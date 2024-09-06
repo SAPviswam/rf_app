@@ -1,1 +1,460 @@
 /* Enter your custom styles here */
+
+/*---------------------------------------------------------------------Login Page Styles Start ---------------------------------------------------------------------*/
+.HomePageBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://i.ibb.co/N79Mgtf/58793ebf-1e00-17be-e434-bcf9334fbf4f-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    padding: 2rem;
+}
+
+.header {
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.568);
+}
+
+.logoTextContainer {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.logoImage {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Glass Effect for Welcome Text */
+.glassEffect {
+    background: rgba(255, 255, 255, 0.1);
+    /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Blur effect to create the frosted glass look */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 1rem 2rem;
+    /* Padding inside the box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Optional border for additional effect */
+    color: white !important;
+    /* White text color */
+    font-size: large;
+    /* Larger font size for the welcome message */
+    text-align: start;
+    /* Align text to the left */
+    width: fit-content;
+    /* Box width based on content */
+    margin-top: 1rem;
+    /* Space above the welcome box */
+    margin-left: 0.5rem;
+    /* Space from the left edge */
+}
+
+.welcomeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align items to the start (left) */
+    margin-top: 4rem;
+    /* Space below the logo */
+}
+
+.welcomeText {
+    color: white;
+    font-size: larger;
+    font-style: italic;
+}
+
+.welcomeTextMessage12 {
+    color: white;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.welcomeTextMessage13,
+.welcomeTextMessage14 {
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.mainContainer.centered {
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-out;
+}
+
+.loginContainer {
+    background-color: rgba(119, 176, 240, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100% !important;
+    text-align: start;
+    margin: auto;
+    transition: all 0.5s ease-out;
+    margin-top: 6rem;
+    margin-left: 52rem;
+}
+
+.sapUiResponsiveMargin {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    padding-top: 0.2rem;
+}
+
+.sapUiSmallMarginTop {
+    margin-top: 1rem;
+}
+
+.SubmitBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: green;
+    margin-right: 0.5rem;
+    font-weight: bold !important;
+}
+
+.ClearBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: red;
+    font-weight: bold !important;
+}
+
+.onSignupClassBtn .sapMBtnText {
+    background-color: transparent !important;
+    color: white;
+    border-color: transparent !important;
+}
+
+.onForgotPassword {
+    color: white !important;
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+}
+
+@media (max-width: 1024px) {
+
+    .SidePanelContent {
+
+        width: 30%;
+
+        height: 40%;
+
+    }
+
+    .loginContainer {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+    .glassEffect {
+
+        font-size: medium;
+
+        padding: 0.5rem 1rem;
+
+        margin-top: 0.5rem;
+
+        margin-left: 0rem;
+
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .mainContainer {
+
+        margin-top: 2rem;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 1rem;
+
+    }
+
+    .descriptionContainer,
+
+    .loginContainer {
+
+        max-width: 100%;
+
+        width: 100%;
+
+        margin: 0;
+
+        margin-right: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+
+    }
+
+    .descriptionContainer {
+
+        text-align: center;
+
+    }
+
+    .loginContainer {
+
+        margin-top: 2rem;
+
+        padding: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+
+    }
+
+    .logoImage {
+
+        width: 100px;
+
+    }
+
+    .glassEffect {
+
+        font-size: smaller;
+
+        padding: 0.5rem 1rem;
+
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+
+    }
+
+    .welcomeContainer {
+
+        margin-top: 2rem;
+
+    }
+
+    .TextParkingLot {
+
+        font-size: large;
+
+    }
+
+    .ParkingSubtitle {
+
+        font-size: small;
+
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .SidePanelContent {
+
+        width: 100%;
+
+        height: 30%;
+
+    }
+
+    .loginContainer {
+
+        /* margin-left: auto;
+
+        margin-right: auto; */
+
+        padding: 1rem;
+
+        max-width: 100%;
+
+        margin-top: 17rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+
+    }
+
+    .descriptionContainer {
+
+        padding: 0.5rem;
+
+        text-align: center;
+
+    }
+
+    .TextParkingLot {
+
+        font-size: medium;
+
+    }
+
+    .ParkingSubtitle {
+
+        font-size: small;
+
+    }
+
+    .glassEffect {
+
+        font-size: smaller;
+
+        padding: 0.5rem 0.5rem;
+
+    }
+
+    .welcomeContainer {
+
+        margin-top: 1rem;
+
+    }
+
+    .logoImage {
+
+        width: 80px;
+
+    }
+
+}
+
+@media (max-width: 1024px) and (max-height: 600px) {
+    .mainContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        /* Ensure the container takes full height */
+    }
+
+    .loginContainer {
+        width: 40%;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        /* Include padding and border in the element's total width and height */
+        margin-left: 55%;
+        margin-top: 7%;
+    }
+
+    .glassEffect {
+        width: 70%;
+        padding: 1rem;
+        box-sizing: border-box;
+        /* Include padding and border in the element's total width and height */
+        margin: 0;
+        margin-top: 0;
+    }
+
+    .logoImage {
+        width: 100px;
+    }
+
+    .welcomeContainer {
+        margin-top: 0;
+        text-align: center;
+    }
+}
+
+/*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
+
+/* Supervisor Page Start */
+.sapUiSmallMarginTop {
+    margin-top: 1rem;
+}
+
+.sapUiSmallMargin {
+    border: 1cm;
+}
+
+.boxContainer {
+    border-radius: 1rem;
+    border: 2px solid black;
+    /* Add border width, style, and color */
+    padding: 3%;
+    width: 35%
+}
+
+.Inputs {
+    width: 100%
+}
+
+.dropdown {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .boxContainer {
+        border-radius: 1rem;
+        border: 2px solid black;
+        /* Add border width, style, and color */
+        padding: 3%;
+        width: 80%;
+    }
+
+    .Inputs {
+        padding-left: 10vw;
+        width: 70%;
+    }
+
+}
+
+.SubmitBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: green;
+    margin-right: 0.5rem;
+    font-weight: bold !important;
+}
+
+.ClearBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: red;
+    font-weight: bold !important;
+}
+/* these are for theme colors for options... */
+.colorCheckBox {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    border-color: black !important;
+  }
+  .redCheckBox .sapMCbBg {
+    background-color: red !important;
+  }
+  .blackCheckBox .sapMCbBg {
+    background-color: black !important;
+  }
+  
+  .greenCheckBox .sapMCbBg {
+    background-color: green !important;
+  }
+  .whiteCheckBox .sapMCbBg {
+    background-color: white !important;
+  }
+  .purpleCheckBox .sapMCbBg {
+    background-color: purple !important;
+  }
+  .blueCheckBox .sapMCbBg {
+    background-color: blue !important;
+  }
+  .YellowCheckBox .sapMCbBg {
+    background-color: yellow !important;
+  }
+  .textFieldsAF{
+    padding-bottom: 1rem;
+  }
+/*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/

@@ -112,6 +112,34 @@
           "target": [
             "TargetHome"
           ]
+        },
+        {
+          "name": "RouteResourcePage",
+          "pattern": "ResourcePage/{id}",
+          "target": [
+            "TargetResourcePage"
+          ]
+        },
+        {
+          "name": "Supervisor",
+          "pattern": "Supervisor",
+          "target": [
+            "TargetSupervisorPage"
+          ]
+        },
+        {
+          "name": "HuQuery",
+          "pattern": "HuQuery",
+          "target": [
+            "TargetHuQueryPage"
+          ]
+        },
+        {
+          "name": "StockBinQueryByBin",
+          "pattern": "StockBinQueryByBin",
+          "target": [
+            "TargetStockBinQueryByBin"
+          ]
         }
       ],
       "targets": {
@@ -121,6 +149,34 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "TargetResourcePage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ResourcePage",
+          "viewName": "ResourcePage"
+        },
+        "TargetSupervisorPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Supervisor",
+          "viewName": "Supervisor"
+        },
+        "TargetHuQueryPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HuQuery",
+          "viewName": "HuQuery"
+        },
+        "TargetStockBinQueryByBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByBin",
+          "viewName": "StockBinQueryByBin"
         }
       }
     },

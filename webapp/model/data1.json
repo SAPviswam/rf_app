@@ -1,0 +1,112 @@
+{
+	"selectedKey": "page2",
+	"navigation": [
+		{
+			"title": "Home",
+			"icon":"sap-icon://home",
+            "tooltip":"Home",
+			"key": "pageSV1"
+		},
+		{
+			"title": "Requested Data",
+			"icon":"sap-icon://request",
+            "tooltip":"Requested Data",
+			"key": "pageSV2"
+		},
+        {
+			"title": "Users Data",
+			"icon":"sap-icon://employee",
+            "tooltip":"Users Data",
+			"key": "pageSV3"
+		},
+		
+		{
+			"title": "Inbound Process",
+			"icon": "sap-icon://shipping-status",
+			"expanded": true,
+			"key": "root1",
+			"items": [
+				{
+					"title": "Unloading",
+					"key": "idpage1"
+				},
+				{
+					"title": "Deconsolidation",
+					"key": "idpage2"
+				},
+                {
+					"title": "Putaway",
+					"key": "idpage3"
+				},
+                {
+					"title": "Receiving Of Hanndling Units",
+					"key": "idpage4"
+				},
+                {
+					"title": "Set Ready for warehouse processing",
+					"key": "idpage5"
+				}
+			]
+		},
+		{
+			"title": "Outbound Process",
+			"icon": "sap-icon://inventory",
+			"expanded": false,
+			"items": [
+				{
+					"title": "Picking",
+                    "key": "idpage6"
+				},
+				{
+					"title": "Packing",
+                    "key": "idpage7"
+				},
+                {
+					"title": "Loading",
+                    "key": "idpage8"
+				},
+				{
+					"title": "Pick Point",
+                    "key": "idpage9"
+				},
+                {
+					"title": "Consumption",
+                    "key": "idpage10"
+				},
+				{
+					"title": "Distribution Equipment",
+                    "key": "idpage11"
+				}
+			]
+		},
+		{
+			"title": "Internal Process",
+			"icon": "sap-icon://company-view",
+			"expanded": false,
+			"items": [
+				{
+					"title": "Inventory Counting",
+                    "key": "idpage12"
+				},
+				{
+					"title": "Adhoc WT creations",
+                    "key": "idpage13"
+				},
+				{
+					"title": "Queries",
+                    "key": "idpage14"
+				},
+                {
+					"title": "Quality Management",
+                    "key": "idpage15"
+				},
+                {
+					"title": "Resource Management",
+                    "key": "idpage16"
+				}
+			]
+		}
+
+
+    ]
+}

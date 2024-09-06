@@ -37,7 +37,7 @@
                 <Key>
                     <PropertyRef Name="Resourceid"/>
                 </Key>
-                <Property Name="Loginfirst" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="    " Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Resourceid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPLOYEE ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Resourcetype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Resource type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Warehouseno" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>

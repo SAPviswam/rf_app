@@ -1,7 +1,156 @@
 <mvc:View controllerName="com.app.rfapp.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<Page
+        id="idPage"
+        showHeader="false"
+        class="HomePageBackground"
+    >
+        <VBox id="idVBox1" justifyContent="SpaceBetween">
+            <HBox
+                id="idHbox1"
+                class="header"
+            >
+                <!-- Positioned at the top-left corner -->
+                <VBox
+                    id="idVBoxLogoText"
+                    class="logoTextContainer"
+                >
+                    <Image
+                        id="idImageLogoAvatar"
+                        src="https://i.postimg.cc/3wBkmqjQ/Artihcus-logo-1-transformed.png"
+                        class="logoImage"
+                    />
+                    <!-- New VBox for Welcome text -->
+                    <VBox
+                        id="idVBoxWelcome"
+                        class="welcomeContainer glassEffect"
+                    >
+                        <Title
+                            id="idTextWelcome"
+                            text="'Welcome..!"
+                            class="welcomeText"
+                        />
+                        <!-- Additional message below the welcome text -->
+                        <Text
+                            id="idTextMessage"
+                            text="We're glad to have you here!"
+                            class="welcomeTextMessage12"
+                        />
+                        <Text
+                            id="idTextMessage1"
+                            text="This application is designed to streamline your warehouse operations,"
+                            class="welcomeTextMessage13"
+                        />
+                        <Text
+                            id="idTextMessage2"
+                            text="from managing inventory and tracking shipments to optimizing storage and handling logistics."
+                            class="welcomeTextMessage14"
+                        />
+                        <Text id="idTextMsg3" />
+                        <Text id="idTextMsg4" />
+                    </VBox>
+                </VBox>
+            </HBox>
+            <VBox
+                id="idVBoxMain"
+                class="mainContainer centered"
+                
+                alignItems="Center"
+            >
+                <VBox
+                    id="idVBoxLoginContainer"
+                    class="loginContainer"
+                    justifyContent="Center"
+                    alignItems="Center"
+                >
+                    <Title
+                        id="idTextParking"
+                        text="LOGIN"
+                        level="H2"
+                    />
+                    <Panel
+                        id="idPanelLogin"
+                        class="sapUiResponsiveMargin"
+                        width="auto"
+                    >
+                        <content>
+                            <Label
+                                id="idLabelHU"
+                                text="Warehouse Number:"
+                                labelFor="idHUInput"
+                                required="true"
+                            />
+                            <Input
+                                id="idHUInput"
+                                placeholder="Enter Warehouse Number..."
+                                value="1710"
+                                editable="false"
+                            />
+                            <Label
+                                id="idLabelUserID"
+                                text="Resource ID:"
+                                labelFor="idUserIDInput"
+                                class="sapUiSmallMarginTop"
+                                required="true"
+                            />
+                            <Input
+                                id="idUserIDInput"
+                                placeholder="Enter Resource ID..."
+                            />
+                            <Label
+                                id="idLabelPassword"
+                                text="Password:"
+                                labelFor="idPasswordInput"
+                                class="sapUiSmallMarginTop"
+                                required="true"
+                            />
+                            <Input
+                                id="idPasswordInput"
+                                type="Password"
+                                placeholder="Enter Password..."
+                            />
+                            <HBox
+                                id="idHBox"
+                                class="sapUiSmallMarginTop"
+                                justifyContent="End"
+                            >
+                                <Button
+                                    id="idButtonLogin"
+                                    text="Login"
+                                    class="SubmitBtnFromVendorPage"
+                                    press="onLoginPress"
+                                />
+                                <Button
+                                    id="idButtonClear"
+                                    text="Clear"
+                                    class="ClearBtnFromVendorPage"
+                                    press="onClearPress"
+                                />
+                            </HBox>
+                        </content>
+                    </Panel>
+                    <HBox
+                        id="idHBoxSignUpForgot"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            id="idButtonSignUp"
+                            text="Sign Up"
+                            press="onPressSignupBtn"
+                            class="onSignupClassBtn"
+                        />
+                        <Button
+                            id="idLinkPassword"
+                            text="Forgot Password"
+                            press="onForgotPassword"
+                            class="onForgotPassword"
+                        />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
     </Page>
 </mvc:View>
