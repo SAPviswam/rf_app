@@ -1,0 +1,176 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="dialog"
+        resizable="false"
+        draggable="true"
+        contentWidth="25%"
+        title="Signup Form"
+    >
+        <customHeader>
+            <Bar
+                id="_IDGenBar1"
+                class="DialogClass"
+            >
+                <contentMiddle>
+                    <Title
+                        id="_IDGenTitle1"
+                        text="Signup Form"
+                    />
+                </contentMiddle>
+                <contentRight>
+                    <Button
+                        id="_IDGenButton1"
+                        icon="sap-icon://decline"
+                        press="onCloseRegisterSubmitDialog"
+                        tooltip="Close"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <beginButton>
+            <Button
+                id="idRegisterUserButton"
+                text="Submit"
+                press="onSubmitPress"
+                class="onSubmitBtnFromFragment"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelRegisterUserButton"
+                text="Clear"
+                press="onClearRegisterSubmitDialog"
+                class="onCancelRegisterBtn"
+            />
+        </endButton>
+
+        <content>
+            <form:SimpleForm
+                id="idRegisterUserDetailsForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <Label
+                    id="idLableResourceId"
+                    text="Resource ID "
+                    required="true"
+                />
+                <Input
+                    id="idResourceIdInput"
+                    value="{}"
+                    placeholder="Enter Resource ID.."
+                    required="true"
+                />
+                <Label
+                    id="idLableResourceType"
+                    text="Resource Type"
+                    required="true"
+                />
+
+                <ComboBox
+                    id="idResouceType"
+                    placeholder="Select Group from Dropdown.."
+                >
+                    <!-- <core:Item
+                       id="default"
+                        text=""
+                    /> -->
+                    <core:Item
+                        id="permanent"
+                        key="Permanent Employee"
+                        text="Permanent Employee"
+                    />
+                    <core:Item
+                        id="contract"
+                        key="Contract Employee"
+                        text="Contract Employee"
+                    />
+                </ComboBox>
+
+                <Label
+                    id="idLableUserName"
+                    text="User Name"
+                    required="true"
+                />
+                <Input
+                    id="idUserNameInput"
+                    value="{}"
+                    placeholder="Enter your Name.."
+                    required="true"
+                />
+                <Label
+                    id="idLableEmail"
+                    text="Email"
+                    required="false"
+                />
+                <Input
+                    id="idInputEmail"
+                    value="{}"
+                    placeholder="Enter Email.."
+                    editable="true"
+                    required="false"
+                />
+                <Label
+                    id="idLablePhoneNumber"
+                    text="Phone Number"
+                />
+
+                <HBox id="idPhonenumberinput" justifyContent="SpaceBetween">
+                    <Input
+                        id="idInputPhoneNumber"
+                        placeholder="Enter Phone Number.."
+                        editable="true"
+                        required="true"
+                        width="120%"
+                        layoutData="{
+                        path: 'sap.ui.layout.HBox',
+                        templateShareable: false,
+                        model: 'sap.ui.layout.HBox'   
+                        }"
+                    />
+                    <Button
+                        id="VerifyButton"
+                        text="Get OTP"
+                        press="onVerify"
+                        type="Emphasized"
+                        width="80px"
+                        visible="true"
+                    />
+                    <core:Icon
+                        id="verficationId"
+                        src="sap-icon://accept"
+                        size="220%"
+                        color="#008000"
+                        visible="false"
+                    />
+                </HBox>
+
+                <Input
+                    id="idOtpInput"
+                    placeholder="Enter OTP..."
+                    visible="false"
+                    valueLiveUpdate="true"
+                    liveChange="onSubmitOtp"
+                    width="100%"
+                />
+            </form:SimpleForm>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

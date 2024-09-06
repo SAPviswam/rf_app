@@ -1,0 +1,1520 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.Supervisor"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:suite="sap.suite.ui.commons"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:unified="sap.ui.unified"
+
+>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader id="idToolHeader">
+                <Button
+                    id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="idToolBarLayout" priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <Label id="idRFScreenHeading"
+                    class="Heading"
+                    text="RF SCREEN"
+                />
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <ToolbarSpacer id="spacer">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="_IDGenOverflowToolbarLayoutData4"
+                            priority="Low"
+                            group="1"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                 <Button
+                    id="themeButton"
+                    text="Theme"
+                    press="onOpenThemeDialog"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                />
+                <!-- <Button id="idNotificationButton"
+                    icon="sap-icon://bell"
+                    press="onNotificationPress"
+                    type="Transparent"
+                >
+                    <customData>
+                        <BadgeCustomData
+                            id="idnotificationsbadge"
+                            visible="true"
+                        />
+                    </customData>
+                </Button> -->
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation id="idSideNavigation"
+                expanded="true"
+                selectedKey="{/selectedKey}"
+                itemSelect=".onItemSelect"
+            >
+                <tnt:NavigationList id="idNavigationList"
+                    items="{path: '/navigation'}"
+                    class="sidecontent"
+                >
+                    <tnt:NavigationListItem id="NavigationListItem01"
+                        text="{title}"
+                        icon="{icon}"
+                        enabled="{enabled}"
+                        expanded="{expanded}"
+                        items="{items}"
+                        key="{key}"
+                        class="sidecontent"
+                    >
+                        <tnt:NavigationListItem id="NavigationListItem02"
+                            text="{title}"
+                            key="{key}"
+                            enabled="{enabled}"
+                            class="sidecontent"
+                        />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+                <tnt:fixedItem>
+                    <tnt:NavigationList
+                        items="{path: '/fixedNavigation'}"
+                        class="sidecontent"
+                    >
+                        <tnt:NavigationListItem
+                            text="{title}"
+                            icon="{icon}"
+                        />
+                    </tnt:NavigationList>
+                </tnt:fixedItem>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer
+                id="pageContainer"
+                initialPage="pageSV1"
+            >
+                <pages>
+                    <ScrollContainer
+                        id="pageSV1"
+                        horizontal="true"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContent"
+                    >
+                        <!-- <ToolbarSpacer id="_IDGenToolbarSpacerArea" /> -->
+
+                        <!-- <Button
+                            id="idnewprocessArea"
+                            text="NewProcessArea"
+                            press="onPressCreateArea"
+                            type="Success"
+                        /> -->
+                        <FlexBox
+                            justifyContent="End"
+                            class="sapUiSmallMarginTop"
+                        >
+                            <!-- <Button
+                                id="idnewprocessArea"
+                                text="NewProcessArea"
+                                press="onPressCreateArea"
+                                type="Success"
+                            /> -->
+                        </FlexBox>
+
+                        <VBox
+                            id="idAssignslots"
+                            class="sapUiSmallMargin boxContainer"
+                        >
+                            <Title
+                                id="_IDHeadLabel"
+                                text="Admin page"
+                                class="sapUiSmallMarginTopHeading"
+                            />
+                            <FlexBox
+                                id="_IDField1"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idempID"
+                                    text="Employee ID:"
+                                    labelFor="idEmppInput"
+                                    required="true"
+                                />
+                                <Input
+                                    id="idEmppInput"
+                                    placeholder="Enter Employee ID"
+                                    class="Inputs"
+                                    liveChange="onEmployeeIdLiveChange"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField4"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idName"
+                                    text="Name:"
+                                    labelFor="idNameInput"
+                                    required="true"
+                                    
+                                />
+                                <Input
+                                editable="true"
+                                    id="idNameInput"
+                                    placeholder="Enter Name"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField3"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idEmail"
+                                    text="Email:"
+                                    labelFor="idEmailInput"
+                                    
+                                />
+                                <Input
+                                    editable="true"
+                                    id="idEmailInput"
+                                    placeholder="Enter Email"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField36"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idPhone"
+                                    text="Phone:"
+                                    labelFor="idPhoneInput"
+                                    required="true"
+                                />
+                                <Input
+                                   editable="true"
+                                    id="idPhoneInput"
+                                    placeholder="Enter Phone"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField345"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idLableRoesurcetype"
+                                    text="Resource Type"
+                                    required="true"
+                                />
+                                <ComboBox id="idRoesurcetypeInput" editable="true">
+                                    <core:Item
+                                        id="_IDGenItemPermanentEmployee"
+                                        key="PermanentEmployee"
+                                        text="Permanent Employee"
+                                    />
+
+                                    <core:Item
+                                        id="_IDGenItemtemporaryemployee"
+                                        key="temporaryemployee"
+                                        text="Contract Employee"
+                                    />
+                                </ComboBox>
+
+                                <!--  OUTBOUND  -->
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField2"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idAreaLabel"
+                                    text="Process Area:"
+                                    labelFor="idAreaInput"
+                                    required="true"
+                                />
+                                <MultiComboBox
+                                    id="AreaSelect"
+                                    items="{path: '/ProcessAreaSet'}"
+                                    selectionChange="onCheckBoxSelect"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem5"
+                                        key="{Processarea}"
+                                        text="{Processarea}"
+                                    />
+                                </MultiComboBox>
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField33"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idGroup"
+                                    text="Group:"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                />
+                                <MultiComboBox
+                                    id="GroupSelect"
+                                    items="{path: '/ProcessAreaSet'}"
+                                    visible="false"
+                                    selectionChange="onCheckBoxSelectGroup"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem4"
+                                        key="{Processgroup}"
+                                        text="{Processgroup}"
+                                    />
+                                </MultiComboBox>
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField34"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idQueue"
+                                    text="Queue:"
+                                    labelFor="idQueueSelect"
+                                    required="true"
+                                />
+                                <MultiComboBox
+                                    id="_IDGenComboBox10"
+                                    placeholder="Select Queue from Dropdown.."
+                                    class="Inputs"
+                                    items="{path: '/ProcessAreaSet'}"
+                                    visible="false"
+                                    selectionChange="onCheckBoxSelectQueue"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem22"
+                                        key="{Queue}"
+                                        text="{Queue}"
+                                    />
+                                </MultiComboBox>
+
+                                <!--  OUTBOUND  -->
+                            </FlexBox>
+                            
+
+                            <FlexBox
+                                id="_IDField6"
+                                justifyContent="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Button
+                                    id="idButtonApprove"
+                                    text="Approve"
+                                    type="Unstyled"
+                                    press="onApprovePress"
+                                    class="SubmitBtnFromVendorPage"
+                                    width="auto"
+                                />
+                                <ToolbarSpacer
+                                    id="toolspacer"
+                                    width="10px"
+                                />
+                                <!-- <Button
+                                    id="idButtonReject"
+                                    text="Reject"
+                                    type="Reject"
+                                    press="onResetPress"
+                                    class="ClearBtnFromVendorPage"
+                                    width="auto"
+                                /> -->
+                            </FlexBox>
+                            <Label id="idEmptyRow" />
+                        </VBox>
+                    </ScrollContainer>
+
+                    <ScrollContainer
+                        id="pageSV2"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <Table
+                            id="idRequestedData"
+                            alternateRowColors="true"
+                            backgroundDesign="Transparent"
+                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}]}"
+                            mode="MultiSelect"
+                            class="Allslotsclasstable"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar id="idSlotsTableHeader1">
+                                    <Title
+                                        id="idTableHeaderTitle1"
+                                        text="Requested Data"
+                                        class="Titles"
+                                    />
+                                    <ToolbarSpacer
+                                        id="idUsersInfoToolbarSpacer"
+                                    />
+                                     <Button
+                                        id="idBtnRefresh"
+                                        tooltip="Refresh"
+                                        icon="sap-icon://refresh"
+                                        type="Emphasized"
+                                        press="onRefreshRequestedData"
+                                    />
+                                    <Button
+                                        id="idBtnApprove"
+                                        text="Approve"
+                                        tooltip="Approve"
+                                        type="Emphasized"
+                                        press="onApproveUserBtnPress"
+                                    />
+                                    <Button
+                                        id="idBtnReject"
+                                        text="Reject"
+                                        tooltip="Reject"
+                                        type="Reject"
+                                        press="onRejectUserBtnPress"
+                                    />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column id="idEmployeeId">
+                                    <Title
+                                        id="idtitleEmpID"
+                                        text="Resource Id"
+                                    />
+                                </Column>
+                                <Column id="idEmployeename">
+                                    <Title
+                                        id="idtitleEmpName"
+                                        text="Resource Name"
+                                    />
+                                </Column>
+                                <Column id="idResourceType">
+                                    <Title
+                                        id="idResourceTypetitle"
+                                        text="Resource Type"
+                                    />
+                                </Column>
+                                <Column id="idPhonenumber">
+                                    <Title
+                                        id="idPhoneNumbertitle"
+                                        text="Phone Number"
+                                    />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem
+                                    id="idColumnListAllSlots"
+                                    class="Requested Data"
+                                >
+                                    <cells>
+                                        <Text
+                                            id="idresourceidValue"
+                                            text="{Resourceid}"
+                                        />
+                                        <Text
+                                            id="idResourcenameValue"
+                                            text="{Resourcename}"
+                                        />
+                                        <Text
+                                            id="idResourceTypeValue"
+                                            text="{Resourcetype}"
+                                        />
+                                        <Text
+                                            id="idPhoneNumberValue"
+                                            text="{Phonenumber}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="pageSV3"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <Table
+                            id="idUserDataTable"
+                            mode="MultiSelect"
+                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
+                            alternateRowColors="true"
+                            growingScrollToLoad="true"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar id="idUsersInfoHeade">
+                                    <Title
+                                        id="idUsersInfoTitl"
+                                        text="Users Data:"
+                                    />
+                                    <!-- <ToolbarSpacer
+                                        id="idUsersInfoToolbarSpace"
+                                    />
+                                    <SearchField
+                                        id="idonSearchBt"
+                                        width="20%"
+                                        liveChange="onSearch"
+                                    >
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData
+                                                id="idToolbarLayoutDat"
+                                                priority="NeverOverflow"
+                                            />
+                                        </layoutData>
+                                    </SearchField>
+<Button
+                                        id="idBtnEd2"
+                                        tooltip="Approve"
+                                        text="Approve"
+                                        type="Accept"
+                                        press="onUpdateUserBtnPress"
+                                    />
+                                    <Button
+                                        id="idBtnEdi"
+                                        tooltip="Reject"
+                                        text="Reject"
+                                        type="Reject"
+                                        press="onUpdateUserBtnPress"
+                                    /> -->
+                                </OverflowToolbar>
+                            </headerToolbar>
+
+                            <columns>
+                                <Column
+                                    id="idRDEmpIdCol"
+                                    width="15%"
+                                >
+                                    <Title
+                                        id="idRDEmpIdTitle"
+                                        text="Resource Id"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDEmpNameCol"
+                                    width="20%"
+                                >
+                                    <Title
+                                        id="idRDEmpNameTitle"
+                                        text="Resource Name"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDAreaCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDAreaColTitle"
+                                        text="Area"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDGroupCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDGroupTitle"
+                                        text="Group"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDResourceTypeCol"
+                                    width="18%"
+                                >
+                                    <Title
+                                        id="idRDResourceTypeTitle"
+                                        text="Resource Type"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDEmailCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDEmailTitle"
+                                        text="Email"
+                                    />
+                                </Column>
+
+                                <Column
+                                    id="idRDPhoneNoCol"
+                                    width="15%"
+                                >
+                                    <Title
+                                        id="idRDPhoneNoTitle"
+                                        text="Phone Number"
+                                    />
+                                </Column>
+
+                                <!-- <Column
+                                    id="idPasswordCol1"
+                                    width="13%"
+                                >
+                                    <Title
+                                        id="idPasswordTitl1e"
+                                        text="Password"
+                                    />
+                                </Column> -->
+                            </columns>
+                            <items>
+                                <ColumnListItem id="idRDEmpIdColListItem">
+                                    <cells>
+                                        <Text
+                                            id="idRDEmpIdValue"
+                                            text="{Resourceid}"
+                                        />
+                                        <Text
+                                            id="idRDEmpNameColValue"
+                                            text="{Resourcename}"
+                                        />
+                                        <Text
+                                            id="idRDAreaColValue"
+                                            text="{Area}"
+                                        />
+                                        <Text
+                                            id="idRDGroupColValue"
+                                            text="{Resourcegroup}"
+                                        />
+                                        <Text
+                                            id="idRDResourceTypeColValue"
+                                            text="{Resourcetype}"
+                                        />
+                                        <Text
+                                            id="idRDEmailColValue"
+                                            text="{Email}"
+                                        />
+                                        <Text
+                                            id="idRDPhoneNoColValue"
+                                            text="{Phonenumber}"
+                                        />
+
+                                        <!-- <Text
+                                            id="idRDPasswordColValue"
+                                            text="{Password}"
+                                        />
+
+                                        <Text
+                                            id="idUserQueueColValue"
+                                            text="{Queue}"
+                                        />
+
+                                        <Text
+                                            id="idRDExpiredDateColValue"
+                                            text="{Expirydate}"
+                                        /> -->
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage1"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <!-- GenericTiles with additional data-operation attribute -->
+                        <GenericTile
+                            id="idUnloadingByDelivery1"
+                            header="Unloading By Delivery"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        >
+                            <TileContent
+                                id="idTileContent"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolor"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile
+                            id="idUnloadingByShipment1"
+                            header="Unloading By Shipment"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadingByTransportUnit1"
+                            header="Unloading By Transport Unit"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadingByASN1"
+                            header="Unloading By ASN"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadingByDoor1"
+                            header="Unloading By Door"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadingByBillOfLading1"
+                            header="Unloading By Bill of Lading"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadingByConsigmentOrder1"
+                            header="Unloading By Consigment Order"
+                            press="onTilePress"
+                            class="sapUiTinyMargin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage2"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="idCreatePutawayHusforDeconsolidation1"
+                            header="Create Putaway Hus for Deconsolidation"
+                            press="onCreatePutawayHusforDeconsolidation"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idCreatePutawayHusManually1"
+                            header="Create Putaway Hus Manually"
+                            press="onCreatePutawayHus Manually"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idDeconsolidationAutomatically1"
+                            header="Deconsolidation Automatically"
+                            press="onDeconsolidationAutomatically"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idDeconsolidateManually1"
+                            header="Deconsolidate Manually"
+                            press="onDeconsolidateManually"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idHUOverview1"
+                            header="HU Overview"
+                            press="onHUOverview"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idCreatePutawayHUManually1"
+                            header="Create Putaway HU Manually (W/O WC)"
+                            press="onCreatePutawayHUManually"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idHUMaintenance1"
+                            header="HU Maintenance"
+                            press="ondHUMaintenance"
+                            class="sapUiTinyMargin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage3"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="idPutawayByHU1"
+                            header="Putaway By HU"
+                            press="onPutawayByHU"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idPutawayByHUClustered1"
+                            header="Putaway By HU (Clustered)"
+                            press="onPutawayByHUClustered"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idPutawayByWO1"
+                            header="Putaway By WO"
+                            press="onPutawayByWO"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idConfiramtionCorrections1"
+                            header="Confiramtion Corrections"
+                            press="onConfiramtionCorrections"
+                            class="sapUiTinyMargin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage4"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <!-- Recieving of Handling Units -->
+                        <GenericTile
+                            id="idReceivingofHUbyDelivery1"
+                            header="Receiving of HU by Delivery"
+                            press="onReceivingofHUbyDelivery"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyShipment1"
+                            header="Receiving of HU by Shipment"
+                            press="onReceivingofHUbyShipment"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyTU1"
+                            header="Receiving of HU by TU"
+                            press="onReceivingofHUbyTU"
+                            class="sapUiTinyMargin"
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyASN1"
+                            header="Receiving of HU by ASN"
+                            press="onReceivingofHUbyASN"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idReceivingofHUbyDoor1"
+                            header="Receiving of HU by Door"
+                            press="onReceivingofHUbyDoor"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idReceivingofHUbyManufacturingOrder1"
+                            header="Receiving of HU by Manufacturing Order"
+                            press="onReceivingofHUbyManufacturingOrder"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idReceivingofTUorDoor1"
+                            header="Receiving of TU/Door (TW)"
+                            press="onReceivingofTUorDoor"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idUnloadHUCTW1"
+                            header="Unload HUC (TW)"
+                            press="onUnloadHUCTW"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idReceivinogfHUbyBillofLading1"
+                            header="Receiving of HU by Bill of Lading"
+                            press="onReceivingofHUbyBillofLading"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idReceivinogfHUbyConsignementOrder1"
+                            header="Receiving of HU by Consignement Order"
+                            press="onReceivingofHUbyConsignementOrder"
+                            class="sapUiTinyMargin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage5"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <!-- Set Ready for Warehouse Processing -->
+
+                        <GenericTile
+                            id="idSetReadyForWHProcessingByBOL1"
+                            header="Set Ready For WH Processing By BOL"
+                            press="onSetReadyForWHProcessingByBOL"
+                            class="sapUiTinyMargin"
+                        />
+
+                        <GenericTile
+                            id="idSetReadyForWHProcessingByCO1"
+                            header="Set Ready For WH Processing By CO"
+                            press="onSetReadyForWHProcessingByCO"
+                            class="sapUiTinyMargin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage6"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile01"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Picking By system Guided"
+                            press="onPressPickingBySysGuided"
+                        />
+                        <GenericTile
+                            id="_IDGenGenericTile02"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="System Guided By queue"
+                            press="onPressSysguidedByQueue"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile03"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Picking By WR"
+                            press="onPressPickingByWR"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile04"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Picking By WO"
+                            press="onPressPickingByWO"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile05"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Picking By HU"
+                            press="onPressPickingByHU"
+                        />
+                    </ScrollContainer>
+
+                    <ScrollContainer
+                        id="idpage7"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile06"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create Shipping HU"
+                            press="onPressCreateShippingHU"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile07"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Automatically Repack HU"
+                            press="onPressAutomaticallyRepeakHU"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile08"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Automatically Repack HU Item"
+                            press="onPressAutomaticallyRepeakHUItem"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile09"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create Shipping HU (W/O WC)"
+                            press="onPress"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTile"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Manually Repack HU"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTileRepackHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Manually Repack HU Item"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTileMaintainHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Maintain HU"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTilere-PackAllHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Manually re-pack all HU items"
+                            press="press"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage8"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTileLoadHUC"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load HUC(TW)"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByDelivery"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Delivery"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByShipment"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Shipment"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByTransportUnit"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Transport Unit"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByDoor"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Door"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By HU"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByRoute"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Route"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDBuildVehicle"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Build Vehicle"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByTUDoor"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By TU/Door (TW)"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByBill"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By bill of Lading"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDLoadingByConsignment"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Loading By Consignment order"
+                            press="press"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage9"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="_IDCreationOfSingleHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Creation Of Single HU"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDGenGenericTilePickPoint"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Pick Point"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="_IDHUMaintenance"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="HU Maintenance"
+                            press="press"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage10"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDGenGenericTile28"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Consumption By Manufacturing Order"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="IDGenGenericTile29"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Reversal of Consumption by MO (HU)"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="IDGenGenericTile30"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Reversal of consumption by MO (Bin)"
+                            press="press"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage11"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDGenGenericTile32"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load By HU - Man. Pos. Assigment"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="IDGenGenericTile33"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Change Loading/Unloading Details"
+                            press="press"
+                        />
+
+                        <GenericTile
+                            id="IDGenGenericTile34"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Unload By HU"
+                            press="press"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage12"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDInventoryCountingGuied"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Inventory Counting Guied"
+                            press="OnPressInventoryCountingGuied"
+                        />
+
+                        <GenericTile
+                            id="IDInventoryCountingManual"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Inventory Counting Manual"
+                            press="OnPressInventoryCountingManual"
+                        />
+
+                        <GenericTile
+                            id="IDAdhocInventoryCreation"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Adhoc Inventory Creation"
+                            press="OnPressAdhocInventoryCreation"
+                        />
+
+                        <GenericTile
+                            id="IDAdhocInventoryCounting"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Adhoc Inventory Counting"
+                            press="OnPressAdhocInventoryCounting"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage13"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDPressReplenishmentforfixedBins"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Replenishment for fixed Bins"
+                            press="onTileSelect"
+                        >
+                            <TileContent id="idTileContent0">
+                                <Button
+                                    id="idBtn"
+                                    press="onPaletteIconBtnTilePress"
+                                    icon="sap-icon://palette"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile
+                            id="IDCreateAdhocHUWT"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create Adhoc HU WT"
+                            press="OnPressCreateAdhocHUWT"
+                        />
+
+                        <GenericTile
+                            id="IDCreateandConfirmAdhocHUWT"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create and Confirm Adhoc HU WT"
+                            press="OnPressCreateandConfirmAdhocHUWT"
+                        />
+
+                        <GenericTile
+                            id="IDCreateAdhocProductWT"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create Adhoc Product WT"
+                            press="OnPressCreateAdhocProductWT"
+                        />
+
+                        <GenericTile
+                            id="IDCreateandConfirmAdhocProductWT"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Create and Confirm Adhoc Product WT"
+                            press="OnPressCreateandConfirmAdhocProductWT"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage14"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDHUQuery"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="HU Query"
+                            press="OnPressHUQuery"
+                        />
+
+                        <GenericTile
+                            id="IDStockBinQuerybyBin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Stock/Bin Query by Bin"
+                            press="OnPressStockBinQueryByBin"
+                        />
+
+                        <GenericTile
+                            id="IDStockBinQuerybyProduct"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Stock/Bin Query by Product"
+                            press="OnPressStock/BinQuerybyProduct"
+                        />
+
+                        <GenericTile
+                            id="IDSerialnumberLocation"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Serial number Location"
+                            press="OnPressSerialnumberLocation"
+                        />
+                        <GenericTile
+                            id="IDAvailableHandlingunitsonbinquery"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Available Handling units on bin query"
+                            press="OnPressAvailable Handling units on bin query"
+                        />
+                        <GenericTile
+                            id="IDWTQuerybyWO"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="WT Query by WO"
+                            press="OnPressWTQuerybyWO"
+                        />
+                        <GenericTile
+                            id="IDWTQuerybyWT"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="WT Query By WT"
+                            press="OnPressWTQuerybyWT"
+                        />
+                        <GenericTile
+                            id="IDWTQuerybyQueue"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="WT Query by Queue"
+                            press="OnPressWTQuerybyQueue"
+                        />
+                        <GenericTile
+                            id="IDWTquerybyHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="WT query by HU"
+                            press="OnPressWTquerybyHU"
+                        />
+                        <GenericTile
+                            id="IDHUStockOverviewQuery"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="HU Stock Overview Query"
+                            press="OnPressHUStockOverviewQuery"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage15"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDProductInspectionByHU"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Product Inspection By HU"
+                            press="OnPressProductInspectionByHU"
+                        />
+
+                        <GenericTile
+                            id="IDProductInspectionByStorageBin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Product Inspection By Storage Bin"
+                            press="OnPressProductInspectionByStorageBin"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="idpage16"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <GenericTile
+                            id="IDChangeQueue"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Change Queue"
+                            press="OnPressChange Queue"
+                        />
+
+                        <GenericTile
+                            id="IDChangeResourceGroup"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Change Resource Group"
+                            press="OnPressChangeResourceGroup"
+                        />
+                    </ScrollContainer>
+                    <Dialog
+                        id="themeTileDialog"
+                        title="Select Theme Color"
+                        contentHeight="65%"
+                    >
+                        <customHeader>
+                            <Bar id="themeDialogHeader">
+                                <contentLeft>
+                                    <Title
+                                        id="idTextColorTheme"
+                                        text="Select Theme Color:"
+                                    />
+                                </contentLeft>
+                                <contentRight>
+                                    <Button
+                                        id="applyColorButton"
+                                        text="Apply"
+                                        press="onApplyColor"
+                                        type="Transparent"
+                                        tooltip="Apply the selected color"
+                                    />
+                                    <Button
+                                        id="cancelColorButton"
+                                        icon="sap-icon://decline"
+                                        press="onCancelColorDialog"
+                                        type="Transparent"
+                                        tooltip="Cancel Theme"
+                                    />
+                                </contentRight>
+                            </Bar>
+                        </customHeader>
+                        <VBox
+                            id="idVBox1796"
+                            class="sapUiSmallMargin"
+                        >
+                            <HBox id="colorOptions">
+                                <CheckBox
+                                    id="colorOptionRed"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox redCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata1"
+                                            key="red"
+                                            value="red"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionBlack"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox blackCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata2"
+                                            key="black"
+                                            value="black"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionGreen"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox greenCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata3"
+                                            key="green"
+                                            value="green"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionWhite"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox whiteCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata4"
+                                            key="white"
+                                            value="white"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionPurple"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox purpleCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata5"
+                                            key="purple"
+                                            value="purple"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionBlue"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox blueCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata6"
+                                            key="blue"
+                                            value="blue"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <CheckBox
+                                    id="colorOptionYellow"
+                                    selected="false"
+                                    select="onColorOptionSelect"
+                                    class="colorCheckBox YellowCheckBox"
+                                >
+                                    <customData>
+                                        <core:CustomData
+                                            id="idcustomedata7"
+                                            key="yellow"
+                                            value="yellow"
+                                        />
+                                    </customData>
+                                </CheckBox>
+                                <!-- <Button id="idCustomethemeSelection" press="onPressCustomeTheme" icon="sap-icon://palette" type="Transparent"></Button> -->
+                                <!-- Add more color options as needed -->
+                            </HBox>
+                            <unified:ColorPicker
+                                id="colorPicker"
+                                mode="HSL"
+                                change="onColorChange"
+                            />
+                        </VBox>
+                    </Dialog>
+
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

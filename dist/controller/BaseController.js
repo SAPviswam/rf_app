@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/core/Fragment"],function(e,r){"use strict";return e.extend("com.app.rfapp.controller.BaseController",{getRouter:function(){return this.getOwnerComponent().getRouter()},createData:function(e,r,t){return new Promise((n,o)=>{e.create(t,r,{refreshAfterChange:true,success:function(e){n(e)},error:function(e){o(e)}})})},deleteData:function(e,r,t){return new Promise((n,o)=>{e.remove(`${r}/${t}`,{success:function(e){n(e)},error:function(e){o(e)}})})}})});
+//# sourceMappingURL=BaseController.js.map
