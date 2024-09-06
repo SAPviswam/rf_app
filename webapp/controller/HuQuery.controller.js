@@ -50,7 +50,7 @@
             var oModel = this.getOwnerComponent().getModel();
             var that = this;
             
-            oModel.read(`/hu_detailsSet('${oHu}')`, {
+            oModel.read(`/Hu_ContentSet('${oHu}')`, {
                 success: function (odata) {
                     
                   
