@@ -1,16 +1,4 @@
-// sap.ui.define(
-//     [
-//         "sap/ui/core/mvc/Controller"
-//     ],
-//     function(BaseController) {
-//       "use strict";
-  
-//       return BaseController.extend("com.app.rfapp.controller.HuQuery", {
-//         onInit: function() {
-//         }
-//       });
-//     }
-//   );
+
   sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device"
@@ -147,7 +135,14 @@
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
             }
         },
+<<<<<<< HEAD
 
+=======
+         onBeforeRendering: function() {
+            this.getView().byId("_IDGenButton1133").setVisible(true);   
+
+        },
+>>>>>>> 1a878083070fe1f285afe7eceacc18b8298ce15a
         onItemSelect: function (oEvent) {
             var oItem = oEvent.getParameter("item");
             this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
@@ -202,6 +197,7 @@
 
         // Submit button logic (if necessary)
         Onpresssubmit: function () {
+<<<<<<< HEAD
             var oHu = this.byId("_IDGenInput1").getValue().trim();
             if (oHu) {
                 this.onLiveHuValidation({
@@ -213,6 +209,115 @@
                 MessageBox.error("Please enter a valid HU.");
             }
         },
+=======
+
+            this.getView().byId("icon1").setVisible(false);
+            this.getView().byId("icon2").setVisible(true);
+            this.getView().byId("_IDGenButton1111").setVisible(true);
+            this.getView().byId("_IDGenButton1133").setVisible(false);
+            var oHu = this.byId("_IDGenInput1").getValue();
+            debugger
+            /**Getting Model */
+            var oModel = this.getOwnerComponent().getModel();
+            var that = this;
+            
+            oModel.read(`/Hu_ContentSet('${oHu}')`, {
+                success: function (odata) {
+                    
+                  
+                   /* odata.Matid
+                    odata.Quan
+                    odata.Meins
+                   
+                    
+                  
+                   
+                    
+                   
+                    odata.UnitLwh
+                    odata.UnitGw
+                    
+                    odata.UnitTv
+                    odata.Lgpla */
+                    that.byId("_IDGenInput2").setValue(odata.Huident);
+                    that.byId("_IDGenInput3").setValue( odata.Letyp);
+                    that.byId("_IDGenInputLength").setValue(odata.Length);
+                    that.byId("_IDGenInputWidth").setValue(odata.Width);
+                    that.byId("_IDGenInputHeight").setValue(odata.Height);
+                    that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
+                    that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
+                    that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
+                    that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+                    that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
+                    that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+                    that.getView().byId("icon1").setVisible(false);
+                    that.getView().byId("icon2").setVisible(true);
+                    that.getView().byId("_IDGenButton1111").setVisible(true);
+                }, error: function (oError) {
+                    sap.m.MessageBox.error("Error");
+
+                }
+            })
+
+
+        },
+        Onpressback3:function () {
+    
+            var oRouter = this.getOwnerComponent().getRouter().navTo("Supervisor");
+         
+            },
+        
+        onHUContentPress: function () {
+
+
+            this.getView().byId("icon1").setVisible(false);
+            this.getView().byId("icon2").setVisible(false);
+            this.getView().byId("icon3").setVisible(true);
+            this.getView().byId("icon4").setVisible(false);
+            this.getView().byId("_IDGenButton1111").setVisible(false);
+            this.getView().byId("_IDGenButton1122").setVisible(true);
+  this.getView().byId("_IDGenButton1133").setVisible(false);
+
+        },
+        onHUHierarchyPress: function () {
+
+            this.getView().byId("icon1").setVisible(false);
+            this.getView().byId("icon2").setVisible(false);
+            this.getView().byId("icon3").setVisible(false);
+            this.getView().byId("icon4").setVisible(true);
+            this.getView().byId("_IDGenButton1111").setVisible(false);
+            this.getView().byId("_IDGenButton1122").setVisible(true);
+   this.getView().byId("_IDGenButton1133").setVisible(false);
+          
+        },
+
+
+        Onpressback1: function () {
+
+            this.getView().byId("icon1").setVisible(false);
+            this.getView().byId("icon2").setVisible(true);
+            this.getView().byId("icon3").setVisible(false);
+            this.getView().byId("icon4").setVisible(false);
+            this.getView().byId("_IDGenButton1111").setVisible(true);
+            this.getView().byId("_IDGenButton1122").setVisible(false);
+
+        },
+        Onpressback2: function () {
+
+            this.getView().byId("icon1").setVisible(true);
+            this.getView().byId("icon2").setVisible(false);
+            this.getView().byId("icon3").setVisible(false);
+            this.getView().byId("icon4").setVisible(false);
+           
+ this.getView().byId("_IDGenButton1133").setVisible(true);
+            this.getView().byId("_IDGenButton1111").setVisible(false);
+         
+
+        },
+        Submit: function () {
+
+        }
+>>>>>>> 1a878083070fe1f285afe7eceacc18b8298ce15a
 
 
 
