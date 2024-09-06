@@ -627,15 +627,16 @@
                                         id="_IDGenInput1"
                                         placeholder="Enter HU..."
                                         class="sapUiTinyMarginBegin"
+                                     liveChange="onLiveHuValidation"
                                     />
-                                    <ndc:BarcodeScannerButton
+                                    <!-- <ndc:BarcodeScannerButton
                                         id="sampleBarcodeScannerButtonZebraThree"
                                         scanSuccess="onScanSuccessThree"
                                         scanFail="onScanErrorThree"
                                         inputLiveUpdate="onScanLiveUpdate"
                                         dialogTitle="Barcode Scanner Button3 Sample"
                                         class="sampleBarcodeScannerButtonWithZebraEB"
-                                    />
+                                    /> -->
                                     <!-- Barcode Scan Button -->
                                     <!-- <Button
                                         id="_IDGenButton11"
@@ -643,11 +644,11 @@
                                         press="Onpressscan"
                                     /> -->
                                     <!-- Submit Button -->
-                                    <Button
+                                    <!-- <Button
                                         id="_IDGenButton111"
                                         text="Submit"
                                         press="Onpresssubmit"
-                                    />
+                                    /> -->
                                 </HBox>
                             </f:SimpleForm>
                         </VBox>
