@@ -140,6 +140,20 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "RouteAdhocHuWt",
+          "pattern": "AdhocHuWt",
+          "target": [
+            "TargetAdhocHuWt"
+          ]
+        },
+        {
+          "name": "RouteAdhocProductWt",
+          "pattern": "AdhocProductWt",
+          "target": [
+            "TargetProductHuWt"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +191,20 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetAdhocHuWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocHuWt",
+          "viewName": "AdhocHuWt"
+        },
+        "TargetProductHuWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocProductWt",
+          "viewName": "AdhocProductWt"
         }
       }
     },
