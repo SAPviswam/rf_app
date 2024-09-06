@@ -214,9 +214,9 @@ sap.ui.define([
            
                 // Prepare the Twilio API details
                 var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
-                const accountSid = 'AC417cceab51088e0d10bec28680eed7ab'; // Replace with your Twilio Account SID
-                const authToken = '1dd160a8637eeeec9cdbfe53c22e8610'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VAdad9553b34304e96322f401d16e47a85'; // Replace with your Twilio Verify Service SID
+         //       const accountSid = 'AC417cceab51088e0d10bec28680eed7ab'; // Replace with your Twilio Account SID
+        //      const authToken = '1dd160a8637eeeec9cdbfe53c22e8610'; // Replace with your Twilio Auth Token
+         //       const serviceSid = 'VAdad9553b34304e96322f401d16e47a85'; // Replace with your Twilio Verify Service SID
                 const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
            
                 // Prepare the data for the request
