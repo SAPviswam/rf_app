@@ -1,194 +1,194 @@
 {
-  "_version": "1.65.0",
-  "sap.app": {
-    "id": "com.app.rfapp",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.14.5",
-      "toolsId": "6e76714b-9449-4c6c-b4a1-d6d1cf63f5e8"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "com.app.rfapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.5",
+            "toolsId": "6e76714b-9449-4c6c-b4a1-d6d1cf63f5e8"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "sap/opu/odata/sap/ZEWM_RFUI_SRV_01/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "rf application-display": {
+                    "semanticObject": "rf application",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
         }
-      }
     },
-    "crossNavigation": {
-      "inbounds": {
-        "rf application-display": {
-          "semanticObject": "rf application",
-          "action": "display",
-          "title": "{{flpTitle}}",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
-          }
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
         }
-      }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.126.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.app.rfapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.app.rfapp.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },
+                {
+                    "name": "RouteResourcePage",
+                    "pattern": "ResourcePage/{id}",
+                    "target": [
+                        "TargetResourcePage"
+                    ]
+                },
+                {
+                    "name": "Supervisor",
+                    "pattern": "Supervisor",
+                    "target": [
+                        "TargetSupervisorPage"
+                    ]
+                },
+                {
+                    "name": "HuQuery",
+                    "pattern": "HuQuery",
+                    "target": [
+                        "TargetHuQueryPage"
+                    ]
+                },
+                {
+                    "name": "StockBinQueryByBin",
+                    "pattern": "StockBinQueryByBin",
+                    "target": [
+                        "TargetStockBinQueryByBin"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "TargetResourcePage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ResourcePage",
+                    "viewName": "ResourcePage"
+                },
+                "TargetSupervisorPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Supervisor",
+                    "viewName": "Supervisor"
+                },
+                "TargetHuQueryPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "HuQuery",
+                    "viewName": "HuQuery"
+                },
+                "TargetStockBinQueryByBin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "StockBinQueryByBin",
+                    "viewName": "StockBinQueryByBin"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.app.rfapp.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "comapprfapp"
     }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.126.2",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "com.app.rfapp.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
-      }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
-    },
-    "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "com.app.rfapp.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        {
-          "name": "RouteHome",
-          "pattern": ":?query:",
-          "target": [
-            "TargetHome"
-          ]
-        },
-        {
-          "name": "RouteResourcePage",
-          "pattern": "ResourcePage/{id}",
-          "target": [
-            "TargetResourcePage"
-          ]
-        },
-        {
-          "name": "Supervisor",
-          "pattern": "Supervisor",
-          "target": [
-            "TargetSupervisorPage"
-          ]
-        },
-        {
-          "name": "HuQuery",
-          "pattern": "HuQuery",
-          "target": [
-            "TargetHuQueryPage"
-          ]
-        },
-        {
-          "name": "StockBinQueryByBin",
-          "pattern": "StockBinQueryByBin",
-          "target": [
-            "TargetStockBinQueryByBin"
-          ]
-        }
-      ],
-      "targets": {
-        "TargetHome": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Home",
-          "viewName": "Home"
-        },
-        "TargetResourcePage": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "ResourcePage",
-          "viewName": "ResourcePage"
-        },
-        "TargetSupervisorPage": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Supervisor",
-          "viewName": "Supervisor"
-        },
-        "TargetHuQueryPage": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "HuQuery",
-          "viewName": "HuQuery"
-        },
-        "TargetStockBinQueryByBin": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "StockBinQueryByBin",
-          "viewName": "StockBinQueryByBin"
-        }
-      }
-    },
-    "rootView": {
-      "viewName": "com.app.rfapp.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
-    }
-  },
-  "sap.cloud": {
-    "public": true,
-    "service": "comapprfapp"
-  }
 }
