@@ -1506,6 +1506,10 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyDelivery");
             },
+            onPutawayByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
+            },
  
 
         });
