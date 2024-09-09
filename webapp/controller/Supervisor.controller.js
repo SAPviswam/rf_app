@@ -1497,7 +1497,7 @@ sap.ui.define(
             OnPressCreateandConfirmAdhocProductWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
              oRouter.navTo("CreateConfirmAdhocProduct")
-            }
+            },
         });
     }
 );
