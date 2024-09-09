@@ -701,7 +701,7 @@
                         <GenericTile
                             id="idUnloadingByBillOfLading1"
                             header="Unloading By Bill of Lading"
-                            press="onTilePress"
+                            press="onUnloadingByBillofLadingPress"
                             class="sapUiTinyMargin"
                         />
 

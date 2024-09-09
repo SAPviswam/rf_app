@@ -140,6 +140,13 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading",
+          "target": [
+            "TargetUnloadingByBillofLading"
+          ]
         }
       ],
       "targets": {
@@ -177,7 +184,15 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
         }
+
       }
     },
     "rootView": {
