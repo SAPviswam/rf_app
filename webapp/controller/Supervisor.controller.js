@@ -36,6 +36,11 @@ sap.ui.define(
                 this.applyStoredColors();
 
             },
+            onPaletteIconSingleClick: function (oEvent) {
+                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
+                this.byId("themeTileDialog").open();
+                oEvent.stopPropagation();
+            },
 
             // onPaletteIconBtnDblClick: function (oEvent) {
             //     this.byId("themeTileDialog").open();
@@ -1520,16 +1525,32 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+
+            onPutawayByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
+            },
+            onReceivingofHUbyDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery");
+            },
+            onTilePressPutawayByWO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("PutawayByWO");
+            },
+
+            onReceivingofHUbyBillofLading: function () {
+
+                var oRouter = UIComponent.getRouterFor(this);
+           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                oRouter.navTo("RouteBillofLading");
+            },
             onUnloadingByDoorTilePress:function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("UnloadingByDoor");
  
             },
-            onReceivingofHUbyDelivery: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
-                oRouter.navTo("RouteBillofLading");
-            },
+
 
             // added by subhash 
 
