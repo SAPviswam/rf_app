@@ -140,6 +140,13 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "RouteBillofLading",
+          "pattern":"BillofLading",
+          "target": [
+            "TargetBillofLading"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +184,13 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "BillofLading",
+          "viewName": "BillofLading"
         }
       }
     },

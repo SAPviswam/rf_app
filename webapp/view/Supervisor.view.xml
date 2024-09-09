@@ -70,10 +70,10 @@
                 itemSelect=".onItemSelect"
             >
                 <tnt:NavigationList id="idNavigationList"
-                    items="{path: '/navigation'}"
+                    items="{path: '/navigation' , templateShareable: true}"
                     class="sidecontent"
                 >
-                    <tnt:NavigationListItem id="NavigationListItem01"
+                    <tnt:NavigationListItem id="NavigationListItem"
                         text="{title}"
                         icon="{icon}"
                         enabled="{enabled}"
@@ -92,7 +92,7 @@
                 </tnt:NavigationList>
                 <tnt:fixedItem>
                     <tnt:NavigationList
-                        items="{path: '/fixedNavigation'}"
+                        items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
                         <tnt:NavigationListItem
@@ -373,7 +373,7 @@
                             id="idRequestedData"
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
-                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}]}"
+                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
                             mode="MultiSelect"
                             class="Allslotsclasstable"
                         >
