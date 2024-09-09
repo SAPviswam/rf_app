@@ -191,9 +191,9 @@
                         </VBox>
                     </IconTabFilter>
 
-            <!--Next screen After entering the Delivery Number -->
+                    <!--Next screen After entering the Delivery Number -->
 
-            <IconTabFilter
+                    <IconTabFilter
                         id="idROHDHUdetailsPage"
                         visible="false"
                         key="info1"
@@ -207,14 +207,12 @@
                             columnsM="1"
                         >
                             <!-- Delivery Number Field -->
-                                  
+
                             <Label
                                 id="idDeliveryNumber"
                                 text="Delivery"
                                 class="sapUiTinyMarginEnd"
                             />
-                            <HBox id="idHboxforDelivery"
-                                class="gapBetweenInputs">
 
                             <Input
                                 id="idDeliveryInput"
@@ -222,22 +220,18 @@
                                 maxLength="25"
                                 width="200px"
                             />
+                            <Label
+                                id="idROHDItemNumber"
+                                text="Item"
+                                class="sapUiTinyMarginEnd"
+                            />
 
-                            <HBox id="ItemHBOX" >
-                                    <Label 
-                                    text="Items:"
-                                    class="ItemLabel"/>
-
-                                    <Input
-                                        id="idInputItemsofDelivery"
-                                        placeholder="Enter Items.."
-                                        maxLength="25"
-                                        width="200px"
-                                        class="sapUiTinyMarginEnd"
-                                    />
-                                </HBox>
-
-                            </HBox>
+                            <Input
+                                id="idInputItemsofDelivery"
+                                placeholder="Enter Items.."
+                                maxLength="25"
+                                width="200px"
+                            />
 
                             <!-- Vendor Field -->
                             <Label
@@ -263,7 +257,7 @@
                                 maxLength="25"
                                 width="200px"
                             />
-                            
+
                             <!-- HU field -->
                             <Label
                                 id="idHUlabelD"
@@ -271,14 +265,14 @@
                                 class="margin"
                             />
                             <VBox>
-                            <Input
-                                id="idInputHUd"
-                                placeholder="Enter HU"
-                                maxLength="25"
-                                width="200px"
-                            />
+                                <Input
+                                    id="idInputHUd"
+                                    placeholder="Enter HU"
+                                    maxLength="25"
+                                    width="200px"
+                                />
                                 <!-- HU List , New Hu ,GR,  -->
-                                 <HBox>
+                                <HBox>
                                     <Button
                                         id="idButtonHulist"
                                         text="HU List"
@@ -361,7 +355,6 @@
                                     <Text
                                         id="IdCtextDeliveryProduct"
                                         text="Product"
-                                    
                                     />
                                 </Column>
                                 <Column id="IdCDeliveryProductdes">
@@ -450,7 +443,7 @@
                                     maxLength="30"
                                     width="100px"
                                 />
- 
+
                                 <HBox
                                     id="idDeliveryHUuombox"
                                     class="customLabelSpacing"
@@ -467,7 +460,7 @@
                                     />
                                 </HBox>
                             </HBox>
- 
+
                             <Label
                                 id="idDeliveryLabelPM"
                                 text="Packing Material"
@@ -477,7 +470,7 @@
                                 maxLength="25"
                                 width="200px"
                             />
- 
+
                             <Label
                                 id="idDeliveryLabelBatch"
                                 text="Batch"
@@ -488,7 +481,7 @@
                                 maxLength="25"
                                 width="200px"
                             />
- 
+
                             <Label
                                 id="idDeliveryLabelbbd"
                                 text="BBD"
@@ -498,7 +491,7 @@
                                 maxLength="13.3"
                                 width="200px"
                             />
- 
+
                             <Label
                                 id="idDeliveryLabelman"
                                 text="Man"
@@ -509,7 +502,7 @@
                                     maxLength="13.3"
                                     width="100px"
                                 />
- 
+
                                 <HBox
                                     id="idDeliveryitemsexpirybox"
                                     class="customLabelSpacing"
@@ -526,7 +519,7 @@
                                     />
                                 </HBox>
                             </HBox>
- 
+
                             <Label
                                 id="idDeliveryLabelcoo"
                                 text="COO"
@@ -566,7 +559,7 @@
                                 id="IdHUDeliveryhuLabel"
                                 text="HU"
                             />
- 
+
                             <Input
                                 id="IdHUDeliveryHUInput"
                                 maxLength="25"
@@ -583,13 +576,13 @@
                                     maxLength="25"
                                     width="100px"
                                 />
- 
+
                                 <HBox id="IdHuDeliveryitemNoHbox">
                                     <Label
                                         id="idHUDeliveryLabelitem"
                                         text="item no:"
                                     />
- 
+
                                     <Input
                                         id="idHUDeliveryInputitem"
                                         maxLength="13.3"
@@ -597,9 +590,9 @@
                                     />
                                 </HBox>
                             </HBox>
- 
+
                             <Label id="idHUDeliveryLabelEmpty" />
- 
+
                             <HBox id="idHUDeliveryhboxgr">
                                 <Button
                                     id="idEnterGRButton"
@@ -607,7 +600,7 @@
                                     press="onPressEnterGRButton"
                                     class="sapUiTinyMarginEnd"
                                 />
- 
+
                                 <HBox id="idHUDeliveryHBoxUnload">
                                     <Button
                                         id="idEnterunloadButton"
@@ -619,7 +612,7 @@
                             </HBox>
                         </f:SimpleForm>
                     </IconTabFilter>
- 
+
                     <IconTabFilter
                         id="IdGRPage"
                         visible="false"
@@ -637,7 +630,7 @@
                                 id="idDeliveryLabelproduct"
                                 text="Product"
                             />
- 
+
                             <Input
                                 id="idDeliveryproductInput"
                                 maxLength="25"
@@ -645,7 +638,7 @@
                             />
                             <Label
                                 id="idHUDeliveryLabelQty"
-                                text="Delivery"
+                                text="Quantity"
                                 class="sapUiMarginTop margin"
                             />
                             <HBox id="idHboxDElivery">
@@ -655,23 +648,21 @@
                                     width="200px"
                                 />
                             </HBox>
- 
-                            <Label id="idHUDeliveryLabelEmptygr" />
- 
-                            <HBox id="idHUDeliveryhboxgr1">
 
+                            <Label id="idHUDeliveryLabelEmptygr" />
+
+                            <HBox id="idHUDeliveryhboxgr1">
                                 <Button
                                     id="idHUDeliverygrButton"
                                     text="GR"
                                     press="onPressGRbutton"
                                     class="sapUiTinyMarginEnd"
                                 />
- 
                             </HBox>
                         </f:SimpleForm>
                     </IconTabFilter>
- 
-                     <IconTabFilter
+
+                    <IconTabFilter
                         id="idUnloadPage"
                         visible="false"
                         key="info1"
@@ -688,7 +679,7 @@
                                 id="IdDeliveryLabelproduct"
                                 text="Product"
                             />
- 
+
                             <Input
                                 id="IdDeliveryinputproduct"
                                 maxLength="25"
@@ -696,7 +687,7 @@
                             />
                             <Label
                                 id="IdDeliveryLabelulQty"
-                                text="Delivery"
+                                text="Quantity"
                                 class="sapUiMarginTop margin"
                             />
                             <HBox id="IdDeliveryHBox">
@@ -706,9 +697,9 @@
                                     width="200px"
                                 />
                             </HBox>
- 
+
                             <Label id="idDeliveryLabelEmptyunload" />
- 
+
                             <HBox id="idDeliveryhboxunload">
                                 <Button
                                     id="idDeliveryunloadButton5"
@@ -716,7 +707,6 @@
                                     press="onPressUnloadbutton"
                                     class="sapUiTinyMarginEnd"
                                 />
- 
                             </HBox>
                         </f:SimpleForm>
                     </IconTabFilter>
