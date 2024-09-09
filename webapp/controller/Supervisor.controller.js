@@ -1527,6 +1527,10 @@ sap.ui.define(
                 oRouter.navTo("RouteBillofLading");
             },
 
+            // added by subhash 
+
+
+
         });
     }
 );
