@@ -1484,10 +1484,15 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
-            OnPressUnloadByDelivery: function () {
+            onPressCreateAdhocHUWTInAdhocWT : function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery");
+                oRouter.navTo("RouteAdhocHuWt");
             },
+            onPressCreateAdhocProductWTInAdhocWT : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteAdhocProductWt");
+            },
+           
         });
     }
 );
