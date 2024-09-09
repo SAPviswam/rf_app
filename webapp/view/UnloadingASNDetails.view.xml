@@ -165,11 +165,12 @@
                         text="ASN"
                         class="sapUiTinyMarginEnd"
                     />
+                       <HBox id="_IDGenHBox6" >
                     <Input
                         id="_IDGenInput2_UBYASN"
                         placeholder="Enter ASN..."
                         maxLength="25"
-                        width="200px"
+                        width="100%"
                     />
 
                     <!-- Item No Field -->
@@ -180,15 +181,14 @@
                         > -->
                     <Label
                         id="idItemNoLabel_UBYASN"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
+                        text="Item No:"
+                        class="sapUiTinyMarginEnd classUOMbyASn"
                     />
                     <Input
                         id="idItemNoInput_UBYASN"
                         placeholder="Enter Item No..."
-                        width="250px"
                     />
-                    <!-- </HBox> -->
+                    </HBox>
 
                     <!-- Vendor Field -->
                     <Label
@@ -410,6 +410,7 @@
                         text="Qty"
                         class="sapUiTinyMarginEnd"
                     />
+                    <HBox id="_IDGenHBox7" >
                     <Input
                         id="idItemNoInput2_UBYASN"
                         placeholder="Enter Qty..."
@@ -424,14 +425,14 @@
                     > -->
                     <Label
                         id="idItemNoLab8el_UBYASN"
-                        text="UOM"
-                        class="sapUiTinyMarginEnd"
+                        text="UOM:"
+                        class="sapUiTinyMarginEnd classUOMbyASn"
                     />
                     <Input
                         id="idItemNoInp5ut_UBYASN"
                         placeholder="Enter UOM..."
-                        width="250px"
                     />
+                    </HBox>
                     <!-- </HBox> -->
 
                     <!-- Packaging Material Field -->
@@ -475,6 +476,7 @@
                         id="_IDGenLabel422_UBYASN"
                         text="Man"
                     />
+                    <HBox id="_IDGenHBox8" >
                     <Input
                         id="_IDGenInput432_UBYASN"
                         placeholder="Enter Man"
@@ -491,13 +493,13 @@
                     <Label
                         id="idItemNoLab99el_UBYASN"
                         text="Expiry:"
-                        class="sapUiTinyMarginEnd"
+                        class="sapUiTinyMarginEnd classUOMbyASn"
                     />
                     <Input
                         id="idItemNoI8nput_UBYASN"
                         placeholder="Enter Expiry..."
-                        width="250px"
                     />
+                    </HBox>
                     <!-- </HBox> -->
 
                     <!-- COO Field -->
