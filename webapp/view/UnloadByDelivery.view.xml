@@ -51,8 +51,6 @@
         </tnt:header>
 
         <tnt:mainContents>
-           
-
             <ScrollContainer
                 id="icon1_UNBD"
                 width="100%"
@@ -99,7 +97,7 @@
                     />
                     <Input
                         id="_IDGenInput1_UNBD"
-                        placeholder="Enter Door Number"
+                        placeholder="Enter Delivery Number"
                     />
                     <HBox
                         id="_idhbox_unknw_UNBD"
