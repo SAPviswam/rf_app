@@ -149,8 +149,8 @@
           ]
         },
         {
-          "name": "RouteAdhocHuWt",
-          "pattern": "RouteAdhocHuWt",
+          "name": "AdhocHuWt",
+          "pattern": "AdhocHuWt",
           "target": [
             "TargetAdhocHuWt"
             ]
@@ -204,6 +204,13 @@
           "target": [
             "TargetPutawayByWO"
           ]
+        },
+        {
+          "name": "AdhocProductWt",
+          "pattern": "AdhocProductWt",
+          "target": [
+            "TargetAdhocProductWt"
+          ]
         }
       ],
       "targets": {
@@ -253,8 +260,8 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "RouteAdhocHuWt",
-          "viewName": "RouteAdhocHuWt"
+          "viewId": "AdhocHuWt",
+          "viewName": "AdhocHuWt"
         },
         "TargetReceivingOfHuByDoor": {
           "viewType": "XML",
@@ -305,6 +312,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetAdhocProductWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocProductWt",
+          "viewName": "AdhocProductWt"
         }
       }
     },
