@@ -1452,6 +1452,29 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+            onUnloadingByDoorTilePress:function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByDoor");
+ 
+            },
+            onReceivingofHUbyDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery");
+            },
+            onPutawayByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
+            },
+ 
+
+            //Press Functon for PutawayByWO Tile...(Ramesh)
+            onTilePressPutawayByWO: function () {
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByWO");
+            },
+
+
+
         });
     }
 );
