@@ -653,7 +653,7 @@
                         <GenericTile
                             id="idUnloadingByDelivery1"
                             header="Unloading By Delivery"
-                            press="onTilePress"
+                            press="OnPressUnloadByDelivery"
                             class="sapUiTinyMargin"
                         >
                             <TileContent

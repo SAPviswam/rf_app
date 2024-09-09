@@ -1484,6 +1484,10 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery");
+            },
         });
     }
 );
