@@ -128,6 +128,10 @@ sap.ui.define([
                 } else {
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
+            },
+            onPutawayByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
             }
         });
     });
