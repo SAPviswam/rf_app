@@ -687,7 +687,7 @@
                         <GenericTile
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
-                            press="onTilePress"
+                            press="onUnloadingBYASN"
                             class="sapUiTinyMargin"
                         />
 

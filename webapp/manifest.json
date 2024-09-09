@@ -140,6 +140,13 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "RouteUnloadingASNDetails",
+          "pattern": "UnloadingASNDetails",
+          "target": [
+            "TargetUnloadingASNDetails"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +184,13 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetUnloadingASNDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingASNDetails",
+          "viewName": "UnloadingASNDetails"
         }
       }
     },

@@ -1484,6 +1484,10 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+            /**Navigate to Unloading By ASN Page */
+            onUnloadingBYASN:function(){
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
+            }
         });
     }
 );
