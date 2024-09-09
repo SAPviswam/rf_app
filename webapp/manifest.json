@@ -142,17 +142,10 @@
           ]
         },
         {
-          "name": "CreateConfirmAdhocHu",
-          "pattern": "CreateConfirmAdhocHu",
+          "name": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU",
           "target": [
-            "TargetCreateConfirmAdhocHu"
-          ]
-        },
-        {
-          "name": "CreateConfirmAdhocProduct",
-          "pattern": "CreateConfirmAdhocProduct",
-          "target": [
-            "TargetCreateConfirmAdhocProduct"
+            "TargetPutawayByHU"
           ]
         }
 
@@ -193,19 +186,12 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
-        "TargetCreateConfirmAdhocHu": {
+        "TargetPutawayByHU": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "CreateConfirmAdhocHu",
-          "viewName": "CreateConfirmAdhocHu"
-        },
-        "TargetCreateConfirmAdhocProduct": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "CreateConfirmAdhocProduct",
-          "viewName": "CreateConfirmAdhocProduct"
+          "viewId": "PutawayByHU",
+          "viewName": "PutawayByHU"
         }
       }
     },
