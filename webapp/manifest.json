@@ -147,7 +147,14 @@
           "target": [
             "TargetPutawayByHU"
           ]
-        }
+        },
+        {
+        "name": "RecevingOfHUbyDelivery",
+        "pattern": "RecevingOfHUbyDelivery",
+        "target": [
+          "TargetRecevingOfHUbyDelivery"
+        ]
+      }
 
       ],
       "targets": {
@@ -192,6 +199,13 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByHU",
           "viewName": "PutawayByHU"
+        },
+        "TargetRecevingOfHUbyDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyDelivery",
+          "viewName": "RecevingOfHUbyDelivery"
         }
       }
     },
