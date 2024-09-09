@@ -1526,6 +1526,13 @@ sap.ui.define(
 
             },
 
+            onReceivingofHUbyDoor: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingOfHuByDoor");
+            },
+            
+
+
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU");
@@ -1557,6 +1564,7 @@ sap.ui.define(
 
 
             // added by subhash 
+
 
         });
     }
