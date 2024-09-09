@@ -144,7 +144,6 @@
         {
           "name": "UnloadingByDoor",
           "pattern": "UnloadingByDoor",
-
           "target": [
             "TargetUnloadingByDoor"
           ]
@@ -162,8 +161,8 @@
           "target": [
             "TargetPutawayByHU"
           ]
-          },
-          {
+        },
+        {
           "name": "RoutePutawayByWO",
           "pattern": "RoutePutawayByWO",
           "target": [
@@ -171,11 +170,10 @@
           ]
         },
         {
-
           "name": "RouteBillofLading",
-          "pattern":"BillofLading",
+          "pattern": "BillofLading",
           "target": [
-            "TargetUnloadingByDoor"
+            "TargetBillofLading"
           ]
         },
         {
@@ -191,8 +189,15 @@
           "target": [
             "TargetPutawayByHU"
           ]
-          },
-          {
+        },
+        {
+          "name": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading",
+          "target": [
+            "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
           "name": "RoutePutawayByWO",
           "pattern": "RoutePutawayByWO",
           "target": [
@@ -258,7 +263,6 @@
           "viewName": "PutawayByHU"
         },
         "TargetPutawayByWO": {
-
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -266,12 +270,19 @@
           "viewName": "PutawayByWO"
         },
         "TargetBillofLading": {
-
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "PutawayByWO",
-          "viewName": "PutawayByWO"
+          "viewId": "BillofLading",
+          "viewName": "BillofLading"
+
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
         }
       }
     },

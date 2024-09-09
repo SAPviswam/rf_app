@@ -1540,7 +1540,6 @@ sap.ui.define(
             },
 
             onReceivingofHUbyBillofLading: function () {
-
                 var oRouter = UIComponent.getRouterFor(this);
            //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
@@ -1549,6 +1548,11 @@ sap.ui.define(
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("UnloadingByDoor");
  
+            },
+            onUnloadingByBillofLadingPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByBillofLading");
+
             },
 
 
