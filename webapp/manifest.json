@@ -199,8 +199,8 @@
           ]
         },
         {
-          "name": "RoutePutawayByWO",
-          "pattern": "RoutePutawayByWO",
+          "name": "PutawayByWO",
+          "pattern": "PutawayByWO",
           "target": [
             "TargetPutawayByWO"
           ]
