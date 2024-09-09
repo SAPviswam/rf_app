@@ -161,6 +161,13 @@
           "target": [
             "TargetPutawayByHU"
           ]
+          },
+          {
+          "name": "RoutePutawayByWO",
+          "pattern": "RoutePutawayByWO",
+          "target": [
+            "TargetPutawayByWO"
+          ]
         }
       ],
       "targets": {
@@ -219,6 +226,13 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByHU",
           "viewName": "PutawayByHU"
+        },
+        "TargetPutawayByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByWO",
+          "viewName": "PutawayByWO"
         }
       }
     },

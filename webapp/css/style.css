@@ -469,6 +469,13 @@
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
+
+
+.hidden{
+  display: none !important;
+}
+
+/*......These are for Putaway By WO Tile......*/
 .putawayContainer {
     height: 100%;
     display: flex;
@@ -540,6 +547,7 @@
     margin-left: 0.3rem;
   }
  
+  
   /* ScrollContainer Page 5 & Page 6 & Page 7 CSS methods */
   .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad {
     display: flex;
@@ -607,6 +615,4 @@
         margin-left: 20vw;
     }
 }
-
-/* unloading by door end*/
 
