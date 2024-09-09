@@ -1452,6 +1452,13 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+
+            onUnloadingByBillofLadingPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByBillofLading");
+
+            },
+
             onUnloadingByDoorTilePress:function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("UnloadingByDoor");
@@ -1472,8 +1479,6 @@ sap.ui.define(
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByWO");
             },
-
-
 
         });
     }
