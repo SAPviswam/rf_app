@@ -1,0 +1,717 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.RecevingOfHUbyDelivery"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="idRecevingofDelivery"
+        showHeader="false"
+        class="PageBackground"
+    >
+        <tnt:ToolHeader
+            id="shellLikeToolHeaderDelivery"
+            visible="true"
+        >
+            <Title
+                text="RFUI"
+                wrapping="false"
+                id="ToolName"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Disappear" />
+                </layoutData>
+            </Title>
+
+            <Text
+                text="By Artihcus Global"
+                wrapping="false"
+                id="SubHeading"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Disappear" />
+                </layoutData>
+            </Text>
+
+            <ToolbarSpacer />
+
+            <ToolbarSpacer id="idToolBarspacer">
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        priority="Low"
+                        group="1"
+                    />
+                </layoutData>
+            </ToolbarSpacer>
+
+            <ToolbarSeparator>
+                <layoutData>
+                    <OverflowToolbarLayoutData group="2" />
+                </layoutData>
+            </ToolbarSeparator>
+
+            <tnt:ToolHeaderUtilitySeparator />
+
+            <ToolbarSpacer width="1.125rem" />
+
+            <!-- <Avatar
+                id="myAvatar"
+                src="test-resources/sap/tnt/images/Woman_avatar_01.png"
+                displaySize="XS"
+                press="onAvatarPressed"
+                tooltip="Profile"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Avatar> -->
+        </tnt:ToolHeader>
+
+        <content>
+            <Button
+                id="idDeliveryDetailsBackButton"
+                icon="sap-icon://nav-back"
+                press="OnDeliveryDetailsBackButton"
+                visible="false"
+            />
+            <Button
+                id="idHUlistBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressHUlistBackbutton"
+                visible="false"
+            />
+            <Button
+                id="idNewHuBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressNewHuBackbutton"
+                visible="false"
+            />
+            <Button
+                id="idAfterNextBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressAfterNextBackbutton"
+                visible="false"
+            />
+            <Button
+                id="idGRBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressGRBackbutton"
+                visible="false"
+            />
+            <Button
+                id="idUnloadBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressUnloadBackbutton"
+                visible="false"
+            />
+
+            <IconTabBar
+                expanded="true"
+                id="idIconTabBar"
+            >
+                <items>
+                    <IconTabFilter
+                        id="IdScanningDeliveryNo"
+                        visible="true"
+                        key="info"
+                        text="Receving Of HU By Delivery"
+                    >
+                        <VBox
+                            id="FirstVBoxId"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            class="centerContent"
+                        >
+                            <f:SimpleForm
+                                id="idSFforDeliveryNo"
+                                layout="ResponsiveGridLayout"
+                                editable="true"
+                                class="sapUiResponsiveMargin"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                columnsL="1"
+                                columnsM="1"
+                            >
+                                <HBox
+                                    id="idHBoxforDeliveryNo"
+                                    justifyContent="Start"
+                                >
+                                    <!-- Scan HU Label -->
+                                    <Label
+                                        id="IdlabelforDeliveryNo"
+                                        text="Delivery :"
+                                        class="ScanDeliverymargin"
+                                    />
+                                    <!-- Input Field -->
+                                    <Input
+                                        id="IdInputforDeliveryNo"
+                                        placeholder="Enter Delivery..."
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                    <!-- <ndc:BarcodeScannerButton
+                                        id="sampleBarcodeScannerButtonZebraThree"
+                                        scanSuccess="onScanSuccessThree"
+                                        scanFail="onScanErrorThree"
+                                        inputLiveUpdate="onScanLiveUpdate"
+                                        dialogTitle="Barcode Scanner Button3 Sample"
+                                        class="sampleBarcodeScannerButtonWithZebraEB"
+                                        
+                                    /> -->
+                                    <!-- Barcode Scan Button -->
+                                    <Button
+                                        id="idbarcodebtn"
+                                        icon="sap-icon://bar-code"
+                                        press="PressOnbarcode"
+                                    />
+                                    <!-- Submit Button -->
+                                    <Button
+                                        id="idSubmmitBtn"
+                                        text="Submit"
+                                        press="PressOnSubmitbtn"
+                                    />
+                                </HBox>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+
+                    <!--Next screen After entering the Delivery Number -->
+
+                    <IconTabFilter
+                        id="idROHDHUdetailsPage"
+                        visible="false"
+                        key="info1"
+                        text="HU Details"
+                    >
+                        <f:SimpleForm
+                            id="idSfDeliveryDetails"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <!-- Delivery Number Field -->
+
+                            <Label
+                                id="idDeliveryNumber"
+                                text="Delivery"
+                                class="sapUiTinyMarginEnd"
+                            />
+
+                            <Input
+                                id="idDeliveryInput"
+                                placeholder="Delivery number.."
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="idROHDItemNumber"
+                                text="Item"
+                                class="sapUiTinyMarginEnd"
+                            />
+
+                            <Input
+                                id="idInputItemsofDelivery"
+                                placeholder="Enter Items.."
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- Vendor Field -->
+                            <Label
+                                id="idVendorofDelivery"
+                                text="Vendor"
+                            />
+                            <Input
+                                id="inputVendorofDelivery"
+                                placeholder="Enter Vendor..."
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- No.of HU -->
+                            <Label
+                                id="idforNOofHU"
+                                text="No.of HU"
+                                class="sapUiMarginTopmargin"
+                            />
+                            <Input
+                                id="idInputforNOofHU"
+                                placeholder="Enter no.of HU"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- HU field -->
+                            <Label
+                                id="idHUlabelD"
+                                text="HU"
+                                class="margin"
+                            />
+                            <VBox>
+                                <Input
+                                    id="idInputHUd"
+                                    placeholder="Enter HU"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                                <!-- HU List , New Hu ,GR,  -->
+                                <HBox>
+                                    <Button
+                                        id="idButtonHulist"
+                                        text="HU List"
+                                        press="onHUListPress"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonNewHUDelivery"
+                                        text="New HU"
+                                        press="onNewHUPress"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonGRDelivery"
+                                        text="GR"
+                                        press="onGRPress"
+                                    />
+                                </HBox>
+                                <!-- HU Change ,Unload ,Create WT, Confirm WT -->
+                                <HBox>
+                                    <Button
+                                        id="idButtonHuChange"
+                                        text="HU Change"
+                                        press="onHUChangePress"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonUnloadDelivery"
+                                        text="Unload"
+                                        press="onUnloadDeliveryPress"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonCreateWT"
+                                        text="Create WT"
+                                        press="onPressCreateWT"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonConfirmWT"
+                                        text="Confirm WT"
+                                        press="onPressConfirmWT"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="idROHDHUlistPage"
+                        visible="false"
+                        key="info2"
+                        text="HU List"
+                    >
+                        <Table
+                            id="idDEliveryHulistTable"
+                            inset="false"
+                            items="{/productData}"
+                            growing="true"
+                            growingScrollToLoad="true"
+                            mode="None"
+                        >
+                            <columns>
+                                <Column
+                                    id="idCDeliverySno"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idCtextDeliverySno"
+                                        text="S.No"
+                                    />
+                                </Column>
+                                <Column id="idCDeliveryHUno">
+                                    <Text
+                                        id="idCTextDeliveryHUno"
+                                        text="HU.No"
+                                    />
+                                </Column>
+                                <Column id="IdCDeliveryProduct">
+                                    <Text
+                                        id="IdCtextDeliveryProduct"
+                                        text="Product"
+                                    />
+                                </Column>
+                                <Column id="IdCDeliveryProductdes">
+                                    <Text
+                                        id="IdCtextDeliveryProductdes"
+                                        text="Product Description"
+                                    />
+                                </Column>
+                                <Column id="idCDeliveryQuantity">
+                                    <Text
+                                        id="idCtextDeliveryQuantity"
+                                        text="Quantity"
+                                    />
+                                </Column>
+                                <Column id="idCDeliveryUOM">
+                                    <Text
+                                        id="idCtextDeliveryUOM"
+                                        text="UOM"
+                                    />
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1">
+                                    <cells>
+                                        <Text
+                                            id="idSerialNoHUDelivery"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idHUNObyDelivery"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idHuDeliveryProduct"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idHuDeliveryProductDes"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idHuDeliveryQuantity"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idHuDeliveryuom"
+                                            text=""
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="idROHDNewHUpage"
+                        visible="false"
+                        key="info3"
+                        text="New HU"
+                    >
+                        <f:SimpleForm
+                            id="NewhuDeliverySimpleForm1"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idDeliveryLabelnewhu"
+                                text="Product"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="idDeliveryinputlnewhu"
+                                maxLength="30"
+                                width="200px"
+                            />
+                            <Label
+                                id="idDeliveryLabelQty"
+                                text="Quantity"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <HBox id="IDqtyinputhbox">
+                                <Input
+                                    id="idDeliveryqtyInput"
+                                    maxLength="30"
+                                    width="100px"
+                                />
+
+                                <HBox
+                                    id="idDeliveryHUuombox"
+                                    class="customLabelSpacing"
+                                >
+                                    <Label
+                                        id="idDeliveryuomLabel"
+                                        text="UOM:"
+                                        class="sapUiTinyMarginEnd customItemLabel"
+                                    />
+                                    <Input
+                                        id="idDeliveryuomInput"
+                                        maxLength="30"
+                                        width="150px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label
+                                id="idDeliveryLabelPM"
+                                text="Packing Material"
+                            />
+                            <Input
+                                id="idDeliveryInputPM"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idDeliveryLabelBatch"
+                                text="Batch"
+                                class="sapUiMarginTop margin"
+                            />
+                            <Input
+                                id="idDeliverybatchGenInput"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idDeliveryLabelbbd"
+                                text="BBD"
+                            />
+                            <Input
+                                id="idDeliveryInputbbd"
+                                maxLength="13.3"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idDeliveryLabelman"
+                                text="Man"
+                            />
+                            <HBox id="idDeliveryMANhbox">
+                                <Input
+                                    id="idDeliveryInputman"
+                                    maxLength="13.3"
+                                    width="100px"
+                                />
+
+                                <HBox
+                                    id="idDeliveryitemsexpirybox"
+                                    class="customLabelSpacing"
+                                >
+                                    <Label
+                                        id="idDeliveryExpiryLabel"
+                                        text="Expiry:"
+                                        class="sapUiTinyMarginEnd customItemLabel"
+                                    />
+                                    <Input
+                                        id="idDeliveryExpiryInput"
+                                        maxLength="30"
+                                        width="150px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label
+                                id="idDeliveryLabelcoo"
+                                text="COO"
+                            />
+                            <VBox id="idDeliveryVBoxbbd">
+                                <Input
+                                    id="idDeliveryInputcoo"
+                                    maxLength="13.3"
+                                    width="200px"
+                                />
+                                <HBox id="idDeliverynextHBox">
+                                    <Button
+                                        id="idDeliverynextbtn"
+                                        text="Next (or) Enter"
+                                        press="onPressEnter"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <!-- When You press Next or Enter -->
+                    <IconTabFilter
+                        id="idDeliveryEnter"
+                        visible="false"
+                        key="info1"
+                        text="Delivery Details"
+                    >
+                        <f:SimpleForm
+                            id="idDeliverysimpleFormAfertEnter"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="IdHUDeliveryhuLabel"
+                                text="HU"
+                            />
+
+                            <Input
+                                id="IdHUDeliveryHUInput"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="IdHUDeliveryLabelDelivery"
+                                text="Delivery"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="idDeliveryHbox12">
+                                <Input
+                                    id="IdHUDeliverydeliveryInput"
+                                    maxLength="25"
+                                    width="100px"
+                                />
+
+                                <HBox id="IdHuDeliveryitemNoHbox">
+                                    <Label
+                                        id="idHUDeliveryLabelitem"
+                                        text="item no:"
+                                    />
+
+                                    <Input
+                                        id="idHUDeliveryInputitem"
+                                        maxLength="13.3"
+                                        width="100px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label id="idHUDeliveryLabelEmpty" />
+
+                            <HBox id="idHUDeliveryhboxgr">
+                                <Button
+                                    id="idEnterGRButton"
+                                    text="GR"
+                                    press="onPressEnterGRButton"
+                                    class="sapUiTinyMarginEnd"
+                                />
+
+                                <HBox id="idHUDeliveryHBoxUnload">
+                                    <Button
+                                        id="idEnterunloadButton"
+                                        text="Unload"
+                                        press="onPressEnterUnloadButton"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="IdGRPage"
+                        visible="false"
+                        key="info1"
+                        text="GR"
+                    >
+                        <f:SimpleForm
+                            id="idDeliverySFOfGR"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idDeliveryLabelproduct"
+                                text="Product"
+                            />
+
+                            <Input
+                                id="idDeliveryproductInput"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="idHUDeliveryLabelQty"
+                                text="Quantity"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="idHboxDElivery">
+                                <Input
+                                    id="idHUDeliveryqtyInput"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                            </HBox>
+
+                            <Label id="idHUDeliveryLabelEmptygr" />
+
+                            <HBox id="idHUDeliveryhboxgr1">
+                                <Button
+                                    id="idHUDeliverygrButton"
+                                    text="GR"
+                                    press="onPressGRbutton"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="idUnloadPage"
+                        visible="false"
+                        key="info1"
+                        text="Unload"
+                    >
+                        <f:SimpleForm
+                            id="idDeliverysimpleFormunload"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="IdDeliveryLabelproduct"
+                                text="Product"
+                            />
+
+                            <Input
+                                id="IdDeliveryinputproduct"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="IdDeliveryLabelulQty"
+                                text="Quantity"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="IdDeliveryHBox">
+                                <Input
+                                    id="_IDbolqtyulGenInput3"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                            </HBox>
+
+                            <Label id="idDeliveryLabelEmptyunload" />
+
+                            <HBox id="idDeliveryhboxunload">
+                                <Button
+                                    id="idDeliveryunloadButton5"
+                                    text="Unload"
+                                    press="onPressUnloadbutton"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
