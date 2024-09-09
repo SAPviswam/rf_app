@@ -144,6 +144,7 @@
         {
           "name": "UnloadingByDoor",
           "pattern": "UnloadingByDoor",
+
           "target": [
             "TargetUnloadingByDoor"
           ]
@@ -174,7 +175,28 @@
           "name": "RouteBillofLading",
           "pattern":"BillofLading",
           "target": [
-            "TargetBillofLading"
+            "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery",
+          "target": [
+            "TargetRecevingOfHUbyDelivery"
+          ]
+        },
+        {
+          "name": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU",
+          "target": [
+            "TargetPutawayByHU"
+          ]
+          },
+          {
+          "name": "RoutePutawayByWO",
+          "pattern": "RoutePutawayByWO",
+          "target": [
+            "TargetPutawayByWO"
           ]
         }
       ],
@@ -236,6 +258,7 @@
           "viewName": "PutawayByHU"
         },
         "TargetPutawayByWO": {
+
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -243,12 +266,12 @@
           "viewName": "PutawayByWO"
         },
         "TargetBillofLading": {
+
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "BillofLading",
-          "viewName": "BillofLading"
-
+          "viewId": "PutawayByWO",
+          "viewName": "PutawayByWO"
         }
       }
     },

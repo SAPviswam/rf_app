@@ -1525,6 +1525,7 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU");
@@ -1539,6 +1540,7 @@ sap.ui.define(
             },
 
             onReceivingofHUbyBillofLading: function () {
+
                 var oRouter = UIComponent.getRouterFor(this);
            //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
@@ -1551,8 +1553,6 @@ sap.ui.define(
 
 
             // added by subhash 
-
-
 
         });
     }
