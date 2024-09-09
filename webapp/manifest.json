@@ -140,6 +140,13 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor",
+          "target": [
+            "TargetReceivingOfHuByDoor"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +184,13 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetReceivingOfHuByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingOfHuByDoor",
+          "viewName": "ReceivingOfHuByDoor"
         }
       }
     },
