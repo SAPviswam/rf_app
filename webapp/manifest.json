@@ -142,10 +142,17 @@
           ]
         },
         {
-          "name": "RecevingOfHUbyDelivery",
-          "pattern": "RecevingOfHUbyDelivery",
+          "name": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu",
           "target": [
-            "TargetRecevingOfHUbyDelivery"
+            "TargetCreateConfirmAdhocHu"
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct",
+          "target": [
+            "TargetCreateConfirmAdhocProduct"
           ]
         }
 
@@ -186,12 +193,19 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
-        "TargetRecevingOfHUbyDelivery": {
+        "TargetCreateConfirmAdhocHu": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyDelivery",
-          "viewName": "RecevingOfHUbyDelivery"
+          "viewId": "CreateConfirmAdhocHu",
+          "viewName": "CreateConfirmAdhocHu"
+        },
+        "TargetCreateConfirmAdhocProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocProduct",
+          "viewName": "CreateConfirmAdhocProduct"
         }
       }
     },

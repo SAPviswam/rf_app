@@ -135,14 +135,11 @@
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
             }
         },
-<<<<<<< HEAD
 
-=======
          onBeforeRendering: function() {
             this.getView().byId("_IDGenButton1133").setVisible(true);   
 
         },
->>>>>>> 1a878083070fe1f285afe7eceacc18b8298ce15a
         onItemSelect: function (oEvent) {
             var oItem = oEvent.getParameter("item");
             this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
@@ -195,72 +192,59 @@
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
         },
 
-        // Submit button logic (if necessary)
-        Onpresssubmit: function () {
-<<<<<<< HEAD
-            var oHu = this.byId("_IDGenInput1").getValue().trim();
-            if (oHu) {
-                this.onLiveHuValidation({
-                    getSource: function () {
-                        return this.byId("_IDGenInput1");
-                    }.bind(this)
-                });
-            } else {
-                MessageBox.error("Please enter a valid HU.");
-            }
-        },
-=======
+        // // Submit button logic (if necessary)
+        // Onpresssubmit: function () {
 
-            this.getView().byId("icon1").setVisible(false);
-            this.getView().byId("icon2").setVisible(true);
-            this.getView().byId("_IDGenButton1111").setVisible(true);
-            this.getView().byId("_IDGenButton1133").setVisible(false);
-            var oHu = this.byId("_IDGenInput1").getValue();
-            debugger
-            /**Getting Model */
-            var oModel = this.getOwnerComponent().getModel();
-            var that = this;
+        //     this.getView().byId("icon1").setVisible(false);
+        //     this.getView().byId("icon2").setVisible(true);
+        //     this.getView().byId("_IDGenButton1111").setVisible(true);
+        //     this.getView().byId("_IDGenButton1133").setVisible(false);
+        //     var oHu = this.byId("_IDGenInput1").getValue();
+        //     debugger
+        //     /**Getting Model */
+        //     var oModel = this.getOwnerComponent().getModel();
+        //     var that = this;
             
-            oModel.read(`/Hu_ContentSet('${oHu}')`, {
-                success: function (odata) {
+        //     oModel.read(`/Hu_ContentSet('${oHu}')`, {
+        //         success: function (odata) {
                     
                   
-                   /* odata.Matid
-                    odata.Quan
-                    odata.Meins
+        //            /* odata.Matid
+        //             odata.Quan
+        //             odata.Meins
                    
                     
                   
                    
                     
                    
-                    odata.UnitLwh
-                    odata.UnitGw
+        //             odata.UnitLwh
+        //             odata.UnitGw
                     
-                    odata.UnitTv
-                    odata.Lgpla */
-                    that.byId("_IDGenInput2").setValue(odata.Huident);
-                    that.byId("_IDGenInput3").setValue( odata.Letyp);
-                    that.byId("_IDGenInputLength").setValue(odata.Length);
-                    that.byId("_IDGenInputWidth").setValue(odata.Width);
-                    that.byId("_IDGenInputHeight").setValue(odata.Height);
-                    that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-                    that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-                    that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-                    that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-                    that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-                    that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-                    that.getView().byId("icon1").setVisible(false);
-                    that.getView().byId("icon2").setVisible(true);
-                    that.getView().byId("_IDGenButton1111").setVisible(true);
-                }, error: function (oError) {
-                    sap.m.MessageBox.error("Error");
+        //             odata.UnitTv
+        //             odata.Lgpla */
+        //             that.byId("_IDGenInput2").setValue(odata.Huident);
+        //             that.byId("_IDGenInput3").setValue( odata.Letyp);
+        //             that.byId("_IDGenInputLength").setValue(odata.Length);
+        //             that.byId("_IDGenInputWidth").setValue(odata.Width);
+        //             that.byId("_IDGenInputHeight").setValue(odata.Height);
+        //             that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
+        //             that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
+        //             that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
+        //             that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+        //             that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
+        //             that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+        //             that.getView().byId("icon1").setVisible(false);
+        //             that.getView().byId("icon2").setVisible(true);
+        //             that.getView().byId("_IDGenButton1111").setVisible(true);
+        //         }, error: function (oError) {
+        //             sap.m.MessageBox.error("Error");
 
-                }
-            })
+        //         }
+        //     })
 
 
-        },
+        // },
         Onpressback3:function () {
     
             var oRouter = this.getOwnerComponent().getRouter().navTo("Supervisor");
@@ -317,7 +301,6 @@
         Submit: function () {
 
         }
->>>>>>> 1a878083070fe1f285afe7eceacc18b8298ce15a
 
 
 
