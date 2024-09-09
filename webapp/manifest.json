@@ -142,6 +142,7 @@
           ]
         },
         {
+
           "name": "RouteBillofLading",
           "pattern":"BillofLading",
           "target": [
@@ -191,6 +192,7 @@
           "clearControlAggregation": false,
           "viewId": "BillofLading",
           "viewName": "BillofLading"
+
         }
       }
     },

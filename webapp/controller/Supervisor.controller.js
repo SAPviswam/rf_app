@@ -11,6 +11,7 @@ sap.ui.define(
 
         return BaseController.extend("com.app.rfapp.controller.Supervisor", {
             onInit: function () {
+                this.bOtpVerified = true;
                 var oModel = new JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
                 this.getView().setModel(oModel);
                 var oModelV2 = this.getOwnerComponent().getModel();
@@ -21,10 +22,26 @@ sap.ui.define(
                 //stored colours applying...
                 this.applyStoredColors();
 
+
+                
+                // Initialize events for tile and button
+                var oTile = this.byId("idPutawayByWO1");
+                var oButton = this.byId("idBtnPutawayByWO");
+                // Attach single-click event to the tile
+                oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
+                // Attach single-click event to the button
+                oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
             },
             onAfterRendering: function () {
                 this.applyStoredColors();
+
             },
+
+            // onPaletteIconBtnDblClick: function (oEvent) {
+            //     this.byId("themeTileDialog").open();
+            // },
+
+            //This is Callback function From Init method...
             applyStoredColors: function () {
                 // Apply stored theme color
                 var sStoredThemeColor = localStorage.getItem("themeColor");
@@ -38,11 +55,12 @@ sap.ui.define(
                     var tileColors = JSON.parse(storedColors);
                     for (var sTileId in tileColors) {
                         if (tileColors.hasOwnProperty(sTileId)) {
-                            this._applyColorToTile(sTileId, tileColors[sTileId]);
+                            this.applyColorToTile(sTileId, tileColors[sTileId]);
                         }
                     }
                 }
             },
+
 
             _applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
@@ -75,14 +93,17 @@ sap.ui.define(
             //         }
             //     }
             // },
+
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
             },
+
 
             onPaletteIconBtnTilePress: function (oEvent) {
                 this._currentTileId = oEvent.getSource().getParent().getParent().getId();
                 this.byId("themeTileDialog").open();
             },
+
 
             onApplyColor: function () {
                 var oView = this.getView();
@@ -159,7 +180,7 @@ sap.ui.define(
                 var aElements = [
                     this.byId("toolPage"),
                     this.byId("idSideNavigation"),
-                    this.byId("idtntToolHeader"),
+                    this.byId("idToolHeader"),
                     this.byId("pageContainer")
                 ];
 
@@ -226,10 +247,12 @@ sap.ui.define(
             //         this._currentTileId = null;
             //     }
             // },
+
             applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
 
                 if (oTile) {
+
                     // Get the DOM reference of the tile
                     var oTileDomRef = oTile.getDomRef();
 
@@ -237,6 +260,7 @@ sap.ui.define(
                         // Directly apply the background color using the DOM reference
                         oTileDomRef.style.backgroundColor = sColor;
                     }
+
 
                     // Retrieve and update the color storage
                     var tileColors = {};
@@ -999,15 +1023,22 @@ sap.ui.define(
                     oEmailInput.setValueState(sap.ui.core.ValueState.None);
                     oEmailInput.setValueStateText("");
                 }
-
+                debugger
                 // Validate Phone
                 if (!phone) {
                     oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
                     oPhoneInput.setValueStateText("Phone number is required.");
                     isValid = false;
-                } else {
+                } else if (phone.length !== 10 || !/^\d+$/.test(phone)) {
                     oPhoneInput.setValueState(sap.ui.core.ValueState.None);
                     oPhoneInput.setValueStateText("");
+                }
+                else {
+                    oPhoneInput.setValueState("None");
+                    if (!this.bOtpVerified) {
+                        sap.m.MessageToast.show("Please verify your phone number with the OTP before submitting.");
+                        return;
+                    }
                 }
 
                 // Validate Resourcetype
@@ -1164,6 +1195,9 @@ sap.ui.define(
                     this.byId("idNameInput").setEditable(true).setValue("");
                     this.byId("idEmailInput").setEditable(true).setValue("");
                     this.byId("idPhoneInput").setEditable(true).setValue("");
+                    this.byId("getotpsv").setVisible(true);
+                    this.bOtpVerified = false;
+
                     this.byId("idRoesurcetypeInput").setEditable(true).setValue("");
                     return;  // Exit early if validation fails
                 } else {
@@ -1196,6 +1230,8 @@ sap.ui.define(
                                 This.byId("idEmailInput").setEditable(false).setValue(email);
                                 This.byId("idPhoneInput").setEditable(false).setValue(Phonenumber);
                                 This.byId("idRoesurcetypeInput").setEditable(false).setValue(RT);
+                                This.byId("getotpsv").setVisible(false);
+                                This.bOtpVerified = true;
 
 
 
@@ -1484,11 +1520,13 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
            //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
+
         });
     }
 );
