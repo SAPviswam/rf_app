@@ -142,31 +142,11 @@
           ]
         },
         {
-          "name": "UnloadingByDoor",
-          "pattern": "UnloadingByDoor",
+
+          "name": "RouteBillofLading",
+          "pattern":"BillofLading",
           "target": [
-            "TargetUnloadingByDoor"
-          ]
-        },
-        {
-          "name": "RecevingOfHUbyDelivery",
-          "pattern": "RecevingOfHUbyDelivery",
-          "target": [
-            "TargetRecevingOfHUbyDelivery"
-          ]
-        },
-        {
-          "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
-          "target": [
-            "TargetPutawayByHU"
-          ]
-          },
-          {
-          "name": "RoutePutawayByWO",
-          "pattern": "RoutePutawayByWO",
-          "target": [
-            "TargetPutawayByWO"
+            "TargetBillofLading"
           ]
         }
       ],
@@ -206,33 +186,13 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
-        "TargetUnloadingByDoor": {
+        "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "UnloadingByDoor",
-          "viewName": "UnloadingByDoor"
-        },
-        "TargetRecevingOfHUbyDelivery": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyDelivery",
-          "viewName": "RecevingOfHUbyDelivery"
-        },
-        "TargetPutawayByHU": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "PutawayByHU",
-          "viewName": "PutawayByHU"
-        },
-        "TargetPutawayByWO": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "PutawayByWO",
-          "viewName": "PutawayByWO"
+          "viewId": "BillofLading",
+          "viewName": "BillofLading"
+
         }
       }
     },
