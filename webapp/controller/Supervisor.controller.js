@@ -32,12 +32,9 @@ sap.ui.define(
                 // Attach single-click event to the button
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
             },
+            onAfterRendering: function () {
+                this.applyStoredColors();
 
-            // Handler for button press event (open dialog)
-            onPaletteIconSingleClick: function (oEvent) {
-                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-                this.byId("themeTileDialog").open();
-                oEvent.stopPropagation();
             },
 
             // onPaletteIconBtnDblClick: function (oEvent) {
@@ -63,14 +60,50 @@ sap.ui.define(
                     }
                 }
             },
+
+
+            _applyColorToTile: function (sTileId, sColor) {
+                var oTile = this.byId(sTileId);
+
+                if (oTile) {
+                    // Use setTimeout to ensure the DOM is ready before applying styles
+                    setTimeout(function () {
+                        var oTileDomRef = oTile.getDomRef();
+                        if (oTileDomRef) {
+                            oTileDomRef.style.backgroundColor = sColor;  // Apply the stored color
+                        }
+                    }, 0);  // Use a short delay
+                }
+            },
+            // applyStoredColors: function () {
+            //     // Apply stored theme color
+            //     var sStoredThemeColor = localStorage.getItem("themeColor");
+            //     if (sStoredThemeColor) {
+            //         this.applyThemeColor(sStoredThemeColor);
+            //     }
+
+            //     // Apply stored tile colors
+            //     var storedColors = localStorage.getItem("tileColors");
+            //     if (storedColors) {
+            //         var tileColors = JSON.parse(storedColors);
+            //         for (var sTileId in tileColors) {
+            //             if (tileColors.hasOwnProperty(sTileId)) {
+            //                 this.applyColorToTile(sTileId, tileColors[sTileId]);
+            //             }
+            //         }
+            //     }
+            // },
+
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
             },
 
-            // onPaletteIconBtnTilePress: function (oEvent) {
-            //     this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-            //     this.byId("themeTileDialog").open();
-            // },
+
+            onPaletteIconBtnTilePress: function (oEvent) {
+                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
+                this.byId("themeTileDialog").open();
+            },
+
 
             onApplyColor: function () {
                 var oView = this.getView();
@@ -174,26 +207,60 @@ sap.ui.define(
                 // Store the selected theme color in local storage
                 localStorage.setItem("themeColor", sColor);
             },
+            // applyColorToTile: function (sTileId, sColor) {
+            //     var oTile = this.byId(sTileId);
+
+            //     if (oTile) {
+            //         var sTileColorClass = "tileColor_" + sTileId;
+
+            //         // Remove the old color class if it exists
+            //         oTile.removeStyleClass(sTileColorClass);
+
+            //         // Create or update the style element
+            //         var oStyleElement = document.getElementById(sTileColorClass);
+            //         if (!oStyleElement) {
+            //             oStyleElement = document.createElement("style");
+            //             oStyleElement.id = sTileColorClass;
+            //             document.head.appendChild(oStyleElement);
+            //         }
+            //         oStyleElement.textContent = "#" + sTileId + " { background-color: " + sColor + " !important; }";
+
+            //         // Apply the new color class to the tile
+            //         oTile.addStyleClass(sTileColorClass);
+
+            //         // Retrieve and update the color storage
+            //         var tileColors = {};
+            //         try {
+            //             var storedColors = localStorage.getItem("tileColors");
+            //             if (storedColors) {
+            //                 tileColors = JSON.parse(storedColors);
+            //             }
+            //         } catch (e) {
+            //             console.error("Failed to parse tile colors from localStorage:", e);
+            //         }
+
+            //         // Update the tile color in localStorage
+            //         tileColors[sTileId] = sColor;
+            //         localStorage.setItem("tileColors", JSON.stringify(tileColors));
+
+            //         // Clear the tile ID after applying the color
+            //         this._currentTileId = null;
+            //     }
+            // },
+
             applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
 
                 if (oTile) {
-                    var sTileColorClass = "tileColor_" + sTileId;
 
-                    // Remove the old color class if it exists
-                    oTile.removeStyleClass(sTileColorClass);
+                    // Get the DOM reference of the tile
+                    var oTileDomRef = oTile.getDomRef();
 
-                    // Create or update the style element
-                    var oStyleElement = document.getElementById(sTileColorClass);
-                    if (!oStyleElement) {
-                        oStyleElement = document.createElement("style");
-                        oStyleElement.id = sTileColorClass;
-                        document.head.appendChild(oStyleElement);
+                    if (oTileDomRef) {
+                        // Directly apply the background color using the DOM reference
+                        oTileDomRef.style.backgroundColor = sColor;
                     }
-                    oStyleElement.textContent = "#" + sTileId + " { background-color: " + sColor + " !important; }";
 
-                    // Apply the new color class to the tile
-                    oTile.addStyleClass(sTileColorClass);
 
                     // Retrieve and update the color storage
                     var tileColors = {};
@@ -214,6 +281,7 @@ sap.ui.define(
                     this._currentTileId = null;
                 }
             },
+
             _isValidColor: function (sColor) {
                 var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
@@ -1452,27 +1520,15 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
-            onUnloadingByDoorTilePress:function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByDoor");
- 
-            },
-            onReceivingofHUbyDelivery: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyDelivery");
-            },
-            onPutawayByHU: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU");
-            },
- 
 
-            //Press Functon for PutawayByWO Tile...(Ramesh)
-            onTilePressPutawayByWO: function () {
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByWO");
+            onReceivingofHUbyBillofLading: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                oRouter.navTo("RouteBillofLading");
             },
+
             // added by subhash 
+
 
 
         });
