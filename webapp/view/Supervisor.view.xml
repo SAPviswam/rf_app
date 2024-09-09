@@ -215,13 +215,49 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
+                                <HBox justifyContent="SpaceBetween">
                                 <Input
                                    editable="true"
                                     id="idPhoneInput"
                                     placeholder="Enter Phone"
                                     class="Inputs"
                                 />
-                            </FlexBox>
+                                <core:Icon
+                        id="verficationIdicon"
+                        src="sap-icon://accept"
+                        size="150%"
+                        color="#008000"
+                        visible="false"
+                    />
+                    </HBox>
+                     </FlexBox>
+                     <FlexBox
+                                id="_IDField420"
+                                justifyContent="End"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                    <HBox justifyContent="SpaceBetween">
+                    <Input
+                    id="idOtpInputsv"
+                    placeholder="Enter OTP..."
+                    visible="false"
+                    valueLiveUpdate="true"
+                    liveChange="onSubmitOtp"
+                    width="100%"
+                />
+                                 <Button
+                        id="getotpsv"
+                        text="Get OTP"
+                        press="onGetOTP"
+                        type="Emphasized"
+                        width="80px"
+                        visible="false"
+                    />
+                                </HBox>
+                     </FlexBox>
+
+                           
                             <FlexBox
                                 id="_IDField345"
                                 justifyContent="SpaceBetween"
@@ -694,7 +730,7 @@
                         <GenericTile
                             id="idUnloadingByDoor1"
                             header="Unloading By Door"
-                            press="onTilePress"
+                            press="onUnloadingByDoorTilePress"
                             class="sapUiTinyMargin"
                         />
 
@@ -1231,7 +1267,7 @@
                             id="IDCreateAdhocHUWT"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Adhoc HU WT"
-                            press="OnPressCreateAdhocHUWT"
+                            press="onPressCreateAdhocHUWTInAdhocWT"
                         />
 
                         <GenericTile
@@ -1245,7 +1281,7 @@
                             id="IDCreateAdhocProductWT"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Adhoc Product WT"
-                            press="OnPressCreateAdhocProductWT"
+                            press="onPressCreateAdhocProductWTInAdhocWT"
                         />
 
                         <GenericTile

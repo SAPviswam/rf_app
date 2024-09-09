@@ -11,6 +11,7 @@ sap.ui.define(
 
         return BaseController.extend("com.app.rfapp.controller.Supervisor", {
             onInit: function () {
+                this.bOtpVerified = true;
                 var oModel = new JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
                 this.getView().setModel(oModel);
                 var oModelV2 = this.getOwnerComponent().getModel();
@@ -999,15 +1000,22 @@ sap.ui.define(
                     oEmailInput.setValueState(sap.ui.core.ValueState.None);
                     oEmailInput.setValueStateText("");
                 }
-
+                debugger
                 // Validate Phone
                 if (!phone) {
                     oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
                     oPhoneInput.setValueStateText("Phone number is required.");
                     isValid = false;
-                } else {
+                } else if (phone.length !== 10 || !/^\d+$/.test(phone)) {
                     oPhoneInput.setValueState(sap.ui.core.ValueState.None);
                     oPhoneInput.setValueStateText("");
+                }
+                else {
+                    oPhoneInput.setValueState("None");
+                    if (!this.bOtpVerified) {
+                        sap.m.MessageToast.show("Please verify your phone number with the OTP before submitting.");
+                        return;
+                    }
                 }
 
                 // Validate Resourcetype
@@ -1164,6 +1172,9 @@ sap.ui.define(
                     this.byId("idNameInput").setEditable(true).setValue("");
                     this.byId("idEmailInput").setEditable(true).setValue("");
                     this.byId("idPhoneInput").setEditable(true).setValue("");
+                    this.byId("getotpsv").setVisible(true);
+                    this.bOtpVerified = false;
+
                     this.byId("idRoesurcetypeInput").setEditable(true).setValue("");
                     return;  // Exit early if validation fails
                 } else {
@@ -1196,6 +1207,8 @@ sap.ui.define(
                                 This.byId("idEmailInput").setEditable(false).setValue(email);
                                 This.byId("idPhoneInput").setEditable(false).setValue(Phonenumber);
                                 This.byId("idRoesurcetypeInput").setEditable(false).setValue(RT);
+                                This.byId("getotpsv").setVisible(false);
+                                This.bOtpVerified = true;
 
 
 
@@ -1484,11 +1497,29 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+<<<<<<< HEAD
             onUnloadingByBillofLadingPress:function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
 
             },
+=======
+            onUnloadingByDoorTilePress:function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByDoor");
+ 
+            },
+            onReceivingofHUbyDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery");
+            },
+            onPutawayByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
+            },
+ 
+
+>>>>>>> afd8cfe9f7d36c804a8cf7ffcb77b66a69cb68cf
         });
     }
 );
