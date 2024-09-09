@@ -142,6 +142,34 @@
           ]
         },
         {
+          "name": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor",
+          "target": [
+            "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery",
+          "target": [
+            "TargetRecevingOfHUbyDelivery"
+          ]
+        },
+        {
+          "name": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU",
+          "target": [
+            "TargetPutawayByHU"
+          ]
+          },
+          {
+          "name": "RoutePutawayByWO",
+          "pattern": "RoutePutawayByWO",
+          "target": [
+            "TargetPutawayByWO"
+          ]
+        },
+        {
 
           "name": "RouteBillofLading",
           "pattern":"BillofLading",
@@ -185,6 +213,34 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetUnloadingByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByDoor",
+          "viewName": "UnloadingByDoor"
+        },
+        "TargetRecevingOfHUbyDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyDelivery",
+          "viewName": "RecevingOfHUbyDelivery"
+        },
+        "TargetPutawayByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHU",
+          "viewName": "PutawayByHU"
+        },
+        "TargetPutawayByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByWO",
+          "viewName": "PutawayByWO"
         },
         "TargetBillofLading": {
           "viewType": "XML",
