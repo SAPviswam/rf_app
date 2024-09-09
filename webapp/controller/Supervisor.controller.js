@@ -1571,7 +1571,11 @@ sap.ui.define(
                 oRouter.navTo("AdhocProductWt");
 
             },
-            
+            OnPressUnloadByDelivery:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery");
+
+            }
 
 
 

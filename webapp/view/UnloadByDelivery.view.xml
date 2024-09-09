@@ -20,7 +20,7 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
-    <tnt:ToolPage id="idToolPagePutawayByWO_UNBD">
+       <tnt:ToolPage id="idToolPagePutawayByWO_UNBD">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderPutawayByWO_UNBD">
                 <Image
@@ -49,15 +49,10 @@
                 />
             </tnt:ToolHeader>
         </tnt:header>
- 
+
         <tnt:mainContents>
-            <!-- <Button
-                id="_IDGenButton7777"
-                icon="sap-icon://nav-back"
-                press="Onpressback7"
-                visible="false"
-            /> -->
- 
+           
+
             <ScrollContainer
                 id="icon1_UNBD"
                 width="100%"
@@ -67,12 +62,18 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <!-- <VBox
-                    id="_IDGenVBox11_UNBD"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                > -->
+             <Button
+                id="_IDGenButton77_UNBD"
+                icon="sap-icon://nav-back"
+                press="onPressBackToHome"
+                visible="true"
+            />
+                <Title
+                    id="idPageTitle_UNBD"
+                    text="Delivery"
+                    level="H2"
+                    class="titles_UNBD"
+                />
                 <f:SimpleForm
                     id="simpleForm_UNBD"
                     editable="true"
@@ -92,41 +93,36 @@
                     singleContainerFullSize="false"
                     class="FormBack"
                 >
-                    <!-- <HBox
-                            id="_IDGenHBoxContainer_UNBD"
-                            justifyContent="Start"
-                        > -->
                     <Label
                         id="_IDGenLabel1_UNBD"
-                        text="Delivery no"
-                        class=""
+                        text="Delivery"
                     />
-                    <!-- Input Field -->
                     <Input
                         id="_IDGenInput1_UNBD"
-                        placeholder="Enter HU"
+                        placeholder="Enter Door Number"
                     />
-                    <HBox id="_idhbox_unknw_UNBD" class="sapTinyMarginEnd" >
-                    <!-- Barcode Scan Button -->
-                    <Button
-                        id="_IDGenButton11_UNBD"
-                        icon="sap-icon://bar-code"
-                        press="Onpressscan"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <!-- Submit Button -->
-                    <Button
-                        id="_IDGenButton111_UNBD"
-                        text="Submit"
-                        class="sapUiTinyMarginEnd"
-                        press="Onpresssubmit"
-                    />
+                    <HBox
+                        id="_idhbox_unknw_UNBD"
+                        class="sapTinyMarginEnd"
+                    >
+                        <!-- Barcode Scan Button -->
+                        <Button
+                            id="_IDGenButton11_UNBD"
+                            icon="sap-icon://bar-code"
+                            press="Onpressscan"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <!-- Submit Button -->
+                        <Button
+                            id="_IDGenButton111_UNBD"
+                            text="Submit"
+                            class="sapUiTinyMarginEnd"
+                            press="Onpresssubmit"
+                        />
                     </HBox>
-                    <!-- </HBox> -->
                 </f:SimpleForm>
-                <!-- </VBox> -->
             </ScrollContainer>
- 
+
             <ScrollContainer
                 id="icon2_UNBD"
                 width="100%"
@@ -139,12 +135,7 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback1"
                 />
-                <!-- <VBox
-                    id="_IDGenVBox12_UNBD"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                > -->
+
                 <Title
                     id="_IDGenTitle_UNBD"
                     class="TitleSecondPage"
@@ -152,12 +143,23 @@
                 />
                 <f:SimpleForm
                     id="simpleForm1_UNBD"
+                   editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
-                    <!-- Delivery Field -->
                     <Label
                         id="_IDGenLabel2_UNBD"
                         text="Delivery"
@@ -167,28 +169,8 @@
                         id="_IDGenInput2_UNBD"
                         placeholder="Enter Delivery..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- Item No Field -->
-                    <!-- <HBox
-                            id="_IDGenHBox5_UNBD"
-                            alignItems="Center"
-                            class=""
-                        > -->
-                    <Label
-                        id="idItemNoLabel_UNBD"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoInput_UNBD"
-                        placeholder="Enter Item No..."
-                        width="250px"
-                    />
-                    <!-- </HBox> -->
- 
-                    <!-- Vendor Field -->
                     <Label
                         id="_IDGenLabel3_UNBD"
                         text="Vendor"
@@ -197,10 +179,9 @@
                         id="_IDGenInput3_UNBD"
                         placeholder="Enter Vendor..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- No. of HU Field -->
+
                     <Label
                         id="_IDGenLabel4_UNBD"
                         text="No. of HU"
@@ -209,10 +190,9 @@
                         id="_IDGenInput4_UNBD"
                         placeholder="Enter No. of HU..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- HU Field -->
+
                     <Label
                         id="_IDGenLabel5_UNBD"
                         text="HU"
@@ -221,14 +201,24 @@
                         id="_IDGenInput5_UNBD"
                         placeholder="Enter HU..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemNoLabel_UNBD"
+                        text="Item No"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoInput_UNBD"
+                        placeholder="Enter Item No..."
+                        width="300px"
                     />
                     <VBox id="_IDGenVBox13_UNBD">
                         <HBox
                             id="_IDGenHBox6_UNBD"
                             class="sapTinyMarginEnd"
                         >
-                            <Button
+                            <Link
                                 id="huListButton_UNBD"
                                 text="HU List"
                                 press="onHUListPress"
@@ -265,9 +255,8 @@
                         </HBox>
                     </VBox>
                 </f:SimpleForm>
-                <!-- </VBox> -->
             </ScrollContainer>
- 
+
             <ScrollContainer
                 id="icon3_UNBD"
                 width="100%"
@@ -335,7 +324,7 @@
                                 />
                             </Column>
                         </columns>
- 
+
                         <items>
                             <ColumnListItem id="_IDGenColumnListItem1_UNBD">
                                 <cells>
@@ -369,6 +358,7 @@
                     </Table>
                 </VBox>
             </ScrollContainer>
+        
             <ScrollContainer
                 id="icon4_UNBD"
                 width="100%"
@@ -376,20 +366,36 @@
                 horizontal="false"
                 vertical="true"
             >
-                <Button
-                    id="_IDGenButton3333_UNBD"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback3"
+                <Button 
+                id="_IDGenButton3333_UNBD"
+                icon="sap-icon://nav-back"
+                press="Onpressback3"
+            />
+                <Title
+                    id="idPageTitle2_UNBD"
+                    level="H2"
+                    class="titles_UNBD"
+
                 />
- 
                 <f:SimpleForm
                     id="simpleForm4_UNBD"
+                     editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
-                    <!-- Product Field -->
                     <Label
                         id="_IDGenLabel22_UNBD"
                         text="Product"
@@ -399,10 +405,9 @@
                         id="_IDGenInput22_UNBD"
                         placeholder="Enter Product..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- Qty Field -->
+
                     <Label
                         id="idItemNoLabel2_UNBD"
                         text="Qty"
@@ -411,15 +416,9 @@
                     <Input
                         id="idItemNoInput2_UNBD"
                         placeholder="Enter Qty..."
-                        width="100px"
+                        width="300px"
                     />
- 
-                    <!-- UOM Field -->
-                    <!-- <HBox
-                        id="_IDGenHBox8_UNBD"
-                        alignItems="Center"
-                        class="sapUiTinyMarginEnd"
-                    > -->
+
                     <Label
                         id="idItemNoLab8el_UNBD"
                         text="UOM"
@@ -428,11 +427,9 @@
                     <Input
                         id="idItemNoInp5ut_UNBD"
                         placeholder="Enter UOM..."
-                        width="250px"
+                        width="300px"
                     />
-                    <!-- </HBox> -->
- 
-                    <!-- Packaging Material Field -->
+
                     <Label
                         id="_IDGenLabel32_UNBD"
                         text="Packaging Material"
@@ -441,10 +438,9 @@
                         id="_IDGenInput32_UNBD"
                         placeholder="Enter Packaging Material..."
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- Batch Field -->
+
                     <Label
                         id="_IDGenLabel42_UNBD"
                         text="Batch"
@@ -453,10 +449,9 @@
                         id="_IDGenInput42_UNBD"
                         placeholder="Enter Batch"
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- BBD Field -->
+
                     <Label
                         id="_IDGenLabel427_UNBD"
                         text="BBD"
@@ -465,10 +460,9 @@
                         id="_IDGenInput423_UNBD"
                         placeholder="Enter BBD"
                         maxLength="25"
-                        width="200px"
+                        width="300px"
                     />
- 
-                    <!-- Man Field -->
+
                     <Label
                         id="_IDGenLabel422_UNBD"
                         text="Man"
@@ -477,40 +471,31 @@
                         id="_IDGenInput432_UNBD"
                         placeholder="Enter Man"
                         maxLength="25"
-                        width="100px"
+                        width="300px"
                     />
- 
-                    <!-- Expiry Field -->
-                    <!-- <HBox
-                        id="_IDGenHBox9_UNBD"
-                        alignItems="Center"
-                        class="sapUiTinyMarginEnd"
-                    > -->
+
                     <Label
                         id="idItemNoLab99el_UNBD"
-                        text="Expiry:"
+                        text="Expiry"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="idItemNoI8nput_UNBD"
                         placeholder="Enter Expiry..."
-                        width="250px"
+                        width="300px"
                     />
-                    <!-- </HBox> -->
- 
-                    <!-- COO Field -->
+
                     <Label
                         id="_IDGenLabel4211_UNBD"
-                        text="Coo"
+                        text="COO"
                     />
                     <Input
                         id="_IDGenInput422_UNBD"
                         placeholder="Enter Coo"
                         maxLength="25"
-                        width="100px"
+                        width="300px"
                     />
- 
-                    <!-- Hidden Man Field -->
+
                     <Label
                         id="_IDGenLabel4225_UNBD"
                         text="Man"
@@ -518,13 +503,12 @@
                     />
                     <Input
                         id="_IDGenInput4532_UNBD"
-                        placeholder="Enter Man"
+                        placeholder="Enter Manf"
                         maxLength="25"
-                        width="100px"
                         visible="false"
+                        width="300px"
                     />
- 
-                    <!-- Next/Enter Button -->
+
                     <HBox
                         id="_IDGenHBox10_UNBD"
                         alignItems="Center"
@@ -539,7 +523,8 @@
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
-                        <ScrollContainer
+
+            <ScrollContainer
                 id="icon5_UNBD"
                 width="100%"
                 height="100%"
@@ -551,76 +536,77 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback4"
                 />
-                <!-- <VBox
-                    id="_IDGenVBox15_UNBD"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                > -->
-                    <f:SimpleForm
-                        id="simpleForm5_UNBD"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        columnsL="2"
-                        columnsM="1"
+
+                <f:SimpleForm
+                    id="simpleForm5_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel442_UNBD"
+                        text="HU       "
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput3442_UNBD"
+                        placeholder="Enter HU..."
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemNo23Label_UNBD"
+                        text="Delivery"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoI233nput_UNBD"
+                        placeholder="Delivery..."
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemLabel_UNBD"
+                        text="Item No"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItem3nput_UNBD"
+                        placeholder="Item No"
+                        width="300px"
+                    />
+                    <HBox
+                        id="_IDGenHBox13_UNBD"
+                        class="sapUiSmallMarginTop"
                     >
-                        <!-- HU Number Field -->
-                        <!-- <HBox
-                            id="_IDGenHBox11_UNBD"
-                            alignItems="Center"
-                        > -->
-                        <Label
-                            id="_IDGenLabel442_UNBD"
-                            text="HU       "
-                            class="sapUiTinyMarginEnd"
+                        <Button
+                            id="newHUButton3123_UNBD"
+                            text="GR"
+                            press="onGRPress"
                         />
-                        <Input
-                            id="_IDGenInput3442_UNBD"
-                            placeholder="Enter HU..."
-                            maxLength="25"
-                            width="200px"
+
+                        <Button
+                            id="_IDGenButton_UNBD"
+                            text="Unload"
+                            press="onUnloadPress"
+                            width="100px"
                         />
-                        <!-- </HBox> -->
- 
-                        <!-- Delivery Field with GR Button (Quantity) -->
-                        <!-- <VBox id="_IDGenVBox16_UNBD"> -->
-                        <!-- <HBox id="_IDGenHBox12_UNBD"> -->
-                        <Label
-                            id="idItemNo23Label_UNBD"
-                            text="Delivery"
-                            class="sapUiTinyMarginEnd"
-                        />
-                        <!-- <VBox id="_IDGenVBox17_UNBD"> -->
-                            <Input
-                                id="idItemNoI233nput_UNBD"
-                                placeholder="Delivery..."
-                                width="200px"
-                            />
-                            <HBox
-                                id="_IDGenHBox13_UNBD"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Button
-                                    id="newHUButton3123_UNBD"
-                                    text="GR"
-                                    press="onGRPress"
-                                    width="100px"
-                                />
- 
-                                <Button
-                                    id="_IDGenButton_UNBD"
-                                    text="Unload"
-                                    press="onUnloadPress"
-                                    width="100px"
-                                />
-                            </HBox>
-                        <!-- </VBox> -->
-                        <!-- </HBox> -->
-                        <!-- </VBox> -->
-                    </f:SimpleForm>
-                <!-- </VBox> -->
+                    </HBox>
+                </f:SimpleForm>
             </ScrollContainer>
- 
+
             <ScrollContainer
                 id="icon6_UNBD"
                 width="100%"
@@ -633,66 +619,59 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback5"
                 />
-                <!-- <VBox
-                    id="_IDGenVBox18_UNBD"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                > -->
-                    <f:SimpleForm
-                        id="simpleForm6_UNBD"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        columnsL="2"
-                        columnsM="1"
-                    >
-                        <!-- HU Number Field (Product) -->
-                        <!-- <HBox
-                            id="_IDGenHBox14_UNBD"
-                            alignItems="Center"
-                        > -->
-                            <Label
-                                id="_IDGenLabel444562_UNBD"
-                                text="Product"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <Input
-                                id="_IDGenInput312442_UNBD"
-                                placeholder="Enter product..."
-                                maxLength="25"
-                                width="200px"
-                            />
-                        <!-- </HBox> -->
- 
-                        <!-- Delivery Field with GR Button (Quantity) -->
-                        <!-- <VBox id="_IDGenVBox19_UNBD"> -->
-                            <!-- <HBox id="_IDGenHBox15_UNBD"> -->
-                                <Label
-                                    id="idItemNo23L12abel_UNBD"
-                                    text="Quantity"
-                                    class="sapUiTinyMarginEnd"
-                                />
-                                <!-- <VBox id="_IDGenVBox20_UNBD"> -->
-                                    <Input
-                                        id="idItemNoI233np12ut_UNBD"
-                                        placeholder="Enter Quantity..."
-                                        maxLength="25"
-                                        width="200px"
-                                    />
- 
-                                    <Button
-                                        id="newHUButto123n3123_UNBD"
-                                        text="GR"
-                                        press="onGRPress"
-                                        width="100px"
-                                    />
-                                <!-- </VBox> -->
-                            <!-- </HBox> -->
-                        <!-- </VBox> -->
-                    </f:SimpleForm>
-                <!-- </VBox> -->
+
+                <f:SimpleForm
+                    id="simpleForm6_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel444562_UNBD"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput312442_UNBD"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItemNo23L12abel_UNBD"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoI233np12ut_UNBD"
+                        placeholder="Enter Quantity..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Button
+                        id="newHUButto123n3123_UNBD"
+                        text="GR"
+                        press="onGRPress"
+                        width="100px"
+                    />
+                </f:SimpleForm>
             </ScrollContainer>
- 
+
             <ScrollContainer
                 id="icon7_UNBD"
                 width="100%"
@@ -705,62 +684,54 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback6"
                 />
-                <!-- <VBox
-                    id="_IDGenVBox21_UNBD"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                > -->
-                    <f:SimpleForm
-                        id="simpleForm7_UNBD"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        columnsL="2"
-                        columnsM="1"
-                    >
-                        <!-- HU Number Field (Product) -->
-                        <!-- <HBox
-                            id="_IDGenHBox16_UNBD"
-                            alignItems="Center"
-                        > -->
-                            <Label
-                                id="_IDGen123Label444562_UNBD"
-                                text="Product"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <Input
-                                id="_IDGenInp234ut312442_UNBD"
-                                placeholder="Enter product..."
-                                maxLength="25"
-                                width="200px"
-                            />
-                        <!-- </HBox> -->
- 
-                        <!-- Delivery Field with Unload Button (Quantity) -->
-                        <!-- <VBox id="_IDGenVBox22_UNBD"> -->
-                            <!-- <HBox id="_IDGenHBox17_UNBD"> -->
-                                <Label
-                                    id="idItem123No23L12abel_UNBD"
-                                    text="Quantity"
-                                    class="sapUiTinyMarginEnd"
-                                />
-                                <!-- <VBox id="_IDGenVBox23_UNBD"> -->
-                                    <Input
-                                        id="idIt1234emNoI233np12ut_UNBD"
-                                        placeholder="Enter Quantity..."
-                                        width="200px"
-                                    />
-                                    <Button
-                                        id="new345HUButto123n3123_UNBD"
-                                        text="Unload"
-                                        press="onUnloadPress1"
-                                        width="100px"
-                                    />
-                                <!-- </VBox> -->
-                            <!-- </HBox> -->
-                        <!-- </VBox> -->
-                    </f:SimpleForm>
-                <!-- </VBox> -->
+                <f:SimpleForm
+                    id="simpleForm7_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGen123Label444562_UNBD"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInp234ut312442_UNBD"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItem123No23L12abel_UNBD"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idIt1234emNoI233np12ut_UNBD"
+                        placeholder="Enter Quantity..."
+                        width="300px"
+                    />
+                    <Button
+                        id="new345HUButto123n3123_UNBD"
+                        text="Unload"
+                        press="onUnloadPress1"
+                        width="100px"
+                    />
+                </f:SimpleForm>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
