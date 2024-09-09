@@ -142,20 +142,12 @@
           ]
         },
         {
-          "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
+          "name": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor",
           "target": [
-            "TargetPutawayByHU"
+            "TargetUnloadingByDoor"
           ]
-        },
-        {
-        "name": "RecevingOfHUbyDelivery",
-        "pattern": "RecevingOfHUbyDelivery",
-        "target": [
-          "TargetRecevingOfHUbyDelivery"
-        ]
-      }
-
+        }
       ],
       "targets": {
         "TargetHome": {
@@ -193,19 +185,12 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
-        "TargetPutawayByHU": {
+        "TargetUnloadingByDoor": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "PutawayByHU",
-          "viewName": "PutawayByHU"
-        },
-        "TargetRecevingOfHUbyDelivery": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyDelivery",
-          "viewName": "RecevingOfHUbyDelivery"
+          "viewId": "UnloadingByDoor",
+          "viewName": "UnloadingByDoor"
         }
       }
     },

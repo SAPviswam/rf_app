@@ -730,7 +730,7 @@
                         <GenericTile
                             id="idUnloadingByDoor1"
                             header="Unloading By Door"
-                            press="onTilePress"
+                            press="onUnloadingByDoorTilePress"
                             class="sapUiTinyMargin"
                         />
 
