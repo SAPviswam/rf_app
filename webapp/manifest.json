@@ -140,6 +140,20 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu",
+          "target": [
+            "TargetCreateConfirmAdhocHu"
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct",
+          "target": [
+            "TargetCreateConfirmAdhocProduct"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +191,20 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetCreateConfirmAdhocHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocHu",
+          "viewName": "CreateConfirmAdhocHu"
+        },
+        "TargetCreateConfirmAdhocProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocProduct",
+          "viewName": "CreateConfirmAdhocProduct"
         }
       }
     },
