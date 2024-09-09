@@ -147,6 +147,13 @@
           "target": [
             "TargetUnloadingByDoor"
           ]
+        },
+        {
+          "name": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery",
+          "target": [
+            "TargetRecevingOfHUbyDelivery"
+          ]
         }
       ],
       "targets": {
@@ -191,6 +198,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
+        },
+        "TargetRecevingOfHUbyDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyDelivery",
+          "viewName": "RecevingOfHUbyDelivery"
         }
       }
     },

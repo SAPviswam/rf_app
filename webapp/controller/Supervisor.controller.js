@@ -1502,6 +1502,11 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByDoor");
  
             },
+            onReceivingofHUbyDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery");
+            },
+ 
 
         });
     }
