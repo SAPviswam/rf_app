@@ -142,10 +142,22 @@
                 />
                 <f:SimpleForm
                     id="simpleForm1_UBYD"
+                   editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
                     <Label
                         id="_IDGenLabel2_UBYD"
@@ -360,14 +372,28 @@
             />
                 <Title
                     id="idPageTitle2_UBYD"
-                    text="New HU"
+                    level="H2"
+                    class="titles_UBYD"
+
                 />
                 <f:SimpleForm
                     id="simpleForm4_UBYD"
+                     editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
                     <Label
                         id="_IDGenLabel22_UBYD"
@@ -512,10 +538,22 @@
 
                 <f:SimpleForm
                     id="simpleForm5_UBYD"
+                     editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
                     <Label
                         id="_IDGenLabel442_UBYD"
@@ -583,10 +621,22 @@
 
                 <f:SimpleForm
                     id="simpleForm6_UBYD"
+                     editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
                     <Label
                         id="_IDGenLabel444562_UBYD"
@@ -616,6 +666,7 @@
                         id="newHUButto123n3123_UBYD"
                         text="GR"
                         press="onGRPress"
+                        width="100px"
                     />
                 </f:SimpleForm>
             </ScrollContainer>
@@ -634,10 +685,22 @@
                 />
                 <f:SimpleForm
                     id="simpleForm7_UBYD"
+                     editable="true"
                     layout="ResponsiveGridLayout"
-                    editable="true"
-                    columnsL="2"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
                     columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
                 >
                     <Label
                         id="_IDGen123Label444562_UBYD"
@@ -655,7 +718,6 @@
                         id="idItem123No23L12abel_UBYD"
                         text="Quantity"
                         class="sapUiTinyMarginEnd"
-                        width="300px"
                     />
                     <Input
                         id="idIt1234emNoI233np12ut_UBYD"

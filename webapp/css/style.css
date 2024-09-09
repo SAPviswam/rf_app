@@ -419,6 +419,7 @@
     color: red;
     font-weight: bold !important;
 }
+
 /* these are for theme colors for options... */
 .colorCheckBox {
     width: 20px;
@@ -426,32 +427,40 @@
     margin-right: 10px;
     display: inline-block;
     border-color: black !important;
-  }
-  .redCheckBox .sapMCbBg {
+}
+
+.redCheckBox .sapMCbBg {
     background-color: red !important;
-  }
-  .blackCheckBox .sapMCbBg {
+}
+
+.blackCheckBox .sapMCbBg {
     background-color: black !important;
-  }
-  
-  .greenCheckBox .sapMCbBg {
+}
+
+.greenCheckBox .sapMCbBg {
     background-color: green !important;
-  }
-  .whiteCheckBox .sapMCbBg {
+}
+
+.whiteCheckBox .sapMCbBg {
     background-color: white !important;
-  }
-  .purpleCheckBox .sapMCbBg {
+}
+
+.purpleCheckBox .sapMCbBg {
     background-color: purple !important;
-  }
-  .blueCheckBox .sapMCbBg {
+}
+
+.blueCheckBox .sapMCbBg {
     background-color: blue !important;
-  }
-  .YellowCheckBox .sapMCbBg {
+}
+
+.YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
-  }
-  .textFieldsAF{
+}
+
+.textFieldsAF {
     padding-bottom: 1rem;
-  }
+}
+
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
@@ -460,7 +469,17 @@
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
 
 /* unloading by door start*/
-.titles_UBYD{
-    margin-left: 23vw;
+.titles_UBYD {
+    margin-left: 30vw;
 }
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile phones */
+
+    .titles_UBYD {
+        margin-left: 20vw;
+    }
+}
+
 /* unloading by door end*/
