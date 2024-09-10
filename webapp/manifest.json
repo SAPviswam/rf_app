@@ -184,6 +184,13 @@
             "TargetUnloadingByDoor"
           ]
         },
+          {
+            "name": "UnloadingByConsignmentOrder",
+            "pattern": "UnloadingByConsignmentOrder",
+            "target": [
+              "TargetUnloadingByConsignmentOrder"
+            ]
+          },
         {
           "name": "RoutePutawayByHU",
           "pattern": "RoutePutawayByHU",
@@ -332,6 +339,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
+        },
+           "TargetUnloadingByConsignmentOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByConsignmentOrder",
+          "viewName": "UnloadingByConsignmentOrder"
         },
         "TargetRecevingOfHUbyDelivery": {
           "viewType": "XML",

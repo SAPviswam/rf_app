@@ -23,7 +23,7 @@ sap.ui.define(
                 this.applyStoredColors();
 
 
-                
+
                 // Initialize events for tile and button
                 var oTile = this.byId("idPutawayByWO1");
                 var oButton = this.byId("idBtnPutawayByWO");
@@ -1527,15 +1527,15 @@ sap.ui.define(
             },
 
 
-            onReceivingofHUbyASN:function(){
+            onReceivingofHUbyASN: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyASN");
-                
+
 
             },
 
             /**Navigate to Unloading By ASN Page */
-            onUnloadingBYASN:function(){
+            onUnloadingBYASN: function () {
                 this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
             },
 
@@ -1544,7 +1544,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor");
             },
-            
+
 
 
             onPutawayByHU: function () {
@@ -1562,30 +1562,35 @@ sap.ui.define(
 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
-            onUnloadingByDoorTilePress:function () {
+            onUnloadingByDoorTilePress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("UnloadingByDoor");
- 
+
             },
-            onUnloadingByBillofLadingPress:function () {
+            onUnloadingByConsignmentOrderTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByConsignmentOrder");
+
+            },
+            onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
 
             },
-            onPressCreateAdhocHUWTInAdhocWT:function(){
+            onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocHuWt");
 
             },
-            onPressCreateAdhocProductWTInAdhocWT:function(){
+            onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocProductWt");
 
             },
-            OnPressUnloadByDelivery:function(){
+            OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery");
 
