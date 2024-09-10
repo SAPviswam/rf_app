@@ -1561,9 +1561,23 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByBillofLading");
 
             },
+            onPressCreateAdhocHUWTInAdhocWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocHuWt");
+
+            },
+            onPressCreateAdhocProductWTInAdhocWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
+            },
+            OnPressUnloadByDelivery:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery");
+
+            }
 
 
-            // added by subhash 
 
 
         });
