@@ -142,6 +142,21 @@
           ]
         },
         {
+          "name": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN",
+          "target": [
+            "TargetReceivingofHUbyASN"
+          ]
+    },
+    {
+          "name": "RouteUnloadingASNDetails",
+          "pattern": "UnloadingASNDetails",
+          "target": [
+            "TargetUnloadingASNDetails"
+          ]
+    },
+    {
+
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -170,6 +185,13 @@
             "TargetUnloadingByDoor"
           ]
         },
+          {
+            "name": "UnloadingByConsignmentOrder",
+            "pattern": "UnloadingByConsignmentOrder",
+            "target": [
+              "TargetUnloadingByConsignmentOrder"
+            ]
+          },
         {
           "name": "RoutePutawayByHU",
           "pattern": "RoutePutawayByHU",
@@ -225,6 +247,31 @@
           "pattern": "AdhocProductWt",
           "target": [
             "TargetAdhocProductWt"
+
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu",
+          "target": [
+            "TargetCreateConfirmAdhocHu"
+
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct",
+          "target": [
+            "TargetCreateConfirmAdhocProduct"
+
+          ]
+        },
+        {
+          "name": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct",
+          "target": [
+            "TargetStockBinQueryByProduct"
+
           ]
         }
       ],
@@ -264,6 +311,22 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
+
+        "TargetReceivingofHUbyASN": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyASN",
+          "viewName": "ReceivingofHUbyASN"
+      },
+
+        "TargetUnloadingASNDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingASNDetails",
+          "viewName": "UnloadingASNDetails"
+      },
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -291,6 +354,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
+        },
+           "TargetUnloadingByConsignmentOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByConsignmentOrder",
+          "viewName": "UnloadingByConsignmentOrder"
         },
         "TargetRecevingOfHUbyDelivery": {
           "viewType": "XML",
@@ -348,6 +418,31 @@
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+        },
+        "TargetCreateConfirmAdhocHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocHu",
+          "viewName": "CreateConfirmAdhocHu"
+
+        },
+        "TargetCreateConfirmAdhocProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocProduct",
+          "viewName": "CreateConfirmAdhocProduct"
+
+        },
+        "TargetStockBinQueryByProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByProduct",
+          "viewName": "StockBinQueryByProduct"
+
+
         }
       }
     },

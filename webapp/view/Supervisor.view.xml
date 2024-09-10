@@ -815,7 +815,7 @@
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
-                            press="onTilePress"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -1410,7 +1410,7 @@
                             id="IDStockBinQuerybyProduct"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Stock/Bin Query by Product"
-                            press="OnPressStock/BinQuerybyProduct"
+                            press="OnPressStockOrBinQuerybyProduct"
                         />
 
                         <GenericTile

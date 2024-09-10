@@ -1,0 +1,737 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.ReceivingofHUbyASN"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="idpageReceivehybyASN"
+        showHeader="false"
+        class="PageBackground"
+    >
+        <tnt:ToolHeader
+            id="shellLikeToolHeaderhubyASn"
+            visible="true"
+        >
+            <Title
+                text="RFUI"
+                wrapping="false"
+                id="productNamehubyASn"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="idhoftblHUbyASN"
+                        priority="Disappear"
+                    />
+                </layoutData>
+            </Title>
+
+            <Text
+                text="By Artihcus Global"
+                wrapping="false"
+                id="secondTitlehubyASN"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Disappear" />
+                </layoutData>
+            </Text>
+
+            <ToolbarSpacer />
+
+            <ToolbarSpacer id="spacerhubyASN">
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        priority="Low"
+                        group="1"
+                    />
+                </layoutData>
+            </ToolbarSpacer>
+
+            <ToolbarSeparator>
+                <layoutData>
+                    <OverflowToolbarLayoutData group="2" />
+                </layoutData>
+            </ToolbarSeparator>
+
+            <tnt:ToolHeaderUtilitySeparator />
+
+            <ToolbarSpacer width="1.125rem" />
+
+            <Avatar
+                id="myAvatarreceivehybyASN"
+                src="test-resources/sap/tnt/images/Woman_avatar_01.png"
+                displaySize="XS"
+                press="onAvatarPressed"
+                tooltip="Profile"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Avatar>
+        </tnt:ToolHeader>
+
+        <content>
+            <Button
+                id="idBackMainButton"
+                icon="sap-icon://nav-back"
+                press="OnpressbackMainn1"
+                visible="true"
+                class="sapUiSmallMarginBottom"
+            />
+            <Button
+                id="idASNdetailsBackButton"
+                icon="sap-icon://nav-back"
+                press="onPressASNdetailsBackButton"
+                visible="false"
+            />
+            <Button
+                id="idAsnHuListBackButton"
+                icon="sap-icon://nav-back"
+                press="OnpressAsnHuListBackButton"
+                visible="false"
+            />
+            <Button
+                id="idAsnNewhuBackButton"
+                icon="sap-icon://nav-back"
+                press="OnpressAsnNewHUBackButton"
+                visible="false"
+            />
+            <Button
+                id="idAsnDetailsBackButton"
+                icon="sap-icon://nav-back"
+                press="OnpressAsnDetailsBackButton"
+                visible="false"
+            />
+
+            <Button
+                id="idAsnGRBackButton"
+                icon="sap-icon://nav-back"
+                press="OnpressGRBackButton"
+                visible="false"
+            />
+            <Button
+                id="idAsnunloadBackButton"
+                icon="sap-icon://nav-back"
+                press="OnpressunloadBackButton"
+                visible="false"
+            />
+
+            <IconTabBar
+                expanded="true"
+                id="IconTabBarhubyASN"
+            >
+                <items>
+                    <IconTabFilter
+                        id="IdpageScanning1"
+                        visible="true"
+                        key="info"
+                        text="Receaving of HU by ASN"
+                    >
+                        <VBox
+                            id="idvboxHUbyASN"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            class="centerContent"
+                        >
+                            <f:SimpleForm
+                                id="simpleFormreceivehubyASN"
+                                layout="ResponsiveGridLayout"
+                                editable="true"
+                                class="sapUiResponsiveMargin"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                columnsL="1"
+                                columnsM="1"
+                            >
+                                <HBox
+                                    id="_IDGenHBoxContainerhubyASn"
+                                    justifyContent="Start"
+                                >
+                                    <!-- Scan HU Label -->
+                                    <Label
+                                        id="_IDGenLabel1rhubyAsn"
+                                        text="Scan ASN :"
+                                        class="ScanHumargin"
+                                    />
+                                    <!-- Input Field -->
+                                    <Input
+                                        id="_IDGenInput1hubyasn"
+                                        placeholder="Enter ASN..."
+                                        class="sapUiTinyMarginBegin"
+                                    />
+
+                                    <Button
+                                        id="_IDGenButton11"
+                                        icon="sap-icon://bar-code"
+                                        press="Onpressscan"
+                                    />
+                                    <!-- Submit Button -->
+                                    <Button
+                                        id="_IDGenButtonRecievehubyASN"
+                                        text="Submit"
+                                        press="Onpresssubmit"
+                                    />
+                                </HBox>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="icon2ReceivehubyASn"
+                        visible="false"
+                        key="info1"
+                        text="HU Details"
+                    >
+                        <f:SimpleForm
+                            id="idsfhubyASN"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idLabelDeNoHUbyASN"
+                                text="ASN.."
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <HBox
+                                id="idHboxDeNoHUbyASN"
+                                class="gapBetweenInputs"
+                            >
+                                <Input
+                                    id="idinputDeNoHUbyASN"
+                                    placeholder="ASN number.."
+                                    maxLength="25"
+                                    width="200px"
+                                />
+
+                                <HBox id="idHboxINOhubyAsn">
+                                    <Label
+                                        id="idlabelINOhubyAsn"
+                                        text="Item NO:"
+                                        class="ItemLabel"
+                                    />
+
+                                    <Input
+                                        id="idInputINOhubyAsn"
+                                        placeholder="Enter Items.."
+                                        maxLength="25"
+                                        width="200px"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <!-- Vendor Field -->
+                            <Label
+                                id="idVendorohubyASN"
+                                text="Vendor"
+                            />
+                            <Input
+                                id="inputVendorohubyASN"
+                                placeholder="Enter Vendor..."
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- No.of HU -->
+                            <Label
+                                id="idforNOofHUbyASN"
+                                text="No.of HU"
+                                class="sapUiMarginTopmargin"
+                            />
+                            <Input
+                                id="idInputforNOofHUbyASN"
+                                placeholder="Enter no.of HU"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- HU field -->
+                            <Label
+                                id="idlabel2hubyASN"
+                                text="HU"
+                                class="margin"
+                            />
+                            <VBox id="idVboxhubyASN">
+                                <Input
+                                    id="idInputhubyASN"
+                                    placeholder="Enter HU"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                                <!-- HU List , New Hu ,GR,  -->
+                                <HBox id="idhboxhubyASN">
+                                    <Button
+                                        id="idButtonHulisthubyASN"
+                                        text="HU List"
+                                        press="onHUListPresshubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonNewHUDeliveryhubyASN"
+                                        text="New HU"
+                                        press="onNewHUPresshubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonGRDeliveryhubyASN"
+                                        text="GR"
+                                        press="onGRPresshubyASN"
+                                    />
+                                </HBox>
+                                <!-- HU Change ,Unload ,Create WT, Confirm WT -->
+                                <HBox id="idhbox2HUbyASN">
+                                    <Button
+                                        id="idButtonHuChangehubyASN"
+                                        text="HU Change"
+                                        press="onHUChangePresshubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonUnloadDeliveryhubyASN"
+                                        text="Unload"
+                                        press="onUnloadDeliveryPresshubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonCreateWThubyASN"
+                                        text="Create WT"
+                                        press="onPressCreateWThubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idButtonConfirmWThubyASN"
+                                        text="Confirm WT"
+                                        press="onPressConfirmWThubyASN"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="icon3hubyASN"
+                        visible="false"
+                        key="info2"
+                        text="HU List"
+                    >
+                        <Table
+                            id="idtablehulistbyASN"
+                            inset="false"
+                            growing="true"
+                            growingScrollToLoad="true"
+                            mode="None"
+                        >
+                            <columns>
+                                <Column
+                                    id="idcolumnDeliveryNobyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextDEliveryNObyASn"
+                                        text="S.No"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnHUNobyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextHUNObyASn"
+                                        text="Hu No"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnPoductNobyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextPRoductNObyASn"
+                                        text="Product"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnPoductDiscriptionbyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextPRoductDiscriptionbyASn"
+                                        text="Producti Description"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnQuantitybyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextQuantitybyASn"
+                                        text="Quantity"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnunitofmeasurebyASn"
+                                    width="17%"
+                                >
+                                    <Text
+                                        id="idTextUnitOfMeasurebyASn"
+                                        text="UoM"
+                                    />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="idColumnListItemtableASN">
+                                    <cells>
+                                        <Text
+                                            id="idvalueSNo"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idvalueHUNO"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idvalueProduct"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idvalueProductDiscription"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idvalueQuantity"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idvalueunitOfMEasure"
+                                            text=""
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="icon4hubyASN"
+                        visible="false"
+                        key="info3"
+                        text="New HU"
+                    >
+                        <f:SimpleForm
+                            id="NewhuHubyASNSimpleForm1"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idHubyASNLabelnewhu"
+                                text="Product"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="idHubyASNinputlnewhu"
+                                maxLength="30"
+                                width="200px"
+                            />
+                            <Label
+                                id="idHubyASNLabelQty"
+                                text="Quantity"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <HBox id="IDqtyinputhbox">
+                                <Input
+                                    id="idHubyASNqtyInput"
+                                    maxLength="30"
+                                    width="100px"
+                                />
+
+                                <HBox
+                                    id="idHubyASNHUuombox"
+                                    class="customLabelSpacing"
+                                >
+                                    <Label
+                                        id="idHubyASNuomLabel"
+                                        text="UOM:"
+                                        class="classUOMbyASn"
+                                    />
+                                    <Input
+                                        id="idHubyASNuomInput"
+                                        maxLength="30"
+                                        width="64px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label
+                                id="idHubyASNLabelPM"
+                                text="Packing Material"
+                            />
+                            <Input
+                                id="idHubyASNInputPM"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idHubyASNLabelBatch"
+                                text="Batch"
+                                class="sapUiMarginTop margin"
+                            />
+                            <Input
+                                id="idHubyASNbatchGenInput"
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idHubyASNLabelbbd"
+                                text="BBD"
+                            />
+                            <Input
+                                id="idHubyASNInputbbd"
+                                maxLength="13.3"
+                                width="200px"
+                            />
+
+                            <Label
+                                id="idHubyASNLabelman"
+                                text="Man"
+                            />
+                            <HBox id="idHubyASNMANhbox">
+                                <Input
+                                    id="idHubyASNInputman"
+                                    maxLength="13.3"
+                                    width="100px"
+                                />
+
+                                <HBox
+                                    id="idHubyASNitemsexpirybox"
+                                    class="customLabelSpacing"
+                                >
+                                    <Label
+                                        id="idHubyASNExpiryLabel"
+                                        text="Expiry:"
+                                        class="classExpiryHUbyASn"
+                                    />
+                                    <Input
+                                        id="idHubyASNExpiryInput"
+                                        maxLength="30"
+                                        width="150px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label
+                                id="idHubyASNLabelcoo"
+                                text="COO"
+                            />
+                            <VBox id="idHubyASNVBoxbbd">
+                                <Input
+                                    id="idHubyASNInputcoo"
+                                    maxLength="13.3"
+                                    width="200px"
+                                />
+                                <HBox id="idHubyASNnextHBox">
+                                    <Button
+                                        id="idHubyASNnextbtn"
+                                        text="Next (or) Enter"
+                                        press="onPressEnter"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="icon5IreceivinghuByASN"
+                        visible="false"
+                        key="info5"
+                        text="ASN Details"
+                    >
+                        <f:SimpleForm
+                            id="idSimpleformASNDetails"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idLabelAsnDetails"
+                                text="HU"
+                            />
+
+                            <Input
+                                id="IdinputAsnDetails"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="idDeliveryLabelAsnDetails"
+                                text="Delivery"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="idhboxASnDetails">
+                                <Input
+                                    id="idDeliveryinputasndetails"
+                                    maxLength="25"
+                                    width="100px"
+                                />
+
+                                <HBox id="IdhboxASnDetailsone">
+                                    <Label
+                                        id="idLabelitemNoAsnDetails"
+                                        text="item no:"
+                                        class="classitemnoHUbyASn"
+                                    />
+
+                                    <Input
+                                        id="idInputitemNoAsnDetails"
+                                        maxLength="13.3"
+                                        width="100px"
+                                    />
+                                </HBox>
+                            </HBox>
+
+                            <Label id="idLabelEmpty" />
+
+                            <HBox id="idHboxspaceASnDetails">
+                                <Button
+                                    id="idbuttongrAsndetails"
+                                    text="GR"
+                                    press="onGRPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+
+                                <HBox id="idbuttonunloadAsnDetails">
+                                    <Button
+                                        id="_IDGenBolunloadButton"
+                                        text="Unload"
+                                        press="onunloadPress"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                </HBox>
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="Icon6receivinghuByASN"
+                        visible="false"
+                        key="info"
+                        text="Goods Receive"
+                    >
+                        <f:SimpleForm
+                            id="simpleformGR"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idlablGRHubyASn"
+                                text="Product"
+                            />
+
+                            <Input
+                                id="idinputGrhubyASn"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="idLabelDeliverybyhu"
+                                text="Delivery"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="idHboxinputGR">
+                                <Input
+                                    id="idinputDeliverybyhu"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                            </HBox>
+
+                            <Label id="idLabelgrbyhuasn" />
+
+                            <HBox id="idhboxGr">
+                                <Button
+                                    id="idbuttonGrDev"
+                                    text="GR"
+                                    press="onGRbuttonPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="icon7receivinghuByASN"
+                        visible="false"
+                        key="info1"
+                        text="Unload"
+                    >
+                        <f:SimpleForm
+                            id="idsimpleformhubyasnunload"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idlableproductunload"
+                                text="Product"
+                            />
+
+                            <Input
+                                id="idinputHubyasnunload"
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <Label
+                                id="idlabeldeliverybyasnunload"
+                                text="Delivery"
+                                class="sapUiMarginTop margin"
+                            />
+                            <HBox id="idhboxgrbyasnhuunload">
+                                <Input
+                                    id="idinputdeliveryunload"
+                                    maxLength="25"
+                                    width="200px"
+                                />
+                            </HBox>
+
+                            <Label id="idlabelbuttonunload" />
+
+                            <HBox id="idgenhboxunload">
+                                <Button
+                                    id="idbuttonunloadbyasn"
+                                    text="Unload"
+                                    press="onUnloadbuttonPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
