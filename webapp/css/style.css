@@ -463,7 +463,7 @@
 }
 
 
-  }
+  
   .classUOMbyASn{
     margin-top: 16%;
   }
@@ -505,142 +505,147 @@
 
 
 /*-----------------New HU FROM BBOL-------------------------*/
-.classUOMbyASn{
-margin-top: 16%;
+.classUOMbyASn {
+    margin-top: 16%;
 }
 
 /*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
 
 
-.hidden{
-  display: none !important;
+.hidden {
+    display: none !important;
 }
 
-/*......These are for Putaway By WO Tile......*/
-.putawayContainer {
+
+
+/*......These are for "PutawayByWOTile=>Page1" & "AvailableHandlingUnitsonBinQuery=>Page1"......*/
+.putawayContainer,.BinQueryContainer_AHUOBQ {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
-  }
-  .warehouseOrderTitle {
+}
+.warehouseOrderTitle,.BinQueryTitle_AHUOBQ {
     align-self: flex-start;
-  }
-  .formContainer {
+}
+.formContainer,.formContainer_AHUOBQ {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-  }
-  .formBox {
+}
+.formBox,.formBox_AHUOBQ {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     width: 400px;
     margin-top: 4rem;
-  }
-  .formLabel {
+}
+.formLabel,.formLabel_AHUOBQ {
     margin-bottom: 7px;
-  }
-  .customMargin {
+}
+.customMargin,.customMargin_AHUOBQ {
     margin-left: 3rem;
     margin-right: 1rem;
-  }
-  .centeredFormBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 4rem); /* Adjust based on the height of the back button and any other fixed elements */
-  }
-  .sapUiSmallMargin {
+}
+.sapUiSmallMargin {
     margin: 1rem;
-  }
-  /* Mobile Styles */
-  @media (max-width: 600px) {
-    .putawayContainer {
-      padding: 10px;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .putawayContainer, .BinQueryContainer_AHUOBQ {
+        padding: 10px;
     }
-    .formBox {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 30rem; /* Adjusted for mobile */
+    .formBox, .formBox_AHUOBQ {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 30rem;
+        /* Adjusted for mobile */
     }
-    .formLabel {
-      font-size: 0.9rem;
+    .formLabel, .formLabel_AHUOBQ {
+        font-size: 0.9rem;
     }
-    .customMargin {
-      margin-left: 3rem;
-      margin-right: 1rem;
+    .customMargin, .customMargin_AHUOBQ {
+        margin-left: 3rem;
+        margin-right: 1rem;
     }
-    .formContainer {
-      flex-direction: column;
-      align-items: flex-start;
+    .formContainer, .formContainer_AHUOBQ {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .centeredFormBox {
-      height: auto; /* Adjusted for mobile if needed */
-      margin-top: 4rem; /* Adjust margin to ensure it's centered properly on small screens */
-    }
-  }
-  .UnitsofMeasure {
-    margin-left: 0.3rem;
-  }
- 
-  
-  /* ScrollContainer Page 5 & Page 6 & Page 7 CSS methods */
-  .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad {
+}
+.UnitsofMeasure {
+    margin-top: 0.4rem;
+}
+/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO && ScrollContainers Page3 & Page4 From AHUOBQ Tile..  */
+.SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
-  }
-  /* Form Header Styling */
-  .SecondPageformHeader, .formHeader,.formHeaderGR, .formHeaderUnLoad {
+}
+/* Form Header Styling */
+.SecondPageformHeader, .formHeader, .formHeaderGR, .formHeaderUnLoad, .ThirdPageformHeaderHUContent_AHUOBQ, .formHeaderPage4PrdDescription_AHUOBQ {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-  }
-  /* Box around the form */
-  .SecondFormBox, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox {
+}
+/* Box around the form */
+.SecondFormBox, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ {
     border: 2px solid black;
     padding: 20px;
     border-radius: 8px;
     width: 400px;
     background-color: #f9f9f9;
-  }
-  .formLabel, .labelStyleGR, .labelStyleUnLoad {
+}
+.formLabel, .labelStyleGR, .labelStyleUnLoad, .labelStyleThirdPage_AHUOBQ, .formLabelPage4_AHUOBQ {
     margin-bottom: 0.5rem;
     font-weight: bold;
-  }
-  /* Button Styling */
-  .formButton {
+}
+/* Button Styling */
+.formButton {
     margin-left: 1rem;
-  }
-  .ButtonsSpaceSecondPage {
+}
+.ButtonsSpaceSecondPage {
     margin-right: 1rem;
-  }
-  @media (max-width: 600px) {
-    .SecondPageContainer, .verifyHuNumberContainer,.MainVBoxGR, .MainVBoxUnLoad {
-      margin: 1rem;
+}
+.BinNumberTableLabel_AHUOBQ{
+    font-weight: bold;
+    margin-top: 0.5rem; 
+    margin-right: 0.3rem;
+}
+.TextLableUnits_AHUOBQ{
+    margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+    .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ {
+        margin: 1rem;
     }
-    .SecondFormBox, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox {
-      padding: 15px; /* Adjust padding for mobile */
-      width: 100%; /* Ensure full width with some margin on the sides */
-      margin: 0 auto; /* Center the box */
+    .SecondFormBox, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ {
+        padding: 15px;
+        /* Adjust padding for mobile */
+        width: 100%;
+        /* Ensure full width with some margin on the sides */
+        margin: 0 auto;
+        /* Center the box */
     }
-  }
+}
+
+
 
 /* ---------------------------------------------------------------------Receving Of HU By Delivery-------------------------------------------------------- */
-.ScanDeliverymargin{
+.ScanDeliverymargin {
     margin-top: 12%;
     margin-right: 2000% !important;
-  }
-  .ItemLabel{
+}
+
+.ItemLabel {
     margin-top: 12%;
     margin-right: 2000% !important;
-  }
+}
 
 
 /* unloading by door start*/
@@ -662,3 +667,4 @@ margin-top: 16%;
 /* unloading by door end*/
 
 
+/* unloading by door end*/

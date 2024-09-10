@@ -98,7 +98,7 @@
                                     width="120%"
                                 />
                                 <ndc:BarcodeScannerButton
-                                    id="sampleBarcodeScannerButton"
+                                    id="sampleBarcodeScannerButton_PBYWO"
                                     scanSuccess="onScanSuccess"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
@@ -106,7 +106,7 @@
                                     class="customMargin"
                                 />
                                 <Button
-                                    id="idSubmitBtnWarhouseON"
+                                    id="idSubmitBtnWarhouseON_PBYWO"
                                     text="Submit"
                                     press="onSubmitPress"
                                 />
@@ -116,7 +116,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage2HUDetails"
+                id="idPage2HUDetails_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -124,7 +124,7 @@
                 visible="false"
             >
                 <Button
-                    id="idBackBtn"
+                    id="idBackBtn_PBYWO"
                     press="onBackPressHUDetails"
                     class="sapUiTinyMarginBottom"
                     icon="sap-icon://nav-back"
@@ -159,7 +159,7 @@
                                 class="labelStyleSecondPage"
                             />
                             <Input
-                                id="idSrScHuInput"
+                                id="idSrScHuInput_PBYWO"
                                 width="10rem"
                             />
                             <Label
@@ -168,7 +168,7 @@
                                 class="labelStyleSecondPage"
                             />
                             <Input
-                                id="idStorageTypeInput"
+                                id="idStorageTypeInput_PBYWO"
                                 placeholder="Stor type"
                                 width="5rem"
                                 class="sapUiTinyMarginEnd"
@@ -179,7 +179,7 @@
                                 class="labelStyleSecondPage"
                             />
                             <Input
-                                id="idSectionInput"
+                                id="idSectionInput_PBYWO"
                                 placeholder="Sec"
                                 width="5rem"
                                 class="sapUiTinyMarginEnd"
@@ -200,7 +200,7 @@
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idBtnHuListBtn"
+                                    id="idBtnHuListBtn_PBYWO"
                                     text="HuList"
                                     press="onPressHUListTable"
                                     class="ButtonsSpaceSecondPage"
@@ -211,7 +211,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage3HUListTable"
+                id="idPage3HUListTable_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -219,89 +219,89 @@
                 visible="false"
             >
                 <Button
-                    id="idBackBtn2"
+                    id="idBackBtn2_PBYWO"
                     press="onBackPressHUListTable"
                     class="sapUiTinyMarginBottom"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
-                <VBox id="idVBoxHUListable">
+                <VBox id="idVBoxHUListable_PBYWO">
                     <Toolbar
-                        id="TB4"
+                        id="TB4_PBYWO"
                         class="HeaderToolBar"
                     >
                         <Title
-                            id="Title1455896"
+                            id="Title1455896_PBYWO"
                             text="HU NUMBERS LIST:"
                         />
-                        <ToolbarSpacer id="IDGenToolbar345" />
+                        <ToolbarSpacer id="IDGenToolbar345_PBYWO" />
                         <Button
-                            id="idBtnNewHUNumberBtn"
+                            id="idBtnNewHUNumberBtn_PBYWO"
                             icon="sap-icon://add"
                             press="onPressNewHUNumberBtn"
                             tooltip="Add New HUNumber"
                         />
                         <Button
-                            id="idRefrehshBtnReservations"
+                            id="idRefrehshBtnReservations_PBYWO"
                             press="onRefreshReservations"
                             icon="sap-icon://synchronize"
                         />
                         <SearchField
-                            id="idSearchFieldFromHUNumbers"
+                            id="idSearchFieldFromHUNumbers_PBYWO"
                             liveChange="onLiveHUNumbersList"
                             placeholder="Search Anything..."
                             width="25%"
                         />
                     </Toolbar>
-                    <Toolbar id="idToolBarHeading">
+                    <Toolbar id="idToolBarHeading_PBYWO">
                         <Title
-                            id="idTextTitle"
+                            id="idTextTitle_PBYWO"
                             text="Table Contents:-"
                         />
                     </Toolbar>
                     <Table
-                        id="idHuListTable"
+                        id="idHuListTable_PBYWO"
                         width="100%"
                     >
                         <columns>
-                            <Column id="IDGenColumn001">
+                            <Column id="IDGenColumn001_PBYWO">
                                 <Text
-                                    id="IDGenText001"
+                                    id="IDGenText001_PBYWO"
                                     text="Serial No:"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn002">
+                            <Column id="IDGenColumn002_PBYWO">
                                 <Text
-                                    id="IDGenText002"
+                                    id="IDGenText002_PBYWO"
                                     text="HU Number:"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn003">
+                            <Column id="IDGenColumn003_PBYWO">
                                 <Text
-                                    id="IDGenText003"
+                                    id="IDGenText003_PBYWO"
                                     text="Product:"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn004">
+                            <Column id="IDGenColumn004_PBYWO">
                                 <Text
-                                    id="IDGenText004"
+                                    id="IDGenText004_PBYWO"
                                     text="Product Description:"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn005">
+                            <Column id="IDGenColumn005_PBYWO">
                                 <Text
-                                    id="IDGenText005"
+                                    id="IDGenText005_PBYWO"
                                     text="Quantity:"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn006">
+                            <Column id="IDGenColumn006_PBYWO">
                                 <Text
-                                    id="IDGenText006"
+                                    id="IDGenText006_PBYWO"
                                     text="Units of Measurement:"
                                     class="HedingNameColor"
                                 />
@@ -309,32 +309,32 @@
                         </columns>
                         <items>
                             <ColumnListItem
-                                id="IDGenHuNumbersColumnListItem1"
+                                id="IDGenHuNumbersColumnListItem1_PBYWO"
                                 class="AlternateRowColor"
                             >
                                 <cells>
                                     <Text
-                                        id="IDGenHunoListText1"
+                                        id="IDGenHunoListText1_PBYWO"
                                         text="{Vendorname}"
                                     />
                                     <Text
-                                        id="IDGenHunoListText2"
+                                        id="IDGenHunoListText2_PBYWO"
                                         text="{Vendornumber}"
                                     />
                                     <Text
-                                        id="IDGenHunoListText3"
+                                        id="IDGenHunoListText3_PBYWO"
                                         text="{Drivername}"
                                     />
                                     <Text
-                                        id="IDGenHunoListText4"
+                                        id="IDGenHunoListText4_PBYWO"
                                         text="{Drivernumber}"
                                     />
                                     <Text
-                                        id="IDGenHunoListText5"
+                                        id="IDGenHunoListText5_PBYWO"
                                         text="{Vehicletype}"
                                     />
                                     <Text
-                                        id="IDGenHunoListText6"
+                                        id="IDGenHunoListText6_PBYWO"
                                         text="{Vehiclenumber}"
                                     />
                                 </cells>
@@ -344,7 +344,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage4NewHUNumber"
+                id="idPage4NewHUNumber_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -352,14 +352,14 @@
                 visible="false"
             >
                 <Button
-                    id="idBackButton"
+                    id="idBackButton_PBYWO"
                     press="onBackBtnPressNewHUNumber"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                     class="sapUiTinyMarginBottom"
                 />
                 <form:SimpleForm
-                    id="SimpleFormToolbar"
+                    id="SimpleFormToolbar_PBYWO"
                     editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="4"
@@ -379,53 +379,57 @@
                 >
                     <form:toolbar>
                         <Toolbar
-                            id="TB1"
+                            id="TB1_PBYWO"
                             class="HeaderToolBar"
                         >
                             <Title
-                                id="Title1"
+                                id="Title1_PBYWO"
                                 text="NEW HU NUMBER:"
                             />
                         </Toolbar>
                     </form:toolbar>
                     <form:content>
                         <Toolbar
-                            id="IDGenToolbar1"
+                            id="IDGenToolbar1_PBYWO"
                             ariaLabelledBy="Title2"
                         >
                             <Title
-                                id="Title2"
+                                id="Title2_PBYWO"
                                 text="Add New HU Number:"
                             />
                         </Toolbar>
                         <Label
-                            id="IDGenLabel1"
+                            id="IDGenLabel1_PBYWO"
                             text="Product"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <Input
-                            id="idInputProduct"
+                            id="idInputProduct_PBYWO"
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel2"
+                            id="IDGenLabel2_PBYWO"
                             text="Quantity"
                             required="true"
                             class="ClassLableroot1"
                         />
-                        <Input
-                            id="idInputQty"
-                            width="auto"
-                            class="sapUiTinyMarginEnd"
-                        />
-                        <Text
-                            id="idTextUom"
-                            text="UOM."
-                            class="UnitsofMeasure"
-                        />
+                        <HBox id="idHBoxPutaway">
+                            <Input
+                                id="idInputQty_PBYWO"
+                                width="auto"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Label
+                                id="idTextUom_PBYWO"
+                                text="UOM:"
+                                class="UnitsofMeasure"
+                                required="true"
+                            />
+                            <Input id="idInputUOM" width="auto"/>
+                        </HBox>
                         <Label
-                            id="IDGenLabel3"
+                            id="IDGenLabel3_PBYWO"
                             text="Packaging Matirial"
                             required="true"
                             class="ClassLableroot1"
@@ -435,67 +439,67 @@
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel4"
+                            id="IDGenLabel4_PBYWO"
                             text="Batch"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <Input
-                            id="idBatch"
+                            id="idBatch_PBYWO"
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel5"
+                            id="IDGenLabel5_PBYWO"
                             text="Best Before Date"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <DatePicker
-                            id="idDatePickerBBD"
+                            id="idDatePickerBBD_PBYWO"
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel6"
+                            id="IDGenLabel6_PBYWO"
                             text="Manufacturing Date"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <Input
-                            id="idManufacturingDate"
+                            id="idManufacturingDate_PBYWO"
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel7"
+                            id="IDGenLabel7_PBYWO"
                             text="Expiry Date"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <Input
-                            id="idExpiryDate"
+                            id="idExpiryDate_PBYWO"
                             width="80%"
                         />
                         <Label
-                            id="IDGenLabel8"
+                            id="IDGenLabel8_PBYWO"
                             text="COO"
                             required="true"
                             class="ClassLableroot1"
                         />
                         <Input
-                            id="idCOO"
+                            id="idCOO_PBYWO"
                             width="80%"
                         />
                         <HBox
-                            id="IDGenHBox2"
+                            id="IDGenHBox2_PBYWO"
                             justifyContent="End"
                         >
                             <Button
-                                id="IDGenButton5"
+                                id="IDGenButton5_PBYWO"
                                 text="Enter"
                                 press="onEnterNewHUNUmberPress"
                                 class="NewHUNUmber"
                             />
                             <Button
-                                id="IDGenButton6"
+                                id="IDGenButton6_PBYWO"
                                 text="Clear"
                                 press="onClearNewHUNumberPress"
                                 class="ClearNewHUNumber"
@@ -505,7 +509,7 @@
                 </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage5VerifyHUNumber"
+                id="idPage5VerifyHUNumber_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -513,29 +517,29 @@
                 visible="false"
             >
                 <Button
-                    id="idBackBtnPressVerifyHUNumber"
+                    id="idBackBtnPressVerifyHUNumber_PBYWO"
                     press="onBackPressVerifyHUNumber"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                     class="backButtonMargin"
                 />
                 <VBox
-                    id="idVerifyHuNumberContainer"
+                    id="idVerifyHuNumberContainer_PBYWO"
                     class="verifyHuNumberContainer"
                     justifyContent="Center"
                 >
                     <Title
-                        id="idVerifyHuNumberTitle"
+                        id="idVerifyHuNumberTitle_PBYWO"
                         text="Verify HU Number"
                         level="H2"
                         class="formHeader"
                     />
                     <VBox
-                        id="idVerifyHuNumberBox"
+                        id="idVerifyHuNumberBox_PBYWO"
                         class="verifyHuNumberBox"
                     >
                         <form:SimpleForm
-                            id="idSimpleFormVerifyHuNumber"
+                            id="idSimpleFormVerifyHuNumber_PBYWO"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -543,45 +547,45 @@
                             columnsM="1"
                         >
                             <Label
-                                id="idHUNumber"
+                                id="idHUNumber_PBYWO"
                                 text="HU Number"
                                 class="formLabel"
                             />
                             <Input
-                                id="idHuInput"
+                                id="idHuInput_PBYWO"
                                 class="formInput"
                             />
                             <Label
-                                id="idDeliverynumber"
+                                id="idDeliverynumber_PBYWO"
                                 text="Delivery Number"
                                 class="formLabel"
                             />
                             <Input
-                                id="idDeliveryInput"
+                                id="idDeliveryInput_PBYWO"
                                 class="formInput"
                             />
                             <Label
-                                id="idItemNumber"
+                                id="idItemNumber_PBYWO"
                                 text="Item Number"
                                 class="formLabel"
                             />
                             <Input
-                                id="idItemNoInput"
+                                id="idItemNoInput_PBYWO"
                                 class="formInput"
                             />
                             <HBox
-                                id="idVBoxbuttonContainer"
+                                id="idVBoxbuttonContainer_PBYWO"
                                 class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idGrBtn"
+                                    id="idGrBtn_PBYWO"
                                     text="GR"
                                     press="onGRBtnPressVerifyHUNumber"
                                     class="formButton"
                                 />
                                 <Button
-                                    id="idUnloadBtn"
+                                    id="idUnloadBtn_PBYWO"
                                     text="Unload"
                                     press="onUnloadPressVerifyHUNumber"
                                     class="formButton"
@@ -592,7 +596,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage6GoodsReceiptGR"
+                id="idPage6GoodsReceiptGR_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -600,29 +604,29 @@
                 visible="false"
             >
                 <Button
-                    id="idBackBtnGoodsReceipt"
+                    id="idBackBtnGoodsReceipt_PBYWO"
                     press="onBackPressGoodsReceipt"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
                 <VBox
-                    id="idMainVBoxGR"
+                    id="idMainVBoxGR_PBYWO"
                     class="MainVBoxGR"
                     justifyContent="End"
                 >
                     <Title
-                        id="idTitleGoodsReceipt"
+                        id="idTitleGoodsReceipt_PBYWO"
                         text="Goods Receipt"
                         level="H2"
                         class="formHeaderGR"
                     />
                     <VBox
-                        id="idGoodsReceiptFormBox"
+                        id="idGoodsReceiptFormBox_PBYWO"
                         class="GoodsReceiptFormBox"
                         justifyContent="End"
                     >
                         <form:SimpleForm
-                            id="idSimpleFormGR"
+                            id="idSimpleFormGR_PBYWO"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -630,30 +634,30 @@
                             columnsM="1"
                         >
                             <Label
-                                id="idPage6Label1"
+                                id="idPage6Label1_PBYWO"
                                 text="Product"
                                 class="labelStyleGR"
                             />
                             <Input
-                                id="idProductInput"
+                                id="idProductInput_PBYWO"
                                 width="12rem"
                             />
                             <Label
-                                id="idPage6Label2"
+                                id="idPage6Label2_PBYWO"
                                 text="Quantity"
                                 class="labelStyleGR"
                             />
                             <Input
-                                id="idQuantityInput"
+                                id="idQuantityInput_PBYWO"
                                 width="12rem"
                             />
                             <HBox
-                                id="idVBoxbuttonGR"
+                                id="idVBoxbuttonGR_PBYWO"
                                 class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idGrBtnforPage6"
+                                    id="idGrBtnforPage6_PBYWO"
                                     text="GR"
                                     press="onGRBtnPress"
                                     class="formButton"
@@ -664,7 +668,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idPage7UnLoadPage"
+                id="idPage7UnLoadPage_PBYWO"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -672,29 +676,29 @@
                 visible="false"
             >
                 <Button
-                    id="idBackBtnUnLoad"
+                    id="idBackBtnUnLoad_PBYWO"
                     press="onBackPressUnLoadPage"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
                 <VBox
-                    id="idMainUnLoadPage"
+                    id="idMainUnLoadPage_PBYWO"
                     class="MainVBoxUnLoad"
                     justifyContent="End"
                 >
                     <Title
-                        id="idTitleUnLoadPage"
+                        id="idTitleUnLoadPage_PBYWO"
                         text="Un Load Page"
                         level="H2"
                         class="formHeaderUnLoad"
                     />
                     <VBox
-                        id="idGoodsUnLoadPageBox"
+                        id="idGoodsUnLoadPageBox_PBYWO"
                         class="UnLoadPageFormBox"
                         justifyContent="End"
                     >
                         <form:SimpleForm
-                            id="idSimpleFormUnLoad"
+                            id="idSimpleFormUnLoad_PBYWO"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -702,30 +706,30 @@
                             columnsM="1"
                         >
                             <Label
-                                id="idPage7Label1"
+                                id="idPage7Label1_PBYWO"
                                 text="Product"
                                 class="labelStyleUnLoad"
                             />
                             <Input
-                                id="idUnLoadProductInput"
+                                id="idUnLoadProductInput_PBYWO"
                                 width="12rem"
                             />
                             <Label
-                                id="idPage7Label2"
+                                id="idPage7Label2_PBYWO"
                                 text="Quantity"
                                 class="labelStyleUnLoad"
                             />
                             <Input
-                                id="idUnLoadQuantityInput"
+                                id="idUnLoadQuantityInput_PBYWO"
                                 width="12rem"
                             />
                             <HBox
-                                id="idVBoxbuttonUnLoad"
+                                id="idVBoxbuttonUnLoad_PBYWO"
                                 class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idUnLoadBtnforPage7"
+                                    id="idUnLoadBtnforPage7_PBYWO"
                                     text="UnLoad"
                                     press="onUnLoadBtnPress"
                                 />
