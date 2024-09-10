@@ -142,10 +142,82 @@
           ]
         },
         {
+
           "name": "RouteUnloadingASNDetails",
           "pattern": "UnloadingASNDetails",
           "target": [
             "TargetUnloadingASNDetails"
+          ]
+    },
+    {
+          "name": "UnloadByDelivery",
+          "pattern": "UnloadByDelivery",
+          "target": [
+            "TargetUnloadByDelivery"
+          ]
+        },
+        {
+          "name": "AdhocHuWt",
+          "pattern": "AdhocHuWt",
+          "target": [
+            "TargetAdhocHuWt"
+            ]
+        },
+        {
+          "name": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor",
+          "target": [
+            "TargetReceivingOfHuByDoor"
+            ]
+        },
+        {
+
+          "name": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor",
+          "target": [
+            "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU",
+          "target": [
+            "TargetPutawayByHU"
+          ]
+        },
+        {
+          "name": "RouteBillofLading",
+          "pattern": "BillofLading",
+          "target": [
+            "TargetBillofLading"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery",
+          "target": [
+            "TargetRecevingOfHUbyDelivery"
+          ]
+        },
+        {
+          "name": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading",
+          "target": [
+            "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "PutawayByWO",
+          "pattern": "PutawayByWO",
+          "target": [
+            "TargetPutawayByWO"
+          ]
+        },
+        {
+          "name": "AdhocProductWt",
+          "pattern": "AdhocProductWt",
+          "target": [
+            "TargetAdhocProductWt"
           ]
         }
       ],
@@ -191,6 +263,79 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingASNDetails",
           "viewName": "UnloadingASNDetails"
+      },
+
+        "TargetUnloadByDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadByDelivery",
+          "viewName": "UnloadByDelivery"
+        },
+        "TargetAdhocHuWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocHuWt",
+          "viewName": "AdhocHuWt"
+        },
+        "TargetReceivingOfHuByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingOfHuByDoor",
+          "viewName": "ReceivingOfHuByDoor"
+        },
+        "TargetUnloadingByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByDoor",
+          "viewName": "UnloadingByDoor"
+        },
+        "TargetRecevingOfHUbyDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyDelivery",
+          "viewName": "RecevingOfHUbyDelivery"
+        },
+        "TargetPutawayByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHU",
+          "viewName": "PutawayByHU"
+        },
+        "TargetPutawayByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByWO",
+          "viewName": "PutawayByWO"
+        },
+        "TargetBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "BillofLading",
+          "viewName": "BillofLading"
+
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
+        },
+        "TargetAdhocProductWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocProductWt",
+          "viewName": "AdhocProductWt"
+
         }
       }
     },
