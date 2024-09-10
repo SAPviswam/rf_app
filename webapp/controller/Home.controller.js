@@ -209,9 +209,9 @@ sap.ui.define([
 
                 // Prepare the Twilio API details
                 var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
-                const accountSid = 'AC417cceab51088e0d10bec28680eed7ab'; // Replace with your Twilio Account SID
-                const authToken = 'e6000ca434697a2cb1db62e09d21e7a8'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VA559384a8e91f2253b487fae52b81e972'; // Replace with your Twilio Verify Service SID
+                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
+                const authToken = '2c166df5d7a8bafe2308d0e2a5bd788c'; // Replace with your Twilio Auth Token
+                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
                 const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
 
                 // Prepare the data for the request
@@ -311,9 +311,9 @@ sap.ui.define([
                 }
 
                 // Prepare the Twilio Verify Check API details
-                const accountSid = 'AC417cceab51088e0d10bec28680eed7ab'; // Replace with your Twilio Account SID
-                const authToken = 'e6000ca434697a2cb1db62e09d21e7a8'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VA559384a8e91f2253b487fae52b81e972'; // Replace with your Twilio Verify Service SID
+                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
+                const authToken = '2c166df5d7a8bafe2308d0e2a5bd788c'; // Replace with your Twilio Auth Token
+                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
                 const url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`;
                 const payload = {
                     To: this._storedPhoneNumber,

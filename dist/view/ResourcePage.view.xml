@@ -79,6 +79,7 @@
                     items="{path: '/navigation'}"
                     id="idNavigationList1"
                         class="nav"
+                        
                 >
                     <tnt:NavigationListItem
                         id="idNavigationListItem"
@@ -97,6 +98,7 @@
                             key="{key}"
                             enabled="{enabled}"
                             visible="{visible}"
+                        
                         />
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
@@ -119,10 +121,20 @@
         <tnt:mainContents>
             <NavContainer
                 id="pageContainer1"
-                initialPage="false"
+               
                 class="pages"
             >
                 <pages>
+
+                <ScrollContainer
+                        id="pageDummy"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                       
+                    >
+                     </ScrollContainer>
                     <ScrollContainer
                         id="page1"
                         horizontal="false"
