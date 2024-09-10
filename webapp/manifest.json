@@ -142,6 +142,14 @@
           ]
         },
         {
+
+          "name": "RouteUnloadingASNDetails",
+          "pattern": "UnloadingASNDetails",
+          "target": [
+            "TargetUnloadingASNDetails"
+          ]
+    },
+    {
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -249,6 +257,14 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
+        "TargetUnloadingASNDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingASNDetails",
+          "viewName": "UnloadingASNDetails"
+      },
+
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -319,6 +335,7 @@
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+
         }
       }
     },
