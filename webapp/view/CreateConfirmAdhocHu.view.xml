@@ -135,6 +135,7 @@
                             <Label
                                 id="idSrcBinLabel1"
                                 text="Src Bin"
+                 
                                  width="100px"
                             />
                             <Input
