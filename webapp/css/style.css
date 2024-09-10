@@ -459,14 +459,12 @@
 
 .textFieldsAF {
     padding-bottom: 1rem;
-<<<<<<< HEAD
+
+  }
+  .classUOMbyASn{
+    margin-top: 16%;
   }
 
-  
-=======
-}
-
->>>>>>> afd8cfe9f7d36c804a8cf7ffcb77b66a69cb68cf
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
@@ -474,13 +472,20 @@
 
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
 
-<<<<<<< HEAD
+
 /*-----------------New HU FROM BBOL-------------------------*/
 .classUOMbyASn{
 margin-top: 16%;
 }
-=======
+
 /*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
+
+
+.hidden{
+  display: none !important;
+}
+
+/*......These are for Putaway By WO Tile......*/
 .putawayContainer {
     height: 100%;
     display: flex;
@@ -552,6 +557,7 @@ margin-top: 16%;
     margin-left: 0.3rem;
   }
  
+  
   /* ScrollContainer Page 5 & Page 6 & Page 7 CSS methods */
   .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad {
     display: flex;
@@ -622,4 +628,3 @@ margin-top: 16%;
 
 /* unloading by door end*/
 
->>>>>>> afd8cfe9f7d36c804a8cf7ffcb77b66a69cb68cf

@@ -144,7 +144,31 @@
             var oItem = oEvent.getParameter("item");
             this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
         },
-
+        onScanSuccess: function(oEvent) {
+            // Get the scanned text from the event
+            var scannedText = oEvent.getParameter("text");
+        
+            // Check if the scan was cancelled
+            if (oEvent.getParameter("cancelled")) {
+                // Show a message toast if the scan is cancelled
+                sap.m.MessageToast.show("Scan cancelled", { duration: 1000 });
+            } else if (scannedText) {
+                // If the scanned text exists, find the input field by its ID
+                var oInput = this.byId("_IDGenInput1"); // Assuming the input field ID is '_IDGenInput1'
+                
+                // Update the input field's value with the scanned text
+                oInput.setValue(scannedText);
+        
+                // Optionally, display a success message
+                sap.m.MessageToast.show("Scanned successfully: " + scannedText);
+            } else {
+                // If no text is scanned, set the input field to empty
+                this.byId("_IDGenInput1").setValue("");
+                sap.m.MessageToast.show("No barcode text found", { duration: 1000 });
+            }
+        },
+        
+        
         // Live validation logic
         onLiveHuValidation: function (oEvent) {
             var oInput = oEvent.getSource();
@@ -192,6 +216,8 @@
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
         },
 
+        // Submit button logic (if necessary)
+        // Onpresssubmit: function () {
         // // Submit button logic (if necessary)
         // Onpresssubmit: function () {
 
@@ -221,6 +247,24 @@
         //             odata.UnitLwh
         //             odata.UnitGw
                     
+                //     odata.UnitTv
+                //     odata.Lgpla 
+                //     that.byId("_IDGenInput2").setValue(odata.Huident);
+                //     that.byId("_IDGenInput3").setValue( odata.Letyp);
+                //     that.byId("_IDGenInputLength").setValue(odata.Length);
+                //     that.byId("_IDGenInputWidth").setValue(odata.Width);
+                //     that.byId("_IDGenInputHeight").setValue(odata.Height);
+                //     that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
+                //     that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
+                //     that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
+                //     that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+                //     that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
+                //     that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+                //     that.getView().byId("icon1").setVisible(false);
+                //     that.getView().byId("icon2").setVisible(true);
+                //     that.getView().byId("_IDGenButton1111").setVisible(true);
+                // }, error: function (oError) {
+                   
         //             odata.UnitTv
         //             odata.Lgpla */
         //             that.byId("_IDGenInput2").setValue(odata.Huident);
