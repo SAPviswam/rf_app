@@ -100,10 +100,10 @@
             >
                 <items>
                     <IconTabFilter
-                        id="idBinPage"
+                        id="idBinPage1"
                         visible="true"
                         key="info"
-                        text="Storage Bin"
+                        text="Bin"
                     >
                         <VBox
                             alignItems="Center"
@@ -134,7 +134,7 @@
                                     />
                                     <!-- Input Field -->
                                     <Input
-                                        id="idBinInput"
+                                        id="idBinInput_SBQB"
                                         placeholder="Enter Bin Number..."
                                         class="sapUiTinyMarginBegin"
                                     />
@@ -143,7 +143,7 @@
                                     <Button
                                         id="idSubmitButtonInStockBinQueryByBin"
                                         text="Submit"
-                                        press="Onpresssubmit"
+                                        press="onPressSubmitBin"
                                     />
                                 </HBox>
                             </f:SimpleForm>
@@ -151,7 +151,7 @@
                     </IconTabFilter>
 
                     <IconTabFilter
-                        id="idBinDetailsPage"
+                        id="idBinDetailsPage2"
                         visible="false"
                         text="Storage Bin Details"
                     >
@@ -406,7 +406,7 @@
                                             />
                                         </header>
                                     </Column>
-                                    <Column id="idPackagingMaterial">
+                                    <Column id="idPackagingMaterial_SBQB">
                                         <header>
                                             <Label
                                                 id="idPackagingMaterialLabel"

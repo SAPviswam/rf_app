@@ -156,6 +156,7 @@
           ]
     },
     {
+
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -177,13 +178,20 @@
             ]
         },
         {
-
+ 
           "name": "UnloadingByDoor",
           "pattern": "UnloadingByDoor",
           "target": [
             "TargetUnloadingByDoor"
           ]
         },
+          {
+            "name": "UnloadingByConsignmentOrder",
+            "pattern": "UnloadingByConsignmentOrder",
+            "target": [
+              "TargetUnloadingByConsignmentOrder"
+            ]
+          },
         {
           "name": "RoutePutawayByHU",
           "pattern": "RoutePutawayByHU",
@@ -198,6 +206,7 @@
             "TargetBillofLading"
           ]
         },
+        
         {
           "name": "RecevingOfHUbyDelivery",
           "pattern": "RecevingOfHUbyDelivery",
@@ -210,6 +219,20 @@
           "pattern": "UnloadingByBillofLading",
           "target": [
             "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment",
+          "target": [
+            "TargetUnloadingByShipment"
+          ]
+        },
+        {
+          "name": "UnloadingByTU",
+          "pattern": "UnloadingByTU",
+          "target": [
+            "TargetUnloadingByTU"
           ]
         },
         {
@@ -232,7 +255,29 @@
           "pattern": "RecevingOfHUbyManufacturingOrder",
           "target": [
             "TargetRecevingOfHUbyManufacturingOrder"
+            ]
+        },
+        {
+          "name": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu",
+          "target": [
+            "TargetCreateConfirmAdhocHu"
 
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct",
+          "target": [
+            "TargetCreateConfirmAdhocProduct"
+
+          ]
+        },
+        {
+          "name": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct",
+          "target": [
+            "TargetStockBinQueryByProduct"
           ]
         }
       ],
@@ -288,7 +333,6 @@
           "viewId": "UnloadingASNDetails",
           "viewName": "UnloadingASNDetails"
       },
-
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -317,6 +361,13 @@
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
         },
+           "TargetUnloadingByConsignmentOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByConsignmentOrder",
+          "viewName": "UnloadingByConsignmentOrder"
+        },
         "TargetRecevingOfHUbyDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -344,7 +395,7 @@
           "clearControlAggregation": false,
           "viewId": "BillofLading",
           "viewName": "BillofLading"
-
+ 
         },
         "TargetUnloadingByBillofLading": {
           "viewType": "XML",
@@ -353,12 +404,50 @@
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
         },
+        "TargetUnloadingByShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByShipment",
+          "viewName": "UnloadingByShipment"
+        },
+        "TargetUnloadingByTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByTU",
+          "viewName": "UnloadingByTU"
+        },
         "TargetAdhocProductWt": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+        },
+        "TargetCreateConfirmAdhocHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocHu",
+          "viewName": "CreateConfirmAdhocHu"
+
+        },
+        "TargetCreateConfirmAdhocProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocProduct",
+          "viewName": "CreateConfirmAdhocProduct"
+
+        },
+        "TargetStockBinQueryByProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByProduct",
+          "viewName": "StockBinQueryByProduct"
+
 
         },
         "TargetRecevingOfHUbyManufacturingOrder": {
@@ -383,3 +472,4 @@
     "service": "comapprfapp"
   }
 }
+ 
