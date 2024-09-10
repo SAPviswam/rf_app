@@ -708,7 +708,7 @@
                                     id="idThemecolor"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -728,7 +728,7 @@
                                     id="idThemecolorUnloadingByShipment"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -748,7 +748,7 @@
                                     id="idThemecolorUnloadingByTransportUnit"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -768,7 +768,7 @@
                                     id="idThemecolorUnloadingByASN"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -788,7 +788,7 @@
                                     id="idThemecolorUnloadingByDoor"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -808,7 +808,7 @@
                                     id="idThemecolorUnloadingByBillofLading"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -828,7 +828,7 @@
                                     id="idThemecolorUnloadingByConsigmentOrder"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -916,7 +916,7 @@
                             <TileContent id="idTileContentPutaway">
                                 <Button
                                     id="idBtnPutawayByWO"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     icon="sap-icon://palette"
                                     type="Transparent"
                                     customData="{dblclickEnabled: true}"
@@ -1352,7 +1352,7 @@
                             <TileContent id="idTileContent0">
                                 <Button
                                     id="idBtn"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     icon="sap-icon://palette"
                                     type="Transparent"
                                 />
