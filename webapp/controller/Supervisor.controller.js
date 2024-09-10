@@ -1561,6 +1561,16 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByBillofLading");
  
             },
+            onUnloadingByShipmentPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment");
+ 
+            },
+            onUnloadingByTUPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU");
+ 
+            },
             onPressCreateAdhocHUWTInAdhocWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocHuWt");

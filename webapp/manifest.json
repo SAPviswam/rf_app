@@ -184,6 +184,7 @@
             "TargetBillofLading"
           ]
         },
+        
         {
           "name": "RecevingOfHUbyDelivery",
           "pattern": "RecevingOfHUbyDelivery",
@@ -196,6 +197,20 @@
           "pattern": "UnloadingByBillofLading",
           "target": [
             "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment",
+          "target": [
+            "TargetUnloadingByShipment"
+          ]
+        },
+        {
+          "name": "UnloadingByTU",
+          "pattern": "UnloadingByTU",
+          "target": [
+            "TargetUnloadingByTU"
           ]
         },
         {
@@ -312,6 +327,20 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetUnloadingByShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByShipment",
+          "viewName": "UnloadingByShipment"
+        },
+        "TargetUnloadingByTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByTU",
+          "viewName": "UnloadingByTU"
         },
         "TargetAdhocProductWt": {
           "viewType": "XML",
