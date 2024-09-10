@@ -1604,6 +1604,13 @@ sap.ui.define(
                 oRouter.navTo("CreateConfirmAdhocHu");
 
             },
+
+            onReceivingofHUbyManufacturingOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+
+            },
+
             OnPressCreateandConfirmAdhocProductWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateConfirmAdhocProduct");

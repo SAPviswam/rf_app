@@ -251,6 +251,13 @@
           ]
         },
         {
+          "name": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "target": [
+            "TargetRecevingOfHUbyManufacturingOrder"
+            ]
+        },
+        {
           "name": "CreateConfirmAdhocHu",
           "pattern": "CreateConfirmAdhocHu",
           "target": [
@@ -271,7 +278,6 @@
           "pattern": "StockBinQueryByProduct",
           "target": [
             "TargetStockBinQueryByProduct"
-
           ]
         }
       ],
@@ -442,6 +448,14 @@
           "viewId": "StockBinQueryByProduct",
           "viewName": "StockBinQueryByProduct"
 
+
+        },
+        "TargetRecevingOfHUbyManufacturingOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyManufacturingOrder",
+          "viewName": "RecevingOfHUbyManufacturingOrder"
 
         }
       }
