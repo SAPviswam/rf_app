@@ -1590,6 +1590,21 @@ sap.ui.define(
                 oRouter.navTo("UnloadByDelivery");
 
             },
+            OnPressCreateandConfirmAdhocHUWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu");
+
+            },
+            OnPressCreateandConfirmAdhocProductWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocProduct");
+
+            },
+            OnPressStockOrBinQuerybyProduct:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct");
+            }
+
 
 
         });
