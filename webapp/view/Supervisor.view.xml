@@ -815,7 +815,7 @@
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
-                            press="onTilePress"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
