@@ -156,6 +156,7 @@
           ]
     },
     {
+
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -177,7 +178,7 @@
             ]
         },
         {
-
+ 
           "name": "UnloadingByDoor",
           "pattern": "UnloadingByDoor",
           "target": [
@@ -205,6 +206,7 @@
             "TargetBillofLading"
           ]
         },
+        
         {
           "name": "RecevingOfHUbyDelivery",
           "pattern": "RecevingOfHUbyDelivery",
@@ -217,6 +219,20 @@
           "pattern": "UnloadingByBillofLading",
           "target": [
             "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment",
+          "target": [
+            "TargetUnloadingByShipment"
+          ]
+        },
+        {
+          "name": "UnloadingByTU",
+          "pattern": "UnloadingByTU",
+          "target": [
+            "TargetUnloadingByTU"
           ]
         },
         {
@@ -311,7 +327,6 @@
           "viewId": "UnloadingASNDetails",
           "viewName": "UnloadingASNDetails"
       },
-
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -374,7 +389,7 @@
           "clearControlAggregation": false,
           "viewId": "BillofLading",
           "viewName": "BillofLading"
-
+ 
         },
         "TargetUnloadingByBillofLading": {
           "viewType": "XML",
@@ -383,13 +398,26 @@
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
         },
+        "TargetUnloadingByShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByShipment",
+          "viewName": "UnloadingByShipment"
+        },
+        "TargetUnloadingByTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByTU",
+          "viewName": "UnloadingByTU"
+        },
         "TargetAdhocProductWt": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
-
         },
         "TargetCreateConfirmAdhocHu": {
           "viewType": "XML",
@@ -414,6 +442,7 @@
           "viewId": "StockBinQueryByProduct",
           "viewName": "StockBinQueryByProduct"
 
+
         }
       }
     },
@@ -429,3 +458,4 @@
     "service": "comapprfapp"
   }
 }
+ 
