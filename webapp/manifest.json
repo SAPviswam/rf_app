@@ -219,6 +219,13 @@
           "target": [
             "TargetAdhocProductWt"
           ]
+        },
+        {
+          "name": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco",
+          "target": [
+            "TargetRecevingofHUbyConsignemntOrder"
+          ]
         }
       ],
       "targets": {
@@ -335,6 +342,14 @@
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+
+        },
+        "TargetRecevingofHUbyConsignemntOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Receivingofhubyco",
+          "viewName": "Receivingofhubyco"
 
         }
       }

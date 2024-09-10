@@ -147,6 +147,7 @@
                                         placeholder="Enter HU..."
                                         class="sapUiTinyMarginBegin"
                                      liveChange="onLiveHuValidation"
+                                      change="onChangeHuValidation"
                                     />
                                     <ndc:BarcodeScannerButton
                                             id="sampleBarcodeScannerButton"
