@@ -419,6 +419,7 @@
     color: red;
     font-weight: bold !important;
 }
+
 /* these are for theme colors for options... */
 .colorCheckBox {
     width: 20px;
@@ -426,35 +427,69 @@
     margin-right: 10px;
     display: inline-block;
     border-color: black !important;
-  }
-  .redCheckBox .sapMCbBg {
+}
+
+.redCheckBox .sapMCbBg {
     background-color: red !important;
-  }
-  .blackCheckBox .sapMCbBg {
+}
+
+.blackCheckBox .sapMCbBg {
     background-color: black !important;
-  }
-  
-  .greenCheckBox .sapMCbBg {
+}
+
+.greenCheckBox .sapMCbBg {
     background-color: green !important;
-  }
-  .whiteCheckBox .sapMCbBg {
+}
+
+.whiteCheckBox .sapMCbBg {
     background-color: white !important;
-  }
-  .purpleCheckBox .sapMCbBg {
+}
+
+.purpleCheckBox .sapMCbBg {
     background-color: purple !important;
-  }
-  .blueCheckBox .sapMCbBg {
+}
+
+.blueCheckBox .sapMCbBg {
     background-color: blue !important;
-  }
-  .YellowCheckBox .sapMCbBg {
+}
+
+.YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
-  }
-  .textFieldsAF{
+}
+
+.textFieldsAF {
     padding-bottom: 1rem;
-  }
+}
+
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
 
 
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
+
+/*-----------------------------Reciving Of Hu by ASN   Start----------------------------------*/
+.ScanHumargin {
+    margin-top: 12%;
+    margin-right: 2000% !important;
+}
+
+.ItemLabel {
+    margin-top: 14%;
+    margin-right: 2000% !important;
+
+}
+.classUOMbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;
+}
+.classExpiryHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;   
+}
+.classitemnoHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;     
+}
+
+/*-----------------------------Reciving Of Hu by ASN   End----------------------------------*/

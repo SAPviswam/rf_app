@@ -140,6 +140,13 @@
           "target": [
             "TargetStockBinQueryByBin"
           ]
+        },
+        {
+          "name": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN",
+          "target": [
+            "TargetReceivingofHUbyASN"
+          ]
         }
       ],
       "targets": {
@@ -177,6 +184,13 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
+        },
+        "TargetReceivingofHUbyASN": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyASN",
+          "viewName": "ReceivingofHUbyASN"
         }
       }
     },

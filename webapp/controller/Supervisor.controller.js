@@ -1484,6 +1484,13 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+
+            onReceivingofHUbyASN:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
+                
+
+            }
         });
     }
 );
