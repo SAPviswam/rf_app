@@ -142,6 +142,20 @@
           ]
         },
         {
+          "name": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN",
+          "target": [
+            "TargetReceivingofHUbyASN"
+          ]
+    },
+    {
+          "name": "RouteUnloadingASNDetails",
+          "pattern": "UnloadingASNDetails",
+          "target": [
+            "TargetUnloadingASNDetails"
+          ]
+    },
+    {
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -210,6 +224,7 @@
           "pattern": "AdhocProductWt",
           "target": [
             "TargetAdhocProductWt"
+
           ]
         }
       ],
@@ -249,6 +264,23 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
+
+        "TargetReceivingofHUbyASN": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyASN",
+          "viewName": "ReceivingofHUbyASN"
+      },
+
+        "TargetUnloadingASNDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingASNDetails",
+          "viewName": "UnloadingASNDetails"
+      },
+
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -319,6 +351,7 @@
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+
         }
       }
     },
