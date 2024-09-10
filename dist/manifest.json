@@ -142,6 +142,20 @@
                     ]
                 },
                 {
+                    "name": "ReceivingofHUbyASN",
+                    "pattern": "ReceivingofHUbyASN",
+                    "target": [
+                        "TargetReceivingofHUbyASN"
+                    ]
+                },
+                {
+                    "name": "RouteUnloadingASNDetails",
+                    "pattern": "UnloadingASNDetails",
+                    "target": [
+                        "TargetUnloadingASNDetails"
+                    ]
+                },
+                {
                     "name": "UnloadByDelivery",
                     "pattern": "UnloadByDelivery",
                     "target": [
@@ -210,6 +224,20 @@
                     "target": [
                         "TargetAdhocProductWt"
                     ]
+                },
+                {
+                    "name": "CreateConfirmAdhocHu",
+                    "pattern": "CreateConfirmAdhocHu",
+                    "target": [
+                        "TargetCreateConfirmAdhocHu"
+                    ]
+                },
+                {
+                    "name": "CreateConfirmAdhocProduct",
+                    "pattern": "CreateConfirmAdhocProduct",
+                    "target": [
+                        "TargetCreateConfirmAdhocProduct"
+                    ]
                 }
             ],
             "targets": {
@@ -247,6 +275,20 @@
                     "clearControlAggregation": false,
                     "viewId": "StockBinQueryByBin",
                     "viewName": "StockBinQueryByBin"
+                },
+                "TargetReceivingofHUbyASN": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReceivingofHUbyASN",
+                    "viewName": "ReceivingofHUbyASN"
+                },
+                "TargetUnloadingASNDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingASNDetails",
+                    "viewName": "UnloadingASNDetails"
                 },
                 "TargetUnloadByDelivery": {
                     "viewType": "XML",
@@ -317,6 +359,20 @@
                     "clearControlAggregation": false,
                     "viewId": "AdhocProductWt",
                     "viewName": "AdhocProductWt"
+                },
+                "TargetCreateConfirmAdhocHu": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateConfirmAdhocHu",
+                    "viewName": "CreateConfirmAdhocHu"
+                },
+                "TargetCreateConfirmAdhocProduct": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateConfirmAdhocProduct",
+                    "viewName": "CreateConfirmAdhocProduct"
                 }
             }
         },

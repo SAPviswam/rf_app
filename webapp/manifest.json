@@ -242,6 +242,14 @@
             "TargetCreateConfirmAdhocProduct"
 
           ]
+        },
+        {
+          "name": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct",
+          "target": [
+            "TargetStockBinQueryByProduct"
+
+          ]
         }
       ],
       "targets": {
@@ -383,6 +391,14 @@
           "clearControlAggregation": false,
           "viewId": "CreateConfirmAdhocProduct",
           "viewName": "CreateConfirmAdhocProduct"
+
+        },
+        "TargetStockBinQueryByProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByProduct",
+          "viewName": "StockBinQueryByProduct"
 
         }
       }

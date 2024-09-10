@@ -1526,6 +1526,20 @@ sap.ui.define(
 
             },
 
+
+            onReceivingofHUbyASN:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
+                
+
+            },
+
+            /**Navigate to Unloading By ASN Page */
+            onUnloadingBYASN:function(){
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
+            },
+
+
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor");
@@ -1575,8 +1589,17 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery");
 
-            }
+            },
+            OnPressCreateandConfirmAdhocHUWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu");
 
+            },
+            OnPressCreateandConfirmAdhocProductWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocProduct");
+
+            },
 
 
 
