@@ -1428,7 +1428,6 @@ sap.ui.define(
                          // Process data to ensure matching with selected groups
                          var oGroupQueueMap = {};
                          var isValid = true;
- 
                          // Build a map of group-queue relations
                          oData.results.forEach(function (oItem) {
                              var sGroup = oItem.Processgroup;
