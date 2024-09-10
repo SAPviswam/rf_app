@@ -279,6 +279,13 @@
           "target": [
             "TargetStockBinQueryByProduct"
           ]
+        },
+        {
+          "name": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco",
+          "target": [
+            "TargetRecevingofHUbyConsignemntOrder"
+          ]
         }
       ],
       "targets": {
@@ -456,6 +463,14 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyManufacturingOrder",
           "viewName": "RecevingOfHUbyManufacturingOrder"
+
+        },
+        "TargetRecevingofHUbyConsignemntOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Receivingofhubyco",
+          "viewName": "Receivingofhubyco"
 
         }
       }
