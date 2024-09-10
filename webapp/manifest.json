@@ -142,7 +142,13 @@
           ]
         },
         {
-
+          "name": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN",
+          "target": [
+            "TargetReceivingofHUbyASN"
+          ]
+    },
+    {
           "name": "RouteUnloadingASNDetails",
           "pattern": "UnloadingASNDetails",
           "target": [
@@ -218,6 +224,7 @@
           "pattern": "AdhocProductWt",
           "target": [
             "TargetAdhocProductWt"
+
           ]
         }
       ],
@@ -257,6 +264,15 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
+
+        "TargetReceivingofHUbyASN": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyASN",
+          "viewName": "ReceivingofHUbyASN"
+      },
+
         "TargetUnloadingASNDetails": {
           "viewType": "XML",
           "transition": "slide",

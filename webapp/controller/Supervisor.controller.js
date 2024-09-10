@@ -1526,6 +1526,14 @@ sap.ui.define(
 
             },
 
+
+            onReceivingofHUbyASN:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
+                
+
+            },
+
             /**Navigate to Unloading By ASN Page */
             onUnloadingBYASN:function(){
                 this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
@@ -1582,9 +1590,6 @@ sap.ui.define(
                 oRouter.navTo("UnloadByDelivery");
 
             },
-
-
-
 
 
         });
