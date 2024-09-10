@@ -1410,7 +1410,7 @@
                             id="IDStockBinQuerybyProduct"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Stock/Bin Query by Product"
-                            press="OnPressStock/BinQuerybyProduct"
+                            press="OnPressStockOrBinQuerybyProduct"
                         />
 
                         <GenericTile
