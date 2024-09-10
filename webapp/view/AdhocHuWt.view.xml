@@ -1,0 +1,205 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    controllerName="com.app.rfapp.controller.AdhocHuWt"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+ 
+    <tnt:ToolPage id="idToolPageAdhocHuWt">
+   
+        <tnt:header>
+       
+       
+            <tnt:ToolHeader id="idtntToolHeaderAdhocHuWt">
+             <Button
+                id="idBackButtoninAdhocHuWtHuScan"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuScan"
+                visible="false"
+            />
+            <Button
+                id="idBackButtoninAdhocHuWtHuDetails"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuDetails"
+                visible="false"
+            />
+                <Image
+                    id="_IDGenImageAdhocHuWt"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorAdhocHuWt"
+                />
+                <ToolbarSpacer id="idToolbarSpacerAdhocHuWt">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataAdhocHuWt"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatarAdhocHuWt"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idHuScanning"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                 <VBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            class="centerContent"
+                        >
+                         
+                                <HBox
+                                    id="idHuScanGenHBoxContainer"
+                                    justifyContent="Start"
+                                >
+                                    <!-- Scan HU Label -->
+                                    <Label
+                                        id="idHuScanlabel"
+                                        text="HU :"
+                                        class="ScanHumargin"
+                                    />
+                                    <!-- Input Field -->
+                                    <Input
+                                        id="idHuScanInput"
+                                        placeholder="Enter HU..."
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                   
+                                    <!-- Barcode Scan Button -->
+                                    <Button
+                                        id="idBtnBarcode"
+                                        icon="sap-icon://bar-code"
+                                        press="Onpressscan"
+                                    />
+                                    <!-- Submit Button -->
+                                    <Button
+                                        id="idSubmitInAdhocHuWt"
+                                        text="Submit"
+                                        press="onPressSubmitInAdhocHuWt"
+                                    />
+                                </HBox>
+                         
+                        </VBox>
+            </ScrollContainer>
+           <!-- Scroll Container for HU Details -->
+<ScrollContainer
+    id="idHuDetails"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+>
+ 
+ 
+    <!-- Vertical Box Layout for Content Alignment -->
+    <VBox
+        class="sapUiSmallMargin"
+    >
+        <!-- Horizontal Box for HU Number Field -->
+        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+            <Label
+                id="idHuScanLabel"
+                text="HU"
+                labelFor="idHuNumberInput"
+                class="sapUiTinyMarginEnd"
+                width="100px"
+            />
+            <Input
+                id="_idHuNumberInput"
+                placeholder="HU Number..."
+                maxLength="30"
+                width="250px"
+            />
+        </HBox>
+ 
+        <!-- Horizontal Box for SRC Bin Field -->
+        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+            <Label
+                id="idSRCBinLabel"
+                text="SRC Bin"
+                labelFor="idSRCBinInput"
+                class="sapUiTinyMarginEnd"
+                width="100px"
+            />
+            <Input
+                id="idSRCBinInput"
+                placeholder="Enter SRC Bin..."
+                maxLength="25"
+                width="250px"
+            />
+        </HBox>
+ 
+        <!-- Horizontal Box for Destination Bin Field -->
+        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+            <Label
+                id="idDestBinLabel"
+                text="Destination Bin"
+                labelFor="idDestBinInput"
+                class="sapUiTinyMarginEnd"
+                width="100px"
+            />
+            <Input
+                id="idDestBinInput"
+                placeholder="Enter Dest Bin..."
+                maxLength="25"
+                width="250px"
+            />
+        </HBox>
+ 
+        <!-- Horizontal Box for Destination HU Field -->
+        <HBox alignItems="Start" class="sapUiSmallMarginBottom sapUiSmallMarginLeft ">
+            <Label
+                id="idDestHuLabel"
+                text="Destination HU"
+                labelFor="idDestHuInput"
+                class="sapUiTinyMarginEnd"
+                width="100px"
+            />
+            <Input
+                id="_idDestHuInput"
+                placeholder="Enter Dest HU..."
+                maxLength="25"
+                width="250px"
+            />
+        </HBox>
+ 
+        <!-- HU Content Button aligned to the left -->
+        <HBox justifyContent="Start" class="sapUiSmallMarginBottom">
+            <Button
+                id="idHuContentButton"
+                text="HU Content"
+                press="onHUContentPress"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </VBox>
+</ScrollContainer>
+           
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+ 
