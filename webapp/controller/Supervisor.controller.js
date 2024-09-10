@@ -1603,7 +1603,7 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct");
-            }
+            },
 
 
 
