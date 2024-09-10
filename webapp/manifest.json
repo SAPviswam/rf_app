@@ -226,6 +226,14 @@
             "TargetAdhocProductWt"
 
           ]
+        },
+        {
+          "name": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "target": [
+            "TargetRecevingOfHUbyManufacturingOrder"
+
+          ]
         }
       ],
       "targets": {
@@ -351,6 +359,14 @@
           "clearControlAggregation": false,
           "viewId": "AdhocProductWt",
           "viewName": "AdhocProductWt"
+
+        },
+        "TargetRecevingOfHUbyManufacturingOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyManufacturingOrder",
+          "viewName": "RecevingOfHUbyManufacturingOrder"
 
         }
       }

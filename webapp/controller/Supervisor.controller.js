@@ -1590,6 +1590,11 @@ sap.ui.define(
                 oRouter.navTo("UnloadByDelivery");
 
             },
+            onReceivingofHUbyManufacturingOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+
+            },
 
 
         });
