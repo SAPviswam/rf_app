@@ -1575,10 +1575,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery");
 
-            }
-
-
-
+            },
 
         });
     }
