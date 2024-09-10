@@ -1,0 +1,739 @@
+
+<mvc:View
+    controllerName="com.app.rfapp.controller.UnloadByDelivery"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+       <tnt:ToolPage id="idToolPagePutawayByWO_UNBD">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderPutawayByWO_UNBD">
+                <Image
+                    id="_IDGenImage1PutawayByWO_UNBD"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPutawayByWO_UNBD"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPutawayByWO_UNBD">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PutawayByWO_UNBD"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1PutawayByWO_UNBD"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="icon1_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+             <Button
+                id="_IDGenButton77_UNBD"
+                icon="sap-icon://nav-back"
+                press="onPressBackToHome"
+                visible="true"
+            />
+                <Title
+                    id="idPageTitle_UNBD"
+                    text="Delivery"
+                    level="H2"
+                    class="titles_UNBD"
+                />
+                <f:SimpleForm
+                    id="simpleForm_UNBD"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel1_UNBD"
+                        text="Delivery"
+                    />
+                    <Input
+                        id="_IDGenInput1_UNBD"
+                        placeholder="Enter Delivery Number"
+                    />
+                    <HBox
+                        id="_idhbox_unknw_UNBD"
+                        class="sapTinyMarginEnd"
+                    >
+                        <!-- Barcode Scan Button -->
+                        <Button
+                            id="_IDGenButton11_UNBD"
+                            icon="sap-icon://bar-code"
+                            press="Onpressscan"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <!-- Submit Button -->
+                        <Button
+                            id="_IDGenButton111_UNBD"
+                            text="Submit"
+                            class="sapUiTinyMarginEnd"
+                            press="Onpresssubmit"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="icon2_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton1111_UNBD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback1"
+                />
+
+                <Title
+                    id="_IDGenTitle_UNBD"
+                    class="TitleSecondPage"
+                    level="H2"
+                />
+                <f:SimpleForm
+                    id="simpleForm1_UNBD"
+                   editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel2_UNBD"
+                        text="Delivery"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput2_UNBD"
+                        placeholder="Enter Delivery..."
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="_IDGenLabel3_UNBD"
+                        text="Vendor"
+                    />
+                    <Input
+                        id="_IDGenInput3_UNBD"
+                        placeholder="Enter Vendor..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel4_UNBD"
+                        text="No. of HU"
+                    />
+                    <Input
+                        id="_IDGenInput4_UNBD"
+                        placeholder="Enter No. of HU..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel5_UNBD"
+                        text="HU"
+                    />
+                    <Input
+                        id="_IDGenInput5_UNBD"
+                        placeholder="Enter HU..."
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemNoLabel_UNBD"
+                        text="Item No"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoInput_UNBD"
+                        placeholder="Enter Item No..."
+                        width="300px"
+                    />
+                    <VBox id="_IDGenVBox13_UNBD">
+                        <HBox
+                            id="_IDGenHBox6_UNBD"
+                            class="sapTinyMarginEnd"
+                        >
+                            <Link
+                                id="huListButton_UNBD"
+                                text="HU List"
+                                press="onHUListPress"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="newHUButton_UNBD"
+                                text="New HU"
+                                class="sapUiTinyMarginEnd"
+                                press="onNewHUPress"
+                            />
+                            <Button
+                                id="newHUButton3_UNBD"
+                                text="GR"
+                                press="onGRRPress"
+                            />
+                        </HBox>
+                        <HBox
+                            id="_IDGenHBox7_UNBD"
+                            class="sapTinyMarginEnd"
+                            justifyContent="Start"
+                        >
+                            <Button
+                                id="_IDGenButton1_UNBD"
+                                text="HU Change"
+                                press="onHUContentPress"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="_IDGenButton2_UNBD"
+                                text="Unload"
+                                press="onHUHierarchyPress"
+                            />
+                        </HBox>
+                    </VBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="icon3_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton2222_UNBD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback2"
+                />
+                <VBox
+                    id="_IDGenVBox14_UNBD"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Table
+                        id="HuDetailsTable_UNBD"
+                        inset="false"
+                        items=""
+                        growing="true"
+                        growingScrollToLoad="true"
+                        mode="None"
+                    >
+                        <columns>
+                            <Column
+                                id="_IDGenColumn1_UNBD"
+                                width="17%"
+                            >
+                                <Text
+                                    id="_IDGenText1_UNBD"
+                                    text="S.No"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn2_UNBD">
+                                <Text
+                                    id="_IDGenText2_UNBD"
+                                    text="HU No"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn3_UNBD">
+                                <Text
+                                    id="_IDGenText3_UNBD"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn4_UNBD">
+                                <Text
+                                    id="_IDGenText4_UNBD"
+                                    text="Product Description"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn5_UNBD">
+                                <Text
+                                    id="_IDGenText5_UNBD"
+                                    text="Qty"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn6_UNBD">
+                                <Text
+                                    id="_IDGenText66_UNBD"
+                                    text="UOM"
+                                />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem id="_IDGenColumnListItem1_UNBD">
+                                <cells>
+                                    <Text
+                                        id="_IDGenText6_UNBD"
+                                        text="{serialNo}"
+                                    />
+                                    <Text
+                                        id="_IDGenText7_UNBD"
+                                        text="{huNo}"
+                                    />
+                                    <Text
+                                        id="_IDGenText8_UNBD"
+                                        text="{product}"
+                                    />
+                                    <Text
+                                        id="_IDGenText9_UNBD"
+                                        text="{productDescription}"
+                                    />
+                                    <Text
+                                        id="_IDGenText10_UNBD"
+                                        text="{quantity}"
+                                    />
+                                    <Text
+                                        id="_IDGenText11_UNBD"
+                                        text="{uom}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </ScrollContainer>
+        
+            <ScrollContainer
+                id="icon4_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button 
+                id="_IDGenButton3333_UNBD"
+                icon="sap-icon://nav-back"
+                press="Onpressback3"
+            />
+                <Title
+                    id="idPageTitle2_UNBD"
+                    level="H2"
+                    class="titles_UNBD"
+
+                />
+                <f:SimpleForm
+                    id="simpleForm4_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel22_UNBD"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput22_UNBD"
+                        placeholder="Enter Product..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItemNoLabel2_UNBD"
+                        text="Qty"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoInput2_UNBD"
+                        placeholder="Enter Qty..."
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItemNoLab8el_UNBD"
+                        text="UOM"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoInp5ut_UNBD"
+                        placeholder="Enter UOM..."
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel32_UNBD"
+                        text="Packaging Material"
+                    />
+                    <Input
+                        id="_IDGenInput32_UNBD"
+                        placeholder="Enter Packaging Material..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel42_UNBD"
+                        text="Batch"
+                    />
+                    <Input
+                        id="_IDGenInput42_UNBD"
+                        placeholder="Enter Batch"
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel427_UNBD"
+                        text="BBD"
+                    />
+                    <Input
+                        id="_IDGenInput423_UNBD"
+                        placeholder="Enter BBD"
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel422_UNBD"
+                        text="Man"
+                    />
+                    <Input
+                        id="_IDGenInput432_UNBD"
+                        placeholder="Enter Man"
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItemNoLab99el_UNBD"
+                        text="Expiry"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoI8nput_UNBD"
+                        placeholder="Enter Expiry..."
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel4211_UNBD"
+                        text="COO"
+                    />
+                    <Input
+                        id="_IDGenInput422_UNBD"
+                        placeholder="Enter Coo"
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel4225_UNBD"
+                        text="Man"
+                        visible="false"
+                    />
+                    <Input
+                        id="_IDGenInput4532_UNBD"
+                        placeholder="Enter Manf"
+                        maxLength="25"
+                        visible="false"
+                        width="300px"
+                    />
+
+                    <HBox
+                        id="_IDGenHBox10_UNBD"
+                        alignItems="Center"
+                        class="sapUiTinyMarginEnd"
+                    >
+                        <Button
+                            id="idNextEnterpress_UNBD"
+                            text="Next (or) Enter"
+                            class="sapUiTinyMarginEnd"
+                            press="onNextEnterpress"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="icon5_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton4444_UNBD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback4"
+                />
+
+                <f:SimpleForm
+                    id="simpleForm5_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel442_UNBD"
+                        text="HU       "
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput3442_UNBD"
+                        placeholder="Enter HU..."
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemNo23Label_UNBD"
+                        text="Delivery"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoI233nput_UNBD"
+                        placeholder="Delivery..."
+                        width="300px"
+                    />
+                    <Label
+                        id="idItemLabel_UNBD"
+                        text="Item No"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItem3nput_UNBD"
+                        placeholder="Item No"
+                        width="300px"
+                    />
+                    <HBox
+                        id="_IDGenHBox13_UNBD"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            id="newHUButton3123_UNBD"
+                            text="GR"
+                            press="onGRPress"
+                        />
+
+                        <Button
+                            id="_IDGenButton_UNBD"
+                            text="Unload"
+                            press="onUnloadPress"
+                            width="100px"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="icon6_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton5555_UNBD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback5"
+                />
+
+                <f:SimpleForm
+                    id="simpleForm6_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGenLabel444562_UNBD"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInput312442_UNBD"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItemNo23L12abel_UNBD"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idItemNoI233np12ut_UNBD"
+                        placeholder="Enter Quantity..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Button
+                        id="newHUButto123n3123_UNBD"
+                        text="GR"
+                        press="onGRPress"
+                        width="100px"
+                    />
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="icon7_UNBD"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton6666_UNBD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback6"
+                />
+                <f:SimpleForm
+                    id="simpleForm7_UNBD"
+                     editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDGen123Label444562_UNBD"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="_IDGenInp234ut312442_UNBD"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="idItem123No23L12abel_UNBD"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idIt1234emNoI233np12ut_UNBD"
+                        placeholder="Enter Quantity..."
+                        width="300px"
+                    />
+                    <Button
+                        id="new345HUButto123n3123_UNBD"
+                        text="Unload"
+                        press="onUnloadPress1"
+                        width="100px"
+                    />
+                </f:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+ 
+ 
+ 
