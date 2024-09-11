@@ -1637,7 +1637,11 @@ sap.ui.define(
             OnPressWTQuerybyWO:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO");
-            }
+            },
+            OnPressWTQuerybyWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT");
+            },
             
         });
     }

@@ -294,6 +294,13 @@
           "target": [
             "TargetWTQueryByWO"
           ]
+        },
+        {
+          "name": "WTQueryByWT",
+          "pattern": "WTQueryByWT",
+          "target": [
+            "TargetWTQueryByWT"
+          ]
         }
       ],
       "targets": {
@@ -485,6 +492,13 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
         }
       }
     },
