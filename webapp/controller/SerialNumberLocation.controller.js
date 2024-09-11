@@ -16,7 +16,7 @@ sap.ui.define(
             oRouter.navTo("Supervisor");
         },
         onSNLproductLiveChange:function(){
-            if(this.getView().byId("idSNLproductInput").getValue()=="800020"){
+            // if(this.getView().byId("idSNLproductInput").getValue()=="800020"){
                 this.getView().byId("idSNLFirstSC").setVisible(false);
                 this.getView().byId("idSNLsecondSC").setVisible(true);
                 var oProduct=this.getView().byId("idSNLproductInput").getValue();
@@ -25,7 +25,7 @@ sap.ui.define(
                 this.getView().byId("idSNLSecondBackBtn").setVisible(true);
                 this.getView().byId("idSNLfirstBackBtn").setVisible(false);
 
-            }
+            // }
         },
         onSNLSecondBackBtnPress:function(){
             this.getView().byId("idSNLFirstSC").setVisible(true);
@@ -34,7 +34,7 @@ sap.ui.define(
             this.getView().byId("idSNLfirstBackBtn").setVisible(true);
         },
         onSNLsnoLiveChange:function(){
-            if(this.getView().byId("idSNLsnoInput").getValue()=="12345"){
+            // if(this.getView().byId("idSNLsnoInput").getValue()=="12345"){
                 this.getView().byId("idSNLthirdSC").setVisible(true);
                 this.getView().byId("idSNLsecondSC").setVisible(false);
                 var osno=this.getView().byId("idSNLsnoInput").getValue();
@@ -46,7 +46,7 @@ sap.ui.define(
                 this.getView().byId("idSNLSecondBackBtn").setVisible(false);
                 this.getView().byId("idSNLthirdBackBtn").setVisible(true);
 
-            }
+            // }
         },
         onSNLthirdBackBtnPress:function(){
             this.getView().byId("idSNLSecondBackBtn").setVisible(true);
