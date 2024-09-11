@@ -32,7 +32,6 @@ sap.ui.define([
 
             },
             onRowDoubleClick: function () {
-                debugger
                 var oSelected = this.byId("idReceivingofHUbyTUnumbertable").getSelectedItem();
                 this.getView().byId("idscrollContainer2ReceivingHubyTU").setVisible(false);
                 this.getView().byId("idscrollContainer3ReceivingHubyTU").setVisible(true);
