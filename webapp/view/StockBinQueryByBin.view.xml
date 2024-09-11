@@ -19,614 +19,528 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
-    <Page
-        showHeader="false"
-        class="PageBackground"
-    >
-        <tnt:ToolHeader
-            id="shellLikeToolHeader1"
-            visible="true"
-        >
-            <Button
-                id="idBackinStockBinQueryByBin1"
-                icon="sap-icon://nav-back"
-                press="onPressBackInStockBinQueryByBin1"
-                visible="false"
-            />
-            <Button
-                id="idBackbtninStockBinQueryByBin2"
-                icon="sap-icon://nav-back"
-                press="OnBackbtninStockBinQueryByBin2"
+    <tnt:ToolPage id="idToolPagePutawayByWO_SBQB">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderPutawayByWO_SBQB">
+                <Image
+                    id="_IDGenImage1PutawayByWO_SBQB"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPutawayByWO_SBQB"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPutawayByWO_SBQB">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PutawayByWO_SBQB"
+                            priority="NeverOverflow"
+                            minWidth="30px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1PutawayByWO_SBQB"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1_SBQB"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
                 visible="true"
-            />
-
-            <Title
-                text="RFUI"
-                wrapping="false"
-                id="productName1"
             >
-                <layoutData>
-                    <OverflowToolbarLayoutData priority="Disappear" />
-                </layoutData>
-            </Title>
-
-            <Text
-                text="By Artihcus Global"
-                wrapping="false"
-                id="secondTitle1"
-            >
-                <layoutData>
-                    <OverflowToolbarLayoutData priority="Disappear" />
-                </layoutData>
-            </Text>
-            <ToolbarSpacer />
-
-            <ToolbarSpacer id="space1r">
-                <layoutData>
-                    <OverflowToolbarLayoutData
-                        priority="Low"
-                        group="1"
+                <Button
+                    id="idNavBacktoHome"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBinBackToHome"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idToolbarLayoutData1"
+                            priority="NeverOverflow"
+                        />
+                    </layoutData>
+                </Button>
+                <Text
+                    id="idBinDetailsText1"
+                    text="Bin"
+                    class="sapUiTinyMarginTop sapUiSmallMarginBegin"
+                />
+                <f:SimpleForm
+                    id="idBinSimpleForm_SBQB"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDBinGenLabel1_SBQB"
+                        text="Bin"
                     />
-                </layoutData>
-            </ToolbarSpacer>
-
-            <ToolbarSeparator>
-                <layoutData>
-                    <OverflowToolbarLayoutData group="2" />
-                </layoutData>
-            </ToolbarSeparator>
-
-            <tnt:ToolHeaderUtilitySeparator />
-
-            <ToolbarSpacer width="1.125rem" />
-
-            <Avatar
-                id="myAvatar1"
-                src="test-resources/sap/tnt/images/Woman_avatar_01.png"
-                displaySize="XS"
-                press="onAvatarPressed"
-                tooltip="Profile"
-            >
-                <layoutData>
-                    <OverflowToolbarLayoutData priority="NeverOverflow" />
-                </layoutData>
-            </Avatar>
-        </tnt:ToolHeader>
-
-        <content>
-            <IconTabBar
-                expanded="true"
-                id="IconTabBar1"
-            >
-                <items>
-                    <IconTabFilter
-                        id="idBinPage"
-                        visible="true"
-                        key="info"
-                        text="Storage Bin"
+                    <Input
+                        id="_IDBinGenInput1_SBQB"
+                        placeholder="Enter Bin Number"
+                    />
+                    <HBox
+                        id="_idBinHBox_unknw_SBQB"
+                        class="sapTinyMarginEnd"
                     >
-                        <VBox
-                            alignItems="Center"
-                            justifyContent="Center"
-                            class="centerContent"
-                        >
-                            <f:SimpleForm
-                                id="simpleForm11"
-                                layout="ResponsiveGridLayout"
-                                editable="true"
-                                class="sapUiResponsiveMargin"
-                                labelSpanL="3"
-                                labelSpanM="3"
-                                emptySpanL="4"
-                                emptySpanM="4"
-                                columnsL="1"
-                                columnsM="1"
-                            >
-                                <HBox
-                                    id="idGenHBoxContainer"
-                                    justifyContent="Start"
-                                >
-                                    <!-- Scan HU Label -->
-                                    <Label
-                                        id="idBinLabel"
-                                        text="Bin :"
-                                        class="ScanHumargin"
-                                    />
-                                    <!-- Input Field -->
-                                    <Input
-                                        id="idBinInput"
-                                        placeholder="Enter Bin Number..."
-                                        class="sapUiTinyMarginBegin"
-                                    />
+                        <!-- Barcode Scan Button -->
+                        <Button
+                            id="_IDBinGenScanButton_SBQB"
+                            icon="sap-icon://bar-code"
+                            press="onPressBinScan"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <!-- Submit Button -->
+                        <Button
+                            id="_IDBinGenSubmitButton_SBQB"
+                            text="Submit"
+                            class="sapUiTinyMarginEnd"
+                            press="onPressBinSubmit"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
 
-                                    <!-- Submit Button -->
-                                    <Button
-                                        id="idSubmitButtonInStockBinQueryByBin"
-                                        text="Submit"
-                                        press="Onpresssubmit"
-                                    />
-                                </HBox>
-                            </f:SimpleForm>
-                        </VBox>
-                    </IconTabFilter>
-
-                    <IconTabFilter
-                        id="idBinDetailsPage"
-                        visible="false"
-                        text="Storage Bin Details"
+            <ScrollContainer
+                id="page2_SBQB"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idNavBacktoBin"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBinBackToBin"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idToolbarLayoutData2"
+                            priority="NeverOverflow"
+                        />
+                    </layoutData>
+                </Button>
+                <Text
+                    id="idBinDetailsText2"
+                    text="Bin Product Details"
+                    class="sapUiTinyMarginTop sapUiSmallMarginBegin"
+                />
+                <f:SimpleForm
+                    id="simpleForm_SBQB"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDBinDetailsGenLabel_SBQB"
+                        text="Bin"
+                    />
+                    <HBox id="idBinDetails">
+                    <Input id="_IDBinDetailsGenInput1_SBQB" editable="false"/>
+                    <Input id="_IDBinDetailsGenInput2_SBQB" width="30%"/>
+                    </HBox>
+                </f:SimpleForm>
+                <Panel
+                    id="idPanel_SBQB"
+                    headerText=""
+                    visible="true"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idBinDataTable"
+                        alternateRowColors="true"
+                        growingScrollToLoad="true"
                     >
-                        <!-- Buttons for HU Info and Product Info -->
-                        <HBox
-                            id="idHboxButtons"
-                            justifyContent="End"
-                            class="sapUiSmallMarginBottom"
-                        >
-                            <!-- HU Info Button -->
-                            <Button
-                                id="idHUInfoButton"
-                                text="HU Info"
-                                press="onHuInfoPress"
-                                class="sapUiSmallMarginTop sapUiTinyMarginEnd"
+                        <columns>
+                            <Column id="idProd.NoCol">
+                                <Title
+                                    id="idProd.NoTitle"
+                                    text="Prod.No"
+                                />
+                            </Column>
+                            <Column id="idProductCol">
+                                <Title
+                                    id="idProductTitle"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column id="idProductQtyCol">
+                                <Title
+                                    id="idProductQtyTitle"
+                                    text="Quantity"
+                                />
+                            </Column>
+                            <Column id="idProductQtyUOMCol">
+                                <Title
+                                    id="idProductQtyUOMTitle"
+                                    text="UOM"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idBinColListItem">
+                                <cells>
+                                    <Text id="idProd.NoValue" />
+                                    <Text id="idProductColValue" />
+                                    <Text id="idQtyColValue" />
+                                    <Text id="idQtyUOMColValue" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <HBox id="idActionButtons" >
+                    <Button
+                        id="idBinDetailsButton"
+                        text="BinDe"
+                        type="Emphasized"
+                        press="onPressBinDetails"
+                        class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
+                    />
+                     <Button
+                        id="idListButton"
+                        text="List"
+                        type="Emphasized"
+                        press="onPressList"
+                        class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+                    />
+                    </HBox>
+                </Panel>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page3_SBQB"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idNavBacktoBinProductDetaails"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBinBacktoProductDetaails"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idToolbarLayoutData3"
+                            priority="NeverOverflow"
+                        />
+                    </layoutData>
+                </Button>
+                <Text
+                    id="idBinDetailsText3"
+                    text="Bin Details"
+                    class="sapUiTinyMarginTop sapUiSmallMarginBegin"
+                />
+                 <form:SimpleForm
+                    id="simpleform4"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <VBox
+                        alignItems="Start"
+                        justifyContent="Center"
+                        width="100%"
+                    >
+                        <VBox  />
+                        <HBox>
+                            <Label
+                                id="idSTypLabel"
+                                text="STyp"
+                                width="60Px"
                             />
-                            <!-- Product Info Button -->
-                            <Button
-                                id="idProductInfoButton"
-                                text="Product Info"
-                                class="sapUiSmallMarginTop"
-                                press=" onProductInfoPress"
+                            <Input
+                                id="idSBQPBinInput"
+                                value=""
+                            />
+                            <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPStorTypeLabel"
+                                text="SSec"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPStoreTypeInput"
+                                value=""
+                            />
+                            <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPStorTypeLabel1"
+                                text="BT"
+                                width="60Px"
+                            />
+                             <Input
+                                id="idSBQPStoreTypeInput1"
+                                value=""
                             />
                         </HBox>
-                        <!-- Table for the storage bin details -->
-                        <Panel
-                            id="idStorageBinPanel"
-                            headerText="Storage Bin Details"
-                            visible="true"
-                            class="sapUiSmallMarginTop"
-                        >
-                            <VBox
-                                id="idkal"
-                                fitContainer="true"
-                            >
-                                <!-- ScrollContainer to enable both horizontal and vertical scrolling -->
-                                <ScrollContainer
-                                    width="100%"
-                                    height="auto"
-                                    horizontal="true"
-                                    class="sapUiResponsiveMargin sapUiNoContentPadding"
-                                >
-                                    <Table
-                                        id="idStorageBinDetailsTable"
-                                        growing="true"
-                                        growingScrollToLoad="true"
-                                        mode="MultiSelect"
-                                        growingThreshold="3"
-                                        selectionChange="onStorageBinSelectionChange"
-                                        width="150%"
-                                    >
-                                        <columns>
-                                            <Column id="idclmnStorageBin">
-                                                <header>
-                                                    <Label
-                                                        id="idStorageBinLabel"
-                                                        text="Storage Bin"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idclmnStorageType">
-                                                <header>
-                                                    <Label
-                                                        id="idStorageTypeLabel"
-                                                        text="Storage Type"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idclmnStorageSection">
-                                                <header>
-                                                    <Label
-                                                        id="idStorageSectionLabel"
-                                                        text="Storage Section"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idclmnNo.ofHU">
-                                                <header>
-                                                    <Label
-                                                        id="idLabelhigherLevel"
-                                                        text="No.of HU"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnMaxweight">
-                                                <header>
-                                                    <Label
-                                                        id="idMaxweightLabel"
-                                                        text="Max weight"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnUsedCapacity">
-                                                <header>
-                                                    <Label
-                                                        id="idUsedCapacityLabel"
-                                                        text="Used Capacity"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnBincapacity">
-                                                <header>
-                                                    <Label
-                                                        id="idBinCapacityLabel"
-                                                        text="Bin capacity"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column
-                                                id="idBinRemainingCapacityLabelColoumn"
-                                            >
-                                                <header>
-                                                    <Label
-                                                        id="idBinRemainingCapacityLabel"
-                                                        text="Remaining Capacity"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column
-                                                id="idBinLastMovementLabelColoumn"
-                                            >
-                                                <header>
-                                                    <Label
-                                                        id="idBinLastMovementLabel"
-                                                        text="Bin Last Movement"
-                                                    />
-                                                </header>
-                                            </Column>
-                                        </columns>
 
-                                        <items>
-                                            <ColumnListItem
-                                                id="IDGenColumnListItem2"
-                                            >
-                                                <cells>
-                                                    <Text
-                                                        id="idcolumlistStorageBinLabel"
-                                                        text="AWWC-01"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlistStorageTypeLabel"
-                                                        text="AWWC"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlistStorageSectionLabel"
-                                                        text="0001"
-                                                    />
-                                                    <Text
-                                                        id="idStoragSectionLabel"
-                                                        text="13"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlist"
-                                                        text="0"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlist1"
-                                                        text="0,000"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlist2"
-                                                        text="dfgh"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlist3"
-                                                        text="wertyu"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnlist4"
-                                                        text="wertyu"
-                                                    />
-                                                </cells>
-                                            </ColumnListItem>
-                                        </items>
-                                    </Table>
-                                </ScrollContainer>
-                            </VBox>
-                        </Panel>
-
-                        <!-- Panel for HU Info Table -->
-                        <Panel
-                            id="idHuDetailsPanel"
-                            headerText="HU Info Details"
-                            visible="false"
-                            class="sapUiSmallMarginTop"
-                        >
-
-                       
-    <VBox id="idhuvbox" >
-        <!-- ScrollContainer to enable both horizontal and vertical scrolling -->
-        <ScrollContainer
-            width="100%"
-            height="auto"
-            horizontal="true"
-            class="sapUiResponsiveMargin sapUiNoContentPadding"
-        >
-                       
-                            <Table
-                                id="idHuInfoTable"
-                                visible="false"
-                                growing="true"
-                                growingScrollToLoad="true"
-                                mode="None"
-                                   width="150%"
-                            >
-                                <columns>
-                                    <Column id="idclmnidStorageBinLabel1">
-                                        <header>
-                                            <Label
-                                                id="idStorageBinLabel1"
-                                                text="Storage Bin"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idclmnidStorageTypeLabel1">
-                                        <header>
-                                            <Label
-                                                id="idStorageTypeLabel1"
-                                                text="Storage Type"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idcolumnStorageSection">
-                                        <header>
-                                            <Label
-                                                id="idcolumnStorageSectionLabel"
-                                                text="Storage Section"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idcolumnHandlingUnit">
-                                        <header>
-                                            <Label
-                                                id="idcolumnHandlingUnitLabel"
-                                                text="Handling Unit"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idcolumnHigher-LevelHU">
-                                        <header>
-                                            <Label
-                                                id="idcolumnHigher-LevelHULabel"
-                                                text="Higher-Level HU"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idcolumnHighest-LevelHU">
-                                        <header>
-                                            <Label
-                                                id="idcolumnHighest-LevelHULabel"
-                                                text="Highest-Level HU"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idPackagingMaterial">
-                                        <header>
-                                            <Label
-                                                id="idPackagingMaterialLabel"
-                                                text="Packaging Material"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idHUtype">
-                                        <header>
-                                            <Label
-                                                id="idHUtypeLabel"
-                                                text="HU type"
-                                            />
-                                        </header>
-                                    </Column>
-                                    <Column id="idStorageProcess">
-                                        <header>
-                                            <Label
-                                                id="idStorageProcessLabel"
-                                                text="Storage Process"
-                                            />
-                                        </header>
-                                    </Column>
-                                </columns>
- 
-                                <items>
-                                    <ColumnListItem id="nListItem2">
-                                        <cells>
-                                            <Text
-                                                id="idStorageBinLabeltext"
-                                                text="{serialNo}"
-                                            />
-                                            <Text
-                                                id="idStoragetypeLabeltext"
-                                                text="{higherLevelHU}"
-                                            />
-                                            <Text
-                                                id="idStoragesectionLabeltext"
-                                                text="{highestLevelHU}"
-                                            />
-                                            <Text
-                                                id="idHandlingunitLabeltext"
-                                                text="{highestLevelHU}"
-                                            />
-                                            <Text
-                                                id="idHigherlevelLabeltext"
-                                                text="{highestLevelHU}"
-                                            />
-                                             <Text
-                                                id="idHighestlevelLabeltext"
-                                                text="{higherLevelHU}"
-                                            />
-                                            <Text
-                                                id="idpackingmaterialLabeltext"
-                                                text="{highestLevelHU}"
-                                            />
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                            </ScrollContainer>
-
-                            </VBox>
-                        </Panel>
-
-                        <!-- Panel for itemss Info Table -->
-                        <Panel
-                            id="idProductInfoPanel"
-                            headerText="product info details"
-                            visible="false"
-                            class="sapUiSmallMarginTop"
-                        >
-                            <VBox
-                                id="idproductbox"
-                                fitContainer="true"
-                            >
-                                <!-- ScrollContainer to enable both horizontal and vertical scrolling -->
-                                <ScrollContainer
-                                    width="100%"
-                                    height="auto"
-                                    horizontal="true"
-                                    class="sapUiResponsiveMargin sapUiNoContentPadding"
-                                >
-                                    <Table
-                                        id="idProductInfoTable"
-                                        visible="false"
-                                        growing="true"
-                                        growingScrollToLoad="true"
-                                        mode="None"
-                                        width="150%"
-                                    >
-                                        <columns>
-                                            <Column id="idcolumnStorageBin">
-                                                <header>
-                                                    <Label
-                                                        id="idcolumnStorageBinLabel"
-                                                        text="Storage Bin"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idColumnStorageType">
-                                                <header>
-                                                    <Label
-                                                        id="idColumnStorageTypeLabel"
-                                                        text="Storage Type"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnHandlingUnit1">
-                                                <header>
-                                                    <Label
-                                                        id="idcolumnHandlingUnitLabel1"
-                                                        text="HU"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnProduct">
-                                                <header>
-                                                    <Label
-                                                        id="idcolumnProductLabel"
-                                                        text="Product"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idcolumnPrdes">
-                                                <header>
-                                                    <Label
-                                                        id="idcolumnPrdesLabel"
-                                                        text="Product Description"
-                                                    />
-                                                </header>
-                                            </Column>
-
-                                            <Column id="idColumnQuantity">
-                                                <header>
-                                                    <Label
-                                                        id="idColumnQuantityLabel"
-                                                        text="Quantity"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idColumnUom">
-                                                <header>
-                                                    <Label
-                                                        id="idColumnUomLabel"
-                                                        text="UOM"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column id="idColumnDocument">
-                                                <header>
-                                                    <Label
-                                                        id="idColumnDocumentLabel"
-                                                        text="Document"
-                                                    />
-                                                </header>
-                                            </Column>
-                                            <Column
-                                                id="idColumnDocumentcategory"
-                                            >
-                                                <header>
-                                                    <Label
-                                                        id="idColumnDocumentcategoryLabel"
-                                                        text="Doc.Cat"
-                                                    />
-                                                </header>
-                                            </Column>
-                                        </columns>
-
-                                        <items>
-                                            <ColumnListItem
-                                                id="idcolumnlistitem"
-                                            >
-                                                <cells>
-                                                    <Text
-                                                        id="idcolumnStorageBinLabeltext"
-                                                        text="{serialNo}"
-                                                    />
-                                                    <Text
-                                                        id="idColumnStorageTypeLabeltext"
-                                                        text="{higherLevelHU}"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnHandlingUnitLabel1text"
-                                                        text="{highestLevelHU}"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnProductLabeltext"
-                                                        text="{highestLevelHU}"
-                                                    />
-                                                    <Text
-                                                        id="idcolumnPrdesLabeltext"
-                                                        text="{highestLevelHU}"
-                                                    />
-                                                    <Text
-                                                        id="idColumnQuantityLabeltext"
-                                                        text="{serialNo}"
-                                                    />
-                                                    <Text
-                                                        id="idColumnDocumentcategoryLabeltext"
-                                                        text="{higherLevelHU}"
-                                                    />
-                                                    <Text
-                                                        id="idColumnQuantityLatext"
-                                                        text="{serialNo}"
-                                                    />
-                                                    <Text
-                                                        id="idColumnDocumentryLabeltext"
-                                                        text="{higherLevelHU}"
-                                                    />
-                                                </cells>
-                                            </ColumnListItem>
-                                        </items>
-                                    </Table>
-                                </ScrollContainer>
-                            </VBox>
-                        </Panel>
-                    </IconTabFilter>
-                </items>
-            </IconTabBar>
-        </content>
-    </Page>
+                        <HBox>
+                            <Label
+                                id="idSBQPQtyLabel"
+                                text="MHU"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPQtyWInput"
+                                value=""
+                            />
+                             <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPStorSecLabel"
+                                text="AcHU"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPStorSecInput"
+                                value=""
+                            /><Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPStorTypeLabel2"
+                                text="Sect"
+                                width="60Px"
+                            />
+                             <Input
+                                id="idSBQPStoreTypeInput2"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQNoOfHuLabel"
+                                text="MaxW"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPNoOfHuInput"
+                                value=""
+                            />
+                             <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPBinAisleLabel"
+                                text="ActW"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPBinAisleInput"
+                                value=""
+                            />
+                            <Input
+                                id="idSBQPBinAisleInputUOM"
+                                value=""
+                                width="4rem"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQMaxWLabel"
+                                text="MaxV"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPMaxWInput"
+                                value=""
+                            />
+                            
+                             <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPBinLevelLabel"
+                                text="ActV"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPBinLevelInput"
+                                value=""
+                            /> 
+                            <Input
+                                id="idSBQPBinLevelInputUOM"
+                                value=""
+                                width="4rem"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQMaxVLabel"
+                                text="MaxC"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPMaxVInput"
+                                value=""
+                            />
+                             <Label
+                                text=""
+                                width="30px"
+                            />
+                            <Label
+                                id="idSBQPStackLabel"
+                                text="Av. C"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idSBQPStackInput"
+                                value=""
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page4_SBQB"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idNavBacktoList"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBackfromBinList"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idToolbarLayoutData4"
+                            priority="NeverOverflow"
+                        />
+                    </layoutData>
+                </Button>
+                <Text
+                    id="idBinDetailsText4"
+                    text="Product List"
+                    class="sapUiTinyMarginTop sapUiSmallMarginBegin"
+                />
+                <f:SimpleForm
+                    id="simpleForm_SBQB2"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    class="FormBack"
+                >
+                    <Label
+                        id="_IDListBinDetailsGenLabel_SBQB"
+                        text="Bin"
+                    />
+                    <HBox id="idBinListDetails">
+                    <Input id="_IDBinListDetailsGenInput1_SBQB" editable="false"/>
+                    </HBox>
+                </f:SimpleForm>
+                <Panel
+                    id="idListPanel_SBQB"
+                    headerText=""
+                    visible="true"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idBinListDataTable"
+                        alternateRowColors="true"
+                        growingScrollToLoad="true"
+                    >
+                        <columns>
+                            <Column id="idHUCol">
+                                <Title
+                                    id="idHUTitle"
+                                    text="Prod.No"
+                                />
+                            </Column>
+                            <Column id="idListProductCol">
+                                <Title
+                                    id="idListProductTitle"
+                                    text="Product"
+                                />
+                            </Column>
+                           
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idBinListColListItem">
+                                <cells>
+                                    <Text id="idHUValue" />
+                                    <Text id="idListProductColValue" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>
