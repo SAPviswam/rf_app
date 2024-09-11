@@ -275,6 +275,14 @@
           ]
         },
         {
+
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+            ]
+        },
+
           "name": "Receivingofhubyco",
           "pattern": "Receivingofhubyco",
           "target": [
@@ -286,6 +294,7 @@
           "pattern": "ReceivingofHUbyShipment",
           "target": [
             "TargetReceivingofHUbyShipment"
+
           ]
         }
       ],
@@ -457,6 +466,15 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyManufacturingOrder",
           "viewName": "RecevingOfHUbyManufacturingOrder"
+
+        },
+        "TargetRecevingOfHUbyTUorDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
+
         },
         "TargetRecevingofHUbyConsignemntOrder": {
           "viewType": "XML",
@@ -471,6 +489,7 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyShipment",
           "viewName": "ReceivingofHUbyShipment"
+
         }
       }
     },

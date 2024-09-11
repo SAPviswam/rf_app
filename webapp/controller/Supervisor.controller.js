@@ -1630,10 +1630,17 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByProduct");
             },
 
+            onReceivingofTUorDoor: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyTUorDoor");
+            },
+
+
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyShipment");
             }
+
 
         });
     }
