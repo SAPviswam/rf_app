@@ -287,6 +287,13 @@
           "target": [
             "TargetReceivingofHUbyShipment"
           ]
+        },
+        {
+          "name": "WTQueryByWO",
+          "pattern": "WTQueryByWO",
+          "target": [
+            "TargetWTQueryByWO"
+          ]
         }
       ],
       "targets": {
@@ -471,6 +478,13 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyShipment",
           "viewName": "ReceivingofHUbyShipment"
+        },
+        "TargetWTQueryByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWO",
+          "viewName": "WTQueryByWO"
         }
       }
     },
