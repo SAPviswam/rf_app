@@ -446,7 +446,15 @@
 }
 .textFieldsAF {
     padding-bottom: 1rem;
+
 }
+
+
+  }
+  .classUOMbyASn{
+    margin-top: 16%;
+  }
+
 
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
 
@@ -454,6 +462,33 @@
 
 
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
+
+
+/*-----------------------------Reciving Of Hu by ASN   Start----------------------------------*/
+.ScanHumargin {
+    margin-top: 12%;
+    margin-right: 2000% !important;
+}
+
+.ItemLabel {
+    margin-top: 14%;
+    margin-right: 2000% !important;
+
+}
+.classUOMbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;
+}
+.classExpiryHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;   
+}
+.classitemnoHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;     
+}
+
+/*-----------------------------Reciving Of Hu by ASN   End----------------------------------*/
 
 
 /*-----------------New HU FROM BBOL-------------------------*/
@@ -626,4 +661,11 @@
     }
 }
 
+
 /* unloading by door end*/
+
+
+
+/* unloading by door end*/
+
+

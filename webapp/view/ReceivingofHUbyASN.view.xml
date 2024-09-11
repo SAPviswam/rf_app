@@ -1,0 +1,871 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.ReceivingofHUbyASN"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+     <tnt:ToolPage id="idToolPageReceivingOfHUByASN">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderReceivingOfHUByASN_RHUASN">
+                <Image
+                    id="_IDGenImage1ReceivingOfHUByASN_RHUASN"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorReceivingOfHUByASN_RHUASN"
+                />
+                <ToolbarSpacer id="idToolbarSpacerReceivingOfHUByASN_RHUASN">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1ReceivingOfHUByASN_RHUASN"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1ReceivingOfHUByASN_RHUASN"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1ReceiveHUbyASN_RHUASN"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idNavBackButton0_RHUASN"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback0"
+                />
+
+                <VBox
+                    id="vBox_BOL_RHUASN"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="mainfirstpageTitle_RHUASN"
+                        text="Receiving of HU by ASN"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormBOL_RHUASN"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHBox1_RHUASN"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idReceiveHUbyASNLabel_RHUASN"
+                                text="ASN:"
+                                class="ScanHumargin"
+                            />
+                            <!-- Input Field -->
+                            <Input
+                                id="idReceiveHUbyASNinput_RHUASN"
+                             
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraOneReceiveHUbyASN_RHUASN"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter HU Number"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <Button
+                                id="idButtonSubmit_RHUASN"
+                                text="Submit"
+                                press="Onpresssubmit"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page2ReceiveHUbyASN_RHUASN"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="idNavBackButton1_RHUASN"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback1"
+                />
+                <VBox
+                    id="idMainVBox_RHUASN"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="Title_RHUASN"
+                        text="HU Details"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1_RHUASN"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <!-- Delivery Field -->
+                        <Label
+                            id="idDeliveryLabel1_RHUASN"
+                            text="ASN"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idASNInput_RHUASN"
+                         
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <Label
+                            id="idItemNoLabel_RHUASN"
+                            text="Item No"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idItemNoInput_RHUASN"
+                            placeholder="Enter Item No..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- Vendor Field -->
+                        <Label
+                            id="idVendorLabel_RHUASN"
+                            text="Vendor"
+                        />
+                        <Input
+                            id="idVendorInput_RHUASN"
+                            placeholder="Enter Vendor..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- No. of HU Field -->
+                        <Label
+                            id="idNoOfHULabel_RHUASN"
+                            text="No. of HU"
+                        />
+                        <Input
+                            id="idNoOfHUInput_RHUASN"
+                            placeholder="Enter No. of HU..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- HU Field -->
+                        <Label
+                            id="idHULabel_RHUASN"
+                            text="HU"
+                        />
+                        <VBox
+                            id="idHUVBox_RHUASN"
+                        >
+                            <Input
+                                id="idHUInput_RHUASN"
+                                placeholder="Enter HU..."
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- HU List and New HU Buttons Positioned Below HU Field -->
+                            <HBox
+                                id="idHUButtonHBox1_RHUASN"
+                                class="sapUiSmallMarginTop"
+                               
+                            >
+                                <Button
+                                    id="idHUListButton_RHUASN"
+                                    text="HU List"
+                                    press="onHUListPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idNewHUButton_RHUASN"
+                                    text="New HU"
+                                    class="sapUiTinyMarginEnd"
+                                    press="onNewHUPress"
+                                />
+                                <Button
+                                    id="idGRButton_RHUASN"
+                                    text="GR"
+                                    press="onGRRPress"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHUButtonHBox2_RHUASN"
+                                class="sapUiSmallMarginTop"
+                                justifyContent="Start"
+                            >
+                                <Button
+                                    id="idHUChangeButton_RHUASN"
+                                    text="HU Change"
+                                    press="onHUContentPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idUnloadButtoninpage2_RHUASN"
+                                    text="Unload"
+                                    press="onHUHierarchyPress"
+                                      class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idCreateWTButtoninpage2_RHUASN"
+                                    text="Create WT"
+                                    press="onCreateWTPress"
+                                      class="sapUiTinyMarginEnd"
+                                />
+                                 <Button
+                                    id="idConfirmButtoninpage2_RHUASN"
+                                    text="Confirm WT"
+                                    press="onConfirmWTPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page3ReceiveHUbyASN_RHUASN"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_RHUASN"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton2_RHUASN"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback2"
+                    />
+                    <Title
+                        id="idTitle_RHUASN"
+                        text="HU List"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_RHUASN"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+                <VBox
+                    id="idMainVBox_RHUASNL"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Table
+                        id="idHuDetailsTable_RHUASN"
+                        inset="false"
+                        items="{/productData}"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        mode="None"
+                    >
+                        <columns>
+                            <Column
+                                id="idSerialNoColumn_RHUASN"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idSerialNoHeader_RHUASN"
+                                    text="S.No"
+                                />
+                            </Column>
+                            <Column
+                                id="idHuNoColumn_RHUASN"
+                            >
+                                <Text
+                                    id="idHuNoHeader_RHUASN"
+                                    text="HU No"
+                                />
+                            </Column>
+                            <Column
+                                id="idProductColumn_RHUASN"
+                            >
+                                <Text
+                                    id="idProductHeader_RHUASN"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column
+                                id="idProductDescriptionColumn_RHUASN"
+                            >
+                                <Text
+                                    id="idProductDescriptionHeader_RHUASN"
+                                    text="Product Description"
+                                />
+                            </Column>
+                            <Column id="idQuantityColumn_RHUASN">
+                                <Text
+                                    id="idQuantityHeader_RHUASN"
+                                    text="Quantity"
+                                />
+                            </Column>
+                            <Column id="idUOMColumn_RHUASN">
+                                <Text
+                                    id="idUOMHeader_RHUASN"
+                                    text="UOM"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="columlist_RHUASN">
+                                <Text
+                                    id="idSerialNoItem_RHUASN"
+                                    text="{SerialNo}"
+                                />
+                                <Text
+                                    id="idHuNoItem_RHUASN"
+                                    text="{HuNo}"
+                                />
+                                <Text
+                                    id="idProductItem_RHUASN"
+                                    text="{Product}"
+                                />
+                                <Text
+                                    id="idProductDescriptionItem_RHUASN"
+                                    text="{ProductDescription}"
+                                />
+                                <Text
+                                    id="idQuantityItem_RHUASN"
+                                    text="{Quantity}"
+                                />
+                                <Text
+                                    id="idUOMItem_RHUASN"
+                                    text="{UOM}"
+                                />
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </ScrollContainer>
+        
+
+
+         <ScrollContainer
+    id="page4ReceiveHUbyASN_RHUASN"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_RHUASN_page4"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton3_RHUASN"
+            icon="sap-icon://nav-back"
+            press="Onpressback3"
+        />
+        <Title
+            id="idTitle_RHUASN_page4"
+            text="New HU"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_RHUASN_page4"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProductDetailsForm_RHUASN"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- Product Field -->
+        <Label
+            id="idProductLabel_RHUASN_page4"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProductInput_RHUASN"
+            placeholder="Enter Product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Qty Field -->
+        <Label
+            id="idHubyASNLabelQty_RHUASN"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <HBox id="IDqtyinputhbox_RHUASN">
+            <Input
+                id="idHubyASNqtyInput_RHUASN"
+                maxLength="30"
+                width="100px"
+            />
+            <HBox
+                id="idHubyASNHUuombox_RHUASN"
+                class="customLabelSpacing"
+            >
+                <Label
+                    id="idHubyASNuomLabel_RHUASN"
+                    text="UOM:"
+                    class="classUOMbyASn"
+                />
+                <Input
+                    id="idHubyASNuomInput_RHUASN"
+                    maxLength="30"
+                    width="64px"
+                />
+            </HBox>
+        </HBox>
+        <!-- Packaging Material Field -->
+        <Label
+            id="idPackagingMaterialLabel_RHUASN"
+            text="Packaging Material"
+        />
+        <Input
+            id="idPackagingMaterialInput_RHUASN"
+            placeholder="Enter Packaging Material..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Batch Field -->
+        <Label
+            id="idBatchLabel_RHUASN"
+            text="Batch"
+        />
+        <Input
+            id="idBatchInput_RHUASN"
+            placeholder="Enter Batch"
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- BBD Field -->
+        <Label
+            id="idBbdLabel_RHUASN"
+            text="BBD"
+        />
+        <Input
+            id="idBbdInput_RHUASN"
+            placeholder="Best Before Date"
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Man Field -->
+        <Label
+            id="idManLabel_RHUASN"
+            text="Man"
+        />
+        <Input
+            id="idManInput_RHUASN"
+            placeholder="Manufacture Date"
+            maxLength="25"
+            width="100px"
+        />
+
+        <!-- Expiry Field -->
+        <Label
+            id="idExpiryLabel_RHUASN"
+            text="Expiry"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idExpiryInput_RHUASN"
+            placeholder="Enter Expiry..."
+            maxLength="25"
+            width="100px"
+        />
+
+        <!-- COO Field -->
+        <Label
+            id="idCooLabel_RHUASN"
+            text="COO"
+        />
+        <Input
+            id="idCooInput_RHUASN"
+            placeholder="Country of origin"
+            maxLength="25"
+            width="100px"
+        />
+
+        <!-- Hidden Man Field -->
+        <Label
+            id="idHiddenManLabel_RHUASN"
+            text="Man"
+            visible="false"
+        />
+        <Input
+            id="idHiddenManInput_RHUASN"
+            placeholder="Enter Man"
+            maxLength="25"
+            width="100px"
+            visible="false"
+        />
+
+        <!-- Next or Enter Button -->
+        <Label id="idNextEnterLabel_RHUASN" />
+        <HBox id="idButtonHBox_RHUASN">
+            <Button
+                id="idNextEnterButton_RHUASN"
+                text="Next (or) Enter"
+                class="sapUiTinyMarginEnd"
+                press="onNextEnterpress"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+
+<ScrollContainer
+    id="page5ReceiveHUbyASN_RHUASN"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_RHUASN_page5"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton4_RHUASN"
+            icon="sap-icon://nav-back"
+            press="Onpressback4"
+        />
+        <Title
+            id="idTitle_RHUASN_page5"
+            text="Choose GR/UNLOAD"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_RHUASN_page5"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idHuDeliveryForm_RHUASN"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field -->
+        <Label
+            id="idHuNumberLabel_RHUASN"
+            text="HU"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idHuNumberInput_RHUASN"
+            placeholder="Enter HU..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idASNLabel_RHUASN"
+            text="ASN"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idASNInput__RHUASN"
+           
+            width="200px"
+        />
+        <Label
+            id="idItem_NOLabel_RHUASN"
+            text="Item No"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idItem_no_Input__RHUASN"
+           
+            width="200px"
+        />
+        <Label
+            id="idPlaceholderLabel_RHUASN_page5"
+            text=""
+        />
+
+        <HBox
+            id="idButtonHBox_RHUASN_page5"
+            class="sapUiSmallMarginTop"
+           
+        >
+            <Button
+                id="idGrButton_RHUASN"
+                text="GR"
+                press="onGRPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+
+            <Button
+                id="idUnloadButtoninpage5_RHUASN"
+                text="Unload"
+                press="onUnloadPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+
+<ScrollContainer
+    id="page6ReceiveHUbyASN_RHUASN"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_RHUASN_page6"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton5_RHUASN"
+            icon="sap-icon://nav-back"
+            press="Onpressback5"
+        />
+        <Title
+            id="idTitle_RHUASN_page6"
+            text="GR"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_RHUASN_page6"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProductQuantityForm_RHUASN"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field (Product) -->
+        <Label
+            id="idProductLabel_RHUASN_page6"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProductInputinpage6_RHUASN"
+            placeholder="Enter product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idQuantityLabelinpage6_RHUASN"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idQuantityInputinpage6_RHUASN"
+            placeholder="Enter Quantity..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <Label
+            id="idPlaceholderLabel_RHUASN_page6"
+            text=""
+        />
+        
+        <HBox
+            id="idGrButtonHBox_RHUASN_page6"
+            class="sapUiSmallMarginTop"
+          
+        >
+            <Button
+                id="idGRPressRHUASN"
+                text="GR"
+                press="onGRRPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+
+            
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="page7ReceiveHUbyASN_RHUASN"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_RHUASN_page7"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton55_RHUASN"
+            icon="sap-icon://nav-back"
+            press="Onpressback6"
+        />
+        <Title
+            id="idTitle_RHUASN_page7"
+            text="UNLOAD"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_RHUASN_page7"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProducttQuantityForm_RHUASN"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field (Product) -->
+        <Label
+            id="idProducttLabel_RHUASN_page7"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProducttInputinpage7_RHUASN"
+            placeholder="Enter product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idQuantityLabelinpage7_RHUASN"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idQuantityInputinpage7_RHUASN"
+            placeholder="Enter Quantity..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <Label
+            id="idPlaceholderLabel_RHUASN_page7"
+            text=""
+        />
+        
+        <HBox
+            id="idGrButtonHBox_RHUASN_page7"
+            class="sapUiSmallMarginTop"
+          
+        >
+           
+
+            <Button
+                id="idUnloadlButton_RHUASN"
+                text="Unload"
+                press="onUnloadPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

@@ -715,7 +715,7 @@
                         <GenericTile
                             id="idUnloadingByShipment1"
                             header="Unloading By Shipment"
-                            press="onTilePress"
+                            press="onUnloadingByShipmentPress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -735,7 +735,7 @@
                         <GenericTile
                             id="idUnloadingByTransportUnit1"
                             header="Unloading By Transport Unit"
-                            press="onTilePress"
+                            press="onUnloadingByTUPress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -755,7 +755,7 @@
                         <GenericTile
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
-                            press="onTilePress"
+                            press="onUnloadingBYASN"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -815,7 +815,7 @@
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
-                            press="onTilePress"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -1409,7 +1409,7 @@
                             id="IDStockBinQuerybyProduct"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Stock/Bin Query by Product"
-                            press="OnPressStock/BinQuerybyProduct"
+                            press="OnPressStockOrBinQuerybyProduct"
                         />
 
                         <GenericTile
