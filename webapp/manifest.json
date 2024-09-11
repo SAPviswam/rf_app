@@ -247,6 +247,20 @@
           ]
         },
         {
+          "name": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "target": [
+            "TargetAvailableHandlingUnitsOnBinQuery"
+          ]
+        },
+        {
+          "name": "WTQueryByHU",
+          "pattern": "WTQueryByHU",
+          "target": [
+            "TargetWTQueryByHU"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt",
           "target": [
@@ -422,6 +436,20 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByWO",
           "viewName": "PutawayByWO"
+        },
+        "TargetAvailableHandlingUnitsOnBinQuery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AvailableHandlingUnitsOnBinQuery",
+          "viewName": "AvailableHandlingUnitsOnBinQuery"
+        },
+        "TargetWTQueryByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByHU",
+          "viewName": "WTQueryByHU"
         },
         "TargetBillofLading": {
           "viewType": "XML",
