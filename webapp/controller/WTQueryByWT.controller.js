@@ -15,12 +15,12 @@ sap.ui.define(
             oRouter.navTo("Supervisor");
         },
         onWtQBWtWhLiveChange:function(){
-            if(this.getView().byId("idWtQBWtWhInput").getValue()=="1234"){
+           
                 this.getView().byId("idWtQBWtFirstSC").setVisible(false);
                 this.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
                 this.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
                 this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
-            }  
+            
         },
         onWtQBWtSecondBackBtnPress:function(){
             this.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
