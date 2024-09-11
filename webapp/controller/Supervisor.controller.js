@@ -1524,6 +1524,7 @@ sap.ui.define(
                 }
             },
             OnPressStockBinQueryByBin: function () {
+                debugger
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByBin");
 

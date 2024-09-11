@@ -109,12 +109,14 @@
                         class="sapTinyMarginEnd"
                     >
                         <!-- Barcode Scan Button -->
-                        <Button
-                            id="_IDBinGenScanButton_SBQB"
-                            icon="sap-icon://bar-code"
-                            press="onPressBinScan"
-                            class="sapUiTinyMarginEnd"
-                        />
+                             <ndc:BarcodeScannerButton
+                                id="_IDBinGenScanButton_SBQB"
+                                scanSuccess="onScanSuccess"
+                                scanFail="onScanError"
+                                inputLiveUpdate="onScanLiveupdate"
+                                dialogTitle="Barcode Scanner"
+                            />
+                        <VBox id="qrCodePlaceholder_SBQB" class="sapUiSmallMarginTop" />
                         <!-- Submit Button -->
                         <Button
                             id="_IDBinGenSubmitButton_SBQB"
@@ -275,7 +277,7 @@
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
                  <form:SimpleForm
-                    id="simpleform4"
+                    id="simpleform4_SBQB"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -297,154 +299,169 @@
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPBinInput"
+                                id="idSBQBBinInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPStorTypeLabel"
+                                id="idSBQBStorTypeLabel"
                                 text="SSec"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPStoreTypeInput"
+                                id="idSBQBStoreTypeInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPStorTypeLabel1"
+                                id="idSBQBStorTypeLabel1"
                                 text="BT"
                                 width="60Px"
                             />
                              <Input
-                                id="idSBQPStoreTypeInput1"
+                                id="idSBQBStoreTypeInput1"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
 
                         <HBox>
                             <Label
-                                id="idSBQPQtyLabel"
+                                id="idSBQBQtyLabel"
                                 text="MHU"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPQtyWInput"
+                                id="idSBQBQtyWInput"
                                 value=""
+                                editable="false"
                             />
                              <Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPStorSecLabel"
+                                id="idSBQBStorSecLabel"
                                 text="AcHU"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPStorSecInput"
+                                id="idSBQBStorSecInput"
                                 value=""
+                                editable="false"
                             /><Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPStorTypeLabel2"
+                                id="idSBQBStorTypeLabel2"
                                 text="Sect"
                                 width="60Px"
                             />
                              <Input
-                                id="idSBQPStoreTypeInput2"
+                                id="idSBQBStoreTypeInput2"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQNoOfHuLabel"
+                                id="idSBQBNoOfHuLabel"
                                 text="MaxW"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPNoOfHuInput"
+                                id="idSBQBNoOfHuInput"
                                 value=""
+                                editable="false"
                             />
                              <Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPBinAisleLabel"
+                                id="idSBQBBinAisleLabel"
                                 text="ActW"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPBinAisleInput"
+                                id="idSBQBBinAisleInput"
                                 value=""
+                                 editable="false"
                             />
                             <Input
-                                id="idSBQPBinAisleInputUOM"
+                                id="idSBQBBinAisleInputUOM"
                                 value=""
                                 width="4rem"
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxWLabel"
+                                id="idSBQBMaxWLabel"
                                 text="MaxV"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPMaxWInput"
+                                id="idSBQBMaxWInput"
                                 value=""
+                                editable="false"
                             />
                             
                              <Label
                                 text=""
                                 width="30px"
+                                
                             />
                             <Label
-                                id="idSBQPBinLevelLabel"
+                                id="idSBQBBinLevelLabel"
                                 text="ActV"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPBinLevelInput"
+                                id="idSBQBBinLevelInput"
                                 value=""
+                                editable="false"
                             /> 
                             <Input
-                                id="idSBQPBinLevelInputUOM"
+                                id="idSBQBinLevelInputUOM"
                                 value=""
                                 width="4rem"
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxVLabel"
+                                id="idSBQBMaxVLabel"
                                 text="MaxC"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPMaxVInput"
+                                id="idSBQBMaxVInput"
                                 value=""
+                                editable="false"
                             />
                              <Label
                                 text=""
                                 width="30px"
                             />
                             <Label
-                                id="idSBQPStackLabel"
+                                id="idSBQBStackLabel"
                                 text="Av. C"
                                 width="60Px"
                             />
                             <Input
-                                id="idSBQPStackInput"
+                                id="idSBQBStackInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                     </VBox>
