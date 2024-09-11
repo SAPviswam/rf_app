@@ -247,6 +247,20 @@
           ]
         },
         {
+          "name": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "target": [
+            "TargetAvailableHandlingUnitsOnBinQuery"
+          ]
+        },
+        {
+          "name": "WTQueryByHU",
+          "pattern": "WTQueryByHU",
+          "target": [
+            "TargetWTQueryByHU"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt",
           "target": [
@@ -314,6 +328,22 @@
           "pattern": "ReceivingofHUbyTU",
           "target": [
             "TargetReceivingofHUbyTU"
+          ]
+        },
+        {
+          "name": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation",
+          "target": [
+            "TargetSerialNumberLocation"
+          ]
+    },
+
+    {
+          "name": "WTQueryByWT",
+          "pattern": "WTQueryByWT",
+          "target": [
+            "TargetWTQueryByWT"
+
           ]
         }
       ],
@@ -430,6 +460,20 @@
           "viewId": "PutawayByWO",
           "viewName": "PutawayByWO"
         },
+        "TargetAvailableHandlingUnitsOnBinQuery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AvailableHandlingUnitsOnBinQuery",
+          "viewName": "AvailableHandlingUnitsOnBinQuery"
+        },
+        "TargetWTQueryByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByHU",
+          "viewName": "WTQueryByHU"
+        },
         "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
@@ -527,6 +571,23 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyTU",
           "viewName": "ReceivingofHUbyTU"
+        },
+
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+      },
+
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+
         }
       }
     },
