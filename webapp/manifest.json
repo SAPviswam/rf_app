@@ -275,14 +275,6 @@
           ]
         },
         {
-
-          "name": "RecevingOfHUbyTUorDoor",
-          "pattern": "RecevingOfHUbyTUorDoor",
-          "target": [
-            "TargetRecevingOfHUbyTUorDoor"
-            ]
-        },
-        {
           "name": "Receivingofhubyco",
           "pattern": "Receivingofhubyco",
           "target": [
@@ -294,7 +286,6 @@
           "pattern": "ReceivingofHUbyShipment",
           "target": [
             "TargetReceivingofHUbyShipment"
-
           ]
         },
         {
@@ -302,13 +293,6 @@
           "pattern": "WTQueryByWO",
           "target": [
             "TargetWTQueryByWO"
-          ]
-        },
-        {
-          "name": "ReceivingofHUbyTU",
-          "pattern": "ReceivingofHUbyTU",
-          "target": [
-            "TargetReceivingofHUbyTU"
           ]
         }
       ],
@@ -480,15 +464,6 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyManufacturingOrder",
           "viewName": "RecevingOfHUbyManufacturingOrder"
-
-        },
-        "TargetRecevingOfHUbyTUorDoor": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyTUorDoor",
-          "viewName": "RecevingOfHUbyTUorDoor"
-
         },
         "TargetRecevingofHUbyConsignemntOrder": {
           "viewType": "XML",
@@ -503,7 +478,6 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyShipment",
           "viewName": "ReceivingofHUbyShipment"
-
         },
         "TargetWTQueryByWO": {
           "viewType": "XML",
@@ -511,14 +485,6 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
-        },
-        "TargetReceivingofHUbyTU": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "ReceivingofHUbyTU",
-          "viewName": "ReceivingofHUbyTU"
-
         }
       }
     },

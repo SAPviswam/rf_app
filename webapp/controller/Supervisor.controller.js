@@ -1647,7 +1647,7 @@ sap.ui.define(
             onReceivingofHUbyTU:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyTU");
-            }
+            },
 
         });
     }
