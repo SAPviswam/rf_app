@@ -1,9 +1,10 @@
 sap.ui.define([
     "./BaseController",
     "sap/m/MessageBox",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/ui/core/BusyIndicator"
 ],
-    function (Controller, MessageBox, MessageToast) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
@@ -136,7 +137,14 @@ sap.ui.define([
 
                 // Special case for Resource ID 111010 and Password ARTIHCUS
                 if (sResourceId === "111010" && sPassword === "ARTIHCUS") {
-                    this.getRouter().navTo("Supervisor");
+                    BusyIndicator.show(5);
+                                    setTimeout(function () {
+                                        // Navigate to another page (user page)
+                                        var oRouter = this.getOwnerComponent().getRouter();
+                                        oRouter.navTo("Supervisor");
+                                        BusyIndicator.hide();
+                                      }.bind(this), 1000); 
+                    // this.getRouter().navTo("Supervisor");
                     return;
                 }
 
@@ -157,6 +165,16 @@ sap.ui.define([
                                     that.sample(); // Your custom logic for first-time login
                                 } else {
                                     sap.m.MessageToast.show("Welcome back!");
+
+                                    // NOTE: just uncomment below code for buffering effect for resource login  
+
+                                    // BusyIndicator.show(3);
+                                    // setTimeout(function () {
+                                    //     // Navigate to another page (user page)
+                                    //     var oRouter = that.getOwnerComponent().getRouter();
+                                    //     oRouter.navTo("RouteResourcePage", { id: sResourceId });
+                                    //     BusyIndicator.hide();
+                                    //   }.bind(this), 2000); 
 
                                     // Navigate to the ResourcePage with the correct ID
                                     that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
