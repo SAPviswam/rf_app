@@ -8,7 +8,7 @@ sap.ui.define(
       return BaseController.extend("com.app.rfapp.controller.RecevingOfHUbyManufacturingOrder", {
         onInit: function () {
   
-        const oTable = this.getView().byId("idROHMTable");
+            const oTable = this.getView().byId("idROHMTable");
               oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
              
           },

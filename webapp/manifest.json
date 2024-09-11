@@ -279,6 +279,13 @@
           "target": [
             "TargetStockBinQueryByProduct"
           ]
+        },
+        {
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+          ]
         }
       ],
       "targets": {
@@ -456,6 +463,14 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyManufacturingOrder",
           "viewName": "RecevingOfHUbyManufacturingOrder"
+
+        },
+        "TargetRecevingOfHUbyTUorDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
 
         }
       }
