@@ -21,15 +21,15 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         },
         Onpresssubmit: function () {
 
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(true);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(true);
            
 
         },
         Onpressback1: function () {
 
-            this.getView().byId("page1billofLading").setVisible(true);
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(true);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
           
 
 
@@ -38,104 +38,104 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         },
         onHUListPress:function () {
 
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(false);
-            this.getView().byId("page3billofLading").setVisible(true);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
+            this.getView().byId("page3billofLading_UOBL").setVisible(true);
            
          
         },
         Onpressback2:function(){
             
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(true);
-            this.getView().byId("page3billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(true);
+            this.getView().byId("page3billofLading_UOBL").setVisible(false);
            
             
             
         },
         onNewHUPress:function(){
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(false);
-            this.getView().byId("page3billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
+            this.getView().byId("page3billofLading_UOBL").setVisible(false);
            
-            this.getView().byId("page4billofLading").setVisible(true);
-            this.getView().byId("page5billofLading").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(true);
+            this.getView().byId("page5billofLading_UOBL").setVisible(false);
 
          
         },
         Onpressback3:function(){
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(true);
-            this.getView().byId("page4billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(true);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
            
         },
         onNextEnterpress:function(){
-            this.getView().byId("page5billofLading").setVisible(true);
+            this.getView().byId("page5billofLading_UOBL").setVisible(true);
            
-            this.getView().byId("page4billofLading").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
            
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
             
         },
         Onpressback4:function(){
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page5billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page5billofLading_UOBL").setVisible(false);
            
-            this.getView().byId("page4billofLading").setVisible(true);
-            this.getView().byId("page3billofLading").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(true);
+            this.getView().byId("page3billofLading_UOBL").setVisible(false);
 
          
         
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
             
         },
         onGRPress:function(){
-            this.getView().byId("page6billofLading").setVisible(true);
-            this.getView().byId("page5billofLading").setVisible(false);
-            this.getView().byId("page4billofLading").setVisible(false);
+            this.getView().byId("page6billofLading_UOBL").setVisible(true);
+            this.getView().byId("page5billofLading_UOBL").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
            
 
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
 
         },
         Onpressback5:function(){
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page5billofLading").setVisible(true);
-            this.getView().byId("page6billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page5billofLading_UOBL").setVisible(true);
+            this.getView().byId("page6billofLading_UOBL").setVisible(false);
             
            
-            this.getView().byId("page4billofLading").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
           
 
         
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
             
         },
         onUnloadPress:function(){
-            this.getView().byId("page6billofLading").setVisible(false);
-            this.getView().byId("page5billofLading").setVisible(false);
-            this.getView().byId("page4billofLading").setVisible(false);
-            this.getView().byId("page7billofLading").setVisible(true);
+            this.getView().byId("page6billofLading_UOBL").setVisible(false);
+            this.getView().byId("page5billofLading_UOBL").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
+            this.getView().byId("page7billofLading_UOBL").setVisible(true);
 
            
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
 
         },
 
        
         // onUnloadPress1:function(){
-        //     this.getView().byId("page6billofLading").setVisible(false);
-        //     this.getView().byId("page5billofLading").setVisible(false);
-        //     this.getView().byId("page4billofLading").setVisible(false);
-        //     this.getView().byId("page7billofLading").setVisible(true);
+        //     this.getView().byId("page6billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page5billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page4billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page7billofLading_UOBL").setVisible(true);
 
         //     this.getView().byId("_IDGenButton4444").setVisible(false); 
         //     this.getView().byId("_IDGenButton2222").setVisible(false);
@@ -146,34 +146,34 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
            
 
 
-        //     this.getView().byId("page1billofLading").setVisible(false);
-        //     this.getView().byId("page2billofLading").setVisible(false);
+        //     this.getView().byId("page1billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
 
         // },
         Onpressback6:function(){
-            this.getView().byId("page1billofLading").setVisible(false);
-            this.getView().byId("page5billofLading").setVisible(true);
+            this.getView().byId("page1billofLading_UOBL").setVisible(false);
+            this.getView().byId("page5billofLading_UOBL").setVisible(true);
             this.getView().byId("icon7").setVisible(false);
-            this.getView().byId("page6billofLading").setVisible(false);
+            this.getView().byId("page6billofLading_UOBL").setVisible(false);
            
-            this.getView().byId("page3billofLading").setVisible(false);
+            this.getView().byId("page3billofLading_UOBL").setVisible(false);
          
-            this.getView().byId("page4billofLading").setVisible(false);
+            this.getView().byId("page4billofLading_UOBL").setVisible(false);
 
         
-            this.getView().byId("page2billofLading").setVisible(false);
+            this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
             
         },
         // Onpressback7:function(){
-        //     this.getView().byId("page1billofLading").setVisible(false);
-        //     this.getView().byId("page5billofLading").setVisible(true);
-        //     this.getView().byId("page6billofLading").setVisible(false);
-        //     this.getView().byId("page7billofLading").setVisible(false);
+        //     this.getView().byId("page1billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page5billofLading_UOBL").setVisible(true);
+        //     this.getView().byId("page6billofLading_UOBL").setVisible(false);
+        //     this.getView().byId("page7billofLading_UOBL").setVisible(false);
 
            
-        //     this.getView().byId("page3billofLading").setVisible(false);
+        //     this.getView().byId("page3billofLading_UOBL").setVisible(false);
         //     this.getView().byId("_IDGenButton4444").setVisible(false); 
         //     this.getView().byId("_IDGenButton2222").setVisible(false);
         //     this.getView().byId("_IDGenButton3333").setVisible(false);  
@@ -181,10 +181,10 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         //     this.getView().byId("_IDGenButton5555").setVisible(false);
         //     this.getView().byId("_IDGenButton6666").setVisible(false);
       
-        //     this.getView().byId("page4billofLading").setVisible(false);
+        //     this.getView().byId("page4billofLading_UOBL").setVisible(false);
 
         
-        //     this.getView().byId("page2billofLading").setVisible(false);
+        //     this.getView().byId("page2billofLading_UOBL").setVisible(false);
 
             
         // },

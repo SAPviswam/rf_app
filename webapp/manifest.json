@@ -107,8 +107,15 @@
       },
       "routes": [
         {
-          "name": "RouteHome",
+          "name": "InitialScreen",
           "pattern": ":?query:",
+          "target": [
+            "TargetInitialScreen"
+          ]
+        },
+        {
+          "name": "Homepage",
+          "pattern": "Homepage/{id}",
           "target": [
             "TargetHome"
           ]
@@ -240,6 +247,20 @@
           ]
         },
         {
+          "name": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "target": [
+            "TargetAvailableHandlingUnitsOnBinQuery"
+          ]
+        },
+        {
+          "name": "WTQueryByHU",
+          "pattern": "WTQueryByHU",
+          "target": [
+            "TargetWTQueryByHU"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt",
           "target": [
@@ -296,14 +317,31 @@
           ]
         },
         {
+
           "name": "SerialNumberLocation",
           "pattern": "SerialNumberLocation",
           "target": [
             "TargetSerialNumberLocation"
           ]
+    },
+
+    {
+          "name": "WTQueryByWT",
+          "pattern": "WTQueryByWT",
+          "target": [
+            "TargetWTQueryByWT"
+
+          ]
         }
       ],
       "targets": {
+        "TargetInitialScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InitialScreen",
+          "viewName": "InitialScreen"
+        },
         "TargetHome": {
           "viewType": "XML",
           "transition": "slide",
@@ -409,6 +447,20 @@
           "viewId": "PutawayByWO",
           "viewName": "PutawayByWO"
         },
+        "TargetAvailableHandlingUnitsOnBinQuery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AvailableHandlingUnitsOnBinQuery",
+          "viewName": "AvailableHandlingUnitsOnBinQuery"
+        },
+        "TargetWTQueryByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByHU",
+          "viewName": "WTQueryByHU"
+        },
         "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
@@ -493,12 +545,22 @@
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
         },
+
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
+      },
+
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+
         }
       }
     },

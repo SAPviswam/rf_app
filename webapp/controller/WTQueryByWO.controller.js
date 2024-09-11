@@ -30,7 +30,8 @@ sap.ui.define(
         onWtQBWoSecondBackBtnPress:function(){
             this.getView().byId("idWtQBWoFirstSC").setVisible(true);
             this.getView().byId("idWtQBWoWhSecondsc").setVisible(false);
- 
+            this.getView().byId("idWtQBWofirstbackbtn").setVisible(true);
+            this.getView().byId("idWtQBWoSecondbackbtn").setVisible(false);
         },
         onBtnPress:function(){
             this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
