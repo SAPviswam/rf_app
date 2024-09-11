@@ -301,6 +301,20 @@
           "target": [
             "TargetWTQueryByWO"
           ]
+        },
+        {
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU",
+          "target": [
+            "TargetReceivingofHUbyTU"
+          ]
         }
       ],
       "targets": {
@@ -499,6 +513,20 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
+        },
+        "TargetRecevingOfHUbyTUorDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
+        },
+        "TargetReceivingofHUbyTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyTU",
+          "viewName": "ReceivingofHUbyTU"
         }
       }
     },
