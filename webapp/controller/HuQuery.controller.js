@@ -6,133 +6,33 @@
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
-        // onInit: function () {
-        //     var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
-        //     this.getView().setModel(oModel);
-        //     var i18nModel = this.getOwnerComponent().getModel("i18n");
-        //     var oTable = this.byId("HuDetailsTable");
-        //     var oQuantityHeader = this.byId("_IDGenText3");
-        //     var oProductDescriptionHeader = this.byId("_IDGenText5");
 
-        //     if (Device.system.phone) {
-        //         oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
-        //         oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
-
-
-        //     }
-        //     else {
-        //         oQuantityHeader.setText(i18nModel.getResourceBundle().getText("quantity"));
-        //         oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
-
-        //     }
-        // },
-        // onItemSelect: function (oEvent) {
-        //     var oItem = oEvent.getParameter("item");
-        //     this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
-        // },
-        // Onpresssubmit: function () {
-        //     debugger
-        //     var oHu = this.byId("_IDGenInput1").getValue();
-        //     debugger
-        //     /**Getting Model */
-        //     var oModel = this.getOwnerComponent().getModel();
-        //     var that = this;
-            
-        //     oModel.read(`/Hu_ContentSet('${oHu}')`, {
-        //         success: function (odata) {
-                    
-                  
-        //            /* odata.Matid
-        //             odata.Quan
-        //             odata.Meins
-                   
-                    
-                  
-                   
-                    
-                   
-        //             odata.UnitLwh
-        //             odata.UnitGw
-                    
-        //             odata.UnitTv
-        //             odata.Lgpla */
-        //             that.byId("_IDGenInput2").setValue(odata.Huident);
-        //             that.byId("_IDGenInput3").setValue( odata.Letyp);
-        //             that.byId("_IDGenInputLength").setValue(odata.Length);
-        //             that.byId("_IDGenInputWidth").setValue(odata.Width);
-        //             that.byId("_IDGenInputHeight").setValue(odata.Height);
-        //             that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-        //             that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-        //             that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-        //             that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-        //             that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-        //             that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-        //             that.getView().byId("icon1").setVisible(false);
-        //             that.getView().byId("icon2").setVisible(true);
-        //             that.getView().byId("_IDGenButton1111").setVisible(true);
-        //         }, error: function (oError) {
-        //             sap.m.MessageBox.error("Error");
-
-        //         }
-        //     })
-
-
-        // },
-        // onHUContentPress: function () {
-
-
-        //     this.getView().byId("icon1").setVisible(false);
-        //     this.getView().byId("icon2").setVisible(false);
-        //     this.getView().byId("icon3").setVisible(true);
-        //     this.getView().byId("icon4").setVisible(false);
-        //     this.getView().byId("_IDGenButton1111").setVisible(false);
-        //     this.getView().byId("_IDGenButton1122").setVisible(true);
-
-        // },
-        // onHUHierarchyPress: function () {
-
-        //     this.getView().byId("icon1").setVisible(false);
-        //     this.getView().byId("icon2").setVisible(false);
-        //     this.getView().byId("icon3").setVisible(false);
-        //     this.getView().byId("icon4").setVisible(true);
-        //     this.getView().byId("_IDGenButton1111").setVisible(false);
-        //     this.getView().byId("_IDGenButton1122").setVisible(true);
-        // },
-
-        // Onpressback1: function () {
-
-        //     this.getView().byId("icon1").setVisible(false);
-        //     this.getView().byId("icon2").setVisible(true);
-        //     this.getView().byId("icon3").setVisible(false);
-        //     this.getView().byId("icon4").setVisible(false);
-        //     this.getView().byId("_IDGenButton1111").setVisible(true);
-        //     this.getView().byId("_IDGenButton1122").setVisible(false);
-
-        // },
-        // Onpressback2: function () {
-
-        //     this.getView().byId("icon1").setVisible(true);
-        //     this.getView().byId("icon2").setVisible(false);
-        //     this.getView().byId("icon3").setVisible(false);
-        //     this.getView().byId("icon4").setVisible(false);
-
-        // },
-        // Submit: function () {
-
-        // }
         onInit: function () {
+         
+            var oProductDescriptionHeader = this.byId("_IDGenText5");
             var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
             this.getView().setModel(oModel);
             var i18nModel = this.getOwnerComponent().getModel("i18n");
             var oQuantityHeader = this.byId("_IDGenText3");
-            var oProductDescriptionHeader = this.byId("_IDGenText5");
-
+            var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
+            
             if (Device.system.phone) {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
             } else {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("quantity"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
+            }
+        
+          
+            this._setFocus();
+            
+        },
+
+        _setFocus: function() {
+            var oInput = this.byId("_IDGenInput1");
+            if (oInput) {
+                oInput.focus();
             }
         },
 
@@ -145,8 +45,10 @@
             this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
         },
         onScanSuccess: function(oEvent) {
+            debugger
             // Get the scanned text from the event
             var scannedText = oEvent.getParameter("text");
+            var othis = this;
         
             // Check if the scan was cancelled
             if (oEvent.getParameter("cancelled")) {
@@ -161,6 +63,7 @@
         
                 // Optionally, display a success message
                 sap.m.MessageToast.show("Scanned successfully: " + scannedText);
+                othis.onLiveHuProcess(scannedText);
             } else {
                 // If no text is scanned, set the input field to empty
                 this.byId("_IDGenInput1").setValue("");
@@ -171,6 +74,7 @@
         
         // Live validation logic
         onLiveHuValidation: function (oEvent) {
+            debugger
             var oInput = oEvent.getSource();
             var oHuValue = oInput.getValue().trim();
 
@@ -184,14 +88,65 @@
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("icon2").setVisible(true);
                         that.getView().byId("icon1").setVisible(false);
+                        that.getView().byId("_IDGenButton1111").setVisible(true);
+                        that.getView().byId("_IDGenButton1122").setVisible(false);
+                        that.getView().byId("_IDGenButton1133").setVisible(false);
                         // Optionally, you can also populate fields here based on the result
                         that._populateHUDetails(odata);
                     },
                     error: function (oError) {
                         // Show error message if HU is not found
-                        MessageBox.error("HU not found. Please enter a valid HU.");
-                        that.getView().byId("icon2").setVisible(false);
-                        that.getView().byId("icon1").setVisible(true);
+                       
+                        
+                    }
+                });
+            } else {
+                // Reset view if input is cleared
+                this.getView().byId("icon2").setVisible(false);
+                this.getView().byId("icon1").setVisible(true);
+            }
+        },
+
+        // Function to populate HU details when successful
+        _populateHUDetails: function (odata) {
+            this.byId("_IDGenInput2").setValue(odata.Huident);
+            this.byId("_IDGenInput3").setValue(odata.Letyp);
+            this.byId("_IDGenInputLength").setValue(odata.Length);
+            this.byId("_IDGenInputWidth").setValue(odata.Width);
+            this.byId("_IDGenInputHeight").setValue(odata.Height);
+            this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
+            this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
+            this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
+            this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+            this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
+            this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+        },
+        onLiveHuProcess: function (scannedText) {
+            var oInput = parseInt(scannedText);
+            var oHuValue = oInput;
+
+            if (oHuValue) {
+                // Call OData service to validate the HU value
+                var oModel = this.getOwnerComponent().getModel();
+                var that = this;
+
+                oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
+                    success: function (odata) {
+                        // If HU exists, show icon2 and hide icon1
+                        that.getView().byId("icon2").setVisible(true);
+                        that.getView().byId("icon1").setVisible(false);
+
+                        // Optionally, you can also populate fields here based on the result
+                        that._populateHUDetails(odata);
+                        that.getView().byId("_IDGenButton1111").setVisible(true);
+                        that.getView().byId("_IDGenButton1122").setVisible(false);
+                        that.getView().byId("_IDGenButton1133").setVisible(false);
+                    },
+                    error: function (oError) {
+                        // Show error message if HU is not found
+                      
+                        
+                        
                     }
                 });
             } else {
@@ -290,7 +245,7 @@
 
         // },
         Onpressback3:function () {
-    
+            debugger
             var oRouter = this.getOwnerComponent().getRouter().navTo("Supervisor");
          
             },
@@ -304,7 +259,7 @@
             this.getView().byId("icon4").setVisible(false);
             this.getView().byId("_IDGenButton1111").setVisible(false);
             this.getView().byId("_IDGenButton1122").setVisible(true);
-  this.getView().byId("_IDGenButton1133").setVisible(false);
+            this.getView().byId("_IDGenButton1133").setVisible(false);
 
         },
         onHUHierarchyPress: function () {
@@ -321,13 +276,15 @@
 
 
         Onpressback1: function () {
-
+           debugger
             this.getView().byId("icon1").setVisible(false);
             this.getView().byId("icon2").setVisible(true);
             this.getView().byId("icon3").setVisible(false);
             this.getView().byId("icon4").setVisible(false);
             this.getView().byId("_IDGenButton1111").setVisible(true);
             this.getView().byId("_IDGenButton1122").setVisible(false);
+            this.byId("_IDGenInput1").setValue("");
+
 
         },
         Onpressback2: function () {
@@ -336,15 +293,25 @@
             this.getView().byId("icon2").setVisible(false);
             this.getView().byId("icon3").setVisible(false);
             this.getView().byId("icon4").setVisible(false);
-           
- this.getView().byId("_IDGenButton1133").setVisible(true);
+            this.byId("_IDGenInput1").setValue("");
+            this.getView().byId("_IDGenButton1133").setVisible(true);
             this.getView().byId("_IDGenButton1111").setVisible(false);
          
 
         },
         Submit: function () {
 
+        },
+        onAfterRendering: function () {
+            var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
+            if (oInput) {
+                setTimeout(function () {
+                    oInput.focus();
+                }, 100); // Adjust the delay if needed
+            }
         }
+
+        
 
 
     });

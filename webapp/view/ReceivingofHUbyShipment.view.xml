@@ -1,0 +1,842 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.ReceivingofHUbyShipment"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageReceivingHubyShipment">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderReceivingHubyShipment">
+                <Image
+                    id="_IDGenImage1ReceivingHubyShipment"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorReceivingHubyShipment"
+                />
+                <ToolbarSpacer id="idToolbarSpacerReceivingHubyShipment">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1ReceivingHubyShipment"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1ReceivingHubyShipment"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idRHBSscrollContainer1"
+                vertical="true"
+                horizontal="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_MainbackButton1"
+                    icon="sap-icon://nav-back"
+                    press="Onpressbackbol1main"
+                    visible="true"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="IDRHBSGenVBoxpage1"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="idRHBStitlebol1"
+                        text="Receiving of HU by Shipment"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                    <form:SimpleForm
+                        id="RHBSsimpleForm"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="_IDGenHBoxContainerinpage1byshipment"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="IDShipmentGenLabel"
+                                text="Shipment Number:"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="IDShipmentInput"
+                                placeholder="Enter Shipment Number"
+                                class="sapUiSmallMarginBegin"
+                                liveChange="onLivechangeShipment"
+                            />
+                            <ndc:BarcodeScannerButton
+                                id="idBarcodeScannerShipment"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter BOL Number"
+                                class="sapUiMediumMarginBegin"
+                            />
+                            <Button
+                                id="IDShipmentsubmitButton"
+                                text="Submit"
+                                press="OnpressShipmentsubmit"
+                                class="sapUiSmallMarginBegin"
+                                type="Emphasized"
+                            />
+                        </HBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer2"
+                vertical="true"
+                horizontal="false"
+                height="100%"
+                width="100%"
+                visible="false"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_FirstbackButton1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressFirstback_Shipment"
+                    visible="false"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="idMainVBox"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    height="100%"
+                    width="100%"
+                    class="sapUiContentPadding"
+                >
+                    <!-- Spacer to push content to the top -->
+                    <form:SimpleForm
+                        id="RHBSsimpleForm2forshipment"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="_IDGenHBoxContainerinScrollContainer2"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="IDShipmentGenLabelforScrollContainer2"
+                                text="Shipment Number:"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="IDShipmentInputforScrollContainer2"
+                                placeholder="Enter Shipment Number"
+                                class="sapUiSmallMarginBegin"
+                                liveChange="onLivechangeShipment"
+                            />
+                        </HBox>
+                    </form:SimpleForm>
+
+                    <VBox
+                        id="idBottomContentVBox"
+                        alignItems="Center"
+                        justifyContent="End"
+                        class="sapUiContentPadding"
+                        height="100%"
+                        width="100%"
+                    >
+                        <Table
+                            id="idRHBSshipmennumbertable"
+                            inset="false"
+                            growing="true"
+                            growingScrollToLoad="true"
+                            mode="SingleSelectMaster"
+                            selectionChange="onSelectionChange"
+                            width="auto"
+                        >
+                            <columns>
+                                <Column
+                                    id="idcolumnserialnumberRHBSShipment"
+                                    width="10%"
+                                >
+                                    <Text
+                                        id="idtextserialnumberRhbsShipment"
+                                        text="S.No"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idcolumnShipmentDeliveryRhbsShipment"
+                                    width="20%"
+                                >
+                                    <Text
+                                        id="idtextShipmentDelivery"
+                                        text="Delivery"
+                                    />
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem id="idcolumnlistitemRHBS">
+                                    <cells>
+                                        <Text
+                                            id="idcellserialnumber"
+                                            text="1"
+                                        />
+                                        <Text
+                                            id="idcellproduct"
+                                            text="800020"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </VBox>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer3"
+                vertical="true"
+                horizontal="false"
+                visible="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_SecondbackButton1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressSecondback_Shipment"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="idTitleVBoxShipment"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Title
+                        id="idRHBStitleHuDetails"
+                        text="Hu Details"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                </VBox>
+                <form:SimpleForm
+                    id="idsimpleformHubyShipmentScreen3"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idLabelDeNoHubyShipmentScreen3"
+                        text="Delivery"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox
+                        id="idHboxDeNoHubyShipmentScreen3"
+                        class="gapBetweenInputs"
+                    >
+                        <Input
+                            id="idinputDeNoHubyShipmentScreen3"
+                            placeholder="Delivery number.."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <HBox id="idHboxINOHubyShipmentScreen3">
+                            <Label
+                                id="idlabelINOHubyShipmentScreen3"
+                                text="Item NO:"
+                                class="ItemLabel"
+                            />
+
+                            <Input
+                                id="idInputINOHubyShipmentScreen3"
+                                placeholder="Enter Items.."
+                                maxLength="25"
+                                width="200px"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <!-- Vendor Field -->
+                    <Label
+                        id="idVendoroHubyShipmentScreen3"
+                        text="Vendor"
+                    />
+                    <Input
+                        id="inputVendoroHubyShipmentScreen3"
+                        placeholder="Enter Vendor..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- No.of HU -->
+                    <Label
+                        id="idforNOofHubyShipmentScreen3"
+                        text="No.of HU"
+                        class="sapUiMarginTopmargin"
+                    />
+                    <Input
+                        id="idInputforNOofHubyShipmentScreen3"
+                        placeholder="Enter no.of HU"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- HU field -->
+                    <Label
+                        id="idlabel2HubyShipmentScreen3"
+                        text="HU"
+                        class="margin"
+                    />
+                    <VBox id="idVboxHubyShipmentScreen3">
+                        <Input
+                            id="idInputHubyShipmentScreen3"
+                            placeholder="Enter HU"
+                            maxLength="25"
+                            width="200px"
+                        />
+                        <!-- HU List , New Hu ,GR,  -->
+                        <HBox id="idhboxHubyShipmentScreen3">
+                            <Button
+                                id="idButtonHulistHubyShipmentScreen3"
+                                text="HU List"
+                                press="onHUListPressHubyShipmentScreen3"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonNewHUDeliveryHubyShipmentScreen3"
+                                text="New HU"
+                                press="onScreen3NewHUPressHubyShipment"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonGRDeliveryHubyShipmentScreen3"
+                                text="GR"
+                                press="onGRPressHubyShipmentScreen3"
+                            />
+                        </HBox>
+                        <!-- HU Change ,Unload ,Create WT, Confirm WT -->
+                        <HBox id="idhbox2HubyShipmentScreen3">
+                            <Button
+                                id="idButtonHuChangeHubyShipmentScreen3"
+                                text="HU Change"
+                                press="onHUChangePressHubyShipmentScreen3"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonUnloadDeliveryHubyShipmentScreen3"
+                                text="Unload"
+                                press="onUnloadDeliveryPressHubyShipmentScreen3"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonCreateWTHubyShipmentScreen3"
+                                text="Create WT"
+                                press="onPressCreateWTHubyShipmentScreen3"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonConfirmWTHubyShipmentScreen3"
+                                text="Confirm WT"
+                                press="onPressConfirmWTHubyShipmentScreen3"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer4"
+                vertical="true"
+                horizontal="false"
+                visible="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_HuListBackButton1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressHuListBackButton1"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="idTitleVBoxShipmentHuDetails"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Table
+                        id="idtablehulistHubyShipmentHuDetails"
+                        inset="false"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        mode="None"
+                    >
+                        <columns>
+                            <Column
+                                id="idcolumnDeliveryNobyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextDEliveryNObyShipmentHuDetails"
+                                    text="S.No"
+                                />
+                            </Column>
+                            <Column
+                                id="idcolumnHUNobyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextHUNObyShipmentHuDetails"
+                                    text="Hu No"
+                                />
+                            </Column>
+                            <Column
+                                id="idcolumnPoductNobyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextPRoductNObyShipmentHuDetails"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column
+                                id="idcolumnPoductDiscriptionbyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextPRoductDiscriptionbyShipmentHuDetails"
+                                    text="Producti Description"
+                                />
+                            </Column>
+                            <Column
+                                id="idcolumnQuantitybyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextQuantitybyShipmentHuDetails"
+                                    text="Quantity"
+                                />
+                            </Column>
+                            <Column
+                                id="idcolumnunitofmeasurebyShipmentHuDetails"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idTextUnitOfMeasurebyShipmentHuDetails"
+                                    text="UoM"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                id="idColumnListItemtableShipmentHuDetails"
+                            >
+                                <cells>
+                                    <Text
+                                        id="idvalueSNoShipmentHuDetails"
+                                        text=""
+                                    />
+                                    <Text
+                                        id="idvalueHUNOShipmentHuDetails"
+                                        text=""
+                                    />
+                                    <Text
+                                        id="idvalueProductShipmentHuDetails"
+                                        text=""
+                                    />
+                                    <Text
+                                        id="idvalueProductDiscriptionShipmentHuDetails"
+                                        text=""
+                                    />
+                                    <Text
+                                        id="idvalueQuantityShipmentHuDetails"
+                                        text=""
+                                    />
+                                    <Text
+                                        id="idvalueunitOfMEasureShipmentHuDetails"
+                                        text=""
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer5"
+                vertical="true"
+                horizontal="false"
+                visible="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_NewHuBackButtonShipmentNewHu"
+                    icon="sap-icon://nav-back"
+                    press="OnpressNewHuBackButton1"
+                    class="sapUiSmallMarginBottom"
+                />
+                <form:SimpleForm
+                    id="NewhuHubyRHBSimpleForm1ShipmentNewHu"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idHubyRHBSLabelnewhuShipmentNewHu"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idHubyRHBSinputlnewhuShipmentNewHu"
+                        maxLength="30"
+                        width="200px"
+                    />
+                    <Label
+                        id="idHubyRHBSLabelQtyShipmentNewHu"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhboxbyShipment">
+                        <Input
+                            id="idHubyRHBSqtyInputShipmentNewHu"
+                            maxLength="30"
+                            width="100px"
+                        />
+
+                        <HBox
+                            id="idHubyRHBSHUuomboxShipmentNewHu"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyRHBSuomLabelShipmentNewHu"
+                                text="UOM:"
+                                class="classUOMbyRHBS"
+                            />
+                            <Input
+                                id="idHubyRHBSuomInputShipmentNewHu"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idHubyRHBSLabelPMShipmentNewHu"
+                        text="Packing Material"
+                    />
+                    <Input
+                        id="idHubyRHBSInputPMShipmentNewHu"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <Label
+                        id="idHubyRHBSLabelBatchShipmentNewHu"
+                        text="Batch"
+                        class="sapUiMarginTop margin"
+                    />
+                    <Input
+                        id="idHubyRHBSbatchGenInputShipmentNewHu"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <Label
+                        id="idHubyRHBSLabelbbdShipmentNewHu"
+                        text="BBD"
+                    />
+                    <Input
+                        id="idHubyRHBSInputbbdShipmentNewHu"
+                        maxLength="13.3"
+                        width="200px"
+                    />
+
+                    <Label
+                        id="idHubyRHBSLabelmanShipmentNewHu"
+                        text="Man"
+                    />
+                    <HBox id="idHubyRHBSMANhboxShipmentNewHu">
+                        <Input
+                            id="idHubyRHBSInputmanShipmentNewHu"
+                            maxLength="13.3"
+                            width="100px"
+                        />
+
+                        <HBox
+                            id="idHubyRHBSitemsexpiryboxShipmentNewHu"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyRHBSExpiryLabelShipmentNewHu"
+                                text="Expiry:"
+                                class="classExpiryHUbyRHBS"
+                            />
+                            <Input
+                                id="idHubyRHBSExpiryInputShipmentNewHu"
+                                maxLength="30"
+                                width="150px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idHubyRHBSLabelcooShipmentNewHu"
+                        text="COO"
+                    />
+                    <VBox id="idHubyASNVBoxbbdbyshipment">
+                        <Input
+                            id="idHubyASNInputcooShipmentNewHu"
+                            maxLength="13.3"
+                            width="200px"
+                        />
+                        <HBox id="idHubyASNnextHBoxShipmentNewHu">
+                            <Button
+                                id="idHubyASNnextbtnShipmentNewHu"
+                                text="Next (or) Enter"
+                                press="onPressEnterNextHuByShipment"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer6"
+                vertical="true"
+                horizontal="false"
+                visible="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_NextOrEnterBackButtonShipment"
+                    icon="sap-icon://nav-back"
+                    press="OnpressNextOrEnterBackButton1"
+                    class="sapUiSmallMarginBottom"
+                />
+                <form:SimpleForm
+                    id="idSimpleformNextOrEnterShipment"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idLabelNextOrEnterShipment"
+                        text="HU"
+                    />
+
+                    <Input
+                        id="IdinputNextOrEnterShipment"
+                        maxLength="25"
+                        width="200px"
+                    />
+                    <Label
+                        id="idDeliveryLabelNextOrEnterShipment"
+                        text="Delivery"
+                        class="sapUiMarginTop margin"
+                    />
+                    <HBox id="idhboxNextOrEnterShipment">
+                        <Input
+                            id="idDeliveryinputNextOrEnterShipment"
+                            maxLength="25"
+                            width="100px"
+                        />
+
+                        <HBox id="IdhboxNextOrEnterShipmentone">
+                            <Label
+                                id="idLabelitemNoNextOrEnterShipment"
+                                text="item no:"
+                                class="classitemnoHUbyASn"
+                            />
+
+                            <Input
+                                id="idInputitemNoNextOrEnterShipment"
+                                maxLength="13.3"
+                                width="100px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label id="idLabelEmptybyshipment" />
+
+                    <HBox id="idHboxspaceNextOrEnterShipment">
+                        <Button
+                            id="idbuttongrNextOrEnterShipment"
+                            text="GR"
+                            press="onGRPressHubyShipment"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <HBox id="idbuttonunloadNextOrEnterShipment">
+                            <Button
+                                id="_IDGenBolunloadButtonbyshipment"
+                                text="Unload"
+                                press="onunloadPressHubyShipment"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </HBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer7"
+                vertical="true"
+                horizontal="false"
+                visible="false"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_GRBackButtonShipmentbyHu"
+                    icon="sap-icon://nav-back"
+                    press="OnpressGRBackButtonbyHu"
+                    class="sapUiSmallMarginBottom"
+                />
+                <form:SimpleForm
+                    id="simpleformGRHuByShipment"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idlablHuByShipment"
+                        text="Product"
+                    />
+
+                    <Input
+                        id="idinputHuByShipment"
+                        maxLength="25"
+                        width="200px"
+                    />
+                    <Label
+                        id="idLabelDeliveryHuByShipment"
+                        text="Quantity"
+                        class="sapUiMarginTop margin"
+                    />
+                    <HBox id="idHboxinputGRbyShipment">
+                        <Input
+                            id="idinputDeliveryHuByShipment"
+                            maxLength="25"
+                            width="200px"
+                        />
+                    </HBox>
+
+                    <Label id="idLabelgrHuByShipment" />
+
+                    <HBox id="idhboxGrbyShipment">
+                        <Button
+                            id="idbuttonDeliveryHuByShipment"
+                            text="GR"
+                            press="onGRbyHuShipmentbuttonPress"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idRHBSscrollContainer8"
+                vertical="true"
+                horizontal="false"
+                height="100%"
+                visible="false"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDRHBS_UnloadBackButtonShipmentbyHu"
+                    icon="sap-icon://nav-back"
+                    press="OnpressUnloadBackButtonbyHu"
+                    class="sapUiSmallMarginBottom"
+                />
+                <form:SimpleForm
+                    id="idsimpleformShipmentbyHununload"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idlableproductunloadShipmentbyHu"
+                        text="Product"
+                    />
+
+                    <Input
+                        id="idinputShipmentbyHuunload"
+                        maxLength="25"
+                        width="200px"
+                    />
+                    <Label
+                        id="idlabeldeliveryShipmentbyHununload"
+                        text="Quantity"
+                        class="sapUiMarginTop margin"
+                    />
+                    <HBox id="idhboxgrShipmentbyHuhuunload">
+                        <Input
+                            id="idinputdeliveryunloadShipmentbyHu"
+                            maxLength="25"
+                            width="200px"
+                        />
+                    </HBox>
+
+                    <Label id="idlabelbuttonunloadShipmentbyHu" />
+
+                    <HBox id="idgenhboxunloadShipmentbyHu">
+                        <Button
+                            id="idbuttonunloadShipmentbyHu"
+                            text="Unload"
+                            press="onUnloadbuttonPress"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

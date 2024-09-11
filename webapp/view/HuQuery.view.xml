@@ -147,6 +147,7 @@
                                         placeholder="Enter HU..."
                                         class="sapUiTinyMarginBegin"
                                      liveChange="onLiveHuValidation"
+                                      change="onChangeHuValidation"
                                     />
                                     <ndc:BarcodeScannerButton
                                             id="sampleBarcodeScannerButton"
@@ -407,7 +408,7 @@
                             </columns>
 
                             <items>
-                                <ColumnListItem id="_IDGenColumnListItem1">
+                                <ColumnListItem id="_IDGenColumnListItem1111">
                                     <cells>
                                         <Text
                                             id="_IDGenText6"

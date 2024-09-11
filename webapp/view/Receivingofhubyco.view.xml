@@ -1,6 +1,6 @@
 <mvc:View
     xmlns:table="sap.ui.table"
-    controllerName="com.app.rfapp.controller.RecevingOfHUbyDelivery"
+    controllerName="com.app.rfapp.controller.Receivingofhubyco"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:ndc="sap.ndc"
@@ -11,29 +11,29 @@
     displayBlock="true"
     height="100%"
 >
-    <tnt:ToolPage id="idToolPageROHD">
+    <tnt:ToolPage id="idToolPageROHCO">
         <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderROHD">
+            <tnt:ToolHeader id="idtntToolHeaderROHCO">
                 <Image
-                    id="idImage1ROHD"
+                    id="idImage1ROHCO"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorROHD"
+                    id="idToolHeaderUtilitySeparatorROHCO"
                 />
-                <ToolbarSpacer id="idToolbarSpacerROHD">
+                <ToolbarSpacer id="idToolbarSpacerROHCO">
                     <layoutData>
                         <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutData1ROHD"
+                            id="idOverflowToolbarLayoutData1ROHCO"
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="IDGenAvatar1ROHD"
+                    id="IDGenAvatar1ROHCO"
                     displaySize="XS"
                     press="onAvatarPressed"
                     tooltip="Profile"
@@ -42,7 +42,7 @@
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
-                id="idROHDScanDeliveryNO"
+                id="idROHCOScanManufacturingorder"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -50,70 +50,120 @@
                 visible="true"
             >
                 <VBox
-                    id="idROHDeliveryNoformBox"
+                    id="idROHCOanufacturingNoVBox"
                 >
                     <HBox
-                        id="idHBoxROHDTitle"
+                        id="idHBoxROHCOTitle"
                         alignItems="Center"
                     >
                         <Button
-                            id="idDeliveryDetailsBackButton"
+                            id="idManufacturingBackButton"
                             icon="sap-icon://nav-back"
-                            press="OnPressScanDeliveryBackButton"
-                            visible="true"
+                            press="onPressScanManubackbtn"
+                            visible="false"
                         />
                         <Title
-                            id="idROHDDeliveryNo"
-                            text="Delivery Number:"
+                            id="idROHCOManu_orderNo"
+                            text="Consignment Order:"
                             level="H2"
                         />
                     </HBox>
                     <VBox
-                        id="idROHDVBoxDeliveryNo"
+                        id="idROHCOVBoxManufacturingNo"
                         class="formContainer"
                     >
                         <VBox
-                            id="idROHDVBOXDelivery"
+                            id="idROHCOVBOXManufacturing"
                             class="formBox"
                         >
                             <Label
-                                id="idROHDLableDelivery"
-                                text="Delivery Number:"
+                                id="idROHCOLableManufacturing"
+                                text="Consignment Order:"
                                 class="formLabel"
                             />
                             <HBox
-                                id="idROHDHBoxDeliveryNo"
+                                id="idROHCOHBoxManuNo"
                                 alignItems="Center"
                                 class="formHBox"
                                 justifyContent="Start"
                                 width="auto"
                             >
                                 <Input
-                                    id="idROHDInputDeliveryNo"
-                                    placeholder="Enter Delivery no..."
+                                    id="idROHCOInputManufacturingNo"
+                                    placeholder="Enter Consignment Order no..."
                                     liveChange="onLiveChange"
                                     width="120%"
                                 />
                                 <ndc:BarcodeScannerButton
-                                    id="idROHDBarcodeScannerButton"
-                                    scanSuccess="onROHDScanSuccess"
+                                    id="idROHCOBarcodeScannerButton"
+                                    scanSuccess="onROHCOScanSuccess"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
-                                    dialogTitle="Enter Delivery Number:"
+                                    dialogTitle="Enter Manufacturing Number:"
                                     class="customMargin"
                                 />
                                 <Button
-                                        id="idROHDSubmmitBtn"
+                                        id="idROHCOSubmmitBtn"
                                         text="Submit"
-                                        press="onPressROHDSubmitbtn"
+                                        press="onPressROHCOSubmitbtn"
                                     />
                             </HBox>
                         </VBox>
                     </VBox>
                 </VBox>
+                <Panel
+                    id="idROHCOPanel"
+                    headerText="Shipment"
+                    visible="false"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idROHCOTable"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        growingThreshold="3"
+                        mode="SingleSelectMaster"
+   
+                       
+                    >
+                        <columns>
+                            <Column id="idROHCOSERIAL">
+                                <header>
+                                    <Label
+                                        id="idROHCOSERIALLabel1"
+                                        text="S.NO"
+                                    />
+                                </header>
+                            </Column>
+                            <Column id="idROHCODelivery">
+                                <header>
+                                    <Label
+                                        id="idROHCODeliveryLabel1"
+                                        text="Delivery"
+                                    />
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idROHCOColumnlistItems">
+                                <cells>
+                                    <Text
+                                        id="idROHCOSerialtext"
+                                        text="S.No"
+                                    />
+                                    <Text
+                                        id="idROHCODeliveryText"
+                                        text="delivery"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+ 
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDDeliverydetailsPage2"
+                id="idROHCODeliverydetailsPage2"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -121,136 +171,136 @@
                 visible="false"
             >
                 <Button
-                    id="idROHDDeliverydetailsBackBtn"
-                    press="OnpressDeliveryDetailsBackbutton"
+                    id="idROHCODeliverydetailsBackBtn"
+                    press="OnpressManuDelDetailsBackbutton"
                     class="sapUiTinyMarginBottom"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
                 <VBox
-                    id="idROHDDeliverydetailsVBox"
+                    id="idROHCODeliverydetailsVBox"
                     class="SecondPageContainer"
                     justifyContent="Center"
                 >
                     <Title
-                        id="idROHDDeliverydetailsTitle"
+                        id="idROHCODeliverydetailsTitle"
                         text="Delivery Details"
                         level="H2"
                         class="SecondPageformHeader"
                     />
                         <form:SimpleForm
-                            id="idROHDDeliverydetailsSF"
+                            id="idROHCODeliverydetailsSF"
                             layout="ResponsiveGridLayout"
                              editable="true"
                              columnsL="2"
                             columnsM="1"
-                        > 
+                        >
                         <!-- Delivery Number -->
                             <Label
-                                id="idROHDDeliveryNumber"
+                                id="idROHCODeliveryNumber"
                                 text="Delivery"
-                                
+                               
                             />
                             <Input
-                                id="idROHDDeliveryNumberInput"
+                                id="idROHCODeliveryNumberInput"
                                 placeholder="Enter Deliver Number..."
                                 width="10rem"
                             />
                             <!-- item no -->
                             <Label
-                                id="idROHDItemNo"
+                                id="idROHCOItemNo"
                                 text="Item No"
-                                
+                               
                             />
                             <Input
-                                id="idROHDItemNoInput"
+                                id="idROHCOItemNoInput"
                                 placeholder="Enter item Number..."
                                 width="10rem"
                             />
-                            
+                           
                             <!-- Vendor Field -->
                             <Label
-                                id="idVendorofDelivery"
+                                id="idROHCOVendorofDelivery"
                                 text="Vendor"
-                                
+                               
                             />
                             <Input
-                                id="idVendorofDeliveryInput"
+                                id="idROHCOVendorofDeliveryInput"
                                 placeholder="Enter Vendor..."
                                 width="7rem"
-                                
+                               
                             />
                             <!-- No.of HU -->
                             <Label
-                                id="idROHDforNOofHU"
+                                id="idROHCOforNOofHU"
                                 text="No.of HU"
-                                
+                               
                             />
                             <Input
-                                id="idROHDforNOofHUInput"
+                                id="idROHCOforNOofHUInput"
                                 placeholder="Enter No.of HU..."
                                 width="7rem"
-                                
+                               
                             />
                             <!-- HU field -->
                             <Label
-                                id="idROHDHUlabel"
+                                id="idROHCOHUlabel"
                                 text="HU"
-                                
+                               
                             />
                             <VBox>
                             <Input
-                                id="idROHDHUInput"
+                                id="idROHCOHUInput"
                                 placeholder="Enter HU...."
                                 width="7rem"
                             />
-                            
+                           
                             <HBox
-                                id="idROHDHbox"
-                                
+                                id="idROHCOHbox"
+                               
                             >
                                 <Button
-                                    id="idButtonHulist"
+                                    id="idROHCOButtonHulist"
                                     text="HU List"
-                                    press="onROHDHUListPress"
+                                    press="onPressROHCOHUListPress"
                                     class="ButtonsSpaceSecondPage"
                                 />
                                 <Button
                                     id="idButtonNewHUDelivery"
                                     text="New HU"
-                                    press="onPressROHDNewHU"
+                                    press="onPressROHCONewHU"
                                     class="ButtonsSpaceSecondPage"
                                 />
                                 <Button
-                                        id="idButtonGRDelivery"
+                                        id="idROHCOButtonGRDelivery"
                                         text="GR"
-                                        press="onPressROHDGR"
+                                        press="onPressROHCOGR"
                                     />
                             </HBox>
                             <HBox>
                                     <Button
-                                        id="idButtonHuChange"
+                                        id="idROHCOButtonHuChange"
                                         text="HU Change"
-                                        press="onHUChangePress"
-                                        
+                                        press="onROHCOHUChangePress"
+                                       
                                     />
                                     <Button
-                                        id="idButtonUnloadDelivery"
+                                        id="idROHCOButtonUnloadDelivery"
                                         text="Unload"
-                                        press="onUnloadDeliveryPress"
-                                        
+                                        press="onROHCOUnloadDeliveryPress"
+                                       
                                     />
                                     <Button
-                                        id="idButtonCreateWT"
+                                        id="idROHCOButtonCreateWT"
                                         text="Create WT"
-                                        press="onPressCreateWT"
-                                        
+                                        press="onROHCOPressCreateWT"
+                                       
                                     />
                                     <Button
-                                        id="idButtonConfirmWT"
+                                        id="idROHCOButtonConfirmWT"
                                         text="Confirm WT"
-                                        press="onPressConfirmWT"
-                                        
+                                        press="onROHCOPressConfirmWT"
+                                       
                                     />
                                 </HBox>
                                 </VBox>
@@ -259,7 +309,7 @@
                 <!-- </VBox> -->
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDHUListPage3"
+                id="idROHCOHUListPage3"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -267,21 +317,21 @@
                 visible="false"
             >
                 <Button
-                    id="idROHDHUlistBackbutton"
-                    press="OnpressHUlistBackbtn"
+                    id="idROHCOHUlistBackbutton"
+                    press="OnpressROHCOHUlistBackbtn"
                     class="sapUiTinyMarginBottom"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
-                <VBox id="idROHDHUListVbox1">
+                <VBox id="idROHCOHUListVbox1">
                     <Toolbar
-                        id="idROHDHUListTB"
+                        id="idROHCOHUListTB"
                     >
                         <Title
-                            id="idROHDHUListTitle"
+                            id="idROHCOHUListTitle"
                             text="HU LIST:"
                         />
-                        <ToolbarSpacer id="idROHDHUListToolbar" />
+                        <ToolbarSpacer id="idROHCOHUListToolbar" />
                         <!-- <Button
                             id="idRefrehshBtnReservations"
                             press="onRefreshReservations"
@@ -301,80 +351,80 @@
                         />
                     </Toolbar> -->
                     <Table
-                        id="idROHDHUListTable"
+                        id="idROHCOHUListTable"
                         width="100%"
                     >
                         <columns>
-                            <Column id="idCDeliverySno">
+                            <Column id="idROHCODeliverySno">
                                 <Text
-                                    id="idCtextDeliverySno"
+                                    id="idROHCOCtextDeliverySno"
                                     text="S.No"
-                                    
+                                   
                                 />
                             </Column>
-                            <Column id="idCDeliveryHUno">
+                            <Column id="idROHCOCDeliveryHUno">
                                     <Text
-                                        id="idCTextDeliveryHUno"
+                                        id="idROHCOCTextDeliveryHUno"
                                         text="HU.No"
-                                    
+                                   
                                 />
                             </Column>
-                            <Column id="IdCDeliveryProduct">
+                            <Column id="IdROHCOCDeliveryProduct">
                                     <Text
-                                        id="IdCtextDeliveryProduct"
+                                        id="IdROHCOCtextDeliveryProduct"
                                         text="Product"
-                                    
+                                   
                                 />
                             </Column>
-                            <Column id="IdCDeliveryProductdes">
+                            <Column id="IdROHCOCDeliveryProductdes">
                                     <Text
-                                    id="IdCtextDeliveryProductdes"
+                                    id="IdROHCOCtextDeliveryProductdes"
                                     text="Product Description"
-                                    
+                                   
                                 />
                             </Column>
-                            <Column id="idCDeliveryQuantity">
+                            <Column id="idROHCOCDeliveryQuantity">
                                     <Text
-                                    id="idCtextDeliveryQuantity"
+                                    id="idROHCOtextDeliveryQuantity"
                                     text="Quantity"
-                                    
+                                   
                                 />
                             </Column>
-                            <Column id="idCDeliveryUOM">
+                            <Column id="idROHCOCDeliveryUOM">
                                     <Text
-                                    id="idCtextDeliveryUOM"
+                                    id="idROHCOCtextDeliveryUOM"
                                     text="UOM"
-                                    
+                                   
                                 />
                             </Column>
                         </columns>
                         <items>
                             <ColumnListItem
-                                id="IDROHDhUlistColumnlist"
+                                id="IDROHCOhUlistColumnlist"
                             >
                                 <cells>
                                         <Text
-                                            id="idSerialNoHUDelivery"
+                                            id="idROHCOSerialNoHUManu"
                                             text=""
                                         />
                                         <Text
-                                            id="idHUNObyDelivery"
+                                            id="idROHCOHUNObyDelivery"
                                             text=""
                                         />
                                         <Text
-                                            id="idHuDeliveryProduct"
+                                            id="idROHCOHuDeliveryProduct"
                                             text=""
                                         />
                                         <Text
-                                            id="idHuDeliveryProductDes"
+                                            id="idROHCOHuDeliveryProductDes"
                                             text=""
                                         />
                                         <Text
-                                            id="idHuDeliveryQuantity"
+                                            id="idROHCOHuDeliveryQuantity"
                                             text=""
                                         />
                                         <Text
-                                            id="idHuDeliveryuom"
+                                            id="idROHCOHuDeliveryuom"
                                             text=""
                                         />
                                 </cells>
@@ -384,7 +434,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDNewHUPage4"
+                id="idROHCONewHUPage4"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -392,14 +442,14 @@
                 visible="false"
             >
                 <Button
-                    id="idNewHuBackbutton"
-                    press="OnpressNewHuBackbutton"
+                    id="idROHCONewHuBackbutton"
+                    press="OnpressROHCONewHuBackbutton"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                     class="sapUiTinyMarginBottom"
                 />
                 <form:SimpleForm
-                    id="NewhuDeliverySimpleForm1"
+                    id="ROHCONewhuDeliverySimpleForm1"
                     editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="4"
@@ -419,10 +469,10 @@
                 >
                     <form:toolbar>
                         <Toolbar
-                            id="idROHDnewHUToolBar"
+                            id="idROHCOnewHUToolBar"
                         >
                             <Title
-                                id="idROHDnewHUTitle"
+                                id="idROHCOnewHUTitle"
                                 text="NEW HU:"
                             />
                         </Toolbar>
@@ -438,112 +488,112 @@
                             />
                         </Toolbar> -->
                         <Label
-                            id="idDeliveryLabelnewhu"
+                            id="idROHCOLabelnewhu"
                             text="Product"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryinputlnewhu"
+                            id="idROHCOinputlnewhu"
                             width="80%"
                         />
                        <Label
-                            id="idDeliveryLabelQty"
+                            id="idROHCODeliveryLabelQty"
                             text="Quantity"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryqtyInput"
+                            id="idROHCODeliveryqtyInput"
                             width="60%"
                             class="sapUiTinyMarginEnd"
                         />
                        <Label
-                            id="idDeliveryuomLabel"
+                            id="idROHCODeliveryuomLabel"
                             text="UOM:"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryuomInput"
+                            id="idROHCODeliveryuomInput"
                             width="60%"
                             class="sapUiTinyMarginEnd"
                         />
                         <Label
-                            id="idDeliveryLabelPM"
+                            id="idROHCODeliveryLabelPM"
                             text="Packing Material"
                             required="true"
                            
                         />
                         <Input
-                            id="idDeliveryInputPM"
+                            id="idROHCODeliveryInputPM"
                             width="80%"
                         />
                         <Label
-                            id="idDeliveryLabelBatch"
+                            id="idROHCODeliveryLabelBatch"
                             text="Batch"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliverybatchGenInput"
+                            id="idROHCODeliverybatchGenInput"
                             width="80%"
                         />
                         <Label
-                            id="idDeliveryLabelbbd"
+                            id="idROHCODeliveryLabelbbd"
                             text="BBD"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryInputbbd"
+                            id="idROHCODeliveryInputbbd"
                             width="80%"
                         />
                        <Label
-                            id="idDeliveryLabelman"
+                            id="idROHCODeliveryLabelman"
                             text="Man"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryInputman"
+                            id="idROHCODeliveryInputman"
                             width="80%"
                         />
                         <Label
-                            id="idDeliveryExpiryLabel"
-                            text="Expiry:"
+                            id="idROHCODeliveryExpiryLabel"
+                            text="Expiry"
                             required="true"
-                            
+                           
                         />
                         <Input
-                            id="idDeliveryExpiryInput"
+                            id="idROHCODeliveryExpiryInput"
                             width="80%"
                         />
                         <Label
-                            id="idDeliveryLabelcoo"
+                            id="idROHCODeliveryLabelcoo"
                             text="COO"
                             required="true"
                            
                         />
                         <Input
-                            id="idDeliveryInputcoo"
+                            id="idROHCODeliveryInputcoo"
                             width="80%"
                         />
                         <HBox
-                            id="idDeliverynextHBox"
+                            id="idROHCODeliverynextHBox"
                             justifyContent="End"
                         >
                             <Button
-                               id="idDeliverynextbtn"
+                               id="idROHCODeliverynextbtn"
                                 text="Next (or) Enter"
-                                press="onPressROHDEnter"
+                                press="onPressROHCOEnter"
                             />
                         </HBox>
                     </form:content>
                 </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDDeliveryEnterpage5"
+                id="idROHCOnextOrEnterpage5"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -551,13 +601,13 @@
                 visible="false"
             >
                 <Button
-                    id="idAfterNextBackbutton"
+                    id="idROHCOAfterNextBackbutton"
                     press="OnpressAfterNextBackbutton"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
                 <VBox
-                    id="idROHDEnterVBox"
+                    id="idROHCOEnterVBox"
                     class="verifyHuNumberContainer"
                     justifyContent="Center"
                 >
@@ -568,11 +618,11 @@
                         class="formHeader"
                     /> -->
                     <VBox
-                        id="idROHDEnterVBox1"
+                        id="idROHCOEnterVBox1"
                         class="verifyHuNumberBox"
                     >
                         <form:SimpleForm
-                            id="idDeliverysimpleFormAfertEnter"
+                            id="idROHCOsimpleFormAfertEnter"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -580,47 +630,47 @@
                             columnsM="1"
                         >
                              <Label
-                                id="IdHUDeliveryhuLabel"
+                                id="IdROHCODhuLabel"
                                 text="HU"
                                 class="formLabel"
                             />
                             <Input
-                                id="IdHUDeliveryHUInput"
-                                
+                                id="IdROHCOHUInput"
+                               
                             />
                              <Label
-                                id="IdHUDeliveryLabelDelivery"
+                                id="IdROHCOLabelDelivery"
                                 text="Delivery"
                                 class="formLabel"
                             />
                             <Input
-                                id="IdHUDeliverydeliveryInput"
+                                id="IdROHCOdeliveryInput"
                                
                             />
                             <Label
-                                id="idHUDeliveryLabelitem"
-                                text="item no:"
+                                id="idROHCOLabelitem"
+                                text="item no"
                                 class="formLabel"
                             />
                             <Input
-                                id="idHUDeliveryInputitem"
-                                
+                                id="idROHCOInputitem"
+                               
                             />
                             <!-- Gr and UNload Buttons -->
                             <HBox
-                                id="idROHDVBoxbuttons"
+                                id="idROHCOVBoxbuttons"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idEnterGRButton"
+                                    id="idROHCOEnterGRButton"
                                     text="GR"
-                                    press="onPressEnterGRButton"
+                                    press="onPressEnterROHCOGRButton"
                                     class="formButton"
                                 />
                                <Button
-                                    id="idEnterunloadButton"
+                                    id="idROHCOEnterunloadButton"
                                     text="Unload"
-                                    press="onPressEnterUnloadButton"
+                                    press="onPressEnterROHCOUnloadButton"
                                     class="formButton"
                                 />
                             </HBox>
@@ -629,7 +679,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDGRpage6"
+                id="idROHCOGRpage6"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -637,29 +687,29 @@
                 visible="false"
             >
                 <Button
-                id="idGRBackbutton"
+                id="idROHCOGRBackbutton"
                 icon="sap-icon://nav-back"
-                press="OnpressROHDGRBackbutton"
+                press="OnpressROHCOGRBackbutton"
                 type="Transparent"
                 />
                 <VBox
-                    id="idROHDGRVBox"
+                    id="idROHCOGRVBox"
                     class="MainVBoxGR"
                     justifyContent="End"
                 >
                     <Title
-                        id="idROHDGRTitle"
+                        id="idROHCOGRTitle"
                         text="Goods Receipt"
                         level="H2"
                         class="formHeaderGR"
                     />
                     <VBox
-                        id="idROHDGRVBox1"
+                        id="idROHCOGRVBox1"
                         class="GoodsReceiptFormBox"
                         justifyContent="End"
                     >
                         <form:SimpleForm
-                            id="idROHDGRSF"
+                            id="idROHCOGRSF"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -667,31 +717,31 @@
                             columnsM="1"
                         >
                             <Label
-                                id="idDeliveryLabelproduct"
+                                id="idROHCOLabelproduct"
                                 text="Product"
                                 class="labelStyleGR"
                             />
                             <Input
-                                id="idDeliveryproductInput"
+                                id="idROHCOproductInput"
                                 width="12rem"
                             />
                             <Label
-                                id="idHUDeliveryLabelQty"
+                                id="idROHCOLabelQty"
                                 text="Quantity"
                                 class="labelStyleGR"
                             />
                             <Input
-                                id="idHUDeliveryqtyInput"
+                                id="idROHCOqtyInput"
                                 width="12rem"
                             />
                             <HBox
-                               id="idHUDeliveryhboxgr1"
+                               id="idROHCODeliveryhboxgr1"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idHUDeliverygrButton"
+                                    id="idROHCODeliverygrButton"
                                     text="GR"
-                                    press="onPressROHDGRbutton"
+                                    press="onPressROHCOGRbutton"
                                     class="formButton"
                                 />
                             </HBox>
@@ -700,7 +750,7 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idROHDUnloadpage7"
+                id="idROHCOUnloadpage7"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -708,29 +758,29 @@
                 visible="false"
             >
                 <Button
-                id="idUnloadBackbutton"
+                id="idROHCOUnloadBackbutton"
                 icon="sap-icon://nav-back"
-                press="OnpressUnloadBackbutton"
+                press="OnpressROHCOUnloadBackbutton"
                 type="Transparent"
                 />
                 <VBox
-                    id="idROHDUnLoadVbox"
+                    id="idROHCOUnLoadVbox"
                     class="MainVBoxUnLoad"
                     justifyContent="End"
                 >
                     <Title
-                        id="idROHDUnLoadTitle"
+                        id="idROHCOUnLoadTitle"
                         text="UnLoad"
                         level="H2"
                         class="formHeaderUnLoad"
                     />
                     <VBox
-                        id="idROHDUnLoadVbox1"
+                        id="idROHCOUnLoadVbox1"
                         class="UnLoadPageFormBox"
                         justifyContent="End"
                     >
                         <form:SimpleForm
-                            id="idDeliverySFunload"
+                            id="idROHCODeliverySFunload"
                             layout="ResponsiveGridLayout"
                             labelSpanL="4"
                             labelSpanM="4"
@@ -738,31 +788,31 @@
                             columnsM="1"
                         >
                             <Label
-                                id="IdROHDLabelproduct"
+                                id="IdROHCOLabelproduct"
                                 text="Product"
                                 class="labelStyleUnLoad"
                             />
                             <Input
-                                id="IdDeliveryinputproduct"
+                                id="IdROHCOinputproduct"
                                 width="12rem"
                             />
                             <Label
-                               id="IdDeliveryLabelUNQty"
+                               id="IdROHCOLabelUNQty"
                                 text="Quantity"
                                 class="labelStyleUnLoad"
                             />
                             <Input
-                                id="idROHDUnLoadQuanInput"
+                                id="idROHCOUnLoadQuanInput"
                                 width="12rem"
                             />
                             <HBox
-                                id="idROHDHBoxUnLoad"
+                                id="idROHCOHBoxUnLoad"
                                 justifyContent="End"
                             >
                                 <Button
-                                    id="idDeliveryunloadButton5"
+                                    id="idROHCODeliveryunloadButton5"
                                     text="Unload"
-                                    press="onPressUnloadbutton"
+                                    press="onPressROHCOUnloadbutton"
                                 />
                             </HBox>
                         </form:SimpleForm>
