@@ -1435,85 +1435,85 @@ sap.ui.define(
                     }
                 });
             },
-            onSelectQueue: function () {
-                // Get the MultiComboBox instances for Group and Queue
-                var oGroupMultiComboBox = this.byId("idGroupSelect");
-                var oQueueMultiComboBox = this.byId("idQueueSelect");
-
-                // Retrieve the selected items
-                var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
-                var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
-
-                // Initialize an array to hold the filters
-                var aFilters = [];
-
-                // Iterate over the selected queues to add corresponding filters
-                aSelectedQueues.forEach(function (oItem) {
-                    var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
-
-                    // Add filter for the selected process queue
-                    aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
-                });
-
-                // Combine the filters with an OR condition
-                var oCombinedFilter = new sap.ui.model.Filter({
-                    filters: aFilters,
-                    and: false // This specifies the OR condition
-                });
-
-                // Fetch data from the model with applied filters
-                var oModel = this.getOwnerComponent().getModel();
-                oModel.read("/ProcessAreaSet", {
-                    filters: [oCombinedFilter],
-                    success: function (oData) {
-                        // Process data to ensure matching with selected groups
-                        var oGroupQueueMap = {};
-                        var isValid = true;
-
-                        // Build a map of group-queue relations
-                        oData.results.forEach(function (oItem) {
-                            var sGroup = oItem.Processgroup;
-                            var sQueue = oItem.Queue;
-
-                            if (!oGroupQueueMap[sGroup]) {
-                                oGroupQueueMap[sGroup] = [];
-                            }
-                            oGroupQueueMap[sGroup].push(sQueue);
-                        });
-
-                        // Validate that the Queue selection matches the Group selections
-                        aSelectedGroups.forEach(function (oGroupItem) {
-                            var sGroupKey = oGroupItem.getText();
-                            var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
-                                var sQueueKey = oQueueItem.getText();
-                                return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
-                            });
-
-                            if (!bQueueMatched) {
-                                isValid = false;
-
-                                // Set the value state to Error for Queue MultiComboBox
-                                oQueueMultiComboBox.setValueState("Error");
-                                oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
-
-                                // Show error message
-                                sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
-                            }
-                        });
-
-                        if (!isValid) {
-                            return;
-                        }
-
-                        // Reset value state to None if validation is successful
-                        oQueueMultiComboBox.setValueState("None");
-
-                    },
-                    error: function (oError) {
-                        // Handle error if necessary
-                        sap.m.MessageToast.show("Failed to fetch data.");
-                    }
-                });
+            onSelectQueue:function(){
+                 // Get the MultiComboBox instances for Group and Queue
+                 var oGroupMultiComboBox = this.byId("idGroupSelect");
+                 var oQueueMultiComboBox = this.byId("idQueueSelect");
+ 
+                 // Retrieve the selected items
+                 var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
+                 var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
+ 
+                 // Initialize an array to hold the filters
+                 var aFilters = [];
+ 
+                 // Iterate over the selected queues to add corresponding filters
+                 aSelectedQueues.forEach(function (oItem) {
+                     var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
+ 
+                     // Add filter for the selected process queue
+                     aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
+                 });
+ 
+                 // Combine the filters with an OR condition
+                 var oCombinedFilter = new sap.ui.model.Filter({
+                     filters: aFilters,
+                     and: false // This specifies the OR condition
+                 });
+ 
+                 // Fetch data from the model with applied filters
+                 var oModel = this.getOwnerComponent().getModel();
+                 oModel.read("/ProcessAreaSet", {
+                     filters: [oCombinedFilter],
+                     success: function (oData) {
+                         // Process data to ensure matching with selected groups
+                         var oGroupQueueMap = {};
+                         var isValid = true;
+                         // Build a map of group-queue relations
+                         oData.results.forEach(function (oItem) {
+                             var sGroup = oItem.Processgroup;
+                             var sQueue = oItem.Queue;
+ 
+                             if (!oGroupQueueMap[sGroup]) {
+                                 oGroupQueueMap[sGroup] = [];
+                             }
+                             oGroupQueueMap[sGroup].push(sQueue);
+                         });
+ 
+                         // Validate that the Queue selection matches the Group selections
+                         aSelectedGroups.forEach(function (oGroupItem) {
+                             var sGroupKey = oGroupItem.getText();
+                             var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
+                                 var sQueueKey = oQueueItem.getText();
+                                 return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
+                             });
+ 
+                             if (!bQueueMatched) {
+                                 isValid = false;
+ 
+                                 // Set the value state to Error for Queue MultiComboBox
+                                 oQueueMultiComboBox.setValueState("Error");
+                                 oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
+ 
+                                 // Show error message
+                                 sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
+                             }
+                         });
+ 
+                         if (!isValid) {
+                             return;
+                         }
+ 
+                         // Reset value state to None if validation is successful
+                         oQueueMultiComboBox.setValueState("None");
+ 
+                     },
+                     error: function (oError) {
+                         // Handle error if necessary
+                         sap.m.MessageToast.show("Failed to fetch data.");
+                     }
+                 });
+          
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1639,8 +1639,15 @@ sap.ui.define(
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyShipment");
-            }
-
+            },
+            OnPressWTQuerybyWO:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO");
+            },
+            onReceivingofHUbyTU:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyTU");
+            },
 
         });
     }

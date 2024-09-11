@@ -107,8 +107,15 @@
       },
       "routes": [
         {
-          "name": "RouteHome",
+          "name": "InitialScreen",
           "pattern": ":?query:",
+          "target": [
+            "TargetInitialScreen"
+          ]
+        },
+        {
+          "name": "Homepage",
+          "pattern": "Homepage/{id}",
           "target": [
             "TargetHome"
           ]
@@ -294,11 +301,24 @@
           "pattern": "ReceivingofHUbyShipment",
           "target": [
             "TargetReceivingofHUbyShipment"
-
+          ]
+        },
+        {
+          "name": "WTQueryByWO",
+          "pattern": "WTQueryByWO",
+          "target": [
+            "TargetWTQueryByWO"
           ]
         }
       ],
       "targets": {
+        "TargetInitialScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InitialScreen",
+          "viewName": "InitialScreen"
+        },
         "TargetHome": {
           "viewType": "XML",
           "transition": "slide",
@@ -466,15 +486,6 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyManufacturingOrder",
           "viewName": "RecevingOfHUbyManufacturingOrder"
-
-        },
-        "TargetRecevingOfHUbyTUorDoor": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyTUorDoor",
-          "viewName": "RecevingOfHUbyTUorDoor"
-
         },
         "TargetRecevingofHUbyConsignemntOrder": {
           "viewType": "XML",
@@ -489,7 +500,13 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyShipment",
           "viewName": "ReceivingofHUbyShipment"
-
+        },
+        "TargetWTQueryByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWO",
+          "viewName": "WTQueryByWO"
         }
       }
     },
