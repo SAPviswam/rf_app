@@ -1465,11 +1465,15 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PutawayByWO");
             },
-
             //AvailableHandlingunitsOnBinQuery Tile...
             OnPressAvailableHandlingUnitsOnBinQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AvailableHandlingUnitsOnBinQuery");
+            },
+            //WTQueryByHU Tile...
+            OnPressWTquerybyHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByHU");
             },
 
             onReceivingofHUbyBillofLading: function () {

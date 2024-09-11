@@ -51,11 +51,11 @@
             >
                 <VBox
                     id="idWarehouseOderNoformBox"
-                    class="putawayContainer"
+                    class="putawayContainer_PBYWO"
                 >
                     <HBox
                         id="idHBoxWarhouseTitle"
-                        class="warehouseOrderTitle"
+                        class="warehouseOrderTitle_PBYWO"
                         alignItems="Center"
                     >
                         <Button
@@ -72,16 +72,16 @@
                     </HBox>
                     <VBox
                         id="idVBoxWarehouseON"
-                        class="formContainer"
+                        class="formContainer_PBYWO"
                     >
                         <VBox
                             id="idVBOXwarhouse"
-                            class="formBox"
+                            class="formBox_PBYWO"
                         >
                             <Label
                                 id="idLableWarehouse"
                                 text="Warehouse Order Number:"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <HBox
                                 id="idHBoxWarehouseorderno"
@@ -103,7 +103,7 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Enter Warehouse Order Number:"
-                                    class="customMargin"
+                                    class="Scannerbtn_PTBYWO"
                                 />
                                 <Button
                                     id="idSubmitBtnWarhouseON_PBYWO"
@@ -132,18 +132,18 @@
                 />
                 <VBox
                     id="idSecondPageContainer"
-                    class="SecondPageContainer"
+                    class="Page2HUDetailsContainer_PBYWO"
                     justifyContent="Center"
                 >
                     <Title
                         id="idSecondPageTitle"
                         text="Second Page"
                         level="H2"
-                        class="SecondPageformHeader"
+                        class="Page2formHeaderTitle_PBYWO"
                     />
                     <VBox
                         id="idSecondBox"
-                        class="SecondFormBox"
+                        class="Page2FormBox_PBYWO"
                     >
                         <form:SimpleForm
                             id="idSimpleFormSecondPage"
@@ -203,7 +203,7 @@
                                     id="idBtnHuListBtn_PBYWO"
                                     text="HuList"
                                     press="onPressHUListTable"
-                                    class="ButtonsSpaceSecondPage"
+                                    class="HUListBtn_PBYWO"
                                 />
                             </HBox>
                         </form:SimpleForm>
@@ -532,7 +532,7 @@
                         id="idVerifyHuNumberTitle_PBYWO"
                         text="Verify HU Number"
                         level="H2"
-                        class="formHeader"
+                        class="Page5formHeaderVerifyHUNum_PBYWO"
                     />
                     <VBox
                         id="idVerifyHuNumberBox_PBYWO"
@@ -549,7 +549,7 @@
                             <Label
                                 id="idHUNumber_PBYWO"
                                 text="HU Number"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <Input
                                 id="idHuInput_PBYWO"
@@ -558,7 +558,7 @@
                             <Label
                                 id="idDeliverynumber_PBYWO"
                                 text="Delivery Number"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <Input
                                 id="idDeliveryInput_PBYWO"
@@ -567,7 +567,7 @@
                             <Label
                                 id="idItemNumber_PBYWO"
                                 text="Item Number"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <Input
                                 id="idItemNoInput_PBYWO"
@@ -582,13 +582,13 @@
                                     id="idGrBtn_PBYWO"
                                     text="GR"
                                     press="onGRBtnPressVerifyHUNumber"
-                                    class="formButton"
+                                    class="GRandUPLOADBtns_PBYWO"
                                 />
                                 <Button
                                     id="idUnloadBtn_PBYWO"
                                     text="Unload"
                                     press="onUnloadPressVerifyHUNumber"
-                                    class="formButton"
+                                    class="GRandUPLOADBtns_PBYWO"
                                 />
                             </HBox>
                         </form:SimpleForm>
