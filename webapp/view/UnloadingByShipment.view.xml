@@ -802,6 +802,94 @@
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
+            <ScrollContainer
+    id="page7Shipment_UBYSHP"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_UBYSHP_page7"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton55_UBYSHP"
+            icon="sap-icon://nav-back"
+            press="Onpressback6"
+        />
+        <Title
+            id="idTitle_UBYSHP_page7"
+            text="UNLOAD"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_UBYSHP_page7"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProducttQuantityForm_UBYSHP"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field (Product) -->
+        <Label
+            id="idProducttLabel_UBYSHP_page7"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProducttInputinpage7_UBYSHP"
+            placeholder="Enter product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idQuantityLabelinpage7_UBYSHP"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idQuantityInputinpage7_UBYSHP"
+            placeholder="Enter Quantity..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <Label
+            id="idPlaceholderLabel_UBYSHP_page7"
+            text=""
+        />
+        
+        <HBox
+            id="idGrButtonHBox_UBYSHP_page7"
+            class="sapUiSmallMarginTop"
+          
+        >
+           
+
+            <Button
+                id="idUnloadlButton_UBYSHP"
+                text="Unload"
+                press="onUnloadPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>

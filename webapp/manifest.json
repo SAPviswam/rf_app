@@ -296,6 +296,20 @@
             "TargetReceivingofHUbyShipment"
 
           ]
+        },
+        {
+          "name": "WTQueryByWO",
+          "pattern": "WTQueryByWO",
+          "target": [
+            "TargetWTQueryByWO"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU",
+          "target": [
+            "TargetReceivingofHUbyTU"
+          ]
         }
       ],
       "targets": {
@@ -489,6 +503,21 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyShipment",
           "viewName": "ReceivingofHUbyShipment"
+
+        },
+        "TargetWTQueryByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWO",
+          "viewName": "WTQueryByWO"
+        },
+        "TargetReceivingofHUbyTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyTU",
+          "viewName": "ReceivingofHUbyTU"
 
         }
       }

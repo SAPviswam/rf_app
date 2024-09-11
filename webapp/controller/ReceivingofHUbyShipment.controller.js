@@ -32,7 +32,6 @@ sap.ui.define([
 
             },
             onRowDoubleClick: function () {
-                debugger
                 var oSelected = this.byId("idRHBSshipmennumbertable").getSelectedItem();
                 this.getView().byId("idRHBSscrollContainer2").setVisible(false);
                 this.getView().byId("idRHBSscrollContainer3").setVisible(true);

@@ -10,7 +10,8 @@ sap.ui.define(
         onInit: function() {
         },
         onSBQPfirstBackBtnPress:function(){
-           
+          var oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("Supervisor");
         },
 
         onSBQProductLiveChange:function(){
@@ -30,6 +31,9 @@ sap.ui.define(
         onSBQPSecondBackBtnPress:function(){
               this.getView().byId("idSBQPFirstSC").setVisible(true)
               this.getView().byId("idSBQPsecondSC").setVisible(false)
+              this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
+              this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+              
         },
         onSBQPPreDePress:function(){
           this.getView().byId("idSBQPsecondSC").setVisible(false);
@@ -57,11 +61,7 @@ sap.ui.define(
           this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
           this.getView().byId("idSBQPsecondSC").setVisible(true);
           this.getView().byId("idSBQPFourthSC").setVisible(false);
-          
-
         }
-
-
       });
     }
   );
