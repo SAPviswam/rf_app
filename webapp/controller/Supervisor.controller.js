@@ -4,9 +4,10 @@ sap.ui.define(
         "sap/ui/Device",
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast",
-        "sap/ui/core/UIComponent"
+        "sap/ui/core/UIComponent",
+         "sap/ui/core/BusyIndicator"
     ],
-    function (BaseController, Device, JSONModel, MessageToast, UIComponent) {
+    function (BaseController, Device, JSONModel, MessageToast, UIComponent, BusyIndicator) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.Supervisor", {
@@ -1537,8 +1538,13 @@ sap.ui.define(
                 oRouter.navTo("RouteBillofLading");
             },
             onUnloadingByDoorTilePress: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByDoor");
+                BusyIndicator.show(3);
+                setTimeout(function () {
+                    // Navigate to another page (user page)
+                    var oRouter = this.getOwnerComponent().getRouter();
+                    oRouter.navTo("UnloadingByDoor");
+                    BusyIndicator.hide();
+                  }.bind(this), 2000); 
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
