@@ -57,11 +57,7 @@ sap.ui.define(
           this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
           this.getView().byId("idSBQPsecondSC").setVisible(true);
           this.getView().byId("idSBQPFourthSC").setVisible(false);
-          
-
         }
-
-
       });
     }
   );

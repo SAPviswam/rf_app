@@ -1632,8 +1632,12 @@ sap.ui.define(
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyShipment");
+            },
+            OnPressWTQuerybyWO:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO");
             }
-
+            
         });
     }
 );
