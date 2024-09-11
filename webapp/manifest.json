@@ -317,10 +317,20 @@
           ]
         },
         {
+
+          "name": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation",
+          "target": [
+            "TargetSerialNumberLocation"
+          ]
+    },
+
+    {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
             "TargetWTQueryByWT"
+
           ]
         }
       ],
@@ -535,12 +545,22 @@
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
         },
+
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+      },
+
         "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
+
         }
       }
     },

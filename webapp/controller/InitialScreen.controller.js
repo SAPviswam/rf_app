@@ -41,8 +41,27 @@ sap.ui.define([
             if (oU === "111010" && oP === "ARTIHCUS") {
                 this.getOwnerComponent().getRouter().navTo("Homepage", { id: oU })
             }
-   
+      
+         this.onUserLogin();
        
+        },
+        onUserLogin: function () {
+            this.getView().byId("idsaplogonUserId").setValue();
+            this.getView().byId("idSapLogonPassword").setValue();
+        },
+        // clear btn in the configure SAP fragment.
+        onClearconnectsapDialog:function () {
+            this.getView().byId("idDescriptionInput").setValue();
+            this.getView().byId("idSystemIdInput").setValue();
+            this.getView().byId("idInstanceNumberInput").setValue();
+            this.getView().byId("idApplicationServerInput").setValue(); 
+            this.getView().byId("idClientInput").setValue();
+            this.getView().byId("idServiceInput").setValue(); 
         }
+
+       
+
     });
+
+
 });
