@@ -315,6 +315,13 @@
           "target": [
             "TargetReceivingofHUbyTU"
           ]
+        },
+        {
+          "name": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation",
+          "target": [
+            "TargetSerialNumberLocation"
+          ]
         }
       ],
       "targets": {
@@ -527,6 +534,13 @@
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyTU",
           "viewName": "ReceivingofHUbyTU"
+        },
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
         }
       }
     },
