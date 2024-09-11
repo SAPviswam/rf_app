@@ -249,6 +249,7 @@
                     valueLiveUpdate="true"
                     liveChange="onSubmitOtp"
                     width="100%"
+                    editable="true"
                 />
                                  <Button
                         id="getotpsv"
@@ -257,6 +258,7 @@
                         type="Emphasized"
                         width="80px"
                         visible="false"
+
                     />
                                 </HBox>
                      </FlexBox>
