@@ -1518,9 +1518,13 @@ sap.ui.define(
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HuQuery");
- 
+                var oInput = this.byId("_IDGenInput1");
+                if (oInput) {
+                    oInput.focus();
+                }
             },
             OnPressStockBinQueryByBin: function () {
+                debugger
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByBin");
 
@@ -1604,6 +1608,11 @@ sap.ui.define(
                 oRouter.navTo("CreateConfirmAdhocHu");
 
             },
+            onReceivingofHUbyConsignementOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("Receivingofhubyco");
+
+            },
 
             onReceivingofHUbyManufacturingOrder:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1625,6 +1634,12 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor");
             },
+
+
+            onReceivingofHUbyShipment:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyShipment");
+            }
 
 
         });
