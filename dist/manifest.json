@@ -142,6 +142,20 @@
                     ]
                 },
                 {
+                    "name": "ReceivingofHUbyASN",
+                    "pattern": "ReceivingofHUbyASN",
+                    "target": [
+                        "TargetReceivingofHUbyASN"
+                    ]
+                },
+                {
+                    "name": "RouteUnloadingASNDetails",
+                    "pattern": "UnloadingASNDetails",
+                    "target": [
+                        "TargetUnloadingASNDetails"
+                    ]
+                },
+                {
                     "name": "UnloadByDelivery",
                     "pattern": "UnloadByDelivery",
                     "target": [
@@ -167,6 +181,13 @@
                     "pattern": "UnloadingByDoor",
                     "target": [
                         "TargetUnloadingByDoor"
+                    ]
+                },
+                {
+                    "name": "UnloadingByConsignmentOrder",
+                    "pattern": "UnloadingByConsignmentOrder",
+                    "target": [
+                        "TargetUnloadingByConsignmentOrder"
                     ]
                 },
                 {
@@ -198,6 +219,20 @@
                     ]
                 },
                 {
+                    "name": "UnloadingByShipment",
+                    "pattern": "UnloadingByShipment",
+                    "target": [
+                        "TargetUnloadingByShipment"
+                    ]
+                },
+                {
+                    "name": "UnloadingByTU",
+                    "pattern": "UnloadingByTU",
+                    "target": [
+                        "TargetUnloadingByTU"
+                    ]
+                },
+                {
                     "name": "PutawayByWO",
                     "pattern": "PutawayByWO",
                     "target": [
@@ -209,6 +244,48 @@
                     "pattern": "AdhocProductWt",
                     "target": [
                         "TargetAdhocProductWt"
+                    ]
+                },
+                {
+                    "name": "RecevingOfHUbyManufacturingOrder",
+                    "pattern": "RecevingOfHUbyManufacturingOrder",
+                    "target": [
+                        "TargetRecevingOfHUbyManufacturingOrder"
+                    ]
+                },
+                {
+                    "name": "CreateConfirmAdhocHu",
+                    "pattern": "CreateConfirmAdhocHu",
+                    "target": [
+                        "TargetCreateConfirmAdhocHu"
+                    ]
+                },
+                {
+                    "name": "CreateConfirmAdhocProduct",
+                    "pattern": "CreateConfirmAdhocProduct",
+                    "target": [
+                        "TargetCreateConfirmAdhocProduct"
+                    ]
+                },
+                {
+                    "name": "StockBinQueryByProduct",
+                    "pattern": "StockBinQueryByProduct",
+                    "target": [
+                        "TargetStockBinQueryByProduct"
+                    ]
+                },
+                {
+                    "name": "Receivingofhubyco",
+                    "pattern": "Receivingofhubyco",
+                    "target": [
+                        "TargetRecevingofHUbyConsignemntOrder"
+                    ]
+                },
+                {
+                    "name": "ReceivingofHUbyShipment",
+                    "pattern": "ReceivingofHUbyShipment",
+                    "target": [
+                        "TargetReceivingofHUbyShipment"
                     ]
                 }
             ],
@@ -248,6 +325,20 @@
                     "viewId": "StockBinQueryByBin",
                     "viewName": "StockBinQueryByBin"
                 },
+                "TargetReceivingofHUbyASN": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReceivingofHUbyASN",
+                    "viewName": "ReceivingofHUbyASN"
+                },
+                "TargetUnloadingASNDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingASNDetails",
+                    "viewName": "UnloadingASNDetails"
+                },
                 "TargetUnloadByDelivery": {
                     "viewType": "XML",
                     "transition": "slide",
@@ -275,6 +366,13 @@
                     "clearControlAggregation": false,
                     "viewId": "UnloadingByDoor",
                     "viewName": "UnloadingByDoor"
+                },
+                "TargetUnloadingByConsignmentOrder": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingByConsignmentOrder",
+                    "viewName": "UnloadingByConsignmentOrder"
                 },
                 "TargetRecevingOfHUbyDelivery": {
                     "viewType": "XML",
@@ -311,12 +409,68 @@
                     "viewId": "UnloadingByBillofLading",
                     "viewName": "UnloadingByBillofLading"
                 },
+                "TargetUnloadingByShipment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingByShipment",
+                    "viewName": "UnloadingByShipment"
+                },
+                "TargetUnloadingByTU": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingByTU",
+                    "viewName": "UnloadingByTU"
+                },
                 "TargetAdhocProductWt": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "AdhocProductWt",
                     "viewName": "AdhocProductWt"
+                },
+                "TargetCreateConfirmAdhocHu": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateConfirmAdhocHu",
+                    "viewName": "CreateConfirmAdhocHu"
+                },
+                "TargetCreateConfirmAdhocProduct": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateConfirmAdhocProduct",
+                    "viewName": "CreateConfirmAdhocProduct"
+                },
+                "TargetStockBinQueryByProduct": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "StockBinQueryByProduct",
+                    "viewName": "StockBinQueryByProduct"
+                },
+                "TargetRecevingOfHUbyManufacturingOrder": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "RecevingOfHUbyManufacturingOrder",
+                    "viewName": "RecevingOfHUbyManufacturingOrder"
+                },
+                "TargetRecevingofHUbyConsignemntOrder": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Receivingofhubyco",
+                    "viewName": "Receivingofhubyco"
+                },
+                "TargetReceivingofHUbyShipment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReceivingofHUbyShipment",
+                    "viewName": "ReceivingofHUbyShipment"
                 }
             }
         },
