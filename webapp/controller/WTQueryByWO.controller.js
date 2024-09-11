@@ -16,7 +16,7 @@ sap.ui.define(
             oRouter.navTo("Supervisor");
         },
         onWtQBWoWhLiveChange:function(){
-            if(this.getView().byId("idWtQBWoWhInput").getValue()=="1234"){
+           
                 this.getView().byId("idWtQBWoFirstSC").setVisible(false);
                 this.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
                 var oWHO=this.getView().byId("idWtQBWoWhInput").getValue();
@@ -24,7 +24,7 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoWh2Input").setEditable(false);
                 this.getView().byId("idWtQBWofirstbackbtn").setVisible(false);
                 this.getView().byId("idWtQBWoSecondbackbtn").setVisible(true);
-            }  
+            
         },
  
         onWtQBWoSecondBackBtnPress:function(){
