@@ -22,6 +22,9 @@ sap.ui.define(
                 this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
                 //stored colours applying...
                 this.applyStoredColors();
+
+
+                
                 // Initialize events for tile and button
                 var oTile = this.byId("idPutawayByWO1");
                 var oButton = this.byId("idBtnPutawayByWO");
@@ -1476,85 +1479,85 @@ sap.ui.define(
                     }
                 });
             },
-            onSelectQueue: function () {
-                // Get the MultiComboBox instances for Group and Queue
-                var oGroupMultiComboBox = this.byId("idGroupSelect");
-                var oQueueMultiComboBox = this.byId("idQueueSelect");
-
-                // Retrieve the selected items
-                var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
-                var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
-
-                // Initialize an array to hold the filters
-                var aFilters = [];
-
-                // Iterate over the selected queues to add corresponding filters
-                aSelectedQueues.forEach(function (oItem) {
-                    var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
-
-                    // Add filter for the selected process queue
-                    aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
-                });
-
-                // Combine the filters with an OR condition
-                var oCombinedFilter = new sap.ui.model.Filter({
-                    filters: aFilters,
-                    and: false // This specifies the OR condition
-                });
-
-                // Fetch data from the model with applied filters
-                var oModel = this.getOwnerComponent().getModel();
-                oModel.read("/ProcessAreaSet", {
-                    filters: [oCombinedFilter],
-                    success: function (oData) {
-                        // Process data to ensure matching with selected groups
-                        var oGroupQueueMap = {};
-                        var isValid = true;
-
-                        // Build a map of group-queue relations
-                        oData.results.forEach(function (oItem) {
-                            var sGroup = oItem.Processgroup;
-                            var sQueue = oItem.Queue;
-
-                            if (!oGroupQueueMap[sGroup]) {
-                                oGroupQueueMap[sGroup] = [];
-                            }
-                            oGroupQueueMap[sGroup].push(sQueue);
-                        });
-
-                        // Validate that the Queue selection matches the Group selections
-                        aSelectedGroups.forEach(function (oGroupItem) {
-                            var sGroupKey = oGroupItem.getText();
-                            var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
-                                var sQueueKey = oQueueItem.getText();
-                                return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
-                            });
-
-                            if (!bQueueMatched) {
-                                isValid = false;
-
-                                // Set the value state to Error for Queue MultiComboBox
-                                oQueueMultiComboBox.setValueState("Error");
-                                oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
-
-                                // Show error message
-                                sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
-                            }
-                        });
-
-                        if (!isValid) {
-                            return;
-                        }
-
-                        // Reset value state to None if validation is successful
-                        oQueueMultiComboBox.setValueState("None");
-
-                    },
-                    error: function (oError) {
-                        // Handle error if necessary
-                        sap.m.MessageToast.show("Failed to fetch data.");
-                    }
-                });
+            onSelectQueue:function(){
+                 // Get the MultiComboBox instances for Group and Queue
+                 var oGroupMultiComboBox = this.byId("idGroupSelect");
+                 var oQueueMultiComboBox = this.byId("idQueueSelect");
+ 
+                 // Retrieve the selected items
+                 var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
+                 var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
+ 
+                 // Initialize an array to hold the filters
+                 var aFilters = [];
+ 
+                 // Iterate over the selected queues to add corresponding filters
+                 aSelectedQueues.forEach(function (oItem) {
+                     var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
+ 
+                     // Add filter for the selected process queue
+                     aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
+                 });
+ 
+                 // Combine the filters with an OR condition
+                 var oCombinedFilter = new sap.ui.model.Filter({
+                     filters: aFilters,
+                     and: false // This specifies the OR condition
+                 });
+ 
+                 // Fetch data from the model with applied filters
+                 var oModel = this.getOwnerComponent().getModel();
+                 oModel.read("/ProcessAreaSet", {
+                     filters: [oCombinedFilter],
+                     success: function (oData) {
+                         // Process data to ensure matching with selected groups
+                         var oGroupQueueMap = {};
+                         var isValid = true;
+                         // Build a map of group-queue relations
+                         oData.results.forEach(function (oItem) {
+                             var sGroup = oItem.Processgroup;
+                             var sQueue = oItem.Queue;
+ 
+                             if (!oGroupQueueMap[sGroup]) {
+                                 oGroupQueueMap[sGroup] = [];
+                             }
+                             oGroupQueueMap[sGroup].push(sQueue);
+                         });
+ 
+                         // Validate that the Queue selection matches the Group selections
+                         aSelectedGroups.forEach(function (oGroupItem) {
+                             var sGroupKey = oGroupItem.getText();
+                             var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
+                                 var sQueueKey = oQueueItem.getText();
+                                 return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
+                             });
+ 
+                             if (!bQueueMatched) {
+                                 isValid = false;
+ 
+                                 // Set the value state to Error for Queue MultiComboBox
+                                 oQueueMultiComboBox.setValueState("Error");
+                                 oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
+ 
+                                 // Show error message
+                                 sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
+                             }
+                         });
+ 
+                         if (!isValid) {
+                             return;
+                         }
+ 
+                         // Reset value state to None if validation is successful
+                         oQueueMultiComboBox.setValueState("None");
+ 
+                     },
+                     error: function (oError) {
+                         // Handle error if necessary
+                         sap.m.MessageToast.show("Failed to fetch data.");
+                     }
+                 });
+          
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1563,27 +1566,29 @@ sap.ui.define(
                 if (oInput) {
                     oInput.focus();
                 }
-
             },
             OnPressStockBinQueryByBin: function () {
+                debugger
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+           onReceivingofHUbyASN: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
 
-            /**Navigate to Unloading By ASN Page */
-            onUnloadingBYASN:function(){
-                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
             },
 
+            /**Navigate to Unloading By ASN Page */
+            onUnloadingBYASN: function () {
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
 
+            },
+ 
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor");
             },
-            
-
-
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU");
@@ -1596,35 +1601,55 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PutawayByWO");
             },
-
+ 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
-            onUnloadingByDoorTilePress:function () {
+            onUnloadingByDoorTilePress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("UnloadingByDoor");
- 
+
             },
-            onUnloadingByBillofLadingPress:function () {
+            onUnloadingByConsignmentOrderTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByConsignmentOrder");
+
+            },
+            onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
-
+ 
             },
-            onPressCreateAdhocHUWTInAdhocWT:function(){
+            onUnloadingByShipmentPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment");
+ 
+            },
+            onUnloadingByTUPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU");
+ 
+            },
+            onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocHuWt");
-
+ 
             },
-            onPressCreateAdhocProductWTInAdhocWT:function(){
+            onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocProductWt");
-
+ 
             },
-            OnPressUnloadByDelivery:function(){
+            OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery");
+ 
+            },
+            OnPressCreateandConfirmAdhocHUWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu");
 
             },
             onReceivingofHUbyConsignementOrder:function(){
@@ -1632,142 +1657,6 @@ sap.ui.define(
                 oRouter.navTo("Receivingofhubyco");
 
             },
-
-            onGetOTP: function () {
-                // Get the phone number from the input field
-                var sPhoneNumber = this.byId("idPhoneInput").getValue();
-
-
-
-                // Basic validation to ensure the phone number is entered
-                if (!sPhoneNumber) {
-                    sap.m.MessageToast.show("Please enter a valid phone number.");
-                    return;
-                }
-
-                // Prepare the Twilio API details
-                var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
-                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account 
-                const authToken = '702f2b322d3ab982e7e8da69db2598b8'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
-                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
-
-                // Prepare the data for the request
-                const payload = {
-                    To: formattedPhoneNumber,
-                    Channel: 'sms'
-                };
-
-                var This = this;
-
-                // Make the AJAX request to Twilio to send the OTP
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $.param(payload),
-                    success: function (data) {
-                        console.log('OTP sent successfully:', data);
-                        sap.m.MessageToast.show('OTP sent successfully! Please check your phone.');
-                        This.byId("idOtpInputsv").setVisible(true);
-
-                        // Store the phone number for later use in OTP verification
-                        this._storedPhoneNumber = formattedPhoneNumber;
-
-                        // Open the OTP dialog
-
-                    }.bind(this),
-                    error: function (xhr, status, error) {
-                        console.error('Error sending OTP:', error);
-                        sap.m.MessageToast.show('Failed to send OTP: ' + error);
-                    }
-                });
-            },
-            onSubmitOtp: function () {
-                var oMobileinput = this.byId("idPhoneInput")
-                var oOtpInput = this.byId("idOtpInputsv");
-                var oVerfied = this.byId("verficationIdicon");
-                var oGetotp = this.byId("getotpsv");
-                var sEnteredOtp = oOtpInput.getValue();
-
-                // Reset the ValueState and ValueStateText before validation
-                oOtpInput.setValueState(sap.ui.core.ValueState.None);
-                oOtpInput.setValueStateText("");
-
-                // Basic validation: Check if OTP is entered
-                if (!sEnteredOtp) {
-                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                    oOtpInput.setValueStateText("Please enter the OTP.");
-                    sap.m.MessageToast.show("Please enter the OTP.");
-                    return;
-                }
-
-                // Validate OTP: It should be exactly 6 digits
-                var otpRegex = /^\d{6}$/;
-                if (!otpRegex.test(sEnteredOtp)) {
-                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                    oOtpInput.setValueStateText("Please enter a valid 6-digit OTP.");
-                    sap.m.MessageToast.show("Please enter a valid 6-digit OTP.");
-                    return;
-                }
-
-                // Prepare the Twilio Verify Check API details
-                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
-                const authToken = '702f2b322d3ab982e7e8da69db2598b8'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
-                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`;
-                const payload = {
-                    To: this._storedPhoneNumber,
-                    Code: sEnteredOtp
-                };
-
-                // Make the AJAX request to Twilio to verify the OTP
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $.param(payload),
-                    success: function (data) {
-                        if (data.status === "approved") {
-                            sap.m.MessageToast.show("OTP verified successfully!");
-                            oOtpInput.setValueState(sap.ui.core.ValueState.Success).setEditable(false);
-                            oMobileinput.setValueState(sap.ui.core.ValueState.Success);
-                            oMobileinput.setEditable(false);
-                            oVerfied.setVisible(true);
-                            oGetotp.setVisible(false);
-                            setTimeout(function() {
-                                oOtpInput.setVisible(false);
-                            }, 5000); 
-
-
-
-                            // Reset the ValueState to None upon successful verification
-
-                            oOtpInput.setValueStateText("OTP verified successfully");
-                            this.bOtpVerified = true;
-
-                            // Proceed with further actions
-                        } else {
-                            oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                            oOtpInput.setValueStateText("Invalid OTP. Please try again.");
-                            sap.m.MessageToast.show("Invalid OTP. Please try again.");
-                            oMobileinput.setValueState(sap.ui.core.ValueState.Error);
-                            oMobileinput.setValueStateText("Recheck your Mobile Number");
-                        }
-                    }.bind(this),
-                    error: function (xhr, status, error) {
-                        console.error('Error verifying OTP:', error);
-                        sap.m.MessageToast.show('Failed to verify OTP: ' + error);
-                    }
-                });
-            },
-
 
 
 

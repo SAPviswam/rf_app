@@ -8,174 +8,152 @@ function (Controller) {
         onInit: function () {
 
         },
-        //when user press on submit button in the first screen
-        PressOnSubmitbtn: function () {
-
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(true);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(true);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-
-        },
-        //Back Button in the next Screen After Scanning the Delivery Number
-        OnDeliveryDetailsBackButton: function () {
-
-            this.getView().byId("IdScanningDeliveryNo").setVisible(true);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-
-        },
-        // When User Press on Back button in the Hu List Page
-        OnpressHUlistBackbutton: function () {
-
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(true);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(true);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-        },
-       // When user press on the HU List in the Second Screen
-        onHUListPress: function() {
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(true);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(true);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-        },
-       //When User Press On Back Button In New HU Page
-        OnpressNewHuBackbutton: function () {
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(true);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(true);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-            
-
-        },
-       // When User Press On New HU Button In the Second Screen
-        onNewHUPress: function () {
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(true);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idDeliveryEnter").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(true);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-
-        },
-        //when user Press on NEXT OR ENTER button
-        onPressEnter: function() {
-
-            this.getView().byId("idDeliveryEnter").setVisible(true);
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(true);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-
-
-        },
-        //when user press on back button after entering next 
-        OnpressAfterNextBackbutton: function() {
-
-            this.getView().byId("idDeliveryEnter").setVisible(false);
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(true);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(true);
-            this.getView().byId("idGRBackbutton").setVisible(false);
-        },
-      // when user press on GR button 
-        onPressEnterGRButton: function() {
-
-            this.getView().byId("IdGRPage").setVisible(true);
-            this.getView().byId("idDeliveryEnter").setVisible(false);
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("idGRBackbutton").setVisible(true);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-        },
-        // when user press on Back button after pressing the Gr button
-        OnpressGRBackbutton: function() {
-            this.getView().byId("idDeliveryEnter").setVisible(true);
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(true);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idGRBackbutton").setVisible(false);
-        },
-        onPressEnterUnloadButton: function() {
-            this.getView().byId("idUnloadPage").setVisible(true);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idDeliveryEnter").setVisible(false);
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("idUnloadBackbutton").setVisible(true);
-            this.getView().byId("idGRBackbutton").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(false);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-        },
-        OnpressUnloadBackbutton: function() {
-            
-            this.getView().byId("idDeliveryEnter").setVisible(true); 
-            this.getView().byId("IdScanningDeliveryNo").setVisible(false);
-            this.getView().byId("idROHDHUdetailsPage").setVisible(false);
-            this.getView().byId("idROHDHUlistPage").setVisible(false);
-            this.getView().byId("idROHDNewHUpage").setVisible(false);
-            this.getView().byId("IdGRPage").setVisible(false);
-            this.getView().byId("idUnloadPage").setVisible(false);
-            this.getView().byId("idAfterNextBackbutton").setVisible(true);
-            this.getView().byId("idHUlistBackbutton").setVisible(false);
-            this.getView().byId("idDeliveryDetailsBackButton").setVisible(false);
-            this.getView().byId("idNewHuBackbutton").setVisible(false);
-            this.getView().byId("idGRBackbutton").setVisible(false);
-            this.getView().byId("idUnloadBackbutton").setVisible(false);
-
-        }
-
+        onAfterRendering: function () {
+            this.byId("idROHDScanDeliveryNO").setVisible(true);
+          },
+          //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
+          OnPressScanDeliveryBackButton: function () {
+            this.getOwnerComponent().getRouter().navTo("Supervisor");
+          },
+    
+          //Back Btn from ScrollContainer Page 2 =>idROHDDeliverydetailsPage2 
+          OnpressDeliveryDetailsBackbutton: function () {
+            var oScrollContainer1 = this.byId("idROHDScanDeliveryNO");
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+    
+            // show the Scanner form VBox
+            oScrollContainer1.setVisible(true);
+    
+            //Hide the HUDetails scroll container
+            oScrollContainer2.setVisible(false);
+          },
+    
+          //Back Btn from ScrollContainer Page 3=>idROHDHUListPage3
+          OnpressHUlistBackbtn: function () {
+            var oScrollContainer3 = this.byId("idROHDHUListPage3");
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+    
+            // show the HUDetails Page2
+            oScrollContainer2.setVisible(true);
+    
+            //Hide the HUListTable Page3
+            oScrollContainer3.setVisible(false);
+          },
+    
+          //Back Btn from ScrollContainer Page 4=>idROHDNewHUPage4
+          OnpressNewHuBackbutton: function () {
+            var oScrollContainer4 = this.byId("idROHDNewHUPage4");
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+    
+            // show the HUDetails Page2
+            oScrollContainer2.setVisible(true);
+    
+            //Hide the NewHuNumber Page3
+            oScrollContainer4.setVisible(true);
+          },
+    
+          //Back Btn from ScrollContainer Page 5=>idROHDNewHUPage4
+          OnpressAfterNextBackbutton: function () {
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+            var oScrollContainer4 = this.byId("idROHDNewHUPage4");
+    
+            // show the HUDetails Page2
+            oScrollContainer4.setVisible(true);
+    
+            //Hide the NewHuNumber Page3
+            oScrollContainer5.setVisible(false);
+          },
+    
+          //Back Btn from ScrollContainer Page 6=>idROHDGRpage6
+          OnpressROHDGRBackbutton: function () {
+            var oScrollContainer6 = this.byId("idROHDGRpage6");
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+    
+            // show the VerifyHUNumber Page5
+            oScrollContainer5.setVisible(true);
+    
+            //Hide the GoodsReceiptGR Page6
+            oScrollContainer6.setVisible(false);
+          },
+    
+          //Back Btn from ScrollContainer Page 7=>idROHDUnloadpage7
+          OnpressUnloadBackbutton: function () {
+            var oScrollContainer7 = this.byId("idROHDUnloadpage7");
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+    
+            // show the UnLoadPage Page7
+            oScrollContainer5.setVisible(true);
+    
+            //Hide the VerifyHuNmber Page5
+            oScrollContainer7.setVisible(false);
+          },
+    
+          //Submit Btn from ScrollContainer Page 1=> idPage1ScannerFormBox..
+          onPressROHDSubmitbtn: function () {
+            var oScrollContainer1 = this.byId("idROHDScanDeliveryNO");
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+    
+            // Hide the Scanner form VBox
+            oScrollContainer1.setVisible(false);
+    
+            // Show the HUDetails scroll container
+            oScrollContainer2.setVisible(true);
+          },
+    
+          //HUListTableBtn from ScrollContainer Page 2 =>idROHDDeliverydetailsPage2
+          onROHDHUListPress: function () {
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+            var oScrollContainer3 = this.byId("idROHDHUListPage3");
+    
+            // Hide the form VBox
+            oScrollContainer2.setVisible(false);
+            //oScrollContainer.setVisible(false);
+    
+            // Show the scroll container
+            oScrollContainer3.setVisible(true);
+          },
+    
+          //NewHUNumberBtn from ScrollContainer Page 2=>idROHDDeliverydetailsPage2 
+          onPressROHDNewHU: function () {
+            var oScrollContainer4 = this.byId("idROHDNewHUPage4");
+            var oScrollContainer2 = this.byId("idROHDDeliverydetailsPage2");
+            // Hide the form VBox
+            oScrollContainer2.setVisible(false);
+    
+            // Show the scroll container
+            oScrollContainer4.setVisible(true);
+          },
+    
+          onPressROHDEnter: function(){
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+            var oScrollContainer4 = this.byId("idROHDNewHUPage4"); 
+            // Hide the form VBox
+            oScrollContainer4.setVisible(false);
+    
+            // Show the scroll container
+            oScrollContainer5.setVisible(true);
+          },
+    
+          //GRBtn from from ScrollContainer Page 5=>idROHDGRpage6
+          onPressEnterGRButton: function(){
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+            var oScrollContainer6 = this.byId("idROHDGRpage6"); 
+            // Hide the form VBox
+            oScrollContainer5.setVisible(false);
+    
+            // Show the scroll container
+            oScrollContainer6.setVisible(true);
+          },
+    
+          //UnLoad Btn from from ScrollContainer Page 5=>idROHDGRpage6
+          onPressEnterUnloadButton: function(){
+            var oScrollContainer5 = this.byId("idROHDDeliveryEnterpage5");
+            var oScrollContainer7 = this.byId("idROHDUnloadpage7"); 
+            // Hide the form VBox
+            oScrollContainer5.setVisible(false);
+    
+            // Show the scroll container
+            oScrollContainer7.setVisible(true);
+          }  
     });
 });
