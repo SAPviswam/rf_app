@@ -107,8 +107,15 @@
       },
       "routes": [
         {
-          "name": "RouteHome",
+          "name": "InitialScreen",
           "pattern": ":?query:",
+          "target": [
+            "TargetInitialScreen"
+          ]
+        },
+        {
+          "name": "Homepage",
+          "pattern": "Homepage/{id}",
           "target": [
             "TargetHome"
           ]
@@ -297,6 +304,13 @@
         }
       ],
       "targets": {
+        "TargetInitialScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InitialScreen",
+          "viewName": "InitialScreen"
+        },
         "TargetHome": {
           "viewType": "XML",
           "transition": "slide",
