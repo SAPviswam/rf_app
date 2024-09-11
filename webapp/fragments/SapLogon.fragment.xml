@@ -38,7 +38,7 @@
                         width="135%"
                     />
                     <Input
-                        id="idsaplogonNewPassword"
+                        id="idsaplogonUserId"
                         value=""
                         placeholder="Enter User ID"
                         required="true"
@@ -49,7 +49,7 @@
                         width="135%"
                     />
                     <Input
-                        id="idsaplogonConfirmPassword"
+                        id="idSapLogonPassword"
                         value=""
                         placeholder="Enter Password"
                         required="true"

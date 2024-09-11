@@ -34,6 +34,15 @@ sap.ui.define([
         },
         onCloseconnectsap:function(){
             this.oConnetSap.close();
+        },
+        onsapsubmitPress: function () {
+            var oU = this.getView().byId("idsaplogonUserId").getValue();
+            var oP = this.getView().byId("idSapLogonPassword").getValue();
+            if (oU === "111010" && oP === "ARTIHCUS") {
+                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oU })
+            }
+   
+       
         }
     });
 });
