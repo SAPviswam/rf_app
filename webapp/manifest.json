@@ -336,6 +336,13 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
+        },
+        {
+          "name": "WTQueryByWT",
+          "pattern": "WTQueryByWT",
+          "target": [
+            "TargetWTQueryByWT"
+          ]
         }
       ],
       "targets": {
@@ -569,6 +576,13 @@
           "clearControlAggregation": false,
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
         }
       }
     },
