@@ -147,16 +147,15 @@
           "target": [
             "TargetReceivingofHUbyASN"
           ]
-    },
-    {
+        },
+        {
           "name": "RouteUnloadingASNDetails",
           "pattern": "UnloadingASNDetails",
           "target": [
             "TargetUnloadingASNDetails"
           ]
-    },
-    {
-
+        },
+        {
           "name": "UnloadByDelivery",
           "pattern": "UnloadByDelivery",
           "target": [
@@ -168,30 +167,29 @@
           "pattern": "AdhocHuWt",
           "target": [
             "TargetAdhocHuWt"
-            ]
+          ]
         },
         {
           "name": "ReceivingOfHuByDoor",
           "pattern": "ReceivingOfHuByDoor",
           "target": [
             "TargetReceivingOfHuByDoor"
-            ]
+          ]
         },
         {
- 
           "name": "UnloadingByDoor",
           "pattern": "UnloadingByDoor",
           "target": [
             "TargetUnloadingByDoor"
           ]
         },
-          {
-            "name": "UnloadingByConsignmentOrder",
-            "pattern": "UnloadingByConsignmentOrder",
-            "target": [
-              "TargetUnloadingByConsignmentOrder"
-            ]
-          },
+        {
+          "name": "UnloadingByConsignmentOrder",
+          "pattern": "UnloadingByConsignmentOrder",
+          "target": [
+            "TargetUnloadingByConsignmentOrder"
+          ]
+        },
         {
           "name": "RoutePutawayByHU",
           "pattern": "RoutePutawayByHU",
@@ -206,7 +204,6 @@
             "TargetBillofLading"
           ]
         },
-        
         {
           "name": "RecevingOfHUbyDelivery",
           "pattern": "RecevingOfHUbyDelivery",
@@ -247,7 +244,13 @@
           "pattern": "AdhocProductWt",
           "target": [
             "TargetAdhocProductWt"
-
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "target": [
+            "TargetRecevingOfHUbyManufacturingOrder"
           ]
         },
         {
@@ -255,7 +258,6 @@
           "pattern": "CreateConfirmAdhocHu",
           "target": [
             "TargetCreateConfirmAdhocHu"
-
           ]
         },
         {
@@ -263,7 +265,6 @@
           "pattern": "CreateConfirmAdhocProduct",
           "target": [
             "TargetCreateConfirmAdhocProduct"
-
           ]
         },
         {
@@ -271,7 +272,27 @@
           "pattern": "StockBinQueryByProduct",
           "target": [
             "TargetStockBinQueryByProduct"
-
+          ]
+        },
+        {
+          "name": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco",
+          "target": [
+            "TargetRecevingofHUbyConsignemntOrder"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyShipment",
+          "pattern": "ReceivingofHUbyShipment",
+          "target": [
+            "TargetReceivingofHUbyShipment"
+          ]
+        },
+        {
+          "name": "WTQueryByWO",
+          "pattern": "WTQueryByWO",
+          "target": [
+            "TargetWTQueryByWO"
           ]
         }
       ],
@@ -311,22 +332,20 @@
           "viewId": "StockBinQueryByBin",
           "viewName": "StockBinQueryByBin"
         },
-
         "TargetReceivingofHUbyASN": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "ReceivingofHUbyASN",
           "viewName": "ReceivingofHUbyASN"
-      },
-
+        },
         "TargetUnloadingASNDetails": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "UnloadingASNDetails",
           "viewName": "UnloadingASNDetails"
-      },
+        },
         "TargetUnloadByDelivery": {
           "viewType": "XML",
           "transition": "slide",
@@ -355,7 +374,7 @@
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
         },
-           "TargetUnloadingByConsignmentOrder": {
+        "TargetUnloadingByConsignmentOrder": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -389,7 +408,6 @@
           "clearControlAggregation": false,
           "viewId": "BillofLading",
           "viewName": "BillofLading"
- 
         },
         "TargetUnloadingByBillofLading": {
           "viewType": "XML",
@@ -425,7 +443,6 @@
           "clearControlAggregation": false,
           "viewId": "CreateConfirmAdhocHu",
           "viewName": "CreateConfirmAdhocHu"
-
         },
         "TargetCreateConfirmAdhocProduct": {
           "viewType": "XML",
@@ -433,7 +450,6 @@
           "clearControlAggregation": false,
           "viewId": "CreateConfirmAdhocProduct",
           "viewName": "CreateConfirmAdhocProduct"
-
         },
         "TargetStockBinQueryByProduct": {
           "viewType": "XML",
@@ -441,8 +457,34 @@
           "clearControlAggregation": false,
           "viewId": "StockBinQueryByProduct",
           "viewName": "StockBinQueryByProduct"
-
-
+        },
+        "TargetRecevingOfHUbyManufacturingOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyManufacturingOrder",
+          "viewName": "RecevingOfHUbyManufacturingOrder"
+        },
+        "TargetRecevingofHUbyConsignemntOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Receivingofhubyco",
+          "viewName": "Receivingofhubyco"
+        },
+        "TargetReceivingofHUbyShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyShipment",
+          "viewName": "ReceivingofHUbyShipment"
+        },
+        "TargetWTQueryByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWO",
+          "viewName": "WTQueryByWO"
         }
       }
     },
@@ -458,4 +500,3 @@
     "service": "comapprfapp"
   }
 }
- 

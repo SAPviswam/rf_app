@@ -76,6 +76,8 @@
                     columnsM="1"
                     columnsS="1"
                 >
+                <VBox alignContent="Center"
+                        alignItems="Center" >
                     <HBox
                         id="idInitialProductPage1"
                         class="sapUiMediumMargin"
@@ -96,6 +98,7 @@
                             press="onProductBarcodeScanner"
                         />
                     </HBox>
+                    </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
@@ -118,6 +121,8 @@
                 >
                     <VBox
                         id="idsecondProductPage2"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label
@@ -170,6 +175,8 @@
                 >
                     <VBox
                         id="idthirdProductPage1"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label
