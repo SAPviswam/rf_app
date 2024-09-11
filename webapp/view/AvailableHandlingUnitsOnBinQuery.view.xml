@@ -100,7 +100,7 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate_AHUOBQ"
                                     dialogTitle="Enter Bin Number:"
-                                    class="customMargin_AHUOBQ"
+                                    class="Scannerbtn_AHUOBQ"
                                 />
                                 <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"

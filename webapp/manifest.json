@@ -254,6 +254,13 @@
           ]
         },
         {
+          "name": "WTQueryByHU",
+          "pattern": "WTQueryByHU",
+          "target": [
+            "TargetWTQueryByHU"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt",
           "target": [
@@ -450,6 +457,13 @@
           "clearControlAggregation": false,
           "viewId": "AvailableHandlingUnitsOnBinQuery",
           "viewName": "AvailableHandlingUnitsOnBinQuery"
+        },
+        "TargetWTQueryByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByHU",
+          "viewName": "WTQueryByHU"
         },
         "TargetBillofLading": {
           "viewType": "XML",
