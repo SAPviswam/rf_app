@@ -732,7 +732,7 @@
         <HBox
             id="idGrButtonHBox_UOBL_page6"
             class="sapUiSmallMarginTop"
-            justifyContent=""
+          
         >
             <Button
                 id="idConfirmButton_UOBL"
@@ -752,6 +752,95 @@
         </HBox>
     </f:SimpleForm>
 </ScrollContainer>
+<ScrollContainer
+    id="page7billofLading_UOBL"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_UOBL_page7"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton55_UOBL"
+            icon="sap-icon://nav-back"
+            press="Onpressback6"
+        />
+        <Title
+            id="idTitle_UOBL_page7"
+            text="UNLOAD"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_UOBL_page7"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProducttQuantityForm_UOBL"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field (Product) -->
+        <Label
+            id="idProducttLabel_UOBL_page7"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProducttInputinpage7_UOBL"
+            placeholder="Enter product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idQuantityLabelinpage7_UOBL"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idQuantityInputinpage7_UOBL"
+            placeholder="Enter Quantity..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <Label
+            id="idPlaceholderLabel_UOBL_page7"
+            text=""
+        />
+        
+        <HBox
+            id="idGrButtonHBox_UOBL_page7"
+            class="sapUiSmallMarginTop"
+          
+        >
+           
+
+            <Button
+                id="idUnloadlButton_UOBL"
+                text="Unload"
+                press="onUnloadPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+
 
 
         </tnt:mainContents>

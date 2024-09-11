@@ -9,160 +9,178 @@ sap.ui.define([
             onInit: function () {
     
             },
-            //Back function 
-            onPressASNdetailsBackButton: function () {
-                this.getView().byId("IdpageScanning1").setVisible(true);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("Icon6receivinghuByASN").setVisible(false);
-                this.getView().byId("idBackMainButton").setVisible(true);
-
+            Onpressback0: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("Supervisor");
             },
-
             Onpresssubmit: function () {
-
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(true);
-                this.getView().byId("idASNdetailsBackButton").setVisible(true);
-                this.getView().byId("idAsnGRBackButton").setVisible(false);
-                this.getView().byId("Icon6receivinghuByASN").setVisible(false);
-                this.getView().byId("idBackMainButton").setVisible(false);
-
-            },
-
-            onHUListPresshubyASN: function () {
-                this.getView().byId("icon3hubyASN").setVisible(true);
-                this.getView().byId("idAsnHuListBackButton").setVisible(true);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
+    
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(true);
                
-
+    
             },
-            //Back function 
-            OnpressAsnHuListBackButton: function () {
-                this.getView().byId("icon2ReceivehubyASn").setVisible(true);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(true);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                
-            },
-
-            onNewHUPresshubyASN:function(){
-                this.getView().byId("icon4hubyASN").setVisible(true);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(true);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                
-            },
-            //Back Functio
-            OnpressAsnNewHUBackButton:function(){
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(true);
-                this.getView().byId("idASNdetailsBackButton").setVisible(true);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                
-
-            },
-            onPressEnter:function(){
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(true);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(true);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                
-            },
-            //Backfunction
-            OnpressAsnDetailsBackButton:function(){
-                this.getView().byId("icon4hubyASN").setVisible(true);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(true);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(false);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(false);
-                
-
-            },
-            onGRPress:function(){
-                this.getView().byId("idAsnGRBackButton").setVisible(true);
-                this.getView().byId("Icon6receivinghuByASN").setVisible(true);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(false);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(false);
-                
-
-            },
-            OnpressGRBackButton:function(){
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(true);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(true);
-                this.getView().byId("idAsnGRBackButton").setVisible(false);
-                this.getView().byId("Icon6receivinghuByASN").setVisible(false);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
+            Onpressback1: function () {
+    
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+              
+    
+    
                 
     
             },
-            onunloadPress:function(){
-                this.getView().byId("icon7receivinghuByASN").setVisible(true);
-                this.getView().byId("idAsnunloadBackButton").setVisible(true);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(false);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(false);
-                
-
+            onHUListPress:function () {
+    
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(true);
+               
+             
             },
-
-            //backbutton
-            OnpressunloadBackButton:function(){
-                this.getView().byId("icon5IreceivinghuByASN").setVisible(true);
-                this.getView().byId("idAsnDetailsBackButton").setVisible(true);
-                this.getView().byId("idAsnGRBackButton").setVisible(false);
-                this.getView().byId("Icon6receivinghuByASN").setVisible(false);
-                this.getView().byId("icon4hubyASN").setVisible(false);
-                this.getView().byId("idAsnNewhuBackButton").setVisible(false);
-                this.getView().byId("icon2ReceivehubyASn").setVisible(false);
-                this.getView().byId("icon3hubyASN").setVisible(false);
-                this.getView().byId("idASNdetailsBackButton").setVisible(false);
-                this.getView().byId("idAsnHuListBackButton").setVisible(false);
-                this.getView().byId("IdpageScanning1").setVisible(false);
-                this.getView().byId("icon7receivinghuByASN").setVisible(false);
-                this.getView().byId("idAsnunloadBackButton").setVisible(false);
+            Onpressback2:function(){
+                
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+                
                 
             },
-
-            OnpressbackMainn1:function(){
-                this.getOwnerComponent().getRouter().navTo("Supervisor");
+            onNewHUPress:function(){
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+             
+            },
+            Onpressback3:function(){
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+            },
+            onNextEnterpress:function(){
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(true);
+               
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
                 
-              },
+            },
+            Onpressback4:function(){
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+             
+            
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+                
+            },
+            onGRPress:function(){
+                this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+    
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+    
+            },
+            Onpressback5:function(){
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(false);
+                
+               
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+              
+    
+            
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+                
+            },
+            onUnloadPress:function(){
+                this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page7ReceiveHUbyASN_RHUASN").setVisible(true);
+    
+               
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+    
+            },
+    
+           
+            // onUnloadPress1:function(){
+            //     this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page7ReceiveHUbyASN_RHUASN").setVisible(true);
+    
+            //     this.getView().byId("_IDGenButton4444").setVisible(false); 
+            //     this.getView().byId("_IDGenButton2222").setVisible(false);
+            //     this.getView().byId("_IDGenButton3333").setVisible(false);  
+            //     this.getView().byId("_IDGenButton1111").setVisible(false);
+            //     this.getView().byId("_IDGenButton5555").setVisible(false);
+            //     this.getView().byId("_IDGenButton6666").setVisible(false);
+               
+    
+    
+            //     this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+    
+            // },
+            Onpressback6:function(){
+                this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(true);
+                this.getView().byId("page7ReceiveHUbyASN_RHUASN").setVisible(false);
+                this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(false);
+               
+                this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(false);
+             
+                this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+            
+                this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+                
+            },
+            // Onpressback7:function(){
+            //     this.getView().byId("page1ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page5ReceiveHUbyASN_RHUASN").setVisible(true);
+            //     this.getView().byId("page6ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("page7ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+               
+            //     this.getView().byId("page3ReceiveHUbyASN_RHUASN").setVisible(false);
+            //     this.getView().byId("_IDGenButton4444").setVisible(false); 
+            //     this.getView().byId("_IDGenButton2222").setVisible(false);
+            //     this.getView().byId("_IDGenButton3333").setVisible(false);  
+            //     this.getView().byId("_IDGenButton1111").setVisible(false);
+            //     this.getView().byId("_IDGenButton5555").setVisible(false);
+            //     this.getView().byId("_IDGenButton6666").setVisible(false);
+          
+            //     this.getView().byId("page4ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+            
+            //     this.getView().byId("page2ReceiveHUbyASN_RHUASN").setVisible(false);
+    
+                
+            // },
         });
     });

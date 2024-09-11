@@ -133,7 +133,7 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
             this.getView().byId("page6_UBYTU").setVisible(false);
             this.getView().byId("page5_UBYTU").setVisible(false);
             this.getView().byId("page4_UBYTU").setVisible(false);
-            this.getView().byId("page7billofLading").setVisible(true);
+            this.getView().byId("page7_UBYTU").setVisible(true);
 
            
             this.getView().byId("page1_UBYTU").setVisible(false);
@@ -147,7 +147,7 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         //     this.getView().byId("page6_UBYTU").setVisible(false);
         //     this.getView().byId("page5_UBYTU").setVisible(false);
         //     this.getView().byId("page4_UBYTU").setVisible(false);
-        //     this.getView().byId("page7billofLading").setVisible(true);
+        //     this.getView().byId("page7_UBYTU").setVisible(true);
 
         //     this.getView().byId("_IDGenButton4444").setVisible(false); 
         //     this.getView().byId("_IDGenButton2222").setVisible(false);
@@ -182,7 +182,7 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         //     this.getView().byId("page1_UBYTU").setVisible(false);
         //     this.getView().byId("page5_UBYTU").setVisible(true);
         //     this.getView().byId("page6_UBYTU").setVisible(false);
-        //     this.getView().byId("page7billofLading").setVisible(false);
+        //     this.getView().byId("page7_UBYTU").setVisible(false);
 
            
         //     this.getView().byId("page3_UBYTU").setVisible(false);
