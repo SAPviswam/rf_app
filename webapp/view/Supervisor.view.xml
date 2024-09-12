@@ -252,6 +252,8 @@
                                         width="100%"
                                         editable="true"
                 />
+
+
                                     <Button
                                         id="getotpsv"
                                         text="Get OTP"
@@ -261,6 +263,8 @@
                                         visible="false"
                 
                     />
+
+
                                 </HBox>
                             </FlexBox>
 
@@ -750,8 +754,7 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />
-                            </TileContent>
+                                />                            </TileContent>
                         </GenericTile>
 
                         <GenericTile

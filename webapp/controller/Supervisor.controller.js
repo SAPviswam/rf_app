@@ -1519,7 +1519,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PutawayByWO");
             },
- 
+
 
             //AvailableHandlingunitsOnBinQuery Tile...
             OnPressAvailableHandlingUnitsOnBinQuery: function () {
@@ -1729,10 +1729,6 @@ sap.ui.define(
             },
 
 
-
-
-
-
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyShipment");
@@ -1741,7 +1737,20 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO");
             },
+
+
             OnPressSerialnumberLocation:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+        },
+
+            OnPressWTQuerybyWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT");
+
+            },
+            
+            onReceivingofHUbyTU:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("SerialNumberLocation");
             },

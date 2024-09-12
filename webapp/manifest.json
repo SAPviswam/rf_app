@@ -336,8 +336,10 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
+
         },
-        {
+    {
+
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
@@ -570,13 +572,15 @@
           "viewId": "ReceivingofHUbyTU",
           "viewName": "ReceivingofHUbyTU"
         },
+
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
-        },
+      },
+
         "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
