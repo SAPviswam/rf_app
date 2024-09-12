@@ -137,14 +137,7 @@ sap.ui.define([
 
                 // Special case for Resource ID 111010 and Password ARTIHCUS
                 if (sResourceId === "111010" && sPassword === "ARTIHCUS") {
-                    BusyIndicator.show(5);
-                                    setTimeout(function () {
-                                        // Navigate to another page (user page)
-                                        var oRouter = this.getOwnerComponent().getRouter();
-                                        oRouter.navTo("Supervisor");
-                                        BusyIndicator.hide();
-                                      }.bind(this), 1000); 
-                    // this.getRouter().navTo("Supervisor");
+                    this.getRouter().navTo("Supervisor");
                     return;
                 }
 
