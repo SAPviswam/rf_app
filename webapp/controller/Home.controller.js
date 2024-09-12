@@ -594,6 +594,8 @@ sap.ui.define([
                     oView.byId("idEnterMobileNo").setValueStateText("Mobile number must be a 10-digit numeric value");
                     bValid = false;
 
+
+                    
                 } else {
                     oView.byId("idEnterMobileNo").setValueState("None");
                     if (!this.bOtpVerified) {
