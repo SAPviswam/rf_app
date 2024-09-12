@@ -78,6 +78,9 @@
                 >
                 <VBox alignContent="Center"
                         alignItems="Center">
+
+                        <Title text="Create and Confirm Adhoc HU"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idInitialHuPage1"
                         alignContent="Center"
