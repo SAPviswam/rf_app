@@ -90,6 +90,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+             <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWoSF1"
                     layout="ResponsiveGridLayout"
@@ -101,7 +102,7 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <HBox>
+                    <HBox alignContent="Center" alignItems="Center">
                         <Label
                             id="idWtQBWoWhLabel"
                             text="WareHouse Order"
@@ -119,6 +120,7 @@
                         />
                     </HBox>
                 </form:SimpleForm>
+                </VBox >
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhSecondsc"
@@ -128,6 +130,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+            <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWoSF2"
                     layout="ResponsiveGridLayout"
@@ -139,8 +142,8 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <VBox>
-                        <HBox>
+                    <VBox alignContent="Center" alignItems="Center">
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoWh2Label"
                                 text="WareHouse Order"
@@ -195,6 +198,7 @@
                         /> -->
                     </VBox>
                 </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhThirdsc"
@@ -204,6 +208,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+            <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWoSF3"
                     layout="ResponsiveGridLayout"
@@ -216,7 +221,7 @@
                     columnsS="1"
                 >
                     <VBox>
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtLabel"
                                 text="WT"
@@ -244,7 +249,7 @@
                    
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtsLabel"
                                 text="WTs"
@@ -276,7 +281,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSproLabel"
                                 text="Spro"
@@ -303,7 +308,7 @@
                        
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoProLabel"
                                 text="Pro"
@@ -319,7 +324,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSbinLabel"
                                 text="Sbin"
@@ -335,7 +340,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoDbinLabel"
                                 text="Dbin"
@@ -351,7 +356,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoCdatLabel"
                                 text="Cdat"
@@ -376,8 +381,8 @@
                                 value=""
                             />
                         </HBox>
- 
-                        <HBox>
+                <VBox alignContent="Center" alignItems="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
                             <Button
                                 id="WtQBWoDetailBtn"
                                 text="Detail"
@@ -398,9 +403,12 @@
                                 text="All"
                                 press="onWtQBWoAllBtnPress"
                             />
+                           
                         </HBox>
+                         </VBox>
                     </VBox>
                 </form:SimpleForm>
+                 </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhFourthsc"
@@ -410,6 +418,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+             <VBox alignContent="Center" alignItems="Center" >
                 <form:SimpleForm
                     id="idWtQBWoSF4"
                     layout="ResponsiveGridLayout"
@@ -424,7 +433,7 @@
                 <VBox >
                     <Title text="Product Description" />
                    
-                    <HBox >
+                    <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWOWoLabel" text="WO" width="60px" ></Label>
                     <Input id="idWtQBWOwoInput" value=""></Input>
  
@@ -434,7 +443,7 @@
                     <Input id="idWtQBWOEstpInput" value=""></Input>
  
                     </HBox>
-                     <HBox >
+                     <HBox alignContent="Center" alignItems="Center"  >
                     <Label id="idWtQBWOSqtyLabel" text="Sqty"  width="60px" ></Label>
                     <Input id="idWtQBWOSqtyInput" value=""></Input>
                     <Input id="idWtQBWOPcInput" value="PC"></Input>
@@ -443,7 +452,7 @@
                     <Input id="idWtQBWOBtchInput" value=""></Input>
                     </HBox>
  
-                    <HBox >
+                    <HBox alignContent="Center" alignItems="Center"  >
                     <Label id="idWtQBWOOwnerLabel" text="Owner"  width="60px" ></Label>
                     <Input id="idWtQBWOOwnerInput" value=""></Input>
                      <Label width="20px"></Label>
@@ -451,7 +460,7 @@
                     <Input id="idWtQBWOPEntInput" value=""></Input>
                     </HBox>
  
-                     <HBox >
+                     <HBox alignContent="Center" alignItems="Center"  >
                     <Label id="idWtQBWOHuWtLabel" text="HuWt"  width="60px" ></Label>
                     <Input id="idWtQBWOHuWtInput" value=""></Input>
                      <Label width="20px"></Label>
@@ -463,6 +472,7 @@
                     </HBox>
                     </VBox>
                 </form:SimpleForm>
+             </VBox>
             </ScrollContainer>
                      <ScrollContainer
                 id="idWtQBWoWhFifthsc"
@@ -472,6 +482,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+             <VBox alignContent="Center" alignItems="Center" >
                 <form:SimpleForm
                     id="idWtQBWoSF5"
                     layout="ResponsiveGridLayout"
@@ -484,7 +495,7 @@
                     columnsS="1"
                 >
                     <VBox>
-                        <HBox>
+                        <HBox  alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtLabel2"
                                 text="WT"
@@ -511,7 +522,7 @@
                             />
                        
                         </HBox>
-  <HBox>
+  <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtsLabel2"
                                 text="WTs"
@@ -545,7 +556,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSproLabel2"
                                 text="Spro"
@@ -573,7 +584,7 @@
                         </HBox>
                      
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoProLabel2"
                                 text="Pro"
@@ -589,7 +600,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSbinLabel2"
                                 text="Sbin"
@@ -605,7 +616,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoDbinLabel2"
                                 text="Dbin"
@@ -621,7 +632,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoCdatLabel2"
                                 text="Cdat"
@@ -647,7 +658,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Button
                                 id="WtQBWoDetailBtn2"
                                 text="Detail"
@@ -671,6 +682,7 @@
                         </HBox>
                     </VBox>
                 </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhSixthsc"
@@ -680,6 +692,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+            <VBox alignContent="Center" alignItems="Center" >
                 <form:SimpleForm
                     id="idWtQBWoSF6"
                     layout="ResponsiveGridLayout"
@@ -692,7 +705,7 @@
                     columnsS="1"
                 >
                     <VBox>
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtLabel3"
                                 text="WT"
@@ -720,7 +733,7 @@
  
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWowtsLabel3"
                                 text="WTs"
@@ -752,7 +765,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSproLabel3"
                                 text="Spro"
@@ -781,7 +794,7 @@
                        
                      
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoProLabel3"
                                 text="Pro"
@@ -797,7 +810,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoSbinLabel3"
                                 text="Sbin"
@@ -813,7 +826,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoDbinLabel3"
                                 text="Dbin"
@@ -829,7 +842,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWoCdatLabel3"
                                 text="Cdat"
@@ -855,7 +868,7 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Button
                                 id="WtQBWoDetailBtn3"
                                 text="Detail"
@@ -879,6 +892,7 @@
                         </HBox>
                     </VBox>
                 </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
              <ScrollContainer
                 id="idWtQBWoWhSeventhsc"
@@ -888,6 +902,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+            <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWoSF7"
                     layout="ResponsiveGridLayout"
@@ -900,7 +915,7 @@
                     columnsS="1"
                 >
 <VBox>
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWhorLabel"
                                 text="Warehouse Order"
@@ -911,7 +926,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox >
+                        <HBox alignContent="Center" alignItems="Center">
                         <Button id="idWtQBWoWtnobtn" text="WT.No" press="onWtQBWoWtnobtnPress"></Button>
                          <Button id="idWtQBWoOpenWtbtn" text="WT.No" press="onWtQBWoOpenwtbtnPress"></Button>
                        <Label width="30px"></Label>
@@ -920,6 +935,7 @@
                         </HBox>
                         </VBox>
                 </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
