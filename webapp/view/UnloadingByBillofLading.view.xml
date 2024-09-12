@@ -630,6 +630,16 @@
             width="200px"
         />
         <Label
+            id="idItem_NOLabel_UOBL"
+            text="Item No"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idItem_no_Input__UOBL"
+           
+            width="200px"
+        />
+        <Label
             id="idPlaceholderLabel_UOBL_page5"
             text=""
         />
