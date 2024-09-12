@@ -10,13 +10,13 @@
     height="100%"
 >
     <tnt:ToolPage id="idToolPageBofl">
-        <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderBofl">
+        <tnt:header >
+            <tnt:ToolHeader id="idtntToolHeaderBofl" class="ToolHeader">
                 <Image
                     id="_IDGenImage1Bofl"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin"
-                    src="https://artihcus.com/assets/img/AG-logo.png"
+                    class="sapUiSmallMarginBegin .Logo"
+                    src="./Images/Artihcus logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorBofl"
