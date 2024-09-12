@@ -296,6 +296,14 @@
           ]
         },
         {
+
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+            ]
+        },
+        {
           "name": "Receivingofhubyco",
           "pattern": "Receivingofhubyco",
           "target": [
@@ -336,14 +344,14 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
-    },
 
+        },
     {
+
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
             "TargetWTQueryByWT"
-
           ]
         }
       ],
@@ -587,7 +595,6 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
-
         }
       }
     },
