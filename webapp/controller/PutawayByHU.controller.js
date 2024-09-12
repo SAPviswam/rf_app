@@ -14,8 +14,8 @@ sap.ui.define(
       //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
       onPressBackBtnScanerFormBox: function () {
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteView1");
-      },
+        oRouter.navTo("Supervisor");
+    },
 
       //Back Btn from ScrollContainer Page 2 =>idPage2HUDetails 
       onBackPressHUDetails: function () {
