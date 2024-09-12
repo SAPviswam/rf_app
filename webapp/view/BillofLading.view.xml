@@ -99,7 +99,7 @@
                                 class="sapUiTinyMarginBegin"
                             />
                             <ndc:BarcodeScannerButton
-                                id="sampleBarcodeScannerButtonZebraOnebilloflading"
+                                id="sampleBarcodebilloflading"
                                 scanSuccess="onScanSuccessOne"
                                 scanFail="onScanErrorOne"
                                 inputLiveUpdate="onScanLiveUpdate"
