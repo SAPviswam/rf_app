@@ -1496,13 +1496,15 @@ sap.ui.define(
                 oRouter.navTo("RouteBillofLading");
             },
             onUnloadingByDoorTilePress: function () {
-                BusyIndicator.show(3);
-                setTimeout(function () {
-                    // Navigate to another page (user page)
-                    var oRouter = this.getOwnerComponent().getRouter();
+                // BusyIndicator.show(3);
+                // setTimeout(function () {
+                //     // Navigate to another page (user page)
+                //     var oRouter = this.getOwnerComponent().getRouter();
+                //     oRouter.navTo("UnloadingByDoor");
+                //     BusyIndicator.hide();
+                //   }.bind(this), 2000); 
+                var oRouter = this.getOwnerComponent().getRouter();
                     oRouter.navTo("UnloadingByDoor");
-                    BusyIndicator.hide();
-                  }.bind(this), 2000); 
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
