@@ -1,69 +1,74 @@
-<mvc:View controllerName="com.app.rfapp.controller.Home"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-<Page
-        id="idPage"
-        showHeader="false"
-        class="HomePageBackground"
-    >
-        <VBox id="idVBox1" justifyContent="SpaceBetween">
-            <HBox
-                id="idHbox1"
-                class="header"
-            >
-                <!-- Positioned at the top-left corner -->
-                <VBox
-                    id="idVBoxLogoText"
-                    class="logoTextContainer"
-                >
-                    <Image
-                        id="idImageLogoAvatar"
-                        src="https://i.postimg.cc/3wBkmqjQ/Artihcus-logo-1-transformed.png"
-                        class="logoImage"
-                    />
-                    <!-- New VBox for Welcome text -->
-                    <VBox
-                        id="idVBoxWelcome"
-                        class="welcomeContainer glassEffect"
-                    >
-                        <Title
-                            id="idTextWelcome"
-                            text="'Welcome..!"
-                            class="welcomeText"
+<mvc:View
+    controllerName="com.app.rfapp.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idPage">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderLogin">
+                <Image
+                    id="_IDGenImageLogin"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorLogin"
+                />
+                <ToolbarSpacer id="idToolbarSpacerLogin">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataLogin"
+                            priority="NeverOverflow"
+                            minWidth="2000%"
                         />
-                        <!-- Additional message below the welcome text -->
-                        <Text
-                            id="idTextMessage"
-                            text="We're glad to have you here!"
-                            class="welcomeTextMessage12"
+                    </layoutData>
+                </ToolbarSpacer>
+                <ToolbarSpacer id="idToolbarSpacerLogin1">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataLogin1"
+                            priority="NeverOverflow"
+                            minWidth="2000%"
                         />
-                        <Text
-                            id="idTextMessage1"
-                            text="This application is designed to streamline your warehouse operations,"
-                            class="welcomeTextMessage13"
-                        />
-                        <Text
-                            id="idTextMessage2"
-                            text="from managing inventory and tracking shipments to optimizing storage and handling logistics."
-                            class="welcomeTextMessage14"
-                        />
-                        <Text id="idTextMsg3" />
-                        <Text id="idTextMsg4" />
-                    </VBox>
-                </VBox>
-            </HBox>
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatarLogin"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
             <VBox
                 id="idVBoxMain"
-                class="mainContainer centered"
-                
+                justifyContent="Center"
                 alignItems="Center"
+                class="mainContainer"
             >
+            
                 <VBox
                     id="idVBoxLoginContainer"
                     class="loginContainer"
                     justifyContent="Center"
                     alignItems="Center"
                 >
+                <HBox alignContent="Start" >
+                    <Image
+                        id="idImageLogoAvatar11"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        class="sapUiSmallMarginEnd"
+                        width="75%"
+                        height="35%"
+                    />
+                    </HBox>
                     <Title
                         id="idTextParking"
                         text="LOGIN"
@@ -136,10 +141,9 @@
                         alignItems="Center"
                         class="sapUiSmallMarginTop"
                     >
-                        <Button
-                            id="idButtonSignUp"
-                            text="Sign Up"
-                            press="onPressSignupBtn"
+                        <CheckBox
+                            id="idButtonSignUpcheckbox"
+                            text="Auto Save"
                             class="onSignupClassBtn"
                         />
                         <Button
@@ -147,10 +151,30 @@
                             text="Forgot Password"
                             press="onForgotPassword"
                             class="onForgotPassword"
+                            type="Transparent"
+                        />
+                    </HBox>
+                    <HBox
+                        id="idHBoxForgot"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            id="idButtonSignUp"
+                            text="Create Resource"
+                            press="onPressSignupBtn"
+                            class="onSignupClassBtn"
+                            type="Transparent"
+                        />
+                        <Button
+                            id="idAddResource"
+                            text="Add Resource To Library"
+                            type="Transparent"
                         />
                     </HBox>
                 </VBox>
             </VBox>
-        </VBox>
-    </Page>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>
