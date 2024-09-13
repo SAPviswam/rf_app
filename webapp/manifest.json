@@ -191,6 +191,20 @@
           ]
         },
         {
+          "name": "ChangeQueue",
+          "pattern": "ChangeQueue",
+          "target": [
+            "TargetChangeQueue"
+          ]
+        },
+        {
+          "name": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup",
+          "target": [
+            "TargetChangeResourceGroup"
+          ]
+        },
+        {
           "name": "UnloadingByConsignmentOrder",
           "pattern": "UnloadingByConsignmentOrder",
           "target": [
@@ -430,6 +444,20 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
+        },
+        "TargetChangeResourceGroup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeResourceGroup",
+          "viewName": "ChangeResourceGroup"
+        },
+        "TargetChangeQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeQueue",
+          "viewName": "ChangeQueue"
         },
         "TargetUnloadingByConsignmentOrder": {
           "viewType": "XML",
