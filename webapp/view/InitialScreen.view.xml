@@ -4,70 +4,75 @@
     displayBlock="true"
     xmlns="sap.m"
 >
-    <Page
-        id="pageInitial"
-    >
+    <Page id="pageInitial">
         <content>
             <FlexBox
                 id="_IDGenFlexBoxInitial"
                 height="100%"
-                justifyContent="Center"
-                direction="Column"  
+                direction="Column"
                 alignItems="Center"
             >
-             <VBox
+                <VBox
                     id="environmentButtonsHBox"
-                    class="sapUiSmallMarginTop boxContainer"  
+                    class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
                 >
-                <Label id="idemptylable3"></Label>
-                <Image id="idlogoarea"
-                    height="2.5rem"
-                    class="sapUiSmallMarginBegin"
-                    src="https://artihcus.com/assets/img/AG-logo.png"
-                    width="9rem"
-                />
-                   <Label
+                    <Label id="idemptylable3" />
+                    <Image
+                        id="idlogoarea"
+                        height="2.5rem"
+                        class="sapUiSmallMarginBegin"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="9rem"
+                    />
+                    <Label
                         id="idEmptylable"
                         textAlign="Center"
                     />
 
-                <!-- Environment Buttons -->
+                    <!-- Environment Buttons -->
 
-
-                <Label
+                    <Label
                         id="idSAPSystem"
                         text="SAP System"
                         textAlign="End"
                     />
-               
+
                     <Button
                         id="devButton"
                         text="Development"
-                        press="onDevButtonPress"  
+                        press="onDevButtonPress"
                         type="Emphasized"
                         width="11rem"
                     />
-                    <ToolbarSpacer id="idinitialtoolspace" width="20px" /> 
+                    <ToolbarSpacer
+                        id="idinitialtoolspace"
+                        width="20px"
+                    />
                     <Button
                         id="prodButton"
                         text="Production"
-                        press="onProdButtonPress" 
-                         type="Emphasized"
+                        press="onProdButtonPress"
+                        type="Emphasized"
                         width="11rem"
                     />
-                    <ToolbarSpacer id="idinitialtool" width="20px" /> 
+                    <ToolbarSpacer
+                        id="idinitialtool"
+                        width="20px"
+                    />
                     <Button
                         id="envButton"
                         text="Environment"
-                        press="onEnvButtonPress" 
-                         type="Emphasized"
-                         width="11rem"
+                        press="onEnvButtonPress"
+                        type="Emphasized"
+                        width="11rem"
                     />
-                    <Label id="idemptylable2"></Label>
-                    <Link id="_IDCofiguresapLink"
+                    <Label id="idemptylable2" />
+                    <Link
+                        id="_IDCofiguresapLink"
                         text="Configure SAP system"
-                        press="handleLinksapPress"></Link>
+                        press="handleLinksapPress"
+                    />
                 </VBox>
             </FlexBox>
         </content>

@@ -7,7 +7,7 @@ sap.ui.define(
 
         return Controller.extend("com.app.rfapp.controller.UnloadingByConsignmentOrder", {
             onInit: function () {
-                const oTable = this.getView().byId("idDeliveryTabl_UBYCONORDR");
+                const oTable = this.getView().byId("_IDGenColumnListItem_UBYCONORDR");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
 
             },
@@ -26,6 +26,8 @@ sap.ui.define(
                 this.getView().byId("_IDGenButton77_UBYCONORDR").setVisible(false);
                 this.getView().byId("_IDGenInput1_UBYCONORDR").setEditable(false);
                 this.getView().byId("_IDGenButtonEnble_UBYCONORDR").setVisible(true);
+                this.getView().byId("sampleBarcodeScannerButton_UBYCONORDR").setVisible(false);
+                this.getView().byId("_IDGenButton111_UBYCONORDR").setVisible(false);
 
             },
             onPressBackFromDlvrs: function () {
@@ -33,6 +35,8 @@ sap.ui.define(
                 this.getView().byId("_IDGenButton77_UBYCONORDR").setVisible(true);
                 this.getView().byId("_IDGenButtonEnble_UBYCONORDR").setVisible(false);
                 this.getView().byId("_IDGenInput1_UBYCONORDR").setEditable(true);
+                this.getView().byId("sampleBarcodeScannerButton_UBYCONORDR").setVisible(true);
+                this.getView().byId("_IDGenButton111_UBYCONORDR").setVisible(true);
 
             },
             Onpressback1: function () {

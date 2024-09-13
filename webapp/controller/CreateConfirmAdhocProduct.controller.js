@@ -11,7 +11,7 @@ sap.ui.define(
         },
 
         onProductLiveChange:function(){
-          if(this.getView().byId("idProductInput").getValue()=="800020"){
+        //   if(this.getView().byId("idProductInput").getValue()=="800020"){
            this.getView().byId("idInitialProductPage").setVisible(false)
            this.getView().byId("idsecondProductPage").setVisible(true)
            var ohu=this.getView().byId("idProductInput").getValue();
@@ -21,13 +21,13 @@ sap.ui.define(
            this.getView().byId("idProdutSecondbackbtn").setVisible(false);
            this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
            
-          }
-          else{
-              MessageToast.show("please enter valid Product Number")
-          }
+        //   }
+        //   else{
+        //       MessageToast.show("please enter valid Product Number")
+        //   }
       },
       onProductSrcLiveChange:function(){
-          if(this.getView().byId("idProductsrcBinInput").getValue()=="12345"){
+        //   if(this.getView().byId("idProductsrcBinInput").getValue()=="12345"){
               this.getView().byId("idthirdProductPage").setVisible(true);
               this.getView().byId("idsecondProductPage").setVisible(false);
               var ohu=this.getView().byId("idProductInput").getValue();
@@ -40,10 +40,10 @@ sap.ui.define(
               this.getView().byId("idProductfirstbackbtn").setVisible(false);
               this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
 
-          }
-          else{
-              MessageToast.show("please enter valid Source Bin number")
-          }
+        //   }
+        //   else{
+        //       MessageToast.show("please enter valid Source Bin number")
+        //   }
       },
       onProductfirstBackBtnPress:function(){
           this.getView().byId("idInitialProductPage").setVisible(true);

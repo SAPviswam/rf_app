@@ -20,7 +20,7 @@ sap.ui.define(
             //Back Btn from ScrollContainer Page 2 =>idPage2HUDetails 
             onBackPressHUDetails: function () {
                 var oScrollContainer1 = this.byId("idPage1ScannerFormBox");
-                var oScrollContainer2 = this.byId("idPage2HUDetails");
+                var oScrollContainer2 = this.byId("idPage2HUDetails_PBYWO");
 
                 // show the Scanner form VBox
                 oScrollContainer1.setVisible(true);
@@ -31,8 +31,8 @@ sap.ui.define(
 
             //Back Btn from ScrollContainer Page 3=>idPage3HUListTable
             onBackPressHUListTable: function () {
-                var oScrollContainer3 = this.byId("idPage3HUListTable");
-                var oScrollContainer2 = this.byId("idPage2HUDetails");
+                var oScrollContainer3 = this.byId("idPage3HUListTable_PBYWO");
+                var oScrollContainer2 = this.byId("idPage2HUDetails_PBYWO");
 
                 // show the HUDetails Page2
                 oScrollContainer2.setVisible(true);
@@ -43,8 +43,8 @@ sap.ui.define(
 
             //Back Btn from ScrollContainer Page 4=>idPage4NewHUNumber
             onBackBtnPressNewHUNumber: function () {
-                var oScrollContainer4 = this.byId("idPage4NewHUNumber");
-                var oScrollContainer3 = this.byId("idPage3HUListTable");
+                var oScrollContainer4 = this.byId("idPage4NewHUNumber_PBYWO");
+                var oScrollContainer3 = this.byId("idPage3HUListTable_PBYWO");
 
                 // show the HUDetails Page2
                 oScrollContainer3.setVisible(true);
@@ -55,8 +55,8 @@ sap.ui.define(
 
             //Back Btn from ScrollContainer Page 5=>idPage4NewHUNumber
             onBackPressVerifyHUNumber: function () {
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
-                var oScrollContainer4 = this.byId("idPage4NewHUNumber");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
+                var oScrollContainer4 = this.byId("idPage4NewHUNumber_PBYWO");
 
                 // show the HUDetails Page2
                 oScrollContainer4.setVisible(true);
@@ -67,8 +67,8 @@ sap.ui.define(
 
             //Back Btn from ScrollContainer Page 6=>idPage6GoodsReceiptGR
             onBackPressGoodsReceipt: function () {
-                var oScrollContainer6 = this.byId("idPage6GoodsReceiptGR");
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
+                var oScrollContainer6 = this.byId("idPage6GoodsReceiptGR_PBYWO");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
 
                 // show the VerifyHUNumber Page5
                 oScrollContainer5.setVisible(true);
@@ -79,8 +79,8 @@ sap.ui.define(
 
             //Back Btn from ScrollContainer Page 7=>idPage7UnLoadPage
             onBackPressUnLoadPage: function () {
-                var oScrollContainer7 = this.byId("idPage7UnLoadPage");
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
+                var oScrollContainer7 = this.byId("idPage7UnLoadPage_PBYWO");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
 
                 // show the UnLoadPage Page7
                 oScrollContainer5.setVisible(true);
@@ -92,7 +92,7 @@ sap.ui.define(
             //Submit Btn from ScrollContainer Page 1=> idPage1ScannerFormBox..
             onSubmitPress: function () {
                 var oScrollContainer1 = this.byId("idPage1ScannerFormBox");
-                var oScrollContainer2 = this.byId("idPage2HUDetails");
+                var oScrollContainer2 = this.byId("idPage2HUDetails_PBYWO");
 
                 // Hide the Scanner form VBox
                 oScrollContainer1.setVisible(false);
@@ -101,10 +101,10 @@ sap.ui.define(
                 oScrollContainer2.setVisible(true);
             },
 
-            //HUListTableBtn from ScrollContainer Page 2 =>idPage2HUDetails
+            //HUListTableBtn from ScrollContainer Page 2 =>idPage2HUDetails_PBYWO
             onPressHUListTable: function () {
-                var oScrollContainer2 = this.byId("idPage2HUDetails");
-                var oScrollContainer3 = this.byId("idPage3HUListTable");
+                var oScrollContainer2 = this.byId("idPage2HUDetails_PBYWO");
+                var oScrollContainer3 = this.byId("idPage3HUListTable_PBYWO");
 
                 // Hide the form VBox
                 oScrollContainer2.setVisible(false);
@@ -114,10 +114,10 @@ sap.ui.define(
                 oScrollContainer3.setVisible(true);
             },
 
-            //NewHUNumberBtn from ScrollContainer Page 2=>idPage2HUDetails 
+            //NewHUNumberBtn from ScrollContainer Page 2=>idPage2HUDetails_PBYWO 
             onPressNewHUNumberBtn: function () {
-                var oScrollContainer4 = this.byId("idPage4NewHUNumber");
-                var oScrollContainer2 = this.byId("idPage3HUListTable");
+                var oScrollContainer4 = this.byId("idPage4NewHUNumber_PBYWO");
+                var oScrollContainer2 = this.byId("idPage3HUListTable_PBYWO");
                 // Hide the form VBox
                 oScrollContainer2.setVisible(false);
 
@@ -126,8 +126,8 @@ sap.ui.define(
             },
 
             onEnterNewHUNUmberPress: function () {
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
-                var oScrollContainer4 = this.byId("idPage4NewHUNumber");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
+                var oScrollContainer4 = this.byId("idPage4NewHUNumber_PBYWO");
                 // Hide the form VBox
                 oScrollContainer4.setVisible(false);
 
@@ -135,10 +135,10 @@ sap.ui.define(
                 oScrollContainer5.setVisible(true);
             },
 
-            //GRBtn from from ScrollContainer Page 5=>idPage6GoodsReceiptGR
+            //GRBtn from from ScrollContainer Page 5=>idPage6GoodsReceiptGR_PBYWO
             onGRBtnPressVerifyHUNumber: function () {
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
-                var oScrollContainer6 = this.byId("idPage6GoodsReceiptGR");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
+                var oScrollContainer6 = this.byId("idPage6GoodsReceiptGR_PBYWO");
                 // Hide the form VBox
                 oScrollContainer5.setVisible(false);
 
@@ -146,10 +146,10 @@ sap.ui.define(
                 oScrollContainer6.setVisible(true);
             },
 
-            //UnLoad Btn from from ScrollContainer Page 5=>idPage6GoodsReceiptGR
+            //UnLoad Btn from from ScrollContainer Page 5=>idPage6GoodsReceiptGR_PBYWO
             onUnloadPressVerifyHUNumber: function () {
-                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber");
-                var oScrollContainer7 = this.byId("idPage7UnLoadPage");
+                var oScrollContainer5 = this.byId("idPage5VerifyHUNumber_PBYWO");
+                var oScrollContainer7 = this.byId("idPage7UnLoadPage_PBYWO");
                 // Hide the form VBox
                 oScrollContainer5.setVisible(false);
 

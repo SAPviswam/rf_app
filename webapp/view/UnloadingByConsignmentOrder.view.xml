@@ -71,60 +71,73 @@
                     press="onPressBackFromDlvrs"
                     visible="false"
                 />
-                <Title
-                    id="idPageTitle_UBYCONORDR"
-                    text="Unloading By Consignment Order"
-                    level="H2"
-                    class="titles_UBYD"
-                />
-                <f:SimpleForm
-                    id="simpleForm_UBYCONORDR"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                    singleContainerFullSize="false"
-                    class="FormBack"
+                <VBox
+                    id="IDRHBSGenVBoxpage_UBYCONORDR"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
                 >
-                    <Label
-                        id="_IDGenLabel1_UBYCONORDR"
-                        text="Consign.Order"
+                    <Title
+                        id="idPageTitle_UBYCONORDR"
+                        text="Unloading By Consignment Order"
+                        level="H2"
                     />
-                    <Input
-                        id="_IDGenInput1_UBYCONORDR"
-                        placeholder="Enter Consignment Order"
+                    <f:SimpleForm
+                        id="simpleForm_UBYCONORDR"
                         editable="true"
-                    />
-                    <HBox
-                        id="_idhbox_unknw_UBYCONORDR"
-                        class="sapTinyMarginEnd"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
                     >
-                        <!-- Barcode Scan Button -->
-                        <Button
-                            id="_IDGenButton11_UBYCONORDR"
-                            icon="sap-icon://bar-code"
-                            press="Onpressscan"
-                            class="sapUiTinyMarginEnd"
+                       <HBox
+                            id="_idhbox_unknw_UBYCONORDR"
+                            alignItems="Center"
+                        >
+                        <Label
+                            id="_IDGenLabel1_UBYCONORDR"
+                            text="Consign.Order :"
+
                         />
-                        <!-- Submit Button -->
-                        <Button
-                            id="_IDGenButton111_UBYCONORDR"
-                            text="Submit"
-                            class="sapUiTinyMarginEnd"
-                            press="Onpresssubmit"
+                        <Input
+                            id="_IDGenInput1_UBYCONORDR"
+                            placeholder="Enter Consignment Order"
+                            editable="true"
+                            width="100%"
+                            class="sapUiTinyMarginBegin"
+
                         />
-                    </HBox>
-                </f:SimpleForm>
+                     
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButton_UBYCONORDR"
+                                scanSuccess="onScanSuccess"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Consignment Order"
+                                class="sapUiMediumMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <Button
+                                id="_IDGenButton111_UBYCONORDR"
+                                text="Submit"
+                                class="sapUiTinyMarginBegin"
+                                press="Onpresssubmit"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
                 <Panel
                     id="idHuDetailAESRsasPanel"
                     headerText="Delivery"
@@ -137,8 +150,6 @@
                         growing="true"
                         growingScrollToLoad="true"
                         mode="SingleSelectMaster"
-                        selectionChange="onSingleRowSelect"
-
                     >
                         <columns>
                             <Column id="_IDGenColumn_UBYCONORDR">
@@ -159,7 +170,9 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem id="_IDGenColumnListItem_UBYCONORDR">
+                            <ColumnListItem
+                                id="_IDGenColumnListItem_UBYCONORDR"
+                            >
                                 <cells>
                                     <Text
                                         id="_IDGenTextrw_UBYCONORDR"
@@ -220,7 +233,7 @@
                     />
                     <Input
                         id="_IDGenInput2_UBYCONORDR"
-                        placeholder="Enter Delivery..."
+                        placeholder="Enter Delivery"
                         maxLength="25"
                         width="300px"
                     />
@@ -230,7 +243,7 @@
                     />
                     <Input
                         id="_IDGenInput3_UBYCONORDR"
-                        placeholder="Enter Vendor..."
+                        placeholder="Enter Vendor"
                         maxLength="25"
                         width="300px"
                     />
@@ -241,7 +254,7 @@
                     />
                     <Input
                         id="_IDGenInput4_UBYCONORDR"
-                        placeholder="Enter No. of HU..."
+                        placeholder="Enter No. of HU"
                         maxLength="25"
                         width="300px"
                     />
@@ -252,7 +265,7 @@
                     />
                     <Input
                         id="_IDGenInput5_UBYCONORDR"
-                        placeholder="Enter HU..."
+                        placeholder="Enter HU"
                         maxLength="25"
                         width="300px"
                     />
@@ -263,7 +276,7 @@
                     />
                     <Input
                         id="idItemNoInput_UBYCONORDR"
-                        placeholder="Enter Item No..."
+                        placeholder="Enter Item No"
                         width="300px"
                     />
                     <VBox id="_IDGenVBox13_UBYCONORDR">
@@ -457,7 +470,7 @@
                     />
                     <Input
                         id="_IDGenInput22_UBYCONORDR"
-                        placeholder="Enter Product..."
+                        placeholder="Enter Product"
                         maxLength="25"
                         width="300px"
                     />
@@ -469,7 +482,7 @@
                     />
                     <Input
                         id="idItemNoInput2_UBYCONORDR"
-                        placeholder="Enter Qty..."
+                        placeholder="Enter Qty"
                         width="300px"
                     />
 
@@ -480,7 +493,7 @@
                     />
                     <Input
                         id="idItemNoInp5ut_UBYCONORDR"
-                        placeholder="Enter UOM..."
+                        placeholder="Enter UOM"
                         width="300px"
                     />
 
@@ -490,7 +503,7 @@
                     />
                     <Input
                         id="_IDGenInput32_UBYCONORDR"
-                        placeholder="Enter Packaging Material..."
+                        placeholder="Enter Packaging Material"
                         maxLength="25"
                         width="300px"
                     />
@@ -535,7 +548,7 @@
                     />
                     <Input
                         id="idItemNoI8nput_UBYCONORDR"
-                        placeholder="Enter Expiry..."
+                        placeholder="Enter Expiry"
                         width="300px"
                     />
 
@@ -617,7 +630,7 @@
                     />
                     <Input
                         id="_IDGenInput3442_UBYCONORDR"
-                        placeholder="Enter HU..."
+                        placeholder="Enter HU"
                         maxLength="25"
                         width="300px"
                     />
@@ -628,7 +641,7 @@
                     />
                     <Input
                         id="idItemNoI233nput_UBYCONORDR"
-                        placeholder="Delivery..."
+                        placeholder="Delivery"
                         width="300px"
                     />
                     <Label
@@ -700,7 +713,7 @@
                     />
                     <Input
                         id="_IDGenInput312442_UBYCONORDR"
-                        placeholder="Enter product..."
+                        placeholder="Enter product"
                         maxLength="25"
                         width="300px"
                     />
@@ -712,7 +725,7 @@
                     />
                     <Input
                         id="idItemNoI233np12ut_UBYCONORDR"
-                        placeholder="Enter Quantity..."
+                        placeholder="Enter Quantity"
                         maxLength="25"
                         width="300px"
                     />
@@ -764,7 +777,7 @@
                     />
                     <Input
                         id="_IDGenInp234ut312442_UBYCONORDR"
-                        placeholder="Enter product..."
+                        placeholder="Enter product"
                         maxLength="25"
                         width="300px"
                     />
@@ -776,7 +789,7 @@
                     />
                     <Input
                         id="idIt1234emNoI233np12ut_UBYCONORDR"
-                        placeholder="Enter Quantity..."
+                        placeholder="Enter Quantity"
                         width="300px"
                     />
                     <Button
