@@ -60,7 +60,7 @@
                     justifyContent="Center"
                     alignItems="Center"
                 >
-                <HBox alignContent="Start" >
+                <HBox  id="idHboxinlogin" alignContent="Start" >
                     <Image
                         id="idImageLogoAvatar11"
                         src="https://artihcus.com/assets/img/AG-logo.png"
