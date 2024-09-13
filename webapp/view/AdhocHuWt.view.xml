@@ -133,6 +133,7 @@
                 placeholder="HU Number..."
                 maxLength="30"
                 width="250px"
+                editable="false"
             />
         </HBox>
  
@@ -150,6 +151,7 @@
                 placeholder="Enter SRC Bin..."
                 maxLength="25"
                 width="250px"
+                 editable="false"
             />
         </HBox>
  
