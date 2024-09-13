@@ -72,16 +72,16 @@
                     </HBox>
                     <VBox
                         id="idVBoxWarehouseONHU"
-                        class="formContainer"
+                        class="formContainer_PBYWO"
                     >
                         <VBox
                             id="idVBOXwarhouseHU"
-                            class="formBox"
+                            class="formBox_PBYWO"
                         >
                             <Label
                                 id="idLableWarehouseHU"
                                 text="Handaling Unit Number:"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <HBox
                                 id="idHBoxWarehouseordernoHU"
@@ -98,7 +98,7 @@
                                     width="120%"
                                 />
                                 <ndc:BarcodeScannerButton
-                                    id="sampleBarcodeScannerButton"
+                                    id="sampleBarcodeScannerButton1"
                                     scanSuccess="onScanSuccess"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"

@@ -19,7 +19,7 @@
        
             <tnt:ToolHeader id="idtntToolHeaderAdhocHuWt">
              <Button
-                id="idBackButtoninAdhocHuWtHuScanInHuDoor"
+                id="idBackButtoninAdhocHuWtHuScan"
                 icon="sap-icon://nav-back"
                 press="onPressBackButtoninAdhocHuWtHuScan"
                 visible="false"
