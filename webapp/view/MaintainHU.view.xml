@@ -171,7 +171,7 @@
                         text="SHU"
                         class="sapUiTinyMarginEnd"
                     />
-                    <HBox >
+                    <HBox id="HBOXX">
                     <Input
                         id="idSHUInput_MHU"
                         placeholder="Handling Unit"
@@ -267,7 +267,7 @@
                             id="idSHU1Input_MHU"
                             placeholder="Source Handling Unit..."
                             maxLength="25"
-                            width="130px"
+                            width="100px"
                         />
                         <HBox
                             id="idHuby1HUuombox_MHU"
@@ -296,7 +296,7 @@
                         <Input
                             id="idHubySbinInput_MHU"
                             maxLength="25"
-                            width="130px"
+                            width="100px"
                             placeholder="Source Storage bin.."
                         />
 
@@ -327,7 +327,7 @@
                             id="idTWHUInput_MHU"
                             placeholder="Total Weight of Handling Unit..."
                             maxLength="25"
-                            width="130px"
+                            width="100px"
                         />
 
                         <HBox
@@ -369,7 +369,7 @@
                             id="idTVHUInput_MHU"
                             placeholder="Total Volume of Handling Unit"
                             maxLength="25"
-                            width="130px"
+                            width="100px"
                         />
 
                         <HBox
@@ -525,13 +525,17 @@
                             class="sapUiTinyMarginEnd"
                             press="onDeletePutawayHUpress"
                         />
+                        
+                    </HBox>
+                     <Label id="idNextLabel_MHU" />
+                    <HBox id="idButton8HBox_MHU">
                          <Button
                             id="idSavePutawayHU_MHU"
                             text="Save"
                             class="sapUiTinyMarginEnd"
                             press="onSavepress"
                         />
-                    </HBox>
+                         </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
         </tnt:mainContents>
