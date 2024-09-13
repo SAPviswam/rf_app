@@ -145,7 +145,7 @@
                     />
                     <Title
                         id="idTitle_MHU_page4"
-                        text="New HU"
+                        text="Source HU"
                         class="TitleSecondPage"
                         level="H1"
                         textAlign="Center"
@@ -237,7 +237,7 @@
                     />
                     <Title
                         id="idTitle1_MHU_page4"
-                        text="New HU"
+                        text="Source HU"
                         class="TitleSecondPage"
                         level="H1"
                         textAlign="Center"
