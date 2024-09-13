@@ -296,14 +296,6 @@
           ]
         },
         {
-
-          "name": "RecevingOfHUbyTUorDoor",
-          "pattern": "RecevingOfHUbyTUorDoor",
-          "target": [
-            "TargetRecevingOfHUbyTUorDoor"
-            ]
-        },
-        {
           "name": "Receivingofhubyco",
           "pattern": "Receivingofhubyco",
           "target": [
