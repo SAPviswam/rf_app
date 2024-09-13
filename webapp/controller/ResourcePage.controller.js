@@ -5,9 +5,10 @@ sap.ui.define([
     "sap/m/Popover",
     "sap/m/Button",
     "sap/m/library",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+     "sap/ui/core/UIComponent"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
@@ -83,7 +84,7 @@ sap.ui.define([
 
 
                 debugger;
-   
+                var that = this;
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 console.log(this.ID);
@@ -97,7 +98,14 @@ sap.ui.define([
                         var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
                         var group = oData.Resourcegroup;
                         var groupArray = group.split(",").map(item => item.trim()); // Split and trim each group
-                        var resourceType = oData.Queue;
+                        var oresourceType = oData.Queue;
+                        var oResourceArray = oresourceType.split(",").map(item => item.trim())
+                        console.log(oResourceArray)
+                        oResourceArray.forEach(function(queue){
+        
+                            let oQueue = queue.replace(/[^a-zA-Z0-9]/g,'');
+                            that.getView().byId(`id_${oQueue}`).setVisible(true)
+                        })
            
                         var aNavigationData = oModel.getProperty("/navigation");
            
@@ -189,10 +197,173 @@ sap.ui.define([
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
             },
+            onPutawayByHUPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU");
+            },
+
+
+
+            OnPressHUQuery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuQuery");
+                var oInput = this.byId("_IDGenInput1");
+                if (oInput) {
+                    oInput.focus();
+                }
+            },
+            OnPressStockBinQueryByBin: function () {
+                debugger
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByBin");
+
+            },
+           onReceivingofHUbyASN: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
+
+            },
+
+            /**Navigate to Unloading By ASN Page */
+            onUnloadingBYASN: function () {
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
+
+            },
+ 
+            onReceivingofHUbyDoor: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingOfHuByDoor");
+            },
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU");
-            }
+            },
+            onReceivingofHUbyDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery");
+            },
+
+            //Putaway By WO Tile..
+            onTilePressPutawayByWO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("PutawayByWO");
+            },
+
+            //AvailableHandlingunitsOnBinQuery Tile...
+            OnPressAvailableHandlingUnitsOnBinQuery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AvailableHandlingUnitsOnBinQuery");
+            },
+            //WTQueryByHU Tile...
+            OnPressWTquerybyHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByHU");
+            },
+
+            onReceivingofHUbyBillofLading: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                oRouter.navTo("RouteBillofLading");
+            },
+            onUnloadingByDoorTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByDoor");
+
+            },
+            onUnloadingByConsignmentOrderTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByConsignmentOrder");
+
+            },
+            onUnloadingByBillofLadingPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByBillofLading");
+ 
+            },
+            onUnloadingByShipmentPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment");
+ 
+            },
+            onUnloadingByTUPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU");
+ 
+            },
+            onPressCreateAdhocHUWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocHuWt");
+ 
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+ 
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery");
+ 
+            },
+            OnPressCreateandConfirmAdhocHUWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu");
+
+            },
+            onReceivingofHUbyConsignementOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("Receivingofhubyco");
+
+            },
+
+            onReceivingofHUbyManufacturingOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+
+            },
+
+            onCreateandConfirmAdhocProductWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
+
+            },
+            OnPressStockOrBinQuerybyProduct:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct");
+            },
+
+            onReceivingofTUorDoor: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyTUorDoor");
+            },
+
+
+            onReceivingofHUbyShipment:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyShipment");
+            },
+            OnPressWTQuerybyWO:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO");
+            },
+
+            OnPressSerialnumberLocation:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+        },
+
+            OnPressWTQuerybyWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT");
+
+            },
+            
+            onReceivingofHUbyTU:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyTU");
+            },
+
+
         });
     });
 

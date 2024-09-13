@@ -283,7 +283,7 @@
         },
         {
           "name": "CreateConfirmAdhocProduct",
-          "pattern": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
           ]
