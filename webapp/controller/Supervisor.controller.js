@@ -1515,6 +1515,11 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByBillofLading");
  
             },
+            OnpressMaintainHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU");
+ 
+            },
             onUnloadingByShipmentPress:function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment");
@@ -1597,6 +1602,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyTU");
             },
+
 
         });
     }

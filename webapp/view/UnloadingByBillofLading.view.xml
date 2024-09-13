@@ -223,7 +223,7 @@
                             <HBox
                                 id="idHUButtonHBox1_UOBL"
                                 class="sapUiSmallMarginTop"
-                                justifyContent=""
+                              
                             >
                                 <Button
                                     id="idHUListButton_UOBL"
@@ -355,7 +355,7 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem>
+                            <ColumnListItem id="colum_UBOL">
                                 <Text
                                     id="idSerialNoItem_UBOL"
                                     text="{SerialNo}"
@@ -647,7 +647,7 @@
         <HBox
             id="idButtonHBox_UOBL_page5"
             class="sapUiSmallMarginTop"
-            justifyContent=""
+           
         >
             <Button
                 id="idGrButton_UOBL"
