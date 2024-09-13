@@ -67,6 +67,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+              <VBox alignContent="Center" alignItems="Center" >
                 <form:SimpleForm
                     id="idWtQBWtSF1"
                     layout="ResponsiveGridLayout"
@@ -78,10 +79,11 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <HBox>
+                <VBox alignContent="Center" alignItems="Center" >
+                    <HBox alignContent="Center" alignItems="Center">
                         <Label
                             id="idWtQBWtWhLabel"
-                            text="WareHouse Task"
+                            text="WareHouse Task:"
                             width="120px"
                         />
                         <Input
@@ -95,7 +97,9 @@
                             press="onWtQBWtWhBarcodeScanner"
                         />
                     </HBox>
+                    </VBox>
                 </form:SimpleForm>
+                 </VBox>
             </ScrollContainer>
            
             <ScrollContainer
@@ -106,6 +110,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+            <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWtSF2"
                     layout="ResponsiveGridLayout"
@@ -117,11 +122,11 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <VBox>
-                        <HBox>
+                    <VBox alignContent="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtwtLabel"
-                                text="WT"
+                                text="WT:"
                                 width="50px"
                             />
                             <Input
@@ -132,7 +137,7 @@
                              <Label width="20px"></Label>
                             <Label
                                 id="idWtQBWtWTitLabel"
-                                text="WTit"
+                                text="WTit:"
                                 width="50px"
                             />
                             <Input
@@ -143,20 +148,21 @@
                    
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtwtsLabel"
-                                text="WTs"
+                                text="WTs:"
                                 width="50px"
                             />
                             <Input
                                 id="idWtQBWtwtsInput"
+                                
                                 value=""
                             />
                         <Label width="20px"></Label>
                             <Label
                                 id="idWtQBWtStsLabel"
-                                text="Sts"
+                                text="Sts:"
                                 width="50px"
                             />
                             <Input
@@ -166,7 +172,7 @@
                        <Label width="30px"></Label>
                             <Label
                                 id="idWtQBWtPtypLabel"
-                                text="Ptyp"
+                                text="Ptyp:"
                                 width="50px"
                             />
                             <Input
@@ -175,10 +181,10 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtSproLabel"
-                                text="Spro"
+                                text="Spro:"
                                 width="50px"
                             />
                             <Input
@@ -188,7 +194,7 @@
                             <Label width="20px"></Label>
                             <Label
                                 id="idWtQBWtActyLabel"
-                                text="Acty"
+                                text="Acty:"
                                 width="50px"
                             />
                             <Input
@@ -202,10 +208,10 @@
                        
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtProLabel"
-                                text="Pro"
+                                text="Pro:"
                                 width="50px"
                             />
                             <Input
@@ -218,10 +224,10 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtSbinLabel"
-                                text="Sbin"
+                                text="Sbin:"
                                 width="50px"
                             />
                             <Input
@@ -234,10 +240,10 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtDbinLabel"
-                                text="Dbin"
+                                text="Dbin:"
                                 width="50px"
                             />
                             <Input
@@ -250,10 +256,10 @@
                             />
                         </HBox>
  
-                        <HBox>
+                        <HBox alignContent="Center" alignItems="Center">
                             <Label
                                 id="idWtQBWtCdatLabel"
-                                text="Cdat"
+                                text="Cdat:"
                                 width="50px"
                             />
                             <Input
@@ -267,7 +273,7 @@
                        <Label width="20px"></Label>
                             <Label
                                 id="idWtQBWtCusrLabel"
-                                text="Cusr"
+                                text="Cusr:"
                                 width="50px"
                             />
                             <Input
@@ -275,8 +281,8 @@
                                 value=""
                             />
                         </HBox>
- 
-                        <HBox>
+        <VBox alignContent="Center" alignItems="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
                             <Button
                                 id="WtQBWtDetailBtn"
                                 text="Detail"
@@ -284,8 +290,10 @@
                             />
                            
                         </HBox>
+                        </VBox>
                     </VBox>
                 </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWtWhThirdsc"
@@ -295,6 +303,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+             <VBox alignContent="Center" alignItems="Center">
                 <form:SimpleForm
                     id="idWtQBWtSF3"
                     layout="ResponsiveGridLayout"
@@ -309,7 +318,7 @@
                 <VBox >
                     <Title text="Product Description" />
                    
-                    <HBox >
+                    <HBox alignContent="Center" alignItems="Center">
                     <Label id="idWtQBWtWoLabel" text="WO" width="60px" ></Label>
                     <Input id="idWtQBWtwoInput" value=""></Input>
  
@@ -319,7 +328,7 @@
                     <Input id="idWtQBWtEstpInput" value=""></Input>
  
                     </HBox>
-                     <HBox >
+                     <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWtSqtyLabel" text="Sqty"  width="60px" ></Label>
                     <Input id="idWtQBWtSqtyInput" value=""></Input>
                     <Input id="idWtQBWtPcInput" value="PC"></Input>
@@ -328,7 +337,7 @@
                     <Input id="idWtQBWtBtchInput" value=""></Input>
                     </HBox>
  
-                    <HBox >
+                    <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWtOwnerLabel" text="Owner"  width="60px" ></Label>
                     <Input id="idWtQBWtOwnerInput" value=""></Input>
                      <Label width="20px"></Label>
@@ -336,7 +345,7 @@
                     <Input id="idWtQBWtPEntInput" value=""></Input>
                     </HBox>
  
-                     <HBox >
+                     <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWtHuWtLabel" text="HuWt"  width="60px" ></Label>
                     <Input id="idWtQBWtHuWtInput" value=""></Input>
                      <Label width="20px"></Label>
@@ -348,6 +357,7 @@
                     </HBox>
                     </VBox>
                 </form:SimpleForm>
+                 </VBox>
             </ScrollContainer>
                     
         </tnt:mainContents>

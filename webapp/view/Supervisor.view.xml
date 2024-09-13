@@ -250,7 +250,10 @@
                                         valueLiveUpdate="true"
                                         liveChange="onSubmitOtp"
                                         width="100%"
-                                    />
+                                        editable="true"
+                />
+
+
                                     <Button
                                         id="getotpsv"
                                         text="Get OTP"
@@ -258,7 +261,10 @@
                                         type="Emphasized"
                                         width="80px"
                                         visible="false"
-                                    />
+                
+                    />
+
+
                                 </HBox>
                             </FlexBox>
 
@@ -748,8 +754,7 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />
-                            </TileContent>
+                                />                            </TileContent>
                         </GenericTile>
 
                         <GenericTile

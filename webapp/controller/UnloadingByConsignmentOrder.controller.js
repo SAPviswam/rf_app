@@ -7,7 +7,7 @@ sap.ui.define(
 
         return Controller.extend("com.app.rfapp.controller.UnloadingByConsignmentOrder", {
             onInit: function () {
-                const oTable = this.getView().byId("idDeliveryTabl_UBYCONORDR");
+                const oTable = this.getView().byId("_IDGenColumnListItem_UBYCONORDR");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
 
             },
