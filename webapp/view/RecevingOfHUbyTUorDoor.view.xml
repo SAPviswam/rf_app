@@ -186,14 +186,14 @@
                 />
                 <VBox
                     id="idROHTU_DDeliverydetailsVBox"
-                    class="SecondPageContainer"
+                    class="Page2HUDetailsContainer_PBYWO"
                     justifyContent="Center"
                 >
                     <Title
                         id="idROHTU_DDeliverydetailsTitle"
                         text="Delivery Details"
                         level="H2"
-                        class="SecondPageformHeader"
+                        class="Page2formHeaderTitle_PBYWO"
                     />
                     <form:SimpleForm
                         id="idROHTU_DDeliverydetailsSF"
