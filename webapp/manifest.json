@@ -570,6 +570,20 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
+        },
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
         }
       }
     },
