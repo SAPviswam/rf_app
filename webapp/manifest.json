@@ -347,11 +347,24 @@
 
         },
     {
-
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
             "TargetWTQueryByWT"
+          ]
+        },
+        {
+          "name": "CreateShippingHU",
+          "pattern": "CreateShippingHU",
+          "target": [
+            "TargetCreateShippingHU"
+          ]
+        },
+        {
+          "name": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC",
+          "target": [
+            "TargetCreateShippingHUWOWC"
           ]
         }
       ],
@@ -595,6 +608,20 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
+        },
+        "TargetCreateShippingHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHU",
+          "viewName": "CreateShippingHU"
+        },
+        "TargetCreateShippingHUWOWC": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHUWOWC",
+          "viewName": "CreateShippingHUWOWC"
         }
       }
     },

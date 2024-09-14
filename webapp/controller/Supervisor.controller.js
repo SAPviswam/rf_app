@@ -1759,6 +1759,14 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT");
             },
+            onPressCreateShippingHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHU");
+            },
+            onPressCreateShippingHUWOWC: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHUWOWC");
+            },
             
         });
     }

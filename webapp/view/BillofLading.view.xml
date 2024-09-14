@@ -672,14 +672,14 @@
 
                     <Label id="_IDGenBolLabelEmptygr" />
 
-                    <HBox id="idgenhboxgr1">
+                    <VBox id="idgenhboxgr1">
                         <Button
                             id="_IDGenBolgrButton5"
                             text="GR"
                             press="onGRbuttonPress"
                             class="sapUiTinyMarginEnd"
                         />
-                    </HBox>
+                    </VBox>
                 </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
