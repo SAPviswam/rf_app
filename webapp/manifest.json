@@ -191,6 +191,20 @@
           ]
         },
         {
+          "name": "ChangeQueue",
+          "pattern": "ChangeQueue",
+          "target": [
+            "TargetChangeQueue"
+          ]
+        },
+        {
+          "name": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup",
+          "target": [
+            "TargetChangeResourceGroup"
+          ]
+        },
+        {
           "name": "UnloadingByConsignmentOrder",
           "pattern": "UnloadingByConsignmentOrder",
           "target": [
@@ -452,6 +466,20 @@
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
         },
+        "TargetChangeResourceGroup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeResourceGroup",
+          "viewName": "ChangeResourceGroup"
+        },
+        "TargetChangeQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeQueue",
+          "viewName": "ChangeQueue"
+        },
         "TargetUnloadingByConsignmentOrder": {
           "viewType": "XML",
           "transition": "slide",
@@ -600,6 +628,22 @@
           "viewName": "RecevingOfHUbyTUorDoor"
         },
 
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+
+
           "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
@@ -620,7 +664,6 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
-
         }
       }
     },

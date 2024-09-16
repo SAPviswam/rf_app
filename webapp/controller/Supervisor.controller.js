@@ -1553,6 +1553,16 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByConsignmentOrder");
 
             },
+            onChangeQueueTilePress: function () {
+                debugger
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("ChangeQueue");
+
+            },
+            onChangeResourceGroupTilePress:function(){
+                const oRoute =this.getOwnerComponent().getRouter()
+                oRoute.navTo("ChangeResourceGroup")
+            },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
