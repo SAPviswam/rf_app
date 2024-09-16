@@ -359,3 +359,8 @@
 .ToolHeader{
 background-color: rgb(9, 8, 8) !important;
 }
+
+
+.customDialogHeader {
+    background-color: orange !important;
+}

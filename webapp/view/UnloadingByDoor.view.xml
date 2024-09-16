@@ -172,12 +172,25 @@
                         text="Delivery"
                         class="sapUiTinyMarginEnd"
                     />
+                    <HBox id="idHBx__UBYCONORDR" >
                     <Input
-                        id="_IDGenInput2_UBYD"
+                        id="_IDGenInt2_UBYCONORDR"
                         placeholder="Enter Delivery"
                         maxLength="25"
-                        width="300px"
+                        width="115px"
                     />
+                         <Label
+                        id="idItemNoLal_UBYCONORDR"
+                        text="Item No:"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                    />
+                    <Input
+                        id="idItemNoIt_UBYCONORDR"
+                        placeholder="Enter Item No"
+                        width="115px"
+                    />
+
+                    </HBox>
                     <Label
                         id="_IDGenLabel3_UBYD"
                         text="Vendor"
@@ -208,16 +221,6 @@
                         id="_IDGenInput5_UBYD"
                         placeholder="Enter HU"
                         maxLength="25"
-                        width="300px"
-                    />
-                    <Label
-                        id="idItemNoLabel_UBYD"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoInput_UBYD"
-                        placeholder="Enter Item No"
                         width="300px"
                     />
                     <VBox id="_IDGenVBox13_UBYD">
@@ -419,22 +422,24 @@
                         text="Qty"
                         class="sapUiTinyMarginEnd"
                     />
-                    <Input
-                        id="idItemNoInput2_UBYD"
-                        placeholder="Enter Qty"
-                        width="300px"
-                    />
+                    <HBox id="idItemNosd_UBYD">
+                        <Input
+                            id="idItemNoInput2_UBYD"
+                            placeholder="Enter Qty"
+                            width="120px"
+                        />
 
-                    <Label
-                        id="idItemNoLab8el_UBYD"
-                        text="UOM"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoInp5ut_UBYD"
-                        placeholder="Enter UOM"
-                        width="300px"
-                    />
+                        <Label
+                            id="idItemNoLab8el_UBYD"
+                            text="UOM:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItemNoInp5ut_UBYD"
+                            placeholder="Enter UOM"
+                            width="129px"
+                        />
+                    </HBox>
 
                     <Label
                         id="_IDGenLabel32_UBYD"
@@ -473,23 +478,25 @@
                         id="_IDGenLabel422_UBYD"
                         text="Man"
                     />
-                    <Input
-                        id="_IDGenInput432_UBYD"
-                        placeholder="Enter Man"
-                        maxLength="25"
-                        width="300px"
-                    />
+                    <HBox id="idItemNd_UBYD">
+                        <Input
+                            id="_IDGenInput432_UBYD"
+                            placeholder="Enter Man"
+                            maxLength="25"
+                            width="120px"
+                        />
 
-                    <Label
-                        id="idItemNoLab99el_UBYD"
-                        text="Expiry"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoI8nput_UBYD"
-                        placeholder="Enter Expiry"
-                        width="300px"
-                    />
+                        <Label
+                            id="idItemNoLab99el_UBYD"
+                            text="Expiry:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItemNoI8nput_UBYD"
+                            placeholder="Enter Expiry"
+                            width="122px"
+                        />
+                    </HBox>
 
                     <Label
                         id="_IDGenLabel4211_UBYD"
@@ -578,21 +585,23 @@
                         text="Delivery"
                         class="sapUiTinyMarginEnd"
                     />
-                    <Input
-                        id="idItemNoI233nput_UBYD"
-                        placeholder="Delivery"
-                        width="300px"
-                    />
-                    <Label
-                        id="idItemLabel_UBYD"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItem3nput_UBYD"
-                        placeholder="Item No"
-                        width="300px"
-                    />
+                     <HBox id="idItesmNo_UBYCONORDR">
+                        <Input
+                            id="idIteasmNoI233nput_UBYCONORDR"
+                            placeholder="Delivery"
+                            width="130px"
+                        />
+                        <Label
+                            id="idItemLdel_UBYCONORDR"
+                            text="Item No:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItem3npsut_UBYCONORDR"
+                            placeholder="Item No"
+                            width="110px"
+                        />
+                    </HBox>
                     <HBox
                         id="_IDGenHBox13_UBYD"
                         class="sapUiSmallMarginTop"

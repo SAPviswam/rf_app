@@ -81,7 +81,6 @@ sap.ui.define([
         },
         Onpressbackbol1:function(){
           this.getOwnerComponent().getRouter().navTo("Supervisor");
-          this.getView().byId("_IDGenbackButton1").setVisible(false);
         },
 
     });

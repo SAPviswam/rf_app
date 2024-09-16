@@ -64,6 +64,12 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback0"
                 />
+                <Button
+                    id="idNavBackButton0_1_UBYSHP"
+                    icon="sap-icon://nav-back"
+                    press="OnpressbackToInput"
+                    visible="false"
+                />
 
                 <VBox
                     id="vBox_BOL_UBYSHP"
@@ -131,7 +137,6 @@
                 >
                     <Table
                         id="idTable_UBYSHP"
-                        visible="false"
                         growing="true"
                         growingScrollToLoad="true"
                        
@@ -679,10 +684,21 @@
                         placeholder="Delivery..."
                         width="200px"
                     />
+                     <Label
+            id="idItem_NOLabel_UBYSHP"
+            text="Item No"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idItem_no_Input__UBYSHP"
+           
+            width="200px"
+        />
                     <Label
                         id="idPlaceholderLabel_UBYSHP_page5"
                         text=""
                     />
+
 
                     <HBox
                         id="idButtonHBox_UBYSHP_page5"
