@@ -92,8 +92,11 @@
                         alignContent="Center"
                         alignItems="Center"
                     >
+
+
                     <Title text="Serial Number Location"></Title>
                         <VBox class="sapUiTinyMarginBottom"></VBox>
+
                         <HBox
                             id="idSNLHbox"
                             class="sapUiMediumMargin"
@@ -103,6 +106,7 @@
                                 text="Product"
                                 width="100px"
                                  class="sapUiTinyMargin"
+
                             />
                             <Input
                                 id="idSNLproductInput"
@@ -143,7 +147,9 @@
                                 id="idSNLPro"
                                 text="Product"
                                 width="100px"
+
                                  class="sapUiTinyMargin"
+
                             />
                             <Input
                                 id="idSNLProInput"
@@ -155,7 +161,9 @@
                                 id="idSNLSno"
                                 text="Serial Number"
                                 width="100px"
+
                                  class="sapUiTinyMargin"
+
                             />
                             <Input
                                 id="idSNLsnoInput"
@@ -209,7 +217,9 @@
                                
                             />
                         </HBox>
+
                         <VBox class="sapUiMediumMarginBottom"></VBox>
+
  <HBox
                                 alignItems="Center"
                                 justifyContent="Center"
@@ -423,7 +433,11 @@
                             />
                             <Label
                                 text=""
+
+                                width="20px"
+
                                 width="30px"
+
                             />
                             <Label
                                 id="idSNLStorTypeLabel"
@@ -448,7 +462,11 @@
                             />
                              <Label
                                 text=""
+
+                                width="20px"
+
                                 width="30px"
+
                             />
                             <Label
                                 id="idSNLStorSecLabel"
@@ -472,7 +490,11 @@
                             />
                              <Label
                                 text=""
+
+                                width="20px"
+
                                 width="30px"
+
                             />
                             <Label
                                 id="idSNLBinAisleLabel"
@@ -498,7 +520,11 @@
                             <Text text="KG"/>
                              <Label
                                 text=""
+
+                                width="20px"
+
                                 width="30px"
+
                             />
                             <Label
                                 id="idSNLBinLevelLabel"
@@ -523,7 +549,11 @@
                             <Text text="M3"/>
                              <Label
                                 text=""
+
+                                width="20px"
+
                                 width="30px"
+
                             />
                             <Label
                                 id="idSNLStackLabel"

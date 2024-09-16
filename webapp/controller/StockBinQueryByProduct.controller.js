@@ -15,7 +15,7 @@ sap.ui.define(
         },
 
         onSBQProductLiveChange:function(){
-            if(this.getView().byId("idSBQProductInput").getValue()=="800020"){
+            // if(this.getView().byId("idSBQProductInput").getValue()=="800020"){
             this.getView().byId("idSBQPFirstSC").setVisible(false);
             this.getView().byId("idSBQPsecondSC").setVisible(true);
             this.getView().byId("idSBQPfirstbackbtn").setVisible(false);
@@ -23,10 +23,10 @@ sap.ui.define(
             var oProduct=this.getView().byId("idSBQProductInput").getValue();
             this.getView().byId("idSBQProductInput2").setValue(oProduct);
             this.getView().byId("idSBQProductInput2").setEditable(false);
-            }
-            else{
-              MessageToast.show("please enter valid product")
-            }
+            // }
+            // else{
+            //   MessageToast.show("please enter valid product")
+            // }
         },
         onSBQPSecondBackBtnPress:function(){
               this.getView().byId("idSBQPFirstSC").setVisible(true)

@@ -317,20 +317,32 @@
           ]
         },
         {
-
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU",
+          "target": [
+            "TargetReceivingofHUbyTU"
+          ]
+        },
+        {
           "name": "SerialNumberLocation",
           "pattern": "SerialNumberLocation",
           "target": [
             "TargetSerialNumberLocation"
           ]
-    },
 
+        },
     {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
             "TargetWTQueryByWT"
-
           ]
         }
       ],
@@ -545,22 +557,33 @@
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
         },
-
+        "TargetReceivingofHUbyTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyTU",
+          "viewName": "ReceivingofHUbyTU"
+        },
+        "TargetRecevingOfHUbyTUorDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
+        },
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
-      },
-
+        },
         "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
-
         }
       }
     },

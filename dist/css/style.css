@@ -391,7 +391,6 @@
 }
 
 @media (max-width: 768px) {
-
     .boxContainer {
         border-radius: 1rem;
         border: 2px solid black;
@@ -399,27 +398,23 @@
         padding: 3%;
         width: 80%;
     }
-
     .Inputs {
         padding-left: 10vw;
         width: 70%;
     }
 
 }
-
 .SubmitBtnFromVendorPage .sapMBtnText {
     background-color: white !important;
     color: green;
     margin-right: 0.5rem;
     font-weight: bold !important;
 }
-
 .ClearBtnFromVendorPage .sapMBtnText {
     background-color: white !important;
     color: red;
     font-weight: bold !important;
 }
-
 /* these are for theme colors for options... */
 .colorCheckBox {
     width: 20px;
@@ -428,42 +423,34 @@
     display: inline-block;
     border-color: black !important;
 }
-
 .redCheckBox .sapMCbBg {
     background-color: red !important;
 }
-
 .blackCheckBox .sapMCbBg {
     background-color: black !important;
 }
-
 .greenCheckBox .sapMCbBg {
     background-color: green !important;
 }
-
 .whiteCheckBox .sapMCbBg {
     background-color: white !important;
 }
-
 .purpleCheckBox .sapMCbBg {
     background-color: purple !important;
 }
-
 .blueCheckBox .sapMCbBg {
     background-color: blue !important;
 }
-
 .YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
 }
-
 .textFieldsAF {
     padding-bottom: 1rem;
 
 }
 
 
-  }
+  
   .classUOMbyASn{
     margin-top: 16%;
   }
@@ -505,142 +492,159 @@
 
 
 /*-----------------New HU FROM BBOL-------------------------*/
-.classUOMbyASn{
-margin-top: 16%;
+.classUOMbyASn {
+    margin-top: 16%;
 }
 
 /*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
 
 
-.hidden{
-  display: none !important;
-}
 
-/*......These are for Putaway By WO Tile......*/
-.putawayContainer {
+
+
+/*......These are(3Tiles) for "PutawayByWO Tile=>Page1" & "AvailableHandlingUnitsonBinQuery Tile=>Page1" & "WTQueryByHU Tile=>Page1"......*/
+.putawayContainer_PBYWO,.BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
-  }
-  .warehouseOrderTitle {
+}
+.warehouseOrderTitle_PBYWO,.BinQueryTitle_AHUOBQ, .WTQueryByHUTitle_WTQBYHU {
     align-self: flex-start;
-  }
-  .formContainer {
+}
+.formContainer_PBYWO,.formContainer_AHUOBQ, .formContainerPage1_WTQBYHU {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-  }
-  .formBox {
+}
+.formBox_PBYWO,.formBox_AHUOBQ, .formBox_WTQBYHU {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     width: 400px;
     margin-top: 4rem;
-  }
-  .formLabel {
+}
+.formLabel_PBYWO,.formLabel_AHUOBQ, .formLabel_WTQBYHU {
     margin-bottom: 7px;
-  }
-  .customMargin {
+}
+.Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU {
     margin-left: 3rem;
     margin-right: 1rem;
-  }
-  .centeredFormBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 4rem); /* Adjust based on the height of the back button and any other fixed elements */
-  }
-  .sapUiSmallMargin {
-    margin: 1rem;
-  }
-  /* Mobile Styles */
-  @media (max-width: 600px) {
-    .putawayContainer {
-      padding: 10px;
+}
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .putawayContainer_PBYWO, .BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU {
+        padding: 10px;
     }
-    .formBox {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 30rem; /* Adjusted for mobile */
+    .formBox_PBYWO, .formBox_AHUOBQ, .formBox_WTQBYHU {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 30rem;
+        /* Adjusted for mobile */
     }
-    .formLabel {
-      font-size: 0.9rem;
+    .formLabel_PBYWO, .formLabel_AHUOBQ, .formLabel_WTQBYHU {
+        font-size: 0.9rem;
     }
-    .customMargin {
-      margin-left: 3rem;
-      margin-right: 1rem;
+    .Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU {
+        margin-left: 3rem;
+        margin-right: 1rem;
     }
-    .formContainer {
-      flex-direction: column;
-      align-items: flex-start;
+    .formContainer_PBYWO, .formContainer_AHUOBQ, .formContainerPage1_WTQBYHU {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .centeredFormBox {
-      height: auto; /* Adjusted for mobile if needed */
-      margin-top: 4rem; /* Adjust margin to ensure it's centered properly on small screens */
-    }
-  }
-  .UnitsofMeasure {
-    margin-left: 0.3rem;
-  }
- 
-  
-  /* ScrollContainer Page 5 & Page 6 & Page 7 CSS methods */
-  .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad {
+}
+.UnitsofMeasure {
+    margin-top: 0.4rem;
+}
+/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+   ScrollContainers Page3 & Page4 From AHUOBQ Tile.. &&
+   ScrollContainers Page3 & Page4 From WTQBYHU Tile..  */
+.Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
-  }
-  /* Form Header Styling */
-  .SecondPageformHeader, .formHeader,.formHeaderGR, .formHeaderUnLoad {
+}
+/* Form Header Styling */
+.Page2formHeaderTitle_PBYWO, .Page5formHeaderVerifyHUNum_PBYWO, .formHeaderGR, .formHeaderUnLoad, .ThirdPageformHeaderHUContent_AHUOBQ, .formHeaderPage4PrdDescription_AHUOBQ, .ThirdPageformHeaderWTDetails_WTQBYHU, .Page4formHeaderPD_WTQBYHU {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-  }
-  /* Box around the form */
-  .SecondFormBox, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox {
+}
+/* Box around the form */
+.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .ThirdPageFormBoxWTDetails_WTQBYHU, .Page4FormBoxPD_WTQBYHU {
     border: 2px solid black;
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
+    width: auto;
     background-color: #f9f9f9;
-  }
-  .formLabel, .labelStyleGR, .labelStyleUnLoad {
+}
+.formLabel_PBYWO, .labelStyleGR, .labelStyleUnLoad, .labelStyleThirdPage_AHUOBQ, .formLabelPage4_AHUOBQ {
     margin-bottom: 0.5rem;
     font-weight: bold;
-  }
-  /* Button Styling */
-  .formButton {
+}
+/* Button Styling */
+.GRandUPLOADBtns_PBYWO {
     margin-left: 1rem;
-  }
-  .ButtonsSpaceSecondPage {
+}
+.HUListBtn_PBYWO {
     margin-right: 1rem;
-  }
-  @media (max-width: 600px) {
-    .SecondPageContainer, .verifyHuNumberContainer,.MainVBoxGR, .MainVBoxUnLoad {
-      margin: 1rem;
+}
+.BinNumberTableLabel_AHUOBQ,.HUNumberTableLabel_WTQBYHU, .WTDetailsLabelPage4_WTQBYHU, .PDLabelPage4_WTQBYHU{
+    font-weight: bold;
+    margin-top: 0.5rem; 
+    margin-right: 0.3rem;
+}
+.TextLableUnits_AHUOBQ{
+    margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+    .Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ {
+        margin: 1rem;
     }
-    .SecondFormBox, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox {
-      padding: 15px; /* Adjust padding for mobile */
-      width: 100%; /* Ensure full width with some margin on the sides */
-      margin: 0 auto; /* Center the box */
+    .Page2FormBox_PBYWO, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ {
+        padding: 15px;
+        width: 100%;
+        margin: 0 auto;
     }
-  }
+}
+/* CSS methods only for WTQBYHU Tile in that Page3 & Page4 Scrollcontainers  */
+@media (max-width: 600px) {
+    .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU {
+        margin: 0.5rem;
+        width: auto;
+        margin-right: 0.5rem;
+    }
+    .ThirdPageContainerWT_WTQBYHU .sapMHBox {
+        flex-direction: column;
+        align-items: stretch;
+        width: auto;
+    }
+    .Page4ContainerPD_WTQBYHU .sapMHBox {
+        flex-direction: column;
+        align-items: stretch;
+        width: auto;
+    }
+}
+
+
+
+
 
 /* ---------------------------------------------------------------------Receving Of HU By Delivery-------------------------------------------------------- */
-.ScanDeliverymargin{
+.ScanDeliverymargin {
     margin-top: 12%;
     margin-right: 2000% !important;
-  }
-  .ItemLabel{
+}
+
+.ItemLabel {
     margin-top: 12%;
     margin-right: 2000% !important;
-  }
+}
 
 
 /* unloading by door start*/
@@ -658,7 +662,14 @@ margin-top: 16%;
 }
 
 
+/* unloading by door end*/
+
+
 
 /* unloading by door end*/
 
 
+/* unloading by door end*/
+.ToolHeader{
+background-color: rgb(9, 8, 8) !important;
+}
