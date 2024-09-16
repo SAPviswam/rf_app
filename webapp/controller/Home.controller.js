@@ -68,7 +68,8 @@ sap.ui.define([
                                     //   }.bind(this), 2000); 
 
                                     // Navigate to the ResourcePage with the correct ID
-                                    if(oData.Users==="SUPERVISOR"){
+                                    let oUser = oData.Users.toLowerCase();
+                                    if(oUser ==="supervisor"){
                                         that.getRouter().navTo("Supervisor", { id: sResourceId });
                                     }
                                     else{

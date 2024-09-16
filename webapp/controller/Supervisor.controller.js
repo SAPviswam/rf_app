@@ -1601,8 +1601,7 @@ sap.ui.define(
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery");
- 
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
             },
             OnPressCreateandConfirmAdhocHUWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
