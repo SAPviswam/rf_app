@@ -1534,7 +1534,6 @@ sap.ui.define(
 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
             onUnloadingByDoorTilePress: function () {
@@ -1554,9 +1553,24 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByConsignmentOrder");
 
             },
+            onChangeQueueTilePress: function () {
+                debugger
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("ChangeQueue");
+
+            },
+            onChangeResourceGroupTilePress:function(){
+                const oRoute =this.getOwnerComponent().getRouter()
+                oRoute.navTo("ChangeResourceGroup")
+            },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
+ 
+            },
+            OnpressMaintainHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU");
  
             },
             onUnloadingByShipmentPress:function () {
@@ -1765,6 +1779,16 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT");
             },
+          
+            onPressCreateShippingHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHU");
+            },
+            onPressCreateShippingHUWOWC: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHUWOWC");
+            },
+
             onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor");
@@ -1784,8 +1808,9 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct");
-            }
-            
+            },
+
+
         });
     }
 );

@@ -32,9 +32,19 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
             this.getView().byId("page1_UBYTU").setVisible(true);
             // this.getView().byId("page2Shipment_UBYTU").setVisible(true);
              this.getView().byId("page2_UBYTU").setVisible(false);
-             this.getView().byId("idTable_UBYTU").setVisible(true);
+            //  this.getView().byId("idTable_UBYTU").setVisible(true);
              this.getView().byId("idPanel_UBYTU").setVisible(true);
+             this.getView().byId("idNavBackButton0_UBYTU").setVisible(false);
+             this.getView().byId("idNavBackButton0_1_UBYTU").setVisible(true);
            
+
+        },
+        OnpressbackToInput:function(){
+            this.getView().byId("idPanel_UBYTU").setVisible(false);
+            this.getView().byId("idNavBackButton0_1_UBYTU").setVisible(false);
+            this.getView().byId("idNavBackButton0_UBYTU").setVisible(true);
+
+
 
         },
        
