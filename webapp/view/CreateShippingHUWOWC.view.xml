@@ -1,0 +1,231 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.CreateShippingHUWOWC"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageCSHUWOWC">
+        <tnt:header>
+            <tnt:ToolHeader
+                id="idtntToolHeaderCSHUWOWC"
+                class="ToolHeader"
+            >
+                <Image
+                    id="_IDGenImage1CSHUWOWC"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin .Logo"
+                    src="./Images/Artihcus logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorCSHUWOWC"
+                />
+                <ToolbarSpacer id="idToolbarSpacerCSHUWOWC">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1CSHUWOWC"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1CSHUWOWC"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="scrollContainerCSHUWOWC1"
+                vertical="true"
+                horizontal="false"
+                height="100%"
+                width="100%"
+            >
+                <Button
+                    id="_IDGenbackButtonCSHUWOWC1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressbackbolCSHUWOWC1"
+                    visible="true"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="_IDGenVBoxWithCSHUWOWCBackButton"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    class="sapUiResponsiveMargin"
+                >
+                    <Title
+                        id="idtitlebolCSHUWOWC1"
+                        text="Create Shipping HU (W/O WC)"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                    <form:SimpleForm
+                        id="CSHUWOWCsimpleForm1"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                        class="sapUiResponsiveMargin"
+                    >
+                        <Label
+                            id="_IDGenCSHUWOWCLabel"
+                            text="Dest.HU"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <HBox id="_IDGenHBox5">
+                            <Input
+                                id="_IDGenDESTHUWOWCInput"
+                                maxLength="255"
+                                width="200px"
+                                liveChange="Ondesthupresswowc"
+                            />
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodedestHUWOWC"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter BOL Number"
+                                class="sapUiTinyMarginBegin"
+                            />
+                        </HBox>
+
+                        <Label
+                            id="_IDPackmatWOWCGenLabel"
+                            text="Pack.mat"
+                        />
+                        <Input
+                            id="_IDPackmatWOWCGenInput3"
+                            maxLength="32"
+                            width="200px"
+                            editable="false"
+                        />
+
+                        <Label
+                            id="_IDGencshuWOWCLabeldestbin"
+                            text="Dest Bin"
+                            class="sapUiMarginTop margin"
+                        />
+                        <Input
+                            id="_IDHUDestWOWCbintypeGenInput3"
+                            maxLength="18"
+                            width="200px"
+                            editable="false"
+                        />
+
+                        <Label
+                            id="_IDGencnsldgrpWOWCLabel"
+                            text="Cnsld.grp"
+                        />
+                        <Input
+                            id="_IDGencnsldgrpWOWCInput"
+                            maxLength="10"
+                            width="200px"
+                            editable="false"
+                        />
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="scrollContainerCSHUWOWC2"
+                vertical="true"
+                horizontal="false"
+                height="100%"
+                width="100%"
+                visible="false"
+            >
+                <Button
+                    id="_IDGenbackButtonCSHUWOWC2"
+                    icon="sap-icon://nav-back"
+                    press="OnpressbackbolCSHU2"
+                    visible="true"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="_IDGenVBoxWithCSHUWOWCBackButton2"
+                    alignItems="Center"
+                    justifyContent="Start"
+                    width="100%"
+                    class="sapUiResponsiveMargin"
+                >
+                    <Title
+                        id="idtitlebolCSHUWOWC2"
+                        text="work center Details"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                    <form:SimpleForm
+                        id="CSHUWOWCsimpleForm2"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                        class="sapUiResponsiveMargin"
+                    >
+                        <Label
+                            id="_IDGenCSHUWOWCLabel2"
+                            text="Dest.HU"
+                            class="sapUiTinyMarginEnd"
+                        />
+                            <Input
+                                id="_IDGenDESTHUWOWCInput1"
+                                maxLength="255"
+                                width="200px"
+                                editable="false"
+                            />
+
+                        <Label
+                            id="_IDPackmatWOWCGenLabel1"
+                            text="Pack.mat"
+                        />
+                        <Input
+                            id="_IDPackmatWOWCGenInput2"
+                            maxLength="32"
+                            width="200px"
+                        />
+
+                        <Label
+                            id="_IDGencshuWOWCLabeldestbin1"
+                            text="Dest Bin"
+                            class="sapUiMarginTop margin"
+                        />
+                        <Input
+                            id="_IDHUDestbinWOWCtypeGenInput"
+                            maxLength="18"
+                            width="200px"
+                        />
+
+                        <Label
+                            id="_IDGencnsldgrpLabelWOWC"
+                            text="Cnsld.grp"
+                        />
+
+                        <Input
+                            id="_IDGencnsldgrpWOWCInput1"
+                            maxLength="10"
+                            width="200px"
+                        />
+                        <VBox >
+                        <Button
+                            id="_IDonsaveCSHUWOWC"
+                            text="Save"
+                            type="Emphasized"
+                            press="onSavePress"
+                        />
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

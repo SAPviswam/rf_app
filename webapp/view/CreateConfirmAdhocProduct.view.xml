@@ -78,6 +78,8 @@
                 >
                 <VBox alignContent="Center"
                         alignItems="Center" >
+                        <Title text="Create and Confirm Adhoc Product"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idInitialProductPage1"
                         class="sapUiMediumMargin"
@@ -85,7 +87,8 @@
                         <Label
                             id="idProductLabel"
                             text="Product"
-                            width="100px"
+                            width="70px"
+                            class="sapUiTinyMargin"
                         />
                         <Input
                             id="idProductInput"
@@ -129,6 +132,7 @@
                                 id="idProductLabel1"
                                 text="Product"
                                 width="100px"
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idproductInput1"
@@ -140,6 +144,7 @@
                                 id="idProductSrcBinLabel1"
                                 text="Src Bin"
                                 width="100px"
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idProductsrcBinInput"

@@ -23,9 +23,9 @@ sap.ui.define(
           this.byId("idROHCOScanManufacturingorder").setVisible(true);
         },
         //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
-        onPressBackBtnScanerFormBox: function () {
+        onPressScanCObackbtn: function () {
           var oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("RouteView1");
+          oRouter.navTo("Supervisor");
         },
    
         //Back Btn from ScrollContainer Page 2 =>idROHCODeliverydetailsPage2

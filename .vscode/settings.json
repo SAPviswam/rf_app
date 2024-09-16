@@ -1,4 +1,5 @@
 {
     "breadcrumbs.enabled": true,
-    "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    "SAP HANA Database Explorer.ShowXsAdvancedConnections": true,
+    "git.ignoreLimitWarning": true
 }

@@ -343,14 +343,27 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
-    },
 
+        },
     {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT",
           "target": [
             "TargetWTQueryByWT"
-
+          ]
+        },
+        {
+          "name": "CreateShippingHU",
+          "pattern": "CreateShippingHU",
+          "target": [
+            "TargetCreateShippingHU"
+          ]
+        },
+        {
+          "name": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC",
+          "target": [
+            "TargetCreateShippingHUWOWC"
           ]
         }
       ],
@@ -572,13 +585,6 @@
           "viewId": "WTQueryByWO",
           "viewName": "WTQueryByWO"
         },
-        "TargetRecevingOfHUbyTUorDoor": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RecevingOfHUbyTUorDoor",
-          "viewName": "RecevingOfHUbyTUorDoor"
-        },
         "TargetReceivingofHUbyTU": {
           "viewType": "XML",
           "transition": "slide",
@@ -586,21 +592,34 @@
           "viewId": "ReceivingofHUbyTU",
           "viewName": "ReceivingofHUbyTU"
         },
-
-        "TargetSerialNumberLocation": {
+        "TargetRecevingOfHUbyTUorDoor": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "SerialNumberLocation",
-          "viewName": "SerialNumberLocation"
-      },
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
+        },
 
-        "TargetWTQueryByWT": {
+          "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
+        },
+        "TargetCreateShippingHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHU",
+          "viewName": "CreateShippingHU"
+        },
+        "TargetCreateShippingHUWOWC": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHUWOWC",
+          "viewName": "CreateShippingHUWOWC"
 
         }
       }

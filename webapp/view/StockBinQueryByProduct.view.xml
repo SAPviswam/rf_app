@@ -84,14 +84,18 @@
                 >
                 <VBox alignContent="Center"
                         alignItems="Center">
+                        <Title text="Stock Bin Query By Product"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idSBQPHbox"
                         class="sapUiMediumMargin"
                     >
+
                         <Label
                             id="idSBQProductLabel"
                             text="Product"
                             width="70px"
+                            class="sapUiTinyMargin"
                         />
                         <Input
                             id="idSBQProductInput"
@@ -146,6 +150,7 @@
                                     id="idSBQProductLabel2"
                                     text="Product"
                                     width="70Px"
+                                    
                                 />
                                 <HBox
                                     id="idSBQPLabelHbox2"
@@ -165,7 +170,7 @@
                                 </HBox>
                             </HBox>
                         </VBox>
-
+<VBox class="sapUiMediumMarginBottom"></VBox>
                         <VBox
                             alignItems="Center"
                             justifyContent="Center"
@@ -376,7 +381,7 @@
                             />
                             <Label
                                 text=""
-                                width="20px"
+                                width="30px"
                             />
                             <Label
                                 id="idSBQPStorTypeLabel"
@@ -401,7 +406,7 @@
                             />
                              <Label
                                 text=""
-                                width="20px"
+                                width="30px"
                             />
                             <Label
                                 id="idSBQPStorSecLabel"
@@ -425,7 +430,7 @@
                             />
                              <Label
                                 text=""
-                                width="20px"
+                                width="30px"
                             />
                             <Label
                                 id="idSBQPBinAisleLabel"
@@ -451,7 +456,7 @@
                             <Text text="KG"/>
                              <Label
                                 text=""
-                                width="20px"
+                                width="30px"
                             />
                             <Label
                                 id="idSBQPBinLevelLabel"
@@ -476,7 +481,7 @@
                             <Text text="M3"/>
                              <Label
                                 text=""
-                                width="20px"
+                                width="30px"
                             />
                             <Label
                                 id="idSBQPStackLabel"
