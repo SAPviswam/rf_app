@@ -45,6 +45,30 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
+                <ComboBox
+                    id="idLanguageSelectorComboBox"
+                    change="onLanguageChange"
+                    visible="false"
+                    placeholder="Pls Select Language!"
+                >
+                    <items>
+                        <core:Item
+                            id="idCoreItemEnglishLanguage"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItemHindiLanguage"
+                            key="hi"
+                            text="Hindi"
+                        />
+                    </items>
+                </ComboBox>
+                <Button
+                    id="idBtnLanguageChange"
+                    icon="sap-icon://italic-text"
+                    press="onPressLanguageChangeApp"
+                />
                 <Button
                     id="themeButton"
                     text="Theme"
@@ -251,8 +275,7 @@
                                         liveChange="onSubmitOtp"
                                         width="100%"
                                         editable="true"
-                />
-
+                                    />
 
                                     <Button
                                         id="getotpsv"
@@ -261,10 +284,7 @@
                                         type="Emphasized"
                                         width="80px"
                                         visible="false"
-                
-                    />
-
-
+                                    />
                                 </HBox>
                             </FlexBox>
 
@@ -754,7 +774,8 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />                            </TileContent>
+                                />
+                            </TileContent>
                         </GenericTile>
 
                         <GenericTile

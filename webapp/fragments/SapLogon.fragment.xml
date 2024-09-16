@@ -9,8 +9,8 @@
         draggable="true"
         contentWidth="20%"
     >
-        <customHeader>
-            <Bar id="_IDsaplogonBar1">
+        <customHeader >
+            <Bar id="_IDsaplogonBar1" class="customDialogHeader">
                 <contentMiddle>
                     <Title
                         id="_IDsaplogonTitle1"
