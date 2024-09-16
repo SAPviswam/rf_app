@@ -1534,7 +1534,6 @@ sap.ui.define(
 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
             onUnloadingByDoorTilePress: function () {
@@ -1760,6 +1759,16 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT");
             },
+
+            onPressCreateShippingHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHU");
+            },
+            onPressCreateShippingHUWOWC: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateShippingHUWOWC");
+            },
+
             onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor");
@@ -1779,7 +1788,8 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct");
-            }
+            },
+
             
         });
     }

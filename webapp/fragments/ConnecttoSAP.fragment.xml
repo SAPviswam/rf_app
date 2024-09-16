@@ -27,23 +27,6 @@
                 </contentRight>
             </Bar>
         </customHeader>
-        <beginButton>
-            <Button
-                id="idconnectsapButton"
-                text="Save"
-                press="onsavePress"
-                class="onsaveBtnsapFragment"
-            />
-        </beginButton>
-        <endButton>
-            <Button
-                id="idCancelconnectsapUserButton"
-                text="Clear"
-                press="onClearconnectsapDialog"
-                class="onCancelconnectsapBtn"
-            />
-        </endButton>
-
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm"
@@ -90,6 +73,7 @@
                         placeholder="ID"
                         maxLength="3"
                         width="50px" 
+                        liveChange="ongetSAPPress"
                         
                     />
                 </HBox>
@@ -160,5 +144,25 @@
                 </HBox>
             </form:SimpleForm>
         </content>
+        <buttons>
+            <Button
+                id="idRemoveButton"
+                text="Remove"
+                press="onRemovePress"
+                type="Reject"
+            />
+            <Button
+                id="idconnectsapButton"
+                text="Save"
+                press="onsaveconnectSAPPress"
+                class="onsaveBtnsapFragment"
+            />
+            <Button
+                id="idCancelconnectsapUserButton"
+                text="Clear"
+                press="onClearconnectsapDialog"
+                class="onCancelconnectsapBtn"
+            />
+        </buttons>
     </Dialog>
 </core:FragmentDefinition>
