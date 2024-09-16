@@ -30,6 +30,12 @@ sap.ui.define(
                 oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
                 // Attach single-click event to the button
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
+            },
+            onSupervisorDetailsLoad: async function (oEvent1) {
+                const { id } = oEvent1.getParameter("arguments");
+                    this.ID = id;
             },
             onPaletteIconSingleClick: function (oEvent) {
                 this._currentTileId = oEvent.getSource().getParent().getParent().getId();
@@ -1751,7 +1757,7 @@ sap.ui.define(
             },
             OnPressWTQuerybyWO:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO");
+                oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
 
 
