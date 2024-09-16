@@ -30,8 +30,7 @@
                         textAlign="Center"
                     />
 
-                    <!-- Environment Buttons -->
-
+                    <!-- Existing Environment Buttons -->
                     <Label
                         id="idSAPSystem"
                         text="SAP System"
@@ -67,7 +66,6 @@
                         type="Emphasized"
                         width="11rem"
                     />
-                    <Label id="idemptylable2" />
                     <Link
                         id="_IDCofiguresapLink"
                         text="Configure SAP system"
