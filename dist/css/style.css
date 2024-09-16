@@ -662,10 +662,13 @@
 }
 
 
-/* unloading by door end*/
+/* unloading by door Start*/
 
 
 
 /* unloading by door end*/
-
-
+/*SapLogon Start*/
+.customDialogHeader {
+    background-color: orange !important;
+}
+/*SapLogon End*/

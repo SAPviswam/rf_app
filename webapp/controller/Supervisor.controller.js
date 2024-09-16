@@ -1753,12 +1753,13 @@ sap.ui.define(
 
             onReceivingofHUbyTU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation");
+                oRouter.navTo("ReceivingofHUbyTU");
             },
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT");
             },
+
             onPressCreateShippingHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHU");
@@ -1771,8 +1772,30 @@ sap.ui.define(
             // In your controller
             onChatbotButtonPress: function () {
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823","_self");
-            }
+            },
 
+            onReceivingofTUorDoor: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyTUorDoor");
+            },
+            onReceivingofHUbyManufacturingOrder: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+            },
+            onPressCreateAdhocHUWTInAdhocWT: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocHuWt");
+            },
+            OnPressCreateandConfirmAdhocProductWT: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocProduct");
+            },
+            OnPressStockOrBinQuerybyProduct: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct");
+            },
+
+            
         });
     }
 );
