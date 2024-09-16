@@ -1138,7 +1138,7 @@
                             id="_IDGenGenericTileMaintainHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Maintain HU"
-                            press="press"
+                            press="OnpressMaintainHU"
                         />
 
                         <GenericTile
@@ -1525,14 +1525,14 @@
                             id="IDChangeQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Queue"
-                            press="OnPressChange Queue"
+                            press="onChangeQueueTilePress"
                         />
 
                         <GenericTile
                             id="IDChangeResourceGroup"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Resource Group"
-                            press="OnPressChangeResourceGroup"
+                            press="onChangeResourceGroupTilePress"
                         />
                     </ScrollContainer>
                     <Dialog
