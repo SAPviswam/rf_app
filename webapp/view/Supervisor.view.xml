@@ -1456,7 +1456,7 @@
                             id="IDWTQuerybyQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT Query by Queue"
-                            press="OnPressWTQuerybyQueue"
+                            press="onPressWTQuerybyQueue"
                         />
                         <GenericTile
                             id="IDWTquerybyHU"
