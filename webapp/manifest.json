@@ -129,7 +129,7 @@
         },
         {
           "name": "Supervisor",
-          "pattern": "Supervisor",
+          "pattern": "Supervisor/{id}",
           "target": [
             "TargetSupervisorPage"
           ]
@@ -188,6 +188,20 @@
           "pattern": "UnloadingByDoor",
           "target": [
             "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "ChangeQueue",
+          "pattern": "ChangeQueue",
+          "target": [
+            "TargetChangeQueue"
+          ]
+        },
+        {
+          "name": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup",
+          "target": [
+            "TargetChangeResourceGroup"
           ]
         },
         {
@@ -290,7 +304,7 @@
         },
         {
           "name": "CreateConfirmAdhocProduct",
-          "pattern": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
           ]
@@ -318,7 +332,7 @@
         },
         {
           "name": "WTQueryByWO",
-          "pattern": "WTQueryByWO",
+          "pattern": "WTQueryByWO/{id}",
           "target": [
             "TargetWTQueryByWO"
           ]
@@ -451,6 +465,20 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
+        },
+        "TargetChangeResourceGroup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeResourceGroup",
+          "viewName": "ChangeResourceGroup"
+        },
+        "TargetChangeQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeQueue",
+          "viewName": "ChangeQueue"
         },
         "TargetUnloadingByConsignmentOrder": {
           "viewType": "XML",
@@ -600,6 +628,22 @@
           "viewName": "RecevingOfHUbyTUorDoor"
         },
 
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+
+
           "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
@@ -620,7 +664,6 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
-
         }
       }
     },

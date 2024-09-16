@@ -34,10 +34,10 @@ sap.ui.define([
                 }
 
                 // Special case for Resource ID 111010 and Password ARTIHCUS
-                if (sResourceId === "111010" && sPassword === "ARTIHCUS") {
-                    this.getRouter().navTo("Supervisor");
-                    return;
-                }
+                // if (sResourceId === "111010" && sPassword === "ARTIHCUS") {
+                //     this.getRouter().navTo("Supervisor");
+                //     return;
+                // }
 
                 // Get the model from the component
                 var oModel = this.getOwnerComponent().getModel();
@@ -68,7 +68,13 @@ sap.ui.define([
                                     //   }.bind(this), 2000); 
 
                                     // Navigate to the ResourcePage with the correct ID
-                                    that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
+                                    if(oData.Users==="SUPERVISOR"){
+                                        that.getRouter().navTo("Supervisor", { id: sResourceId });
+                                    }
+                                    else{
+                                        that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
+                                    }
+                                   
                                 }
 
                             } else {
