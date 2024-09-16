@@ -129,7 +129,7 @@
         },
         {
           "name": "Supervisor",
-          "pattern": "Supervisor",
+          "pattern": "Supervisor/{id}",
           "target": [
             "TargetSupervisorPage"
           ]
@@ -311,7 +311,7 @@
         },
         {
           "name": "WTQueryByWO",
-          "pattern": "WTQueryByWO",
+          "pattern": "WTQueryByWO/{id}",
           "target": [
             "TargetWTQueryByWO"
           ]
