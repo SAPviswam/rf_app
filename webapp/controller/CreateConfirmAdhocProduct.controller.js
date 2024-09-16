@@ -8,6 +8,14 @@ sap.ui.define(
   
       return BaseController.extend("com.app.rfapp.controller.CreateConfirmAdhocProduct", {
         onInit: function() {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+        },
+        onResourceDetailsLoad:function(oEvent1){
+            var that = this;
+            const { id } = oEvent1.getParameter("arguments");
+            this.ID = id;
+            console.log(this.ID);
         },
 
         onProductLiveChange:function(){
@@ -60,7 +68,7 @@ sap.ui.define(
       },
       onInitialAdhocProductBackBtnPress:function(){
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Supervisor");
+        oRouter.navTo("RouteResourcePage",{id:this.ID});
       },
       
       });

@@ -5,9 +5,10 @@ sap.ui.define([
     "sap/m/Popover",
     "sap/m/Button",
     "sap/m/library",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+     "sap/ui/core/UIComponent"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
@@ -28,11 +29,12 @@ sap.ui.define([
                    }.bind(this));
 
                    oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                   
             },
 
 
             onResourceDetailsLoad: async function (oEvent1) {
-
+               
                 // const { id } = oEvent1.getParameter("arguments");
                 // this.ID = id;
                 // console.log(this.ID)
@@ -83,7 +85,7 @@ sap.ui.define([
 
 
                 debugger;
-   
+                var that = this;
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 console.log(this.ID);
@@ -95,9 +97,25 @@ sap.ui.define([
                     success: function (oData) {
                         var area = oData.Area;
                         var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
-                        var group = oData.Resourcegroup;
-                        var groupArray = group.split(",").map(item => item.trim()); // Split and trim each group
-                        var resourceType = oData.Queue;
+                        var ogroup = oData.Resourcegroup;
+                        var groupArray = ogroup.split(",").map(item => item.trim()); // Split and trim each group
+
+                        groupArray.forEach(function(group){
+        
+                            let oGroup = group.replace(/[^a-zA-Z0-9]/g,'');
+                            let loGroup=oGroup.toLowerCase();
+                            that.getView().byId(`id_${loGroup}_title`).setVisible(true)
+                        })
+
+                        var oresourceType = oData.Queue;
+                        var oResourceArray = oresourceType.split(",").map(item => item.trim())
+                        console.log(oResourceArray)
+                        oResourceArray.forEach(function(queue){
+        
+                            let oQueue = queue.replace(/[^a-zA-Z0-9]/g,'');
+                            let lOQueue=oQueue.toLowerCase();
+                            that.getView().byId(`id_${lOQueue}`).setVisible(true)
+                        })
            
                         var aNavigationData = oModel.getProperty("/navigation");
            
@@ -189,10 +207,14 @@ sap.ui.define([
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
             },
-            onPutawayByHU: function () {
+           
+            onWTQuerybyWOPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU");
-            }
+                oRouter.navTo("WTQueryByWO",{id:this.ID});
+            },
+
+          
+
         });
     });
 
