@@ -8,12 +8,32 @@ sap.ui.define(
  
       return BaseController.extend("com.app.rfapp.controller.WTQueryByWO", {
         onInit: function() {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             const oTable = this.getView().byId("idWtQBWoWhTable");
             oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));  
         },
-        onWtQBWofirstBackBtnPress:function(){
+        onResourceDetailsLoad: async function (oEvent1) {
+            const { id } = oEvent1.getParameter("arguments");
+                this.ID = id;
+        },
+        onWtQBWofirstBackBtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("Supervisor");
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    if(oData.Users ===  "RESOURCE"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
+           
         },
         onWtQBWoWhLiveChange:function(){
            
