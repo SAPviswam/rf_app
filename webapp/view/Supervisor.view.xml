@@ -122,11 +122,11 @@
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
                 <tnt:fixedItem>
-                    <tnt:NavigationList
+                    <tnt:NavigationList id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem
+                        <tnt:NavigationListItem id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -155,7 +155,7 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox
+                        <FlexBox id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -244,7 +244,7 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -266,7 +266,7 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
@@ -1125,7 +1125,7 @@
                             id="_IDGenGenericTile09"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Shipping HU (W/O WC)"
-                            press="onPress"
+                            press="onPressCreateShippingHUWOWC"
                         />
 
                         <GenericTile
@@ -1146,7 +1146,7 @@
                             id="_IDGenGenericTileMaintainHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Maintain HU"
-                            press="press"
+                            press="OnpressMaintainHU"
                         />
 
                         <GenericTile
@@ -1533,14 +1533,14 @@
                             id="IDChangeQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Queue"
-                            press="OnPressChange Queue"
+                            press="onChangeQueueTilePress"
                         />
 
                         <GenericTile
                             id="IDChangeResourceGroup"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Resource Group"
-                            press="OnPressChangeResourceGroup"
+                            press="onChangeResourceGroupTilePress"
                         />
                     </ScrollContainer>
                     <Dialog

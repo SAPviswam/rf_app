@@ -64,6 +64,12 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback0"
                 />
+                <Button
+                    id="idNavBackButton0_1_UBYTU"
+                    icon="sap-icon://nav-back"
+                    press="OnpressbackToInput"
+                    visible="false"
+                />
 
                 <VBox
                     id="vBox_BOL_UBYTU"
@@ -125,12 +131,12 @@
                  <Panel
                     id="idPanel_UBYTU"
                     headerText="TU"
-                    visible="false"
+                   visible="false"
                     class="sapUiSmallMarginTop"
                 >
                     <Table
                         id="idTable_UBYTU"
-                        visible="false"
+                      
                         growing="true"
                         growingScrollToLoad="true"
                        
@@ -690,6 +696,16 @@
         <Input
             id="idDeliveryInputDelivery_UBYTU"
             placeholder="Delivery..."
+            width="200px"
+        />
+         <Label
+            id="idItem_NOLabel_UBYTU"
+            text="Item No"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idItem_no_Input__UBYTU"
+           
             width="200px"
         />
         <Label

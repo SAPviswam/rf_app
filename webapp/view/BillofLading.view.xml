@@ -51,7 +51,7 @@
                     id="_IDGenbackButton1"
                     icon="sap-icon://nav-back"
                     press="Onpressbackbol1"
-                    visible="false"
+                    visible="true"
                     class="sapUiSmallMarginBottom"
                 />
                 <VBox
@@ -672,14 +672,14 @@
 
                     <Label id="_IDGenBolLabelEmptygr" />
 
-                    <HBox id="idgenhboxgr1">
+                    <VBox id="idgenhboxgr1">
                         <Button
                             id="_IDGenBolgrButton5"
                             text="GR"
                             press="onGRbuttonPress"
                             class="sapUiTinyMarginEnd"
                         />
-                    </HBox>
+                    </VBox>
                 </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
