@@ -1125,7 +1125,7 @@
                             id="_IDGenGenericTileMaintainHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Maintain HU"
-                            press="press"
+                            press="OnpressMaintainHU"
                         />
 
                         <GenericTile

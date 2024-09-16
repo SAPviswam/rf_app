@@ -226,6 +226,13 @@
           ]
         },
         {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU",
+          "target": [
+            "TargetMaintainHU"
+          ]
+        },
+        {
           "name": "UnloadingByShipment",
           "pattern": "UnloadingByShipment",
           "target": [
@@ -500,6 +507,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetMaintainHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MaintainHU",
+          "viewName": "MaintainHU"
         },
         "TargetUnloadingByShipment": {
           "viewType": "XML",

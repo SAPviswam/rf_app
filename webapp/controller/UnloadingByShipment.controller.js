@@ -31,10 +31,19 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
 
             this.getView().byId("page1Shipment_UBYSHP").setVisible(true);
             // this.getView().byId("page2Shipment_UBYSHP").setVisible(true);
-             this.getView().byId("page2Shipment_UBYSHP").setVisible(false);
-             this.getView().byId("idTable_UBYSHP").setVisible(true);
-             this.getView().byId("idPanel_UBYSHP").setVisible(true);
+            this.getView().byId("page2Shipment_UBYSHP").setVisible(false);
+            this.getView().byId("idPanel_UBYSHP").setVisible(true);
+            this.getView().byId("idNavBackButton0_UBYSHP").setVisible(false);
+            this.getView().byId("idNavBackButton0_1_UBYSHP").setVisible(true);
            
+
+        },
+        OnpressbackToInput:function(){
+            this.getView().byId("idPanel_UBYSHP").setVisible(false);
+            this.getView().byId("idNavBackButton0_1_UBYSHP").setVisible(false);
+            this.getView().byId("idNavBackButton0_UBYSHP").setVisible(true);
+
+
 
         },
         // onTableRowSelect: function (oEvent) {
@@ -60,10 +69,6 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
 
             this.getView().byId("page1Shipment_UBYSHP").setVisible(true);
             this.getView().byId("page2Shipment_UBYSHP").setVisible(false);
-           
-
-
-            
 
         },
         onHUListPress:function () {
