@@ -212,9 +212,30 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
-
-          
-
+            onReceivingofHUbyDeliveryPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyDelivery",{id:this.ID});
+            },
+            onReceivingofHUbymanufacturingOrderPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder",{id:this.ID});
+            },
+            onRecevingofTUDoorTWPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
+            },
+            onReceivingofHUbyASNPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN",{id:this.ID});
+            },
+            onReceivingofHUbyShipmentPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyShipment",{id:this.ID});
+            },
+            onReceivingofHUbyTUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
+            },
         });
     });
 

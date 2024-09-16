@@ -9,7 +9,16 @@ sap.ui.define([
 
                 const oTable = this.getView().byId("idReceivingofHUbyTUnumbertable");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
-            },
+
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+        
+              },
+              onResourceDetailsLoad: async function (oEvent1) {
+                const { id } = oEvent1.getParameter("arguments");
+                this.ID = id;
+              },
+
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInputReceivingHubyTU").getValue() == "800020") {
                     this.getView().byId("idscrollContainer1ReceivingHubyTU").setVisible(false)
@@ -87,10 +96,36 @@ sap.ui.define([
                 this.getView().byId("idRCHUbyTUscrollContainer8ReceivingOfHUbyTu").setVisible(false);
                 this.getView().byId("idRCHUbyTUscrollContainer6ReceivingOfHubyTu").setVisible(true);
             },
-            Onpressbackbol1ReceivingHubyTU: function () {
-                this.getOwnerComponent().getRouter().navTo("Supervisor");
+            Onpressbackbol1ReceivingHubyTU: async function () {
+        var oRouter = UIComponent.getRouterFor(this);
+
+        var oModel1 = this.getOwnerComponent().getModel();
+
+        await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+
+          success: function (oData) {
+
+            if (oData.Users === "RESOURCE") {
+
+              oRouter.navTo("RouteResourcePage", { id: this.ID });
 
             }
+
+            else {
+
+              oRouter.navTo("Supervisor", { id: this.ID });
+            }
+
+          }.bind(this),
+
+          error: function () {
+
+            MessageToast.show("User does not exist");
+
+          }
+
+        });
+      },
 
         });
     });

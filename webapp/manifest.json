@@ -150,14 +150,14 @@
         },
         {
           "name": "ReceivingofHUbyASN",
-          "pattern": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN/{id}",
           "target": [
             "TargetReceivingofHUbyASN"
           ]
         },
         {
           "name": "RouteUnloadingASNDetails",
-          "pattern": "UnloadingASNDetails",
+          "pattern": "UnloadingASNDetails/{id}",
           "target": [
             "TargetUnloadingASNDetails"
           ]
@@ -227,7 +227,7 @@
         },
         {
           "name": "RecevingOfHUbyDelivery",
-          "pattern": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery/{id}",
           "target": [
             "TargetRecevingOfHUbyDelivery"
           ]
@@ -290,7 +290,7 @@
         },
         {
           "name": "RecevingOfHUbyManufacturingOrder",
-          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder/{id}",
           "target": [
             "TargetRecevingOfHUbyManufacturingOrder"
           ]
@@ -325,7 +325,7 @@
         },
         {
           "name": "ReceivingofHUbyShipment",
-          "pattern": "ReceivingofHUbyShipment",
+          "pattern": "ReceivingofHUbyShipment/{id}",
           "target": [
             "TargetReceivingofHUbyShipment"
           ]
@@ -339,14 +339,14 @@
         },
         {
           "name": "RecevingOfHUbyTUorDoor",
-          "pattern": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor/{id}",
           "target": [
             "TargetRecevingOfHUbyTUorDoor"
           ]
         },
         {
           "name": "ReceivingofHUbyTU",
-          "pattern": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU/{id}",
           "target": [
             "TargetReceivingofHUbyTU"
           ]
@@ -642,8 +642,6 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-
-
           "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
