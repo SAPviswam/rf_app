@@ -1754,7 +1754,7 @@ sap.ui.define(
 
             OnPressWTQuerybyWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT");
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
 
             },
             
