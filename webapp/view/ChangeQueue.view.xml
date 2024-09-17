@@ -64,6 +64,7 @@
                         placeholder="Enter Resource"
                         maxLength="25"
                         width="300px"
+                        editable="false"
                     />
                     <Label
                         id="_IDGenLabel3_CHNGQ"
@@ -74,6 +75,7 @@
                         placeholder="Enter Queue"
                         maxLength="25"
                         width="300px"
+                        editable="false"
                     />
 
                     <Label
