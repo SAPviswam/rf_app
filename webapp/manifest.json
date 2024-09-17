@@ -234,28 +234,28 @@
         },
         {
           "name": "UnloadingByBillofLading",
-          "pattern": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading/{id}",
           "target": [
             "TargetUnloadingByBillofLading"
           ]
         },
         {
           "name": "MaintainHU",
-          "pattern": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
           "target": [
             "TargetMaintainHU"
           ]
         },
         {
           "name": "UnloadingByShipment",
-          "pattern": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment/{id}",
           "target": [
             "TargetUnloadingByShipment"
           ]
         },
         {
           "name": "UnloadingByTU",
-          "pattern": "UnloadingByTU",
+          "pattern": "UnloadingByTU/{id}",
           "target": [
             "TargetUnloadingByTU"
           ]

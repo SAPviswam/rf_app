@@ -6,9 +6,10 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/library",
     "sap/m/MessageToast",
-     "sap/ui/core/UIComponent"
+     "sap/ui/core/UIComponent",
+     "sap/ui/core/Fragment"  
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent,Fragment) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
@@ -212,6 +213,69 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
+            onUnloadingbyBillofLadingPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
+            },
+            onMaintainHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU",{id:this.ID});
+            },
+            onUnloadingByShipmentPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment",{id:this.ID});
+            },
+            onUnloadingByTUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU",{id:this.ID});
+            },
+            // onSBQPAvatarPressed: function () {
+            //     var oView = this.getView();
+    
+            //     // Create the dialog lazily
+            //     if (!this._pProfileDialog) {
+            //         this._pProfileDialog = Fragment.load({
+            //             id: oView.getId(),
+            //             name: "com.app.rfapp.fragments.ProfileDialog",
+            //             controller: this
+            //         }).then(function (oDialog) {
+            //             oView.addDependent(oDialog);
+            //             return oDialog;
+            //         });
+            //     }
+    
+            //     this._pProfileDialog.then(function (oDialog) {
+            //         oDialog.open();
+            //     });
+            // },
+            onSBQPAvatarPressed: function(oEvent) {
+                
+              
+                
+                if (!this._oPopover) {
+                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
+                    this.getView().addDependent(this._oPopover);
+                }
+                // Open popover near the avatar
+                this._oPopover.openBy(oEvent.getSource());
+            
+        },
+    
+            onCloseDialog: function () {
+                this._pProfileDialog.then(function (oDialog) {
+                    oDialog.close();
+                });
+            },
+    
+            onMyAccountPress: function () {
+                sap.m.MessageToast.show("Navigating to My Account...");
+            },
+    
+            onLogoutPress: function () {
+                sap.m.MessageToast.show("Logging out...");
+                // Add actual logout logic here
+            },
+            
 
           
 

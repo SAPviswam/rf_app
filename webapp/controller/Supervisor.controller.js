@@ -1571,22 +1571,22 @@ sap.ui.define(
             },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByBillofLading");
+                oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
  
             },
             OnpressMaintainHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU");
+                oRouter.navTo("MaintainHU",{id:this.ID});
  
             },
             onUnloadingByShipmentPress:function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByShipment");
+                oRouter.navTo("UnloadingByShipment",{id:this.ID});
  
             },
             onUnloadingByTUPress:function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByTU");
+                oRouter.navTo("UnloadingByTU",{id:this.ID});
  
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
