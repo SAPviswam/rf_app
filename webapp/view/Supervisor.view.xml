@@ -13,7 +13,6 @@
     xmlns:viz.data="sap.viz.ui5.data"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:unified="sap.ui.unified"
-
 >
     <tnt:ToolPage id="toolPage">
         <tnt:header>
@@ -25,10 +24,14 @@
                     press=".onSideNavButtonPress"
                 >
                     <layoutData>
-                        <OverflowToolbarLayoutData id="idToolBarLayout" priority="NeverOverflow" />
+                        <OverflowToolbarLayoutData
+                            id="idToolBarLayout"
+                            priority="NeverOverflow"
+                        />
                     </layoutData>
                 </Button>
-                <Label id="idRFScreenHeading"
+                <Label
+                    id="idRFScreenHeading"
                     class="Heading"
                     text="RF SCREEN"
                 />
@@ -42,7 +45,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                 <Button
+                <Button
                     id="themeButton"
                     text="Theme"
                     press="onOpenThemeDialog"
@@ -64,16 +67,18 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
-            <tnt:SideNavigation id="idSideNavigation"
+            <tnt:SideNavigation
+                id="idSideNavigation"
                 expanded="true"
                 selectedKey="{/selectedKey}"
                 itemSelect=".onItemSelect"
             >
                 <tnt:NavigationList id="idNavigationList"
-                    items="{path: '/navigation'}"
+                    items="{path: '/navigation' , templateShareable: true}"
                     class="sidecontent"
                 >
-                    <tnt:NavigationListItem id="NavigationListItem01"
+                    <tnt:NavigationListItem id="NavigationListItem"
+
                         text="{title}"
                         icon="{icon}"
                         enabled="{enabled}"
@@ -82,7 +87,8 @@
                         key="{key}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem id="NavigationListItem02"
+                        <tnt:NavigationListItem
+                            id="NavigationListItem02"
                             text="{title}"
                             key="{key}"
                             enabled="{enabled}"
@@ -92,7 +98,7 @@
                 </tnt:NavigationList>
                 <tnt:fixedItem>
                     <tnt:NavigationList
-                        items="{path: '/fixedNavigation'}"
+                        items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
                         <tnt:NavigationListItem
@@ -175,10 +181,9 @@
                                     text="Name:"
                                     labelFor="idNameInput"
                                     required="true"
-                                    
                                 />
                                 <Input
-                                editable="true"
+                                    editable="true"
                                     id="idNameInput"
                                     placeholder="Enter Name"
                                     class="Inputs"
@@ -194,7 +199,6 @@
                                     id="idEmail"
                                     text="Email:"
                                     labelFor="idEmailInput"
-                                    
                                 />
                                 <Input
                                     editable="true"
@@ -215,13 +219,49 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
+                                <HBox justifyContent="SpaceBetween">
                                 <Input
-                                   editable="true"
+                                    editable="true"
                                     id="idPhoneInput"
                                     placeholder="Enter Phone"
                                     class="Inputs"
                                 />
-                            </FlexBox>
+                                <core:Icon
+                        id="verficationIdicon"
+                        src="sap-icon://accept"
+                        size="150%"
+                        color="#008000"
+                        visible="false"
+                    />
+                    </HBox>
+                     </FlexBox>
+                     <FlexBox
+                                id="_IDField420"
+                                justifyContent="End"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                    <HBox justifyContent="SpaceBetween">
+                    <Input
+                    id="idOtpInputsv"
+                    placeholder="Enter OTP..."
+                    visible="false"
+                    valueLiveUpdate="true"
+                    liveChange="onSubmitOtp"
+                    width="100%"
+                />
+                                 <Button
+                        id="getotpsv"
+                        text="Get OTP"
+                        press="onGetOTP"
+                        type="Emphasized"
+                        width="80px"
+                        visible="false"
+                    />
+                                </HBox>
+                     </FlexBox>
+
+                           
                             <FlexBox
                                 id="_IDField345"
                                 justifyContent="SpaceBetween"
@@ -233,7 +273,10 @@
                                     text="Resource Type"
                                     required="true"
                                 />
-                                <ComboBox id="idRoesurcetypeInput" editable="true">
+                                <ComboBox
+                                    id="idRoesurcetypeInput"
+                                    editable="true"
+                                >
                                     <core:Item
                                         id="_IDGenItemPermanentEmployee"
                                         key="PermanentEmployee"
@@ -330,7 +373,6 @@
 
                                 <!--  OUTBOUND  -->
                             </FlexBox>
-                            
 
                             <FlexBox
                                 id="_IDField6"
@@ -373,7 +415,7 @@
                             id="idRequestedData"
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
-                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}]}"
+                            items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
                             mode="MultiSelect"
                             class="Allslotsclasstable"
                         >
@@ -387,7 +429,7 @@
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
                                     />
-                                     <Button
+                                    <Button
                                         id="idBtnRefresh"
                                         tooltip="Refresh"
                                         icon="sap-icon://refresh"
@@ -653,7 +695,7 @@
                         <GenericTile
                             id="idUnloadingByDelivery1"
                             header="Unloading By Delivery"
-                            press="onTilePress"
+                            press="OnPressUnloadByDelivery"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -675,42 +717,120 @@
                             header="Unloading By Shipment"
                             press="onTilePress"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByShipment"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByShipment"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByTransportUnit1"
                             header="Unloading By Transport Unit"
                             press="onTilePress"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByTransportUnit"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByTransportUnit"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
                             press="onUnloadingBYASN"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByAS"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByASN"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByDoor1"
                             header="Unloading By Door"
-                            press="onTilePress"
+                            press="onUnloadingByDoorTilePress"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByDoor"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByDoor"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByBillOfLading1"
                             header="Unloading By Bill of Lading"
-                            press="onTilePress"
+                            press="onUnloadingByBillofLadingPress"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByBillofLading"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByBillofLading"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
                             press="onTilePress"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent
+                                id="idTileContentUnloadingByConsigmentOrder"
+                                class="tailContentTheme"
+                            >
+                                <Button
+                                    id="idThemecolorUnloadingByConsigmentOrder"
+                                    class="tailTheme"
+                                    icon="sap-icon://palette"
+                                    press="onPaletteIconBtnTilePress"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
                     </ScrollContainer>
                     <ScrollContainer
                         id="idpage2"
@@ -788,9 +908,19 @@
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
-                            press="onPutawayByWO"
+                            press="onTilePressPutawayByWO"
                             class="sapUiTinyMargin"
-                        />
+                        >
+                            <TileContent id="idTileContentPutaway">
+                                <Button
+                                    id="idBtnPutawayByWO"
+                                    press="onPaletteIconBtnTilePress"
+                                    icon="sap-icon://palette"
+                                    type="Transparent"
+                                    customData="{dblclickEnabled: true}"
+                                />
+                            </TileContent>
+                        </GenericTile>
                         <GenericTile
                             id="idConfiramtionCorrections1"
                             header="Confiramtion Corrections"
@@ -1231,7 +1361,7 @@
                             id="IDCreateAdhocHUWT"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Adhoc HU WT"
-                            press="OnPressCreateAdhocHUWT"
+                            press="onPressCreateAdhocHUWTInAdhocWT"
                         />
 
                         <GenericTile
@@ -1245,7 +1375,7 @@
                             id="IDCreateAdhocProductWT"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Adhoc Product WT"
-                            press="OnPressCreateAdhocProductWT"
+                            press="onPressCreateAdhocProductWTInAdhocWT"
                         />
 
                         <GenericTile
@@ -1512,7 +1642,6 @@
                             />
                         </VBox>
                     </Dialog>
-
                 </pages>
             </NavContainer>
         </tnt:mainContents>

@@ -419,6 +419,7 @@
     color: red;
     font-weight: bold !important;
 }
+
 /* these are for theme colors for options... */
 .colorCheckBox {
     width: 20px;
@@ -426,38 +427,204 @@
     margin-right: 10px;
     display: inline-block;
     border-color: black !important;
-  }
-  .redCheckBox .sapMCbBg {
+}
+
+.redCheckBox .sapMCbBg {
     background-color: red !important;
-  }
-  .blackCheckBox .sapMCbBg {
+}
+
+.blackCheckBox .sapMCbBg {
     background-color: black !important;
-  }
-  
-  .greenCheckBox .sapMCbBg {
+}
+
+.greenCheckBox .sapMCbBg {
     background-color: green !important;
-  }
-  .whiteCheckBox .sapMCbBg {
+}
+
+.whiteCheckBox .sapMCbBg {
     background-color: white !important;
-  }
-  .purpleCheckBox .sapMCbBg {
+}
+
+.purpleCheckBox .sapMCbBg {
     background-color: purple !important;
-  }
-  .blueCheckBox .sapMCbBg {
+}
+
+.blueCheckBox .sapMCbBg {
     background-color: blue !important;
-  }
-  .YellowCheckBox .sapMCbBg {
+}
+
+.YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
-  }
-  .textFieldsAF{
+}
+
+.textFieldsAF {
     padding-bottom: 1rem;
+
   }
   .classUOMbyASn{
     margin-top: 16%;
   }
+
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
 
 
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
+
+
+/*-----------------New HU FROM BBOL-------------------------*/
+.classUOMbyASn{
+margin-top: 16%;
+}
+
+/*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
+
+
+.hidden{
+  display: none !important;
+}
+
+/*......These are for Putaway By WO Tile......*/
+.putawayContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+  }
+  .warehouseOrderTitle {
+    align-self: flex-start;
+  }
+  .formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .formBox {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    margin-top: 4rem;
+  }
+  .formLabel {
+    margin-bottom: 7px;
+  }
+  .customMargin {
+    margin-left: 3rem;
+    margin-right: 1rem;
+  }
+  .centeredFormBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 4rem); /* Adjust based on the height of the back button and any other fixed elements */
+  }
+  .sapUiSmallMargin {
+    margin: 1rem;
+  }
+  /* Mobile Styles */
+  @media (max-width: 600px) {
+    .putawayContainer {
+      padding: 10px;
+    }
+    .formBox {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 30rem; /* Adjusted for mobile */
+    }
+    .formLabel {
+      font-size: 0.9rem;
+    }
+    .customMargin {
+      margin-left: 3rem;
+      margin-right: 1rem;
+    }
+    .formContainer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .centeredFormBox {
+      height: auto; /* Adjusted for mobile if needed */
+      margin-top: 4rem; /* Adjust margin to ensure it's centered properly on small screens */
+    }
+  }
+  .UnitsofMeasure {
+    margin-left: 0.3rem;
+  }
+ 
+  
+  /* ScrollContainer Page 5 & Page 6 & Page 7 CSS methods */
+  .SecondPageContainer, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+  }
+  /* Form Header Styling */
+  .SecondPageformHeader, .formHeader,.formHeaderGR, .formHeaderUnLoad {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  /* Box around the form */
+  .SecondFormBox, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox {
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    background-color: #f9f9f9;
+  }
+  .formLabel, .labelStyleGR, .labelStyleUnLoad {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  /* Button Styling */
+  .formButton {
+    margin-left: 1rem;
+  }
+  .ButtonsSpaceSecondPage {
+    margin-right: 1rem;
+  }
+  @media (max-width: 600px) {
+    .SecondPageContainer, .verifyHuNumberContainer,.MainVBoxGR, .MainVBoxUnLoad {
+      margin: 1rem;
+    }
+    .SecondFormBox, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox {
+      padding: 15px; /* Adjust padding for mobile */
+      width: 100%; /* Ensure full width with some margin on the sides */
+      margin: 0 auto; /* Center the box */
+    }
+  }
+
+/* ---------------------------------------------------------------------Receving Of HU By Delivery-------------------------------------------------------- */
+.ScanDeliverymargin{
+    margin-top: 12%;
+    margin-right: 2000% !important;
+  }
+  .ItemLabel{
+    margin-top: 12%;
+    margin-right: 2000% !important;
+  }
+
+
+/* unloading by door start*/
+.titles_UBYD {
+    margin-left: 30vw;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile phones */
+
+    .titles_UBYD {
+        margin-left: 20vw;
+    }
+}
+
+/* unloading by door end*/
+
