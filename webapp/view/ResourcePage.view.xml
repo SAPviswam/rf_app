@@ -54,7 +54,7 @@
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
-                <form:SimpleForm
+                <!-- <form:SimpleForm
                     id="idsimpleform"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
@@ -64,14 +64,15 @@
                     columnsL="2"
                     columnsM="1"
                     columnsS="1"
-                >
+                > -->
                     <ScrollContainer
                         width="100%"
                         height="100%"
                     >
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
-                    <HBox />
+                    <HBox >
+                     </HBox>
                         </VBox>
                         <GenericTile
                             id="id_unloadingbydelivery"
@@ -775,7 +776,7 @@
                             visible="false"
                         />
                     </ScrollContainer>
-                </form:SimpleForm>
+                <!-- </form:SimpleForm> -->
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
