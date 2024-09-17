@@ -1508,7 +1508,7 @@ sap.ui.define(
 
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingOfHuByDoor");
+                oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
             },
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1550,11 +1550,7 @@ sap.ui.define(
                 //     BusyIndicator.hide();
                 //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-<<<<<<< HEAD
                     oRouter.navTo("UnloadingByDoor",{id:this.ID});
-=======
-                oRouter.navTo("UnloadingByDoor");
->>>>>>> 07690371163d1a7205bb15761d5b94808cde46ea
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
@@ -1634,7 +1630,7 @@ sap.ui.define(
             },
             onPressWTQuerybyQueue:function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByQueue");
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});
  
             },
 
@@ -1786,7 +1782,7 @@ sap.ui.define(
 
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-=======
+
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
 
