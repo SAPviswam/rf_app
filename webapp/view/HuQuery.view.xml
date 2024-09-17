@@ -11,6 +11,7 @@
 
     <!-- Login Dialog Definition -->
     <Dialog
+    
         id="loginDialog"
         class="glassMorphism"
         title="Login"
