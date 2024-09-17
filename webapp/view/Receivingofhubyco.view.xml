@@ -57,10 +57,10 @@
                         alignItems="Center"
                     >
                         <Button
-                            id="idManufacturingBackButton"
+                            id="idROHCOBackButton"
                             icon="sap-icon://nav-back"
-                            press="onPressScanManubackbtn"
-                            visible="false"
+                            press="onPressScanCObackbtn"
+                            visible="true"
                         />
                         <Title
                             id="idROHCOManu_orderNo"
@@ -70,16 +70,16 @@
                     </HBox>
                     <VBox
                         id="idROHCOVBoxManufacturingNo"
-                        class="formContainer"
+                        class="formContainer_PBYWO"
                     >
                         <VBox
                             id="idROHCOVBOXManufacturing"
-                            class="formBox"
+                            class="formBox_PBYWO"
                         >
                             <Label
                                 id="idROHCOLableManufacturing"
                                 text="Consignment Order:"
-                                class="formLabel"
+                                class="formLabel_PBYWO"
                             />
                             <HBox
                                 id="idROHCOHBoxManuNo"

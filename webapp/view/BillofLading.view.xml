@@ -10,13 +10,13 @@
     height="100%"
 >
     <tnt:ToolPage id="idToolPageBofl">
-        <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderBofl">
+        <tnt:header >
+            <tnt:ToolHeader id="idtntToolHeaderBofl" class="ToolHeader">
                 <Image
                     id="_IDGenImage1Bofl"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin"
-                    src="https://artihcus.com/assets/img/AG-logo.png"
+                    class="sapUiSmallMarginBegin .Logo"
+                    src="./Images/Artihcus logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorBofl"
@@ -51,7 +51,7 @@
                     id="_IDGenbackButton1"
                     icon="sap-icon://nav-back"
                     press="Onpressbackbol1"
-                    visible="false"
+                    visible="true"
                     class="sapUiSmallMarginBottom"
                 />
                 <VBox
@@ -99,7 +99,7 @@
                                 class="sapUiTinyMarginBegin"
                             />
                             <ndc:BarcodeScannerButton
-                                id="sampleBarcodeScannerButtonZebraOnebilloflading"
+                                id="sampleBarcodebilloflading"
                                 scanSuccess="onScanSuccessOne"
                                 scanFail="onScanErrorOne"
                                 inputLiveUpdate="onScanLiveUpdate"
@@ -672,14 +672,14 @@
 
                     <Label id="_IDGenBolLabelEmptygr" />
 
-                    <HBox id="idgenhboxgr1">
+                    <VBox id="idgenhboxgr1">
                         <Button
                             id="_IDGenBolgrButton5"
                             text="GR"
                             press="onGRbuttonPress"
                             class="sapUiTinyMarginEnd"
                         />
-                    </HBox>
+                    </VBox>
                 </form:SimpleForm>
                 </VBox>
             </ScrollContainer>

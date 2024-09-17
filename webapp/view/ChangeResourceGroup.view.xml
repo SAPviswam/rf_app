@@ -1,0 +1,113 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.ChangeResourceGroup"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.ui.layout.form"
+>
+    <tnt:ToolPage id="idToolPagePutawayByWO_CHNGRSGRP">
+        <tnt:mainContents>
+            <ScrollContainer
+                id="icon_CHNGRSGRP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="_IDGenButton1111_CHNGRSGRP"
+                    icon="sap-icon://nav-back"
+                    press="OnpressBackFromChangeResourceGroup"
+                />
+
+                <VBox
+                    id="IDRHBSGenVBoxpage_CHNGRSGRP"
+                    alignItems="Center"
+                    justifyContent="Center"
+                >
+                    <Title
+                        id="idPageTitle_CHNGRSGRP"
+                        text="Change Resource Group"
+                        level="H2"
+                    />
+                </VBox>
+
+                <f:SimpleForm
+                    id="simpleForm1_CHNGRSGRP"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    
+                >
+                    <Label
+                        id="_IDGenLabel2_CHNGRSGRP"
+                        text="Resource"
+                        class="sapUiTinyMarginEnd"
+                        
+                    />
+                    <Input
+                        id="_IDGenInput2_CHNGRSGRP"
+                        placeholder="Enter Resource"
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="_IDGenLabel3_CHNGRSGRP"
+                        text="RsGrp"
+                    />
+                    <Input
+                        id="_IDGenInput3_CHNGRSGRP"
+                        placeholder="Enter RsGrp"
+                        maxLength="25"
+                        width="300px"
+                    />
+
+                    <Label
+                        id="_IDGenLabel4_CHNGRSGRP"
+                        text="Queue"
+                    />
+                    <Input
+                        id="_IDGenInput4_CHNGRSGRP"
+                        placeholder="Enter Queue"
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="_IDGenLabelgyu_CHNGRSGRP"
+                        text="NRsGrp"
+                    />
+                    <Input
+                        id="_IDGenInpsdfut4_CHNGRSGRP"
+                        placeholder="Enter NRsGrp"
+                        maxLength="25"
+                        width="300px"
+                    />
+                    <Label
+                        id="_IDGen_CHNGRSGRP"
+                        text="NQueue"
+                    />
+                    <Input
+                        id="_IDGenInp_CHNGRSGRP"
+                        placeholder="Enter NQueue"
+                        maxLength="25"
+                        width="300px"
+                    />
+                </f:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
