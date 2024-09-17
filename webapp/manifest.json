@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0", 
+  "_version": "1.65.0",
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -357,9 +357,8 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
-
         },
-    {
+        {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT/{id}",
           "target": [
@@ -367,23 +366,13 @@
           ]
         },
         {
-<<<<<<< HEAD
-=======
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "WTQueryByQueue",
           "pattern": "WTQueryByQueue",
           "target": [
             "TargetWTQueryByQueue"
           ]
-<<<<<<< HEAD
         },
         {
-=======
-    },
-
-    {
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -395,10 +384,6 @@
           "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
-<<<<<<< HEAD
-=======
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           ]
         }
       ],
@@ -648,23 +633,13 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
-<<<<<<< HEAD
-=======
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
-<<<<<<< HEAD
         },
-=======
-      },
-
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -679,10 +654,6 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -696,13 +667,9 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
-<<<<<<< HEAD
-=======
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         }
       }
-      },
+    },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
