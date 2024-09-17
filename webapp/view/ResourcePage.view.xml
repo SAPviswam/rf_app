@@ -54,7 +54,7 @@
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
-                <form:SimpleForm
+                <!-- <form:SimpleForm
                     id="idsimpleform"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
@@ -64,14 +64,15 @@
                     columnsL="2"
                     columnsM="1"
                     columnsS="1"
-                >
+                > -->
                     <ScrollContainer
                         width="100%"
                         height="100%"
                     >
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
-                    <HBox />
+                    <HBox >
+                     </HBox>
                         </VBox>
                         <GenericTile
                             id="id_unloadingbydelivery"
@@ -105,7 +106,7 @@
                             id="id_unloadingbydoor"
                             class="sapUiTinyMargin"
                             header="Unloading By Door"
-                            press="onUnloadingByDoorPress"
+                            press="onUnloadingByDoorTilePress"
                             visible="false"
                         />
                         <GenericTile
@@ -119,7 +120,7 @@
                             id="id_unloadingbyconsigmentorder"
                             class="sapUiTinyMargin sapUiResponsivePadding"
                             header="Unloading By Consigment Order"
-                            press="onUnloadingByConsigmentOrder"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             visible="false"
                         />
                          <VBox >
@@ -378,7 +379,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_rceateshippinghuwowc"
+                            id="id_createshippinghuwowc"
                             class="sapUiTinyMargin"
                             header="Create Shipping HU (W/O WC)"
                             press="onCreateShippingHUWOWCPress"
@@ -764,18 +765,18 @@
                             id="id_changequeue"
                             class="sapUiTinyMargin"
                             header="Change Queue"
-                            press="onChangeQueuePress"
+                            press="onChangeQueueTilePress"
                             visible="false"
                         />
                          <GenericTile
                             id="id_changeresourcegroup"
                             class="sapUiTinyMargin"
                             header="Change Resource Group"
-                            press="onChangeResourceGroupPress"
+                            press="onChangeResourceGroupTilePress"
                             visible="false"
                         />
                     </ScrollContainer>
-                </form:SimpleForm>
+                <!-- </form:SimpleForm> -->
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>

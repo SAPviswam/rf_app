@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0",
+  "_version": "1.65.0", 
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -164,49 +164,49 @@
         },
         {
           "name": "UnloadByDelivery",
-          "pattern": "UnloadByDelivery",
+          "pattern": "UnloadByDelivery/{id}",
           "target": [
             "TargetUnloadByDelivery"
           ]
         },
         {
           "name": "AdhocHuWt",
-          "pattern": "AdhocHuWt",
+          "pattern": "AdhocHuWt/{id}",
           "target": [
             "TargetAdhocHuWt"
           ]
         },
         {
           "name": "ReceivingOfHuByDoor",
-          "pattern": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor/{id}",
           "target": [
             "TargetReceivingOfHuByDoor"
           ]
         },
         {
           "name": "UnloadingByDoor",
-          "pattern": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor/{id}",
           "target": [
             "TargetUnloadingByDoor"
           ]
         },
         {
           "name": "ChangeQueue",
-          "pattern": "ChangeQueue",
+          "pattern": "ChangeQueue/{id}",
           "target": [
             "TargetChangeQueue"
           ]
         },
         {
           "name": "ChangeResourceGroup",
-          "pattern": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup/{id}",
           "target": [
             "TargetChangeResourceGroup"
           ]
         },
         {
           "name": "UnloadingByConsignmentOrder",
-          "pattern": "UnloadingByConsignmentOrder",
+          "pattern": "UnloadingByConsignmentOrder/{id}",
           "target": [
             "TargetUnloadingByConsignmentOrder"
           ]
@@ -220,7 +220,7 @@
         },
         {
           "name": "RouteBillofLading",
-          "pattern": "BillofLading",
+          "pattern": "BillofLading/{id}",
           "target": [
             "TargetBillofLading"
           ]
@@ -262,28 +262,28 @@
         },
         {
           "name": "PutawayByWO",
-          "pattern": "PutawayByWO",
+          "pattern": "PutawayByWO/{id}",
           "target": [
             "TargetPutawayByWO"
           ]
         },
         {
           "name": "AvailableHandlingUnitsOnBinQuery",
-          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery/{id}",
           "target": [
             "TargetAvailableHandlingUnitsOnBinQuery"
           ]
         },
         {
           "name": "WTQueryByHU",
-          "pattern": "WTQueryByHU",
+          "pattern": "WTQueryByHU/{id}",
           "target": [
             "TargetWTQueryByHU"
           ]
         },
         {
           "name": "AdhocProductWt",
-          "pattern": "AdhocProductWt",
+          "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
           ]
@@ -297,7 +297,7 @@
         },
         {
           "name": "CreateConfirmAdhocHu",
-          "pattern": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
@@ -311,7 +311,7 @@
         },
         {
           "name": "StockBinQueryByProduct",
-          "pattern": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct/{id}",
           "target": [
             "TargetStockBinQueryByProduct"
           ]
@@ -353,7 +353,7 @@
         },
         {
           "name": "SerialNumberLocation",
-          "pattern": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation/{id}",
           "target": [
             "TargetSerialNumberLocation"
           ]
@@ -361,21 +361,30 @@
         },
     {
           "name": "WTQueryByWT",
-          "pattern": "WTQueryByWT",
+          "pattern": "WTQueryByWT/{id}",
           "target": [
             "TargetWTQueryByWT"
           ]
         },
         {
+          "name": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue",
+          "target": [
+            "TargetWTQueryByQueue"
+          ]
+
+        },
+
+    {
           "name": "CreateShippingHU",
-          "pattern": "CreateShippingHU",
+          "pattern": "CreateShippingHU/{id}",
           "target": [
             "TargetCreateShippingHU"
           ]
         },
         {
           "name": "CreateShippingHUWOWC",
-          "pattern": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
@@ -628,6 +637,15 @@
           "viewName": "RecevingOfHUbyTUorDoor"
         },
 
+        "TargetWTQueryByQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByQueue",
+          "viewName": "WTQueryByQueue"
+
+        },
+
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -642,6 +660,7 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+
           "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
@@ -649,6 +668,7 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -664,7 +684,7 @@
           "viewName": "CreateShippingHUWOWC"
         }
       }
-    },
+      },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
