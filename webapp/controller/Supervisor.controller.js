@@ -1497,7 +1497,7 @@ sap.ui.define(
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HuQuery");
+                oRouter.navTo("HuQuery",{id:this.ID});
                 var oInput = this.byId("_IDGenInput1");
                 if (oInput) {
                     oInput.focus();
@@ -1506,7 +1506,7 @@ sap.ui.define(
             OnPressStockBinQueryByBin: function () {
                 debugger
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByBin");
+                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
 
             },
             onReceivingofHUbyASN: function () {

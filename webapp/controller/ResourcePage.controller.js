@@ -394,6 +394,14 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
             },
+            onStockBinQuerybyBinPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
+            },
+            onHUQueryPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuQuery",{id:this.ID});
+            },
 
             onUnloadingByDeliveryPress:function(){ 
                 debugger
