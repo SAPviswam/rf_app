@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="idProfilePopover"
+        placement="Bottom"
+        verticalScrolling="false"
+        horizontalScrolling="false"
+        class="sapUiResponsivePadding"
+        contentWidth="200px" 
+        title="My Profile"
+    >
+        <!-- Content of the Profile Popover -->
+        <VBox
+            id="idProfileVBox"
+            alignItems="Center"
+            justifyContent="Center"
+           
+        >
+            <!-- Profile Section -->
+            <VBox
+                id="idProfileInfoVBox"
+                alignItems="Center"
+               
+            >
+                <!-- Avatar Icon -->
+                <Avatar
+                 id="idProfileAvatar"
+    displaySize="S"
+    initials="G"
+     tooltip="Profile"
+    style="margin-bottom: 5px;"
+/>
+                
+                <!-- User Details -->
+                <Text
+                    id="idProfileName"
+                    text="Gayathri"
+                    
+                />
+                <Text
+                    id="idProfileNumber"
+                    text="9234567811"
+                  
+                />
+            </VBox>
+            
+            <!-- Divider (optional for spacing control) -->
+            <Label
+                id="idProfileDivider"
+                text=""
+                width="100%"
+               
+            />
+
+            <!-- Buttons: My Account and Logout -->
+            <VBox
+                id="idProfileButtonVBox"
+                alignItems="Center"
+                
+            >
+                <Button
+                    id="idMyAccountButton"
+                    text="My Account"
+                    type="Transparent"
+                    press="onMyAccountPressed"
+                />
+                <Button
+                    id="idLogoutButton"
+                    text="Logout"
+                    type="Transparent"
+                    press="onLogoutPressed"
+                   
+                />
+            </VBox>
+        </VBox>
+    </Popover>
+</core:FragmentDefinition>
