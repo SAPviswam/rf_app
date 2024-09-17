@@ -1,9 +1,10 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
-        "sap/m/MessageToast"
+        "sap/m/MessageToast",
+         "sap/ui/core/UIComponent"
     ],
-    function(BaseController,MessageToast) {
+    function(BaseController,MessageToast,UIComponent) {
       "use strict";
   
       return BaseController.extend("com.app.rfapp.controller.CreateConfirmAdhocProduct", {
@@ -66,9 +67,23 @@ sap.ui.define(
           this.getView().byId("idProductfirstbackbtn").setVisible(true);
           this.getView().byId("idProdutSecondbackbtn").setVisible(false)
       },
-      onInitialAdhocProductBackBtnPress:function(){
-        var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteResourcePage",{id:this.ID});
+      onInitialAdhocProductBackBtnPress:async function(){
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
       },
       
       });
