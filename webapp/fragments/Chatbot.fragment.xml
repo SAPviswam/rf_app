@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ui.demo.wt.controller.HelloDialog">
+    <Dialog
+        id="helloDialog"
+        title="Hello {/recipient/name}">
+        <beginButton>
+            <Button
+                text="OK"
+                press=".onCloseDialog" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>
