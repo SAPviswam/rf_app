@@ -70,7 +70,6 @@ sap.ui.define([
                 MessageToast.show("Please enter required fields.");
                 return;
             }
-
             // Create a new button for the configured SAP system
             var oHomePage = oView.byId("environmentButtonsHBox");
             var oNewButton = new sap.m.Button({
