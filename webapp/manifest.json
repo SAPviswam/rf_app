@@ -262,21 +262,21 @@
         },
         {
           "name": "PutawayByWO",
-          "pattern": "PutawayByWO",
+          "pattern": "PutawayByWO/{id}",
           "target": [
             "TargetPutawayByWO"
           ]
         },
         {
           "name": "AvailableHandlingUnitsOnBinQuery",
-          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery/{id}",
           "target": [
             "TargetAvailableHandlingUnitsOnBinQuery"
           ]
         },
         {
           "name": "WTQueryByHU",
-          "pattern": "WTQueryByHU",
+          "pattern": "WTQueryByHU/{id}",
           "target": [
             "TargetWTQueryByHU"
           ]

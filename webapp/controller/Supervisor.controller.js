@@ -27,12 +27,13 @@ sap.ui.define(
                 var oButton = this.byId("idBtnPutawayByWO");
                 oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
+
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
-                    this.ID = id;
+                this.ID = id;
             },
             onAfterRendering: function () {
                 debugger
@@ -206,7 +207,6 @@ sap.ui.define(
                             delete tileColors[tileId]; // Remove outdated colors from localStorage
                         }
                     }
-
                     // Save the current color for the tile
                     tileColors[sTileId] = sColor;
                     localStorage.setItem("tileColors", JSON.stringify(tileColors));
@@ -1536,19 +1536,17 @@ sap.ui.define(
             //Putaway By WO Tile..
             onTilePressPutawayByWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("PutawayByWO");
+                oRouter.navTo("PutawayByWO", { id: this.ID });
             },
-
-
             //AvailableHandlingunitsOnBinQuery Tile...
             OnPressAvailableHandlingUnitsOnBinQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AvailableHandlingUnitsOnBinQuery");
+                oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
             },
             //WTQueryByHU Tile...
             OnPressWTquerybyHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByHU");
+                oRouter.navTo("WTQueryByHU", { id: this.ID });
             },
 
             onReceivingofHUbyBillofLading: function () {
@@ -1578,8 +1576,8 @@ sap.ui.define(
                 oRouter.navTo("ChangeQueue");
 
             },
-            onChangeResourceGroupTilePress:function(){
-                const oRoute =this.getOwnerComponent().getRouter()
+            onChangeResourceGroupTilePress: function () {
+                const oRoute = this.getOwnerComponent().getRouter()
                 oRoute.navTo("ChangeResourceGroup")
             },
             onUnloadingByBillofLadingPress: function () {
@@ -1587,16 +1585,12 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByBillofLading");
 
             },
-<<<<<<< HEAD
-            onUnloadingByShipmentPress: function () {
-=======
-            OnpressMaintainHU: function () {
+            onMaintainHUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU");
- 
+
             },
-            onUnloadingByShipmentPress:function () {
->>>>>>> 84832347eb4c45f633b05ceeba45fbf5cbbda6aa
+            onUnloadingByShipmentPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment");
 
@@ -1774,7 +1768,7 @@ sap.ui.define(
             },
             OnPressWTQuerybyWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO",{id:this.ID});
+                oRouter.navTo("WTQueryByWO", { id: this.ID });
             },
 
 
@@ -1797,10 +1791,11 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT");
             },
-<<<<<<< HEAD
-            onReceivingofTUorDoor: function () {
-=======
-          
+            // onReceivingofTUorDoor: function () {
+            //     var oRouter = UIComponent.getRouterFor(this);
+            //     oRouter.navTo("RecevingOfHUbyTUorDoor");
+            // },
+
             onPressCreateShippingHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHU");
@@ -1810,8 +1805,7 @@ sap.ui.define(
                 oRouter.navTo("CreateShippingHUWOWC");
             },
 
-            onReceivingofTUorDoor: function() {
->>>>>>> 84832347eb4c45f633b05ceeba45fbf5cbbda6aa
+            onReceivingofTUorDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor");
             },
@@ -1830,12 +1824,8 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct");
-<<<<<<< HEAD
-            }
-=======
             },
 
->>>>>>> 84832347eb4c45f633b05ceeba45fbf5cbbda6aa
 
         });
     }
