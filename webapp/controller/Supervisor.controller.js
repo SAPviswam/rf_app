@@ -1591,14 +1591,7 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                oRouter.navTo("AdhocHuWt");
-=======
-
                oRouter.navTo("AdhocHuWt",{id:this.ID});
->>>>>>> c9b8825998e7da50afd16266d4099909b8e9c0c9
-
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1607,16 +1600,8 @@ sap.ui.define(
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+                oRouter.navTo("UnloadByDelivery", {id:this.ID})
 
-<<<<<<< HEAD
-=======
-                oRouter.navTo("AdhocHuWt",{id:this.ID});
-=======
-
-                
->>>>>>> c9b8825998e7da50afd16266d4099909b8e9c0c9
- 
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1626,11 +1611,6 @@ sap.ui.define(
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery", {id:this.ID});
-<<<<<<< HEAD
->>>>>>> 2348e9547a70d7edf5dc6c285ff14cee8d96799f
-=======
-
->>>>>>> c9b8825998e7da50afd16266d4099909b8e9c0c9
             },
             OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1795,21 +1775,9 @@ sap.ui.define(
 
 
             OnPressSerialnumberLocation: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                oRouter.navTo("SerialNumberLocation");
-            },
-=======
+                var oRouter = UIComponent.getRouterFor(this)
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
->>>>>>> 2348e9547a70d7edf5dc6c285ff14cee8d96799f
-=======
-=======
-                oRouter.navTo("SerialNumberLocation",{id:this.ID});
-        },
-
->>>>>>> c9b8825998e7da50afd16266d4099909b8e9c0c9
 
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
