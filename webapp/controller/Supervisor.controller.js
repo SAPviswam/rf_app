@@ -1513,7 +1513,7 @@ sap.ui.define(
             },
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU");
+                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
             },
             onReceivingofHUbyDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1611,7 +1611,7 @@ sap.ui.define(
             },
             onReceivingofHUbyConsignementOrder:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("Receivingofhubyco");
+                oRouter.navTo("Receivingofhubyco",{id:this.ID});
 
             },
 

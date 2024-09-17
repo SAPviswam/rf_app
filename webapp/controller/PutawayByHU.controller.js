@@ -1,20 +1,43 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast"
   ],
-  function (BaseController) {
+  function (BaseController,MessageToast) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.PutawayByHU", {
       onInit: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+    },
+    onResourceDetailsLoad: async function (oEvent1) {
+        const { id } = oEvent1.getParameter("arguments");
+            this.ID = id;
+  
       },
       onAfterRendering: function () {
         this.byId("idPage1ScannerFormBoxHU").setVisible(true);
       },
       //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
-      onPressBackBtnScanerFormBox: function () {
+    //   
+      onPressBackBtnScanerFormBox: async function(){
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("Supervisor");
+        var oModel1 = this.getOwnerComponent().getModel();
+        await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+            success: function (oData) {
+                let oUser=oData.Users.toLowerCase()
+                if(oUser ===  "resource"){
+                    oRouter.navTo("RouteResourcePage",{id:this.ID});
+                }
+                else{
+                oRouter.navTo("Supervisor",{id:this.ID});
+            }
+            }.bind(this),
+            error: function () {
+                MessageToast.show("User does not exist");
+            }
+        });
     },
 
       //Back Btn from ScrollContainer Page 2 =>idPage2HUDetails 

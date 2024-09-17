@@ -282,9 +282,9 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_receivingofhubyconsignementorder"
-                            class="sapUiTinyMargin"
-                            header="Receiving of HU by Consignement Order"
+                            id="id_recevingofhubyconsignmentorder"
+                            class="sapUiTinyMargin" 
+                            header="Receiving of HU by Consignment Order"
                             press="onReceivingofHUbyConsignementOrderPress"
                             visible="false"
                         />

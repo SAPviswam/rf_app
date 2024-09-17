@@ -212,7 +212,16 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
+            onPutawayByHUPress: function () {
+                debugger
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
+            },
+            onReceivingofHUbyConsignementOrderPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("Receivingofhubyco",{id:this.ID});
 
+            },
           
 
         });
