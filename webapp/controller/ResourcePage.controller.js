@@ -93,12 +93,18 @@ sap.ui.define([
            
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
-                        var area = oData.Area;
-                        var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
-                        var group = oData.Resourcegroup;
-                        var groupArray = group.split(",").map(item => item.trim()); // Split and trim each group
-                        var resourceType = oData.Queue;
-           
+                        // var area = oData.Area;
+                        // var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
+                        // var group = oData.Resourcegroup;
+                        // var groupArray = group.split(",").map(item => item.trim()); // Split and trim each group
+                        // var oresourceType = oData.Queue;
+                        // var oResourceArray = oresourceType.split(",").map(item => item.trim())
+                        // console.log(oResourceArray)
+                        // oResourceArray.forEach(function(queue){    
+                        //     let oQueue = queue.replace(/[\s()/\-]+/g, '');
+                        //     console.log(oQueue);
+                        // })
+
                         var aNavigationData = oModel.getProperty("/navigation");
            
                         // Loop through navigation data
