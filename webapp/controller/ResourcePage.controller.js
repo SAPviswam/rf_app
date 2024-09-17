@@ -212,6 +212,33 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
+            onUnloadingByDoorTilePress: function () {
+                // BusyIndicator.show(3);
+                // setTimeout(function () {
+                //     // Navigate to another page (user page)
+                //     var oRouter = this.getOwnerComponent().getRouter();
+                //     oRouter.navTo("UnloadingByDoor");
+                //     BusyIndicator.hide();
+                //   }.bind(this), 2000); 
+                var oRouter = this.getOwnerComponent().getRouter();
+                    oRouter.navTo("UnloadingByDoor",{id:this.ID});
+
+            },
+            onUnloadingByConsignmentOrderTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByConsignmentOrder",{id:this.ID});
+
+            },
+            onChangeQueueTilePress: function () {
+                debugger
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("ChangeQueue",{id:this.ID});
+
+            },
+            onChangeResourceGroupTilePress:function(){
+                const oRoute =this.getOwnerComponent().getRouter()
+                oRoute.navTo("ChangeResourceGroup",{id:this.ID})
+            },
 
             onRecevinngofHUbyBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);

@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0",
+  "_version": "1.65.0", 
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -185,28 +185,28 @@
         },
         {
           "name": "UnloadingByDoor",
-          "pattern": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor/{id}",
           "target": [
             "TargetUnloadingByDoor"
           ]
         },
         {
           "name": "ChangeQueue",
-          "pattern": "ChangeQueue",
+          "pattern": "ChangeQueue/{id}",
           "target": [
             "TargetChangeQueue"
           ]
         },
         {
           "name": "ChangeResourceGroup",
-          "pattern": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup/{id}",
           "target": [
             "TargetChangeResourceGroup"
           ]
         },
         {
           "name": "UnloadingByConsignmentOrder",
-          "pattern": "UnloadingByConsignmentOrder",
+          "pattern": "UnloadingByConsignmentOrder/{id}",
           "target": [
             "TargetUnloadingByConsignmentOrder"
           ]
