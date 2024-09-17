@@ -368,12 +368,12 @@
         },
         {
           "name": "WTQueryByQueue",
-          "pattern": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue/{id}",
           "target": [
             "TargetWTQueryByQueue"
           ]
+    },
 
-        },
 
     {
           "name": "CreateShippingHU",
@@ -636,7 +636,6 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
-
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
@@ -644,7 +643,7 @@
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
 
-        },
+      },
 
         "TargetSerialNumberLocation": {
           "viewType": "XML",
@@ -653,6 +652,7 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
+
           "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
@@ -660,6 +660,7 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+
 
         "TargetCreateShippingHU": {
           "viewType": "XML",

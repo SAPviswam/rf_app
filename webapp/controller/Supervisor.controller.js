@@ -1633,7 +1633,7 @@ sap.ui.define(
             },
             onPressWTQuerybyQueue:function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByQueue");
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});
  
             },
 

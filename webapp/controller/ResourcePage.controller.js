@@ -408,6 +408,13 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
             }, 
+          
+            onWTQuerybyQueuePress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
+            }, 
+
 
         });
     });
