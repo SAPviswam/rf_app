@@ -23,7 +23,11 @@ sap.ui.define(
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
 
                 success: function (oData) {
+
                     let oUser=oData.Users.toLowerCase()
+
+              
+
                     if(oUser ===  "resource"){
                         oRouter.navTo("RouteResourcePage",{id:this.ID});
                     }
