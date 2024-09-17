@@ -136,28 +136,28 @@
         },
         {
           "name": "HuQuery",
-          "pattern": "HuQuery",
+          "pattern": "HuQuery/{id}",
           "target": [
             "TargetHuQueryPage"
           ]
         },
         {
           "name": "StockBinQueryByBin",
-          "pattern": "StockBinQueryByBin",
+          "pattern": "StockBinQueryByBin/{id}",
           "target": [
             "TargetStockBinQueryByBin"
           ]
         },
         {
           "name": "ReceivingofHUbyASN",
-          "pattern": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN/{id}",
           "target": [
             "TargetReceivingofHUbyASN"
           ]
         },
         {
           "name": "RouteUnloadingASNDetails",
-          "pattern": "UnloadingASNDetails",
+          "pattern": "UnloadingASNDetails/{id}",
           "target": [
             "TargetUnloadingASNDetails"
           ]
@@ -213,7 +213,7 @@
         },
         {
           "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU/{id}",
           "target": [
             "TargetPutawayByHU"
           ]
@@ -227,35 +227,35 @@
         },
         {
           "name": "RecevingOfHUbyDelivery",
-          "pattern": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery/{id}",
           "target": [
             "TargetRecevingOfHUbyDelivery"
           ]
         },
         {
           "name": "UnloadingByBillofLading",
-          "pattern": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading/{id}",
           "target": [
             "TargetUnloadingByBillofLading"
           ]
         },
         {
           "name": "MaintainHU",
-          "pattern": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
           "target": [
             "TargetMaintainHU"
           ]
         },
         {
           "name": "UnloadingByShipment",
-          "pattern": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment/{id}",
           "target": [
             "TargetUnloadingByShipment"
           ]
         },
         {
           "name": "UnloadingByTU",
-          "pattern": "UnloadingByTU",
+          "pattern": "UnloadingByTU/{id}",
           "target": [
             "TargetUnloadingByTU"
           ]
@@ -290,7 +290,7 @@
         },
         {
           "name": "RecevingOfHUbyManufacturingOrder",
-          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder/{id}",
           "target": [
             "TargetRecevingOfHUbyManufacturingOrder"
           ]
@@ -318,14 +318,14 @@
         },
         {
           "name": "Receivingofhubyco",
-          "pattern": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco/{id}",
           "target": [
             "TargetRecevingofHUbyConsignemntOrder"
           ]
         },
         {
           "name": "ReceivingofHUbyShipment",
-          "pattern": "ReceivingofHUbyShipment",
+          "pattern": "ReceivingofHUbyShipment/{id}",
           "target": [
             "TargetReceivingofHUbyShipment"
           ]
@@ -339,14 +339,14 @@
         },
         {
           "name": "RecevingOfHUbyTUorDoor",
-          "pattern": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor/{id}",
           "target": [
             "TargetRecevingOfHUbyTUorDoor"
           ]
         },
         {
           "name": "ReceivingofHUbyTU",
-          "pattern": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU/{id}",
           "target": [
             "TargetReceivingofHUbyTU"
           ]
@@ -367,12 +367,18 @@
         },
         {
           "name": "WTQueryByQueue",
-          "pattern": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue/{id}",
           "target": [
             "TargetWTQueryByQueue"
           ]
+<<<<<<< HEAD
         },
         {
+=======
+    },
+
+    {
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -639,7 +645,13 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
+<<<<<<< HEAD
         },
+=======
+      },
+
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -647,13 +659,18 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-        "TargetWTQueryByWT": {
+
+          "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+<<<<<<< HEAD
+
+=======
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
