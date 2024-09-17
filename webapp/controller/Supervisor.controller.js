@@ -5,7 +5,7 @@ sap.ui.define(
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast",
         "sap/ui/core/UIComponent",
-         "sap/ui/core/BusyIndicator"
+        "sap/ui/core/BusyIndicator"
     ],
     function (BaseController, Device, JSONModel, MessageToast, UIComponent, BusyIndicator) {
         "use strict";
@@ -62,7 +62,7 @@ sap.ui.define(
                     }
                 }
             },
-        
+
             //For background Theme Dialog..
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
@@ -365,7 +365,6 @@ sap.ui.define(
             },
             onApprove: function () {
                 var Empid = this.byId("idEmployeeIDInputF").getText();
-
                 var oNameInput = this.byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
@@ -419,7 +418,7 @@ sap.ui.define(
                     oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
                     oPhoneInput.setValueStateText("Mobile number must be a 10-digit numeric value");
                 }
-                else{
+                else {
                     oPhoneInput.setValueState(sap.ui.core.ValueState.None);
                     if (this.bOtpVerified) {
                         sap.m.MessageToast.show("Please verify your phone number with the OTP before submitting.");
@@ -1069,41 +1068,41 @@ sap.ui.define(
                 };
                 var oModel = this.getOwnerComponent().getModel();
                 if (!this.bCreate) {
-                    
-                
-                oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
-                    success: function () {
-                        sap.m.MessageToast.show(`${Empid} request is Accpeted!`);
-                        this.resetForm();
-                        this.bCreate = true;
 
-                        // Navigate to the user menu after successful password update
-                        this.onRequestedData();
-                        this.onUserData();
-                    }.bind(this),
-                    error: function () {
-                        sap.m.MessageToast.show("Error updating user login status.");
-                    }
-                });
-            }
-            else{
 
-                oModel.create("/RESOURCESSet",oData ,{
-                    success: function () {
-                        sap.m.MessageToast.show("successfully Created");
-                        this.resetForm();
+                    oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
+                        success: function () {
+                            sap.m.MessageToast.show(`${Empid} request is Accpeted!`);
+                            this.resetForm();
+                            this.bCreate = true;
 
-                        // Navigate to the user menu after successful password update
-                        this.onRequestedData();
-                        this.onUserData();
-                        this.bCreate = true;
-                    }.bind(this),
-                    error: function () {
-                        sap.m.MessageToast.show("Error updating user login status.");
-                    }
+                            // Navigate to the user menu after successful password update
+                            this.onRequestedData();
+                            this.onUserData();
+                        }.bind(this),
+                        error: function () {
+                            sap.m.MessageToast.show("Error updating user login status.");
+                        }
+                    });
+                }
+                else {
 
-                } )
-            }
+                    oModel.create("/RESOURCESSet", oData, {
+                        success: function () {
+                            sap.m.MessageToast.show("successfully Created");
+                            this.resetForm();
+
+                            // Navigate to the user menu after successful password update
+                            this.onRequestedData();
+                            this.onUserData();
+                            this.bCreate = true;
+                        }.bind(this),
+                        error: function () {
+                            sap.m.MessageToast.show("Error updating user login status.");
+                        }
+
+                    })
+                }
             },
             formatDate: function (oDate) {
                 var sYear = oDate.getFullYear();
@@ -1401,85 +1400,85 @@ sap.ui.define(
                     }
                 });
             },
-            onSelectQueue:function(){
-                 // Get the MultiComboBox instances for Group and Queue
-                 var oGroupMultiComboBox = this.byId("idGroupSelect");
-                 var oQueueMultiComboBox = this.byId("idQueueSelect");
- 
-                 // Retrieve the selected items
-                 var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
-                 var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
- 
-                 // Initialize an array to hold the filters
-                 var aFilters = [];
- 
-                 // Iterate over the selected queues to add corresponding filters
-                 aSelectedQueues.forEach(function (oItem) {
-                     var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
- 
-                     // Add filter for the selected process queue
-                     aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
-                 });
- 
-                 // Combine the filters with an OR condition
-                 var oCombinedFilter = new sap.ui.model.Filter({
-                     filters: aFilters,
-                     and: false // This specifies the OR condition
-                 });
- 
-                 // Fetch data from the model with applied filters
-                 var oModel = this.getOwnerComponent().getModel();
-                 oModel.read("/ProcessAreaSet", {
-                     filters: [oCombinedFilter],
-                     success: function (oData) {
-                         // Process data to ensure matching with selected groups
-                         var oGroupQueueMap = {};
-                         var isValid = true;
-                         // Build a map of group-queue relations
-                         oData.results.forEach(function (oItem) {
-                             var sGroup = oItem.Processgroup;
-                             var sQueue = oItem.Queue;
- 
-                             if (!oGroupQueueMap[sGroup]) {
-                                 oGroupQueueMap[sGroup] = [];
-                             }
-                             oGroupQueueMap[sGroup].push(sQueue);
-                         });
- 
-                         // Validate that the Queue selection matches the Group selections
-                         aSelectedGroups.forEach(function (oGroupItem) {
-                             var sGroupKey = oGroupItem.getText();
-                             var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
-                                 var sQueueKey = oQueueItem.getText();
-                                 return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
-                             });
- 
-                             if (!bQueueMatched) {
-                                 isValid = false;
- 
-                                 // Set the value state to Error for Queue MultiComboBox
-                                 oQueueMultiComboBox.setValueState("Error");
-                                 oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
- 
-                                 // Show error message
-                                 sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
-                             }
-                         });
- 
-                         if (!isValid) {
-                             return;
-                         }
- 
-                         // Reset value state to None if validation is successful
-                         oQueueMultiComboBox.setValueState("None");
- 
-                     },
-                     error: function (oError) {
-                         // Handle error if necessary
-                         sap.m.MessageToast.show("Failed to fetch data.");
-                     }
-                 });
-          
+            onSelectQueue: function () {
+                // Get the MultiComboBox instances for Group and Queue
+                var oGroupMultiComboBox = this.byId("idGroupSelect");
+                var oQueueMultiComboBox = this.byId("idQueueSelect");
+
+                // Retrieve the selected items
+                var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
+                var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
+
+                // Initialize an array to hold the filters
+                var aFilters = [];
+
+                // Iterate over the selected queues to add corresponding filters
+                aSelectedQueues.forEach(function (oItem) {
+                    var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
+
+                    // Add filter for the selected process queue
+                    aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
+                });
+
+                // Combine the filters with an OR condition
+                var oCombinedFilter = new sap.ui.model.Filter({
+                    filters: aFilters,
+                    and: false // This specifies the OR condition
+                });
+
+                // Fetch data from the model with applied filters
+                var oModel = this.getOwnerComponent().getModel();
+                oModel.read("/ProcessAreaSet", {
+                    filters: [oCombinedFilter],
+                    success: function (oData) {
+                        // Process data to ensure matching with selected groups
+                        var oGroupQueueMap = {};
+                        var isValid = true;
+                        // Build a map of group-queue relations
+                        oData.results.forEach(function (oItem) {
+                            var sGroup = oItem.Processgroup;
+                            var sQueue = oItem.Queue;
+
+                            if (!oGroupQueueMap[sGroup]) {
+                                oGroupQueueMap[sGroup] = [];
+                            }
+                            oGroupQueueMap[sGroup].push(sQueue);
+                        });
+
+                        // Validate that the Queue selection matches the Group selections
+                        aSelectedGroups.forEach(function (oGroupItem) {
+                            var sGroupKey = oGroupItem.getText();
+                            var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
+                                var sQueueKey = oQueueItem.getText();
+                                return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
+                            });
+
+                            if (!bQueueMatched) {
+                                isValid = false;
+
+                                // Set the value state to Error for Queue MultiComboBox
+                                oQueueMultiComboBox.setValueState("Error");
+                                oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
+
+                                // Show error message
+                                sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
+                            }
+                        });
+
+                        if (!isValid) {
+                            return;
+                        }
+
+                        // Reset value state to None if validation is successful
+                        oQueueMultiComboBox.setValueState("None");
+
+                    },
+                    error: function (oError) {
+                        // Handle error if necessary
+                        sap.m.MessageToast.show("Failed to fetch data.");
+                    }
+                });
+
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1495,7 +1494,7 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByBin");
 
             },
-           onReceivingofHUbyASN: function () {
+            onReceivingofHUbyASN: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyASN");
 
@@ -1506,7 +1505,7 @@ sap.ui.define(
                 this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
 
             },
- 
+
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor");
@@ -1551,7 +1550,7 @@ sap.ui.define(
                 //     BusyIndicator.hide();
                 //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-                    oRouter.navTo("UnloadingByDoor");
+                oRouter.navTo("UnloadingByDoor");
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
@@ -1572,8 +1571,9 @@ sap.ui.define(
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
- 
+
             },
+            // onUnloadingByShipmentPress: function () {
             OnpressMaintainHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU");
@@ -1582,16 +1582,30 @@ sap.ui.define(
             onUnloadingByShipmentPress:function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment");
- 
+
             },
-            onUnloadingByTUPress:function () {
+            onUnloadingByTUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByTU");
- 
+
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt",{id:this.ID});
+
+               oRouter.navTo("AdhocHuWt",{id:this.ID});
+
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+
+
+                
  
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
@@ -1602,13 +1616,14 @@ sap.ui.define(
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery", {id:this.ID});
+
             },
-            OnPressCreateandConfirmAdhocHUWT:function(){
+            OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
 
             },
-            onReceivingofHUbyConsignementOrder:function(){
+            onReceivingofHUbyConsignementOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("Receivingofhubyco");
 
@@ -1727,9 +1742,9 @@ sap.ui.define(
                             oMobileinput.setEditable(false);
                             oVerfied.setVisible(true);
                             oGetotp.setVisible(false);
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 oOtpInput.setVisible(false);
-                            }, 5000); 
+                            }, 5000);
 
 
 
@@ -1755,32 +1770,34 @@ sap.ui.define(
             },
 
 
-            onReceivingofHUbyShipment:function(){
+            onReceivingofHUbyShipment: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyShipment");
             },
-            OnPressWTQuerybyWO:function(){
+            OnPressWTQuerybyWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
 
 
-            OnPressSerialnumberLocation:function(){
+            OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
+=======
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
 
-            OnPressWTQuerybyWT:function(){
+
+            OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});
 
             },
-            
-            onReceivingofHUbyTU:function(){
+
+            onReceivingofHUbyTU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyTU");
             },
-            OnPressWTQuerybyWT:function(){
+            OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});
             },
@@ -1792,6 +1809,11 @@ sap.ui.define(
             onPressCreateShippingHUWOWC: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHUWOWC");
+            },
+
+            // CHATBOT
+            onChatbotButtonPress: function () {
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823","_self");
             },
 
             onReceivingofTUorDoor: function() {

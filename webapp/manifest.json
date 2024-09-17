@@ -220,7 +220,7 @@
         },
         {
           "name": "RouteBillofLading",
-          "pattern": "BillofLading",
+          "pattern": "BillofLading/{id}",
           "target": [
             "TargetBillofLading"
           ]
@@ -377,14 +377,14 @@
 
     {
           "name": "CreateShippingHU",
-          "pattern": "CreateShippingHU",
+          "pattern": "CreateShippingHU/{id}",
           "target": [
             "TargetCreateShippingHU"
           ]
         },
         {
           "name": "CreateShippingHUWOWC",
-          "pattern": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
 
