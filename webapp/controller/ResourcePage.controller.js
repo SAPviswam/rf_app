@@ -253,6 +253,15 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HuQuery",{id:this.ID});
             },
+
+            onUnloadingByDeliveryPress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
+            }, 
+          
+
+
         });
     });
 
