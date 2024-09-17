@@ -129,7 +129,7 @@
         },
         {
           "name": "Supervisor",
-          "pattern": "Supervisor",
+          "pattern": "Supervisor/{id}",
           "target": [
             "TargetSupervisorPage"
           ]
@@ -164,21 +164,21 @@
         },
         {
           "name": "UnloadByDelivery",
-          "pattern": "UnloadByDelivery",
+          "pattern": "UnloadByDelivery/{id}",
           "target": [
             "TargetUnloadByDelivery"
           ]
         },
         {
           "name": "AdhocHuWt",
-          "pattern": "AdhocHuWt",
+          "pattern": "AdhocHuWt/{id}",
           "target": [
             "TargetAdhocHuWt"
           ]
         },
         {
           "name": "ReceivingOfHuByDoor",
-          "pattern": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor/{id}",
           "target": [
             "TargetReceivingOfHuByDoor"
           ]
@@ -188,6 +188,20 @@
           "pattern": "UnloadingByDoor",
           "target": [
             "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "ChangeQueue",
+          "pattern": "ChangeQueue",
+          "target": [
+            "TargetChangeQueue"
+          ]
+        },
+        {
+          "name": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup",
+          "target": [
+            "TargetChangeResourceGroup"
           ]
         },
         {
@@ -223,6 +237,13 @@
           "pattern": "UnloadingByBillofLading",
           "target": [
             "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU",
+          "target": [
+            "TargetMaintainHU"
           ]
         },
         {
@@ -262,7 +283,7 @@
         },
         {
           "name": "AdhocProductWt",
-          "pattern": "AdhocProductWt",
+          "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
           ]
@@ -276,21 +297,21 @@
         },
         {
           "name": "CreateConfirmAdhocHu",
-          "pattern": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
         },
         {
           "name": "CreateConfirmAdhocProduct",
-          "pattern": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
           ]
         },
         {
           "name": "StockBinQueryByProduct",
-          "pattern": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct/{id}",
           "target": [
             "TargetStockBinQueryByProduct"
           ]
@@ -311,7 +332,7 @@
         },
         {
           "name": "WTQueryByWO",
-          "pattern": "WTQueryByWO",
+          "pattern": "WTQueryByWO/{id}",
           "target": [
             "TargetWTQueryByWO"
           ]
@@ -332,7 +353,7 @@
         },
         {
           "name": "SerialNumberLocation",
-          "pattern": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation/{id}",
           "target": [
             "TargetSerialNumberLocation"
           ]
@@ -340,16 +361,33 @@
         },
     {
           "name": "WTQueryByWT",
-          "pattern": "WTQueryByWT",
+          "pattern": "WTQueryByWT/{id}",
           "target": [
             "TargetWTQueryByWT"
           ]
         },
         {
+
           "name": "WTQueryByQueue",
           "pattern": "WTQueryByQueue",
           "target": [
             "TargetWTQueryByQueue"
+          ]
+    },
+
+    {
+          "name": "CreateShippingHU",
+          "pattern": "CreateShippingHU",
+          "target": [
+            "TargetCreateShippingHU"
+          ]
+        },
+        {
+          "name": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC",
+          "target": [
+            "TargetCreateShippingHUWOWC"
+
           ]
         }
       ],
@@ -438,6 +476,20 @@
           "viewId": "UnloadingByDoor",
           "viewName": "UnloadingByDoor"
         },
+        "TargetChangeResourceGroup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeResourceGroup",
+          "viewName": "ChangeResourceGroup"
+        },
+        "TargetChangeQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeQueue",
+          "viewName": "ChangeQueue"
+        },
         "TargetUnloadingByConsignmentOrder": {
           "viewType": "XML",
           "transition": "slide",
@@ -493,6 +545,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetMaintainHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MaintainHU",
+          "viewName": "MaintainHU"
         },
         "TargetUnloadingByShipment": {
           "viewType": "XML",
@@ -578,12 +637,44 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
+
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
+      },
+
+
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+        "TargetCreateShippingHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHU",
+          "viewName": "CreateShippingHU"
+        },
+        "TargetCreateShippingHUWOWC": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHUWOWC",
+          "viewName": "CreateShippingHUWOWC"
+
         }
       }
       },

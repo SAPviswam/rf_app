@@ -1,0 +1,543 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.MaintainHU"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageMaintainHU">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderMaintainHU_MHU">
+                <Image
+                    id="_IDGenImage1MaintainHU_MHU"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorMaintainHU_MHU"
+                />
+                <ToolbarSpacer id="idToolbarSpacerMaintainHU_MHU">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1MaintainHU_MHU"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1MaintainHU_MHU"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1MaintainHU_MHU"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idNavBackButton0_MHU"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback0"
+                />
+
+                <VBox
+                    id="vBox_BOL_MHU"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="mainfirstpageTitle_MHU"
+                        text="Maintain HU"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormBOL_MHU"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHBox1_MHU"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idMaintainHULabel_MHU"
+                                text="Work Center :"
+                                class="ScanHumargin"
+                            />
+                            <!-- Input Field -->
+                            
+                            <Input
+                                id="idMaintainHUinput_MHU"
+                                placeholder="Enter Work center..."
+                                class="sapUiTinyMarginBegin"
+                                liveChange="Onpresssubmit"
+                            />
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraOneMaintainHU_MHU"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Work Center"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <!-- <Button
+                                id="idButtonSubmit_MHU"
+                                text="Submit"
+                                press="Onpresssubmit"
+                            /> -->
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page2MaintainHU_MHU"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_MHU_page4"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton3_MHU"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback2"
+                    />
+                    <Title
+                        id="idTitle_MHU_page4"
+                        text="Source HU"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_MHU_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_MHU"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <!-- Product Field -->
+                    <Label
+                        id="idScanHULabel_MHU_page4"
+                        text="SHU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="HBOXX">
+                    <Input
+                        id="idSHUInput_MHU"
+                        placeholder="Handling Unit"
+                        maxLength="25"
+                        width="150px"
+                        liveChange="OnpressWorkCenter"
+                    />
+                     <ndc:BarcodeScannerButton
+                            id="sampleBarcodeScannerButtonZebraOneMaintainHU_MHU1"
+                            scanSuccess="onScanSuccessOne"
+                            scanFail="onScanErrorOne"
+                            inputLiveUpdate="onScanLiveUpdate"
+                            dialogTitle="Enter Work Center"
+                        />
+                        </HBox>
+                    
+                    <Label id="idSHULael_MHU_page4" />
+
+                    <Button
+                        id="idClosePutawayHUButton_MHU"
+                        text="Close Putaway HU"
+                        press="onClosePutawayHUPress"
+                        width="200px"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Label id="idSHULae_MHU_page4" />
+
+                    <Button
+                        id="idDeletePutawayHUButtoninpage5_MHU"
+                        text="Delete Putaway HU"
+                        press="onDeletePutawayHUPress"
+                        width="200px"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <Label id="idScanSourceHULabel_MHU" />
+                    <HBox id="idButtonHBox_MHU">
+                        <!-- <Button
+                            id="idButtonScanWorkCenter_MHU"
+                            text="Scan Work Center"
+                            press="OnpressWorkCenter"
+                        /> -->
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page3MaintainHU_MHU"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox1_MHU_page4"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton_3_MHU"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback3"
+                    />
+                    <Title
+                        id="idTitle1_MHU_page4"
+                        text="Source HU"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText1_MHU_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetails1Form_MHU"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idSHULabel_MHU_page4"
+                        text="SHU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDproductinputhbox_MHU">
+                        <Input
+                            id="idSHU1Input_MHU"
+                            placeholder="Source Handling Unit..."
+                            maxLength="25"
+                            width="100px"
+                        />
+                        <HBox
+                            id="idHuby1HUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idprnoomLabel_MHU"
+                                text="ProductNumber:"
+                               class="sapUiTinyMarginTop"
+                            />
+                            <Input
+                                id="idHubmInput_MHU"
+                                placeholder="ProductNumber..."
+                                maxLength="30"
+                                width="100px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idSbinLabelQty_MHU"
+                        text="Sbin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_MHU">
+                        <Input
+                            id="idHubySbinInput_MHU"
+                            maxLength="25"
+                            width="100px"
+                            placeholder="Source Storage bin.."
+                        />
+
+                        <HBox
+                            id="idHubyASNHUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_MHU"
+                                text="CGRP:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_MHU"
+                                placeholder="Consolidation Group..."
+                                maxLength="30"
+                                width="130px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idTWHULabel_MHU"
+                        text="TWHU"
+                    />
+                    <HBox id="IDTWHUinputhbox_MHU">
+                        <Input
+                            id="idTWHUInput_MHU"
+                            placeholder="Total Weight of Handling Unit..."
+                            maxLength="25"
+                            width="100px"
+                        />
+
+                        <HBox
+                            id="idHubyAS1NHUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idMWHULabel"
+                                text="MWHU:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idMWHUInput"
+                                placeholder="Maximum Weight of Handling..."
+                                width="70px"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHubyAS1HUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idMWHLabel"
+                                text="Unit:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idMWUInput"
+                                width="16px"
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idTVHULabel_MHU"
+                        text="TVHU"
+                    />
+                    <HBox id="IDTWHinputhbox_MHU">
+                        <Input
+                            id="idTVHUInput_MHU"
+                            placeholder="Total Volume of Handling Unit"
+                            maxLength="25"
+                            width="100px"
+                        />
+
+                        <HBox
+                            id="idHubAS1NHUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idMVHabel"
+                                text="MVHU:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idMWHInput"
+                                placeholder="Maximum Volume of Handling..."
+                                width="70px"
+                            />
+                        </HBox>
+                        <Label
+                            id="idMWLabel"
+                            text="Unit:"
+                            class="classUOMbyASn"
+                        />
+                        <Input
+                            id="idMWInput"
+                            width="16px"
+                        />
+                    </HBox>
+
+                    <Label
+                        id="idLLabel_MHU"
+                        text="L"
+                    />
+                    <HBox id="hboxx2">
+                        <Input
+                            id="idLInput_MHU"
+                            placeholder="Length"
+                            maxLength="25"
+                            width="100px"
+                        />
+
+                        <HBox
+                            id="idHubUOMNHUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idUOMabel"
+                                text="UOM:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idUOMInput"
+                                width="60px"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHubEVTHUuombox_MHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idEVTabel"
+                                text="EVT:"
+                                class="classUOMbyASn"
+                            />
+
+                            <Input
+                                id="idEVTInput"
+                                width="40px"
+                            />
+                            <Input
+                                id="idPERInput"
+                                value="%"
+                                width="10px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idWidthLabel_MHU"
+                        text="W"
+                    />
+                    <HBox id="hboxx3">
+                        <Input
+                            id="idWidthInput_MHU"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                        />
+                       
+                            <HBox
+                                id="idHubEWTHUuombox_MHU"
+                                class="customLabelSpacing"
+                            >
+                                <Label
+                                    id="idEwtabel"
+                                    text="EWT:"
+                                    class="classUOMbyASn"
+                                />
+
+                                <Input
+                                    id="idEwtInput"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idPER1Input"
+                                    value="%"
+                                    width="10px"
+                                />
+                            </HBox>
+                   
+                    </HBox>
+
+                    <!-- Expiry Field -->
+                    <Label
+                        id="idHLabel_MHU"
+                        text="H"
+                        class="sapUiTinyMarginEnd"
+                    />
+                     <HBox id="hboxx4">
+                    <Input
+                        id="idhInput_MHU"
+                        placeholder="Height.."
+                        maxLength="25"
+                        width="100px"
+                    />
+                    <HBox
+                                id="idHubLogposuombox_MHU"
+                                class="customLabelSpacing"
+                            >
+                                <Label
+                                    id="idLogpostabel"
+                                    text="LogPos:"
+                                    class="classUOMbyASn"
+                                />
+
+                                <Input
+                                    id="idLogPosInput"
+                                    width="40px"
+                                />
+                                 </HBox>
+                            </HBox>
+
+                    <Label id="idNextEnterLabel_MHU" />
+                    <HBox id="idButton1HBox_MHU">
+                        <Button
+                            id="idClosePutawayHU_MHU"
+                            text="Close Putaway HU"
+                            class="sapUiTinyMarginEnd"
+                            press="onClosePutawayHUpress"
+                        />
+                        <Button
+                            id="idDeletePutawayHU_MHU"
+                            text="Delete Putaway HU"
+                            class="sapUiTinyMarginEnd"
+                            press="onDeletePutawayHUpress"
+                        />
+                        
+                    </HBox>
+                     <Label id="idNextLabel_MHU" />
+                    <HBox id="idButton8HBox_MHU">
+                         <Button
+                            id="idSavePutawayHU_MHU"
+                            text="Save"
+                            class="sapUiTinyMarginEnd"
+                            press="onSavepress"
+                        />
+                         </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
