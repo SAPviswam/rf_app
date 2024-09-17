@@ -1613,6 +1613,11 @@ sap.ui.define(
                 oRouter.navTo("Receivingofhubyco");
 
             },
+            onPressWTQuerybyQueue:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByQueue");
+ 
+            },
 
             onGetOTP: function () {
                 // Get the phone number from the input field

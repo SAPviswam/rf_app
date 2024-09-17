@@ -367,6 +367,15 @@
           ]
         },
         {
+
+          "name": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue",
+          "target": [
+            "TargetWTQueryByQueue"
+          ]
+    },
+
+    {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU",
           "target": [
@@ -378,6 +387,7 @@
           "pattern": "CreateShippingHUWOWC",
           "target": [
             "TargetCreateShippingHUWOWC"
+
           ]
         }
       ],
@@ -628,6 +638,15 @@
           "viewName": "RecevingOfHUbyTUorDoor"
         },
 
+        "TargetWTQueryByQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByQueue",
+          "viewName": "WTQueryByQueue"
+      },
+
+
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -655,9 +674,10 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
+
         }
       }
-    },
+      },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
