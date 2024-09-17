@@ -1497,7 +1497,7 @@ sap.ui.define(
             },
            onReceivingofHUbyASN: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyASN");
+                oRouter.navTo("ReceivingofHUbyASN",{id:this.ID});
 
             },
 
@@ -1517,7 +1517,7 @@ sap.ui.define(
             },
             onReceivingofHUbyDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyDelivery");
+                oRouter.navTo("RecevingOfHUbyDelivery",{id:this.ID});
             },
 
             //Putaway By WO Tile..
@@ -1752,7 +1752,7 @@ sap.ui.define(
 
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyShipment");
+                oRouter.navTo("ReceivingofHUbyShipment",{id:this.ID});
             },
             OnPressWTQuerybyWO:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1773,7 +1773,7 @@ sap.ui.define(
             
             onReceivingofHUbyTU:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU");
+                oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
             },
             OnPressWTQuerybyWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1795,7 +1795,7 @@ sap.ui.define(
             },
             onReceivingofHUbyManufacturingOrder: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder",{id:this.ID});
             },
             onPressCreateAdhocHUWTInAdhocWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1808,6 +1808,10 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
+            },
+            onUnloadingBYASN:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
             },
 
 
