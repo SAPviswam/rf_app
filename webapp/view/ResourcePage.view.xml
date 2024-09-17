@@ -220,7 +220,7 @@
                      </HBox>
                         </VBox>
                         <GenericTile
-                            id="id_receivingofhubydelivery"
+                            id="id_receivingofhubydelivery"  
                             class="sapUiTinyMargin"
                             header="Receiving of HU by Delivery"
                             press="onReceivingofHUbyDeliveryPress"
@@ -255,9 +255,9 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_receivingofhubymanufacturingorder"
+                            id="id_recevingofhubymanufacturingorder"  
                             class="sapUiTinyMargin"
-                            header="Receiving of HU by manufacturing Order"
+                            header="Receving of HU by manufacturing Order"
                             press="onReceivingofHUbymanufacturingOrderPress"
                             visible="false"
                         />
