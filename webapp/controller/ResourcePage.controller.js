@@ -209,13 +209,6 @@ sap.ui.define([
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
             },
-<<<<<<< HEAD
-           
-            onWTQuerybyWOPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO",{id:this.ID});
-            },
-=======
 
             onWTQuerybyWOPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -338,7 +331,6 @@ sap.ui.define([
                 // Add actual logout logic here
             },
             
->>>>>>> 2974be3c20cefb726f63244258907f3b9018bcb0
             onRecevinngofHUbyBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteBillofLading",{id:this.ID});
@@ -351,8 +343,6 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
             },
-<<<<<<< HEAD
-=======
 
 
             //Putaway By WO Tile..
@@ -372,7 +362,6 @@ sap.ui.define([
             },
 
 
->>>>>>> 2974be3c20cefb726f63244258907f3b9018bcb0
             onWTQueryByWTPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});
@@ -405,16 +394,26 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
             },
+            onStockBinQuerybyBinPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
+            },
+            onHUQueryPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuQuery",{id:this.ID});
+            },
 
             onUnloadingByDeliveryPress:function(){ 
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
             }, 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2974be3c20cefb726f63244258907f3b9018bcb0
+          
+            onWTQuerybyQueuePress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
+            }, 
         });
     });
 

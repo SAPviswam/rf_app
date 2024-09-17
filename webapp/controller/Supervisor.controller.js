@@ -1499,7 +1499,7 @@ sap.ui.define(
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HuQuery");
+                oRouter.navTo("HuQuery",{id:this.ID});
                 var oInput = this.byId("_IDGenInput1");
                 if (oInput) {
                     oInput.focus();
@@ -1508,7 +1508,7 @@ sap.ui.define(
             OnPressStockBinQueryByBin: function () {
                 debugger
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByBin");
+                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
 
             },
             onReceivingofHUbyASN: function () {
@@ -1519,17 +1519,17 @@ sap.ui.define(
 
             /**Navigate to Unloading By ASN Page */
             onUnloadingBYASN: function () {
-                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails",{id:this.ID})
 
             },
 
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingOfHuByDoor");
+                oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
             },
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU");
+                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
             },
             onReceivingofHUbyDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1539,22 +1539,22 @@ sap.ui.define(
             //Putaway By WO Tile..
             onTilePressPutawayByWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("PutawayByWO", { id: this.ID });
+                oRouter.navTo("PutawayByWO",{id:this.ID});
             },
             //AvailableHandlingunitsOnBinQuery Tile...
             OnPressAvailableHandlingUnitsOnBinQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
+                oRouter.navTo("AvailableHandlingUnitsOnBinQuery",{id:this.ID});
             },
             //WTQueryByHU Tile...
             OnPressWTquerybyHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByHU", { id: this.ID });
+                oRouter.navTo("WTQueryByHU",{id:this.ID});
             },
 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteBillofLading");
+                oRouter.navTo("RouteBillofLading",{id:this.ID});
             },
             onUnloadingByDoorTilePress: function () {
                 // BusyIndicator.show(3);
@@ -1606,6 +1606,7 @@ sap.ui.define(
             onUnloadingByTUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByTU",{id:this.ID});
+ 
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1619,16 +1620,16 @@ sap.ui.define(
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery", {id:this.ID})
-
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt");
+                oRouter.navTo("AdhocProductWt",{id:this.ID});
  
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+                oRouter.navTo("UnloadByDelivery",{id:this.ID});
+ 
             },
             OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1637,12 +1638,12 @@ sap.ui.define(
             },
             onReceivingofHUbyConsignementOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("Receivingofhubyco");
+                oRouter.navTo("Receivingofhubyco",{id:this.ID});
 
             },
             onPressWTQuerybyQueue:function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByQueue");
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});
  
             },
 
@@ -1807,22 +1808,18 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
             },
-            OnPressWTQuerybyWT: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT",{id:this.ID});
-            },
-            // onReceivingofTUorDoor: function () {
+            // OnPressWTQuerybyWT:function(){
             //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("RecevingOfHUbyTUorDoor");
+            //     oRouter.navTo("WTQueryByWT",{id:this.ID});
             // },
-
+          
             onPressCreateShippingHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHU");
+                oRouter.navTo("CreateShippingHU",{id:this.ID});
             },
             onPressCreateShippingHUWOWC: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHUWOWC");
+                oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
             },
 
 
@@ -1850,10 +1847,6 @@ sap.ui.define(
             OnPressStockOrBinQuerybyProduct: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
-            },
-            onUnloadingBYASN:function() {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
             },
 
 
