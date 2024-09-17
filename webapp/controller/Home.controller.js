@@ -68,13 +68,18 @@ sap.ui.define([
                                     //   }.bind(this), 2000); 
 
                                     // Navigate to the ResourcePage with the correct ID
-                                    if(oData.Users==="SUPERVISOR"){
+
+
+                                    let oUser = oData.Users.toLowerCase();
+                                    if (oUser === "supervisor") {
+
+
                                         that.getRouter().navTo("Supervisor", { id: sResourceId });
                                     }
-                                    else{
+                                    else {
                                         that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
                                     }
-                                   
+
                                 }
 
                             } else {
@@ -507,7 +512,7 @@ sap.ui.define([
                 var oOtpInput = this.byId("idEnterConformationCode");
                 var sEnteredOtp = oOtpInput.getValue();
                 var oVerfied = this.byId("verficationId1");
-                var that=this
+                var that = this
 
                 // Reset the ValueState and ValueStateText before validation
                 oOtpInput.setValueState(sap.ui.core.ValueState.None);
@@ -594,7 +599,7 @@ sap.ui.define([
                     bValid = false;
 
 
-                    
+
                 } else {
                     oView.byId("idEnterMobileNo").setValueState("None");
                     if (!this.bOtpVerified) {

@@ -1,0 +1,33 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Page id="idDeconAutoPage">
+        <content>
+            <VBox
+                id="idVBoxDeconAuto"
+                justifyContent="Center"
+                alignContent="Center"
+            >
+                <VBox
+                    id="idVBox2DeconAuto"
+                    justifyContent="Center"
+                    alignItems="Center"
+                >
+                    <HBox
+                        id="idHBoxDeconAuto"
+                        justifyContent="Center"
+                        alignItems="Center"
+                    >
+                        <Label id="idworkcenterLabelDeconAuto" text="WorkCenter"/>
+                        <Input
+                            id="idInputWorkCenter"
+                            value="{}"
+                        />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
