@@ -147,27 +147,16 @@
                                         placeholder="Enter HU..."
                                         class="sapUiTinyMarginBegin"
                                      liveChange="onLiveHuValidation"
+                                      change="onChangeHuValidation"
                                     />
-                                    <!-- <ndc:BarcodeScannerButton
-                                        id="sampleBarcodeScannerButtonZebraThree"
-                                        scanSuccess="onScanSuccessThree"
-                                        scanFail="onScanErrorThree"
-                                        inputLiveUpdate="onScanLiveUpdate"
-                                        dialogTitle="Barcode Scanner Button3 Sample"
-                                        class="sampleBarcodeScannerButtonWithZebraEB"
-                                    /> -->
-                                    <!-- Barcode Scan Button -->
-                                    <!-- <Button
-                                        id="_IDGenButton11"
-                                        icon="sap-icon://bar-code"
-                                        press="Onpressscan"
-                                    /> -->
-                                    <!-- Submit Button -->
-                                    <!-- <Button
-                                        id="_IDGenButton111"
-                                        text="Submit"
-                                        press="Onpresssubmit"
-                                    /> -->
+                                    <ndc:BarcodeScannerButton
+                                            id="sampleBarcodeScannerButton"
+                                            scanSuccess="onScanSuccess"
+                                            scanFail="onScanError"
+                                            inputLiveUpdate="onScanLiveupdate"
+                                            dialogTitle="Barcode Scanner"
+                                        />
+
                                 </HBox>
                             </f:SimpleForm>
                         </VBox>
@@ -419,7 +408,7 @@
                             </columns>
 
                             <items>
-                                <ColumnListItem id="_IDGenColumnListItem1">
+                                <ColumnListItem id="_IDGenColumnListItem1111">
                                     <cells>
                                         <Text
                                             id="_IDGenText6"

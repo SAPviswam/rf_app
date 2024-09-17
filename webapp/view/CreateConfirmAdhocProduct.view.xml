@@ -76,6 +76,10 @@
                     columnsM="1"
                     columnsS="1"
                 >
+                <VBox alignContent="Center"
+                        alignItems="Center" >
+                        <Title text="Create and Confirm Adhoc Product"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idInitialProductPage1"
                         class="sapUiMediumMargin"
@@ -83,7 +87,8 @@
                         <Label
                             id="idProductLabel"
                             text="Product"
-                            width="100px"
+                            width="70px"
+                            class="sapUiTinyMargin"
                         />
                         <Input
                             id="idProductInput"
@@ -96,6 +101,7 @@
                             press="onProductBarcodeScanner"
                         />
                     </HBox>
+                    </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
@@ -118,12 +124,15 @@
                 >
                     <VBox
                         id="idsecondProductPage2"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label
                                 id="idProductLabel1"
                                 text="Product"
                                 width="100px"
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idproductInput1"
@@ -135,6 +144,7 @@
                                 id="idProductSrcBinLabel1"
                                 text="Src Bin"
                                 width="100px"
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idProductsrcBinInput"
@@ -170,6 +180,8 @@
                 >
                     <VBox
                         id="idthirdProductPage1"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label

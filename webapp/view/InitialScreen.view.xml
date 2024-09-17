@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.InitialScreen"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page id="pageInitial">
+        <content>
+            <FlexBox
+                id="_IDGenFlexBoxInitial"
+                height="100%"
+                direction="Column"
+                alignItems="Center"
+            >
+                <VBox
+                    id="environmentButtonsHBox"
+                    class="sapUiSmallMarginTop boxContainer"
+                    alignItems="Center"
+                >
+                    <Label id="idemptylable3" />
+                    <Image
+                        id="idlogoarea"
+                        height="2.5rem"
+                        class="sapUiSmallMarginBegin"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="9rem"
+                    />
+                    <Label
+                        id="idEmptylable"
+                        textAlign="Center"
+                    />
+
+                    <!-- Existing Environment Buttons -->
+                    <Label
+                        id="idSAPSystem"
+                        text="SAP System"
+                        textAlign="End"
+                    />
+
+                    <Button
+                        id="devButton"
+                        text="Development"
+                        press="onDevButtonPress"
+                        type="Emphasized"
+                        width="11rem"
+                    />
+                    <ToolbarSpacer
+                        id="idinitialtoolspace"
+                        width="20px"
+                    />
+                    <Button
+                        id="prodButton"
+                        text="Production"
+                        press="onProdButtonPress"
+                        type="Emphasized"
+                        width="11rem"
+                    />
+                    <ToolbarSpacer
+                        id="idinitialtool"
+                        width="20px"
+                    />
+                    <Button
+                        id="envButton"
+                        text="Environment"
+                        press="onEnvButtonPress"
+                        type="Emphasized"
+                        width="11rem"
+                    />
+                    <Link
+                        id="_IDCofiguresapLink"
+                        text="Configure SAP system"
+                        press="handleLinksapPress"
+                    />
+                </VBox>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

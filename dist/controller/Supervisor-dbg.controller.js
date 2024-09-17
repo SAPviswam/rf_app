@@ -4,14 +4,16 @@ sap.ui.define(
         "sap/ui/Device",
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast",
-        "sap/ui/core/UIComponent"
+        "sap/ui/core/UIComponent",
+         "sap/ui/core/BusyIndicator"
     ],
-    function (BaseController, Device, JSONModel, MessageToast, UIComponent) {
+    function (BaseController, Device, JSONModel, MessageToast, UIComponent, BusyIndicator) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.Supervisor", {
             onInit: function () {
                 this.bOtpVerified = true;
+                this.bCreate = true;
                 var oModel = new JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
                 this.getView().setModel(oModel);
                 var oModelV2 = this.getOwnerComponent().getModel();
@@ -21,9 +23,6 @@ sap.ui.define(
                 this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
                 //stored colours applying...
                 this.applyStoredColors();
-
-
-                
                 // Initialize events for tile and button
                 var oTile = this.byId("idPutawayByWO1");
                 var oButton = this.byId("idBtnPutawayByWO");
@@ -32,19 +31,11 @@ sap.ui.define(
                 // Attach single-click event to the button
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
             },
-            onAfterRendering: function () {
-                this.applyStoredColors();
-
-            },
             onPaletteIconSingleClick: function (oEvent) {
                 this._currentTileId = oEvent.getSource().getParent().getParent().getId();
                 this.byId("themeTileDialog").open();
                 oEvent.stopPropagation();
             },
-
-            // onPaletteIconBtnDblClick: function (oEvent) {
-            //     this.byId("themeTileDialog").open();
-            // },
 
             //This is Callback function From Init method...
             applyStoredColors: function () {
@@ -65,50 +56,11 @@ sap.ui.define(
                     }
                 }
             },
-
-
-            _applyColorToTile: function (sTileId, sColor) {
-                var oTile = this.byId(sTileId);
-
-                if (oTile) {
-                    // Use setTimeout to ensure the DOM is ready before applying styles
-                    setTimeout(function () {
-                        var oTileDomRef = oTile.getDomRef();
-                        if (oTileDomRef) {
-                            oTileDomRef.style.backgroundColor = sColor;  // Apply the stored color
-                        }
-                    }, 0);  // Use a short delay
-                }
-            },
-            // applyStoredColors: function () {
-            //     // Apply stored theme color
-            //     var sStoredThemeColor = localStorage.getItem("themeColor");
-            //     if (sStoredThemeColor) {
-            //         this.applyThemeColor(sStoredThemeColor);
-            //     }
-
-            //     // Apply stored tile colors
-            //     var storedColors = localStorage.getItem("tileColors");
-            //     if (storedColors) {
-            //         var tileColors = JSON.parse(storedColors);
-            //         for (var sTileId in tileColors) {
-            //             if (tileColors.hasOwnProperty(sTileId)) {
-            //                 this.applyColorToTile(sTileId, tileColors[sTileId]);
-            //             }
-            //         }
-            //     }
-            // },
-
+        
+            //For background Theme Dialog..
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
             },
-
-
-            onPaletteIconBtnTilePress: function (oEvent) {
-                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-                this.byId("themeTileDialog").open();
-            },
-
 
             onApplyColor: function () {
                 var oView = this.getView();
@@ -212,60 +164,26 @@ sap.ui.define(
                 // Store the selected theme color in local storage
                 localStorage.setItem("themeColor", sColor);
             },
-            // applyColorToTile: function (sTileId, sColor) {
-            //     var oTile = this.byId(sTileId);
-
-            //     if (oTile) {
-            //         var sTileColorClass = "tileColor_" + sTileId;
-
-            //         // Remove the old color class if it exists
-            //         oTile.removeStyleClass(sTileColorClass);
-
-            //         // Create or update the style element
-            //         var oStyleElement = document.getElementById(sTileColorClass);
-            //         if (!oStyleElement) {
-            //             oStyleElement = document.createElement("style");
-            //             oStyleElement.id = sTileColorClass;
-            //             document.head.appendChild(oStyleElement);
-            //         }
-            //         oStyleElement.textContent = "#" + sTileId + " { background-color: " + sColor + " !important; }";
-
-            //         // Apply the new color class to the tile
-            //         oTile.addStyleClass(sTileColorClass);
-
-            //         // Retrieve and update the color storage
-            //         var tileColors = {};
-            //         try {
-            //             var storedColors = localStorage.getItem("tileColors");
-            //             if (storedColors) {
-            //                 tileColors = JSON.parse(storedColors);
-            //             }
-            //         } catch (e) {
-            //             console.error("Failed to parse tile colors from localStorage:", e);
-            //         }
-
-            //         // Update the tile color in localStorage
-            //         tileColors[sTileId] = sColor;
-            //         localStorage.setItem("tileColors", JSON.stringify(tileColors));
-
-            //         // Clear the tile ID after applying the color
-            //         this._currentTileId = null;
-            //     }
-            // },
-
             applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
 
                 if (oTile) {
+                    var sTileColorClass = "tileColor_" + sTileId;
 
-                    // Get the DOM reference of the tile
-                    var oTileDomRef = oTile.getDomRef();
+                    // Remove the old color class if it exists
+                    oTile.removeStyleClass(sTileColorClass);
 
-                    if (oTileDomRef) {
-                        // Directly apply the background color using the DOM reference
-                        oTileDomRef.style.backgroundColor = sColor;
+                    // Create or update the style element
+                    var oStyleElement = document.getElementById(sTileColorClass);
+                    if (!oStyleElement) {
+                        oStyleElement = document.createElement("style");
+                        oStyleElement.id = sTileColorClass;
+                        document.head.appendChild(oStyleElement);
                     }
+                    oStyleElement.textContent = "#" + sTileId + " { background-color: " + sColor + " !important; }";
 
+                    // Apply the new color class to the tile
+                    oTile.addStyleClass(sTileColorClass);
 
                     // Retrieve and update the color storage
                     var tileColors = {};
@@ -286,7 +204,6 @@ sap.ui.define(
                     this._currentTileId = null;
                 }
             },
-
             _isValidColor: function (sColor) {
                 var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
@@ -461,51 +378,58 @@ sap.ui.define(
 
                 var isValid = true;
 
-                // // Validate Name
-                // if (!Name) {
-                //     oNameInput.setValueState(sap.ui.core.ValueState.Error);
-                //     oNameInput.setValueStateText("Name is required.");
-                //     isValid = false;
-                // } else {
-                //     oNameInput.setValueState(sap.ui.core.ValueState.None);
-                //     oNameInput.setValueStateText("");
-                // }
+                // Validate Name
+                if (!Name) {
+                    oNameInput.setValueState(sap.ui.core.ValueState.Error);
+                    oNameInput.setValueStateText("Name is required.");
+                    isValid = false;
+                } else {
+                    oNameInput.setValueState(sap.ui.core.ValueState.None);
+                    oNameInput.setValueStateText("");
+                }
 
-                // // Validate Email (optional)
-                // if (email) {
-                //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                //     if (!emailRegex.test(email)) {
-                //         oEmailInput.setValueState(sap.ui.core.ValueState.Error);
-                //         oEmailInput.setValueStateText("Invalid email format.");
-                //         isValid = false;
-                //     } else {
-                //         oEmailInput.setValueState(sap.ui.core.ValueState.None);
-                //         oEmailInput.setValueStateText("");
-                //     }
-                // } else {
-                //     oEmailInput.setValueState(sap.ui.core.ValueState.None);
-                //     oEmailInput.setValueStateText("");
-                // }
+                // Validate Email (optional)
+                if (email) {
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        oEmailInput.setValueState(sap.ui.core.ValueState.Error);
+                        oEmailInput.setValueStateText("Invalid email format.");
+                        isValid = false;
+                    } else {
+                        oEmailInput.setValueState(sap.ui.core.ValueState.None);
+                        oEmailInput.setValueStateText("");
+                    }
+                } else {
+                    oEmailInput.setValueState(sap.ui.core.ValueState.None);
+                    oEmailInput.setValueStateText("");
+                }
 
-                // // Validate Phone
-                // if (!phone) {
-                //     oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
-                //     oPhoneInput.setValueStateText("Phone number is required.");
-                //     isValid = false;
-                // } else {
-                //     oPhoneInput.setValueState(sap.ui.core.ValueState.None);
-                //     oPhoneInput.setValueStateText("");
-                // }
+                // Validate Phone
+                if (!phone) {
+                    oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
+                    oPhoneInput.setValueStateText("Phone number is required.");
+                    isValid = false;
+                } else if (oPhoneInput.length !== 10 || !/^\d+$/.test(oPhoneInput)) {
+                    oPhoneInput.setValueState(sap.ui.core.ValueState.Error);
+                    oPhoneInput.setValueStateText("Mobile number must be a 10-digit numeric value");
+                }
+                else{
+                    oPhoneInput.setValueState(sap.ui.core.ValueState.None);
+                    if (this.bOtpVerified) {
+                        sap.m.MessageToast.show("Please verify your phone number with the OTP before submitting.");
+                        return;
+                    }
+                }
 
-                // // Validate Resourcetype
-                // if (!Resourcetype) {
-                //     oResourcetypeInput.setValueState(sap.ui.core.ValueState.Error);
-                //     oResourcetypeInput.setValueStateText("Resource type is required.");
-                //     isValid = false;
-                // } else {
-                //     oResourcetypeInput.setValueState(sap.ui.core.ValueState.None);
-                //     oResourcetypeInput.setValueStateText("");
-                // }
+                // Validate Resourcetype
+                if (!Resourcetype) {
+                    oResourcetypeInput.setValueState(sap.ui.core.ValueState.Error);
+                    oResourcetypeInput.setValueStateText("Resource type is required.");
+                    isValid = false;
+                } else {
+                    oResourcetypeInput.setValueState(sap.ui.core.ValueState.None);
+                    oResourcetypeInput.setValueStateText("");
+                }
 
                 // Validate Area
                 if (Area.length === 0) {
@@ -1138,10 +1062,14 @@ sap.ui.define(
                     Loginfirst: true
                 };
                 var oModel = this.getOwnerComponent().getModel();
+                if (!this.bCreate) {
+                    
+                
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
-                        sap.m.MessageToast.show("Password updated successfully!");
+                        sap.m.MessageToast.show(`${Empid} request is Accpeted!`);
                         this.resetForm();
+                        this.bCreate = true;
 
                         // Navigate to the user menu after successful password update
                         this.onRequestedData();
@@ -1151,7 +1079,25 @@ sap.ui.define(
                         sap.m.MessageToast.show("Error updating user login status.");
                     }
                 });
+            }
+            else{
 
+                oModel.create("/RESOURCESSet",oData ,{
+                    success: function () {
+                        sap.m.MessageToast.show("successfully Created");
+                        this.resetForm();
+
+                        // Navigate to the user menu after successful password update
+                        this.onRequestedData();
+                        this.onUserData();
+                        this.bCreate = true;
+                    }.bind(this),
+                    error: function () {
+                        sap.m.MessageToast.show("Error updating user login status.");
+                    }
+
+                } )
+            }
             },
             formatDate: function (oDate) {
                 var sYear = oDate.getFullYear();
@@ -1166,6 +1112,12 @@ sap.ui.define(
                 this.byId("idEmailInput").setValue("");
                 this.byId("idPhoneInput").setValue("");
                 this.byId("idRoesurcetypeInput").setValue("");
+                this.byId("verficationIdicon").setVisible(false);
+                this.byId("getotpsv").setVisible(false);
+                this.byId("_IDGenComboBox10").setVisible(false);
+                this.byId("GroupSelect").setVisible(false);
+
+
 
                 // Reset select fields
                 this.byId("AreaSelect").setSelectedKeys([]);
@@ -1222,10 +1174,17 @@ sap.ui.define(
                             if (oData.results[0].Area) {
                                 oInput.setValueState(sap.ui.core.ValueState.Error);
                                 oInput.setValueStateText("Employee ID is already approved.");
+                                This.byId("idNameInput").setEditable(false).setValue(name);
+                                This.byId("idEmailInput").setEditable(false).setValue(email);
+                                This.byId("idPhoneInput").setEditable(false).setValue(Phonenumber);
+                                This.byId("idRoesurcetypeInput").setEditable(false).setValue(RT);
+                                This.byId("getotpsv").setVisible(false);
+                                This.byId("idOtpInputsv").setVisible(false);
                             } else {
                                 // Employee ID exists but is not approved
                                 oInput.setValueState(sap.ui.core.ValueState.Success);
                                 oInput.setValueStateText("Employee ID already exists.");
+                                This.bCreate = false;
                                 var email = oData.results[0].Email;
                                 var name = oData.results[0].Resourcename;
                                 var Phonenumber = oData.results[0].Phonenumber;
@@ -1236,6 +1195,7 @@ sap.ui.define(
                                 This.byId("idPhoneInput").setEditable(false).setValue(Phonenumber);
                                 This.byId("idRoesurcetypeInput").setEditable(false).setValue(RT);
                                 This.byId("getotpsv").setVisible(false);
+                                This.byId("idOtpInputsv").setVisible(false);
                                 This.bOtpVerified = true;
 
 
@@ -1435,104 +1395,116 @@ sap.ui.define(
                     }
                 });
             },
-            onSelectQueue: function () {
-                // Get the MultiComboBox instances for Group and Queue
-                var oGroupMultiComboBox = this.byId("idGroupSelect");
-                var oQueueMultiComboBox = this.byId("idQueueSelect");
-
-                // Retrieve the selected items
-                var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
-                var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
-
-                // Initialize an array to hold the filters
-                var aFilters = [];
-
-                // Iterate over the selected queues to add corresponding filters
-                aSelectedQueues.forEach(function (oItem) {
-                    var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
-
-                    // Add filter for the selected process queue
-                    aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
-                });
-
-                // Combine the filters with an OR condition
-                var oCombinedFilter = new sap.ui.model.Filter({
-                    filters: aFilters,
-                    and: false // This specifies the OR condition
-                });
-
-                // Fetch data from the model with applied filters
-                var oModel = this.getOwnerComponent().getModel();
-                oModel.read("/ProcessAreaSet", {
-                    filters: [oCombinedFilter],
-                    success: function (oData) {
-                        // Process data to ensure matching with selected groups
-                        var oGroupQueueMap = {};
-                        var isValid = true;
-
-                        // Build a map of group-queue relations
-                        oData.results.forEach(function (oItem) {
-                            var sGroup = oItem.Processgroup;
-                            var sQueue = oItem.Queue;
-
-                            if (!oGroupQueueMap[sGroup]) {
-                                oGroupQueueMap[sGroup] = [];
-                            }
-                            oGroupQueueMap[sGroup].push(sQueue);
-                        });
-
-                        // Validate that the Queue selection matches the Group selections
-                        aSelectedGroups.forEach(function (oGroupItem) {
-                            var sGroupKey = oGroupItem.getText();
-                            var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
-                                var sQueueKey = oQueueItem.getText();
-                                return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
-                            });
-
-                            if (!bQueueMatched) {
-                                isValid = false;
-
-                                // Set the value state to Error for Queue MultiComboBox
-                                oQueueMultiComboBox.setValueState("Error");
-                                oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
-
-                                // Show error message
-                                sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
-                            }
-                        });
-
-                        if (!isValid) {
-                            return;
-                        }
-
-                        // Reset value state to None if validation is successful
-                        oQueueMultiComboBox.setValueState("None");
-
-                    },
-                    error: function (oError) {
-                        // Handle error if necessary
-                        sap.m.MessageToast.show("Failed to fetch data.");
-                    }
-                });
+            onSelectQueue:function(){
+                 // Get the MultiComboBox instances for Group and Queue
+                 var oGroupMultiComboBox = this.byId("idGroupSelect");
+                 var oQueueMultiComboBox = this.byId("idQueueSelect");
+ 
+                 // Retrieve the selected items
+                 var aSelectedGroups = oGroupMultiComboBox.getSelectedItems();
+                 var aSelectedQueues = oQueueMultiComboBox.getSelectedItems();
+ 
+                 // Initialize an array to hold the filters
+                 var aFilters = [];
+ 
+                 // Iterate over the selected queues to add corresponding filters
+                 aSelectedQueues.forEach(function (oItem) {
+                     var sQueueKey = oItem.getText(); // Get the key (e.g., "Queue1", "Queue2", etc.)
+ 
+                     // Add filter for the selected process queue
+                     aFilters.push(new sap.ui.model.Filter("Queue", sap.ui.model.FilterOperator.EQ, sQueueKey));
+                 });
+ 
+                 // Combine the filters with an OR condition
+                 var oCombinedFilter = new sap.ui.model.Filter({
+                     filters: aFilters,
+                     and: false // This specifies the OR condition
+                 });
+ 
+                 // Fetch data from the model with applied filters
+                 var oModel = this.getOwnerComponent().getModel();
+                 oModel.read("/ProcessAreaSet", {
+                     filters: [oCombinedFilter],
+                     success: function (oData) {
+                         // Process data to ensure matching with selected groups
+                         var oGroupQueueMap = {};
+                         var isValid = true;
+                         // Build a map of group-queue relations
+                         oData.results.forEach(function (oItem) {
+                             var sGroup = oItem.Processgroup;
+                             var sQueue = oItem.Queue;
+ 
+                             if (!oGroupQueueMap[sGroup]) {
+                                 oGroupQueueMap[sGroup] = [];
+                             }
+                             oGroupQueueMap[sGroup].push(sQueue);
+                         });
+ 
+                         // Validate that the Queue selection matches the Group selections
+                         aSelectedGroups.forEach(function (oGroupItem) {
+                             var sGroupKey = oGroupItem.getText();
+                             var bQueueMatched = aSelectedQueues.some(function (oQueueItem) {
+                                 var sQueueKey = oQueueItem.getText();
+                                 return oGroupQueueMap[sGroupKey] && oGroupQueueMap[sGroupKey].includes(sQueueKey);
+                             });
+ 
+                             if (!bQueueMatched) {
+                                 isValid = false;
+ 
+                                 // Set the value state to Error for Queue MultiComboBox
+                                 oQueueMultiComboBox.setValueState("Error");
+                                 oQueueMultiComboBox.setValueStateText("Please select at least one queue related to the selected groups.");
+ 
+                                 // Show error message
+                                 sap.m.MessageToast.show("Please select at least one queue related to the selected groups.");
+                             }
+                         });
+ 
+                         if (!isValid) {
+                             return;
+                         }
+ 
+                         // Reset value state to None if validation is successful
+                         oQueueMultiComboBox.setValueState("None");
+ 
+                     },
+                     error: function (oError) {
+                         // Handle error if necessary
+                         sap.m.MessageToast.show("Failed to fetch data.");
+                     }
+                 });
+          
             },
             OnPressHUQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HuQuery");
-
+                var oInput = this.byId("_IDGenInput1");
+                if (oInput) {
+                    oInput.focus();
+                }
             },
             OnPressStockBinQueryByBin: function () {
+                debugger
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByBin");
 
             },
+           onReceivingofHUbyASN: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyASN");
 
+            },
+
+            /**Navigate to Unloading By ASN Page */
+            onUnloadingBYASN: function () {
+                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails")
+
+            },
+ 
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor");
             },
-            
-
-
             onPutawayByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU");
@@ -1541,31 +1513,254 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyDelivery");
             },
+
+            //Putaway By WO Tile..
             onTilePressPutawayByWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PutawayByWO");
             },
 
+
+            //AvailableHandlingunitsOnBinQuery Tile...
+            OnPressAvailableHandlingUnitsOnBinQuery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AvailableHandlingUnitsOnBinQuery");
+            },
+            //WTQueryByHU Tile...
+            OnPressWTquerybyHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByHU");
+            },
+
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-           //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
+                //  this.getOwnerComponent().getRouter().navTo("RouteBilloflading");
                 oRouter.navTo("RouteBillofLading");
             },
-            onUnloadingByDoorTilePress:function () {
+            onUnloadingByDoorTilePress: function () {
+                // BusyIndicator.show(3);
+                // setTimeout(function () {
+                //     // Navigate to another page (user page)
+                //     var oRouter = this.getOwnerComponent().getRouter();
+                //     oRouter.navTo("UnloadingByDoor");
+                //     BusyIndicator.hide();
+                //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByDoor");
- 
+                    oRouter.navTo("UnloadingByDoor");
+
             },
-            onUnloadingByBillofLadingPress:function () {
+            onUnloadingByConsignmentOrderTilePress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("UnloadingByConsignmentOrder");
+
+            },
+            onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading");
+ 
+            },
+            onUnloadingByShipmentPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment");
+ 
+            },
+            onUnloadingByTUPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU");
+ 
+            },
+            onPressCreateAdhocHUWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocHuWt");
+ 
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+ 
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery");
+ 
+            },
+            OnPressCreateandConfirmAdhocHUWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu");
+
+            },
+            onReceivingofHUbyConsignementOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("Receivingofhubyco");
 
             },
 
+            onGetOTP: function () {
+                // Get the phone number from the input field
+                var sPhoneNumber = this.byId("idPhoneInput").getValue();
 
-            // added by subhash 
 
 
+                // Basic validation to ensure the phone number is entered
+                if (!sPhoneNumber) {
+                    sap.m.MessageToast.show("Please enter a valid phone number.");
+                    return;
+                }
+
+                // Prepare the Twilio API details
+                var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
+                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account 
+                const authToken = 'b0825bb59321ebdf831fda7a8507dc45'; // Replace with your Twilio Auth Token
+                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
+                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
+
+                // Prepare the data for the request
+                const payload = {
+                    To: formattedPhoneNumber,
+                    Channel: 'sms'
+                };
+
+                var This = this;
+
+                // Make the AJAX request to Twilio to send the OTP
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: $.param(payload),
+                    success: function (data) {
+                        console.log('OTP sent successfully:', data);
+                        sap.m.MessageToast.show('OTP sent successfully! Please check your phone.');
+                        This.byId("idOtpInputsv").setVisible(true);
+
+                        // Store the phone number for later use in OTP verification
+                        this._storedPhoneNumber = formattedPhoneNumber;
+
+                        // Open the OTP dialog
+
+                    }.bind(this),
+                    error: function (xhr, status, error) {
+                        console.error('Error sending OTP:', error);
+                        sap.m.MessageToast.show('Failed to send OTP: ' + error);
+                    }
+                });
+            },
+            onSubmitOtp: function () {
+                var oMobileinput = this.byId("idPhoneInput")
+                var oOtpInput = this.byId("idOtpInputsv");
+                var oVerfied = this.byId("verficationIdicon");
+                var oGetotp = this.byId("getotpsv");
+                var sEnteredOtp = oOtpInput.getValue();
+
+                // Reset the ValueState and ValueStateText before validation
+                oOtpInput.setValueState(sap.ui.core.ValueState.None);
+                oOtpInput.setValueStateText("");
+
+                // Basic validation: Check if OTP is entered
+                if (!sEnteredOtp) {
+                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
+                    oOtpInput.setValueStateText("Please enter the OTP.");
+                    sap.m.MessageToast.show("Please enter the OTP.");
+                    return;
+                }
+
+                // Validate OTP: It should be exactly 6 digits
+                var otpRegex = /^\d{6}$/;
+                if (!otpRegex.test(sEnteredOtp)) {
+                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
+                    oOtpInput.setValueStateText("Please enter a valid 6-digit OTP.");
+                    sap.m.MessageToast.show("Please enter a valid 6-digit OTP.");
+                    return;
+                }
+
+                // Prepare the Twilio Verify Check API details
+                const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
+                const authToken = 'b0825bb59321ebdf831fda7a8507dc45'; // Replace with your Twilio Auth Token
+                const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
+                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`;
+                const payload = {
+                    To: this._storedPhoneNumber,
+                    Code: sEnteredOtp
+                };
+
+                // Make the AJAX request to Twilio to verify the OTP
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: $.param(payload),
+                    success: function (data) {
+                        if (data.status === "approved") {
+                            sap.m.MessageToast.show("OTP verified successfully!");
+                            oOtpInput.setValueState(sap.ui.core.ValueState.Success).setEditable(false);
+                            oMobileinput.setValueState(sap.ui.core.ValueState.Success);
+                            oMobileinput.setEditable(false);
+                            oVerfied.setVisible(true);
+                            oGetotp.setVisible(false);
+                            setTimeout(function() {
+                                oOtpInput.setVisible(false);
+                            }, 5000); 
+
+
+
+                            // Reset the ValueState to None upon successful verification
+
+                            oOtpInput.setValueStateText("OTP verified successfully");
+                            this.bOtpVerified = true;
+
+                            // Proceed with further actions
+                        } else {
+                            oOtpInput.setValueState(sap.ui.core.ValueState.Error);
+                            oOtpInput.setValueStateText("Invalid OTP. Please try again.");
+                            sap.m.MessageToast.show("Invalid OTP. Please try again.");
+                            oMobileinput.setValueState(sap.ui.core.ValueState.Error);
+                            oMobileinput.setValueStateText("Recheck your Mobile Number");
+                        }
+                    }.bind(this),
+                    error: function (xhr, status, error) {
+                        console.error('Error verifying OTP:', error);
+                        sap.m.MessageToast.show('Failed to verify OTP: ' + error);
+                    }
+                });
+            },
+
+
+            onReceivingofHUbyShipment:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingofHUbyShipment");
+            },
+            OnPressWTQuerybyWO:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO");
+            },
+
+
+            OnPressSerialnumberLocation:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+        },
+
+            OnPressWTQuerybyWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT");
+
+            },
+            
+            onReceivingofHUbyTU:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+            },
+            OnPressWTQuerybyWT:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT");
+            },
+            
         });
     }
 );

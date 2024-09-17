@@ -76,9 +76,15 @@
                     columnsM="1"
                     columnsS="1"
                 >
+                <VBox alignContent="Center"
+                        alignItems="Center">
+
+                        <Title text="Create and Confirm Adhoc HU"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idInitialHuPage1"
-                        class="sapUiMediumMargin"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <Label
                             id="idHuLabel"
@@ -97,6 +103,7 @@
                         />
                        
                     </HBox>
+                    </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
@@ -119,6 +126,8 @@
                 >
                     <VBox
                         id="idsecondHuPage2"
+                        alignContent="Center"
+                        alignItems="Center"
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label
@@ -135,6 +144,7 @@
                             <Label
                                 id="idSrcBinLabel1"
                                 text="Src Bin"
+                 
                                  width="100px"
                             />
                             <Input
@@ -171,6 +181,9 @@
                 >
                     <VBox
                         id="idthirdHuPage1"
+                        alignContent="Center"
+                        alignItems="Center"
+
                     >
                         <HBox class="sapUiTinyMargin">
                             <Label

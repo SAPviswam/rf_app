@@ -1,0 +1,911 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.UnloadingByShipment"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPage_UnloadingByShipment">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeader_UnloadingByShipment_UBYSHP">
+                <Image
+                    id="_IDGenImage1_UnloadingByShipment_UBYSHP"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_UnloadingByShipment_UBYSHP"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_UnloadingByShipment_UBYSHP">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1_UnloadingByShipment_UBYSHP"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1_UnloadingByShipment_UBYSHP"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idNavBackButton0_UBYSHP"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback0"
+                />
+                <Button
+                    id="idNavBackButton0_1_UBYSHP"
+                    icon="sap-icon://nav-back"
+                    press="OnpressbackToInput"
+                    visible="false"
+                />
+
+                <VBox
+                    id="vBox_BOL_UBYSHP"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="mainfirstpageTitle_UBYSHP"
+                        text="Unloading by Shipment"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormBOL_UBYSHP"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHBox1_UBYSHP"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idShipmentLabel_UBYSHP"
+                                text="Shipment:"
+                                class="classUOMbyASn"
+                            />
+                            <!-- Input Field -->
+                            <Input
+                                id="idShipmentinput_UBYSHP"
+                                placeholder="..."
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraOneShipment_UBYSHP"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter HU Number"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <Button
+                                id="idButtonSubmit_UBYSHP"
+                                text="Submit"
+                                press="Onpresssubmit"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+
+                <Panel
+                    id="idPanel_UBYSHP"
+                    headerText="Shipment"
+                    visible="false"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idTable_UBYSHP"
+                        growing="true"
+                        growingScrollToLoad="true"
+                       
+                        growingThreshold="3"
+                          mode="SingleSelectMaster" 
+   
+                        
+                    >
+                        <columns>
+                            <Column id="idclmnLabel_UBYSHP">
+                                <header>
+                                    <Label
+                                        id="id1_UBYSHP"
+                                        text="S.NO"
+                                    />
+                                </header>
+                            </Column>
+                            <Column id="idclmn1_UBYSHP">
+                                <header>
+                                    <Label
+                                        id="idSl1_UBYSHP"
+                                        text="Delivery"
+                                    />
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="nListItem2_UBYSHP">
+                                <cells>
+                                    <Text
+                                        id="idltext_UBYSHP"
+                                        text="No"
+                                    />
+                                    <Text
+                                        id="idltext1_UBYSHP"
+                                        text="delivery"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page2Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <Button
+                    id="idNavBackButton1_UBYSHP"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback1"
+                />
+                <VBox
+                    id="idMainVBox_UBYSHP"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="Title_UBYSHP"
+                        text="HU Details"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1_UBYSHP"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <!-- Delivery Field -->
+                        <Label
+                            id="idDeliveryLabel1_UBYSHP"
+                            text="Delivery"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idDeliveryInput_UBYSHP"
+                            placeholder="Enter Delivery..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <Label
+                            id="idItemNoLabel_UBYSHP"
+                            text="Item No"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idItemNoInput_UBYSHP"
+                            placeholder="Enter Item No..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- Vendor Field -->
+                        <Label
+                            id="idVendorLabel_UBYSHP"
+                            text="Vendor"
+                        />
+                        <Input
+                            id="idVendorInput_UBYSHP"
+                            placeholder="Enter Vendor..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- No. of HU Field -->
+                        <Label
+                            id="idNoOfHULabel_UBYSHP"
+                            text="No. of HU"
+                        />
+                        <Input
+                            id="idNoOfHUInput_UBYSHP"
+                            placeholder="Enter No. of HU..."
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- HU Field -->
+                        <Label
+                            id="idHULabel_UBYSHP"
+                            text="HU"
+                        />
+                        <VBox id="idHUVBox_UBYSHP">
+                            <Input
+                                id="idHUInput_UBYSHP"
+                                placeholder="Enter HU..."
+                                maxLength="25"
+                                width="200px"
+                            />
+
+                            <!-- HU List and New HU Buttons Positioned Below HU Field -->
+                            <HBox
+                                id="idHUButtonHBox1_UBYSHP"
+                                class="sapUiSmallMarginTop"
+                               
+                            >
+                                <Button
+                                    id="idHUListButton_UBYSHP"
+                                    text="HU List"
+                                    press="onHUListPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idNewHUButton_UBYSHP"
+                                    text="New HU"
+                                    class="sapUiTinyMarginEnd"
+                                    press="onNewHUPress"
+                                />
+                                <Button
+                                    id="idGRButton_UBYSHP"
+                                    text="GR"
+                                    press="onGRRPress"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHUButtonHBox2_UBYSHP"
+                                class="sapUiSmallMarginTop"
+                                justifyContent="Start"
+                            >
+                                <Button
+                                    id="idHUChangeButton_UBYSHP"
+                                    text="HU Change"
+                                    press="onHUContentPress"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idUnloadButtoninpage2_UBYSHP"
+                                    text="Unload"
+                                    press="onHUHierarchyPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page3Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_UBYSHP"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton2_UBYSHP"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback2"
+                    />
+                    <Title
+                        id="idTitle_UBYSHP"
+                        text="HU List"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_UBYSHP"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+                <VBox
+                    id="idMainVBox_UBYSHPL"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Table
+                        id="idHuDetailsTable_UBYSHP"
+                        inset="false"
+                        items="{/productData}"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        mode="None"
+                    >
+                        <columns>
+                            <Column
+                                id="idSerialNoColumn_UBYSHP"
+                                width="17%"
+                            >
+                                <Text
+                                    id="idSerialNoHeader_UBYSHP"
+                                    text="S.No"
+                                />
+                            </Column>
+                            <Column id="idHuNoColumn_UBYSHP">
+                                <Text
+                                    id="idHuNoHeader_UBYSHP"
+                                    text="HU No"
+                                />
+                            </Column>
+                            <Column id="idProductColumn_UBYSHP">
+                                <Text
+                                    id="idProductHeader_UBYSHP"
+                                    text="Product"
+                                />
+                            </Column>
+                            <Column id="idProductDescriptionColumn_UBYSHP">
+                                <Text
+                                    id="idProductDescriptionHeader_UBYSHP"
+                                    text="Product Description"
+                                />
+                            </Column>
+                            <Column id="idQuantityColumn_UBYSHP">
+                                <Text
+                                    id="idQuantityHeader_UBYSHP"
+                                    text="Quantity"
+                                />
+                            </Column>
+                            <Column id="idUOMColumn_UBYSHP">
+                                <Text
+                                    id="idUOMHeader_UBYSHP"
+                                    text="UOM"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="id_UBYSHP">
+                                <Text
+                                    id="idSerialNoItem_UBYSHP"
+                                    text="{SerialNo}"
+                                />
+                                <Text
+                                    id="idHuNoItem_UBYSHP"
+                                    text="{HuNo}"
+                                />
+                                <Text
+                                    id="idProductItem_UBYSHP"
+                                    text="{Product}"
+                                />
+                                <Text
+                                    id="idProductDescriptionItem_UBYSHP"
+                                    text="{ProductDescription}"
+                                />
+                                <Text
+                                    id="idQuantityItem_UBYSHP"
+                                    text="{Quantity}"
+                                />
+                                <Text
+                                    id="idUOMItem_UBYSHP"
+                                    text="{UOM}"
+                                />
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page4Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_UBYSHP_page4"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton3_UBYSHP"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback3"
+                    />
+                    <Title
+                        id="idTitle_UBYSHP_page4"
+                        text="New HU"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_UBYSHP_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_UBYSHP"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <!-- Product Field -->
+                    <Label
+                        id="idProductLabel_UBYSHP_page4"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idProductInput_UBYSHP"
+                        placeholder="Enter Product..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- Qty Field -->
+                    <Label
+                        id="idHubyASNLabelQty_UBYSHP"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_UBYSHP">
+                        <Input
+                            id="idHubyASNqtyInput_UBYSHP"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox
+                            id="idHubyASNHUuombox_UBYSHP"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_UBYSHP"
+                                text="UOM:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_UBYSHP"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                    </HBox>
+                    <!-- Packaging Material Field -->
+                    <Label
+                        id="idPackagingMaterialLabel_UBYSHP"
+                        text="Packaging Material"
+                    />
+                    <Input
+                        id="idPackagingMaterialInput_UBYSHP"
+                        placeholder="Enter Packaging Material..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- Batch Field -->
+                    <Label
+                        id="idBatchLabel_UBYSHP"
+                        text="Batch"
+                    />
+                    <Input
+                        id="idBatchInput_UBYSHP"
+                        placeholder="Enter Batch"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- BBD Field -->
+                    <Label
+                        id="idBbdLabel_UBYSHP"
+                        text="BBD"
+                    />
+                    <Input
+                        id="idBbdInput_UBYSHP"
+                        placeholder="Best Before Date"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- Man Field -->
+                    <Label
+                        id="idManLabel_UBYSHP"
+                        text="Man"
+                    />
+                    <Input
+                        id="idManInput_UBYSHP"
+                        placeholder="Manufacture Date"
+                        maxLength="25"
+                        width="100px"
+                    />
+
+                    <!-- Expiry Field -->
+                    <Label
+                        id="idExpiryLabel_UBYSHP"
+                        text="Expiry"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idExpiryInput_UBYSHP"
+                        placeholder="Enter Expiry..."
+                        maxLength="25"
+                        width="100px"
+                    />
+
+                    <!-- COO Field -->
+                    <Label
+                        id="idCooLabel_UBYSHP"
+                        text="COO"
+                    />
+                    <Input
+                        id="idCooInput_UBYSHP"
+                        placeholder="Country of origin"
+                        maxLength="25"
+                        width="100px"
+                    />
+
+                    <!-- Hidden Man Field -->
+                    <Label
+                        id="idHiddenManLabel_UBYSHP"
+                        text="Man"
+                        visible="false"
+                    />
+                    <Input
+                        id="idHiddenManInput_UBYSHP"
+                        placeholder="Enter Man"
+                        maxLength="25"
+                        width="100px"
+                        visible="false"
+                    />
+
+                    <!-- Next or Enter Button -->
+                    <Label id="idNextEnterLabel_UBYSHP" />
+                    <HBox id="idButtonHBox_UBYSHP">
+                        <Button
+                            id="idNextEnterButton_UBYSHP"
+                            text="Next (or) Enter"
+                            class="sapUiTinyMarginEnd"
+                            press="onNextEnterpress"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page5Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_UBYSHP_page5"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton4_UBYSHP"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback4"
+                    />
+                    <Title
+                        id="idTitle_UBYSHP_page5"
+                        text="Choose GR/UNLOAD"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_UBYSHP_page5"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idHuDeliveryForm_UBYSHP"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <!-- HU Number Field -->
+                    <Label
+                        id="idHuNumberLabel_UBYSHP"
+                        text="HU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idHuNumberInput_UBYSHP"
+                        placeholder="Enter HU..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- Delivery Field with GR Button (Quantity) -->
+                    <Label
+                        id="idDeliveryLabel_UBYSHP"
+                        text="Delivery"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idDeliveryInputDelivery_UBYSHP"
+                        placeholder="Delivery..."
+                        width="200px"
+                    />
+                     <Label
+            id="idItem_NOLabel_UBYSHP"
+            text="Item No"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idItem_no_Input__UBYSHP"
+           
+            width="200px"
+        />
+                    <Label
+                        id="idPlaceholderLabel_UBYSHP_page5"
+                        text=""
+                    />
+
+
+                    <HBox
+                        id="idButtonHBox_UBYSHP_page5"
+                        class="sapUiSmallMarginTop"
+                      
+                    >
+                        <Button
+                            id="idGrButton_UBYSHP"
+                            text="GR"
+                            press="onGRPress"
+                            width="100px"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <Button
+                            id="idUnloadButtoninpage5_UBYSHP"
+                            text="Unload"
+                            press="onUnloadPress"
+                            width="100px"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="page6Shipment_UBYSHP"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_UBYSHP_page6"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton5_UBYSHP"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback5"
+                    />
+                    <Title
+                        id="idTitle_UBYSHP_page6"
+                        text="GR"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_UBYSHP_page6"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductQuantityForm_UBYSHP"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <!-- HU Number Field (Product) -->
+                    <Label
+                        id="idProductLabel_UBYSHP_page6"
+                        text="Product"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idProductInputinpage6_UBYSHP"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <!-- Delivery Field with GR Button (Quantity) -->
+                    <Label
+                        id="idQuantityLabelinpage6_UBYSHP"
+                        text="Quantity"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Input
+                        id="idQuantityInputinpage6_UBYSHP"
+                        placeholder="Enter Quantity..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <Label
+                        id="idPlaceholderLabel_UBYSHP_page6"
+                        text=""
+                    />
+
+                    <HBox
+                        id="idGrButtonHBox_UBYSHP_page6"
+                        class="sapUiSmallMarginTop"
+                       
+                    >
+                        <Button
+                            id="idConfirmButton_UBYSHP"
+                            text="Confirm"
+                            press="onConfirmPress"
+                            width="100px"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <Button
+                            id="idCancelButton_UBYSHP"
+                            text="Cancel"
+                            press="onCancelPress"
+                            width="100px"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+    id="page7Shipment_UBYSHP"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+>
+    <HBox
+        id="idMainHBox_UBYSHP_page7"
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+    >
+        <Button
+            id="idNavBackButton55_UBYSHP"
+            icon="sap-icon://nav-back"
+            press="Onpressback6"
+        />
+        <Title
+            id="idTitle_UBYSHP_page7"
+            text="UNLOAD"
+            class="TitleSecondPage"
+            level="H1"
+            textAlign="Center"
+        />
+        <!-- This empty Text element helps push the Title to the center -->
+        <Text
+            id="idEmptyText_UBYSHP_page7"
+            text=""
+            width="32px"
+        />
+    </HBox>
+
+    <f:SimpleForm
+        id="idProducttQuantityForm_UBYSHP"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        columnsL="2"
+        columnsM="1"
+    >
+        <!-- HU Number Field (Product) -->
+        <Label
+            id="idProducttLabel_UBYSHP_page7"
+            text="Product"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idProducttInputinpage7_UBYSHP"
+            placeholder="Enter product..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <!-- Delivery Field with GR Button (Quantity) -->
+        <Label
+            id="idQuantityLabelinpage7_UBYSHP"
+            text="Quantity"
+            class="sapUiTinyMarginEnd"
+        />
+        <Input
+            id="idQuantityInputinpage7_UBYSHP"
+            placeholder="Enter Quantity..."
+            maxLength="25"
+            width="200px"
+        />
+
+        <Label
+            id="idPlaceholderLabel_UBYSHP_page7"
+            text=""
+        />
+        
+        <HBox
+            id="idGrButtonHBox_UBYSHP_page7"
+            class="sapUiSmallMarginTop"
+          
+        >
+           
+
+            <Button
+                id="idUnloadlButton_UBYSHP"
+                text="Unload"
+                press="onUnloadPress"
+                width="100px"
+                class="sapUiTinyMarginEnd"
+            />
+        </HBox>
+    </f:SimpleForm>
+</ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

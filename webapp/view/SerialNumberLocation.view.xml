@@ -1,0 +1,573 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.SerialNumberLocation"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageSNL">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderSNL">
+                <Button
+                    id="idSNLfirstBackBtn"
+                    icon="sap-icon://nav-back"
+                    press="onSNLfirxtBackBtnPress"
+                    visible="true"
+                />
+                 <Button
+                    id="idSNLSecondBackBtn"
+                    icon="sap-icon://nav-back"
+                    press="onSNLSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idSNLthirdBackBtn"
+                    icon="sap-icon://nav-back"
+                    press="onSNLthirdBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idSNLfourthBackBtn"
+                    icon="sap-icon://nav-back"
+                    press="onSNLfourthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idSNLfifthBackBtn"
+                    icon="sap-icon://nav-back"
+                    press="onSNLfifthBackBtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="_IDGenImage1SNL"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorSNL"
+                />
+                <ToolbarSpacer id="idToolbarSpacerSNL">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1SNL"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1SNL"
+                    displaySize="XS"
+                    press="onSNLAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idSNLFirstSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+
+
+                    <Title text="Serial Number Location"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
+
+                        <HBox
+                            id="idSNLHbox"
+                            class="sapUiMediumMargin"
+                        >
+                            <Label
+                                id="idSNLroductLabel"
+                                text="Product"
+                                width="100px"
+                                 class="sapUiTinyMargin"
+
+                            />
+                            <Input
+                                id="idSNLproductInput"
+                                value=""
+                                liveChange="onSNLproductLiveChange"
+                            />
+                            <Button
+                                id="idSNLproductScannerBtn"
+                                icon="sap-icon://bar-code"
+                                press="onSNLproductBarcodeScanner"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idSNLsecondSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    id="simpleform2"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox alignContent="Center" alignItems="Center">
+                        <HBox>
+                            <Label
+                                id="idSNLPro"
+                                text="Product"
+                                width="100px"
+
+                                 class="sapUiTinyMargin"
+
+                            />
+                            <Input
+                                id="idSNLProInput"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSNLSno"
+                                text="Serial Number"
+                                width="100px"
+
+                                 class="sapUiTinyMargin"
+
+                            />
+                            <Input
+                                id="idSNLsnoInput"
+                                value=""
+                                liveChange="onSNLsnoLiveChange"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idSNLthirdSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    id="simpleform3"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox alignContent="Center" alignItems="Center">
+                        <HBox>
+                            <Label
+                                id="idSNLPro1"
+                                text="Product"
+                                width="100px"
+                            />
+                            <Input
+                                id="idSNLProInput1"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSNLSno1"
+                                text="Serial Number"
+                                width="100px"
+                            />
+                            <Input
+                                id="idSNLsnoInput1"
+                                value=""
+                               
+                            />
+                        </HBox>
+
+                        <VBox class="sapUiMediumMarginBottom"></VBox>
+
+ <HBox
+                                alignItems="Center"
+                                justifyContent="Center"
+                                width="100%"
+                            >
+                                <Table
+                                    id="idSNLTable"
+                                    growing="true"
+                                    growingScrollToLoad="true"
+                                    mode="None"
+                                    width="100%"
+                                >
+                                    <columns>
+                                        <Column id="idSNLBinNoColumn">
+                                            <Text
+                                                id="idSNLBinNoText"
+                                                text="Bin No"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLBinColumn">
+                                            <Text
+                                                id="idSNLBinText"
+                                                text="Bin"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLColumn">
+                                            <Text
+                                                id="idSNLText"
+                                                text="P"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLPcColumn">
+                                            <Text
+                                                id="idSNLPcText"
+                                                text="pc"
+                                            />
+                                        </Column>
+                                    </columns>
+
+                                    <items>
+                                        <ColumnListItem
+                                            id="idGenSNLColumnListItem"
+                                        >
+                                            <cells>
+                                                <Text
+                                                    id="idSNLBinNoCell"
+                                                    text=""
+                                                />
+                                                <Text
+                                                    id="idSNLBinCell"
+                                                    text=""
+                                                />
+                                                <Text
+                                                    id="idSNLpCell"
+                                                    text=""
+                                                />
+                                                <Text
+                                                    id="idSNLpc"
+                                                    text=""
+                                                />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </HBox>
+ <VBox class="sapUiLargeMarginBottom" />
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
+                        >
+                            <Button
+                                id="idSNLprdDe"
+                                text="Prd De"
+                                class="sapUiTinyMargin"
+                                press="onSNLPreDePress"
+                            />
+
+                            <Button
+                                id="idSNLBinDe"
+                                text="Bin De"
+                                class="sapUiTinyMargin"
+                                press="onSNLBinDePress"
+                            />
+                            
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+             <ScrollContainer
+                id="idSNLfourthSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    id="simpleform4"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignItems="Center"
+                        justifyContent="Center"
+                        width="100%"
+                    >
+                        <Title text="Product Description" />
+                        <VBox class="sapUiLargeMarginBottom" />
+                        <HBox>
+                            <Label
+                                id="idSNLSnoLabel2"
+                                text="Serial Number"
+                                width="100Px"
+                            />
+                            <Input
+                                id="idSNLSnoInput"
+                                value=""
+                            />
+                            </HBox>
+                        <HBox>
+                            <Label
+                                id="idSNLEANLabel"
+                                text="EAN/UPC"
+                                width="70Px"
+                            />
+                            <Input
+                                id="idSNLEANInput"
+                                value=""
+                            />
+                            <Input
+                                id="idSNLEANInput2"
+                                value=""
+                            />
+                        </HBox>
+
+                        <HBox>
+                            <Label
+                                id="idSNLTotWLabel"
+                                text="TotW"
+                                width="70Px"
+                            />
+                            <Input
+                                id="idSNLTotWInput"
+                                value=""
+                            />
+                            <Input
+                                id="idSNLTotWInput2"
+                                value="KG"
+                            />
+                        </HBox>
+
+                        <HBox>
+                            <Label
+                                id="idSNLTotVLabel"
+                                text="TotV"
+                                width="70Px"
+                            />
+                            <Input
+                                id="idSNLTotVInput"
+                                value=""
+                            />
+                            <Input
+                                id="idSNLTotVInput2"
+                                value="L"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idSNLFifthSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    id="simpleform5"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignItems="Center"
+                        justifyContent="Center"
+                        width="100%"
+                    >
+                        <VBox class="sapUiLargeMarginBottom" />
+                        <HBox>
+                            <Label
+                                id="idSNLBinLabel"
+                                text="Bin"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLBinInput"
+                                value=""
+                            />
+                            <Label
+                                text=""
+
+                                width="20px"
+
+                                width="30px"
+
+                            />
+                            <Label
+                                id="idSNLStorTypeLabel"
+                                text="StorageType"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLStoreTypeInput"
+                                value=""
+                            />
+                        </HBox>
+
+                        <HBox>
+                            <Label
+                                id="idSNLQtyLabel"
+                                text="Qty"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLQtyWInput"
+                                value=""
+                            />
+                             <Label
+                                text=""
+
+                                width="20px"
+
+                                width="30px"
+
+                            />
+                            <Label
+                                id="idSNLStorSecLabel"
+                                text="Storage Sec"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLStorSecInput"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQNoOfHuLabel"
+                                text="No of Hu's"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLNoOfHuInput"
+                                value=""
+                            />
+                             <Label
+                                text=""
+
+                                width="20px"
+
+                                width="30px"
+
+                            />
+                            <Label
+                                id="idSNLBinAisleLabel"
+                                text="Bin Aisle"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLBinAisleInput"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQMaxWLabel"
+                                text="MaxW"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLMaxWInput"
+                                value=""
+                            />
+                            
+                            <Text text="KG"/>
+                             <Label
+                                text=""
+
+                                width="20px"
+
+                                width="30px"
+
+                            />
+                            <Label
+                                id="idSNLBinLevelLabel"
+                                text="Bin Level"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLBinLevelInput"
+                                value=""
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                id="idSBQMaxVLabel"
+                                text="MaxV"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLMaxVInput"
+                                value=""
+                            />
+                            <Text text="M3"/>
+                             <Label
+                                text=""
+
+                                width="20px"
+
+                                width="30px"
+
+                            />
+                            <Label
+                                id="idSNLStackLabel"
+                                text="Stack"
+                                width="90Px"
+                            />
+                            <Input
+                                id="idSNLStackInput"
+                                value=""
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

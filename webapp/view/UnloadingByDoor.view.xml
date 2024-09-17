@@ -50,8 +50,6 @@
         </tnt:header>
 
         <tnt:mainContents>
-           
-
             <ScrollContainer
                 id="icon1_UBYD"
                 width="100%"
@@ -61,65 +59,75 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-             <Button
-                id="_IDGenButton77_UBYD"
-                icon="sap-icon://nav-back"
-                press="onPressBackToHome"
-                visible="true"
-            />
-                <Title
-                    id="idPageTitle_UBYD"
-                    text="Unloading By Door"
-                    level="H2"
-                    class="titles_UBYD"
+                <Button
+                    id="_IDGenButton77_UBYD"
+                    icon="sap-icon://nav-back"
+                    press="onPressBackToHome"
+                    visible="true"
                 />
-                <f:SimpleForm
-                    id="simpleForm_UBYD"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                    singleContainerFullSize="false"
-                    class="FormBack"
+                <VBox
+                    id="IDRHBSGenVBoxpage_UBYD"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
                 >
-                    <Label
-                        id="_IDGenLabel1_UBYD"
-                        text="Warehouse Door"
+                    <Title
+                        id="idPageTitle_UBYD"
+                        text="Unloading By Door"
+                        level="H2"
                     />
-                    <Input
-                        id="_IDGenInput1_UBYD"
-                        placeholder="Enter Door Number"
-                    />
-                    <HBox
-                        id="_idhbox_unknw_UBYD"
-                        class="sapTinyMarginEnd"
+                    <f:SimpleForm
+                        id="simpleForm_UBYD"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
                     >
-                        <!-- Barcode Scan Button -->
-                        <Button
-                            id="_IDGenButton11_UBYD"
-                            icon="sap-icon://bar-code"
-                            press="Onpressscan"
-                            class="sapUiTinyMarginEnd"
-                        />
-                        <!-- Submit Button -->
-                        <Button
-                            id="_IDGenButton111_UBYD"
-                            text="Submit"
-                            class="sapUiTinyMarginEnd"
-                            press="Onpresssubmit"
-                        />
-                    </HBox>
-                </f:SimpleForm>
+                        <HBox
+                            id="_idhbox_unknw_UBYD"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="_IDGenLabel1_UBYD"
+                                text="Warehouse Door:"
+                            />
+                            <Input
+                                id="_IDGenInput1_UBYD"
+                                placeholder="Enter Door Number"
+                                class="sapUiTinyMarginBegin"
+                            />
+
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButton_UBYD"
+                                scanSuccess="onScanSuccess"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Door Number"
+                                class="sapUiMediumMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <Button
+                                id="_IDGenButton111_UBYD"
+                                text="Submit"
+                                class="sapUiTinyMarginBegin"
+                                press="Onpresssubmit"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
             </ScrollContainer>
 
             <ScrollContainer
@@ -142,7 +150,7 @@
                 />
                 <f:SimpleForm
                     id="simpleForm1_UBYD"
-                   editable="true"
+                    editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -164,19 +172,32 @@
                         text="Delivery"
                         class="sapUiTinyMarginEnd"
                     />
+                    <HBox id="idHBx__UBYCONORDR" >
                     <Input
-                        id="_IDGenInput2_UBYD"
-                        placeholder="Enter Delivery..."
+                        id="_IDGenInt2_UBYCONORDR"
+                        placeholder="Enter Delivery"
                         maxLength="25"
-                        width="300px"
+                        width="115px"
                     />
+                         <Label
+                        id="idItemNoLal_UBYCONORDR"
+                        text="Item No:"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                    />
+                    <Input
+                        id="idItemNoIt_UBYCONORDR"
+                        placeholder="Enter Item No"
+                        width="115px"
+                    />
+
+                    </HBox>
                     <Label
                         id="_IDGenLabel3_UBYD"
                         text="Vendor"
                     />
                     <Input
                         id="_IDGenInput3_UBYD"
-                        placeholder="Enter Vendor..."
+                        placeholder="Enter Vendor"
                         maxLength="25"
                         width="300px"
                     />
@@ -187,7 +208,7 @@
                     />
                     <Input
                         id="_IDGenInput4_UBYD"
-                        placeholder="Enter No. of HU..."
+                        placeholder="Enter No. of HU"
                         maxLength="25"
                         width="300px"
                     />
@@ -198,18 +219,8 @@
                     />
                     <Input
                         id="_IDGenInput5_UBYD"
-                        placeholder="Enter HU..."
+                        placeholder="Enter HU"
                         maxLength="25"
-                        width="300px"
-                    />
-                    <Label
-                        id="idItemNoLabel_UBYD"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoInput_UBYD"
-                        placeholder="Enter Item No..."
                         width="300px"
                     />
                     <VBox id="_IDGenVBox13_UBYD">
@@ -357,7 +368,7 @@
                     </Table>
                 </VBox>
             </ScrollContainer>
-        
+
             <ScrollContainer
                 id="icon4_UBYD"
                 width="100%"
@@ -365,20 +376,19 @@
                 horizontal="false"
                 vertical="true"
             >
-                <Button 
-                id="_IDGenButton3333_UBYD"
-                icon="sap-icon://nav-back"
-                press="Onpressback3"
-            />
+                <Button
+                    id="_IDGenButton3333_UBYD"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback3"
+                />
                 <Title
                     id="idPageTitle2_UBYD"
                     level="H2"
                     class="titles_UBYD"
-
                 />
                 <f:SimpleForm
                     id="simpleForm4_UBYD"
-                     editable="true"
+                    editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -402,7 +412,7 @@
                     />
                     <Input
                         id="_IDGenInput22_UBYD"
-                        placeholder="Enter Product..."
+                        placeholder="Enter Product"
                         maxLength="25"
                         width="300px"
                     />
@@ -412,22 +422,24 @@
                         text="Qty"
                         class="sapUiTinyMarginEnd"
                     />
-                    <Input
-                        id="idItemNoInput2_UBYD"
-                        placeholder="Enter Qty..."
-                        width="300px"
-                    />
+                    <HBox id="idItemNosd_UBYD">
+                        <Input
+                            id="idItemNoInput2_UBYD"
+                            placeholder="Enter Qty"
+                            width="120px"
+                        />
 
-                    <Label
-                        id="idItemNoLab8el_UBYD"
-                        text="UOM"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoInp5ut_UBYD"
-                        placeholder="Enter UOM..."
-                        width="300px"
-                    />
+                        <Label
+                            id="idItemNoLab8el_UBYD"
+                            text="UOM:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItemNoInp5ut_UBYD"
+                            placeholder="Enter UOM"
+                            width="129px"
+                        />
+                    </HBox>
 
                     <Label
                         id="_IDGenLabel32_UBYD"
@@ -435,7 +447,7 @@
                     />
                     <Input
                         id="_IDGenInput32_UBYD"
-                        placeholder="Enter Packaging Material..."
+                        placeholder="Enter Packaging Material"
                         maxLength="25"
                         width="300px"
                     />
@@ -466,23 +478,25 @@
                         id="_IDGenLabel422_UBYD"
                         text="Man"
                     />
-                    <Input
-                        id="_IDGenInput432_UBYD"
-                        placeholder="Enter Man"
-                        maxLength="25"
-                        width="300px"
-                    />
+                    <HBox id="idItemNd_UBYD">
+                        <Input
+                            id="_IDGenInput432_UBYD"
+                            placeholder="Enter Man"
+                            maxLength="25"
+                            width="120px"
+                        />
 
-                    <Label
-                        id="idItemNoLab99el_UBYD"
-                        text="Expiry"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItemNoI8nput_UBYD"
-                        placeholder="Enter Expiry..."
-                        width="300px"
-                    />
+                        <Label
+                            id="idItemNoLab99el_UBYD"
+                            text="Expiry:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItemNoI8nput_UBYD"
+                            placeholder="Enter Expiry"
+                            width="122px"
+                        />
+                    </HBox>
 
                     <Label
                         id="_IDGenLabel4211_UBYD"
@@ -538,7 +552,7 @@
 
                 <f:SimpleForm
                     id="simpleForm5_UBYD"
-                     editable="true"
+                    editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -562,7 +576,7 @@
                     />
                     <Input
                         id="_IDGenInput3442_UBYD"
-                        placeholder="Enter HU..."
+                        placeholder="Enter HU"
                         maxLength="25"
                         width="300px"
                     />
@@ -571,21 +585,23 @@
                         text="Delivery"
                         class="sapUiTinyMarginEnd"
                     />
-                    <Input
-                        id="idItemNoI233nput_UBYD"
-                        placeholder="Delivery..."
-                        width="300px"
-                    />
-                    <Label
-                        id="idItemLabel_UBYD"
-                        text="Item No"
-                        class="sapUiTinyMarginEnd"
-                    />
-                    <Input
-                        id="idItem3nput_UBYD"
-                        placeholder="Item No"
-                        width="300px"
-                    />
+                     <HBox id="idItesmNo_UBYCONORDR">
+                        <Input
+                            id="idIteasmNoI233nput_UBYCONORDR"
+                            placeholder="Delivery"
+                            width="130px"
+                        />
+                        <Label
+                            id="idItemLdel_UBYCONORDR"
+                            text="Item No:"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItem3npsut_UBYCONORDR"
+                            placeholder="Item No"
+                            width="110px"
+                        />
+                    </HBox>
                     <HBox
                         id="_IDGenHBox13_UBYD"
                         class="sapUiSmallMarginTop"
@@ -621,7 +637,7 @@
 
                 <f:SimpleForm
                     id="simpleForm6_UBYD"
-                     editable="true"
+                    editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -645,7 +661,7 @@
                     />
                     <Input
                         id="_IDGenInput312442_UBYD"
-                        placeholder="Enter product..."
+                        placeholder="Enter product"
                         maxLength="25"
                         width="300px"
                     />
@@ -657,7 +673,7 @@
                     />
                     <Input
                         id="idItemNoI233np12ut_UBYD"
-                        placeholder="Enter Quantity..."
+                        placeholder="Enter Quantity"
                         maxLength="25"
                         width="300px"
                     />
@@ -685,7 +701,7 @@
                 />
                 <f:SimpleForm
                     id="simpleForm7_UBYD"
-                     editable="true"
+                    editable="true"
                     layout="ResponsiveGridLayout"
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -709,7 +725,7 @@
                     />
                     <Input
                         id="_IDGenInp234ut312442_UBYD"
-                        placeholder="Enter product..."
+                        placeholder="Enter product"
                         maxLength="25"
                         width="300px"
                     />
@@ -721,7 +737,7 @@
                     />
                     <Input
                         id="idIt1234emNoI233np12ut_UBYD"
-                        placeholder="Enter Quantity..."
+                        placeholder="Enter Quantity"
                         width="300px"
                     />
                     <Button

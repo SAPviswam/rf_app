@@ -1,0 +1,824 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    controllerName="com.app.rfapp.controller.Receivingofhubyco"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageROHCO">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderROHCO">
+                <Image
+                    id="idImage1ROHCO"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorROHCO"
+                />
+                <ToolbarSpacer id="idToolbarSpacerROHCO">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1ROHCO"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1ROHCO"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idROHCOScanManufacturingorder"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <VBox
+                    id="idROHCOanufacturingNoVBox"
+                >
+                    <HBox
+                        id="idHBoxROHCOTitle"
+                        alignItems="Center"
+                    >
+                        <Button
+                            id="idROHCOBackButton"
+                            icon="sap-icon://nav-back"
+                            press="onPressScanCObackbtn"
+                            visible="true"
+                        />
+                        <Title
+                            id="idROHCOManu_orderNo"
+                            text="Consignment Order:"
+                            level="H2"
+                        />
+                    </HBox>
+                    <VBox
+                        id="idROHCOVBoxManufacturingNo"
+                        class="formContainer_PBYWO"
+                    >
+                        <VBox
+                            id="idROHCOVBOXManufacturing"
+                            class="formBox_PBYWO"
+                        >
+                            <Label
+                                id="idROHCOLableManufacturing"
+                                text="Consignment Order:"
+                                class="formLabel_PBYWO"
+                            />
+                            <HBox
+                                id="idROHCOHBoxManuNo"
+                                alignItems="Center"
+                                class="formHBox"
+                                justifyContent="Start"
+                                width="auto"
+                            >
+                                <Input
+                                    id="idROHCOInputManufacturingNo"
+                                    placeholder="Enter Consignment Order no..."
+                                    liveChange="onLiveChange"
+                                    width="120%"
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="idROHCOBarcodeScannerButton"
+                                    scanSuccess="onROHCOScanSuccess"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Enter Manufacturing Number:"
+                                    class="customMargin"
+                                />
+                                <Button
+                                        id="idROHCOSubmmitBtn"
+                                        text="Submit"
+                                        press="onPressROHCOSubmitbtn"
+                                    />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+                <Panel
+                    id="idROHCOPanel"
+                    headerText="Shipment"
+                    visible="false"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idROHCOTable"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        growingThreshold="3"
+                        mode="SingleSelectMaster"
+   
+                       
+                    >
+                        <columns>
+                            <Column id="idROHCOSERIAL">
+                                <header>
+                                    <Label
+                                        id="idROHCOSERIALLabel1"
+                                        text="S.NO"
+                                    />
+                                </header>
+                            </Column>
+                            <Column id="idROHCODelivery">
+                                <header>
+                                    <Label
+                                        id="idROHCODeliveryLabel1"
+                                        text="Delivery"
+                                    />
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idROHCOColumnlistItems">
+                                <cells>
+                                    <Text
+                                        id="idROHCOSerialtext"
+                                        text="S.No"
+                                    />
+                                    <Text
+                                        id="idROHCODeliveryText"
+                                        text="delivery"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+ 
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCODeliverydetailsPage2"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idROHCODeliverydetailsBackBtn"
+                    press="OnpressManuDelDetailsBackbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idROHCODeliverydetailsVBox"
+                    class="SecondPageContainer"
+                    justifyContent="Center"
+                >
+                    <Title
+                        id="idROHCODeliverydetailsTitle"
+                        text="Delivery Details"
+                        level="H2"
+                        class="SecondPageformHeader"
+                    />
+                        <form:SimpleForm
+                            id="idROHCODeliverydetailsSF"
+                            layout="ResponsiveGridLayout"
+                             editable="true"
+                             columnsL="2"
+                            columnsM="1"
+                        >
+                        <!-- Delivery Number -->
+                            <Label
+                                id="idROHCODeliveryNumber"
+                                text="Delivery"
+                               
+                            />
+                            <Input
+                                id="idROHCODeliveryNumberInput"
+                                placeholder="Enter Deliver Number..."
+                                width="10rem"
+                            />
+                            <!-- item no -->
+                            <Label
+                                id="idROHCOItemNo"
+                                text="Item No"
+                               
+                            />
+                            <Input
+                                id="idROHCOItemNoInput"
+                                placeholder="Enter item Number..."
+                                width="10rem"
+                            />
+                           
+                            <!-- Vendor Field -->
+                            <Label
+                                id="idROHCOVendorofDelivery"
+                                text="Vendor"
+                               
+                            />
+                            <Input
+                                id="idROHCOVendorofDeliveryInput"
+                                placeholder="Enter Vendor..."
+                                width="7rem"
+                               
+                            />
+                            <!-- No.of HU -->
+                            <Label
+                                id="idROHCOforNOofHU"
+                                text="No.of HU"
+                               
+                            />
+                            <Input
+                                id="idROHCOforNOofHUInput"
+                                placeholder="Enter No.of HU..."
+                                width="7rem"
+                               
+                            />
+                            <!-- HU field -->
+                            <Label
+                                id="idROHCOHUlabel"
+                                text="HU"
+                               
+                            />
+                            <VBox>
+                            <Input
+                                id="idROHCOHUInput"
+                                placeholder="Enter HU...."
+                                width="7rem"
+                            />
+                           
+                            <HBox
+                                id="idROHCOHbox"
+                               
+                            >
+                                <Button
+                                    id="idROHCOButtonHulist"
+                                    text="HU List"
+                                    press="onPressROHCOHUListPress"
+                                    class="ButtonsSpaceSecondPage"
+                                />
+                                <Button
+                                    id="idButtonNewHUDelivery"
+                                    text="New HU"
+                                    press="onPressROHCONewHU"
+                                    class="ButtonsSpaceSecondPage"
+                                />
+                                <Button
+                                        id="idROHCOButtonGRDelivery"
+                                        text="GR"
+                                        press="onPressROHCOGR"
+                                    />
+                            </HBox>
+                            <HBox>
+                                    <Button
+                                        id="idROHCOButtonHuChange"
+                                        text="HU Change"
+                                        press="onROHCOHUChangePress"
+                                       
+                                    />
+                                    <Button
+                                        id="idROHCOButtonUnloadDelivery"
+                                        text="Unload"
+                                        press="onROHCOUnloadDeliveryPress"
+                                       
+                                    />
+                                    <Button
+                                        id="idROHCOButtonCreateWT"
+                                        text="Create WT"
+                                        press="onROHCOPressCreateWT"
+                                       
+                                    />
+                                    <Button
+                                        id="idROHCOButtonConfirmWT"
+                                        text="Confirm WT"
+                                        press="onROHCOPressConfirmWT"
+                                       
+                                    />
+                                </HBox>
+                                </VBox>
+                        </form:SimpleForm>
+                    </VBox>
+                <!-- </VBox> -->
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCOHUListPage3"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idROHCOHUlistBackbutton"
+                    press="OnpressROHCOHUlistBackbtn"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox id="idROHCOHUListVbox1">
+                    <Toolbar
+                        id="idROHCOHUListTB"
+                    >
+                        <Title
+                            id="idROHCOHUListTitle"
+                            text="HU LIST:"
+                        />
+                        <ToolbarSpacer id="idROHCOHUListToolbar" />
+                        <!-- <Button
+                            id="idRefrehshBtnReservations"
+                            press="onRefreshReservations"
+                            icon="sap-icon://synchronize"
+                        />
+                        <SearchField
+                            id="idSearchFieldFromHUNumbers"
+                            liveChange="onLiveHUNumbersList"
+                            placeholder="Search Anything..."
+                            width="25%"
+                        /> -->
+                    </Toolbar>
+                    <!-- <Toolbar id="idToolBaridROHDHUListHeading">
+                        <Title
+                            id="IdROHDHUListTitle1"
+                            text="Table Contents:-"
+                        />
+                    </Toolbar> -->
+                    <Table
+                        id="idROHCOHUListTable"
+                        width="100%"
+                    >
+                        <columns>
+                            <Column id="idROHCODeliverySno">
+                                <Text
+                                    id="idROHCOCtextDeliverySno"
+                                    text="S.No"
+                                   
+                                />
+                            </Column>
+                            <Column id="idROHCOCDeliveryHUno">
+                                    <Text
+                                        id="idROHCOCTextDeliveryHUno"
+                                        text="HU.No"
+                                   
+                                />
+                            </Column>
+                            <Column id="IdROHCOCDeliveryProduct">
+                                    <Text
+                                        id="IdROHCOCtextDeliveryProduct"
+                                        text="Product"
+                                   
+                                />
+                            </Column>
+                            <Column id="IdROHCOCDeliveryProductdes">
+                                    <Text
+                                    id="IdROHCOCtextDeliveryProductdes"
+                                    text="Product Description"
+                                   
+                                />
+                            </Column>
+                            <Column id="idROHCOCDeliveryQuantity">
+                                    <Text
+                                    id="idROHCOtextDeliveryQuantity"
+                                    text="Quantity"
+                                   
+                                />
+                            </Column>
+                            <Column id="idROHCOCDeliveryUOM">
+                                    <Text
+                                    id="idROHCOCtextDeliveryUOM"
+                                    text="UOM"
+                                   
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                id="IDROHCOhUlistColumnlist"
+                            >
+                                <cells>
+                                        <Text
+                                            id="idROHCOSerialNoHUManu"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idROHCOHUNObyDelivery"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idROHCOHuDeliveryProduct"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idROHCOHuDeliveryProductDes"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idROHCOHuDeliveryQuantity"
+                                            text=""
+                                        />
+                                        <Text
+                                            id="idROHCOHuDeliveryuom"
+                                            text=""
+                                        />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCONewHUPage4"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idROHCONewHuBackbutton"
+                    press="OnpressROHCONewHuBackbutton"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    class="sapUiTinyMarginBottom"
+                />
+                <form:SimpleForm
+                    id="ROHCONewhuDeliverySimpleForm1"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="3"
+                    labelSpanM="4"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="4"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    ariaLabelledBy="Title1"
+                >
+                    <form:toolbar>
+                        <Toolbar
+                            id="idROHCOnewHUToolBar"
+                        >
+                            <Title
+                                id="idROHCOnewHUTitle"
+                                text="NEW HU:"
+                            />
+                        </Toolbar>
+                    </form:toolbar>
+                    <form:content>
+                        <!-- <Toolbar
+                            id="IDGenToolbar1"
+                            ariaLabelledBy="Title2"
+                        >
+                            <Title
+                                id="Title2"
+                                text="Add New HU Number:"
+                            />
+                        </Toolbar> -->
+                        <Label
+                            id="idROHCOLabelnewhu"
+                            text="Product"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCOinputlnewhu"
+                            width="80%"
+                        />
+                       <Label
+                            id="idROHCODeliveryLabelQty"
+                            text="Quantity"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryqtyInput"
+                            width="60%"
+                            class="sapUiTinyMarginEnd"
+                        />
+                       <Label
+                            id="idROHCODeliveryuomLabel"
+                            text="UOM:"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryuomInput"
+                            width="60%"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Label
+                            id="idROHCODeliveryLabelPM"
+                            text="Packing Material"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryInputPM"
+                            width="80%"
+                        />
+                        <Label
+                            id="idROHCODeliveryLabelBatch"
+                            text="Batch"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliverybatchGenInput"
+                            width="80%"
+                        />
+                        <Label
+                            id="idROHCODeliveryLabelbbd"
+                            text="BBD"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryInputbbd"
+                            width="80%"
+                        />
+                       <Label
+                            id="idROHCODeliveryLabelman"
+                            text="Man"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryInputman"
+                            width="80%"
+                        />
+                        <Label
+                            id="idROHCODeliveryExpiryLabel"
+                            text="Expiry"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryExpiryInput"
+                            width="80%"
+                        />
+                        <Label
+                            id="idROHCODeliveryLabelcoo"
+                            text="COO"
+                            required="true"
+                           
+                        />
+                        <Input
+                            id="idROHCODeliveryInputcoo"
+                            width="80%"
+                        />
+                        <HBox
+                            id="idROHCODeliverynextHBox"
+                            justifyContent="End"
+                        >
+                            <Button
+                               id="idROHCODeliverynextbtn"
+                                text="Next (or) Enter"
+                                press="onPressROHCOEnter"
+                            />
+                        </HBox>
+                    </form:content>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCOnextOrEnterpage5"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idROHCOAfterNextBackbutton"
+                    press="OnpressAfterNextBackbutton"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idROHCOEnterVBox"
+                    class="verifyHuNumberContainer"
+                    justifyContent="Center"
+                >
+                    <!-- <Title
+                        id="idTitle"
+                        text="Verify HU Number"
+                        level="H2"
+                        class="formHeader"
+                    /> -->
+                    <VBox
+                        id="idROHCOEnterVBox1"
+                        class="verifyHuNumberBox"
+                    >
+                        <form:SimpleForm
+                            id="idROHCOsimpleFormAfertEnter"
+                            layout="ResponsiveGridLayout"
+                            labelSpanL="4"
+                            labelSpanM="4"
+                            columnsL="1"
+                            columnsM="1"
+                        >
+                             <Label
+                                id="IdROHCODhuLabel"
+                                text="HU"
+                                class="formLabel"
+                            />
+                            <Input
+                                id="IdROHCOHUInput"
+                               
+                            />
+                             <Label
+                                id="IdROHCOLabelDelivery"
+                                text="Delivery"
+                                class="formLabel"
+                            />
+                            <Input
+                                id="IdROHCOdeliveryInput"
+                               
+                            />
+                            <Label
+                                id="idROHCOLabelitem"
+                                text="item no"
+                                class="formLabel"
+                            />
+                            <Input
+                                id="idROHCOInputitem"
+                               
+                            />
+                            <!-- Gr and UNload Buttons -->
+                            <HBox
+                                id="idROHCOVBoxbuttons"
+                                justifyContent="End"
+                            >
+                                <Button
+                                    id="idROHCOEnterGRButton"
+                                    text="GR"
+                                    press="onPressEnterROHCOGRButton"
+                                    class="formButton"
+                                />
+                               <Button
+                                    id="idROHCOEnterunloadButton"
+                                    text="Unload"
+                                    press="onPressEnterROHCOUnloadButton"
+                                    class="formButton"
+                                />
+                            </HBox>
+                        </form:SimpleForm>
+                    </VBox>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCOGRpage6"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                id="idROHCOGRBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressROHCOGRBackbutton"
+                type="Transparent"
+                />
+                <VBox
+                    id="idROHCOGRVBox"
+                    class="MainVBoxGR"
+                    justifyContent="End"
+                >
+                    <Title
+                        id="idROHCOGRTitle"
+                        text="Goods Receipt"
+                        level="H2"
+                        class="formHeaderGR"
+                    />
+                    <VBox
+                        id="idROHCOGRVBox1"
+                        class="GoodsReceiptFormBox"
+                        justifyContent="End"
+                    >
+                        <form:SimpleForm
+                            id="idROHCOGRSF"
+                            layout="ResponsiveGridLayout"
+                            labelSpanL="4"
+                            labelSpanM="4"
+                            columnsL="1"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="idROHCOLabelproduct"
+                                text="Product"
+                                class="labelStyleGR"
+                            />
+                            <Input
+                                id="idROHCOproductInput"
+                                width="12rem"
+                            />
+                            <Label
+                                id="idROHCOLabelQty"
+                                text="Quantity"
+                                class="labelStyleGR"
+                            />
+                            <Input
+                                id="idROHCOqtyInput"
+                                width="12rem"
+                            />
+                            <HBox
+                               id="idROHCODeliveryhboxgr1"
+                                justifyContent="End"
+                            >
+                                <Button
+                                    id="idROHCODeliverygrButton"
+                                    text="GR"
+                                    press="onPressROHCOGRbutton"
+                                    class="formButton"
+                                />
+                            </HBox>
+                        </form:SimpleForm>
+                    </VBox>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idROHCOUnloadpage7"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                id="idROHCOUnloadBackbutton"
+                icon="sap-icon://nav-back"
+                press="OnpressROHCOUnloadBackbutton"
+                type="Transparent"
+                />
+                <VBox
+                    id="idROHCOUnLoadVbox"
+                    class="MainVBoxUnLoad"
+                    justifyContent="End"
+                >
+                    <Title
+                        id="idROHCOUnLoadTitle"
+                        text="UnLoad"
+                        level="H2"
+                        class="formHeaderUnLoad"
+                    />
+                    <VBox
+                        id="idROHCOUnLoadVbox1"
+                        class="UnLoadPageFormBox"
+                        justifyContent="End"
+                    >
+                        <form:SimpleForm
+                            id="idROHCODeliverySFunload"
+                            layout="ResponsiveGridLayout"
+                            labelSpanL="4"
+                            labelSpanM="4"
+                            columnsL="1"
+                            columnsM="1"
+                        >
+                            <Label
+                                id="IdROHCOLabelproduct"
+                                text="Product"
+                                class="labelStyleUnLoad"
+                            />
+                            <Input
+                                id="IdROHCOinputproduct"
+                                width="12rem"
+                            />
+                            <Label
+                               id="IdROHCOLabelUNQty"
+                                text="Quantity"
+                                class="labelStyleUnLoad"
+                            />
+                            <Input
+                                id="idROHCOUnLoadQuanInput"
+                                width="12rem"
+                            />
+                            <HBox
+                                id="idROHCOHBoxUnLoad"
+                                justifyContent="End"
+                            >
+                                <Button
+                                    id="idROHCODeliveryunloadButton5"
+                                    text="Unload"
+                                    press="onPressROHCOUnloadbutton"
+                                />
+                            </HBox>
+                        </form:SimpleForm>
+                    </VBox>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

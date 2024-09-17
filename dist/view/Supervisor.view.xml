@@ -73,12 +73,13 @@
                 selectedKey="{/selectedKey}"
                 itemSelect=".onItemSelect"
             >
-                <tnt:NavigationList id="idNavigationList"
+                <tnt:NavigationList
+                    id="idNavigationList"
                     items="{path: '/navigation' , templateShareable: true}"
                     class="sidecontent"
                 >
-                    <tnt:NavigationListItem id="NavigationListItem"
-
+                    <tnt:NavigationListItem
+                        id="NavigationListItem"
                         text="{title}"
                         icon="{icon}"
                         enabled="{enabled}"
@@ -220,48 +221,53 @@
                                     required="true"
                                 />
                                 <HBox justifyContent="SpaceBetween">
-                                <Input
-                                    editable="true"
-                                    id="idPhoneInput"
-                                    placeholder="Enter Phone"
-                                    class="Inputs"
-                                />
-                                <core:Icon
-                        id="verficationIdicon"
-                        src="sap-icon://accept"
-                        size="150%"
-                        color="#008000"
-                        visible="false"
-                    />
-                    </HBox>
-                     </FlexBox>
-                     <FlexBox
+                                    <Input
+                                        editable="true"
+                                        id="idPhoneInput"
+                                        placeholder="Enter Phone"
+                                        class="Inputs"
+                                    />
+                                    <core:Icon
+                                        id="verficationIdicon"
+                                        src="sap-icon://accept"
+                                        size="150%"
+                                        color="#008000"
+                                        visible="false"
+                                    />
+                                </HBox>
+                            </FlexBox>
+                            <FlexBox
                                 id="_IDField420"
                                 justifyContent="End"
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                    <HBox justifyContent="SpaceBetween">
-                    <Input
-                    id="idOtpInputsv"
-                    placeholder="Enter OTP..."
-                    visible="false"
-                    valueLiveUpdate="true"
-                    liveChange="onSubmitOtp"
-                    width="100%"
+                                <HBox justifyContent="SpaceBetween">
+                                    <Input
+                                        id="idOtpInputsv"
+                                        placeholder="Enter OTP..."
+                                        visible="false"
+                                        valueLiveUpdate="true"
+                                        liveChange="onSubmitOtp"
+                                        width="100%"
+                                        editable="true"
                 />
-                                 <Button
-                        id="getotpsv"
-                        text="Get OTP"
-                        press="onGetOTP"
-                        type="Emphasized"
-                        width="80px"
-                        visible="false"
-                    />
-                                </HBox>
-                     </FlexBox>
 
-                           
+
+                                    <Button
+                                        id="getotpsv"
+                                        text="Get OTP"
+                                        press="onGetOTP"
+                                        type="Emphasized"
+                                        width="80px"
+                                        visible="false"
+                
+                    />
+
+
+                                </HBox>
+                            </FlexBox>
+
                             <FlexBox
                                 id="_IDField345"
                                 justifyContent="SpaceBetween"
@@ -695,7 +701,7 @@
                         <GenericTile
                             id="idUnloadingByDelivery1"
                             header="Unloading By Delivery"
-                            press="onTilePress"
+                            press="OnPressUnloadByDelivery"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -706,7 +712,7 @@
                                     id="idThemecolor"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -715,7 +721,7 @@
                         <GenericTile
                             id="idUnloadingByShipment1"
                             header="Unloading By Shipment"
-                            press="onTilePress"
+                            press="onUnloadingByShipmentPress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -726,7 +732,7 @@
                                     id="idThemecolorUnloadingByShipment"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -735,7 +741,7 @@
                         <GenericTile
                             id="idUnloadingByTransportUnit1"
                             header="Unloading By Transport Unit"
-                            press="onTilePress"
+                            press="onUnloadingByTUPress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -746,16 +752,15 @@
                                     id="idThemecolorUnloadingByTransportUnit"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />
-                            </TileContent>
+                                />                            </TileContent>
                         </GenericTile>
 
                         <GenericTile
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
-                            press="onTilePress"
+                            press="onUnloadingBYASN"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -766,7 +771,7 @@
                                     id="idThemecolorUnloadingByASN"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -786,7 +791,7 @@
                                     id="idThemecolorUnloadingByDoor"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -806,7 +811,7 @@
                                     id="idThemecolorUnloadingByBillofLading"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -815,7 +820,7 @@
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
-                            press="onTilePress"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent
@@ -826,7 +831,7 @@
                                     id="idThemecolorUnloadingByConsigmentOrder"
                                     class="tailTheme"
                                     icon="sap-icon://palette"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     type="Transparent"
                                 />
                             </TileContent>
@@ -914,10 +919,9 @@
                             <TileContent id="idTileContentPutaway">
                                 <Button
                                     id="idBtnPutawayByWO"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     icon="sap-icon://palette"
                                     type="Transparent"
-                                    customData="{dblclickEnabled: true}"
                                 />
                             </TileContent>
                         </GenericTile>
@@ -1350,7 +1354,7 @@
                             <TileContent id="idTileContent0">
                                 <Button
                                     id="idBtn"
-                                    press="onPaletteIconBtnTilePress"
+                                    press="onPaletteIconSingleClick"
                                     icon="sap-icon://palette"
                                     type="Transparent"
                                 />
@@ -1410,7 +1414,7 @@
                             id="IDStockBinQuerybyProduct"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Stock/Bin Query by Product"
-                            press="OnPressStock/BinQuerybyProduct"
+                            press="OnPressStockOrBinQuerybyProduct"
                         />
 
                         <GenericTile
@@ -1423,8 +1427,19 @@
                             id="IDAvailableHandlingunitsonbinquery"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Available Handling units on bin query"
-                            press="OnPressAvailable Handling units on bin query"
-                        />
+                            press="OnPressAvailableHandlingUnitsOnBinQuery"
+                        >
+                            <TileContent
+                                id="idTileContentHandlingunitsonbinquery"
+                            >
+                                <Button
+                                    id="idBtnHandlingunitsonbinquery"
+                                    press="onPaletteIconSingleClick"
+                                    icon="sap-icon://palette"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
                         <GenericTile
                             id="IDWTQuerybyWO"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
@@ -1448,7 +1463,16 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT query by HU"
                             press="OnPressWTquerybyHU"
-                        />
+                        >
+                            <TileContent id="idTileContentWTquerybyHU">
+                                <Button
+                                    id="idBtnWTquerybyHU"
+                                    press="onPaletteIconSingleClick"
+                                    icon="sap-icon://palette"
+                                    type="Transparent"
+                                />
+                            </TileContent>
+                        </GenericTile>
                         <GenericTile
                             id="IDHUStockOverviewQuery"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"

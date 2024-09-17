@@ -1,0 +1,367 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.WTQueryByWT"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageWtQBWt">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderWtQBWt">
+                <Button
+                    id="idWtQBWtfirstbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onWtQBWtfirstBackBtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idWtQBWtSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onWtQBWtSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idWtQBWtThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onWtQBWtThirdBackBtnPress"
+                    visible="false"
+                />
+               
+                <Image
+                    id="_IDGenImage1WtQBWt"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorWtQBWt"
+                />
+                <ToolbarSpacer id="idToolbarSpacerWtQBWt">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1WtQBWt"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1WtQBWt"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idWtQBWtFirstSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+              <VBox alignContent="Center" alignItems="Center" >
+                <form:SimpleForm
+                    id="idWtQBWtSF1"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                <VBox alignContent="Center" alignItems="Center" >
+                    <HBox alignContent="Center" alignItems="Center">
+                        <Label
+                            id="idWtQBWtWhLabel"
+                            text="WareHouse Task:"
+                            width="120px"
+                        />
+                        <Input
+                            id="idWtQBWtWhInput"
+                            value=""
+                            liveChange="onWtQBWtWhLiveChange"
+                        />
+                        <Button
+                            id="idWtQBWtWhScannerBtn"
+                            icon="sap-icon://bar-code"
+                            press="onWtQBWtWhBarcodeScanner"
+                        />
+                    </HBox>
+                    </VBox>
+                </form:SimpleForm>
+                 </VBox>
+            </ScrollContainer>
+           
+            <ScrollContainer
+                id="idWtQBWtWhSecondsc"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+            <VBox alignContent="Center" alignItems="Center">
+                <form:SimpleForm
+                    id="idWtQBWtSF2"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox alignContent="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtwtLabel"
+                                text="WT:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtwtInput"
+                                value=""
+                            />
+ 
+                             <Label width="20px"></Label>
+                            <Label
+                                id="idWtQBWtWTitLabel"
+                                text="WTit:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtWTitInput"
+                                value=""
+                            />
+                          
+                   
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtwtsLabel"
+                                text="WTs:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtwtsInput"
+                                
+                                value=""
+                            />
+                        <Label width="20px"></Label>
+                            <Label
+                                id="idWtQBWtStsLabel"
+                                text="Sts:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtStsInput"
+                                value=""
+                            />
+                       <Label width="30px"></Label>
+                            <Label
+                                id="idWtQBWtPtypLabel"
+                                text="Ptyp:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtPtypInput"
+                                value=""
+                            />
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtSproLabel"
+                                text="Spro:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtSproInput"
+                                value=""
+                            />
+                            <Label width="20px"></Label>
+                            <Label
+                                id="idWtQBWtActyLabel"
+                                text="Acty:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtActyInput"
+                                value=""
+                            />
+                            <Input
+                                id="idWtQBWtActyEmpInput"
+                                value=""
+                            />
+                       
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtProLabel"
+                                text="Pro:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtProInput"
+                                value=""
+                            />
+                            <Input
+                                id="idWtQBWtProEmpInput"
+                                value=""
+                            />
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtSbinLabel"
+                                text="Sbin:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtSbinInput"
+                                value=""
+                            />
+                            <Input
+                                id="idWtQBWtSbinEmpInput"
+                                value=""
+                            />
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtDbinLabel"
+                                text="Dbin:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtDbinInput"
+                                value=""
+                            />
+                            <Input
+                                id="idWtQBWtDbinEmpInput"
+                                value=""
+                            />
+                        </HBox>
+ 
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Label
+                                id="idWtQBWtCdatLabel"
+                                text="Cdat:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtCdatInput"
+                                value=""
+                            />
+                            <Input
+                                id="idWtQBWtCdatnput"
+                                value=""
+                            />
+                       <Label width="20px"></Label>
+                            <Label
+                                id="idWtQBWtCusrLabel"
+                                text="Cusr:"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBWtCusrInput"
+                                value=""
+                            />
+                        </HBox>
+        <VBox alignContent="Center" alignItems="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Button
+                                id="WtQBWtDetailBtn"
+                                text="Detail"
+                                press="onWtQBWtDetailBtnPress"
+                            />
+                           
+                        </HBox>
+                        </VBox>
+                    </VBox>
+                </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idWtQBWtWhThirdsc"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+             <VBox alignContent="Center" alignItems="Center">
+                <form:SimpleForm
+                    id="idWtQBWtSF3"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                <VBox >
+                    <Title text="Product Description" />
+                   
+                    <HBox alignContent="Center" alignItems="Center">
+                    <Label id="idWtQBWtWoLabel" text="WO" width="60px" ></Label>
+                    <Input id="idWtQBWtwoInput" value=""></Input>
+ 
+                    <Label width="20px"></Label>
+ 
+                    <Label id="idWtQBWtEstpLabel" text="ESTP"  width="60px" ></Label>
+                    <Input id="idWtQBWtEstpInput" value=""></Input>
+ 
+                    </HBox>
+                     <HBox alignContent="Center" alignItems="Center" >
+                    <Label id="idWtQBWtSqtyLabel" text="Sqty"  width="60px" ></Label>
+                    <Input id="idWtQBWtSqtyInput" value=""></Input>
+                    <Input id="idWtQBWtPcInput" value="PC"></Input>
+                       <Label width="20px"></Label>
+                    <Label id="idWtQBWtBtchLabel" text="Btch"  width="60px" ></Label>
+                    <Input id="idWtQBWtBtchInput" value=""></Input>
+                    </HBox>
+ 
+                    <HBox alignContent="Center" alignItems="Center" >
+                    <Label id="idWtQBWtOwnerLabel" text="Owner"  width="60px" ></Label>
+                    <Input id="idWtQBWtOwnerInput" value=""></Input>
+                     <Label width="20px"></Label>
+                    <Label id="idWtQBWtPEntLabel" text="PEnt"  width="60px" ></Label>
+                    <Input id="idWtQBWtPEntInput" value=""></Input>
+                    </HBox>
+ 
+                     <HBox alignContent="Center" alignItems="Center" >
+                    <Label id="idWtQBWtHuWtLabel" text="HuWt"  width="60px" ></Label>
+                    <Input id="idWtQBWtHuWtInput" value=""></Input>
+                     <Label width="20px"></Label>
+                    <Label id="idWtQBWtHtypeLabel" text="H Type"  width="60px"></Label>
+                    <Input id="idWtQBWtHTypeInput" value=""></Input>
+                     <Label width="20px"></Label>
+                    <Label id="idWtQBWtWhHuLabel" text="Wh Hu"  width="60px"></Label>
+                    <Input id="idWtQBWtWhHuInput" value=""></Input>
+                    </HBox>
+                    </VBox>
+                </form:SimpleForm>
+                 </VBox>
+            </ScrollContainer>
+                    
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+ 
+ 

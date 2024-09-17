@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="_Iddialogsaplogon"
+        resizable="false"
+        draggable="true"
+        contentWidth="20%"
+    >
+        <customHeader >
+            <Bar id="_IDsaplogonBar1" class="customDialogHeader">
+                <contentMiddle>
+                    <Title
+                        id="_IDsaplogonTitle1"
+                        text="SAP System Logon"
+                    />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <form:SimpleForm
+                id="idsaplogonpasswordForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanL="3"
+                labelSpanM="3"
+                emptySpanL="4"
+                emptySpanM="4"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                    <Label
+                        id="_IDsaplogonuserlable"
+                        text="User ID"
+                        width="135%"
+                    />
+                    <Input
+                        id="idsaplogonUserId"
+                        value=""
+                        placeholder="Enter User ID"
+                        required="true"
+                    />
+                    <Label
+                        id="_IDsaplogonpasswordlable"
+                        text="Password"
+                        width="135%"
+                    />
+                    <Input
+                        id="idSapLogonPassword"
+                        value=""
+                        placeholder="Enter Password"
+                        required="true"
+                        type="Password"
+                    />
+            </form:SimpleForm>
+        </content>
+        <!-- Add button to the bottom right corner -->
+        <endButton>
+            <Button
+                id="idsapCancelButton"
+                text="Cancel"
+                press="onsapCancelPress"
+            />
+        </endButton>
+        <beginButton>
+            <Button
+                id="idsapsystemLoginButton"
+                text="submit"
+                press="onsapsubmitPress"
+            />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>
