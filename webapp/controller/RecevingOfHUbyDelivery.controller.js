@@ -24,6 +24,7 @@ sap.ui.define([
       },
       //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
       OnPressScanDeliveryBackButton: async function () {
+
         var oRouter = UIComponent.getRouterFor(this);
 
         var oModel1 = this.getOwnerComponent().getModel();
@@ -32,7 +33,8 @@ sap.ui.define([
 
           success: function (oData) {
 
-            if (oData.Users === "RESOURCE") {
+            
+            if (oUser === "resource") {let oUser=oData.Users.toLowerCase()
 
               oRouter.navTo("RouteResourcePage", { id: this.ID });
 
