@@ -13,7 +13,17 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         onInit: function () {
             const oTable = this.getView().byId("idTable_UBYSHP");
             oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
-			
+			const oRouter = this.getOwnerComponent().getRouter();
+
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+
+        },
+        onResourceDetailsLoad: async function (oEvent1) {
+
+            const { id } = oEvent1.getParameter("arguments");
+
+            this.ID = id;
+
         },
         onRowDoubleClick: function () {
             debugger
@@ -23,9 +33,34 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
             this.getView().byId("page2Shipment_UBYSHP").setVisible(true);
         },
        
-        Onpressback0: function () {
-            var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("Supervisor");
+        Onpressback0: async function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+     
+            var oModel1 = this.getOwnerComponent().getModel();
+     
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+     
+              success: function (oData) {
+                let oUser=oData.Users.toLowerCase()
+                if (oUser === "resource") {
+     
+                  oRouter.navTo("RouteResourcePage", { id: this.ID });
+     
+                }
+     
+                else {
+     
+                  oRouter.navTo("Supervisor", { id: this.ID });
+                }
+     
+              }.bind(this),
+     
+              error: function () {
+     
+                sap.m.MessageToast.show("User does not exist");
+     
+              }
+            });
         },
         Onpresssubmit: function () {
 

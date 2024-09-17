@@ -1602,8 +1602,7 @@ sap.ui.define(
             },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByBillofLading");
-
+                oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
             },
             onMaintainHUPress: function () {
                var oRouter = UIComponent.getRouterFor(this);
@@ -1615,17 +1614,14 @@ sap.ui.define(
 
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
-
             },
             onUnloadingByShipmentPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByShipment");
-
+                oRouter.navTo("UnloadingByShipment",{id:this.ID});
             },
             onUnloadingByTUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByTU");
-
+                oRouter.navTo("UnloadingByTU",{id:this.ID});
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
