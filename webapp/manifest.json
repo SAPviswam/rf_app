@@ -171,14 +171,14 @@
         },
         {
           "name": "AdhocHuWt",
-          "pattern": "AdhocHuWt",
+          "pattern": "AdhocHuWt/{id}",
           "target": [
             "TargetAdhocHuWt"
           ]
         },
         {
           "name": "ReceivingOfHuByDoor",
-          "pattern": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor/{id}",
           "target": [
             "TargetReceivingOfHuByDoor"
           ]
@@ -283,7 +283,7 @@
         },
         {
           "name": "AdhocProductWt",
-          "pattern": "AdhocProductWt",
+          "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
           ]
@@ -297,7 +297,7 @@
         },
         {
           "name": "CreateConfirmAdhocHu",
-          "pattern": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
@@ -311,7 +311,7 @@
         },
         {
           "name": "StockBinQueryByProduct",
-          "pattern": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct/{id}",
           "target": [
             "TargetStockBinQueryByProduct"
           ]
@@ -353,7 +353,7 @@
         },
         {
           "name": "SerialNumberLocation",
-          "pattern": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation/{id}",
           "target": [
             "TargetSerialNumberLocation"
           ]
@@ -361,7 +361,7 @@
         },
     {
           "name": "WTQueryByWT",
-          "pattern": "WTQueryByWT",
+          "pattern": "WTQueryByWT/{id}",
           "target": [
             "TargetWTQueryByWT"
           ]
@@ -636,15 +636,6 @@
           "viewName": "SerialNumberLocation"
         },
         "TargetWTQueryByWT": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "WTQueryByWT",
-          "viewName": "WTQueryByWT"
-        },
-
-
-          "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
