@@ -283,6 +283,7 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByTU",{id:this.ID});
             },
+
             // onSBQPAvatarPressed: function () {
             //     var oView = this.getView();
     
@@ -330,7 +331,6 @@ sap.ui.define([
                 // Add actual logout logic here
             },
             
-
             onRecevinngofHUbyBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteBillofLading",{id:this.ID});
@@ -400,6 +400,7 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
             }, 
+
         });
     });
 
