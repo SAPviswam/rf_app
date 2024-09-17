@@ -9,7 +9,18 @@ sap.ui.define([
 
                 const oTable = this.getView().byId("idRHBSshipmennumbertable");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
-            },
+                const oRouter = this.getOwnerComponent().getRouter();
+
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+        
+              },
+              onResourceDetailsLoad: async function (oEvent1) {
+        
+                const { id } = oEvent1.getParameter("arguments");
+        
+                this.ID = id;
+        
+              },
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInput").getValue() == "800020") {
                     this.getView().byId("idRHBSscrollContainer1").setVisible(false)
@@ -88,9 +99,35 @@ sap.ui.define([
                 this.getView().byId("idRHBSscrollContainer6").setVisible(true);
             },
 
-            Onpressbackbol1main:function(){
-                this.getOwnerComponent().getRouter().navTo("Supervisor");
-                
+            Onpressbackbol1main:async function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+           var oModel1 = this.getOwnerComponent().getModel();
+        
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+        
+                  success: function (oData) {
+        
+                    let oUser=oData.Users.toLowerCase()
+                    if (oUser === "resource") {
+        
+                      oRouter.navTo("RouteResourcePage", { id: this.ID });
+        
+                    }
+        
+                    else {
+        
+                      oRouter.navTo("Supervisor", { id: this.ID });
+                    }
+        
+                  }.bind(this),
+        
+                  error: function () {
+        
+                    MessageToast.show("User does not exist");
+        
+                  }
+        
+                });
               },
 
         });
