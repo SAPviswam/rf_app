@@ -21,46 +21,66 @@ sap.ui.define(
                 //this._updateComboBoxItems();
                 this._fetchUniqueProcessAreas();
                 this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
-                //stored colours applying...
-                this.applyStoredColors();
+
                 // Initialize events for tile and button
                 var oTile = this.byId("idPutawayByWO1");
                 var oButton = this.byId("idBtnPutawayByWO");
-                // Attach single-click event to the tile
                 oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
-                // Attach single-click event to the button
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
+
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
-                    this.ID = id;
+                this.ID = id;
+            },
+            onAfterRendering: function () {
+                debugger
+                // Apply stored theme color immediately
+                var sStoredThemeColor = localStorage.getItem("themeColor");
+                if (sStoredThemeColor) {
+                    this.applyThemeColor(sStoredThemeColor); // Assuming a method to apply theme color exists
+                }
+
+                // Apply stored tile colors directly from localStorage
+                var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+
+                // Loop through saved colors and apply them directly to the tiles
+                for (var sTileId in tileColors) {
+                    var sColor = tileColors[sTileId];
+
+                    // Extract the local ID from the fully qualified ID
+                    var sLocalTileId = this._extractLocalId(sTileId);
+                    var oTile = this.byId(sLocalTileId);
+
+                    // If the tile exists, apply the color directly
+                    if (oTile) {
+                        // Wait until the tile's DOM is available
+                        oTile.addEventDelegate({
+                            onAfterRendering: function () {
+                                var oTileDom = oTile.getDomRef();
+                                if (oTileDom) {
+                                    oTileDom.style.backgroundColor = sColor;
+                                }
+                            }
+                        });
+                    } else {
+                        console.warn("Tile with ID '" + sLocalTileId + "' not found.");
+                    }
+                }
+            },
+
+            // Utility function to extract the local ID from the fully-qualified ID
+            _extractLocalId: function (sTileId) {
+                // Get the last part of the ID after the last "--"
+                var aIdParts = sTileId.split("--");
+                return aIdParts.length > 1 ? aIdParts[aIdParts.length - 1] : sTileId;
             },
             onPaletteIconSingleClick: function (oEvent) {
                 this._currentTileId = oEvent.getSource().getParent().getParent().getId();
                 this.byId("themeTileDialog").open();
                 oEvent.stopPropagation();
-            },
-
-            //This is Callback function From Init method...
-            applyStoredColors: function () {
-                // Apply stored theme color
-                var sStoredThemeColor = localStorage.getItem("themeColor");
-                if (sStoredThemeColor) {
-                    this.applyThemeColor(sStoredThemeColor);
-                }
-
-                // Apply stored tile colors
-                var storedColors = localStorage.getItem("tileColors");
-                if (storedColors) {
-                    var tileColors = JSON.parse(storedColors);
-                    for (var sTileId in tileColors) {
-                        if (tileColors.hasOwnProperty(sTileId)) {
-                            this.applyColorToTile(sTileId, tileColors[sTileId]);
-                        }
-                    }
-                }
             },
 
             //For background Theme Dialog..
@@ -86,17 +106,13 @@ sap.ui.define(
                 // Handle cases where checkboxes are selected
                 if (aSelectedColors.length > 0) {
                     if (aSelectedColors.length > 1) {
-                        // If more than one checkbox is selected, raise an error
                         sap.m.MessageToast.show("You can only select one color.");
                         return; // Exit the function without applying the color
                     }
-
                     if (oColorPicker.getVisible()) {
-                        // If the color picker is visible while a checkbox is selected, raise an error
                         sap.m.MessageToast.show("Please deselect the checkbox before using the custom color picker.");
-                        return; // Exit the function without applying the color
+                        return;
                     }
-
                     var sSelectedColor = aSelectedColors[0]; // Only one color is allowed from checkboxes
                     if (this._currentTileId) {
                         this.applyColorToTile(this._currentTileId, sSelectedColor);
@@ -173,41 +189,29 @@ sap.ui.define(
             applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
 
-                if (oTile) {
-                    var sTileColorClass = "tileColor_" + sTileId;
+                if (!oTile) return; // If tile doesn't exist, return early
 
-                    // Remove the old color class if it exists
-                    oTile.removeStyleClass(sTileColorClass);
+                // Get tile's DOM element
+                var oTileDomRef = oTile.getDomRef();
+                if (oTileDomRef) {
+                    // Reset the previous background color (optional)
+                    oTileDomRef.style.backgroundColor = ""; // Clear any existing color
 
-                    // Create or update the style element
-                    var oStyleElement = document.getElementById(sTileColorClass);
-                    if (!oStyleElement) {
-                        oStyleElement = document.createElement("style");
-                        oStyleElement.id = sTileColorClass;
-                        document.head.appendChild(oStyleElement);
-                    }
-                    oStyleElement.textContent = "#" + sTileId + " { background-color: " + sColor + " !important; }";
+                    // Apply the new color
+                    oTileDomRef.style.backgroundColor = sColor;
 
-                    // Apply the new color class to the tile
-                    oTile.addStyleClass(sTileColorClass);
+                    // Update the localStorage to only store the current colors
+                    var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
 
-                    // Retrieve and update the color storage
-                    var tileColors = {};
-                    try {
-                        var storedColors = localStorage.getItem("tileColors");
-                        if (storedColors) {
-                            tileColors = JSON.parse(storedColors);
+                    // Remove previous tile colors from localStorage if necessary
+                    for (var tileId in tileColors) {
+                        if (tileId !== sTileId) {
+                            delete tileColors[tileId]; // Remove outdated colors from localStorage
                         }
-                    } catch (e) {
-                        console.error("Failed to parse tile colors from localStorage:", e);
                     }
-
-                    // Update the tile color in localStorage
+                    // Save the current color for the tile
                     tileColors[sTileId] = sColor;
                     localStorage.setItem("tileColors", JSON.stringify(tileColors));
-
-                    // Clear the tile ID after applying the color
-                    this._currentTileId = null;
                 }
             },
             _isValidColor: function (sColor) {
@@ -235,6 +239,17 @@ sap.ui.define(
                 oColorPicker.setColorString("#FFFFFF"); // Set to white or any default color
                 oColorPicker.setVisible(true);
             },
+
+            //Language Selecting...
+            onPressLanguageChangeApp: function () {
+                var oComboBox = this.byId("idLanguageSelectorComboBox");
+                var bVisible = oComboBox.getVisible();
+                oComboBox.setVisible(!bVisible);
+            },
+
+
+
+
 
 
             onRefreshRequestedData: function () {
@@ -1087,6 +1102,7 @@ sap.ui.define(
                 }
                 else {
 
+
                     oModel.create("/RESOURCESSet", oData, {
                         success: function () {
                             sap.m.MessageToast.show("successfully Created");
@@ -1100,6 +1116,23 @@ sap.ui.define(
                         error: function () {
                             sap.m.MessageToast.show("Error updating user login status.");
                         }
+
+
+
+                    oModel.create("/RESOURCESSet", oData, {
+                        success: function () {
+                            sap.m.MessageToast.show("successfully Created");
+                            this.resetForm();
+
+                            // Navigate to the user menu after successful password update
+                            this.onRequestedData();
+                            this.onUserData();
+                            this.bCreate = true;
+                        }.bind(this),
+                        error: function () {
+                            sap.m.MessageToast.show("Error updating user login status.");
+                        }
+
 
                     })
                 }
@@ -1522,19 +1555,17 @@ sap.ui.define(
             //Putaway By WO Tile..
             onTilePressPutawayByWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("PutawayByWO");
+                oRouter.navTo("PutawayByWO", { id: this.ID });
             },
-
-
             //AvailableHandlingunitsOnBinQuery Tile...
             OnPressAvailableHandlingUnitsOnBinQuery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AvailableHandlingUnitsOnBinQuery");
+                oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
             },
             //WTQueryByHU Tile...
             OnPressWTquerybyHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByHU");
+                oRouter.navTo("WTQueryByHU", { id: this.ID });
             },
 
             onReceivingofHUbyBillofLading: function () {
@@ -1550,11 +1581,7 @@ sap.ui.define(
                 //     BusyIndicator.hide();
                 //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-<<<<<<< HEAD
                     oRouter.navTo("UnloadingByDoor",{id:this.ID});
-=======
-                oRouter.navTo("UnloadingByDoor");
->>>>>>> 07690371163d1a7205bb15761d5b94808cde46ea
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
@@ -1568,6 +1595,7 @@ sap.ui.define(
                 oRouter.navTo("ChangeQueue",{id:this.ID});
 
             },
+
             onChangeResourceGroupTilePress:function(){
                 const oRoute =this.getOwnerComponent().getRouter()
                 oRoute.navTo("ChangeResourceGroup",{id:this.ID})
@@ -1577,13 +1605,19 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByBillofLading");
 
             },
+            onMaintainHUPress: function () {
+               var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU",{id:this.ID});
+            },
+
             // onUnloadingByShipmentPress: function () {
             OnpressMaintainHU: function () {
+
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU");
- 
+                oRouter.navTo("MaintainHU",{id:this.ID});
+
             },
-            onUnloadingByShipmentPress:function () {
+            onUnloadingByShipmentPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment");
 
@@ -1595,7 +1629,6 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-
                oRouter.navTo("AdhocHuWt",{id:this.ID});
 
             },
@@ -1607,14 +1640,11 @@ sap.ui.define(
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadByDelivery", {id:this.ID});
-
-
-                
  
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt",{id:this.ID});
+                oRouter.navTo("AdhocProductWt");
  
             },
             OnPressUnloadByDelivery: function () {
@@ -1780,16 +1810,14 @@ sap.ui.define(
             },
             OnPressWTQuerybyWO: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO",{id:this.ID});
+                oRouter.navTo("WTQueryByWO", { id: this.ID });
             },
 
 
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-=======
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
-
 
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1805,7 +1833,11 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});
             },
-          
+            // onReceivingofTUorDoor: function () {
+            //     var oRouter = UIComponent.getRouterFor(this);
+            //     oRouter.navTo("RecevingOfHUbyTUorDoor");
+            // },
+
             onPressCreateShippingHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHU");
@@ -1814,6 +1846,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHUWOWC");
             },
+
 
             // CHATBOT
             onChatbotButtonPress: function () {
@@ -1824,19 +1857,19 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
             },
-            onReceivingofHUbyManufacturingOrder: function() {
+            onReceivingofHUbyManufacturingOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyManufacturingOrder");
             },
-            onPressCreateAdhocHUWTInAdhocWT: function() {
+            onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocHuWt",{id:this.ID});
             },
-            OnPressCreateandConfirmAdhocProductWT: function() {
+            OnPressCreateandConfirmAdhocProductWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
             },
-            OnPressStockOrBinQuerybyProduct: function() {
+            OnPressStockOrBinQuerybyProduct: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
             },
