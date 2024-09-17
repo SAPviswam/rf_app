@@ -213,7 +213,7 @@
         },
         {
           "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU/{id}",
           "target": [
             "TargetPutawayByHU"
           ]
@@ -318,7 +318,7 @@
         },
         {
           "name": "Receivingofhubyco",
-          "pattern": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco/{id}",
           "target": [
             "TargetRecevingofHUbyConsignemntOrder"
           ]
@@ -652,14 +652,6 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-        "TargetWTQueryByWT": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "WTQueryByWT",
-          "viewName": "WTQueryByWT"
-        },
-
 
           "TargetWTQueryByWT":{
           "viewType": "XML",
