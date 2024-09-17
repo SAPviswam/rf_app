@@ -106,7 +106,7 @@
                             id="id_unloadingbydoor"
                             class="sapUiTinyMargin"
                             header="Unloading By Door"
-                            press="onUnloadingByDoorPress"
+                            press="onUnloadingByDoorTilePress"
                             visible="false"
                         />
                         <GenericTile
@@ -379,7 +379,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_rceateshippinghuwowc"
+                            id="id_createshippinghuwowc"
                             class="sapUiTinyMargin"
                             header="Create Shipping HU (W/O WC)"
                             press="onCreateShippingHUWOWCPress"

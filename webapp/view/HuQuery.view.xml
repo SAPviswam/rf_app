@@ -18,9 +18,40 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
+<<<<<<< HEAD
+    <!-- Existing content here -->
+
+    <!-- Login Dialog Definition -->
+    <Dialog
+    
+        id="loginDialog"
+        class="glassMorphism"
+        title="Login"
+  
+        afterOpen="onDialogOpen"
+        afterClose="onDialogClose"
+    >
+        <VBox>
+            <Input
+                id="usernameInput"
+                placeholder="Username"
+                type="Text"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+            />
+            <Input
+                id="passwordInput"
+                placeholder="Password"
+                type="Password"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+            />
+            <HBox justifyContent="End">
+=======
     <tnt:ToolPage id="_IDGenPage1">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHuQuery">
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
                 <Button
                     id="_IDGenButton1122"
                     icon="sap-icon://nav-back"

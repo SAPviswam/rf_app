@@ -215,7 +215,7 @@
                             maxLength="10"
                             width="200px"
                         />
-                        <VBox >
+                    <VBox id="_IDvboxcshu">
                         <Button
                             id="_IDonsaveCSHUWOWC"
                             text="Save"

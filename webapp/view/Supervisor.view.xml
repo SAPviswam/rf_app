@@ -76,6 +76,13 @@
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                 />
+                <Button
+                    id="chatbotButton"
+                    press="onChatbotButtonPress"
+                    icon="sap-icon://headset"
+                    tooltip="Open Chatbot"
+                />
+
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -122,11 +129,13 @@
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
                 <tnt:fixedItem>
-                    <tnt:NavigationList id="_IDGenNavigationList1"
+                    <tnt:NavigationList
+                        id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem id="_IDGenNavigationListItem"
+                        <tnt:NavigationListItem
+                            id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -155,7 +164,8 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox id="_IDGenFlexBox"
+                        <FlexBox
+                            id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -244,7 +254,10 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox9"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -266,7 +279,10 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox10"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
@@ -1477,7 +1493,7 @@
                             id="IDWTQuerybyQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT Query by Queue"
-                            press="OnPressWTQuerybyQueue"
+                            press="onPressWTQuerybyQueue"
                         />
                         <GenericTile
                             id="IDWTquerybyHU"
