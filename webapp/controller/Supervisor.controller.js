@@ -365,7 +365,6 @@ sap.ui.define(
             },
             onApprove: function () {
                 var Empid = this.byId("idEmployeeIDInputF").getText();
-
                 var oNameInput = this.byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
@@ -1791,7 +1790,7 @@ sap.ui.define(
                 oRouter.navTo("CreateShippingHUWOWC");
             },
 
-            // In your controller
+            // CHATBOT
             onChatbotButtonPress: function () {
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823","_self");
             },

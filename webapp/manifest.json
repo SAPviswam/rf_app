@@ -220,7 +220,7 @@
         },
         {
           "name": "RouteBillofLading",
-          "pattern": "BillofLading",
+          "pattern": "BillofLading/{id}",
           "target": [
             "TargetBillofLading"
           ]
@@ -368,14 +368,14 @@
         },
         {
           "name": "CreateShippingHU",
-          "pattern": "CreateShippingHU",
+          "pattern": "CreateShippingHU/{id}",
           "target": [
             "TargetCreateShippingHU"
           ]
         },
         {
           "name": "CreateShippingHUWOWC",
-          "pattern": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
@@ -636,15 +636,6 @@
           "viewName": "SerialNumberLocation"
         },
         "TargetWTQueryByWT": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "WTQueryByWT",
-          "viewName": "WTQueryByWT"
-        },
-
-
-          "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
