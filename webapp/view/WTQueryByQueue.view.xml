@@ -100,7 +100,7 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                   
                 >
                     <HBox alignContent="Center" alignItems="Center">
                         <Label
