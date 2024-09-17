@@ -30,6 +30,12 @@ sap.ui.define(
                 oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
                 // Attach single-click event to the button
                 oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
+            },
+            onSupervisorDetailsLoad: async function (oEvent1) {
+                const { id } = oEvent1.getParameter("arguments");
+                    this.ID = id;
             },
             onPaletteIconSingleClick: function (oEvent) {
                 this._currentTileId = oEvent.getSource().getParent().getParent().getId();
@@ -1585,22 +1591,21 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt");
+                oRouter.navTo("AdhocHuWt",{id:this.ID});
  
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt");
+                oRouter.navTo("AdhocProductWt",{id:this.ID});
  
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery");
- 
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
             },
             OnPressCreateandConfirmAdhocHUWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocHu");
+                oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
 
             },
             onReceivingofHUbyConsignementOrder:function(){
@@ -1756,18 +1761,18 @@ sap.ui.define(
             },
             OnPressWTQuerybyWO:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO");
+                oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
 
 
             OnPressSerialnumberLocation:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation");
+                oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
 
             OnPressWTQuerybyWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT");
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
 
             },
             
@@ -1777,7 +1782,7 @@ sap.ui.define(
             },
             OnPressWTQuerybyWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT");
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
             },
           
             onPressCreateShippingHU: function () {
@@ -1791,7 +1796,7 @@ sap.ui.define(
 
             onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyTUorDoor");
+                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
             },
             onReceivingofHUbyManufacturingOrder: function() {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1799,15 +1804,15 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt");
+                oRouter.navTo("AdhocHuWt",{id:this.ID});
             },
             OnPressCreateandConfirmAdhocProductWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocProduct");
+                oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
             },
             OnPressStockOrBinQuerybyProduct: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByProduct");
+                oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
             },
 
 

@@ -129,7 +129,7 @@
         },
         {
           "name": "Supervisor",
-          "pattern": "Supervisor",
+          "pattern": "Supervisor/{id}",
           "target": [
             "TargetSupervisorPage"
           ]
@@ -164,21 +164,21 @@
         },
         {
           "name": "UnloadByDelivery",
-          "pattern": "UnloadByDelivery",
+          "pattern": "UnloadByDelivery/{id}",
           "target": [
             "TargetUnloadByDelivery"
           ]
         },
         {
           "name": "AdhocHuWt",
-          "pattern": "AdhocHuWt",
+          "pattern": "AdhocHuWt/{id}",
           "target": [
             "TargetAdhocHuWt"
           ]
         },
         {
           "name": "ReceivingOfHuByDoor",
-          "pattern": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor/{id}",
           "target": [
             "TargetReceivingOfHuByDoor"
           ]
@@ -283,7 +283,7 @@
         },
         {
           "name": "AdhocProductWt",
-          "pattern": "AdhocProductWt",
+          "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
           ]
@@ -297,21 +297,21 @@
         },
         {
           "name": "CreateConfirmAdhocHu",
-          "pattern": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
         },
         {
           "name": "CreateConfirmAdhocProduct",
-          "pattern": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
           ]
         },
         {
           "name": "StockBinQueryByProduct",
-          "pattern": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct/{id}",
           "target": [
             "TargetStockBinQueryByProduct"
           ]
@@ -332,7 +332,7 @@
         },
         {
           "name": "WTQueryByWO",
-          "pattern": "WTQueryByWO",
+          "pattern": "WTQueryByWO/{id}",
           "target": [
             "TargetWTQueryByWO"
           ]
@@ -353,7 +353,7 @@
         },
         {
           "name": "SerialNumberLocation",
-          "pattern": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation/{id}",
           "target": [
             "TargetSerialNumberLocation"
           ]
@@ -361,19 +361,29 @@
         },
     {
           "name": "WTQueryByWT",
-          "pattern": "WTQueryByWT",
+          "pattern": "WTQueryByWT/{id}",
           "target": [
             "TargetWTQueryByWT"
           ]
         },
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "WTQueryByQueue",
           "pattern": "WTQueryByQueue",
           "target": [
             "TargetWTQueryByQueue"
           ]
+<<<<<<< HEAD
         },
         {
+=======
+    },
+
+    {
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU",
           "target": [
@@ -385,6 +395,10 @@
           "pattern": "CreateShippingHUWOWC",
           "target": [
             "TargetCreateShippingHUWOWC"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           ]
         }
       ],
@@ -634,13 +648,23 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
+<<<<<<< HEAD
         },
+=======
+      },
+
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -655,7 +679,10 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -669,6 +696,10 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         }
       }
       },
