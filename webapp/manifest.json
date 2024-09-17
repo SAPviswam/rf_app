@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0",
+  "_version": "1.65.0", 
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -367,6 +367,15 @@
           ]
         },
         {
+          "name": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue",
+          "target": [
+            "TargetWTQueryByQueue"
+          ]
+
+        },
+
+    {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -628,6 +637,15 @@
           "viewName": "RecevingOfHUbyTUorDoor"
         },
 
+        "TargetWTQueryByQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByQueue",
+          "viewName": "WTQueryByQueue"
+
+        },
+
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -642,6 +660,7 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -657,7 +676,7 @@
           "viewName": "CreateShippingHUWOWC"
         }
       }
-    },
+      },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
