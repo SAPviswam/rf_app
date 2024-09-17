@@ -1497,7 +1497,7 @@ sap.ui.define(
             },
            onReceivingofHUbyASN: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyASN");
+                oRouter.navTo("ReceivingofHUbyASN",{id:this.ID});
 
             },
 
@@ -1517,7 +1517,7 @@ sap.ui.define(
             },
             onReceivingofHUbyDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyDelivery");
+                oRouter.navTo("RecevingOfHUbyDelivery",{id:this.ID});
             },
 
             //Putaway By WO Tile..
@@ -1753,7 +1753,7 @@ sap.ui.define(
 
             onReceivingofHUbyShipment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyShipment");
+                oRouter.navTo("ReceivingofHUbyShipment",{id:this.ID});
             },
             OnPressWTQuerybyWO:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1774,7 +1774,7 @@ sap.ui.define(
             
             onReceivingofHUbyTU:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU");
+                oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
             },
             OnPressWTQuerybyWT:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1792,11 +1792,11 @@ sap.ui.define(
 
             onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyTUorDoor");
+                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
             },
             onReceivingofHUbyManufacturingOrder: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyManufacturingOrder");
+                oRouter.navTo("RecevingOfHUbyManufacturingOrder",{id:this.ID});
             },
             onPressCreateAdhocHUWTInAdhocWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1812,7 +1812,7 @@ sap.ui.define(
             },
             onUnloadingBYASN:function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteUnloadingASNDetails");
+                oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
             },
 
 

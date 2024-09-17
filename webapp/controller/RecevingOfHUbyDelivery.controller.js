@@ -1,5 +1,6 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller"
+  "sap/ui/core/mvc/Controller",
+
 ],
   function (Controller) {
     "use strict";
@@ -24,17 +25,16 @@ sap.ui.define([
       },
       //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
       OnPressScanDeliveryBackButton: async function () {
-
-        var oRouter = UIComponent.getRouterFor(this);
+        var oRouter = this.getOwnerComponent().getRouter();
 
         var oModel1 = this.getOwnerComponent().getModel();
 
         await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
 
           success: function (oData) {
-
             
-            if (oUser === "resource") {let oUser=oData.Users.toLowerCase()
+            let oUser=oData.Users.toLowerCase()
+            if (oUser === "resource") {
 
               oRouter.navTo("RouteResourcePage", { id: this.ID });
 

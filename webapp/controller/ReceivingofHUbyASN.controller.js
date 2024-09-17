@@ -19,7 +19,7 @@ sap.ui.define([
         
               },
             Onpressback0: async function () {
-                var oRouter = UIComponent.getRouterFor(this);
+                var oRouter = this.getOwnerComponent().getRouter();
         
                 var oModel1 = this.getOwnerComponent().getModel();
         

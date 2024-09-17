@@ -97,7 +97,7 @@ sap.ui.define([
                 this.getView().byId("idRCHUbyTUscrollContainer6ReceivingOfHubyTu").setVisible(true);
             },
             Onpressbackbol1ReceivingHubyTU: async function () {
-        var oRouter = UIComponent.getRouterFor(this);
+        var oRouter = this.getOwnerComponent().getRouter();
 
         var oModel1 = this.getOwnerComponent().getModel();
 

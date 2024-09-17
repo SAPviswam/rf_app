@@ -95,7 +95,7 @@ sap.ui.define(
       },
       /** Initial page To Home ->Back Navigation */
       Onpressback7:async function () {
-        var oRouter = UIComponent.getRouterFor(this);
+        var oRouter = this.getOwnerComponent().getRouter();
 
         var oModel1 = this.getOwnerComponent().getModel();
 

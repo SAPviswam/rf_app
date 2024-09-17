@@ -34,7 +34,7 @@ sap.ui.define(
         },
         //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
         onPressROHMScanManubackbtn: async function () {
-          var oRouter = UIComponent.getRouterFor(this);
+          var oRouter = this.getOwnerComponent().getRouter();
   
           var oModel1 = this.getOwnerComponent().getModel();
   

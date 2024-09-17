@@ -100,9 +100,8 @@ sap.ui.define([
             },
 
             Onpressbackbol1main:async function () {
-                var oRouter = UIComponent.getRouterFor(this);
-        
-                var oModel1 = this.getOwnerComponent().getModel();
+                var oRouter = this.getOwnerComponent().getRouter();
+           var oModel1 = this.getOwnerComponent().getModel();
         
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
         
