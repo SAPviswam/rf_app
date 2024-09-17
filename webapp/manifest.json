@@ -136,14 +136,14 @@
         },
         {
           "name": "HuQuery",
-          "pattern": "HuQuery",
+          "pattern": "HuQuery/{id}",
           "target": [
             "TargetHuQueryPage"
           ]
         },
         {
           "name": "StockBinQueryByBin",
-          "pattern": "StockBinQueryByBin",
+          "pattern": "StockBinQueryByBin/{id}",
           "target": [
             "TargetStockBinQueryByBin"
           ]
@@ -213,7 +213,7 @@
         },
         {
           "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU/{id}",
           "target": [
             "TargetPutawayByHU"
           ]
@@ -318,7 +318,7 @@
         },
         {
           "name": "Receivingofhubyco",
-          "pattern": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco/{id}",
           "target": [
             "TargetRecevingofHUbyConsignemntOrder"
           ]
@@ -367,12 +367,16 @@
         },
         {
           "name": "WTQueryByQueue",
-          "pattern": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue/{id}",
           "target": [
             "TargetWTQueryByQueue"
           ]
         },
         {
+    },
+
+
+    {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -639,6 +643,9 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
+
+      },
+
         },
         "TargetSerialNumberLocation": {
           "viewType": "XML",
@@ -647,6 +654,16 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
+
+          "TargetWTQueryByWT":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+
+
         "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",

@@ -283,6 +283,7 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByTU",{id:this.ID});
             },
+
             // onSBQPAvatarPressed: function () {
             //     var oView = this.getView();
     
@@ -330,7 +331,6 @@ sap.ui.define([
                 // Add actual logout logic here
             },
             
-
             onRecevinngofHUbyBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteBillofLading",{id:this.ID});
@@ -394,12 +394,28 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
             },
+            onStockBinQuerybyBinPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
+            },
+            onHUQueryPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuQuery",{id:this.ID});
+            },
 
             onUnloadingByDeliveryPress:function(){ 
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
             }, 
+          
+            onWTQuerybyQueuePress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
+            }, 
+
+
         });
     });
 
