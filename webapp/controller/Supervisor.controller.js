@@ -1101,24 +1101,6 @@ sap.ui.define(
                     });
                 }
                 else {
-
-
-                    oModel.create("/RESOURCESSet", oData, {
-                        success: function () {
-                            sap.m.MessageToast.show("successfully Created");
-                            this.resetForm();
-
-                            // Navigate to the user menu after successful password update
-                            this.onRequestedData();
-                            this.onUserData();
-                            this.bCreate = true;
-                        }.bind(this),
-                        error: function () {
-                            sap.m.MessageToast.show("Error updating user login status.");
-                        }
-
-
-
                     oModel.create("/RESOURCESSet", oData, {
                         success: function () {
                             sap.m.MessageToast.show("successfully Created");
