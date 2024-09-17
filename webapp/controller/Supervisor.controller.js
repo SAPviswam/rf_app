@@ -70,6 +70,7 @@ sap.ui.define(
                     }
                 }
             },
+
             // Utility function to extract the local ID from the fully-qualified ID
             _extractLocalId: function (sTileId) {
                 // Get the last part of the ID after the last "--"
@@ -81,6 +82,7 @@ sap.ui.define(
                 this.byId("themeTileDialog").open();
                 oEvent.stopPropagation();
             },
+
             //For background Theme Dialog..
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
@@ -378,7 +380,6 @@ sap.ui.define(
             },
             onApprove: function () {
                 var Empid = this.byId("idEmployeeIDInputF").getText();
-
                 var oNameInput = this.byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
@@ -1101,6 +1102,7 @@ sap.ui.define(
                 }
                 else {
 
+
                     oModel.create("/RESOURCESSet", oData, {
                         success: function () {
                             sap.m.MessageToast.show("successfully Created");
@@ -1114,6 +1116,23 @@ sap.ui.define(
                         error: function () {
                             sap.m.MessageToast.show("Error updating user login status.");
                         }
+
+
+
+                    oModel.create("/RESOURCESSet", oData, {
+                        success: function () {
+                            sap.m.MessageToast.show("successfully Created");
+                            this.resetForm();
+
+                            // Navigate to the user menu after successful password update
+                            this.onRequestedData();
+                            this.onUserData();
+                            this.bCreate = true;
+                        }.bind(this),
+                        error: function () {
+                            sap.m.MessageToast.show("Error updating user login status.");
+                        }
+
 
                     })
                 }
@@ -1562,23 +1581,24 @@ sap.ui.define(
                 //     BusyIndicator.hide();
                 //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByDoor");
+                    oRouter.navTo("UnloadingByDoor",{id:this.ID});
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByConsignmentOrder");
+                oRouter.navTo("UnloadingByConsignmentOrder",{id:this.ID});
 
             },
             onChangeQueueTilePress: function () {
                 debugger
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("ChangeQueue");
+                oRouter.navTo("ChangeQueue",{id:this.ID});
 
             },
-            onChangeResourceGroupTilePress: function () {
-                const oRoute = this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup")
+
+            onChangeResourceGroupTilePress:function(){
+                const oRoute =this.getOwnerComponent().getRouter()
+                oRoute.navTo("ChangeResourceGroup",{id:this.ID})
             },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1586,8 +1606,15 @@ sap.ui.define(
 
             },
             onMaintainHUPress: function () {
+               var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU",{id:this.ID});
+            },
+
+            // onUnloadingByShipmentPress: function () {
+            OnpressMaintainHU: function () {
+
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU");
+                oRouter.navTo("MaintainHU",{id:this.ID});
 
             },
             onUnloadingByShipmentPress: function () {
@@ -1602,7 +1629,17 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt");
+               oRouter.navTo("AdhocHuWt",{id:this.ID});
+
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
  
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
@@ -1612,8 +1649,8 @@ sap.ui.define(
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery");
- 
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+
             },
             OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1624,6 +1661,11 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("Receivingofhubyco");
 
+            },
+            onPressWTQuerybyQueue:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByQueue");
+ 
             },
 
             onGetOTP: function () {
@@ -1774,7 +1816,7 @@ sap.ui.define(
 
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation");
+                oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
 
             OnPressWTQuerybyWT: function () {
@@ -1805,7 +1847,13 @@ sap.ui.define(
                 oRouter.navTo("CreateShippingHUWOWC");
             },
 
-            onReceivingofTUorDoor: function () {
+
+            // CHATBOT
+            onChatbotButtonPress: function () {
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823","_self");
+            },
+
+            onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
             },
