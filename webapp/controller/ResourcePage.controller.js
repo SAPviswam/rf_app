@@ -212,6 +212,7 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
+
             onRecevinngofHUbyBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteBillofLading",{id:this.ID});
@@ -224,6 +225,49 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
             },
+
+
+            onWTQueryByWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
+            },
+            onCreateandConfirmAdhocHUWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
+            },
+            onCreateandConfirmAdhocProductWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
+            },
+            onSerialnumberLocationPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation",{id:this.ID});
+            },
+            onStockBinQuerybyProductPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
+            },
+            onCreateAdhocHUWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocHuWt",{id:this.ID});
+            },
+            onCreateAdhocProductWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt",{id:this.ID});
+            },
+            onReceivingofHUbyDoorPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
+            },
+
+            onUnloadingByDeliveryPress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
+            }, 
+          
+
+
 
         });
     });

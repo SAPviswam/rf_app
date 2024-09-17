@@ -1591,7 +1591,8 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt");
+
+               oRouter.navTo("AdhocHuWt",{id:this.ID});
 
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
@@ -1601,18 +1602,36 @@ sap.ui.define(
             },
             OnPressUnloadByDelivery: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery");
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+
+
+                
+ 
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt",{id:this.ID});
+ 
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
 
             },
             OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocHu");
+                oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
 
             },
             onReceivingofHUbyConsignementOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("Receivingofhubyco");
 
+            },
+            onPressWTQuerybyQueue:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByQueue");
+ 
             },
 
             onGetOTP: function () {
@@ -1763,12 +1782,14 @@ sap.ui.define(
 
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation");
-            },
+=======
+                oRouter.navTo("SerialNumberLocation",{id:this.ID});
+        },
+
 
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT");
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
 
             },
 
@@ -1778,7 +1799,7 @@ sap.ui.define(
             },
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT");
+                oRouter.navTo("WTQueryByWT",{id:this.ID});
             },
           
             onPressCreateShippingHU: function () {
@@ -1797,7 +1818,7 @@ sap.ui.define(
 
             onReceivingofTUorDoor: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyTUorDoor");
+                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
             },
             onReceivingofHUbyManufacturingOrder: function() {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1805,15 +1826,15 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt");
+                oRouter.navTo("AdhocHuWt",{id:this.ID});
             },
             OnPressCreateandConfirmAdhocProductWT: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocProduct");
+                oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
             },
             OnPressStockOrBinQuerybyProduct: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByProduct");
+                oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
             },
 
 
