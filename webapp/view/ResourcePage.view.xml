@@ -105,7 +105,7 @@
                             id="id_unloadingbydoor"
                             class="sapUiTinyMargin"
                             header="Unloading By Door"
-                            press="onUnloadingByDoorPress"
+                            press="onUnloadingByDoorTilePress"
                             visible="false"
                         />
                         <GenericTile

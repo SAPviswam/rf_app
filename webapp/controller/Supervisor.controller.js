@@ -1551,23 +1551,23 @@ sap.ui.define(
                 //     BusyIndicator.hide();
                 //   }.bind(this), 2000); 
                 var oRouter = this.getOwnerComponent().getRouter();
-                    oRouter.navTo("UnloadingByDoor");
+                    oRouter.navTo("UnloadingByDoor",{id:this.ID});
 
             },
             onUnloadingByConsignmentOrderTilePress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByConsignmentOrder");
+                oRouter.navTo("UnloadingByConsignmentOrder",{id:this.ID});
 
             },
             onChangeQueueTilePress: function () {
                 debugger
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("ChangeQueue");
+                oRouter.navTo("ChangeQueue",{id:this.ID});
 
             },
             onChangeResourceGroupTilePress:function(){
                 const oRoute =this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup")
+                oRoute.navTo("ChangeResourceGroup",{id:this.ID})
             },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
