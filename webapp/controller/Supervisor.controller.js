@@ -1811,6 +1811,11 @@ sap.ui.define(
                 oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
             },
 
+            onPickPointPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("PickPoint",{id:this.ID});  
+            },
+
 
             // CHATBOT
             onChatbotButtonPress: function () {

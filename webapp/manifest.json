@@ -388,6 +388,13 @@
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
+        },
+        {
+          "name": "PickPoint",
+          "pattern": "PickPoint/{id}",
+          "target": [
+            "TargetPickPoint"
+          ]
         }
       ],
       "targets": {
@@ -675,6 +682,13 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
+        },
+        "TargetPickPoint": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PickPoint",
+          "viewName": "PickPoint"
         }
       }
       },
