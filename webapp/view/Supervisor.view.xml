@@ -1148,14 +1148,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onPressManuallyRepackHUItem"
                         />
 
                         <GenericTile

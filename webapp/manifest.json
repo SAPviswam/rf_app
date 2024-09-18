@@ -388,6 +388,20 @@
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
+        },
+        {
+          "name": "ManuallyRepackAllHUItems",
+          "pattern": "ManuallyRepackAllHUItems/{id}",
+          "target": [
+            "TargetManuallyRepackAllHUItems"
+          ]
+        },
+        {
+          "name": "ManuallyRepackHU",
+          "pattern": "ManuallyRepackHU/{id}",
+          "target": [
+            "TargetManuallyRepackHU"
+          ]
         }
       ],
       "targets": {
@@ -397,6 +411,20 @@
           "clearControlAggregation": false,
           "viewId": "InitialScreen",
           "viewName": "InitialScreen"
+        },
+        "TargetManuallyRepackAllHUItems": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ManuallyRepackAllHUItems",
+          "viewName": "ManuallyRepackAllHUItems"
+        },
+        "TargetManuallyRepackHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ManuallyRepackHU",
+          "viewName": "ManuallyRepackHU"
         },
         "TargetHome": {
           "viewType": "XML",

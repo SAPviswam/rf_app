@@ -1590,6 +1590,16 @@ sap.ui.define(
                var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
             },
+            onPressManuallyRepackHU : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
+            
+            },
+            onPressManuallyRepackHUItem : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            },
+
 
             // onUnloadingByShipmentPress: function () {
             OnpressMaintainHU: function () {

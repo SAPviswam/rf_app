@@ -355,7 +355,6 @@
 /* unloading by door end*/
 
 
-<<<<<<< HEAD
 /* unloading by door end*/
 .ToolHeader{
 background-color: rgb(9, 8, 8) !important;
@@ -364,11 +363,8 @@ background-color: rgb(9, 8, 8) !important;
 
 .customDialogHeader {
     background-color: orange !important;
-=======
-.customSpacing {
-    margin-left: 10px;  /* Add space to the left of the element */
->>>>>>> 1c91eef2 (updated)
 }
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
 }
+

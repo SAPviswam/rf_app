@@ -1,0 +1,485 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.ManuallyRepackHU"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageManuallyRepackHU">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderManuallyRepackHU">
+                <Button
+                    id="idManuallyRepackHUfirstbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUfirstBackBtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idManuallyRepackHUSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackHUThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUThirdBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackHUFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUFourthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackHUFifthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUFifthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackHUSixththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUSixthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackHUSevenththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackHUSeventhBackBtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="ManuallyRepackHUManuallyRepackHU"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorManuallyRepackHU"
+                />
+                <ToolbarSpacer id="idToolbarSpacerManuallyRepackHU">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataManuallyRepackHU"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1ManuallyRepackHU"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+          <ScrollContainer
+                id="idManuallyRepackHUFirstSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackHUSF1"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idSrceHUwtLabel"
+                                    text="Srce HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idSrcewtInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Source HU"
+                                />
+ 
+                                <Label width="20px"></Label>
+ 
+                                <Input
+                                    id="idAllitAllInput"
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter ALL"
+                                />
+                            </HBox>
+ 
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idCnsldwtsLabel"
+                                    text="Cnsld.Grp"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idCnsldwtsInput"
+                                    value=""
+                                    maxLength="10"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                />
+                                <Label width="20px"></Label>
+                                <Label
+                                    id="idSisStsLabel"
+                                    text="Sis"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idSisStsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Sis"
+                                />
+                            </HBox>
+ 
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idDestSproLabel"
+                                    text="Dest.HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestSproInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                />
+                            </HBox>
+ 
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDestProLabel"
+                                    text="Dest.Bin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestiBinProInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idManuallyRepackHUSecSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackHUSec"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idManuallyRepackSrceLabel"
+                                    text="Srce HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackSrceInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Source HU"
+                                />
+                                <Label width="20px"></Label>
+                            </HBox>
+
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idCnsldLabel"
+                                    text="Cnsld.Grp"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="ididCnsldwtsInput"
+                                    value=""
+                                    maxLength="10"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idDestHUSproLabel"
+                                    text="Dest.HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestHUSproInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDestBinProLabel"
+                                    text="Dest.Bin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestBinProInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                />
+                            </HBox>
+                             <VBox alignContent="Center" alignItems="Center" >
+                        <HBox alignContent="Center" alignItems="Center">
+                            <Button
+                                id="idHuCreateInManuvallyRepackHUBtn"
+                                text="Hu Create"
+                                press="onPressHuCreateInManuvallyRepackHUBtn"
+                            />
+                            <Button
+                                id="idHuOverviewInManuvallyRepackHUBtn"
+                                text="Hu Overview"
+                                press="onPressHuOverviewBtnPress"
+                            />
+                            <Button
+                                id="idHuItemListInManuvallyRepackHUBtn"
+                                text="HU Item List"
+                                press="onHuItemListBtnPress"
+                            /> 
+                        </HBox>
+                         </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idManuallyRepackHUThirdSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackHUThird"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                              
+                                <Label width="20px"></Label>
+                            </HBox>
+
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idCnsldThirdScLabel"
+                                    text="Cnsld.Grp"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="ididCnsldThirdScInput"
+                                    value=""
+                                    maxLength="10"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idDestHUThirdScLabel"
+                                    text="Dest.HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestHUThirdScInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                />
+                            </HBox>
+                                <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                             <Label
+                                    id="idManuallyRepackPackMatThirdScLabel"
+                                    text="pack.Mat"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackPackMatThirdScInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Pack.Mat"
+                                /> 
+                            </HBox>
+                            
+                              
+
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDestBinThirdScLabel"
+                                    text="Dest.Bin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestBinThirdScInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                />
+                            </HBox>
+                             
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+              <ScrollContainer
+                id="idManuallyRepackHUFourthSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackHUFourth"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                              
+                                <Label width="20px"></Label>
+                            </HBox>
+
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idCnsldFourthScLabel"
+                                    text="Cnsld.Grp"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="ididCnsldFourthScInput"
+                                    value=""
+                                    maxLength="10"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idDestHUFourthScLabel"
+                                    text="Dest.HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestHUFourthScInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                />
+                            </HBox>
+                                <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                             <Label
+                                    id="idManuallyRepackPackMatFourthScLabel"
+                                    text="pack.Mat"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackPackMatFourthScInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Pack.Mat"
+                                /> 
+                            </HBox>
+                            
+                              
+
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDestBinFourthScLabel"
+                                    text="Dest.Bin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestBinFourthScInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                />
+                            </HBox>
+                             
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

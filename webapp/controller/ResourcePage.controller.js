@@ -209,6 +209,15 @@ sap.ui.define([
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
             },
+            onManuallyRepackHUPress : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
+            
+            },
+            onManuallyRepackHUItemPress : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            },
 
             onWTQuerybyWOPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);

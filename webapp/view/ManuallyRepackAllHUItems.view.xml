@@ -1,0 +1,194 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.ManuallyRepackAllHUItems"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageManuallyRepackAllHUItems">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderManuallyRepackAllHUItems">
+                <Button
+                    id="idManuallyRepackAllHUItemsfirstbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsfirstBackBtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsThirdBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsFourthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsFifthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsFifthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSixththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSixthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSevenththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSeventhBackBtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="ManuallyRepackAllHUItemsManuallyRepackAllHUItems"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorManuallyRepackAllHUItems"
+                />
+                <ToolbarSpacer id="idToolbarSpacerManuallyRepackAllHUItems">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataManuallyRepackAllHUItems"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1ManuallyRepackAllHUItems"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idManuallyRepackAllHUItemsFirstSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackAllHUItemsSF1"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idManuallyRepackAllHUItemswtLabel"
+                                    text="Srce HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackAllHUItemswtInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Source HU"
+                                />
+
+                                <Label width="20px"></Label>
+
+                                <Input
+                                    id="idManuallyRepackAllHUItemsWTitAllInput"
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter ALL"
+                                />
+                            </HBox>
+
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idManuallyRepackAllHUItemswtsLabel"
+                                    text="Cnsld.Grp"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackAllHUItemswtsInput"
+                                    value=""
+                                    maxLength="10"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                />
+                                <Label width="20px"></Label>
+                                <Label
+                                    id="idManuallyRepackAllHUItemsStsLabel"
+                                    text="Sis"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackAllHUItemsStsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Sis"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center" styleClass="sapUiSmallMarginBottom">
+                                <Label
+                                    id="idManuallyRepackAllHUItemsSproLabel"
+                                    text="Dest.HU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackAllHUItemsSproInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                />
+                            </HBox>
+
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idManuallyRepackAllHUItemsProLabel"
+                                    text="Dest.Bin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idManuallyRepackAllHUItemsProInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
