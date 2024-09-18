@@ -1,0 +1,288 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.CreatePutawayHusforDeconsolidate"
+    xmlns:table="sap.ui.table"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageCPHFDE">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderCPHFDE">
+                <Image
+                    id="idImage1CPHFDE"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorCPHFDE"
+                />
+                <ToolbarSpacer id="idToolbarSpacerCPHFDE">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1CPHFDE"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1CPHFDE"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idCPHFDEScanPage1"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idCPHFDEBackButton"
+                    icon="sap-icon://nav-back"
+                    press="onPressCPHFDEScanbackbtn"
+                    visible="true"
+                />
+
+                <VBox
+                    id="idCPHFDEVBOx"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="idCPHFDEtitle"
+                        text="Create Putaway Hus for Deconsolidation"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="idCPHFDEsf"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idCPHFDEHbox1"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idCPHFDETUorDoorLabel"
+                                text="Decon.HU"
+                            />
+                            <!-- Input Field -->
+                             <Input
+                                    id="ididCPHFDETUorDoorinput"
+                                    placeholder="Enter Decon.HU...."
+                                    liveChange="onPressCPHFDESubmitbtn"
+                                />
+                                
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idCPHFDEPage2"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idCPHFDEBackBtn"
+                    press="OnpressCPHFDEPage2Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idCPHFDEDeVBox"
+                    class="Page2HUDetailsContainer_PBYWO"
+                    justifyContent="Center"
+                >
+                    <Title
+                        id="idCPHFDEDeTitle"
+                        text=""
+                        level="H2"
+                        class="Page2formHeaderTitle_PBYWO"
+                    />
+                    <form:SimpleForm
+                        id="idCPHFDEDeSF"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <!-- Deconsolidate HU -->
+                        <Label
+                            id="idCPHFDEDeconsolidateHU"
+                            text="Decon.HU"
+                            
+                        />
+                        <Input
+                            id="idCPHFDEDeconsolidateHuInput"
+                            width="10rem"
+                            editable="false"
+                        />
+                        <!-- Cnsld.group -->
+                        <Label
+                            id="idCPHFDEcnsld.group"
+                            text="Cnsld.group"
+                        />
+                        <Input
+                            id="idCPHFDEcnsld.groupInput"
+                            width="10rem"
+                            editable="false"
+                        />
+
+                        <!-- Number DGs -->
+                        <Label
+                            id="idCPHFDEnumberDGs"
+                            text="Number DGs"
+                        />
+                        <Input
+                            id="idCPHFDEnumberDGsInput"
+                            placeholder="Enter Number DGs..."
+                            width="10rem"
+                        />
+                        <!-- Putaway HU -->
+                        <Label
+                            id="idCPHFDEPutawayHU"
+                            text="Putaway HU"
+                        />
+                        <Input
+                            id="idCPHFDEPutawayHUInput"
+                            placeholder="Enter Putaway HU..."
+                            width="10rem"
+                            liveChange="OnlivechangePutaway"
+                        />
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idCPHFDEPage3"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idCPHFPage3BackBtn"
+                    press="OnpressCPHFDEPage3Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idCPHFDEDeVBox1"
+                    class="Page2HUDetailsContainer_PBYWO"
+                    justifyContent="Center"
+                >
+                    <Title
+                        id="idCPHFDEDeTitle1"
+                        text=""
+                        level="H2"
+                        class="Page2formHeaderTitle_PBYWO"
+                    />
+                    <form:SimpleForm
+                        id="idCPHFDEDeSF1"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <!-- Deconsolidate HU -->
+                        <Label
+                            id="idCPHFDEDeconsolidateHU1"
+                            text="Decon.HU"
+                            
+                        />
+                        <Input
+                            id="idCPHFDEDeconsolidateHuInput1"
+                            width="10rem"
+                            editable="false"
+                        />
+                        <!-- Cnsld.group -->
+                        <Label
+                            id="idCPHFDEcnsld.group1"
+                            text="Cnsld.group"
+                        />
+                        <Input
+                            id="idCPHFDEcnsld.groupInput1"
+                            width="10rem"
+                            editable="false"
+                        />
+
+                        <!-- Number DGs -->
+                        <Label
+                            id="idCPHFDEnumberDGs1"
+                            text="Number DGs"
+                        />
+                        <Input
+                            id="idCPHFDEnumberDGsInput1"
+                            placeholder="Enter Number DGs..."
+                            width="10rem"
+                            editable="false"
+                        />
+                        <!-- Pack.Mat HU -->
+                        <Label
+                            id="idCPHFDEPack_Mat"
+                            text="Pack.Mat"
+                        />
+                        <Input
+                            id="idCPHFDEPack_matInput"
+                            placeholder="Scan Pack.Mat..."
+                            width="10rem"
+                        />
+                        <!-- Dest.Bin -->
+                        <Label
+                            id="idCPHFDEDestBin"
+                            text="Dest.Bin"
+                        />
+                        <VBox >
+                        <Input
+                            id="idCPHFDEDestBinInput"
+                            placeholder="Scan Dest.Bin..."
+                            width="10rem"
+                        />
+                               <Button
+                                    id="idCPHFDEButtonSave"
+                                    text="SAVE"
+                                    press="onPressCPHFDESaveBTn"
+                                />
+                                </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

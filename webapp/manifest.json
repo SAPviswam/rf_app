@@ -388,6 +388,20 @@
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
+        },
+        {
+          "name": "CreatePutawayHusforDeconsolidate",
+          "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+          "target": [
+            "TargetCreatePutawayHusforDeconsolidate"
+          ]
+        },
+        {
+          "name": "CreatePutawayHusManually",
+          "pattern": "CreatePutawayHusManually/{id}",
+          "target": [
+            "TargetCreatePutawayHusManually"
+          ]
         }
       ],
       "targets": {
@@ -675,6 +689,20 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
+        },
+        "TargetCreatePutawayHusforDeconsolidate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusforDeconsolidate",
+          "viewName": "CreatePutawayHusforDeconsolidate"
+        },
+        "TargetCreatePutawayHusManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusManually",
+          "viewName": "CreatePutawayHusManually"
         }
       }
       },
