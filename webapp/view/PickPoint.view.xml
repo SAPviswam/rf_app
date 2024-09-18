@@ -14,21 +14,21 @@
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderPP">
                 <Button
-                    id="idInitialPPbackbtn"
+                    id="idFirstPPbackbtn"
                     icon="sap-icon://nav-back"
-                    press="onInitialPPBackBtnPress"
+                    press="onFirstPPbackbtnPress"
                     visible="true"
-                />
-                <Button
-                    id="idPPfirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onfirstBackBtnPress"
-                    visible="false"
                 />
                 <Button
                     id="idPPSecondbackbtn"
                     icon="sap-icon://nav-back"
-                    press="onSecondBackBtnPress"
+                    press="onPPSecondbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPThirdbackbtnPress"
                     visible="false"
                 />
                 <Image
@@ -79,7 +79,7 @@
                 <VBox alignContent="Center"
                         alignItems="Center">
 
-                        <Title text="Create and Confirm PP HU"></Title>
+                        <Title text="Pick Point"></Title>
                         <VBox class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idfirstPPPage1"
@@ -88,8 +88,8 @@
                     >
                         <Label
                             id="idWorkCenterLabel"
-                            text="HU"
-                             width="70px"
+                            text="Work Center"
+                             width="100px"
                         />
                         <Input
                             id="idWorkCebnterInput"
@@ -102,6 +102,99 @@
                             press="onPPBarcodeScanner"
                         />
                        
+                    </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idSecondHUPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                <VBox alignContent="Center"
+                        alignItems="Center">
+
+                        <Title text="Pick Point"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
+                    <HBox
+                        
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <Label
+                            id="idHUPPLabel"
+                            text="HU"
+                            width="70px"
+                        />
+                        <Input
+                            id="idHUPPInput"
+                            value=""
+                            liveChange="onHUPPLiveChange"
+                        />
+                        <Button
+                            id="idHUPPScannerBtn"
+                            icon="sap-icon://bar-code"
+                            press="onHUPPBarcodeScanner"
+                        />
+                       
+                    </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idThirdPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                <VBox alignContent="Center"
+                        alignItems="Center">
+
+                        <Title text="Pick Point"></Title>
+                        <VBox class="sapUiTinyMarginBottom"></VBox>
+                    <HBox
+                        
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <Label
+                            id="idSrcHULabel"
+                            text="Source HU"
+                            width="100px"
+                        />
+                        <Input
+                            id="idSrcHuInput"
+                            value=""
+                            
+                        />
+                       <Input id="idToWT" value="ToWT"></Input>
                     </HBox>
                     </VBox>
                 </form:SimpleForm>

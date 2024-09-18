@@ -49,8 +49,8 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idScrollContainer1"
-                horizontal="false"
-                vertical="false"
+                horizontal="true"
+                vertical="true"
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
@@ -65,10 +65,13 @@
                     columnsM="1"
                     columnsS="1"
                 > -->
-                    <ScrollContainer
+                    <!-- <ScrollContainer
+                     horizontal="false"
+    vertical="true"
                         width="100%"
                         height="100%"
-                    >
+                        class="sapUiContentPadding sapUiResponsiveMargin"
+                    > -->
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
                     <HBox >
@@ -775,7 +778,7 @@
                             press="onChangeResourceGroupTilePress"
                             visible="false"
                         />
-                    </ScrollContainer>
+                    <!-- </ScrollContainer> -->
                 <!-- </form:SimpleForm> -->
             </ScrollContainer>
         </tnt:mainContents>

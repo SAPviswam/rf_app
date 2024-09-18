@@ -414,6 +414,11 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
+            onPickPointPress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("PickPoint",{id:this.ID});                 
+            }, 
 
 
         });
