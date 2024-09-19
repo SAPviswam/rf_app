@@ -1169,7 +1169,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer

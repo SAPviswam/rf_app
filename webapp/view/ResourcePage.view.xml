@@ -49,8 +49,8 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idScrollContainer1"
-                horizontal="false"
-                vertical="false"
+                horizontal="true"
+                vertical="true"
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
