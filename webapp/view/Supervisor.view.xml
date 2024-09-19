@@ -891,7 +891,7 @@
                         <GenericTile
                             id="idCreatePutawayHusManually1"
                             header="Create Putaway Hus Manually"
-                            press="onCreatePutawayHus Manually"
+                            press="onCreatePutawayHusManually"
                             class="sapUiTinyMargin"
                         />
 

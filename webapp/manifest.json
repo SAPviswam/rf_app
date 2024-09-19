@@ -410,6 +410,21 @@
           ]
         },
         {
+
+          "name": "CreatePutawayHusforDeconsolidate",
+          "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+          "target": [
+            "TargetCreatePutawayHusforDeconsolidate"
+          ]
+        },
+        {
+          "name": "CreatePutawayHusManually",
+          "pattern": "CreatePutawayHusManually/{id}",
+          "target": [
+            "TargetCreatePutawayHusManually"
+    ]
+},
+
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
           "target": [
@@ -421,6 +436,7 @@
           "pattern": "ProductInspectionByStorageBin/{id}",
           "target": [
             "TargetProductInspectionByStorageBin"
+
           ]
         }
       ],
@@ -731,6 +747,20 @@
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
         },
+        "TargetCreatePutawayHusforDeconsolidate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusforDeconsolidate",
+          "viewName": "CreatePutawayHusforDeconsolidate"
+        },
+        "TargetCreatePutawayHusManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusManually",
+          "viewName": "CreatePutawayHusManually"
+        },
         "TargetProductInspectionByHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -744,6 +774,16 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
+<<<<<<< HEAD
+=======
+
+      },
+      "rootView": {
+        "viewName": "com.app.rfapp.view.App",
+        "type": "XML",
+        "async": true,
+        "id": "App"
+>>>>>>> cc9b4431d3089c10b7d6339c85cdf1db3acb6c81
       }
     },
     "sap.cloud": {
