@@ -37,7 +37,10 @@ sap.ui.define([
             this.oConnetSap.open();
         },
         onCloseconnectsap: function () {
+            debugger
             this.oConnetSap.close();
+            var oModel = this.getView().getModel();
+            oModel.refresh(true);
         },
         onsapsubmitPress: function () {
             var oU = this.getView().byId("idsaplogonUserId").getValue();
@@ -287,12 +290,13 @@ sap.ui.define([
         onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client) {
             this.selectedButton = oButton;
             this.client = Client;
+            this.sdedescription = oButton.mProperties.text;
         },
-        onCloseconnectsap: function () {
-            // Close the dialog
-            var oDialog = this.getView().byId("idconnectsapdialog");
-            oDialog.close();
-        },
+        // onCloseconnectsap: function () {
+        //     // Close the dialog
+        //     var oDialog = this.getView().byId("idconnectsapdialog");
+        //     oDialog.close();
+        // },
         handleAddPress: function () {
             this.handleLinksapPress();
         },
@@ -342,17 +346,154 @@ sap.ui.define([
                 }.bind(that) // Bind the controller context
             });
         },
-onEditConfiguredSystem : function() {
-    if (!this.selectedButton) {
-        MessageToast.show("No button selected to edit.");
-        return;
-    }
+        onEditConfiguredSystem: function () {
+            if (!this.selectedButton) {
+                MessageToast.show("No button selected to edit.");
+                return;
+            }
+            this.handleLinksapPress();
+            var oButtonText = this.sdedescription;
 
-    this.handleLinksapPress();
-},
+            var oModel = this.getView().getModel();
 
+            var that = this;
 
+            oModel.read("/ServiceSet", {
+                filters: [new sap.ui.model.Filter("DescriptionB", sap.ui.model.FilterOperator.EQ, oButtonText)],
+                success: function (oData) {
 
+                    var aButtons = oData.results;
+                    function checkButton(v) {
+                        return v.DescriptionB === oButtonText;
+                    }
+                    var oButtonedit = aButtons.filter(checkButton);
+                    if (oButtonedit) {
 
+                        that.byId("idDescriptionInput").setValue(oButtonedit[0].Description);
+                        that.byId("idSystemIdInput").setValue(oButtonedit[0].SystemId);
+                        that.byId("idInstanceNumberInput").setValue(oButtonedit[0].InstanceNo);
+                        that.byId("idClientInput").setValue(oButtonedit[0].Client);
+                        that.byId("idApplicationServerInput").setValue(oButtonedit[0].AppServer);
+                        that.byId("idRouterStringInput").setValue(oButtonedit[0].SapRouterStr);
+                        that.byId("idServiceInput").setValue(oButtonedit[0].SapService);
+                    }
+                }
+            });
+
+        },
+        // onEditconnectSAPPress: function () {
+        //     // Get updated values from input fields
+        //     var oView = this.getView();
+        //     var sDescription = this.byId("idDescriptionInput").getValue();
+        //     var sSystemId = this.byId("idSystemIdInput").getValue();
+        //     var sInstanceNumber = this.byId("idInstanceNumberInput").getValue();
+        //     var sClient = this.byId("idClientInput").getValue();
+        //     var sApplicationServer = this.byId("idApplicationServerInput").getValue();
+        //     var sRouterString = this.byId("idRouterStringInput").getValue();
+        //     var sService = this.byId("idServiceInput").getValue();
+        //     var oCheckbox = oView.byId("idCheckboxDescription");
+        
+        
+        //     var oModel = this.getView().getModel();
+
+        //     // Create an object with updated values
+        //     var oUpdatedData = {
+        //         Description: sDescription,
+        //         SystemId: sSystemId,
+        //         InstanceNo: sInstanceNumber,
+        //         Client: sClient,
+        //         AppServer: sApplicationServer,
+        //         SapRouterStr: sRouterString,
+        //         SapService: sService,
+        //         DescriptionB: (oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription)
+        //     };
+        //     var that = this;
+        //     // Update the entry in OData service
+        //     oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
+        //         success: function () {
+        //             MessageToast.show("Data updated successfully.");
+        //             that.onCloseconnectsap();
+        //             that.clearInputFields(oView);
+        //         },
+        //         error: function (oError) {
+        //             MessageToast.show("Error updating data.");
+        //         }
+        //     });
+        // },
+        onEditconnectSAPPress: function () {
+            var oView = this.getView();
+            var sDescription = oView.byId("idDescriptionInput").getValue();
+            var sSystemId = oView.byId("idSystemIdInput").getValue();
+            var sInstanceNumber = oView.byId("idInstanceNumberInput").getValue();
+            var sClient = oView.byId("idClientInput").getValue();
+            var sApplicationServer = oView.byId("idApplicationServerInput").getValue();
+            var sRouterString = oView.byId("idRouterStringInput").getValue();
+            var sService = oView.byId("idServiceInput").getValue();
+            var oCheckbox = oView.byId("idCheckboxDescription");
+            var oButton = this.selectedButton;
+        
+            // Perform validation checks
+            if (!sSystemId) {
+                sap.m.MessageToast.show("System ID is required.");
+                return;
+            }
+            if (!sInstanceNumber) {
+                sap.m.MessageToast.show("Instance Number is required.");
+                return;
+            }
+            if (!sClient) {
+                sap.m.MessageToast.show("Client is required.");
+                return;
+            }
+            if (!sApplicationServer) {
+                sap.m.MessageToast.show("Application Server is required.");
+                return;
+            }
+            // if (!sRouterString) {
+            //     sap.m.MessageToast.show("Router String is required.");
+            //     return;
+            // }
+            if (!sService) {
+                sap.m.MessageToast.show("Service is required.");
+                return;
+            }
+        
+            // Update the sDescription based on the checkbox state
+            if (oCheckbox.getSelected()) {
+                sDescription = sSystemId + " / " + sClient;
+            }
+        
+            // Update button text
+            oButton.setText(sDescription);
+        
+            // Create an object with updated values, setting both Description and DescriptionB
+            var oUpdatedData = {
+                Description: sDescription,
+                DescriptionB: sDescription,  // Ensure DescriptionB is updated to the same value
+                SystemId: sSystemId,
+                InstanceNo: sInstanceNumber,
+                Client: sClient,
+                AppServer: sApplicationServer,
+                SapRouterStr: sRouterString,
+                SapService: sService
+            };
+        
+            var that = this;
+            var oModel = this.getView().getModel();
+        
+            // Update the entry in OData service
+            oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
+                success: function () {
+                    sap.m.MessageToast.show("Data updated successfully.");
+                    that.clearInputFields(oView);
+                    that.onCloseconnectsap(); // Close the dialog after updating
+                },
+                error: function (oError) {
+                    sap.m.MessageToast.show("Error updating data.");
+                }
+            });
+        },
+        
+        
     })
 });
