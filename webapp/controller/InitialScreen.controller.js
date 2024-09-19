@@ -8,7 +8,8 @@ sap.ui.define([
 
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
         onInit: function () {
-            this.loadConfiguredSystems();
+         this.loadConfiguredSystems();
+
         },
         onDevButtonPress: async function () {
             this.LoadSapLogon();
@@ -64,18 +65,71 @@ sap.ui.define([
             var oDialog = oView.byId("idconnectsapdialog");
             var sDescription = oView.byId("idDescriptionInput").getValue();
             var sSystemId = oView.byId("idSystemIdInput").getValue();
+            var sInstanceNumber = oView.byId("idInstanceNumberInput").getValue();
+            var sClient = oView.byId("idClientInput").getValue();
+            var sApplicationServer = oView.byId("idApplicationServerInput").getValue();
+            var sRouterString = oView.byId("idRouterStringInput").getValue();
+            var sService = oView.byId("idServiceInput").getValue();
 
-            // Validate input
-            if (!sDescription || !sSystemId) {
-                MessageToast.show("Please enter required fields.");
-                return;
-            }
+            // // Initialize an array to hold error messages
+            // var aErrorMessages = [];
+
+            // // Validate input fields
+            // if (!sDescription) {
+            //     aErrorMessages.push("Please fill in the Description field.");
+            //     oView.byId("idDescriptionInput").setValueState(sap.ui.core.ValueState.Error); // Highlight the field
+            // } else {
+            //     oView.byId("idDescriptionInput").setValueState(sap.ui.core.ValueState.None); // Clear error state
+            // }
+
+            // if (!sSystemId) {
+            //     aErrorMessages.push("Please fill in the System ID field.");
+            //     oView.byId("idSystemIdInput").setValueState(sap.ui.core.ValueState.Error);
+            // } else {
+            //     oView.byId("idSystemIdInput").setValueState(sap.ui.core.ValueState.None);
+            // }
+
+            // if (!sInstanceNumber) {
+            //     aErrorMessages.push("Please fill in the Instance Number field.");
+            //     oView.byId("idInstanceNumberInput").setValueState(sap.ui.core.ValueState.Error);
+            // } else {
+            //     oView.byId("idInstanceNumberInput").setValueState(sap.ui.core.ValueState.None);
+            // }
+
+            // if (!sClient) {
+            //     aErrorMessages.push("Please fill in the Client field.");
+            //     oView.byId("idClientInput").setValueState(sap.ui.core.ValueState.Error);
+            // } else {
+            //     oView.byId("idClientInput").setValueState(sap.ui.core.ValueState.None);
+            // }
+
+            // if (!sApplicationServer) {
+            //     aErrorMessages.push("Please fill in the Application Server field.");
+            //     oView.byId("idApplicationServerInput").setValueState(sap.ui.core.ValueState.Error);
+            // } else {
+            //     oView.byId("idApplicationServerInput").setValueState(sap.ui.core.ValueState.None);
+            // }
+
+            // // Optional: Validate Router String and Service if needed
+            // // Add similar checks for Router String and Service fields if they are mandatory
+
+            // // If there are any error messages, show them and return
+            // if (aErrorMessages.length > 0) {
+            //     MessageToast.show("Please fill all mandatory fields "); // Show all error messages
+            //     return;
+            // }
 
             // Create a new button for the configured SAP system
             var oNewButton = new sap.m.Button({
-                text: sDescription + " (" + sSystemId + ")",
+                text: sDescription,
                 type: "Emphasized",
                 width: "11rem",
+                customData: [
+                    new sap.ui.core.CustomData({
+                        key: "systemId",
+                        value: sSystemId // Store system ID in custom data
+                    })
+                ]
             });
 
             // Attach single click event for CRUD operations
@@ -95,53 +149,85 @@ sap.ui.define([
             // Insert the new button after the link
             oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
 
-            // Save the button data in local storage
-            this.saveConfiguredSystem(sDescription, sSystemId);
+            // Save to OData service (if needed)
+            var oModel = this.getView().getModel(); // Get the OData model
+            var oEntry = {
+                Description: sDescription,
+                SystemId: sSystemId,
+                InstanceNo:sInstanceNumber,
+                Client:sClient,
+                AppServer:sApplicationServer,
+                SapRouterStr:sRouterString,
+                SapService:sService
+                // Add other properties as needed based on your OData service structure
+            };
+
+            oModel.create("/ServiceSet", oEntry, {
+                success: function () {
+                    MessageToast.show("Configured system saved successfully.");
+                    this.clearInputFields(oView);
+                }.bind(this), // Ensure 'this' context is correct
+                error: function (oError) {
+                    MessageToast.show("Error saving configured system.");
+                }
+            });
 
             // Close the dialog after saving
             oDialog.close();
         },
+        clearInputFields: function(oView) {
+            // Clear all input fields by setting their values to an empty string
+            oView.byId("idDescriptionInput").setValue("");
+            oView.byId("idSystemIdInput").setValue("");
+            oView.byId("idInstanceNumberInput").setValue("");
+            oView.byId("idClientInput").setValue("");
+            oView.byId("idApplicationServerInput").setValue("");
+            oView.byId("idRouterStringInput").setValue(""); 
+            oView.byId("idServiceInput").setValue(""); 
+         },
 
-        // Single click handler for CRUD operations
+        // Load configured systems from OData service and display them in the UI
+        loadConfiguredSystems: function () {
+            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+
+            oModel.read("/ServiceSet", {
+                success: function (oData) {
+                    var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
+
+                    var oHomePage = this.getView().byId("environmentButtonsHBox");
+                    // Clear existing items before adding new ones
+
+                    aConfiguredSystems.forEach(function (system) {
+                        var oNewButton = new sap.m.Button({
+                            text: system.Description,
+                            type: "Emphasized",
+                            width: "11rem"
+                        });
+
+                        // Attach single click event for CRUD operations
+                        oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, system.Description, system.SystemId));
+
+                        // Attach double click event for opening SAP logon
+                        oNewButton.attachBrowserEvent("dblclick", function () {
+                            this.LoadSapLogon();
+                        }.bind(this));
+
+                        // Add button to the HBox
+                        oHomePage.addItem(oNewButton);
+                    }, this); // Bind 'this' context for inner function
+
+                }.bind(this), // Ensure 'this' context is correct
+                error: function (oError) {
+                    MessageToast.show("Error loading configured systems.");
+                    console.error(oError);
+                }
+            });
+        },
+
         onConfiguredSystemButtonPress: function (oButton, description, systemId) {
             this.selectedButton = oButton;
-
+            this.systemId = systemId;
         },
-
-        // Save configured system in local storage
-        saveConfiguredSystem: function (description, systemId) {
-            var configuredSystems = JSON.parse(localStorage.getItem("configuredSystems")) || [];
-            configuredSystems.push({ description: description, systemId: systemId });
-            localStorage.setItem("configuredSystems", JSON.stringify(configuredSystems));
-        },
-        // Load configured systems from local storage
-        loadConfiguredSystems: function () {
-            var configuredSystems = JSON.parse(localStorage.getItem("configuredSystems")) || [];
-            var oHomePage = this.getView().byId("environmentButtonsHBox");
-
-            configuredSystems.forEach(function (system) {
-                var oNewButton = new sap.m.Button({
-                    text: system.description + " (" + system.systemId + ")",
-                    type: "Emphasized",
-                    width: "11rem"
-                });
-
-                // Attach the press event to the new button
-                oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, system.description, system.systemId));
-
-                // Attach double click event for opening SAP logon
-                oNewButton.attachBrowserEvent("dblclick", function () {
-                    this.LoadSapLogon();
-                }.bind(this));
-
-                // Get the "Configure SAP system" link
-                var oLink = this.getView().byId("_IDCofiguresapLink");
-
-                // Insert the new button before the link
-                oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
-            }, this);
-        },
-
         onCloseconnectsap: function () {
             // Close the dialog
             var oDialog = this.getView().byId("idconnectsapdialog");
@@ -159,36 +245,34 @@ sap.ui.define([
                 return;
             }
 
-            // Get the description and systemId from the selected button
-            var description = this.selectedButton
-            var systemId = this.selectedButton
+            var that = this; // Store reference to 'this' for use in callbacks
+
             MessageBox.warning("Are you sure you want to delete the configured system?", {
                 title: "Confirm Deletion",
                 onClose: function (status) {
                     if (status === "OK") {
-                        // Remove from local storage
-                        this.removeConfiguredSystem(description, systemId);
+                        // Delete from OData service
+                        var oModel = that.getView().getModel(); // Get the OData model
+                        var sPath = "/ServiceSet('" + that.systemId + "')"; // Construct path based on your entity set
+
+                        oModel.remove(sPath, {
+                            success: function () {
+                                MessageToast.show("Configured system deleted successfully.");
+                            }.bind(that), // Ensure 'this' context is correct
+                            error: function (oError) {
+                                MessageToast.show("Error deleting configured system.");
+                                console.error(oError);
+                            }
+                        });
+
                         // Clear selection
-                        this.selectedButton = null;
-                        MessageToast.show("Configured system removed from local storage.");
+                        that.selectedButton = null;
                     } else {
                         MessageToast.show("Deletion cancelled.");
                     }
-                }.bind(this) // Bind the controller context
+                }.bind(that) // Bind the controller context
             });
-        },
-
-        removeConfiguredSystem: function (description) {
-            var configuredSystems = JSON.parse(localStorage.getItem("configuredSystems")) || [];
-
-            // Filter out the system that matches description and systemId
-            configuredSystems = configuredSystems.filter(function (system) {
-                return !(system.description === description);
-            });
-
-            localStorage.removeItem("configuredSystems", JSON.stringify(configuredSystems));
         }
-
     });
 
 

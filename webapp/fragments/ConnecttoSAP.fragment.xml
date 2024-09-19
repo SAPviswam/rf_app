@@ -84,6 +84,7 @@
                         text="System Id:"
                         width="150px" 
                         class="sapUiTinyMarginTop"
+                        required="true"
 
                     />
                     <Input
@@ -104,6 +105,7 @@
                         text="Instance Number:"
                         width="150px" 
                         class="sapUiTinyMarginTop"
+                        required="true"
 
                     />
                     <Input
@@ -122,6 +124,7 @@
                         text="Client:"
                         width="150px" 
                         class="sapUiTinyMarginTop"
+                        required="true"
 
                     />
                     <Input
@@ -140,6 +143,7 @@
                         text="Application server:"
                         width="150px"
                         class="sapUiTinyMarginTop"
+                        required="true"
 
                     />
                     <Input
