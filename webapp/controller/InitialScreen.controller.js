@@ -11,7 +11,6 @@ sap.ui.define([
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
         onInit: function () {
             this.loadConfiguredSystems();
-
         },
         onDevButtonPress: async function () {
             this.LoadSapLogon();
@@ -343,7 +342,14 @@ sap.ui.define([
                 }.bind(that) // Bind the controller context
             });
         },
+onEditConfiguredSystem : function() {
+    if (!this.selectedButton) {
+        MessageToast.show("No button selected to edit.");
+        return;
+    }
 
+    this.handleLinksapPress();
+},
 
 
 
