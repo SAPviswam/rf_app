@@ -34,16 +34,26 @@
 </EntityType>
 <EntityType Name="Service" sap:content-version="1">
 <Key>
+<<<<<<< HEAD
 <PropertyRef Name="Client"/>
 </Key>
 <Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+=======
+<PropertyRef Name="SystemId"/>
+</Key>
+<Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+>>>>>>> 108ba7c15cbe9f984205b58a4957a480ed7a5586
 <Property Name="SystemId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="System id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="InstanceNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Instance No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CLIENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="AppServer" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Application Server" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SapRouterStr" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="SAP ROUTER STRING" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<<<<<<< HEAD
 <Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+=======
+<Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+>>>>>>> 108ba7c15cbe9f984205b58a4957a480ed7a5586
 </EntityType>
 <EntityType Name="RESOURCES" sap:content-version="1">
 <Key>
@@ -79,3 +89,4 @@
 </Schema>
 </edmx:DataServices>
 </edmx:Edmx>
+ 

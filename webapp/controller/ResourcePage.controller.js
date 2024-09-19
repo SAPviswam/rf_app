@@ -414,6 +414,7 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
+
             onCreatePutawayHusforDeconsolidationPress: function(){
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
@@ -423,5 +424,6 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
             },
+
         });
     });
