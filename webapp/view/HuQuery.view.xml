@@ -18,10 +18,7 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
-<<<<<<< HEAD
 
-=======
->>>>>>> c8abee7adc9421190926f5ad1af095a0beb03d4e
     <tnt:ToolPage id="_IDGenPage1">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHuQuery">
