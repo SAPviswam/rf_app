@@ -408,6 +408,22 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
             }, 
+          
+            onWTQuerybyQueuePress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
+            }, 
+
+            onCreatePutawayHusforDeconsolidationPress: function(){
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});        
+            },
+            onCreatePutawayHusManuallyPress: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
 
         });
     });
