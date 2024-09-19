@@ -402,7 +402,7 @@
             "TargetCreatePutawayHusManually"
     ]
 },
-
+{
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
           "target": [
