@@ -34,15 +34,17 @@
 </EntityType>
 <EntityType Name="Service" sap:content-version="1">
 <Key>
-<PropertyRef Name="SystemId"/>
+<PropertyRef Name="Client"/>
 </Key>
+<Property Name="DescriptionB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Button Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SystemId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="System id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="InstanceNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Instance No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CLIENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="AppServer" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Application Server" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SapRouterStr" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="SAP ROUTER STRING" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="RESOURCES" sap:content-version="1">
 <Key>
@@ -73,8 +75,8 @@
 <EntitySet Name="ServiceSet" EntityType="ZEWM_RFUI_SRV_01.Service" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="RESOURCESSet" EntityType="ZEWM_RFUI_SRV_01.RESOURCES" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 </EntityContainer>
-<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://VHCALAKECI.ARTIHCUS.COM:44306/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
-<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://VHCALAKECI.ARTIHCUS.COM:44306/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
 </Schema>
 </edmx:DataServices>
 </edmx:Edmx>

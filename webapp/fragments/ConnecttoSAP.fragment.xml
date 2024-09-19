@@ -178,6 +178,7 @@
                         text="SAP Service:"
                         width="150px" 
                         class="sapUiTinyMarginTop"
+                        required="true"
 
                     />
                     <Input
@@ -202,8 +203,8 @@
         <buttons>
          <Button
                 id="idconnectsapcancelButton"
-                text="Cancel"
-                press="onCancelconnectSAPPress"
+                text="Clear"
+                press="onClearconnectSAPPress"
             />
          <Button
                 id="idconnectsapbackButton"

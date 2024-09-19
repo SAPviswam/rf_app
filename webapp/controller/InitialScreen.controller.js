@@ -2,13 +2,15 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
     "sap/m/MessageToast",
-    "sap/m/MessageBox"
-], function (Controller, Device, MessageToast, MessageBox) {
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+], function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator,) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
         onInit: function () {
-         this.loadConfiguredSystems();
+            this.loadConfiguredSystems();
 
         },
         onDevButtonPress: async function () {
@@ -50,19 +52,9 @@ sap.ui.define([
             this.getView().byId("idsaplogonUserId").setValue();
             this.getView().byId("idSapLogonPassword").setValue();
         },
-        // clear btn in the configure SAP fragment.
-        onCancelconnectSAPPress: function () {
-            this.getView().byId("idDescriptionInput").setValue();
-            this.getView().byId("idSystemIdInput").setValue();
-            this.getView().byId("idInstanceNumberInput").setValue();
-            this.getView().byId("idApplicationServerInput").setValue();
-            this.getView().byId("idClientInput").setValue();
-            this.getView().byId("idServiceInput").setValue();
-        },
         onFinishconnectSAPPress: function () {
             // Get the dialog and its input fields
             var oView = this.getView();
-            var oDialog = oView.byId("idconnectsapdialog");
             var sDescription = oView.byId("idDescriptionInput").getValue();
             var sSystemId = oView.byId("idSystemIdInput").getValue();
             var sInstanceNumber = oView.byId("idInstanceNumberInput").getValue();
@@ -70,121 +62,190 @@ sap.ui.define([
             var sApplicationServer = oView.byId("idApplicationServerInput").getValue();
             var sRouterString = oView.byId("idRouterStringInput").getValue();
             var sService = oView.byId("idServiceInput").getValue();
+            var oCheckbox = oView.byId("idCheckboxDescription");
+            var bValid = true;
+            var bAllFieldsFilled = true;
 
-            // // Initialize an array to hold error messages
-            // var aErrorMessages = [];
+            // Validate Description only if the checkbox is not selected
+            if (!oCheckbox.getSelected() && !sDescription) {
+                oView.byId("idDescriptionInput").setValueState("Error");
+                oView.byId("idDescriptionInput").setValueStateText("Description is mandatory when checkbox is not selected.");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idDescriptionInput").setValueState("None");
+            }
 
-            // // Validate input fields
-            // if (!sDescription) {
-            //     aErrorMessages.push("Please fill in the Description field.");
-            //     oView.byId("idDescriptionInput").setValueState(sap.ui.core.ValueState.Error); // Highlight the field
-            // } else {
-            //     oView.byId("idDescriptionInput").setValueState(sap.ui.core.ValueState.None); // Clear error state
-            // }
+            if (!sSystemId) {
+                oView.byId("idSystemIdInput").setValueState("Error");
+                oView.byId("idSystemIdInput").setValueStateText("System ID must be a 3-digit value");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idSystemIdInput").setValueState("None");
+            }
 
-            // if (!sSystemId) {
-            //     aErrorMessages.push("Please fill in the System ID field.");
-            //     oView.byId("idSystemIdInput").setValueState(sap.ui.core.ValueState.Error);
-            // } else {
-            //     oView.byId("idSystemIdInput").setValueState(sap.ui.core.ValueState.None);
-            // }
+            // Validate Username
+            if (!sInstanceNumber) {
+                oView.byId("idInstanceNumberInput").setValueState("Error");
+                oView.byId("idInstanceNumberInput").setValueStateText("InstanceNumber must be a 3-digit value");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idInstanceNumberInput").setValueState("None");
+            }
 
-            // if (!sInstanceNumber) {
-            //     aErrorMessages.push("Please fill in the Instance Number field.");
-            //     oView.byId("idInstanceNumberInput").setValueState(sap.ui.core.ValueState.Error);
-            // } else {
-            //     oView.byId("idInstanceNumberInput").setValueState(sap.ui.core.ValueState.None);
-            // }
+            if (!sClient) {
+                oView.byId("idClientInput").setValueState("Error");
+                oView.byId("idClientInput").setValueStateText("clientID must be a 3-digit value");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idClientInput").setValueState("None");
+            }
 
-            // if (!sClient) {
-            //     aErrorMessages.push("Please fill in the Client field.");
-            //     oView.byId("idClientInput").setValueState(sap.ui.core.ValueState.Error);
-            // } else {
-            //     oView.byId("idClientInput").setValueState(sap.ui.core.ValueState.None);
-            // }
+            if (!sApplicationServer) {
+                oView.byId("idApplicationServerInput").setValueState("Error");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idApplicationServerInput").setValueState("None");
+            }
 
-            // if (!sApplicationServer) {
-            //     aErrorMessages.push("Please fill in the Application Server field.");
-            //     oView.byId("idApplicationServerInput").setValueState(sap.ui.core.ValueState.Error);
-            // } else {
-            //     oView.byId("idApplicationServerInput").setValueState(sap.ui.core.ValueState.None);
-            // }
+            if (!sService) {
+                oView.byId("idServiceInput").setValueState("Error");
+                oView.byId("idServiceInput").setValueStateText("Service is mandatory");
+                bValid = false;
+                bAllFieldsFilled = false;
+            } else {
+                oView.byId("idServiceInput").setValueState("None");
+            }
 
-            // // Optional: Validate Router String and Service if needed
-            // // Add similar checks for Router String and Service fields if they are mandatory
 
-            // // If there are any error messages, show them and return
-            // if (aErrorMessages.length > 0) {
-            //     MessageToast.show("Please fill all mandatory fields "); // Show all error messages
-            //     return;
-            // }
+            // Display appropriate message
+            if (!bAllFieldsFilled) {
+                sap.m.MessageToast.show("Please fill all mandatory details");
+                return;
+            }
 
-            // Create a new button for the configured SAP system
-            var oNewButton = new sap.m.Button({
-                text: sDescription,
-                type: "Emphasized",
-                width: "11rem",
-                customData: [
-                    new sap.ui.core.CustomData({
-                        key: "systemId",
-                        value: sSystemId // Store system ID in custom data
-                    })
-                ]
-            });
+            if (!bValid) {
+                sap.m.MessageToast.show("Please enter correct data");
+                return;
+            }
 
-            // Attach single click event for CRUD operations
-            oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, sDescription, sSystemId));
 
-            // Attach double click event for opening SAP logon
-            oNewButton.attachBrowserEvent("dblclick", function () {
-                this.LoadSapLogon();
-            }.bind(this));
+            // Get the OData model
+            var oModel = this.getView().getModel();
 
-            // Get the HBox that holds the buttons
-            var oHomePage = oView.byId("environmentButtonsHBox");
+            // Read existing entries to check uniqueness
+            oModel.read("/ServiceSet", {
+                filters: [new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription)],
+                filters: [new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient)],
+                filters: [new sap.ui.model.Filter("SapService", sap.ui.model.FilterOperator.EQ, sService)],
+                success: function (oData) {
+                    // Initialize an array to hold error messages
+                    var errorMessages = [];
 
-            // Find the reference link to insert after
-            var oLink = oView.byId("_IDCofiguresapLink");
+                    // Check for duplicates and populate error messages
+                    if (oData.results.length > 0) {
+                        if (oData.results.some(entry => entry.Client === sClient)) {
+                            errorMessages.push("The Client must be unique.");
+                        }
+                        if (oData.results.some(entry => entry.Description === sDescription)) {
+                            errorMessages.push("The Description must be unique.");
+                        }
+                        if (oData.results.some(entry => entry.SapService === sService)) {
+                            errorMessages.push("The SAP Service must be unique.");
+                        }
 
-            // Insert the new button after the link
-            oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
+                        if (errorMessages.length > 0) {
+                            MessageToast.show(errorMessages.join("\n"));
+                            return; // Exit the function if duplicates are found
+                        }
 
-            // Save to OData service (if needed)
-            var oModel = this.getView().getModel(); // Get the OData model
-            var oEntry = {
-                Description: sDescription,
-                SystemId: sSystemId,
-                InstanceNo:sInstanceNumber,
-                Client:sClient,
-                AppServer:sApplicationServer,
-                SapRouterStr:sRouterString,
-                SapService:sService
-                // Add other properties as needed based on your OData service structure
-            };
+                    }
 
-            oModel.create("/ServiceSet", oEntry, {
-                success: function () {
-                    MessageToast.show("Configured system saved successfully.");
-                    this.clearInputFields(oView);
+                    // Create a new button for the configured SAP system
+                    var oNewButton = new sap.m.Button({
+                        type: "Emphasized",
+                        width: "11rem",
+                        customData: [
+                            new sap.ui.core.CustomData({
+                                key: "systemId",
+                                value: sSystemId // Store system ID in custom data
+                            })
+                        ]
+                    });
+
+                    // Set the button text based on the checkbox state
+                    if (oCheckbox.getSelected()) {
+                        oNewButton.setText(sSystemId + " / " + sClient);
+                    } else {
+                        oNewButton.setText(sDescription);
+                    }
+
+                    // Attach single click event for CRUD operations
+                    oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, sDescription, sSystemId, sClient));
+
+                    // Attach double click event for opening SAP logon
+                    oNewButton.attachBrowserEvent("dblclick", function () {
+                        this.LoadSapLogon();
+                    }.bind(this));
+
+                    // Create entry for OData service
+                    var oEntry = {
+                        Description: sDescription,
+                        SystemId: sSystemId,
+                        InstanceNo: sInstanceNumber,
+                        Client: sClient,
+                        AppServer: sApplicationServer,
+                        SapRouterStr: sRouterString,
+                        SapService: sService,
+                        DescriptionB: (oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription)
+                        // Add other properties as needed based on your OData service structure
+                    };
+
+                    // Save to OData service
+                    oModel.create("/ServiceSet", oEntry, {
+                        success: function () {
+                            MessageToast.show("Configured system saved successfully.");
+                            this.clearInputFields(oView);
+
+                            // Get the HBox that holds the buttons
+                            var oHomePage = oView.byId("environmentButtonsHBox");
+
+                            // Find the reference link to insert after
+                            var oLink = oView.byId("_IDCofiguresapLink");
+
+                            // Insert the new button after the link
+                            oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
+                        }.bind(this), // Ensure 'this' context is correct
+                        error: function (oError) {
+                            MessageToast.show("Error saving configured system.");
+                        }
+                    });
+
+                    // Close the dialog after saving
+                    this.onCloseconnectsap(); // Assuming you have a method to close the dialog
+
                 }.bind(this), // Ensure 'this' context is correct
                 error: function (oError) {
-                    MessageToast.show("Error saving configured system.");
+                    MessageToast.show("Error checking existing systems.");
                 }
             });
-
-            // Close the dialog after saving
-            oDialog.close();
         },
-        clearInputFields: function(oView) {
+        clearInputFields: function (oView) {
             // Clear all input fields by setting their values to an empty string
             oView.byId("idDescriptionInput").setValue("");
             oView.byId("idSystemIdInput").setValue("");
             oView.byId("idInstanceNumberInput").setValue("");
             oView.byId("idClientInput").setValue("");
             oView.byId("idApplicationServerInput").setValue("");
-            oView.byId("idRouterStringInput").setValue(""); 
-            oView.byId("idServiceInput").setValue(""); 
-         },
+            oView.byId("idRouterStringInput").setValue("");
+            oView.byId("idServiceInput").setValue("");
+            var oCheckbox = oView.byId("idCheckboxDescription");
+            oCheckbox.setSelected(false);
+        },
 
         // Load configured systems from OData service and display them in the UI
         loadConfiguredSystems: function () {
@@ -199,13 +260,13 @@ sap.ui.define([
 
                     aConfiguredSystems.forEach(function (system) {
                         var oNewButton = new sap.m.Button({
-                            text: system.Description,
+                            text: system.DescriptionB,
                             type: "Emphasized",
                             width: "11rem"
                         });
 
                         // Attach single click event for CRUD operations
-                        oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, system.Description, system.SystemId));
+                        oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, system.Description, system.SystemId, system.Client));
 
                         // Attach double click event for opening SAP logon
                         oNewButton.attachBrowserEvent("dblclick", function () {
@@ -224,9 +285,9 @@ sap.ui.define([
             });
         },
 
-        onConfiguredSystemButtonPress: function (oButton, description, systemId) {
+        onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client) {
             this.selectedButton = oButton;
-            this.systemId = systemId;
+            this.client = Client;
         },
         onCloseconnectsap: function () {
             // Close the dialog
@@ -239,6 +300,10 @@ sap.ui.define([
         handleEditPress: function () {
             this.handleLinksapPress();
         },
+        onClearconnectSAPPress: function () {
+            var oView = this.getView();
+            this.clearInputFields(oView);
+        },
         onDeleteConfiguredSystem: function () {
             if (!this.selectedButton) {
                 MessageToast.show("No button selected for deletion.");
@@ -247,33 +312,41 @@ sap.ui.define([
 
             var that = this; // Store reference to 'this' for use in callbacks
 
-            MessageBox.warning("Are you sure you want to delete the configured system?", {
+            MessageBox.confirm("Are you sure you want to delete the configured system?", {
                 title: "Confirm Deletion",
+                actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                 onClose: function (status) {
-                    if (status === "OK") {
+                    if (status === MessageBox.Action.DELETE) {
                         // Delete from OData service
                         var oModel = that.getView().getModel(); // Get the OData model
-                        var sPath = "/ServiceSet('" + that.systemId + "')"; // Construct path based on your entity set
+                        var sPath = "/ServiceSet('" + this.client + "')"; // Construct path based on your entity set
 
                         oModel.remove(sPath, {
                             success: function () {
                                 MessageToast.show("Configured system deleted successfully.");
+
+                                // Remove the button from the UI
+                                var oHomePage = that.getView().byId("environmentButtonsHBox");
+                                oHomePage.removeItem(that.selectedButton); // Remove the selected button
+
+                                // Clear selection
+                                that.selectedButton = null;
                             }.bind(that), // Ensure 'this' context is correct
                             error: function (oError) {
                                 MessageToast.show("Error deleting configured system.");
                                 console.error(oError);
                             }
                         });
-
-                        // Clear selection
-                        that.selectedButton = null;
                     } else {
                         MessageToast.show("Deletion cancelled.");
                     }
                 }.bind(that) // Bind the controller context
             });
-        }
-    });
+        },
 
 
+
+
+
+    })
 });
