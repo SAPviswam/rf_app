@@ -636,7 +636,6 @@ sap.ui.define([
                         success: function () {
                             sap.m.MessageToast.show("Password updated successfully!");
                             this.byId("verficationId1").setVisible(false);
-
                             // Clear input fields after success
                             oView.byId("idEnterNewPassword").setValue("");
                             oView.byId("idConfirmPassword").setValue("");

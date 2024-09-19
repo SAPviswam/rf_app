@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0", 
+  "_version": "1.65.0",
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -357,9 +357,8 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
-
         },
-    {
+        {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT/{id}",
           "target": [
@@ -372,10 +371,8 @@
           "target": [
             "TargetWTQueryByQueue"
           ]
-    },
-
-
-    {
+        },
+        {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -387,6 +384,13 @@
           "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
+          ]
+        },
+        {
+          "name": "DeconsAuto",
+          "pattern":"DeconsAuto/{id}",
+          "target": [
+            "TargetDeconsAuto"
           ]
         }
       ],
@@ -642,9 +646,7 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
-
-      },
-
+        },
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -652,16 +654,13 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-
-        
-          "TargetWTQueryByWT":{
+        "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
- 
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -675,9 +674,16 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
+        },
+        "TargetDeconsAuto": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DeconsAuto",
+          "viewName": "DeconsAuto"
         }
       }
-      },
+    },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",

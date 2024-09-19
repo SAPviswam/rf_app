@@ -1842,6 +1842,10 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
             },
+            onDeconsolidationAutomatically:function(){
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("DeconsAuto",{id:this.ID});   
+            }
 
 
 
