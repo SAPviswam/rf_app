@@ -1588,7 +1588,23 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
             },
-            onMaintainHUPress: function () {
+            onDeconsolidationAutomaticallypress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            },
+            onDeconsolidationManuallypress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            },
+            OnPressAdhocInventoryCreation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            },
+            onCreationOfSingleHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+            },
+            OnpressMaintainHU: function () {
                var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
             },
