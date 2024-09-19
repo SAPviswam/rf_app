@@ -766,12 +766,6 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
-        },
-        "rootView": {
-          "viewName": "com.app.rfapp.view.App",
-          "type": "XML",
-          "async": true,
-          "id": "App"
         }
       },
       "sap.cloud": {
