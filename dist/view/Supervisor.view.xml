@@ -45,6 +45,30 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
+                <ComboBox
+                    id="idLanguageSelectorComboBox"
+                    change="onLanguageChange"
+                    visible="false"
+                    placeholder="Pls Select Language!"
+                >
+                    <items>
+                        <core:Item
+                            id="idCoreItemEnglishLanguage"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItemHindiLanguage"
+                            key="hi"
+                            text="Hindi"
+                        />
+                    </items>
+                </ComboBox>
+                <Button
+                    id="idBtnLanguageChange"
+                    icon="sap-icon://italic-text"
+                    press="onPressLanguageChangeApp"
+                />
                 <Button
                     id="themeButton"
                     text="Theme"
@@ -52,6 +76,13 @@
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                 />
+                <Button
+                    id="chatbotButton"
+                    press="onChatbotButtonPress"
+                    icon="sap-icon://headset"
+                    tooltip="Open Chatbot"
+                />
+
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -99,10 +130,12 @@
                 </tnt:NavigationList>
                 <tnt:fixedItem>
                     <tnt:NavigationList
+                        id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
                         <tnt:NavigationListItem
+                            id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -132,6 +165,7 @@
                             type="Success"
                         /> -->
                         <FlexBox
+                            id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -220,7 +254,10 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox9"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -242,7 +279,10 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox10"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
@@ -251,8 +291,7 @@
                                         liveChange="onSubmitOtp"
                                         width="100%"
                                         editable="true"
-                />
-
+                                    />
 
                                     <Button
                                         id="getotpsv"
@@ -261,10 +300,7 @@
                                         type="Emphasized"
                                         width="80px"
                                         visible="false"
-                
-                    />
-
-
+                                    />
                                 </HBox>
                             </FlexBox>
 
@@ -754,7 +790,8 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />                            </TileContent>
+                                />
+                            </TileContent>
                         </GenericTile>
 
                         <GenericTile
@@ -1104,7 +1141,7 @@
                             id="_IDGenGenericTile09"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Shipping HU (W/O WC)"
-                            press="onPress"
+                            press="onPressCreateShippingHUWOWC"
                         />
 
                         <GenericTile
@@ -1125,7 +1162,7 @@
                             id="_IDGenGenericTileMaintainHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Maintain HU"
-                            press="press"
+                            press="OnpressMaintainHU"
                         />
 
                         <GenericTile
@@ -1456,7 +1493,7 @@
                             id="IDWTQuerybyQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT Query by Queue"
-                            press="OnPressWTQuerybyQueue"
+                            press="onPressWTQuerybyQueue"
                         />
                         <GenericTile
                             id="IDWTquerybyHU"
@@ -1512,14 +1549,14 @@
                             id="IDChangeQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Queue"
-                            press="OnPressChange Queue"
+                            press="onChangeQueueTilePress"
                         />
 
                         <GenericTile
                             id="IDChangeResourceGroup"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Resource Group"
-                            press="OnPressChangeResourceGroup"
+                            press="onChangeResourceGroupTilePress"
                         />
                     </ScrollContainer>
                     <Dialog
