@@ -318,6 +318,7 @@
                             width="100px"
                             editable="false"
                         />
+                        <HBox width="5px"></HBox>
                         <Label
                             id="idLLabelDeconsolidationManually11222"
                             text="AQty:"
@@ -726,6 +727,7 @@
                                 editable="false"
                             />
                         </HBox>
+                        
                         <HBox
                             id="idHubyAS1HUuomboxDeconsolidationManually"
                             class="customLabelSpacing"

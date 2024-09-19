@@ -260,7 +260,7 @@
                             width="100px"
                             editable="false"
                         />
-
+<HBox width="10px"></HBox>
                         <HBox
                             id="idHubyAS1NHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -277,6 +277,7 @@
                                 width="70px"
                                 editable="false"
                             />
+                             <HBox width="10px"></HBox>
                         </HBox>
                         <HBox
                             id="idHubyAS1HUuomboxDeconsolidationAutomatically"
@@ -309,7 +310,7 @@
                             width="100px"
                             editable="false"
                         />
-
+<HBox width="10px"></HBox>
                         <HBox
                             id="idHubUOMNHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -325,6 +326,7 @@
                                 editable="false"
                             />
                         </HBox>
+                        <HBox width="10px"></HBox>
                         <HBox
                             id="idHubEVTHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -362,6 +364,7 @@
                             width="150px"
                             editable="false"
                         />
+                        <HBox width="5px"></HBox>
                          <Input
                             id="idWidthInputDeconsolidationAutomatically1"
                             placeholder="Width"

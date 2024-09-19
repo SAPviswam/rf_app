@@ -1,0 +1,568 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.AdhocInventoryCreation"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageUnloadingByBillofLading">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderUnloadingByBillofLading_UOBL">
+                <Image
+                    id="_IDGenImage1UnloadingByBillofLading_UOBL"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorUnloadingByBillofLading_UOBL"
+                />
+                <ToolbarSpacer id="idToolbarSpacerUnloadingByBillofLading_UOBL">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1UnloadingByBillofLading_UOBL"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1UnloadingByBillofLading_UOBL"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1_AIC"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_AIC"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton3_AIC"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback0"
+                    />
+                    <Title
+                        id="idTitle_AIC1"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_AIC1"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_AICL"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <!-- Product Field -->
+                    <Label
+                        id="idProductLabel__AIC"
+                        text="Bin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox>
+                        <Input
+                            id="idProductInput_AIC"
+                            maxLength="25"
+                            width="100px"
+                        />
+
+                        <Input
+                            id="idHubyASNuomInput_AIC1"
+                            maxLength="30"
+                            width="64px"
+                        />
+                    </HBox>
+
+                    <!-- Packaging Material Field -->
+                    <Label
+                        id="idProductMaterialLabel_AIC"
+                        text="Product"
+                    />
+                    <Input
+                        id="idPackagingMaterialInput_AIC"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <Label
+                        id="idHubyASNLabelQtyAIC"
+                        text="Reason"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_AIC">
+                        <Input
+                            id="idHubyASNqtyInput_AIC"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox_AIC"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_AIC"
+                                text="Priority"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_AIC"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idBbdLabel_AIC"
+                        text="Block"
+                    />
+                    <Input
+                        id="idBbdInput_AIC"
+                        maxLength="25"
+                        width="200px"
+                    />
+
+                    <Label id="idNextEnterLabel_AIC" />
+                    <HBox id="idButtonHBox_AIC">
+                        <Button
+                            id="idF1Button_AIC"
+                            text="F1"
+                            class="sapUiTinyMarginEnd"
+                            press="onF1press"
+                        />
+                        <Button
+                            id="idF2Button_AIC"
+                            text="F2"
+                            class="sapUiTinyMarginEnd"
+                            press="onF2press"
+                        />
+                        <Button
+                            id="idF3Button_AIC"
+                            text="F3"
+                            class="sapUiTinyMarginEnd"
+                            press="onF3press"
+                        />
+                        <Button
+                            id="idF4Button_AIC"
+                            text="F4"
+                            class="sapUiTinyMarginEnd"
+                            press="onF4press"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page2_AIC"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_AIC1"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton1_AIC"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback1"
+                    />
+                    <Title
+                        id="idTitle_AIC"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText_AIC"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_AICL1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idProductLabel__AIC1"
+                        text="Bin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox>
+                        <Input
+                            id="idProductInput_AIC1"
+                            maxLength="25"
+                            width="100px"
+                        />
+                        <HBox width="10px" />
+                        <Label id="asdfg" />
+                        <Input
+                            id="input"
+                            maxLength="25"
+                            width="50px"
+                        />
+                    </HBox>
+
+                    <Label
+                        id="idProductMaterialLabel_AIC1"
+                        text="Product"
+                    />
+                    <Input
+                        id="idPackagingMaterialInput_AIC1"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="200px"
+                    />
+                    <Label id="idExtraInputLabel_AIC1" />
+                    <HBox>
+                        <Input
+                            id="idExtraInput_AIC1"
+                            maxLength="25"
+                            width="20px"
+                        />
+                        <HBox width="10px" />
+                        <Label id="asdfg1" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_AIC12"
+                            maxLength="25"
+                            width="90px"
+                        />
+
+                        <Label id="asdfg12" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_AIC122"
+                            maxLength="25"
+                            width="70px"
+                        />
+
+                        <Label id="asdfg122" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_AIC1222"
+                            maxLength="25"
+                            width="50px"
+                        />
+                       
+                        <Label id="asdfg112241" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_AIC122214"
+                            maxLength="25"
+                            width="10px"
+                        />
+                      
+                    </HBox>
+                    <Label id="idExtraInputLabel1_AIC1" />
+                    <HBox>
+                        <Input
+                            id="idExtraInput1_AIC1"
+                            maxLength="25"
+                            width="20px"
+                        />
+                        <HBox width="10px" />
+                        <Label id="asdfg11" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_AI1C12"
+                            maxLength="25"
+                            width="90px"
+                        />
+
+                        <Label id="asdfg112" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput_1AIC122"
+                            maxLength="25"
+                            width="70px"
+                        />
+  </HBox>
+  <Label id="idExtraInputLabel1_A1IC1" />
+                    <HBox>
+                        <Input
+                            id="idExtraI1nput_AIC1"
+                            maxLength="25"
+                            width="20px"
+                        />
+                        <HBox width="10px" />
+                        <Label id="asdf1g1" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraI1nput_AIC12"
+                            maxLength="25"
+                            width="90px"
+                        />
+
+                        <Label id="asdf1g12" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraI1nput_AIC122"
+                            maxLength="25"
+                            width="70px"
+                        />
+
+                        <Label id="asdfg1122" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput1_AIC1222"
+                            maxLength="25"
+                            width="50px"
+                        />
+                       
+                        <Label id="asdfg1112241" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraInput1_AIC122214"
+                            maxLength="25"
+                            width="10px"
+                        />
+                      
+                    </HBox>
+                     <Label id="idExtr1aInputLabel1_AIC1" />
+                    <HBox>
+                        <Input
+                            id="idExtr1aInput1_AIC1"
+                            maxLength="25"
+                            width="20px"
+                        />
+                        <HBox width="10px" />
+                        <Label id="asd1fg11" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExt1raInput_AI1C12"
+                            maxLength="25"
+                            width="90px"
+                        />
+
+                        <Label id="asd1fg112" />
+                        <HBox width="10px" />
+                        <Input
+                            id="idExtraI1nput_1AIC122"
+                            maxLength="25"
+                            width="70px"
+                        />
+  </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+             <ScrollContainer
+                id="page3_AIC"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+            
+                <HBox
+                    id="idMainHBox1_AIC1"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton11_AIC"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback2"
+                    />
+                    <Title
+                        id="idTitle1_AIC"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText1_AIC"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_AICL12"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                 <Label
+                        id="idProductMaterialLabel_AIC12"
+                        text="Product"
+                    />
+                    <Input
+                        id="idPackagingMaterialInput_AIC12"
+                        placeholder="Enter product..."
+                        maxLength="25"
+                        width="200px"
+                    />
+                     <Label
+                        id="idHubyASNLabelQtyAIC1"
+                        text="Batch"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_AIC1">
+                        <Input
+                            id="idHubyASNqtyInput_AIC1"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox_AIC1"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_AIC1"
+                                text="Type:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_AIC11"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox_AIC12"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_AIC12"
+                                text="Usage:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_AIC112"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                        
+
+
+                    </HBox>
+                    <Label
+                        id="idHubyASNLabelQtyAIC12"
+                        text="Owner"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_AIC12">
+                        <Input
+                            id="idHubyASNqtyInput_AIC12"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox_AIC121"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_AIC121"
+                                text="Disposal:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput_AIC1121"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                         </HBox>
+                          <Label
+                        id="idHubyASNLabelQtyAIC11"
+                        text="SO/Proj"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox_AIC11">
+                        <Input
+                            id="idHubyASNqtyInput_AIC11"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox_1AIC1"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel_1AIC1"
+                                
+                            />
+                            <Input
+                                id="idHubyASNuomInput1_AIC11"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                        <HBox width="10px" />
+                        <HBox
+                            id="idHubyASNHUuombox1_AIC12"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuom1Label_AIC12"
+                                
+                            />
+                            <Input
+                                id="idHubyASNuomIn1put_AIC112"
+                                maxLength="30"
+                                width="64px"
+                            />
+                        </HBox>
+                        
+
+
+                    </HBox>
+
+                </f:SimpleForm>
+              </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
