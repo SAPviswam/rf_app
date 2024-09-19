@@ -253,7 +253,6 @@
             "TargetCreationOfSingleHU"
           ]
         },
-        
         {
           "name": "DeconsolidationAutomatically",
           "pattern": "DeconsolidationAutomatically/{id}",
@@ -394,8 +393,7 @@
             "TargetWTQueryByQueue"
           ]
         },
-    {
-
+        {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -410,7 +408,6 @@
           ]
         },
         {
-
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -422,9 +419,9 @@
           "pattern": "CreatePutawayHusManually/{id}",
           "target": [
             "TargetCreatePutawayHusManually"
-    ]
-},
-
+          ]
+        },
+        {
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
           "target": [
@@ -436,7 +433,6 @@
           "pattern": "ProductInspectionByStorageBin/{id}",
           "target": [
             "TargetProductInspectionByStorageBin"
-
           ]
         }
       ],
@@ -595,8 +591,6 @@
           "viewId": "AdhocInventoryCreation",
           "viewName": "AdhocInventoryCreation"
         },
-        
-        
         "TargetCreationOfSingleHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -604,7 +598,6 @@
           "viewId": "CreationOfSingleHU",
           "viewName": "CreationOfSingleHU"
         },
-        
         "TargetDeconsolidationAutomatically": {
           "viewType": "XML",
           "transition": "slide",
@@ -731,8 +724,6 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-
-
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -774,21 +765,17 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
-<<<<<<< HEAD
-=======
-
+        },
+        "rootView": {
+          "viewName": "com.app.rfapp.view.App",
+          "type": "XML",
+          "async": true,
+          "id": "App"
+        }
       },
-      "rootView": {
-        "viewName": "com.app.rfapp.view.App",
-        "type": "XML",
-        "async": true,
-        "id": "App"
->>>>>>> cc9b4431d3089c10b7d6339c85cdf1db3acb6c81
-      }
-    },
-    "sap.cloud": {
-      "public": true,
-      "service": "comapprfapp"
+      "sap.cloud": {
+        "public": true,
+        "service": "comapprfapp"
       }
     },
     "rootView": {
