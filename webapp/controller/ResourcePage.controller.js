@@ -416,7 +416,16 @@ sap.ui.define([
             //     oRouter.navTo("DeconsAuto",{id:this.ID});   
             // }
 
- 
+            onCreatePutawayHusforDeconsolidationPress: function(){
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});        
+            },
+            onCreatePutawayHusManuallyPress: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
+
         });
     });
 

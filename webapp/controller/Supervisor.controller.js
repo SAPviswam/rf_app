@@ -1101,6 +1101,8 @@ sap.ui.define(
                     });
                 }
                 else {
+
+
                     oModel.create("/RESOURCESSet", oData, {
 
                         success: function () {
@@ -1116,9 +1118,9 @@ sap.ui.define(
                             sap.m.MessageToast.show("Error updating user login status.");
                         }
 
-
                     })
                 }
+       
             },
             formatDate: function (oDate) {
                 var sYear = oDate.getFullYear();
@@ -1607,8 +1609,16 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt", { id: this.ID });
+               oRouter.navTo("AdhocHuWt",{id:this.ID});
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
 
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery", {id:this.ID})
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1783,9 +1793,9 @@ sap.ui.define(
 
 
             OnPressSerialnumberLocation: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation", { id: this.ID });
-            },
+                var oRouter = UIComponent.getRouterFor(this)
+                oRouter.navTo("SerialNumberLocation",{id:this.ID});
+        },
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT", { id: this.ID });
@@ -1836,7 +1846,6 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
             },
-
             onUnloadingBYASN: function () {
                 debugger
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1845,10 +1854,27 @@ sap.ui.define(
             onDeconsolidationAutomatically:function(){
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("DeconsAuto",{id:this.ID});   
-            }
+            },
+            onCreatePutawayHusforDeconsolidation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});
+            },
+            onCreatePutawayHusManually: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
+
+            OnPressProductInspectionByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
+            },
+            OnPressProductInspectionByStorageBin: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+            },
+
 
 
 
         });
-    }
-);
+    });

@@ -28,7 +28,7 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "rf application-display": {
+        "rf applicationdisplay": {
           "semanticObject": "rf application",
           "action": "display",
           "title": "{{flpTitle}}",
@@ -372,7 +372,7 @@
             "TargetWTQueryByQueue"
           ]
         },
-        {
+    {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -387,10 +387,38 @@
           ]
         },
         {
+
           "name": "DeconsAuto",
           "pattern":"DeconsAuto/{id}",
           "target": [
-            "TargetDeconsAuto"
+            "TargetDeconsAuto"]
+          },
+          {
+          "name": "CreatePutawayHusforDeconsolidate",
+          "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+          "target": [
+            "TargetCreatePutawayHusforDeconsolidate"
+          ]
+        },
+        {
+          "name": "CreatePutawayHusManually",
+          "pattern": "CreatePutawayHusManually/{id}",
+          "target": [
+            "TargetCreatePutawayHusManually"
+    ]
+},
+{
+          "name": "ProductInspectionByHU",
+          "pattern": "ProductInspectionByHU/{id}",
+          "target": [
+            "TargetProductInspectionByHU"
+          ]
+        },
+        {
+          "name": "ProductInspectionByStorageBin",
+          "pattern": "ProductInspectionByStorageBin/{id}",
+          "target": [
+            "TargetProductInspectionByStorageBin"
           ]
         }
       ],
@@ -675,13 +703,47 @@
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
         },
+
         "TargetDeconsAuto": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "DeconsAuto",
           "viewName": "DeconsAuto"
-        }
+        },
+        "TargetCreatePutawayHusforDeconsolidate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusforDeconsolidate",
+          "viewName": "CreatePutawayHusforDeconsolidate"
+        },
+        "TargetCreatePutawayHusManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusManually",
+          "viewName": "CreatePutawayHusManually"
+        },
+        "TargetProductInspectionByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByHU",
+          "viewName": "ProductInspectionByHU"
+        },
+        "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
+
+      }
+    },
+    "sap.cloud": {
+      "public": true,
+      "service": "comapprfapp"
       }
     },
     "rootView": {
@@ -690,9 +752,5 @@
       "async": true,
       "id": "App"
     }
-  },
-  "sap.cloud": {
-    "public": true,
-    "service": "comapprfapp"
   }
 }
