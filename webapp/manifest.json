@@ -419,7 +419,11 @@
           "pattern": "CreatePutawayHusManually/{id}",
           "target": [
             "TargetCreatePutawayHusManually"
+<<<<<<< HEAD
           ]
+=======
+    ]
+>>>>>>> ffe8eb8bf585d644081df66b81bba163f9b8f389
 },
 {
 
