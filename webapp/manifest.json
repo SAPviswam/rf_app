@@ -372,7 +372,8 @@
             "TargetWTQueryByQueue"
           ]
         },
-        {
+    {
+
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -668,6 +669,14 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -695,7 +704,17 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
-        }
+      },
+      "rootView": {
+        "viewName": "com.app.rfapp.view.App",
+        "type": "XML",
+        "async": true,
+        "id": "App"
+      }
+    },
+    "sap.cloud": {
+      "public": true,
+      "service": "comapprfapp"
       }
     },
     "rootView": {
@@ -704,9 +723,5 @@
       "async": true,
       "id": "App"
     }
-  },
-  "sap.cloud": {
-    "public": true,
-    "service": "comapprfapp"
   }
 }
