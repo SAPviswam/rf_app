@@ -372,11 +372,8 @@
             "TargetWTQueryByQueue"
           ]
         },
-        {
-    },
-
-
     {
+
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -388,6 +385,20 @@
           "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
+          ]
+        },
+        {
+          "name": "ProductInspectionByHU",
+          "pattern": "ProductInspectionByHU/{id}",
+          "target": [
+            "TargetProductInspectionByHU"
+          ]
+        },
+        {
+          "name": "ProductInspectionByStorageBin",
+          "pattern": "ProductInspectionByStorageBin/{id}",
+          "target": [
+            "TargetProductInspectionByStorageBin"
           ]
         }
       ],
@@ -643,9 +654,6 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
-
-      },
-
         },
         "TargetSerialNumberLocation": {
           "viewType": "XML",
@@ -654,16 +662,6 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-
-          "TargetWTQueryByWT":{
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "WTQueryByWT",
-          "viewName": "WTQueryByWT"
-        },
-
-
         "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
@@ -671,6 +669,14 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+        "TargetWTQueryByWT": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -684,7 +690,20 @@
           "clearControlAggregation": false,
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
-        }
+        },
+        "TargetProductInspectionByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByHU",
+          "viewName": "ProductInspectionByHU"
+        },
+        "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
       },
       "rootView": {
         "viewName": "com.app.rfapp.view.App",
@@ -696,6 +715,13 @@
     "sap.cloud": {
       "public": true,
       "service": "comapprfapp"
+      }
+    },
+    "rootView": {
+      "viewName": "com.app.rfapp.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
     }
   }
 }
