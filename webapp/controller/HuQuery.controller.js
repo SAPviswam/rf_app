@@ -1,14 +1,17 @@
 
   sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/Device"
-], function (Controller,Device) {
+    "sap/ui/Device",
+    "sap/m/MessageToast", // Import MessageToast for user feedback
+    "sap/ui/core/UIComponent"
+], function (Controller,Device, MessageToast,UIComponent) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
 
         onInit: function () {
-         
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             var oProductDescriptionHeader = this.byId("_IDGenText5");
             var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
             this.getView().setModel(oModel);
@@ -27,6 +30,12 @@
           
             this._setFocus();
             
+        },
+        onResourceDetailsLoad:function(oEvent1){
+            var that = this;
+            const { id } = oEvent1.getParameter("arguments");
+            this.ID = id;
+            console.log(this.ID);
         },
 
         _setFocus: function() {
@@ -244,9 +253,23 @@
 
 
         // },
-        Onpressback3:function () {
-            debugger
-            var oRouter = this.getOwnerComponent().getRouter().navTo("Supervisor");
+        Onpressback3:async function(){
+            var oRouter = UIComponent.getRouterFor(this);
+                var oModel1 = this.getOwnerComponent().getModel();
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        let oUser=oData.Users.toLowerCase()
+                        if(oUser ===  "resource"){
+                            oRouter.navTo("RouteResourcePage",{id:this.ID});
+                        }
+                        else{
+                        oRouter.navTo("Supervisor",{id:this.ID});
+                    }
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
+                });
          
             },
         

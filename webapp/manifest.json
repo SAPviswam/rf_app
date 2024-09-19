@@ -136,14 +136,14 @@
         },
         {
           "name": "HuQuery",
-          "pattern": "HuQuery",
+          "pattern": "HuQuery/{id}",
           "target": [
             "TargetHuQueryPage"
           ]
         },
         {
           "name": "StockBinQueryByBin",
-          "pattern": "StockBinQueryByBin",
+          "pattern": "StockBinQueryByBin/{id}",
           "target": [
             "TargetStockBinQueryByBin"
           ]
@@ -213,7 +213,7 @@
         },
         {
           "name": "RoutePutawayByHU",
-          "pattern": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU/{id}",
           "target": [
             "TargetPutawayByHU"
           ]
@@ -234,28 +234,28 @@
         },
         {
           "name": "UnloadingByBillofLading",
-          "pattern": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading/{id}",
           "target": [
             "TargetUnloadingByBillofLading"
           ]
         },
         {
           "name": "MaintainHU",
-          "pattern": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
           "target": [
             "TargetMaintainHU"
           ]
         },
         {
           "name": "UnloadingByShipment",
-          "pattern": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment/{id}",
           "target": [
             "TargetUnloadingByShipment"
           ]
         },
         {
           "name": "UnloadingByTU",
-          "pattern": "UnloadingByTU",
+          "pattern": "UnloadingByTU/{id}",
           "target": [
             "TargetUnloadingByTU"
           ]
@@ -318,7 +318,7 @@
         },
         {
           "name": "Receivingofhubyco",
-          "pattern": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco/{id}",
           "target": [
             "TargetRecevingofHUbyConsignemntOrder"
           ]
@@ -368,12 +368,12 @@
         },
         {
           "name": "WTQueryByQueue",
-          "pattern": "WTQueryByQueue",
+          "pattern": "WTQueryByQueue/{id}",
           "target": [
             "TargetWTQueryByQueue"
           ]
+    },
 
-        },
 
     {
           "name": "CreateShippingHU",
@@ -636,7 +636,6 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
-
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
@@ -644,7 +643,7 @@
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
 
-        },
+      },
 
         "TargetSerialNumberLocation": {
           "viewType": "XML",
@@ -662,6 +661,7 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
+ 
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",

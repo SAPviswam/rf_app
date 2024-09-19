@@ -82,7 +82,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_unloadingbyshipment"
+                            id="id_unlodingbyshipment"
                             class="sapUiTinyMargin"
                             header="Unloading By Shipment"
                             press="onUnloadingByShipmentPress"

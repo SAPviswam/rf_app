@@ -45,7 +45,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                <ComboBox
+                <!-- <ComboBox
                     id="idLanguageSelectorComboBox"
                     change="onLanguageChange"
                     visible="false"
@@ -68,7 +68,7 @@
                     id="idBtnLanguageChange"
                     icon="sap-icon://italic-text"
                     press="onPressLanguageChangeApp"
-                />
+                /> -->
                 <Button
                     id="themeButton"
                     text="Theme"
