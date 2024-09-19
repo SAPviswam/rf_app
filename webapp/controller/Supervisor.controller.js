@@ -1848,6 +1848,16 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
             },
+
+            onCreatePutawayHusforDeconsolidation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});
+            },
+            onCreatePutawayHusManually: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
+
             OnPressProductInspectionByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByHU",{id:this.ID});
@@ -1856,6 +1866,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
             },
+
 
 
         });

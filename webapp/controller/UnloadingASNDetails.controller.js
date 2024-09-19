@@ -7,6 +7,7 @@ sap.ui.define(
   
       return BaseController.extend("com.app.rfapp.controller.UnloadingASNDetails", {
         onInit: function() {
+          
             const oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
@@ -95,6 +96,7 @@ sap.ui.define(
       },
       /** Initial page To Home ->Back Navigation */
       Onpressback7:async function () {
+
         var oRouter = this.getOwnerComponent().getRouter();
 
         var oModel1 = this.getOwnerComponent().getModel();
