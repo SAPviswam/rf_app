@@ -310,6 +310,13 @@
           ]
         },
         {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
+          "target": [
+            "TargetMaintainHU"
+          ]
+        },
+        {
           "name": "RecevingOfHUbyManufacturingOrder",
           "pattern": "RecevingOfHUbyManufacturingOrder/{id}",
           "target": [
@@ -766,6 +773,13 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
         }
       },
       "sap.cloud": {
