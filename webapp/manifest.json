@@ -240,10 +240,31 @@
           ]
         },
         {
-          "name": "MaintainHU",
-          "pattern": "MaintainHU/{id}",
+          "name": "AdhocInventoryCreation",
+          "pattern": "AdhocInventoryCreation/{id}",
           "target": [
-            "TargetMaintainHU"
+            "TargetAdhocInventoryCreation"
+          ]
+        },
+        {
+          "name": "CreationOfSingleHU",
+          "pattern": "CreationOfSingleHU/{id}",
+          "target": [
+            "TargetCreationOfSingleHU"
+          ]
+        },
+        {
+          "name": "DeconsolidationAutomatically",
+          "pattern": "DeconsolidationAutomatically/{id}",
+          "target": [
+            "TargetDeconsolidationAutomatically"
+          ]
+        },
+        {
+          "name": "DeconsolidationManually",
+          "pattern": "DeconsolidationManually/{id}",
+          "target": [
+            "TargetDeconsolidationManually"
           ]
         },
         {
@@ -372,8 +393,7 @@
             "TargetWTQueryByQueue"
           ]
         },
-    {
-
+        {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -388,7 +408,6 @@
           ]
         },
         {
-
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -403,6 +422,7 @@
     ]
 },
 {
+
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
           "target": [
@@ -414,7 +434,6 @@
           "pattern": "ProductInspectionByStorageBin/{id}",
           "target": [
             "TargetProductInspectionByStorageBin"
-
           ]
         }
       ],
@@ -566,12 +585,33 @@
           "viewId": "BillofLading",
           "viewName": "BillofLading"
         },
-        "TargetUnloadingByBillofLading": {
+        "TargetAdhocInventoryCreation": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "UnloadingByBillofLading",
-          "viewName": "UnloadingByBillofLading"
+          "viewId": "AdhocInventoryCreation",
+          "viewName": "AdhocInventoryCreation"
+        },
+        "TargetCreationOfSingleHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreationOfSingleHU",
+          "viewName": "CreationOfSingleHU"
+        },
+        "TargetDeconsolidationAutomatically": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DeconsolidationAutomatically",
+          "viewName": "DeconsolidationAutomatically"
+        },
+        "TargetDeconsolidationManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DeconsolidationManually",
+          "viewName": "DeconsolidationManually"
         },
         "TargetMaintainHU": {
           "viewType": "XML",
@@ -685,14 +725,6 @@
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-        "TargetWTQueryByWT": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "WTQueryByWT",
-          "viewName": "WTQueryByWT"
-        },
-
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",
@@ -734,18 +766,11 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
-
+        }
       },
-      "rootView": {
-        "viewName": "com.app.rfapp.view.App",
-        "type": "XML",
-        "async": true,
-        "id": "App"
-      }
-    },
-    "sap.cloud": {
-      "public": true,
-      "service": "comapprfapp"
+      "sap.cloud": {
+        "public": true,
+        "service": "comapprfapp"
       }
     },
     "rootView": {

@@ -208,8 +208,8 @@
             />
          <Button
                 id="idconnectsapbackButton"
-                text="Back"
-                press="onBackconnectSAPPress"
+                text="Edit"
+                press="onEditconnectSAPPress"
             />
             <Button
                 id="idconnectsapfinishButton"
