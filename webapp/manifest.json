@@ -303,6 +303,13 @@
           ]
         },
         {
+          "name": "AutomaticallyRepackHUItem",
+          "pattern": "AutomaticallyRepackHUItem/{id}",
+          "target": [
+            "TargetAutomaticallyRepackHUItem"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt/{id}",
           "target": [
@@ -577,6 +584,13 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByHU",
           "viewName": "WTQueryByHU"
+        },
+        "TargetAutomaticallyRepackHUItem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHUItem",
+          "viewName": "AutomaticallyRepackHUItem"
         },
         "TargetBillofLading": {
           "viewType": "XML",
