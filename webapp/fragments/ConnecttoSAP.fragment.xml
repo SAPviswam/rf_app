@@ -13,7 +13,7 @@
             <Bar id="_IDBar1coonectsap">
                 <contentMiddle>
                     <!-- Logo -->
-                    <Image
+                    <Image id="_IDGenImage"
                         src="https://artihcus.com/assets/img/AG-logo.png"
                         width="65px"
                         height="25px" 

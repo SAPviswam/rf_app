@@ -12,17 +12,8 @@ sap.ui.define([
         onInit: function () {
             this.loadConfiguredSystems();
         },
-        onDevButtonPress: async function () {
-            this.LoadSapLogon();
-        },
         onsapCancelPress: function () {
             this.oConfigSap.close();
-        },
-        onProdButtonPress: function () {
-            this.LoadSapLogon();
-        },
-        onEnvButtonPress: function () {
-            this.LoadSapLogon();
         },
         LoadSapLogon: async function () {
             this.oConfigSap ??= await this.loadFragment({
@@ -317,7 +308,7 @@ sap.ui.define([
 
             var that = this; // Store reference to 'this' for use in callbacks
 
-            MessageBox.confirm("Are you sure you want to delete the configured system?", {
+            MessageBox.warning("Are you sure you want to delete the configured system?", {
                 title: "Confirm Deletion",
                 actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                 onClose: function (status) {
@@ -383,7 +374,6 @@ sap.ui.define([
                     }
                 }
             });
-
         },
         onEditconnectSAPPress: function () {
             var oView = this.getView();
@@ -414,10 +404,6 @@ sap.ui.define([
                 sap.m.MessageToast.show("Application Server is required.");
                 return;
             }
-            // if (!sRouterString) {
-            //     sap.m.MessageToast.show("Router String is required.");
-            //     return;
-            // }
             if (!sService) {
                 sap.m.MessageToast.show("Service is required.");
                 return;
@@ -457,6 +443,9 @@ sap.ui.define([
                     sap.m.MessageToast.show("Error updating data.");
                 }
             });
+        },
+        onBackconnectSAPPress:function(){
+            this.onCloseconnectsap();
         },
         
         
