@@ -169,7 +169,7 @@
 
                         <VBox
                             id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer"
+                            class="sapUiSmallMargin boxContainer3"
                         >
                             <Title
                                 id="_IDHeadLabel"
