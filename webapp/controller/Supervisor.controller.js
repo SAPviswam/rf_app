@@ -1631,9 +1631,7 @@ sap.ui.define(
 >>>>>>> 738d8e75269db3fd66cb9b11137b1cc9ab14772c
             },
 
-            // onUnloadingByShipmentPress: function () {
             OnpressMaintainHU: function () {
-
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU", { id: this.ID });
 
