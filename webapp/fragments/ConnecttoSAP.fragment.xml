@@ -207,9 +207,15 @@
                 press="onClearconnectSAPPress"
             />
          <Button
-                id="idconnectsapbackButton"
+                id="idconnectsapeditButton"
                 text="Edit"
                 press="onEditconnectSAPPress"
+                visible="false"
+            />
+            <Button
+                id="idconnectsapbackButton"
+                text="Back"
+                press="onBackconnectSAPPress"
             />
             <Button
                 id="idconnectsapfinishButton"

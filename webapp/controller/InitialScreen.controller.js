@@ -352,6 +352,8 @@ sap.ui.define([
                 return;
             }
             this.handleLinksapPress();
+            this.getView().byId("idconnectsapeditButton").setVisible(true);
+            this.getView().byId("idconnectsapfinishButton").setVisible(false);
             var oButtonText = this.sdedescription;
 
             var oModel = this.getView().getModel();
@@ -381,45 +383,6 @@ sap.ui.define([
             });
 
         },
-        // onEditconnectSAPPress: function () {
-        //     // Get updated values from input fields
-        //     var oView = this.getView();
-        //     var sDescription = this.byId("idDescriptionInput").getValue();
-        //     var sSystemId = this.byId("idSystemIdInput").getValue();
-        //     var sInstanceNumber = this.byId("idInstanceNumberInput").getValue();
-        //     var sClient = this.byId("idClientInput").getValue();
-        //     var sApplicationServer = this.byId("idApplicationServerInput").getValue();
-        //     var sRouterString = this.byId("idRouterStringInput").getValue();
-        //     var sService = this.byId("idServiceInput").getValue();
-        //     var oCheckbox = oView.byId("idCheckboxDescription");
-        
-        
-        //     var oModel = this.getView().getModel();
-
-        //     // Create an object with updated values
-        //     var oUpdatedData = {
-        //         Description: sDescription,
-        //         SystemId: sSystemId,
-        //         InstanceNo: sInstanceNumber,
-        //         Client: sClient,
-        //         AppServer: sApplicationServer,
-        //         SapRouterStr: sRouterString,
-        //         SapService: sService,
-        //         DescriptionB: (oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription)
-        //     };
-        //     var that = this;
-        //     // Update the entry in OData service
-        //     oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
-        //         success: function () {
-        //             MessageToast.show("Data updated successfully.");
-        //             that.onCloseconnectsap();
-        //             that.clearInputFields(oView);
-        //         },
-        //         error: function (oError) {
-        //             MessageToast.show("Error updating data.");
-        //         }
-        //     });
-        // },
         onEditconnectSAPPress: function () {
             var oView = this.getView();
             var sDescription = oView.byId("idDescriptionInput").getValue();
