@@ -35,6 +35,8 @@ sap.ui.define([
                 name: "com.app.rfapp.fragments.ConnecttoSAP"
             })
             this.oConnetSap.open();
+            this.getView().byId("idconnectsapeditButton").setVisible(false);
+            this.getView().byId("idconnectsapfinishButton").setVisible(true);
         },
         onCloseconnectsap: function () {
             debugger
