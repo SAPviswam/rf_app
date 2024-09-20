@@ -20,12 +20,14 @@ sap.ui.define([
                 name: "com.app.rfapp.fragments.SapLogon"
             })
             this.oConfigSap.open();
+            this.onUserLogin();
         },
         handleLinksapPress: async function () {
             this.oConnetSap ??= await this.loadFragment({
                 name: "com.app.rfapp.fragments.ConnecttoSAP"
             })
             this.oConnetSap.open();
+            
             this.getView().byId("idconnectsapeditButton").setVisible(false);
             this.getView().byId("idconnectsapfinishButton").setVisible(true);
         },
@@ -41,7 +43,7 @@ sap.ui.define([
             if (oU === "111010" && oP === "ARTIHCUS") {
                 this.getOwnerComponent().getRouter().navTo("Homepage", { id: oU })
             }
-            this.onUserLogin();
+            
         },
         onUserLogin: function () {
             this.getView().byId("idsaplogonUserId").setValue();
