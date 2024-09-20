@@ -1101,6 +1101,8 @@ sap.ui.define(
                     });
                 }
                 else {
+
+
                     oModel.create("/RESOURCESSet", oData, {
                         success: function () {
                             sap.m.MessageToast.show("successfully Created");
@@ -1115,9 +1117,9 @@ sap.ui.define(
                             sap.m.MessageToast.show("Error updating user login status.");
                         }
 
-
                     })
                 }
+       
             },
             formatDate: function (oDate) {
                 var sYear = oDate.getFullYear();
@@ -1586,7 +1588,23 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
             },
-            onMaintainHUPress: function () {
+            onDeconsolidationAutomaticallypress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            },
+            onDeconsolidationManuallypress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            },
+            OnPressAdhocInventoryCreation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            },
+            onCreationOfSingleHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+            },
+            OnpressMaintainHU: function () {
                var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
             },
@@ -1608,8 +1626,16 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt",{id:this.ID});
- 
+               oRouter.navTo("AdhocHuWt",{id:this.ID});
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
+            },
+            OnPressUnloadByDelivery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByDelivery", {id:this.ID})
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1784,9 +1810,10 @@ sap.ui.define(
 
 
             OnPressSerialnumberLocation: function () {
-                var oRouter = UIComponent.getRouterFor(this);
+                var oRouter = UIComponent.getRouterFor(this)
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
         },
+
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});
@@ -1838,7 +1865,25 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
             },
 
+            onCreatePutawayHusforDeconsolidation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});
+            },
+            onCreatePutawayHusManually: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
+
+            OnPressProductInspectionByHU: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
+            },
+            OnPressProductInspectionByStorageBin: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+            },
+
+
 
         });
-    }
-);
+    });

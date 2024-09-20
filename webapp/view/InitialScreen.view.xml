@@ -1,4 +1,4 @@
-<mvc:View
+<mvc:View xmlns:statusindicator="sap.suite.ui.commons.statusindicator"
     controllerName="com.app.rfapp.controller.InitialScreen"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -17,55 +17,61 @@
                     class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
                 >
-                    <Label id="idemptylable3" />
-                    <Image
-                        id="idlogoarea"
-                        height="2.5rem"
-                        class="sapUiSmallMarginBegin"
-                        src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="9rem"
-                    />
-                    <Label
-                        id="idEmptylable"
-                        textAlign="Center"
-                    />
+           <VBox >
+                    <HBox
+                        id="idHboxinitial"
+                        alignContent="Start"
+                        class = "boxContainer2"
+                        width="auto"
+                    >
+                        <Image
+                            id="idImageLogoAvatarinitial"
+                            src="https://artihcus.com/assets/img/AG-logo.png"
+                            class="sapUiSmallMarginEnd logo"
+                            width="80%"
+                            height="30%"
+                        />
+                        <Title
+                            id="initialscreentitle"
+                            text="CAPModel RF"
+                            class="capModelRFText sapUiSmallMarginBottom"
+                        />
+                    </HBox>
+                     <Text
+                            text=""
+                            class="underline" 
+                        />
+                 <!-- New HBox for buttons directly below the logo -->
+                    <HBox
+                        id="idHboxButtons"
+                        alignContent="Start"    
+                    >
+                        <Button
+                            id="idButtonAdd"
+                            icon="sap-icon://add"
+                            tooltip="Add"
+                            press="handleAddPress"
+                            class="button"
+                            
+                        />
+                        <Button
+                            id="idButtonEdit"
+                            icon="sap-icon://edit"
+                            tooltip="Edit"
+                            press="onEditConfiguredSystem"
+                            class="button1"
+                        />
+                        <Button
+                            id="idButtonDelete"
+                            icon="sap-icon://delete"
+                            tooltip="Delete"
+                            press="onDeleteConfiguredSystem"
+                            class="button2"
+                        />
+                    </HBox>
+                    </VBox>
 
-                    <!-- Existing Environment Buttons -->
-                    <Label
-                        id="idSAPSystem"
-                        text="SAP System"
-                        textAlign="End"
-                    />
-
-                    <Button
-                        id="devButton"
-                        text="Development"
-                        press="onDevButtonPress"
-                        type="Emphasized"
-                        width="11rem"
-                    />
-                    <ToolbarSpacer
-                        id="idinitialtoolspace"
-                        width="20px"
-                    />
-                    <Button
-                        id="prodButton"
-                        text="Production"
-                        press="onProdButtonPress"
-                        type="Emphasized"
-                        width="11rem"
-                    />
-                    <ToolbarSpacer
-                        id="idinitialtool"
-                        width="20px"
-                    />
-                    <Button
-                        id="envButton"
-                        text="Environment"
-                        press="onEnvButtonPress"
-                        type="Emphasized"
-                        width="11rem"
-                    />
+                    <!-- Link for configuring SAP system -->
                     <Link
                         id="_IDCofiguresapLink"
                         text="Configure SAP system"
