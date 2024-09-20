@@ -364,6 +364,7 @@ sap.ui.define(
                 this.oApproveForm.close();
             },
             onApprove: function () {
+                debugger
                 var Empid = this.byId("idEmployeeIDInputF").getText();
 
                 var oNameInput = this.byId("idNameInputF");
@@ -373,11 +374,13 @@ sap.ui.define(
                 var oAreaSelect = this.byId("idAreaSelect");
                 var oGroupSelect = this.byId("idGroupSelect");
                 var oQueueSelect = this.byId("idQueueSelect");
+               
 
                 var Name = oNameInput.getText();
                 var email = oEmailInput.getText();
                 var phone = oPhoneInput.getText();
                 var Resourcetype = oResourcetypeInput.getText();
+                
                 var Area = oAreaSelect.getSelectedKeys().join(",");
                 var Group = oGroupSelect.getSelectedKeys().join(",");
                 var Queue = oQueueSelect.getSelectedKeys().join(",");
@@ -436,6 +439,8 @@ sap.ui.define(
                     oResourcetypeInput.setValueState(sap.ui.core.ValueState.None);
                     oResourcetypeInput.setValueStateText("");
                 }
+
+               
 
                 // Validate Area
                 if (Area.length === 0) {
@@ -507,7 +512,8 @@ sap.ui.define(
                     Email: email,
                     Notification: "your request has been Approved",
                     Phonenumber: phone,
-                    Queue: Queue,
+                    
+                    Queue : Queue,
                     Resourcegroup: Group,
                     Resourceid: Empid,
                     Resourcename: Name,
@@ -922,6 +928,7 @@ sap.ui.define(
                 var oAreaSelect = this.byId("AreaSelect");
                 var oGroupSelect = this.byId("GroupSelect");
                 var oQueueSelect = this.byId("_IDGenComboBox10");
+                var oUsertype = this.byId("userType");
 
                 var Name = oNameInput.getValue();
                 var email = oEmailInput.getValue();
@@ -930,6 +937,7 @@ sap.ui.define(
                 var Area = oAreaSelect.getSelectedKeys().join(",");
                 var Group = oGroupSelect.getSelectedKeys().join(",");
                 var Queue = oQueueSelect.getSelectedKeys().join(",");
+                var Usertype = oUsertype.getValue();
 
                 var isValid = true;
 
@@ -984,6 +992,15 @@ sap.ui.define(
                 } else {
                     oResourcetypeInput.setValueState(sap.ui.core.ValueState.None);
                     oResourcetypeInput.setValueStateText("");
+                }
+
+                if (!Usertype) {
+                    oUsertype.setValueState(sap.ui.core.ValueState.Error);
+                    oUsertype.setValueStateText("User type is required.");
+                    isValid = false;
+                } else {
+                    oUsertype.setValueState(sap.ui.core.ValueState.None);
+                    oUsertype.setValueStateText("");
                 }
 
                 // Validate Area
@@ -1057,6 +1074,7 @@ sap.ui.define(
                     Notification: "your request has been Approved",
                     Phonenumber: phone,
                     Queue: Queue,
+                    Users : Usertype,
                     Resourcegroup: Group,
                     Resourceid: Empid,
                     Resourcename: Name,
@@ -1810,6 +1828,11 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("StockBinQueryByProduct");
             },
+            onManuallyRepackHUItemPress:function () {
+                debugger
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackingByHUItem",{id:this.ID});
+            }
 
 
         });

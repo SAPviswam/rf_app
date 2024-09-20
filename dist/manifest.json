@@ -350,6 +350,13 @@
                     "target": [
                         "TargetWTQueryByWT"
                     ]
+                },
+                {
+                    "name": "RouteManuallyRepackingByHuItems",
+                    "pattern": "RouteManuallyRepackingByHuItems/{id}",
+                    "target": [
+                        "TargetManuallyRepackingByHuItems"
+                    ]
                 }
             ],
             "targets": {
@@ -590,6 +597,13 @@
                     "clearControlAggregation": false,
                     "viewId": "WTQueryByWT",
                     "viewName": "WTQueryByWT"
+                },
+                "TargetManuallyRepackingByHuItems": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ManuallyRepackingByHuItem",
+                    "viewName": "ManuallyRepackingByHuItem"
                 }
             }
         },

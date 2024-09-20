@@ -267,6 +267,41 @@
 
                                 </HBox>
                             </FlexBox>
+                             <FlexBox
+                                id="_IDFlex21"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="iduserType"
+                                    text="User Type"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="userType"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem1"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem2"
+                                        key="SuperVisor"
+                                        text="Super Visor"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem3"
+                                        key="Manager"
+                                        text="Manager"
+                                    />
+                                </ComboBox>
+                            </FlexBox>
 
                             <FlexBox
                                 id="_IDField345"
@@ -1118,7 +1153,7 @@
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile

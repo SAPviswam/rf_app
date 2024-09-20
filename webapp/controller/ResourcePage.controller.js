@@ -213,7 +213,7 @@ sap.ui.define([
                 oRouter.navTo("WTQueryByWO",{id:this.ID});
             },
             onPutawayByHUPress: function () {
-                debugger
+             
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayByHU",{id:this.ID});
             },
@@ -222,6 +222,10 @@ sap.ui.define([
                 oRouter.navTo("Receivingofhubyco",{id:this.ID});
 
             },
+            onManuallyRepackHUItemPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteManuallyRepackingByHuItems",{id:this.ID});
+            }
           
 
         });
