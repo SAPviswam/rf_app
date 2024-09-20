@@ -1630,6 +1630,16 @@ sap.ui.define(
                 oRouter.navTo("MaintainHU",{id:this.ID});
 >>>>>>> 738d8e75269db3fd66cb9b11137b1cc9ab14772c
             },
+            onPressManuallyRepackHU : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
+            
+            },
+            onPressManuallyRepackAllHUItems : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            },
+
 
             OnpressMaintainHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);

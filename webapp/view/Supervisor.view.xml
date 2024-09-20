@@ -1132,14 +1132,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onPressManuallyRepackHUItem"
                         />
 
                         <GenericTile
@@ -1153,7 +1153,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
