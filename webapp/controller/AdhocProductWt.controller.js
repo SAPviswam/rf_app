@@ -1,4 +1,4 @@
-c
+sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
          "sap/ui/core/UIComponent"
