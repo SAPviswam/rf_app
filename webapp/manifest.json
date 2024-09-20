@@ -303,10 +303,24 @@
           ]
         },
         {
+          "name": "AutomaticallyRepackHUItem",
+          "pattern": "AutomaticallyRepackHUItem/{id}",
+          "target": [
+            "TargetAutomaticallyRepackHUItem"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
+          ]
+        },
+        {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
+          "target": [
+            "TargetMaintainHU"
           ]
         },
         {
@@ -578,6 +592,13 @@
           "viewId": "WTQueryByHU",
           "viewName": "WTQueryByHU"
         },
+        "TargetAutomaticallyRepackHUItem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHUItem",
+          "viewName": "AutomaticallyRepackHUItem"
+        },
         "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
@@ -766,6 +787,13 @@
           "clearControlAggregation": false,
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
         }
       },
       "sap.cloud": {
