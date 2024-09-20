@@ -282,6 +282,13 @@
           ]
         },
         {
+          "name": "AutomaticallyRepackHUItem",
+          "pattern": "AutomaticallyRepackHUItem/{id}",
+          "target": [
+            "TargetAutomaticallyRepackHUItem"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt/{id}",
           "target": [
@@ -371,14 +378,8 @@
           "target": [
             "TargetWTQueryByQueue"
           ]
-<<<<<<< HEAD
         },
         {
-=======
-    },
-
-    {
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -534,6 +535,13 @@
           "viewId": "WTQueryByHU",
           "viewName": "WTQueryByHU"
         },
+        "TargetAutomaticallyRepackHUItem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHUItem",
+          "viewName": "AutomaticallyRepackHUItem"
+        },
         "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
@@ -645,13 +653,7 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
-<<<<<<< HEAD
         },
-=======
-      },
-
-
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -659,18 +661,13 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-
-          "TargetWTQueryByWT":{
+        "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> 665911656281555b06ce7793cd27ccfcb9459a2c
         "TargetCreateShippingHU": {
           "viewType": "XML",
           "transition": "slide",

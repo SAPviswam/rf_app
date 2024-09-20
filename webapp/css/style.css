@@ -188,24 +188,24 @@
 
 
 
-/*......These are(3Tiles) for "PutawayByWO Tile=>Page1" & "AvailableHandlingUnitsonBinQuery Tile=>Page1" & "WTQueryByHU Tile=>Page1"......*/
-.putawayContainer_PBYWO,.BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU {
+/*......These are(4Tiles) for "PutawayByWO Tile=>Page1" & "AvailableHandlingUnitsonBinQuery Tile=>Page1" & "WTQueryByHU Tile=>Page1" & "AutomaticallyRepackHUItem Tile=>Page1" ......*/
+.putawayContainer_PBYWO,.BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU,.AutoRepackHUIContainer_ARHUI {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
 }
-.warehouseOrderTitle_PBYWO,.BinQueryTitle_AHUOBQ, .WTQueryByHUTitle_WTQBYHU {
+.warehouseOrderTitle_PBYWO,.BinQueryTitle_AHUOBQ, .WTQueryByHUTitle_WTQBYHU, .AutoRepackHUITitle_ARHUI {
     align-self: flex-start;
 }
-.formContainer_PBYWO,.formContainer_AHUOBQ, .formContainerPage1_WTQBYHU {
+.formContainer_PBYWO,.formContainer_AHUOBQ, .formContainerPage1_WTQBYHU, .formContainer_ARHUI {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
 }
-.formBox_PBYWO,.formBox_AHUOBQ, .formBox_WTQBYHU {
+.formBox_PBYWO,.formBox_AHUOBQ, .formBox_WTQBYHU, .formBox_ARHUI {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -213,32 +213,32 @@
     width: 400px;
     margin-top: 4rem;
 }
-.formLabel_PBYWO,.formLabel_AHUOBQ, .formLabel_WTQBYHU {
+.formLabel_PBYWO,.formLabel_AHUOBQ, .formLabel_WTQBYHU, .formLabel_ARHUI {
     margin-bottom: 7px;
 }
-.Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU {
+.Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU, .Scannerbtn_ARHUI {
     margin-left: 3rem;
     margin-right: 1rem;
 }
 /* Mobile Styles */
 @media (max-width: 600px) {
-    .putawayContainer_PBYWO, .BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU {
+    .putawayContainer_PBYWO, .BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU, .AutoRepackHUIContainer_ARHUI {
         padding: 10px;
     }
-    .formBox_PBYWO, .formBox_AHUOBQ, .formBox_WTQBYHU {
+    .formBox_PBYWO, .formBox_AHUOBQ, .formBox_WTQBYHU, .formBox_ARHUI {
         width: 100%;
         padding: 15px;
         margin-bottom: 30rem;
         /* Adjusted for mobile */
     }
-    .formLabel_PBYWO, .formLabel_AHUOBQ, .formLabel_WTQBYHU {
+    .formLabel_PBYWO, .formLabel_AHUOBQ, .formLabel_WTQBYHU, .formLabel_ARHUI {
         font-size: 0.9rem;
     }
-    .Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU {
+    .Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU, .Scannerbtn_ARHUI {
         margin-left: 3rem;
         margin-right: 1rem;
     }
-    .formContainer_PBYWO, .formContainer_AHUOBQ, .formContainerPage1_WTQBYHU {
+    .formContainer_PBYWO, .formContainer_AHUOBQ, .formContainerPage1_WTQBYHU, .formContainer_ARHUI {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -247,30 +247,31 @@
     margin-top: 0.4rem;
 }
 /* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
-   ScrollContainers Page3 & Page4 From AHUOBQ Tile.. &&
-   ScrollContainers Page3 & Page4 From WTQBYHU Tile..  */
-.Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU {
+   ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
+   ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
+   ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
+.Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU, .Page4AutoRHUIContainer_ARHUI, .Page5AutoRHUIContainer_ARHUI, .Page8AutoRHUIContainer_ARHUI, .Page9AutoRHUIContainer_ARHUI {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
 }
 /* Form Header Styling */
-.Page2formHeaderTitle_PBYWO, .Page5formHeaderVerifyHUNum_PBYWO, .formHeaderGR, .formHeaderUnLoad, .ThirdPageformHeaderHUContent_AHUOBQ, .formHeaderPage4PrdDescription_AHUOBQ, .ThirdPageformHeaderWTDetails_WTQBYHU, .Page4formHeaderPD_WTQBYHU {
+.Page2formHeaderTitle_PBYWO, .Page5formHeaderVerifyHUNum_PBYWO, .formHeaderGR, .formHeaderUnLoad, .ThirdPageformHeaderHUContent_AHUOBQ, .formHeaderPage4PrdDescription_AHUOBQ, .ThirdPageformHeaderWTDetails_WTQBYHU, .Page4formHeaderPD_WTQBYHU, .Page4formHeaderTitle_ARHUI, .Page5formHeaderTitle_ARHUI, .Page8formHeaderTitle_ARHUI, .Page9formHeaderTitle_ARHUI {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
 }
 /* Box around the form */
-.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .ThirdPageFormBoxWTDetails_WTQBYHU, .Page4FormBoxPD_WTQBYHU {
+.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .ThirdPageFormBoxWTDetails_WTQBYHU, .Page4FormBoxPD_WTQBYHU, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
     border: 2px solid black;
     padding: 20px;
     border-radius: 8px;
     width: auto;
     background-color: #f9f9f9;
 }
-.formLabel_PBYWO, .labelStyleGR, .labelStyleUnLoad, .labelStyleThirdPage_AHUOBQ, .formLabelPage4_AHUOBQ {
-    margin-bottom: 0.5rem;
+.formLabel_PBYWO, .labelStyleGR, .labelStyleUnLoad, .labelStyleThirdPage_AHUOBQ, .formLabelPage4_AHUOBQ, .labelStylePage4_ARHUI, .labelStylePage5_ARHUI, .labelStylePage8_ARHUI, .labelStylePage9_ARHUI {
+    margin-bottom: 0.3rem;
     font-weight: bold;
 }
 /* Button Styling */
@@ -289,16 +290,16 @@
     margin-top: 0.5rem;
 }
 @media (max-width: 600px) {
-    .Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ {
+    .Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .Page4AutoRHUIContainer_ARHUI, .Page5AutoRHUIContainer_ARHUI, .Page8AutoRHUIContainer_ARHUI, .Page9AutoRHUIContainer_ARHUI {
         margin: 1rem;
     }
-    .Page2FormBox_PBYWO, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ {
+    .Page2FormBox_PBYWO, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
         padding: 15px;
         width: 100%;
         margin: 0 auto;
     }
 }
-/* CSS methods only for WTQBYHU Tile in that Page3 & Page4 Scrollcontainers  */
+/* CSS methods only for WTQueryByHU Tile in that Page3 & Page4 Scrollcontainers  */
 @media (max-width: 600px) {
     .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU {
         margin: 0.5rem;
@@ -315,6 +316,12 @@
         align-items: stretch;
         width: auto;
     }
+}
+
+.centeredForm {
+    width: 50%; /* Default width for larger screens */
+    margin: auto;
+    position: relative;
 }
 
 
