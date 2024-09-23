@@ -166,7 +166,11 @@
                             text="PR/SI/HU"
                             required="true"
                         />
-                        <HBox id="idHBoxAutoRepackHUI01_ARHUI">
+                        <FlexBox
+                            id="idFlexBoxPage2PRSIHU_ARHUI"
+                            wrap="Wrap"
+                            class="autoRepackPage"
+                        >
                             <Input
                                 id="idInputPRSIHU_ARHUI"
                                 width="15rem"
@@ -177,42 +181,45 @@
                             />
                             <Label
                                 id="IDGenPage2Label4_ARHUI"
-                                text="Lable:"
+                                text="Label:"
                             />
                             <Input
-                                id="idInputEmptyLable1_ARHUI"
+                                id="idInputEmptyLabel1_ARHUI"
                                 width="7rem"
                             />
                             <Label
                                 id="IDGenPage2Label5_ARHUI"
-                                text="lable:"
+                                text="Label:"
                             />
                             <Input
-                                id="idInputEmptyLable2_ARHUI"
+                                id="idInputEmptyLabel2_ARHUI"
                                 width="7rem"
                             />
-                        </HBox>
+                        </FlexBox>
                         <Label
                             id="IDGenPage2Label6_ARHUI"
                             text="Source Quantity"
                             required="true"
                         />
-                        <HBox id="idHBoxAutoRepackHUI02_ARHUI">
+                        <FlexBox
+                            id="idFlexBoxPage2SourceQty_ARHUI"
+                            wrap="Wrap"
+                            class="autoRepackPage"
+                        >
                             <Input
                                 id="idInputSourceQty_ARHUI"
                                 width="9rem"
                             />
                             <Label
                                 id="IDGenPage2SpaceLabel7_ARHUI"
-                                width="2rem"
-                                class="MobileView"
+                                width="8rem"
                             />
                             <Label
                                 id="IDGenPage2Label8_ARHUI"
-                                text="Lable:"
+                                text="Label:"
                             />
                             <Input
-                                id="idInputEmptyLable3_ARHUI"
+                                id="idInputEmptyLabel3_ARHUI"
                                 width="7rem"
                             />
                             <Label
@@ -223,7 +230,7 @@
                                 id="idInputSis_ARHUI"
                                 width="7rem"
                             />
-                        </HBox>
+                        </FlexBox>
                         <Label
                             id="IDGenPage2Label_ARHUI"
                             text="Consolidation GRP"
@@ -319,7 +326,11 @@
                             text="PR/SI/HU"
                             required="true"
                         />
-                        <HBox id="idHBoxPage3AutoRepackHUI01_ARHUI">
+                        <FlexBox
+                            id="idFlexBox01Page3PRSIHU_ARHUI"
+                            wrap="Wrap"
+                            class="autoRepackPage"
+                        >
                             <Input
                                 id="idInputPage3PRSIHU_ARHUI"
                                 width="15rem"
@@ -344,13 +355,17 @@
                                 id="idInputPage3EmptyLable2_ARHUI"
                                 width="7rem"
                             />
-                        </HBox>
+                        </FlexBox>
                         <Label
                             id="IDGenPage3LabelProText_ARHUI"
                             text="Pro Text"
                             required="true"
                         />
-                        <HBox id="idHBoxPage3ProText_ARHUI">
+                        <FlexBox
+                            id="idFlexBox02Page3PRSIHU_ARHUI"
+                            wrap="Wrap"
+                            class="autoRepackPage"
+                        >
                             <Input
                                 id="idInputPage3ProText_ARHUI"
                                 width="15rem"
@@ -375,20 +390,24 @@
                                 id="idInputPage3EmptyLable22_ARHUI"
                                 width="7rem"
                             />
-                        </HBox>
+                        </FlexBox>
                         <Label
                             id="IDGenPage3Label6_ARHUI"
                             text="Source Quantity"
                             required="true"
                         />
-                        <HBox id="idHBoxPage3AutoRepackHUI02_ARHUI">
+                        <FlexBox
+                            id="idFlexBox03Page3PRSIHU_ARHUI"
+                            wrap="Wrap"
+                            class="autoRepackPage"
+                        >
                             <Input
                                 id="idInputPage3SourceQty_ARHUI"
                                 width="9rem"
                             />
                             <Label
                                 id="IDGenPage3SpaceLabel7_ARHUI"
-                                width="2rem"
+                                width="8rem"
                                 class="MobileView"
                             />
                             <Label
@@ -407,7 +426,7 @@
                                 id="idInputPage3Sis_ARHUI"
                                 width="7rem"
                             />
-                        </HBox>
+                        </FlexBox>
                         <Label
                             id="IDGenPage3Label_ARHUI"
                             text="Consolidation GRP"
@@ -1496,7 +1515,10 @@
                             id="idPage11PentsInput_ARHUI"
                             width="50%"
                         />
-                        <Text id="idTextSTYPPage11_ARHUI" text="Styp" />
+                        <Text
+                            id="idTextSTYPPage11_ARHUI"
+                            text="Styp"
+                        />
                         <Input
                             id="idPage11STYPInput_ARHUI"
                             width="50%"
@@ -1509,12 +1531,15 @@
                             id="idPage11OwnerInput_ARHUI"
                             width="50%"
                         />
-                        <Text id="iaPage11TextStatus_ARHUI" text="StUs" />
+                        <Text
+                            id="iaPage11TextStatus_ARHUI"
+                            text="StUs"
+                        />
                         <Input
                             id="idPage11StatusInput_ARHUI"
                             width="50%"
                         />
-                        <Label id="idPage11EmptyLabel6_ARHUI"/>
+                        <Label id="idPage11EmptyLabel6_ARHUI" />
                         <Input
                             id="idPage11Empty3Input_ARHUI"
                             width="50%"
