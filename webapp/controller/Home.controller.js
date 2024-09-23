@@ -10,6 +10,17 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 this.bOtpVerified = false;
+                var sUsername = localStorage.getItem("username");
+            var sPassword = localStorage.getItem("password");
+            var bAutoSave = localStorage.getItem("autoSave") === "true";
+
+            if (sUsername) {
+                this.getView().byId("idUserIDInput").setValue(sUsername);
+            }
+            if (sPassword) {
+                this.getView().byId("idPasswordInput").setValue(sPassword);
+            }
+            this.getView().byId("idButtonSignUpcheckbox").setSelected(bAutoSave);
             },
             onLoginPress: async function () {
                 var oView = this.getView();
@@ -18,6 +29,17 @@ sap.ui.define([
                 var sWarehouseNumber = oView.byId("idHUInput").getValue();
                 var sResourceId = oView.byId("idUserIDInput").getValue();
                 var sPassword = oView.byId("idPasswordInput").getValue();
+                var bAutoSave = this.getView().byId("idButtonSignUpcheckbox").getSelected();
+                if (bAutoSave) {
+                    localStorage.setItem("username", sResourceId);
+                    localStorage.setItem("password", sPassword);
+                    localStorage.setItem("autoSave", "true");
+                } else {
+                    // Clear stored credentials if auto-save is unchecked
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("password");
+                    localStorage.removeItem("autoSave");
+                }
 
                 // Perform validation checks
                 if (!sWarehouseNumber) {
