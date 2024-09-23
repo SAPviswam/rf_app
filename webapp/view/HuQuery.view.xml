@@ -18,6 +18,7 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
+
     <tnt:ToolPage id="_IDGenPage1">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHuQuery">
@@ -64,59 +65,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            <ScrollContainer
-                id="icon1"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="true"
-            >
-                <VBox
-                    id="_IDGenVBox1"
-                    alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
-                >
-                    <f:SimpleForm
-                        id="simpleForm"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
-                        columnsM="1"
-                    >
-                        <HBox id="_IDGenHBoxContainer" justifyContent="Start">
-                            <!-- Scan HU Label -->
-                            <Label
-                                id="_IDGenLabel1"
-                                text="Scan HU :"
-                                class="ScanHumargin"
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="_IDGenInput1"
-                                placeholder="Enter HU..."
-                                class="sapUiTinyMarginBegin"
-                                liveChange="onLiveHuValidation"
-                                change="onChangeHuValidation"
-                            />
-                            <ndc:BarcodeScannerButton
-                                id="sampleBarcodeScannerButtonnnnnnnnnnn"
-                                scanSuccess="onScanSuccess"
-                                scanFail="onScanError"
-                                inputLiveUpdate="onScanLiveupdate"
-                                dialogTitle="Barcode Scanner"
-                            />
-                        </HBox>
-                    </f:SimpleForm>
-                </VBox>
-            </ScrollContainer>
- 
+            
             <!-- Scroll Container for HU Details -->
             <ScrollContainer
                 id="icon2"

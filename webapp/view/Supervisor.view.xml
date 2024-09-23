@@ -45,6 +45,30 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
+                <ComboBox
+                    id="idLanguageSelectorComboBox"
+                    change="onLanguageChange"
+                    visible="false"
+                    placeholder="Pls Select Language!"
+                >
+                    <items>
+                        <core:Item
+                            id="idCoreItemEnglishLanguage"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItemHindiLanguage"
+                            key="hi"
+                            text="Hindi"
+                        />
+                    </items>
+                </ComboBox>
+                <Button
+                    id="idBtnLanguageChange"
+                    icon="sap-icon://translate"
+                    press="onPressLanguageChangeApp"
+                />
                 <Button
                     id="themeButton"
                     text="Theme"
@@ -146,7 +170,7 @@
 
                         <VBox
                             id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer"
+                            class="sapUiSmallMargin boxContainer3"
                         >
                             <Title
                                 id="_IDHeadLabel"
@@ -252,8 +276,7 @@
                                         liveChange="onSubmitOtp"
                                         width="100%"
                                         editable="true"
-                />
-
+                                    />
 
                                     <Button
                                         id="getotpsv"
@@ -262,10 +285,7 @@
                                         type="Emphasized"
                                         width="80px"
                                         visible="false"
-                
-                    />
-
-
+                                    />
                                 </HBox>
                             </FlexBox>
                              <FlexBox
@@ -790,7 +810,8 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />                            </TileContent>
+                                />
+                            </TileContent>
                         </GenericTile>
 
                         <GenericTile
@@ -890,20 +911,20 @@
                         <GenericTile
                             id="idCreatePutawayHusManually1"
                             header="Create Putaway Hus Manually"
-                            press="onCreatePutawayHus Manually"
+                            press="onCreatePutawayHusManually"
                             class="sapUiTinyMargin"
                         />
 
                         <GenericTile
                             id="idDeconsolidationAutomatically1"
                             header="Deconsolidation Automatically"
-                            press="onDeconsolidationAutomatically"
+                            press="onDeconsolidationAutomaticallypress"
                             class="sapUiTinyMargin"
                         />
                         <GenericTile
                             id="idDeconsolidateManually1"
                             header="Deconsolidate Manually"
-                            press="onDeconsolidateManually"
+                            press="onDeconsolidationManuallypress"
                             class="sapUiTinyMargin"
                         />
                         <GenericTile
@@ -923,7 +944,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onPressHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMargin"
                         />
                     </ScrollContainer>
@@ -1133,7 +1154,7 @@
                             id="_IDGenGenericTile08"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Automatically Repack HU Item"
-                            press="onPressAutomaticallyRepeakHUItem"
+                            press="onPressAutomaticallyRepackHUItem"
                         />
 
                         <GenericTile
@@ -1147,7 +1168,7 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
@@ -1168,7 +1189,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1266,14 +1287,14 @@
                             id="_IDCreationOfSingleHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Creation Of Single HU"
-                            press="press"
+                            press="onCreationOfSingleHUpress"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPickPointPress"
                         />
 
                         <GenericTile
