@@ -45,6 +45,30 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
+                <ComboBox
+                    id="idLanguageSelectorComboBox"
+                    change="onLanguageChange"
+                    visible="false"
+                    placeholder="Pls Select Language!"
+                >
+                    <items>
+                        <core:Item
+                            id="idCoreItemEnglishLanguage"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItemHindiLanguage"
+                            key="hi"
+                            text="Hindi"
+                        />
+                    </items>
+                </ComboBox>
+                <Button
+                    id="idBtnLanguageChange"
+                    icon="sap-icon://translate"
+                    press="onPressLanguageChangeApp"
+                />
                 <Button
                     id="themeButton"
                     text="Theme"
@@ -98,11 +122,11 @@
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
                 <tnt:fixedItem>
-                    <tnt:NavigationList
+                    <tnt:NavigationList id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem
+                        <tnt:NavigationListItem id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -131,7 +155,7 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox
+                        <FlexBox id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -145,7 +169,7 @@
 
                         <VBox
                             id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer"
+                            class="sapUiSmallMargin boxContainer3"
                         >
                             <Title
                                 id="_IDHeadLabel"
@@ -220,7 +244,7 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -242,7 +266,7 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
@@ -251,8 +275,7 @@
                                         liveChange="onSubmitOtp"
                                         width="100%"
                                         editable="true"
-                />
-
+                                    />
 
                                     <Button
                                         id="getotpsv"
@@ -261,10 +284,7 @@
                                         type="Emphasized"
                                         width="80px"
                                         visible="false"
-                
-                    />
-
-
+                                    />
                                 </HBox>
                             </FlexBox>
 
@@ -754,7 +774,8 @@
                                     icon="sap-icon://palette"
                                     press="onPaletteIconSingleClick"
                                     type="Transparent"
-                                />                            </TileContent>
+                                />
+                            </TileContent>
                         </GenericTile>
 
                         <GenericTile
@@ -854,20 +875,20 @@
                         <GenericTile
                             id="idCreatePutawayHusManually1"
                             header="Create Putaway Hus Manually"
-                            press="onCreatePutawayHus Manually"
+                            press="onCreatePutawayHusManually"
                             class="sapUiTinyMargin"
                         />
 
                         <GenericTile
                             id="idDeconsolidationAutomatically1"
                             header="Deconsolidation Automatically"
-                            press="onDeconsolidationAutomatically"
+                            press="onDeconsolidationAutomaticallypress"
                             class="sapUiTinyMargin"
                         />
                         <GenericTile
                             id="idDeconsolidateManually1"
                             header="Deconsolidate Manually"
-                            press="onDeconsolidateManually"
+                            press="onDeconsolidationManuallypress"
                             class="sapUiTinyMargin"
                         />
                         <GenericTile
@@ -913,13 +934,13 @@
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
-                            press="onTilePressPutawayByWO"
+                            press="onTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent id="idTileContentPutaway">
                                 <Button
                                     id="idBtnPutawayByWO"
-                                    press="onPaletteIconSingleClick"
+                                    press="onPaletteIconPress"
                                     icon="sap-icon://palette"
                                     type="Transparent"
                                 />
@@ -1097,42 +1118,42 @@
                             id="_IDGenGenericTile08"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Automatically Repack HU Item"
-                            press="onPressAutomaticallyRepeakHUItem"
+                            press="onPressAutomaticallyRepackHUItem"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTile09"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Create Shipping HU (W/O WC)"
-                            press="onPress"
+                            press="onPressCreateShippingHUWOWC"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onPressManuallyRepackHUItem"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileMaintainHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Maintain HU"
-                            press="press"
+                            press="OnpressMaintainHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1230,7 +1251,7 @@
                             id="_IDCreationOfSingleHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Creation Of Single HU"
-                            press="press"
+                            press="onCreationOfSingleHUpress"
                         />
 
                         <GenericTile
@@ -1512,14 +1533,14 @@
                             id="IDChangeQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Queue"
-                            press="OnPressChange Queue"
+                            press="onChangeQueueTilePress"
                         />
 
                         <GenericTile
                             id="IDChangeResourceGroup"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Resource Group"
-                            press="OnPressChangeResourceGroup"
+                            press="onChangeResourceGroupTilePress"
                         />
                     </ScrollContainer>
                     <Dialog

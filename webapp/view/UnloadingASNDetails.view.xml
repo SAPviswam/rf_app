@@ -71,6 +71,13 @@
                     icon="sap-icon://nav-back"
                     press="Onpressback7"
                 />
+                <Title
+                    id="idtitleUBYASN"
+                        text="Unloading By ASN"
+                        class="titles_UBYD"
+                        level="H1"
+                        titleStyle="Auto"
+                    />
                 <f:SimpleForm
                     id="simpleForm_UBYASN"
                     editable="true"
@@ -103,7 +110,7 @@
                     <!-- Input Field -->
                     <Input
                         id="_IDGenInput1_UBYASN"
-                        placeholder="Enter HU"
+                        placeholder="Enter ASN"
                     />
                     <HBox
                         id="_idhbox_unknw_UBYASN"
@@ -171,6 +178,7 @@
                         placeholder="Enter ASN..."
                         maxLength="25"
                         width="100%"
+                        class="sapUiTinyMarginEnd"
                     />
 
                     <!-- Item No Field -->

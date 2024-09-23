@@ -64,6 +64,8 @@
                         placeholder="Enter Resource"
                         maxLength="25"
                         width="300px"
+                        editable="false"
+
                     />
                     <Label
                         id="_IDGenLabel3_CHNGRSGRP"
@@ -74,6 +76,8 @@
                         placeholder="Enter RsGrp"
                         maxLength="25"
                         width="300px"
+                        editable="false"
+
                     />
 
                     <Label
@@ -85,6 +89,8 @@
                         placeholder="Enter Queue"
                         maxLength="25"
                         width="300px"
+                        editable="false"
+
                     />
                     <Label
                         id="_IDGenLabelgyu_CHNGRSGRP"

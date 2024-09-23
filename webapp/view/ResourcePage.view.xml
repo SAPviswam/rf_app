@@ -49,12 +49,12 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idScrollContainer1"
-                horizontal="false"
-                vertical="false"
+                horizontal="true"
+                vertical="true"
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
-                <form:SimpleForm
+                <!-- <form:SimpleForm
                     id="idsimpleform"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
@@ -64,14 +64,23 @@
                     columnsL="2"
                     columnsM="1"
                     columnsS="1"
-                >
-                    <ScrollContainer
+                > -->
+                    <!-- <ScrollContainer
+
+                     horizontal="false"
+                        vertical="true"
                         width="100%"
                         height="100%"
-                    >
+                        class="sapUiContentPadding sapUiResponsiveMargin"
+
+                        width="100%"
+                        height="100%"
+
+                    > -->
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
-                    <HBox />
+                    <HBox >
+                     </HBox>
                         </VBox>
                         <GenericTile
                             id="id_unloadingbydelivery"
@@ -81,7 +90,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_unloadingbyshipment"
+                            id="id_unlodingbyshipment"
                             class="sapUiTinyMargin"
                             header="Unloading By Shipment"
                             press="onUnloadingByShipmentPress"
@@ -105,7 +114,7 @@
                             id="id_unloadingbydoor"
                             class="sapUiTinyMargin"
                             header="Unloading By Door"
-                            press="onUnloadingByDoorPress"
+                            press="onUnloadingByDoorTilePress"
                             visible="false"
                         />
                         <GenericTile
@@ -119,7 +128,7 @@
                             id="id_unloadingbyconsigmentorder"
                             class="sapUiTinyMargin sapUiResponsivePadding"
                             header="Unloading By Consigment Order"
-                            press="onUnloadingByConsigmentOrder"
+                            press="onUnloadingByConsignmentOrderTilePress"
                             visible="false"
                         />
                          <VBox >
@@ -150,7 +159,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_deconsolidatemanually"
+                            id="id_deconsolidationmanually"
                             class="sapUiTinyMargin"
                             header="Deconsolidate Manually"
                             press="onDeconsolidateManuallyPress"
@@ -219,7 +228,7 @@
                      </HBox>
                         </VBox>
                         <GenericTile
-                            id="id_receivingofhubydelivery"
+                            id="id_receivingofhubydelivery"  
                             class="sapUiTinyMargin"
                             header="Receiving of HU by Delivery"
                             press="onReceivingofHUbyDeliveryPress"
@@ -254,9 +263,9 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_receivingofhubymanufacturingorder"
+                            id="id_recevingofhubymanufacturingorder"  
                             class="sapUiTinyMargin"
-                            header="Receiving of HU by manufacturing Order"
+                            header="Receving of HU by manufacturing Order"
                             press="onReceivingofHUbymanufacturingOrderPress"
                             visible="false"
                         />
@@ -378,7 +387,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_rceateshippinghuwowc"
+                            id="id_createshippinghuwowc"
                             class="sapUiTinyMargin"
                             header="Create Shipping HU (W/O WC)"
                             press="onCreateShippingHUWOWCPress"
@@ -505,7 +514,7 @@
                             id="id_creationofsinglehu"
                             class="sapUiTinyMargin"
                             header="Creation Of Single HU"
-                            press="onCreationOfSingleHUPress"
+                            press="onCreationOfSingleHUpress"
                             visible="false"
                         />
                         <GenericTile
@@ -764,18 +773,18 @@
                             id="id_changequeue"
                             class="sapUiTinyMargin"
                             header="Change Queue"
-                            press="onChangeQueuePress"
+                            press="onChangeQueueTilePress"
                             visible="false"
                         />
                          <GenericTile
                             id="id_changeresourcegroup"
                             class="sapUiTinyMargin"
                             header="Change Resource Group"
-                            press="onChangeResourceGroupPress"
+                            press="onChangeResourceGroupTilePress"
                             visible="false"
                         />
-                    </ScrollContainer>
-                </form:SimpleForm>
+                    <!-- </ScrollContainer> -->
+                <!-- </form:SimpleForm> -->
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
