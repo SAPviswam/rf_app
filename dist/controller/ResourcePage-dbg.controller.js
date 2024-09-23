@@ -271,6 +271,22 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
             },
+            onDeconsolidationAutomaticallyPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            },
+            onDeconsolidateManuallyPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            },
+            onAdhocInventoryCreationPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            },
+            onCreationOfSingleHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+            },
             onMaintainHUPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
@@ -415,6 +431,15 @@ sap.ui.define([
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
 
+            onCreatePutawayHusforDeconsolidationPress: function(){
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});        
+            },
+            onCreatePutawayHusManuallyPress: function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+            },
 
         });
     });

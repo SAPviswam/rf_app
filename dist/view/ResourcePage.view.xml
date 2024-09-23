@@ -49,8 +49,8 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idScrollContainer1"
-                horizontal="false"
-                vertical="false"
+                horizontal="true"
+                vertical="true"
                 height="100%"
                 class="sapUiContentPadding sapUiResponsiveMargin"
             >
@@ -65,10 +65,10 @@
                     columnsM="1"
                     columnsS="1"
                 > -->
-                    <ScrollContainer
+                    <!-- <ScrollContainer
                         width="100%"
                         height="100%"
-                    >
+                    > -->
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
                     <HBox >
@@ -151,7 +151,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_deconsolidatemanually"
+                            id="id_deconsolidationmanually"
                             class="sapUiTinyMargin"
                             header="Deconsolidate Manually"
                             press="onDeconsolidateManuallyPress"
@@ -506,7 +506,7 @@
                             id="id_creationofsinglehu"
                             class="sapUiTinyMargin"
                             header="Creation Of Single HU"
-                            press="onCreationOfSingleHUPress"
+                            press="onCreationOfSingleHUpress"
                             visible="false"
                         />
                         <GenericTile
@@ -775,7 +775,7 @@
                             press="onChangeResourceGroupTilePress"
                             visible="false"
                         />
-                    </ScrollContainer>
+                    <!-- </ScrollContainer> -->
                 <!-- </form:SimpleForm> -->
             </ScrollContainer>
         </tnt:mainContents>
