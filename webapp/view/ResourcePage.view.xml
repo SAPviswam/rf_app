@@ -76,6 +76,8 @@
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
                     <HBox >
                      </HBox>
+
+                     
                         </VBox>
                         <GenericTile
                             id="id_unloadingbydelivery"
