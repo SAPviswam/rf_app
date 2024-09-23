@@ -864,8 +864,7 @@
     "sap.cloud": {
       "public": true,
       "service": "comapprfapp"
-      }
-    },
+      },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
@@ -873,3 +872,4 @@
       "id": "App"
     }
   }
+}
