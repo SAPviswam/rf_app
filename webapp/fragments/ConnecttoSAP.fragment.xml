@@ -12,9 +12,18 @@
         <customHeader>
             <Bar id="_IDBar1coonectsap">
                 <contentMiddle>
+                    <!-- Logo -->
+                    <Image id="_IDGenImage"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="65px"
+                        height="25px" 
+                        class="sapUiSmallMarginEnd" 
+                    />
+                    <!-- Title -->
                     <Title
                         id="_IDTitleconnectsap"
-                        text="System Connection Parameters"
+                        text="CAPModel RF"
+                        class="capModelRFText1"
                     />
                 </contentMiddle>
                 <contentRight>
@@ -23,6 +32,7 @@
                         icon="sap-icon://decline"
                         press="onCloseconnectsap"
                         tooltip="Close"
+        
                     />
                 </contentRight>
             </Bar>
@@ -44,12 +54,19 @@
                 columnsL="2"     
                 columnsM="1"
             >
+             <Title
+                    id="idSimpleFormTitle"
+                    text="System Connection Parameters" 
+                    level="H2"
+                    class="sapUiSmallMarginBottom"
+                />
                 <!-- Description -->
                 <HBox id="hboxDescription">
                     <Label
                         id="idLableDescription"
                         text="Description:"
                         width="150px" 
+                        class="sapUiTinyMarginTop"
                     />
                     <Input
                         id="idDescriptionInput"
@@ -66,6 +83,9 @@
                         id="idLableSystemId"
                         text="System Id:"
                         width="150px" 
+                        class="sapUiTinyMarginTop"
+                        required="true"
+
                     />
                     <Input
                         id="idSystemIdInput"
@@ -84,6 +104,9 @@
                         id="idLableInstanceNumber"
                         text="Instance Number:"
                         width="150px" 
+                        class="sapUiTinyMarginTop"
+                        required="true"
+
                     />
                     <Input
                         id="idInstanceNumberInput"
@@ -94,29 +117,15 @@
                     />
                 </HBox>
 
-                <!-- Application server -->
-                <HBox id="hboxApplicationServer">
-                    <Label
-                        id="idLableApplicationServer"
-                        text="Application server:"
-                        width="150px" 
-                    />
-                    <Input
-                        id="idApplicationServerInput"
-                        value="{}"
-                        placeholder="Enter Application server..."
-                        class="customInput"
-                        width="200px" 
-                        maxLength="200"
-                    />
-                </HBox>
-
-                <!-- Client -->
+                 <!-- Client -->
                 <HBox id="hboxClient">
                     <Label
                         id="idLableClient"
                         text="Client:"
                         width="150px" 
+                        class="sapUiTinyMarginTop"
+                        required="true"
+
                     />
                     <Input
                         id="idClientInput"
@@ -127,12 +136,50 @@
                     />
                 </HBox>
 
+                <!-- Application server -->
+                <HBox id="hboxApplicationServer">
+                    <Label
+                        id="idLableApplicationServer"
+                        text="Application server:"
+                        width="150px"
+                        class="sapUiTinyMarginTop"
+                        required="true"
+
+                    />
+                    <Input
+                        id="idApplicationServerInput"
+                        value="{}"
+                        placeholder="Enter Application server..."
+                        class="customInput"
+                        width="200px" 
+                        maxLength="200"
+                    />
+                </HBox>
+                <HBox id="hboxRouterString">
+                    <Label
+                        id="idLableRouterString"
+                        text="SAP Router String:"
+                        width="150px" 
+                        class="sapUiTinyMarginTop"
+
+                    />
+                    <Input
+                        id="idRouterStringInput"
+                        value="{}"
+                        placeholder="Enter Router String..."
+                        class="customInput"
+                        width="200px" 
+                    />
+                </HBox>
                 <!-- Service -->
                 <HBox id="hboxService">
                     <Label
                         id="idLableService"
-                        text="Service:"
+                        text="SAP Service:"
                         width="150px" 
+                        class="sapUiTinyMarginTop"
+                        required="true"
+
                     />
                     <Input
                         id="idServiceInput"
@@ -142,26 +189,43 @@
                         width="200px" 
                     />
                 </HBox>
+                
+                <!-- Checkboxes for Description, System ID, and Client -->
+               <HBox id="hboxCheckboxes" class='sapUiSmallMarginTop'>
+                   <CheckBox
+                       id='idCheckboxDescription'
+                       text='Description as System ID/Client'
+                   />
+               </HBox>
+
             </form:SimpleForm>
         </content>
         <buttons>
-            <Button
-                id="idRemoveButton"
-                text="Remove"
-                press="onRemovePress"
-                type="Reject"
-            />
-            <Button
-                id="idconnectsapButton"
-                text="Save"
-                press="onsaveconnectSAPPress"
-                class="onsaveBtnsapFragment"
-            />
-            <Button
-                id="idCancelconnectsapUserButton"
+         <Button
+                id="idconnectsapcancelButton"
                 text="Clear"
-                press="onClearconnectsapDialog"
-                class="onCancelconnectsapBtn"
+                press="onClearconnectSAPPress"
+            />
+         <Button
+                id="idconnectsapeditButton"
+                text="Edit"
+                press="onEditconnectSAPPress"
+                visible="false"
+            />
+            <Button
+                id="idconnectsapbackButton"
+                text="Back"
+                press="onBackconnectSAPPress"
+            />
+            <Button
+                id="idconnectsapfinishButton"
+                text="Finish"
+                press="onFinishconnectSAPPress"
+            />
+            <Button
+                id="idhelpconnectsapButton"
+                text="Help"
+                press="onHelpconnectsapDialog"
             />
         </buttons>
     </Dialog>
