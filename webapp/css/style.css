@@ -379,12 +379,18 @@
         width: auto;
     }
 }
-
-.centeredForm {
-    width: 50%; /* Default width for larger screens */
-    margin: auto;
-    position: relative;
+/* CSS methods for ARHUI(Automatically RepackHUItem) Tile in that Page 2 & Page 3... */
+@media (max-width: 768px) {
+    .autoRepackPage {
+        flex-direction: column; /* Stack vertically */
+        align-items: flex-start;
+    }
+    .autoRepackPage .sapMLabel {
+        width: auto !important; /* Adjust labels */
+    }
 }
+
+
 
 
 
