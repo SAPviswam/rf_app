@@ -218,6 +218,23 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
             },
+
+            onPutawayByHUPress: function () {
+             
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
+            },
+            onReceivingofHUbyConsignementOrderPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("Receivingofhubyco",{id:this.ID});
+
+
+            },
+            onManuallyRepackHUItemPress:function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteManuallyRepackingByHuItems",{id:this.ID});
+            },
+
             onWTQuerybyWOPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO", { id: this.ID });
@@ -436,15 +453,27 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
+
             // onDeconsolidationAutomaticallyPress:function(){
             //     var oRouter = UIComponent.getRouterFor(this); 
             //     oRouter.navTo("DeconsAuto",{id:this.ID});   
             // }
 
+            onPickPointPress:function(){ 
+                debugger
+                var oRouter = UIComponent.getRouterFor(this); 
+                oRouter.navTo("PickPoint",{id:this.ID});                 
+            }, 
+
             onManuallyrepackallHUitemsPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
             },
+            onHUStockOverviewQueryPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
+            },
+            
 
             onCreatePutawayHusforDeconsolidationPress: function(){
                 debugger
