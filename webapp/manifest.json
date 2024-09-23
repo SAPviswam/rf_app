@@ -219,6 +219,13 @@
           ]
         },
         {
+          "name": "ManuallyRepackingByHUItem",
+          "pattern": "ManuallyRepackingByHUItem/{id}",
+          "target": [
+            "TargetManuallyRepackingByHUItem"
+          ]
+        },
+        {
           "name": "RouteBillofLading",
           "pattern": "BillofLading/{id}",
           "target": [
@@ -392,9 +399,8 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
- 
         },
-    {
+        {
           "name": "WTQueryByWT",
           "pattern": "WTQueryByWT/{id}",
           "target": [
@@ -800,6 +806,22 @@
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
         },
+
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        },
+        "TargetManuallyRepackingByHUItem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ManuallyRepackingByHUItem",
+          "viewName": "ManuallyRepackingByHUItem"
+        },
+
         "TargetWTQueryByQueue": {
           "viewType": "XML",
           "transition": "slide",
@@ -816,7 +838,6 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-
 
         "TargetWTQueryByWT": {
           "viewType": "XML",
@@ -927,4 +948,4 @@
   }
 }
 }
- 
+
