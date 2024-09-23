@@ -459,7 +459,8 @@
           "name": "HUStockOverviewQuery",
           "pattern": "HUStockOverviewQuery/{id}",
             "TargetCreatePutawayHusManually"
-    ]
+          ]
+
 },
 {
 
@@ -841,6 +842,13 @@
           "viewName": "UnloadingByBillofLading"
         }
       },
+      "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
+        },
       "sap.cloud": {
         "public": true,
         "service": "comapprfapp"
