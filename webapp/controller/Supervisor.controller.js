@@ -1173,6 +1173,7 @@ sap.ui.define(
             },
 
 
+
             onEmployeeIdLiveChange: function (oEvent) {
                 debugger
                 var oInput = oEvent.getSource();
@@ -1517,6 +1518,14 @@ sap.ui.define(
                     oInput.focus();
                 }
             },
+            onPressHUMaintenanceInDeconsolidation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuMaintanaceInDeconsolidation",{id:this.ID});
+                // var oInput = this.byId("_IDGenInput1");
+                // if (oInput) {
+                //     oInput.focus();
+                // }
+            },
             OnPressStockBinQueryByBin: function () {
                 debugger
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1626,6 +1635,9 @@ sap.ui.define(
             },
             OnpressMaintainHU: function () {
                var oRouter = UIComponent.getRouterFor(this);
+
+        oRouter.navTo("MaintainHU",{id:this.ID});
+
             },
             onPressManuallyRepackHU : function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1654,11 +1666,14 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
+
                 oRouter.navTo("AdhocHuWt", { id: this.ID });
+
+             
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt");
+                oRouter.navTo("AdhocProductWt",{id:this.ID});
 
             },
             OnPressUnloadByDelivery: function () {
