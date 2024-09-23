@@ -460,14 +460,7 @@
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
-            "TargetManuallyRepackAllHUItems"
-          ]
-        },
-        {
-          "name": "ManuallyRepackHU",
-          "pattern": "ManuallyRepackHU/{id}",
-          "target": [
-            "TargetManuallyRepackHU"
+            "TargetCreatePutawayHusforDeconsolidate"
           ]
         },
         {
