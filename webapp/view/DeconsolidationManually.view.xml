@@ -1,0 +1,1283 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.DeconsolidationManually"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageDeconsolidationManually">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderDeconsolidationManually">
+                <Image
+                    id="_IDGenImage1DeconsolidationManually"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorDeconsolidationManually"
+                />
+                <ToolbarSpacer id="idToolbarSpacerDeconsolidationManually">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1DeconsolidationManually"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1DeconsolidationManually"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="page1DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idNavBackButton0DeconsolidationManually"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback0"
+                />
+
+                <VBox
+                    id="vBox_BOLDeconsolidationManually"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="mainfirstpageTitleDeconsolidationManually"
+                        text="Deconsolidate Manually"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormBOLDeconsolidationManually"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHBox1DeconsolidationManually"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idDeconsolidationManuallyLabelDeconsolidationManually"
+                                text="Decon.HU:"
+                                class="ScanHumargin"
+                            />
+                            <!-- Input Field -->
+
+                            <Input
+                                id="idDeconsolidationManuallyinputDeconsolidationManually"
+                                placeholder="Enter Work center..."
+                                class="sapUiTinyMarginBegin"
+                                liveChange="Onpresssubmit"
+                            />
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraOneDeconsolidationManually"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Work Center"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <!-- Submit Button -->
+                            <!-- <Button
+                                id="idButtonSubmitDeconsolidationManually"
+                                text="Submit"
+                                press="Onpresssubmit"
+                            /> -->
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page2DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBoxDeconsolidationManually_page4"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton3DeconsolidationManually"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback2"
+                    />
+                    <Title
+                        id="idTitleDeconsolidationManually_page4"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyTextDeconsolidationManually_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetails1FormDeconsolidationManually"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idTWHULabelDeconsolidationManually"
+                        text="Decon.HU"
+                    />
+                    <HBox id="IDTWHUinputhboxDeconsolidationManually">
+                        <Input
+                            id="idTWHUInputDeconsolidationManually"
+                            placeholder="HU..."
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+
+                        <HBox
+                            id="idHubyAS1NHUuomboxDeconsolidationManually"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idTWHULabel2"
+                                text="OWTs:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idOWTSInput"
+                                placeholder=""
+                                width="70px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idLLabelDeconsolidationManually"
+                        text="WT/Pr/HU"
+                    />
+                    <HBox id="hboxx2_WTHU">
+                        <Input
+                            id="idLInputDeconsolidationManually"
+                            placeholder=""
+                            maxLength="25"
+                            width="100px"
+                            liveChange="Onpresssubmit1"
+                        />
+                        <ndc:BarcodeScannerButton
+                            id="sampleBarcodeScannerButtonZebraOneDeconsolidationManually1"
+                            scanSuccess="onScanSuccessOne"
+                            scanFail="onScanErrorOne"
+                            inputLiveUpdate="onScanLiveUpdate"
+                            dialogTitle="Enter Work Center"
+                            class="sapUiTinyMarginBegin"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page3DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBoxDeconsolidationManually_page41"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton3DeconsolidationManually1"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback3"
+                    />
+                    <Title
+                        id="idTitleDeconsolidationManually_page41"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyTextDeconsolidationManually_page41"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetails1FormDeconsolidationManually1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idTWHULabelDeconsolidationManually1"
+                        text="Decon.HU"
+                    />
+                    <HBox id="IDTWHUinputhboxDeconsolidationManually1">
+                        <Input
+                            id="idTWHUInputDeconsolidationManually1"
+                            placeholder="HU..."
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+
+                        <HBox
+                            id="idHubyAS1NHUuomboxDeconsolidationManually1"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idTWHULabel1"
+                                text="OWTs:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idOWTSInput1"
+                                placeholder=""
+                                width="70px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label
+                        id="idLLabelDeconsolidationManually1"
+                        text="WT/Pr/HU"
+                    />
+                    <HBox id="hboxx2_WTHU1">
+                        <Input
+                            id="idLInputDeconsolidationManually1"
+                            placeholder=""
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                    </HBox>
+                    <Label id="idLLabelDeconsolidationManually11" />
+                    <Input
+                        id="idLInputDeconsolidationManually111"
+                        placeholder="pr.desc"
+                        maxLength="25"
+                        width="150px"
+                        editable="false"
+                        value="pr.desc"
+                    />
+                    <Label id="idLLabelDeconsolidationManually1122" />
+                    <HBox>
+                        <Input
+                            id="idLInputDeconsolidationManually11122"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox width="5px"></HBox>
+                        <Label
+                            id="idLLabelDeconsolidationManually11222"
+                            text="AQty:"
+                            class="classUOMbyASn"
+                        />
+                        <Input
+                            id="idLInputDeconsolidationManually111221"
+                            maxLength="25"
+                            width="100px"
+                        />
+                        <Input
+                            id="idLInputDeconsolidationManually1112211"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="EA"
+                        />
+                    </HBox>
+                    <Label
+                        id="idLLabelDeconsgrpconsolidationManually"
+                        text="Cnsld.GRP"
+                    />
+                    <HBox id="hboxx2_cnsdgrp1">
+                        <Input
+                            id="idLInputcnsdgrpDeconsolidationManually1"
+                            placeholder=""
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                    </HBox>
+                    <Label
+                        id="idLLabelDeconsDestHUconsolidationManually"
+                        text="DestHU/Bin"
+                    />
+                    <HBox id="hboxx2_DestHUgrp1">
+                        <Input
+                            id="idLInputcnsdgrpDestHUDeconsolidationManually1"
+                            placeholder=""
+                            maxLength="25"
+                            width="150px"
+                            liveChange="navigatetopage9"
+                        />
+                        <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraneDeconsolidationManual"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Work Center"
+                                class="sapUiTinyMarginBegin"
+                            />
+                    </HBox>
+                    <Label id="idQueriesLabel" />
+                    <HBox id="idHBoxForQueriesButton">
+                        <HBox id="idHBoxButtons">
+                            <Button
+                                id="idQueriesButton"
+                                text="Queries"
+                                press="onQueriesButtonPress"
+                            />
+                            <Label
+                                id="idLabelQueriesSpacing"
+                                width="20px"
+                            />
+                            <Button
+                                id="idHUovButton"
+                                text="HUOv"
+                                press="onHUovButtonPress"
+                            />
+                            <Label
+                                id="idLabelHUovSpacing"
+                                width="20px"
+                            />
+                            <Button
+                                id="idwtlisButton"
+                                text="WTLis"
+                                press="onwtlisButtonPress"
+                            />
+                            <Label
+                                id="idLabelwtlisSpacing"
+                                width="20px"
+                            />
+                            <Button
+                                id="idHUCrtvButton"
+                                text="HUCrt"
+                                press="onHUCrtvButtonPress"
+                            />
+                            <Label
+                                id="idLabelHUCrtvSpacing"
+                                width="20px"
+                            />
+                            <Button
+                                id="idSNoButton"
+                                text="SNo"
+                                press="onSNoButtonPress"
+                            />
+                            <Label
+                                id="idLabelSNoSpacing"
+                                width="20px"
+                            />
+                        </HBox>
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page4DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idNavBackButton0DeconsolidationManually4"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback4"
+                />
+
+                <VBox
+                    id="vBox_BOLD1econsolidationManually"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="mainfirstpag1eTitleDeconsolidationManually"
+                        text="Queries"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                </VBox>
+                <f:SimpleForm
+                    id="idProductFormDeconsolidatonManually1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                 <Label id="idWidthLabel1_DM" />
+                    <HBox id="hboxx31_DM2">
+                        <Input
+                            id="idWidthInputD1econsolidationManually_DM"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="1"
+                        />
+                        <Input
+                            id="idWidthInput1DeconsolidationManuall"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Source HU"
+                        />
+                         
+                        </HBox>
+                         <Label id="idWidthLabel11_DM" />
+                    <HBox id="hboxx311_DM2">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="2"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Stock Overview Query Source HU"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM3" />
+                    <HBox id="hboxx311_DM3">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM3"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="3"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall3"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Destination HU"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM4" />
+                    <HBox id="hboxx311_DM4">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM4"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="4"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall4"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Stock Overview Query Destination HU"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM5" />
+                    <HBox id="hboxx311_DM5">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM5"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="5"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManual5"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Stock for Bin"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM6" />
+                    <HBox id="hboxx311_DM26">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM6"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="6"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall6"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="Stock for product"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM7" />
+                    <HBox id="hboxx311_DM7">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM7"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="7"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall7"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="WT for HU"
+                        />
+                         
+                        </HBox>
+                        <Label id="idWidthLabel11_DM8" />
+                    <HBox id="hboxx311_DM28">
+                        <Input
+                            id="idWidthInputD11econsolidationManually_DM8"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="8"
+                        />
+                        <Input
+                            id="idWidthInput11DeconsolidationManuall8"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="250px"
+                            editable="false"
+                              value="WT for WT"
+                        />
+                         
+                        </HBox>
+                        <Label id="emptylabel1"/>
+                        <HBox >
+                        <Input
+                            id="idWidthInput11DeonsolidationManuall8"
+                           
+                            maxLength="25"
+                            width="90px"
+                           
+                             
+                        />
+                        <Button text="Enter" press="Onpressenter4" width="150px"></Button>
+                        </HBox>
+                </f:SimpleForm>
+
+            </ScrollContainer>
+            <ScrollContainer
+                id="page5DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox1DeconsolidationManually_page4"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton_3DeconsolidationManually"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback5"
+                    />
+                    <Title
+                        id="idTitle1DeconsolidationManually_page4"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText1DeconsolidationManually_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductFormDeconsolidationManually"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idSHULabelDeconsolidationManually_page4"
+                        text="DcHU"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <Input
+                        id="idSHU1InputDeconsolidationManually"
+                        placeholder="Source Handling Unit..."
+                        maxLength="25"
+                        width="100px"
+                        editable="false"
+                    />
+                    <Label
+                        id="idSHULabelDeconsolidationManually_page5"
+                        text="SBin"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <Input
+                        id="idSHU1InputDeconsolidationManually_5"
+                        maxLength="25"
+                        width="100px"
+                        editable="false"
+                    />
+
+                    <Label
+                        id="idTWHULabelManually"
+                        text="DGs"
+                    />
+                    <HBox id="IDTWHUinputhboxanually">
+                        <Input
+                            id="idTWHUInputManually"
+                            placeholder="SBin..."
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+
+                        <HBox
+                            id="idHubyAS1NHUuomboxonManually"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idTWHULbel"
+                                text="OWTs:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idOWTsIput"
+                                placeholder="Maximum Weight of Handling..."
+                                width="70px"
+                                editable="false"
+                            />
+                        </HBox>
+                        
+                        <HBox
+                            id="idHubyAS1HUuomboxDeconsolidationManually"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idDALabel_DM"
+                                text="TWHU:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idTWHUUInput_DM"
+                                width="70px"
+                            />
+                            <Input
+                                id="idTWHU1UInput_DM"
+                                width="35px"
+                                value="KG"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <Label id="idWidthLabelDeconsolidationManually" />
+                    <HBox id="hboxx3_DM">
+                        <Input
+                            id="idWidthInputDeconsolidationManually"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Input
+                            id="idWidthInputDeconsolidationManually1"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label
+                            id="idEVTabel_DM"
+                            text="TVHU:"
+                            class="classUOMbyASn"
+                        />
+
+                        <Input
+                            id="idEVTInput_DM"
+                            width="70px"
+                        />
+                        <Input
+                            id="idETInput_DM"
+                            width="35px"
+                            value="L"
+                            editable="false"
+                        />
+                    </HBox>
+                    <Label id="idWidthLabelDeconsoidationManually" />
+                    <HBox id="hboxx_DM">
+                        <Input
+                            id="idWidthInputDeconsolidatinManually"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Input
+                            id="idWidthInputDeconsolidaionManually1"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page6DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <HBox
+                    id="idMainHBox1DeconolidationManually_page6"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton_3DeconsoidationManually"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback6"
+                    />
+                    <Title
+                        id="idTitle1DeconsoliationManually_page4"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyText1DeconsoldationManually_page4"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductFormDeconsolidatonManually"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idSHULabelDeconsolidatio1nManually_page6"
+                        text="DcHU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox>
+                        <Input
+                            id="idSHU1InputDeconsolidation1Manually"
+                            maxLength="25"
+                            width="100px"
+                        />
+                        <Label width="30px" />
+                        <Label
+                            id="idTWHULbel1"
+                            text="OWTs:"
+                            class="classUOMbyASn"
+                        />
+                        <Input
+                            id="idOWTsIput1"
+                            placeholder="Maximum Weight of Handling..."
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+                     <Label id="idWidthLabelDeconsolidationManually_DM" />
+                    <HBox id="hboxx3_DM1">
+                        <Input
+                            id="idWidthInputDeconsolidationManually6_DM"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="50px"
+                            editable="false"
+                            value="SNo"
+                        />
+                        <Input
+                            id="idWidthInputDeconsolidationManually6"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                              value="WT"
+                        />
+                         <Input
+                            id="idWidthInputprodDeconsolidationManually6"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                              value="Prod"
+                        />
+                        </HBox>
+                         <Label id="idWidthLabel_DM" />
+                    <HBox id="hboxx3_DM2">
+                        <Input
+                            id="idWidthInputDeconsolidationManually_DM"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                            value="Dest.Bin"
+                        />
+                        <Input
+                            id="idWidthInputDeconsolidationManuall"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                              value="Qua"
+                        />
+                         <Input
+                            id="idWidthInputprodDeconsolidationManuall"
+                            placeholder="Width"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                              value="EA"
+                        />
+                        </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+             <ScrollContainer
+                id="page7DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBoxDeconsolidationManually_page7"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton7DeconsolidationManually"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback7"
+                    />
+                    <Title
+                        id="idTitleDeconsolidationManually_page7"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyTextDeconsolidationManually_page7"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetails1FormDeconsolidationManually_page7"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idTWHULabelDeconsolidati"
+                        text="Cnsld. Grp"
+                    />
+                   
+                        <Input
+                            id="idTWHUInput7"
+                            placeholder="Cnsld. Grp..."
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+
+                        
+                 
+
+                    <Label
+                        id="idLLabelDeconsolidationManually7"
+                        text="Putaway HU"
+                    />
+                    
+                        <Input
+                            id="idLInputDeconsolidationManually7"
+                            placeholder=""
+                            maxLength="25"
+                            width="150px"
+                         
+                        />
+                        <Label id="emptylabel"/>
+                        <Button text="Enter" press="Onpressenter" width="150px"></Button>
+                        
+                  
+                </f:SimpleForm>
+            </ScrollContainer>
+              <ScrollContainer
+                id="page8DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBoxDeconsolidationManually_page8"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idNavBackButton8DeconsolidationManually"
+                        icon="sap-icon://nav-back"
+                        press="Onpressback8"
+                    />
+                    <Title
+                        id="idTitleDeconsolidationManually_page8"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                    />
+                    <!-- This empty Text element helps push the Title to the center -->
+                    <Text
+                        id="idEmptyTextDeconsolidationManually_page8"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetails1FormDeconsolidationManually_page8"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idTWHULabelDeconsolidati8"
+                        text="Cnsld. Grp"
+                    />
+                   
+                        <Input
+                            id="idTWHUInput8"
+                            placeholder="Cnsld. Grp..."
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+
+
+                    <Label
+                        id="idLLabelDeconsolidationManually8"
+                        text="Pack.Mat"
+                    />
+                    <HBox >
+                        <Input
+                            id="idLInputDeconsolidationManually8"
+                            placeholder=""
+                            maxLength="25"
+                            width="130px"
+                            liveChange="Onpresssubmit1"
+                         
+                        />
+                          <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraneDeconsolidationManuall"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Work Center"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            </HBox>
+                        
+                        <Label
+                        id="idLLabelDeconsolidationManually9"
+                        text="Dest.Bin"
+                    />
+                    <HBox >
+                        <Input
+                            id="idLInputDeconsolidationManually9"
+                            placeholder=""
+                            maxLength="25"
+                            width="130px"
+                             liveChange="Onpresssubmit1"
+                         
+                        />
+                        <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonZebraneDeconsolidationManually"
+                                scanSuccess="onScanSuccessOne"
+                                scanFail="onScanErrorOne"
+                                inputLiveUpdate="onScanLiveUpdate"
+                                dialogTitle="Enter Work Center"
+                                class="sapUiTinyMarginBegin"
+                            />
+                       
+                        </HBox>
+                  
+                </f:SimpleForm>
+            </ScrollContainer>
+             <ScrollContainer
+                id="page9DeconsolidationManually"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+               <HBox
+    id="idMainHBox1DeconsolidationManually_DM"
+    width="100%"
+    justifyContent="SpaceBetween"
+    alignItems="Center"
+>
+    <Button
+        id="idNavBackButton_3DeconsolidationManually_DM"
+        icon="sap-icon://nav-back"
+        press="Onpressback9"
+    />
+    <Title
+        id="idTitle1DeconsolidationManually_DM"
+        class="TitleSecondPage"
+        level="H1"
+        textAlign="Center"
+    />
+    <Text
+        id="idEmptyText1DeconsolidationManually_DM"
+        text=""
+        width="32px"
+    />
+</HBox>
+
+<f:SimpleForm
+    id="idProductDetails1FormDeconsolidationManually_DM"
+    layout="ResponsiveGridLayout"
+    editable="true"
+    columnsL="2"
+    columnsM="1"
+>
+    <Label
+        id="idSHULabelDeconsolidationManually_DM"
+        text="HU"
+        class="sapUiTinyMarginEnd"
+    />
+    <Input
+        id="idSHU1InputDeconsolidationManually_DM"
+        placeholder="Source Handling Unit..."
+        maxLength="25"
+        width="100px"
+    />
+
+    <Label
+        id="idTWHULabelDeconsolidationManually_DM"
+        text="SBin"
+    />
+    <HBox id="IDTWHUinputhboxDeconsolidationManually_DM">
+        <Input
+            id="idTWHUInputDeconsolidationManually_DM"
+            placeholder="SBin..."
+            maxLength="25"
+            width="100px"
+            editable="false"
+        />
+
+        <HBox
+            id="idHubyAS1NHUuomboxDeconsolidationManually_DM"
+            class="customLabelSpacing"
+        >
+            <Label
+                id="idTWHULabel_DM"
+                text="TWHU:"
+                class="classUOMbyASn"
+            />
+            <Input
+                id="idTWHUInput_DM"
+                placeholder="Maximum Weight of Handling..."
+                width="70px"
+                editable="false"
+            />
+        </HBox>
+        <HBox
+            id="idHubyAS1HUuomboxDeconsolidationManually_DM"
+            class="customLabelSpacing"
+        >
+            <Label
+                id="idDALabel_DA_DM"
+                text="Unit:"
+                class="classUOMbyASn"
+            />
+            <Input
+                id="idDAUInput_DM"
+                width="20px"
+                value="KG"
+                editable="false"
+            />
+        </HBox>
+    </HBox>
+
+    <Label
+        id="idLLabelDeconsolidationManually_DM"
+        text="DGs"
+    />
+    <HBox id="hboxx2_DA_DM">
+        <Input
+            id="idLInputDeconsolidationManually_DM"
+            placeholder=""
+            maxLength="25"
+            width="100px"
+            editable="false"
+        />
+        <HBox
+            id="idHubUOMNHUuomboxDeconsolidationManually_DM"
+            class="customLabelSpacing"
+        >
+            <Label
+                id="idUOMLabel_DA_DM"
+                text="OWTs:"
+                class="classUOMbyASn"
+            />
+            <Input
+                id="idUOMInput_DA_DM"
+                width="60px"
+                editable="false"
+            />
+        </HBox>
+        <HBox
+            id="idHubEVTHUuomboxDeconsolidationManually_DM"
+            class="customLabelSpacing"
+        >
+            <Label
+                id="idEVTLabel_DA_DM"
+                text="TVHU:"
+                class="classUOMbyASn"
+            />
+            <Input
+                id="idEVTInput_DA_DM"
+                width="40px"
+                editable="false"
+            />
+            <Input
+                id="idPERInput_DA_DM"
+                value="L"
+                width="10px"
+                editable="false"
+            />
+        </HBox>
+    </HBox>
+
+    <Label
+        id="idWidthLabelDeconsolidationManually1_DM"
+    />
+    <HBox id="hboxx3_DA_DM">
+        <Input
+            id="idWidthInputDeconsolidationManuall1y_DM"
+            placeholder="Width"
+            maxLength="25"
+            width="150px"
+            editable="false"
+        />
+        <Input
+            id="idWidthInputDeconsolidationManually1_DM"
+            placeholder="Width"
+            maxLength="25"
+            width="100px"
+            editable="false"
+        />
+    </HBox>
+
+    <Label id="idEmptyLabelForSpacing_DM" text=""/>
+    <VBox id="idVBoxForTextAndButtons_DM">
+        <Text id="idClosePutawayText_DM" text="Close putaway HU?" />
+        <HBox id="idHBoxForButtons_DM">
+            <Button id="idYesButton_DM" text="Yes" />
+            <Label id="idButtonSpacingLabel_DM" width="20px"/> 
+            <Button id="idNoButton_DM" text="No" />
+        </HBox>
+    </VBox>
+</f:SimpleForm>
+
+               
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

@@ -1,0 +1,243 @@
+<mvc:View 
+    controllerName="com.app.rfapp.controller.CreatePutawayHusManually"
+    xmlns:table="sap.ui.table"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt">
+    <tnt:ToolPage id="idToolPageCPHMAN">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderCPHMAN">
+                <Image
+                    id="idImage1CPHMAN"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorCPHMAN"
+                />
+                <ToolbarSpacer id="idToolbarSpacerCPHMAN">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1CPHMAN"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1CPHMAN"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idCPHMANScanPage1"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idCPHMANBackButton"
+                    icon="sap-icon://nav-back"
+                    press="onPressCPHMANScanbackbtn"
+                    visible="true"
+                />
+
+                <VBox
+                    id="idCPHMANVBOx"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="idCPHMANtitle"
+                        text="Create Putaway Hus Manually"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="idCPHMANsf"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idCPHMANHbox1"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idCPHMANTLabel"
+                                text="Putaway HU"
+                            />
+                            <!-- Input Field -->
+                             <Input
+                                    id="ididCPHMANTUorDoorinput"
+                                    placeholder="Enter Putaway Hu...."
+                                    liveChange="onPressCPHMANSubmitbtn"
+                                />
+                                
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idCPHMANPage2"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idCPHMANEPage2BackBtn"
+                    press="OnpressCPHMANPage2Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idCPHMANEDeVBox"
+                    class="Page2HUDetailsContainer_PBYWO"
+                    justifyContent="Center"
+                >
+                    <Title
+                        id="idCPHMANEDeTitle"
+                        text=""
+                        level="H2"
+                        class="Page2formHeaderTitle_PBYWO"
+                    />
+                    <form:SimpleForm
+                        id="idCPHMANEDeSF"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <!-- Pack.Mat -->
+                       <Label
+                            id="idCPHMANEPack_Mat"
+                            text="Pack.Mat"
+                        />
+                        <Input
+                            id="idCPHMANEPack_matInput"
+                            placeholder="Scan Pack.Mat..."
+                            width="10rem"
+                        />
+                    
+                        <!-- Dest.Bin -->
+                        <Label
+                            id="idCPHMANEDestBin"
+                            text="Dest.Bin"
+                        />
+                        <Input
+                            id="idCPHMANEDestBinInput"
+                            placeholder="Scan Dest.Bin..."
+                            width="10rem"
+                        />
+                        <!-- Cnsld.group -->
+                        <Label
+                            id="idCPHMANEcnsld.group"
+                            text="Cnsld.group"
+                        />
+                        <VBox >
+                        <Input
+                            id="idCPHMANEcnsld.groupInput"
+                            width="10rem"
+                            
+                        />
+                               <Button
+                                    id="idCPHMANEButtonSave"
+                                    text="SAVE"
+                                    press="onPressCPHMANESaveBTn"
+                                />
+                                </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idCPHMANPage3"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idCPHMANPage3BackButton"
+                    icon="sap-icon://nav-back"
+                    press="onPressCPHMANPage3backbtn"
+                    visible="true"
+                />
+
+                <VBox
+                    id="idCPHMANVBOx1"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="idCPHMANtitle1"
+                        text="Create Putaway Hus Manually"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="idCPHMANsf1"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idCPHMANHbox2"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idCPHMANTLabel1"
+                                text="Putaway HU"
+                            />
+                            <!-- Input Field -->
+                             <Input
+                                    id="idCPHMANTUorDoorinput"
+                                    editable="false"
+                                />
+                                
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+       </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

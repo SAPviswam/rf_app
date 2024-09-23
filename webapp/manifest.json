@@ -1,5 +1,5 @@
 {
-  "_version": "1.65.0", 
+  "_version": "1.65.0",
   "sap.app": {
     "id": "com.app.rfapp",
     "type": "application",
@@ -240,10 +240,31 @@
           ]
         },
         {
-          "name": "MaintainHU",
-          "pattern": "MaintainHU/{id}",
+          "name": "AdhocInventoryCreation",
+          "pattern": "AdhocInventoryCreation/{id}",
           "target": [
-            "TargetMaintainHU"
+            "TargetAdhocInventoryCreation"
+          ]
+        },
+        {
+          "name": "CreationOfSingleHU",
+          "pattern": "CreationOfSingleHU/{id}",
+          "target": [
+            "TargetCreationOfSingleHU"
+          ]
+        },
+        {
+          "name": "DeconsolidationAutomatically",
+          "pattern": "DeconsolidationAutomatically/{id}",
+          "target": [
+            "TargetDeconsolidationAutomatically"
+          ]
+        },
+        {
+          "name": "DeconsolidationManually",
+          "pattern": "DeconsolidationManually/{id}",
+          "target": [
+            "TargetDeconsolidationManually"
           ]
         },
         {
@@ -282,10 +303,24 @@
           ]
         },
         {
+          "name": "AutomaticallyRepackHUItem",
+          "pattern": "AutomaticallyRepackHUItem/{id}",
+          "target": [
+            "TargetAutomaticallyRepackHUItem"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt/{id}",
           "target": [
             "TargetAdhocProductWt"
+          ]
+        },
+        {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU/{id}",
+          "target": [
+            "TargetMaintainHU"
           ]
         },
         {
@@ -357,7 +392,7 @@
           "target": [
             "TargetSerialNumberLocation"
           ]
-
+ 
         },
     {
           "name": "WTQueryByWT",
@@ -372,10 +407,10 @@
           "target": [
             "TargetWTQueryByQueue"
           ]
-    },
 
+        },
+        {
 
-    {
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -390,12 +425,92 @@
           ]
         },
         {
+
           "name": "PickPoint",
           "pattern": "PickPoint/{id}",
           "target": [
             "TargetPickPoint"
           ]
+    },
+    {
+
+          "name": "ManuallyRepackAllHUItems",
+          "pattern": "ManuallyRepackAllHUItems/{id}",
+
+          "target": [
+            "TargetManuallyRepackAllHUItems"
+          ]
+        },
+        {
+          "name": "ManuallyRepackHU",
+          "pattern": "ManuallyRepackHU/{id}",
+          "target": [
+            "TargetManuallyRepackHU"
+    ]
+},
+{
+
+          "name": "CreatePutawayHusforDeconsolidate",
+          "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+
+          "target": [
+            "TargetManuallyRepackAllHUItems"
+          ]
+        },
+        {
+          "name": "ManuallyRepackHU",
+          "pattern": "ManuallyRepackHU/{id}",
+          "target": [
+
+            "TargetManuallyRepackHU"
+          ]
+        },
+        {
+          "name": "HUStockOverviewQuery",
+          "pattern": "HUStockOverviewQuery/{id}",
+            "TargetHUStockOverviewQuery"
+              ]
+          },
+        {
+          "name": "CreatePutawayHusManually",
+          "pattern": "CreatePutawayHusManually/{id}",
+          "target": [
+            "TargetCreatePutawayHusManually"
+    ]
+},
+
+{
+
+
+          "name": "ProductInspectionByHU",
+          "pattern": "ProductInspectionByHU/{id}",
+          "target": [
+            "TargetHUStockOverviewQuery"
+          ]
+        },
+        {
+          "name": "HuMaintanaceInDeconsolidation",
+          "pattern": "HuMaintanaceInDeconsolidation/{id}",
+          "target": [
+            "TargetHuMaintanaceInDeconsolidation"
+            ]
+        },
+        {
+          "name": "ProductInspectionByStorageBin",
+          "pattern": "ProductInspectionByStorageBin/{id}",
+          "target": [
+            "TargetProductInspectionByStorageBin"
+          ]
+        },
+        {
+          "name": "HUStockOverviewQuery",
+          "pattern": "HUStockOverviewQuery/{id}",
+          "target": [
+            "TargetHUStockOverviewQuery"
+
+          ]
         }
+
       ],
       "targets": {
         "TargetInitialScreen": {
@@ -404,6 +519,20 @@
           "clearControlAggregation": false,
           "viewId": "InitialScreen",
           "viewName": "InitialScreen"
+        },
+        "TargetManuallyRepackAllHUItems": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ManuallyRepackAllHUItems",
+          "viewName": "ManuallyRepackAllHUItems"
+        },
+        "TargetManuallyRepackHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ManuallyRepackHU",
+          "viewName": "ManuallyRepackHU"
         },
         "TargetHome": {
           "viewType": "XML",
@@ -538,6 +667,13 @@
           "viewId": "WTQueryByHU",
           "viewName": "WTQueryByHU"
         },
+        "TargetAutomaticallyRepackHUItem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHUItem",
+          "viewName": "AutomaticallyRepackHUItem"
+        },
         "TargetBillofLading": {
           "viewType": "XML",
           "transition": "slide",
@@ -545,12 +681,33 @@
           "viewId": "BillofLading",
           "viewName": "BillofLading"
         },
-        "TargetUnloadingByBillofLading": {
+        "TargetAdhocInventoryCreation": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "UnloadingByBillofLading",
-          "viewName": "UnloadingByBillofLading"
+          "viewId": "AdhocInventoryCreation",
+          "viewName": "AdhocInventoryCreation"
+        },
+        "TargetCreationOfSingleHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreationOfSingleHU",
+          "viewName": "CreationOfSingleHU"
+        },
+        "TargetDeconsolidationAutomatically": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DeconsolidationAutomatically",
+          "viewName": "DeconsolidationAutomatically"
+        },
+        "TargetDeconsolidationManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DeconsolidationManually",
+          "viewName": "DeconsolidationManually"
         },
         "TargetMaintainHU": {
           "viewType": "XML",
@@ -649,9 +806,9 @@
           "clearControlAggregation": false,
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
-
+ 
       },
-
+ 
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -660,14 +817,14 @@
           "viewName": "SerialNumberLocation"
         },
 
-          "TargetWTQueryByWT":{
+
+        "TargetWTQueryByWT": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WTQueryByWT",
           "viewName": "WTQueryByWT"
         },
-
 
         "TargetCreateShippingHU": {
           "viewType": "XML",
@@ -683,14 +840,79 @@
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
         },
+
         "TargetPickPoint": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "PickPoint",
           "viewName": "PickPoint"
-        }
-      }
+        },
+
+        "TargetHUStockOverviewQuery": {
+
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HUStockOverviewQuery",
+          "viewName": "HUStockOverviewQuery"
+        },
+        "TargetCreatePutawayHusforDeconsolidate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusforDeconsolidate",
+          "viewName": "CreatePutawayHusforDeconsolidate"
+        },
+        "TargetCreatePutawayHusManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusManually",
+          "viewName": "CreatePutawayHusManually"
+        },
+
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HUStockOverviewQuery",
+          "viewName": "HUStockOverviewQuery"
+        },
+        "TargetHuMaintanaceInDeconsolidation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HuMaintanaceInDeconsolidation",
+          "viewName": "HuMaintanaceInDeconsolidation"
+        },
+          "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
+      },
+      "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
+        },
+    "TargetHUStockOverviewQuery":{
+       "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HUStockOverviewQuer",
+          "viewName": "HUStockOverviewQuer"
+    }
       },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
@@ -704,3 +926,5 @@
     "service": "comapprfapp"
   }
 }
+}
+ 

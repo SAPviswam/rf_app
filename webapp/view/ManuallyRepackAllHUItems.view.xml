@@ -1,0 +1,929 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.ManuallyRepackAllHUItems"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageManuallyRepackAllHUItems">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderManuallyRepackAllHUItems">
+                <Button
+                    id="idManuallyRepackAllHUItemsfirstbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsfirstBackBtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsThirdBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsFourthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsFifthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsFifthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSixththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSixthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idManuallyRepackAllHUItemsSevenththbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onManuallyRepackAllHUItemsSeventhBackBtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="ManuallyRepackAllHUItemsManuallyRepackAllHUItems"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorManuallyRepackAllHUItems"
+                />
+                <ToolbarSpacer id="idToolbarSpacerManuallyRepackAllHUItems">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDataManuallyRepackAllHUItems"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1ManuallyRepackAllHUItems"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+         <ScrollContainer
+    id="idManuallyRepackAllHUItemsFirstSC"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+    style="max-width: 100%;"
+>
+    <VBox alignContent="Center" alignItems="Center" width="100%">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSF1"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox width="100%">
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idSrceHUItemswtLabel"
+                        text="Srce HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="idSrceItemsInput"
+                        value=""
+                        maxLength="20"
+                        liveChange="onValueLiveChange"
+                        placeholder="Enter Source HU"
+                        width="100%"
+                    />
+                 
+                 
+                </HBox>
+                  <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idPrSIHUItemswtLabel"
+                        text="Pr/SI/HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="idPrSIItemsInput"
+                        value=""
+                        maxLength="20"
+                        
+                        placeholder="Enter Source HU"
+                        width="100%"
+                    />
+                    <Label width="150px"></Label>
+                    <Input
+                        id="idAllitAllItemsInput"
+                        maxLength="3"
+                       
+                        width="50%"
+                    />
+                      <Label width="30px"></Label>
+                    <Input
+                        id="idAAllItemsInput"
+                        maxLength="3"
+                       
+                        width="50%"
+                    />
+                </HBox>
+
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idCnsldRepackAllHUItemsLabel"
+                        text="Source Qty"
+                        width="100px"
+                    />
+                    <Input
+                        id="idCnsldRepackAllHUItemsInput"
+                        value=""
+                        maxLength="10"
+                       
+                        placeholder="Enter Cnsld.Grp"
+                        editable="false"
+                        width="100%"
+                    />
+                    <Label width="20px"></Label>
+                     <Input
+                        id="idCepackAllHUItemsInput"
+                        value=""
+                        maxLength="10"
+                       
+                        placeholder="Enter Cnsld.Grp"
+                        editable="false"
+                        width="50%"
+                    />
+                     <Label width="90px"></Label>
+                    <Label
+                        id="idSisRepackAllHUItemsLabel"
+                        text="Sis"
+                        width="60px"
+                    />
+                    <Input
+                        id="idSisRepackAllHUItemsInput"
+                        value=""
+                        maxLength="3"
+                       
+                        placeholder="Enter Sis"
+                        width="50%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idcnsRepackAllHUItemsLabel"
+                        text="Cnsld.Grp"
+                        width="100px"
+                    />
+                    <Input
+                        id="idCnsldGrpRepackAllHUItemsInput"
+                        value=""
+                        maxLength="255"
+                    
+                        placeholder="Enter Cnsld.Grp"
+                       editable="false"
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestRepackAllHUItemsLabel"
+                        text="Dest.HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestRepackAllHUItemsInput"
+                        value=""
+                        maxLength="255"
+                    
+                        placeholder="Enter Dest.HU"
+                       editable="false"
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestManuallyRepackAllHUItemsLabel"
+                        text="Dest.Bin"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestiBinRepackAllHUItemsInput"
+                        value=""
+                        maxLength="18"
+                       
+                        placeholder="Enter Dest.Bin"
+                        editable="false"
+                        width="100%"
+                    />
+                </HBox>
+            </VBox>
+        </form:SimpleForm>
+    </VBox>
+</ScrollContainer>
+
+<ScrollContainer
+    id="idManuallyRepackAllHUItemsSecSC"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+    style="max-width: 100%;"
+>
+    <VBox alignContent="Center" alignItems="Center" width="100%">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSec"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox width="100%">
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idManuallyRepackAllHUItemsSrceLabel"
+                        text="Srce HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="idManuallyRepackAllHUItemsSrceInput"
+                        value=""
+                        maxLength="20"
+                       
+                        placeholder="Enter Source HU"
+                        editable="false"
+                        width="100%"
+                    />
+                    <Label width="20px"></Label>
+                </HBox>
+
+                <!-- <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idCnsldManuallyRepackAllHUItemsLabel"
+                        text="Cnsld.Grp"
+                        width="100px"
+                    />
+                    <Input
+                        id="ididCnsldManuallyRepackAllHUItemssInput"
+                        value=""
+                        maxLength="10"
+                        
+                        placeholder="Enter Cnsld.Grp"
+                        editable="false"
+                        width="100%"
+                    />
+                </HBox> -->
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestHUManuallyRepackAllHUItemsLabel"
+                        text="Dest.HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestHUManuallyRepackAllHUItemsInput"
+                        value=""
+                        maxLength="255"
+                        liveChange="onDestHUValueEnter"
+                        placeholder="Enter Dest.HU"
+                    
+                        width="100%"
+                    />
+                </HBox>
+
+                <!-- <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestBinManuallyRepackAllHUItemsLabel"
+                        text="Dest.Bin"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestBinManuallyRepackAllHUItemsInput"
+                        value=""
+                        maxLength="18"
+                       
+                        placeholder="Enter Dest.Bin"
+                        editable="false"
+                        width="100%"
+                    />
+                </HBox> -->
+
+                <VBox alignContent="Center" alignItems="Center" width="100%">
+                    <HBox alignContent="Center" alignItems="Center" width="100%">
+                        <Button
+                            id="idHuCreateInManuvallyRepackHUItemsBtn"
+                            text="Hu Create"
+                            press="onPressHuCreateInManuvallyRepackHUBtn"
+                        />
+                        <Button
+                            id="idHuOverviewInManuvallyRepackHUItemsBtn"
+                            text="Hu Overview"
+                            press="onPressHuOverviewBtnPress"
+                        />
+                        <Button
+                            id="idHuItemListInManuvallyRepackHUItemsBtn"
+                            text="HU Item List"
+                            press="onHuItemListBtnPress"
+                        />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </form:SimpleForm>
+    </VBox>
+</ScrollContainer>
+<ScrollContainer
+    id="idManuallyRepackAllHUItemsThirdSC"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+>
+    <VBox alignContent="Center" alignItems="Center" width="100%">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSec3"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox width="100%">
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idManuallyRepackAllHUItemsSrceLabel3"
+                        text="Cnsld.Grp"
+                        width="100px"
+                    />
+                    <Input
+                        id="idManuallyRepackAllHUItemsSrceInput3"
+                        value=""
+                        maxLength="20"
+                       
+                        placeholder="Enter Source HU"
+                        editable="false"
+                        width="100%"
+                    />
+                    <Label width="20px"></Label>
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idCnsldAllHUItemsLabel3"
+                        text="Dest.HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="ididCnsldAllHUItemssInput3"
+                        value=""
+                        maxLength="10"
+                        liveChange="onValueLiveChangeDestThird"
+                        placeholder="Enter Cnsld.Grp"
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestHUAllHUItemsLabel3"
+                        text="Pack.Mat"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestHUAllHUItemsInput3"
+                        value=""
+                        maxLength="255"
+                       
+                        placeholder="Enter Dest.HU"
+                    editable="false"
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestBinAllHUItemsLabel3"
+                        text="Dest.Bin"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestBinAllHUItemsInput3"
+                        value=""
+                        maxLength="18"
+                        liveChange="onValueLiveChange"
+                        placeholder="Enter Dest.Bin"
+                        editable="false"
+                        width="100%"
+                    />
+                </HBox>
+
+                <!-- <VBox alignContent="Center" alignItems="Center" width="100%">
+                    <HBox alignContent="Center" alignItems="Center" width="100%">
+                        <Button
+                            id="idHuCreateInManuvallyRepackHUBtn4"
+                            text="Save"
+                            press="onPressHuCreateInManuvallyRepackHUBtn"
+                        />
+                       
+                    </HBox>
+                </VBox> -->
+            </VBox>
+        </form:SimpleForm>
+    </VBox>
+</ScrollContainer>
+
+
+<ScrollContainer
+    id="idManuallyRepackAllHUItemsFourthSC"
+   horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+    style="max-width: 100%;"
+>
+
+        <VBox alignContent="Center" alignItems="Center" width="100%">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSec4"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox width="100%">
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idManuallyRepackAllHUItemsSrceLabel4"
+                        text="Cnsld.Grp"
+                        width="100px"
+                    />
+                    <Input
+                        id="idManuallyRepackAllHUItemsSrceInput4"
+                        value=""
+                        maxLength="20"
+                        liveChange="onValueLiveChange"
+                        placeholder="Enter Source HU"
+                        editable="false"
+                        width="100%"
+                    />
+                    <Label width="20px"></Label>
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idCnsldAllHUItemsLabel4"
+                        text="Dest.HU"
+                        width="100px"
+                    />
+                    <Input
+                        id="ididCnsldAllHUItemsInput4"
+                        value=""
+                        maxLength="10"
+                        liveChange="onValueLiveChange"
+                        placeholder="Enter Cnsld.Grp"
+                        editable="false"
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestHUAllHUItemsLabel4"
+                        text="Pack.Mat"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestHUAllHUItemsInput4"
+                        value=""
+                        maxLength="255"
+                       
+                        placeholder="Enter Dest.HU"
+                    
+                        width="100%"
+                    />
+                </HBox>
+
+                <HBox alignContent="Center" alignItems="Center" width="100%">
+                    <Label
+                        id="idDestBinAllHUItemsLabel4"
+                        text="Dest.Bin"
+                        width="100px"
+                    />
+                    <Input
+                        id="idDestBinAllHUItemsInput4"
+                        value=""
+                        maxLength="18"
+                       
+                        placeholder="Enter Dest.Bin"
+                        
+                        width="100%"
+                    />
+                </HBox>
+
+                <VBox alignContent="Center" alignItems="Center" width="100%">
+                    <HBox alignContent="Center" alignItems="Center" width="100%">
+                        <Button
+                            id="idHuCreateInManuvallyRepackHUItemsBtn4"
+                            text="Save"
+                            press="onPressSaveInManuvallyRepackHUBtn"
+                        />
+                       
+                    </HBox>
+                </VBox>
+            </VBox>
+        </form:SimpleForm>
+    </VBox>
+      
+</ScrollContainer>
+
+
+            <ScrollContainer
+                id="idManuallyRepackAllHUItemsFifthSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+               visible="false"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idManuallyRepackAllHUItemsFifth1"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <!-- Add spacing above this HBox -->
+                            <HBox alignContent="Center" alignItems="Center" >
+                                <Label
+                                    id="idSrceItemsFifthLabel"
+                                    text="SHU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idSrceItemsFifthInput"
+                                    value=""
+                                    maxLength="20"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Source HU"
+                                />
+ 
+                                <Label width="80px"></Label>
+ 
+                                <Input
+                                    id="idAllFifthAllItemsInput"
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                          
+                                />
+                                
+                                <Label width="100px"></Label>
+                                <Button
+                                    id="idScrollBottom1"
+                                    icon="sap-icon://navigation-up-arrow"
+                                   
+                                 
+                                />
+                                <Button
+                                    id="idScrollTop1"
+                                     icon="sap-icon://navigation-down-arrow"
+                                    
+                                    
+                                  
+                                />
+                            </HBox>
+ 
+                            <!-- Add spacing between HBoxes -->
+                            <HBox alignContent="Center" alignItems="Center" >
+                                <Label
+                                    id="idCnsldItemsFifthsLabel"
+                                    text="SBin"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idCnsldItemsFifthsInput"
+                                    value=""
+                                    maxLength="15"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idTItemsLabel"
+                                 
+                                    width="170px"
+                                />
+                               
+                                <Label
+                                    id="idSisFifthItemsLabel"
+                                    text="TWHU"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idSisFifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    width="50px"
+                                 
+                                />
+                                <Input
+                                    id="idifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                   width="20px"
+                                 
+                                />
+                            </HBox>
+                               <HBox alignContent="Center" alignItems="Center" >
+                                <Label
+                                    id="idDgBinFifthItemsLabel"
+                                    text="DGs"
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDGsFifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                    editable="false"
+                                    width="100px"
+                                />
+                               
+                                <Label
+                                    id="idItmsFifthItemsLabel"
+                                    text="Itms"
+                                    width="50px"
+                                />
+                                  <Input
+                                    id="idItmsFifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                    editable="false"
+                                       width="50px"
+                                />
+                                   
+                                <Label
+                                    id="iditmFifthItemsLabel"
+                                 
+                                    width="10px"
+                                />
+                                 <Input
+                                    id="idItmssFifthItemsInput"
+                                    value=""
+                                     width="50px"
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Cnsld.Grp"
+                                    editable="false"
+                                />
+
+                                  <Label
+                                    id="idFifthItemsLabel"
+                             
+                                    width="80px"
+                                />
+                                <Label
+                                    id="idTVHUFifthItemsLabel"
+                                    text="TVHU"
+                                    width="100px"
+                                />
+
+                                   <Input
+                                    id="idtvhuFifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                    liveChange="onValueLiveChange"
+                                    width="50px"
+                                 
+                                />
+                                <Input
+                                    id="idtvhuifthItemsInput"
+                                    value=""
+                                    maxLength="3"
+                                   width="20px"
+                                 
+                                />
+                            </HBox>
+ 
+                            <HBox alignContent="Center" alignItems="Center" >
+                                <Label
+                                    id="idDestFifthItemsLabel"
+                                    text=""
+                                    width="100px"
+                                   
+                                />
+                                <Input
+                                    id="idDestFifthItemsInput"
+                                    value=""
+                                    maxLength="255"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.HU"
+                                    editable="false"
+                                      width="100px"
+                                />
+                            </HBox>
+ 
+                            <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idFifthRepackAllHUItemsLabel"
+                                    text=""
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idBinFifthItemsInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                    editable="false"
+                                      width="100px"
+                                />
+                            </HBox>
+                             <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDeFifthRepackAllHULabel"
+                                    text=""
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idiBinRepackAllHUFifthInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                    editable="false"
+                                      width="100px"
+                                />
+                            </HBox>
+                             <HBox alignContent="Center" alignItems="Center">
+                                <Label
+                                    id="idDestRepackAllHUFifth1Label"
+                                    text=""
+                                    width="100px"
+                                />
+                                <Input
+                                    id="idDestRepackAllHUBinFifthInput"
+                                    value=""
+                                    maxLength="18"
+                                    liveChange="onValueLiveChange"
+                                    placeholder="Enter Dest.Bin"
+                                    editable="false"
+                                      width="100px"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+             <ScrollContainer
+                id="idManuallyRepackAllHUItemsSixthSC"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox alignContent="Center" alignItems="Center">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSixth1"
+            layout="ResponsiveGridLayout"
+            labelSpanL="2"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox>
+                <!-- Replacing HBox with l:Grid for better responsiveness -->
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label id="idSrceSixthLabel11" text="SHU" />
+                    <Input id="idSrceSixthInput444" value="" width="150%" />
+                    
+                    <Label id="idSrceSixthfirstLabel999" />
+                    <Input id="idSrceSixthfirstInput000" value="" width="80%"  />
+
+                    <!-- <Label id="idSrceSixthfirstttttLabel0000" /> -->
+                    <Input id="idSrceSixthfirsttttInput000000" value="" width="60%"  />
+
+                    <!-- <Label id="idSrceSixthfirstLabelll8888" /> -->
+                    <Input id="idSrceSixthfirstInputtt8888" value="" width="50%"  />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label  />
+                    <Input  value="" width="150%" />
+
+                    <Label id="idSrceSixthfirs88888" />
+                    <Input id="idSrceSixthfitt77777" value="" width="170%" maxLength="20" />
+
+                    <Label id="idSrceSixth99999" />
+                    <Input id="idSrceSixthfi99999" value="" maxLength="20" width="50%" />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label  />
+                    <Input  value="" width="150%" />
+
+                    <Label  />
+                    <Input value="" width="170%" maxLength="20" />
+
+                    <Label />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                     <Label  />
+                    <Input  value="" width="150%" />
+
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+
+                    <Label />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                      <Label  />
+                    <Input  value="" width="150%" />
+
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                     <Label  />
+                    <Input  value="" width="150%" />
+
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+
+                <l:Grid defaultSpan="L2 M2 S2">
+                      <Label />
+                    <Input  value="" width="150%" />
+
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+            </VBox>
+        </form:SimpleForm>
+    </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
