@@ -420,6 +420,13 @@
           "target": [
             "TargetProductInspectionByStorageBin"
           ]
+        },
+        {
+          "name": "RoutePutawayHuClustered",
+          "pattern": "RoutePutawayHuClustered/{id}",
+          "target":[
+            "TargetRoutePutawayHuClustered"
+          ]
         }
       ],
       "targets": {
@@ -739,7 +746,15 @@
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
 
-      }
+      },
+      "TargetRoutePutawayHuClustered": {
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewId": "PutawayByHuc",
+        "viewName": "PutawayByHuc"
+
+    }
     },
     "sap.cloud": {
       "public": true,
