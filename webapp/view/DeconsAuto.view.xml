@@ -1,0 +1,86 @@
+<mvc:View
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    controllerName="com.app.rfapp.controller.DeconsAuto"
+>
+    <tnt:ToolPage id="idtoolpageDeconsAuto">
+        <tnt:header>
+            <tnt:ToolHeader
+                id="idtntToolHeaderpageDeconsAuto"
+                class="ToolHeader"
+            >
+                <Image
+                    id="_IDGenImagepageDeconsAuto"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin .Logo"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorpageDeconsAuto"
+                />
+                <ToolbarSpacer id="idToolbarSpacerpageDeconsAuto">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutDatapageDeconsAuto"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatarpageDeconsAuto"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <VBox
+                id="idVBoxDeconAuto"
+                justifyContent="Center"
+                alignContent="Center"
+            >
+             <Button
+                    id="_IDGenButtonpageDeconsAuto"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback7"
+                />
+                <Title
+                    id="idtitlepageDeconsAuto"
+                        text="Unloading By ASN"
+                        class="titles_UBYD"
+                        level="H1"
+                        textAlign="Center"
+                        titleStyle="Auto"
+                    />
+                <VBox
+                    id="idVBox2DeconAuto"
+                    justifyContent="Center"
+                    alignItems="Center"
+                    class="sapUiTinyMargin"
+                >
+                    <HBox
+                        id="idHBoxDeconAuto"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        
+                    >
+                        <Label
+                            id="idworkcenterLabelDeconAuto"
+                            text="WorkCenter"
+                            class="sapUiSmallMargin"
+                        />
+                        <Input
+                            id="idInputWorkCenter"
+                            value="{}"
+                        />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
