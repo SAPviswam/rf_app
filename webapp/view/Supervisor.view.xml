@@ -52,6 +52,7 @@
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                 />
+                
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -948,13 +949,13 @@
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
-                            press="onTilePressPutawayByWO"
+                            press="onTilePress"
                             class="sapUiTinyMargin"
                         >
                             <TileContent id="idTileContentPutaway">
                                 <Button
                                     id="idBtnPutawayByWO"
-                                    press="onPaletteIconSingleClick"
+                                    press="onPaletteIconPress"
                                     icon="sap-icon://palette"
                                     type="Transparent"
                                 />
