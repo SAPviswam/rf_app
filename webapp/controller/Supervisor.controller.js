@@ -1173,6 +1173,7 @@ sap.ui.define(
             },
 
 
+
             onEmployeeIdLiveChange: function (oEvent) {
                 debugger
                 var oInput = oEvent.getSource();
@@ -1516,6 +1517,14 @@ sap.ui.define(
                 if (oInput) {
                     oInput.focus();
                 }
+            },
+            onPressHUMaintenanceInDeconsolidation: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuMaintanaceInDeconsolidation",{id:this.ID});
+                // var oInput = this.byId("_IDGenInput1");
+                // if (oInput) {
+                //     oInput.focus();
+                // }
             },
             OnPressStockBinQueryByBin: function () {
                 debugger
