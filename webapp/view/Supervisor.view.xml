@@ -47,12 +47,25 @@
                 </ToolbarSpacer>
                 <Button
                     id="themeButton"
-                    text="Theme"
+                    text="BackgroundTheme"
                     press="onOpenThemeDialog"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
+                    visible="false"
                 />
-                
+                <Button
+                    id="themeButton3"
+                    text="Theme"
+                    press="onThemeButton"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                />
+                <Button 
+                id="CancelButton"
+                text="Cancel"
+                press="onCancel"
+                visible="false"
+                ></Button>
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -952,14 +965,6 @@
                             press="onTilePress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent id="idTileContentPutaway">
-                                <Button
-                                    id="idBtnPutawayByWO"
-                                    press="onPaletteIconPress"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
                         </GenericTile>
                         <GenericTile
                             id="idConfiramtionCorrections1"

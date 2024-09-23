@@ -241,8 +241,6 @@
             <HBox >
             <Button text="HU OVERVIEW"></Button>
             <Button text="HU ITEM LIST"></Button>
-            </HBox>
-            </VBox>
              <Button
         id="idNxtButtons2"
         press="onNxtBtnPressScreen2"
@@ -251,6 +249,9 @@
         type="Transparent"
         class="sapUiTinyMarginBottom"
     />
+            </HBox>
+            </VBox>
+            
     </form:SimpleForm>
 </ScrollContainer>
 <ScrollContainer
@@ -483,7 +484,9 @@
        <Button text="HU OVERVIEW" ></Button>
        <Button text ="HU ITEM LIST"></Button>
        <Button text ="DISPLAY MATERIAL LIST" ></Button>
-         <Button
+        
+       </HBox>
+        <Button
         id="idNxtButtons5"
         press="onNxtBtnPressScreen5"
 
@@ -491,7 +494,6 @@
         type="Transparent"
         class="sapUiTinyMarginBottom"
     />
-       </HBox>
        </VBox>
     </form:SimpleForm>
 </ScrollContainer>
