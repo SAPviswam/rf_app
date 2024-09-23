@@ -240,10 +240,31 @@
                     ]
                 },
                 {
-                    "name": "MaintainHU",
-                    "pattern": "MaintainHU/{id}",
+                    "name": "AdhocInventoryCreation",
+                    "pattern": "AdhocInventoryCreation/{id}",
                     "target": [
-                        "TargetMaintainHU"
+                        "TargetAdhocInventoryCreation"
+                    ]
+                },
+                {
+                    "name": "CreationOfSingleHU",
+                    "pattern": "CreationOfSingleHU/{id}",
+                    "target": [
+                        "TargetCreationOfSingleHU"
+                    ]
+                },
+                {
+                    "name": "DeconsolidationAutomatically",
+                    "pattern": "DeconsolidationAutomatically/{id}",
+                    "target": [
+                        "TargetDeconsolidationAutomatically"
+                    ]
+                },
+                {
+                    "name": "DeconsolidationManually",
+                    "pattern": "DeconsolidationManually/{id}",
+                    "target": [
+                        "TargetDeconsolidationManually"
                     ]
                 },
                 {
@@ -384,6 +405,34 @@
                     "pattern": "CreateShippingHUWOWC/{id}",
                     "target": [
                         "TargetCreateShippingHUWOWC"
+                    ]
+                },
+                {
+                    "name": "CreatePutawayHusforDeconsolidate",
+                    "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+                    "target": [
+                        "TargetCreatePutawayHusforDeconsolidate"
+                    ]
+                },
+                {
+                    "name": "CreatePutawayHusManually",
+                    "pattern": "CreatePutawayHusManually/{id}",
+                    "target": [
+                        "TargetCreatePutawayHusManually"
+                    ]
+                },
+                {
+                    "name": "ProductInspectionByHU",
+                    "pattern": "ProductInspectionByHU/{id}",
+                    "target": [
+                        "TargetProductInspectionByHU"
+                    ]
+                },
+                {
+                    "name": "ProductInspectionByStorageBin",
+                    "pattern": "ProductInspectionByStorageBin/{id}",
+                    "target": [
+                        "TargetProductInspectionByStorageBin"
                     ]
                 }
             ],
@@ -535,12 +584,33 @@
                     "viewId": "BillofLading",
                     "viewName": "BillofLading"
                 },
-                "TargetUnloadingByBillofLading": {
+                "TargetAdhocInventoryCreation": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "UnloadingByBillofLading",
-                    "viewName": "UnloadingByBillofLading"
+                    "viewId": "AdhocInventoryCreation",
+                    "viewName": "AdhocInventoryCreation"
+                },
+                "TargetCreationOfSingleHU": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreationOfSingleHU",
+                    "viewName": "CreationOfSingleHU"
+                },
+                "TargetDeconsolidationAutomatically": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "DeconsolidationAutomatically",
+                    "viewName": "DeconsolidationAutomatically"
+                },
+                "TargetDeconsolidationManually": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "DeconsolidationManually",
+                    "viewName": "DeconsolidationManually"
                 },
                 "TargetMaintainHU": {
                     "viewType": "XML",
@@ -667,7 +737,39 @@
                     "clearControlAggregation": false,
                     "viewId": "CreateShippingHUWOWC",
                     "viewName": "CreateShippingHUWOWC"
+                },
+                "TargetCreatePutawayHusforDeconsolidate": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreatePutawayHusforDeconsolidate",
+                    "viewName": "CreatePutawayHusforDeconsolidate"
+                },
+                "TargetCreatePutawayHusManually": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreatePutawayHusManually",
+                    "viewName": "CreatePutawayHusManually"
+                },
+                "TargetProductInspectionByHU": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ProductInspectionByHU",
+                    "viewName": "ProductInspectionByHU"
+                },
+                "TargetProductInspectionByStorageBin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ProductInspectionByStorageBin",
+                    "viewName": "ProductInspectionByStorageBin"
                 }
+            },
+            "sap.cloud": {
+                "public": true,
+                "service": "comapprfapp"
             }
         },
         "rootView": {
@@ -676,9 +778,5 @@
             "async": true,
             "id": "App"
         }
-    },
-    "sap.cloud": {
-        "public": true,
-        "service": "comapprfapp"
     }
 }
