@@ -69,10 +69,10 @@
 }
 .boxContainer3 {
     border-radius: 1rem !important;
-    border: 2px solid #090909d2 !important;
+     border: 2px solid #090909d2 !important; 
     /* Add border width, style, and color */
-    padding: auto !important; 
-    width: 25% !important;
+    padding: 2rem !important; 
+    width: 40% !important;
 }
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2 !important;
@@ -436,4 +436,5 @@ background-color: rgb(9, 8, 8) !important;
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
 }
+
 
