@@ -425,6 +425,15 @@
           ]
         },
         {
+
+          "name": "PickPoint",
+          "pattern": "PickPoint/{id}",
+          "target": [
+            "TargetPickPoint"
+          ]
+    },
+    {
+
           "name": "ManuallyRepackAllHUItems",
           "pattern": "ManuallyRepackAllHUItems/{id}",
 
@@ -498,6 +507,7 @@
           "pattern": "HUStockOverviewQuery/{id}",
           "target": [
             "TargetHUStockOverviewQuery"
+
           ]
         }
 
@@ -830,6 +840,15 @@
           "viewId": "CreateShippingHUWOWC",
           "viewName": "CreateShippingHUWOWC"
         },
+
+        "TargetPickPoint": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PickPoint",
+          "viewName": "PickPoint"
+        },
+
         "TargetHUStockOverviewQuery": {
 
           "viewType": "XML",
@@ -894,11 +913,6 @@
           "viewId": "HUStockOverviewQuer",
           "viewName": "HUStockOverviewQuer"
     }
-    
-      "sap.cloud": {
-        "public": true,
-        "service": "comapprfapp"
-      }
       },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
