@@ -878,40 +878,41 @@
           "viewId": "CreatePutawayHusManually",
           "viewName": "CreatePutawayHusManually"
         },
-      "TargetProductInspectionByHU": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "ProductInspectionByHU",
-        "viewName": "ProductInspectionByHU"
-      },
-      "TargetHuMaintanaceInDeconsolidation": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "HuMaintanaceInDeconsolidation",
-        "viewName": "HuMaintanaceInDeconsolidation"
-      },
-      "TargetProductInspectionByStorageBin": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "ProductInspectionByStorageBin",
-        "viewName": "ProductInspectionByStorageBin"
-      },
-      "TargetUnloadingByBillofLading": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "UnloadingByBillofLading",
-        "viewName": "UnloadingByBillofLading"
-      },
-      "TargetRoutePutawayHuClustered": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "PutawayByHuc",
-        "viewName": "PutawayByHuc"
+        "TargetProductInspectionByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByHU",
+          "viewName": "ProductInspectionByHU"
+        },
+        "TargetHuMaintanaceInDeconsolidation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HuMaintanaceInDeconsolidation",
+          "viewName": "HuMaintanaceInDeconsolidation"
+        },
+        "TargetProductInspectionByStorageBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductInspectionByStorageBin",
+          "viewName": "ProductInspectionByStorageBin"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
+        },
+        "TargetRoutePutawayHuClustered": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHuc",
+          "viewName": "PutawayByHuc"
+        }
       }
     },
     "rootView": {
@@ -925,5 +926,4 @@
     "public": true,
     "service": "comapprfapp"
   }
-}
 }

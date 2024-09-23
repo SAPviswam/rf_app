@@ -1132,14 +1132,6 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 if (!this.bCreate) {
 
-
-
-                    oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
-                        success: function () {
-                            sap.m.MessageToast.show(`${Empid} request is Accpeted!`);
-                            this.resetForm();
-                            this.bCreate = true;
-
                     oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                         success: function () {
                             sap.m.MessageToast.show(`${Empid} request is Accpeted!`);
@@ -1155,26 +1147,7 @@ sap.ui.define(
                         }
                     });
                 }
-                else {
-
-
-                    oModel.create("/RESOURCESSet", oData, {
-
-                        success: function () {
-                            sap.m.MessageToast.show("successfully Created");
-                            this.resetForm();
-
-
-                            // Navigate to the user menu after successful password update
-                            this.onRequestedData();
-                            this.onUserData();
-                            this.bCreate = true;
-                        }.bind(this),
-                        error: function () {
-                            sap.m.MessageToast.show("Error updating user login status.");
-                        }
-                    });
-                }
+        
                 else {
 
                     oModel.create("/RESOURCESSet", oData, {
@@ -1190,9 +1163,6 @@ sap.ui.define(
                         error: function () {
                             sap.m.MessageToast.show("Error updating user login status.");
                         }
-
-                    })
-                }
 
                     })
                 }
