@@ -433,9 +433,9 @@
           "pattern": "ManuallyRepackHU/{id}",
           "target": [
             "TargetManuallyRepackHU"
-              ]
-          },
-          {
+    ]
+},
+{
 
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
