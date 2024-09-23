@@ -208,6 +208,15 @@ sap.ui.define([
                 } else {
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
+            }, 
+            onManuallyRepackHUPress : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
+            
+            },
+            onManuallyRepackHUItemPress : function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
             },
             onWTQuerybyWOPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -268,6 +277,22 @@ sap.ui.define([
             onUnloadingbyBillofLadingPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
+            },
+            onDeconsolidationAutomaticallyPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            },
+            onDeconsolidateManuallyPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            },
+            onAdhocInventoryCreationPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            },
+            onCreationOfSingleHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
             },
             onMaintainHUPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -416,6 +441,11 @@ sap.ui.define([
             //     oRouter.navTo("DeconsAuto",{id:this.ID});   
             // }
 
+            onManuallyrepackallHUitemsPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            },
+
             onCreatePutawayHusforDeconsolidationPress: function(){
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
@@ -424,6 +454,7 @@ sap.ui.define([
             onCreatePutawayHusManuallyPress: function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+
             },
             onPutawayByHUClusteredPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
@@ -432,5 +463,3 @@ sap.ui.define([
 
         });
     });
-
-

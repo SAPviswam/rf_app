@@ -58,7 +58,7 @@
                             id="idButtonEdit"
                             icon="sap-icon://edit"
                             tooltip="Edit"
-                            press="handleEditPress"
+                            press="onEditConfiguredSystem"
                             class="button1"
                         />
                         <Button
