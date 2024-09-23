@@ -66,8 +66,16 @@
                     columnsS="1"
                 > -->
                     <!-- <ScrollContainer
+
+                     horizontal="false"
+                        vertical="true"
                         width="100%"
                         height="100%"
+                        class="sapUiContentPadding sapUiResponsiveMargin"
+
+                        width="100%"
+                        height="100%"
+
                     > -->
                     <VBox >
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
@@ -283,9 +291,9 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_receivingofhubyconsignementorder"
-                            class="sapUiTinyMargin"
-                            header="Receiving of HU by Consignement Order"
+                            id="id_recevingofhubyconsignmentorder"
+                            class="sapUiTinyMargin" 
+                            header="Receiving of HU by Consignment Order"
                             press="onReceivingofHUbyConsignementOrderPress"
                             visible="false"
                         />

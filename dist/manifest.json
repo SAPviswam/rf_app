@@ -303,10 +303,24 @@
                     ]
                 },
                 {
+                    "name": "AutomaticallyRepackHUItem",
+                    "pattern": "AutomaticallyRepackHUItem/{id}",
+                    "target": [
+                        "TargetAutomaticallyRepackHUItem"
+                    ]
+                },
+                {
                     "name": "AdhocProductWt",
                     "pattern": "AdhocProductWt/{id}",
                     "target": [
                         "TargetAdhocProductWt"
+                    ]
+                },
+                {
+                    "name": "MaintainHU",
+                    "pattern": "MaintainHU/{id}",
+                    "target": [
+                        "TargetMaintainHU"
                     ]
                 },
                 {
@@ -387,6 +401,14 @@
                     ]
                 },
                 {
+
+                    "name": "RouteManuallyRepackingByHuItems",
+                    "pattern": "RouteManuallyRepackingByHuItems/{id}",
+                    "target": [
+                        "TargetManuallyRepackingByHuItems"
+                  ]
+        },
+                {
                     "name": "WTQueryByQueue",
                     "pattern": "WTQueryByQueue/{id}",
                     "target": [
@@ -405,6 +427,20 @@
                     "pattern": "CreateShippingHUWOWC/{id}",
                     "target": [
                         "TargetCreateShippingHUWOWC"
+                    ]
+                },
+                {
+                    "name": "ManuallyRepackAllHUItems",
+                    "pattern": "ManuallyRepackAllHUItems/{id}",
+                    "target": [
+                        "TargetManuallyRepackAllHUItems"
+                    ]
+                },
+                {
+                    "name": "ManuallyRepackHU",
+                    "pattern": "ManuallyRepackHU/{id}",
+                    "target": [
+                        "TargetManuallyRepackHU"
                     ]
                 },
                 {
@@ -433,6 +469,7 @@
                     "pattern": "ProductInspectionByStorageBin/{id}",
                     "target": [
                         "TargetProductInspectionByStorageBin"
+
                     ]
                 }
             ],
@@ -443,6 +480,20 @@
                     "clearControlAggregation": false,
                     "viewId": "InitialScreen",
                     "viewName": "InitialScreen"
+                },
+                "TargetManuallyRepackAllHUItems": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ManuallyRepackAllHUItems",
+                    "viewName": "ManuallyRepackAllHUItems"
+                },
+                "TargetManuallyRepackHU": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ManuallyRepackHU",
+                    "viewName": "ManuallyRepackHU"
                 },
                 "TargetHome": {
                     "viewType": "XML",
@@ -576,6 +627,13 @@
                     "clearControlAggregation": false,
                     "viewId": "WTQueryByHU",
                     "viewName": "WTQueryByHU"
+                },
+                "TargetAutomaticallyRepackHUItem": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AutomaticallyRepackHUItem",
+                    "viewName": "AutomaticallyRepackHUItem"
                 },
                 "TargetBillofLading": {
                     "viewType": "XML",
@@ -724,6 +782,15 @@
                     "viewId": "WTQueryByWT",
                     "viewName": "WTQueryByWT"
                 },
+
+                "TargetManuallyRepackingByHuItems": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ManuallyRepackingByHuItem",
+                    "viewName": "ManuallyRepackingByHuItem"
+            },
+
                 "TargetCreateShippingHU": {
                     "viewType": "XML",
                     "transition": "slide",
@@ -765,6 +832,14 @@
                     "clearControlAggregation": false,
                     "viewId": "ProductInspectionByStorageBin",
                     "viewName": "ProductInspectionByStorageBin"
+                },
+                "TargetUnloadingByBillofLading": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadingByBillofLading",
+                    "viewName": "UnloadingByBillofLading"
+
                 }
             },
             "sap.cloud": {
