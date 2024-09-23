@@ -115,7 +115,7 @@
         },
         {
           "name": "Homepage",
-          "pattern": "Homepage/{id}",
+          "pattern": "Homepage",
           "target": [
             "TargetHome"
           ]
@@ -407,9 +407,10 @@
             "TargetWTQueryByQueue"
           ]
         },
- 
+
+        
     {
- 
+
           "name": "CreateShippingHU",
           "pattern": "CreateShippingHU/{id}",
           "target": [
@@ -768,6 +769,7 @@
           "clearControlAggregation": false,
           "viewId": "RecevingOfHUbyTUorDoor",
           "viewName": "RecevingOfHUbyTUorDoor"
+        
         },
         "TargetWTQueryByQueue": {
           "viewType": "XML",
@@ -776,6 +778,8 @@
           "viewId": "WTQueryByQueue",
           "viewName": "WTQueryByQueue"
         },
+
+        
         "TargetSerialNumberLocation": {
           "viewType": "XML",
           "transition": "slide",
@@ -783,7 +787,7 @@
           "viewId": "SerialNumberLocation",
           "viewName": "SerialNumberLocation"
         },
-        "TargetWTQueryByWT": {
+          "TargetWTQueryByWT":{
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
