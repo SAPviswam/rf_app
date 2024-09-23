@@ -12,34 +12,47 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 this.bOtpVerified = false;
-                var savedResourceID = localStorage.getItem("resourceID");
-                var savedPassword = localStorage.getItem("password");
+
+                var sUsername = localStorage.getItem("username");
+            var sPassword = localStorage.getItem("password");
+            var bAutoSave = localStorage.getItem("autoSave") === "true";
+
+            if (sUsername) {
+                this.getView().byId("idUserIDInput").setValue(sUsername);
+            }
+            if (sPassword) {
+                this.getView().byId("idPasswordInput").setValue(sPassword);
+            }
+            this.getView().byId("idButtonSignUpcheckbox").setSelected(bAutoSave);
+
+//                 var savedResourceID = localStorage.getItem("resourceID");
+//                 var savedPassword = localStorage.getItem("password");
            
-                if (savedResourceID) {
-                    this.byId("idUserIDInput").setValue(savedResourceID);
-                }
-                if (savedPassword) {
-                    this.byId("idPasswordInput").setValue(savedPassword);
-                }
+//                 if (savedResourceID) {
+//                     this.byId("idUserIDInput").setValue(savedResourceID);
+//                 }
+//                 if (savedPassword) {
+//                     this.byId("idPasswordInput").setValue(savedPassword);
+//                 }
            
             },
-            onPressAutoSaveBtn: function (oEvent) {
-                var isChecked = oEvent.getParameter("selected");
+//             onPressAutoSaveBtn: function (oEvent) {
+//                 var isChecked = oEvent.getParameter("selected");
                
-                if (isChecked) {
-                    // Save details when checked
-                    var resourceID = this.byId("idUserIDInput").getValue();
-                    var password = this.byId("idPasswordInput").getValue();
+//                 if (isChecked) {
+//                     // Save details when checked
+//                     var resourceID = this.byId("idUserIDInput").getValue();
+//                     var password = this.byId("idPasswordInput").getValue();
                    
-                    // Store data in local storage
-                    localStorage.setItem("resourceID", resourceID);
-                    localStorage.setItem("password", password);
-                } else {
-                    // Optionally, handle when unchecked (e.g., clear saved data)
-                    localStorage.removeItem("resourceID");
-                    localStorage.removeItem("password");
-                }
-            },
+//                     // Store data in local storage
+//                     localStorage.setItem("resourceID", resourceID);
+//                     localStorage.setItem("password", password);
+//                 } else {
+//                     // Optionally, handle when unchecked (e.g., clear saved data)
+//                     localStorage.removeItem("resourceID");
+//                     localStorage.removeItem("password");
+//                 }
+//             },
             onLoginPress: async function () {
                 var oView = this.getView();
  
@@ -47,7 +60,19 @@ sap.ui.define([
                 var sWarehouseNumber = oView.byId("idHUInput").getValue();
                 var sResourceId = oView.byId("idUserIDInput").getValue();
                 var sPassword = oView.byId("idPasswordInput").getValue();
- 
+
+                var bAutoSave = this.getView().byId("idButtonSignUpcheckbox").getSelected();
+                if (bAutoSave) {
+                    localStorage.setItem("username", sResourceId);
+                    localStorage.setItem("password", sPassword);
+                    localStorage.setItem("autoSave", "true");
+                } else {
+                    // Clear stored credentials if auto-save is unchecked
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("password");
+                    localStorage.removeItem("autoSave");
+                }
+
                 // Perform validation checks
                 if (!sWarehouseNumber) {
                     MessageToast.show("Please enter the Warehouse Number.");

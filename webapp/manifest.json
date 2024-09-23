@@ -440,6 +440,7 @@
     ]
 },
 {
+
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
 
@@ -458,11 +459,19 @@
         {
           "name": "HUStockOverviewQuery",
           "pattern": "HUStockOverviewQuery/{id}",
+            "TargetHUStockOverviewQuery"
+              ]
+          },
+        {
+          "name": "CreatePutawayHusManually",
+          "pattern": "CreatePutawayHusManually/{id}",
+          "target": [
             "TargetCreatePutawayHusManually"
-          ]
-
+    ]
 },
+
 {
+
 
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
@@ -484,6 +493,14 @@
             "TargetProductInspectionByStorageBin"
           ]
         },
+        {
+          "name": "HUStockOverviewQuery",
+          "pattern": "HUStockOverviewQuery/{id}",
+          "target": [
+            "TargetHUStockOverviewQuery"
+          ]
+        }
+
       ],
       "targets": {
         "TargetInitialScreen": {
@@ -814,6 +831,28 @@
           "viewName": "CreateShippingHUWOWC"
         },
         "TargetHUStockOverviewQuery": {
+
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HUStockOverviewQuery",
+          "viewName": "HUStockOverviewQuery"
+        },
+        "TargetCreatePutawayHusforDeconsolidate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusforDeconsolidate",
+          "viewName": "CreatePutawayHusforDeconsolidate"
+        },
+        "TargetCreatePutawayHusManually": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreatePutawayHusManually",
+          "viewName": "CreatePutawayHusManually"
+        },
+
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -840,7 +879,6 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
-        }
       },
       "TargetProductInspectionByStorageBin": {
           "viewType": "XML",
@@ -849,6 +887,14 @@
           "viewId": "ProductInspectionByStorageBin",
           "viewName": "ProductInspectionByStorageBin"
         },
+    "TargetHUStockOverviewQuery":{
+       "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HUStockOverviewQuer",
+          "viewName": "HUStockOverviewQuer"
+    }
+    
       "sap.cloud": {
         "public": true,
         "service": "comapprfapp"
