@@ -504,6 +504,13 @@
           "target": [
             "TargetRoutePutawayHuClustered"
           ]
+        },
+        {
+          "name": "RouteReversalofConsumptionbyMO_Bin",
+          "pattern": "ReversalofConsumptionbyMO_Bin/{id}",
+          "target": [
+            "TargetReversalofConsumptionbyMO_Bin"
+          ]
         }
       ],
       "targets": {
@@ -905,6 +912,13 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
+        },
+        "TargetReversalofConsumptionbyMO_Bin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReversalofConsumptionbyMO_Bin",
+          "viewName": "ReversalofConsumptionbyMO_Bin"
         }
       }
     },

@@ -2016,7 +2016,12 @@ sap.ui.define(
             onPutawayByHUClustered:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-            }
+            },
+            onPressReversalofConsumptionbyMO_Bin:function() {
+                debugger
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteReversalofConsumptionbyMO_Bin",{id:this.ID});
+            },
 
 
 
