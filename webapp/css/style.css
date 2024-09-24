@@ -67,6 +67,14 @@
     padding: auto !important; 
     width: 25% !important;
 }
+
+.boxContainer3 {
+    border-radius: 1rem !important;
+    border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important; 
+    width: 25% !important;
+}
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2 !important;
     /* Add border width, style, and color */
@@ -107,6 +115,10 @@
         width: 90% !important; /* Full width on mobile */
         padding: 1rem; /* Adjust padding */
     }
+    .boxContainer3 {
+        width: 90% !important; /* Full width on mobile */
+        padding: 1rem; /* Adjust padding */
+    }
     .boxContainer2 {
         border-bottom: 2px solid #ed731dd2 !important;
         /* Add border width, style, and color */
@@ -139,19 +151,6 @@
 .orangeButtonText .sapMBtnText {
     color: red !important; /* Remove default border */
 }
-
-/* @media (max-width: 768px) {
-    .boxContainer {
-        border-radius: 1rem;
-        border: 2px solid #ed731dd2;
-        padding: 3%;
-        width: 80%;
-    }
-    .Inputs {
-        padding-left: 10vw;
-        width: 70%;
-    }
-} */
 .SubmitBtnFromVendorPage .sapMBtnText {
     background-color: white !important;
     color: green;
@@ -449,3 +448,4 @@ background-color: rgb(9, 8, 8) !important;
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
 }
+

@@ -1,27 +1,26 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
+    "sap/ui/core/mvc/Controller"
   ],
-  function (BaseController,MessageToast) {
+  function (Controller) {
     "use strict";
 
-    return BaseController.extend("com.app.rfapp.controller.PutawayByHU", {
+    return Controller.extend("com.app.rfapp.controller.ManuallyRepackingByHUItem", {
       onInit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-    },
-    onResourceDetailsLoad: async function (oEvent1) {
+      },
+      onResourceDetailsLoad: async function (oEvent1) {
         const { id } = oEvent1.getParameter("arguments");
-            this.ID = id;
-  
+        this.ID = id;
       },
       onAfterRendering: function () {
-        this.byId("idPage1ScannerFormBoxHU").setVisible(true);
+        this.byId("idScrollContainerScreen1").setVisible(false);
       },
       //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
     //   
-      onPressBackBtnScanerFormBox: async function(){
+    onBackBtnPressScreen1: async function(){
+        
         var oRouter = this.getOwnerComponent().getRouter();
         var oModel1 = this.getOwnerComponent().getModel();
         await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
@@ -41,53 +40,7 @@ sap.ui.define(
     },
 
       //Back Btn from ScrollContainer Page 2 =>idPage2HUDetails 
-      onBackPressHUDetails: function () {
-        var oScrollContainer1 = this.byId("idPage1ScannerFormBoxHU");
-        var oScrollContainer2 = this.byId("idPage2HUDetails");
-
-        // show the Scanner form VBox
-        oScrollContainer1.setVisible(true);
-
-        //Hide the HUDetails scroll container
-        oScrollContainer2.setVisible(false);
-      },
-
-      //Back Btn from ScrollContainer Page 3=>idPage3HUListTable
-      onBackPressHUListTable: function () {
-        var oScrollContainer3 = this.byId("idPage3HUListTable");
-        var oScrollContainer2 = this.byId("idPage2HUDetails");
-
-        // show the HUDetails Page2
-        oScrollContainer2.setVisible(true);
-
-        //Hide the HUListTable Page3
-        oScrollContainer3.setVisible(false);
-      },
-
-      //Back Btn from ScrollContainer Page 4=>idPage4NewHUNumber
-      onBackBtnPressNewHUNumber: function () {
-        var oScrollContainer4 = this.byId("idPage4NewHUNumber");
-        var oScrollContainer3 = this.byId("idPage3HUListTable");
-
-        // show the HUDetails Page2
-        oScrollContainer3.setVisible(true);
-
-        //Hide the NewHuNumber Page3
-        oScrollContainer4.setVisible(true);
-      },
-
-      //Submit Btn from ScrollContainer Page 1=> idPage1ScannerFormBox..
-      onSubmitPress: function () {
-        var oScrollContainer1 = this.byId("idPage1ScannerFormBoxHU");
-        var oScrollContainer2 = this.byId("idPage2HUDetails");
-
-        // Hide the Scanner form VBox
-        oScrollContainer1.setVisible(false);
-
-        // Show the HUDetails scroll container
-        oScrollContainer2.setVisible(true);
-      },
-
+      
     //   onSubmitPress: function () {
     //     debugger
     //     var oHu = this.byId("idInputWarhouseOrderNoHU").getValue();
@@ -216,8 +169,121 @@ sap.ui.define(
       //Hide the VerifyHuNmber Page5
       oScrollContainer7.setVisible(false);
   },
+  onBackBtnPressScreen1: async function(){
+    var oRouter = this.getOwnerComponent().getRouter();
+    var oModel1 = this.getOwnerComponent().getModel();
+    await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+        success: function (oData) {
+            let oUser=oData.Users.toLowerCase()
+            if(oUser ===  "resource"){
+                oRouter.navTo("RouteResourcePage",{id:this.ID});
+            }
+            else{
+            oRouter.navTo("Supervisor",{id:this.ID});
+        }
+        }.bind(this),
+        error: function () {
+            MessageToast.show("User does not exist");
+        }
+    });
+},
+onNxtBtnPressScreen1: function () {
+  this.byId("idScrollContainerScreen1").setVisible(false);
+  this.byId("idScrollContainerScreen2").setVisible(true);
+
+},
+  onNxtBtnPressScreen2: function () {
+    this.byId("idScrollContainerScreen2").setVisible(false);
+    this.byId("idScrollContainerScreen3").setVisible(true);
+
+  },
+  onNxtBtnPressScreen3: function () {
+    this.byId("idScrollContainerScreen3").setVisible(false);
+    this.byId("idScrollContainerScreen4").setVisible(true);
+
+  },
+  onNxtBtnPressScreen4: function () {
+    this.byId("idScrollContainerScreen4").setVisible(false);
+    this.byId("idScrollContainerScreen5").setVisible(true);
+
+  },
+  
+  onNxtBtnPressScreen5: function () {
+    this.byId("idScrollContainerScreen5").setVisible(false);
+    this.byId("idScrollContainerScreen6").setVisible(true);
+
+  },
+  onNxtBtnPressScreen6: function () {
+    this.byId("idScrollContainerScreen6").setVisible(false);
+    this.byId("idScrollContainerScreen7").setVisible(true);
+
+  },
+  onNxtBtnPressScreen7: function () {
+    this.byId("idScrollContainerScreen7").setVisible(false);
+    this.byId("idScrollContainerScreen8").setVisible(true);
+
+  },
+  onNxtBtnPressScreen8: function () {
+    this.byId("idScrollContainerScreen8").setVisible(false);
+    this.byId("idScrollContainerScreen9").setVisible(true);
+
+  },
+  onNxtBtnPressScreen9: function () {
+    this.byId("idScrollContainerScreen9").setVisible(false);
+    this.byId("idScrollContainerScreen10").setVisible(true);
+
+  },
+ 
+  onBackBtnPressScreen2 : function () {
+    this.byId("idScrollContainerScreen1").setVisible(true);
+    this.byId("idScrollContainerScreen2").setVisible(false);
+
+  },
+  onBackBtnPressScreen3 : function () {
+    this.byId("idScrollContainerScreen2").setVisible(true);
+    this.byId("idScrollContainerScreen3").setVisible(false);
+
+  },
+  onBackBtnPressScreen4 : function () {
+    this.byId("idScrollContainerScreen3").setVisible(true);
+    this.byId("idScrollContainerScreen4").setVisible(false);
+
+  },
+  onBackBtnPressScreen5 : function () {
+    this.byId("idScrollContainerScreen4").setVisible(true);
+    this.byId("idScrollContainerScreen5").setVisible(false);
+
+  },
+  onBackBtnPressScreen6 : function () {
+    this.byId("idScrollContainerScreen5").setVisible(true);
+    this.byId("idScrollContainerScreen6").setVisible(false);
+
+  },
+  onBackBtnPressScreen7 : function () {
+    this.byId("idScrollContainerScreen6").setVisible(true);
+    this.byId("idScrollContainerScreen7").setVisible(false);
+
+  },
+  onBackBtnPressScreen8 : function () {
+    this.byId("idScrollContainerScreen7").setVisible(true);
+    this.byId("idScrollContainerScreen8").setVisible(false);
+
+  },
+  onBackBtnPressScreen9 : function () {
+    this.byId("idScrollContainerScreen8").setVisible(true);
+    this.byId("idScrollContainerScreen9").setVisible(false);
+
+  },
+  onBackBtnPressScreen10 : function () {
+    this.byId("idScrollContainerScreen9").setVisible(true);
+    this.byId("idScrollContainerScreen10").setVisible(false);
+
+  },
+
+  
 
 
     });
   }
 );
+

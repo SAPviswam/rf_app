@@ -80,7 +80,6 @@
             }
         },
         
-        
         // Live validation logic
         onLiveHuValidation: function (oEvent) {
             debugger
