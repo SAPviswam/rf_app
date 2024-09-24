@@ -169,7 +169,7 @@ sap.ui.define(
       //Hide the VerifyHuNmber Page5
       oScrollContainer7.setVisible(false);
   },
-  onNxtBtnPressScreen1: async function(){
+  onBackBtnPressScreen1: async function(){
     var oRouter = this.getOwnerComponent().getRouter();
     var oModel1 = this.getOwnerComponent().getModel();
     await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
@@ -186,6 +186,11 @@ sap.ui.define(
             MessageToast.show("User does not exist");
         }
     });
+},
+onNxtBtnPressScreen1: function () {
+  this.byId("idScrollContainerScreen1").setVisible(false);
+  this.byId("idScrollContainerScreen2").setVisible(true);
+
 },
   onNxtBtnPressScreen2: function () {
     this.byId("idScrollContainerScreen2").setVisible(false);
