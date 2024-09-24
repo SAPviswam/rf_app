@@ -62,6 +62,16 @@
                             key="hi"
                             text="Hindi"
                         />
+                        <core:Item
+                            id="idCoreItemSpanishLanguage"
+                            key="es"
+                            text="Spanish"
+                        />
+                        <core:Item
+                            id="idCoreItemFrenchLanguage"
+                            key="fr"
+                            text="French"
+                        />
                     </items>
                 </ComboBox>
                 <Button
@@ -122,11 +132,13 @@
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
                 <tnt:fixedItem>
-                    <tnt:NavigationList id="_IDGenNavigationList1"
+                    <tnt:NavigationList
+                        id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem id="_IDGenNavigationListItem"
+                        <tnt:NavigationListItem
+                            id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -155,7 +167,8 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox id="_IDGenFlexBox"
+                        <FlexBox
+                            id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -244,7 +257,10 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox9"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -266,7 +282,10 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
+                                <HBox
+                                    id="_IDGenHBox10"
+                                    justifyContent="SpaceBetween"
+                                >
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
