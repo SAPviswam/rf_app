@@ -1937,7 +1937,10 @@ sap.ui.define(
                 oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
             },
 
-
+            onSetReadyForWHProcessingByBOLPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WHProcessingByBOL",{id:this.ID});
+            },
 
         });
     });
