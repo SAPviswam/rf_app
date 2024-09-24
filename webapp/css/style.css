@@ -71,12 +71,15 @@
     color: #333; /* Adjust as needed */
 }
 
+
 .buttonContainer {
+    border-radius: 0rem !important;
     margin-top: 20px; /* Optional: add some spacing between buttons */
     background-color: black;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
 }
+ 
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
 }
@@ -95,6 +98,8 @@
     padding: auto !important; 
     width: 25% !important;
     padding-bottom: 1rem;
+    width: 30% !important;
+    margin:1rem;
 }
 .TitlecustomHeader{
     border-radius: 0rem !important;

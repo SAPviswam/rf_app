@@ -449,7 +449,6 @@ sap.ui.define([
                 oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
             },
             onWTQuerybyQueuePress:function(){ 
-                debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
@@ -458,13 +457,11 @@ sap.ui.define([
             //     var oRouter = UIComponent.getRouterFor(this); 
             //     oRouter.navTo("DeconsAuto",{id:this.ID});   
             // }
-
             onPickPointPress:function(){ 
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("PickPoint",{id:this.ID});                 
             }, 
-
             onManuallyrepackallHUitemsPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
