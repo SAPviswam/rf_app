@@ -20,6 +20,7 @@
                     alignItems="Center"
                 >
 
+
                     <VBox>
                         <HBox
                             id="idHboxinitial"

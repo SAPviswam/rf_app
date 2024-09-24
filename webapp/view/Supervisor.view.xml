@@ -1327,14 +1327,14 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="OnReversalofConsumptionbyMObyHUpress"
+                            press="press"
                         />
 
                         <GenericTile
                             id="IDGenGenericTile30"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Reversal of consumption by MO (Bin)"
-                            press="press"
+                            header="Reversal of Consumption by MO (Bin)"
+                            press="onPressReversalofConsumptionbyMO_Bin"
                         />
                     </ScrollContainer>
                     <ScrollContainer

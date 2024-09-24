@@ -618,6 +618,7 @@
                                 <Input
                                     id="idPPWaveInput"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
 
@@ -647,6 +648,7 @@
                                 <Input
                                     id="idPPOpenDItmInput"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
 
@@ -671,6 +673,7 @@
                                 <Input
                                     id="idPPOpenWgInput1"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
                            
@@ -696,6 +699,7 @@
                                 <Input
                                     id="idPPOpenVolInput1"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
 
@@ -713,6 +717,7 @@
                                 <Input
                                     id="idPPLengthInput"
                                     value=""
+                                   
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
@@ -720,6 +725,7 @@
                                 <Input
                                     id="idPPLengthInput1"
                                     value=""
+                                     width="80px"
                                 />
                             </HBox>
 
@@ -738,14 +744,16 @@
                                     id="idPPWidthInput"
                                     value=""
                                 />
-                                <VBox width="20px" />
-                                <!-- Spacer -->
+                                </HBox>
+
+                                <HBox alignContent="Center" alignItems="Center" width="100%">
+                               
                                 <Label
                                     id="idPPHeightLabel"
                                     text="Height"
                                 />
                                 <VBox width="10px" />
-                                <!-- Spacer -->
+                               
                                 <Input
                                     id="idPPHeightInput"
                                     value=""
@@ -766,7 +774,7 @@
                 </VBox>
             </ScrollContainer>
 
-            <ScrollContainer
+           <ScrollContainer
                 id="idFifthPPPage"
                 horizontal="false"
                 vertical="true"
@@ -806,7 +814,7 @@
                                     text="Dest Hu"
                                 />
                                 <VBox width="10px" />
-                                <!-- Spacer -->
+                               
                                 <Input
                                     id="idPPDestHuInput1"
                                     value=""
@@ -823,7 +831,7 @@
                                     text="Pack.Mat"
                                 />
                                 <VBox width="10px" />
-                                <!-- Spacer -->
+                               
                                 <Input
                                     id="idPPPackMatInput"
                                     value=""
@@ -840,7 +848,7 @@
                                     text="Dest.Bin"
                                 />
                                 <VBox width="10px" />
-                                <!-- Spacer -->
+                               
                                 <Input
                                     id="idPPDestBinInput"
                                     value=""
@@ -857,7 +865,7 @@
                                     text="Cons.Grp"
                                 />
                                 <VBox width="10px" />
-                                <!-- Spacer -->
+                              
                                 <Input
                                     id="idPPConsGrpInput1"
                                     value=""
@@ -882,7 +890,7 @@
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
-            </ScrollContainer>
+            </ScrollContainer> 
 
             <ScrollContainer
                 id="idPPSixthPage"
@@ -928,6 +936,7 @@
                                 <Input
                                     id="idPWOInput"
                                     value=""
+                                    width="80PX"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
@@ -940,6 +949,7 @@
                                 <Input
                                     id="idPPWTInput"
                                     value=""
+                                     width="80PX"
                                 />
                             </HBox>
 
@@ -954,18 +964,21 @@
                                 <Input
                                     id="idPPPtlInput1"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput2"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput3"
                                     value=""
+                                     width="80PX"
                                 />
                             </HBox>
 
@@ -977,18 +990,21 @@
                                 <Input
                                     id="idPPPtlInput4"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput5"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput6"
                                     value=""
+                                     width="60PX"
                                 />
                             </HBox>
 
@@ -1000,12 +1016,14 @@
                                 <Input
                                     id="idPPPtlInput7"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput8"
                                     value=""
+                                     width="80PX"
                                 />
                             </HBox>
 
@@ -1017,18 +1035,21 @@
                                 <Input
                                     id="idPPPtlInput9"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput10"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput11"
                                     value=""
+                                     width="60PX"
                                 />
                             </HBox>
 
@@ -1040,12 +1061,14 @@
                                 <Input
                                     id="idPPPtlInput12"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput13"
                                     value=""
+                                     width="80PX"
                                 />
                             </HBox>
 
@@ -1057,18 +1080,21 @@
                                 <Input
                                     id="idPPPtlInput14"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput15"
                                     value=""
+                                     width="80PX"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput16"
                                     value=""
+                                     width="80PX"
                                 />
                             </HBox>
                             <VBox
@@ -1143,6 +1169,7 @@
                                 <Input
                                     id="idPWOInput1"
                                     value=""
+                                    width="80px"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
@@ -1155,6 +1182,7 @@
                                 <Input
                                     id="idPPWTInput1"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
 
@@ -1169,12 +1197,14 @@
                                 <Input
                                     id="idPPPtlInput71"
                                     value=""
+                                    width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput72"
                                     value=""
+                                  
                                 />
                             </HBox>
                             <HBox
@@ -1191,6 +1221,14 @@
                                 <Input
                                     id="idGWPrInput"
                                     value=""
+                                    width="80px"
+                                />
+                                 <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idGWPrInput1"
+                                    value=""
+                                    width="50px"
                                 />
                                 <VBox width="20px" />
 
@@ -1203,6 +1241,7 @@
                                 <Input
                                     id="idBtchInput"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
                             <HBox
@@ -1219,11 +1258,13 @@
                                 <Input
                                     id="idGVPrInput"
                                     value=""
+                                    width="80px"
                                 />
                                 <VBox width="10px" />
                                 <Input
                                     id="idGVPrInput1"
                                     value=""
+                                       width="50px"
                                 />
                             </HBox>
 
@@ -1235,18 +1276,22 @@
                                 <Input
                                     id="idPPPtlInput73"
                                     value=""
+                                      width="80px"
+                                    
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput74"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput75"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                             <HBox
@@ -1263,11 +1308,19 @@
                                 <Input
                                     id="idStypInput"
                                     value=""
+                                    width="50px"
                                 />
                                 <VBox width="10px" />
                                 <Input
                                     id="idStypInput1"
                                     value=""
+                                     width="80px"
+                                />
+                                 <VBox width="10px" />
+                                <Input
+                                    id="idStypInput2"
+                                    value=""
+                                     width="50px"
                                 />
                             </HBox>
                             <HBox
@@ -1278,18 +1331,21 @@
                                 <Input
                                     id="idPPPtlInput76"
                                     value=""
+                                      width="70px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput77"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idPPPtlInput78"
                                     value=""
+                                      width="50px"
                                 />
                             </HBox>
 
@@ -1307,6 +1363,7 @@
                                 <Input
                                     id="idOwnrInput1"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
@@ -1319,6 +1376,7 @@
                                 <Input
                                     id="idPEntInput1"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                         </VBox>
@@ -1370,6 +1428,7 @@
                                 <Input
                                     id="idProInput1"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
@@ -1382,6 +1441,7 @@
                                 <Input
                                     id="idSNInput1"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
 
@@ -1402,12 +1462,14 @@
                                 <Input
                                     id="idSNcrInput"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput1"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -1419,12 +1481,14 @@
                                 <Input
                                     id="idSncrInput81"
                                     value=""
+                                      width="80px"
                                 />
-                                <VBox width="10px" />
+                                <VBox width="40px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput82"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
 
@@ -1438,12 +1502,14 @@
                                 <Input
                                     id="idSncrInput83"
                                     value=""
+                                      width="80px"
                                 />
-                                <VBox width="10px" />
+                                <VBox width="40px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput84"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
 
@@ -1455,11 +1521,13 @@
                                 <Input
                                     id="idInput85"
                                     value=""
+                                      width="80px"
                                 />
-                                <VBox width="20px" />
+                                <VBox width="40px" />
                                 <Input
                                     id="idInput86"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                             <HBox
@@ -1470,11 +1538,13 @@
                                 <Input
                                     id="idInput87"
                                     value=""
+                                      width="80px"
                                 />
-                                <VBox width="20px" />
+                                <VBox width="40px" />
                                 <Input
                                     id="idInput88"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                             <HBox
@@ -1485,11 +1555,13 @@
                                 <Input
                                     id="idInput89"
                                     value=""
+                                      width="80px"
                                 />
-                                <VBox width="20px" />
+                                <VBox width="40px" />
                                 <Input
                                     id="idInput810"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -1581,6 +1653,7 @@
                                 <Input
                                     id="idProInput"
                                     value=""
+                                      width="80px"
                                 />
                             </HBox>
 
@@ -1601,18 +1674,21 @@
                                 <Input
                                     id="idSNcrInput91"
                                     value=""
+                                      width="50px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput92"
                                     value=""
+                                      width="80px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput93"
                                     value=""
+                                      width="50px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -1752,9 +1828,10 @@
                                 <Input
                                     id="idProInput10"
                                     value=""
+                                      width="90px"
                                 />
 
-                                <VBox height="10px" />
+                                <VBox width="10px" />
                                 <!-- Spacer between rows -->
 
                                 <Label
@@ -1766,12 +1843,14 @@
                                 <Input
                                     id="idSNcrInput101"
                                     value=""
+                                     width="50px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idSNcrInput102"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -1783,12 +1862,14 @@
                                 <Input
                                     id="idInput103"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput104"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
 
@@ -1800,12 +1881,14 @@
                                 <Input
                                     id="idInput105"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput106"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
 
@@ -1817,12 +1900,14 @@
                                 <Input
                                     id="idInput107"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput108"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
 
@@ -1834,12 +1919,14 @@
                                 <Input
                                     id="idInput109"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput1010"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
 
@@ -1851,12 +1938,15 @@
                                 <Input
                                     id="idInput1011"
                                     value=""
+                                     width="90px"
+
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput1012"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
                             <HBox
@@ -1867,18 +1957,21 @@
                                 <Input
                                     id="idInput1013"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="25px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput1014"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="20px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput1015"
                                     value=""
+                                     width="50px"
                                 />
                             </HBox>
                             <HBox
@@ -1941,12 +2034,14 @@
                                 <Input
                                     id="idInput111"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput112"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -1958,6 +2053,7 @@
                                 <Input
                                     id="idInput113"
                                     value=""
+                                    width="80px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
@@ -1971,6 +2067,7 @@
                                 <Input
                                     id="idInput114"
                                     value=""
+                                     width="80px"
                                 />
 
                                 <VBox width="10px" />
@@ -1978,32 +2075,18 @@
                                 <Input
                                     id="idInput115"
                                     value=""
+                                     width="80px"
                                 />
                             </HBox>
-
-                            <HBox
-                                
-                            >
-                                <Label
-                                    id="idSubHuLabel"
-                                    text="SubHU"
-                                />
-                                <VBox width="50px" />
-                                <Label
-                                    id="idW"
-                                    text="W"
-                                />
-                                <VBox width="20px" />
-                                <Label
-                                    id="idAqty"
-                                    text="Aqty"
-                                />
-                                <VBox width="30px" />
-                                <Label
-                                    id="idExc"
-                                    text="Exc"
-                                />
-                            </HBox>
+<HBox width="100%" alignItems="Center">
+                    <Label id="idSubHuLabel" text="SubHU" />
+                    <VBox width="30px" />
+                    <Label id="idW" text="W" />
+                    <VBox width="20px" />
+                    <Label id="idAqty" text="Aqty" />
+                    <VBox width="30px" />
+                    <Label id="idExc" text="Exc" />
+                </HBox>
 
                             <HBox
                                 alignContent="Center"
@@ -2013,6 +2096,7 @@
                                 <Input
                                     id="idInput116"
                                     value=""
+                                     width="80px"
                                 />
                                 <VBox width="15px" />
                                 <!-- Spacer -->
@@ -2030,6 +2114,7 @@
                                 <Input
                                     id="idInput118"
                                     value=""
+                                     width="80px"
                                 />
                                 <VBox width="15px" />
                                 <!-- Spacer -->
@@ -2047,6 +2132,7 @@
                                 <Input
                                     id="idInput1110"
                                     value=""
+                                     width="80px"
                                 />
                                 <VBox width="15px" />
                                 <!-- Spacer -->
@@ -2056,22 +2142,7 @@
                                 />
                             </HBox>
 
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                width="100%"
-                            >
-                                <Input
-                                    id="idInput1112"
-                                    value=""
-                                />
-                                <VBox width="15px" />
-                                <!-- Spacer -->
-                                <Input
-                                    id="idInput1113"
-                                    value=""
-                                />
-                            </HBox>
+                            
                             <HBox
                                 alignContent="Center"
                                 alignItems="Center"
@@ -2153,12 +2224,14 @@
                                 <Input
                                     id="idProductInp1"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idProductInp2"
                                     value=""
+                                     width="90px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -2177,7 +2250,9 @@
                                 <Input
                                     id="idBatchInput"
                                     value=""
+                                     width="90px"
                                 />
+                                   <VBox width="10px" />
                                 <Label
                                     id="idStyp1Label"
                                     text="Styp"
@@ -2188,6 +2263,7 @@
                                 <Input
                                     id="idStyp1Input"
                                     value=""
+                                     width="90px"
                                 /> 
                             </HBox>
 
@@ -2195,17 +2271,20 @@
                                 <Input
                                     id="idInput121"
                                     value=""
+                                     width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput122"
                                     value=""
+                                     width="90px"
                                 />
                                   <VBox width="10px" />
                                    <Input
                                     id="idInput123"
                                     value=""
+                                     width="90px"
                                 />
 
                             </HBox>
@@ -2219,19 +2298,20 @@
                             <VBox width="10px"></VBox>
                                 <Input
                                     id="idInput124"
-                                    value=""
+                                    value="" width="90px"
+
                                 />
                                 <VBox width="10px"></VBox>
                                 <Input
                                     id="idInput125"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 <VBox width="10px"></VBox>
                                 <Label id="idSN" text="SN"/>
                             <VBox width="10px"></VBox>
                                 <Input
                                     id="idSnInput"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 
 
@@ -2249,7 +2329,7 @@
                                 <!-- Spacer -->
                                 <Input
                                     id="idActQtyInput"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
 
@@ -2263,7 +2343,7 @@
                                 <!-- Spacer -->
                                 <Input
                                     id="idDifQtyInput"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
                             <HBox
@@ -2337,13 +2417,13 @@
 
                                 <Input
                                     id="idProductInp13"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idProductInp213"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
                             <VBox height="10px" />
@@ -2361,8 +2441,9 @@
 
                                 <Input
                                     id="idBatchInput13"
-                                    value=""
+                                    value=""  width="90px"
                                 />
+                                   <VBox width="10px" />
                                 <Label
                                     id="idStyp1Label13"
                                     text="Styp"
@@ -2372,25 +2453,25 @@
 
                                 <Input
                                     id="idStyp1Input13"
-                                    value=""
+                                    value=""  width="90px"
                                 /> 
                             </HBox>
 
                             <HBox>
                                 <Input
                                     id="idInput131"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 <VBox width="10px" />
                                 <!-- Spacer -->
                                 <Input
                                     id="idInput132"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                   <VBox width="10px" />
                                    <Input
                                     id="idInput133"
-                                    value=""
+                                    value=""  width="90px"
                                 />
 
                             </HBox>
@@ -2404,19 +2485,19 @@
                             <VBox width="10px"></VBox>
                                 <Input
                                     id="idInput134"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 <VBox width="10px"></VBox>
                                 <Input
                                     id="idInput135"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                                 <VBox width="10px"></VBox>
                                 <Label id="idSN13" text="SN"/>
                             <VBox width="10px"></VBox>
                                 <Input
                                     id="idSnInput13"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
                             <HBox
@@ -2429,7 +2510,7 @@
                                 <!-- Spacer -->
                                 <Input
                                     id="idActQtyInput13"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
 
@@ -2443,7 +2524,7 @@
                                 <!-- Spacer -->
                                 <Input
                                     id="idDifQtyInput13"
-                                    value=""
+                                    value=""  width="90px"
                                 />
                             </HBox>
                             <HBox

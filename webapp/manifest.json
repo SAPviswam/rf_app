@@ -451,6 +451,13 @@
           ]
         },
         {
+          "name": "LoadbyHUManPosAssiognment",
+          "pattern": "LoadbyHUManPosAssiognment/{id}",
+          "target": [
+            "TargetLoadbyHUManPosAssiognment"
+          ]
+        },
+        {
           "name": "ManuallyRepackHU",
           "pattern": "ManuallyRepackHU/{id}",
           "target": [
@@ -465,6 +472,7 @@
           ]
         },
         {
+
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -511,6 +519,28 @@
           "pattern": "RoutePutawayHuClustered/{id}",
           "target": [
             "TargetRoutePutawayHuClustered"
+
+          ]
+        },
+        {
+          "name": "WHProcessingByBOL",
+          "pattern": "WHProcessingByBOL/{id}",
+          "target": [
+            "TargetWHProcessingByBOL"
+          ]
+        },
+        {
+          "name": "UnloadByHu",
+          "pattern": "UnloadByHu/{id}",
+          "target": [
+            "TargetUnloadByHu"
+          ]
+        },
+        {
+          "name": "RouteReversalofConsumptionbyMO_Bin",
+          "pattern": "ReversalofConsumptionbyMO_Bin/{id}",
+          "target": [
+            "TargetReversalofConsumptionbyMO_Bin"
           ]
         }
       ],
@@ -914,12 +944,48 @@
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
         },
+        "TargetLoadbyHUManPosAssiognment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "LoadbyHUManPosAssiognment",
+          "viewName": "LoadbyHUManPosAssiognment"
+        },
+
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
+        },
+        "TargetWHProcessingByBOL": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WHProcessingByBOL",
+          "viewName": "WHProcessingByBOL"
+      },
+        "TargetUnloadByHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadByHu",
+          "viewName": "UnloadByHu"
+        },
+        "TargetRoutePutawayHuClustered": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHuc",
+          "viewName": "PutawayByHuc"
+        },
+        "TargetReversalofConsumptionbyMO_Bin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReversalofConsumptionbyMO_Bin",
+          "viewName": "ReversalofConsumptionbyMO_Bin"
         }
       }
     },
