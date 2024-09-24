@@ -58,13 +58,25 @@ sap.ui.define(
                     this.onTilePressPutawayByWO(oEvent);
                 }
             },
+            // onTilePress: function (oEvent) {
+            //     var oPressedControl = oEvent.getSource(); // Source of the press
+            //     // If the pressed control is the button inside the tile
+            //     if (oPressedControl instanceof sap.m.Button) {
+            //         oEvent.stopPropagation();
+            //         this.onPaletteIconPress(oEvent);
+            //     } else {
+            //         // If the press is on the tile itself, handle navigation
+            //         this.onTilePressPutawayByWO(oEvent);
+            //     }
+            // },
 
             // Palette button press logic (this is triggered when the button is pressed)
             onPaletteIconPress: function (oEvent) {
+                debugger
                 // Open the theme dialog box
-                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
+                this._currentTileId = oEvent.getSource().getId();
                 this.byId("themeTileDialog").open();
-                oEvent.stopPropagation();
+               
             },
             onAfterRendering: function () {
                 debugger
@@ -118,6 +130,7 @@ sap.ui.define(
                 this.byId("themeTileDialog").open();
             },
             onApplyColor: function () {
+                debugger
                 var oView = this.getView();
                 var oColorPicker = oView.byId("colorPicker");
                 var sColorPickerValue = oColorPicker.getColorString();
@@ -184,6 +197,7 @@ sap.ui.define(
                 this.byId("colorPicker").setVisible(!oSelectedCheckBox.getSelected());
             },
             applyThemeColor: function (sColor) {
+                debugger
                 var aElements = [
                     this.byId("toolPage"),
                     this.byId("idSideNavigation"),
@@ -215,6 +229,7 @@ sap.ui.define(
                 localStorage.setItem("themeColor", sColor);
             },
             applyColorToTile: function (sTileId, sColor) {
+                debugger
                 var oTile = this.byId(sTileId);
 
                 if (!oTile) return; // If tile doesn't exist, return early

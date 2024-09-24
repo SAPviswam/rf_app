@@ -33,7 +33,7 @@
                         />
                         <Title
                             id="initialscreentitle"
-                            text="CAPModel RF"
+                            text="CAPmodel RF"
                             class="capModelRFText sapUiSmallMarginBottom"
                         />
                     </HBox>
