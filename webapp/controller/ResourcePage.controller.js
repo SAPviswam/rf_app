@@ -455,6 +455,10 @@ sap.ui.define([
                 oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
 
             },
+            onLoadByHUManPosAssigmentPress: function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
+            }
 
         });
     });

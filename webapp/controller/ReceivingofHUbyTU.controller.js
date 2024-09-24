@@ -12,12 +12,12 @@ sap.ui.define([
 
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-        
-              },
-              onResourceDetailsLoad: async function (oEvent1) {
+
+            },
+            onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
-              },
+            },
 
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInputReceivingHubyTU").getValue() == "800020") {
@@ -97,36 +97,36 @@ sap.ui.define([
                 this.getView().byId("idRCHUbyTUscrollContainer6ReceivingOfHubyTu").setVisible(true);
             },
             Onpressbackbol1ReceivingHubyTU: async function () {
-        var oRouter = this.getOwnerComponent().getRouter();
+                var oRouter = this.getOwnerComponent().getRouter();
 
-        var oModel1 = this.getOwnerComponent().getModel();
+                var oModel1 = this.getOwnerComponent().getModel();
 
-        await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
 
-          success: function (oData) {
+                    success: function (oData) {
 
-            let oUser=oData.Users.toLowerCase()
-            if (oUser === "resource") {
+                        let oUser = oData.Users.toLowerCase()
+                        if (oUser === "resource") {
 
-              oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID });
 
-            }
+                        }
 
-            else {
+                        else {
 
-              oRouter.navTo("Supervisor", { id: this.ID });
-            }
+                            oRouter.navTo("Supervisor", { id: this.ID });
+                        }
 
-          }.bind(this),
+                    }.bind(this),
 
-          error: function () {
+                    error: function () {
 
-            MessageToast.show("User does not exist");
+                        MessageToast.show("User does not exist");
 
-          }
+                    }
 
-        });
-      },
+                });
+            },
 
         });
     });

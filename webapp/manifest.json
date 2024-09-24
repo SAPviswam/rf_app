@@ -429,14 +429,20 @@
           ]
         },
         {
+          "name": "LoadbyHUManPosAssiognment",
+          "pattern": "LoadbyHUManPosAssiognment/{id}",
+          "target": [
+            "TargetLoadbyHUManPosAssiognment"
+          ]
+        },
+        {
           "name": "ManuallyRepackHU",
           "pattern": "ManuallyRepackHU/{id}",
           "target": [
             "TargetManuallyRepackHU"
-    ]
-},
-{
-
+          ]
+        },
+        {
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -448,10 +454,9 @@
           "pattern": "CreatePutawayHusManually/{id}",
           "target": [
             "TargetCreatePutawayHusManually"
-    ]
-},
-{
-
+          ]
+        },
+        {
           "name": "ProductInspectionByHU",
           "pattern": "ProductInspectionByHU/{id}",
           "target": [
@@ -823,6 +828,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetLoadbyHUManPosAssiognment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "LoadbyHUManPosAssiognment",
+          "viewName": "LoadbyHUManPosAssiognment"
         }
       },
       "sap.cloud": {
