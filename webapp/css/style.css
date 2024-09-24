@@ -130,6 +130,10 @@
     font-size: 1em !important; /* Optional: adjust font size */
     margin-left: 30px !important;
 }
+.capModelRFTextdialog {
+     color: #ed731dd2 !important;
+     margin-left: 45px !important;
+}
 .button{
     margin-left:20% !important;
 }
@@ -139,7 +143,24 @@
 .button2{
     margin-left:60% !important;
 }
+.sapMDialog {
+    color: white; /* Set text color for better visibility */
+}
 
+.buttonContainer {
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-color: black !important; /* Set button border color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+    padding: 8px 16px; /* Optional: Add padding for better button size */
+    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
 .Inputs {
     width: 100%
 }
