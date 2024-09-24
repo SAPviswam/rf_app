@@ -973,13 +973,6 @@
           "viewId": "UnloadByHu",
           "viewName": "UnloadByHu"
         },
-        "TargetRoutePutawayHuClustered": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "PutawayByHuc",
-          "viewName": "PutawayByHuc"
-        },
         "TargetReversalofConsumptionbyMO_Bin": {
           "viewType": "XML",
           "transition": "slide",

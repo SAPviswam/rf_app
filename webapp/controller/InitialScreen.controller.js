@@ -242,6 +242,7 @@ sap.ui.define([
             this.sdedescription = oButton.mProperties.text;
         },
         handleAddPress: function () {
+            debugger
             this.handleLinksapPress();
         },
         handleEditPress: function () {

@@ -192,7 +192,7 @@
                     <CheckBox
                         id='idCheckboxDescription'
                         text='Description as System ID/Client'
-                        class="checkBoxText
+                        class="checkBoxText"
                     />
                 </HBox>
             </form:SimpleForm>
