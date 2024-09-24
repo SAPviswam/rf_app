@@ -117,6 +117,7 @@
                             />
                             <!-- Input Field -->
                             <Input id="idinputhusovqhu"
+                            width="200px"
                                 class="sapUiTinyMarginBegin"
                                 liveChange="onHUInputChange"
                             />
@@ -481,7 +482,7 @@
                           <Input ></Input>
                         </HBox>
                          <HBox 
-                         alignContent="Center"
+                                alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
                                 width="100%"
@@ -507,9 +508,13 @@
                                 class="sapUiSmallMarginBottom">
                         
                         <Label text="MaxW"></Label>
-                        <Input ></Input>
+                          <VBox width="1%"></VBox>
+                        <Input width="1%"></Input>
+                         <Label  width="3%" ></Label>
                         <Label text="MaxV"></Label>
-                          <Input ></Input>
+                        <Label  width="1%" ></Label>
+                          <Input width="1%"></Input>
+                            <Label  width="3%" ></Label>
                         </HBox>
                         <HBox 
                          alignContent="Center"
@@ -519,15 +524,23 @@
                                 class="sapUiSmallMarginBottom">
                         
                         <Label text="TarW"></Label>
-                        <Input ></Input>
+                          <VBox width="2%"></VBox>
+                        <Input width="1%"></Input>
+                          <Label  width="3%" ></Label>
                         <Label text="TarV"></Label>
-                          <Input ></Input>
+                          <Input width="1%"></Input>
+                            <Label  width="3%" ></Label>
                         </HBox>
                         <HBox >
+                            <Label id="er"   width="5%" ></Label>
                             <Input ></Input>
+                              <Label  width="3%" ></Label>
                              <Input ></Input>
+                               <Label  width="1%" ></Label>
                               <Input ></Input>
+                              <Label  width="1%" ></Label>
                                <Input ></Input>
+                               <Label  width="3%" ></Label>
                         </HBox>
                          <HBox alignContent="Center"
                                 alignItems="Center"
@@ -554,7 +567,8 @@
                         <Label text="Bin"></Label>
                         <Input ></Input>
                         <Label text="CGrp"></Label>
-                          <Input ></Input>
+                         <Input width="2%" ></Input>
+                          <Label Width="3%"></Label> 
                         </HBox>
                          </VBox>
                     </f:SimpleForm>
@@ -598,8 +612,10 @@
                                 class="sapUiSmallMarginBottom">
 
             <Label text="Pro"></Label>
-            <Input ></Input>
-            <Input ></Input>
+             
+            <Input width="150px" ></Input>
+            <Label width="20px"></Label> 
+            <Input width="70px" ></Input>
 
                                 </HBox>
  <HBox 
@@ -609,8 +625,8 @@
                                 width="100%"
                                 class="sapUiSmallMarginBottom">
 
-           
-            <Input ></Input>
+             <Label width="20px"></Label> 
+            <Input width="250px"></Input>
 
                                 </HBox>
                                  <HBox 
@@ -620,10 +636,12 @@
                                 width="100%"
                                 class="sapUiSmallMarginBottom">
 
-            <Label text="Styo"></Label>
-            <Input ></Input>
+            <Label text="Styp"></Label>
+            <Input width="70px" ></Input>
+              <Label width="20px"></Label> 
             <Label text="Bin"></Label>
-            <Input ></Input>
+              <Label width="20px"></Label> 
+            <Input  width="120px"></Input>
 
                                 </HBox>
  <HBox 
@@ -634,8 +652,9 @@
                                 class="sapUiSmallMarginBottom">
 
             <Label text="Aqty"></Label>
-            <Input ></Input>
-            <Input ></Input>
+             <Input width="70px" ></Input>
+              <Label width="60px"></Label> 
+            <Input  width="20px" ></Input>
 
                                 </HBox>
                                 <HBox 
@@ -646,10 +665,11 @@
                                 class="sapUiSmallMarginBottom">
 
             <Label text="Btch"></Label>
-            <Input ></Input>
-             <Input ></Input>
+           <Input width="70px" ></Input>
+            <Label width="60px"></Label> 
+            <Input  width="40px" ></Input>
             <Label text="Styp"></Label>
-            <Input ></Input>
+            <Input  width="50px"></Input>
 
                                 </HBox>
                                  <HBox 
@@ -660,9 +680,11 @@
                                 class="sapUiSmallMarginBottom">
 
             <Label text="Ownr"></Label>
-            <Input ></Input>
+            <Input width="70px" ></Input>
+             <Label width="10px"></Label> 
             <Label text="Pent"></Label>
-            <Input ></Input>
+              <Label width="20px"></Label> 
+        <Input  width="70px"></Input>
 
                                 </HBox>
                                 <HBox 
@@ -673,10 +695,11 @@
                                 class="sapUiSmallMarginBottom">
 
            
-            <Input ></Input>
-           
-            <Input ></Input>
-            <Input ></Input>
+            <Input width="70px" ></Input>
+             <Label width="60px" ></Label>
+            <Input width="20px"></Input>
+                <Label width="30px"></Label> 
+            <Input width="20px"></Input>
 
                                 </HBox>
  </VBox>

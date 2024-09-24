@@ -499,7 +499,7 @@
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxWLabel"
+                                id="idSBQMaxWLabel"             `   `
                                 text="MaxW"
                                 width="90Px"
                             />

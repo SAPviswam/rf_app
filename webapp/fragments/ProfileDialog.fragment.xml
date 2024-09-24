@@ -8,7 +8,7 @@
         verticalScrolling="false"
         horizontalScrolling="false"
         class="sapUiResponsivePadding"
-        contentWidth="200px" 
+        contentWidth="200px"
         title="My Profile"
     >
         <!-- Content of the Profile Popover -->
@@ -16,49 +16,43 @@
             id="idProfileVBox"
             alignItems="Center"
             justifyContent="Center"
-           
         >
             <!-- Profile Section -->
             <VBox
                 id="idProfileInfoVBox"
                 alignItems="Center"
-               
             >
                 <!-- Avatar Icon -->
                 <Avatar
-                 id="idProfileAvatar"
-    displaySize="S"
-    initials="G"
-     tooltip="Profile"
-    style="margin-bottom: 5px;"
-/>
-                
+                    id="idProfileAvatar"
+                    displaySize="S"
+                    initials="G"
+                    tooltip="Profile"
+                    style="margin-bottom: 5px;"
+                />
+
                 <!-- User Details -->
                 <Text
                     id="idProfileName"
                     text="Gayathri"
-                    
                 />
                 <Text
                     id="idProfileNumber"
                     text="9234567811"
-                  
                 />
             </VBox>
-            
+
             <!-- Divider (optional for spacing control) -->
             <Label
                 id="idProfileDivider"
                 text=""
                 width="100%"
-               
             />
 
             <!-- Buttons: My Account and Logout -->
             <VBox
                 id="idProfileButtonVBox"
                 alignItems="Center"
-                
             >
                 <Button
                     id="idMyAccountButton"
@@ -71,7 +65,6 @@
                     text="Logout"
                     type="Transparent"
                     press="onLogoutPressed"
-                   
                 />
             </VBox>
         </VBox>
