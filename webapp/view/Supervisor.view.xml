@@ -1353,7 +1353,7 @@
                             id="IDGenGenericTile34"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Unload By HU"
-                            press="press"
+                            press="onUnloadByHUPress"
                         />
                     </ScrollContainer>
                     <ScrollContainer
