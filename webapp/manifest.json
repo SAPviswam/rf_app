@@ -239,6 +239,14 @@
             "TargetRecevingOfHUbyDelivery"
           ]
         },
+        
+        {
+          "name": "ReversalofConsumptionbyMObyHU",
+          "pattern": "ReversalofConsumptionbyMObyHU/{id}",
+          "target": [
+            "TargetReversalofConsumptionbyMObyHU"
+          ]
+        },
         {
           "name": "UnloadingByBillofLading",
           "pattern": "UnloadingByBillofLading/{id}",
@@ -667,6 +675,13 @@
           "clearControlAggregation": false,
           "viewId": "AutomaticallyRepackHUItem",
           "viewName": "AutomaticallyRepackHUItem"
+        },
+        "TargetReversalofConsumptionbyMObyHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReversalofConsumptionbyMObyHU",
+          "viewName": "ReversalofConsumptionbyMObyHU"
         },
         "TargetBillofLading": {
           "viewType": "XML",

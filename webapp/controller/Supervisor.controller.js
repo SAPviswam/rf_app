@@ -1664,6 +1664,10 @@ sap.ui.define(
                 oRoute.navTo("ChangeResourceGroup", { id: this.ID })
  
             },
+            OnReversalofConsumptionbyMObyHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
+            },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
