@@ -11,7 +11,7 @@
         class="boxContainer"
     >
         <customHeader>
-            <Bar id="_IDBar1coonectsap">
+            <Bar id="_IDBar1coonectsap" class="TitlecustomHeader">
                 <contentMiddle>
                     <!-- Logo -->
                     <Image
@@ -31,6 +31,16 @@
             </Bar>
         </customHeader>
         <content>
+                    <VBox class="titleContainer"> <!-- Add VBox to wrap the title with border -->
+                <HBox class="titleHeaderBox">
+                    <Title
+                        id="idSimpleFormTitle"
+                        text="System Connection Parameters"
+                        level="H2"
+                        class="customHeader_SSC titleWithBorder" 
+                    />
+                </HBox>
+            </VBox>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm"
                 editable="true"
@@ -47,12 +57,12 @@
                 columnsL="2"
                 columnsM="1"
             >
-                <Title
+                <!-- <Title
                     id="idSimpleFormTitle"
                     text="System Connection Parameters"
                     level="H2"
                     class="sapUiSmallMarginBottom"
-                />
+                /> -->
                 <!-- Description -->
                 <HBox id="hboxDescription">
                     <Label
@@ -174,11 +184,12 @@
                 <!-- Checkboxes for Description, System ID, and Client -->
                 <HBox
                     id="hboxCheckboxes"
-                    class='sapUiSmallMarginTop'
+                    class='sapUiSmallMarginTop Checkbox'
                 >
                     <CheckBox
                         id='idCheckboxDescription'
                         text='Description as System ID/Client'
+                        class="checkBoxText"
                     />
                 </HBox>
             </form:SimpleForm>
