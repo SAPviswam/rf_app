@@ -1646,7 +1646,7 @@ sap.ui.define(
             },
             onChangeResourceGroupTilePress: function () {
                 const oRoute = this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup")
+                oRoute.navTo("ChangeResourceGroup", { id: this.ID })
  
             },
             onUnloadingByBillofLadingPress: function () {
@@ -1684,7 +1684,7 @@ sap.ui.define(
                 oRouter.navTo("UnloadingByShipment",{id:this.ID});
 
             },
-            onUnloadingByTUPress: function () {
+            onPressManuallyRepackHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackHU",{id:this.ID});
             
@@ -1720,10 +1720,7 @@ sap.ui.define(
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
- 
                 oRouter.navTo("AdhocProductWt", { id: this.ID });
- 
-
             },
 
             OnPressUnloadByDelivery: function () {
@@ -1750,15 +1747,15 @@ sap.ui.define(
             },
             onReceivingofHUbyConsignementOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-  oRouter.navTo("Receivingofhubyco", { id: this.ID });
-
-
+                oRouter.navTo("Receivingofhubyco", { id: this.ID });
             },
-            onPressWTQuerybyQueue: function () {
+            OnPressWTQuerybyQueue: function () {
                 var oRouter = UIComponent.getRouterFor(this);
- 
                 oRouter.navTo("WTQueryByQueue", { id: this.ID });
- 
+            },
+            OnPressHUStockOverviewQuery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
             },
 
             onGetOTP: function () {
@@ -1920,7 +1917,7 @@ sap.ui.define(
 
             onReceivingofHUbyTU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU");
+                oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
             },
 
             onPressCreateShippingHU: function () {
