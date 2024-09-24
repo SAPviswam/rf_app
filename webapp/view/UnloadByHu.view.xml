@@ -1,0 +1,749 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.UnloadByHu"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageUnloadByHu">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderUnloadByHu_MHU">
+                <Button
+                    id="idUnloadByHufirstbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHufirstBackBtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idUnloadByHuSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHuSecondBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idUnloadByHuThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHuThirdBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idUnloadByHuFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHuFourthBackBtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idUnloadByHuFifthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHuFifthBackBtnPress"
+                    visible="false"
+                />
+                 <Button
+                    id="idUnloadByHuSixthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onUnloadByHuSIxthBackBtnPress"
+                    visible="false"
+                />
+
+                <Image
+                    id="_IDGenImage1UnloadByHu"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorUnloadByHu"
+                />
+                <ToolbarSpacer id="idToolbarSpacerUnloadByHu">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1UnloadByHu"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1UnloadByHu"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idScforFirstUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <VBox
+                    id="idvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="simpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idhboxUnloadByHu"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <!-- Scan HU Label -->
+                            <Label
+                                id="idlableUnloadByHuhu"
+                                text="HU :"
+                                class="ScanHumargin"
+                            />
+                            <!-- Input Field -->
+                            <Input
+                                id="idinputUnloadByHuhu"
+                                width="200px"
+                                class="sapUiTinyMarginBegin"
+                                liveChange="onHUInputChange"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idScforSecondUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idSecvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="SecsimpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <!-- Scan HU Label -->
+                                <Label
+                                    text="DstBin"
+                                    class="ScanHumargin"
+                                    width="100%"
+                                />
+                                <VBox width="5%" />
+                                <Input width="70px" />
+                                <Label width="20px" />
+                                <Input width="150px" />
+                                <Label width="20px" />
+                                <Input width="70px" />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="PSA" />
+                                <VBox width="8%" />
+                                <Input width="240px" />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="HU Pos" />
+                                <VBox width="4%" />
+                                <Input width="240px" />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="Srce HU" />
+                                <VBox width="3%" />
+                                <Input width="240px" />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <!-- Scan HU Label -->
+                                <Label text="Product" />
+                                <VBox width="4%" />
+                                <Input width="70px" />
+                                <Label width="20px" />
+                                <Input width="150px" />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="Pro Text" />
+                                <VBox width="4%" />
+                                <Input width="240px" />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="Batch" />
+                                <VBox width="7%" />
+                                <Input width="240px" />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="SpaceAround"
+                            >
+                                <Button
+                                    text="List for Hus"
+                                    press="onPressListForHus"
+                                />
+                                <Button
+                                    text="Transfer Order List"
+                                    press="onPressTOL"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="SpaceAround"
+                            >
+                                <Button
+                                    text="WO Details"
+                                    press="onPressWODetails"
+                                />
+                                <Button
+                                    text="Distribution Equipment Towing Vehicle"
+                                    press="onPressDETV"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="SpaceAround"
+                            >
+                                <Button
+                                    text="Skip Current Storage Bin"
+                                    press="onPressSkipCureentStorageBin"
+                                />
+                                <Button
+                                    text="Skip Current Warehouse Task"
+                                    press="onPressSkipCurrentWarehouseTask"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idScforThirdUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idThirdvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="ThirdsimpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="HU " />
+                              <VBox width="14%"></VBox>
+                                <Input width="200px" editable="false" />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="Final Bin " />
+                              <VBox width="3%"></VBox>
+                                <Input width="200px" editable="false"/>
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="Dest Bin " />
+                              <VBox width="3%"></VBox>
+                                <Input width="200px" />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idScforFourthUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idFourthvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="FourthsimpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                              <Input
+                            id="idInputScontainer3_1"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer1"
+                            width="10px"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer2"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_2"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer3"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_3"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+ 
+                    <Label id="idExtraInputLabel1_LBHUAPA1" />
+                    <HBox id="idHboxScontainer3Fourth">
+                        <Input
+                            id="idInputScontainer3_4"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer4"
+                            width="10px"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer5"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_5"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer6"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_6"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+ 
+                    <Label  />
+                    <HBox id="idHboxScontainer3Eight">
+                        <Input
+                            id="idInputScontainer3_7"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer7"
+                            width="10px"
+                        />
+                        <Label />
+                        <HBox
+                            id="idHboxScontainer3Spacer8"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_8"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer9"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_9"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+ 
+                    <Label id="idExtr1aInputLabel1_LBHUAPA1" />
+                    <HBox id="idHboxScontainer3OneTwo">
+                        <Input
+                            id="idInputScontainer3_10"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer10"
+                            width="10px"
+                        />
+                        <Label  />
+                        <HBox
+                            id="idHboxScontainer3Spacer11"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_11"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label />
+                        <HBox
+                            id="idHboxScontainer3Spacer12"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_12"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+ 
+                    <Label id="idExtr1aInputLabel1_LBHUAPA1r" />
+                    <HBox id="idHboxScontainer3Final">
+                        <Input
+                            id="idInputScontainer3_13"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer13"
+                            width="10px"
+                        />
+                        <Label id="asd1fg1125" />
+                        <HBox
+                            id="idHboxScontainer3Spacer14"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_14"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="asd1fg1124" />
+                        <HBox
+                            id="idHboxScontainer3Spacer15"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_15"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+ 
+                    <Label id="idExtr1aInputLabel1_LBHUAPA16" />
+                    <HBox id="idHboxScontainer3Penultimate">
+                        <Input
+                            id="idInputScontainer3_16"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer16"
+                            width="10px"
+                        />
+                        <Label id="asd1fg116" />
+                        <HBox
+                            id="idHboxScontainer3Spacer17"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_17"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="asd1fg1126" />
+                        <HBox
+                            id="idHboxScontainer3Spacer18"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_18"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+                <ScrollContainer
+                id="idScforFifthUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idFifthvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="FifthsimpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                               <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+
+                            <Input editable="false" ></Input>
+                            <VBox width="5%"></VBox>
+                             <Input editable="false"></Input>
+                             </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idScforSixthUnloadByHu"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idSixthvboxUnloadByHu"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="SixthsimpleFormUnloadByHu"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="TopHUs"></Label>
+                                 <VBox width="5%"></VBox>
+                                <Input width="30%"></Input>
+                             </HBox>
+                             <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="open WTs"></Label>
+                                 <VBox width="2%"></VBox>
+                                <Input width="30%"></Input>
+                             </HBox>
+                             <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="WO Unld"></Label>
+                                <VBox width="3%"></VBox>
+                                <Input width="30%"></Input>
+                                <VBox width="3%"></VBox>
+                                 <Input width="80%"></Input>
+                             </HBox>
+                             <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label text="A. Srce"></Label>
+                                 <VBox width="6%"></VBox>
+                                <Input width="50%"></Input>
+                             </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

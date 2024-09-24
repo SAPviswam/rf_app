@@ -433,9 +433,6 @@
                             />
                             <Label
                                 text=""
-
-                                width="20px"
-
                                 width="30px"
 
                             />
@@ -462,9 +459,6 @@
                             />
                              <Label
                                 text=""
-
-                                width="20px"
-
                                 width="30px"
 
                             />
@@ -490,9 +484,6 @@
                             />
                              <Label
                                 text=""
-
-                                width="20px"
-
                                 width="30px"
 
                             />
@@ -508,7 +499,7 @@
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxWLabel"
+                                id="idSBQMaxWLabel"             `   `
                                 text="MaxW"
                                 width="90Px"
                             />
@@ -520,9 +511,6 @@
                             <Text text="KG"/>
                              <Label
                                 text=""
-
-                                width="20px"
-
                                 width="30px"
 
                             />
@@ -549,9 +537,6 @@
                             <Text text="M3"/>
                              <Label
                                 text=""
-
-                                width="20px"
-
                                 width="30px"
 
                             />

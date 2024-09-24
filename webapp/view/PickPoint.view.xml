@@ -1,0 +1,2555 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.PickPoint"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPagePP">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderPP">
+                <Button
+                    id="idFirstPPbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onFirstPPbackbtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idPPSecondbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPSecondbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPThirdbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPThirdbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPFourthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPFifthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPFiftthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPSixthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPSixthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPSeventhbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPSeventhbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPEigthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPEigthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPNinthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPNinthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPTenthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPTenthbackbtnPress"
+                    visible="false"
+                />
+                 <Button
+                    id="idPPEleventhbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPEleventhbackbtnPress"
+                    visible="false"
+                />
+                 <Button
+                    id="idPPTwelthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPTwelthbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idPPThirteenbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onPPThirteenbackbtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="_IDGenImage1PP"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPP"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPP">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PP"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1PP"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idFirstPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <Title text="Pick Point" />
+                        <VBox class="sapUiTinyMarginBottom" />
+                        <HBox
+                            id="idfirstPPPage1"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="idWorkCenterLabel"
+                                text="Work Center"
+                                width="100px"
+                            />
+                            <Input
+                                id="idWorkCebnterInput"
+                                value=""
+                                liveChange="onWorkCenterLiveChange"
+                            />
+                            <Button
+                                id="idWorkCenterScannerBtn"
+                                icon="sap-icon://bar-code"
+                                press="onPPBarcodeScanner"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idSecondHUPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <VBox class="sapUiTinyMarginBottom" />
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="idHUPPLabel"
+                                text="HU"
+                                width="70px"
+                            />
+                            <Input
+                                id="idHUPPInput"
+                                value=""
+                                liveChange="onHUPPLiveChange"
+                            />
+                            <Button
+                                id="idHUPPScannerBtn"
+                                icon="sap-icon://bar-code"
+                                press="onHUPPBarcodeScanner"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idThirdPPPage"
+                horizontal="true"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPSrcHULabel"
+                                    text="Source HU"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPSrcHuInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPToWTLabel"
+                                    text="Total weight"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPToWTInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPProductLabel"
+                                    text="Product"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPProductInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPHuWHLabel"
+                                    text="HuWH"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPHuWHInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPInput1"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPInput2"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPInput3"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPInput4"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPCnsGrpLabel"
+                                    text="Cns Grp"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPCnsGrpInput1"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPCnsGrpInput2"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPCnsGrpInput3"
+                                    value=""
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPCnsGrpInput4"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPSnLabel"
+                                    text="Sn"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPSnInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPDestHuLabel"
+                                    text="Dest Hu"
+                                />
+                                <Input
+                                    id="idPPDestHuInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idAvlQtyInput1"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPAQtyLabel"
+                                    text="AQty"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPAQtyInput2"
+                                    value=""
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPAQtyInput3"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idRmnQtyInput1"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPRmnQtyLabel"
+                                    text="Rmn Qty"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPRmnQtyInput2"
+                                    value=""
+                                    editable="false"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPRmnQtyInput3"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                    width="100%"
+                                >
+                                    <Button
+                                        id="idPPWLSbtn"
+                                        text="WorkLoad Screen"
+                                        width="100%"
+                                        press="onPPWorkloadScrPress"
+                                    />
+                                    <VBox width="10px" />
+                                    <!-- Spacer -->
+                                    <Button
+                                        id="idPPHuWLbtn"
+                                        text="Hu Withdrawl"
+                                        width="100%"
+                                    />
+                                    <VBox width="10px" />
+                                    <!-- Spacer -->
+                                    <Button
+                                        id="idPPPtlLbtn"
+                                        text="Picking To List"
+                                        width="100%"
+                                        press="onppPtlBtnPress"
+                                    />
+                                </HBox>
+                            </VBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                    width="100%"
+                                >
+                                    <Button
+                                        id="idPPDetailScrnbtn"
+                                        text="Detail Screen"
+                                        press="onPPDetailScrnBtnPress"
+                                        width="100%"
+                                    />
+                                    <VBox width="10px" />
+                                    <!-- Spacer -->
+                                    <Button
+                                        id="idPPHuCreatebtn"
+                                        text="Hu Create"
+                                        width="100%"
+                                        press="onPPHuCreateBtnPress"
+                                    />
+                                    <VBox width="10px" />
+                                    <!-- Spacer -->
+                                    <Button
+                                        id="idPPPSeNoLocbtn"
+                                        text="Serial No Location"
+                                        press="onPPSerialNoLocBtnPress"
+                                        width="100%"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idFourthPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+                
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPConsGrpLabel"
+                                    text="Cons Grp"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPConsGrpInput"
+                                    value=""
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPWaveLabel"
+                                    text="Wave"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPWaveInput"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPOpenWTLabel"
+                                    text="OpenWT"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPOpenWTInput"
+                                    value=""
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPOpenDItmLabel"
+                                    text="Open DItm"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPOpenDItmInput"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPOpenWgLabel"
+                                    text="OpenWg"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPOpenWgInput"
+                                    value=""
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+
+                                <Input
+                                    id="idPPOpenWgInput1"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+                           
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPOpenVolLabel"
+                                    text="OpenVol"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPOpenVolInput"
+                                    value=""
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+
+                                <Input
+                                    id="idPPOpenVolInput1"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPLengthLabel"
+                                    text="Length"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPLengthInput"
+                                    value=""
+                                   
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+
+                                <Input
+                                    id="idPPLengthInput1"
+                                    value=""
+                                     width="80px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPWidthLabel"
+                                    text="Width"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPWidthInput"
+                                    value=""
+                                />
+                                </HBox>
+
+                                <HBox alignContent="Center" alignItems="Center" width="100%">
+                               
+                                <Label
+                                    id="idPPHeightLabel"
+                                    text="Height"
+                                />
+                                <VBox width="10px" />
+                               
+                                <Input
+                                    id="idPPHeightInput"
+                                    value=""
+                                />
+                            </HBox>
+                             <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idEnterButton"
+                                    text="Enter"
+                                    press="onEnterBtnPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+           <ScrollContainer
+                id="idFifthPPPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPDestHuLabel1"
+                                    text="Dest Hu"
+                                />
+                                <VBox width="10px" />
+                               
+                                <Input
+                                    id="idPPDestHuInput1"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPPackMatLabel"
+                                    text="Pack.Mat"
+                                />
+                                <VBox width="10px" />
+                               
+                                <Input
+                                    id="idPPPackMatInput"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPDestBinLabel"
+                                    text="Dest.Bin"
+                                />
+                                <VBox width="10px" />
+                               
+                                <Input
+                                    id="idPPDestBinInput"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPConsGrpLabel1"
+                                    text="Cons.Grp"
+                                />
+                                <VBox width="10px" />
+                              
+                                <Input
+                                    id="idPPConsGrpInput1"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                    width="100%"
+                                >
+                                    <Button
+                                        id="idPPHUCrtSaveBtn"
+                                        text="Save"
+                                        press="onPPHuCrtSaveBtnPress"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer> 
+
+            <ScrollContainer
+                id="idPPSixthPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPWOLabel"
+                                    text="WO"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPWOInput"
+                                    value=""
+                                    width="80PX"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPWTLabel"
+                                    text="WT"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPWTInput"
+                                    value=""
+                                     width="80PX"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput1"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput2"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput3"
+                                    value=""
+                                     width="80PX"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput4"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput5"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput6"
+                                    value=""
+                                     width="60PX"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput7"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput8"
+                                    value=""
+                                     width="80PX"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput9"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput10"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput11"
+                                    value=""
+                                     width="60PX"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput12"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput13"
+                                    value=""
+                                     width="80PX"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput14"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput15"
+                                    value=""
+                                     width="80PX"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput16"
+                                    value=""
+                                     width="80PX"
+                                />
+                            </HBox>
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                    width="100%"
+                                >
+                                    <Button
+                                        id="idppCurEntEndBtn"
+                                        text="Current Entry At End"
+                                        press="onppCurEntEndBtnPress"
+                                    />
+                                    <VBox width="10px" />
+                                    <!-- Spacer -->
+
+                                    <Button
+                                        id="idppTransOrdBtn"
+                                        text="Transfer Order"
+                                        press="onTransOrdPress"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idPPSeventhPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idPPWOLabel1"
+                                    text="WO"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPWOInput1"
+                                    value=""
+                                    width="80px"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPPWTLabel1"
+                                    text="WT"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPWTInput1"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput71"
+                                    value=""
+                                    width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput72"
+                                    value=""
+                                  
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idGWPrLabel"
+                                    text="GWPr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idGWPrInput"
+                                    value=""
+                                    width="80px"
+                                />
+                                 <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idGWPrInput1"
+                                    value=""
+                                    width="50px"
+                                />
+                                <VBox width="20px" />
+
+                                <Label
+                                    id="idBtchLabel"
+                                    text="Btch"
+                                />
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idBtchInput"
+                                    value=""
+                                    width="80px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idGVPrLabel"
+                                    text="GVPr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idGVPrInput"
+                                    value=""
+                                    width="80px"
+                                />
+                                <VBox width="10px" />
+                                <Input
+                                    id="idGVPrInput1"
+                                    value=""
+                                       width="50px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput73"
+                                    value=""
+                                      width="80px"
+                                    
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput74"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput75"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idStypLabel"
+                                    text="Styp"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idStypInput"
+                                    value=""
+                                    width="50px"
+                                />
+                                <VBox width="10px" />
+                                <Input
+                                    id="idStypInput1"
+                                    value=""
+                                     width="80px"
+                                />
+                                 <VBox width="10px" />
+                                <Input
+                                    id="idStypInput2"
+                                    value=""
+                                     width="50px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idPPPtlInput76"
+                                    value=""
+                                      width="70px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput77"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPPPtlInput78"
+                                    value=""
+                                      width="50px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idOWNrLabel1"
+                                    text="Ownr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idOwnrInput1"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idPEntLabel1"
+                                    text="WT"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idPEntInput1"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idPPEigthPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idProLabel1"
+                                    text="Pro"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idProInput1"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idSNLabel1"
+                                    text="SN"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNInput1"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idSncrLabel"
+                                    text="SNCr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput1"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idSncrInput81"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="40px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput82"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idSncrInput83"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="40px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput84"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput85"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="40px" />
+                                <Input
+                                    id="idInput86"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput87"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="40px" />
+                                <Input
+                                    id="idInput88"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput89"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="40px" />
+                                <Input
+                                    id="idInput810"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idPPSetRangeBtn"
+                                    text="Set Range"
+                                    press="onSetRangeBtnPress"
+                                />
+                                <VBox width="10px" />
+                                <Button
+                                    id="idPPSaveBtn"
+                                    text="Save"
+                                    press="onSaveBtnPress"
+                                />
+                                <VBox width="10px" />
+                                <Button
+                                    id="idSnSelByListBtn"
+                                    text="SN Selection By List"
+                                    press="onSnSelByListBtnPress"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idAutomaticSerNoBtn"
+                                    text="Automatic Serial No"
+                                    press="onAutomaticSerNoBtnPress"
+                                />
+                                <VBox width="10px" />
+                                <Button
+                                    id="idDeleteSerialNoBtn"
+                                    text="Delete Serial No"
+                                    press="onDeleteSerialNoBtnPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idPPNinthPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idProLabel"
+                                    text="Pro"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idProInput"
+                                    value=""
+                                      width="80px"
+                                />
+                            </HBox>
+
+                            <VBox height="10px" />
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idSncrLabel9"
+                                    text="SNCr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput91"
+                                    value=""
+                                      width="50px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput92"
+                                    value=""
+                                      width="80px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput93"
+                                    value=""
+                                      width="50px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idFromLabel"
+                                    text="From"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idFromInput"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <!-- Spacer between rows -->
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idToLabel"
+                                    text="To"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idToInput"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput91"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput92"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput93"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput94"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSaveBtn9"
+                                    text="Save"
+                                    press="onSave9BtnPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idPPTenthPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idProLabel10"
+                                    text="Pro"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idProInput10"
+                                    value=""
+                                      width="90px"
+                                />
+
+                                <VBox width="10px" />
+                                <!-- Spacer between rows -->
+
+                                <Label
+                                    id="idSncrLabel10"
+                                    text="SNCr"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput101"
+                                    value=""
+                                     width="50px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idSNcrInput102"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput103"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput104"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput105"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput106"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput107"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput108"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput109"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput1010"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput1011"
+                                    value=""
+                                     width="90px"
+
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput1012"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput1013"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="25px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput1014"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="20px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput1015"
+                                    value=""
+                                     width="50px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSave11"
+                                    text="Save"
+                                    press="onSave11Press"
+                                />
+
+                                 <Button
+                                    id="idEnter1"
+                                    text="Enter"
+                                    press="onEnter1Press"
+                                />
+                            </HBox>
+                           
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idPPEleventhPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput111"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput112"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput113"
+                                    value=""
+                                    width="80px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Label
+                                    id="idOpQt"
+                                    text="OpQt"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idInput114"
+                                    value=""
+                                     width="80px"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idInput115"
+                                    value=""
+                                     width="80px"
+                                />
+                            </HBox>
+<HBox width="100%" alignItems="Center">
+                    <Label id="idSubHuLabel" text="SubHU" />
+                    <VBox width="30px" />
+                    <Label id="idW" text="W" />
+                    <VBox width="20px" />
+                    <Label id="idAqty" text="Aqty" />
+                    <VBox width="30px" />
+                    <Label id="idExc" text="Exc" />
+                </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput116"
+                                    value=""
+                                     width="80px"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput117"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput118"
+                                    value=""
+                                     width="80px"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput119"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Input
+                                    id="idInput1110"
+                                    value=""
+                                     width="80px"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput1111"
+                                    value=""
+                                />
+                            </HBox>
+
+                            
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                               
+                            >
+                                <Button
+                                    id="idsaveBtn"
+                                    text="Save"
+                                    press="onSaveBtnPress"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                              <Button
+                                    id="idChangeQuantityBtn"
+                                    text="Change Quantity"
+                                    press="onChangeQuantityPress"
+                                />
+                               
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idDeleteHU"
+                                    text="Delete HU"
+                                    press="onDeleteHUPress"
+                                />
+                                 <VBox width="15px" />
+                                  <Button
+                                    id="idHUWithdrawl"
+                                    text="HU Withdrawl"
+                                    press="onHuWithdrawlPress"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idPPTwelvethPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                            <Label id="idProdLabel" text="Product"/>
+                             <VBox width="10px" />
+
+                                <Input
+                                    id="idProductInp1"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idProductInp2"
+                                    value=""
+                                     width="90px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idBatchLabel"
+                                    text="Batch"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idBatchInput"
+                                    value=""
+                                     width="90px"
+                                />
+                                   <VBox width="10px" />
+                                <Label
+                                    id="idStyp1Label"
+                                    text="Styp"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idStyp1Input"
+                                    value=""
+                                     width="90px"
+                                /> 
+                            </HBox>
+
+                            <HBox>
+                                <Input
+                                    id="idInput121"
+                                    value=""
+                                     width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput122"
+                                    value=""
+                                     width="90px"
+                                />
+                                  <VBox width="10px" />
+                                   <Input
+                                    id="idInput123"
+                                    value=""
+                                     width="90px"
+                                />
+
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                            <Label id="idTgtQty" text="TgtQty"/>
+                            <VBox width="10px"></VBox>
+                                <Input
+                                    id="idInput124"
+                                    value="" width="90px"
+
+                                />
+                                <VBox width="10px"></VBox>
+                                <Input
+                                    id="idInput125"
+                                    value=""  width="90px"
+                                />
+                                <VBox width="10px"></VBox>
+                                <Label id="idSN" text="SN"/>
+                            <VBox width="10px"></VBox>
+                                <Input
+                                    id="idSnInput"
+                                    value=""  width="90px"
+                                />
+                                
+
+                            </HBox>
+
+                           
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                               <Label id="idActQtyLabel" text="ActQty"></Label>
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idActQtyInput"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label id="idDifQtyLabel" text="DifQty"></Label>
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idDifQtyInput"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                               
+                            >
+                                <Button
+                                    id="idsaveBtn12"
+                                    text="Save"
+                                    press="onSaveBtn12Press"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                              <Button
+                                    id="idSerialNoColBtn"
+                                    text="Serial No Collection"
+                                    press="onserNoColBtnPress"
+                                />
+                                 <VBox width="15px" />
+                                <!-- Spacer -->
+                              <Button
+                                    id="idEnter3"
+                                    text="Enter"
+                                    press="onEnterPress3"
+                                />
+                        
+                            </HBox>
+
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+              <ScrollContainer
+                id="idPPThirteenPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+                width="100%"
+            >
+                <VBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                >
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsS="1"
+                        width="100%"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                            <Label id="idProdLabel13" text="Product"/>
+                             <VBox width="10px" />
+
+                                <Input
+                                    id="idProductInp13"
+                                    value=""  width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idProductInp213"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+                            <VBox height="10px" />
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label
+                                    id="idBatchLabel13"
+                                    text="Batch"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idBatchInput13"
+                                    value=""  width="90px"
+                                />
+                                   <VBox width="10px" />
+                                <Label
+                                    id="idStyp1Label13"
+                                    text="Styp"
+                                />
+
+                                <VBox width="10px" />
+
+                                <Input
+                                    id="idStyp1Input13"
+                                    value=""  width="90px"
+                                /> 
+                            </HBox>
+
+                            <HBox>
+                                <Input
+                                    id="idInput131"
+                                    value=""  width="90px"
+                                />
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idInput132"
+                                    value=""  width="90px"
+                                />
+                                  <VBox width="10px" />
+                                   <Input
+                                    id="idInput133"
+                                    value=""  width="90px"
+                                />
+
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                            <Label id="idTgtQty13" text="TgtQty"/>
+                            <VBox width="10px"></VBox>
+                                <Input
+                                    id="idInput134"
+                                    value=""  width="90px"
+                                />
+                                <VBox width="10px"></VBox>
+                                <Input
+                                    id="idInput135"
+                                    value=""  width="90px"
+                                />
+                                <VBox width="10px"></VBox>
+                                <Label id="idSN13" text="SN"/>
+                            <VBox width="10px"></VBox>
+                                <Input
+                                    id="idSnInput13"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                               <Label id="idActQtyLabel13" text="ActQty"></Label>
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idActQtyInput13"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                width="100%"
+                            >
+                                <Label id="idDifQtyLabel13" text="DifQty"></Label>
+                                <VBox width="10px" />
+                                <!-- Spacer -->
+                                <Input
+                                    id="idDifQtyInput13"
+                                    value=""  width="90px"
+                                />
+                            </HBox>
+                            <HBox
+                                alignContent="Center"
+                                alignItems="Center"
+                               
+                            >
+                                <Button
+                                    id="idsaveBtn13"
+                                    text="Save"
+                                    press="onSaveBtn12Press"
+                                />
+                                <VBox width="15px" />
+                                <!-- Spacer -->
+                              <Button
+                                    id="idChangeBtn"
+                                    text="Change"
+                                    press="onChangeBtnPress"
+                                />
+                            </HBox>
+
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

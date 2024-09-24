@@ -71,11 +71,25 @@
                 />
                 <Button
                     id="themeButton"
-                    text="Theme"
+                    text="BackgroundTheme"
                     press="onOpenThemeDialog"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
+                    visible="false"
                 />
+                <Button
+                    id="themeButton3"
+                    text="Theme"
+                    press="onThemeButton"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                />
+                <Button 
+                id="CancelButton"
+                text="Cancel"
+                press="onCancel"
+                visible="false"
+                ></Button>
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -140,7 +154,7 @@
                 initialPage="pageSV1"
             >
                 <pages>
-                    <ScrollContainer
+                  <ScrollContainer
                         id="pageSV1"
                         horizontal="true"
                         vertical="true"
@@ -148,7 +162,7 @@
                         class="sapUiContent"
                     >
                         <!-- <ToolbarSpacer id="_IDGenToolbarSpacerArea" /> -->
-
+ 
                         <!-- <Button
                             id="idnewprocessArea"
                             text="NewProcessArea"
@@ -166,6 +180,300 @@
                                 type="Success"
                             /> -->
                         </FlexBox>
+ <VBox
+    id="idAssignslots"
+    class="sapUiSmallMargin boxContainer3"
+>
+    <Title
+        id="_IDHeadLabel"
+        text="Admin page"
+        class="sapUiSmallMarginTopHeading"
+    />
+
+    <!-- Employee ID Field -->
+    <FlexBox
+        id="_IDField1"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%" 
+    >
+        <Label
+            id="idempID"
+            text="Employee ID:"
+            labelFor="idEmppInput"
+            required="true"
+             
+        />
+        <Input
+            id="idEmppInput"
+            placeholder="Enter Employee ID"
+            class="Inputs"
+            liveChange="onEmployeeIdLiveChange"
+            width="65%" 
+        />
+    </FlexBox>
+
+    <!-- Name Field -->
+    <FlexBox
+        id="_IDField4"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <Label
+            id="idName"
+            text="Name:"
+            labelFor="idNameInput"
+            required="true"
+            
+        />
+        <Input
+            editable="true"
+            id="idNameInput"
+            placeholder="Enter Name"
+            class="Inputs"
+            width="65%"
+        />
+    </FlexBox>
+
+    <!-- Email Field -->
+    <FlexBox
+        id="_IDField3"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <Label
+            id="idEmail"
+            text="Email:"
+            labelFor="idEmailInput"
+           
+        />
+        <Input
+            editable="true"
+            id="idEmailInput"
+            placeholder="Enter Email"
+            class="Inputs"
+            width="65%"
+        />
+    </FlexBox>
+
+    <!-- Phone Field -->
+    <FlexBox
+        id="_IDField36"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <Label
+            id="idPhone"
+            text="Phone:"
+            labelFor="idPhoneInput"
+            required="true"
+           
+        />
+        <HBox id="_IDGenHBox9" justifyContent="SpaceBetween" alignItems="Center">
+            <Input
+                editable="true"
+                id="idPhoneInput"
+                placeholder="Enter Phone"
+                class="Inputs"
+                width="65%"
+            />
+            <core:Icon
+                id="verficationIdicon"
+                src="sap-icon://accept"
+                size="150%"
+                color="#008000"
+                visible="false"
+            />
+        </HBox>
+    </FlexBox>
+
+    <!-- OTP Field -->
+    <FlexBox
+        id="_IDField420"
+        justifyContent="End"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
+            <Input
+                id="idOtpInputsv"
+                placeholder="Enter OTP..."
+                visible="false"
+                valueLiveUpdate="true"
+                liveChange="onSubmitOtp"
+                width="100%"
+                editable="true"
+            />
+            <Button
+                id="getotpsv"
+                text="Get OTP"
+                press="onGetOTP"
+                type="Emphasized"
+                width="80px"
+                visible="false"
+            />
+        </HBox>
+    </FlexBox>
+
+    <!-- Resource Type Field -->
+    <FlexBox
+        id="_IDField345"
+        justifyContent="SpaceBetween"
+        alignItems="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <Label
+            id="idLableRoesurcetype"
+            text="Resource Type"
+            required="true"
+            
+        />
+        <ComboBox
+            id="idRoesurcetypeInput"
+            editable="true"
+            width="65%"
+        >
+            <core:Item
+                id="_IDGenItemPermanentEmployee"
+                key="PermanentEmployee"
+                text="Permanent Employee"
+            />
+            <core:Item
+                id="_IDGenItemtemporaryemployee"
+                key="temporaryemployee"
+                text="Contract Employee"
+            />
+        </ComboBox>
+    </FlexBox>
+
+    <!-- Process Area Field -->
+   <!-- Process Area Field -->
+<FlexBox
+    id="_IDField2"
+    justifyContent="SpaceBetween"
+    alignItems="Center"
+    class="sapUiSmallMarginTop"
+    width="100%"
+>
+    <Label
+        id="idAreaLabel"
+        text="Process Area:"
+        labelFor="idAreaInput"
+        required="true"
+        
+    />
+    <MultiComboBox
+        id="AreaSelect"
+        items="{path: '/ProcessAreaSet'}"
+        selectionChange="onCheckBoxSelect"
+        width="65%" 
+    >
+        <core:Item
+            class="dropdown"
+            id="_IDGenItem5"
+            key="{Processarea}"
+            text="{Processarea}"
+        />
+    </MultiComboBox>
+</FlexBox>
+
+<!-- Group Field -->
+<FlexBox
+    id="_IDField33"
+    justifyContent="SpaceBetween"
+    alignItems="Center"
+    class="sapUiSmallMarginTop"
+    width="100%"
+>
+    <Label
+        id="idGroup"
+        text="Group:"
+        labelFor="idGroupInput"
+        required="true"
+       
+    />
+    <MultiComboBox
+        id="GroupSelect"
+        items="{path: '/ProcessAreaSet'}"
+        visible="false"
+        selectionChange="onCheckBoxSelectGroup"
+        width="65%" 
+    >
+        <core:Item
+            class="dropdown"
+            id="_IDGenItem4"
+            key="{Processgroup}"
+            text="{Processgroup}"
+        />
+    </MultiComboBox>
+</FlexBox>
+
+<!-- Queue Field -->
+<FlexBox
+    id="_IDField34"
+    justifyContent="SpaceBetween"
+    alignItems="Center"
+    class="sapUiSmallMarginTop"
+    width="100%"
+>
+    <Label
+        id="idQueue"
+        text="Queue:"
+        labelFor="idQueueSelect"
+        required="true"
+       
+    />
+    <MultiComboBox
+        id="_IDGenComboBox10"
+        placeholder="Select Queue from Dropdown.."
+        class="Inputs"
+        items="{path: '/ProcessAreaSet'}"
+        visible="false"
+        selectionChange="onCheckBoxSelectQueue"
+        width="65%" 
+    >
+        <core:Item
+            class="dropdown"
+            id="_IDGenItem22"
+            key="{Queue}"
+            text="{Queue}"
+        />
+    </MultiComboBox>
+</FlexBox>
+
+    <!-- Approve Button -->
+    <FlexBox
+        id="_IDField6"
+        justifyContent="Center"
+        class="sapUiSmallMarginTop"
+        width="100%"
+    >
+        <Button
+            id="idButtonApprove"
+            text="Approve"
+            type="Unstyled"
+            press="onApprovePress"
+            class="SubmitBtnFromVendorPage"
+            width="auto"
+        />
+        <ToolbarSpacer
+            id="toolspacer"
+            width="10px"
+        />
+    </FlexBox>
+
+    <Label id="idEmptyRow" />
+</VBox>
+
 
                         <VBox
                             id="idAssignslots"
@@ -287,6 +595,41 @@
                                     />
                                 </HBox>
                             </FlexBox>
+                             <FlexBox
+                                id="_IDFlex21"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="iduserType"
+                                    text="User Type"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="userType"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem1"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem2"
+                                        key="SuperVisor"
+                                        text="Super Visor"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem3"
+                                        key="Manager"
+                                        text="Manager"
+                                    />
+                                </ComboBox>
+                            </FlexBox>
 
                             <FlexBox
                                 id="_IDField345"
@@ -400,36 +743,8 @@
                                 <!--  OUTBOUND  -->
                             </FlexBox>
 
-                            <FlexBox
-                                id="_IDField6"
-                                justifyContent="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Button
-                                    id="idButtonApprove"
-                                    text="Approve"
-                                    type="Unstyled"
-                                    press="onApprovePress"
-                                    class="SubmitBtnFromVendorPage"
-                                    width="auto"
-                                />
-                                <ToolbarSpacer
-                                    id="toolspacer"
-                                    width="10px"
-                                />
-                                <!-- <Button
-                                    id="idButtonReject"
-                                    text="Reject"
-                                    type="Reject"
-                                    press="onResetPress"
-                                    class="ClearBtnFromVendorPage"
-                                    width="auto"
-                                /> -->
-                            </FlexBox>
-                            <Label id="idEmptyRow" />
-                        </VBox>
-                    </ScrollContainer>
 
+                    </ScrollContainer>
                     <ScrollContainer
                         id="pageSV2"
                         horizontal="false"
@@ -908,7 +1223,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onPressHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMargin"
                         />
                     </ScrollContainer>
@@ -937,14 +1252,6 @@
                             press="onTilePress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent id="idTileContentPutaway">
-                                <Button
-                                    id="idBtnPutawayByWO"
-                                    press="onPaletteIconPress"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
                         </GenericTile>
                         <GenericTile
                             id="idConfiramtionCorrections1"
@@ -1040,7 +1347,7 @@
                         <GenericTile
                             id="idSetReadyForWHProcessingByBOL1"
                             header="Set Ready For WH Processing By BOL"
-                            press="onSetReadyForWHProcessingByBOL"
+                            press="onSetReadyForWHProcessingByBOLPress"
                             class="sapUiTinyMargin"
                         />
 
@@ -1139,7 +1446,7 @@
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="onPressManuallyRepackHUItem"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile
@@ -1258,7 +1565,7 @@
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPickPointPress"
                         />
 
                         <GenericTile
@@ -1286,7 +1593,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="press"
+                            press="OnReversalofConsumptionbyMObyHUpress"
                         />
 
                         <GenericTile
@@ -1321,7 +1628,7 @@
                             id="IDGenGenericTile34"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Unload By HU"
-                            press="press"
+                            press="onUnloadByHUPress"
                         />
                     </ScrollContainer>
                     <ScrollContainer
