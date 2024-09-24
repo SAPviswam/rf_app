@@ -315,6 +315,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
             },
+            onReversalofConsumptionbyMOHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReversalofConsumptionbyMObyHU",{id:this.ID});
+            },
             onUnloadingByShipmentPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment",{id:this.ID});
