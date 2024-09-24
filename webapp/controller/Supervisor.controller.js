@@ -1933,7 +1933,12 @@ sap.ui.define(
             OnPressHUStockOverviewQuery:function() {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
+            },
+            onUnloadByHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByHu",{id:this.ID});
             }
+        
 
 
         });

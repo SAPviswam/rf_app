@@ -482,7 +482,7 @@
                           <Input ></Input>
                         </HBox>
                          <HBox 
-                         alignContent="Center"
+                                alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
                                 width="100%"
@@ -694,7 +694,7 @@
                                 width="100%"
                                 class="sapUiSmallMarginBottom">
 
-           <Label width="30px"></Label> 
+           
             <Input width="70px" ></Input>
              <Label width="60px" ></Label>
             <Input width="20px"></Input>
