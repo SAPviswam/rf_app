@@ -451,6 +451,13 @@
           ]
         },
         {
+          "name": "LoadbyHUManPosAssiognment",
+          "pattern": "LoadbyHUManPosAssiognment/{id}",
+          "target": [
+            "TargetLoadbyHUManPosAssiognment"
+          ]
+        },
+        {
           "name": "ManuallyRepackHU",
           "pattern": "ManuallyRepackHU/{id}",
           "target": [
@@ -465,6 +472,7 @@
           ]
         },
         {
+
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -929,6 +937,14 @@
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
         },
+        "TargetLoadbyHUManPosAssiognment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "LoadbyHUManPosAssiognment",
+          "viewName": "LoadbyHUManPosAssiognment"
+        },
+
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
           "transition": "slide",
