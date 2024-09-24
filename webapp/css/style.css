@@ -154,12 +154,12 @@
 }
 @media (max-width: 600px) {
     .boxContainer {
-        width: 90% !important; /* Full width on mobile */
-        padding: 1rem; /* Adjust padding */
+        width: auto !important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
-        width: 90% !important; /* Full width on mobile */
-        padding: 1rem; /* Adjust padding */
+        width: auto !important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer2 {
         border-bottom: 2px solid #ed731dd2 !important;
