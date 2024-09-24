@@ -239,6 +239,14 @@
             "TargetRecevingOfHUbyDelivery"
           ]
         },
+        
+        {
+          "name": "ReversalofConsumptionbyMObyHU",
+          "pattern": "ReversalofConsumptionbyMObyHU/{id}",
+          "target": [
+            "TargetReversalofConsumptionbyMObyHU"
+          ]
+        },
         {
           "name": "UnloadingByBillofLading",
           "pattern": "UnloadingByBillofLading/{id}",
@@ -503,6 +511,7 @@
           "pattern": "RoutePutawayHuClustered/{id}",
           "target": [
             "TargetRoutePutawayHuClustered"
+
           ]
         },
         {
@@ -510,6 +519,13 @@
           "pattern": "WHProcessingByBOL/{id}",
           "target": [
             "TargetWHProcessingByBOL"
+          ]
+        },
+        {
+          "name": "UnloadByHu",
+          "pattern": "UnloadByHu/{id}",
+          "target": [
+            "TargetUnloadByHu"
           ]
         }
       ],
@@ -674,6 +690,13 @@
           "clearControlAggregation": false,
           "viewId": "AutomaticallyRepackHUItem",
           "viewName": "AutomaticallyRepackHUItem"
+        },
+        "TargetReversalofConsumptionbyMObyHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReversalofConsumptionbyMObyHU",
+          "viewName": "ReversalofConsumptionbyMObyHU"
         },
         "TargetBillofLading": {
           "viewType": "XML",
@@ -919,6 +942,20 @@
           "clearControlAggregation": false,
           "viewId": "WHProcessingByBOL",
           "viewName": "WHProcessingByBOL"
+      },
+        "TargetUnloadByHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadByHu",
+          "viewName": "UnloadByHu"
+        },
+        "TargetRoutePutawayHuClustered": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHuc",
+          "viewName": "PutawayByHuc"
         }
       }
     },
