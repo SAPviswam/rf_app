@@ -473,8 +473,10 @@ sap.ui.define([
             if (this.currentIndex + 3 < this.aAllButtons.length) { // Check if there are more buttons to show
                 this.currentIndex += 3; // Move to next set of buttons
                 this.updateDisplayedButtons(); // Update displayed buttons
+                this.getView().byId("upNavigationButtonId").setVisible(true)
             } else {
                 MessageToast.show("No more buttons to display."); // Optional feedback for user
+
             }
         },
         
@@ -482,6 +484,9 @@ sap.ui.define([
             if (this.currentIndex - 3 >= 0) { // Check if we can go back
                 this.currentIndex -= 3; // Move to previous set of buttons
                 this.updateDisplayedButtons(); // Update displayed buttons
+                if(this.currentIndex === 0){
+                    this.getView().byId("upNavigationButtonId").setVisible(false)
+                }
             } else {
                 MessageToast.show("No previous buttons to display."); // Optional feedback for user
             }

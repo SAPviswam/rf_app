@@ -86,6 +86,7 @@
                                 icon="sap-icon://navigation-up-arrow"
                                 tooltip="Next"
                                 press="onNavNext"
+                                visible="false"
                              
                             />
                             </HBox>
