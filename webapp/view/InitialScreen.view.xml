@@ -84,7 +84,7 @@
                      <Button
                                 id="upNavigationButtonId"
                                 icon="sap-icon://navigation-up-arrow"
-                                tooltip="Next"
+                                tooltip="Previous"
                                 press="onNavNext"
                                 visible="false"
                              
@@ -98,7 +98,7 @@
                             <Button
                                 id="downNavigationButtonId"
                                 icon="sap-icon://navigation-down-arrow"
-                                tooltip="Previous"
+                                tooltip="Next"
                                 press="onNavPrevious"
                           
                             />
