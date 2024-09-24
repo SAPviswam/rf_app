@@ -1347,7 +1347,7 @@
                         <GenericTile
                             id="idSetReadyForWHProcessingByBOL1"
                             header="Set Ready For WH Processing By BOL"
-                            press="onSetReadyForWHProcessingByBOL"
+                            press="onSetReadyForWHProcessingByBOLPress"
                             class="sapUiTinyMargin"
                         />
 

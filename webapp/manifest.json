@@ -515,6 +515,13 @@
           ]
         },
         {
+          "name": "WHProcessingByBOL",
+          "pattern": "WHProcessingByBOL/{id}",
+          "target": [
+            "TargetWHProcessingByBOL"
+          ]
+        },
+        {
           "name": "UnloadByHu",
           "pattern": "UnloadByHu/{id}",
           "target": [
@@ -929,14 +936,19 @@
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
         },
+        "TargetWHProcessingByBOL": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WHProcessingByBOL",
+          "viewName": "WHProcessingByBOL"
+      },
         "TargetUnloadByHu": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "UnloadByHu",
           "viewName": "UnloadByHu"
-        }
-        
         },
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
