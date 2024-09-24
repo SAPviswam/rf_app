@@ -59,13 +59,51 @@
 .sapUiSmallMargin {
     border: 1cm;
 }
+.titleWithBorder {
+    border: 2px solid orange;  /* Add border */
+    padding: 10px;             /* Add padding for spacing */
+    background-color: white;   /* Background color to make it stand out */
+    width: auto;               /* Fit content */
+}
+.customHeader_SSC {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333; /* Adjust as needed */
+}
 
+
+.buttonContainer {
+    border-radius: 0rem !important;
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+ 
+.capModelRFTextdialog {
+    color: #ed731dd2 !important;
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-color: black !important; /* Set button border color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+    padding: 8px 16px; /* Optional: Add padding for better button size */
+    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
 .boxContainer {
-    border-radius: 1rem !important;
+    border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
     /* Add border width, style, and color */
     padding: auto !important; 
     width: 25% !important;
+    padding-bottom: 1rem;
+    width: 30% !important;
+    margin:1rem;
+}
+.TitlecustomHeader{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
 }
 .boxContainer3 {
     border-radius: 1rem !important;
@@ -81,6 +119,11 @@
     width: auto !important;
     /* padding-bottom: 4rem; */
 }
+.checkBoxText .sapMCbLabel {
+    font-weight: bold; /* Make the checkbox label text bold */
+    color: #333;
+}
+
 .capModelRFText {
     color: #ed731dd2 !important;
     margin-top: 25px !important; /* Adjust margin to position it below the title */

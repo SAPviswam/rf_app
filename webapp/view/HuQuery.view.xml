@@ -18,7 +18,6 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
 >
-
     <tnt:ToolPage id="_IDGenPage1">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHuQuery">
@@ -46,7 +45,9 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
-                <tnt:ToolHeaderUtilitySeparator id="idToolHeaderUtilitySeparatorAdhocHuquery" />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorAdhocHuquery"
+                />
                 <ToolbarSpacer id="idToolbarSpacerAdhocHQuery">
                     <layoutData>
                         <OverflowToolbarLayoutData
@@ -65,7 +66,62 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            
+            <ScrollContainer
+                id="icon1"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <VBox
+                    id="_IDGenVBox1"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <f:SimpleForm
+                        id="simpleForm"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="_IDGenHBoxContainer"
+                            justifyContent="Start"
+                        >
+                            <!-- Scan HU Label -->
+                            <Label
+                                id="_IDGenLabel1"
+                                text="Scan HU :"
+                                class="ScanHumargin"
+                            />
+                            <!-- Input Field -->
+                            <Input
+                                id="_IDGenInput1"
+                                placeholder="Enter HU..."
+                                class="sapUiTinyMarginBegin"
+                                liveChange="onLiveHuValidation"
+                                change="onChangeHuValidation"
+                            />
+                            <ndc:BarcodeScannerButton
+                                id="sampleBarcodeScannerButtonnnnnnnnnnn"
+                                scanSuccess="onScanSuccess"
+                                scanFail="onScanError"
+                                inputLiveUpdate="onScanLiveupdate"
+                                dialogTitle="Barcode Scanner"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+
             <!-- Scroll Container for HU Details -->
             <ScrollContainer
                 id="icon2"
@@ -94,7 +150,7 @@
                         maxLength="30"
                         width="250px"
                     />
- 
+
                     <!-- HU Type Field -->
                     <Label
                         id="_IDGenLabel3"
@@ -106,7 +162,7 @@
                         maxLength="25"
                         width="200px"
                     />
- 
+
                     <!-- Dimensions Group: Length, Width, Height -->
                     <Label
                         id="_IDGenLabelDimensions"
@@ -120,7 +176,10 @@
                     >
                         <!-- Length Input -->
                         <VBox id="_IDGenVBox2">
-                            <Label id="_IDGenLabel8" text="Length" />
+                            <Label
+                                id="_IDGenLabel8"
+                                text="Length"
+                            />
                             <Input
                                 id="_IDGenInputLength"
                                 placeholder="Enter Length..."
@@ -131,7 +190,10 @@
                         </VBox>
                         <!-- Width Input -->
                         <VBox id="_IDGenVBox3">
-                            <Label id="_IDGenLabel9" text="Width" />
+                            <Label
+                                id="_IDGenLabel9"
+                                text="Width"
+                            />
                             <Input
                                 id="_IDGenInputWidth"
                                 placeholder="Enter Width..."
@@ -142,7 +204,10 @@
                         </VBox>
                         <!-- Height Input -->
                         <VBox id="_IDGenVBox4">
-                            <Label id="_IDGenLabel10" text="Height" />
+                            <Label
+                                id="_IDGenLabel10"
+                                text="Height"
+                            />
                             <Input
                                 id="_IDGenInputHeight"
                                 placeholder="Enter Height..."
@@ -153,7 +218,10 @@
                         </VBox>
                         <!-- Height Measurements -->
                         <VBox id="_IDGenVBox5">
-                            <Label id="_IDGenLabel11" text="Units" />
+                            <Label
+                                id="_IDGenLabel11"
+                                text="Units"
+                            />
                             <Input
                                 id="_IDGenInputMeasurement"
                                 placeholder=""
@@ -162,7 +230,7 @@
                             />
                         </VBox>
                     </HBox>
-                   
+
                     <!-- Weights Group: Tare Weight, Net Weight, Gross Weight -->
                     <Label
                         id="_IDGenLabelWeights"
@@ -176,7 +244,10 @@
                     >
                         <!-- Tare Weight Input -->
                         <VBox id="_IDGenVBox6">
-                            <Label id="_IDGenLabel12" text="Tare" />
+                            <Label
+                                id="_IDGenLabel12"
+                                text="Tare"
+                            />
                             <Input
                                 id="_IDGenInputTareWeight"
                                 placeholder="Tare wt..."
@@ -187,7 +258,10 @@
                         </VBox>
                         <!-- Net Weight Input -->
                         <VBox id="_IDGenVBox7">
-                            <Label id="_IDGenLabel13" text="Net" />
+                            <Label
+                                id="_IDGenLabel13"
+                                text="Net"
+                            />
                             <Input
                                 id="_IDGenInputNetWeight"
                                 placeholder="Net wt..."
@@ -198,7 +272,10 @@
                         </VBox>
                         <!-- Gross Weight Input -->
                         <VBox id="_IDGenVBox8">
-                            <Label id="_IDGenLabel14" text="Gross" />
+                            <Label
+                                id="_IDGenLabel14"
+                                text="Gross"
+                            />
                             <Input
                                 id="_IDGenInputGrossWeight"
                                 placeholder="Gross wt..."
@@ -209,7 +286,10 @@
                         </VBox>
                         <!-- Weight Measurements -->
                         <VBox id="_IDGenVBox9">
-                            <Label id="_IDGenLabel15" text="Units" />
+                            <Label
+                                id="_IDGenLabel15"
+                                text="Units"
+                            />
                             <Input
                                 id="_IDGenInputWeightsMeasurement"
                                 placeholder=""
@@ -218,7 +298,7 @@
                             />
                         </VBox>
                     </HBox>
- 
+
                     <!-- Volume Field -->
                     <Label
                         id="_IDGenLabel322"
@@ -229,7 +309,7 @@
                         placeholder="Enter Volume..."
                         width="80px"
                     />
- 
+
                     <!-- Location and Action Buttons -->
                     <Label
                         id="_IDGenLabel112"
@@ -258,7 +338,7 @@
                     </VBox>
                 </f:SimpleForm>
             </ScrollContainer>
- 
+
             <!-- Scroll Container for HU Details Table -->
             <ScrollContainer
                 id="icon3"
@@ -311,7 +391,7 @@
                             />
                         </Column>
                     </columns>
- 
+
                     <items>
                         <ColumnListItem id="_IDGenColumnListItem1111">
                             <cells>
@@ -340,7 +420,7 @@
                     </items>
                 </Table>
             </ScrollContainer>
- 
+
             <!-- Scroll Container for Hierarchy Table -->
             <ScrollContainer
                 id="icon4"
@@ -384,7 +464,7 @@
                             </header>
                         </Column>
                     </columns>
- 
+
                     <items>
                         <ColumnListItem id="_IDGenColumnListItem2">
                             <cells>
@@ -408,5 +488,3 @@
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
- 
- 
