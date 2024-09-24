@@ -504,6 +504,13 @@
           "target": [
             "TargetRoutePutawayHuClustered"
           ]
+        },
+        {
+          "name": "RouteChangeLoadingUnloadingDetails",
+          "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
+          "target": [
+            "TargetRouteChangeLoadingUnloadingDetails"
+          ]
         }
       ],
       "targets": {
@@ -905,9 +912,18 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
+        },
+        "TargetRouteChangeLoadingUnloadingDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeLoadingUnloadingDetails",
+          "viewName": "ChangeLoadingUnloadingDetails"
         }
       }
-    },
+      },
+        
+    
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
