@@ -59,6 +59,18 @@
 .sapUiSmallMargin {
     border: 1cm;
 }
+.titleWithBorder {
+    border: 2px solid orange;  /* Add border */
+    padding: 10px;             /* Add padding for spacing */
+    background-color: white;   /* Background color to make it stand out */
+    width: auto;               /* Fit content */
+}
+.customHeader_SSC {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333; /* Adjust as needed */
+}
+
 .buttonContainer {
     margin-top: 20px; /* Optional: add some spacing between buttons */
     background-color: black;
@@ -83,7 +95,10 @@
     padding: auto !important; 
     width: 25% !important;
 }
-
+.TitlecustomHeader{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+}
 .boxContainer3 {
     border-radius: 1rem !important;
     border: 2px solid #090909d2 !important;
@@ -98,6 +113,11 @@
     width: auto !important;
     /* padding-bottom: 4rem; */
 }
+.checkBoxText .sapMCbLabel {
+    font-weight: bold; /* Make the checkbox label text bold */
+    color: #333;
+}
+
 .capModelRFText {
     color: #ed731dd2 !important;
     margin-top: 25px !important; /* Adjust margin to position it below the title */

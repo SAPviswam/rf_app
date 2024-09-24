@@ -94,6 +94,7 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: 25% !important;
+    padding-bottom: 1rem;
 }
 .TitlecustomHeader{
     border-radius: 0rem !important;
