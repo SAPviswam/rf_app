@@ -321,6 +321,7 @@ sap.ui.define(
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
+                this.onSideNavButtonPress();
             },
 
             onSideNavButtonPress: function () {
@@ -1695,7 +1696,9 @@ sap.ui.define(
             },
             OnpressMaintainHU: function () {
                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU",{id:this.ID});
+
+        oRouter.navTo("MaintainHU",{id:this.ID});
+
             },
 
             onUnloadingByShipmentPress: function () {
@@ -1725,7 +1728,10 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-               oRouter.navTo("AdhocHuWt",{id:this.ID});
+
+                oRouter.navTo("AdhocHuWt", { id: this.ID });
+
+             
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -2017,12 +2023,21 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
             },
+
+            OnPressHUStockOverviewQuery:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
+            },
+            onUnloadByHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByHu",{id:this.ID});
+            },
+        
+
             onPutawayByHUClustered:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-            }
-
-
+            },
 
 
         });
