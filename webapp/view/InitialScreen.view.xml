@@ -19,6 +19,7 @@
                     class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
                 >
+
                     <VBox>
                         <HBox
                             id="idHboxinitial"
@@ -35,7 +36,7 @@
                             />
                             <Title
                                 id="initialscreentitle"
-                                text="CAPModel RF"
+                                text="CAPmodel RF"
                                 class="capModelRFText sapUiSmallMarginBottom"
                             />
                         </HBox>

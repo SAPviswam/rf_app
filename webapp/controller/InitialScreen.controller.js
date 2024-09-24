@@ -22,6 +22,7 @@ sap.ui.define([
                 name: "com.app.rfapp.fragments.SapLogon"
             })
             this.oConfigSap.open();
+            this.onUserLogin();
         },
         handleLinksapPress: async function () {
             this.oConnetSap ??= await this.loadFragment({
@@ -30,6 +31,7 @@ sap.ui.define([
             this.oConnetSap.open();
             this.getView().byId("idconnectsapeditButton").setVisible(false);
             this.getView().byId("idconnectsapfinishButton").setVisible(true);
+
         },
         onCloseconnectsap: function () {
             debugger
@@ -42,7 +44,11 @@ sap.ui.define([
             var oP = this.getView().byId("idSapLogonPassword").getValue();
             if (oU === "111010" && oP === "ARTIHCUS") {
                 this.getOwnerComponent().getRouter().navTo("Homepage", { id: oU })
+               
             }
+
+        },
+        onExit:function(){
             this.onUserLogin();
         },
         onUserLogin: function () {

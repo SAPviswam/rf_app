@@ -45,7 +45,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                <!-- <ComboBox
+                <ComboBox
                     id="idLanguageSelectorComboBox"
                     change="onLanguageChange"
                     visible="false"
@@ -66,23 +66,30 @@
                 </ComboBox>
                 <Button
                     id="idBtnLanguageChange"
-                    icon="sap-icon://italic-text"
+                    icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
-                /> -->
+                />
                 <Button
                     id="themeButton"
-                    text="Theme"
+                    text="BackgroundTheme"
                     press="onOpenThemeDialog"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
+                    visible="false"
                 />
                 <Button
-                    id="chatbotButton"
-                    press="onChatbotButtonPress"
-                    icon="sap-icon://headset"
-                    tooltip="Open Chatbot"
+                    id="themeButton3"
+                    text="Theme"
+                    press="onThemeButton"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
                 />
-
+                <Button 
+                id="CancelButton"
+                text="Cancel"
+                press="onCancel"
+                visible="false"
+                ></Button>
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -129,13 +136,11 @@
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
                 <tnt:fixedItem>
-                    <tnt:NavigationList
-                        id="_IDGenNavigationList1"
+                    <tnt:NavigationList id="_IDGenNavigationList1"
                         items="{path: '/fixedNavigation', templateShareable: true}"
                         class="sidecontent"
                     >
-                        <tnt:NavigationListItem
-                            id="_IDGenNavigationListItem"
+                        <tnt:NavigationListItem id="_IDGenNavigationListItem"
                             text="{title}"
                             icon="{icon}"
                         />
@@ -164,8 +169,7 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox
-                            id="_IDGenFlexBox"
+                        <FlexBox id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
                         >
@@ -254,10 +258,7 @@
                                     labelFor="idPhoneInput"
                                     required="true"
                                 />
-                                <HBox
-                                    id="_IDGenHBox9"
-                                    justifyContent="SpaceBetween"
-                                >
+                                <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
@@ -279,10 +280,7 @@
                                 alignItems="Center"
                                 class="sapUiSmallMarginTop"
                             >
-                                <HBox
-                                    id="_IDGenHBox10"
-                                    justifyContent="SpaceBetween"
-                                >
+                                <HBox id="_IDGenHBox10" justifyContent="SpaceBetween">
                                     <Input
                                         id="idOtpInputsv"
                                         placeholder="Enter OTP..."
@@ -302,6 +300,41 @@
                                         visible="false"
                                     />
                                 </HBox>
+                            </FlexBox>
+                             <FlexBox
+                                id="_IDFlex21"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="iduserType"
+                                    text="User Type"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="userType"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem1"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem2"
+                                        key="SuperVisor"
+                                        text="Super Visor"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem3"
+                                        key="Manager"
+                                        text="Manager"
+                                    />
+                                </ComboBox>
                             </FlexBox>
 
                             <FlexBox
@@ -924,7 +957,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onPressHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMargin"
                         />
                     </ScrollContainer>
@@ -950,17 +983,9 @@
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
-                            press="onTilePressPutawayByWO"
+                            press="onTilePress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent id="idTileContentPutaway">
-                                <Button
-                                    id="idBtnPutawayByWO"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
                         </GenericTile>
                         <GenericTile
                             id="idConfiramtionCorrections1"
@@ -1134,7 +1159,7 @@
                             id="_IDGenGenericTile08"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Automatically Repack HU Item"
-                            press="onPressAutomaticallyRepeakHUItem"
+                            press="onPressAutomaticallyRepackHUItem"
                         />
 
                         <GenericTile
@@ -1148,14 +1173,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile
@@ -1169,7 +1194,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1274,7 +1299,7 @@
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPickPointPress"
                         />
 
                         <GenericTile
@@ -1302,7 +1327,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="press"
+                            press="OnReversalofConsumptionbyMObyHUpress"
                         />
 
                         <GenericTile
@@ -1493,7 +1518,7 @@
                             id="IDWTQuerybyQueue"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT Query by Queue"
-                            press="onPressWTQuerybyQueue"
+                            press="OnPressWTQuerybyQueue"
                         />
                         <GenericTile
                             id="IDWTquerybyHU"
