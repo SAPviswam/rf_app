@@ -43,6 +43,7 @@ sap.ui.define([
             oView.byId("idInstanceNumberInput").setValueState("None");
             oView.byId("idClientInput").setValueState("None");
             oView.byId("idApplicationServerInput").setValueState("None");
+            this.clearInputFields(oView);
         },
         onsapsubmitPress: function () {
             var oU = this.getView().byId("idsaplogonUserId").getValue();
