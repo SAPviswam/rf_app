@@ -1,0 +1,554 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.LoadbyHUManPosAssiognment"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageLoadByHU_ManPosAssignment">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderLoadByHU_ManPosAssignment">
+                <Image
+                    id="_IDGenImage1LoadByHU_ManPosAssignment"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorLoadByHU_ManPosAssignment"
+                />
+                <ToolbarSpacer id="idToolbarSpacerLoadByHU_ManPosAssignment">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1LoadByHU_ManPosAssignment"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1LoadByHU_ManPosAssignment"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idLBHUManPosAssignmentScrollContainer1"
+                vertical="true"
+                horizontal="false"
+                visible="true"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="idLBHUManPosAssSecondBackButton1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressBack_ManPosAssignment"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="idLBHUManPosAssTitleVBox"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Title
+                        id="idLBHUManPosAssTitleHuDetails"
+                        text="Hu Details"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                </VBox>
+                <f:SimpleForm
+                    id="idLBHUManPosAssSimpleFormScreen1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idLBHUManPosAssLabelDeNo"
+                        text="HU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox
+                        id="idLBHUManPosAssHboxDeNo"
+                        class="gapBetweenInputs"
+                    >
+                        <Input
+                            id="idLBHUManPosAssInputDeNo"
+                            placeholder="HU number.."
+                            maxLength="25"
+                            width="200px"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <HBox id="idLBHUManPosAssHboxINO">
+                            <Label
+                                id="idLBHUManPosAssLabelINO"
+                                text="Top Hus:"
+                                class="ItemLabel"
+                            />
+
+                            <Input
+                                id="idLBHUManPosAssInputINO"
+                                maxLength="25"
+                                width="200px"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <!-- Vendor Field -->
+                    <Label
+                        id="idLBHUManPosAssVendorLabel"
+                        text="A Rsrc"
+                    />
+                    <VBox id="idLBHUManPosAssVBox">
+                        <Input
+                            id="idLBHUManPosAssInputVendor"
+                            placeholder="Enter A Rsrc "
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- F1, F2, F3  -->
+                        <HBox id="idLBHUManPosAssHbox">
+                            <Button
+                                id="idLBHUManPosAssButtonF1"
+                                text="F1"
+                                press="onF1PressManPosAssignmentScreen1"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idLBHUManPosAssButtonF2"
+                                text="F2"
+                                press="onF2PressManPosAssignment"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idLBHUManPosAssButtonF3"
+                                text="F3"
+                                press="onF3ManPosAssignmentScreen1"
+                            />
+                        </HBox>
+                        <!-- F4 -->
+                        <HBox id="idLBHUManPosAssHboxF4">
+                            <Button
+                                id="idLBHUManPosAssButtonF4"
+                                text="F4"
+                                press="onF4PressManPosAssignmentScreen1"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </VBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idLBHUManPosAssignmentScrollContainer2"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idLBHUManPosAssNavBackButton"
+                    icon="sap-icon://nav-back"
+                    press="OnPressSecondBackButton"
+                />
+
+                <VBox
+                    id="idLBHUManPosAssTitleVBoxContainer2"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Title
+                        id="idLBHUManPosAssTitleListForHUs"
+                        text="List For HUs"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                </VBox>
+
+                <f:SimpleForm
+                    id="idLBHUManPosAssSimpleForm2"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idLBHUManPosAssProductMaterialLabel"
+                        text="HU"
+                    />
+                    <HBox id="idLBHUManPosAssQtyInputHbox">
+                        <Input
+                            id="idLBHUManPosAssPackagingMaterialInput"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHbox2Container"
+                            width="30px"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHubyASNHUuombx"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idLBHUManPosAssHubyASNuomLabel" />
+                            <Input
+                                id="idLBHUManPosAssHubyASNuomInput"
+                                maxLength="30"
+                                width="150px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idLBHUManPosAssMaterialLabel"
+                        text="Finl Bin"
+                    />
+                    <Input
+                        id="idLBHUManPosAssHuyASNuomInput"
+                        maxLength="30"
+                        width="200px"
+                        editable="false"
+                    />
+                    <Label
+                        id="idLBHUManPosAssHubyASNLabelQty"
+                        text="Dest Bin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="idLBHUManPosAssQtyInputHbox2">
+                        <Input
+                            id="idLBHUManPosAssHubyASNqtyInput"
+                            maxLength="30"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxContainer2Space"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHubyHbox"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idLBHUManPosAssHubyASNuomLabel2"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idLBHUManPosAssHubyASNuomInput2"
+                                maxLength="30"
+                                width="64px"
+                                editable="false"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idLBHUManPosAssHboxContainer2Space2"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHubyASNHUuombx2"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idLBHUManPosAssHubyASNuomLabel3"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idLBHUManPosAssHubyASNuomInput3"
+                                maxLength="30"
+                                width="64px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idLBHUManPosAssPositionLabel"
+                        text="Position"
+                    />
+                    <Input
+                        id="idLBHUManPosAssPositionInput"
+                        maxLength="30"
+                        width="200px"
+                    />
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idLBHUManPosAssignmentScrollContainer3"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idLBHUManPosAssMainHBox"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idLBHUManPosAssThirdBackButton"
+                        icon="sap-icon://nav-back"
+                        press="OnpressThirdBackButtonLBHUManPosAssignment"
+                    />
+                    <Title
+                        id="idLBHUManPosAssTitle"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                        text="WO Details"
+                    />
+                    <Text
+                        id="idLBHUManPosAssEmptyText"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idLBHUManPosAssProductDetailsForm"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label id="idLBHUManPosAssExtraInputLabel" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3First">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_1"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer1"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel1" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer2"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_2"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel2" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer3"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_3"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idLBHUManPosAssExtraInputLabel1" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3Fourth">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_4"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer4"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel3" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer5"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_5"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel4" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer6"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_6"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idLBHUManPosAssExtraInputLabel1_A1IC1" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3Eight">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_7"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer7"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel5" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer8"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_8"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel6" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer9"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_9"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idLBHUManPosAssExtr1aInputLabel1" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3OneTwo">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_10"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer10"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel7" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer11"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_11"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel8" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer12"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_12"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idLBHUManPosAssExtr1aInputLabel1r" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3Final">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_13"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer13"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel9" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer14"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_14"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel10" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer15"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_15"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idLBHUManPosAssExtr1aInputLabel1_LBHUManPosAssignment16" />
+                    <HBox id="idLBHUManPosAssHboxScontainer3Penultimate">
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_16"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer16"
+                            width="10px"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel11" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer17"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_17"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="idLBHUManPosAssExtraLabel12" />
+                        <HBox
+                            id="idLBHUManPosAssHboxScontainer3Spacer18"
+                            width="10px"
+                        />
+                        <Input
+                            id="idLBHUManPosAssInputScontainer3_18"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
