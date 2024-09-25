@@ -96,7 +96,7 @@
                             <Label
                                 id="idDeconsolidationAutomaticallyLabelDeconsolidationAutomatically"
                                 text="Work Center :"
-                                class="ScanHumargin"
+                                class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
                             

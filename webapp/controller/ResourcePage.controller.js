@@ -474,7 +474,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
             },
-            
+            onConsumptionByManufacturingOrderPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ConsumptionByManufacturingOrder",{id:this.ID});
+            },
 
             onCreatePutawayHusforDeconsolidationPress: function(){
                 debugger
@@ -495,8 +498,11 @@ sap.ui.define([
             onPutawayByHUClusteredPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-
-            }
+            },
+            onAutomaticallyRepackHUPress:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
+            },
 
         });
     });

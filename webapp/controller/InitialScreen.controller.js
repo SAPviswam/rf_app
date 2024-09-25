@@ -242,10 +242,12 @@ sap.ui.define([
             oCheckbox.setSelected(false);
         },
 
-        onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client) {
+        onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client, oEvent) {
             this.selectedButton = oButton;
             this.client = Client;
             this.sdedescription = oButton.mProperties.text;
+
+
         },
 
         onClearconnectSAPPress: function () {
@@ -276,6 +278,13 @@ sap.ui.define([
                                 // Remove the button from the UI
                                 var oHomePage = that.getView().byId("environmentButtonsHBox");
                                 oHomePage.removeItem(that.selectedButton); // Remove the selected button
+                                var index = that.aAllButtons.indexOf(that.selectedButton);
+                                if (index !== -1) {
+                                    that.aAllButtons.splice(index, 1); // Remove button from array
+                                }
+                                // Clear selection
+                                that.selectedButton = null;
+                                that.updateDisplayedButtons()
 
                                 var index = that.aAllButtons.indexOf(that.selectedButton);
                                 if (index !== -1) {
@@ -418,6 +427,10 @@ sap.ui.define([
                 success: function (oData) {
                     var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
 
+//                     var oHomePage = this.getView().byId("environmentButtonsHBox");
+//                     var oLink = this.getView().byId("_IDCofiguresapLink");
+
+
                     this.aAllButtons = []; // Reset the array
 
                     // Store all button instances
@@ -458,6 +471,7 @@ sap.ui.define([
             var oHomePage = this.getView().byId("environmentButtonsHBox");
 
             oHomePage.addItem(this.getView().byId("upNavigationButtonId"));
+
             // Determine how many buttons to display (3 at a time)
             var iLimit = Math.min(3, this.aAllButtons.length - this.currentIndex);
 

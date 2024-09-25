@@ -96,7 +96,7 @@
                             <Label
                                 id="idCreationOfSingleHULabel_SHU"
                                 text="Work Center :"
-                                class="ScanHumargin"
+                                class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
                             
