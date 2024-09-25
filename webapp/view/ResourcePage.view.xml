@@ -573,7 +573,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_loadbyhumanposassigment"
+                            id="id_loadbyhumanposassignment"
                             class="sapUiTinyMargin"
                             header="Load By HU - Man.Pos.Assignment"
                             press="onLoadByHUManPosAssigmentPress"
