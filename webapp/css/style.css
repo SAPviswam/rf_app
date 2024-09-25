@@ -59,21 +59,57 @@
 .sapUiSmallMargin {
     border: 1cm;
 }
+.titleWithBorder {
+    border: 2px solid orange;  /* Add border */
+    padding: 10px;             /* Add padding for spacing */
+    background-color: white;   /* Background color to make it stand out */
+    width: auto;               /* Fit content */
+}
+.customHeader_SSC {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333; /* Adjust as needed */
+}
 
+
+.buttonContainer {
+    border-radius: 0rem !important;
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+ 
+.capModelRFTextdialog {
+    color: #ed731dd2 !important;
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-color: black !important; /* Set button border color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+    padding: 8px 16px; /* Optional: Add padding for better button size */
+    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
 .boxContainer {
-    border-radius: 1rem !important;
+    border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
     /* Add border width, style, and color */
     padding: auto !important; 
     width: 25% !important;
+    padding-bottom: 1rem;
+    width: 30% !important;
 }
-
+.TitlecustomHeader{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+}
 .boxContainer3 {
     border-radius: 1rem !important;
-    border: 2px solid #090909d2 !important;
+     border: 2px solid #090909d2 !important; 
     /* Add border width, style, and color */
-    padding: auto !important; 
-    width: 25% !important;
+    padding: 2rem !important; 
+    width: 40% !important;
 }
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2 !important;
@@ -82,11 +118,20 @@
     width: auto !important;
     /* padding-bottom: 4rem; */
 }
+.checkBoxText .sapMCbLabel {
+    font-weight: bold; /* Make the checkbox label text bold */
+    color: #333;
+}
+
 .capModelRFText {
     color: #ed731dd2 !important;
     margin-top: 25px !important; /* Adjust margin to position it below the title */
     font-size: 1em !important; /* Optional: adjust font size */
     margin-left: 30px !important;
+}
+.capModelRFTextdialog {
+     color: #ed731dd2 !important;
+     margin-left: 45px !important;
 }
 .button{
     margin-left:20% !important;
@@ -97,7 +142,24 @@
 .button2{
     margin-left:60% !important;
 }
+.sapMDialog {
+    color: white; /* Set text color for better visibility */
+}
 
+.buttonContainer {
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-color: black !important; /* Set button border color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+    padding: 8px 16px; /* Optional: Add padding for better button size */
+    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
 .Inputs {
     width: 100%
 }
@@ -112,12 +174,12 @@
 }
 @media (max-width: 600px) {
     .boxContainer {
-        width: 90% !important; /* Full width on mobile */
-        padding: 1rem; /* Adjust padding */
+        width: auto !important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
-        width: 90% !important; /* Full width on mobile */
-        padding: 1rem; /* Adjust padding */
+        width: auto !important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer2 {
         border-bottom: 2px solid #ed731dd2 !important;
@@ -213,7 +275,7 @@
 
 /*-----------------------------Reciving Of Hu by ASN   Start----------------------------------*/
 .ScanHumargin {
-    margin-top: 12%;
+    margin-top: 20%;
     margin-right: 2000% !important;
 }
 
@@ -443,4 +505,5 @@ background-color: rgb(9, 8, 8) !important;
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
 }
+
 

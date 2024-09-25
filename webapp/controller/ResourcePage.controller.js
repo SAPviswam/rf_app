@@ -315,6 +315,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU",{id:this.ID});
             },
+            onReversalofConsumptionbyMOHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReversalofConsumptionbyMObyHU",{id:this.ID});
+            },
             onUnloadingByShipmentPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment",{id:this.ID});
@@ -449,7 +453,6 @@ sap.ui.define([
                 oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
             },
             onWTQuerybyQueuePress:function(){ 
-                debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
             }, 
@@ -458,13 +461,11 @@ sap.ui.define([
             //     var oRouter = UIComponent.getRouterFor(this); 
             //     oRouter.navTo("DeconsAuto",{id:this.ID});   
             // }
-
             onPickPointPress:function(){ 
                 debugger
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("PickPoint",{id:this.ID});                 
             }, 
-
             onManuallyrepackallHUitemsPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
@@ -485,9 +486,16 @@ sap.ui.define([
                 oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
 
             },
+
+            onLoadByHUManPosAssigmentPress: function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
+        },
+
             onPutawayByHUClusteredPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
+
             }
 
         });
