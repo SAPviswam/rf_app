@@ -504,5 +504,10 @@ sap.ui.define([
                 oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
             },
 
+            onLoadByHUAutoPosAssignmentPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
+            },
+
         });
     });
