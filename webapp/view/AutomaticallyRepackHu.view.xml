@@ -1,0 +1,960 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.AutomaticallyRepackHu"
+    xmlns:table="sap.ui.table"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPageARHU">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderARHU">
+                <Image
+                    id="idImage1ARHU"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorARHU"
+                />
+                <ToolbarSpacer id="idToolbarSpacerARHU">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1ARHU"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1ARHU"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idARHUScanPage1"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idARHUBackButton"
+                    icon="sap-icon://nav-back"
+                    press="onPressARHUScanbackbtn"
+                    visible="true"
+                />
+
+                <VBox
+                    id="idARHUVBOx"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="idARHUtitle"
+                        text="Automatically Repack Hu"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="idARHUsf"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idARHUHbox1"
+                            justifyContent="Start"
+                        >
+                            <Label
+                                id="idARHUTLabel"
+                                text="Work ctr"
+                            />
+                            <!-- Input Field -->
+                            <Input
+                                id="ididARHUTUorDoorinput"
+                                placeholder="Enter Work ctr...."
+                                liveChange="onPressARHUSubmitbtn"
+                            />
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage2"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage2BackBtn"
+                    press="OnpressARHUPage2Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDGenTitleARHU"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1ARHUE"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Source Hu -->
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    id="idARHUSourceLabel"
+                                    text="Source Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSourceInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onPressARHUSourceHu"
+                                />
+                                <Input
+                                    id="idARHUsourceInput1"
+                                    value=""
+                                    width="110px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Cnsld.grp -->
+                            <HBox>
+                                <Label
+                                    id="idARHUCnsldgrpLabel"
+                                    text="Cnsld.grp:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUCnsldgrpInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <!-- field Sis -->
+                                <Label
+                                    id="idARHUSisLabel"
+                                    text="Sis:"
+                                    width="30px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSisInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 3: Dest.Hu -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestHuLabel"
+                                    text="Dest.Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestHuInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Dest.Bin -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestbinLabel"
+                                    text="Dest.Bin:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestbinInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage3"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage3BackBtn"
+                    press="OnpressARHUPage3Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU1"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDGenTitleARHU1"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormARHUE"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Source Hu -->
+                        <VBox>
+                            <!-- Row 1: Cnsld.grp -->
+                            <HBox>
+                                <Label
+                                    id="idARHUCnsldgrpLabel1"
+                                    text="Cnsld.grp:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUCnsldgrpInput1"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Dest.Hu -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestHuLabel1"
+                                    text="Dest.Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestHuInput1"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onPressARHUDestHu"
+                                />
+                            </HBox>
+                            <!-- Row 3: Pack.mat -->
+                            <HBox>
+                                <Label
+                                    id="idARHUPackmatLabel"
+                                    text="Pack.Mat"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUPackmatInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <!-- Row 4: Dest.Bin -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestbinLabel1"
+                                    text="Dest.Bin:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestbinInput1"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage4"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage4BackBtn"
+                    press="OnpressARHUPage4Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU2"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDGenTitleARHU2"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleFormARHUE1"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <VBox>
+                            <!-- Row 1: Cnsld.grp -->
+                            <HBox>
+                                <Label
+                                    id="idARHUCnsldgrpLabel2"
+                                    text="Cnsld.grp:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUCnsldgrpInput2"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Dest.Hu -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestHuLabel2"
+                                    text="Dest.Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestHuInput2"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onPressARHUDestHu"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <!-- Row 3: Pack.mat -->
+                            <HBox>
+                                <Label
+                                    id="idARHUPackmatLabel1"
+                                    text="Pack.Mat"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUPackmatInput1"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <!-- Row 4: Dest.Bin -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestbinLabel2"
+                                    text="Dest.Bin:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestbinInput2"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <VBox alignItems="Center">
+                                <Button
+                                    id="idARHUSaveBtn"
+                                    text="SAVE"
+                                    press="onPressARHUSaveBtn"
+                                />
+                            </VBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage5"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage5BackBtn"
+                    press="OnpressARHUPage5Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU3"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDGenTitleARHU3"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1ARHUE3"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Source Hu -->
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    id="idARHUSourceLabel3"
+                                    text="Source Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSourceInput3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUsourceInput3"
+                                    value=""
+                                    width="110px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Cnsld.grp -->
+                            <HBox>
+                                <Label
+                                    id="idARHUCnsldgrpLabel3"
+                                    text="Cnsld.grp:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUCnsldgrpInput3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <!-- field Sis -->
+                                <Label
+                                    id="idARHUSisLabel3"
+                                    text="Sis:"
+                                    width="30px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSisInput3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 3: Dest.Hu -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestHuLabel3"
+                                    text="Dest.Hu:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestHuInput3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Dest.Bin -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDestbinLabel3"
+                                    text="Dest.Bin:"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUDestbinInput3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox alignItems="Center">
+                                <Button
+                                    id="idARHUHUCREATEBtn"
+                                    text="HU CREATE"
+                                    press="onPressARHUHUCreateBtn"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idARHUHUOverviewBtn"
+                                    text="HU Overview"
+                                    press="onPressARHUHUOverviewBtn"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idARHUHUItemListBtn"
+                                    text="HU ITEM LIST"
+                                    press="onPressARHUHUItemListBtn"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage6"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                width="auto"
+                class="sapUiContentPadding sapUiResponsiveMargin"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage6BackBtn"
+                    press="OnpressARHUPage6Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU6"
+                >
+                    <Title
+                        id="_IDGenTitleARHU6"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1ARHUE6"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack sapUiResponsiveMargin"
+                    >
+                        <!-- Row 1: SHU -->
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    id="idARHUSHULabel"
+                                    text="SHU:"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSHUInput"
+                                    value=""
+                                    width="150px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInput1"
+                                    value=""
+                                    width="110px"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Sbin -->
+                            <HBox>
+                                <Label
+                                    id="idARHUSbinLabel"
+                                    text="Sbin"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUSbinInput"
+                                    value=""
+                                    width="150px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <!-- field TWHU -->
+                                <Label
+                                    id="idARHUTWHULabel"
+                                    text="TWHU:"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUTWHUInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInput2"
+                                    value=""
+                                    width="110px"
+                                />
+                            </HBox>
+
+                            <!-- Row 3: DGs -->
+                            <HBox>
+                                <Label
+                                    id="idARHUDGsLabel"
+                                    text="DGs:"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                
+                                <Input
+                                    id="idARHUDGsInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <!-- field itms -->
+                                <Label
+                                    id="idARHUitmsLabel"
+                                    text="ITMS:"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idARHUITMSInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <!-- field TVHU  -->
+                                <Label
+                                    id="idARHUTVHULabel"
+                                    text="TVHU:"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                
+                                <Input
+                                    id="idARHUTVHUInput"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInput3"
+                                    value=""
+                                    width="110px"
+                                />
+                                </HBox>
+                                
+
+                            <!-- Row 4: inputs -->
+                            <HBox >
+                              
+                              <Label
+                                    id="idARHUinputLabel"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                /> 
+                                <Input
+                                    id="idARHUInput4"
+                                    value=""
+                                    width="200px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInput5"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <!-- Row 5: inputs -->
+                            <HBox >
+                              
+                              <Label
+                                    id="idARHUinputLabel1"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                /> 
+                                <Input
+                                    id="idARHUInputR2"
+                                    value=""
+                                    width="200px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInputRC2"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <!-- Row 6: inputs -->
+                            <HBox >
+                              
+                              <Label
+                                    id="idARHUinputLabel6"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                /> 
+                                <Input
+                                    id="idARHUInputR3"
+                                    value=""
+                                    width="200px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInputRC3"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <!-- Row 7: inputs -->
+                            <HBox >
+                              
+                              <Label
+                                    id="idARHUinputLabel7"
+                                    width="50px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                /> 
+                                <Input
+                                    id="idARHUInputR1"
+                                    value=""
+                                    width="200px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idARHUInputRC4"
+                                    value=""
+                                    width="110px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idARHUPage7"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                width="auto"
+                class="sapUiContentPadding sapUiResponsiveMargin"
+                visible="false"
+            >
+                <Button
+                    id="idARHUEPage7BackBtn"
+                    press="OnpressARHUPage7Backbutton"
+                    class="sapUiTinyMarginBottom"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <VBox
+                    id="idMainVBoxARHU7"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent sapUiResponsiveMargin "
+                >
+                    <Title
+                        id="_IDGenTitleARHU7"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+                    <f:SimpleForm
+                        id="simpleForm1ARHUE7"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack sapUiResponsiveMargin"
+                    >
+                        <!-- Row 1: SHU -->
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    id="idARHUSHULabel7"
+                                    text="SHU:"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                                <VBox> 
+                                <HBox >
+                                <Input
+                                    id="idARHUSHUInput7"
+                                    value=""
+                                    width="150px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                
+                                    <Input
+                                        id="idARHUInput7"
+                                        value=""
+                                        width="110px"
+                                    />
+                                    </HBox>
+
+                                    <Input
+                                        id="idARHUInput8"
+                                        value=""
+                                        width="150px"
+                                    />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

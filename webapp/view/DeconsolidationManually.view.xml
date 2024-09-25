@@ -96,7 +96,7 @@
                             <Label
                                 id="idDeconsolidationManuallyLabelDeconsolidationManually"
                                 text="Decon.HU:"
-                                class="ScanHumargin"
+                                class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
 

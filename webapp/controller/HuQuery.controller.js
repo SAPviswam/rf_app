@@ -4,7 +4,7 @@
     "sap/ui/Device",
     "sap/m/MessageToast", // Import MessageToast for user feedback
     "sap/ui/core/UIComponent"
-], function (Controller,Device, MessageToast,UIComponent) {
+], function (Controller,Device, MessageToastFra,UIComponent) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {

@@ -1,0 +1,554 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.LoadbyHUAutoPosAssiognment"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageLoadByHU_AutoPosAssignment">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderLoadByHU_AutoPosAssignment">
+                <Image
+                    id="_IDGenImage1LoadByHU_AutoPosAssignment"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorLoadByHU_AutoPosAssignment"
+                />
+                <ToolbarSpacer id="idToolbarSpacerLoadByHU_AutoPosAssignment">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1LoadByHU_AutoPosAssignment"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="IDGenAvatar1LoadByHU_AutoPosAssignment"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idLBHUAPAscrollContainer1"
+                vertical="true"
+                horizontal="false"
+                visible="true"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="IDLBHUAPA_SecondbackButton1"
+                    icon="sap-icon://nav-back"
+                    press="OnpressBack_AutoPosAssignment"
+                    class="sapUiSmallMarginBottom"
+                />
+                <VBox
+                    id="idTitleVBoxAutoPosAssignment"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Title
+                        id="idLBHUAPAtitleHuDetails"
+                        text="Hu Details"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                </VBox>
+                <f:SimpleForm
+                    id="idsimpleformHubyAutoPosAssignmentScreen1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idLabelDeNoHubyAutoPosAssignmentScreen1"
+                        text="HU"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox
+                        id="idHboxDeNoHubyAutoPosAssignmentScreen1"
+                        class="gapBetweenInputs"
+                    >
+                        <Input
+                            id="idinputDeNoHubyAutoPosAssignmentScreen1"
+                            placeholder="HU number.."
+                            maxLength="25"
+                            width="200px"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <HBox id="idHboxINOHubyAutoPosAssignmentScreen1">
+                            <Label
+                                id="idlabelINOHubyAutoPosAssignmentScreen1"
+                                text="Top Hus:"
+                                class="ItemLabel"
+                            />
+
+                            <Input
+                                id="idInputINOHubyAutoPosAssignmentScreen1"
+                                maxLength="25"
+                                width="200px"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </HBox>
+
+                    <!-- Vendor Field -->
+                    <Label
+                        id="idVendoroHubyAutoPosAssignmentScreen1"
+                        text="A Rsrc"
+                    />
+                    <VBox id="idVboxHubyAutoPosAssignmentScreen1">
+                        <Input
+                            id="inputVendoroHubyAutoPosAssignmentScreen1"
+                            placeholder="Enter A Rsrc "
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <!-- F1, F2, F3  -->
+                        <HBox id="idhboxHubyAutoPosAssignmentScreen1">
+                            <Button
+                                id="idButtonF1HubyAutoPosAssignmentScreen1"
+                                text="F1"
+                                press="onF1PressHubyAutoPosAssignmentScreen1"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonF2HubyAutoPosAssignmentScreen1"
+                                text="F2"
+                                press="onF2PressHubyAutoPosAssignment"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="idButtonF3HubyAutoPosAssignmentScreen1"
+                                text="F3"
+                                press="onF3HubyAutoPosAssignmentScreen1"
+                            />
+                        </HBox>
+                        <!-- F4 -->
+                        <HBox id="idhbox2HubyAutoPosAssignmentScreen1">
+                            <Button
+                                id="idButtonF4HubyAutoPosAssignmentScreen1"
+                                text="F4"
+                                press="onF4PressHubyAutoPosAssignmentScreen1"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </HBox>
+                    </VBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idLBHUAPAscrollContainer2"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <Button
+                    id="idNavBackButton1_LBHUAPA"
+                    icon="sap-icon://nav-back"
+                    press="OnPressSecondBackButtonLBHUAPA"
+                />
+
+                <VBox
+                    id="idTitleVBoxScontaner2"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="sapUiContentPadding"
+                    height="auto"
+                    width="auto"
+                >
+                    <Title
+                        id="idLBHUAPAtitleListforhus"
+                        text="List For Hus"
+                        class="TitleSecondPage"
+                        level="H1"
+                    />
+                </VBox>
+
+                <f:SimpleForm
+                    id="idLBHUAPASimpleForm2"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label
+                        id="idProductMaterialLabe_LBHUAPA"
+                        text="HU"
+                    />
+                    <HBox id="IDqtyinputhbo_LBHUAPA">
+                        <Input
+                            id="idPackagingMaterialInpu_LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHbox2Scontainer2LBHUAPA"
+                            width="30px"
+                        />
+                        <HBox
+                            id="idHubyASNHUuombx_LBHUAPA"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyASNuomLabe_1LBHUAPA" />
+                            <Input
+                                id="idHubyASNuomInpu__LBHUAPA"
+                                maxLength="30"
+                                width="150px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idMaterialLabe_LBHUAPA"
+                        text="Finl Bin"
+                    />
+                    <Input
+                        id="idHuyASNuomInpu__LBHUAPA"
+                        maxLength="30"
+                        width="200px"
+                        editable="false"
+                    />
+                    <Label
+                        id="idHubyASNLabelQty_LBHUAPA"
+                        text="Dest Bin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbox__LBHUAPA">
+                        <Input
+                            id="idHubyASNqtyInput__LBHUAPA"
+                            maxLength="30"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idhboxScontainer2Box"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUuombox__LBHUAPA"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel__LBHUAPA"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput__LBHUAPA1"
+                                maxLength="30"
+                                width="64px"
+                                editable="false"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHboxContainer2Space"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUuombox__LBHUAPA2"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNuomLabel__LBHUAPA2"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="idHubyASNuomInput__LBHUAPA12"
+                                maxLength="30"
+                                width="64px"
+                                editable="false"
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idPositionLabel_LBHUAPA"
+                        text="Position"
+                    />
+                    <Input
+                        id="idPositionInput__LBHUAPA"
+                        maxLength="30"
+                        width="200px"
+                    />
+                </f:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idLBHUAPAScrollContainer3"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+            >
+                <HBox
+                    id="idMainHBox_LBHUAPA1"
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                >
+                    <Button
+                        id="idThirdBackButton_LBHUAPA"
+                        icon="sap-icon://nav-back"
+                        press="OnpressThirdBackButtonLBHUAPA"
+                    />
+                    <Title
+                        id="idTitle_LBHUAPA"
+                        class="TitleSecondPage"
+                        level="H1"
+                        textAlign="Center"
+                        text="WO Details"
+                    />
+                    <Text
+                        id="idEmptyText_LBHUAPA"
+                        text=""
+                        width="32px"
+                    />
+                </HBox>
+
+                <f:SimpleForm
+                    id="idProductDetailsForm_LBHUAPAL1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <Label id="idExtraInputLabel_LBHUAPA1" />
+                    <HBox id="idHboxScontainer3First">
+                        <Input
+                            id="idInputScontainer3_1LBHUAPA"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer1LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asdfg1LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer2LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_2LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="asdfg12LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer3LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_3LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idExtraInputLabel1_LBHUAPA1LBHUAPA" />
+                    <HBox id="idHboxScontainer3FourthLBHUAPA">
+                        <Input
+                            id="idInputScontainer3_4LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer4LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asdfg11LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer5LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_5LBHUAPA"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="asdfg112LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer6LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_6LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idExtraInputLabel1_A1IC1LBHUAPA" />
+                    <HBox id="idHboxScontainer3EightLBHUAPA">
+                        <Input
+                            id="idInputScontainer3_7v"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer7LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asdf1g1LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer8LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_8LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="asdf1g12LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer9LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_9LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idExtr1aInputLabel1_LBHUAPA1LBHUAPA" />
+                    <HBox id="idHboxScontainer3OneTwoLBHUAPA">
+                        <Input
+                            id="idInputScontainer3_10LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer10LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asd1fg11LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer11LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_11LBHUAPA"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="asd1fg112LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer12LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_12LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idExtr1aInputLabel1_LBHUAPA1rLBHUAPA" />
+                    <HBox id="idHboxScontainer3FinalLBHUAPA">
+                        <Input
+                            id="idInputScontainer3_13LBHUAPA"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer13LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asd1fg1125LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer14LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_14LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <Label id="asd1fg1124LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer15LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_15LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+
+                    <Label id="idExtr1aInputLabel1_LBHUAPA16LBHUAPA" />
+                    <HBox id="idHboxScontainer3PenultimateLBHUAPA">
+                        <Input
+                            id="idInputScontainer3_16LBHUAPA"
+                            maxLength="25"
+                            width="100px"
+                            editable="false"
+                        />
+                        <HBox
+                            id="idHboxScontainer3Spacer16LBHUAPA"
+                            width="10px"
+                        />
+                        <Label id="asd1fg116LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer17LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_17LBHUAPA"
+                            maxLength="25"
+                            width="150px"
+                            editable="false"
+                        />
+                        <Label id="asd1fg1126LBHUAPA" />
+                        <HBox
+                            id="idHboxScontainer3Spacer18LBHUAPA"
+                            width="10px"
+                        />
+                        <Input
+                            id="idInputScontainer3_18LBHUAPA"
+                            maxLength="25"
+                            width="70px"
+                            editable="false"
+                        />
+                    </HBox>
+                </f:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
