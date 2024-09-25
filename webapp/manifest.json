@@ -325,6 +325,13 @@
           ]
         },
         {
+          "name": "SetReadyforWHProcessingByCO",
+          "pattern": "SetReadyforWHProcessingByCO/{id}",
+          "target": [
+            "TargetSetReadyforWHProcessingByCO"
+          ]
+        },
+        {
           "name": "AdhocProductWt",
           "pattern": "AdhocProductWt/{id}",
           "target": [
@@ -729,12 +736,21 @@
           "viewId": "AutomaticallyRepackHUItem",
           "viewName": "AutomaticallyRepackHUItem"
         },
+        "TargetSetReadyforWHProcessingByCO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SetReadyforWHProcessingByCO",
+          "viewName": "SetReadyforWHProcessingByCO"
+},
+
         "TargetReversalofConsumptionbyMObyHU": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "ReversalofConsumptionbyMObyHU",
           "viewName": "ReversalofConsumptionbyMObyHU"
+
         },
         "TargetBillofLading": {
           "viewType": "XML",

@@ -23,16 +23,6 @@ sap.ui.define(
                 this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
 
                 //stored colours applying...
-                // this.applyStoredColors();
-                // // Initialize events for tile and button
-                // var oTile = this.byId("idPutawayByWO1");
-                // var oButton = this.byId("idBtnPutawayByWO");
-                // // Attach single-click event to the tile
-                // oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
-                // // Attach single-click event to the button
-                // oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
-
-
                 // Initialize events for tile and button
                 // var oTile = this.byId("idPutawayByWO1");
                 // var oButton = this.byId("idBtnPutawayByWO");
@@ -42,7 +32,9 @@ sap.ui.define(
 
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
+                this._isThemeMode = false;
                  this.Themecall = false;
+
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -59,14 +51,12 @@ sap.ui.define(
                     this.onTilePressPutawayByWO(oEvent);
                 }
             },
-           
             // Palette button press logic (this is triggered when the button is pressed)
             onPaletteIconPress: function (oEvent) {
                 debugger
                 // Open the theme dialog box
                 this._currentTileId = oEvent;
                 this.byId("themeTileDialog").open();
-               
             },
             onAfterRendering: function () {
                 debugger
@@ -1604,6 +1594,12 @@ sap.ui.define(
                 oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
  
             },
+            //SetReady for WH Processing By CO Tile...
+            onPressSetReadyForWHProcessingByCO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+ 
+            },
 
             onReceivingofHUbyBillofLading: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1644,23 +1640,23 @@ sap.ui.define(
             },
             onDeconsolidationAutomaticallypress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+                oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
             },
             onDeconsolidationManuallypress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+                oRouter.navTo("DeconsolidationManually", { id: this.ID });
             },
             OnPressAdhocInventoryCreation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+                oRouter.navTo("AdhocInventoryCreation", { id: this.ID });
             },
             onCreationOfSingleHUpress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+                oRouter.navTo("CreationOfSingleHU", { id: this.ID });
             },
             OnpressMaintainHU: function () {
-               var oRouter = UIComponent.getRouterFor(this);
-        oRouter.navTo("MaintainHU",{id:this.ID});
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("MaintainHU", { id: this.ID });
 
             },
 
@@ -1694,7 +1690,7 @@ sap.ui.define(
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt",{id:this.ID});
+                oRouter.navTo("AdhocProductWt", { id: this.ID });
 
             },
             OnPressUnloadByDelivery: function () {
@@ -2032,12 +2028,12 @@ sap.ui.define(
             },
             onCreatePutawayHusforDeconsolidation: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});
+                oRouter.navTo("CreatePutawayHusforDeconsolidate", { id: this.ID });
             },
 
             onCreatePutawayHusManually: function() {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+                oRouter.navTo("CreatePutawayHusManually", { id: this.ID });
             },
             onManuallyRepackHUItemPress: function () {
                 debugger
@@ -2047,11 +2043,11 @@ sap.ui.define(
 
             OnPressProductInspectionByHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
+                oRouter.navTo("ProductInspectionByHU", { id: this.ID });
             },
             OnPressProductInspectionByStorageBin: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
 
             onPutawayByHUClustered:function(){
@@ -2079,7 +2075,6 @@ sap.ui.define(
                 oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
             },
 
-
             onSetReadyForWHProcessingByBOLPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WHProcessingByBOL",{id:this.ID});
@@ -2106,5 +2101,6 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
             },
+
         });
     });
