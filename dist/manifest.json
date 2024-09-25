@@ -240,6 +240,13 @@
                     ]
                 },
                 {
+                    "name": "ReversalofConsumptionbyMObyHU",
+                    "pattern": "ReversalofConsumptionbyMObyHU/{id}",
+                    "target": [
+                        "TargetReversalofConsumptionbyMObyHU"
+                    ]
+                },
+                {
                     "name": "UnloadingByBillofLading",
                     "pattern": "UnloadingByBillofLading/{id}",
                     "target": [
@@ -443,6 +450,13 @@
                     ]
                 },
                 {
+                    "name": "LoadbyHUManPosAssiognment",
+                    "pattern": "LoadbyHUManPosAssiognment/{id}",
+                    "target": [
+                        "TargetLoadbyHUManPosAssiognment"
+                    ]
+                },
+                {
                     "name": "ManuallyRepackHU",
                     "pattern": "ManuallyRepackHU/{id}",
                     "target": [
@@ -503,6 +517,27 @@
                     "pattern": "RoutePutawayHuClustered/{id}",
                     "target": [
                         "TargetRoutePutawayHuClustered"
+                    ]
+                },
+                {
+                    "name": "WHProcessingByBOL",
+                    "pattern": "WHProcessingByBOL/{id}",
+                    "target": [
+                        "TargetWHProcessingByBOL"
+                    ]
+                },
+                {
+                    "name": "UnloadByHu",
+                    "pattern": "UnloadByHu/{id}",
+                    "target": [
+                        "TargetUnloadByHu"
+                    ]
+                },
+                {
+                    "name": "RouteReversalofConsumptionbyMO_Bin",
+                    "pattern": "ReversalofConsumptionbyMO_Bin/{id}",
+                    "target": [
+                        "TargetReversalofConsumptionbyMO_Bin"
                     ]
                 }
             ],
@@ -667,6 +702,13 @@
                     "clearControlAggregation": false,
                     "viewId": "AutomaticallyRepackHUItem",
                     "viewName": "AutomaticallyRepackHUItem"
+                },
+                "TargetReversalofConsumptionbyMObyHU": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReversalofConsumptionbyMObyHU",
+                    "viewName": "ReversalofConsumptionbyMObyHU"
                 },
                 "TargetBillofLading": {
                     "viewType": "XML",
@@ -899,12 +941,40 @@
                     "viewId": "UnloadingByBillofLading",
                     "viewName": "UnloadingByBillofLading"
                 },
+                "TargetLoadbyHUManPosAssiognment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "LoadbyHUManPosAssiognment",
+                    "viewName": "LoadbyHUManPosAssiognment"
+                },
                 "TargetRoutePutawayHuClustered": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "PutawayByHuc",
                     "viewName": "PutawayByHuc"
+                },
+                "TargetWHProcessingByBOL": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "WHProcessingByBOL",
+                    "viewName": "WHProcessingByBOL"
+                },
+                "TargetUnloadByHu": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "UnloadByHu",
+                    "viewName": "UnloadByHu"
+                },
+                "TargetReversalofConsumptionbyMO_Bin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReversalofConsumptionbyMO_Bin",
+                    "viewName": "ReversalofConsumptionbyMO_Bin"
                 }
             }
         },
