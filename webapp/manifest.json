@@ -965,12 +965,19 @@
           "viewId": "WHProcessingByBOL",
           "viewName": "WHProcessingByBOL"
       },
-        "TargetUnloadByHu": {
+      "TargetUnloadByHu": {
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewId": "UnloadByHu",
+        "viewName": "UnloadByHu"
+      },
+        "TargetConsumptionByManufacturingOrder": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "UnloadByHu",
-          "viewName": "UnloadByHu"
+          "viewId": "ConsumptionByManufacturingOrder",
+          "viewName": "ConsumptionByManufacturingOrder"
         },
         "TargetReversalofConsumptionbyMO_Bin": {
           "viewType": "XML",
