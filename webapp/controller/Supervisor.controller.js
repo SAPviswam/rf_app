@@ -23,16 +23,6 @@ sap.ui.define(
                 this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
 
                 //stored colours applying...
-                // this.applyStoredColors();
-                // // Initialize events for tile and button
-                // var oTile = this.byId("idPutawayByWO1");
-                // var oButton = this.byId("idBtnPutawayByWO");
-                // // Attach single-click event to the tile
-                // oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
-                // // Attach single-click event to the button
-                // oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
-
-
                 // Initialize events for tile and button
                 // var oTile = this.byId("idPutawayByWO1");
                 // var oButton = this.byId("idBtnPutawayByWO");
@@ -42,6 +32,7 @@ sap.ui.define(
 
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
+                this._isThemeMode = false;
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -58,25 +49,12 @@ sap.ui.define(
                     this.onTilePressPutawayByWO(oEvent);
                 }
             },
-            // onTilePress: function (oEvent) {
-            //     var oPressedControl = oEvent.getSource(); // Source of the press
-            //     // If the pressed control is the button inside the tile
-            //     if (oPressedControl instanceof sap.m.Button) {
-            //         oEvent.stopPropagation();
-            //         this.onPaletteIconPress(oEvent);
-            //     } else {
-            //         // If the press is on the tile itself, handle navigation
-            //         this.onTilePressPutawayByWO(oEvent);
-            //     }
-            // },
-
             // Palette button press logic (this is triggered when the button is pressed)
             onPaletteIconPress: function (oEvent) {
                 debugger
                 // Open the theme dialog box
                 this._currentTileId = oEvent.getSource().getId();
                 this.byId("themeTileDialog").open();
-               
             },
             onAfterRendering: function () {
                 debugger
@@ -1621,6 +1599,12 @@ sap.ui.define(
             onPressAutomaticallyRepackHUItem: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
+ 
+            },
+            //SetReady for WH Processing By CO Tile...
+            onPressSetReadyForWHProcessingByCO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
  
             },
 
