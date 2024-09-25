@@ -565,7 +565,7 @@
             "TargetAutomaticallyRepackHu"
           ]
     },
-
+{
           "name": "RouteChangeLoadingUnloadingDetails",
           "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
           "target": [
