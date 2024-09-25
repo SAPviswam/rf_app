@@ -2052,5 +2052,9 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
             },
+            OnpressLoadbyHUAutoPosAssiognment:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
+            }
         });
     });

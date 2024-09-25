@@ -549,6 +549,13 @@
           "target": [
             "TargetAutomaticallyRepackHu"
           ]
+        },
+        {
+          "name": "LoadbyHUAutoPosAssiognment",
+          "pattern": "LoadbyHUAutoPosAssiognment/{id}",
+          "target": [
+            "TargetLoadbyHUAutoPosAssiognment"
+          ]
         }
       ],
       "targets": {
@@ -958,7 +965,13 @@
           "viewId": "LoadbyHUManPosAssiognment",
           "viewName": "LoadbyHUManPosAssiognment"
         },
-
+        "TargetLoadbyHUAutoPosAssiognment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "LoadbyHUAutoPosAssiognment",
+          "viewName": "LoadbyHUAutoPosAssiognment"
+        },
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
           "transition": "slide",
