@@ -16,7 +16,7 @@
             >
                 <VBox
                     id="environmentButtonsHBox"
-                    class="sapUiSmallMarginTop boxContainer"
+                    class="sapUiSmallMargin boxContainer"
                     alignItems="Center"
                 >
 
@@ -27,6 +27,7 @@
                             alignContent="Start"
                             class="boxContainer2"
                             width="auto"
+                            height="40%"
                         >
                             <Image
                                 id="idImageLogoAvatarinitial"
@@ -49,6 +50,7 @@
                         <HBox
                             id="idHboxButtons"
                             alignContent="Start"
+                            class="sapUiTinyMarginBegin"
                         >
                             <Button
                                 id="idButtonAdd"
