@@ -504,6 +504,13 @@
           "target": [
             "TargetRoutePutawayHuClustered"
           ]
+        },
+        {
+          "name": "AutomaticallyRepackHu",
+          "pattern": "AutomaticallyRepackHu/{id}",
+          "target": [
+            "TargetAutomaticallyRepackHu"
+          ]
         }
       ],
       "targets": {
@@ -905,6 +912,13 @@
           "clearControlAggregation": false,
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
+        },
+        "TargetAutomaticallyRepackHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHu",
+          "viewName": "AutomaticallyRepackHu"
         }
       }
     },

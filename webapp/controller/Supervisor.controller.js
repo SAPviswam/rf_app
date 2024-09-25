@@ -2016,6 +2016,10 @@ sap.ui.define(
             onPutawayByHUClustered:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
+            },
+            onPressAutomaticallyRepeakHU:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
             }
 
 
