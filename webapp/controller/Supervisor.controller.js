@@ -2102,6 +2102,9 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteReversalofConsumptionbyMO_Bin",{id:this.ID});
             },
-
+            onPressAutomaticallyRepeakHU:function() { 
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
+            },
         });
     });

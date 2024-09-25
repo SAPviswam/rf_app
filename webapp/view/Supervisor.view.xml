@@ -1273,6 +1273,13 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Man. Pos. Assigment"
                             press="OnpressLoadbyHUManPosAssiognment"
+
+                        />
+                         <GenericTile
+                            id="IDGenGenericTile322"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load By HU - Auto. Pos. Assigment"
+                            press="OnpressLoadbyHUAutoPosAssiognment"
                         />
 
                         <GenericTile

@@ -498,8 +498,11 @@ sap.ui.define([
             onPutawayByHUClusteredPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-
-            }
+            },
+            onAutomaticallyRepackHUPress:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
+            },
 
         });
     });
