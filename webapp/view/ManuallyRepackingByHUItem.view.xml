@@ -1,0 +1,967 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    controllerName="com.app.rfapp.controller.ManuallyRepackingByHUItem"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    height="100%"
+>
+
+    <tnt:ToolPage id="idToolPageManuallyRepackingByHu">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderManuallyRepackingByHu">
+                <Image
+                    id="_IDGenImage1ManuallyRepackingByHu"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorManuallyRepackingByHu"
+                />
+                <ToolbarSpacer id="idToolbarSpacerManuallyRepackingByHu">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1ManuallyRepackingByHu"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1ManuallyRepackingByHu"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+           <ScrollContainer
+    id="idScrollContainerScreen1"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen1"
+        press="onBackBtnPressScreen1"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen1"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen1"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen1"
+                    text="Screen 1: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Src HU" id="idLabelSrcHU" />
+            <Input id="idInputSrcHU" width="100%" />
+
+            <Label text="Pr/SI/HU" id="idLabelPrSIHU" />
+            <Input id="idInputPrSIHU" width="100%" />
+
+            <Label text="Source Qty" id="idLabelSourceQty" />
+            <Input id="idInputSourceQty" width="100%" />
+
+            <Label text="Cnsl. Grp" id="idLabelCnslGrp" />
+            <Input id="idInputCnslGrp" width="100%" />
+
+            <Label text="Dest. HU" id="idLabelDestHU" />
+            <Input id="idInputDestHU" width="100%" />
+
+            <Label text="Dest. Bin" id="idLabelDestBin" />
+            <Input id="idInputDestBin" width="100%" />
+
+            <Label text="Product is Hazardous Substance" id="idLabelHazardous" />
+            <Input id="idInputHazardous" width="100%" />
+
+            <Label text="Alternative Unit of Measure" id="idLabelAltUOM" />
+            
+            <!-- Corrected HBox for Horizontal Inputs -->
+        
+                <Input
+                    id="idInputAltUOM"
+                    width="100%" 
+                    placeholder="Alternative UOM"
+                />
+                <Label
+                    text="Sis"
+                    id="idLabelSis"
+                    labelFor="idInputSis"
+                    class="sapUiTinyMarginEnd"
+                />
+                <Input
+                    id="idInputSis"
+                    width="100%" 
+                    placeholder="Sis"
+                />
+                <Button
+        id="idNxtButton"
+        press="onNxtBtnPressScreen1"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+
+<ScrollContainer
+    id="idScrollContainerScreen2"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+>
+    <Button
+        id="idBackButtonScreen2"
+        press="onBackBtnPressScreen2"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    
+    <form:SimpleForm
+        id="idSimpleFormScreen2"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="3"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen2"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen2"
+                    text="Screen 2: Source and Destination"
+                />
+            </Toolbar>
+        </form:toolbar>
+       
+        <form:content>
+            <!-- Existing fields -->
+
+
+            <Label text="Src HU" id="idLabelSrcHUScreen2" />
+            <Input id="idInputSrcHUScreen2" width="100%" />
+
+            <Label text="Pr/SI/HU" id="idLabelPrSIHUScreen2" />
+            <Input id="idInputPrSIHUScreen2" width="100%" />
+
+            <Label text="Pro Txt" id="idLabelProTxt" />
+            <Input id="idInputProTxt" width="100%" />
+
+            <Label text="Source Qty" id="idLabelSourceQtyScreen2" />
+            <Input id="idInputSourceQtyScreen2" width="100%" />
+
+            <Label text="Cnsl. Grp" id="idLabelCnslGrpScreen2" />
+            <Input id="idInputCnslGrpScreen2" width="100%" />
+
+            <Label text="Dest. HU" id="idLabelDestHUScreen2" />
+            <Input id="idInputDestHUScreen2" width="100%" />
+
+            <Label text="Dest. Bin" id="idLabelDestBinScreen2" />
+            <Input id="idInputDestBinScreen2" width="100%" />
+
+            <Label text="Number of lower-level HUs" id="idLabelLowerLevelHUs" />
+            <Input id="idInputLowerLevelHUs" width="100%" />
+
+            <Label text="Undefined Range (Patch Levels)" id="idLabelUndefinedRange" />
+            <Input id="idInputUndefinedRange" width="100%" />
+
+            <Label text="Product is Hazardous Substance" id="idLabelHazardousScreen2" />
+            <Input id="idInputHazardousscreen2" width="100%" />
+
+            <Label text="Alternative Unit of Measure" id="idLabelAltUOMScreen2" />
+            <Input id="idInputAltUOMScreen2" width="100%" />
+        </form:content>
+
+        <!-- New horizontal content -->
+        <form:content>
+            <VBox>
+                <HBox>
+                    <Label text="Sis" id="idLabelAdditionalNotes" />
+                    <Input id="idInputAdditionalNotes" width="100%" />
+                </HBox>
+            </VBox>
+        </form:content>
+          <Label text="Number of HU Items" id="idLabelNOHUITScreen2" />
+          <VBox >
+            <Input id="idInputNumberofHUItemscreen2" width="100%" />
+            <HBox >
+            <Button text="HU OVERVIEW"></Button>
+            <Button text="HU ITEM LIST"></Button>
+             <Button
+        id="idNxtButtons2"
+        press="onNxtBtnPressScreen2"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+            </HBox>
+            </VBox>
+            
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="idScrollContainerScreen3"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen3"
+        press="onBackBtnPressScreen3"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen3"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen3"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen3"
+                    text="Screen 3: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Cnsld .Grp" id="idLabelSrcCnsldGrp" />
+            <Input id="idInputCnsldGrp" width="100%" />
+
+            <Label text="Dest.Hu" id="idLabelDestHu" />
+            <Input id="idInputDestHu" width="100%" />
+
+            <Label text="Pack. Mat" id="idLabelPackMat" />
+            <Input id="idInputPackMat" width="100%" />
+
+            <Label text="Dest.Bin" id="idLabelDestBins3" />
+            <VBox >
+            <Input id="idInputDestBins3" width="100%" />
+         
+                <Button
+        id="idNxtButtons3"
+        press="onNxtBtnPressScreen3"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    </VBox>
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="idScrollContainerScreen4"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen4"
+        press="onBackBtnPressScreen4"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen4"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen4"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen4"
+                    text="Screen 4: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Cnsld .Grp" id="idLabelSrcCnsldGrpS4" />
+            <Input id="idInputCnsldGrpS4" width="100%" />
+
+            <Label text="Dest.Hu" id="idLabelDestHuS4" />
+            <Input id="idInputDestHuS4" width="100%" />
+
+            <Label text="Pack. Mat" id="idLabelPackMatS4" />
+            <Input id="idInputPackMatS4" width="100%" />
+
+            <Label text="Dest.Bin" id="idLabelDestBins4" />
+            <VBox >
+            <Input id="idInputDestBins4" width="100%" />
+
+             <Button text="save"></Button>
+                <Button
+        id="idNxtButtons4"
+        press="onNxtBtnPressScreen4"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    </VBox>
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+            <ScrollContainer
+    id="idScrollContainerScreen5"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="false"
+><Button
+        id="idBackButtonScreen5"
+        press="onBackBtnPressScreen5"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen5"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="0"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="4"
+        columnsL="4"
+        columnsM="2"
+        singleContainerFullSize="false"
+        width="200%"
+    >
+        <!-- Row 1: Source HU, Pr/SI/HU, empty inputs and button -->
+        <Label text="Srce HU" />
+        <Input id="idInputSrcHU5" width="100%" />
+         <Input id="idInputEmpty1" width="100%" /> <!-- Empty input -->
+         <Input id="idInputEmpty55" width="100%" /> <!-- Empty input -->
+
+
+        <Label text="Pr/SI/HU" />
+        <Input id="idInputPrSIHU5" width="100%" />
+         <Input id="idInputEmpty21" width="100%" /> <!-- Empty input -->
+         <Input id="idInputEmpty22" width="100%" /> 
+
+       
+
+        <!-- Row 2: Serial Number, another empty input -->
+        <Label text="" />
+        <Input id="idInputSN" width="100%" />
+
+        <Input id="idInputEmpty2" width="100%" /> <!-- Empty input -->
+          <Text text="SN:"></Text>
+        <Input id="idInputEmpty3" width="100%" /> <!-- Empty input -->
+       
+        <Input id="idInputEmpty4" width="100%" /> <!-- Empty input -->
+
+        <!-- Row 3: AQty, Btch -->
+        <Label text="" />
+        <Input id="idInputAQty" width="100%" />
+        <Text text="AQty:"></Text>
+        <Input id="idInputAQty1" width="100%" />
+        <Input id="idInputAQty2" width="100%" />
+        <Input id="idInputAQty3" width="100%" />
+        <Label text="Btch" />
+        <Input id="idInputBtch" width="100%" />
+
+        <Input id="idInputEmpty5" width="100%" /> <!-- Empty input -->
+
+       <!-- Empty input -->
+
+        <!-- Row 4: Cnsl. Grp, Dest. HU -->
+        <Label text="Cnsl. Grp" />
+        <Input id="idInputCnslGrp5" width="100%" />
+
+        <Label text="Dest. HU" />
+        <Input id="idInputDestHU5" width="100%" />
+
+        <!-- Row 5: Dest. Bin and empty inputs -->
+        <Label text="Dest. Bin" />
+        <VBox >
+        <Input id="idInputDestBin5" width="60%" />
+       <HBox >
+       <Button  text="HU CREATE"></Button>
+       <Button text="HU OVERVIEW" ></Button>
+       <Button text ="HU ITEM LIST"></Button>
+       <Button text ="DISPLAY MATERIAL LIST" ></Button>
+        
+       </HBox>
+        <Button
+        id="idNxtButtons5"
+        press="onNxtBtnPressScreen5"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+       </VBox>
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="idScrollContainerScreen6"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen6"
+        press="onBackBtnPressScreen6"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen6"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+        width="150%"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen6"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen6"
+                    text="Screen 6: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Product" id="idLabelSrcProductS6" />
+            <Input id="idInputProductS6" width="100%" />
+
+            <Label text="Source Qty" id="idLabelSourceQtyS6" />
+            <Input id="idInputSourceQtyS6" width="50%" />
+
+            <Text text="Alternative unit of measure"></Text>
+            <Input id="idAUOMS6" width="100%" />
+            <Text text="Undefined range"></Text>
+            <Input id="idURS6" width="50%" />
+
+            <Label text="Excl Qty" id="idLabelExclQtyS6" />
+            <Input id="idInputExclQtyS6" width="100%" />
+
+            <Label text="DestHU/Bin" id="idLabelDestHUBins6" />
+            <VBox >
+            <Input id="idInputDestHUBins6" width="100%" />
+           <HBox >
+             <Button text="Change"></Button>
+             <Button text="save"></Button>
+                <Button
+        id="idNxtButtons6"
+        press="onNxtBtnPressScreen6"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    </HBox>
+    </VBox>
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="idScrollContainerScreen7"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen7"
+        press="onBackBtnPressScreen7"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen7"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+        width="150%"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen7"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen7"
+                    text="Screen 7: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Product" id="idLabelSrcProductS7" />
+            <Input id="idInputProductS7" width="100%" />
+            <Label text="Product short text" id="idLabelSrcProductSTS7" />
+            <Input id="idInputProductSTS7" width="100%" />
+            <Text text="Product is Hazardous Substance"></Text>  
+             <Input id="idInputProductSHS7" width="100%" />
+
+
+            <Label text="Source Qty" id="idLabelSourceQtyS7" />
+            <Input id="idInputSourceQtyS7" width="50%" />
+             <Text text="Undefined range"></Text>
+            <Input id="idURS7" width="50%" />
+            
+
+            <Label text="Actyal Qty" id="idLabelActyalQtyS7" />
+            <Input id="idInputActyalQtyS7" width="100%" />
+
+            <Label text="Diff. Qty" id="idLabelDiffQtys7" />
+            <VBox >
+            <Input id="idInputDiffQtys7" width="100%" />
+           <HBox >
+           
+             <Button text="save"></Button>
+               <Button text="Change"></Button>
+                <Button
+        id="idNxtButtons7"
+        press="onNxtBtnPressScreen7"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    </HBox>
+    </VBox>
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+    id="idScrollContainerScreen8"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen8"
+        press="onBackBtnPressScreen8"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen8"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+        width="150%"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen8"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen8"
+                    text="Screen 8: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="SHU" id="idLabelSrcSHUS8" />
+            <Input id="idInputSHUS8" width="100%" />
+             <Text text="Text Field for Main"></Text>  
+             <Input id="idInputProductSHS8" width="100%" />
+            <Label text="Sbin" id="idLabelSrcSbinSTS8" />
+            <Input id="idInputSbinSTS8" width="100%" />
+                <Text text="TWHU"></Text>
+            <Input id="idTWHUS8" width="50%" />
+           
+
+
+            <Label text="DGs" id="idLabelDGsS8" />
+            <Input id="idInputDGsS8" width="50%" />
+             <Text text="TVHU"></Text>
+            <Input id="idTVHUS8" width="50%" />
+         
+            
+
+           <Label ></Label>
+            <Input id="idInputActyalQtyS8" width="50%" />
+             <Label ></Label>
+            <Input id="idInputActyalQtS8" width="50%" />
+             <Label ></Label>
+            <Input id="idInputActyalQS8" width="50%" />
+             <Label ></Label>
+            <Input id="idInputActyaQS8" width="50%" />
+
+         
+           
+    <Button
+        id="idNxtButtons8"
+        press="onNxtBtnPressScreen8"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+   
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+<ScrollContainer
+                id="idScrollContainerScreen9"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+            <Button
+        id="idBackButtonScreen9"
+        press="onBackBtnPressScreen9"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+                <VBox alignContent="Center" alignItems="Center">
+        <form:SimpleForm
+            id="idManuallyRepackAllHUItemsSixth1"
+            layout="ResponsiveGridLayout"
+            labelSpanL="2"
+            labelSpanM="4"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <VBox>
+                <!-- Replacing HBox with l:Grid for better responsiveness -->
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label id="idSrceSixthLabel11" text="SHU" />
+                    <Input id="idSrceSixthInput444" value="" width="150%" />
+                   
+                    <Label id="idSrceSixthfirstLabel999" />
+                    <Input id="idSrceSixthfirstInput000" value="" width="80%"  />
+ 
+                    <!-- <Label id="idSrceSixthfirstttttLabel0000" /> -->
+                    <Input id="idSrceSixthfirsttttInput000000" value="" width="60%"  />
+ 
+                    <!-- <Label id="idSrceSixthfirstLabelll8888" /> -->
+                    <Input id="idSrceSixthfirstInputtt8888" value="" width="50%"  />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label  />
+                    <Input  value="" width="150%" />
+ 
+                    <Label id="idSrceSixthfirs88888" />
+                    <Input id="idSrceSixthfitt77777" value="" width="170%" maxLength="20" />
+ 
+                    <Label id="idSrceSixth99999" />
+                    <Input id="idSrceSixthfi99999" value="" maxLength="20" width="50%" />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                    <Label  />
+                    <Input  value="" width="150%" />
+ 
+                    <Label  />
+                    <Input value="" width="170%" maxLength="20" />
+ 
+                    <Label />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                     <Label  />
+                    <Input  value="" width="150%" />
+ 
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+ 
+                    <Label />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                      <Label  />
+                    <Input  value="" width="150%" />
+ 
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+ 
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                     <Label  />
+                    <Input  value="" width="150%" />
+ 
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+ 
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+ 
+                <l:Grid defaultSpan="L2 M2 S2">
+                      <Label />
+                    <Input  value="" width="150%" />
+ 
+                    <Label  />
+                    <Input  value="" width="170%" maxLength="20" />
+ 
+                    <Label  />
+                    <Input  value="" maxLength="20" width="50%" />
+                </l:Grid>
+            </VBox>
+               <Button
+        id="idNxtButtons9"
+        press="onNxtBtnPressScreen9"
+
+        icon="sap-icon://open-command-field"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+        </form:SimpleForm>
+    </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+    id="idScrollContainerScreen10"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="sapUiContentPadding"
+    visible="true"
+>
+    <Button
+        id="idBackButtonScreen10"
+        press="onBackBtnPressScreen10"
+        icon="sap-icon://nav-back"
+        type="Transparent"
+        class="sapUiTinyMarginBottom"
+    />
+    <form:SimpleForm
+        id="idSimpleFormScreen10"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="4"
+        emptySpanM="0"
+        emptySpanS="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false"
+        width="150%"
+    >
+        <form:toolbar>
+            <Toolbar
+                id="idToolbarScreen10"
+                class="HeaderToolBar"
+            >
+                <Title
+                    id="idTitleScreen10"
+                    text="Screen 10: Handling Unit"
+                />
+            </Toolbar>
+        </form:toolbar>
+        <form:content>
+            <Label text="Pro" id="idLabelSrcProS10" />
+            <Input id="idInputProS10" width="100%" />
+           
+            <Label text="PTxt" id="idLabelSrcPTxtSTS10" />
+            <Input id="idInputPTxtSTS10" width="100%" />
+            <Label text="Btch" id="idLabelSrcBtchSTS10" />
+            <Input id="idInputBtchSTS10" width="100%" />
+            
+            <Input id="idTWHUS10" width="50%" />
+            <Input id="idTWHS10" width="50%" />
+           
+
+
+            <Label text="Pents" id="idLabelPentsS10" />
+            <Input id="idInputPentsS10" width="50%" />
+             <Text text="Styp"></Text>
+            <Input id="idStypS10" width="50%" />
+         
+            <Label text="Ownr" id="idLabelOwnrS10" />
+            <Input id="idInputOwnrS10" width="50%" />
+             <Text text="StUs"></Text>
+            <Input id="idStUsS10" width="50%" />
+         
+            
+
+           <Label ></Label>
+            <Input id="idInputActyalQtyS10" width="50%" />
+             
+            <Input id="idStUS10" width="50%" />
+               
+            <Input id="idStS10" width="50%" />
+             <Label ></Label>
+            <Input id="idInputActyalQtS10" width="50%" />
+        
+            <Input id="idInputActyalQS10" width="50%" />
+         
+            <Input id="idInputActyaQS10" width="50%" />
+
+         
+           
+    
+   
+            
+        </form:content>
+    </form:SimpleForm>
+</ScrollContainer>
+            
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

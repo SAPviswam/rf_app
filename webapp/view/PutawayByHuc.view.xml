@@ -1,0 +1,158 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.PutawayByHuc"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    displayBlock="true"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+    <!-- Tool Page For Our View -->
+        <tnt:ToolPage id="idToolPagePBYHU">
+            <tnt:header>
+            <!-- ToolPage Header for Our Page -->
+                <tnt:ToolHeader id="idtntToolHeaderPBYHU">
+                <Button
+                        id="IDMainbackButton2PBYHU"
+                        icon="sap-icon://nav-back"
+                        press="Onpressbackbol1PBYHU"
+                        visible="true"
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <Image
+                        id="_IDGenImage1PBYHU"
+                        height="1.5rem"
+                        class="sapUiSmallMarginBegin"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                    />
+                    <tnt:ToolHeaderUtilitySeparator
+                        id="idToolHeaderUtilitySeparatorPBYHU"
+                    />
+                    <ToolbarSpacer id="idToolbarSpacerPBYHU">
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutData1PBYHU"
+                                priority="NeverOverflow"
+                                minWidth="20px"
+                            />
+                        </layoutData>
+                    </ToolbarSpacer>
+                    <Avatar
+                        id="IDGenAvatar1PBYHU"
+                        displaySize="XS"
+                        press="onAvatarPressed"
+                        tooltip="Profile"
+                    />
+                </tnt:ToolHeader>
+            </tnt:header>
+            <tnt:mainContents>
+                <!-- Page for Putaway By HU  -->
+                <ScrollContainer
+                    id="idscrollContainer1PBYHU"
+                    vertical="true"
+                    horizontal="false"
+                    height="100%"
+                    width="100%"
+                    class="sapUiContentPadding"
+                >
+                <!-- Navigation Back Button -->
+                    <Button
+                        id="IDMainbackButton1PBYHU"
+                        icon="sap-icon://nav-back"
+                        press="Onpressbackbol1PBYHU"
+                        visible="true"
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <!-- Adding title to our screen -->
+                    <VBox
+                        id="idVBoxPBYHU"
+                        alignItems="Center"
+                        justifyContent="Center"
+                        class="sapUiContentPadding"
+                        height="auto"
+                        width="auto"
+                    >
+                        <Title
+                            id="idPBYHUTitle"
+                            text="Putaway By HU"
+                            class="TitleSecondPage"
+                            level="H1"
+                        />
+                    </VBox>
+                    <!-- Displaying the content in the forms -->
+                    <f:SimpleForm
+                        id="idsimplePBYHU"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                        layout="ResponsiveGridLayout"
+                    >
+                        <Label
+                            id="idHulabelPBYHU"
+                            text="HU"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idHuinputPBYHU"
+                            placeholder="Enter Hu"
+                            maxLength="25"
+                            width="200px"
+                        />
+
+                        <Label
+                            id="idLogoLabelPBYHU"
+                            text="LogPos"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Input
+                            id="idlogposvaluePBYHU"
+                            placeholder="Log Pos"
+                            maxLength="25"
+                            width="200px"
+                        />
+                        <Label
+                            id="idHUsLabelPBYHU"
+                            text="HUs"
+                            class="sapUiMarginBegin"
+                        />
+                        <Input
+                            id="idHusValuePBYHU"
+                            placeholder=""
+                            maxLength="25"
+                            width="200px"
+                        />
+                        <Label id="dummy" />
+                        <HBox
+                            id="idHBoxButtonPBYHU"
+                            class="sapUiTinyMargin"
+                        >
+                            <Button
+                                id="idGuidedPBYHU"
+                                text="Guided"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                width="100px"
+                                type="Emphasized"
+                            />
+                            <Button
+                                id="idIdselPBYHU"
+                                text="ID Selection"
+                                class="sapUiTinyMargin"
+                                width="100px"
+                            />
+                            <Button
+                                id="idQueriesPBYHU"
+                                text="Queries"
+                                class="sapUiTinyMarginTop"
+                                width="100px"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
+                </ScrollContainer>
+            </tnt:mainContents>
+        </tnt:ToolPage>
+    </Page>
+</mvc:View>
