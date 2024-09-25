@@ -1642,7 +1642,6 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU", { id: this.ID });
             },
-
             onDeconsolidationAutomaticallypress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
@@ -1691,7 +1690,6 @@ sap.ui.define(
             },
             onPressCreateAdhocHUWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-
                 oRouter.navTo("AdhocHuWt", { id: this.ID });
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
@@ -1700,14 +1698,17 @@ sap.ui.define(
 
             },
             OnPressUnloadByDelivery: function () {
-                debugger
                 if (this.Themecall) {
                     this.onPaletteIconPress("idUnloadingByDelivery1")
                     return
                 }
                 var oRouter = UIComponent.getRouterFor(this);
-              
-                oRouter.navTo("UnloadByDelivery", {id:this.ID})
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
             },
             onUnloadingByShipmentPress: function () {
                 if (this.Themecall) {
@@ -1955,8 +1956,10 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO", { id: this.ID });
             },
-
-
+            OnPressSerialnumberLocation: function () {                
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+            },
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this)
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
@@ -1992,7 +1995,10 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PickPoint",{id:this.ID});  
             },
-
+            onPressConsumptionByManufacturingOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ConsumptionByManufacturingOrder",{id: this.ID});  
+            },
 
 
             onReceivingofTUorDoor: function () {

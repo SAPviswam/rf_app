@@ -542,7 +542,7 @@
                             id="id_consumptionbymanufacturingorder"
                             class="sapUiTinyMargin"
                             header="Consumption By Manufacturing Order"
-                            press="onConsumption ByManufacturingOrderPress"
+                            press="onConsumptionByManufacturingOrderPress"
                             visible="false"
                         />
                         <GenericTile

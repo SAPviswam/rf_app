@@ -1244,7 +1244,7 @@
                             id="IDGenGenericTile28"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Consumption By Manufacturing Order"
-                            press="press"
+                            press="onPressConsumptionByManufacturingOrder"
                         />
 
                         <GenericTile
