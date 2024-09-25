@@ -542,6 +542,13 @@
           "target": [
             "TargetReversalofConsumptionbyMO_Bin"
           ]
+        },
+        {
+          "name": "RouteChangeLoadingUnloadingDetails",
+          "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
+          "target": [
+            "TargetRouteChangeLoadingUnloadingDetails"
+          ]
         }
       ],
       "targets": {
@@ -959,6 +966,14 @@
           "viewId": "PutawayByHuc",
           "viewName": "PutawayByHuc"
         },
+        "TargetRouteChangeLoadingUnloadingDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeLoadingUnloadingDetails",
+          "viewName": "ChangeLoadingUnloadingDetails"
+      },
+
         "TargetWHProcessingByBOL": {
           "viewType": "XML",
           "transition": "slide",
@@ -981,7 +996,9 @@
           "viewName": "ReversalofConsumptionbyMO_Bin"
         }
       }
-    },
+      },
+        
+    
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
