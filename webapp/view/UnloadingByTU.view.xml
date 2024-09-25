@@ -102,7 +102,7 @@
                             <Label
                                 id="idShipmentLabel_UBYTU"
                                 text="TU :"
-                                class="classUOMbyASn"
+                                class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
                             <Input
