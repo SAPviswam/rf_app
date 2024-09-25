@@ -28,10 +28,9 @@ sap.ui.define([
             this.oConnetSap ??= await this.loadFragment({
                 name: "com.app.rfapp.fragments.ConnecttoSAP"
             })
-            this.oConnetSap.open();
-            this.getView().byId("idconnectsapeditButton").setVisible(false);
             this.getView().byId("idconnectsapfinishButton").setVisible(true);
-
+            this.getView().byId("idconnectsapeditButton").setVisible(false);
+            this.oConnetSap.open();
         },
         handleAddPress: function () {
             this.handleLinksapPress();
@@ -161,7 +160,6 @@ sap.ui.define([
                     var oNewButton = new sap.m.Button({
                         type: "Emphasized",
                         width: "11rem",
-                        class:"DynamicBtn",
                         customData: [
                             new sap.ui.core.CustomData({
                                 key: "systemId",
@@ -313,12 +311,12 @@ sap.ui.define([
             }
 
             this.handleLinksapPress();
-            // this.getView().byId("idconnectsapeditButton").setVisible(true);
-            // this.getView().byId("idconnectsapfinishButton").setVisible(false);
+            this.getView().byId("idconnectsapfinishButton").setVisible(false);
+            this.getView().byId("idconnectsapeditButton").setVisible(true);
             var oButtonText = this.sdedescription;
             var oModel = this.getView().getModel();
             var that = this;
-       
+
             oModel.read("/ServiceSet", {
                 filters: [new sap.ui.model.Filter("DescriptionB", sap.ui.model.FilterOperator.EQ, oButtonText)],
                 success: function (oData) {
@@ -441,7 +439,6 @@ sap.ui.define([
                             text: system.DescriptionB,
                             type: "Emphasized",
                             width: "11rem",
-                            class:"DynamicBtn",
                         });
 
                         // Attach single click event for CRUD operations
