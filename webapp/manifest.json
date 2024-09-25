@@ -499,6 +499,13 @@
           ]
         },
         {
+          "name": "ConsumptionByManufacturingOrder",
+          "pattern": "ConsumptionByManufacturingOrder/{id}",
+          "target": [
+            "TargetConsumptionByManufacturingOrder"
+          ]
+        },
+        {
           "name": "RoutePutawayHuClustered",
           "pattern": "RoutePutawayHuClustered/{id}",
           "target": [
@@ -898,6 +905,13 @@
           "clearControlAggregation": false,
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
+        },
+        "TargetConsumptionByManufacturingOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ConsumptionByManufacturingOrder",
+          "viewName": "ConsumptionByManufacturingOrder"
         },
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
