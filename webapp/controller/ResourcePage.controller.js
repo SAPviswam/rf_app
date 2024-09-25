@@ -474,7 +474,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
             },
-            
+            onConsumptionByManufacturingOrderPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ConsumptionByManufacturingOrder",{id:this.ID});
+            },
 
             onCreatePutawayHusforDeconsolidationPress: function(){
                 debugger
