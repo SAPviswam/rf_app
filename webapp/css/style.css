@@ -155,17 +155,18 @@
 .buttonContainer {
     margin-top: 20px; /* Optional: add some spacing between buttons */
     background-color: black;
-    margin-left: 2.5rem;
+    margin-left: 1.7rem;
     margin-right: 2.5rem;
     margin-bottom: 0.5rem;
+ 
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
-    border-color: black !important; /* Set button border color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
     color: white !important; /* Set button text color to white */
-    padding: 8px 16px; /* Optional: Add padding for better button size */
-    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
+.DynamicBtn{
+    height: 4rem !important;
 }
 .Inputs {
     width: 100%

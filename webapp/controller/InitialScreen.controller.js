@@ -161,6 +161,7 @@ sap.ui.define([
                     var oNewButton = new sap.m.Button({
                         type: "Emphasized",
                         width: "11rem",
+                        class:"DynamicBtn",
                         customData: [
                             new sap.ui.core.CustomData({
                                 key: "systemId",
@@ -390,7 +391,7 @@ sap.ui.define([
             // Update the entry in OData service
             oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
                 success: function () {
-                    sap.m.MessageToast.show("Data updated successfully.");
+                    sap.m.MessageToast.show("system Configuration updated successfully");
                     that.clearInputFields(oView);
                     that.onCloseconnectsap(); // Close the dialog after updating
                 },
@@ -426,7 +427,8 @@ sap.ui.define([
                         var oNewButton = new sap.m.Button({
                             text: system.DescriptionB,
                             type: "Emphasized",
-                            width: "11rem"
+                            width: "11rem",
+                            class:"DynamicBtn",
                         });
 
                         // Attach single click event for CRUD operations
