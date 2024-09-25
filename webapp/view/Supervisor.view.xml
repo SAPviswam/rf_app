@@ -85,6 +85,7 @@
                     press="onOpenThemeDialog"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
+                    visible="true"
                 />
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
@@ -743,18 +744,7 @@
                             press="OnPressUnloadByDelivery"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContent"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolor"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                           
                         </GenericTile>
 
                         <GenericTile
@@ -763,18 +753,7 @@
                             press="onUnloadingByShipmentPress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByShipment"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByShipment"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                            
                         </GenericTile>
 
                         <GenericTile
@@ -783,18 +762,7 @@
                             press="onUnloadingByTUPress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByTransportUnit"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByTransportUnit"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                           
                         </GenericTile>
 
                         <GenericTile
@@ -803,18 +771,7 @@
                             press="onUnloadingBYASN"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByAS"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByASN"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                           
                         </GenericTile>
 
                         <GenericTile
@@ -823,18 +780,7 @@
                             press="onUnloadingByDoorTilePress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByDoor"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByDoor"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                           
                         </GenericTile>
 
                         <GenericTile
@@ -843,18 +789,7 @@
                             press="onUnloadingByBillofLadingPress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByBillofLading"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByBillofLading"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                           
                         </GenericTile>
 
                         <GenericTile
@@ -863,18 +798,7 @@
                             press="onUnloadingByConsignmentOrderTilePress"
                             class="sapUiTinyMargin"
                         >
-                            <TileContent
-                                id="idTileContentUnloadingByConsigmentOrder"
-                                class="tailContentTheme"
-                            >
-                                <Button
-                                    id="idThemecolorUnloadingByConsigmentOrder"
-                                    class="tailTheme"
-                                    icon="sap-icon://palette"
-                                    press="onPaletteIconSingleClick"
-                                    type="Transparent"
-                                />
-                            </TileContent>
+                            
                         </GenericTile>
                     </ScrollContainer>
                     <ScrollContainer
@@ -1298,21 +1222,21 @@
                             id="IDGenGenericTile28"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Consumption By Manufacturing Order"
-                            press="press"
+                            press="onPressConsumptionByManufacturingOrder"
                         />
 
                         <GenericTile
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="press"
+                            press="OnReversalofConsumptionbyMObyHUpress"
                         />
 
                         <GenericTile
                             id="IDGenGenericTile30"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Reversal of consumption by MO (Bin)"
-                            press="press"
+                            header="Reversal of Consumption by MO (Bin)"
+                            press="onPressReversalofConsumptionbyMO_Bin"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1326,14 +1250,21 @@
                             id="IDGenGenericTile32"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Man. Pos. Assigment"
-                            press="press"
+                            press="OnpressLoadbyHUManPosAssiognment"
+
+                        />
+                         <GenericTile
+                            id="IDGenGenericTile322"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load By HU - Auto. Pos. Assigment"
+                            press="OnpressLoadbyHUAutoPosAssiognment"
                         />
 
                         <GenericTile
                             id="IDGenGenericTile33"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Loading/Unloading Details"
-                            press="press"
+                            press="onChangeLoadingUnloadingDetails"
                         />
 
                         <GenericTile

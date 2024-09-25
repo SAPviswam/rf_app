@@ -1,4 +1,5 @@
-<mvc:View xmlns:statusindicator="sap.suite.ui.commons.statusindicator"
+<mvc:View
+    xmlns:statusindicator="sap.suite.ui.commons.statusindicator"
     controllerName="com.app.rfapp.controller.InitialScreen"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -11,64 +12,68 @@
                 height="100%"
                 direction="Column"
                 alignItems="Center"
+                
             >
                 <VBox
                     id="environmentButtonsHBox"
                     class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
                 >
-           <VBox >
-                    <HBox
-                        id="idHboxinitial"
-                        alignContent="Start"
-                        class = "boxContainer2"
-                        width="auto"
-                    >
-                        <Image
-                            id="idImageLogoAvatarinitial"
-                            src="https://artihcus.com/assets/img/AG-logo.png"
-                            class="sapUiSmallMarginEnd logo"
-                            width="80%"
-                            height="30%"
-                        />
-                        <Title
-                            id="initialscreentitle"
-                            text="CAPModel RF"
-                            class="capModelRFText sapUiSmallMarginBottom"
-                        />
-                    </HBox>
-                     <Text
+
+
+                    <VBox>
+                        <HBox
+                            id="idHboxinitial"
+                            alignContent="Start"
+                            class="boxContainer2"
+                            width="auto"
+                        >
+                            <Image
+                                id="idImageLogoAvatarinitial"
+                                src="https://artihcus.com/assets/img/AG-logo.png"
+                                class="sapUiSmallMarginEnd logo"
+                                width="85%"
+                                height="35%"
+                            />
+                            <Title
+                                id="initialscreentitle"
+                                text="CAPmodel RF"
+                                class="capModelRFText sapUiSmallMarginBottom"
+                            />
+                        </HBox>
+                        <Text
                             text=""
-                            class="underline" 
+                            class="underline"
                         />
-                 <!-- New HBox for buttons directly below the logo -->
-                    <HBox
-                        id="idHboxButtons"
-                        alignContent="Start"    
-                    >
-                        <Button
-                            id="idButtonAdd"
-                            icon="sap-icon://add"
-                            tooltip="Add"
-                            press="handleAddPress"
-                            class="button"
-                            
-                        />
-                        <Button
-                            id="idButtonEdit"
-                            icon="sap-icon://edit"
-                            tooltip="Edit"
-                            press="onEditConfiguredSystem"
-                            class="button1"
-                        />
-                        <Button
-                            id="idButtonDelete"
-                            icon="sap-icon://delete"
-                            tooltip="Delete"
-                            press="onDeleteConfiguredSystem"
-                            class="button2"
-                        />
-                    </HBox>
+                        <!-- New HBox for buttons directly below the logo -->
+                        <HBox
+                            id="idHboxButtons"
+                            alignContent="Start"
+                        >
+                            <Button
+                                id="idButtonAdd"
+                                icon="sap-icon://add"
+                                tooltip="Add"
+                                press="handleAddPress"
+                                class="button"
+                            />
+                            <Button
+                                id="idButtonEdit"
+                                icon="sap-icon://edit"
+                                tooltip="Edit"
+                                press="onEditConfiguredSystem"
+                                class="button1"
+                            />
+                            <Button
+                                id="idButtonDelete"
+                                icon="sap-icon://delete"
+                                tooltip="Delete"
+                                press="onDeleteConfiguredSystem"
+                                class="button2"
+                            />
+                        </HBox>
+
+                        <!-- New HBox for navigation buttons -->
                     </VBox>
 
                     <!-- Link for configuring SAP system -->
@@ -77,6 +82,29 @@
                         text="Configure SAP system"
                         press="handleLinksapPress"
                     />
+                    <HBox id="IDhboxnavup" >
+                     <Button
+                                id="upNavigationButtonId"
+                                icon="sap-icon://navigation-up-arrow"
+                                tooltip="Previous"
+                                press="onNavNext"
+                                visible="false"
+                             
+                            />
+                            </HBox>
+                            <HBox
+                            id="idHboxNavigation"
+                            alignContent="Start"
+                            class="sapUiSmallMarginTop"
+                        >
+                            <Button
+                                id="downNavigationButtonId"
+                                icon="sap-icon://navigation-down-arrow"
+                                tooltip="Next"
+                                press="onNavPrevious"
+                          
+                            />
+                        </HBox>
                 </VBox>
             </FlexBox>
         </content>

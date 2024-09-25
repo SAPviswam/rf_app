@@ -33,6 +33,8 @@ sap.ui.define(
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
                 this._isThemeMode = false;
+                 this.Themecall = false;
+
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -43,7 +45,7 @@ sap.ui.define(
                 // If the pressed control is the button inside the tile
                 if (oPressedControl instanceof sap.m.Button) {
                     oEvent.stopPropagation();
-                    this.onPaletteIconPress(oEvent);
+                   ;
                 } else {
                     // If the press is on the tile itself, handle navigation
                     this.onTilePressPutawayByWO(oEvent);
@@ -53,7 +55,7 @@ sap.ui.define(
             onPaletteIconPress: function (oEvent) {
                 debugger
                 // Open the theme dialog box
-                this._currentTileId = oEvent.getSource().getId();
+                this._currentTileId = oEvent;
                 this.byId("themeTileDialog").open();
             },
             onAfterRendering: function () {
@@ -63,29 +65,31 @@ sap.ui.define(
                 if (sStoredThemeColor) {
                     this.applyThemeColor(sStoredThemeColor); // Assuming a method to apply theme color exists
                 }
-
+            
                 // Apply stored tile colors directly from localStorage
                 var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
-
+            
                 // Loop through saved colors and apply them directly to the tiles
                 for (var sTileId in tileColors) {
                     var sColor = tileColors[sTileId];
-
+            
                     // Extract the local ID from the fully qualified ID
                     var sLocalTileId = this._extractLocalId(sTileId);
                     var oTile = this.byId(sLocalTileId);
-
+            
                     // If the tile exists, apply the color directly
                     if (oTile) {
-                        // Wait until the tile's DOM is available
-                        oTile.addEventDelegate({
-                            onAfterRendering: function () {
-                                var oTileDom = oTile.getDomRef();
-                                if (oTileDom) {
-                                    oTileDom.style.backgroundColor = sColor;
+                        // Create a closure to capture the current tile and color
+                        (function(oTile, sColor) {
+                            oTile.addEventDelegate({
+                                onAfterRendering: function () {
+                                    var oTileDom = oTile.getDomRef();
+                                    if (oTileDom) {
+                                        oTileDom.style.backgroundColor = sColor;
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        })(oTile, sColor); // Immediately invoke the function to capture variables
                     } else {
                         console.warn("Tile with ID '" + sLocalTileId + "' not found.");
                     }
@@ -97,11 +101,7 @@ sap.ui.define(
                 var aIdParts = sTileId.split("--");
                 return aIdParts.length > 1 ? aIdParts[aIdParts.length - 1] : sTileId;
             },
-            // onPaletteIconSingleClick: function (oEvent) {
-            //     this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-            //     this.byId("themeTileDialog").open();
-            //     oEvent.stopPropagation();
-            // },
+            
 
             //For background Theme Dialog..
             onOpenThemeDialog: function () {
@@ -206,30 +206,25 @@ sap.ui.define(
                 // Store the selected theme color in local storage
                 localStorage.setItem("themeColor", sColor);
             },
+            
             applyColorToTile: function (sTileId, sColor) {
                 debugger
                 var oTile = this.byId(sTileId);
-
+            
                 if (!oTile) return; // If tile doesn't exist, return early
-
+            
                 // Get tile's DOM element
                 var oTileDomRef = oTile.getDomRef();
                 if (oTileDomRef) {
                     // Reset the previous background color (optional)
                     oTileDomRef.style.backgroundColor = ""; // Clear any existing color
-
+            
                     // Apply the new color
                     oTileDomRef.style.backgroundColor = sColor;
-
-                    // Update the localStorage to only store the current colors
+            
+                    // Update the localStorage to store multiple tile colors
                     var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
-
-                    // Remove previous tile colors from localStorage if necessary
-                    for (var tileId in tileColors) {
-                        if (tileId !== sTileId) {
-                            delete tileColors[tileId]; // Remove outdated colors from localStorage
-                        }
-                    }
+            
                     // Save the current color for the tile
                     tileColors[sTileId] = sColor;
                     localStorage.setItem("tileColors", JSON.stringify(tileColors));
@@ -299,6 +294,7 @@ sap.ui.define(
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
+                this.onSideNavButtonPress();
             },
 
             onSideNavButtonPress: function () {
@@ -1562,10 +1558,7 @@ sap.ui.define(
             },
 
             /**Navigate to Unloading By ASN Page */
-            onUnloadingBYASN: function () {
-                this.getOwnerComponent().getRouter().navTo("RouteUnloadingASNDetails", { id: this.ID })
-
-            },
+          
 
             onReceivingofHUbyDoor: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1612,24 +1605,8 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RouteBillofLading", { id: this.ID });
             },
-            onUnloadingByDoorTilePress: function () {
-                // BusyIndicator.show(3);
-                // setTimeout(function () {
-                //     // Navigate to another page (user page)
-                //     var oRouter = this.getOwnerComponent().getRouter();
-                //     oRouter.navTo("UnloadingByDoor");
-                //     BusyIndicator.hide();
-                //   }.bind(this), 2000); 
-                var oRouter = this.getOwnerComponent().getRouter();
-               oRouter.navTo("UnloadingByDoor", { id: this.ID });
-            },
-            onUnloadingByConsignmentOrderTilePress: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
- 
-                oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
- 
-
-            },
+            
+            
             onChangeQueueTilePress: function () {
                 debugger
                 var oRouter = this.getOwnerComponent().getRouter();
@@ -1645,18 +1622,22 @@ sap.ui.define(
             },
             onChangeResourceGroupTilePress: function () {
                 const oRoute = this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup")
+                oRoute.navTo("ChangeResourceGroup", { id: this.ID })
  
+            },
+            OnReversalofConsumptionbyMObyHUpress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
             },
             onUnloadingByBillofLadingPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
             },
+
             onMaintainHUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU", { id: this.ID });
             },
-
             onDeconsolidationAutomaticallypress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
@@ -1676,18 +1657,18 @@ sap.ui.define(
             OnpressMaintainHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("MaintainHU", { id: this.ID });
+
             },
 
             onUnloadingByShipmentPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("UnloadingByShipment",{id:this.ID});
-
             },
-            onUnloadingByTUPress: function () {
+            onPressManuallyRepackHU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackHU",{id:this.ID});
-            
             },
+            
             onPressManuallyRepackAllHUItems : function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
@@ -1713,8 +1694,85 @@ sap.ui.define(
 
             },
             OnPressUnloadByDelivery: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByDelivery1")
+                    return
+                }
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery", {id:this.ID})
+                oRouter.navTo("UnloadByDelivery", {id:this.ID});
+            },
+            onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt");
+
+            },
+            onUnloadingByShipmentPress: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByShipment1")
+                    return
+                }
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByShipment",{id:this.ID});
+            },
+
+               onPressCreateAdhocProductWTInAdhocWT: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AdhocProductWt", { id: this.ID });
+            },
+
+            onUnloadingByTUPress: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByTransportUnit1")
+                    return
+                }
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByTU", { id: this.ID });
+
+            },
+            onUnloadingBYASN: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByASN1")
+                    return
+                }
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
+            }, 
+            onUnloadingByDoorTilePress: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByDoor1")
+                    return
+                }
+                var oRouter = this.getOwnerComponent().getRouter();
+               oRouter.navTo("UnloadingByDoor", { id: this.ID });
+            },
+            onUnloadingByBillofLadingPress: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByBillOfLading1")
+                    return
+                }
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
+            },
+            onUnloadingByConsignmentOrderTilePress: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("idUnloadingByConsigmentOrder1")
+                    return
+                }
+                var oRouter = this.getOwnerComponent().getRouter();
+ 
+                oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
+ 
+
+            },
+            onChangeLoadingUnloadingDetails: function () {
+                if (this.Themecall) {
+                    this.onPaletteIconPress("IDGenGenericTile33")
+                    return
+                }
+                var oRouter = this.getOwnerComponent().getRouter();
+ 
+                oRouter.navTo("RouteChangeLoadingUnloadingDetails", { id: this.ID });
+ 
 
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
@@ -1725,23 +1783,13 @@ sap.ui.define(
 
             },
 
-            OnPressUnloadByDelivery: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery", { id: this.ID });
-            },
-
+           
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocProductWt",{ id: this.ID });
 
             },
 
-            OnPressUnloadByDelivery: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadByDelivery", { id: this.ID });
-
- 
-            },
             OnPressCreateandConfirmAdhocHUWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
@@ -1749,15 +1797,15 @@ sap.ui.define(
             },
             onReceivingofHUbyConsignementOrder: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-  oRouter.navTo("Receivingofhubyco", { id: this.ID });
-
-
+                oRouter.navTo("Receivingofhubyco", { id: this.ID });
             },
-            onPressWTQuerybyQueue: function () {
+            OnPressWTQuerybyQueue: function () {
                 var oRouter = UIComponent.getRouterFor(this);
- 
                 oRouter.navTo("WTQueryByQueue", { id: this.ID });
- 
+            },
+            OnPressHUStockOverviewQuery: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
             },
 
             onGetOTP: function () {
@@ -1904,13 +1952,15 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWO", { id: this.ID });
             },
-
-
+            OnPressSerialnumberLocation: function () {                
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SerialNumberLocation");
+            },
             OnPressSerialnumberLocation: function () {
                 var oRouter = UIComponent.getRouterFor(this)
                 oRouter.navTo("SerialNumberLocation",{id:this.ID});
-            },
- 
+
+        },
             OnPressWTQuerybyWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT", { id: this.ID });
@@ -1919,7 +1969,7 @@ sap.ui.define(
 
             onReceivingofHUbyTU: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU");
+                oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
             },
 
             onPressCreateShippingHU: function () {
@@ -1941,7 +1991,10 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PickPoint",{id:this.ID});  
             },
-
+            onPressConsumptionByManufacturingOrder:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ConsumptionByManufacturingOrder",{id: this.ID});  
+            },
 
 
             onReceivingofTUorDoor: function () {
@@ -1967,11 +2020,7 @@ sap.ui.define(
                 oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
  
             },
-            onUnloadingBYASN: function () {
-                debugger
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
-            },
+           
             onDeconsolidationAutomatically:function(){
                 var oRouter = UIComponent.getRouterFor(this); 
                 oRouter.navTo("DeconsAuto",{id:this.ID});   
@@ -2000,19 +2049,58 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
+
             onPutawayByHUClustered:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-            }
+            },
 
+            onThemeButton: function () {
 
+                this.byId("themeButton").setVisible(true);
+                this.byId("CancelButton").setVisible(true);
+                this.byId("themeButton3").setVisible(false);
 
+                this.Themecall = true;            
+            },
+            onCancel: function () {
+                this.byId("themeButton").setVisible(false);
+                this.byId("CancelButton").setVisible(false);
+                this.byId("themeButton3").setVisible(true);
+                this.Themecall = false;
+            },
 
+            OnpressLoadbyHUManPosAssiognment:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
+            },
 
-
-
-
-            
+            onSetReadyForWHProcessingByBOLPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WHProcessingByBOL",{id:this.ID});
+            },
+            OnPressHUStockOverviewQuery:function() {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
+            },
+            onUnloadByHUPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("UnloadByHu",{id:this.ID});
+            },
+        
+            onPutawayByHUClustered:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
+            },
+            onPressReversalofConsumptionbyMO_Bin:function() {
+                debugger
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteReversalofConsumptionbyMO_Bin",{id:this.ID});
+            },
+            onPressAutomaticallyRepeakHU:function() { 
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
+            },
 
         });
     });

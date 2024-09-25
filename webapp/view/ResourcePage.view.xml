@@ -81,6 +81,8 @@
                     <Title id="id_unloading_title" text="Unloading" visible="false"></Title>
                     <HBox >
                      </HBox>
+
+                     
                         </VBox>
                         <GenericTile
                             id="id_unloadingbydelivery"
@@ -540,7 +542,7 @@
                             id="id_consumptionbymanufacturingorder"
                             class="sapUiTinyMargin"
                             header="Consumption By Manufacturing Order"
-                            press="onConsumption ByManufacturingOrderPress"
+                            press="onConsumptionByManufacturingOrderPress"
                             visible="false"
                         />
                         <GenericTile
@@ -571,7 +573,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_loadbyhumanposassigment"
+                            id="id_loadbyhumanposassignment"
                             class="sapUiTinyMargin"
                             header="Load By HU - Man.Pos.Assignment"
                             press="onLoadByHUManPosAssigmentPress"

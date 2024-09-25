@@ -101,8 +101,7 @@
                             <!-- Input Field -->
                             <Input
                                 id="idReceiveHUbyASNinput_RHUASN"
-                             
-                                class="sapUiTinyMarginBegin"
+                                class="sapUiSmallMarginBegin"
                             />
                             <!-- Barcode Scan Button -->
                             <ndc:BarcodeScannerButton
@@ -111,13 +110,15 @@
                                 scanFail="onScanErrorOne"
                                 inputLiveUpdate="onScanLiveUpdate"
                                 dialogTitle="Enter HU Number"
-                                class="sapUiTinyMarginBegin"
+                                class="sapUiMediumMarginBegin"
                             />
                             <!-- Submit Button -->
                             <Button
                                 id="idButtonSubmit_RHUASN"
                                 text="Submit"
+                                type="Emphasized"
                                 press="Onpresssubmit"
+                                class="sapUiSmallMarginBegin"
                             />
                         </HBox>
                     </f:SimpleForm>
