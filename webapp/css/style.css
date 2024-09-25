@@ -94,15 +94,21 @@
 .boxContainer {
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
-    /* Add border width, style, and color */
     padding: auto !important; 
-    width: 25% !important;
     padding-bottom: 1rem;
-    width: 30% !important;
+    width: 23% !important;
 }
 .TitlecustomHeader{
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
+}
+.InitialButton67{
+    margin-left: 0.5rem;
+    font-size: x-small;
+    margin-bottom: 0.3rem !important;
+}
+.Butns{
+    margin-left: 0.3rem;
 }
 .boxContainer3 {
     border-radius: 1rem !important;
@@ -151,6 +157,7 @@
     background-color: black;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+    margin-bottom: 0.5rem;
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
@@ -174,7 +181,7 @@
 }
 @media (max-width: 600px) {
     .boxContainer {
-        width: auto !important; /* Full width on mobile */
+        width:  85%!important; /* Full width on mobile */
         padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
