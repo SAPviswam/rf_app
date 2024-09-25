@@ -122,15 +122,18 @@ sap.ui.define([
                                     //   }.bind(this), 2000);
  
                                     // Navigate to the ResourcePage with the correct ID
+
+
                                     let oUser = oData.Users.toLowerCase();
-                                    if(oUser ==="supervisor"){
+
+                                    if (oUser === "supervisor") {
  
                                         that.getRouter().navTo("Supervisor", { id: sResourceId });
                                     }
-                                    else{
+                                    else {
                                         that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
                                     }
-                                   
+
                                 }
  
                             } else {
@@ -563,8 +566,7 @@ sap.ui.define([
                 var oOtpInput = this.byId("idEnterConformationCode");
                 var sEnteredOtp = oOtpInput.getValue();
                 var oVerfied = this.byId("verficationId1");
-                var that=this
- 
+                var that = this
                 // Reset the ValueState and ValueStateText before validation
                 oOtpInput.setValueState(sap.ui.core.ValueState.None);
                 oOtpInput.setValueStateText("");
@@ -648,9 +650,7 @@ sap.ui.define([
                     oView.byId("idEnterMobileNo").setValueState("Error");
                     oView.byId("idEnterMobileNo").setValueStateText("Mobile number must be a 10-digit numeric value");
                     bValid = false;
- 
- 
-                   
+
                 } else {
                     oView.byId("idEnterMobileNo").setValueState("None");
                     if (!this.bOtpVerified) {
@@ -687,7 +687,6 @@ sap.ui.define([
                         success: function () {
                             sap.m.MessageToast.show("Password updated successfully!");
                             this.byId("verficationId1").setVisible(false);
- 
                             // Clear input fields after success
                             oView.byId("idEnterNewPassword").setValue("");
                             oView.byId("idConfirmPassword").setValue("");
