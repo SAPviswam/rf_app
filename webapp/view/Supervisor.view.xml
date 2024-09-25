@@ -1333,8 +1333,8 @@
                         <GenericTile
                             id="IDGenGenericTile30"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Reversal of consumption by MO (Bin)"
-                            press="press"
+                            header="Reversal of Consumption by MO (Bin)"
+                            press="onPressReversalofConsumptionbyMO_Bin"
                         />
                     </ScrollContainer>
                     <ScrollContainer
