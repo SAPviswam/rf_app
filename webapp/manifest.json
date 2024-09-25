@@ -986,6 +986,13 @@
           "clearControlAggregation": false,
           "viewId": "ReversalofConsumptionbyMO_Bin",
           "viewName": "ReversalofConsumptionbyMO_Bin"
+        },
+        "TargetAutomaticallyRepackHu":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHu",
+          "viewName": "AutomaticallyRepackHu"
         }
       }
     },
