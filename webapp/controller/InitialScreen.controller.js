@@ -33,20 +33,24 @@ sap.ui.define([
             this.getView().byId("idconnectsapfinishButton").setVisible(true);
 
         },
+        handleAddPress: function () {
+            this.handleLinksapPress();
+        },
         onCloseconnectsap: function () {
-            debugger
             this.oConnetSap.close();
-            var oModel = this.getView().getModel();
-            oModel.refresh(true);
+            var oView = this.getView();
+            oView.byId("idDescriptionInput").setValueState("None");
+            oView.byId("idSystemIdInput").setValueState("None");
+            oView.byId("idInstanceNumberInput").setValueState("None");
+            oView.byId("idClientInput").setValueState("None");
+            oView.byId("idApplicationServerInput").setValueState("None");
         },
         onsapsubmitPress: function () {
             var oU = this.getView().byId("idsaplogonUserId").getValue();
             var oP = this.getView().byId("idSapLogonPassword").getValue();
             if (oU === "111010" && oP === "ARTIHCUS") {
                 this.getOwnerComponent().getRouter().navTo("Homepage", { id: oU })
-
             }
-
         },
         onExit: function () {
             this.onUserLogin();
@@ -126,9 +130,8 @@ sap.ui.define([
                 return;
             }
 
-
             // Get the OData model
-            var oModel = this.getView().getModel();
+            var oModel = this.getOwnerComponent().getModel();
 
             // Read existing entries to check uniqueness
             oModel.read("/ServiceSet", {
@@ -158,6 +161,7 @@ sap.ui.define([
                     var oNewButton = new sap.m.Button({
                         type: "Emphasized",
                         width: "11rem",
+                        class:"DynamicBtn",
                         customData: [
                             new sap.ui.core.CustomData({
                                 key: "systemId",
@@ -208,6 +212,8 @@ sap.ui.define([
 
                             // Insert the new button after the link
                             oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
+                            oModel.refresh(true);
+                            this.getView().byId("pageInitial").getModel().refresh(true);
                         }.bind(this), // Ensure 'this' context is correct
                         error: function (oError) {
                             MessageToast.show("Error saving configured system.");
@@ -243,27 +249,21 @@ sap.ui.define([
 
 
         },
-        handleAddPress: function () {
-            debugger
-            this.handleLinksapPress();
-        },
-        handleEditPress: function () {
-            this.handleLinksapPress();
-        },
+
         onClearconnectSAPPress: function () {
             var oView = this.getView();
             this.clearInputFields(oView);
         },
         onDeleteConfiguredSystem: function () {
             if (!this.selectedButton) {
-                MessageToast.show("No button selected for deletion.");
+                MessageToast.show("No System selected for deletion.");
                 return;
             }
 
             var that = this; // Store reference to 'this' for use in callbacks
 
-            MessageBox.warning("Are you sure you want to delete the configured system?", {
-                title: "Confirm Deletion",
+            MessageBox.warning("Delete the selected system?", {
+                title: "Delete",
                 actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                 onClose: function (status) {
                     if (status === MessageBox.Action.DELETE) {
@@ -286,8 +286,13 @@ sap.ui.define([
                                 that.selectedButton = null;
                                 that.updateDisplayedButtons()
 
+                                var index = that.aAllButtons.indexOf(that.selectedButton);
+                                if (index !== -1) {
+                                    that.aAllButtons.splice(index, 1); // Remove button from array
+                                }
                                 // Clear selection
                                 that.selectedButton = null;
+                                that.updateDisplayedButtons();
                             }.bind(that), // Ensure 'this' context is correct
                             error: function (oError) {
                                 MessageToast.show("Error deleting configured system.");
@@ -296,24 +301,24 @@ sap.ui.define([
                         });
                     } else {
                         MessageToast.show("Deletion cancelled.");
+                        this.selectedButton = null;
                     }
                 }.bind(that) // Bind the controller context
             });
         },
         onEditConfiguredSystem: function () {
             if (!this.selectedButton) {
-                MessageToast.show("No button selected to edit.");
+                MessageToast.show("No System selected to edit.");
                 return;
             }
+
             this.handleLinksapPress();
-            this.getView().byId("idconnectsapeditButton").setVisible(true);
-            this.getView().byId("idconnectsapfinishButton").setVisible(false);
+            // this.getView().byId("idconnectsapeditButton").setVisible(true);
+            // this.getView().byId("idconnectsapfinishButton").setVisible(false);
             var oButtonText = this.sdedescription;
-
             var oModel = this.getView().getModel();
-
             var that = this;
-
+       
             oModel.read("/ServiceSet", {
                 filters: [new sap.ui.model.Filter("DescriptionB", sap.ui.model.FilterOperator.EQ, oButtonText)],
                 success: function (oData) {
@@ -324,7 +329,6 @@ sap.ui.define([
                     }
                     var oButtonedit = aButtons.filter(checkButton);
                     if (oButtonedit) {
-
                         that.byId("idDescriptionInput").setValue(oButtonedit[0].Description);
                         that.byId("idSystemIdInput").setValue(oButtonedit[0].SystemId);
                         that.byId("idInstanceNumberInput").setValue(oButtonedit[0].InstanceNo);
@@ -396,7 +400,7 @@ sap.ui.define([
             // Update the entry in OData service
             oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
                 success: function () {
-                    sap.m.MessageToast.show("Data updated successfully.");
+                    sap.m.MessageToast.show("system Configuration updated successfully");
                     that.clearInputFields(oView);
                     that.onCloseconnectsap(); // Close the dialog after updating
                 },
@@ -407,6 +411,7 @@ sap.ui.define([
         },
         onBackconnectSAPPress: function () {
             this.onCloseconnectsap();
+            this.selectedButton = null;
         },
         onToggleButtonPress: function (oEvent) {
             const oButton = oEvent.getSource();
@@ -422,8 +427,9 @@ sap.ui.define([
                 success: function (oData) {
                     var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
 
-                    var oHomePage = this.getView().byId("environmentButtonsHBox");
-                    var oLink = this.getView().byId("_IDCofiguresapLink");
+//                     var oHomePage = this.getView().byId("environmentButtonsHBox");
+//                     var oLink = this.getView().byId("_IDCofiguresapLink");
+
 
                     this.aAllButtons = []; // Reset the array
 
@@ -434,7 +440,8 @@ sap.ui.define([
                         var oNewButton = new sap.m.Button({
                             text: system.DescriptionB,
                             type: "Emphasized",
-                            width: "11rem"
+                            width: "11rem",
+                            class:"DynamicBtn",
                         });
 
                         // Attach single click event for CRUD operations
@@ -491,7 +498,7 @@ sap.ui.define([
                 this.updateDisplayedButtons(); // Update displayed buttons
                 this.getView().byId("upNavigationButtonId").setVisible(true)
             } else {
-                MessageToast.show("No more buttons to display."); // Optional feedback for user
+                MessageToast.show("No more Systems to display."); // Optional feedback for user
 
             }
         },

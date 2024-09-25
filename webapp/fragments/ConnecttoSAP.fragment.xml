@@ -201,6 +201,7 @@
             id="_IDgenhboxcontainer"
             justifyContent="Center"
             class="buttonContainer"
+            width="85%"
         >
             <!-- Centering buttons -->
             <Button
@@ -208,7 +209,7 @@
                 text="Clear"
                 press="onClearconnectSAPPress"
                 type="Unstyled"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
 
             />
             <Button
@@ -217,21 +218,21 @@
                 press="onEditconnectSAPPress"
                 type="Unstyled"
                 visible="false"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idconnectsapbackButton"
                 text="Cancel"
                 type="Unstyled"
                 press="onBackconnectSAPPress"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idconnectsapfinishButton"
                 text="Finish"
                 type="Unstyled"
                 press="onFinishconnectSAPPress"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idhelpconnectsapButton"
