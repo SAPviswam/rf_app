@@ -1348,7 +1348,7 @@
                             id="IDGenGenericTile32"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Man. Pos. Assigment"
-                            press="press"
+                            press="OnpressLoadbyHUManPosAssiognment"
                         />
 
                         <GenericTile
