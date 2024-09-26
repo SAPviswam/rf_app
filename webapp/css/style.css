@@ -110,7 +110,7 @@
 .Butns{
     margin-left: 0.3rem;
 }
-.boxContainersupervisor {
+.boxContainer3 {
     border-radius: 1rem !important;
      border: 2px solid #090909d2 !important; 
     /* Add border width, style, and color */
@@ -516,3 +516,38 @@ background-color: rgb(9, 8, 8) !important;
 }
 
 
+
+.LabelHomePage{
+    margin-top: 0.3rem;
+}
+.LabelHomepageFragmentSignup{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup2{
+    margin-top: 0.8rem;
+}
+.LabelHomepageFragmentSignup3{
+    margin-top: 0.7rem;
+}
+.LabelHomepageFragmentSignup4{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup5{
+    margin-top: 0.7rem;
+}
+.signupCreatebutton {
+    background-color: darkorange;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+    border-color:  darkorange !important;
+    font-weight: bold !important;
+}
+.textbold{
+    font-weight: bold;
+}
+.boxContainersignup{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    width: 19% !important;
+}

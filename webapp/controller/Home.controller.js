@@ -23,7 +23,7 @@ sap.ui.define([
             if (sPassword) {
                 this.getView().byId("idPasswordInput").setValue(sPassword);
             }
-            this.getView().byId("idButtonSignUpcheckbox").setSelected(bAutoSave);
+       //     this.getView().byId("idButtonSignUpcheckbox").setSelected(bAutoSave);
 
 //                 var savedResourceID = localStorage.getItem("resourceID");
 //                 var savedPassword = localStorage.getItem("password");
@@ -164,7 +164,7 @@ sap.ui.define([
                 this.oSignupForm.open();
             },
             /*Close Signup Form */
-            onCloseRegisterSubmitDialog: function () {
+            oncancelsignupPress: function () {
                 this.oSignupForm.close();
             },
  
