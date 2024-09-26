@@ -8,22 +8,22 @@
     xmlns:tnt="sap.tnt"
     xmlns:core="sap.ui.core"
     height="100%">
-     <tnt:ToolPage id="idToolPagePutawayByHU">
+     <tnt:ToolPage id="idToolPagePutawayByHU22">
         <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderPutawayByHU">
+            <tnt:ToolHeader id="idtntToolHeaderPutawayByHU66">
                 <Image
-                    id="_IDGenImage1PutawayByHU"
+                    id="_IDGenImage1PutawayByHU99"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorPutawayByHU"
+                    id="idToolHeaderUtilitySeparatorPutawayByHU88"
                 />
-                <ToolbarSpacer id="idToolbarSpacerPutawayByHU">
+                <ToolbarSpacer id="idToolbarSpacerPutawayByHU78">
                     <layoutData>
                         <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutData1PutawayByHU"
+                            id="idOverflowToolbarLayoutData1PutawayByHU96"
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
