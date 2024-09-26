@@ -402,6 +402,16 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByHU", { id: this.ID });
             },
+            //SetReadyforWHProcessingByCO Tile...
+            onSetReadyforWHprocessingbyCOPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+            },
+            //onAutomaticallyRepackHUPress Tile...
+            onAutomaticallyRepackHUItemPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
+            },
             onWTQueryByWTPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT",{id:this.ID});

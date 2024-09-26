@@ -878,7 +878,7 @@
                             id="idPutawayByWO1"
                             header="Putaway By WO"
                             press="onTilePress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMargin ToolPageBackground"
                         >
                             <TileContent id="idTileContentPutaway">
                                 <Button
@@ -1260,7 +1260,7 @@
                             press="OnpressLoadbyHUAutoPosAssiognment"
                         />
                          <GenericTile
-                            id="IDGenGenericTile322"
+                            id="IDGenGenericTile3221"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
