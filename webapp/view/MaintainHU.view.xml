@@ -96,7 +96,7 @@
                             <Label
                                 id="idMaintainHULabel_MHU"
                                 text="Work Center :"
-                                class="ScanHumargin"
+                                class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
                             

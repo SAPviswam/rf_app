@@ -1,0 +1,1017 @@
+<mvc:View
+    controllerName="com.app.rfapp.controller.ReversalofConsumptionbyMO_Bin"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <tnt:ToolPage id="idToolPagePutawayByWO_RCBM">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderPutawayByWO_RCBM">
+                <Image
+                    id="_IDGenImage1PutawayByWO_RCBM"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPutawayByWO_RCBM"
+                />
+
+                <ToolbarSpacer id="idToolbarSpacerPutawayByWO_RCBM">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PutawayByWO_RCBM"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+
+                <Avatar
+                    id="_IDGenAvatar1PutawayByWO_RCBM"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:mainContents>
+        <ScrollContainer
+    id="icon1_RCBM"
+    width="100%"
+    height="100%"
+    horizontal="false"
+    vertical="true"
+    class="sapUiContentPadding manfOrdContent"
+    visible="true"
+>
+
+    
+        <Button
+            id="_IDGenButton77_RCBM"
+            icon="sap-icon://nav-back"
+            press="onPressBackToHome_RCBM"
+            visible="true"
+            class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
+        />
+        <Title
+            id="idPageTitle_RCBM"
+            text="Delivery"
+            level="H2"
+            class="titles_RCBM sapUiTinyMarginEnd sapUiTinyMarginTop"
+        />
+            <!-- for centering -->
+        <VBox
+        justifyContent="Center"
+        alignItems="Center"
+        width="100%"
+        height="100%"
+    >
+        
+        <f:SimpleForm
+            id="simpleForm_RCBM"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false"
+            class="FormBack manfOrd"
+        >
+            <HBox
+                id="_idhbox_unknw_RCBM"
+                alignItems="Center"
+            >
+                <Label
+                    id="_IDGenLabel1_RCBM"
+                    text="Warehouse Door:"
+                />
+                <Input
+                    id="_IDGenInput1_RCBM"
+                    placeholder="Enter Door Number"
+                    class="sapUiTinyMarginBegin"
+                />
+                <ndc:BarcodeScannerButton
+                    id="sampleBarcodeScannerButton_RCBM"
+                    scanSuccess="onScanSuccess"
+                    scanFail="onScanErrorOne"
+                    inputLiveUpdate="onScanLiveUpdate"
+                    dialogTitle="Enter Door Number"
+                    class="sapUiMediumMarginBegin"
+                />
+                <Button
+                    id="_IDGenButton111_RCBM"
+                    text="Submit"
+                    class="sapUiTinyMarginBegin"
+                    press="onPressManfOrdSubmit"
+                />
+            </HBox>
+        </f:SimpleForm>
+    </VBox>
+</ScrollContainer>
+
+            <ScrollContainer
+                id="icon2_RCBM"               
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                visible="false"
+                class="sapUiContentPadding"
+            >
+                <Button
+                    id="_IDGenButton1111_RCBM"
+                    icon="sap-icon://nav-back"
+                    press="onPressback1"
+                    visible="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                />
+
+                <VBox
+                    id="idMainVBox_RCBM"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDGenTitle_RCBM"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+
+                    <f:SimpleForm
+                        id="simpleForm1_RCBM"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Manuford -->
+
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    text="Manuford"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label id="idManufordINSpace"
+                                width="10px"/>
+
+                                <Input
+                                    value=""
+                               
+                                     editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Product -->
+
+                            <HBox>
+                                <Label
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onProductInputChange"
+                                />
+                            </HBox>
+                            <HBox>
+                             <Label
+                                    text=""
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                            <Input
+                                    value=""
+                                  
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            
+                            </HBox>
+
+                            <!-- Row 3: Batch -->
+
+                            <HBox>
+                                <Label
+                                    text="Batch"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text="SLED"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
+                                />
+
+                                <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text="BIRU"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Stor.Bin -->
+
+                            <HBox>
+                                <Label
+                                    text="Stor.Bin"
+                                   
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                  
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 5: RevQ -->
+
+                            <HBox>
+                                <Label
+                                    text="RevQ"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                 <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                   
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="icon3_RCBM"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                visible="false"
+            >
+                <Button
+                    id="_IDGenButton_RCBM"
+                    icon="sap-icon://nav-back"
+                    press="onPressback2"
+                    visible="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                />
+
+                <VBox
+                    id="idIcon3MainVBox_RCBM"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDIcon3GenTitle_RCBM"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+
+                    <f:SimpleForm
+                        id="idIcon3simpleForm1_RCBM"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Manuford -->
+
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    text="Manuford"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label id="idIcon3ManufordINSpace"
+                                width="40px"/>
+
+                                <Input
+                                    value=""
+                                    width="240px"
+                                     editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Product -->
+
+                            <HBox>
+                                <Label
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    editable="false"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <HBox>
+                             <Label
+                                    text=""
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                            <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            
+                            </HBox>
+
+                            <!-- Row 3: Batch -->
+
+                            <HBox>
+                                <Label
+                                    text="Batch"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onBatchInputChange"
+                                />
+                                 <Label
+                                    text="SLED"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text="BIRU"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Stor.Bin -->
+
+                            <HBox>
+                                <Label
+                                    text="Stor.Bin"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 5: RevQ -->
+
+                            <HBox>
+                                <Label
+                                    text="RevQ"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                 <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="icon4_RCBM"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                visible="false"
+            >
+                <Button
+                    id="_IDIcon4GenButton_RCBM"
+                    icon="sap-icon://nav-back"
+                    press="onPressback3"
+                    visible="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                />
+
+                <VBox
+                    id="idIcon4MainVBox_RCBM"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDIcon4GenTitle_RCBM"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+
+                    <f:SimpleForm
+                        id="idIcon4simpleForm1_RCBM"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Manuford -->
+
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    text="Manuford"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label id="idIcon4ManufordINSpace"
+                                width="40px"/>
+
+                                <Input
+                                    value=""
+                                    width="240px"
+                                     editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Product -->
+
+                            <HBox>
+                                <Label
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    editable="false"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <HBox>
+                             <Label
+                                    text=""
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                            <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            
+                            </HBox>
+
+                            <!-- Row 3: Batch -->
+
+                            <HBox>
+                                <Label
+                                    text="Batch"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text="SLED"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text="BIRU"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Stor.Bin -->
+
+                            <HBox>
+                                <Label
+                                    text="Stor.Bin"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onStorBinInputChange"
+                                />
+                            </HBox>
+
+                            <!-- Row 5: RevQ -->
+
+                            <HBox>
+                                <Label
+                                    text="RevQ"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                 <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="icon5_RCBM"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                visible="false"
+            >
+                <Button
+                    id="_IDIcon5GenButton_RCBM"
+                    icon="sap-icon://nav-back"
+                    press="onPressback3"
+                    visible="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                />
+
+                <VBox
+                    id="idIcon5MainVBox_RCBM"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDIcon5GenTitle_RCBM"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+
+                    <f:SimpleForm
+                        id="idIcon5simpleForm1_RCBM"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Manuford -->
+
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    text="Manuford"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label id="idIcon5ManufordINSpace"
+                                width="40px"/>
+
+                                <Input
+                                    value=""
+                                    width="240px"
+                                     editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Product -->
+
+                            <HBox>
+                                <Label
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    editable="false"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <HBox>
+                             <Label
+                                    text=""
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                            <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            
+                            </HBox>
+
+                            <!-- Row 3: Batch -->
+
+                            <HBox>
+                                <Label
+                                    text="Batch"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text="SLED"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text="BIRU"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Stor.Bin -->
+
+                            <HBox>
+                                <Label
+                                    text="Stor.Bin"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="340px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                    
+                                />
+                            </HBox>
+
+                            <!-- Row 5: RevQ -->
+
+                            <HBox>
+                                <Label
+                                    text="RevQ"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                 <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onRevQInputChange"
+                                />
+                                 <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="70px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

@@ -7,6 +7,8 @@
         id="idconnectsapdialogbox"
         resizable="false"
         draggable="false"
+        contentWidth="30%"
+
         class="boxContainer"
     >
         <customHeader>
@@ -24,6 +26,7 @@
                     <Title
                         id="_IDTitleconnectsap"
                         text="CAPmodel RF"
+
                         class="capModelRFTextdialog"
                     />
                 </contentMiddle>
@@ -56,6 +59,7 @@
                 columnsL="2"
                 columnsM="1"
             >
+
                 <!-- <Title
                     id="idSimpleFormTitle"
                     text="System Connection Parameters"
@@ -113,7 +117,6 @@
                         width="50px"
                     />
                 </HBox>
- 
                 <!-- Client -->
                 <HBox id="hboxClient">
                     <Label
@@ -179,6 +182,7 @@
                         width="200px"
                     />
                 </HBox>
+
  
                 <!-- Checkboxes for Description, System ID, and Client -->
                 <HBox
@@ -197,6 +201,7 @@
             id="_IDgenhboxcontainer"
             justifyContent="Center"
             class="buttonContainer"
+            width="85%"
         >
             <!-- Centering buttons -->
             <Button
@@ -204,8 +209,8 @@
                 text="Clear"
                 press="onClearconnectSAPPress"
                 type="Unstyled"
-                class="dialogButton"
-               
+                class="dialogButton sapUiTinyMarginEnd"
+
             />
             <Button
                 id="idconnectsapeditButton"
@@ -213,21 +218,21 @@
                 press="onEditconnectSAPPress"
                 type="Unstyled"
                 visible="false"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idconnectsapbackButton"
                 text="Cancel"
                 type="Unstyled"
                 press="onBackconnectSAPPress"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idconnectsapfinishButton"
                 text="Finish"
                 type="Unstyled"
                 press="onFinishconnectSAPPress"
-                class="dialogButton"
+                class="dialogButton sapUiTinyMarginEnd"
             />
             <Button
                 id="idhelpconnectsapButton"
@@ -239,5 +244,4 @@
         </HBox>
     </Dialog>
 </core:FragmentDefinition>
- 
- 
+

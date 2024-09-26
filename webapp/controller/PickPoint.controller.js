@@ -95,7 +95,7 @@ sap.ui.define(
         this.getView().byId("idPPFifthbackbtn").setVisible(false);
         this.getView().byId("idThirdPPPage").setVisible(true);
         this.getView().byId("idPPThirdbackbtn").setVisible(true);
-        this.getView().byId("idPPFifthbackbtn").setVisible(false);
+        this.getView().byId("idFifthPPPage").setVisible(false);
       },
       onppPtlBtnPress: function () {
         this.getView().byId("idPPSixthPage").setVisible(true);

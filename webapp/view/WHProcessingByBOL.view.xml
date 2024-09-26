@@ -1,0 +1,569 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.WHProcessingByBOL"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idToolPageWHPbyBOL">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderWHPbyBOL">
+                <Button
+                    id="idFirstBOLbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onFirstBOLbackbtnPress"
+                    visible="true"
+                />
+                <Button
+                    id="idSecondBOLbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onSecondBOLbackbtnPress"
+                    visible="false"
+                />
+                <Button
+                    id="idThirdBOLbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onThirdBOLbackbtnPress"
+                    visible="false"
+                />
+                 <Button
+                    id="idFourthBOLbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onFourthBOLbackbtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="_IDGenImage1WHPbyBOL"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorWHPbyBOL"
+                />
+                <ToolbarSpacer id="idToolbarSpacerWHPbyBOL">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1WHPbyBOL"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1WHPbyBOL"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idFirstBOLPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <Title text="Set Ready for WH Processing by BOL" />
+                        <VBox class="sapUiTinyMarginBottom" />
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="idBOLLabel"
+                                text="BOL/Fo"
+                                width="90px"
+                            />
+                            <Input
+                                id="idBOLInput"
+                                width="90%"
+                            />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Label
+                                id="idBOLUnloadLabel"
+                                text="Unload.Pnt"
+                                width="90px"
+                            />
+                            <Input
+                                id="idBOLUnloadInput"
+                                width="90%"
+                            />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Button
+                                id="idBOLQueries"
+                                text="Queries"
+                                press="onBolQueriesPress"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idSecondBOLPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <VBox class="sapUiTinyMarginBottom" />
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input
+                                id="idBOLFoInput"
+                                value="BoL/Fo"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLCarrierInput"
+                                value="Carrier"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLP1ndArrvlInput"
+                                value="P1nd Arrvl"
+                            />
+
+                            <Button icon="sap-icon://slim-arrow-down" />
+                            <Button icon="sap-icon://slim-arrow-up" />
+                        </HBox>
+
+                        <!-- Repeat the HBox structure for remaining input fields -->
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput1" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput2" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput3" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput4" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput5" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput6" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput7" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput8" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput9" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput10" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput11" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput12" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput13" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput14" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput15" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput16" />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput17" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput18" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput19" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput20" />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput21" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput22" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput23" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput24" />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLInput25"
+                                width="60px"
+                            />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Button
+                                id="idBOLEnter"
+                                text="Enter"
+                                press="onBOLEnterPress"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+
+            <ScrollContainer
+                id="idThirdBOLPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <VBox class="sapUiTinyMarginBottom" />
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input
+                                id="idBOLFoInput2"
+                                value="BoL/Fo"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLCarrierInput2"
+                                value="Carrier"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLP1ndArrvlInput2"
+                                value="P1nd Arrvl"
+                            />
+
+                            <Button icon="sap-icon://slim-arrow-down" />
+
+                            <Button icon="sap-icon://slim-arrow-up" />
+                        </HBox>
+
+                        <!-- Repeat the HBox structure for remaining input fields -->
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput26" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput27" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput28" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput29" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput30" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput31" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput32" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput33" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput34" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput35" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput36" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput37" />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput38" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput39" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput40" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput41" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput47" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput48" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput49" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput50" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput42" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput43" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput44" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput45" />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLInput46"
+                                width="60px"
+                            />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Button
+                                id="idBOLEnter1"
+                                text="Enter1"
+                                press="onBOLEnterPress1"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idFourthBOLPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <form:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <VBox class="sapUiTinyMarginBottom" />
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input
+                                id="idBOLFoInput3"
+                                value="BoL/Fo"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLCarrierInput3"
+                                value="Carrier"
+                            />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLP1ndArrvlInput3"
+                                value="P1nd Arrvl"
+                            />
+
+                            <Button icon="sap-icon://slim-arrow-down" />
+
+                            <Button icon="sap-icon://slim-arrow-up" />
+                        </HBox>
+
+                        <!-- Repeat the HBox structure for remaining input fields -->
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput51" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput52" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput53" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput54" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput55" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput56" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput57" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput58" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput59" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput60" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput61" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput62" />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput63" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput64" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput65" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput66" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput67" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput68" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput69" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput70" />
+                        </HBox>
+
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Input id="idBOLInput71" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput72" />
+                            <VBox width="10px" />
+
+                            <Input id="idBOLInput73" />
+                            <VBox width="10px" />
+                            <Input id="idBOLInput74" />
+                            <VBox width="10px" />
+                            <Input
+                                id="idBOLInput75"
+                                width="60px"
+                            />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Button
+                                id="idBOLEnter2"
+                                text="Enter2"
+                                press="onBOLEnterPress2"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
