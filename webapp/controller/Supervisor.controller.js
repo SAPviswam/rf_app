@@ -29,7 +29,6 @@ sap.ui.define(
                 // oTile.attachPress(this.onTilePressPutawayByWO.bind(this));
                 // oButton.attachPress(this.onPaletteIconSingleClick.bind(this));
 
-
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
                 this._isThemeMode = false;

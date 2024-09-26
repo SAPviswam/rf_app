@@ -1244,7 +1244,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="OnReversalofConsumptionbyMObyHUpress"
+                            press="press"
                         />
 
                         <GenericTile
