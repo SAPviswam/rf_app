@@ -6,7 +6,7 @@
     <Dialog
         id="idconnectsapdialogbox"
         resizable="false"
-        draggable="false"
+        draggable="true"
         contentWidth="30%"
 
         class="boxContainer"

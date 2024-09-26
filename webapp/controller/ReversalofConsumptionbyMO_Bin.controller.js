@@ -9,6 +9,8 @@ sap.ui.define(
   
       return Controller.extend("com.app.rfapp.controller.ReversalofConsumptionbyMO_Bin", {
         onInit: function() {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
         },
         onPressBackToHome_RCBM:async function(){
           debugger

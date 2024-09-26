@@ -488,6 +488,11 @@ sap.ui.define([
 
                 }
             }
+            if (this.currentIndex + 3 >= this.aAllButtons.length) {
+                this.getView().byId("downNavigationButtonId").setVisible(false); // Hide down navigation button
+            } else {
+                this.getView().byId("downNavigationButtonId").setVisible(true); // Show down navigation button
+            }
             oHomePage.addItem(this.getView().byId("downNavigationButtonId"));
         },
         onNavPrevious: function () {
