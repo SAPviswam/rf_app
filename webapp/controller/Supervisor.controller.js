@@ -2052,11 +2052,9 @@ sap.ui.define(
             },
 
             onThemeButton: function () {
-
                 this.byId("themeButton").setVisible(true);
                 this.byId("CancelButton").setVisible(true);
                 this.byId("themeButton3").setVisible(false);
-
                 this.Themecall = true;            
             },
             onCancel: function () {
