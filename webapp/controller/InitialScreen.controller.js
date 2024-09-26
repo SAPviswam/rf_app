@@ -32,8 +32,8 @@ sap.ui.define([
             this.getView().byId("idconnectsapeditButton").setVisible(false);
             this.oConnetSap.open();
         },
-        handleAddPress: function () {
-            this.handleLinksapPress();
+        handleAddPress: async function () {
+            await this.handleLinksapPress();
         },
         onCloseconnectsap: function () {
             this.oConnetSap.close();
@@ -211,8 +211,7 @@ sap.ui.define([
 
                             // Insert the new button after the link
                             oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
-                            oModel.refresh(true);
-                            this.getView().byId("pageInitial").getModel().refresh(true);
+                            window.location.reload();
                         }.bind(this), // Ensure 'this' context is correct
                         error: function (oError) {
                             MessageToast.show("Error saving configured system.");
@@ -245,8 +244,30 @@ sap.ui.define([
             this.selectedButton = oButton;
             this.client = Client;
             this.sdedescription = oButton.mProperties.text;
+            // Initialize an array to hold selected buttons if it doesn't exist
 
+            // if (!this.selectedButtons) {
+            //     this.selectedButtons = [];
+            // }
 
+            // // Check if the button is already selected
+            // var index = this.selectedButtons.indexOf(oButton);
+
+            // if (index === -1) {
+            //     // If not selected, add it to the array
+            //     this.selectedButtons.push(oButton);
+            // } else {
+            //     // If already selected, remove it from the array
+            //     this.selectedButtons.splice(index, 1);
+            // }
+
+            // // Update properties based on the last selected button
+            // this.selectedButton = oButton;
+            // this.client = Client;
+            // this.sdedescription = oButton.mProperties.text;
+
+            // // Optional: Log or handle the selected buttons array
+            // console.log("Selected Buttons:", this.selectedButtons);
         },
 
         onClearconnectSAPPress: function () {
@@ -305,13 +326,13 @@ sap.ui.define([
                 }.bind(that) // Bind the controller context
             });
         },
-        onEditConfiguredSystem: function () {
+        onEditConfiguredSystem: async function () {
             if (!this.selectedButton) {
                 MessageToast.show("No System selected to edit.");
                 return;
             }
 
-            this.handleLinksapPress();
+            await this.handleLinksapPress();
             this.getView().byId("idconnectsapfinishButton").setVisible(false);
             this.getView().byId("idconnectsapeditButton").setVisible(true);
             var oButtonText = this.sdedescription;
@@ -426,10 +447,6 @@ sap.ui.define([
                 success: function (oData) {
                     var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
 
-//                     var oHomePage = this.getView().byId("environmentButtonsHBox");
-//                     var oLink = this.getView().byId("_IDCofiguresapLink");
-
-
                     this.aAllButtons = []; // Reset the array
 
                     // Store all button instances
@@ -488,6 +505,11 @@ sap.ui.define([
 
                 }
             }
+            if (this.currentIndex + 3 >= this.aAllButtons.length) {
+                this.getView().byId("downNavigationButtonId").setVisible(false); // Hide down navigation button
+            } else {
+                this.getView().byId("downNavigationButtonId").setVisible(true); // Show down navigation button
+            }
             oHomePage.addItem(this.getView().byId("downNavigationButtonId"));
         },
         onNavPrevious: function () {
@@ -497,7 +519,6 @@ sap.ui.define([
                 this.getView().byId("upNavigationButtonId").setVisible(true)
             } else {
                 MessageToast.show("No more Systems to display."); // Optional feedback for user
-
             }
         },
 

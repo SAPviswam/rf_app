@@ -44,6 +44,28 @@
                             alignContent="Start"
                             class="sapUiTinyMarginBegin"
                         >
+                        
+<!--                             <Button
+                                id="idButtonAdd"
+                                icon="sap-icon://add"
+                                tooltip="Add"
+                                press="handleAddPress"
+                                class="button"
+                            />
+                            <Button
+                                id="idButtonEdit"
+                                icon="sap-icon://edit"
+                                tooltip="Edit"
+                                press="onEditConfiguredSystem"
+                                class="button1"
+                            />
+                            <Button
+                                id="idButtonDelete"
+                                icon="sap-icon://delete"
+                                tooltip="Delete"
+                                press="onDeleteConfiguredSystem"
+                                class="button2"
+                            /> -->
                             <VBox id="idbuttonvbox">
                                 <Button
                                     id="idButtonAdd"
