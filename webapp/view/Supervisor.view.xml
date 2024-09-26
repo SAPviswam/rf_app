@@ -79,14 +79,29 @@
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
                 />
-                <Button
+                 <Button
                     id="themeButton"
-                    text="Theme"
+                    text="Background Theme"
                     press="onOpenThemeDialog"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                    visible="false"
+                />
+                <Button
+                    id="themeButton3"
+                    text="Theme"
+                    press="onThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
                 />
+                <Button
+                id="CancelButton"
+                text="Cancel"
+                press="onCancel"
+                visible="false"
+                ></Button>
+ 
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -183,7 +198,7 @@
 
                         <VBox
                             id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer"
+                            class="sapUiSmallMargin boxContainer3"
                         >
                             <Title
                                 id="_IDHeadLabel"
@@ -1259,6 +1274,13 @@
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
                         />
+                         <GenericTile
+                            id="IDGenGenericTile322"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load By HU - Auto. Pos. Assigment"
+                            press="OnpressLoadbyHUAutoPosAssiognment"
+                        />
+
                         <GenericTile
                             id="IDGenGenericTile33"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"

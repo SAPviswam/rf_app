@@ -68,7 +68,7 @@
         <beginButton>
             <Button
                 id="idsapsystemLoginButton"
-                text="submit"
+                text="Submit"
                 press="onsapsubmitPress"
             />
         </beginButton>

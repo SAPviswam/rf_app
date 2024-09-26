@@ -239,7 +239,6 @@
             "TargetRecevingOfHUbyDelivery"
           ]
         },
-        
         {
           "name": "ReversalofConsumptionbyMObyHU",
           "pattern": "ReversalofConsumptionbyMObyHU/{id}",
@@ -479,7 +478,6 @@
           ]
         },
         {
-
           "name": "CreatePutawayHusforDeconsolidate",
           "pattern": "CreatePutawayHusforDeconsolidate/{id}",
           "target": [
@@ -533,7 +531,6 @@
           "pattern": "RoutePutawayHuClustered/{id}",
           "target": [
             "TargetRoutePutawayHuClustered"
-
           ]
         },
         {
@@ -563,16 +560,18 @@
           "target": [
             "TargetAutomaticallyRepackHu"
           ]
-
         },
         {
           "name": "LoadbyHUAutoPosAssiognment",
           "pattern": "LoadbyHUAutoPosAssiognment/{id}",
           "target": [
             "TargetLoadbyHUAutoPosAssiognment"
+ 
             ]
-    },
-{
+  
+        },
+        {
+ 
           "name": "RouteChangeLoadingUnloadingDetails",
           "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
           "target": [
@@ -748,15 +747,13 @@
           "clearControlAggregation": false,
           "viewId": "SetReadyforWHProcessingByCO",
           "viewName": "SetReadyforWHProcessingByCO"
-},
-
+        },
         "TargetReversalofConsumptionbyMObyHU": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "ReversalofConsumptionbyMObyHU",
           "viewName": "ReversalofConsumptionbyMObyHU"
-
         },
         "TargetBillofLading": {
           "viewType": "XML",
@@ -989,7 +986,6 @@
           "viewId": "UnloadingByBillofLading",
           "viewName": "UnloadingByBillofLading"
         },
-
         "TargetLoadbyHUManPosAssiognment": {
           "viewType": "XML",
           "transition": "slide",
@@ -1004,7 +1000,6 @@
           "viewId": "LoadbyHUAutoPosAssiognment",
           "viewName": "LoadbyHUAutoPosAssiognment"
         },
-
         "TargetRoutePutawayHuClustered": {
           "viewType": "XML",
           "transition": "slide",
@@ -1018,22 +1013,21 @@
           "clearControlAggregation": false,
           "viewId": "ChangeLoadingUnloadingDetails",
           "viewName": "ChangeLoadingUnloadingDetails"
-      },
-
+        },
         "TargetWHProcessingByBOL": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "WHProcessingByBOL",
           "viewName": "WHProcessingByBOL"
-      },
-      "TargetUnloadByHu": {
-        "viewType": "XML",
-        "transition": "slide",
-        "clearControlAggregation": false,
-        "viewId": "UnloadByHu",
-        "viewName": "UnloadByHu"
-      },
+        },
+        "TargetUnloadByHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadByHu",
+          "viewName": "UnloadByHu"
+        },
         "TargetConsumptionByManufacturingOrder": {
           "viewType": "XML",
           "transition": "slide",
@@ -1048,7 +1042,7 @@
           "viewId": "ReversalofConsumptionbyMO_Bin",
           "viewName": "ReversalofConsumptionbyMO_Bin"
         },
-        "TargetAutomaticallyRepackHu":{
+        "TargetAutomaticallyRepackHu": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -1056,9 +1050,7 @@
           "viewName": "AutomaticallyRepackHu"
         }
       }
-      },
-        
-    
+    },
     "rootView": {
       "viewName": "com.app.rfapp.view.App",
       "type": "XML",
