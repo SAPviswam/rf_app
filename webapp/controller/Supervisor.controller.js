@@ -1772,8 +1772,6 @@ sap.ui.define(
                 var oRouter = this.getOwnerComponent().getRouter();
  
                 oRouter.navTo("RouteChangeLoadingUnloadingDetails", { id: this.ID });
- 
-
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -1781,9 +1779,7 @@ sap.ui.define(
                 oRouter.navTo("AdhocProductWt", { id: this.ID });
  
 
-            },
-
-           
+            },           
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocProductWt",{ id: this.ID });
@@ -2056,11 +2052,9 @@ sap.ui.define(
             },
 
             onThemeButton: function () {
-
                 this.byId("themeButton").setVisible(true);
                 this.byId("CancelButton").setVisible(true);
                 this.byId("themeButton3").setVisible(false);
-
                 this.Themecall = true;            
             },
             onCancel: function () {
