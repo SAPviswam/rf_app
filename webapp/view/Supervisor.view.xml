@@ -1259,12 +1259,6 @@
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
                         />
-                        <GenericTile
-                            id="IDGenGenericTile33"
-                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Change Loading/Unloading Details"
-                            press="onChangeLoadingUnloadingDetails"
-                        />
 
                         <GenericTile
                             id="IDGenGenericTile34"
