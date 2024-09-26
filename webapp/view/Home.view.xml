@@ -8,150 +8,73 @@
     xmlns:cssgrid="sap.ui.layout.cssgrid"
     xmlns:tnt="sap.tnt"
 >
-    <tnt:ToolPage id="idPage">
-        <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderLogin">
-                <Image
-                    id="_IDGenImageLogin"
-                    height="1.5rem"
-                    class="sapUiSmallMarginBegin"
-                    src="https://artihcus.com/assets/img/AG-logo.png"
-                />
-                <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorLogin"
-                />
-                <ToolbarSpacer id="idToolbarSpacerLogin">
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutDataLogin"
-                            priority="NeverOverflow"
-                            minWidth="2000%"
-                        />
-                    </layoutData>
-                </ToolbarSpacer>
-                <ToolbarSpacer id="idToolbarSpacerLogin1">
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutDataLogin1"
-                            priority="NeverOverflow"
-                            minWidth="2000%"
-                        />
-                    </layoutData>
-                </ToolbarSpacer>
-                <Avatar
-                    id="_IDGenAvatarLogin"
-                    displaySize="XS"
-                    press="onAvatarPressed"
-                    tooltip="Profile"
-                />
-            </tnt:ToolHeader>
-        </tnt:header>
-        <tnt:mainContents>
-            <VBox
-                id="idVBoxMain"
-                justifyContent="Center"
+    <Page id="pageHome">
+        <content>
+            <FlexBox
+                id="_IDGenFlexBoxHome"
+                height="100%"
+                direction="Column"
                 alignItems="Center"
-                class="mainContainer"
             >
-           
                 <VBox
-                    id="idVBoxLoginContainer"
-                    class="loginContainer"
-                    justifyContent="Center"
+                    id="environmentButtonsHBoxHome"
+                    class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
                 >
-                <HBox  id="idHboxinlogin" alignContent="Start" >
-                    <Image
-                        id="idImageLogoAvatar11"
-                        src="https://artihcus.com/assets/img/AG-logo.png"
-                        class="sapUiSmallMarginEnd"
-                        width="75%"
-                        height="35%"
-                    />
-                    </HBox>
-                    <Title
-                        id="idTextParking"
-                        text="LOGIN"
-                        level="H2"
-                    />
-                    <Panel
-                        id="idPanelLogin"
-                        class="sapUiResponsiveMargin"
+                    <HBox
+                        id="idHboxHome"
+                        alignContent="Start"
+                        class="boxContainer2"
                         width="auto"
                     >
-                        <content>
+                        <Image
+                            id="idImageLogoAvatarHome"
+                            src="https://artihcus.com/assets/img/AG-logo.png"
+                            class="sapUiSmallMarginEnd logo"
+                            width="85%"
+                            height="35%"
+                        />
+                        <Title
+                            id="Homescreentitle"
+                            text="CAPmodel RF"
+                            class="capModelRFText sapUiSmallMarginBottom"
+                        />
+                    </HBox>
+                    <Label id="idlabelempty" width="0.5rem" />
+                    <HBox id="idhboxwah">
+                        <VBox id="_IDGenHBox26">
                             <Label
                                 id="idLabelHU"
-                                text="Warehouse Number:"
+                                text="Warehouse No:"
                                 labelFor="idHUInput"
-                                required="true"
-                            />
-                            <Input
-                                id="idHUInput"
-                                placeholder="Enter Warehouse Number..."
-                                value="1710"
-                                editable="false"
+                                class="LabelHomePage"
                             />
                             <Label
                                 id="idLabelUserID"
-                                text="Resource ID:"
+                                text="Resource:"
                                 labelFor="idUserIDInput"
-                                class="sapUiSmallMarginTop"
-                                required="true"
+                                class="sapUiSmallMarginTop LabelHomePage"
+                            />
+                        </VBox>
+                        <Text id="idtext" width="0.4rem"></Text>
+                        <VBox id="_IDGenHBox32">
+                            <MultiInput
+                                id="idHUInput"
+                                width="7rem"
                             />
                             <Input
                                 id="idUserIDInput"
-                                placeholder="Enter Resource ID..."
+                                width="7rem"
                             />
-                            <Label
-                                id="idLabelPassword"
-                                text="Password:"
-                                labelFor="idPasswordInput"
-                                class="sapUiSmallMarginTop"
-                                required="true"
-                            />
-                            <Input
-                                id="idPasswordInput"
-                                type="Password"
-                                placeholder="Enter Password..."
-                            />
-                            <HBox
-                                id="idHBox"
-                                class="sapUiSmallMarginTop"
-                                justifyContent="End"
-                            >
-                                <Button
-                                    id="idButtonLogin"
-                                    text="Login"
-                                    class="SubmitBtnFromVendorPage"
-                                    press="onLoginPress"
-                                />
-                                <Button
-                                    id="idButtonClear"
-                                    text="Clear"
-                                    class="ClearBtnFromVendorPage"
-                                    press="onClearPress"
-                                />
-                            </HBox>
-                        </content>
-                    </Panel>
+                        </VBox>
+                    </HBox>
                     <HBox
-                        id="idHBoxSignUpForgot"
+                        id="_IDGenHBox69"
                         justifyContent="Center"
-                        alignItems="Center"
-                        class="sapUiSmallMarginTop"
                     >
                         <CheckBox
-                            id="idButtonSignUpcheckbox"
+                            id="_IDGenCheckBox"
                             text="Auto Save"
-                            class="onPressAutoSaveBtn"
-                        />
-                        <Button
-                            id="idLinkPassword"
-                            text="Forgot Password"
-                            press="onForgotPassword"
-                            class="onForgotPassword"
-                            type="Transparent"
                         />
                     </HBox>
                     <HBox
@@ -168,13 +91,13 @@
                             type="Transparent"
                         />
                         <Button
-                            id="idAddResource"
-                            text="Add Resource To Library"
+                            id="idchangequeue"
+                            text="Change Queue"
                             type="Transparent"
                         />
                     </HBox>
                 </VBox>
-            </VBox>
-        </tnt:mainContents>
-    </tnt:ToolPage>
+            </FlexBox>
+        </content>
+    </Page>
 </mvc:View>
