@@ -2,14 +2,21 @@ sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/UIComponent",
-        "sap/m/MessageToast",
+        "sap/m/MessageToast"
     ],
     function(Controller,UIComponent,MessageToast) {
       "use strict";
   
       return Controller.extend("com.app.rfapp.controller.ReversalofConsumptionbyMO_Bin", {
         onInit: function() {
-        },
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+      },
+      onResourceDetailsLoad: async function (oEvent1) {
+          const { id } = oEvent1.getParameter("arguments");
+              this.ID = id;
+      },
+
         onPressBackToHome_RCBM:async function(){
           debugger
           var oRouter = UIComponent.getRouterFor(this);
@@ -73,12 +80,19 @@ sap.ui.define(
         this.getView().byId("icon2_RCBM").setVisible(false);
         this.getView().byId("icon3_RCBM").setVisible(true);
       },
+
       onStorBinInputChange:function () {
         this.getView().byId("icon1_RCBM").setVisible(false);
         this.getView().byId("icon2_RCBM").setVisible(false);
         this.getView().byId("icon3_RCBM").setVisible(false);
         this.getView().byId("icon4_RCBM").setVisible(false);
         this.getView().byId("icon5_RCBM").setVisible(true);
+ 
+      },
+
+      onPressback4:function(){
+        this.getView().byId("icon4_RCBM").setVisible(true);
+        this.getView().byId("icon5_RCBM").setVisible(false);
 
       },
     
