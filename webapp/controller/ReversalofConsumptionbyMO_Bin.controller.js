@@ -1,14 +1,40 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/core/UIComponent"
     ],
-    function(BaseController) {
+    function(BaseController,UIComponent) {
       "use strict";
   
       return BaseController.extend("com.app.rfapp.controller.ReversalofConsumptionbyMO_Bin", {
         onInit: function() {
-        },
-        onPressManfOrdSubmit: function () {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+      },
+      onResourceDetailsLoad: async function (oEvent1) {
+          const { id } = oEvent1.getParameter("arguments");
+              this.ID = id;
+      },
+      onPressBackToHome_RCBM:async function(){
+        debugger
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
+    },
+      onPressManfOrdSubmit: function () {
           this.getView().byId("icon1_RCBM").setVisible(false);
           this.getView().byId("icon2_RCBM").setVisible(true);
           // this.getView().byId("_IDGenButton77_RCBM").setVisible(false);
@@ -54,6 +80,20 @@ sap.ui.define(
         this.getView().byId("icon2_RCBM").setVisible(false);
         this.getView().byId("icon2_RCBM").setVisible(false);
         this.getView().byId("icon3_RCBM").setVisible(true);
+      },
+
+      onStorBinInputChange:function () {
+        this.getView().byId("icon1_RCBM").setVisible(false);
+        this.getView().byId("icon2_RCBM").setVisible(false);
+        this.getView().byId("icon3_RCBM").setVisible(false);
+        this.getView().byId("icon4_RCBM").setVisible(false);
+        this.getView().byId("icon5_RCBM").setVisible(true);
+ 
+      },
+
+      onPressback4:function(){
+        this.getView().byId("icon4_RCBM").setVisible(true);
+        this.getView().byId("icon5_RCBM").setVisible(false);
       },
     
       });
