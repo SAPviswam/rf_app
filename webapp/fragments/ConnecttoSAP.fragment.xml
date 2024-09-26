@@ -79,7 +79,7 @@
                         value="{}"
                         placeholder="Enter Description..."
                         class="customInput"
-                        width="200px"
+                        width="100%"
                     />
                 </HBox>
  
@@ -147,7 +147,7 @@
                         value="{}"
                         placeholder="Enter Application server..."
                         class="customInput"
-                        width="200px"
+                        width="100%"
                         maxLength="200"
                     />
                 </HBox>
@@ -163,7 +163,7 @@
                         value="{}"
                         placeholder="Enter Router String..."
                         class="customInput"
-                        width="200px"
+                        width="100%"
                     />
                 </HBox>
                 <!-- Service -->
@@ -179,7 +179,7 @@
                         value="{}"
                         placeholder="Enter Service..."
                         class="customInput"
-                        width="200px"
+                        width="100%"
                     />
                 </HBox>
 

@@ -91,6 +91,13 @@
     padding: 8px 16px; /* Optional: Add padding for better button size */
     border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
 }
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: 2rem !important;
+    width: 40% !important;
+}
 .boxContainer {
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
