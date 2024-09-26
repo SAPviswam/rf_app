@@ -91,20 +91,33 @@
     padding: 8px 16px; /* Optional: Add padding for better button size */
     border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
 }
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: 2rem !important;
+    width: 40% !important;
+}
 .boxContainer {
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
-    /* Add border width, style, and color */
     padding: auto !important; 
-    width: 25% !important;
     padding-bottom: 1rem;
-    width: 30% !important;
+    width: 23% !important;
 }
 .TitlecustomHeader{
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
 }
-.boxContainer3 {
+.InitialButton67{
+    margin-left: 0.5rem;
+    font-size: x-small;
+    margin-bottom: 0.3rem !important;
+}
+.Butns{
+    margin-left: 0.3rem;
+}
+.boxContainersupervisor {
     border-radius: 1rem !important;
      border: 2px solid #090909d2 !important; 
     /* Add border width, style, and color */
@@ -149,16 +162,18 @@
 .buttonContainer {
     margin-top: 20px; /* Optional: add some spacing between buttons */
     background-color: black;
-    margin-left: 2.5rem;
+    margin-left: 1.7rem;
     margin-right: 2.5rem;
+    margin-bottom: 0.5rem;
+ 
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
-    border-color: black !important; /* Set button border color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
     color: white !important; /* Set button text color to white */
-    padding: 8px 16px; /* Optional: Add padding for better button size */
-    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
+.DynamicBtn{
+    height: 4rem !important;
 }
 .Inputs {
     width: 100%
@@ -174,7 +189,7 @@
 }
 @media (max-width: 600px) {
     .boxContainer {
-        width: auto !important; /* Full width on mobile */
+        width:  85%!important; /* Full width on mobile */
         padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
@@ -450,6 +465,7 @@
         width: auto !important; /* Adjust labels */
     }
 }
+
 
 
 
