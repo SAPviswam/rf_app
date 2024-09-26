@@ -201,11 +201,13 @@
                                     text="Employee ID:"
                                     labelFor="idEmppInput"
                                     required="true"
+                                    width="120px"
+                                  
                                 />
                                 <Input
                                     id="idEmppInput"
                                     placeholder="Enter Employee ID"
-                                    class="Inputs"
+                                    class="Input"
                                     liveChange="onEmployeeIdLiveChange"
                                 />
                             </FlexBox>
@@ -220,12 +222,13 @@
                                     text="Name:"
                                     labelFor="idNameInput"
                                     required="true"
+                                    width="120px"
                                 />
                                 <Input
                                     editable="true"
                                     id="idNameInput"
                                     placeholder="Enter Name"
-                                    class="Inputs"
+                                    class="Input"
                                 />
                             </FlexBox>
                             <FlexBox
@@ -238,12 +241,13 @@
                                     id="idEmail"
                                     text="Email:"
                                     labelFor="idEmailInput"
+                                    width="120px"
                                 />
                                 <Input
                                     editable="true"
                                     id="idEmailInput"
                                     placeholder="Enter Email"
-                                    class="Inputs"
+                                    class="Input"
                                 />
                             </FlexBox>
                             <FlexBox
@@ -257,13 +261,14 @@
                                     text="Phone:"
                                     labelFor="idPhoneInput"
                                     required="true"
+                                    width="120px"
                                 />
                                 <HBox id="_IDGenHBox9" justifyContent="SpaceBetween">
                                     <Input
                                         editable="true"
                                         id="idPhoneInput"
                                         placeholder="Enter Phone"
-                                        class="Inputs"
+                                        class="Input"
                                     />
                                     <core:Icon
                                         id="verficationIdicon"
@@ -312,6 +317,7 @@
                                     text="User Type"
                                     labelFor="idGroupInput"
                                     required="true"
+                                    width="120px"
                                 />
                                 <ComboBox
                                     id="userType"
@@ -347,6 +353,7 @@
                                     id="idLableRoesurcetype"
                                     text="Resource Type"
                                     required="true"
+                                    width="120px"
                                 />
                                 <ComboBox
                                     id="idRoesurcetypeInput"
@@ -378,6 +385,7 @@
                                     text="Process Area:"
                                     labelFor="idAreaInput"
                                     required="true"
+                                    width="120px"
                                 />
                                 <MultiComboBox
                                     id="AreaSelect"
@@ -403,6 +411,7 @@
                                     text="Group:"
                                     labelFor="idGroupInput"
                                     required="true"
+                                    width="120px"
                                 />
                                 <MultiComboBox
                                     id="GroupSelect"
@@ -429,6 +438,7 @@
                                     text="Queue:"
                                     labelFor="idQueueSelect"
                                     required="true"
+                                    width="120px"
                                 />
                                 <MultiComboBox
                                     id="_IDGenComboBox10"
