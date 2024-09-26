@@ -1775,8 +1775,6 @@ sap.ui.define(
                 var oRouter = this.getOwnerComponent().getRouter();
  
                 oRouter.navTo("RouteChangeLoadingUnloadingDetails", { id: this.ID });
- 
-
             },
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
