@@ -11,7 +11,7 @@ sap.ui.define(
         onInit: function() {
           const oRouter = this.getOwnerComponent().getRouter();
           oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-      },
+        },
       onResourceDetailsLoad: async function (oEvent1) {
           const { id } = oEvent1.getParameter("arguments");
               this.ID = id;
