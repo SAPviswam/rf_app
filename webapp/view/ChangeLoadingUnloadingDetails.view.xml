@@ -1,0 +1,175 @@
+<mvc:View controllerName="com.app.rfapp.controller.ChangeLoadingUnloadingDetails"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:ndc="sap.ndc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    height="100%">
+     <tnt:ToolPage id="idToolPagePutawayByHU22">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderPutawayByHU66">
+                <Image
+                    id="_IDGenImage1PutawayByHU99"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPutawayByHU88"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPutawayByHU78">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PutawayByHU96"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar1PutawayByHU"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+           
+            <ScrollContainer
+                id="idPage7UnLoadPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+                <Button
+                    id="idBackBtnUnLoad"
+                    press="onBackPressUnLoadPage"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                />
+                <HBox
+                    id="idMainUnLoadPage"
+                     class="MainVBoxUnLoad"
+                    justifyContent="End"
+                    
+                >
+                    
+                    <HBox
+                        id="idGoodSchange"
+                       
+                        justifyContent="Center"
+                    >
+                        <form:SimpleForm
+                            id="idSimpleFormChange"
+                            layout="ResponsiveGridLayout"
+                            labelSpanL="4"
+                            labelSpanM="4"
+                            columnsL="1"
+                            columnsM="1"
+                            width = "125%"
+                        >
+                            <Label
+                                id="idHULabel"
+                                text="HU"
+                                class="labelStyleUnLoad"
+                            />
+                            <Input
+                                id="idChangeHu"
+                                width="12rem"
+                            />
+                            <Label
+                                id="idTopHusLabel"
+                                text="Top Hus"
+                                class="labelStyleUnLoad"
+                            />
+                            <Input
+                                id="idTopHusInput"
+                                width="12rem"
+                            />
+                            <Label
+                                id="idWOLabel"
+                                text="WO"
+                                class="labelStyleUnLoad"
+                            />
+                            <Input
+                                id="idWOInput"
+                                width="12rem"
+                            />
+                            <Input
+                                id="idWOInput1"
+                                width="10rem"
+                            />
+                            <Label
+                                id="idPage7Label23"
+                                text="RSRC"
+                                class="labelStyleUnLoad"
+                            />
+                            <VBox id="idVBox">
+                            <Input
+                                id="RSRCiNPUT"
+                                width="12rem"
+                            />
+                            <HBox
+                                id="idHBoxbuttonUnLoad"
+                                class="buttonContainer"
+                               justifyContent = "SpaceBetween"
+                            >
+                                <Button
+                                    id="idTransaction"
+                                    text="Transaction End"
+                                    press="onUnLoadBtnPress"
+                                />
+                                <Button
+                                    id="idChngeF2"
+                                    text="List for HUs"
+                                    press="onUnLoadBtnPress"
+                                />
+                                <Button
+                                    id="idChngeF3"
+                                    text="R L - Distribution Equipment"
+                                    press="onUnLoadBtnPress"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idChangeHBoxButtons2"
+                                class="buttonContainer"
+                                justifyContent = "SpaceBetween"
+                               
+                            >
+                                <Button
+                                    id="idChngeF4"
+                                    text="PosAuto"
+                                    press=""
+                                />
+                                <Button
+                                    id="idChngeF5"
+                                    text="PosMan"
+                                    press="PosMan"
+                                />
+                                <Button
+                                    id="idChngeF6"
+                                    text="Equipment Unloading"
+                                    press="onUnLoadBtnPress"
+                                />
+                            </HBox>
+                             <Button
+                                    id="idChngeF7"
+                                    text="Equipment Unloading"
+                                    press="onUnLoadBtnPress"
+                                />
+                            </VBox>
+
+                        </form:SimpleForm>
+                    </HBox>
+                </HBox>
+            </ScrollContainer>
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

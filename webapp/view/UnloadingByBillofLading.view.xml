@@ -96,8 +96,9 @@
                             <Label
                                 id="idBillofLadingLabel_UOBL"
                                 text="Bill of Lading :"
-                                class="ScanHumargin"
+                                 class="sapUiTinyMargin"
                             />
+                            <HBox>
                             <!-- Input Field -->
                             <Input
                                 id="idBillofLadinginput_UOBL"
@@ -119,6 +120,7 @@
                                 text="Submit"
                                 press="Onpresssubmit"
                             />
+                               </HBox>
                         </HBox>
                     </f:SimpleForm>
                 </VBox>
