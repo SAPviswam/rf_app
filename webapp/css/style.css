@@ -558,3 +558,17 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 19% !important;
 }
+
+
+.noHeaderDialog .sapMDialogTitle {
+    display: none;
+}
+.connecttoSAPform{
+    border-radius: 0rem !important;
+    border: 0.5px solid #080808d2 !important;
+}
+
+.comboCS{
+margin-left: 20%;
+margin-right: 20%;
+}

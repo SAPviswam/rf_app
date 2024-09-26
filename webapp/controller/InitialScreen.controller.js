@@ -13,6 +13,7 @@ sap.ui.define([
             this.loadConfiguredSystems();
             this.aAllButtons = []; // Store all button instances
             this.currentIndex = 0;
+           
         },
         onsapCancelPress: function () {
             this.oConfigSap.close();
@@ -532,6 +533,37 @@ sap.ui.define([
             } else {
                 MessageToast.show("No previous buttons to display."); // Optional feedback for user
             }
+        },
+        onLogOnPress:async function(){
+            if(!(this.getView().byId("idUserInput_CS").getValue())){
+                MessageToast.show("Please enter the username");
+                return
+            }
+            if(!(this.getView().byId("idSPasswordInput_CS").getValue())){
+                MessageToast.show("Please enter the Password");
+                return
+            }
+            //filter(num => num % 2 !== 0);
+            var oResourceId=this.getView().byId("idUserInput_CS").getValue();
+            var oPassword=this.getView().byId("idSPasswordInput_CS").getValue();
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.read("/RESOURCESSet('" + oResourceId + "')", {
+                success: function (oData) {
+                    if(oData.Password===oPassword){
+
+                    
+                    
+                    this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
+                    }
+                    else{
+                        MessageToast.show("Please enter the correct Password");
+                    }
+
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User doesn't exist")
+                }
+            });
         }
 
 

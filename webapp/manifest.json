@@ -115,7 +115,7 @@
         },
         {
           "name": "Homepage",
-          "pattern": "Homepage",
+          "pattern": "Homepage/{id}",
           "target": [
             "TargetHome"
           ]
