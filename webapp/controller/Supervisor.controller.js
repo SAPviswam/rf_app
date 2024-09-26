@@ -1779,9 +1779,7 @@ sap.ui.define(
                 oRouter.navTo("AdhocProductWt", { id: this.ID });
  
 
-            },
-
-           
+            },           
             onPressCreateAdhocProductWTInAdhocWT: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("AdhocProductWt",{ id: this.ID });
