@@ -115,7 +115,7 @@
         },
         {
           "name": "Homepage",
-          "pattern": "Homepage",
+          "pattern": "Homepage/{id}",
           "target": [
             "TargetHome"
           ]
@@ -1027,27 +1027,7 @@
           "clearControlAggregation": false,
           "viewId": "UnloadByHu",
           "viewName": "UnloadByHu"
-        },
-        "TargetConsumptionByManufacturingOrder": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "ConsumptionByManufacturingOrder",
-          "viewName": "ConsumptionByManufacturingOrder"
-        },
-        "TargetReversalofConsumptionbyMO_Bin": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "ReversalofConsumptionbyMO_Bin",
-          "viewName": "ReversalofConsumptionbyMO_Bin"
-        },
-        "TargetAutomaticallyRepackHu": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "AutomaticallyRepackHu",
-          "viewName": "AutomaticallyRepackHu"
+        
         }
       }
     },

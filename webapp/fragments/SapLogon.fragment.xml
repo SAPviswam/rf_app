@@ -1,76 +1,151 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
 >
     <Dialog
-        id="_Iddialogsaplogon"
+        id="idconnectsapdialogbox_CS"
         resizable="false"
         draggable="true"
-        contentWidth="20%"
+        contentWidth="25%"
+        class="boxContainer"
     >
-        <customHeader >
-            <Bar id="_IDsaplogonBar1" class="customDialogHeader">
-                <contentMiddle>
+        <customHeader>
+            <Bar
+                id="_IDBar1coonectsap_CS"
+                class="TitlecustomHeader"
+            >
+                <contentLeft>
+                    <!-- Logo -->
+                    <Image
+                        id="_IDGenImage_CS"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="80%"
+                        height="60%"
+                    />
+                    </contentLeft>
+                    <!-- Title -->
+                    <contentMiddle>
                     <Title
-                        id="_IDsaplogonTitle1"
-                        text="SAP System Logon"
+                        id="_IDTitleconnectsap_CS"
+                        text="CAPmodel RF"
+                        class="capModelRFTextdialog"
                     />
                 </contentMiddle>
             </Bar>
         </customHeader>
         <content>
             <form:SimpleForm
-                id="idsaplogonpasswordForm"
+                id="idconnecttosapDetailsForm_CS"
                 editable="true"
                 layout="ResponsiveGridLayout"
-                labelSpanL="3"
-                labelSpanM="3"
-                emptySpanL="4"
-                emptySpanM="4"
-                columnsL="1"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                emptySpanXL="1"
+                emptySpanL="1"
+                emptySpanM="1"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
                 columnsM="1"
-                singleContainerFullSize="false"
             >
-                    <Label
-                        id="_IDsaplogonuserlable"
-                        text="User ID"
-                        width="135%"
-                    />
+                <VBox
+                    id="SAPlogonform1"
+                    width="72%"
+                    class="connecttoSAPform sapUiLargeMargin sapUiSmallMarginTop" 
+                >
+                <VBox
+                    id="SAPlogonform2"
+                    width="100%"
+                    class="sapUiSmallMargin"
+                >
+
+
+                <VBox alignItems="Start">
+                    <!-- User Input -->
                     <Input
-                        id="idsaplogonUserId"
-                        value=""
-                        placeholder="Enter User ID"
-                        required="true"
+                        id="idUserInput_CS"
+                        value="{}"
+                        placeholder="User"
+                        class="customInput"
+                        width="105%"
                     />
-                    <Label
-                        id="_IDsaplogonpasswordlable"
-                        text="Password"
-                        width="135%"
-                    />
+                    <!-- Password Input -->
                     <Input
-                        id="idSapLogonPassword"
-                        value=""
-                        placeholder="Enter Password"
-                        required="true"
+                        id="idSPasswordInput_CS"
                         type="Password"
+                        placeholder="Password"
+                        width="105%"
                     />
+                        <Label
+                            id="idLableInstanceNumber_CS"
+                            text="Language"
+                            width="120px"
+                        />
+                    </VBox>
+                        <ComboBox
+                            id="idLanguageSelectorMultiComboBox_CS"
+                            width="85%"
+                            selectedKey="en"
+                            class="comboCS"
+                        >
+                            <items>
+                                <core:Item
+                                    id="idCoreItemEnglishLanguage_CS"
+                                    key="en"
+                                    text="EN-English"
+                                />
+                                <core:Item
+                                    id="idCoreItemSpanishLanguage_CS"
+                                    key="es"
+                                    text="SP-Spanish"
+                                />
+                            </items>
+                        </ComboBox>
+
+
+                   <VBox alignItems="Start">
+                    <Input
+                        id="idRouterStringInput_CS"
+                        value="400"
+                        placeholder=""
+                        class="customInput"
+                        width="105%"
+                        editable="false"
+                    />
+                    </VBox>
+                    
+
+                    <!-- Log On Button -->
+                        
+                        <Button
+                            id="LoginButton_CS"
+                            text="Log On"
+                           
+                            width="85%"
+                            press="onLogOnPress"
+                        />
+                        <HBox class="sapUiSmallMarginEnd">
+                    
+                    
+                        <Link
+                        id="IDchangePassword"
+                        text="Change Password"
+                        class="sapUiSmallMarginEnd"
+                        />
+                        <Button text="Cancel"
+                        press="onPressCancleSapLogon"/>
+                        </HBox>
+                        </VBox>
+
+
+                    <!-- Change Password Link -->
+                    
+                    </VBox>
             </form:SimpleForm>
         </content>
-        <!-- Add button to the bottom right corner -->
-        <endButton>
-            <Button
-                id="idsapCancelButton"
-                text="Cancel"
-                press="onsapCancelPress"
-            />
-        </endButton>
-        <beginButton>
-            <Button
-                id="idsapsystemLoginButton"
-                text="Submit"
-                press="onsapsubmitPress"
-            />
-        </beginButton>
     </Dialog>
 </core:FragmentDefinition>
