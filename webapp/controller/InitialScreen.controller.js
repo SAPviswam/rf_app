@@ -58,8 +58,8 @@ sap.ui.define([
             this.onUserLogin();
         },
         onUserLogin: function () {
-            this.getView().byId("idsaplogonUserId").setValue("");
-            this.getView().byId("idSapLogonPassword").setValue("");
+            this.getView().byId("idUserInput_CS").setValue("");
+            this.getView().byId("idSPasswordInput_CS").setValue("");
         },
         onFinishconnectSAPPress: function () {
             // Get the dialog and its input fields
