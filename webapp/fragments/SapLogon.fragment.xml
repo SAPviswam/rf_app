@@ -8,7 +8,7 @@
         id="idconnectsapdialogbox_CS"
         resizable="false"
         draggable="true"
-        contentWidth="30%"
+        contentWidth="25%"
         class="boxContainer"
     >
         <customHeader>
@@ -16,16 +16,17 @@
                 id="_IDBar1coonectsap_CS"
                 class="TitlecustomHeader"
             >
-                <contentMiddle>
+                <contentLeft>
                     <!-- Logo -->
                     <Image
                         id="_IDGenImage_CS"
                         src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="100px"
-                        height="40px"
-                        class="sapUiSmallMarginEnd"
+                        width="80%"
+                        height="60%"
                     />
+                    </contentLeft>
                     <!-- Title -->
+                    <contentMiddle>
                     <Title
                         id="_IDTitleconnectsap_CS"
                         text="CAPmodel RF"
@@ -53,14 +54,13 @@
             >
                 <VBox
                     id="SAPlogonform1"
-                    width="75%"
-                    class="connecttoSAPform sapUiMediumMargin sapUiSmallMarginTop" 
+                    width="72%"
+                    class="connecttoSAPform sapUiLargeMargin sapUiSmallMarginTop" 
                 >
                 <VBox
                     id="SAPlogonform2"
                     width="100%"
                     class="sapUiSmallMargin"
-
                 >
 
 
@@ -88,7 +88,7 @@
                     </VBox>
                         <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="83%"
+                            width="85%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -117,26 +117,31 @@
                         editable="false"
                     />
                     </VBox>
-                    </VBox>
+                    
 
                     <!-- Log On Button -->
-                        <VBox id="LogonButton_CS"  alignContent="Center" >
+                        
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                            class="sapUiTinyMarginTop sapUiTinyMargin"
-                            width="95%"
+                           
+                            width="85%"
                             press="onLogOnPress"
                         />
+                        <VBox alignItems="Center">
+                    
+                    
+                        <Link
+                        id="IDchangePassword"
+                        text="Change Password"
+                        class="changePassword"
+                        />
+                        </VBox>
                         </VBox>
 
 
                     <!-- Change Password Link -->
-                    <Link
-                        id="IDchangePassword"
-                        text="Change Password"
-                        class="sapUiTinyMarginTop sapUiLargeMarginBegin sapUiLargeMarginEnd"
-                    />
+                    
                     </VBox>
             </form:SimpleForm>
         </content>
