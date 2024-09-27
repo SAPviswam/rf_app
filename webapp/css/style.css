@@ -106,8 +106,11 @@
     width: 23% !important;
 }
 .TitlecustomHeader{
-    border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 .InitialButton67{
     margin-left: 0.5rem;
@@ -566,13 +569,24 @@ background-color: rgb(9, 8, 8) !important;
 .connecttoSAPform{
     border-radius: 0rem !important;
     /* border: 0.5px solid #080808d2 !important; */
-    background-color: rgb(165, 199, 245);
+    background-color: #c9dbe9;
 }
+.logonbutton{
+    background-color:#5496cd;
+    border: 2px solid #5496cd !important;
+    color:  #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* .cancelbutton{
+    background-color: #c9dbe9;
+    border: 2px solid #c9dbe9 !important;
+    color:#8b9baf !important
+} */
 
-.comboCS{
+/* .comboCS{
 margin-left: 20%;
 margin-right: 20%;
-}
+} */
 /* .changePassword{
     font-size: 90%;
 } */

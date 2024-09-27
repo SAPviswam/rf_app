@@ -6,7 +6,7 @@
     <Dialog
         id="dialog"
         resizable="false"
-        draggable="false"
+        draggable="true"
         contentWidth="25%"
         class="boxContainersignup"
     >

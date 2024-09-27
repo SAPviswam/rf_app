@@ -57,8 +57,8 @@ sap.ui.define([
             this.onUserLogin();
         },
         onUserLogin: function () {
-            this.getView().byId("idsaplogonUserId").setValue();
-            this.getView().byId("idSapLogonPassword").setValue();
+            this.getView().byId("idsaplogonUserId").setValue("");
+            this.getView().byId("idSapLogonPassword").setValue("");
         },
         onFinishconnectSAPPress: function () {
             // Get the dialog and its input fields
@@ -245,30 +245,6 @@ sap.ui.define([
             this.selectedButton = oButton;
             this.client = Client;
             this.sdedescription = oButton.mProperties.text;
-            // Initialize an array to hold selected buttons if it doesn't exist
-
-            // if (!this.selectedButtons) {
-            //     this.selectedButtons = [];
-            // }
-
-            // // Check if the button is already selected
-            // var index = this.selectedButtons.indexOf(oButton);
-
-            // if (index === -1) {
-            //     // If not selected, add it to the array
-            //     this.selectedButtons.push(oButton);
-            // } else {
-            //     // If already selected, remove it from the array
-            //     this.selectedButtons.splice(index, 1);
-            // }
-
-            // // Update properties based on the last selected button
-            // this.selectedButton = oButton;
-            // this.client = Client;
-            // this.sdedescription = oButton.mProperties.text;
-
-            // // Optional: Log or handle the selected buttons array
-            // console.log("Selected Buttons:", this.selectedButtons);
         },
 
         onClearconnectSAPPress: function () {
