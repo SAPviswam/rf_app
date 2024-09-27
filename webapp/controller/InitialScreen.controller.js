@@ -579,48 +579,58 @@ sap.ui.define([
             });
         },
 
-        onChangePasswordPress: function () {
+        onChangePasswordPress: function() {
             var oView = this.getView();
             var sCurrentPassword = oView.byId("idSPasswordInput_CP").getValue();
+            var sNewPassword = oView.byId("idNewPasswordInput_CP").getValue();
+            var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
             var oModel = this.getView().getModel(); // Get your model
             var sResourceId = this.sResourceID;
+        
+            if (!sCurrentPassword) {
+                MessageToast.show("Please enter current password");
+                return;
+            }
 
+            // Check if all mandatory fields are filled
+            if (!sNewPassword || !sConfirmPassword) {
+                MessageToast.show("Please fill all feilds");
+                return;
+            }
+        
             // Read user data from model (adjust path as necessary)
             oModel.read("/RESOURCESSet('" + sResourceId + "')", {
-                success: function (oData) {
+                success: function(oData) {
                     // Compare entered current password with stored password
                     if (oData.Password === sCurrentPassword) {
-                        var sNewPassword = oView.byId("idNewPasswordInput_CP").getValue();
-                        var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
-
-                        // Check if the passwords match
+                        // Check if the new passwords match
                         if (sNewPassword !== sConfirmPassword) {
-                            sap.m.MessageToast.show("Passwords do not match. Please try again.");
+                            MessageBox.error("Passwords do not match. Please try again.");
                             return;
                         }
+        
                         oModel.update(`/RESOURCESSet('${sResourceId}')`, {
-                            Password: sConfirmPassword // Use an object to set the new password
+                            Password: sNewPassword // Use an object to set the new password
                         }, {
-                            success: function () {
-                                sap.m.MessageToast.show("Password updated successfully!");
+                            success: function() {
+                                MessageBox.success("Password updated successfully!");
                                 oView.byId("idSPasswordInput_CP").setValue("");
                                 oView.byId("idNewPasswordInput_CP").setValue("");
                                 oView.byId("idRepeatPasswordInput_CP").setValue("");
                             }.bind(this),
-                            error: function () {
-                                sap.m.MessageToast.show("Error updating user login status.");
+                            error: function() {
+                                MessageBox.error("Error updating user login status.");
                             }
                         });
-                    }
-                    else{
-                        MessageBox.error("current Password not matching");
+                    } else {
+                        MessageBox.error("Current password is incorrect. Please try again.");
                     }
                 },
-                error: function () {
-                    MessageBox.error("Error");
+                error: function() {
+                    MessageBox.error("Error retrieving user data.");
                 }
             });
-        },
+        }
 
 
     })
