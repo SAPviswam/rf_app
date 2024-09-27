@@ -911,7 +911,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onPressHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMargin"
                         />
                     </ScrollContainer>

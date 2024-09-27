@@ -82,6 +82,9 @@
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
+    margin-right: 8%;
+  
+   
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
@@ -556,8 +559,18 @@ background-color: rgb(9, 8, 8) !important;
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 19% !important;
+    width: 15% !important;
 }
+.B25 {
+    border-bottom: 2px solid #FF8C00; /* Dark orange color */
+    
+
+}
+ 
+.LogoInSaplogon {
+    margin-top:5%; 
+   
+} 
 
 
 .noHeaderDialog .sapMDialogTitle {
@@ -580,3 +593,23 @@ margin-right: 20%;
 .VboxChangePassword {
 margin-right: 15%;
 }
+
+
+
+
+/***dialog css**/
+.headerContainer {
+    display: flex; /* Ensure flexbox for alignment */
+    justify-content: space-between; /* Space between items */
+    width: 100%; /* Full width */
+}
+
+.imageContainer, .titleContainer {
+    flex: 1; /* Make each take equal width */
+    display: flex; /* Enable flexbox for vertical centering */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+ 
+

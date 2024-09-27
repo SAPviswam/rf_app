@@ -10,31 +10,26 @@
         draggable="true"
         contentWidth="25%"
         class="boxContainer"
+        showHeader="false"
     >
-        <customHeader>
-            <Bar
-                id="_IDBar1coonectsap_CS"
-                class="TitlecustomHeader"
-            >
-                <contentLeft>
-                    <!-- Logo -->
-                    <Image
-                        id="_IDGenImage_CS"
-                        src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="85%"
-                        height="60%"
-                    />
-                    </contentLeft>
-                    <!-- Title -->
-                    <contentMiddle>
-                    <Title
-                        id="_IDTitleconnectsap_CS"
-                        text="CAPmodel RF"
-                        class="capModelRFTextdialog"
-                    />
-                </contentMiddle>
-            </Bar>
-        </customHeader>
+<VBox class="B25" alignItems="Center">
+    <Image
+        id="_IDGenImage_CS"
+        src="https://artihcus.com/assets/img/AG-logo.png"
+        width="25%"
+        height="10%"
+        class="sapUiSmallMarginBegin"
+     
+    />
+    <VBox alignContent="Start" alignItems="Start" >
+    <Title
+        id="_IDTitleconnectsap_CS"
+        text="CAPmodel RF"
+        class="capModelRFTextdialog sapUiTinyMarginBottom"
+    />
+    </VBox>
+</VBox>
+       
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm_CS"
@@ -55,15 +50,15 @@
                 <VBox
                     id="SAPlogonform1"
                     width="72%"
-                    class="connecttoSAPform sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop" 
+                    class="connecttoSAPform sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop"
                 >
                 <VBox
                     id="SAPlogonform2"
                     width="100%"
                     class="sapUiSmallMargin"
                 >
-
-
+ 
+ 
                 <VBox alignItems="Start">
                     <!-- User Input -->
                     <Input
@@ -105,8 +100,8 @@
                                 />
                             </items>
                         </ComboBox>
-
-
+ 
+ 
                    <VBox alignItems="Start">
                     <Input
                         id="idRouterStringInput_CS"
@@ -117,10 +112,10 @@
                         editable="false"
                     />
                     </VBox>
-                    
-
+                   
+ 
                     <!-- Log On Button -->
-                        
+                       
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
@@ -129,8 +124,8 @@
                             press="onLogOnPress"
                         />
                         <HBox class="sapUiSmallMarginEnd">
-                    
-                    
+                   
+                   
                         <Link
                         id="IDchangePassword"
                         text="Change Password"
@@ -141,12 +136,14 @@
                         press="onPressCancleSapLogon"/>
                         </HBox>
                         </VBox>
-
-
+ 
+ 
                     <!-- Change Password Link -->
-                    
+                   
                     </VBox>
             </form:SimpleForm>
         </content>
     </Dialog>
 </core:FragmentDefinition>
+ 
+ 
