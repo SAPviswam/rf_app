@@ -1760,7 +1760,7 @@ sap.ui.define(
  
 
             },
-            onChangeLoadingUnloadingDetails: function () {
+            OnpressChangeLoadingUnloadingDetails: function () {
                 if (this.Themecall) {
                     this.onPaletteIconPress("IDGenGenericTile33")
                     return
@@ -2064,8 +2064,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
             },
-
-            onSetReadyForWHProcessingByBOLPress:function(){
+            onSetReadyForWHProcessingByBOL:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WHProcessingByBOL",{id:this.ID});
             },
@@ -2095,5 +2094,9 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
             },
+            ondHUMaintenance:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuMaintanaceInDeconsolidation",{id:this.ID});
+            }
         });
     });
