@@ -383,7 +383,7 @@ sap.ui.define([
                             success: function () {
                                 sap.m.MessageToast.show("Success");
                                 that.onCloseRegisterSubmitDialog();
-                                
+
 
                             },
                             error: function (oError) {
@@ -483,28 +483,29 @@ sap.ui.define([
                 this.oResetDialog.close();
             },
 
-            onSelectCheckBox:function(){
+            onSelectCheckBox: function () {
                 var oModel = this.getOwnerComponent().getModel();
-            oModel.read("/RESOURCESSet('" + this.ID + "')", {
-                success: function (oData) {
-                    var ouser=oData.Users.toLowerCase()
-                    if(ouser==="supervisor" || ouser==="manager"){
+                oModel.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        var ouser = oData.Users.toLowerCase()
+                        if (ouser === "supervisor" || ouser === "manager") {
 
-                    this.getOwnerComponent().getRouter().navTo("Supervisor", { id:this.ID })
-                    }
-                    else{
-                        this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id:this.ID })
-                    }
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                        }
+                        else {
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                        }
 
-                }.bind(this),
-                error: function () {
-                    MessageToast.show("User doesn't exist")
-                }
-            });
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User doesn't exist")
+                    }
+                });
             },
-            oncreatesingupPress: function() {
+
+            oncreatesingupPress: function () {
                 var oView = this.getView();
-    
+
                 // Retrieve values from input fields
                 var sFirstName = oView.byId("idFirstnameInput").getValue();
                 var sLastName = oView.byId("idLastnameInput").getValue();
@@ -513,43 +514,77 @@ sap.ui.define([
                 var sEmailID = oView.byId("idEmailIDInput").getValue();
                 var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
 
-                if (!sFirstName || !sEmployeeNo || !sLastName || !sMobileNo ||!sEmailID ||!sResourceType ||!sResourceType) {
-                    MessageToast.show("Please fill all feilds");
+                // Validate input fields
+                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
+                    MessageToast.show("Please fill all fields");
                     return;
                 }
-    
-                // Create a data object
-                var oData = {
-                    Resourcename: sFirstName,
-                //    LastName: sLastName,
-                    Resourceid: sEmployeeNo,
-                    Phonenumber: sMobileNo,
-                    Email: sEmailID,
-                    Resourcetype: sResourceType
-                };
-    
+
+                // Validate mobile number
+                if (!/^\d{10}$/.test(sMobileNo)) {
+                    MessageToast.show("Mobile number must be exactly 10 digits.");
+                    return;
+                }
+                if (!this.validateEmail(sEmailID)) {
+                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
+                    return;
+                }
+
                 // Get the OData model
                 var oModel = this.getView().getModel();
-    
-                // Send data to backend (adjust path as necessary)
-                oModel.create("/RESOURCESSet", oData, {
-                    success: function() {
-                        MessageToast.show("User created successfully!");
-                        // Optionally close the dialog or reset the form
-                        oView.byId("idFirstnameInput").setValue("");
-                        oView.byId("idLastnameInput").setValue(""); // Uncomment if Last Name is used
-                        oView.byId("idEmployeenoInput").setValue("");
-                        oView.byId("idMobilenoInput").setValue("");
-                        oView.byId("idEmailIDInput").setValue("");
-                        oView.byId("dialog").close();
+
+                // Check if Employee No already exists
+                oModel.read("/RESOURCESSet", {
+                    filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
+                    success: function (oData) {
+                        // Check if any results were returned
+                        if (oData.results.length > 0) {
+                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
+                        } else {
+                            // Create a data object for new user
+                            var oDataToCreate = {
+                                Resourcename: sFirstName,
+                                Lname: sLastName,
+                                Resourceid: sEmployeeNo,
+                                Phonenumber: sMobileNo,
+                                Email: sEmailID,
+                                Resourcetype: sResourceType
+                            };
+
+                            // Send data to backend (adjust path as necessary)
+                            oModel.create("/RESOURCESSet", oDataToCreate, {
+                                success: function () {
+                                    MessageToast.show("User created successfully!");
+                                    // Reset input fields
+                                    oView.byId("idFirstnameInput").setValue("");
+                                    oView.byId("idLastnameInput").setValue("");
+                                    oView.byId("idEmployeenoInput").setValue("");
+                                    oView.byId("idMobilenoInput").setValue("");
+                                    oView.byId("idEmailIDInput").setValue("");
+                                    oView.byId("idinternal").setSelected(false);
+                                    oView.byId("idexternal").setSelected(false);
+                                    oView.byId("idothers").setSelected(false);
+                                    oView.byId("dialog").close();
+                                },
+                                error: function () {
+                                    MessageToast.show("Error creating user. Please try again.");
+                                }
+                            });
+                        }
                     },
-                    error: function() {
-                        MessageToast.show("Error creating user. Please try again.");
+                    error: function () {
+                        MessageToast.show("Error checking existing Employee No. Please try again.");
                     }
                 });
             },
-    
-            getSelectedResourceType: function() {
+
+            validateEmail: function(email) {
+                // Regular expression for validating an email address
+                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+                return re.test(email);  // Returns true if valid, false otherwise
+            },
+
+            getSelectedResourceType: function () {
                 // Get selected resource type from radio buttons
                 var oView = this.getView();
                 if (oView.byId("idinternal").getSelected()) {
@@ -559,10 +594,9 @@ sap.ui.define([
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
                 }
-            //    MessageToast.show("Please select a Resource type")
-            //     return; // or handle default case
-            },
-    
+            }
+
+
 
         });
     });
