@@ -91,6 +91,13 @@
     padding: 8px 16px; /* Optional: Add padding for better button size */
     border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
 }
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: 1rem !important;
+    width: 40% !important;
+}
 .boxContainer {
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
@@ -208,8 +215,8 @@
     }
 
     .logo {
-        margin-top: 5%; /* Adjust logo margin for mobile */
-        margin-left: 0; /* Center logo on mobile */
+        margin-top: 12%; /* Adjust logo margin for mobile */
+        margin-left: 12%; /* Center logo on mobile */
         width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
@@ -551,3 +558,21 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 19% !important;
 }
+
+
+.noHeaderDialog .sapMDialogTitle {
+    display: none;
+}
+.connecttoSAPform{
+    border-radius: 0rem !important;
+    /* border: 0.5px solid #080808d2 !important; */
+    background-color: rgb(165, 199, 245);
+}
+
+.comboCS{
+margin-left: 20%;
+margin-right: 20%;
+}
+/* .changePassword{
+    font-size: 90%;
+} */
