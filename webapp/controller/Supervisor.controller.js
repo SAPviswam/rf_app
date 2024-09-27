@@ -176,7 +176,7 @@ sap.ui.define(
             applyThemeColor: function (sColor) {
                  
                 var aElements = [
-                    this.byId("toolPage"),
+                    // this.byId("toolPage"),
                     this.byId("idSideNavigation"),
                     this.byId("idToolHeader"),
                     this.byId("pageContainer")

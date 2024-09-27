@@ -501,7 +501,68 @@ sap.ui.define([
                     MessageToast.show("User doesn't exist")
                 }
             });
-            }
+            },
+            oncreatesingupPress: function() {
+                var oView = this.getView();
+    
+                // Retrieve values from input fields
+                var sFirstName = oView.byId("idFirstnameInput").getValue();
+                var sLastName = oView.byId("idLastnameInput").getValue();
+                var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
+                var sMobileNo = oView.byId("idMobilenoInput").getValue();
+                var sEmailID = oView.byId("idEmailIDInput").getValue();
+                var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
+
+                if (!sFirstName || !sEmployeeNo || !sLastName || !sMobileNo ||!sEmailID ||!sResourceType ||!sResourceType) {
+                    MessageToast.show("Please fill all feilds");
+                    return;
+                }
+    
+                // Create a data object
+                var oData = {
+                    Resourcename: sFirstName,
+                //    LastName: sLastName,
+                    Resourceid: sEmployeeNo,
+                    Phonenumber: sMobileNo,
+                    Email: sEmailID,
+                    Resourcetype: sResourceType
+                };
+    
+                // Get the OData model
+                var oModel = this.getView().getModel();
+    
+                // Send data to backend (adjust path as necessary)
+                oModel.create("/RESOURCESSet", oData, {
+                    success: function() {
+                        MessageToast.show("User created successfully!");
+                        // Optionally close the dialog or reset the form
+                        oView.byId("idFirstnameInput").setValue("");
+                        oView.byId("idLastnameInput").setValue(""); // Uncomment if Last Name is used
+                        oView.byId("idEmployeenoInput").setValue("");
+                        oView.byId("idMobilenoInput").setValue("");
+                        oView.byId("idEmailIDInput").setValue("");
+                        oView.byId("dialog").close();
+                    },
+                    error: function() {
+                        MessageToast.show("Error creating user. Please try again.");
+                    }
+                });
+            },
+    
+            getSelectedResourceType: function() {
+                // Get selected resource type from radio buttons
+                var oView = this.getView();
+                if (oView.byId("idinternal").getSelected()) {
+                    return "Internal";
+                } else if (oView.byId("idexternal").getSelected()) {
+                    return "External";
+                } else if (oView.byId("idothers").getSelected()) {
+                    return "Others";
+                }
+            //    MessageToast.show("Please select a Resource type")
+            //     return; // or handle default case
+            },
+    
 
         });
     });
