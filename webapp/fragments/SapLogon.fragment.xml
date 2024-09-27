@@ -10,26 +10,31 @@
         draggable="true"
         contentWidth="25%"
         class="boxContainer"
-        showHeader="false"
     >
-<VBox class="B25" alignItems="Center">
-    <Image
-        id="_IDGenImage_CS"
-        src="https://artihcus.com/assets/img/AG-logo.png"
-        width="25%"
-        height="10%"
-        class="sapUiSmallMarginBegin"
-     
-    />
-    <VBox alignContent="Start" alignItems="Start" >
-    <Title
-        id="_IDTitleconnectsap_CS"
-        text="CAPmodel RF"
-        class="capModelRFTextdialog sapUiTinyMarginBottom"
-    />
-    </VBox>
-</VBox>
-       
+        <customHeader>
+            <Bar
+                id="_IDBar1coonectsap_CS"
+                class="TitlecustomHeader"
+            >
+                <contentLeft>
+                    <!-- Logo -->
+                    <Image
+                        id="_IDGenImage_CS"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="85%"
+                        height="60%"
+                    />
+                    </contentLeft>
+                    <!-- Title -->
+                    <contentMiddle>
+                    <Title
+                        id="_IDTitleconnectsap_CS"
+                        text="CAPmodel RF"
+                        class="capModelRFTextdialog"
+                    />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm_CS"
@@ -81,9 +86,9 @@
                             width="120px"
                         />
                     </VBox>
-                        <ComboBox
+                        <Select
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="85%"
+                            width="80%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -100,8 +105,8 @@
                                 />
                             </items>
                         </ComboBox>
- 
- 
+
+
                    <VBox alignItems="Start">
                     <Input
                         id="idRouterStringInput_CS"
@@ -119,9 +124,10 @@
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                           
-                            width="85%"
+                            width="80%"
+                            type="Unstyled"
                             press="onLogOnPress"
+                            class="logonbutton"
                         />
                         <HBox class="sapUiSmallMarginEnd">
                    
@@ -132,8 +138,12 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button text="Cancel"
-                        press="onPressCancleSapLogon"/>
+                        <Button id="IDlogoncancelbutton"
+                         text="Cancel"
+                        press="onPressCancleSapLogon"
+                        type="Unstyled"
+                        class="cancelbutton"
+                       />
                         </HBox>
                         </VBox>
  
