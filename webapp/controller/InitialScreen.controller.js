@@ -5,8 +5,8 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, JSONModel) {
+], 
+   function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
@@ -528,8 +528,6 @@ sap.ui.define([
                 success: function (oData) {
                     if (oData.Password === oPassword) {
 
-
-
                         this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
                     }
                     else {
@@ -568,9 +566,10 @@ sap.ui.define([
             // Read user data based on Resource ID
             oModel.read("/RESOURCESSet('" + sResourceId + "')", {
                 success: function (oData) {
-                    // Assuming 'Name' is the property that holds the resource name
+                    // Assuming 'Resourcename' is the property that holds the resource name
                     var sResourceName = oData.Resourcename; // Adjust property name as necessary
                     this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
+                    this.onUserLogin();
                     this.oConfigSapCP.open(); // Open the dialog after setting the value
                 }.bind(this), // Bind 'this' to maintain context
                 error: function () {
@@ -612,9 +611,13 @@ sap.ui.define([
                             }
                         });
                     }
+                    else{
+                        MessageBox.error("current Password not matching");
+                    }
                 },
                 error: function () {
                     MessageBox.error("Password not matching");
+
                 }
             });
         },
