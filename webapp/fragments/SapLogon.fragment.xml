@@ -140,7 +140,8 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button text="Cancel"
+                        <Button id="IDlogoncancelbutton"
+                         text="Cancel"
                         press="onPressCancleSapLogon"
                         type="Unstyled"
                         class="cancelbutton"
