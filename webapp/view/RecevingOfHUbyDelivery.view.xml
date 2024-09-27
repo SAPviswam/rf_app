@@ -157,56 +157,81 @@
                         columnsM="1"
                     >
                         <!-- Delivery Number -->
+                        <VBox>
+                        <HBox >
                         <Label
                             id="idROHDDeliveryNumber"
                             text="Delivery"
+                            width="70px"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <Input
                             id="idROHDDeliveryNumberInput"
                             placeholder="Enter Deliver Number..."
                             width="10rem"
+                            class="sapUiTinyMarginEnd"
                         />
+                        </HBox>
                         <!-- item no -->
+                        <HBox >
                         <Label
                             id="idROHDItemNo"
                             text="Item No"
+                            width="70px"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+
                         />
                         <Input
                             id="idROHDItemNoInput"
                             placeholder="Enter item Number..."
                             width="10rem"
+                            class="sapUiTinyMarginEnd"
                         />
-
+                        </HBox>
                         <!-- Vendor Field -->
+                        <HBox >
                         <Label
                             id="idVendorofDelivery"
                             text="Vendor"
+                            width="70px"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <Input
                             id="idVendorofDeliveryInput"
                             placeholder="Enter Vendor..."
                             width="7rem"
+                            class="sapUiTinyMarginEnd"
                         />
+                        </HBox >
                         <!-- No.of HU -->
+                        <HBox >
                         <Label
                             id="idROHDforNOofHU"
                             text="No.of HU"
+                            width="70px"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <Input
                             id="idROHDforNOofHUInput"
                             placeholder="Enter No.of HU..."
                             width="7rem"
+                            class="sapUiTinyMarginEnd"
                         />
+                        </HBox >
                         <!-- HU field -->
+                        <HBox >
                         <Label
                             id="idROHDHUlabel"
                             text="HU"
+                            width="70px"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <VBox>
                             <Input
                                 id="idROHDHUInput"
                                 placeholder="Enter HU...."
                                 width="7rem"
+                                class="sapUiTinyMarginEnd"
                             />
 
                             <HBox id="idROHDHbox">
@@ -250,6 +275,8 @@
                                     press="onPressConfirmWT"
                                 />
                             </HBox>
+                        </VBox>
+                        </HBox >
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
