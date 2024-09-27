@@ -120,6 +120,7 @@
                         </HBox>
                     </f:SimpleForm>
                 </VBox>
+                
             </ScrollContainer>
 
             <!-- Scroll Container for HU Details -->
