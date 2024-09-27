@@ -11,10 +11,12 @@
         contentWidth="25%"
         class="boxContainer"
     >
-        <customHeader>
+        <customHeader >
             <Bar
                 id="_IDBar1coonectsap_CS"
                 class="TitlecustomHeader"
+            
+                
             >
                 <contentLeft>
                     <!-- Logo -->
@@ -86,9 +88,9 @@
                             width="120px"
                         />
                     </VBox>
-                        <ComboBox
+                        <Select
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="85%"
+                            width="80%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -104,7 +106,7 @@
                                     text="SP-Spanish"
                                 />
                             </items>
-                        </ComboBox>
+                        </Select>
 
 
                    <VBox alignItems="Start">
@@ -124,9 +126,10 @@
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                           
-                            width="85%"
+                            width="80%"
+                            type="Unstyled"
                             press="onLogOnPress"
+                            class="logonbutton"
                         />
                         <HBox class="sapUiSmallMarginEnd">
                     
@@ -137,8 +140,12 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button text="Cancel"
-                        press="onPressCancleSapLogon"/>
+                        <Button id="IDlogoncancelbutton"
+                         text="Cancel"
+                        press="onPressCancleSapLogon"
+                        type="Unstyled"
+                        class="cancelbutton"
+                       />
                         </HBox>
                         </VBox>
 
