@@ -79,14 +79,29 @@
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
                 />
-                <Button
+                 <Button
                     id="themeButton"
-                    text="Theme"
+                    text="Background Theme"
                     press="onOpenThemeDialog"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                    visible="false"
+                />
+                <Button
+                    id="themeButton3"
+                    text="Theme"
+                    press="onThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
                 />
+                <Button
+                id="CancelButton"
+                text="Cancel"
+                press="onCancel"
+                visible="false"
+                ></Button>
+ 
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -168,44 +183,46 @@
                             press="onPressCreateArea"
                             type="Success"
                         /> -->
-                        <FlexBox
+                        <!-- <FlexBox
                             id="_IDGenFlexBox"
                             justifyContent="End"
                             class="sapUiSmallMarginTop"
-                        >
+                        > -->
                             <!-- <Button
                                 id="idnewprocessArea"
                                 text="NewProcessArea"
                                 press="onPressCreateArea"
                                 type="Success"
                             /> -->
-                        </FlexBox>
+                        <!-- </FlexBox> -->
 
                         <VBox
                             id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer3"
+                            class="sapUiTinyMargin boxContainer3"
                         >
-                            <Title
+                            <!-- <Title
                                 id="_IDHeadLabel"
                                 text="Admin page"
                                 class="sapUiSmallMarginTopHeading"
-                            />
+                            /> -->
                             <FlexBox
                                 id="_IDField1"
                                 justifyContent="SpaceBetween"
                                 alignItems="Center"
-                                class="sapUiSmallMarginTop"
+                                class="sapUiTinyMarginTop"
                             >
                                 <Label
                                     id="idempID"
                                     text="Employee ID:"
                                     labelFor="idEmppInput"
                                     required="true"
+                                    width="105px"
+                                  
                                 />
                                 <Input
                                     id="idEmppInput"
                                     placeholder="Enter Employee ID"
-                                    class="Inputs"
+                                    class="Input"
                                     liveChange="onEmployeeIdLiveChange"
                                 />
                             </FlexBox>
@@ -213,19 +230,20 @@
                                 id="_IDField4"
                                 justifyContent="SpaceBetween"
                                 alignItems="Center"
-                                class="sapUiSmallMarginTop"
+                                class="sapUiTinyMarginTop"
                             >
                                 <Label
                                     id="idName"
                                     text="Name:"
                                     labelFor="idNameInput"
                                     required="true"
+                                    width="105px"
                                 />
                                 <Input
                                     editable="true"
                                     id="idNameInput"
                                     placeholder="Enter Name"
-                                    class="Inputs"
+                                    class="Input"
                                 />
                             </FlexBox>
                             <FlexBox
@@ -238,12 +256,13 @@
                                     id="idEmail"
                                     text="Email:"
                                     labelFor="idEmailInput"
+                                    width="105px"
                                 />
                                 <Input
                                     editable="true"
                                     id="idEmailInput"
                                     placeholder="Enter Email"
-                                    class="Inputs"
+                                    class="Input"
                                 />
                             </FlexBox>
                             <FlexBox
@@ -257,6 +276,7 @@
                                     text="Phone:"
                                     labelFor="idPhoneInput"
                                     required="true"
+                                    width="105px"
                                 />
                                 <HBox
                                     id="_IDGenHBox9"
@@ -266,7 +286,7 @@
                                         editable="true"
                                         id="idPhoneInput"
                                         placeholder="Enter Phone"
-                                        class="Inputs"
+                                        class="Input"
                                     />
                                     <core:Icon
                                         id="verficationIdicon"
@@ -307,6 +327,42 @@
                                     />
                                 </HBox>
                             </FlexBox>
+                             <FlexBox
+                                id="_IDFlex21"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="iduserType"
+                                    text="User Type"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                    width="105px"
+                                />
+                                <ComboBox
+                                    id="userType"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem1"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem2"
+                                        key="SuperVisor"
+                                        text="Super Visor"
+                                    />
+                                    <core:Item
+                                        class="dropdown"
+                                        id="userTypeitem3"
+                                        key="Manager"
+                                        text="Manager"
+                                    />
+                                </ComboBox>
+                            </FlexBox>
 
                             <FlexBox
                                 id="_IDField345"
@@ -318,6 +374,7 @@
                                     id="idLableRoesurcetype"
                                     text="Resource Type"
                                     required="true"
+                                    width="105px"
                                 />
                                 <ComboBox
                                     id="idRoesurcetypeInput"
@@ -349,6 +406,7 @@
                                     text="Process Area:"
                                     labelFor="idAreaInput"
                                     required="true"
+                                    width="105px"
                                 />
                                 <MultiComboBox
                                     id="AreaSelect"
@@ -374,6 +432,7 @@
                                     text="Group:"
                                     labelFor="idGroupInput"
                                     required="true"
+                                    width="105px"
                                 />
                                 <MultiComboBox
                                     id="GroupSelect"
@@ -400,6 +459,7 @@
                                     text="Queue:"
                                     labelFor="idQueueSelect"
                                     required="true"
+                                    width="105px"
                                 />
                                 <MultiComboBox
                                     id="_IDGenComboBox10"
@@ -1229,7 +1289,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="OnReversalofConsumptionbyMObyHUpress"
+                            press="press"
                         />
 
                         <GenericTile
@@ -1258,19 +1318,6 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
-                        />
-                         <GenericTile
-                            id="IDGenGenericTile322"
-                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Load By HU - Auto. Pos. Assigment"
-                            press="OnpressLoadbyHUAutoPosAssiognment"
-                        />
-
-                        <GenericTile
-                            id="IDGenGenericTile33"
-                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Change Loading/Unloading Details"
-                            press="onChangeLoadingUnloadingDetails"
                         />
 
                         <GenericTile

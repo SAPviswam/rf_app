@@ -5,7 +5,8 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-], function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
+], 
+   function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
@@ -527,8 +528,6 @@ sap.ui.define([
                 success: function (oData) {
                     if (oData.Password === oPassword) {
 
-
-
                         this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
                     }
                     else {
@@ -617,7 +616,8 @@ sap.ui.define([
                     }
                 },
                 error: function () {
-                    MessageBox.error("Error");
+                    MessageBox.error("Password not matching");
+
                 }
             });
         },
