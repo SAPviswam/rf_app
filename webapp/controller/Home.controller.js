@@ -383,9 +383,7 @@ sap.ui.define([
                             success: function () {
                                 sap.m.MessageToast.show("Success");
                                 that.onCloseRegisterSubmitDialog();
-
-                                that.onClearRegisterSubmitDialog();
-
+                                
 
                             },
                             error: function (oError) {
@@ -492,8 +490,6 @@ sap.ui.define([
                     var ouser=oData.Users.toLowerCase()
                     if(ouser==="supervisor" || ouser==="manager"){
 
-                   
-                    
                     this.getOwnerComponent().getRouter().navTo("Supervisor", { id:this.ID })
                     }
                     else{

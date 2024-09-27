@@ -5,8 +5,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator,JSONModel) {
+], function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.InitialScreen", {
@@ -14,7 +13,7 @@ sap.ui.define([
             this.loadConfiguredSystems();
             this.aAllButtons = []; // Store all button instances
             this.currentIndex = 0;
-           
+
         },
         onsapCancelPress: function () {
             this.oConfigSap.close();
@@ -58,8 +57,8 @@ sap.ui.define([
             this.onUserLogin();
         },
         onUserLogin: function () {
-            this.getView().byId("idsaplogonUserId").setValue("");
-            this.getView().byId("idSapLogonPassword").setValue("");
+            this.getView().byId("idUserInput_CS").setValue("");
+            this.getView().byId("idSPasswordInput_CS").setValue("");
         },
         onFinishconnectSAPPress: function () {
             // Get the dialog and its input fields
@@ -511,28 +510,28 @@ sap.ui.define([
                 MessageToast.show("No previous buttons to display."); // Optional feedback for user
             }
         },
-        onLogOnPress:async function(){
-            if(!(this.getView().byId("idUserInput_CS").getValue())){
+        onLogOnPress: async function () {
+            if (!(this.getView().byId("idUserInput_CS").getValue())) {
                 MessageToast.show("Please enter the username");
                 return
             }
-            if(!(this.getView().byId("idSPasswordInput_CS").getValue())){
+            if (!(this.getView().byId("idSPasswordInput_CS").getValue())) {
                 MessageToast.show("Please enter the Password");
                 return
             }
             //filter(num => num % 2 !== 0);
-            var oResourceId=this.getView().byId("idUserInput_CS").getValue();
-            var oPassword=this.getView().byId("idSPasswordInput_CS").getValue();
+            var oResourceId = this.getView().byId("idUserInput_CS").getValue();
+            var oPassword = this.getView().byId("idSPasswordInput_CS").getValue();
             var oModel = this.getOwnerComponent().getModel();
             oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                 success: function (oData) {
-                    if(oData.Password===oPassword){
+                    if (oData.Password === oPassword) {
 
-                    
-                    
-                    this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
+
+
+                        this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
                     }
-                    else{
+                    else {
                         MessageToast.show("Please enter the correct Password");
                     }
 
@@ -545,11 +544,11 @@ sap.ui.define([
         onPressCancleSapLogon: function () {
             this.oConfigSap.close();
         },
-        onPressCancleSapLogonInChangePassword:function () {
+        onPressCancleSapLogonInChangePassword: function () {
             this.oConfigSapCP.close();
         },
 
-        onChangePasswordBtn: async function() {
+        onChangePasswordBtn: async function () {
             var oView = this.getView();
             var sResourceId = oView.byId("idUserInput_CS").getValue(); // Get the Resource ID from user input
             this.sResourceID = sResourceId;
@@ -557,29 +556,30 @@ sap.ui.define([
                 MessageBox.error("Please enter User");
                 return;
             }
-        
+
             // Load the Change Password fragment if not already loaded
             this.oConfigSapCP ??= await this.loadFragment({
                 name: "com.app.rfapp.fragments.ChangePassword"
             });
-        
+
             var oModel = this.getView().getModel(); // Get your OData model
-        
+
             // Read user data based on Resource ID
             oModel.read("/RESOURCESSet('" + sResourceId + "')", {
-                success: function(oData) {
-                    // Assuming 'Name' is the property that holds the resource name
+                success: function (oData) {
+                    // Assuming 'Resourcename' is the property that holds the resource name
                     var sResourceName = oData.Resourcename; // Adjust property name as necessary
                     this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
+                    this.onUserLogin();
                     this.oConfigSapCP.open(); // Open the dialog after setting the value
                 }.bind(this), // Bind 'this' to maintain context
-                error: function() {
+                error: function () {
                     MessageBox.error("Error retrieving user data. Please try again later.");
                 }
             });
         },
 
-        onChangePasswordPress : function () {
+        onChangePasswordPress: function () {
             var oView = this.getView();
             var sCurrentPassword = oView.byId("idSPasswordInput_CP").getValue();
             var oModel = this.getView().getModel(); // Get your model
@@ -587,12 +587,12 @@ sap.ui.define([
 
             // Read user data from model (adjust path as necessary)
             oModel.read("/RESOURCESSet('" + sResourceId + "')", {
-                success: function(oData) {
+                success: function (oData) {
                     // Compare entered current password with stored password
                     if (oData.Password === sCurrentPassword) {
                         var sNewPassword = oView.byId("idNewPasswordInput_CP").getValue();
                         var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
-        
+
                         // Check if the passwords match
                         if (sNewPassword !== sConfirmPassword) {
                             sap.m.MessageToast.show("Passwords do not match. Please try again.");
@@ -601,17 +601,23 @@ sap.ui.define([
                         oModel.update(`/RESOURCESSet('${sResourceId}')`, {
                             Password: sConfirmPassword // Use an object to set the new password
                         }, {
-                                success: function () {
-                                    sap.m.MessageToast.show("Password updated successfully!");
-                                }.bind(this),
-                                error: function () {
-                                    sap.m.MessageToast.show("Error updating user login status.");
-                                }
-                            });
+                            success: function () {
+                                sap.m.MessageToast.show("Password updated successfully!");
+                                oView.byId("idSPasswordInput_CP").setValue("");
+                                oView.byId("idNewPasswordInput_CP").setValue("");
+                                oView.byId("idRepeatPasswordInput_CP").setValue("");
+                            }.bind(this),
+                            error: function () {
+                                sap.m.MessageToast.show("Error updating user login status.");
+                            }
+                        });
+                    }
+                    else{
+                        MessageBox.error("current Password not matching");
                     }
                 },
-                error: function() {
-                    MessageBox.error("Password not matching");
+                error: function () {
+                    MessageBox.error("Error");
                 }
             });
         },
