@@ -564,7 +564,10 @@ sap.ui.define([
                     MessageToast.show("User doesn't exist")
                 }
             });
-        }
+        },
+        onPressCancleSapLogon: function () {
+            this.oConfigSap.close();
+        },
 
 
     })

@@ -128,15 +128,17 @@
                             width="85%"
                             press="onLogOnPress"
                         />
-                        <VBox alignItems="Center">
+                        <HBox class="sapUiSmallMarginEnd">
                     
                     
                         <Link
                         id="IDchangePassword"
                         text="Change Password"
-                        class="changePassword"
+                        class="sapUiSmallMarginEnd"
                         />
-                        </VBox>
+                        <Button text="Cancel"
+                        press="onPressCancleSapLogon"/>
+                        </HBox>
                         </VBox>
 
 
