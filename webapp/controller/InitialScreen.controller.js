@@ -544,6 +544,16 @@ sap.ui.define([
         onPressCancleSapLogon: function () {
             this.oConfigSap.close();
         },
+        onPressCancleSapLogonInChangePassword:function () {
+            this.oConfigSapCP.close();
+        },
+        onChangePasswordBtn: async function (){
+            this.oConfigSapCP ??= await this.loadFragment({
+                name: "com.app.rfapp.fragments.ChangePassword"
+            })
+            this.oConfigSapCP.open();
+            this.onUserLogin();
+        },
 
 
     })
