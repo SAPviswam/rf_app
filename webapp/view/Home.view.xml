@@ -61,10 +61,13 @@
                             <MultiInput
                                 id="idHUInput"
                                 width="7rem"
+                                 value="1710"
+                                editable="true"
                             />
                             <Input
                                 id="idUserIDInput"
                                 width="7rem"
+                               
                             />
                         </VBox>
                     </HBox>
@@ -75,6 +78,7 @@
                         <CheckBox
                             id="_IDGenCheckBox"
                             text="Auto Save"
+                            select="onSelectCheckBox"
                         />
                     </HBox>
                     <HBox

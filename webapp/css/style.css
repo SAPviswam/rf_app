@@ -95,7 +95,7 @@
     border-radius: 1rem !important;
      border: 2px solid #090909d2 !important;
     /* Add border width, style, and color */
-    padding: 2rem !important;
+    padding: 1rem !important;
     width: 40% !important;
 }
 .boxContainer {
@@ -558,3 +558,21 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 19% !important;
 }
+
+
+.noHeaderDialog .sapMDialogTitle {
+    display: none;
+}
+.connecttoSAPform{
+    border-radius: 0rem !important;
+    /* border: 0.5px solid #080808d2 !important; */
+    background-color: rgb(165, 199, 245);
+}
+
+.comboCS{
+margin-left: 20%;
+margin-right: 20%;
+}
+/* .changePassword{
+    font-size: 90%;
+} */

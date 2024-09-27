@@ -723,7 +723,7 @@
                              </HBox>
                              <HBox
                                 alignContent="Center"
-                                alignItems="Center"
+                               
                             >
                                 <Label text="WO Unld"></Label>
                                 <VBox width="3%"></VBox>
