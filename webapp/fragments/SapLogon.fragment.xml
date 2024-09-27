@@ -55,7 +55,7 @@
                 <VBox
                     id="SAPlogonform1"
                     width="72%"
-                    class="connecttoSAPform sapUiLargeMargin sapUiSmallMarginTop" 
+                    class="connecttoSAPform sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop" 
                 >
                 <VBox
                     id="SAPlogonform2"
@@ -135,6 +135,7 @@
                         id="IDchangePassword"
                         text="Change Password"
                         class="sapUiSmallMarginEnd"
+                        press="onChangePasswordBtn"
                         />
                         <Button text="Cancel"
                         press="onPressCancleSapLogon"/>
