@@ -554,7 +554,7 @@ sap.ui.define([
                             // Send data to backend (adjust path as necessary)
                             oModel.create("/RESOURCESSet", oDataToCreate, {
                                 success: function () {
-                                    MessageToast.show("User created successfully!");
+                                    MessageToast.show("Resource created successfully!");
                                     // Reset input fields
                                     oView.byId("idFirstnameInput").setValue("");
                                     oView.byId("idLastnameInput").setValue("");
