@@ -23,7 +23,7 @@
                     <Image
                         id="_IDGenImage_CS"
                         src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="80%"
+                        width="85%"
                         height="60%"
                     />
                     </contentLeft>
@@ -115,7 +115,7 @@
                         value="400"
                         placeholder=""
                         class="customInput"
-                        width="105%"
+                        width="110%"
                         editable="false"
                     />
                     </VBox>
