@@ -104,7 +104,8 @@
                                     text="SP-Spanish"
                                 />
                             </items>
-                        </ComboBox>
+                            </Select>
+                     
 
 
                    <VBox alignItems="Start">
