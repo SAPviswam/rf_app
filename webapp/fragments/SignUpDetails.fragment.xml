@@ -53,7 +53,7 @@
                 <HBox id="idresourcecheckbox">
                     <Text
                         id="idresourcetext"
-                        text="Resource Type"
+                        text="Resource Type:"
                         class="textbold"
                     />
                     <Text id="_IDGenText14" width="0.3rem"></Text>
