@@ -26,6 +26,7 @@
                         alignContent="Start"
                         class="boxContainer2"
                         width="auto"
+                        height="20%"
                     >
                         <Image
                             id="idImageLogoAvatarHome"
