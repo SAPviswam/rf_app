@@ -610,21 +610,124 @@ margin-right: 15%;
 }
 
 
+/* --------------------------------------Begin of sap logon password dialog media quries--------------------------------------------------------------- *
+/* General styles for the dialog and inputs */
+.boxContainerInChangePassword {
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: auto; /* Center the dialog */
+}
 
+.customInput, .comboCS {
+    width: 100%; /* Make inputs full width within their container */
+}
 
-/***dialog css**/
-.headerContainer {
-    display: flex; /* Ensure flexbox for alignment */
-    justify-content: space-between; /* Space between items */
+/* Orange line styles */
+.orangeLine {
+    background-color: orange;
+    height: 2px; /* Height of the orange line */
     width: 100%; /* Full width */
+    margin: 1rem 0; /* Spacing around the line */
 }
 
-.imageContainer, .titleContainer {
-    flex: 1; /* Make each take equal width */
-    display: flex; /* Enable flexbox for vertical centering */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+/* Mobile devices */
+@media only screen and (max-width: 480px) {
+    .boxContainerInChangePassword {
+        width: 90%; /* Take most of the screen width */
+    }
 }
 
- 
+/* Tablets */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .boxContainerInChangePassword {
+        width: 80%; /* Use more screen width than mobile */
+    }
+}
 
+/* Desktops and larger devices */
+@media only screen and (min-width: 769px) {
+    .boxContainerInChangePassword {
+        width: 60%; /* Use less width on larger screens */
+    }
+}
+
+/* Ensure buttons and links align properly */
+.HBox {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center vertically */
+}
+
+/* ------------------------------------Begin of change password dialog media quries--------------------------------------------------------------- */
+
+ /* change password media quries  */
+ /* General styles for the dialog and inputs */
+.boxContainerInChangePassword {
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: auto; /* Center the dialog */ /* Any specific styles for the dialog can go here */
+}
+
+.customInput {
+    width: 100%; /* Default input width */
+}
+
+/* Media Queries for responsiveness */
+
+/* Extra Small Devices (phones, less than 600px) */
+@media only screen and (max-width: 599px) {
+    .B25 {
+        width: 100%; /* Adjust width for small devices */
+    }
+    .connecttoSAPform {
+        width: 100%; /* Ensure the form takes full width */
+    }
+    .sapUiTinyMarginTop {
+        margin-top: 0.5rem; /* Adjust margin for small devices */
+    }
+}
+
+/* Small Devices (tablets, 600px to 899px) */
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+    .B25 {
+        width: 90%; /* Adjust width for medium devices */
+    }
+    .connecttoSAPform {
+        width: 90%; /* Keep form responsive */
+    }
+}
+
+/* Medium Devices (desktops, 900px to 1199px) */
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+    .B25 {
+        width: 100%; /* Adjust width for larger devices */
+    }
+    .connecttoSAPform {
+        width: 80%; /* Keep form aligned */
+    }
+}
+
+/* Large Devices (large desktops, 1200px and above) */
+@media only screen and (min-width: 1200px) {
+    .B25 {
+        width: 90%; /* Maintain width for large screens */
+    }
+    .connecttoSAPform {
+        width: 70%; /* Keep the form aligned */
+    }
+}
+
+/* Button styles for consistency across devices */
+.VboxChangePassword {
+    display: flex;
+    justify-content: center; /* Center align buttons */
+    width: 100%; /* Ensure buttons take full width */
+}
+
+#ChangePwd_CP {
+    width: 85%; /* Maintain button width */
+}
+
+#Cancel {
+    margin-top: 1rem; /* Add margin for better spacing */
+}
+
+/* ----------------------------------------- End of change password dialog media quries--------------------------------------------- */

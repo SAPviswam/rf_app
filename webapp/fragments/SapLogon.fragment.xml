@@ -9,32 +9,27 @@
         resizable="false"
         draggable="true"
         contentWidth="25%"
-        class="boxContainer"
+        class="boxContainerInChangePassword"
+        showHeader="false"
     >
-        <customHeader>
-            <Bar
-                id="_IDBar1coonectsap_CS"
-                class="TitlecustomHeader"
-            >
-                <contentLeft>
-                    <!-- Logo -->
-                    <Image
-                        id="_IDGenImage_CS"
-                        src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="85%"
-                        height="60%"
-                    />
-                    </contentLeft>
-                    <!-- Title -->
-                    <contentMiddle>
-                    <Title
-                        id="_IDTitleconnectsap_CS"
-                        text="CAPmodel RF"
-                        class="capModelRFTextdialog"
-                    />
-                </contentMiddle>
-            </Bar>
-        </customHeader>
+<VBox class="B25" alignItems="Center">
+    <Image
+        id="_IDGenImage_CS"
+        src="https://artihcus.com/assets/img/AG-logo.png"
+        width="25%"
+        height="10%"
+        class="sapUiSmallMarginBegin"
+     
+    />
+    <VBox alignContent="Start" alignItems="Start" >
+    <Title
+        id="_IDTitleconnectsap_CS"
+        text="CAPmodel RF"
+        class="capModelRFTextdialog sapUiTinyMarginBottom"
+    />
+    </VBox>
+</VBox>
+       
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm_CS"
@@ -86,9 +81,9 @@
                             width="120px"
                         />
                     </VBox>
-                        <Select
+                        <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="80%"
+                            width="85%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -104,17 +99,16 @@
                                     text="SP-Spanish"
                                 />
                             </items>
-                            </Select>
-                     
-
-
+                        </ComboBox>
+ 
+ 
                    <VBox alignItems="Start">
                     <Input
                         id="idRouterStringInput_CS"
                         value="400"
                         placeholder=""
                         class="customInput"
-                        width="110%"
+                        width="100%"
                         editable="false"
                     />
                     </VBox>
@@ -125,10 +119,9 @@
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                            width="80%"
-                            type="Unstyled"
+                           
+                            width="85%"
                             press="onLogOnPress"
-                            class="logonbutton"
                         />
                         <HBox class="sapUiSmallMarginEnd">
                    
@@ -139,12 +132,8 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button id="IDlogoncancelbutton"
-                         text="Cancel"
-                        press="onPressCancleSapLogon"
-                        type="Unstyled"
-                        class="cancelbutton"
-                       />
+                        <Button text="Cancel"
+                        press="onPressCancleSapLogon"/>
                         </HBox>
                         </VBox>
  
@@ -156,5 +145,3 @@
         </content>
     </Dialog>
 </core:FragmentDefinition>
- 
- 
