@@ -6,7 +6,7 @@
     <Dialog
         id="dialog"
         resizable="false"
-        draggable="false"
+        draggable="true"
         contentWidth="25%"
         class="boxContainersignup"
     >
@@ -53,7 +53,7 @@
                 <HBox id="idresourcecheckbox">
                     <Text
                         id="idresourcetext"
-                        text="Resource Type"
+                        text="Resource Type:"
                         class="textbold"
                     />
                     <Text id="_IDGenText14" width="0.3rem"></Text>
@@ -65,6 +65,11 @@
                     <RadioButton
                         id="idexternal"
                         text="External"
+                    />
+                    <Text id="_IDGenText17" width="0.8rem"></Text>
+                    <RadioButton
+                        id="idothers"
+                        text="Others"
                     />
                 </HBox>
                 <HBox id="_IDGenHBox11">
