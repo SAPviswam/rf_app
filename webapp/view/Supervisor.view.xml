@@ -45,7 +45,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                <ComboBox
+                <!-- <ComboBox
                     id="idLanguageSelectorComboBox"
                     change="onLanguageChange"
                     visible="false"
@@ -78,7 +78,7 @@
                     id="idBtnLanguageChange"
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
-                />
+                /> -->
                  <Button
                     id="themeButton"
                     text="Background Theme"
@@ -1141,14 +1141,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile
@@ -1162,7 +1162,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1295,7 +1295,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="press"
+                            press="OnReversalofConsumptionbyMObyHUpress"
                         />
 
                         <GenericTile
@@ -1325,12 +1325,18 @@
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
                         />
+                        <GenericTile
+                            id="IDGenGenericTile3222"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Change Loading/Unloading Details"
+                            press="OnpressChangeLoadingUnloadingDetails"
+                        />
 
                         <GenericTile
                             id="IDGenGenericTile34"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Unload By HU"
-                            press="press"
+                            press="onUnloadByHUPress"
                         />
                     </ScrollContainer>
                     <ScrollContainer
