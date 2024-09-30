@@ -1261,14 +1261,14 @@
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPressPickPoint"
                         />
 
                         <GenericTile
                             id="_IDHUMaintenance"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="HU Maintenance"
-                            press="press"
+                            press="onPressHUMaintenance"
                         />
                     </ScrollContainer>
                     <ScrollContainer
