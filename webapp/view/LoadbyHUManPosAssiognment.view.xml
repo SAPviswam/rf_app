@@ -365,6 +365,17 @@
                             maxLength="25"
                             width="70px"
                             editable="false"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Button
+                            id="idbuttonLBHUManPosAssArrowdown"
+                            icon="sap-icon://slim-arrow-down"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Button
+                            id="idbuttonLBHUManPosAssArrowUp"
+                            icon="sap-icon://slim-arrow-up"
+                            class="sapUiTinyMarginEnd"
                         />
                     </HBox>
 
