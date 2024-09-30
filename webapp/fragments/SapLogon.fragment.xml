@@ -6,7 +6,7 @@
 >
     <Dialog
         id="idconnectsapdialogbox_CS"
-        resizable="false"
+        resizable="true"
         draggable="true"
         contentWidth="25%"
         class="boxContainer"
@@ -37,6 +37,7 @@
                 </contentMiddle>
             </Bar>
         </customHeader>
+        
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm_CS"
