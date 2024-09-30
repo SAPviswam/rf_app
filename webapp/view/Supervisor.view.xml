@@ -224,6 +224,7 @@
                                     placeholder="Enter Employee ID"
                                     class="Input"
                                     liveChange="onEmployeeIdLiveChange"
+                                   
                                 />
                             </FlexBox>
                             <FlexBox
@@ -244,6 +245,7 @@
                                     id="idNameInput"
                                     placeholder="Enter Name"
                                     class="Input"
+                                  
                                 />
                             </FlexBox>
                             <FlexBox
@@ -263,6 +265,7 @@
                                     id="idEmailInput"
                                     placeholder="Enter Email"
                                     class="Input"
+                                    
                                 />
                             </FlexBox>
                             <FlexBox
@@ -287,6 +290,9 @@
                                         id="idPhoneInput"
                                         placeholder="Enter Phone"
                                         class="Input"
+                                        type="Number"
+                                        liveChange="onMobileVal"
+                                    
                                     />
                                     <core:Icon
                                         id="verficationIdicon"
