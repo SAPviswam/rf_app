@@ -79,6 +79,7 @@
                         placeholder="Enter Description..."
                         class="customInput"
                         width="100%"
+                        
                     />
                 </HBox>
  

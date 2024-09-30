@@ -107,11 +107,12 @@
 }
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
-    user-select: none; /* Prevent text selection */
-    -webkit-user-select: none; /* For Safari */
-    -moz-user-select: none; /* For Firefox */
-    -ms-user-select: none; /* For Internet Explorer/Edge */
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* For Safari */
+    -moz-user-select: none !important; /* For Firefox */
+    -ms-user-select: none !important; /* For Internet Explorer/Edge */
 }
+    
 .InitialButton67{
     margin-left: 0.5rem;
     font-size: x-small;
