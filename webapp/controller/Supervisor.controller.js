@@ -2047,6 +2047,8 @@ sap.ui.define(
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
             },
 
+           
+            
             onThemeButton: function () {
                 this.byId("themeButton").setVisible(true);
                 this.byId("CancelButton").setVisible(true);
