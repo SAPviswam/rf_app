@@ -551,6 +551,8 @@ sap.ui.define([
                             oModel.create("/RESOURCESSet", oDataToCreate, {
                                 success: function () {
                                     MessageBox.success("Woohoo!\nYour Request Has Been Placed");
+
+
                                     // Reset input fields
                                     oView.byId("idFirstnameInput").setValue("");
                                     oView.byId("idLastnameInput").setValue("");

@@ -15,24 +15,173 @@ sap.ui.define([
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
 
+                $(document).on("keydown",this.FunctionKeysPress.bind(this));
+                this.isActive = true;
+            },
+            FunctionKeysPress:function(event){
+                if(event.key === "F1")
+                    {
+                        this.handleAddPressfragment();
+                        event.preventDefault();
+                        
+                    }
+                    else if(event.key === "F2")
+                        {
+                            this.handleEditPressfragment();
+                            event.preventDefault();   
+                        }
+                     else if(event.key === "F4")
+                        {
+                            this.handleDeletePressfragment();
+                            event.preventDefault();   
+                        }                            
+            },
+            handleAddPressfragment:function(){
+                this.handleLinksapPress();
+            },
+            handleEditPressfragment: async function(){
+                await this.onEditConfiguredSystem();
+            },
+            handleDeletePressfragment:function(){
+                this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
+                
+                // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
-                })
+                });
+            
+                // Open the dialog
                 this.oConfigSap.open();
+            
+                // Call the user login function
                 this.onUserLogin();
+                this._attachFocusToInputsforlogon();
+
+                // Focus on the user input after dialog opens
+                var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
+                if (oUserInputCS) {
+                    oUserInputCS.focus();
+                }
             },
             handleLinksapPress: async function () {
+                debugger
+                // Load the SAP connection fragment if it hasn't been loaded yet
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
-                })
+                });
+            
+                // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
+            
+                // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
+
+                var oDialog = this.byId("idconnectsapdialogbox");
+                if (oDialog) {
+                    oDialog.attachAfterOpen(function () {
+                        this.byId("idDescriptionInput").focus();
+                    }.bind(this));
+            
+                    // Attach focus change listeners to inputs
+                    this._attachFocusToInputs();
+                }
+            },
+            _attachFocusToInputsforlogon: function() {
+                var aInputIds = [
+                    "idUserInput_CS",
+                    "idSystemIdInput",
+                    "idLanguageSelectorMultiComboBox_CS",
+                    "idRouterStringInput_CS"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    // Access elements via the fragment instance (this.oConfigSap)
+                    var oInput = this.oConfigSap.byId(sId);
+            
+                    if (oInput) {
+                        oInput.attachBrowserEvent("focusin", function() {
+                            console.log("Focused on: " + sId);
+                        });
+                    } else {
+                        console.error("Element with ID " + sId + " not found.");
+                    }
+                }.bind(this));
+            },
+            _attachFocusToInputs: function() {
+                var aInputIds = [
+                    "idDescriptionInput",
+                    "idSPasswordInput_CS",
+                    "idInstanceNumberInput",
+                    "idClientInput",
+                    "idApplicationServerInput",
+                    "idRouterStringInput",
+                    "idServiceInput"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    this.byId(sId).attachBrowserEvent("focusin", function(oEvent) {
+                        // Focus logic can be applied here if needed
+                        console.log("Focused on: " + sId);
+                    });
+                }.bind(this));
+
+                const initialInput = this.byId("idDescriptionInput");
+                initialInput.focus();
+            
+                // Set up focus management
+                const inputs = [
+                    initialInput,
+                    this.byId("idSystemIdInput"),
+                    this.byId("idInstanceNumberInput"),
+                    this.byId("idClientInput"),
+                    this.byId("idApplicationServerInput"),
+                    this.byId("idRouterStringInput"),
+                    this.byId("idServiceInput")
+                ];
+            
+                // Track if user is focused on any input
+                let userFocusedInput = false;
+            
+                // Attach focus event to each input
+                inputs.forEach(input => {
+                    if (input) { // Check if input is a valid object
+                        input.attachFocusin(() => {
+                            userFocusedInput = true; // Mark that the user has focused on an input
+                        });
+            
+                        input.attachFocusout(() => {
+                            // If the focus moves away, reset the userFocusedInput if no input is active
+                            const activeElement = document.activeElement;
+                            if (!inputs.some(inp => inp.getDomRef() === activeElement)) {
+                                userFocusedInput = false;
+                            }
+                        });
+                    }
+                });
+            
+                // Keep track of focus
+                const focusInterval = setInterval(() => {
+                    if (!userFocusedInput) {
+                        const activeElement = document.activeElement;
+                        const currentInput = inputs.find(input => input.getDomRef() === activeElement);
+                        
+                        // If no input is focused, refocus on initialInput
+                        if (!currentInput) {
+                            initialInput.focus(); 
+                        }
+                    }
+                }, 100);
+            
+                // Clear the interval when the dialog closes
+                this.oConnetSap.attachAfterClose(() => {
+                    clearInterval(focusInterval);
+                });
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
@@ -184,6 +333,8 @@ sap.ui.define([
                         // Attach double click event for opening SAP logon
                         oNewButton.attachBrowserEvent("dblclick", function () {
                             this.LoadSapLogon();
+                            const oInput = this.getView().byId("idDescriptionInput");
+   
                         }.bind(this));
 
                         // Create entry for OData service
