@@ -11,13 +11,11 @@
                 height="100%"
                 direction="Column"
                 alignItems="Center"
-                 width="auto"
             >
                 <VBox
                     id="environmentButtonsHBox"
                     class="sapUiSmallMargin boxContainer"
                     alignItems="Center"
-                   width="auto"
                 >
                     <VBox id="idvboxnavbuttons" width="auto">
                         <HBox

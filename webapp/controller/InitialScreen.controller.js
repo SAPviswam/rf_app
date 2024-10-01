@@ -11,9 +11,25 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+                this.isIPhone = /iPhone/i.test(navigator.userAgent);
+            
                 this.loadConfiguredSystems();
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
+
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("idImageLogoAvatarinitial").setWidth("20%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("25%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        this.byId("idImageLogoAvatarinitial").setWidth("90%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("35%");
+                    }
+                }
 
             },
             onsapCancelPress: function () {
