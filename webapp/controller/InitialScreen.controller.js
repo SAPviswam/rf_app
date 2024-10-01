@@ -15,24 +15,63 @@ sap.ui.define([
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
 
+                $(document).on("keydown",this.FunctionKeysPress.bind(this));
+                this.isActive = true;
+            },
+            FunctionKeysPress:function(event){
+                if(event.key === "F1")
+                    {
+                        this.handleAddPressfragment();
+                        event.preventDefault();
+                        
+                    }
+                    else if(event.key === "F2")
+                        {
+                            this.handleEditPressfragment();
+                            event.preventDefault();   
+                        }
+                     else if(event.key === "F4")
+                        {
+                            this.handleDeletePressfragment();
+                            event.preventDefault();   
+                        }                            
+            },
+            handleAddPressfragment:function(){
+                this.handleLinksapPress();
+            },
+            handleEditPressfragment: async function(){
+                await this.onEditConfiguredSystem();
+            },
+            handleDeletePressfragment:function(){
+                this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
+                
+                // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
-                })
+                });
+            
+                // Open the dialog
                 this.oConfigSap.open();
+            
+                // Call the user login function
                 this.onUserLogin();
+              
             },
             handleLinksapPress: async function () {
+                // Load the SAP connection fragment if it hasn't been loaded yet
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
-                })
+                });
+                // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
-                this.oConnetSap.open();
+                // Open the dialog and set initial focus on idDescriptionInput
+                this.oConnetSap.open(); 
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
@@ -184,6 +223,8 @@ sap.ui.define([
                         // Attach double click event for opening SAP logon
                         oNewButton.attachBrowserEvent("dblclick", function () {
                             this.LoadSapLogon();
+                            const oInput = this.getView().byId("idDescriptionInput");
+   
                         }.bind(this));
 
                         // Create entry for OData service
