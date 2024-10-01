@@ -89,12 +89,13 @@ sap.ui.define([
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");
                     }
-                var oDialog = this.byId("idconnectsapdialogbox_CS");
-                if (oDialog) {
-                    oDialog.attachAfterOpen(function () {
-                        this.byId("idUserInput_CS").focus();
-                    }.bind(this));
+                    var oDialog = this.byId("idconnectsapdialogbox_CS");
+                    if (oDialog) {
+                        oDialog.attachAfterOpen(function () {
+                            this.byId("idUserInput_CS").focus();
+                        }.bind(this));
 
+                    }
                 }
 
             },
