@@ -2049,20 +2049,8 @@ sap.ui.define(
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
             },
 
-            onThemeButton: function () {
-
-                this.byId("themeButton").setVisible(true);
-                this.byId("CancelButton").setVisible(true);
-                this.byId("themeButton3").setVisible(false);
-
-                this.Themecall = true;            
-            },
-            onCancel: function () {
-                this.byId("themeButton").setVisible(false);
-                this.byId("CancelButton").setVisible(false);
-                this.byId("themeButton3").setVisible(true);
-                this.Themecall = false;
-            },
+           
+            
 
             OnpressLoadbyHUManPosAssiognment:function(){
                 var oRouter = UIComponent.getRouterFor(this);
