@@ -170,9 +170,9 @@
                 <pages>
                     <ScrollContainer
                         id="pageSV2"
-                        horizontal="false"
+                        horizontal="true"
                         vertical="true"
-                        height="100%"
+                        height="auto"
                         class="sapUiContentPadding"
                     >
                         <Table
@@ -182,6 +182,9 @@
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
                             mode="MultiSelect"
                             class="Allslotsclasstable"
+                            growingScrollToLoad="true"
+                            growing="true"
+                            width="450px"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idSlotsTableHeader1">

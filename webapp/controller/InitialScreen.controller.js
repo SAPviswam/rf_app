@@ -622,10 +622,19 @@ sap.ui.define([
                         this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
                         this.onUserLogin();
                         this.oConfigSapCP.open(); // Open the dialog after setting the value
+
+                        var oDialog = this.byId("idconnectsapdialogbox_CP");
+                        if (oDialog) {
+                        oDialog.attachAfterOpen(function () {
+                        this.byId("idSPasswordInput_CP").focus();
+                        }.bind(this));
+                   
+                }
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
                         MessageBox.error("Error retrieving user data. Please try again later.");
                     }
+
                 });
             },
 
