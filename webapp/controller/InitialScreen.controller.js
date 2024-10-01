@@ -25,6 +25,13 @@ sap.ui.define([
                 })
                 this.oConfigSap.open();
                 this.onUserLogin();
+                this._attachFocusToInputsforlogon();
+
+                // Focus on the user input after dialog opens
+                var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
+                if (oUserInputCS) {
+                    oUserInputCS.focus();
+                }
             },
             handleLinksapPress: async function () {
                 this.oConnetSap ??= await this.loadFragment({
@@ -33,6 +40,54 @@ sap.ui.define([
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
                 this.oConnetSap.open();
+                var oDialog = this.byId("idconnectsapdialogbox");
+                if (oDialog) {
+                    oDialog.attachAfterOpen(function () {
+                        this.byId("idDescriptionInput").focus();
+                    }.bind(this));
+            
+                    // Attach focus change listeners to inputs
+                    this._attachFocusToInputs();
+                }
+            },
+            _attachFocusToInputsforlogon: function() {
+                var aInputIds = [
+                    "idUserInput_CS",
+                    "idSystemIdInput",
+                    "idLanguageSelectorMultiComboBox_CS",
+                    "idRouterStringInput_CS"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    // Access elements via the fragment instance (this.oConfigSap)
+                    var oInput = this.oConfigSap.byId(sId);
+            
+                    if (oInput) {
+                        oInput.attachBrowserEvent("focusin", function() {
+                            console.log("Focused on: " + sId);
+                        });
+                    } else {
+                        console.error("Element with ID " + sId + " not found.");
+                    }
+                }.bind(this));
+            },
+            _attachFocusToInputs: function() {
+                var aInputIds = [
+                    "idDescriptionInput",
+                    "idSPasswordInput_CS",
+                    "idInstanceNumberInput",
+                    "idClientInput",
+                    "idApplicationServerInput",
+                    "idRouterStringInput",
+                    "idServiceInput"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    this.byId(sId).attachBrowserEvent("focusin", function(oEvent) {
+                        // Focus logic can be applied here if needed
+                        console.log("Focused on: " + sId);
+                    });
+                }.bind(this));
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
