@@ -11,9 +11,27 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+                this.isIPhone = /iPhone/i.test(navigator.userAgent);
+            
                 this.loadConfiguredSystems();
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
+
+
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("idImageLogoAvatarinitial").setWidth("20%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("25%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        this.byId("idImageLogoAvatarinitial").setWidth("90%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("35%");
+                    }
+                }
+
 
                 $(document).on("keydown", this.FunctionKeysPress.bind(this));
                 this.isActive = true;
@@ -57,12 +75,26 @@ sap.ui.define([
 
                 // Call the user login function
                 this.onUserLogin();
-              
+
+
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("_IDGenImage_CS").setWidth("20%");
+                        this.byId("_IDGenImage_CS").setHeight("25%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        // this.byId("_IDGenImage_CS").setWidth("90%");
+                        // this.byId("_IDGenImage_CS").setHeight("35%");
+                    }
                 var oDialog = this.byId("idconnectsapdialogbox_CS");
                 if (oDialog) {
                     oDialog.attachAfterOpen(function () {
                         this.byId("idUserInput_CS").focus();
                     }.bind(this));
+
                 }
 
             },
