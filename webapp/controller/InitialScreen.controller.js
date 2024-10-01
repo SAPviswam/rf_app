@@ -15,58 +15,55 @@ sap.ui.define([
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
 
-                $(document).on("keydown",this.FunctionKeysPress.bind(this));
+                $(document).on("keydown", this.FunctionKeysPress.bind(this));
                 this.isActive = true;
             },
-            FunctionKeysPress:function(event){
-                if(event.key === "F1")
-                    {
-                        this.handleAddPressfragment();
-                        event.preventDefault();
-                        
-                    }
-                    else if(event.key === "F2")
-                        {
-                            this.handleEditPressfragment();
-                            event.preventDefault();   
-                        }
-                     else if(event.key === "F4")
-                        {
-                            this.handleDeletePressfragment();
-                            event.preventDefault();   
-                        }                            
+            FunctionKeysPress: function (event) {
+                if (event.key === "F1") {
+                    this.handleAddPressfragment();
+                    event.preventDefault();
+
+                }
+                else if (event.key === "F2") {
+                    this.handleEditPressfragment();
+                    event.preventDefault();
+                }
+                else if (event.key === "F4") {
+                    this.handleDeletePressfragment();
+                    event.preventDefault();
+                }
             },
-            handleAddPressfragment:function(){
+            handleAddPressfragment: function () {
                 this.handleLinksapPress();
             },
-            handleEditPressfragment: async function(){
+            handleEditPressfragment: async function () {
                 await this.onEditConfiguredSystem();
             },
-            handleDeletePressfragment:function(){
+            handleDeletePressfragment: function () {
                 this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
-                
+
                 // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
                 });
-            
+
                 // Open the dialog
                 this.oConfigSap.open();
-            
+
                 // Call the user login function
                 this.onUserLogin();
-                this._attachFocusToInputsforlogon();
+//                 this._attachFocusToInputsforlogon();
 
-                // Focus on the user input after dialog opens
-                var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
-                if (oUserInputCS) {
-                    oUserInputCS.focus();
-                }
+//                 // Focus on the user input after dialog opens
+//                 var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
+//                 if (oUserInputCS) {
+//                     oUserInputCS.focus();
+
             },
             handleLinksapPress: async function () {
                 debugger
@@ -74,11 +71,11 @@ sap.ui.define([
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
                 });
-            
+
                 // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
-            
+
                 // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
 
@@ -92,27 +89,27 @@ sap.ui.define([
                     this._attachFocusToInputs();
                 }
             },
-            _attachFocusToInputsforlogon: function() {
-                var aInputIds = [
-                    "idUserInput_CS",
-                    "idSystemIdInput",
-                    "idLanguageSelectorMultiComboBox_CS",
-                    "idRouterStringInput_CS"
-                ];
+//             _attachFocusToInputsforlogon: function() {
+//                 var aInputIds = [
+//                     "idUserInput_CS",
+//                     "idSystemIdInput",
+//                     "idLanguageSelectorMultiComboBox_CS",
+//                     "idRouterStringInput_CS"
+//                 ];
             
-                aInputIds.forEach(function(sId) {
-                    // Access elements via the fragment instance (this.oConfigSap)
-                    var oInput = this.oConfigSap.byId(sId);
+//                 aInputIds.forEach(function(sId) {
+//                     // Access elements via the fragment instance (this.oConfigSap)
+//                     var oInput = this.oConfigSap.byId(sId);
             
-                    if (oInput) {
-                        oInput.attachBrowserEvent("focusin", function() {
-                            console.log("Focused on: " + sId);
-                        });
-                    } else {
-                        console.error("Element with ID " + sId + " not found.");
-                    }
-                }.bind(this));
-            },
+//                     if (oInput) {
+//                         oInput.attachBrowserEvent("focusin", function() {
+//                             console.log("Focused on: " + sId);
+//                         });
+//                     } else {
+//                         console.error("Element with ID " + sId + " not found.");
+//                     }
+//                 }.bind(this));
+//             },
             _attachFocusToInputs: function() {
                 var aInputIds = [
                     "idDescriptionInput",
@@ -182,6 +179,7 @@ sap.ui.define([
                 this.oConnetSap.attachAfterClose(() => {
                     clearInterval(focusInterval);
                 });
+
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
@@ -334,7 +332,7 @@ sap.ui.define([
                         oNewButton.attachBrowserEvent("dblclick", function () {
                             this.LoadSapLogon();
                             const oInput = this.getView().byId("idDescriptionInput");
-   
+
                         }.bind(this));
 
                         // Create entry for OData service
