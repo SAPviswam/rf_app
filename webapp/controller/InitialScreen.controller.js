@@ -15,59 +15,56 @@ sap.ui.define([
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
 
-                $(document).on("keydown",this.FunctionKeysPress.bind(this));
+                $(document).on("keydown", this.FunctionKeysPress.bind(this));
                 this.isActive = true;
             },
-            FunctionKeysPress:function(event){
-                if(event.key === "F1")
-                    {
-                        this.handleAddPressfragment();
-                        event.preventDefault();
-                        
-                    }
-                    else if(event.key === "F2")
-                        {
-                            this.handleEditPressfragment();
-                            event.preventDefault();   
-                        }
-                     else if(event.key === "F4")
-                        {
-                            this.handleDeletePressfragment();
-                            event.preventDefault();   
-                        }                            
+            FunctionKeysPress: function (event) {
+                if (event.key === "F1") {
+                    this.handleAddPressfragment();
+                    event.preventDefault();
+
+                }
+                else if (event.key === "F2") {
+                    this.handleEditPressfragment();
+                    event.preventDefault();
+                }
+                else if (event.key === "F4") {
+                    this.handleDeletePressfragment();
+                    event.preventDefault();
+                }
             },
-            handleAddPressfragment:function(){
+            handleAddPressfragment: function () {
                 this.handleLinksapPress();
             },
-            handleEditPressfragment: async function(){
+            handleEditPressfragment: async function () {
                 await this.onEditConfiguredSystem();
             },
-            handleDeletePressfragment:function(){
+            handleDeletePressfragment: function () {
                 this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
-                
+
                 // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
                 });
-            
+
                 // Open the dialog
                 this.oConfigSap.open();
-            
+
                 // Call the user login function
                 this.onUserLogin();
               
-
                 var oDialog = this.byId("idconnectsapdialogbox_CS");
                 if (oDialog) {
                     oDialog.attachAfterOpen(function () {
                         this.byId("idUserInput_CS").focus();
                     }.bind(this));
                 }
+
             },
             handleLinksapPress: async function () {
                 debugger
@@ -75,11 +72,11 @@ sap.ui.define([
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
                 });
-            
+
                 // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
-            
+
                 // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
 
@@ -90,8 +87,6 @@ sap.ui.define([
                     }.bind(this));
                    
                 }
- 
-
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
