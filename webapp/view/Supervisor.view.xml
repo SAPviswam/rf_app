@@ -619,9 +619,9 @@
                     </ScrollContainer>
                     <ScrollContainer
                         id="pageSV3"
-                        horizontal="false"
+                        horizontal="true"
                         vertical="true"
-                        height="100%"
+                        height="auto"
                         class="sapUiContentPadding"
                     >
                         <Table
@@ -630,6 +630,9 @@
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
+                            growing="true"
+                            class="Allslotsclasstable"
+                            width="450px" 
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -668,7 +671,7 @@
                                     /> -->
                                 </OverflowToolbar>
                             </headerToolbar>
-
+ 
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
@@ -724,7 +727,7 @@
                                         text="Email"
                                     />
                                 </Column>
-
+ 
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
@@ -734,7 +737,7 @@
                                         text="Phone Number"
                                     />
                                 </Column>
-
+ 
                                 <!-- <Column
                                     id="idPasswordCol1"
                                     width="13%"
@@ -776,17 +779,17 @@
                                             id="idRDPhoneNoColValue"
                                             text="{Phonenumber}"
                                         />
-
+ 
                                         <!-- <Text
                                             id="idRDPasswordColValue"
                                             text="{Password}"
                                         />
-
+ 
                                         <Text
                                             id="idUserQueueColValue"
                                             text="{Queue}"
                                         />
-
+ 
                                         <Text
                                             id="idRDExpiredDateColValue"
                                             text="{Expirydate}"
