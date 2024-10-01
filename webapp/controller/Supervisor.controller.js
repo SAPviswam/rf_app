@@ -101,7 +101,6 @@ sap.ui.define(
                 return aIdParts.length > 1 ? aIdParts[aIdParts.length - 1] : sTileId;
             },
             
-
             //For background Theme Dialog..
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
@@ -947,7 +946,6 @@ sap.ui.define(
                     }
                 });
             },
-
 
             onApprovePress: function () {
                  
@@ -2047,6 +2045,8 @@ sap.ui.define(
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
             },
 
+           
+            
             onThemeButton: function () {
                 this.byId("themeButton").setVisible(true);
                 this.byId("CancelButton").setVisible(true);

@@ -60,8 +60,13 @@ sap.ui.define([
             
                 // Call the user login function
                 this.onUserLogin();
-            
-                
+                this._attachFocusToInputsforlogon();
+
+                // Focus on the user input after dialog opens
+                var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
+                if (oUserInputCS) {
+                    oUserInputCS.focus();
+                }
             },
             handleLinksapPress: async function () {
                 debugger
@@ -76,6 +81,56 @@ sap.ui.define([
             
                 // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
+
+                var oDialog = this.byId("idconnectsapdialogbox");
+                if (oDialog) {
+                    oDialog.attachAfterOpen(function () {
+                        this.byId("idDescriptionInput").focus();
+                    }.bind(this));
+            
+                    // Attach focus change listeners to inputs
+                    this._attachFocusToInputs();
+                }
+            },
+            _attachFocusToInputsforlogon: function() {
+                var aInputIds = [
+                    "idUserInput_CS",
+                    "idSystemIdInput",
+                    "idLanguageSelectorMultiComboBox_CS",
+                    "idRouterStringInput_CS"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    // Access elements via the fragment instance (this.oConfigSap)
+                    var oInput = this.oConfigSap.byId(sId);
+            
+                    if (oInput) {
+                        oInput.attachBrowserEvent("focusin", function() {
+                            console.log("Focused on: " + sId);
+                        });
+                    } else {
+                        console.error("Element with ID " + sId + " not found.");
+                    }
+                }.bind(this));
+            },
+            _attachFocusToInputs: function() {
+                var aInputIds = [
+                    "idDescriptionInput",
+                    "idSPasswordInput_CS",
+                    "idInstanceNumberInput",
+                    "idClientInput",
+                    "idApplicationServerInput",
+                    "idRouterStringInput",
+                    "idServiceInput"
+                ];
+            
+                aInputIds.forEach(function(sId) {
+                    this.byId(sId).attachBrowserEvent("focusin", function(oEvent) {
+                        // Focus logic can be applied here if needed
+                        console.log("Focused on: " + sId);
+                    });
+                }.bind(this));
+
                 const initialInput = this.byId("idDescriptionInput");
                 initialInput.focus();
             
@@ -461,10 +516,6 @@ sap.ui.define([
                 }
                 if (!sApplicationServer) {
                     sap.m.MessageToast.show("Application Server is required.");
-                    return;
-                }
-                if (!sService) {
-                    sap.m.MessageToast.show("Service is required.");
                     return;
                 }
 

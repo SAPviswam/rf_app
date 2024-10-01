@@ -183,7 +183,6 @@
                     />
                 </HBox>
 
- 
                 <!-- Checkboxes for Description, System ID, and Client -->
                 <HBox
                     id="hboxCheckboxes"
