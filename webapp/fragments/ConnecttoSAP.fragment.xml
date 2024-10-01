@@ -79,6 +79,7 @@
                         placeholder="Enter Description..."
                         class="customInput"
                         width="100%"
+                        
                     />
                 </HBox>
  
@@ -182,7 +183,6 @@
                     />
                 </HBox>
 
- 
                 <!-- Checkboxes for Description, System ID, and Client -->
                 <HBox
                     id="hboxCheckboxes"

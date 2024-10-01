@@ -176,7 +176,7 @@ sap.ui.define(
             applyThemeColor: function (sColor) {
                  
                 var aElements = [
-                    this.byId("toolPage"),
+                    // this.byId("toolPage"),
                     this.byId("idSideNavigation"),
                     this.byId("idToolHeader"),
                     this.byId("pageContainer")
@@ -1760,7 +1760,7 @@ sap.ui.define(
  
 
             },
-            onChangeLoadingUnloadingDetails: function () {
+            OnpressChangeLoadingUnloadingDetails: function () {
                 if (this.Themecall) {
                     this.onPaletteIconPress("IDGenGenericTile33")
                     return
@@ -2064,8 +2064,7 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
             },
-
-            onSetReadyForWHProcessingByBOLPress:function(){
+            onSetReadyForWHProcessingByBOL:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WHProcessingByBOL",{id:this.ID});
             },
@@ -2095,5 +2094,32 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
             },
+
+            /**Mobile validation */
+            onMobileVal: async function (oEvent) {
+                var oPhone = oEvent.getSource();
+                var oVal1 = oPhone.getValue();
+ 
+                // regular expression for validating the phone
+                var regexpMobile = /^[0-9]{10}$/;
+                if (oVal1.trim() === '') {
+                    oPhone.setValueState("None"); // Clear any previous state
+                } else if (oVal1.match(regexpMobile)) {
+                    oPhone.setValueState("Success");
+                } else {
+                    oPhone.setValueState("Error");
+                    // Check if MessageToast is available before showing message
+                    if (sap.m.MessageToast) {
+                        sap.m.MessageToast.show("Invalid Phone format");
+                    } else {
+                        console.error("MessageToast is not available.");
+                    }
+                }
+            },
+
+            ondHUMaintenance:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("HuMaintanaceInDeconsolidation",{id:this.ID});
+            }
         });
     });

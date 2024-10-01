@@ -120,7 +120,6 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
                 >
                     <VBox alignContent="Center" >
                         <HBox alignContent="Center" alignItems="Center">
