@@ -2,24 +2,11 @@
 	"selectedKey": "page2",
 	"navigation": [
 		{
-			"title": "Home",
-			"icon":"sap-icon://home",
-            "tooltip":"Home",
-			"key": "pageSV1"
-		},
-		{
 			"title": "Requested Data",
 			"icon":"sap-icon://request",
             "tooltip":"Requested Data",
 			"key": "pageSV2"
 		},
-        {
-			"title": "Users Data",
-			"icon":"sap-icon://employee",
-            "tooltip":"Users Data",
-			"key": "pageSV3"
-		},
-		
 		{
 			"title": "Inbound Process",
 			"icon": "sap-icon://shipping-status",
@@ -105,8 +92,12 @@
                     "key": "idpage16"
 				}
 			]
+		},
+		{
+			"title": "Users Data",
+			"icon":"sap-icon://employee",
+            "tooltip":"Users Data",
+			"key": "pageSV3"
 		}
-
-
     ]
 }
