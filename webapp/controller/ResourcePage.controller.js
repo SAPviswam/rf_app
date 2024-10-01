@@ -924,5 +924,15 @@ sap.ui.define([
                 }
             },
 
+            onProductInspectionByHUPress :function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
+            },
+
+            onProductInspectionByStorageBinPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+            }
+
         });
     });

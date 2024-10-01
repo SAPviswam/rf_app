@@ -34,11 +34,8 @@ sap.ui.define(
 
               oRouter.navTo("Supervisor", { id: this.ID });
             }
-
           }.bind(this),
-
           error: function () {
-
             MessageToast.show("User does not exist");
 
           }

@@ -144,14 +144,16 @@
                         text="work center Details"
                         class="TitleSecondPage"
                         level="H1"
+                        textAlign="Center"
                     />
                     <form:SimpleForm
                         id="CSHUsimpleForm1"
                         layout="ResponsiveGridLayout"
                         editable="true"
-                        columnsL="2"
-                        columnsM="1"
                         class="sapUiResponsiveMargin"
+                        columnsL="1"
+                        columnsM="1"
+                        width="70%"
                     >
                         <Label
                             id="_IDGenCSHULabel"
@@ -232,12 +234,13 @@
                     alignItems="Center"
                     justifyContent="Center"
                 >
-                    <Title
+                    <!-- <Title
                         id="idtitlebolCSHU3"
                         text="work center Details"
                         class="TitleSecondPage"
                         level="H1"
-                    />
+                        textAlign="Center"
+                    /> -->
                     <form:SimpleForm
                         id="CSHUsimpleForm3"
                         layout="ResponsiveGridLayout"
@@ -245,6 +248,7 @@
                         columnsL="2"
                         columnsM="1"
                         class="sapUiResponsiveMargin"
+                        width="60%"
                     >
                         <Label
                             id="_IDGenCSHULabel2"
@@ -289,7 +293,7 @@
                             maxLength="10"
                             width="200px"
                         />
-                        <VBox >
+                        <VBox alignItems="Center" >
                         <Button
                             id="_IDonsaveCSHU"
                             text="Save"
