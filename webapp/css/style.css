@@ -107,11 +107,12 @@
 }
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
-    user-select: none; /* Prevent text selection */
-    -webkit-user-select: none; /* For Safari */
-    -moz-user-select: none; /* For Firefox */
-    -ms-user-select: none; /* For Internet Explorer/Edge */
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* For Safari */
+    -moz-user-select: none !important; /* For Firefox */
+    -ms-user-select: none !important; /* For Internet Explorer/Edge */
 }
+    
 .InitialButton67{
     margin-left: 0.5rem;
     font-size: x-small;
@@ -192,7 +193,7 @@
 }
 
 .dropdown {
-    width: 100%;
+    width: 80%;
 }
 /* General styles for all devices */
 .boxContainer {
@@ -566,6 +567,7 @@ background-color: rgb(9, 8, 8) !important;
 }
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
+ 
 }
 
 
@@ -609,23 +611,22 @@ background-color: rgb(9, 8, 8) !important;
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
-.connecttoSAPform{
+/* .connecttoSAPform{
     border-radius: 0rem !important;
-    /* border: 0.5px solid #080808d2 !important; */
     background-color: #c9dbe9;
-}
+} */
 .logonbutton{
     background-color:#5496cd;
     border: 2px solid #5496cd !important;
     color:  #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.cancelbutton{
+/* .cancelbutton{
     background-color: #c9dbe9;
     border: 2px solid #c9dbe9 !important;
     color:rgba(24, 24, 237, 0.852) !important;
     margin-top: 0.2rem;
-}
+} */
 
 /* .comboCS{
 margin-left: 20%;
@@ -638,3 +639,7 @@ margin-right: 20%;
 .VboxChangePassword {
 margin-right: 15%;
 }
+
+
+
+

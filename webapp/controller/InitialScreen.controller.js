@@ -17,6 +17,7 @@ sap.ui.define([
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
 
+
                 if (Device.system.phone){
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
@@ -31,16 +32,50 @@ sap.ui.define([
                     }
                 }
 
+
+                $(document).on("keydown", this.FunctionKeysPress.bind(this));
+                this.isActive = true;
+            },
+            FunctionKeysPress: function (event) {
+                if (event.key === "F1") {
+                    this.handleAddPressfragment();
+                    event.preventDefault();
+
+                }
+                else if (event.key === "F2") {
+                    this.handleEditPressfragment();
+                    event.preventDefault();
+                }
+                else if (event.key === "F4") {
+                    this.handleDeletePressfragment();
+                    event.preventDefault();
+                }
+            },
+            handleAddPressfragment: function () {
+                this.handleLinksapPress();
+            },
+            handleEditPressfragment: async function () {
+                await this.onEditConfiguredSystem();
+            },
+            handleDeletePressfragment: function () {
+                this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
+
+                // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
-                })
+                });
+
+                // Open the dialog
                 this.oConfigSap.open();
+
+                // Call the user login function
                 this.onUserLogin();
+
 
                 if (Device.system.phone){
                     if (this.isIPhone) {
@@ -54,21 +89,41 @@ sap.ui.define([
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");
                     }
+                var oDialog = this.byId("idconnectsapdialogbox_CS");
+                if (oDialog) {
+                    oDialog.attachAfterOpen(function () {
+                        this.byId("idUserInput_CS").focus();
+                    }.bind(this));
+
                 }
 
             },
             handleLinksapPress: async function () {
+                debugger
+                // Load the SAP connection fragment if it hasn't been loaded yet
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
-                })
+                });
+
+                // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
+
+                // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
-                
+
+                var oDialog = this.byId("idconnectsapdialogbox");
+                if (oDialog) {
+                    oDialog.attachAfterOpen(function () {
+                        this.byId("idDescriptionInput").focus();
+                    }.bind(this));
+                   
+                }
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
             },
+           
             onCloseconnectsap: function () {
                 this.oConnetSap.close();
                 var oView = this.getView();
@@ -397,10 +452,6 @@ sap.ui.define([
                 }
                 if (!sApplicationServer) {
                     sap.m.MessageToast.show("Application Server is required.");
-                    return;
-                }
-                if (!sService) {
-                    sap.m.MessageToast.show("Service is required.");
                     return;
                 }
 

@@ -238,10 +238,6 @@ sap.ui.define([
 
                 // Prepare the Twilio Verify Check API details
 
-                // const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
-                // const authToken = '702f2b322d3ab982e7e8da69db2598b8'; // Replace with your Twilio Auth Token
-                // const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
-
                 const accountSid = 'AC2fb46ec1c11689b5cecea6361105c723'; // Replace with your Twilio Account SID
                 const authToken = 'f1ae977a8f46265e4078d48e6bbfa5b4'; // Replace with your Twilio Auth Token
                 const serviceSid = 'VAdfa3a7c4613f48b5722f611bb2ef3b5d';
@@ -569,7 +565,9 @@ sap.ui.define([
                             // Send data to backend (adjust path as necessary)
                             oModel.create("/RESOURCESSet", oDataToCreate, {
                                 success: function () {
-                                    MessageToast.show("Resource created successfully!");
+                                    MessageBox.success("Woohoo!\nYour Request Has Been Placed");
+
+
                                     // Reset input fields
                                     oView.byId("idFirstnameInput").setValue("");
                                     oView.byId("idLastnameInput").setValue("");

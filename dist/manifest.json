@@ -1024,6 +1024,27 @@
                     "clearControlAggregation": false,
                     "viewId": "UnloadByHu",
                     "viewName": "UnloadByHu"
+                },
+                "TargetAutomaticallyRepackHu": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AutomaticallyRepackHu",
+                    "viewName": "AutomaticallyRepackHu"
+                },
+                "TargetConsumptionByManufacturingOrder": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ConsumptionByManufacturingOrder",
+                    "viewName": "ConsumptionByManufacturingOrder"
+                },
+                "TargetReversalofConsumptionbyMO_Bin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ReversalofConsumptionbyMO_Bin",
+                    "viewName": "ReversalofConsumptionbyMO_Bin"
                 }
             }
         },

@@ -162,10 +162,7 @@ sap.ui.define(
         this.getView().byId("idConsumptionByManufacturingOrderNigthSC").setVisible(true);
         this.getView().byId("idConsumptionByManufacturingOrderTengthbackbtn").setVisible(false);
         this.getView().byId("idConsumptionByManufacturingOrderNigthbackbtn").setVisible(true);
-
     },
-
-
       });
     }
   );
