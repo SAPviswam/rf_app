@@ -317,7 +317,7 @@
                             id="id_setreadyforwhprocessingbyco"
                             class="sapUiTinyMargin"
                             header="Set Ready for WH processing by CO"
-                            press="onSetReadyforWHprocessingbyCOPress"
+                            press="onSetReadyforWHprocessingbyCOPress"  
                             visible="false"
                         />
 
@@ -361,7 +361,6 @@
                             press="onPickingByHUPress"
                             visible="false"
                         />
-
                          <VBox >
                     <Title id="id_packing_title" text="Packing" visible="false"></Title>
                     <HBox >
@@ -542,7 +541,7 @@
                             id="id_consumptionbymanufacturingorder"
                             class="sapUiTinyMargin"
                             header="Consumption By Manufacturing Order"
-                            press="onConsumption ByManufacturingOrderPress"
+                            press="onConsumptionByManufacturingOrderPress"
                             visible="false"
                         />
                         <GenericTile
@@ -573,7 +572,7 @@
                             visible="false"
                         />
                         <GenericTile
-                            id="id_loadbyhumanposassigment"
+                            id="id_loadbyhumanposassignment"
                             class="sapUiTinyMargin"
                             header="Load By HU - Man.Pos.Assignment"
                             press="onLoadByHUManPosAssigmentPress"

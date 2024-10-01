@@ -34,22 +34,24 @@
 </EntityType>
 <EntityType Name="Service" sap:content-version="1">
 <Key>
-<PropertyRef Name="SystemId"/>
+<PropertyRef Name="Client"/>
 </Key>
 <Property Name="DescriptionB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Button Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SystemId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="System id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="InstanceNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Instance No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CLIENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="AppServer" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Application Server" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SapRouterStr" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="SAP ROUTER STRING" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="SapService" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="SAP SERVICE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="RESOURCES" sap:content-version="1">
 <Key>
 <PropertyRef Name="Resourceid"/>
 </Key>
 <Property Name="Loginfirst" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Users" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Resourceid" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="EMPLOYEE ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Resourcetype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Resource type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -58,7 +60,7 @@
 <Property Name="Resourcename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Area" Type="Edm.String" Nullable="false" MaxLength="150" sap:unicode="false" sap:label="AREA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Resourcegroup" Type="Edm.String" Nullable="false" MaxLength="256" sap:unicode="false" sap:label="GROUP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="EMAIL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="EMAIL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Phonenumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PHONENUMBER" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Notification" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="NOTIFICATION" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Notifysupervisor" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="NOTIFY SUPERVISOR" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -79,3 +81,4 @@
 </Schema>
 </edmx:DataServices>
 </edmx:Edmx>
+ 

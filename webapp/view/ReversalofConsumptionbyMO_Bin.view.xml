@@ -67,7 +67,7 @@
         <Button
             id="_IDGenButton77_RCBM"
             icon="sap-icon://nav-back"
-            press="onPressBackToHome"
+            press="onPressBackToHome_RCBM"
             visible="true"
             class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
         />
@@ -137,11 +137,12 @@
 </ScrollContainer>
 
             <ScrollContainer
-                id="icon2_RCBM"
-                width="100%"
+                id="icon2_RCBM"               
                 height="100%"
                 horizontal="false"
                 vertical="true"
+                visible="false"
+                class="sapUiContentPadding"
             >
                 <Button
                     id="_IDGenButton1111_RCBM"
@@ -194,16 +195,14 @@
 
                                 <Input
                                     value=""
-                                    width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label id="idManufordINSpace"
-                                width="40px"/>
+                                width="10px"/>
 
                                 <Input
                                     value=""
-                                    width="240px"
                                      editable="false"
                                 />
                             </HBox>
@@ -219,7 +218,6 @@
 
                                 <Input
                                     value=""
-                                    width="340px"
                                     class="sapUiTinyMarginEnd"
                                     liveChange="onProductInputChange"
                                 />
@@ -232,7 +230,6 @@
                                 />
                             <Input
                                     value=""
-                                    width="340px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -250,7 +247,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -263,7 +259,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -275,7 +270,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -286,13 +280,12 @@
                             <HBox>
                                 <Label
                                     text="Stor.Bin"
-                                    width="70px"
+                                    width="70PX"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="340px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -309,43 +302,39 @@
 
                                  <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                  <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -360,6 +349,7 @@
                 height="100%"
                 horizontal="false"
                 vertical="true"
+                visible="false"
             >
                 <Button
                     id="_IDGenButton_RCBM"
@@ -412,16 +402,14 @@
 
                                 <Input
                                     value=""
-                                    width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label id="idIcon3ManufordINSpace"
-                                width="40px"/>
+                                width="10px"/>
 
                                 <Input
                                     value=""
-                                    width="240px"
                                      editable="false"
                                 />
                             </HBox>
@@ -437,7 +425,6 @@
 
                                 <Input
                                     value=""
-                                    width="340px"
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
@@ -450,7 +437,6 @@
                                 />
                             <Input
                                     value=""
-                                    width="340px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -468,7 +454,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     liveChange="onBatchInputChange"
                                 />
@@ -481,7 +466,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -493,7 +477,6 @@
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -510,7 +493,6 @@
 
                                 <Input
                                     value=""
-                                    width="340px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -527,43 +509,39 @@
 
                                  <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                  <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label
                                     text=""
-                                    width="40px"
+                                    width="10px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
                                     value=""
-                                    width="70px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
@@ -578,6 +556,7 @@
                 height="100%"
                 horizontal="false"
                 vertical="true"
+                visible="false"
             >
                 <Button
                     id="_IDIcon4GenButton_RCBM"
@@ -630,11 +609,220 @@
 
                                 <Input
                                     value=""
-                                    width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                                 <Label id="idIcon4ManufordINSpace"
+                                width="10px"/>
+
+                                <Input
+                                    value=""
+                                     editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 2: Product -->
+
+                            <HBox>
+                                <Label
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    editable="false"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                            <HBox>
+                             <Label
+                                    text=""
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+                            <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            
+                            </HBox>
+
+                            <!-- Row 3: Batch -->
+
+                            <HBox>
+                                <Label
+                                    text="Batch"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text="SLED"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text="BIRU"
+                                    width="40px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- Row 4: Stor.Bin -->
+
+                            <HBox>
+                                <Label
+                                    text="Stor.Bin"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    liveChange="onStorBinInputChange"
+                                    class="sapUiTinyMarginEnd"
+                                    liveChange="onStorBinInputChange"
+                                />
+                            </HBox>
+
+                            <!-- Row 5: RevQ -->
+
+                            <HBox>
+                                <Label
+                                    text="RevQ"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                 <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                 <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label
+                                    text=""
+                                    width="10px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="icon5_RCBM"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                visible="false"
+            >
+                <Button
+                    id="_IDIcon5GenButton_RCBM"
+                    icon="sap-icon://nav-back"
+                    press="onPressback3"
+                    visible="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                />
+
+                <VBox
+                    id="idIcon5MainVBox_RCBM"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    class="centerContent"
+                >
+                    <Title
+                        id="_IDIcon5GenTitle_RCBM"
+                        class="TitleSecondPage"
+                        level="H2"
+                    />
+
+                    <f:SimpleForm
+                        id="idIcon5simpleForm1_RCBM"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <!-- Row 1: Manuford -->
+
+                        <VBox>
+                            <HBox>
+                                <Label
+                                    text="Manuford"
+                                    width="70px"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
+
+                                <Input
+                                    value=""
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <Label id="idIcon5ManufordINSpace"
                                 width="40px"/>
 
                                 <Input
@@ -730,6 +918,8 @@
                                     value=""
                                     width="340px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                    
                                 />
                             </HBox>
 
@@ -746,7 +936,7 @@
                                     value=""
                                     width="70px"
                                     class="sapUiTinyMarginEnd"
-                                    editable="false"
+                                    liveChange="onRevQInputChange"
                                 />
                                  <Label
                                     text=""
