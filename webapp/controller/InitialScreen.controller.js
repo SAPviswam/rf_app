@@ -60,13 +60,15 @@ sap.ui.define([
             
                 // Call the user login function
                 this.onUserLogin();
-                this._attachFocusToInputsforlogon();
+               
 
-                // Focus on the user input after dialog opens
-                var oUserInputCS = this.oConfigSap.byId("idUserInput_CS");
-                if (oUserInputCS) {
-                    oUserInputCS.focus();
-                }
+            // Focus on the user input after dialog opens
+            this._attachFocusToInputsforlogon();
+            var oUserInputCS = this.byId("LoginButton_CS");
+            if (oUserInputCS) {
+                oUserInputCS.focus();
+            }
+           
             },
             handleLinksapPress: async function () {
                 debugger
@@ -102,7 +104,7 @@ sap.ui.define([
             
                 aInputIds.forEach(function(sId) {
                     // Access elements via the fragment instance (this.oConfigSap)
-                    var oInput = this.oConfigSap.byId(sId);
+                    var oInput = this.byId(sId);
             
                     if (oInput) {
                         oInput.attachBrowserEvent("focusin", function() {
