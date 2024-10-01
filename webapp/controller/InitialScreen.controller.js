@@ -367,10 +367,6 @@ sap.ui.define([
                     sap.m.MessageToast.show("Application Server is required.");
                     return;
                 }
-                if (!sService) {
-                    sap.m.MessageToast.show("Service is required.");
-                    return;
-                }
 
                 // Update the sDescription based on the checkbox state
                 if (oCheckbox.getSelected()) {
