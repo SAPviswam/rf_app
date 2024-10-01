@@ -141,10 +141,9 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button id="IDlogoncancelbutton"
+                        <Link id="IDlogoncancelbutton"
                          text="Cancel"
                         press="onPressCancleSapLogon"
-                        type="Unstyled"
                         class="cancelbutton"
                        />
                         </HBox>

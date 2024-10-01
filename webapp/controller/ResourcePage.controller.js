@@ -6,10 +6,10 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/library",
     "sap/m/MessageToast",
-     "sap/ui/core/UIComponent",
-     "sap/ui/core/Fragment"  
+    "sap/ui/core/UIComponent",
+    "sap/ui/core/Fragment"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent,Fragment) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment) {
 
         "use strict";
 
@@ -31,8 +31,192 @@ sap.ui.define([
                 }.bind(this));
 
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-
+                this.Themecall = false; // Initialize theme call flag
+                this._currentTileId = null;
             },
+            onAfterRendering: function () {
+                // Apply stored theme color
+                var sStoredThemeColor = localStorage.getItem("themeColor");
+                if (sStoredThemeColor) this.applyThemeColor(sStoredThemeColor);
+ 
+                // Apply stored tile colors
+                var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+                for (var sTileId in tileColors) {
+                    var sColor = tileColors[sTileId];
+                    var oTile = this.byId(this._extractLocalId(sTileId));
+ 
+                    if (oTile) {
+                        (function (oTile, sColor) {
+                            oTile.addEventDelegate({
+                                onAfterRendering: function () {
+                                    var oTileDom = oTile.getDomRef();
+                                    if (oTileDom) oTileDom.style.backgroundColor = sColor;
+                                }
+                            });
+                        })(oTile, sColor);
+                    }
+                }
+            },
+            onMainThemeButton: function () {
+                this.byId("idMainthemeBtn").setVisible(false);
+                this.byId("idCancelButtonResource").setVisible(true);
+                this.byId("idthemeBackGroundButton").setVisible(true);
+                this.Themecall = true;
+                sap.m.MessageToast.show("Theme mode activated.");
+            },
+            onCancelPressThemeMode: function () {
+                this.byId("idMainthemeBtn").setVisible(true);
+                this.byId("idCancelButtonResource").setVisible(false);
+                this.byId("idthemeBackGroundButton").setVisible(false);
+                this.Themecall = false;
+                sap.m.MessageToast.show("Theme mode Deactivated.");
+            },
+            onCancelColorDialog: function () {
+                this.byId("idthemeTileDialogResource").close();
+                this.resetDialogBox();
+            },
+            onBackgroundThemeBtn: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            onApplyColor: function () {
+                var oView = this.getView();
+                var oColorPicker = oView.byId("idcolorPickerResource");
+                var sColorPickerValue = oColorPicker.getColorString();
+                var aSelectedColors = [];
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
+ 
+                // Collect selected colors from checkboxes
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox && oItem.getSelected()) {
+                        var sColorValue = oItem.getCustomData()[0].getValue(); // Get color from custom data
+                        aSelectedColors.push(sColorValue);
+                    }
+                });
+                // Handle cases where checkboxes are selected
+                if (aSelectedColors.length > 0) {
+                    if (aSelectedColors.length > 1) {
+                        sap.m.MessageToast.show("You can only select one color.");
+                        return; 
+                    }
+                    if (oColorPicker.getVisible()) {
+                        sap.m.MessageToast.show("Please deselect the checkbox before using the custom color picker.");
+                        return; 
+                    }
+                    var sSelectedColor = aSelectedColors[0]; // Get the selected color from checkbox
+                    if (this._currentTileId) {
+                        this.applyColorToTile(this._currentTileId, sSelectedColor);
+                        sap.m.MessageToast.show("Tile color applied successfully!");
+                        this._currentTileId = null; 
+                    } else {
+                        this.applyThemeColor(sSelectedColor);
+                        sap.m.MessageToast.show("Theme color applied successfully!");
+                    }
+                } else if (this._isValidColor(sColorPickerValue)) {
+                    // If no checkbox is selected, apply the color from the color picker
+                    if (this._currentTileId) {
+                        this.applyColorToTile(this._currentTileId, sColorPickerValue);
+                        sap.m.MessageToast.show("Tile color applied successfully!");
+                        this._currentTileId = null; 
+                    } else {
+                        this.applyThemeColor(sColorPickerValue);
+                        sap.m.MessageToast.show("Theme color applied successfully!");
+                    }
+                } else {
+                    sap.m.MessageToast.show("Invalid color format. Please use a valid color code.");
+                }
+                // Deactivate any flag and reset dialog
+                //this.Themecall = false; // Deactivate the flag after applying
+                this.resetDialogBox();
+ 
+                // Close the dialog and reset background and cancel buttons
+                this.byId("idthemeTileDialogResource").close();
+                //this.byId("themeButton").setVisible(false);
+                //this.byId("CancelButton").setVisible(false);
+                //this.byId("themeButton3").setVisible(true);
+            },
+            applyColorToTile: function (sTileId, sColor) {
+                var oTile = this.byId(sTileId);
+                if (!oTile) return;
+ 
+                var oTileDomRef = oTile.getDomRef();
+                if (oTileDomRef) {
+                    oTileDomRef.style.backgroundColor = sColor;
+ 
+                    // Update localStorage with tile color
+                    var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+                    tileColors[sTileId] = sColor;
+                    localStorage.setItem("tileColors", JSON.stringify(tileColors));
+                }
+            },
+            applyThemeColor: function (sColor) {
+                debugger
+                var aElements = [
+                    this.byId("idScrollContainer1"),
+                ];
+ 
+                // Remove any existing style element for the theme
+                var sStyleId = "customThemeStyle";
+                var oOldStyle = document.getElementById(sStyleId);
+                if (oOldStyle) {
+                    oOldStyle.remove();
+                }
+ 
+                // Create a new style element and apply the color
+                var oStyle = document.createElement("style");
+                oStyle.id = sStyleId;
+                oStyle.textContent = ".customTheme { background-color: " + sColor + " !important; }";
+                document.head.appendChild(oStyle);
+ 
+                // Add the custom theme class to the elements
+                aElements.forEach(function (oElement) {
+                    if (oElement) {
+                        oElement.addStyleClass("customTheme");
+                    }
+                });
+                localStorage.setItem("themeColor", sColor);
+            },
+            onColorOptionSelect: function (oEvent) {
+                var oSelectedCheckBox = oEvent.getSource();
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
+                // Deselect all other checkboxes except the currently selected one
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox && oItem !== oSelectedCheckBox) {
+                        oItem.setSelected(false);
+                    }
+                });
+                // Hide the color picker if a checkbox is selected, show if deselected
+                var isCheckBoxSelected = oSelectedCheckBox.getSelected();
+                this.byId("idcolorPickerResource").setVisible(!isCheckBoxSelected);
+            },
+            // Reset the dialog box when canceled or after applying the color
+            resetDialogBox: function () {
+                var oView = this.getView();
+                var oColorPicker = oView.byId("idcolorPickerResource");
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
+ 
+                // Deselect all checkboxes
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox) {
+                        oItem.setSelected(false);
+                    }
+                });
+                // Reset the color picker to its default value
+                oColorPicker.setColorString("#FFFFFF"); 
+                oColorPicker.setVisible(true);
+            },
+            onCancelColorDialog: function () {
+                this.byId("idthemeTileDialogResource").close();
+            },
+            // Helper function to extract the local ID of a tile
+            _extractLocalId: function (sTileId) {
+                return sTileId.split("--").pop(); 
+            },
+            _isValidColor: function (sColor) {
+                var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
+                var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
+                return hexRegex.test(sColor) || rgbRegex.test(sColor);
+            },
+ 
 
 
             onResourceDetailsLoad: async function (oEvent1) {
@@ -85,8 +269,6 @@ sap.ui.define([
                 //   const sToolPage = this. getView().byId("toolPage");
                 //   sToolPage.bindElement(`/(${id})`);
 
-
-                debugger;
                 var that = this;
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
@@ -98,9 +280,9 @@ sap.ui.define([
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var area = oData.Area;
-                        var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
+                        var areaArray = area.split(",").map(item => item.trim()); 
                         var ogroup = oData.Resourcegroup;
-                        var groupArray = ogroup.split(",").map(item => item.trim()); // Split and trim each group
+                        var groupArray = ogroup.split(",").map(item => item.trim()); 
 
                         groupArray.forEach(function (group) {
 
@@ -123,7 +305,7 @@ sap.ui.define([
 
                         // Loop through navigation data
                         aNavigationData.forEach(function (oProcess) {
-                            var processVisible = false; // Flag to track visibility for each process
+                            var processVisible = false; 
 
                             // Loop through areaArray
                             areaArray.forEach(function (areaArray1) {
@@ -208,129 +390,236 @@ sap.ui.define([
                 } else {
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
-            }, 
-            onManuallyRepackHUPress : function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
-            
             },
-            onManuallyRepackHUItemPress : function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            onManuallyRepackHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackHU", { id: this.ID });
+                }
             },
-
-            onPutawayByHUPress: function () {
-             
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
+            onManuallyRepackHUItemPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
+                }
             },
-            onReceivingofHUbyConsignementOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("Receivingofhubyco",{id:this.ID});
-
-
+            onPutawayByHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RoutePutawayByHU", { id: this.ID });
+                }
             },
-            onManuallyRepackHUItemPress:function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteManuallyRepackingByHuItems",{id:this.ID});
+            onReceivingofHUbyConsignementOrderPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("Receivingofhubyco", { id: this.ID });
+                }
             },
-
-            onWTQuerybyWOPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO", { id: this.ID });
+            onManuallyRepackHUItemPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteManuallyRepackingByHuItems", { id: this.ID });
+                }
             },
-            onReceivingofHUbyDeliveryPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyDelivery",{id:this.ID});
+            onWTQuerybyWOPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByWO", { id: this.ID });
+                }
             },
-            onReceivingofHUbymanufacturingOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyManufacturingOrder",{id:this.ID});
+            onReceivingofHUbyDeliveryPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyDelivery", { id: this.ID });
+                }
             },
-            onRecevingofTUDoorTWPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
+            onReceivingofHUbymanufacturingOrderPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyManufacturingOrder", { id: this.ID });
+                }
             },
-            onReceivingofHUbyASNPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyASN",{id:this.ID});
+            onRecevingofTUDoorTWPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyTUorDoor", { id: this.ID });
+                }
             },
-            onReceivingofHUbyShipmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyShipment",{id:this.ID});
+            onReceivingofHUbyASNPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
+                }
             },
-            onReceivingofHUbyTUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
+            onReceivingofHUbyShipmentPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
+                }
             },
-
-            onUnloadingByDoorTilePress: function () {
-                // BusyIndicator.show(3);
-                // setTimeout(function () {
-                //     // Navigate to another page (user page)
-                //     var oRouter = this.getOwnerComponent().getRouter();
-                //     oRouter.navTo("UnloadingByDoor");
-                //     BusyIndicator.hide();
-                //   }.bind(this), 2000); 
-                var oRouter = this.getOwnerComponent().getRouter();
-                    oRouter.navTo("UnloadingByDoor",{id:this.ID});
-
+            onReceivingofHUbyTUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
+                }
             },
-            onUnloadingByConsignmentOrderTilePress: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByConsignmentOrder",{id:this.ID});
-
+            onUnloadingByDoorTilePress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByDoor", { id: this.ID });
+                }
             },
-            onChangeQueueTilePress: function () {
-                debugger
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("ChangeQueue",{id:this.ID});
-
+            onUnloadingByConsignmentOrderTilePress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
+                }
             },
-            onChangeResourceGroupTilePress:function(){
-                const oRoute =this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup",{id:this.ID})
+            onChangeQueueTilePress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeQueue", { id: this.ID });
+                }
             },
-            onUnloadingbyBillofLadingPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
+            onChangeResourceGroupTilePress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeResourceGroup", { id: this.ID });
+                }
             },
-            onDeconsolidationAutomaticallyPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            onUnloadingbyBillofLadingPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
+                }
             },
-            onDeconsolidateManuallyPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            onDeconsolidationAutomaticallyPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
+                }
             },
-            onAdhocInventoryCreationPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            onDeconsolidateManuallyPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("DeconsolidationManually", { id: this.ID });
+                }
             },
-            onCreationOfSingleHUpress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+            onAdhocInventoryCreationPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocInventoryCreation", { id: this.ID });
+                }
             },
-            onMaintainHUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU",{id:this.ID});
+            onCreationOfSingleHUpress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreationOfSingleHU", { id: this.ID });
+                }
             },
-            onReversalofConsumptionbyMOHUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReversalofConsumptionbyMObyHU",{id:this.ID});
+            onMaintainHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("MaintainHU", { id: this.ID });
+                }
             },
-            onUnloadingByShipmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByShipment",{id:this.ID});
+            onReversalofConsumptionbyMOHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
+                }
             },
-            onUnloadingByTransportUnitPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByTU",{id:this.ID});
+            onUnloadingByShipmentPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByShipment", { id: this.ID });
+                }
+            },
+            onUnloadingByTransportUnitPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByTU", { id: this.ID });
+                }
             },
 
             // onSBQPAvatarPressed: function () {
             //     var oView = this.getView();
-    
+
             //     // Create the dialog lazily
             //     if (!this._pProfileDialog) {
             //         this._pProfileDialog = Fragment.load({
@@ -342,172 +631,308 @@ sap.ui.define([
             //             return oDialog;
             //         });
             //     }
-    
+
             //     this._pProfileDialog.then(function (oDialog) {
             //         oDialog.open();
             //     });
             // },
-            onSBQPAvatarPressed: function(oEvent) {
-                
-              
-                
+            onSBQPAvatarPressed: function (oEvent) {
                 if (!this._oPopover) {
                     this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
                     this.getView().addDependent(this._oPopover);
                 }
                 // Open popover near the avatar
                 this._oPopover.openBy(oEvent.getSource());
-            
-        },
-    
+            },
+
             onCloseDialog: function () {
                 this._pProfileDialog.then(function (oDialog) {
                     oDialog.close();
                 });
             },
-    
+
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
             },
-    
+
             onLogoutPress: function () {
                 sap.m.MessageToast.show("Logging out...");
                 // Add actual logout logic here
             },
-            
-            onRecevinngofHUbyBillofLadingPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteBillofLading",{id:this.ID});
+            onRecevinngofHUbyBillofLadingPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("onRecevinngofHUbyBillofLadingPress", { id: this.ID });
+                }
             },
-            onCreateShippingHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHU",{id:this.ID});
+            onCreateShippingHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateShippingHU", { id: this.ID });
+                }
             },
-            onCreateShippingHUWOWCPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
+            onCreateShippingHUWOWCPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateShippingHUWOWC", { id: this.ID });
+                }
             },
-            //Putaway By WO Tile..
-            onPutawayByWOPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("PutawayByWO", { id: this.ID });
+            onPutawayByWOPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("PutawayByWO", { id: this.ID });
+                }
             },
-            //AvailableHandlingunitsOnBinQuery Tile...
-            onAvailableHandlingunitsonbinqueryPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
+            onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
+                }
             },
-            //WTQueryByHU Tile...
-            onWTquerybyHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByHU", { id: this.ID });
+            onWTquerybyHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByHU", { id: this.ID });
+                }
             },
-            onWTQueryByWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT",{id:this.ID});
+            onWTQueryByWTPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByWT", { id: this.ID });
+                }
             },
-            onCreateandConfirmAdhocHUWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
+            onCreateandConfirmAdhocHUWTPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
+                }
             },
-            onCreateandConfirmAdhocProductWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
+            onCreateandConfirmAdhocProductWTPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
+                }
             },
-            onSerialnumberLocationPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation",{id:this.ID});
+            onSerialnumberLocationPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("SerialNumberLocation", { id: this.ID });
+                }
             },
-            onStockBinQuerybyProductPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
+            onStockBinQuerybyProductPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
+                }
             },
-            onCreateAdhocHUWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt",{id:this.ID});
+            onCreateAdhocHUWTPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocHuWt", { id: this.ID });
+                }
             },
-            onCreateAdhocProductWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt",{id:this.ID});
+            onCreateAdhocProductWTPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocProductWt", { id: this.ID });
+                }
             },
-            onReceivingofHUbyDoorPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
+            onReceivingofHUbyDoorPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingOfHuByDoor", { id: this.ID });
+                }
             },
-            onStockBinQuerybyBinPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
+            onStockBinQuerybyBinPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("StockBinQueryByBin", { id: this.ID });
+                }
             },
-            onHUQueryPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HuQuery",{id:this.ID});
+            onHUQueryPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HuQuery", { id: this.ID });
+                }
             },
-            onUnloadingByDeliveryPress:function(){ 
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
-            }, 
- 
-            onUnloadingByASNPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
+            onUnloadingByDeliveryPress: function (oEvent) {
+                if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTileId = oEvent.getSource().getId();
+                    // Open the theme dialog for tile color selection
+                    this.onBackgroundThemeBtn();
+                } else {
+                    // Proceed with normal navigation
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadByDelivery", { id: this.ID });
+                }
             },
-            onWTQuerybyQueuePress:function(){ 
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
-            }, 
+            onUnloadingByASNPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
+                }
+            },
+            onWTQuerybyQueuePress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByQueue", { id: this.ID });
+                }
+            },
+            onPickPointPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("PickPoint", { id: this.ID });
+                }
+            },
+            onManuallyrepackallHUitemsPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
+                }
+            },
+            onHUStockOverviewQueryPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
+                }
+            },
+            onConsumptionByManufacturingOrderPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ConsumptionByManufacturingOrder", { id: this.ID });
+                }
+            },
+            onCreatePutawayHusforDeconsolidationPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreatePutawayHusforDeconsolidate", { id: this.ID });
+                }
+            },
+            onCreatePutawayHusManuallyPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreatePutawayHusManually", { id: this.ID });
+                }
+            },
+            onLoadByHUManPosAssigmentPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("LoadbyHUManPosAssiognment", { id: this.ID });
+                }
+            },
+            onPutawayByHUClusteredPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RoutePutawayHuClustered", { id: this.ID });
+                }
+            },
+            onAutomaticallyRepackHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AutomaticallyRepackHu", { id: this.ID });
+                }
+            },
+            onLoadByHUAutoPosAssignmentPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTileId = oEvent.getSource().getId();
+                    this.onBackgroundThemeBtn();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("LoadbyHUAutoPosAssiognment", { id: this.ID });
+                }
+            },
 
-            // onDeconsolidationAutomaticallyPress:function(){
-            //     var oRouter = UIComponent.getRouterFor(this); 
-            //     oRouter.navTo("DeconsAuto",{id:this.ID});   
-            // }
-            onPickPointPress:function(){ 
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("PickPoint",{id:this.ID});                 
-            }, 
-            onManuallyrepackallHUitemsPress:function(){
+            onProductInspectionByHUPress :function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
-            },
-            onHUStockOverviewQueryPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
-            },
-            onConsumptionByManufacturingOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ConsumptionByManufacturingOrder",{id:this.ID});
+                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
             },
 
-            onCreatePutawayHusforDeconsolidationPress: function(){
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});        
-            },
-            onCreatePutawayHusManuallyPress: function() {
+            onProductInspectionByStorageBinPress:function(){
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
-
-            },
-
-            onLoadByHUManPosAssigmentPress: function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
-        },
-
-            onPutawayByHUClusteredPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-            },
-            onAutomaticallyRepackHUPress:function() {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
-            },
-
-            onLoadByHUAutoPosAssignmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
-            },
+                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+            }
 
         });
     });
