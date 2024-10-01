@@ -45,7 +45,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                <ComboBox
+                <!-- <ComboBox
                     id="idLanguageSelectorComboBox"
                     change="onLanguageChange"
                     visible="false"
@@ -78,7 +78,7 @@
                     id="idBtnLanguageChange"
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
-                />
+                /> -->
                  <Button
                     id="themeButton"
                     text="Background Theme"
@@ -224,6 +224,7 @@
                                     placeholder="Enter Employee ID"
                                     class="Input"
                                     liveChange="onEmployeeIdLiveChange"
+                                   
                                 />
                             </FlexBox>
                             <FlexBox
@@ -244,6 +245,7 @@
                                     id="idNameInput"
                                     placeholder="Enter Name"
                                     class="Input"
+                                  
                                 />
                             </FlexBox>
                             <FlexBox
@@ -263,6 +265,7 @@
                                     id="idEmailInput"
                                     placeholder="Enter Email"
                                     class="Input"
+                                    
                                 />
                             </FlexBox>
                             <FlexBox
@@ -287,6 +290,9 @@
                                         id="idPhoneInput"
                                         placeholder="Enter Phone"
                                         class="Input"
+                                        type="Number"
+                                        liveChange="onMobileVal"
+                                    
                                     />
                                     <core:Icon
                                         id="verficationIdicon"
@@ -802,7 +808,7 @@
                             id="idUnloadingByDelivery1"
                             header="Unloading By Delivery"
                             press="OnPressUnloadByDelivery"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                            
                         </GenericTile>
@@ -811,7 +817,7 @@
                             id="idUnloadingByShipment1"
                             header="Unloading By Shipment"
                             press="onUnloadingByShipmentPress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                             
                         </GenericTile>
@@ -820,7 +826,7 @@
                             id="idUnloadingByTransportUnit1"
                             header="Unloading By Transport Unit"
                             press="onUnloadingByTUPress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                            
                         </GenericTile>
@@ -829,7 +835,7 @@
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
                             press="onUnloadingBYASN"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                            
                         </GenericTile>
@@ -838,7 +844,7 @@
                             id="idUnloadingByDoor1"
                             header="Unloading By Door"
                             press="onUnloadingByDoorTilePress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                            
                         </GenericTile>
@@ -847,7 +853,7 @@
                             id="idUnloadingByBillOfLading1"
                             header="Unloading By Bill of Lading"
                             press="onUnloadingByBillofLadingPress"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                            
                         </GenericTile>
@@ -856,7 +862,7 @@
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
                             press="onUnloadingByConsignmentOrderTilePress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                             
                         </GenericTile>
@@ -872,47 +878,47 @@
                             id="idCreatePutawayHusforDeconsolidation1"
                             header="Create Putaway Hus for Deconsolidation"
                             press="onCreatePutawayHusforDeconsolidation"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idCreatePutawayHusManually1"
                             header="Create Putaway Hus Manually"
                             press="onCreatePutawayHusManually"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idDeconsolidationAutomatically1"
                             header="Deconsolidation Automatically"
                             press="onDeconsolidationAutomaticallypress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idDeconsolidateManually1"
                             header="Deconsolidate Manually"
                             press="onDeconsolidationManuallypress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idHUOverview1"
                             header="HU Overview"
                             press="onHUOverview"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idCreatePutawayHUManually1"
                             header="Create Putaway HU Manually (W/O WC)"
                             press="onCreatePutawayHUManually"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
                             press="ondHUMaintenance"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -920,25 +926,25 @@
                         horizontal="false"
                         vertical="true"
                         height="100%"
-                        class="sapUiContentPadding"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     >
                         <GenericTile
                             id="idPutawayByHU1"
                             header="Putaway By HU"
                             press="onPutawayByHU"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idPutawayByHUClustered1"
                             header="Putaway By HU (Clustered)"
                             press="onPutawayByHUClustered"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
                             press="onTilePress"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                             <TileContent id="idTileContentPutaway">
                                 <Button
@@ -953,7 +959,7 @@
                             id="idConfiramtionCorrections1"
                             header="Confiramtion Corrections"
                             press="onConfiramtionCorrections"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -968,67 +974,67 @@
                             id="idReceivingofHUbyDelivery1"
                             header="Receiving of HU by Delivery"
                             press="onReceivingofHUbyDelivery"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyShipment1"
                             header="Receiving of HU by Shipment"
                             press="onReceivingofHUbyShipment"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyTU1"
                             header="Receiving of HU by TU"
                             press="onReceivingofHUbyTU"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyASN1"
                             header="Receiving of HU by ASN"
                             press="onReceivingofHUbyASN"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofHUbyDoor1"
                             header="Receiving of HU by Door"
                             press="onReceivingofHUbyDoor"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofHUbyManufacturingOrder1"
                             header="Receiving of HU by Manufacturing Order"
                             press="onReceivingofHUbyManufacturingOrder"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofTUorDoor1"
                             header="Receiving of TU/Door (TW)"
                             press="onReceivingofTUorDoor"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idUnloadHUCTW1"
                             header="Unload HUC (TW)"
                             press="onUnloadHUCTW"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivinogfHUbyBillofLading1"
                             header="Receiving of HU by Bill of Lading"
                             press="onReceivingofHUbyBillofLading"
-                            class="sapUiTinyMargin"
+                           class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivinogfHUbyConsignementOrder1"
                             header="Receiving of HU by Consignement Order"
                             press="onReceivingofHUbyConsignementOrder"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1044,14 +1050,14 @@
                             id="idSetReadyForWHProcessingByBOL1"
                             header="Set Ready For WH Processing By BOL"
                             press="onSetReadyForWHProcessingByBOL"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idSetReadyForWHProcessingByCO1"
                             header="Set Ready For WH Processing By CO"
                             press="onPressSetReadyForWHProcessingByCO"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1135,14 +1141,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile
@@ -1156,7 +1162,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1261,14 +1267,14 @@
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPressPickPoint"
                         />
 
                         <GenericTile
                             id="_IDHUMaintenance"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="HU Maintenance"
-                            press="press"
+                            press="onPressHUMaintenance"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1289,7 +1295,7 @@
                             id="IDGenGenericTile29"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Reversal of Consumption by MO (HU)"
-                            press="press"
+                            press="OnReversalofConsumptionbyMObyHUpress"
                         />
 
                         <GenericTile
@@ -1319,12 +1325,18 @@
                             header="Load By HU - Auto. Pos. Assigment"
                             press="OnpressLoadbyHUAutoPosAssiognment"
                         />
+                        <GenericTile
+                            id="IDGenGenericTile3222"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Change Loading/Unloading Details"
+                            press="OnpressChangeLoadingUnloadingDetails"
+                        />
 
                         <GenericTile
                             id="IDGenGenericTile34"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Unload By HU"
-                            press="press"
+                            press="onUnloadByHUPress"
                         />
                     </ScrollContainer>
                     <ScrollContainer
