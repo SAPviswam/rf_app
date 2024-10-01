@@ -324,7 +324,6 @@
                         width="32px"
                     />
                 </HBox>
-
                 <f:SimpleForm
                     id="idProductDetailsForm_LBHUAPAL1"
                     layout="ResponsiveGridLayout"
@@ -365,6 +364,17 @@
                             maxLength="25"
                             width="70px"
                             editable="false"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Button
+                            id="idbuttonLBHUAPAArrowdown"
+                            icon="sap-icon://slim-arrow-down"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Button
+                            id="idbuttonLBHUAPAArrowUp"
+                            icon="sap-icon://slim-arrow-up"
+                            class="sapUiTinyMarginEnd"
                         />
                     </HBox>
 
