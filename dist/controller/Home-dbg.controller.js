@@ -189,53 +189,6 @@ sap.ui.define([
                 this.OnGenereateOTP(sPhoneNumber);
                 this.byId("idOtpInput").setVisible(true);
             },
-            OnGenereateOTP: function (sPhoneNumber) {
-                // Prepare the Twilio API details
-                var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
-
-                // const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account
-                // const authToken = '702f2b322d3ab982e7e8da69db2598b8'; // Replace with your Twilio Auth Token
-                // const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
-
-                const accountSid = 'AC2fb46ec1c11689b5cecea6361105c723'; // Replace with your Twilio Account SID
-                const authToken = 'f1ae977a8f46265e4078d48e6bbfa5b4'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VAdfa3a7c4613f48b5722f611bb2ef3b5d';// Replace with your Twilio Verify Service SID
-
-                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
-
-                // Prepare the data for the request
-                const payload = {
-                    To: formattedPhoneNumber,
-                    Channel: 'sms'
-                };
-
-                var that = this;
-
-                // Make the AJAX request to Twilio to send the OTP
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $.param(payload),
-                    success: function (data) {
-                        console.log('OTP sent successfully:', data);
-                        sap.m.MessageToast.show('OTP sent successfully! Please check your phone.');
-
-                        // Store the phone number for later use in OTP verification
-                        that._storedPhoneNumber = formattedPhoneNumber;
-
-                        // Open the OTP dialog
-
-                    }.bind(that),
-                    error: function (xhr, status, error) {
-                        console.error('Error sending OTP:', error);
-                        sap.m.MessageToast.show('Failed to send OTP: ' + error);
-                    }
-                });
-            },
             handleEscape: function () {
                 // Handle the escape key event if necessary
                 this.byId("idOtpDialog").close();
@@ -431,8 +384,6 @@ sap.ui.define([
                                 sap.m.MessageToast.show("Success");
                                 that.onCloseRegisterSubmitDialog();
 
-                                that.onClearRegisterSubmitDialog();
-
 
                             },
                             error: function (oError) {
@@ -461,22 +412,6 @@ sap.ui.define([
                 this.bOtpVerified = false;
                 // Clear the value of each ComboBox
                 oView.byId("idResouceType").setSelectedKey("");
-            },
-
-            onForgotPassword: async function () {
-                var oView = this.getView();
-                var sResourceId = oView.byId("idUserIDInput").getValue();
-                if (!sResourceId) {
-                    MessageBox.error("Plesase enter resource ID")
-                    return;
-                }
-                this.oforgotDialog ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.Forgotpassword"
-                })
-                this.oforgotDialog.open();
-            },
-            onCloseFP: function () {
-                this.oforgotDialog.close();
             },
 
             sample: async function () {
@@ -547,190 +482,121 @@ sap.ui.define([
             onCancelPress: function () {
                 this.oResetDialog.close();
             },
-            onSelectGetCode: function () {
-                var mobileNo = this.byId("idEnterMobileNo").getValue();
 
-                // Validate mobile number
-                if (!mobileNo) {
-                    sap.m.MessageToast.show("Please enter your mobile number.");
-                    return;
-                }
+            onSelectCheckBox: function () {
                 var oModel = this.getOwnerComponent().getModel();
-                // Call the OData service to check if the record exists
-                oModel.read("/RESOURCESSet?$filter=Phonenumber eq '" + mobileNo + "'", {
-                    success: function (data) {
-                        if (data.results.length > 0) {
-                            this.OnGenereateOTP(mobileNo)
-                        } else {
-                            MessageToast.show("No record found for this mobile number.");
+                oModel.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        var ouser = oData.Users.toLowerCase()
+                        if (ouser === "supervisor" || ouser === "manager") {
+
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
                         }
+                        else {
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                        }
+
                     }.bind(this),
                     error: function () {
-                        MessageToast.show("Error fetching data. Please try again.");
+                        MessageToast.show("User doesn't exist")
                     }
                 });
             },
-            OnVerifyforgetOTP: function () {
-                var oMobileinput = this.byId("idEnterMobileNo")
-                var oOtpInput = this.byId("idEnterConformationCode");
-                var sEnteredOtp = oOtpInput.getValue();
-                var oVerfied = this.byId("verficationId1");
-                var that = this
-                // Reset the ValueState and ValueStateText before validation
-                oOtpInput.setValueState(sap.ui.core.ValueState.None);
-                oOtpInput.setValueStateText("");
 
-                // Basic validation: Check if OTP is entered
-                if (!sEnteredOtp) {
-                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                    oOtpInput.setValueStateText("Please enter the OTP.");
-                    sap.m.MessageToast.show("Please enter the OTP.");
-                    return;
-                }
-
-                // Validate OTP: It should be exactly 6 digits
-                var otpRegex = /^\d{6}$/;
-                if (!otpRegex.test(sEnteredOtp)) {
-                    oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                    oOtpInput.setValueStateText("Please enter a valid 6-digit OTP.");
-                    sap.m.MessageToast.show("Please enter a valid 6-digit OTP.");
-                    return;
-                }
-
-                // Prepare the Twilio Verify Check API details
-                const accountSid = 'AC2fb46ec1c11689b5cecea6361105c723'; // Replace with your Twilio Account SID
-                const authToken = 'f1ae977a8f46265e4078d48e6bbfa5b4'; // Replace with your Twilio Auth Token
-                const serviceSid = 'VAdfa3a7c4613f48b5722f611bb2ef3b5d'; // Replace with your Twilio Verify Service SID
-                const url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`;
-                const payload = {
-                    To: that._storedPhoneNumber,
-                    Code: sEnteredOtp
-                };
-
-                // Make the AJAX request to Twilio to verify the OTP
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $.param(payload),
-                    success: function (data) {
-                        if (data.status === "approved") {
-                            sap.m.MessageToast.show("OTP verified successfully!");
-                            oOtpInput.setValueState(sap.ui.core.ValueState.Success);
-                            oMobileinput.setValueState(sap.ui.core.ValueState.Success);
-                            oVerfied.setVisible(true);
-
-                            // Reset the ValueState to None upon successful verification
-
-                            oOtpInput.setValueStateText("OTP verified successfully");
-                            that.bOtpVerified = true;
-
-                            // Proceed with further actions
-                        } else {
-                            oOtpInput.setValueState(sap.ui.core.ValueState.Error);
-                            oOtpInput.setValueStateText("Invalid OTP. Please try again.");
-                            sap.m.MessageToast.show("Invalid OTP. Please try again.");
-                            oMobileinput.setValueState(sap.ui.core.ValueState.Error);
-                            oMobileinput.setValueStateText("Recheck your Mobile Number");
-                        }
-                    }.bind(that),
-                    error: function (xhr, status, error) {
-                        console.error('Error verifying OTP:', error);
-                        sap.m.MessageToast.show('Failed to verify OTP: ' + error);
-                    }
-                });
-            },
-            onforgotpassword: async function () {
+            oncreatesingupPress: function () {
                 var oView = this.getView();
 
-                // Retrieve the new password and confirm password from the dialog input fields
-                var sResourceId = oView.byId("idUserIDInput").getValue();
-                var sNewPassword = oView.byId("idEnterNewPassword").getValue();
-                var sotp = oView.byId("idEnterConformationCode").getValue();
-                var sConfirmPassword = oView.byId("idConfirmPassword").getValue();
-                var sMobno = oView.byId("idEnterMobileNo").getValue();
+                // Retrieve values from input fields
+                var sFirstName = oView.byId("idFirstnameInput").getValue();
+                var sLastName = oView.byId("idLastnameInput").getValue();
+                var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
+                var sMobileNo = oView.byId("idMobilenoInput").getValue();
+                var sEmailID = oView.byId("idEmailIDInput").getValue();
+                var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
 
-
-
-                if (sMobno.length !== 10 || !/^\d+$/.test(sMobno)) {
-                    oView.byId("idEnterMobileNo").setValueState("Error");
-                    oView.byId("idEnterMobileNo").setValueStateText("Mobile number must be a 10-digit numeric value");
-                    bValid = false;
-
-                } else {
-                    oView.byId("idEnterMobileNo").setValueState("None");
-                    if (!this.bOtpVerified) {
-                        sap.m.MessageToast.show("Please verify your phone number with the OTP before submitting.");
-                        return;
-                    }
-                }
-                if (!sotp || !sNewPassword || !sConfirmPassword || !sMobno) {
-                    sap.m.MessageToast.show("Please fill all details.");
+                // Validate input fields
+                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
+                    MessageToast.show("Please fill all fields");
                     return;
                 }
 
-                // Validate password length
-                if (sConfirmPassword.length !== 8 || sNewPassword.length !== 8) {
-                    MessageBox.error("Your Password length should be 8 characters.");
+                // Validate mobile number
+                if (!/^\d{10}$/.test(sMobileNo)) {
+                    MessageToast.show("Mobile number must be exactly 10 digits.");
+                    return;
+                }
+                if (!this.validateEmail(sEmailID)) {
+                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
                     return;
                 }
 
-                // Check if the passwords match
-                if (sNewPassword !== sConfirmPassword) {
-                    sap.m.MessageToast.show("Passwords do not match. Please try again.");
-                    return;
-                }
-                // Get the model from the component
-                var oModel = this.getOwnerComponent().getModel();
+                // Get the OData model
+                var oModel = this.getView().getModel();
 
-                var oDataUpdate = {
-                    Password: sNewPassword
-                };
+                // Check if Employee No already exists
+                oModel.read("/RESOURCESSet", {
+                    filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
+                    success: function (oData) {
+                        // Check if any results were returned
+                        if (oData.results.length > 0) {
+                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
+                        } else {
+                            // Create a data object for new user
+                            var oDataToCreate = {
+                                Resourcename: sFirstName,
+                                Lname: sLastName,
+                                Resourceid: sEmployeeNo,
+                                Phonenumber: sMobileNo,
+                                Email: sEmailID,
+                                Resourcetype: sResourceType
+                            };
 
-                // Update the user's password in the backend
-                try {
-                    await oModel.update(`/RESOURCESSet('${sResourceId}')`, oDataUpdate, {
-                        success: function () {
-                            sap.m.MessageToast.show("Password updated successfully!");
-                            this.byId("verficationId1").setVisible(false);
-                            // Clear input fields after success
-                            oView.byId("idEnterNewPassword").setValue("");
-                            oView.byId("idConfirmPassword").setValue("");
-                            oView.byId("idEnterMobileNo").setValue("");
-                            oView.byId("idEnterConformationCode").setValue("");
-                        }.bind(this),
-                        error: function () {
-                            sap.m.MessageToast.show("Error updating user login status.");
+                            // Send data to backend (adjust path as necessary)
+                            oModel.create("/RESOURCESSet", oDataToCreate, {
+                                success: function () {
+                                    MessageToast.show("Resource created successfully!");
+                                    // Reset input fields
+                                    oView.byId("idFirstnameInput").setValue("");
+                                    oView.byId("idLastnameInput").setValue("");
+                                    oView.byId("idEmployeenoInput").setValue("");
+                                    oView.byId("idMobilenoInput").setValue("");
+                                    oView.byId("idEmailIDInput").setValue("");
+                                    oView.byId("idinternal").setSelected(false);
+                                    oView.byId("idexternal").setSelected(false);
+                                    oView.byId("idothers").setSelected(false);
+                                    oView.byId("dialog").close();
+                                },
+                                error: function () {
+                                    MessageToast.show("Error creating user. Please try again.");
+                                }
+                            });
                         }
-                    });
-                } catch (error) {
-                    sap.m.MessageToast.show("An error occurred while updating the password.");
-                }
+                    },
+                    error: function () {
+                        MessageToast.show("Error checking existing Employee No. Please try again.");
+                    }
+                });
             },
-            onSelectCheckBox:function(){
-                var oModel = this.getOwnerComponent().getModel();
-            oModel.read("/RESOURCESSet('" + this.ID + "')", {
-                success: function (oData) {
-                    var ouser=oData.Users.toLowerCase()
-                    if(ouser==="supervisor" || ouser==="manager"){
 
-                   
-                    
-                    this.getOwnerComponent().getRouter().navTo("Supervisor", { id:this.ID })
-                    }
-                    else{
-                        this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id:this.ID })
-                    }
+            validateEmail: function(email) {
+                // Regular expression for validating an email address
+                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+                return re.test(email);  // Returns true if valid, false otherwise
+            },
 
-                }.bind(this),
-                error: function () {
-                    MessageToast.show("User doesn't exist")
+            getSelectedResourceType: function () {
+                // Get selected resource type from radio buttons
+                var oView = this.getView();
+                if (oView.byId("idinternal").getSelected()) {
+                    return "Internal";
+                } else if (oView.byId("idexternal").getSelected()) {
+                    return "External";
+                } else if (oView.byId("idothers").getSelected()) {
+                    return "Others";
                 }
-            });
             }
+
+
 
         });
     });

@@ -670,23 +670,22 @@ background-color: rgb(9, 8, 8) !important;
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
-.connecttoSAPform{
+/* .connecttoSAPform{
     border-radius: 0rem !important;
-    /* border: 0.5px solid #080808d2 !important; */
     background-color: #c9dbe9;
-}
+} */
 .logonbutton{
     background-color:#5496cd;
     border: 2px solid #5496cd !important;
     color:  #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.cancelbutton{
+/* .cancelbutton{
     background-color: #c9dbe9;
     border: 2px solid #c9dbe9 !important;
     color:rgba(24, 24, 237, 0.852) !important;
     margin-top: 0.2rem;
-}
+} */
 
 /* .comboCS{
 margin-left: 20%;
