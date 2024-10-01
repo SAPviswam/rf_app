@@ -41,6 +41,21 @@ sap.ui.define([
                 })
                 this.oConfigSap.open();
                 this.onUserLogin();
+
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("_IDGenImage_CS").setWidth("20%");
+                        this.byId("_IDGenImage_CS").setHeight("25%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        // this.byId("_IDGenImage_CS").setWidth("90%");
+                        // this.byId("_IDGenImage_CS").setHeight("35%");
+                    }
+                }
+
             },
             handleLinksapPress: async function () {
                 this.oConnetSap ??= await this.loadFragment({
@@ -49,6 +64,7 @@ sap.ui.define([
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
                 this.oConnetSap.open();
+                
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
