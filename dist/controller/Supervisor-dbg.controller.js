@@ -101,7 +101,6 @@ sap.ui.define(
                 return aIdParts.length > 1 ? aIdParts[aIdParts.length - 1] : sTileId;
             },
             
-
             //For background Theme Dialog..
             onOpenThemeDialog: function () {
                 this.byId("themeTileDialog").open();
@@ -947,7 +946,6 @@ sap.ui.define(
                     }
                 });
             },
-
 
             onApprovePress: function () {
                  
@@ -1979,7 +1977,7 @@ sap.ui.define(
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
             },
 
-            onPickPointPress:function(){
+            onPressPickPoint:function(){
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("PickPoint",{id:this.ID});  
             },
@@ -2047,6 +2045,8 @@ sap.ui.define(
                 oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
             },
 
+           
+            
             onThemeButton: function () {
                 this.byId("themeButton").setVisible(true);
                 this.byId("CancelButton").setVisible(true);
