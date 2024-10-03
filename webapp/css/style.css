@@ -431,7 +431,7 @@
 .UnitsofMeasure {
     margin-top: 0.4rem;
 }
-/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+/* ScrollContainers Page2 & Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
    ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
    ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
    ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
@@ -512,7 +512,9 @@
         width: auto !important; /* Adjust labels */
     }
 }
-
+.onProfileOptions{
+    margin-left: -0.2rem !important;
+}
 
 
 
