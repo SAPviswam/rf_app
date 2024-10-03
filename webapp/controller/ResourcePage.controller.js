@@ -38,13 +38,13 @@ sap.ui.define([
                 // Apply stored theme color
                 var sStoredThemeColor = localStorage.getItem("themeColor");
                 if (sStoredThemeColor) this.applyThemeColor(sStoredThemeColor);
- 
+
                 // Apply stored tile colors
                 var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
                 for (var sTileId in tileColors) {
                     var sColor = tileColors[sTileId];
                     var oTile = this.byId(this._extractLocalId(sTileId));
- 
+
                     if (oTile) {
                         (function (oTile, sColor) {
                             oTile.addEventDelegate({
@@ -57,15 +57,15 @@ sap.ui.define([
                     }
                 }
             },
-            onMainThemeButton: function () {
-                this.byId("idMainthemeBtn").setVisible(false);
+            onPressThemesResource: function () {
+                //this.byId("idMainthemeBtn").setVisible(false);
                 this.byId("idCancelButtonResource").setVisible(true);
                 this.byId("idthemeBackGroundButton").setVisible(true);
                 this.Themecall = true;
                 sap.m.MessageToast.show("Theme mode activated.");
             },
             onCancelPressThemeMode: function () {
-                this.byId("idMainthemeBtn").setVisible(true);
+                //this.byId("idMainthemeBtn").setVisible(true);
                 this.byId("idCancelButtonResource").setVisible(false);
                 this.byId("idthemeBackGroundButton").setVisible(false);
                 this.Themecall = false;
@@ -84,7 +84,7 @@ sap.ui.define([
                 var sColorPickerValue = oColorPicker.getColorString();
                 var aSelectedColors = [];
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
- 
+
                 // Collect selected colors from checkboxes
                 oColorOptions.forEach(function (oItem) {
                     if (oItem instanceof sap.m.CheckBox && oItem.getSelected()) {
@@ -96,17 +96,17 @@ sap.ui.define([
                 if (aSelectedColors.length > 0) {
                     if (aSelectedColors.length > 1) {
                         sap.m.MessageToast.show("You can only select one color.");
-                        return; 
+                        return;
                     }
                     if (oColorPicker.getVisible()) {
                         sap.m.MessageToast.show("Please deselect the checkbox before using the custom color picker.");
-                        return; 
+                        return;
                     }
                     var sSelectedColor = aSelectedColors[0]; // Get the selected color from checkbox
                     if (this._currentTileId) {
                         this.applyColorToTile(this._currentTileId, sSelectedColor);
                         sap.m.MessageToast.show("Tile color applied successfully!");
-                        this._currentTileId = null; 
+                        this._currentTileId = null;
                     } else {
                         this.applyThemeColor(sSelectedColor);
                         sap.m.MessageToast.show("Theme color applied successfully!");
@@ -116,7 +116,7 @@ sap.ui.define([
                     if (this._currentTileId) {
                         this.applyColorToTile(this._currentTileId, sColorPickerValue);
                         sap.m.MessageToast.show("Tile color applied successfully!");
-                        this._currentTileId = null; 
+                        this._currentTileId = null;
                     } else {
                         this.applyThemeColor(sColorPickerValue);
                         sap.m.MessageToast.show("Theme color applied successfully!");
@@ -127,7 +127,7 @@ sap.ui.define([
                 // Deactivate any flag and reset dialog
                 //this.Themecall = false; // Deactivate the flag after applying
                 this.resetDialogBox();
- 
+
                 // Close the dialog and reset background and cancel buttons
                 this.byId("idthemeTileDialogResource").close();
                 //this.byId("themeButton").setVisible(false);
@@ -137,11 +137,11 @@ sap.ui.define([
             applyColorToTile: function (sTileId, sColor) {
                 var oTile = this.byId(sTileId);
                 if (!oTile) return;
- 
+
                 var oTileDomRef = oTile.getDomRef();
                 if (oTileDomRef) {
                     oTileDomRef.style.backgroundColor = sColor;
- 
+
                     // Update localStorage with tile color
                     var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
                     tileColors[sTileId] = sColor;
@@ -153,20 +153,20 @@ sap.ui.define([
                 var aElements = [
                     this.byId("idScrollContainer1"),
                 ];
- 
+
                 // Remove any existing style element for the theme
                 var sStyleId = "customThemeStyle";
                 var oOldStyle = document.getElementById(sStyleId);
                 if (oOldStyle) {
                     oOldStyle.remove();
                 }
- 
+
                 // Create a new style element and apply the color
                 var oStyle = document.createElement("style");
                 oStyle.id = sStyleId;
                 oStyle.textContent = ".customTheme { background-color: " + sColor + " !important; }";
                 document.head.appendChild(oStyle);
- 
+
                 // Add the custom theme class to the elements
                 aElements.forEach(function (oElement) {
                     if (oElement) {
@@ -193,7 +193,7 @@ sap.ui.define([
                 var oView = this.getView();
                 var oColorPicker = oView.byId("idcolorPickerResource");
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
- 
+
                 // Deselect all checkboxes
                 oColorOptions.forEach(function (oItem) {
                     if (oItem instanceof sap.m.CheckBox) {
@@ -201,7 +201,7 @@ sap.ui.define([
                     }
                 });
                 // Reset the color picker to its default value
-                oColorPicker.setColorString("#FFFFFF"); 
+                oColorPicker.setColorString("#FFFFFF");
                 oColorPicker.setVisible(true);
             },
             onCancelColorDialog: function () {
@@ -209,14 +209,41 @@ sap.ui.define([
             },
             // Helper function to extract the local ID of a tile
             _extractLocalId: function (sTileId) {
-                return sTileId.split("--").pop(); 
+                return sTileId.split("--").pop();
             },
             _isValidColor: function (sColor) {
                 var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
                 return hexRegex.test(sColor) || rgbRegex.test(sColor);
             },
- 
+            onPressLanguageTransulation: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this._oLanguagePopover) {
+                    this._oLanguagePopover = sap.ui.xmlfragment("com.app.rfapp.fragments.LanguageTransulations", this);
+                    this.getView().addDependent(this._oLanguagePopover);
+                }
+
+                // Open popover near the language button
+                this._oLanguagePopover.openBy(oEvent.getSource());
+            },
+            onPressTileViewSettings: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this.oTileViewSettings) {
+                    this.oTileViewSettings = sap.ui.xmlfragment("com.app.rfapp.fragments.UserTileView", this);
+                    this.getView().addDependent(this.oTileViewSettings);
+                }
+
+                // Open popover near the language button
+                this.oTileViewSettings.openBy(oEvent.getSource());
+            },
+
+
+
+
+
+
+
+
 
 
             onResourceDetailsLoad: async function (oEvent1) {
@@ -280,9 +307,9 @@ sap.ui.define([
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var area = oData.Area;
-                        var areaArray = area.split(",").map(item => item.trim()); 
+                        var areaArray = area.split(",").map(item => item.trim());
                         var ogroup = oData.Resourcegroup;
-                        var groupArray = ogroup.split(",").map(item => item.trim()); 
+                        var groupArray = ogroup.split(",").map(item => item.trim());
 
                         groupArray.forEach(function (group) {
 
@@ -305,7 +332,7 @@ sap.ui.define([
 
                         // Loop through navigation data
                         aNavigationData.forEach(function (oProcess) {
-                            var processVisible = false; 
+                            var processVisible = false;
 
                             // Loop through areaArray
                             areaArray.forEach(function (areaArray1) {
@@ -713,23 +740,9 @@ sap.ui.define([
                     oRouter.navTo("WTQueryByHU", { id: this.ID });
                 }
             },
-            onWTQueryByWTPress: function (oEvent) {
-                if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("WTQueryByWT", { id: this.ID });
-                }
-            },
-            onCreateandConfirmAdhocHUWTPress: function (oEvent) {
-                if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
-                }
+            onWTQueryByWTPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWT", { id: this.ID });
             },
             onCreateandConfirmAdhocProductWTPress: function (oEvent) {
                 if (this.Themecall) {
@@ -924,14 +937,14 @@ sap.ui.define([
                 }
             },
 
-            onProductInspectionByHUPress :function(){
+            onProductInspectionByHUPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByHU",{id:this.ID});
+                oRouter.navTo("ProductInspectionByHU", { id: this.ID });
             },
 
-            onProductInspectionByStorageBinPress:function(){
+            onProductInspectionByStorageBinPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByStorageBin",{id:this.ID});
+                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             }
 
         });

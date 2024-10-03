@@ -1,4 +1,5 @@
 <core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
@@ -9,64 +10,82 @@
         horizontalScrolling="false"
         class="sapUiResponsivePadding"
         contentWidth="200px"
-        title="My Profile"
+        title="Profile:"
     >
-        <!-- Content of the Profile Popover -->
-        <VBox
-            id="idProfileVBox"
-            alignItems="Center"
-            justifyContent="Center"
+        <form:SimpleForm
+            id="idSimpleFormProfile"
+            backgroundDesign="Solid"
         >
-            <!-- Profile Section -->
-            <VBox
-                id="idProfileInfoVBox"
-                alignItems="Center"
-            >
-                <!-- Avatar Icon -->
-                <Avatar
-                    id="idProfileAvatar"
-                    displaySize="S"
-                    initials="G"
-                    tooltip="Profile"
-                    style="margin-bottom: 5px;"
-                />
-
-                <!-- User Details -->
-                <Text
-                    id="idProfileName"
-                    text="Gayathri"
-                />
-                <Text
-                    id="idProfileNumber"
-                    text="9234567811"
-                />
+            <VBox id="idVBoxProfile">
+                <HBox
+                    id="idProfileHeaderHBox"
+                    alignItems="Start"
+                >
+                    <Avatar
+                        id="idProfileAvatar"
+                        displaySize="XS"
+                        tooltip="Profile"
+                    />
+                    <Label
+                        id="idLabelEmptyInProfile"
+                        width="1rem"
+                    />
+                    <VBox
+                        id="idProfileInfoVBox"
+                        alignItems="Start"
+                    >
+                        <Text
+                            id="idProfileName"
+                            text="Name"
+                        />
+                        <Link
+                            id="idProfileNumber"
+                            text="1234567890"
+                        />
+                    </VBox>
+                </HBox>
+                <VBox
+                    id="idProfileOptionsVBox"
+                    alignItems="Start"
+                    class="onProfileOptions"
+                >
+                    <Button
+                        id="idProfileButton"
+                        icon="sap-icon://person-placeholder"
+                        text="Account Details"
+                        type="Transparent"
+                        press="onProfilePressed"
+                    />
+                    <Button
+                        id="idThemesButton"
+                        icon="sap-icon://palette"
+                        text="Themes"
+                        type="Transparent"
+                        press="onPressThemesResource"
+                    />
+                    <Button
+                        id="idLanguageButton"
+                        icon="sap-icon://translate"
+                        text="Language"
+                        type="Transparent"
+                        press="onPressLanguageTransulation"
+                    />
+                    <Button
+                        id="idTileViewButton"
+                        icon="sap-icon://my-view"
+                        text="Tile View"
+                        type="Transparent"
+                        press="onPressTileViewSettings"
+                    />
+                    <Button
+                        id="idSignoutButton"
+                        icon="sap-icon://log"
+                        text="Sign Out"
+                        type="Transparent"
+                        press="onSignoutPressed"
+                    />
+                </VBox>
             </VBox>
-
-            <!-- Divider (optional for spacing control) -->
-            <Label
-                id="idProfileDivider"
-                text=""
-                width="100%"
-            />
-
-            <!-- Buttons: My Account and Logout -->
-            <VBox
-                id="idProfileButtonVBox"
-                alignItems="Center"
-            >
-                <Button
-                    id="idMyAccountButton"
-                    text="My Account"
-                    type="Transparent"
-                    press="onMyAccountPressed"
-                />
-                <Button
-                    id="idLogoutButton"
-                    text="Logout"
-                    type="Transparent"
-                    press="onLogoutPressed"
-                />
-            </VBox>
-        </VBox>
+        </form:SimpleForm>
     </Popover>
 </core:FragmentDefinition>

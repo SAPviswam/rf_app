@@ -65,10 +65,10 @@ sap.ui.define(
             },
             // Palette button press logic (this is triggered when the button is pressed)
             onPaletteIconPress: function (oEvent) {
-
                 // Open the theme dialog box
-                this._currentTileId = oEvent;
+                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
                 this.byId("themeTileDialog").open();
+                oEvent.stopPropagation();
             },
             onAfterRendering: function () {
 
