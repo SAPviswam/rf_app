@@ -969,7 +969,12 @@ sap.ui.define([
     
             onCloseUSerDetailsDialog: function() {
                 this.byId("idUserDetails").close();
-            }
+            },
+            onSignoutPressed: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
 
         });
     });
