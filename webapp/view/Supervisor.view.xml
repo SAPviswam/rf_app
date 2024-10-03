@@ -373,7 +373,7 @@
                     <ScrollContainer
                         id="pageSV3"
                         vertical="true"
-                        height="100%"
+                        height="400px"
                         class="sapUiContentPadding"
                         width="100%"
                     >
@@ -385,7 +385,8 @@
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
-                            width="450px"
+                            width="100%"
+                            sticky="ColumnHeaders"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -393,9 +394,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <!-- <ToolbarSpacer
-                                        id="idUsersInfoToolbarSpace"
-                                    />
+                                    <ToolbarSpacer />
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -408,7 +407,7 @@
                                             />
                                         </layoutData>
                                     </SearchField>
-<Button
+                                    <Button
                                         id="idBtnEd2"
                                         tooltip="Approve"
                                         text="Approve"
@@ -421,7 +420,7 @@
                                         text="Reject"
                                         type="Reject"
                                         press="onUpdateUserBtnPress"
-                                    /> -->
+                                    />
                                 </OverflowToolbar>
                             </headerToolbar>
 
@@ -498,7 +497,6 @@
                                         text="Email"
                                     />
                                 </Column>
-
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
@@ -522,6 +520,7 @@
                                     />
                                 </Column> -->
                             </columns>
+
                             <items>
                                 <ColumnListItem id="idRDEmpIdColListItem">
                                     <cells>
@@ -568,6 +567,7 @@
                                             id="idRDExpiredDateColValue"
                                             text="{Expirydate}"
                                         /> -->
+
                                     </cells>
                                 </ColumnListItem>
                             </items>
