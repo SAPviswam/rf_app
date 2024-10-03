@@ -196,7 +196,6 @@
                             />
                             <HBox
                                 id="idHBoxSecondPage"
-                                class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
@@ -426,7 +425,10 @@
                                 class="UnitsofMeasure"
                                 required="true"
                             />
-                            <Input id="idInputUOM" width="auto"/>
+                            <Input
+                                id="idInputUOM"
+                                width="auto"
+                            />
                         </HBox>
                         <Label
                             id="IDGenLabel3_PBYWO"
@@ -575,7 +577,6 @@
                             />
                             <HBox
                                 id="idVBoxbuttonContainer_PBYWO"
-                                class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
@@ -653,7 +654,6 @@
                             />
                             <HBox
                                 id="idVBoxbuttonGR_PBYWO"
-                                class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
@@ -725,7 +725,6 @@
                             />
                             <HBox
                                 id="idVBoxbuttonUnLoad_PBYWO"
-                                class="buttonContainer"
                                 justifyContent="End"
                             >
                                 <Button
