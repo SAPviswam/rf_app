@@ -45,14 +45,14 @@
                     tooltip="Change Background Color"
                     visible="false"
                 />
-                <Button
+                <!-- <Button
                     id="idMainthemeBtn"
                     text="Theme"
                     press="onMainThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
-                />
+                /> -->
                 <Button
                     id="idCancelButtonResource"
                     text="Cancel"
