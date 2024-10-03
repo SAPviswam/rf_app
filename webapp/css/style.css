@@ -258,8 +258,8 @@
     }
  
     .logo {
-        margin-top: 12%; /* Adjust logo margin for mobile */
-        margin-left: 12%; /* Center logo on mobile */
+        margin-top: 7%; /* Adjust logo margin for mobile */
+        margin-left: 7%; /* Center logo on mobile */
         width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
