@@ -103,8 +103,18 @@
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-   
+    /* width: 23% !important; */
 }
+@media only screen and (min-width: 1024px) {
+    .boxContainer {
+        border-radius: 0rem !important;
+        border: 2px solid #ed731dd2 !important;
+        padding: auto !important; 
+        padding-bottom: 1rem;
+        width: 23% !important;
+    }
+}
+
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
     user-select: none !important; /* Prevent text selection */
@@ -196,10 +206,7 @@
     width: 80%;
 }
 /* General styles for all devices */
-.boxContainer {
-  
-    padding: 0; /* Default padding */
-}
+
 
 .boxContainer3 {
     width: auto; /* Default width */
@@ -232,7 +239,7 @@
 
 @media (max-width: 600px) {
     .boxContainer {
-     
+        width:  85%!important; /* Full width on mobile */
         padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {

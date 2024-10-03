@@ -20,6 +20,7 @@
                     id="environmentButtonsHBoxHome"
                     class="sapUiSmallMarginTop boxContainer sapUiLargeMargin"
                     alignItems="Center"
+                    width="23%"
                 >
                     <HBox
                         id="idHboxHome"
