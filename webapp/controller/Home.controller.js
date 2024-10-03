@@ -494,7 +494,7 @@ sap.ui.define([
                 this.oResetDialog.close();
             },
 
-            onSelectCheckBox: function () {
+            onPressConnectButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
