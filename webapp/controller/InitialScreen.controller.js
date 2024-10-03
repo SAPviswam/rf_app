@@ -26,6 +26,7 @@ sap.ui.define([
                         // this.byId("initialscreentitle").setMarginRight("25%")
                         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
                         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+                       
 
                     } else {
                         // Non-iPhone phones
@@ -83,6 +84,7 @@ sap.ui.define([
 
 
                 if (Device.system.phone) {
+                   
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
                         this.byId("_IDGenImage_CS").setWidth("20%");
@@ -92,9 +94,14 @@ sap.ui.define([
                         this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
                         this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
 
+                        // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("75%");
+                        // this.byId("LoginButton_CS").setWidth("75%");
+
 
                     }
                     else {
+                        this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
+                        this.byId("LoginButton_CS").setWidth("85%");
                         // Non-iPhone phones
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");
@@ -106,6 +113,10 @@ sap.ui.define([
                         }.bind(this));
 
                     }
+                }
+                else if(Device.system.tablet){
+                    this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
+                    this.byId("LoginButton_CS").setWidth("92%");
                 }
                 
 
