@@ -18,10 +18,18 @@ sap.ui.define([
                 console.log(this.isTablet)
 
                 this.bOtpVerified = false;
-
-                var sUsername = localStorage.getItem("username");
-                var sPassword = localStorage.getItem("password");
-                var bAutoSave = localStorage.getItem("autoSave") === "true";
+                const huValue = localStorage.getItem("warehouseNo");
+                const userIdValue = localStorage.getItem("resource");
+    
+                if (huValue) {
+                    this.byId("idHUInput").setValue(huValue);
+                }
+                if (userIdValue) {
+                    this.byId("idUserIDInput").setValue(userIdValue);
+                }
+                // var sUsername = localStorage.getItem("username");
+                // var sPassword = localStorage.getItem("password");
+                // var bAutoSave = localStorage.getItem("autoSave") === "true";
 
                 // if (sUsername) {
                 //     this.getView().byId("idUserIDInput").setValue(sUsername);
@@ -66,6 +74,26 @@ sap.ui.define([
                     this.byId("environmentButtonsHBoxHome").setWidth("23%");
                 }
 
+            },
+            onSelectCheckBox: function(oEvent) {
+                const isSelected = oEvent.getParameter("selected");
+    
+                if (isSelected) {
+                    // Save the current input values to localStorage
+                    const huInput = this.byId("idHUInput").getValue();
+                    const userIdInput = this.byId("idUserIDInput").getValue();
+    
+                    localStorage.setItem("warehouseNo", huInput);
+                    localStorage.setItem("resource", userIdInput);
+                    
+                    MessageToast.show("Auto Save enabled. Your details will be saved.");
+                } else {
+                    // Optionally clear the saved values if unchecked
+                    localStorage.removeItem("warehouseNo");
+                    localStorage.removeItem("resource");
+                    
+                    MessageToast.show("Auto Save disabled. Your details will not be saved.");
+                }
             },
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -507,7 +535,7 @@ sap.ui.define([
                 this.oResetDialog.close();
             },
 
-            onSelectCheckBox: function () {
+            onPressConnectButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {

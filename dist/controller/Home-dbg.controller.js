@@ -4,14 +4,16 @@ sap.ui.define([
     "./BaseController",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "sap/ui/core/BusyIndicator"
+    "sap/ui/core/BusyIndicator",
+    "sap/ui/Device"
+
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator,Device) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
-
+                this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.bOtpVerified = false;
 
                 var sUsername = localStorage.getItem("username");
@@ -38,6 +40,19 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("idImageLogoAvatarHome").setWidth("25%");
+                        this.byId("idImageLogoAvatarHome").setHeight("45%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        // this.byId("idImageLogoAvatarHome").setWidth("85%");
+                        // this.byId("idImageLogoAvatarHome").setHeight("35%");
+                    }
+                }
             },
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -479,7 +494,7 @@ sap.ui.define([
                 this.oResetDialog.close();
             },
 
-            onSelectCheckBox: function () {
+            onPressConnectButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
