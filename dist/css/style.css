@@ -106,9 +106,13 @@
     width: 23% !important;
 }
 .TitlecustomHeader{
-    border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* For Safari */
+    -moz-user-select: none !important; /* For Firefox */
+    -ms-user-select: none !important; /* For Internet Explorer/Edge */
 }
+    
 .InitialButton67{
     margin-left: 0.5rem;
     font-size: x-small;
@@ -182,24 +186,59 @@
 .logo{
     margin-top: 7%;
     margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+      
 }
 
 .dropdown {
-    width: 100%;
+    width: 80%;
 }
+/* General styles for all devices */
+.boxContainer {
+    width: 100%; /* Default to full width */
+    padding: 0; /* Default padding */
+}
+
+.boxContainer3 {
+    width: auto; /* Default width */
+}
+
+.boxContainer2 {
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
+}
+
+.capModelRFText {
+    font-size: 1.5em; /* Default font size */
+}
+
+.button {
+    margin-left: 5%; /* Default left margin */
+    width: auto; /* Default width */
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+.logo {
+    margin-top: 7%;
+    margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+/* General mobile styles */
 @media (max-width: 600px) {
     .boxContainer {
-        width:  85%!important; /* Full width on mobile */
-        padding: auto !important; /* Adjust padding */
+        width: 85% !important; /* Full width on mobile */
+        padding: 0 !important; /* Adjust padding */
     }
     .boxContainer3 {
         width: auto !important; /* Full width on mobile */
-        padding: auto !important; /* Adjust padding */
+        padding: 0 !important; /* Adjust padding */
     }
     .boxContainer2 {
-        border-bottom: 2px solid #ed731dd2 !important;
-        /* Add border width, style, and color */
-        padding: auto !important; 
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important; 
         width: auto !important;
     }
     .capModelRFText {
@@ -207,20 +246,85 @@
         margin-left: 10px; /* Adjust left margin */
         margin-top: 15px; /* Adjust top margin */
     }
-
     .button {
         margin-left: 5% !important; /* Reduce left margin on mobile */
         width: 100%; /* Full width buttons on mobile */
         margin-bottom: 10px; /* Add space between buttons */
     }
-
     .logo {
-        margin-top: 12%; /* Adjust logo margin for mobile */
-        margin-left: 12%; /* Center logo on mobile */
-        width: 100%; /* Logo full width on mobile */
+        margin-top: 7%;
+        margin-left: 7%;
+        max-width: 100%;
         height: auto; /* Maintain aspect ratio */
     }
 }
+
+/* Media query for iPhone 14 */
+@media (min-width: 390px) and (max-width: 430px) {
+    .boxContainer {
+        width: 90% !important; /* Slightly narrower */
+    }
+    .capModelRFText {
+        font-size: 1.3em; /* Adjust font size */
+        margin-left: 5%; /* Adjust left margin */
+    }
+    .button {
+        width: 90%; /* Slightly narrower buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 5%; /* Adjust top margin */
+        margin-left: auto; /* Center alignment */
+        margin-right: auto; /* Center alignment */
+        max-width: 80%; /* Adjust logo size */
+    }
+}
+
+/* Media query for iPad Mini */
+@media (min-width: 768px) and (max-width: 800px) {
+    .boxContainer {
+        width: 90% !important; /* Maintain good width */
+        
+    }
+    .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .button {
+        width: 85%; /* Wider buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 6%; /* Adjust margins */
+        max-width: 75%; /* Adjust logo size */
+    }
+}
+
+/* Media query for iPad Air */
+@media (min-width: 820px) and (max-width: 840px) {
+    .boxContainer {
+        width: 90% !important; /* Maintain good width */
+    }
+    .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .button {
+        width: 80%; /* Wider buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 6%; /* Adjust margins */
+        max-width: 75%; /* Adjust logo size */
+    }
+}
+
+
+
+
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
     color: rgb(243, 15, 15) !important; /* Remove default border */
@@ -278,6 +382,8 @@
   .classUOMbyASn{
     margin-top: 16%;
   }
+
+  
 
 
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
@@ -520,10 +626,11 @@ background-color: rgb(9, 8, 8) !important;
 }
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
+ 
 }
 
 
-
+/* CSS Methods For SIGNUP Fragment */
 .LabelHomePage{
     margin-top: 0.3rem;
 }
@@ -556,23 +663,42 @@ background-color: rgb(9, 8, 8) !important;
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 19% !important;
+    width: 25% !important;
 }
 
 
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
-.connecttoSAPform{
+/* .connecttoSAPform{
     border-radius: 0rem !important;
-    /* border: 0.5px solid #080808d2 !important; */
-    background-color: rgb(165, 199, 245);
+    background-color: #c9dbe9;
+} */
+.logonbutton{
+    background-color:#5496cd;
+    border: 2px solid #5496cd !important;
+    color:  #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+/* .cancelbutton{
+    background-color: #c9dbe9;
+    border: 2px solid #c9dbe9 !important;
+    color:rgba(24, 24, 237, 0.852) !important;
+    margin-top: 0.2rem;
+} */
 
-.comboCS{
+/* .comboCS{
 margin-left: 20%;
 margin-right: 20%;
-}
+} */
 /* .changePassword{
     font-size: 90%;
 } */
+
+.VboxChangePassword {
+margin-right: 15%;
+}
+
+
+
+

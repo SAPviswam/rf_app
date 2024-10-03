@@ -17,7 +17,7 @@
                     class="sapUiSmallMargin boxContainer"
                     alignItems="Center"
                 >
-                    <VBox id="idvboxnavbuttons">
+                    <VBox id="idvboxnavbuttons" width="auto">
                         <HBox
                             id="idHboxinitial"
                             alignContent="Start"

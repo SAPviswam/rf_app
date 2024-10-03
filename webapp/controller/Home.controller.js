@@ -4,14 +4,16 @@ sap.ui.define([
     "./BaseController",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "sap/ui/core/BusyIndicator"
+    "sap/ui/core/BusyIndicator",
+    "sap/ui/Device"
+
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator,Device) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
-
+                this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.bOtpVerified = false;
 
                 var sUsername = localStorage.getItem("username");
@@ -38,6 +40,19 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
+                if (Device.system.phone){
+                    if (this.isIPhone) {
+                        // Targeting iPhones (common pixel density for Retina displays and screen width)
+                        this.byId("idImageLogoAvatarHome").setWidth("25%");
+                        this.byId("idImageLogoAvatarHome").setHeight("45%");
+                        // this.byId("initialscreentitle").setMarginRight("25%")
+    
+                    } else {
+                        // Non-iPhone phones
+                        // this.byId("idImageLogoAvatarHome").setWidth("85%");
+                        // this.byId("idImageLogoAvatarHome").setHeight("35%");
+                    }
+                }
             },
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -223,10 +238,6 @@ sap.ui.define([
 
                 // Prepare the Twilio Verify Check API details
 
-                // const accountSid = 'AC21c2f98c918eae4d276ffd6268a75bcf'; // Replace with your Twilio Account SID
-                // const authToken = '702f2b322d3ab982e7e8da69db2598b8'; // Replace with your Twilio Auth Token
-                // const serviceSid = 'VA104b5a334e3f175333acbd45c5065910'; // Replace with your Twilio Verify Service SID
-
                 const accountSid = 'AC2fb46ec1c11689b5cecea6361105c723'; // Replace with your Twilio Account SID
                 const authToken = 'f1ae977a8f46265e4078d48e6bbfa5b4'; // Replace with your Twilio Auth Token
                 const serviceSid = 'VAdfa3a7c4613f48b5722f611bb2ef3b5d';
@@ -383,7 +394,7 @@ sap.ui.define([
                             success: function () {
                                 sap.m.MessageToast.show("Success");
                                 that.onCloseRegisterSubmitDialog();
-                                
+
 
                             },
                             error: function (oError) {
@@ -483,25 +494,122 @@ sap.ui.define([
                 this.oResetDialog.close();
             },
 
-            onSelectCheckBox:function(){
+            onSelectCheckBox: function () {
                 var oModel = this.getOwnerComponent().getModel();
-            oModel.read("/RESOURCESSet('" + this.ID + "')", {
-                success: function (oData) {
-                    var ouser=oData.Users.toLowerCase()
-                    if(ouser==="supervisor" || ouser==="manager"){
+                oModel.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        var ouser = oData.Users.toLowerCase()
+                        if (ouser === "supervisor" || ouser === "manager") {
 
-                    this.getOwnerComponent().getRouter().navTo("Supervisor", { id:this.ID })
-                    }
-                    else{
-                        this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id:this.ID })
-                    }
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                        }
+                        else {
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                        }
 
-                }.bind(this),
-                error: function () {
-                    MessageToast.show("User doesn't exist")
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User doesn't exist")
+                    }
+                });
+            },
+
+            oncreatesingupPress: function () {
+                var oView = this.getView();
+
+                // Retrieve values from input fields
+                var sFirstName = oView.byId("idFirstnameInput").getValue();
+                var sLastName = oView.byId("idLastnameInput").getValue();
+                var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
+                var sMobileNo = oView.byId("idMobilenoInput").getValue();
+                var sEmailID = oView.byId("idEmailIDInput").getValue();
+                var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
+
+                // Validate input fields
+                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
+                    MessageToast.show("Please fill all fields");
+                    return;
                 }
-            });
+
+                // Validate mobile number
+                if (!/^\d{10}$/.test(sMobileNo)) {
+                    MessageToast.show("Mobile number must be exactly 10 digits.");
+                    return;
+                }
+                if (!this.validateEmail(sEmailID)) {
+                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
+                    return;
+                }
+
+                // Get the OData model
+                var oModel = this.getView().getModel();
+
+                // Check if Employee No already exists
+                oModel.read("/RESOURCESSet", {
+                    filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
+                    success: function (oData) {
+                        // Check if any results were returned
+                        if (oData.results.length > 0) {
+                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
+                        } else {
+                            // Create a data object for new user
+                            var oDataToCreate = {
+                                Resourcename: sFirstName,
+                                Lname: sLastName,
+                                Resourceid: sEmployeeNo,
+                                Phonenumber: sMobileNo,
+                                Email: sEmailID,
+                                Resourcetype: sResourceType
+                            };
+
+                            // Send data to backend (adjust path as necessary)
+                            oModel.create("/RESOURCESSet", oDataToCreate, {
+                                success: function () {
+                                    MessageBox.success("Woohoo!\nYour Request Has Been Placed");
+
+
+                                    // Reset input fields
+                                    oView.byId("idFirstnameInput").setValue("");
+                                    oView.byId("idLastnameInput").setValue("");
+                                    oView.byId("idEmployeenoInput").setValue("");
+                                    oView.byId("idMobilenoInput").setValue("");
+                                    oView.byId("idEmailIDInput").setValue("");
+                                    oView.byId("idinternal").setSelected(false);
+                                    oView.byId("idexternal").setSelected(false);
+                                    oView.byId("idothers").setSelected(false);
+                                    oView.byId("dialog").close();
+                                },
+                                error: function () {
+                                    MessageToast.show("Error creating user. Please try again.");
+                                }
+                            });
+                        }
+                    },
+                    error: function () {
+                        MessageToast.show("Error checking existing Employee No. Please try again.");
+                    }
+                });
+            },
+
+            validateEmail: function(email) {
+                // Regular expression for validating an email address
+                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+                return re.test(email);  // Returns true if valid, false otherwise
+            },
+
+            getSelectedResourceType: function () {
+                // Get selected resource type from radio buttons
+                var oView = this.getView();
+                if (oView.byId("idinternal").getSelected()) {
+                    return "Internal";
+                } else if (oView.byId("idexternal").getSelected()) {
+                    return "External";
+                } else if (oView.byId("idothers").getSelected()) {
+                    return "Others";
+                }
             }
+
+
 
         });
     });

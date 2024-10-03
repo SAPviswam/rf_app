@@ -66,6 +66,11 @@
                         id="idexternal"
                         text="External"
                     />
+                    <Text id="_IDGenText17" width="0.8rem"></Text>
+                    <RadioButton
+                        id="idothers"
+                        text="Others"
+                    />
                 </HBox>
                 <HBox id="_IDGenHBox11">
                     <VBox id="idLableFirstnamehbox">
