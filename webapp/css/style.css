@@ -103,8 +103,18 @@
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 23% !important;
+    /* width: 23% !important; */
 }
+@media only screen and (min-width: 1024px) {
+    .boxContainer {
+        border-radius: 0rem !important;
+        border: 2px solid #ed731dd2 !important;
+        padding: auto !important; 
+        padding-bottom: 1rem;
+        width: 23% !important;
+    }
+}
+
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
     user-select: none !important; /* Prevent text selection */
@@ -196,10 +206,7 @@
     width: 80%;
 }
 /* General styles for all devices */
-.boxContainer {
-    width: 100%; /* Default to full width */
-    padding: 0; /* Default padding */
-}
+
 
 .boxContainer3 {
     width: auto; /* Default width */
@@ -265,6 +272,21 @@
     }
 }
  
+.iphoneMarginLeft {
+    margin: 2% !important;
+}
+
+
+.iphoneMarginSapLogon{
+    margin: 0%;
+}
+
+.iphoneInitialTitle{
+    padding: 0%;
+}
+.tabletBoxContainer{
+    width: 150%;
+}
 
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
@@ -645,6 +667,7 @@ margin-right: 15%;
     background-color: orange !important;
     color: orange;
 }
+
 
 
 

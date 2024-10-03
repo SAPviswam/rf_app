@@ -8,12 +8,15 @@ sap.ui.define([
     "sap/ui/Device"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator,Device) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
+                this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
+                console.log(this.isTablet)
+
                 this.bOtpVerified = false;
                 const huValue = localStorage.getItem("warehouseNo");
                 const userIdValue = localStorage.getItem("resource");
@@ -48,19 +51,29 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarHome").setWidth("25%");
-                        this.byId("idImageLogoAvatarHome").setHeight("45%");
+                        this.byId("idImageLogoAvatarHome").setWidth("42.5%");
+                        this.byId("idImageLogoAvatarHome").setHeight("45.5%");
+                        this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
-    
-                    } else {
+
+                    }
+
+                    else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
                         // this.byId("idImageLogoAvatarHome").setHeight("35%");
                     }
                 }
+                else if (Device.system.tablet) {
+                    this.byId("environmentButtonsHBoxHome").setWidth("40%");
+                }
+                else{
+                    this.byId("environmentButtonsHBoxHome").setWidth("23%");
+                }
+
             },
             onSelectCheckBox: function(oEvent) {
                 const isSelected = oEvent.getParameter("selected");
@@ -619,7 +632,7 @@ sap.ui.define([
                 });
             },
 
-            validateEmail: function(email) {
+            validateEmail: function (email) {
                 // Regular expression for validating an email address
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
                 return re.test(email);  // Returns true if valid, false otherwise
