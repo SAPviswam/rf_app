@@ -366,7 +366,7 @@ sap.ui.define([
                         oTile.removeStyleClass("largeIcons");
                         oTile.removeStyleClass("mediumIcons");
                         oTile.removeStyleClass("smallIcons");
-            
+
                         // Apply the selected size class
                         switch (sSelectedKey) {
                             case "LargeIcons":
@@ -1111,14 +1111,24 @@ sap.ui.define([
                 }
             },
 
-            onProductInspectionByHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByHU", { id: this.ID });
+            onProductInspectionByHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByHU", { id: this.ID });
+                }
             },
 
-            onProductInspectionByStorageBinPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            onProductInspectionByStorageBinPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+                }
             }
 
         });
