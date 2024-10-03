@@ -945,6 +945,30 @@ sap.ui.define([
             onProductInspectionByStorageBinPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            },
+            onProfilePressed: function() {
+                var oView = this.getView();
+    
+                // Check if the dialog already exists
+                if (!this.byId("idUserDetails")) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function(oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                        oDialog.open();
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+            },
+    
+            onCloseUSerDetailsDialog: function() {
+                this.byId("idUserDetails").close();
             }
 
         });

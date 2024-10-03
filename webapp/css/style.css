@@ -641,6 +641,10 @@ margin-right: 20%;
 .VboxChangePassword {
 margin-right: 15%;
 }
+.UserDetailsDialog{
+    background-color: orange !important;
+    color: orange;
+}
 
 
 
