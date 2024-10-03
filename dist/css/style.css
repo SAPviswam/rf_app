@@ -133,6 +133,7 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: auto !important;
+   
     /* padding-bottom: 4rem; */
 }
 .checkBoxText .sapMCbLabel {
@@ -206,8 +207,7 @@
 
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2; /* Border style */
-    padding: 0; /* Default padding */
-    width: auto; /* Default width */
+    width: 100% !;
 }
 
 .capModelRFText {
@@ -226,19 +226,23 @@
     max-width: 100%;
     height: auto; /* Maintain aspect ratio */
 }
-/* General mobile styles */
+
+/* Responsive styles for tablets and mobile devices */
+
+
 @media (max-width: 600px) {
     .boxContainer {
-        width: 85% !important; /* Full width on mobile */
-        padding: 0 !important; /* Adjust padding */
+        width:  85%!important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
         width: auto !important; /* Full width on mobile */
-        padding: 0 !important; /* Adjust padding */
+        padding: auto !important; /* Adjust padding */
     }
     .boxContainer2 {
-        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
-        padding: 0 !important; 
+        border-bottom: 2px solid #ed731dd2 !important;
+        /* Add border width, style, and color */
+        padding: auto !important;
         width: auto !important;
     }
     .capModelRFText {
@@ -246,84 +250,21 @@
         margin-left: 10px; /* Adjust left margin */
         margin-top: 15px; /* Adjust top margin */
     }
+ 
     .button {
         margin-left: 5% !important; /* Reduce left margin on mobile */
         width: 100%; /* Full width buttons on mobile */
         margin-bottom: 10px; /* Add space between buttons */
     }
+ 
     .logo {
-        margin-top: 7%;
-        margin-left: 7%;
-        max-width: 100%;
+        margin-top: 12%; /* Adjust logo margin for mobile */
+        margin-left: 12%; /* Center logo on mobile */
+        width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
 }
-
-/* Media query for iPhone 14 */
-@media (min-width: 390px) and (max-width: 430px) {
-    .boxContainer {
-        width: 90% !important; /* Slightly narrower */
-    }
-    .capModelRFText {
-        font-size: 1.3em; /* Adjust font size */
-        margin-left: 5%; /* Adjust left margin */
-    }
-    .button {
-        width: 90%; /* Slightly narrower buttons */
-        margin-left: auto; /* Center button */
-        margin-right: auto; /* Center button */
-    }
-    .logo {
-        margin-top: 5%; /* Adjust top margin */
-        margin-left: auto; /* Center alignment */
-        margin-right: auto; /* Center alignment */
-        max-width: 80%; /* Adjust logo size */
-    }
-}
-
-/* Media query for iPad Mini */
-@media (min-width: 768px) and (max-width: 800px) {
-    .boxContainer {
-        width: 90% !important; /* Maintain good width */
-        
-    }
-    .capModelRFText {
-        font-size: 1.4em; /* Adjust font size */
-        margin-left: 10px; /* Adjust left margin */
-    }
-    .button {
-        width: 85%; /* Wider buttons */
-        margin-left: auto; /* Center button */
-        margin-right: auto; /* Center button */
-    }
-    .logo {
-        margin-top: 6%; /* Adjust margins */
-        max-width: 75%; /* Adjust logo size */
-    }
-}
-
-/* Media query for iPad Air */
-@media (min-width: 820px) and (max-width: 840px) {
-    .boxContainer {
-        width: 90% !important; /* Maintain good width */
-    }
-    .capModelRFText {
-        font-size: 1.4em; /* Adjust font size */
-        margin-left: 10px; /* Adjust left margin */
-    }
-    .button {
-        width: 80%; /* Wider buttons */
-        margin-left: auto; /* Center button */
-        margin-right: auto; /* Center button */
-    }
-    .logo {
-        margin-top: 6%; /* Adjust margins */
-        max-width: 75%; /* Adjust logo size */
-    }
-}
-
-
-
+ 
 
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
