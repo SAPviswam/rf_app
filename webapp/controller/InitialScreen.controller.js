@@ -21,9 +21,11 @@ sap.ui.define([
                 if (Device.system.phone){
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarinitial").setWidth("20%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("25%");
+                        this.byId("idImageLogoAvatarinitial").setWidth("45%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("50.5%");
                         // this.byId("initialscreentitle").setMarginRight("25%")
+                        this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+                        this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
     
                     } else {
                         // Non-iPhone phones
@@ -77,14 +79,19 @@ sap.ui.define([
                 this.onUserLogin();
 
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("_IDGenImage_CS").setWidth("20%");
-                        this.byId("_IDGenImage_CS").setHeight("25%");
-                        // this.byId("initialscreentitle").setMarginRight("25%")
-    
-                    } else {
+                        this.byId("_IDGenImage_CS").setWidth("25%");
+                        this.byId("_IDGenImage_CS").setHeight("50.5%");
+                        
+                        // Add margin-left by applying a CSS class
+                        this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
+                        this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
+
+                    
+                }
+                 else {
                         // Non-iPhone phones
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");

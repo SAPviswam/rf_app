@@ -103,7 +103,7 @@
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 23% !important;
+   
 }
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
@@ -197,7 +197,7 @@
 }
 /* General styles for all devices */
 .boxContainer {
-    width: 100%; /* Default to full width */
+  
     padding: 0; /* Default padding */
 }
 
@@ -232,7 +232,7 @@
 
 @media (max-width: 600px) {
     .boxContainer {
-        width:  85%!important; /* Full width on mobile */
+     
         padding: auto !important; /* Adjust padding */
     }
     .boxContainer3 {
@@ -265,6 +265,21 @@
     }
 }
  
+.iphoneMarginLeft {
+    margin: 2% !important;
+}
+
+
+.iphoneMarginSapLogon{
+    margin: 0%;
+}
+
+.iphoneInitialTitle{
+    padding: 0%;
+}
+.tabletBoxContainer{
+    width: 150%;
+}
 
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
@@ -639,6 +654,7 @@ margin-right: 20%;
 .VboxChangePassword {
 margin-right: 15%;
 }
+
 
 
 
