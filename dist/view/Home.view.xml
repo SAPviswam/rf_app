@@ -74,13 +74,15 @@
                     </HBox>
                     <HBox
                         id="_IDGenHBox69"
-                        justifyContent="Center"
+                        justifyContent="Start"
                     >
                         <CheckBox
                             id="_IDGenCheckBox"
                             text="Auto Save"
                             select="onSelectCheckBox"
+                             class="sapUiLargeMarginEnd"
                         />
+                        <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
                     </HBox>
                     <HBox
                         id="idHBoxForgot"

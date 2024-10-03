@@ -12,25 +12,30 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
-            
+                this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
                 this.loadConfiguredSystems();
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
                 this.arrayOfButton=[];
                 this.arrayOfClient=[];
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarinitial").setWidth("20%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("25%");
+                        this.byId("idImageLogoAvatarinitial").setWidth("30%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("40.5%");
                         // this.byId("initialscreentitle").setMarginRight("25%")
-    
+                        this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+                        this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+
                     } else {
                         // Non-iPhone phones
                         this.byId("idImageLogoAvatarinitial").setWidth("90%");
                         this.byId("idImageLogoAvatarinitial").setHeight("35%");
                     }
+                }
+                else if (Device.system.tablet) {
+                    this.byId("environmentButtonsHBox").setWidth("40%");
                 }
 
 
@@ -78,14 +83,19 @@ sap.ui.define([
                 this.onUserLogin();
 
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
                         this.byId("_IDGenImage_CS").setWidth("20%");
-                        this.byId("_IDGenImage_CS").setHeight("25%");
-                        // this.byId("initialscreentitle").setMarginRight("25%")
-    
-                    } else {
+                        this.byId("_IDGenImage_CS").setHeight("45.5%");
+
+                        // Add margin-left by applying a CSS class
+                        this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
+                        this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
+
+
+                    }
+                    else {
                         // Non-iPhone phones
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");
@@ -98,6 +108,7 @@ sap.ui.define([
 
                     }
                 }
+                
 
             },
             handleLinksapPress: async function () {
@@ -127,13 +138,13 @@ sap.ui.define([
                     oDialog.attachAfterOpen(function () {
                         this.byId("idDescriptionInput").focus();
                     }.bind(this));
-                   
+
                 }
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
             },
-           
+
             onCloseconnectsap: function () {
                 this.isEditButtonPressed=false;
                 this.oConnetSap.close();
@@ -781,11 +792,11 @@ sap.ui.define([
 
                         var oDialog = this.byId("idconnectsapdialogbox_CP");
                         if (oDialog) {
-                        oDialog.attachAfterOpen(function () {
-                        this.byId("idSPasswordInput_CP").focus();
-                        }.bind(this));
-                   
-                }
+                            oDialog.attachAfterOpen(function () {
+                                this.byId("idSPasswordInput_CP").focus();
+                            }.bind(this));
+
+                        }
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
                         MessageBox.error("Error retrieving user data. Please try again later.");

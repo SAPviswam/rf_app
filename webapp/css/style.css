@@ -103,8 +103,18 @@
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 23% !important;
+    /* width: 23% !important; */
 }
+@media only screen and (min-width: 1024px) {
+    .boxContainer {
+        border-radius: 0rem !important;
+        border: 2px solid #ed731dd2 !important;
+        padding: auto !important; 
+        padding-bottom: 1rem;
+        width: 23% !important;
+    }
+}
+
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
     user-select: none !important; /* Prevent text selection */
@@ -196,10 +206,7 @@
     width: 80%;
 }
 /* General styles for all devices */
-.boxContainer {
-    width: 100%; /* Default to full width */
-    padding: 0; /* Default padding */
-}
+
 
 .boxContainer3 {
     width: auto; /* Default width */
@@ -258,13 +265,28 @@
     }
  
     .logo {
-        margin-top: 12%; /* Adjust logo margin for mobile */
-        margin-left: 12%; /* Center logo on mobile */
+        margin-top: 7%; /* Adjust logo margin for mobile */
+        margin-left: 7%; /* Center logo on mobile */
         width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
 }
  
+.iphoneMarginLeft {
+    margin: 2% !important;
+}
+
+
+.iphoneMarginSapLogon{
+    margin: 0%;
+}
+
+.iphoneInitialTitle{
+    padding: 0%;
+}
+.tabletBoxContainer{
+    width: 150%;
+}
 
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
@@ -642,8 +664,8 @@ background-color: rgb(9, 8, 8) !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /* .cancelbutton{
-    background-color: #c9dbe9;
-    border: 2px solid #c9dbe9 !important;
+    background-color: #fbf6f6;
+    border: 2px solid #ffffff !important;
     color:rgba(24, 24, 237, 0.852) !important;
     margin-top: 0.2rem;
 } */
@@ -658,6 +680,24 @@ margin-right: 20%;
 
 .VboxChangePassword {
 margin-right: 15%;
+}
+.UserDetailsDialog{
+    background-color: orange !important;
+    color: orange;
+}
+
+
+@media (max-width: 600px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: 100% !important; /* Make buttons full-width on smaller screens */
+        margin-bottom: 10px !important; /* Add spacing between buttons */
+    }
+}
+
+@media (min-width: 601px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: auto !important; /* Reset width for larger screens */
+    }
 }
 
 
