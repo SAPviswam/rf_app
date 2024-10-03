@@ -669,6 +669,19 @@ margin-right: 15%;
 }
 
 
+@media (max-width: 600px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: 100% !important; /* Make buttons full-width on smaller screens */
+        margin-bottom: 10px !important; /* Add spacing between buttons */
+    }
+}
+
+@media (min-width: 601px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: auto !important; /* Reset width for larger screens */
+    }
+}
+
 
 
 

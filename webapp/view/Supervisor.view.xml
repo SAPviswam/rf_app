@@ -79,7 +79,7 @@
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
                 /> -->
-                <Button
+                <!-- <Button
                     id="themeButton"
                     text="Background Theme"
                     press="onOpenThemeDialog"
@@ -100,7 +100,7 @@
                     text="Cancel"
                     press="onCancel"
                     visible="false"
-                />
+                /> -->
 
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
@@ -170,28 +170,28 @@
                 <pages>
                     <ScrollContainer
                         id="pageSV2"
-                        horizontal="true"
                         vertical="true"
-                        height="auto"
-                        class="sapUiContentPadding"
+                        height="100%"
+                        width="100%"
+                        horizontal="true"
                     >
                         <Table
                             id="idRequestedData"
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
-                            mode="MultiSelect"
-                            class="Allslotsclasstable"
+                            mode="SingleSelectLeft"
                             growingScrollToLoad="true"
-                            growing="true"
-                            width="450px"
+                            growing="true" 
+                            width="40%"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idSlotsTableHeader1">
                                     <Title
                                         id="idTableHeaderTitle1"
                                         text="Requested Data"
-                                        class="Titles"
+
+                                        
                                     />
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
@@ -202,6 +202,7 @@
                                         icon="sap-icon://refresh"
                                         type="Emphasized"
                                         press="onRefreshRequestedData"
+                                    
                                     />
                                     <Button
                                         id="idBtnApprove"
@@ -220,43 +221,76 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <columns>
-                                <Column id="idEmployeeId">
+                                <Column
+                                    id="idEmployeeId"
+                                    width="12em"
+                                >
                                     <Title
                                         id="idtitleEmpID"
                                         text="Resource Id"
                                     />
                                 </Column>
-                                <Column id="idEmployeename">
+                                <Column
+                                    id="idEmployeename"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column id="idResourceType">
+                                <Column
+                                    id="idResourceType"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column id="idPhonenumber">
+                                <Column
+                                    id="idPhonenumber"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
                                     />
                                 </Column>
-                                <Column id="idProcessArea">
+                                <Column
+                                    id="idProcessArea"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idProcessAreatitle"
                                         text="Process Area"
                                     />
                                 </Column>
-                                <Column id="idProcessGroup">
+                                <Column
+                                    id="idProcessGroup"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idProcessgrouptitle"
                                         text="Group"
                                     />
                                 </Column>
-                                <Column id="idProcessQueue">
+                                <Column
+                                    id="idProcessQueue"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
                                     <Title
                                         id="idProcessQueuetitle"
                                         text="Queue"
@@ -294,6 +328,7 @@
                                             id="idProcessAreaValue"
                                             items="{path: '/ProcessAreaSet'}"
                                             selectionChange="onSelectTableProcesAarea"
+                                            maxWidth="20%"
                                         >
                                             <core:Item
                                                 class="dropdown"
@@ -337,14 +372,14 @@
                     </ScrollContainer>
                     <ScrollContainer
                         id="pageSV3"
-                        horizontal="true"
                         vertical="true"
                         height="400px"
                         class="sapUiContentPadding"
+                        width="100%"
                     >
                         <Table
                             id="idUserDataTable"
-                            mode="MultiSelect"
+                            mode="SingleSelectLeft"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
@@ -393,6 +428,9 @@
                                 <Column
                                     id="idRDEmpIdCol"
                                     width="10%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Begin"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
@@ -402,6 +440,9 @@
                                 <Column
                                     id="idRDEmpNameCol"
                                     width="10%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDEmpNameTitle"
@@ -411,6 +452,9 @@
                                 <Column
                                     id="idRDAreaCol"
                                     width="10%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDAreaColTitle"
@@ -420,6 +464,9 @@
                                 <Column
                                     id="idRDGroupCol"
                                     width="25%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDGroupTitle"
@@ -429,6 +476,9 @@
                                 <Column
                                     id="idRDResourceTypeCol"
                                     width="12%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -438,6 +488,9 @@
                                 <Column
                                     id="idRDEmailCol"
                                     width="10%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDEmailTitle"
@@ -447,12 +500,25 @@
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDPhoneNoTitle"
                                         text="Phone Number"
                                     />
                                 </Column>
+
+                                <!-- <Column
+                                    id="idPasswordCol1"
+                                    width="13%"
+                                >
+                                    <Title
+                                        id="idPasswordTitl1e"
+                                        text="Password"
+                                    />
+                                </Column> -->
                             </columns>
 
                             <items>
@@ -486,6 +552,22 @@
                                             id="idRDPhoneNoColValue"
                                             text="{Phonenumber}"
                                         />
+
+                                        <!-- <Text
+                                            id="idRDPasswordColValue"
+                                            text="{Password}"
+                                        />
+ 
+                                        <Text
+                                            id="idUserQueueColValue"
+                                            text="{Queue}"
+                                        />
+ 
+                                        <Text
+                                            id="idRDExpiredDateColValue"
+                                            text="{Expirydate}"
+                                        /> -->
+
                                     </cells>
                                 </ColumnListItem>
                             </items>

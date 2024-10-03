@@ -692,7 +692,7 @@ sap.ui.define([
                     this.onBackgroundThemeBtn();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("onRecevinngofHUbyBillofLadingPress", { id: this.ID });
+                    oRouter.navTo("RouteBillofLading", { id: this.ID });
                 }
             },
             onCreateShippingHUPress: function (oEvent) {
