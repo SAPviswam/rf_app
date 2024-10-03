@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="idLanguagePopover"
+        placement="Bottom"
+        verticalScrolling="false"
+        horizontalScrolling="false"
+        contentWidth="100px"
+        title="Select Language:"
+        class="sapUiResponsivePadding"
+    >
+        <VBox id="idPopOverLanguage">
+            <Button
+                id="idEnglishLanguage"
+                text="English"
+                type="Transparent"
+                press="onLanguageSelect"
+            />
+            <Button
+                id="idHindiLanguage"
+                text="Hindi"
+                type="Transparent"
+                press="onLanguageSelect"
+            />
+            <Button
+                id="idSpanishLanguage"
+                text="Spanish"
+                type="Transparent"
+                press="onLanguageSelect"
+            />
+            <Button
+                id="idFrenchLanguage"
+                text="French"
+                type="Transparent"
+                press="onLanguageSelect"
+            />
+        </VBox>
+    </Popover>
+</core:FragmentDefinition>

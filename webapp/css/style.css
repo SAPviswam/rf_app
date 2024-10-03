@@ -512,7 +512,9 @@
         width: auto !important; /* Adjust labels */
     }
 }
-
+.onProfileOptions{
+    margin-left: -0.2rem !important;
+}
 
 
 
