@@ -339,7 +339,7 @@
                         id="pageSV3"
                         horizontal="true"
                         vertical="true"
-                        height="auto"
+                        height="400px"
                         class="sapUiContentPadding"
                     >
                         <Table
@@ -350,7 +350,8 @@
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
-                            width="450px" 
+                            width="100%"
+                            sticky="ColumnHeaders"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -358,9 +359,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <!-- <ToolbarSpacer
-                                        id="idUsersInfoToolbarSpace"
-                                    />
+                                    <ToolbarSpacer />
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -373,7 +372,7 @@
                                             />
                                         </layoutData>
                                     </SearchField>
-<Button
+                                    <Button
                                         id="idBtnEd2"
                                         tooltip="Approve"
                                         text="Approve"
@@ -386,10 +385,10 @@
                                         text="Reject"
                                         type="Reject"
                                         press="onUpdateUserBtnPress"
-                                    /> -->
+                                    />
                                 </OverflowToolbar>
                             </headerToolbar>
- 
+
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
@@ -445,7 +444,6 @@
                                         text="Email"
                                     />
                                 </Column>
- 
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
@@ -455,17 +453,8 @@
                                         text="Phone Number"
                                     />
                                 </Column>
- 
-                                <!-- <Column
-                                    id="idPasswordCol1"
-                                    width="13%"
-                                >
-                                    <Title
-                                        id="idPasswordTitl1e"
-                                        text="Password"
-                                    />
-                                </Column> -->
                             </columns>
+
                             <items>
                                 <ColumnListItem id="idRDEmpIdColListItem">
                                     <cells>
@@ -497,21 +486,6 @@
                                             id="idRDPhoneNoColValue"
                                             text="{Phonenumber}"
                                         />
- 
-                                        <!-- <Text
-                                            id="idRDPasswordColValue"
-                                            text="{Password}"
-                                        />
- 
-                                        <Text
-                                            id="idUserQueueColValue"
-                                            text="{Queue}"
-                                        />
- 
-                                        <Text
-                                            id="idRDExpiredDateColValue"
-                                            text="{Expirydate}"
-                                        /> -->
                                     </cells>
                                 </ColumnListItem>
                             </items>

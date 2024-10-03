@@ -142,7 +142,7 @@
                         press="onChangePasswordBtn"
                         />
                         <Link id="IDlogoncancelbutton"
-                         text="Cancel"
+                        text="Cancel"
                         press="onPressCancleSapLogon"
                         class="cancelbutton"
                        />
