@@ -10,7 +10,7 @@
         horizontalScrolling="false"
         class="sapUiResponsivePadding"
         contentWidth="200px"
-        title="User Profile:"
+        title="Profile:"
     >
         <form:SimpleForm
             id="idSimpleFormProfile"
@@ -82,7 +82,7 @@
                         icon="sap-icon://translate"
                         text="Language"
                         type="Transparent"
-                        press="onPressLanguageTransulation"
+                        press="onPressLanguageTranslation"
                     />
                     <Button
                         id="idTileViewButton"
