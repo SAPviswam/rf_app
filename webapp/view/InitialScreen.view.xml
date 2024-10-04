@@ -11,13 +11,11 @@
                 height="100%"
                 direction="Column"
                 alignItems="Center"
-                 width="auto"
             >
                 <VBox
                     id="environmentButtonsHBox"
                     class="sapUiSmallMargin boxContainer"
                     alignItems="Center"
-                   width="auto"
                 >
                     <VBox id="idvboxnavbuttons" width="auto">
                         <HBox
@@ -107,10 +105,11 @@
                     </VBox>
 
                     <!-- Link for configuring SAP system -->
-                    <Link
+                    <Button
                         id="_IDCofiguresapLink"
                         text="Configure SAP system"
                         press="handleLinksapPress"
+                        type="Transparent"
                     />
                     <HBox id="IDhboxnavup">
                         <Button
