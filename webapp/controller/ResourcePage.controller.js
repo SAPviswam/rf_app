@@ -462,12 +462,12 @@ sap.ui.define([
                         var ogroup = oData.Resourcegroup;
                         var groupArray = ogroup.split(",").map(item => item.trim());
 
-                        groupArray.forEach(function (group) {
+                        // groupArray.forEach(function (group) {
 
-                            let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
-                            let loGroup = oGroup.toLowerCase();
-                            that.getView().byId(`id_${loGroup}_title`).setVisible(true)
-                        })
+                        //     let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
+                        //     let loGroup = oGroup.toLowerCase();
+                        //     that.getView().byId(`id_${loGroup}_title`).setVisible(true)
+                        // })
 
                         var oresourceType = oData.Queue;
                         var oResourceArray = oresourceType.split(",").map(item => item.trim())
@@ -1130,7 +1130,7 @@ sap.ui.define([
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
-            }
+            },
 
             onProductInspectionByStorageBinPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
