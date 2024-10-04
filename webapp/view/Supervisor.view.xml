@@ -180,6 +180,7 @@
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
+                            
                             mode="SingleSelectLeft"
                             growingScrollToLoad="true"
                             growing="true" 
@@ -263,6 +264,13 @@
                                         text="Phone Number"
                                     />
                                 </Column>
+                                <Column id="idEmail">
+                                    <Title
+                                        id="idEmailtitle"
+                                        text="Email"
+                                    />
+                                </Column>
+                                <Column id="idProcessArea">
                                 <Column
                                     id="idProcessArea"
                                     minScreenWidth="Tablet"
@@ -319,15 +327,16 @@
                                             id="idPhoneNumberValue"
                                             text="{Phonenumber}"
                                         />
-                                        <!-- <Input
-                                            id="idProcessAreaValue"
-                                            visible="true"
-                                            value="{Area}"
-                                        /> -->
+                                        <Text
+                                            id="idEmailValue"
+                                            text="{Email}"
+                                        />
+                                        
                                         <MultiComboBox
                                             id="idProcessAreaValue"
                                             items="{path: '/ProcessAreaSet'}"
                                             selectionChange="onSelectTableProcesAarea"
+                                            visible="false"
                                             maxWidth="20%"
                                         >
                                             <core:Item
