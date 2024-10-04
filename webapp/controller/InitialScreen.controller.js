@@ -1,3 +1,4 @@
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
@@ -8,183 +9,50 @@ sap.ui.define([
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
         "use strict";
-
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 this.loadConfiguredSystems();
                 this.aAllButtons = []; // Store all button instances
                 this.currentIndex = 0;
-
-                $(document).on("keydown",this.FunctionKeysPress.bind(this));
-                this.isActive = true;
-            },
-            FunctionKeysPress:function(event){
-                if(event.key === "F1")
-                    {
-                        this.handleAddPressfragment();
-                        event.preventDefault();
-                        
-                    }
-                    else if(event.key === "F2")
-                        {
-                            this.handleEditPressfragment();
-                            event.preventDefault();   
-                        }
-                     else if(event.key === "F4")
-                        {
-                            this.handleDeletePressfragment();
-                            event.preventDefault();   
-                        }                            
-            },
-            handleAddPressfragment:function(){
-                this.handleLinksapPress();
-            },
-            handleEditPressfragment: async function(){
-                await this.onEditConfiguredSystem();
-            },
-            handleDeletePressfragment:function(){
-                this.onDeleteConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
             },
             LoadSapLogon: async function () {
-                
-                // Load the fragment if it hasn't been loaded yet
                 this.oConfigSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.SapLogon"
-                });
-            
-                // Open the dialog
+                })
                 this.oConfigSap.open();
-            
-                // Call the user login function
                 this.onUserLogin();
                
-
             // Focus on the user input after dialog opens
-            this._attachFocusToInputsforlogon();
-            var oUserInputCS = this.byId("LoginButton_CS");
-            if (oUserInputCS) {
-                oUserInputCS.focus();
+            var oDialog = this.byId("idconnectsapdialogbox_CS");
+            if (oDialog) {
+                oDialog.attachAfterOpen(function () {
+                    this.byId("idUserInput_CS").focus();
+                }.bind(this));
             }
-           
             },
             handleLinksapPress: async function () {
-                debugger
-                // Load the SAP connection fragment if it hasn't been loaded yet
                 this.oConnetSap ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ConnecttoSAP"
-                });
-            
-                // Set button visibility
+                })
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
-            
-                // Open the dialog and set initial focus on idDescriptionInput
                 this.oConnetSap.open();
-
                 var oDialog = this.byId("idconnectsapdialogbox");
                 if (oDialog) {
                     oDialog.attachAfterOpen(function () {
                         this.byId("idDescriptionInput").focus();
                     }.bind(this));
             
-                    // Attach focus change listeners to inputs
-                    this._attachFocusToInputs();
+        
                 }
             },
-            _attachFocusToInputsforlogon: function() {
-                var aInputIds = [
-                    "idUserInput_CS",
-                    "idSystemIdInput",
-                    "idLanguageSelectorMultiComboBox_CS",
-                    "idRouterStringInput_CS"
-                ];
             
-                aInputIds.forEach(function(sId) {
-                    // Access elements via the fragment instance (this.oConfigSap)
-                    var oInput = this.byId(sId);
             
-                    if (oInput) {
-                        oInput.attachBrowserEvent("focusin", function() {
-                            console.log("Focused on: " + sId);
-                        });
-                    } else {
-                        console.error("Element with ID " + sId + " not found.");
-                    }
-                }.bind(this));
-            },
-            _attachFocusToInputs: function() {
-                var aInputIds = [
-                    "idDescriptionInput",
-                    "idSPasswordInput_CS",
-                    "idInstanceNumberInput",
-                    "idClientInput",
-                    "idApplicationServerInput",
-                    "idRouterStringInput",
-                    "idServiceInput"
-                ];
-            
-                aInputIds.forEach(function(sId) {
-                    this.byId(sId).attachBrowserEvent("focusin", function(oEvent) {
-                        // Focus logic can be applied here if needed
-                        console.log("Focused on: " + sId);
-                    });
-                }.bind(this));
-
-                const initialInput = this.byId("idDescriptionInput");
-                initialInput.focus();
-            
-                // Set up focus management
-                const inputs = [
-                    initialInput,
-                    this.byId("idSystemIdInput"),
-                    this.byId("idInstanceNumberInput"),
-                    this.byId("idClientInput"),
-                    this.byId("idApplicationServerInput"),
-                    this.byId("idRouterStringInput"),
-                    this.byId("idServiceInput")
-                ];
-            
-                // Track if user is focused on any input
-                let userFocusedInput = false;
-            
-                // Attach focus event to each input
-                inputs.forEach(input => {
-                    if (input) { // Check if input is a valid object
-                        input.attachFocusin(() => {
-                            userFocusedInput = true; // Mark that the user has focused on an input
-                        });
-            
-                        input.attachFocusout(() => {
-                            // If the focus moves away, reset the userFocusedInput if no input is active
-                            const activeElement = document.activeElement;
-                            if (!inputs.some(inp => inp.getDomRef() === activeElement)) {
-                                userFocusedInput = false;
-                            }
-                        });
-                    }
-                });
-            
-                // Keep track of focus
-                const focusInterval = setInterval(() => {
-                    if (!userFocusedInput) {
-                        const activeElement = document.activeElement;
-                        const currentInput = inputs.find(input => input.getDomRef() === activeElement);
-                        
-                        // If no input is focused, refocus on initialInput
-                        if (!currentInput) {
-                            initialInput.focus(); 
-                        }
-                    }
-                }, 100);
-            
-                // Clear the interval when the dialog closes
-                this.oConnetSap.attachAfterClose(() => {
-                    clearInterval(focusInterval);
-                });
-            },
+                
+           
             handleAddPress: async function () {
                 await this.handleLinksapPress();
             },
@@ -225,7 +93,6 @@ sap.ui.define([
                 var oCheckbox = oView.byId("idCheckboxDescription");
                 var bValid = true;
                 var bAllFieldsFilled = true;
-
                 // Validate Description only if the checkbox is not selected
                 if (!oCheckbox.getSelected() && !sDescription) {
                     oView.byId("idDescriptionInput").setValueState("Error");
@@ -235,7 +102,6 @@ sap.ui.define([
                 } else {
                     oView.byId("idDescriptionInput").setValueState("None");
                 }
-
                 if (!sSystemId) {
                     oView.byId("idSystemIdInput").setValueState("Error");
                     oView.byId("idSystemIdInput").setValueStateText("System ID must be a 3-digit value");
@@ -244,7 +110,6 @@ sap.ui.define([
                 } else {
                     oView.byId("idSystemIdInput").setValueState("None");
                 }
-
                 // Validate Username
                 if (!sInstanceNumber) {
                     oView.byId("idInstanceNumberInput").setValueState("Error");
@@ -254,7 +119,6 @@ sap.ui.define([
                 } else {
                     oView.byId("idInstanceNumberInput").setValueState("None");
                 }
-
                 if (!sClient) {
                     oView.byId("idClientInput").setValueState("Error");
                     oView.byId("idClientInput").setValueStateText("clientID must be a 3-digit value");
@@ -263,7 +127,6 @@ sap.ui.define([
                 } else {
                     oView.byId("idClientInput").setValueState("None");
                 }
-
                 if (!sApplicationServer) {
                     oView.byId("idApplicationServerInput").setValueState("Error");
                     bValid = false;
@@ -271,21 +134,17 @@ sap.ui.define([
                 } else {
                     oView.byId("idApplicationServerInput").setValueState("None");
                 }
-
                 // Display appropriate message
                 if (!bAllFieldsFilled) {
                     sap.m.MessageToast.show("Please fill all mandatory details");
                     return;
                 }
-
                 if (!bValid) {
                     sap.m.MessageToast.show("Please enter correct data");
                     return;
                 }
-
                 // Get the OData model
                 var oModel = this.getOwnerComponent().getModel();
-
                 // Read existing entries to check uniqueness
                 oModel.read("/ServiceSet", {
                     filters: [new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription)],
@@ -293,7 +152,6 @@ sap.ui.define([
                     success: function (oData) {
                         // Initialize an array to hold error messages
                         var errorMessages = [];
-
                         // Check for duplicates and populate error messages
                         if (oData.results.length > 0) {
                             if (oData.results.some(entry => entry.Client === sClient)) {
@@ -302,14 +160,11 @@ sap.ui.define([
                             if (oData.results.some(entry => entry.Description === sDescription)) {
                                 errorMessages.push("The Description must be unique.");
                             }
-
                             if (errorMessages.length > 0) {
                                 MessageToast.show(errorMessages.join("\n"));
                                 return; // Exit the function if duplicates are found
                             }
-
                         }
-
                         // Create a new button for the configured SAP system
                         var oNewButton = new sap.m.Button({
                             type: "Emphasized",
@@ -321,24 +176,18 @@ sap.ui.define([
                                 })
                             ]
                         });
-
                         // Set the button text based on the checkbox state
                         if (oCheckbox.getSelected()) {
                             oNewButton.setText(sSystemId + " / " + sClient);
                         } else {
                             oNewButton.setText(sDescription);
                         }
-
                         // Attach single click event for CRUD operations
                         oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, sDescription, sSystemId, sClient));
-
                         // Attach double click event for opening SAP logon
                         oNewButton.attachBrowserEvent("dblclick", function () {
                             this.LoadSapLogon();
-                            const oInput = this.getView().byId("idDescriptionInput");
-   
                         }.bind(this));
-
                         // Create entry for OData service
                         var oEntry = {
                             Description: sDescription,
@@ -351,19 +200,15 @@ sap.ui.define([
                             DescriptionB: (oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription)
                             // Add other properties as needed based on your OData service structure
                         };
-
                         // Save to OData service
                         oModel.create("/ServiceSet", oEntry, {
                             success: function () {
                                 MessageToast.show("Configured system saved successfully.");
                                 this.clearInputFields(oView);
-
                                 // Get the HBox that holds the buttons
                                 var oHomePage = oView.byId("environmentButtonsHBox");
-
                                 // Find the reference link to insert after
                                 var oLink = oView.byId("_IDCofiguresapLink");
-
                                 // Insert the new button after the link
                                 oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
                                 window.location.reload();
@@ -372,10 +217,8 @@ sap.ui.define([
                                 MessageToast.show("Error saving configured system.");
                             }
                         });
-
                         // Close the dialog after saving
                         this.onCloseconnectsap(); // Assuming you have a method to close the dialog
-
                     }.bind(this), // Ensure 'this' context is correct
                     error: function (oError) {
                         MessageToast.show("Error checking existing systems.");
@@ -394,13 +237,11 @@ sap.ui.define([
                 var oCheckbox = oView.byId("idCheckboxDescription");
                 oCheckbox.setSelected(false);
             },
-
             onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client, oEvent) {
                 this.selectedButton = oButton;
                 this.client = Client;
                 this.sdedescription = oButton.mProperties.text;
             },
-
             onClearconnectSAPPress: function () {
                 var oView = this.getView();
                 this.clearInputFields(oView);
@@ -410,9 +251,7 @@ sap.ui.define([
                     MessageToast.show("No System selected for deletion.");
                     return;
                 }
-
                 var that = this; // Store reference to 'this' for use in callbacks
-
                 MessageBox.warning("Delete the selected system?", {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -421,11 +260,9 @@ sap.ui.define([
                             // Delete from OData service
                             var oModel = that.getView().getModel(); // Get the OData model
                             var sPath = "/ServiceSet('" + this.client + "')"; // Construct path based on your entity set
-
                             oModel.remove(sPath, {
                                 success: function () {
                                     MessageToast.show("Configured system deleted successfully.");
-
                                     // Remove the button from the UI
                                     var oHomePage = that.getView().byId("environmentButtonsHBox");
                                     oHomePage.removeItem(that.selectedButton); // Remove the selected button
@@ -436,7 +273,6 @@ sap.ui.define([
                                     // Clear selection
                                     that.selectedButton = null;
                                     that.updateDisplayedButtons()
-
                                     var index = that.aAllButtons.indexOf(that.selectedButton);
                                     if (index !== -1) {
                                         that.aAllButtons.splice(index, 1); // Remove button from array
@@ -462,18 +298,15 @@ sap.ui.define([
                     MessageToast.show("No System selected to edit.");
                     return;
                 }
-
                 await this.handleLinksapPress();
                 this.getView().byId("idconnectsapfinishButton").setVisible(false);
                 this.getView().byId("idconnectsapeditButton").setVisible(true);
                 var oButtonText = this.sdedescription;
                 var oModel = this.getView().getModel();
                 var that = this;
-
                 oModel.read("/ServiceSet", {
                     filters: [new sap.ui.model.Filter("DescriptionB", sap.ui.model.FilterOperator.EQ, oButtonText)],
                     success: function (oData) {
-
                         var aButtons = oData.results;
                         function checkButton(v) {
                             return v.DescriptionB === oButtonText;
@@ -502,7 +335,6 @@ sap.ui.define([
                 var sService = oView.byId("idServiceInput").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription");
                 var oButton = this.selectedButton;
-
                 // Perform validation checks
                 if (!sSystemId) {
                     sap.m.MessageToast.show("System ID is required.");
@@ -520,15 +352,16 @@ sap.ui.define([
                     sap.m.MessageToast.show("Application Server is required.");
                     return;
                 }
-
+                if (!sService) {
+                    sap.m.MessageToast.show("Service is required.");
+                    return;
+                }
                 // Update the sDescription based on the checkbox state
                 if (oCheckbox.getSelected()) {
                     sDescription = sSystemId + " / " + sClient;
                 }
-
                 // Update button text
                 oButton.setText(sDescription);
-
                 // Create an object with updated values, setting both Description and DescriptionB
                 var oUpdatedData = {
                     Description: sDescription,
@@ -540,10 +373,8 @@ sap.ui.define([
                     SapRouterStr: sRouterString,
                     SapService: sService
                 };
-
                 var that = this;
                 var oModel = this.getView().getModel();
-
                 // Update the entry in OData service
                 oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
                     success: function () {
@@ -565,42 +396,32 @@ sap.ui.define([
                 // Toggle the selected state
                 oButton.setPressed(!oButton.getPressed());
             },
-
             // Load configured systems from OData service and display them in the UI
             loadConfiguredSystems: function () {
                 var oModel = this.getOwnerComponent().getModel(); // Get the OData model
-
                 oModel.read("/ServiceSet", {
                     success: function (oData) {
                         var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
-
                         this.aAllButtons = []; // Reset the array
-
                         // Store all button instances
                         for (var i = 0; i < aConfiguredSystems.length; i++) {
                             var system = aConfiguredSystems[i]; // Get the current system
-
                             var oNewButton = new sap.m.Button({
                                 text: system.DescriptionB,
                                 type: "Emphasized",
                                 width: "11rem",
                             });
-
                             // Attach single click event for CRUD operations
                             oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, system.Description, system.SystemId, system.Client));
-
                             // Attach double click event for opening SAP logon
                             oNewButton.attachBrowserEvent("dblclick", function () {
                                 this.LoadSapLogon();
                             }.bind(this));
-
                             // Store the button in the array
                             this.aAllButtons.push(oNewButton);
                         }
-
                         // Load initial set of buttons
                         this.updateDisplayedButtons();
-
                     }.bind(this), // Ensure 'this' context is correct
                     error: function (oError) {
                         MessageToast.show("Error loading configured systems.");
@@ -608,15 +429,11 @@ sap.ui.define([
                     }
                 });
             },
-
             updateDisplayedButtons: function () {
                 var oHomePage = this.getView().byId("environmentButtonsHBox");
-
                 oHomePage.addItem(this.getView().byId("upNavigationButtonId"));
-
                 // Determine how many buttons to display (3 at a time)
                 var iLimit = Math.min(3, this.aAllButtons.length - this.currentIndex);
-
                 for (var i = 0; i < this.aAllButtons.length; i++) {
                     if (i >= this.currentIndex && i < this.currentIndex + iLimit) {
                         // Show buttons within the current range
@@ -625,11 +442,9 @@ sap.ui.define([
                         // Hide buttons outside the current range
                         this.aAllButtons[i].setVisible(false);
                     }
-
                     // Add visible buttons to the HBox
                     if (this.aAllButtons[i].getVisible()) {
                         oHomePage.addItem(this.aAllButtons[i]);
-
                     }
                 }
                 if (this.currentIndex + 3 >= this.aAllButtons.length) {
@@ -648,7 +463,6 @@ sap.ui.define([
                     MessageToast.show("No more Systems to display."); // Optional feedback for user
                 }
             },
-
             onNavNext: function () {
                 if (this.currentIndex - 3 >= 0) { // Check if we can go back
                     this.currentIndex -= 3; // Move to previous set of buttons
@@ -676,13 +490,11 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-
                             this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
                         }
-
                     }.bind(this),
                     error: function () {
                         MessageToast.show("User doesn't exist")
@@ -695,7 +507,6 @@ sap.ui.define([
             onPressCancleSapLogonInChangePassword: function () {
                 this.oConfigSapCP.close();
             },
-
             onChangePasswordBtn: async function () {
                 var oView = this.getView();
                 var sResourceId = oView.byId("idUserInput_CS").getValue(); // Get the Resource ID from user input
@@ -704,14 +515,11 @@ sap.ui.define([
                     MessageBox.error("Please enter User");
                     return;
                 }
-
                 // Load the Change Password fragment if not already loaded
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
-
                 var oModel = this.getView().getModel(); // Get your OData model
-
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
                     success: function (oData) {
@@ -726,7 +534,6 @@ sap.ui.define([
                     }
                 });
             },
-
             onChangePasswordPress: function () {
                 var oView = this.getView();
                 var sCurrentPassword = oView.byId("idSPasswordInput_CP").getValue();
@@ -734,18 +541,15 @@ sap.ui.define([
                 var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
                 var oModel = this.getView().getModel(); // Get your model
                 var sResourceId = this.sResourceID;
-
                 if (!sCurrentPassword) {
                     MessageToast.show("Please enter current password");
                     return;
                 }
-
                 // Check if all mandatory fields are filled
                 if (!sNewPassword || !sConfirmPassword) {
                     MessageToast.show("Please fill all feilds");
                     return;
                 }
-
                 // Read user data from model (adjust path as necessary)
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
                     success: function (oData) {
@@ -756,7 +560,6 @@ sap.ui.define([
                                 MessageBox.error("Passwords do not match. Please try again.");
                                 return;
                             }
-
                             oModel.update(`/RESOURCESSet('${sResourceId}')`, {
                                 Password: sNewPassword // Use an object to set the new password
                             }, {
@@ -779,7 +582,6 @@ sap.ui.define([
                     }
                 });
             }
-
 
         })
     });
