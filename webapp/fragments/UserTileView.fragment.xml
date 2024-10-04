@@ -16,19 +16,19 @@
                 id="idEnglishTileView"
                 text="Large Icons"
                 type="Transparent"
-                press="onTileViewSelect"
+                press="onPressTileViewLargeIcons"
             />
             <Button
                 id="idHindiTileView"
                 text="Medium Icons"
                 type="Transparent"
-                press="onTileViewSelect"
+                press="onPressTileViewMediumIcons"
             />
             <Button
                 id="idSpanishTileView"
                 text="Small Icons"
                 type="Transparent"
-                press="onTileViewSelect"
+                press="onPressTileViewSmallIcons"
             />
         </VBox>
     </Popover>

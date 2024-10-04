@@ -56,13 +56,71 @@ sap.ui.define([
                         })(oTile, sColor);
                     }
                 }
+                // Apply stored view setting
+                var sStoredView = localStorage.getItem("selectedView");
+                if (sStoredView) {
+                    // Get the ScrollContainer and its content
+                    var oTilesContainer = this.byId("idScrollContainer1");
+                    var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+                    aTiles.forEach(function (oTile) {
+                        // Check if the content is a GenericTile before proceeding
+                        if (oTile.isA("sap.m.GenericTile")) {
+                            // Remove any previous size-related CSS classes
+                            oTile.removeStyleClass("largeIcons");
+                            oTile.removeStyleClass("mediumIcons");
+                            oTile.removeStyleClass("smallIcons");
+
+                            // Apply the stored size class
+                            switch (sStoredView) {
+                                case "LargeIcons":
+                                    oTile.addStyleClass("largeIcons");
+                                    break;
+                                case "MediumIcons":
+                                    oTile.addStyleClass("mediumIcons");
+                                    break;
+                                case "SmallIcons":
+                                    oTile.addStyleClass("smallIcons");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    });
+                    oTilesContainer.rerender();
+                }
+                // Apply stored tile details (header and subheader)
+                var tileIds = Object.keys(localStorage).filter(key => key.startsWith('tile_'));
+                tileIds.forEach(function (tileKey) {
+                    // Extract the tile ID from the key
+                    var tileId = tileKey.replace('tile_', '');
+                    var storedTileData = JSON.parse(localStorage.getItem(tileKey));
+                    // Retrieve the tile by ID
+                    var oTile = this.byId(this._extractLocalId(tileId));
+                    // Apply the stored data to the tile if the tile exists
+                    if (oTile && storedTileData) {
+                        oTile.setHeader(storedTileData.header || "");
+                        oTile.setSubheader(storedTileData.subHeader || "");
+                    }
+                }.bind(this));
             },
+            //Themes Btn from Profile click...
             onPressThemesResource: function () {
-                //this.byId("idMainthemeBtn").setVisible(false);
-                this.byId("idCancelButtonResource").setVisible(true);
-                this.byId("idthemeBackGroundButton").setVisible(true);
-                this.Themecall = true;
-                sap.m.MessageToast.show("Theme mode activated.");
+                this.Themecall = !this.Themecall; // Toggle the state
+                if (this.Themecall) {
+                    // Theme mode activated
+                    this.byId("idCancelButtonResource").setVisible(true);
+                    this.byId("idthemeBackGroundButton").setVisible(true);
+                    sap.m.MessageToast.show("Theme mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idCancelButtonResource").setVisible(false);
+                    this.byId("idthemeBackGroundButton").setVisible(false);
+                    sap.m.MessageToast.show("Theme mode deactivated.");
+                }
+            },
+            //Main Background Btn...
+            onBackgroundThemeBtn: function () {
+                this.byId("idthemeTileDialogResource").open();
             },
             onCancelPressThemeMode: function () {
                 //this.byId("idMainthemeBtn").setVisible(true);
@@ -71,12 +129,10 @@ sap.ui.define([
                 this.Themecall = false;
                 sap.m.MessageToast.show("Theme mode Deactivated.");
             },
+            //closing theme dialog when press on tile...
             onCancelColorDialog: function () {
                 this.byId("idthemeTileDialogResource").close();
                 this.resetDialogBox();
-            },
-            onBackgroundThemeBtn: function () {
-                this.byId("idthemeTileDialogResource").open();
             },
             onApplyColor: function () {
                 var oView = this.getView();
@@ -204,9 +260,6 @@ sap.ui.define([
                 oColorPicker.setColorString("#FFFFFF");
                 oColorPicker.setVisible(true);
             },
-            onCancelColorDialog: function () {
-                this.byId("idthemeTileDialogResource").close();
-            },
             // Helper function to extract the local ID of a tile
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
@@ -216,26 +269,133 @@ sap.ui.define([
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
                 return hexRegex.test(sColor) || rgbRegex.test(sColor);
             },
-            onPressLanguageTransulation: function (oEvent) {
-                // Check if the popover already exists, if not create it
-                if (!this._oLanguagePopover) {
-                    this._oLanguagePopover = sap.ui.xmlfragment("com.app.rfapp.fragments.LanguageTransulations", this);
-                    this.getView().addDependent(this._oLanguagePopover);
-                }
-
-                // Open popover near the language button
-                this._oLanguagePopover.openBy(oEvent.getSource());
+            //opens theme dialog when click on tile...
+            onBackgroundTilePopOverThemeBtn: function () {
+                this._currentTileId = this._currentTile.getId();
+                this.byId("idthemeTileDialogResource").open();
             },
+            _openTilePopover: function () {
+                debugger
+                if (!this._tilePopover) {
+                    this._tilePopover = new sap.m.Popover({
+                        title: "Tile Options",
+                        content: [
+                            new sap.m.Button({
+                                icon: "sap-icon://edit",
+                                type: "Transparent",
+                                text: "Rename",
+                                press: this.onPressRenameTile.bind(this) // Bind the context
+                            }),
+                            new sap.m.Button({
+                                icon: "sap-icon://palette",
+                                type: "Transparent",
+                                text: "Theme",
+                                press: this.onBackgroundTilePopOverThemeBtn.bind(this) // Bind the context for the theme button
+                            })
+                        ],
+                        placement: sap.m.PlacementType.Right,
+                        //afterOpen: this._onPopoverAfterOpen.bind(this)
+                    });
+                }
+                this._tilePopover.openBy(this._currentTile);
+                this.TileHeader = this._currentTile.getHeader();
+                this.TileSubHeader = this._currentTile.mProperties.subheader;
+            },
+            onPressRenameTile: function () {
+                debugger
+                this.byId("idInputTileHeaderResorce").setValue(this.TileHeader);
+                this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
+                // Open the rename dialog
+                this.byId("IdEditTileDetailsDialogResource").open();
+            },
+            onPressSaveTileEditDeatils: function () {
+                debugger
+                var sNewHeader = this.byId("idInputTileHeaderResorce").getValue();
+                var sNewSubHeader = this.byId("idInputSubHeaderResource").getValue();
+
+                // Update the tile details
+                if (this._currentTile) {
+                    var tileId = this._currentTile.getId();
+                    this._currentTile.setHeader(sNewHeader);
+                    this._currentTile.setSubheader(sNewSubHeader);
+
+                    // Create an object to store the updated tile data
+                    var tileData = {
+                        header: sNewHeader,
+                        subHeader: sNewSubHeader // Store the new subheader
+                    };
+                    // Save the updated tile details in localStorage
+                    localStorage.setItem(`tile_${tileId}`, JSON.stringify(tileData)); // Save tile data as a string in localStorage
+                    this.byId("IdEditTileDetailsDialogResource").close();
+                    sap.m.MessageToast.show("Tile details updated successfully!");
+                }
+            },
+            onCloseEditingTileDetailsDialog: function () {
+                this.byId("IdEditTileDetailsDialogResource").close();
+            },
+            //Tile View setting When press on profile...
             onPressTileViewSettings: function (oEvent) {
                 // Check if the popover already exists, if not create it
                 if (!this.oTileViewSettings) {
                     this.oTileViewSettings = sap.ui.xmlfragment("com.app.rfapp.fragments.UserTileView", this);
                     this.getView().addDependent(this.oTileViewSettings);
                 }
-
                 // Open popover near the language button
                 this.oTileViewSettings.openBy(oEvent.getSource());
             },
+            onPressTileViewLargeIcons: function () {
+                this.onPressTileViewResizeIcons("LargeIcons");
+            },
+            onPressTileViewMediumIcons: function () {
+                this.onPressTileViewResizeIcons("MediumIcons");
+            },
+            onPressTileViewSmallIcons: function () {
+                this.onPressTileViewResizeIcons("SmallIcons");
+            },
+            //CallBack function every Tile view....
+            onPressTileViewResizeIcons: function (sSelectedKey) {
+                var oTilesContainer = this.byId("idScrollContainer1");
+                var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+                // Save the selected key to localStorage
+                localStorage.setItem("selectedView", sSelectedKey);
+                // Loop through each tile and apply the appropriate style class based on the selected view
+                aTiles.forEach(function (oTile) {
+                    // Check if the content is a GenericTile before proceeding
+                    if (oTile.isA("sap.m.GenericTile")) {
+                        // Remove any previous size-related CSS classes
+                        oTile.removeStyleClass("largeIcons");
+                        oTile.removeStyleClass("mediumIcons");
+                        oTile.removeStyleClass("smallIcons");
+
+                        // Apply the selected size class
+                        switch (sSelectedKey) {
+                            case "LargeIcons":
+                                oTile.addStyleClass("largeIcons");
+                                break;
+                            case "MediumIcons":
+                                oTile.addStyleClass("mediumIcons");
+                                break;
+                            case "SmallIcons":
+                                oTile.addStyleClass("smallIcons");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+                oTilesContainer.rerender();
+            },
+            //Language Transulation PopOver Profile...
+            onPressLanguageTransulation: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this._oLanguagePopover) {
+                    this._oLanguagePopover = sap.ui.xmlfragment("com.app.rfapp.fragments.LanguageTransulations", this);
+                    this.getView().addDependent(this._oLanguagePopover);
+                }
+                // Open popover near the language button
+                this._oLanguagePopover.openBy(oEvent.getSource());
+            },
+
 
             onResourceDetailsLoad: async function (oEvent1) {
 
@@ -410,8 +570,8 @@ sap.ui.define([
             },
             onManuallyRepackHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackHU", { id: this.ID });
@@ -419,8 +579,8 @@ sap.ui.define([
             },
             onManuallyRepackHUItemPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
@@ -428,8 +588,8 @@ sap.ui.define([
             },
             onPutawayByHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RoutePutawayByHU", { id: this.ID });
@@ -437,8 +597,8 @@ sap.ui.define([
             },
             onReceivingofHUbyConsignementOrderPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("Receivingofhubyco", { id: this.ID });
@@ -447,8 +607,8 @@ sap.ui.define([
             },
             onManuallyRepackHUItemPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RouteManuallyRepackingByHuItems", { id: this.ID });
@@ -456,8 +616,8 @@ sap.ui.define([
             },
             onWTQuerybyWOPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByWO", { id: this.ID });
@@ -465,8 +625,8 @@ sap.ui.define([
             },
             onReceivingofHUbyDeliveryPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyDelivery", { id: this.ID });
@@ -474,8 +634,8 @@ sap.ui.define([
             },
             onReceivingofHUbymanufacturingOrderPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyManufacturingOrder", { id: this.ID });
@@ -483,8 +643,8 @@ sap.ui.define([
             },
             onRecevingofTUDoorTWPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyTUorDoor", { id: this.ID });
@@ -492,8 +652,8 @@ sap.ui.define([
             },
             onReceivingofHUbyASNPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
@@ -501,8 +661,8 @@ sap.ui.define([
             },
             onReceivingofHUbyShipmentPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
@@ -510,8 +670,8 @@ sap.ui.define([
             },
             onReceivingofHUbyTUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
@@ -519,8 +679,8 @@ sap.ui.define([
             },
             onUnloadingByDoorTilePress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByDoor", { id: this.ID });
@@ -528,8 +688,8 @@ sap.ui.define([
             },
             onUnloadingByConsignmentOrderTilePress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
@@ -537,8 +697,8 @@ sap.ui.define([
             },
             onChangeQueueTilePress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ChangeQueue", { id: this.ID });
@@ -546,8 +706,8 @@ sap.ui.define([
             },
             onChangeResourceGroupTilePress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ChangeResourceGroup", { id: this.ID });
@@ -555,8 +715,8 @@ sap.ui.define([
             },
             onUnloadingbyBillofLadingPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
@@ -564,8 +724,8 @@ sap.ui.define([
             },
             onDeconsolidationAutomaticallyPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
@@ -573,8 +733,8 @@ sap.ui.define([
             },
             onDeconsolidateManuallyPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("DeconsolidationManually", { id: this.ID });
@@ -582,8 +742,8 @@ sap.ui.define([
             },
             onAdhocInventoryCreationPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocInventoryCreation", { id: this.ID });
@@ -591,8 +751,8 @@ sap.ui.define([
             },
             onCreationOfSingleHUpress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreationOfSingleHU", { id: this.ID });
@@ -600,8 +760,8 @@ sap.ui.define([
             },
             onMaintainHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("MaintainHU", { id: this.ID });
@@ -609,8 +769,8 @@ sap.ui.define([
             },
             onReversalofConsumptionbyMOHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
@@ -618,8 +778,8 @@ sap.ui.define([
             },
             onUnloadingByShipmentPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByShipment", { id: this.ID });
@@ -627,8 +787,8 @@ sap.ui.define([
             },
             onUnloadingByTransportUnitPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByTU", { id: this.ID });
@@ -679,8 +839,8 @@ sap.ui.define([
             },
             onRecevinngofHUbyBillofLadingPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RouteBillofLading", { id: this.ID });
@@ -688,8 +848,8 @@ sap.ui.define([
             },
             onCreateShippingHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateShippingHU", { id: this.ID });
@@ -697,8 +857,8 @@ sap.ui.define([
             },
             onCreateShippingHUWOWCPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateShippingHUWOWC", { id: this.ID });
@@ -706,8 +866,9 @@ sap.ui.define([
             },
             onPutawayByWOPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("PutawayByWO", { id: this.ID });
@@ -715,17 +876,39 @@ sap.ui.define([
             },
             onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
                 }
             },
+            onAutomaticallyRepackHUItemPress: function (oEvent) {
+                if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
+                }
+            },
+            onSetReadyforWHprocessingbyCOPress: function (oEvent) {
+                if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+                }
+            },
             onWTquerybyHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByHU", { id: this.ID });
@@ -737,8 +920,8 @@ sap.ui.define([
             },
             onCreateandConfirmAdhocProductWTPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
@@ -746,8 +929,8 @@ sap.ui.define([
             },
             onSerialnumberLocationPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("SerialNumberLocation", { id: this.ID });
@@ -755,8 +938,8 @@ sap.ui.define([
             },
             onStockBinQuerybyProductPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
@@ -764,8 +947,8 @@ sap.ui.define([
             },
             onCreateAdhocHUWTPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocHuWt", { id: this.ID });
@@ -773,8 +956,8 @@ sap.ui.define([
             },
             onCreateAdhocProductWTPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocProductWt", { id: this.ID });
@@ -782,8 +965,8 @@ sap.ui.define([
             },
             onReceivingofHUbyDoorPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingOfHuByDoor", { id: this.ID });
@@ -791,8 +974,8 @@ sap.ui.define([
             },
             onStockBinQuerybyBinPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("StockBinQueryByBin", { id: this.ID });
@@ -800,8 +983,8 @@ sap.ui.define([
             },
             onHUQueryPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("HuQuery", { id: this.ID });
@@ -810,9 +993,9 @@ sap.ui.define([
             onUnloadingByDeliveryPress: function (oEvent) {
                 if (this.Themecall) {
                     // Get the ID of the pressed tile
-                    this._currentTileId = oEvent.getSource().getId();
+                    this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
-                    this.onBackgroundThemeBtn();
+                    this._openTilePopover();
                 } else {
                     // Proceed with normal navigation
                     var oRouter = UIComponent.getRouterFor(this);
@@ -821,8 +1004,8 @@ sap.ui.define([
             },
             onUnloadingByASNPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
@@ -830,8 +1013,8 @@ sap.ui.define([
             },
             onWTQuerybyQueuePress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByQueue", { id: this.ID });
@@ -839,8 +1022,8 @@ sap.ui.define([
             },
             onPickPointPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("PickPoint", { id: this.ID });
@@ -848,8 +1031,8 @@ sap.ui.define([
             },
             onManuallyrepackallHUitemsPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
@@ -857,8 +1040,8 @@ sap.ui.define([
             },
             onHUStockOverviewQueryPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
@@ -866,8 +1049,8 @@ sap.ui.define([
             },
             onConsumptionByManufacturingOrderPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ConsumptionByManufacturingOrder", { id: this.ID });
@@ -875,8 +1058,8 @@ sap.ui.define([
             },
             onCreatePutawayHusforDeconsolidationPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreatePutawayHusforDeconsolidate", { id: this.ID });
@@ -884,8 +1067,8 @@ sap.ui.define([
             },
             onCreatePutawayHusManuallyPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreatePutawayHusManually", { id: this.ID });
@@ -893,8 +1076,8 @@ sap.ui.define([
             },
             onLoadByHUManPosAssigmentPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("LoadbyHUManPosAssiognment", { id: this.ID });
@@ -902,8 +1085,8 @@ sap.ui.define([
             },
             onPutawayByHUClusteredPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RoutePutawayHuClustered", { id: this.ID });
@@ -911,8 +1094,8 @@ sap.ui.define([
             },
             onAutomaticallyRepackHUPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AutomaticallyRepackHu", { id: this.ID });
@@ -920,18 +1103,34 @@ sap.ui.define([
             },
             onLoadByHUAutoPosAssignmentPress: function (oEvent) {
                 if (this.Themecall) {
-                    this._currentTileId = oEvent.getSource().getId();
-                    this.onBackgroundThemeBtn();
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("LoadbyHUAutoPosAssiognment", { id: this.ID });
                 }
             },
 
-            onProductInspectionByHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByHU", { id: this.ID });
+            onProductInspectionByHUPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByHU", { id: this.ID });
+                }
             },
+
+
+            onProductInspectionByStorageBinPress: function (oEvent) {
+                if (this.Themecall) {
+                    this._currentTile = oEvent.getSource();
+                    this._openTilePopover();
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+                }
+            }
 
             onProductInspectionByStorageBinPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
@@ -981,7 +1180,13 @@ sap.ui.define([
     
             onCloseUSerDetailsDialog: function() {
                 this.byId("idUserDetails").close();
-            }
+            },
+            onSignoutPressed: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
+
 
         });
     });
