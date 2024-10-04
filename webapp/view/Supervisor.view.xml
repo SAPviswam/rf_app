@@ -230,9 +230,6 @@
                                 </Column>
                                 <Column
                                     id="idEmployeename"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idtitleEmpName"
@@ -241,9 +238,6 @@
                                 </Column>
                                 <Column
                                     id="idResourceType"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idResourceTypetitle"
@@ -252,9 +246,6 @@
                                 </Column>
                                 <Column
                                     id="idPhonenumber"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idPhoneNumbertitle"
@@ -263,9 +254,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessArea"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessAreatitle"
@@ -274,9 +262,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessGroup"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessgrouptitle"
@@ -285,9 +270,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessQueue"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessQueuetitle"
@@ -435,9 +417,6 @@
                                 <Column
                                     id="idRDEmpNameCol"
                                     width="10%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDEmpNameTitle"
@@ -447,9 +426,6 @@
                                 <Column
                                     id="idRDAreaCol"
                                     width="10%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDAreaColTitle"
@@ -459,9 +435,6 @@
                                 <Column
                                     id="idRDGroupCol"
                                     width="25%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDGroupTitle"
@@ -471,9 +444,6 @@
                                 <Column
                                     id="idRDResourceTypeCol"
                                     width="12%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -483,9 +453,6 @@
                                 <Column
                                     id="idRDEmailCol"
                                     width="10%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDEmailTitle"
@@ -496,9 +463,6 @@
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idRDPhoneNoTitle"
