@@ -396,7 +396,7 @@
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
-                                    width="15%"
+                                    width="10%"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
@@ -405,7 +405,7 @@
                                 </Column>
                                 <Column
                                     id="idRDEmpNameCol"
-                                    width="20%"
+                                    width="10%"
                                 >
                                     <Title
                                         id="idRDEmpNameTitle"
@@ -423,7 +423,7 @@
                                 </Column>
                                 <Column
                                     id="idRDGroupCol"
-                                    width="10%"
+                                    width="25%"
                                 >
                                     <Title
                                         id="idRDGroupTitle"
@@ -432,7 +432,7 @@
                                 </Column>
                                 <Column
                                     id="idRDResourceTypeCol"
-                                    width="18%"
+                                    width="12%"
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
