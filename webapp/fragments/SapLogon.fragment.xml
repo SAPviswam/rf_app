@@ -58,7 +58,7 @@
                 <VBox
                     id="SAPlogonform1"
                     width="72%"
-                    class="connecttoSAPform sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop" 
+                    class="connecttoSAPform sapUiMediumMargin" 
                 >
                 <VBox
                     id="SAPlogonform2"
@@ -91,7 +91,7 @@
                     </VBox>
                         <Select
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="80%"
+                            width="90.5%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -116,7 +116,7 @@
                         value="400"
                         placeholder=""
                         class="customInput"
-                        width="110%"
+                        width="105%"
                         editable="false"
                     />
                     </VBox>
@@ -127,7 +127,7 @@
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                            width="80%"
+                            width="90%"
                             type="Unstyled"
                             press="onLogOnPress"
                             class="logonbutton"
@@ -142,7 +142,7 @@
                         press="onChangePasswordBtn"
                         />
                         <Link id="IDlogoncancelbutton"
-                         text="Cancel"
+                        text="Cancel"
                         press="onPressCancleSapLogon"
                         class="cancelbutton"
                        />

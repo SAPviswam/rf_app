@@ -45,14 +45,14 @@
                     tooltip="Change Background Color"
                     visible="false"
                 />
-                <Button
+                <!-- <Button
                     id="idMainthemeBtn"
                     text="Theme"
                     press="onMainThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
-                />
+                /> -->
                 <Button
                     id="idCancelButtonResource"
                     text="Cancel"
@@ -243,6 +243,7 @@
                     header="Putaway By WO"
                     press="onPutawayByWOPress"
                     visible="false"
+                    subheader="Putaway By WO"
                 />
                 <GenericTile
                     id="id_confiramtioncorrectionst"
@@ -426,6 +427,7 @@
                     header="Automatically Repack HU Item"
                     press="onAutomaticallyRepackHUItemPress"
                     visible="false"
+                    subheader="Automatically Repack HU Item"
                 />
                 <GenericTile
                     id="id_createshippinghuwowc"
@@ -1005,6 +1007,53 @@
                         change="onColorChange"
                     />
                 </VBox>
+            </Dialog>
+            <Dialog
+                id="IdEditTileDetailsDialogResource"
+                title="Edit The Tile Deatils:"
+                contentHeight="30%"
+            >
+                <customHeader>
+                    <Bar id="idTileDeatilsDialogHeaderResource">
+                        <contentLeft>
+                            <Title
+                                id="idTextEditTileDetailsResource"
+                                text="Edit Tile details:"
+                            />
+                        </contentLeft>
+                        <contentRight>
+                            <Button
+                                id="idSaveTileDetailsButtonResource"
+                                text="Save"
+                                press="onPressSaveTileEditDeatils"
+                                type="Transparent"
+                                visible="true"
+                            />
+                            <Button
+                                id="idDeclineTileDeialsEditButtonResource"
+                                icon="sap-icon://decline"
+                                press="onCloseEditingTileDetailsDialog"
+                                type="Transparent"
+                                visible="true"
+                            />
+                        </contentRight>
+                    </Bar>
+                </customHeader>
+                <form:SimpleForm id="idSimpleformTileDetails">
+                    <VBox id="idVBoxTileDeatsils">
+                        <Label
+                            id="idTileHeaderLabel"
+                            text="Header:"
+                        />
+                        <Input id="idInputTileHeaderResorce" />
+                        <Label id="idEmptyTileDetails" />
+                        <Label
+                            id="idTileSubHeaderTiledetails"
+                            text="Sub Header:"
+                        />
+                        <Input id="idInputSubHeaderResource" />
+                    </VBox>
+                </form:SimpleForm>
             </Dialog>
         </tnt:mainContents>
     </tnt:ToolPage>
