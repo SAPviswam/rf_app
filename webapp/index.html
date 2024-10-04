@@ -14,6 +14,13 @@
         #container-uiarea {
             height: 100%;
         }
+        #pdf-container {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+        iframe {
+            border: none;
+        }
     </style>
     
     <!-- chatbot -->
@@ -26,14 +33,27 @@
     id="cai-webclient-custom">
     </script> -->
     <!-- chatbot end -->
-    <script id="sap-ui-bootstrap" src="resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon"
-        data-sap-ui-resourceroots='{
-            "com.app.rfapp": "./"
-        }' data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
-        data-sap-ui-async="true" data-sap-ui-frameOptions="trusted"></script>
+
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div data-sap-ui-component data-name="com.app.rfapp" data-id="container" data-settings='{"id" : "com.app.rfapp"}'
         data-handle-validation="true"></div>
+ <!-- PDF Open and Download Section -->
+ <h1>PDF Download Example</h1>
+ <button id="open-pdf">Open PDF</button>
+ <div id="pdf-container">
+     <iframe id="pdf-frame" src="" width="600" height="400"></iframe>
+     <a id="download-link" href="" download="example.pdf">
+         <button>Download PDF</button>
+     </a>
+ </div>
+ <script>
+     document.getElementById('open-pdf').addEventListener('click', function() {
+         const pdfUrl = 'com/app/rfapp/docs/helpdoc.pdf'; 
+         document.getElementById('pdf-frame').src = pdfUrl;
+         document.getElementById('download-link').href = pdfUrl;
+         document.getElementById('pdf-container').style.display = 'block';
+     });
+ </script>
 </body>
 </html>

@@ -1,12 +1,14 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/m/PDFViewer",
+    "sap/ui/model/json/JSONModel",
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
 ],
-    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
+    function (Controller, PDFViewer,JSONModel,Device, MessageToast, MessageBox, Filter, FilterOperator) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
@@ -22,8 +24,8 @@ sap.ui.define([
                 if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarinitial").setWidth("30%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("40.5%");
+                        this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
                         // this.byId("initialscreentitle").setMarginRight("25%")
                         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
                         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
@@ -39,23 +41,6 @@ sap.ui.define([
                     this.byId("environmentButtonsHBox").setWidth("40%");
                 }
 
-                $(document).on("keydown", this.FunctionKeysPress.bind(this));
-                this.isActive = true;
-
-                    var oDialog = this.byId("idconnectsapdialogbox");
-                
-                    if (oDialog) {
-                        oDialog.attachAfterOpen(function() {
-                            $("#" + oDialog.getId()).draggable({
-                                handle: ".boxContainer"
-                            });
-                
-                            $("#" + oDialog.getId()).resizable();
-                        });
-                    } else {
-                        console.error("Dialog not found!");
-                    }
-                
             },
         
             FunctionKeysPress: function (event) {
@@ -106,8 +91,11 @@ sap.ui.define([
 
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("_IDGenImage_CS").setWidth("20%");
-                        this.byId("_IDGenImage_CS").setHeight("45.5%");
+                        this.byId("_IDGenImage_CS").setWidth("25.5%");
+                        this.byId("_IDGenImage_CS").setHeight("50.5%");
+                        this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("78.5%");
+                        this.byId("LoginButton_CS").setWidth("78.5%");
+                        this.byId("LoginButton_CS").setHeight("100%");
 
                         // Add margin-left by applying a CSS class
                         this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
@@ -351,6 +339,38 @@ sap.ui.define([
                     }
                 });
             },
+            // onHelpconnectsapDialog: function() {
+            //     // Open the PDF when the help dialog is activated
+            //     this.onOpenPDF();
+            // },
+            onOpenPDF: function () {
+                // Get the source of the PDF from the model
+                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
+            
+                if (sSource) {
+                    // Open the PDF in a new tab
+                    window.open(sSource, '_blank');
+                } else {
+                    sap.m.MessageToast.show("PDF source not found.");
+                    console.error("PDF source not found.");
+                }
+            },
+            onDownloadPDF: function () {
+                // Get the source of the PDF from the model
+                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
+    
+                if (sSource) {
+                    // Create an anchor element to trigger download
+                    var link = document.createElement('a');
+                    link.href = sSource;
+                    link.download = 'helpdoc.pdf'; // Set the name for downloaded file
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    console.error("PDF source not found.");
+                }
+            },
             clearInputFields: function (oView) {
                 // Clear all input fields by setting their values to an empty string
                 oView.byId("idDescriptionInput").setValue("");
@@ -363,6 +383,7 @@ sap.ui.define([
                 var oCheckbox = oView.byId("idCheckboxDescription");
                 oCheckbox.setSelected(false);
             },
+
 
             onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client, oEvent) {
                 this.isButtonPressed = true
