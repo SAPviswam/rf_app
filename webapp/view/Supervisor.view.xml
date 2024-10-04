@@ -385,6 +385,8 @@
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
+                            width="100%"
+                            sticky="ColumnHeaders"
                             width="450px"
                         >
                             <headerToolbar>
@@ -568,6 +570,7 @@
                                             id="idRDExpiredDateColValue"
                                             text="{Expirydate}"
                                         /> -->
+
                                     </cells>
                                 </ColumnListItem>
                             </items>
