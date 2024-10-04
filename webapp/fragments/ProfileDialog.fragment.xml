@@ -68,7 +68,7 @@
                         icon="sap-icon://translate"
                         text="Language"
                         type="Transparent"
-                        press="onPressLanguageTransulation"
+                        press="onPressLanguageTranslation"
                     />
                     <Button
                         id="idTileViewButton"
