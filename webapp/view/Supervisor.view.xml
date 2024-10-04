@@ -180,7 +180,7 @@
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
-                            
+                            selectionChange="onRowSelect"
                             mode="SingleSelectLeft"
                             growingScrollToLoad="true"
                             growing="true" 
@@ -270,7 +270,6 @@
                                         text="Email"
                                     />
                                 </Column>
-                                <Column id="idProcessArea">
                                 <Column
                                     id="idProcessArea"
                                     minScreenWidth="Tablet"

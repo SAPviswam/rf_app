@@ -911,94 +911,87 @@ sap.ui.define(
             },
 
             onRowSelect: function (oEvent) {
-
-
                 var select = oEvent.mParameters.selected;
-                // Get the selected item
                 var oSelectedItem = oEvent.getParameter("listItem");
+                var oModel = this.getOwnerComponent().getModel();
+            
+                // Reference to previously selected item
+                if (this._oPreviousSelectedItem && this._oPreviousSelectedItem !== oSelectedItem) {
+                    // Deselect the previous item
+                    this._oPreviousSelectedItem.mAggregations.cells[5].setVisible(false);
+                    this._oPreviousSelectedItem.mAggregations.cells[5].setValue("");
+                    
+                    // Additional cells to hide
+                    this._oPreviousSelectedItem.mAggregations.cells[6].setVisible(false);
+                    this._oPreviousSelectedItem.mAggregations.cells[7].setVisible(false);
+                }
+            
                 if (select) {
-                    
-                }
-                else{
-                    oSelectedItem.mAggregations.cells[5].setValue("");
-                    oSelectedItem.mAggregations.cells[6].setValue("");
-                    oSelectedItem.mAggregations.cells[7].setValue("");
-                    oSelectedItem.mAggregations.cells[5].setVisible(false);
-                    oSelectedItem.mAggregations.cells[6].setVisible(false);
-                    oSelectedItem.mAggregations.cells[7].setVisible(false);
-                    return
-                    
-                }
-                
-                if (oSelectedItem&&select) {
-                    // Get the binding context of the selected item
-                    var oContext = oSelectedItem.getBindingContext();
+                    if (oSelectedItem) {
+                        // Get the binding context of the selected item
+                        var oContext = oSelectedItem.getBindingContext();
             
-                    // Assuming you have a way to get the Process Area from the selected item
-                    oSelectedItem.mAggregations.cells[5].setVisible(true) // Adjust the property name as needed
-                    
-                    // Get the MultiComboBox instance for Process Area
-                    
-                    
-                    // Set the selected value in the MultiComboBox (if you want it to reflect the selected Process Area)
-                    // oMultiComboBox.setSelectedKeys([sProcessArea]);
-                    
-                    // Make the MultiComboBox visible
-                  
-                    
-                    // Trigger filtering for the Group MultiComboBox
-                    var oModel = this.getOwnerComponent().getModel();
-                    oModel.read("/ProcessAreaSet", {
-                        success: function (oData) {
-                            var aProcessAreas = oData.results;
-                            var uniqueProcessAreasSet = new Set();
-    
-                            // Add unique Processarea values to the Set
-                            aProcessAreas.forEach(function (item) {
-                                uniqueProcessAreasSet.add(item.Processarea);
-                            });
-    
-                            // Convert the Set back to an array for the JSON model
-                            var aUniqueProcessAreas = Array.from(uniqueProcessAreasSet).map(function (area) {
-                                return { Processarea: area };
-                            });
-    
-                            var oUniqueModel = new sap.ui.model.json.JSONModel({
-                                ProcessAreas: aUniqueProcessAreas
-                            });
-    
-                            var oMultiComboBox = oSelectedItem.mAggregations.cells[5];
-                            if (!oMultiComboBox) {
-                                // If it's inside a fragment, use Fragment.byId
-                                oMultiComboBox = sap.ui.core.byId("idProcessAreaValue");
-                            }
-                            if (oMultiComboBox) {
-                                oMultiComboBox.setModel(oUniqueModel);
-                                oMultiComboBox.bindItems({
-                                    path: "/ProcessAreas",
-                                    template: new sap.ui.core.Item({
-                                        key: "{Processarea}",
-                                        text: "{Processarea}"
-                                    })
+                        // Make the MultiComboBox visible
+                        oSelectedItem.mAggregations.cells[5].setVisible(true);
+            
+                        // Read ProcessAreaSet
+                        oModel.read("/ProcessAreaSet", {
+                            success: function (oData) {
+                                var aProcessAreas = oData.results;
+                                var uniqueProcessAreasSet = new Set();
+            
+                                // Add unique Processarea values to the Set
+                                aProcessAreas.forEach(function (item) {
+                                    uniqueProcessAreasSet.add(item.Processarea);
                                 });
-                            } else {
-                                console.error("MultiComboBox with id 'idAreaSelect' not found.");
-                               
             
-                                // Assuming you have a way to get the Process Area from the selected item
-                               
-
+                                // Convert the Set back to an array for the JSON model
+                                var aUniqueProcessAreas = Array.from(uniqueProcessAreasSet).map(function (area) {
+                                    return { Processarea: area };
+                                });
+            
+                                var oUniqueModel = new sap.ui.model.json.JSONModel({
+                                    ProcessAreas: aUniqueProcessAreas
+                                });
+            
+                                var oMultiComboBox = oSelectedItem.mAggregations.cells[5];
+                                if (!oMultiComboBox) {
+                                    oMultiComboBox = sap.ui.core.byId("idProcessAreaValue");
+                                }
+                                if (oMultiComboBox) {
+                                    oMultiComboBox.setModel(oUniqueModel);
+                                    oMultiComboBox.bindItems({
+                                        path: "/ProcessAreas",
+                                        template: new sap.ui.core.Item({
+                                            key: "{Processarea}",
+                                            text: "{Processarea}"
+                                        })
+                                    });
+                                }
+            
+                                // Add the two functions after the success
+                                this.onRequestedData();
+                                this.onUserData();
+            
+                                // Set the current selected item as previous
+                                this._oPreviousSelectedItem = oSelectedItem;
+                            }.bind(this),
+                            error: function (oError) {
+                                console.error("Error reading AreaSet:", oError);
                             }
-                            // Add the two functions here after the success
-                            this.onRequestedData();
-                            this.onUserData();
-                        }.bind(this),
-                        error: function (oError) {
-                            console.error("Error reading AreaSet:", oError);
-                        }
-                    });
+                        });
+                    }
+                } else {
+                    // Deselecting
+                    if (oSelectedItem) {
+                        oSelectedItem.mAggregations.cells[5].setValue("");
+                        oSelectedItem.mAggregations.cells[5].setVisible(false);
+                        oSelectedItem.mAggregations.cells[6].setVisible(false);
+                        oSelectedItem.mAggregations.cells[7].setVisible(false);
+                    }
+                    // Clear previous selected item reference
+                    this._oPreviousSelectedItem = null;
                 }
-               
             },
             onSelectTableProcesAarea: function (oEvent) {
                 debugger;
