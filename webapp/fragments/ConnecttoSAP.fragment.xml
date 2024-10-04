@@ -5,12 +5,13 @@
 >
     <Dialog
         id="idconnectsapdialogbox"
-        resizable="false"
+        resizable="true"
         draggable="true"
         contentWidth="30%"
         class="boxContainer"
+        initialFocus="idDescriptionInput"
     >
-        <customHeader>
+        <customHeader >
             <Bar id="_IDBar1coonectsap" class="TitlecustomHeader">
                 <contentMiddle>
                     <!-- Logo -->
