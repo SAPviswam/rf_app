@@ -521,7 +521,6 @@ sap.ui.define([
                         MessageToast.show("User does not exist");
                     }
                 });
-
             },
 
             onItemSelect: function (oEvent) {
@@ -603,6 +602,7 @@ sap.ui.define([
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("Receivingofhubyco", { id: this.ID });
+                    
                 }
             },
             onManuallyRepackHUItemPress: function (oEvent) {
@@ -1136,24 +1136,45 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
+            // onProfilePressed: function() {
+            //     var oView = this.getView();
+    
+            //     // Check if the dialog already exists
+            //     if (!this.byId("idUserDetails")) {
+            //         // Load the fragment asynchronously
+            //         Fragment.load({
+            //             id: oView.getId(),
+            //             name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+            //             controller: this
+            //         }).then(function(oDialog) {
+            //             var oViewModel = oView.getModel();
+            //             oDialog.setModel(oViewModel);
+            //             oDialog.bindElement(`/RESOURCESSet(${this.ID})`);
+            //             oDialog.open();
+            //         //     // Add the dialog to the view
+            //         //     oView.addDependent(oDialog);
+            //         //   //  oDialog.bindElement(`/RESOURCESSet(${this.ID})`);
+            //         //     oDialog.open();
+            //         });
+            //     }
+                
+            // },
             onProfilePressed: function() {
                 var oView = this.getView();
-    
-                // Check if the dialog already exists
+                
+                // Load dialog if it doesn't exist
                 if (!this.byId("idUserDetails")) {
-                    // Load the fragment asynchronously
                     Fragment.load({
                         id: oView.getId(),
                         name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
                         controller: this
                     }).then(function(oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
+                        oDialog.setModel(oView.getModel("userDetails")); // Set specific model for dialog
+                        oDialog.bindElement(`/RESOURCESSet(${this.ID})`); // Bind element based on ID
                         oDialog.open();
-                    });
+                    }.bind(this));
                 } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
+                    this.byId("idUserDetails").open(); // Open existing dialog
                 }
             },
     

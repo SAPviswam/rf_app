@@ -10,7 +10,7 @@
         horizontalScrolling="false"
         class="sapUiResponsivePadding"
         contentWidth="200px"
-        title="User Profile:"
+        title="Profile:"
     >
         <form:SimpleForm
             id="idSimpleFormProfile"

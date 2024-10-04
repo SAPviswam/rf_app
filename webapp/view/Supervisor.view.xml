@@ -190,9 +190,7 @@
                                 <OverflowToolbar id="idSlotsTableHeader1">
                                     <Title
                                         id="idTableHeaderTitle1"
-                                        text="Requested Data"
-
-                                        
+                                        text="Requested Data"   
                                     />
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
@@ -381,20 +379,19 @@
                     <ScrollContainer
                         id="pageSV3"
                         vertical="true"
-                        height="400px"
+                        height="100%"
                         class="sapUiContentPadding"
                         width="100%"
                     >
                         <Table
                             id="idUserDataTable"
-                            mode="SingleSelectLeft"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
-                            width="100%"
                             sticky="ColumnHeaders"
+                            width="100%"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -432,13 +429,11 @@
                                 </OverflowToolbar>
                             </headerToolbar>
 
+
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
-                                    width="10%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Begin"
+                                    width="5%"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
@@ -505,6 +500,7 @@
                                         text="Email"
                                     />
                                 </Column>
+
                                 <Column
                                     id="idRDPhoneNoCol"
                                     width="15%"
