@@ -371,6 +371,40 @@ sap.ui.define([
                     }
                 });
             },
+            onHelpconnectsapDialog: function() {
+                // Open the PDF when the help dialog is activated
+                this.onOpenPDF();
+              
+                // Additional code for your dialog can go here
+            },
+            onOpenPDF: function () {
+                // Get the source of the PDF from the model
+                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
+            
+                if (sSource) {
+                    // Open the PDF in a new tab
+                    window.open(sSource, '_blank');
+                } else {
+                    sap.m.MessageToast.show("PDF source not found.");
+                    console.error("PDF source not found.");
+                }
+            },
+            onDownloadPDF: function () {
+                // Get the source of the PDF from the model
+                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
+    
+                if (sSource) {
+                    // Create an anchor element to trigger download
+                    var link = document.createElement('a');
+                    link.href = sSource;
+                    link.download = 'helpdoc.pdf'; // Set the name for downloaded file
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    console.error("PDF source not found.");
+                }
+            },
             clearInputFields: function (oView) {
                 // Clear all input fields by setting their values to an empty string
                 oView.byId("idDescriptionInput").setValue("");
