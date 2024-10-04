@@ -58,8 +58,14 @@
                     visible="true"
                 /> -->
                 <Button
+                    id="idCancelEditButtonResource"
+                    text="Exit edit mode"
+                    press="onCancelEditPress"
+                    visible="false"
+                />
+                <Button
                     id="idCancelButtonResource"
-                    text="Cancel"
+                    text="Exit theme mode"
                     press="onCancelPressThemeMode"
                     visible="false"
                 />

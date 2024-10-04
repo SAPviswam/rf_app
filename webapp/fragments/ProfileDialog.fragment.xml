@@ -57,6 +57,20 @@
                         press="onProfilePressed"
                     />
                     <Button
+                        id="idEditButton"
+                        icon="sap-icon://edit"
+                        text="Edit Tile"
+                        type="Transparent"
+                        press="onEditTileNamePress"
+                    />
+                    <Button
+                        id="idResetDefault"
+                        icon="sap-icon://settings"
+                        text="Default Settings"
+                        type="Transparent"
+                        press="onResetDefaultPress"
+                    />
+                    <Button
                         id="idThemesButton"
                         icon="sap-icon://palette"
                         text="Themes"
@@ -76,6 +90,13 @@
                         text="Tile View"
                         type="Transparent"
                         press="onPressTileViewSettings"
+                    />
+                    <Button
+                        id="idHelpButton"
+                        icon="sap-icon://sys-help"
+                        text="Help"
+                        type="Transparent"
+                        press="onChatbotButtonPress"
                     />
                     <Button
                         id="idSignoutButton"
