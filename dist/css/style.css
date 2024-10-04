@@ -537,6 +537,24 @@
 .onProfileOptions{
     margin-left: -0.2rem !important;
 }
+.largeIcons{
+    width: 150px !important;
+    height: 150px !important;
+    font-size: auto !important;
+}
+.mediumIcons{
+    width: 110px !important;
+    height: 110px !important;
+    font-size: auto !important;
+}
+.smallIcons{
+    width: 80px !important;
+    height: 80px !important;
+    font-size: auto !important;
+}
+.TileViewPopOver{
+    background-color: orange !important;
+}
 
 
 
