@@ -18,8 +18,9 @@
             >
                 <VBox
                     id="environmentButtonsHBoxHome"
-                    class="sapUiSmallMarginTop boxContainer"
+                    class="sapUiSmallMarginTop sapUiLargeMargin boxContainer"
                     alignItems="Center"
+                    width="23%"
                 >
                     <HBox
                         id="idHboxHome"

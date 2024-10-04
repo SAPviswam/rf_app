@@ -34,19 +34,19 @@ sap.ui.define(
                 this._isThemeMode = false;
                 this.Themecall = false;
 
-                 if (Device.system.desktop) {
+                if (Device.system.desktop) {
                     this.byId("idRequestedData").setWidth("1400px");
-                    this.byId("idUserDataTable").setWidth("1400px");
-
+                    this.byId("idUserDataTable").setWidth("2200px");
+ 
                 } else if (Device.system.tablet) {
                     this.byId("idRequestedData").setWidth("3500px"); // Adjust width for tablets
-              
+                    this.byId("idUserDataTable").setWidth("2200px");
                 }
                 else if (Device.system.phone) {
                     this.byId("idRequestedData").setWidth("600px");
-
+                    this.byId("idUserDataTable").setWidth("2200px");
                 }
-
+ 
             },
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -65,10 +65,10 @@ sap.ui.define(
             },
             // Palette button press logic (this is triggered when the button is pressed)
             onPaletteIconPress: function (oEvent) {
-
                 // Open the theme dialog box
-                this._currentTileId = oEvent;
+                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
                 this.byId("themeTileDialog").open();
+                oEvent.stopPropagation();
             },
             onAfterRendering: function () {
 
