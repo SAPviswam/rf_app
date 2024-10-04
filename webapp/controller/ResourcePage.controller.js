@@ -386,7 +386,7 @@ sap.ui.define([
                 oTilesContainer.rerender();
             },
             //Language Transulation PopOver Profile...
-            onPressLanguageTransulation: function (oEvent) {
+            onPressLanguageTranslation: function (oEvent) {
                 // Check if the popover already exists, if not create it
                 if (!this._oLanguagePopover) {
                     this._oLanguagePopover = sap.ui.xmlfragment("com.app.rfapp.fragments.LanguageTransulations", this);
@@ -395,6 +395,59 @@ sap.ui.define([
                 // Open popover near the language button
                 this._oLanguagePopover.openBy(oEvent.getSource());
             },
+            onLanguageSelect: function (oEvent) {
+                // Get the selected button text
+                var sLanguage = oEvent.getSource().getText();
+            
+                // Define the message based on the selected language
+                var sSpeechText = "";
+                
+                switch (sLanguage) {
+                    case "English":
+                        sSpeechText = "You have chosen English language.";
+                        break;
+                    case "Hindi":
+                        sSpeechText = "आपने हिंदी भाषा चुनी है।"; // Speech for Hindi
+                        break;
+                    case "Spanish":
+                        sSpeechText = "Has elegido el idioma español."; // Speech for Spanish
+                        break;
+                    case "French":
+                        sSpeechText = "Vous avez choisi la langue française."; // Speech for French
+                        break;
+                    default:
+                        sSpeechText = "Language selection failed.";
+                }
+                
+                // Use Web Speech API to make the sound announcement
+                this._announceLanguageSelection(sSpeechText);
+            
+                // Close the popover after selection
+                this._oPopover.close();
+            },
+            
+            // Function to handle sound announcements
+            _announceLanguageSelection: function(speechText) {
+                if ('speechSynthesis' in window) {
+                    var speech = new SpeechSynthesisUtterance(speechText);
+                    
+                    // Optional: Set the language of the speech
+                    if (speechText.includes("हिंदी")) {
+                        speech.lang = 'hi-IN'; // Hindi language setting
+                    } else if (speechText.includes("español")) {
+                        speech.lang = 'es-ES'; // Spanish language setting
+                    } else if (speechText.includes("française")) {
+                        speech.lang = 'fr-FR'; // French language setting
+                    } else {
+                        speech.lang = 'en-US'; // English as default
+                    }
+                    
+                    window.speechSynthesis.speak(speech);
+                } else {
+                    console.log("Speech Synthesis not supported in this browser.");
+                }
+            },
+            
 
 
             onResourceDetailsLoad: async function (oEvent1) {
