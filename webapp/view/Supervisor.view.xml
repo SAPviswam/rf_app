@@ -393,9 +393,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <!-- <ToolbarSpacer
-                                        id="idUsersInfoToolbarSpace"
-                                    />
+                                    <ToolbarSpacer />
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -408,7 +406,7 @@
                                             />
                                         </layoutData>
                                     </SearchField>
-<Button
+                                    <Button
                                         id="idBtnEd2"
                                         tooltip="Approve"
                                         text="Approve"
@@ -421,9 +419,10 @@
                                         text="Reject"
                                         type="Reject"
                                         press="onUpdateUserBtnPress"
-                                    /> -->
+                                    />
                                 </OverflowToolbar>
                             </headerToolbar>
+
 
                             <columns>
                                 <Column
@@ -522,6 +521,7 @@
                                     />
                                 </Column> -->
                             </columns>
+
                             <items>
                                 <ColumnListItem id="idRDEmpIdColListItem">
                                     <cells>

@@ -82,7 +82,7 @@
                             select="onSelectCheckBox"
                              class="sapUiLargeMarginEnd"
                         />
-                        <Button type="Transparent" text="Connect" press="onPressConnectButton"></Button>
+                        <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
                     </HBox>
                     <HBox
                         id="idHBoxForgot"

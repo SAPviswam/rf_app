@@ -258,8 +258,8 @@
     }
  
     .logo {
-        margin-top: 12%; /* Adjust logo margin for mobile */
-        margin-left: 12%; /* Center logo on mobile */
+        margin-top: 7%; /* Adjust logo margin for mobile */
+        margin-left: 7%; /* Center logo on mobile */
         width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
@@ -431,7 +431,7 @@
 .UnitsofMeasure {
     margin-top: 0.4rem;
 }
-/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+/* ScrollContainers Page2 & Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
    ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
    ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
    ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
@@ -512,7 +512,9 @@
         width: auto !important; /* Adjust labels */
     }
 }
-
+.onProfileOptions{
+    margin-left: -0.2rem !important;
+}
 
 
 
@@ -622,8 +624,8 @@ background-color: rgb(9, 8, 8) !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /* .cancelbutton{
-    background-color: #c9dbe9;
-    border: 2px solid #c9dbe9 !important;
+    background-color: #fbf6f6;
+    border: 2px solid #ffffff !important;
     color:rgba(24, 24, 237, 0.852) !important;
     margin-top: 0.2rem;
 } */
@@ -638,6 +640,10 @@ margin-right: 20%;
 
 .VboxChangePassword {
 margin-right: 15%;
+}
+.UserDetailsDialog{
+    background-color: orange !important;
+    color: orange;
 }
 
 @media (max-width: 600px) {
