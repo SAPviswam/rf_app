@@ -182,6 +182,7 @@
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
                             mode="MultiSelect"
                             class="Allslotsclasstable"
+                            selectionChange="onRowSelect"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idSlotsTableHeader1">
@@ -241,6 +242,12 @@
                                         text="Phone Number"
                                     />
                                 </Column>
+                                <Column id="idEmail">
+                                    <Title
+                                        id="idEmailtitle"
+                                        text="Email"
+                                    />
+                                </Column>
                                 <Column id="idProcessArea">
                                     <Title
                                         id="idProcessAreatitle"
@@ -282,15 +289,17 @@
                                             id="idPhoneNumberValue"
                                             text="{Phonenumber}"
                                         />
-                                        <!-- <Input
-                                            id="idProcessAreaValue"
-                                            visible="true"
-                                            value="{Area}"
-                                        /> -->
+                                        <Text
+                                            id="idEmailValue"
+                                            text="{Email}"
+                                        />
+                                        
                                         <MultiComboBox
                                             id="idProcessAreaValue"
                                             items="{path: '/ProcessAreaSet'}"
                                             selectionChange="onSelectTableProcesAarea"
+                                            visible="false"
+                                            
                                         >
                                             <core:Item
                                                 class="dropdown"

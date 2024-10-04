@@ -314,6 +314,30 @@ sap.ui.define(
                 }
             },
             onApproveUserBtnPress: async function () {
+                debugger
+                var SelectedTable =this.byId("idRequestedData").getSelectedItem().mAggregations;
+                
+                var oSelectedTableResource1 = SelectedTable.cells[5].mProperties.hasSelection;
+                var oSelectedTableResource2 = SelectedTable.cells[6].mProperties.hasSelection;
+                var oSelectedTableResource3 = SelectedTable.cells[7].mProperties.hasSelection;
+                var AreaV = SelectedTable.cells[5].mProperties.selectedKeys;
+                var GrpV = SelectedTable.cells[6].mProperties.selectedKeys;
+                var QusV = SelectedTable.cells[7].mProperties.selectedKeys;
+                if (oSelectedTableResource1&&oSelectedTableResource2&&oSelectedTableResource3) {
+                    this.onApproveforTable(AreaV,GrpV,QusV);
+                    return
+
+                }
+                else if (oSelectedTableResource1&& !oSelectedTableResource2){
+                    SelectedTable.cells[6].setValueState(sap.ui.core.ValueState.Error);
+                    SelectedTable.cells[6].setValueStateText("Please Select Group");
+                    return
+                }
+                else if (oSelectedTableResource1&&oSelectedTableResource2&&!oSelectedTableResource3){
+                    SelectedTable.cells[7].setValueState(sap.ui.core.ValueState.Error);
+                    SelectedTable.cells[7].setValueStateText("Please Select Queue");
+                    return
+                }
 
                 var oView = this.getView();
                 if (this.byId("idRequestedData").getSelectedItems().length < 1) {
@@ -396,6 +420,7 @@ sap.ui.define(
                 this.oApproveForm.close();
             },
             onApprove: function () {
+                debugger
 
                 var Empid = this.byId("idEmployeeIDInputF").getText();
 
@@ -565,6 +590,83 @@ sap.ui.define(
                         // Navigate to the user menu after successful password update
                         this.onRequestedData();
                         this.onUserData();
+
+                    }.bind(this),
+                    error: function () {
+                        sap.m.MessageToast.show("Error updating user login status.");
+                    }
+                });
+
+            },
+            onApproveforTable: function (AreaV,GrpV,QusV) {
+                debugger
+
+                var SelectedTable =this.byId("idRequestedData").getSelectedItem().mAggregations;
+                var Empid =   SelectedTable.cells[0].mProperties.text;
+                var Name = SelectedTable.cells[1].mProperties.text;
+                var phone =  SelectedTable.cells[3].mProperties.text;
+                var Resourcetype = SelectedTable.cells[2].mProperties.text;
+                var email = SelectedTable.cells[4].mProperties.text
+
+                var Area = AreaV.join(",");
+                var Group = GrpV.join(",");
+                var Queue = QusV.join(",");
+
+                function generatePassword() {
+                    const regex = /[A-Za-z@!#$%&]/;
+                    const passwordLength = 8;
+                    let password = "";
+
+                    for (let i = 0; i < passwordLength; i++) {
+                        let char = '';
+                        while (!char.match(regex)) {
+                            char = String.fromCharCode(Math.floor(Math.random() * 94) + 33);
+                        }
+                        password += char;
+                    }
+
+                    return password;
+                }
+                var oPassword = generatePassword();
+
+                var oExpiryDate = new Date();
+                // Set the expiry date based on the resource type
+                if (Resourcetype === "Permanent Employee") {
+                    oExpiryDate.setFullYear(oExpiryDate.getFullYear() + 1); // 1 year for permanent employees
+                } else if (Resourcetype === "Contract Employee") {
+                    oExpiryDate.setMonth(oExpiryDate.getMonth() + 2); // 2 months for temporary employees
+                }
+
+                var oCurrentDateTime = new Date();
+                var sFormattedCurrentDateTime = this.formatDate(oCurrentDateTime);
+                var sFormattedExpiryDate = this.formatDate(oExpiryDate);
+
+                var oData = {
+                    Area: Area,
+                    Email: email,
+                    Notification: "your request has been Approved",
+                    Phonenumber: phone,
+
+                    Queue: Queue,
+                    Resourcegroup: Group,
+                    Resourceid: Empid,
+                    Resourcename: Name,
+                    Resourcetype: Resourcetype,
+                    Approveddate: sFormattedCurrentDateTime,
+                    Expirydate: sFormattedExpiryDate,
+                    Password: oPassword,
+                    Status: "true",
+                    Loginfirst: true
+                };
+                var oModel = this.getOwnerComponent().getModel();
+                oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
+                    success: function () {
+                        sap.m.MessageToast.show("Password updated successfully!");
+                       
+
+                        // Navigate to the user menu after successful password update
+                        this.onRequestedData();
+                        this.onUserData();
                         this.oApproveForm.close();
                     }.bind(this),
                     error: function () {
@@ -726,18 +828,197 @@ sap.ui.define(
                 this.onSelectFilterArea(oMultiComboBox, oGroupMultiComboBox);
 
             },
-            // Resuable code for Selecting Process Area
-            onSelectFilterArea: function (oMultiComboBox,oGroupMultiComboBox) {
+              // Resuable code for Selecting Process Area
+              onSelectFilterArea: function (oMultiComboBox,oGroupMultiComboBox) {
                 debugger;
                 // Retrieve the selected items
                 var aSelectedItems = oMultiComboBox.getSelectedItems();
+ 
+                // Initialize an array to hold the filters
+                var aFilters = [];
+ 
+                // Iterate over the selected items to add corresponding filters
+                aSelectedItems.forEach(function (oItem) {
+                    var sKey = oItem.getText(); // Get the key (e.g., "Inbound", "Outbound", "Internal")
+ 
+                    // Add filter for the selected process area
+                    aFilters.push(new sap.ui.model.Filter("Processarea", sap.ui.model.FilterOperator.EQ, sKey));
+                });
+ 
+                // Combine the filters with an OR condition
+                var oCombinedFilter = new sap.ui.model.Filter({
+                    filters: aFilters,
+                    and: false // This specifies the OR condition
+                });
+ 
+ 
+                // Fetch data from the model with applied filters
+                var oModel = this.getOwnerComponent().getModel();
+                oModel.read("/ProcessAreaSet", {
+                    filters: [oCombinedFilter],
+                    success: function (oData) {
+                        // Process data to remove duplicates
+                        var aUniqueItems = [];
+                        var oProcessGroups = {};
+ 
+                        // Iterate over fetched data
+                        oData.results.forEach(function (oItem) {
+                            var sGroup = oItem.Processgroup;
+ 
+                            // Add to unique items if not already present
+                            if (!oProcessGroups[sGroup]) {
+                                oProcessGroups[sGroup] = true;
+                                aUniqueItems.push({
+                                    key: sGroup,
+                                    text: sGroup
+                                });
+                            }
+                        });
+ 
+ 
+                        // Clear existing items in the MultiComboBox
+                        oGroupMultiComboBox.removeAllItems();
+ 
+                        // Add the unique items to the MultiComboBox
+                        aUniqueItems.forEach(function (oItem) {
+                            oGroupMultiComboBox.addItem(new sap.ui.core.Item({
+                                key: oItem.key,
+                                text: oItem.text
+                            }));
+                        });
+ 
+                        // Make sure the Group MultiComboBox is visible
+                        oGroupMultiComboBox.setVisible(true);
+                    },
+                    error: function (oError) {
+                        // Handle error if necessary
+                        sap.m.MessageToast.show("Failed to fetch data.");
+                    }
+                });
+            },
+
+            onRowSelect: function (oEvent) {
+
+
+                var select = oEvent.mParameters.selected;
+                // Get the selected item
+                var oSelectedItem = oEvent.getParameter("listItem");
+                if (select) {
+                    
+                }
+                else{
+                    oSelectedItem.mAggregations.cells[5].setValue("");
+                    oSelectedItem.mAggregations.cells[6].setValue("");
+                    oSelectedItem.mAggregations.cells[7].setValue("");
+                    oSelectedItem.mAggregations.cells[5].setVisible(false);
+                    oSelectedItem.mAggregations.cells[6].setVisible(false);
+                    oSelectedItem.mAggregations.cells[7].setVisible(false);
+                    return
+                    
+                }
+                
+                if (oSelectedItem&&select) {
+                    // Get the binding context of the selected item
+                    var oContext = oSelectedItem.getBindingContext();
+            
+                    // Assuming you have a way to get the Process Area from the selected item
+                    oSelectedItem.mAggregations.cells[5].setVisible(true) // Adjust the property name as needed
+                    
+                    // Get the MultiComboBox instance for Process Area
+                    
+                    
+                    // Set the selected value in the MultiComboBox (if you want it to reflect the selected Process Area)
+                    // oMultiComboBox.setSelectedKeys([sProcessArea]);
+                    
+                    // Make the MultiComboBox visible
+                  
+                    
+                    // Trigger filtering for the Group MultiComboBox
+                    var oModel = this.getOwnerComponent().getModel();
+                    oModel.read("/ProcessAreaSet", {
+                        success: function (oData) {
+                            var aProcessAreas = oData.results;
+                            var uniqueProcessAreasSet = new Set();
+    
+                            // Add unique Processarea values to the Set
+                            aProcessAreas.forEach(function (item) {
+                                uniqueProcessAreasSet.add(item.Processarea);
+                            });
+    
+                            // Convert the Set back to an array for the JSON model
+                            var aUniqueProcessAreas = Array.from(uniqueProcessAreasSet).map(function (area) {
+                                return { Processarea: area };
+                            });
+    
+                            var oUniqueModel = new sap.ui.model.json.JSONModel({
+                                ProcessAreas: aUniqueProcessAreas
+                            });
+    
+                            var oMultiComboBox = oSelectedItem.mAggregations.cells[5];
+                            if (!oMultiComboBox) {
+                                // If it's inside a fragment, use Fragment.byId
+                                oMultiComboBox = sap.ui.core.byId("idProcessAreaValue");
+                            }
+                            if (oMultiComboBox) {
+                                oMultiComboBox.setModel(oUniqueModel);
+                                oMultiComboBox.bindItems({
+                                    path: "/ProcessAreas",
+                                    template: new sap.ui.core.Item({
+                                        key: "{Processarea}",
+                                        text: "{Processarea}"
+                                    })
+                                });
+                            } else {
+                                console.error("MultiComboBox with id 'idAreaSelect' not found.");
+                               
+            
+                                // Assuming you have a way to get the Process Area from the selected item
+                               
+
+                            }
+                            // Add the two functions here after the success
+                            this.onRequestedData();
+                            this.onUserData();
+                        }.bind(this),
+                        error: function (oError) {
+                            console.error("Error reading AreaSet:", oError);
+                        }
+                    });
+                }
+               
+            },
+            onSelectTableProcesAarea: function (oEvent) {
+                debugger;
+                var oTable = this.byId("idRequestedData");
+    
+               // Get selected items from the table
+               var aSelectedtableItems = oTable.getSelectedItems();
+
+                
+                var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5].mProperties.selectedKeys
+                this.onSelectFiltertableArea(oSelectedItem);
+            },
+            // Resuable code for Selecting Process Area
+            onSelectFiltertableArea: function (oSelectedItem) {
+                debugger;
+                var oTable = this.byId("idRequestedData");
+    
+               // Get selected items from the table
+               var aSelectedtableItems = oTable.getSelectedItems();
+                // Retrieve the selected items
+
+                var oContext = aSelectedtableItems[0].getBindingContext();
+            
+                // Assuming you have a way to get the Process Area from the selected item
+                var oGroupMultiComboBox =  aSelectedtableItems[0].mAggregations.cells[6];
+              
 
                 // Initialize an array to hold the filters
                 var aFilters = [];
 
                 // Iterate over the selected items to add corresponding filters
-                aSelectedItems.forEach(function (oItem) {
-                    var sKey = oItem.getText(); // Get the key (e.g., "Inbound", "Outbound", "Internal")
+                oSelectedItem.forEach(function (oItem) {
+                    var sKey = oItem; // Get the key (e.g., "Inbound", "Outbound", "Internal")
 
                     // Add filter for the selected process area
                     aFilters.push(new sap.ui.model.Filter("Processarea", sap.ui.model.FilterOperator.EQ, sKey));
@@ -794,6 +1075,7 @@ sap.ui.define(
                     }
                 });
             },
+            
             //press function for Selecting Process Group In Fragment
             onSelectGroup: function () {
                 // Get the MultiComboBox instances for Area and Group
@@ -867,6 +1149,131 @@ sap.ui.define(
                             var sAreaKey = oAreaItem.getText();
                             var bGroupMatched = aSelectedGroups.some(function (oGroupItem) {
                                 var sGroupKey = oGroupItem.getText();
+                                return oAreaGroupMap[sAreaKey] && oAreaGroupMap[sAreaKey][sGroupKey];
+                            });
+ 
+                            if (!bGroupMatched) {
+                                isValid = false;
+ 
+                                // Set the value state to Error for Group MultiComboBox
+                                oGroupMultiComboBox.setValueState("Error");
+                                oGroupMultiComboBox.setValueStateText("Please select at least one group related to the selected areas.");
+ 
+                                // Show error message
+                                sap.m.MessageToast.show("Please select at least one group related to the selected areas.");
+                            }
+                        });
+ 
+                        if (!isValid) {
+                            oQueueMultiComboBox.removeAllItems(); // Clear Queue items if validation fails
+                            return;
+                        }
+ 
+                        // Reset value state to None if validation is successful
+                        oGroupMultiComboBox.setValueState("None");
+ 
+                        // Clear existing items in the Queue MultiComboBox
+                        oQueueMultiComboBox.removeAllItems();
+ 
+                        // Add the unique items to the Queue MultiComboBox
+                        aUniqueItems.forEach(function (oItem) {
+                            oQueueMultiComboBox.addItem(new sap.ui.core.Item({
+                                key: oItem.key,
+                                text: oItem.text
+                            }));
+                        });
+ 
+                        // Make sure the Queue MultiComboBox is visible
+                        oQueueMultiComboBox.setVisible(true);
+                    },
+                    error: function (oError) {
+                        // Handle error if necessary
+                        sap.m.MessageToast.show("Failed to fetch data.");
+                    }
+                });
+            },
+             //press function for Selecting Process Group In Fragment
+             onSelectTableGroup: function () {
+                debugger
+                // Get the MultiComboBox instances for Area and Group
+                var oTable = this.byId("idRequestedData");
+    
+                // Get selected items from the table
+                var aSelectedtableItems = oTable.getSelectedItems();
+ 
+                 
+                 var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5]
+
+                var oAreaMultiComboBox = aSelectedtableItems[0].mAggregations.cells[5];
+                var oGroupMultiComboBox = aSelectedtableItems[0].mAggregations.cells[6];
+                var oQueueMultiComboBox = aSelectedtableItems[0].mAggregations.cells[7];
+                this.OnFilterTableGroup( oAreaMultiComboBox, oGroupMultiComboBox, oQueueMultiComboBox );
+ 
+            },
+            // Resuable code for selecting Group 
+            OnFilterTableGroup:function( oAreaMultiComboBox, oGroupMultiComboBox, oQueueMultiComboBox ){
+                // Retrieve the selected items
+                var aSelectedAreas = oAreaMultiComboBox.mProperties.selectedKeys;
+                var aSelectedGroups = oGroupMultiComboBox.mProperties.selectedKeys;
+ 
+                // Initialize an array to hold the filters
+                var aFilters = [];
+ 
+                // Iterate over the selected groups to add corresponding filters
+                aSelectedGroups.forEach(function (oItem) {
+                    var sGroupKey = oItem; // Get the key (e.g., "Inbound", "Outbound", "Internal")
+ 
+                    // Add filter for the selected process group
+                    aFilters.push(new sap.ui.model.Filter("Processgroup", sap.ui.model.FilterOperator.EQ, sGroupKey));
+                });
+ 
+                // Combine the filters with an OR condition
+                var oCombinedFilter = new sap.ui.model.Filter({
+                    filters: aFilters,
+                    and: false // This specifies the OR condition
+                });
+ 
+                // Fetch data from the model with applied filters
+                var oModel = this.getOwnerComponent().getModel();
+                oModel.read("/ProcessAreaSet", {
+                    filters: [oCombinedFilter],
+                    success: function (oData) {
+                        // Process data to remove duplicates and ensure matching with selected areas
+                        var aUniqueItems = [];
+                        var oQueues = {};
+                        var oAreaGroupMap = {};
+ 
+                        // Iterate over fetched data
+                        oData.results.forEach(function (oItem) {
+                            var sQueue = oItem.Queue;
+                            var sArea = oItem.Processarea;
+                            var sGroup = oItem.Processgroup;
+ 
+                            // Build a map of area-group-queue relations
+                            if (!oAreaGroupMap[sArea]) {
+                                oAreaGroupMap[sArea] = {};
+                            }
+                            if (!oAreaGroupMap[sArea][sGroup]) {
+                                oAreaGroupMap[sArea][sGroup] = [];
+                            }
+                            oAreaGroupMap[sArea][sGroup].push(sQueue);
+ 
+                            // Add to unique items if not already present
+                            if (!oQueues[sQueue]) {
+                                oQueues[sQueue] = true;
+                                aUniqueItems.push({
+                                    key: sQueue,
+                                    text: sQueue
+                                });
+                            }
+                        });
+ 
+                        // Validate that the Group selection matches the Area selections
+                        var isValid = true;
+                        aSelectedAreas.forEach(function (oAreaItem) {
+                            var sAreaKey = oAreaItem;
+                            var bGroupMatched = aSelectedGroups.some(function (oGroupItem) {
+                                var sGroupKey = oGroupItem;
                                 return oAreaGroupMap[sAreaKey] && oAreaGroupMap[sAreaKey][sGroupKey];
                             });
  
