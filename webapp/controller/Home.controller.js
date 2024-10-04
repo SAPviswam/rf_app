@@ -553,10 +553,10 @@ sap.ui.define([
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID },Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID },Animation)
                         }
 
                     }.bind(this),

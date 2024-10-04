@@ -189,9 +189,7 @@
                                 <OverflowToolbar id="idSlotsTableHeader1">
                                     <Title
                                         id="idTableHeaderTitle1"
-                                        text="Requested Data"
-
-                                        
+                                        text="Requested Data"   
                                     />
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
@@ -379,7 +377,7 @@
                     >
                         <Table
                             id="idUserDataTable"
-                            mode="SingleSelectLeft"
+                            mode="MultiSelect"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
@@ -387,7 +385,6 @@
                             class="Allslotsclasstable"
                             width="100%"
                             sticky="ColumnHeaders"
-                            width="450px"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -429,10 +426,6 @@
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
-                                    width="10%"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Begin"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"

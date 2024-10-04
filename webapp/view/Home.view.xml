@@ -42,7 +42,10 @@
                             class="capModelRFText sapUiSmallMarginBottom"
                         />
                     </HBox>
-                    <Label id="idlabelempty" width="0.5rem" />
+                    <Label
+                        id="idlabelempty"
+                        width="0.5rem"
+                    />
                     <HBox id="idhboxwah">
                         <VBox id="_IDGenHBox26">
                             <Label
@@ -58,18 +61,20 @@
                                 class="sapUiSmallMarginTop LabelHomePage"
                             />
                         </VBox>
-                        <Text id="idtext" width="0.4rem"></Text>
+                        <Text
+                            id="idtext"
+                            width="0.4rem"
+                        />
                         <VBox id="_IDGenHBox32">
                             <MultiInput
                                 id="idHUInput"
                                 width="7rem"
-                                 value="1710"
+                                value="1710"
                                 editable="true"
                             />
                             <Input
                                 id="idUserIDInput"
                                 width="7rem"
-                               
                             />
                         </VBox>
                     </HBox>
@@ -81,9 +86,14 @@
                             id="_IDGenCheckBox"
                             text="Auto Save"
                             select="onSelectCheckBox"
-                             class="sapUiLargeMarginEnd"
+                            class="sapUiLargeMarginEnd"
                         />
-                        <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
+                        <Button
+                            text="Enter"
+                            type="Emphasized"
+                            press="onPressConnectButton"
+                        >
+                        </Button>
                     </HBox>
                     <HBox
                         id="idHBoxForgot"

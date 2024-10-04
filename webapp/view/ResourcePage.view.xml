@@ -11,6 +11,10 @@
     displayBlock="false"
     height="100%"
 >
+	<NavContainer
+			navigationFinished="onNavigationFinished"
+			id="navCon"
+			class="navContainerControl sapUiSmallMarginBottom">
     <tnt:ToolPage id="idToolPageP">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderP">
@@ -1057,4 +1061,5 @@
             </Dialog>
         </tnt:mainContents>
     </tnt:ToolPage>
+    		</NavContainer>
 </mvc:View>
