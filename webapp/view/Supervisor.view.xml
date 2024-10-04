@@ -377,14 +377,13 @@
                     >
                         <Table
                             id="idUserDataTable"
-                            mode="MultiSelect"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
-                            width="100%"
                             sticky="ColumnHeaders"
+                            width="100%"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -426,6 +425,7 @@
                             <columns>
                                 <Column
                                     id="idRDEmpIdCol"
+                                    width="5%"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
