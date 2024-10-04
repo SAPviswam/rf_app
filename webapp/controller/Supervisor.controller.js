@@ -12,6 +12,7 @@ sap.ui.define(
 
         return BaseController.extend("com.app.rfapp.controller.Supervisor", {
             onInit: function () {
+                this.chekBoxName=[];
                 this.bOtpVerified = true;
                 this.bCreate = true;
                 var oModel = new JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
@@ -2497,6 +2498,73 @@ sap.ui.define(
                         console.error("MessageToast is not available.");
                     }
                 }
+            },
+            onSelectFieldsPress: function () {
+                if (!this.oSelectFieldsDialog) {
+                    this.oSelectFieldsDialog = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectFields", this);
+                    this.getView().addDependent(this.oSelectFieldsDialog);
+                }
+                this.oSelectFieldsDialog.open();
+            },
+            onSelect:function (oEvent) {
+                const isSelected = oEvent.getParameter("selected");
+                var oCheckBox = oEvent.getSource();
+                var sText = oCheckBox.getText();
+                if(isSelected){
+                   
+                    this.chekBoxName.push(sText)
+                   
+                }
+                else{
+                   
+                    this.chekBoxName =this.chekBoxName.filter(item=> item !==sText)
+                }
+                console.log(this.chekBoxName)
+         
+            },
+            onSaveFieldsPress: function (oEvent) {
+                var oView = this.getView();
+               
+                // Define an array to hold the widths of visible columns
+                var visibleWidths = [];
+               
+                // Hide all columns initially
+                oView.byId("idresourceid").setVisible(false);
+                oView.byId("idarea").setVisible(false);
+                oView.byId("idresourcename").setVisible(false);
+                oView.byId("idgroup").setVisible(false);
+                oView.byId("idresourcetype").setVisible(false);
+                oView.byId("idemail").setVisible(false);
+                oView.byId("idphonenumber").setVisible(false);
+            //var oWidth=0;
+                var that = this;
+                this.chekBoxName.forEach(function (item) {
+                    let oitems = item.replace(/[^a-zA-Z0-9]/g, '');
+                    let lItem = oitems.toLowerCase();
+                    let column = that.getView().byId(`id${lItem}`);
+                   // oWidth+=parseInt(column.getWidth());
+ 
+                    console.log(column.getWidth());
+                    column.setVisible(true); // Set column visible
+                   
+                    // Add the width of the visible column to the array
+                    visibleWidths.push(column.getWidth().replace('%', '')); // Assuming widths are in percentage
+                });
+           
+    const newWidth = (this.chekBoxName.length) * 350; // Set 100px per column, adjust as needed
+                // Set the table width based on the total width of visible columns
+                oView.byId("idUserDataTable").setWidth(`${newWidth}px`);
+           
+    //             // Refresh the table binding
+                var oTable = oView.byId("idUserDataTable");
+                oTable.getBinding("items").refresh();
+                console.log(this.getView().byId("idUserDataTable").getWidth())
+                // Close the dialog
+                this.oSelectFieldsDialog.close();
+            },
+ 
+            onCancelInRequesteddataTablePress: function () {
+                this.oSelectFieldsDialog.close();  
             },
 
             // ondHUMaintenance: function () {

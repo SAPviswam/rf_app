@@ -42,25 +42,23 @@ sap.ui.define([
                 }
 
 
-                $(document).on("keydown", this.FunctionKeysPress.bind(this));
-                this.isActive = true;
 
-                this._pdfViewer = new PDFViewer({
-                    isTrustedSource: true
-                });
-                this.getView().addDependent(this._pdfViewer);
+                // this._pdfViewer = new PDFViewer({
+                //     isTrustedSource: true
+                // });
+                // this.getView().addDependent(this._pdfViewer);
      
-                // Sample model for the PDF documents
-                var oSampleModel = new JSONModel({
-                    documents: [
-                        {
-                            Title: "Opening PDF",
-                            Source: sap.ui.require.toUrl("com/app/rfapp/docs/helpdoc.pdf") // Path to your PDF file
-                        }
-                    ]
-                });
+                // // Sample model for the PDF documents
+                // var oSampleModel = new JSONModel({
+                //     documents: [
+                //         {
+                //             Title: "Opening PDF",
+                //             Source: sap.ui.require.toUrl("com/app/rfapp/docs/helpdoc.pdf") // Path to your PDF file
+                //         }
+                //     ]
+                // });
      
-                this.getView().setModel(oSampleModel);
+                // this.getView().setModel(oSampleModel);
             },
             FunctionKeysPress: function (event) {
                 if (event.key === "F1") {
@@ -371,12 +369,10 @@ sap.ui.define([
                     }
                 });
             },
-            onHelpconnectsapDialog: function() {
-                // Open the PDF when the help dialog is activated
-                this.onOpenPDF();
-              
-                // Additional code for your dialog can go here
-            },
+            // onHelpconnectsapDialog: function() {
+            //     // Open the PDF when the help dialog is activated
+            //     this.onOpenPDF();
+            // },
             onOpenPDF: function () {
                 // Get the source of the PDF from the model
                 var sSource = this.getView().getModel().getProperty("/documents/0/Source");
@@ -417,40 +413,7 @@ sap.ui.define([
                 var oCheckbox = oView.byId("idCheckboxDescription");
                 oCheckbox.setSelected(false);
             },
-            onHelpconnectsapDialog: function() {
-                // Open the PDF when the help dialog is activated
-                this.onOpenPDF();
-              
-                // Additional code for your dialog can go here
-            },
-            onOpenPDF: function () {
-                // Get the source of the PDF from the model
-                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
-            
-                if (sSource) {
-                    // Open the PDF in a new tab
-                    window.open(sSource, '_blank');
-                } else {
-                    sap.m.MessageToast.show("PDF source not found.");
-                    console.error("PDF source not found.");
-                }
-            },
-            onDownloadPDF: function () {
-                // Get the source of the PDF from the model
-                var sSource = this.getView().getModel().getProperty("/documents/0/Source");
-    
-                if (sSource) {
-                    // Create an anchor element to trigger download
-                    var link = document.createElement('a');
-                    link.href = sSource;
-                    link.download = 'helpdoc.pdf'; // Set the name for downloaded file
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                } else {
-                    console.error("PDF source not found.");
-                }
-            },
+
 
             onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client, oEvent) {
                 this.isButtonPressed=true

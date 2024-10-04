@@ -5,10 +5,11 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/core/BusyIndicator",
-    "sap/ui/Device"
+    "sap/ui/Device",
+    "sap/ui/core/UIComponent"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator, Device) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device,UIComponent) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
@@ -658,10 +659,38 @@ sap.ui.define([
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
                 }
+            },
+            onBackBtnInHomePage: function (){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+             
+            },
+            onLogoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+ 
+            },
+           onHomePageAvatarPressed: function (oEvent) {
+            if (!this._oPopover) {
+                this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
+                this.getView().addDependent(this._oPopover);
+                this.getView().byId("idTileViewButton").setVisible(false);
             }
+            // Open popover near the avatar
+            this._oPopover.openBy(oEvent.getSource());
+           
+        },
 
-
-
+        onCloseDialogInHomePage: function () {
+            this._pProfileDialog.then(function (oDialog) {
+                oDialog.close();
+            });
+        },
+        onSignoutPressed: function (){
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InitialScreen", { id: this.ID });
+         
+        },
         });
     });
 
