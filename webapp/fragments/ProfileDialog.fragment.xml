@@ -34,13 +34,9 @@
                         id="idProfileInfoVBox"
                         alignItems="Start"
                     >
-                        <Text
-                            id="idProfileName"
-                            text="Name"
-                        />
                         <Link
                             id="idProfileNumber"
-                            text="1234567890"
+                            text="{userDetails>/username}"
                         />
                     </VBox>
                 </HBox>
