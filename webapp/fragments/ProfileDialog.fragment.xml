@@ -10,7 +10,7 @@
         horizontalScrolling="false"
         class="sapUiResponsivePadding"
         contentWidth="200px"
-        title="User Profile:"
+        title="Profile:"
     >
         <form:SimpleForm
             id="idSimpleFormProfile"
@@ -34,9 +34,13 @@
                         id="idProfileInfoVBox"
                         alignItems="Start"
                     >
+                        <Text
+                            id="idProfileName"
+                            text="Name"
+                        />
                         <Link
                             id="idProfileNumber"
-                            text="{userDetails>/username}"
+                            text="1234567890"
                         />
                     </VBox>
                 </HBox>

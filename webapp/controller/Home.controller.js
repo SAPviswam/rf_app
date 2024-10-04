@@ -52,7 +52,6 @@ sap.ui.define([
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
                 if (Device.system.phone) {
-                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
                         this.byId("idImageLogoAvatarHome").setWidth("42.5%");
@@ -60,10 +59,7 @@ sap.ui.define([
                         this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
 
-                    } else {
-
-                    }
-
+                    } 
                     else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
@@ -646,8 +642,6 @@ sap.ui.define([
                     }
                 });
             },
-
-            validateEmail: function (email) {
             validateEmail: function (email) {
                 // Regular expression for validating an email address
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
