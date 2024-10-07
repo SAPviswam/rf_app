@@ -53,6 +53,18 @@ sap.ui.define([
                         // this.byId("idImageLogoAvatarHome").setHeight("35%");
                     }
                 }
+                $(document).on("keydown", this.HomeFunctionKeysPress.bind(this));
+                this.isActive = true;
+            },
+            HomeFunctionKeysPress: function (event) {
+                if (event.key === "Enter") {
+                    this.EnterKeyPressforHome();
+                    event.preventDefault();
+
+                }
+            },
+            EnterKeyPressforHome: function () {
+                this.onPressConnectButton();
             },
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");

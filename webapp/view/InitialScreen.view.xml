@@ -36,6 +36,7 @@
                                 id="initialscreentitle"
                                 text="CAPmodel RF"
                                 class="capModelRFText sapUiSmallMarginBottom"
+                                textAlign="Center"
                             />
                         </HBox>
                         <!-- New HBox for buttons directly below the logo -->
