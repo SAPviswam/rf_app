@@ -10,13 +10,12 @@
         draggable="true"
         contentWidth="25%"
         class="boxContainer"
+        initialFocus="idUserInput_CS"
     >
         <customHeader >
             <Bar
                 id="_IDBar1coonectsap_CS"
                 class="TitlecustomHeader"
-            
-                
             >
                 <contentLeft>
                     <!-- Logo -->

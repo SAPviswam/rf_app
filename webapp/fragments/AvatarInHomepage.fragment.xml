@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="idProfilePopoverInHomePage"
+        placement="Bottom"
+        verticalScrolling="false"
+        horizontalScrolling="false"
+        class="sapUiResponsivePadding"
+        contentWidth="200px"
+        title="Profile:"
+    >
+        <form:SimpleForm
+            id="idSimpleFormProfileInHomePage"
+            backgroundDesign="Solid"
+        >
+            <VBox id="idVBoxProfileInHomePage">
+                <HBox
+                    id="idProfileHeaderHBoxInHomePage"
+                    alignItems="Start"
+                >
+                    <Avatar
+                        id="idProfileAvatarInHomePage"
+                        displaySize="XS"
+                        tooltip="Profile"
+                    />
+                    <Label
+                        id="idLabelEmptyInProfileInHomePage"
+                        width="1rem"
+                    />
+                    <VBox
+                        id="idProfileInfoVBoxInHomePage"
+                        alignItems="Start"
+                    >
+                        <Text
+                            id="idProfileNameInHomePage"
+                            text="{profile>/Name}"
+                        />
+                        <Link
+                            id="idProfileNumberInHomePage"
+                            text="{profile>/Number}"
+                        />
+                    </VBox>
+                </HBox>
+                <VBox
+                    id="idProfileOptionsVBoxInHomePage"
+                    alignItems="Start"
+                    class="onProfileOptions"
+                >
+                    <Button
+                        id="idProfileButtonInHomePage"
+                        icon="sap-icon://person-placeholder"
+                        text="Account Details"
+                        type="Transparent"
+                        press="onAccountDetailsPressedInHomePage"
+                    />
+                    <Button
+                        id="idSignoutButtonInHomePage"
+                        icon="sap-icon://log"
+                        text="Sign Out"
+                        type="Transparent"
+                        press="onSignoutPressedInHomePage"
+                    />
+                </VBox>
+            </VBox>
+        </form:SimpleForm>
+    </Popover>
+</core:FragmentDefinition>

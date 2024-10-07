@@ -23,6 +23,7 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
+                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -30,11 +31,17 @@
                         />
                     </layoutData>
                 </Button>
-                <Label
+                <Image
+                    id="_IDGenImage_supervisor"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- <Label
                     id="idRFScreenHeading"
                     class="Heading"
                     text="RF SCREEN"
-                />
+                /> -->
                 <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                 <ToolbarSpacer id="spacer">
                     <layoutData>
@@ -114,6 +121,21 @@
                         />
                     </customData>
                 </Button> -->
+                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayout_supervisor"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar_supervisor"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
@@ -230,9 +252,6 @@
                                 </Column>
                                 <Column
                                     id="idEmployeename"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idtitleEmpName"
@@ -241,9 +260,6 @@
                                 </Column>
                                 <Column
                                     id="idResourceType"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idResourceTypetitle"
@@ -252,9 +268,6 @@
                                 </Column>
                                 <Column
                                     id="idPhonenumber"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idPhoneNumbertitle"
@@ -269,9 +282,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessArea"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessAreatitle"
@@ -280,9 +290,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessGroup"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessgrouptitle"
@@ -291,9 +298,6 @@
                                 </Column>
                                 <Column
                                     id="idProcessQueue"
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true"
-                                    hAlign="Center"
                                 >
                                     <Title
                                         id="idProcessQueuetitle"
@@ -460,6 +464,7 @@
                                 <Column
                                     id="idresourcetype"
                                     width="100px"
+
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
