@@ -68,7 +68,7 @@
                         icon="sap-icon://settings"
                         text="Default Settings"
                         type="Transparent"
-                        press="onResetDefaultPress"
+                        press="onResetToDefaultPress"
                     />
                     <Button
                         id="idThemesButton"
