@@ -40,7 +40,7 @@
                             minWidth="20px"
                         />
                     </layoutData>
-                </ToolbarSpacer>
+                    </ToolbarSpacer>
                 <Avatar
                     id="id_GenAvatar1PageHome"
                     displaySize="XS"
@@ -73,7 +73,7 @@
                             src="https://artihcus.com/assets/img/AG-logo.png"
                             class="sapUiSmallMarginEnd logo"
                             width="85%"
-                            height="35%"
+                             height="35%"
                         />
                         <Title
                             id="Homescreentitle"
@@ -102,7 +102,7 @@
                             <MultiInput
                                 id="idHUInput"
                                 width="7rem"
-                                 value="1710"
+                                  value="1710"
                                 editable="true"
                             />
                             <Input
@@ -112,15 +112,14 @@
                             />
                         </VBox>
                     </HBox>
-                     <HBox
+                    <HBox
                         id="_IDGenHBox69"
-                        justifyContent="Start"
+                        justifyContent="Center"
                     >
                         <CheckBox
                             id="_IDGenCheckBox"
                             text="Auto Save"
                             select="onSelectCheckBox"
-                             class="sapUiLargeMarginEnd"
                         />
                         <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
                     </HBox>
@@ -139,7 +138,7 @@
                         />
                         <Button
                             id="idchangequeue"
-                            text="Change Queue"
+                             text="Change Queue"
                             type="Transparent"
                         />
                     </HBox>
