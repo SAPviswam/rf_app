@@ -106,6 +106,8 @@ sap.ui.define([
                     else {
                         this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
                         this.byId("LoginButton_CS").setWidth("85%");
+                        this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
+                        this.byId("LoginButton_CS").setWidth("85%");
                         // Non-iPhone phones
                         // this.byId("_IDGenImage_CS").setWidth("90%");
                         // this.byId("_IDGenImage_CS").setHeight("35%");
@@ -120,7 +122,10 @@ sap.ui.define([
                 }
                 else if(Device.system.tablet){
                     this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
-                    this.byId("LoginButton_CS").setWidth("92%");
+                    this.byId("LoginButton_CS").setWidth("90.5%");
+                    this.byId("idRouterStringInput_CS").setWidth("106%");
+                    
+                    
                 }
                 
 
