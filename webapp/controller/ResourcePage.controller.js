@@ -124,7 +124,6 @@ sap.ui.define([
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
             },
             onResetToDefaultPress: function () {
-
                 sap.m.MessageBox.warning("Reset to default settings ?", {
                     title: "Default settings",
                     actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
@@ -132,12 +131,9 @@ sap.ui.define([
                         if (status === sap.m.MessageBox.Action.OK) {
                             localStorage.clear();
                             sap.m.MessageToast.show("Settings reset to default.");
-                            const oModel = this.getView().getModel()
-                            oModel.refresh(true)
-
+                            window.location.reload();
                         } else {
-                            MessageToast.show("Reset to default settings cancelled.");
-                            
+                            MessageToast.show("Reset to default settings cancelled.");    
                         }
                     }
                 });
