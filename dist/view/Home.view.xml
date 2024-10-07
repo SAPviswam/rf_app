@@ -1,0 +1,150 @@
+<mvc:View
+    xmlns:unified="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form"
+   controllerName="com.app.rfapp.controller.Home"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+   displayBlock="true"
+    height="100%"
+   xmlns:layout="sap.ui.layout"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+ 
+>
+    <tnt:ToolPage id="pageHome">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntpageHome">
+                <Button
+                    id="idBackBtnInPageHome"
+                    icon="sap-icon://nav-back"
+                    press="onBackBtnInHomePage"
+                    visible="true"
+                />
+                <Image
+                    id="id_GenImage1PageHome"
+                    height="1.5rem"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPageHome"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPageHomePageHome">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PageHome"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="id_GenAvatar1PageHome"
+                    displaySize="XS"
+                    press="onHomePageAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <FlexBox
+                id="_IDGenFlexBoxHome"
+                height="100%"
+                direction="Column"
+                alignItems="Center"
+            >
+                <VBox
+                    id="environmentButtonsHBoxHome"
+                    class="sapUiSmallMarginTop boxContainer"
+                    alignItems="Center"
+                >
+                    <HBox
+                        id="idHboxHome"
+                        alignContent="Start"
+                        class="boxContainer2"
+                        width="auto"
+                        height="20%"
+                    >
+                        <Image
+                            id="idImageLogoAvatarHome"
+                            src="https://artihcus.com/assets/img/AG-logo.png"
+                            class="sapUiSmallMarginEnd logo"
+                            width="85%"
+                            height="35%"
+                        />
+                        <Title
+                            id="Homescreentitle"
+                            text="CAPmodel RF"
+                            class="capModelRFText sapUiSmallMarginBottom"
+                        />
+                    </HBox>
+                    <Label id="idlabelempty" width="0.5rem" />
+                    <HBox id="idhboxwah">
+                        <VBox id="_IDGenHBox26">
+                            <Label
+                                id="idLabelHU"
+                                text="Warehouse No:"
+                                labelFor="idHUInput"
+                                class="LabelHomePage"
+                            />
+                            <Label
+                                id="idLabelUserID"
+                                text="Resource:"
+                                labelFor="idUserIDInput"
+                                class="sapUiSmallMarginTop LabelHomePage"
+                            />
+                        </VBox>
+                        <Text id="idtext" width="0.4rem"></Text>
+                        <VBox id="_IDGenHBox32">
+                            <MultiInput
+                                id="idHUInput"
+                                width="7rem"
+                                 value="1710"
+                                editable="true"
+                            />
+                            <Input
+                                id="idUserIDInput"
+                                width="7rem"
+                               
+                            />
+                        </VBox>
+                    </HBox>
+                     <HBox
+                        id="_IDGenHBox69"
+                        justifyContent="Start"
+                    >
+                        <CheckBox
+                            id="_IDGenCheckBox"
+                            text="Auto Save"
+                            select="onSelectCheckBox"
+                             class="sapUiLargeMarginEnd"
+                        />
+                        <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
+                    </HBox>
+                    <HBox
+                        id="idHBoxForgot"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            id="idButtonSignUp"
+                            text="Create Resource"
+                            press="onPressSignupBtn"
+                            class="onSignupClassBtn"
+                            type="Transparent"
+                        />
+                        <Button
+                            id="idchangequeue"
+                            text="Change Queue"
+                            type="Transparent"
+                        />
+                    </HBox>
+                </VBox>
+            </FlexBox>  
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

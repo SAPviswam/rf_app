@@ -1,0 +1,1071 @@
+<mvc:View
+    xmlns:unified="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.ResourcePage"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="false"
+    height="100%"
+>
+	<NavContainer
+			navigationFinished="onNavigationFinished"
+			id="navCon"
+			class="navContainerControl sapUiSmallMarginBottom">
+    <tnt:ToolPage id="idToolPageP">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntToolHeaderP">
+                <Button
+                    id="idPFourthbackbtn"
+                    icon="sap-icon://nav-back"
+                    press="onSBQPFourthBackBtnPress"
+                    visible="false"
+                />
+                <Image
+                    id="id_GenImage1P"
+                    height="1.5rem"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorP"
+                />
+                <ToolbarSpacer id="idToolbarSpacerP">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1P"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Button
+                    id="idthemeBackGroundButton"
+                    text="Background Theme"
+                    press="onBackgroundThemeBtn"
+                    tooltip="Change Background Color"
+                    visible="false"
+                />
+                <!-- <Button
+                    id="idMainthemeBtn"
+                    text="Theme"
+                    press="onMainThemeButton"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                    visible="true"
+                /> -->
+                <Button
+                    id="idCancelEditButtonResource"
+                    text="Exit edit mode"
+                    press="onCancelEditPress"
+                    visible="false"
+                />
+                <Button
+                    id="idCancelButtonResource"
+                    text="Exit theme mode"
+                    press="onCancelPressThemeMode"
+                    visible="false"
+                />
+                <Avatar
+                    id="id_GenAvatar1P"
+                    displaySize="XS"
+                    press="onSBQPAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <ScrollContainer
+                id="idScrollContainer1"
+                horizontal="true"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding sapUiResponsiveMargin"
+            >
+                <!-- <form:SimpleForm
+                    id="idsimpleform"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsS="1"
+                > -->
+                <!-- <ScrollContainer
+
+                     horizontal="false"
+                        vertical="true"
+                        width="100%"
+                        height="100%"
+                        class="sapUiContentPadding sapUiResponsiveMargin"
+
+                        width="100%"
+                        height="100%"
+
+                    > -->
+                <VBox>
+                    <Title
+                        id="id_unloading_title"
+                        text="Unloading"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox>
+                <GenericTile
+                    id="id_unloadingbydelivery"
+                    class="sapUiTinyMargin sapUiResponsivePadding"
+                    header="Unloading By Delivery"
+                    press="onUnloadingByDeliveryPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unlodingbyshipment"
+                    class="sapUiTinyMargin"
+                    header="Unloading By Shipment"
+                    press="onUnloadingByShipmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadingbytransportunit"
+                    class="sapUiTinyMargin"
+                    header="Unloading By Transport Unit"
+                    press="onUnloadingByTransportUnitPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadingbyasn"
+                    class="sapUiTinyMargin"
+                    header="Unloading By ASN"
+                    press="onUnloadingByASNPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadingbydoor"
+                    class="sapUiTinyMargin"
+                    header="Unloading By Door"
+                    press="onUnloadingByDoorTilePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadingbybilloflading"
+                    class="sapUiTinyMargin"
+                    header="Unloading by Bill of Lading"
+                    press="onUnloadingbyBillofLadingPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadingbyconsigmentorder"
+                    class="sapUiTinyMargin sapUiResponsivePadding"
+                    header="Unloading By Consigment Order"
+                    press="onUnloadingByConsignmentOrderTilePress"
+                    visible="false"
+                />
+                <!-- <VBox>
+                    <Title
+                        id="id_deconsolidation_title"
+                        text="Deconsolidation"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+
+                <GenericTile
+                    id="id_createputawayhusfordeconsolidation"
+                    class="sapUiTinyMargin"
+                    header="Create Putaway Hus for Deconsolidation"
+                    press="onCreatePutawayHusforDeconsolidationPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createputawayhusmanually"
+                    class="sapUiTinyMargin"
+                    header="Create Putaway Hus Manually"
+                    press="onCreatePutawayHusManuallyPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_deconsolidationautomatically"
+                    class="sapUiTinyMargin"
+                    header="Deconsolidation Automatically"
+                    press="onDeconsolidationAutomaticallyPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_deconsolidationmanually"
+                    class="sapUiTinyMargin"
+                    header="Deconsolidate Manually"
+                    press="onDeconsolidateManuallyPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_huoverview"
+                    class="sapUiTinyMargin"
+                    header="HU Overview"
+                    press="onHUOverviewPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createputawayhumanuallywowc"
+                    class="sapUiTinyMargin"
+                    header="Create Putaway HU Manually (W/O WC)"
+                    press="onCreatePutawayHUManuallyPress"
+                    visible="false"
+                />
+
+                <GenericTile
+                    id="id_humaintenance1"
+                    class="sapUiTinyMargin"
+                    header="HU Maintenance"
+                    press="onHUMaintenancePress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_putaway_title"
+                        text="Putaway"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_putawaybyhu"
+                    class="sapUiTinyMargin"
+                    header="Putaway By HU"
+                    press="onPutawayByHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_putawaybyhuclustered"
+                    class="sapUiTinyMargin"
+                    header="Putaway By HU (Clustered)"
+                    press="onPutawayByHUClusteredPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_putawaybywo"
+                    class="sapUiTinyMargin"
+                    header="Putaway By WO"
+                    press="onPutawayByWOPress"
+                    visible="false"
+                    subheader="Putaway By WO"
+                />
+                <GenericTile
+                    id="id_confiramtioncorrectionst"
+                    class="sapUiTinyMargin"
+                    header="Confiramtion Corrections"
+                    press="onConfiramtionCorrectionsPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_receivingofhanndlingunits_title"
+                        text="Receiving Of Hanndling Units"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_receivingofhubydelivery"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by Delivery"
+                    press="onReceivingofHUbyDeliveryPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_receivingofhubyshipment"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by Shipment"
+                    press="onReceivingofHUbyShipmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_receivingofhubytu"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by TU"
+                    press="onReceivingofHUbyTUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_receivingofhubyasn"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by ASN"
+                    press="onReceivingofHUbyASNPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_receivingofhubydoor"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by Door"
+                    press="onReceivingofHUbyDoorPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_recevingofhubymanufacturingorder"
+                    class="sapUiTinyMargin"
+                    header="Receving of HU by manufacturing Order"
+                    press="onReceivingofHUbymanufacturingOrderPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_recevingoftudoortw"
+                    class="sapUiTinyMargin"
+                    header="Receving of TU/Door (TW)"
+                    press="onRecevingofTUDoorTWPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadhuctw"
+                    class="sapUiTinyMargin"
+                    header="Unload HUC (TW)"
+                    press="onUnloadHUCTWPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_recevinngofhubybilloflading"
+                    class="sapUiTinyMargin"
+                    header="Recevinng of HU by Bill of Lading"
+                    press="onRecevinngofHUbyBillofLadingPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_recevingofhubyconsignmentorder"
+                    class="sapUiTinyMargin"
+                    header="Receiving of HU by Consignment Order"
+                    press="onReceivingofHUbyConsignementOrderPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_setreadyforwarehouseprocessing_title"
+                        text="Set Ready for warehouse processing"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+
+                <GenericTile
+                    id="id_setreadyforwhprocessingbybol"
+                    class="sapUiTinyMargin"
+                    header="Set Ready for WH processing by BOL"
+                    press="onSetReadyforWHprocessingbyBOLPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_setreadyforwhprocessingbyco"
+                    class="sapUiTinyMargin"
+                    header="Set Ready for WH processing by CO"
+                    press="onSetReadyforWHprocessingbyCOPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_picking_title"
+                        text="Picking"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_pickingbysystemguided"
+                    class="sapUiTinyMargin"
+                    header="Picking By system Guided"
+                    press="onPickingBysystemGuidedPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_systemguidedbyqueue"
+                    class="sapUiTinyMargin"
+                    header="System Guided By queue"
+                    press="onSystemGuidedByqueuePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_pickingbywr"
+                    class="sapUiTinyMargin"
+                    header="Picking by WR"
+                    press="onPickingbyWRPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_pickingbywo"
+                    class="sapUiTinyMargin"
+                    header="Picking by WO"
+                    press="onPickingByWOPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_pickingbyhu"
+                    class="sapUiTinyMargin"
+                    header="Picking By HU"
+                    press="onPickingByHUPress"
+                    visible="false"
+                />
+                <!-- <VBox>
+                    <Title
+                        id="id_packing_title"
+                        text="Packing"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_createshippinghu"
+                    class="sapUiTinyMargin"
+                    header="Create Shipping HU"
+                    press="onCreateShippingHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_automaticallyrepackhu"
+                    class="sapUiTinyMargin"
+                    header="Automatically Repack HU"
+                    press="onAutomaticallyRepackHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_automaticallyrepackhuitem"
+                    class="sapUiTinyMargin"
+                    header="Automatically Repack HU Item"
+                    press="onAutomaticallyRepackHUItemPress"
+                    visible="false"
+                    subheader="Automatically Repack HU Item"
+                />
+                <GenericTile
+                    id="id_createshippinghuwowc"
+                    class="sapUiTinyMargin"
+                    header="Create Shipping HU (W/O WC)"
+                    press="onCreateShippingHUWOWCPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_manuallyrepackhu"
+                    class="sapUiTinyMargin"
+                    header="Manually Repack HU"
+                    press="onManuallyRepackHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_manuallyrepackhuitem"
+                    class="sapUiTinyMargin"
+                    header="Manually Repack HU Item"
+                    press="onManuallyRepackHUItemPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_maintainhu"
+                    class="sapUiTinyMargin"
+                    header="Maintain HU"
+                    press="onMaintainHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_manuallyrepackallhuitems"
+                    class="sapUiTinyMargin"
+                    header="Manually re-pack all HU items"
+                    press="onManuallyrepackallHUitemsPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_loading_title"
+                        text="Loading"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_loadhuctW"
+                    class="sapUiTinyMargin"
+                    header="Load HUC(TW)"
+                    press="onLoadHUCTWPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbydelivery"
+                    class="sapUiTinyMargin"
+                    header="Loading By Delivery"
+                    press="onLoadingByDeliveryPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbyshipment"
+                    class="sapUiTinyMargin"
+                    header="Loading By Shipment"
+                    press="onLoadingByShipmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbytransportunit"
+                    class="sapUiTinyMargin"
+                    header="Loading By Transport Unit"
+                    press="onLoadingByShipmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbydoor"
+                    class="sapUiTinyMargin"
+                    header="Loading By Door"
+                    press="onLoadingByDoorPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbyhu"
+                    class="sapUiTinyMargin"
+                    header="Loading By HU"
+                    press="onLoadingByHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbyroute"
+                    class="sapUiTinyMargin"
+                    header="Loading By Route"
+                    press="onLoadingByRoutePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_buildvehicle"
+                    class="sapUiTinyMargin"
+                    header="Build Vehicle"
+                    press="onBuildVehiclePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbytudoortw"
+                    class="sapUiTinyMargin"
+                    header="Loading By TU/Door (TW)"
+                    press="onLoadingByTUDoorTWPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbybilloflading"
+                    class="sapUiTinyMargin"
+                    header="Loading By bill of Lading"
+                    press="onLoadingBybillofLadingPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadingbyconsignmentorder"
+                    class="sapUiTinyMargin"
+                    header="Loading By Consignment order"
+                    press="onLoadingByConsignmentorderPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_pickpoint_title"
+                        text="Pick Point"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_creationofsinglehu"
+                    class="sapUiTinyMargin"
+                    header="Creation Of Single HU"
+                    press="onCreationOfSingleHUpress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_pickpoint"
+                    class="sapUiTinyMargin"
+                    header="Pick Point"
+                    press="onPickPointPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_humaintenance"
+                    class="sapUiTinyMargin"
+                    header="HU Maintenance"
+                    press="onHUMaintenancePress"
+                    visible="false"
+                />
+                <!-- <VBox>
+                    <Title
+                        id="id_consumption_title"
+                        text="Consumption"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_consumptionbymanufacturingorder"
+                    class="sapUiTinyMargin"
+                    header="Consumption By Manufacturing Order"
+                    press="onConsumptionByManufacturingOrderPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_reversalofconsumptionbymohu"
+                    class="sapUiTinyMargin"
+                    header="Reversal of Consumption by MO (HU)"
+                    press="onReversalofConsumptionbyMOHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_reversalofconsumptionbymobin"
+                    class="sapUiTinyMargin"
+                    header="Reversal of consumption by MO (Bin)"
+                    press="onReversalofconsumptionbyMOBinPress"
+                    visible="false"
+                />
+                <!-- <VBox>
+                    <Title
+                        id="id_distributionequipment_title"
+                        text="Distribution Equipment"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+
+                <GenericTile
+                    id="id_loadbyhuautoposassignment"
+                    class="sapUiTinyMargin"
+                    header="Load By HU - Auto.Pos.Assignment"
+                    press="onLoadByHUAutoPosAssignmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_loadbyhumanposassignment"
+                    class="sapUiTinyMargin"
+                    header="Load By HU - Man.Pos.Assignment"
+                    press="onLoadByHUManPosAssigmentPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_changeloadingunloadingdetails"
+                    class="sapUiTinyMargin"
+                    header="Change Loading/Unloading Details"
+                    press="onChangeLoadingUnloadingDetailsPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_unloadbyhu"
+                    class="sapUiTinyMargin"
+                    header="Unload By HU"
+                    press="onUnloadByHUPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_inventorycounting_title"
+                        text="Inventory Counting"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_inventorycountingguied"
+                    class="sapUiTinyMargin"
+                    header="Inventory Counting Guied"
+                    press="onInventoryCountingGuiedPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_inventorycountingmanual"
+                    class="sapUiTinyMargin"
+                    header="Inventory Counting Manual"
+                    press="onInventoryCountingManualPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_adhocinventorycreation"
+                    class="sapUiTinyMargin"
+                    header="Adhoc Inventory Creation"
+                    press="onAdhocInventoryCreationPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_adhocinventorycounting"
+                    class="sapUiTinyMargin"
+                    header="Adhoc Inventory Counting"
+                    press="onAdhocInventoryCountingPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_adhocwtcreations_title"
+                        text="Adhoc WT creations"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_replenishmentforfixedbins"
+                    class="sapUiTinyMargin"
+                    header="Replenishment for fixed Bins"
+                    press="onReplenishmentforfixedBinsPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createadhochuwt"
+                    class="sapUiTinyMargin"
+                    header="Create Adhoc HU WT"
+                    press="onCreateAdhocHUWTPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createandconfirmadhochuwt"
+                    class="sapUiTinyMargin"
+                    header="Create and Confirm Adhoc HU WT"
+                    press="onCreateandConfirmAdhocHUWTPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createadhocproductwt"
+                    class="sapUiTinyMargin"
+                    header="Create Adhoc Product WT"
+                    press="onCreateAdhocProductWTPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_createandconfirmadhocproductwt"
+                    class="sapUiTinyMargin"
+                    header="Create and Confirm Adhoc Product WT"
+                    press="onCreateandConfirmAdhocProductWTPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_queries_title"
+                        text="Queries"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_huquery"
+                    class="sapUiTinyMargin"
+                    header="HU Query"
+                    press="onHUQueryPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_stockbinquerybybin"
+                    class="sapUiTinyMargin"
+                    header="Stock/Bin Query by Bin"
+                    press="onStockBinQuerybyBinPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_stockbinquerybyproduct"
+                    class="sapUiTinyMargin"
+                    header="Stock/Bin Query by Product"
+                    press="onStockBinQuerybyProductPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_serialnumberlocation"
+                    class="sapUiTinyMargin"
+                    header="Serial number Location"
+                    press="onSerialnumberLocationPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_availablehandlingunitsonbinquery"
+                    class="sapUiTinyMargin"
+                    header="Available Handling units on bin query"
+                    press="onAvailableHandlingunitsonbinqueryPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_wtquerybywo"
+                    class="sapUiTinyMargin"
+                    header="WT Query by WO"
+                    press="onWTQuerybyWOPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_wtquerybywt"
+                    class="sapUiTinyMargin"
+                    header="WT Query By WT"
+                    press="onWTQueryByWTPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_wtquerybyqueue"
+                    class="sapUiTinyMargin"
+                    header="WT Query by Queue"
+                    press="onWTQuerybyQueuePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_wtquerybyhu"
+                    class="sapUiTinyMargin"
+                    header="WT query by HU"
+                    press="onWTquerybyHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_hustockoverviewquery"
+                    class="sapUiTinyMargin"
+                    header="HU Stock Overview Query"
+                    press="onHUStockOverviewQueryPress"
+                    visible="false"
+                />
+                <!-- <VBox>
+                    <Title
+                        id="id_qualitymanagement_title"
+                        text="Quality Management"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+
+                <GenericTile
+                    id="id_productinspectionbyhu"
+                    class="sapUiTinyMargin"
+                    header="Product Inspection By HU"
+                    press="onProductInspectionByHUPress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_productinspectionbystoragebin"
+                    class="sapUiTinyMargin"
+                    header="Product Inspection By Storage Bin"
+                    press="onProductInspectionByStorageBinPress"
+                    visible="false"
+                />
+
+                <!-- <VBox>
+                    <Title
+                        id="id_resourcemanagement_title"
+                        text="Resource Management"
+                        visible="false"
+                    />
+                    <HBox />
+                </VBox> -->
+                <GenericTile
+                    id="id_changequeue"
+                    class="sapUiTinyMargin"
+                    header="Change Queue"
+                    press="onChangeQueueTilePress"
+                    visible="false"
+                />
+                <GenericTile
+                    id="id_changeresourcegroup"
+                    class="sapUiTinyMargin"
+                    header="Change Resource Group"
+                    press="onChangeResourceGroupTilePress"
+                    visible="false"
+                />
+                <!-- </ScrollContainer> -->
+                <!-- </form:SimpleForm> -->
+            </ScrollContainer>
+            <Dialog
+                id="idthemeTileDialogResource"
+                title="Select Theme Color"
+                contentHeight="65%"
+            >
+                <customHeader>
+                    <Bar id="themeDialogHeaderResource">
+                        <contentLeft>
+                            <Title
+                                id="idTextColorThemeResource"
+                                text="Select Theme Color:"
+                            />
+                        </contentLeft>
+                        <contentRight>
+                            <Button
+                                id="applyColorButtonResource"
+                                text="Apply"
+                                press="onApplyColor"
+                                type="Transparent"
+                                tooltip="Apply the selected color"
+                            />
+                            <Button
+                                id="cancelColorButtonResource"
+                                icon="sap-icon://decline"
+                                press="onCancelColorDialog"
+                                type="Transparent"
+                                tooltip="Cancel Theme"
+                            />
+                        </contentRight>
+                    </Bar>
+                </customHeader>
+                <!-- <unified:FileUploader
+                            id="idBrowseImgfileUploader"
+                            icon="sap-icon://background"
+                            tooltip="Upload an image to apply as tile background"
+                            change="onFileUploadChange"
+                            fileType="jpg,png,jpeg,gif"
+                            maximumFileSize="2"
+                            uploadOnChange="false"
+                        /> -->
+                <VBox
+                    id="idVBox1796Resource"
+                    class="sapUiSmallMargin"
+                >
+                    <HBox id="colorOptionsResource">
+                        <CheckBox
+                            id="colorOptionRedResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox redCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata1Resource"
+                                    key="red"
+                                    value="red"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionBlackResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox blackCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata2Resource"
+                                    key="black"
+                                    value="black"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionGreenResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox greenCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata3Resource"
+                                    key="green"
+                                    value="green"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionWhiteResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox whiteCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata4Resource"
+                                    key="white"
+                                    value="white"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionPurpleResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox purpleCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata5Resource"
+                                    key="purple"
+                                    value="purple"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionBlueResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox blueCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata6Resource"
+                                    key="blue"
+                                    value="blue"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <CheckBox
+                            id="colorOptionYellowResource"
+                            selected="false"
+                            select="onColorOptionSelect"
+                            class="colorCheckBox YellowCheckBox"
+                        >
+                            <customData>
+                                <core:CustomData
+                                    id="idcustomedata7Resource"
+                                    key="yellow"
+                                    value="yellow"
+                                />
+                            </customData>
+                        </CheckBox>
+                        <!-- <Button id="idCustomethemeSelection" press="onPressCustomeTheme" icon="sap-icon://palette" type="Transparent"></Button> -->
+                        <!-- Add more color options as needed -->
+                    </HBox>
+                    <unified:ColorPicker
+                        id="idcolorPickerResource"
+                        mode="HSL"
+                        change="onColorChange"
+                    />
+                </VBox>
+            </Dialog>
+            <Dialog
+                id="IdEditTileDetailsDialogResource"
+                title="Edit The Tile Deatils:"
+                contentHeight="30%"
+            >
+                <customHeader>
+                    <Bar id="idTileDeatilsDialogHeaderResource">
+                        <contentLeft>
+                            <Title
+                                id="idTextEditTileDetailsResource"
+                                text="Edit Tile details:"
+                            />
+                        </contentLeft>
+                        <contentRight>
+                            <Button
+                                id="idSaveTileDetailsButtonResource"
+                                text="Save"
+                                press="onPressSaveTileEditDeatils"
+                                type="Transparent"
+                                visible="true"
+                            />
+                            <Button
+                                id="idDeclineTileDeialsEditButtonResource"
+                                icon="sap-icon://decline"
+                                press="onCloseEditingTileDetailsDialog"
+                                type="Transparent"
+                                visible="true"
+                            />
+                        </contentRight>
+                    </Bar>
+                </customHeader>
+                <form:SimpleForm id="idSimpleformTileDetails">
+                    <VBox id="idVBoxTileDeatsils">
+                        <Label
+                            id="idTileHeaderLabel"
+                            text="Header:"
+                        />
+                        <Input id="idInputTileHeaderResorce" />
+                        <Label id="idEmptyTileDetails" />
+                        <Label
+                            id="idTileSubHeaderTiledetails"
+                            text="Sub Header:"
+                        />
+                        <Input id="idInputSubHeaderResource" />
+                    </VBox>
+                </form:SimpleForm>
+            </Dialog>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+    		</NavContainer>
+</mvc:View>

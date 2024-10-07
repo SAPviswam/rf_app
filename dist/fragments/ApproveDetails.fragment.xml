@@ -1,0 +1,167 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog
+        id="idAdminDialog"
+        title="Approval form"
+        class="sapUiMediumMargin"
+    >
+        <customHeader>
+            <Bar id="idDialogHeader">
+                <contentLeft>
+                    <Title
+                        id="idAdminPage"
+                        text="Admin page"
+                    />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="idRejectButton"
+                        press="onClose"
+                        type="Reject"
+                        tooltip="Close"
+                        icon="sap-icon://decline"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <VBox
+            id="idDialogContent"
+            class="sapUiMediumMargin marginApproveDetailsFragment"
+           
+        >
+       
+            <Label
+                id="idEmployeeIDLabelF"
+                text="Employee ID:"
+               
+            />
+            <Text
+                class="textFieldsAF"
+                id="idEmployeeIDInputF"
+               
+            />
+         
+ 
+            <Label
+                id="idEmployeeNameLabeFl"
+                text="Name:"
+               
+            />
+            <Text
+            class="textFieldsAF"
+                id="idNameInputF"
+               
+            />
+ 
+            <Label
+                id="idEmployeeEmailLabelF"
+                text="Email:"
+               
+            />
+            <Text
+            class="textFieldsAF"
+                id="idEmailInputF"
+               
+            />
+ 
+            <Label
+                id="idEmployeePhoneLabelF"
+                text="Phone:"
+             
+            />
+            <Text
+            class="textFieldsAF"
+                id="idPhoneInputF"
+               
+            />
+             <Label
+                id="idResourceTypeLabelF"
+                text="Resource Type:"
+             
+            />
+            <Text
+            class="textFieldsAF"
+                id="idRoesurcetypeInputF"
+               
+            />
+ 
+            <Label
+                id="idEmployeeAreaLabeFl"
+                text="Process Area:"
+                required="true"
+            />
+            <MultiComboBox
+                id="idAreaSelect"
+                items="{path: '/ProcessAreaSet'}"
+                selectionChange="onSelectProcesAarea"
+            >
+                <core:Item
+                    class="dropdown"
+                    id="_IDGenItemProcessarea"
+                    key="{Processarea}"
+                    text="{Processarea}"
+                />
+            </MultiComboBox>
+ 
+ 
+            <Label
+                id="idEmployeeGroupLabelF"
+                text="Group:"
+                required="true"
+                class="sapUiSmallMarginTop"
+            />
+             <MultiComboBox
+                id="idGroupSelect"
+                items="{path: '/ProcessAreaSet'}"
+                visible="false"
+                selectionChange="onSelectGroup"
+                
+            >
+                <core:Item
+                    class="dropdown"
+                    id="_IDGenItemProcessgroup"
+                    key="{Processgroup}"
+                    text="{Processgroup}"
+                />
+            </MultiComboBox>
+ 
+            <Label
+                id="idEmployeeQueueLabelF"
+                text="Queue:"
+                required="true"
+                class="sapUiSmallMarginTop"
+                
+            />
+            <MultiComboBox
+                id="idQueueSelect"
+                placeholder="Select Queue from Dropdown.."
+                class="Inputs"
+                items="{path: '/ProcessAreaSet'}"
+                visible="false"
+                selectionChange="onSelectQueue"
+            >
+                <core:Item
+                    class="dropdown"
+                    id="_IDGenItemQueue"
+                    key="{Queue}"
+                    text="{Queue}"
+                />
+            </MultiComboBox>
+        </VBox>
+        <HBox
+            id="idButton"
+            justifyContent="SpaceAround"
+        >
+            <Button
+                id="idApproveButton"
+                text="Approve"
+                type="Emphasized"
+                press="onApprove"
+               
+            />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

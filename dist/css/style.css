@@ -1,0 +1,704 @@
+/* Ensure the entire page is centered with background image */
+.HomePageBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    padding: 0; /* Adjust padding as needed */
+}
+
+/* Center the login container */
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* Ensure the container takes full height */
+}
+
+/* Style the login container */
+.loginContainer {
+    background-color: rgba(119, 176, 240, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: start;
+    transition: all 0.5s ease-out;
+    margin: 0; /* Remove margin to center properly */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .loginContainer {
+        padding: 1rem;
+        margin: 0 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginContainer {
+        padding: 1rem;
+        margin: 0;
+    }
+}
+
+/*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
+
+/* Supervisor Page Start */
+.sapUiSmallMarginTop {
+    margin-top: 1rem;
+}
+
+.sapUiSmallMargin {
+    border: 1cm;
+}
+.titleWithBorder {
+    border: 2px solid orange;  /* Add border */
+    padding: 10px;             /* Add padding for spacing */
+    background-color: white;   /* Background color to make it stand out */
+    width: auto;               /* Fit content */
+}
+.customHeader_SSC {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333; /* Adjust as needed */
+}
+
+
+.buttonContainer {
+    border-radius: 0rem !important;
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+ 
+.capModelRFTextdialog {
+    color: #ed731dd2 !important;
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-color: black !important; /* Set button border color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+    padding: 8px 16px; /* Optional: Add padding for better button size */
+    border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
+}
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: 1rem !important;
+    width: 40% !important;
+}
+.boxContainer {
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    /* width: 23% !important; */
+}
+@media only screen and (min-width: 1024px) {
+    .boxContainer {
+        border-radius: 0rem !important;
+        border: 2px solid #ed731dd2 !important;
+        padding: auto !important; 
+        padding-bottom: 1rem;
+        width: 23% !important;
+    }
+}
+
+.TitlecustomHeader{
+    border: 2px solid #ed731dd2 !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* For Safari */
+    -moz-user-select: none !important; /* For Firefox */
+    -ms-user-select: none !important; /* For Internet Explorer/Edge */
+}
+    
+.InitialButton67{
+    margin-left: 0.5rem;
+    font-size: x-small;
+    margin-bottom: 0.3rem !important;
+}
+.Butns{
+    margin-left: 0.3rem;
+}
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important; 
+    /* Add border width, style, and color */
+    padding: 2rem !important; 
+    width: 40% !important;
+}
+.boxContainer2 {
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important; 
+    width: auto !important;
+   
+    /* padding-bottom: 4rem; */
+}
+.checkBoxText .sapMCbLabel {
+    font-weight: bold; /* Make the checkbox label text bold */
+    color: #333;
+}
+
+.capModelRFText {
+    color: #ed731dd2 !important;
+    margin-top: 25px !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
+.capModelRFTextdialog {
+     color: #ed731dd2 !important;
+     margin-left: 45px !important;
+}
+.button{
+    margin-left:20% !important;
+}
+.button1{
+    margin-left:40% !important;
+}
+.button2{
+    margin-left:60% !important;
+}
+.sapMDialog {
+    color: white; /* Set text color for better visibility */
+}
+
+.buttonContainer {
+    margin-top: 20px; /* Optional: add some spacing between buttons */
+    background-color: black;
+    margin-left: 1.7rem;
+    margin-right: 2.5rem;
+    margin-bottom: 0.5rem;
+ 
+}
+.dialogButton {
+    background-color: black !important; /* Set button background color to black */
+    border-radius: 12px !important; /* Adjusted for more pronounced curve */
+    color: white !important; /* Set button text color to white */
+}
+.DynamicBtn{
+    height: 4rem !important;
+}
+.Inputs {
+    width: 100%
+}
+
+.logo{
+    margin-top: 7%;
+    margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+      
+}
+
+.dropdown {
+    width: 80%;
+}
+/* General styles for all devices */
+
+
+.boxContainer3 {
+    width: auto; /* Default width */
+}
+
+.boxContainer2 {
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    width: 100% !;
+}
+
+.capModelRFText {
+    font-size: 1.5em; /* Default font size */
+}
+
+.button {
+    margin-left: 5%; /* Default left margin */
+    width: auto; /* Default width */
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+.logo {
+    margin-top: 7%;
+    margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive styles for tablets and mobile devices */
+
+
+@media (max-width: 600px) {
+    .boxContainer {
+        width:  85%!important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
+    }
+    .boxContainer3 {
+        width: auto !important; /* Full width on mobile */
+        padding: auto !important; /* Adjust padding */
+    }
+    .boxContainer2 {
+        border-bottom: 2px solid #ed731dd2 !important;
+        /* Add border width, style, and color */
+        padding: auto !important;
+        width: auto !important;
+    }
+    .capModelRFText {
+        font-size: 1.2em; /* Increase font size for better readability */
+        margin-left: 10px; /* Adjust left margin */
+        margin-top: 15px; /* Adjust top margin */
+    }
+ 
+    .button {
+        margin-left: 5% !important; /* Reduce left margin on mobile */
+        width: 100%; /* Full width buttons on mobile */
+        margin-bottom: 10px; /* Add space between buttons */
+    }
+ 
+    .logo {
+        margin-top: 7%; /* Adjust logo margin for mobile */
+        margin-left: 7%; /* Center logo on mobile */
+        width: 100%; /* Logo full width on mobile */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+ 
+.iphoneMarginLeft {
+    margin: 2% !important;
+}
+
+
+.iphoneMarginSapLogon{
+    margin: 0%;
+}
+
+.iphoneInitialTitle{
+    padding: 0%;
+}
+.tabletBoxContainer{
+    width: 150%;
+}
+
+.orangeButtonText {
+    background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
+    color: rgb(243, 15, 15) !important; /* Remove default border */
+}
+.orangeButtonText .sapMBtnText {
+    color: red !important; /* Remove default border */
+}
+.SubmitBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: green;
+    margin-right: 0.5rem;
+    font-weight: bold !important;
+}
+.ClearBtnFromVendorPage .sapMBtnText {
+    background-color: white !important;
+    color: red;
+    font-weight: bold !important;
+}
+/* these are for theme colors for options... */
+.colorCheckBox {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    border-color: black !important;
+}
+.redCheckBox .sapMCbBg {
+    background-color: red !important;
+}
+.blackCheckBox .sapMCbBg {
+    background-color: black !important;
+}
+.greenCheckBox .sapMCbBg {
+    background-color: green !important;
+}
+.whiteCheckBox .sapMCbBg {
+    background-color: white !important;
+}
+.purpleCheckBox .sapMCbBg {
+    background-color: purple !important;
+}
+.blueCheckBox .sapMCbBg {
+    background-color: blue !important;
+}
+.YellowCheckBox .sapMCbBg {
+    background-color: yellow !important;
+}
+.textFieldsAF {
+    padding-bottom: 1rem;
+
+}
+
+
+  
+  .classUOMbyASn{
+    margin-top: 16%;
+  }
+
+  
+
+
+/*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
+
+
+/*-----------------------------Reciving Of Hu by ASN   Start----------------------------------*/
+.ScanHumargin {
+    margin-top: 20%;
+    margin-right: 2000% !important;
+}
+
+.ItemLabel {
+    margin-top: 14%;
+    margin-right: 2000% !important;
+
+}
+.classUOMbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;
+}
+.classExpiryHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;   
+}
+.classitemnoHUbyASn{
+    margin-top: 16%;
+    margin-right: 2000% !important;     
+}
+
+/*-----------------------------Reciving Of Hu by ASN   End----------------------------------*/
+
+
+/*-----------------New HU FROM BBOL-------------------------*/
+.classUOMbyASn {
+    margin-top: 16%;
+}
+
+/*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
+
+
+
+
+
+/*......These are(4Tiles) for "PutawayByWO Tile=>Page1" & "AvailableHandlingUnitsonBinQuery Tile=>Page1" & "WTQueryByHU Tile=>Page1" & "AutomaticallyRepackHUItem Tile=>Page1" ......*/
+.putawayContainer_PBYWO,.BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU,.AutoRepackHUIContainer_ARHUI {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+}
+.warehouseOrderTitle_PBYWO,.BinQueryTitle_AHUOBQ, .WTQueryByHUTitle_WTQBYHU, .AutoRepackHUITitle_ARHUI {
+    align-self: flex-start;
+}
+.formContainer_PBYWO,.formContainer_AHUOBQ, .formContainerPage1_WTQBYHU, .formContainer_ARHUI {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.formBox_PBYWO,.formBox_AHUOBQ, .formBox_WTQBYHU, .formBox_ARHUI {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    margin-top: 4rem;
+}
+.formLabel_PBYWO,.formLabel_AHUOBQ, .formLabel_WTQBYHU, .formLabel_ARHUI {
+    margin-bottom: 7px;
+}
+.Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU, .Scannerbtn_ARHUI {
+    margin-left: 3rem;
+    margin-right: 1rem;
+}
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .putawayContainer_PBYWO, .BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU, .AutoRepackHUIContainer_ARHUI {
+        padding: 10px;
+    }
+    .formBox_PBYWO, .formBox_AHUOBQ, .formBox_WTQBYHU, .formBox_ARHUI {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 30rem;
+        /* Adjusted for mobile */
+    }
+    .formLabel_PBYWO, .formLabel_AHUOBQ, .formLabel_WTQBYHU, .formLabel_ARHUI {
+        font-size: 0.9rem;
+    }
+    .Scannerbtn_PTBYWO, .Scannerbtn_AHUOBQ, .Scannerbtn_WTQBYHU, .Scannerbtn_ARHUI {
+        margin-left: 3rem;
+        margin-right: 1rem;
+    }
+    .formContainer_PBYWO, .formContainer_AHUOBQ, .formContainerPage1_WTQBYHU, .formContainer_ARHUI {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.UnitsofMeasure {
+    margin-top: 0.4rem;
+}
+/* ScrollContainers Page2 & Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+   ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
+   ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
+   ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
+.Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU, .Page4AutoRHUIContainer_ARHUI, .Page5AutoRHUIContainer_ARHUI, .Page8AutoRHUIContainer_ARHUI, .Page9AutoRHUIContainer_ARHUI {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+}
+/* Form Header Styling */
+.Page2formHeaderTitle_PBYWO, .Page5formHeaderVerifyHUNum_PBYWO, .formHeaderGR, .formHeaderUnLoad, .ThirdPageformHeaderHUContent_AHUOBQ, .formHeaderPage4PrdDescription_AHUOBQ, .ThirdPageformHeaderWTDetails_WTQBYHU, .Page4formHeaderPD_WTQBYHU, .Page4formHeaderTitle_ARHUI, .Page5formHeaderTitle_ARHUI, .Page8formHeaderTitle_ARHUI, .Page9formHeaderTitle_ARHUI {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+/* Box around the form */
+.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .ThirdPageFormBoxWTDetails_WTQBYHU, .Page4FormBoxPD_WTQBYHU, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 8px;
+    width: auto;
+    background-color: #f9f9f9;
+}
+.formLabel_PBYWO, .labelStyleGR, .labelStyleUnLoad, .labelStyleThirdPage_AHUOBQ, .formLabelPage4_AHUOBQ, .labelStylePage4_ARHUI, .labelStylePage5_ARHUI, .labelStylePage8_ARHUI, .labelStylePage9_ARHUI {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+/* Button Styling */
+.GRandUPLOADBtns_PBYWO {
+    margin-left: 1rem;
+}
+.HUListBtn_PBYWO {
+    margin-right: 1rem;
+}
+.BinNumberTableLabel_AHUOBQ,.HUNumberTableLabel_WTQBYHU, .WTDetailsLabelPage4_WTQBYHU, .PDLabelPage4_WTQBYHU{
+    font-weight: bold;
+    margin-top: 0.5rem; 
+    margin-right: 0.3rem;
+}
+.TextLableUnits_AHUOBQ{
+    margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+    .Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .Page4AutoRHUIContainer_ARHUI, .Page5AutoRHUIContainer_ARHUI, .Page8AutoRHUIContainer_ARHUI, .Page9AutoRHUIContainer_ARHUI {
+        margin: 1rem;
+    }
+    .Page2FormBox_PBYWO, .verifyHuNumberBox,.GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
+        padding: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+/* CSS methods only for WTQueryByHU Tile in that Page3 & Page4 Scrollcontainers  */
+@media (max-width: 600px) {
+    .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU {
+        margin: 0.5rem;
+        width: auto;
+        margin-right: 0.5rem;
+    }
+    .ThirdPageContainerWT_WTQBYHU .sapMHBox {
+        flex-direction: column;
+        align-items: stretch;
+        width: auto;
+    }
+    .Page4ContainerPD_WTQBYHU .sapMHBox {
+        flex-direction: column;
+        align-items: stretch;
+        width: auto;
+    }
+}
+/* CSS methods for ARHUI(Automatically RepackHUItem) Tile in that Page 2 & Page 3... */
+@media (max-width: 768px) {
+    .autoRepackPage {
+        flex-direction: column; /* Stack vertically */
+        align-items: flex-start;
+    }
+    .autoRepackPage .sapMLabel {
+        width: auto !important; /* Adjust labels */
+    }
+}
+.onProfileOptions{
+    margin-left: -0.2rem !important;
+}
+.largeIcons{
+    width: 150px !important;
+    height: 150px !important;
+    font-size: auto !important;
+}
+.mediumIcons{
+    width: 110px !important;
+    height: 110px !important;
+    font-size: auto !important;
+}
+.smallIcons{
+    width: 80px !important;
+    height: 80px !important;
+    font-size: auto !important;
+}
+.TileViewPopOver{
+    background-color: orange !important;
+}
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------Receving Of HU By Delivery-------------------------------------------------------- */
+.ScanDeliverymargin {
+    margin-top: 12%;
+    margin-right: 2000% !important;
+}
+
+.ItemLabel {
+    margin-top: 12%;
+    margin-right: 2000% !important;
+}
+
+
+/* unloading by door start*/
+.titles_UBYD {
+    margin-left: 30vw;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile phones */
+
+    .titles_UBYD {
+        margin-left: 20vw;
+    }
+}
+
+
+/* unloading by door end*/
+
+
+
+/* unloading by door end*/
+
+
+/* unloading by door end*/
+.ToolHeader{
+background-color: rgb(9, 8, 8) !important;
+}
+
+.customDialogHeader {
+    background-color: orange !important;
+}
+.customSpacing {
+    margin-left: 10px;  /* Add space to the left of the element */
+}
+.sapUiResponsivePadding .sapUiTinyMarginEnd {
+    margin-right: 5px;
+ 
+}
+
+
+/* CSS Methods For SIGNUP Fragment */
+.LabelHomePage{
+    margin-top: 0.3rem;
+}
+.LabelHomepageFragmentSignup{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup2{
+    margin-top: 0.8rem;
+}
+.LabelHomepageFragmentSignup3{
+    margin-top: 0.7rem;
+}
+.LabelHomepageFragmentSignup4{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup5{
+    margin-top: 0.7rem;
+}
+.signupCreatebutton {
+    background-color: darkorange;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+    border-color:  darkorange !important;
+    font-weight: bold !important;
+}
+.textbold{
+    font-weight: bold;
+}
+.boxContainersignup{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    width: 25% !important;
+}
+
+
+.noHeaderDialog .sapMDialogTitle {
+    display: none;
+}
+/* .connecttoSAPform{
+    border-radius: 0rem !important;
+    background-color: #c9dbe9;
+} */
+.logonbutton{
+    background-color:#5496cd;
+    border: 2px solid #5496cd !important;
+    color:  #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* .cancelbutton{
+    background-color: #fbf6f6;
+    border: 2px solid #ffffff !important;
+    color:rgba(24, 24, 237, 0.852) !important;
+    margin-top: 0.2rem;
+} */
+
+/* .comboCS{
+margin-left: 20%;
+margin-right: 20%;
+} */
+/* .changePassword{
+    font-size: 90%;
+} */
+
+.VboxChangePassword {
+margin-right: 15%;
+}
+.UserDetailsDialog{
+    background-color: orange !important;
+    color: orange;
+}
+
+
+@media (max-width: 600px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: 100% !important; /* Make buttons full-width on smaller screens */
+        margin-bottom: 10px !important; /* Add spacing between buttons */
+    }
+}
+
+@media (min-width: 601px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: auto !important; /* Reset width for larger screens */
+    }
+}
+
+
+

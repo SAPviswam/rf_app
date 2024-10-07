@@ -1,0 +1,154 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="dialog"
+        resizable="false"
+        draggable="true"
+        contentWidth="25%"
+        class="boxContainersignup"
+        initialFocus="idFirstnameInput"
+      
+    >
+        <customHeader>
+            <Bar
+                id="_IDBar1signupdialog"
+                class="TitlecustomHeader"
+            >
+                <contentMiddle>
+                    <Image
+                        id="_IDGenImagesignup"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="65px"
+                        height="25px"
+                        class="sapUiSmallMarginEnd"
+                    />
+                    <Title
+                        id="_IDTitlesignup"
+                        text="CAPmodel RF"
+                        class="capModelRFTextdialog"
+                    />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <form:SimpleForm
+                id="idRegisterUserDetailsForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <HBox id="idresourcecheckbox">
+                    <Text
+                        id="idresourcetext"
+                        text="Resource Type:"
+                        class="textbold"
+                    />
+                    <Text id="_IDGenText14" width="0.3rem"></Text>
+                    <RadioButton
+                        id="idinternal"
+                        text="Internal"
+                    />
+                    <Text id="_IDGenText15" width="0.6rem"></Text>
+                    <RadioButton
+                        id="idexternal"
+                        text="External"
+                    />
+                    <Text id="_IDGenText17" width="0.8rem"></Text>
+                    <RadioButton
+                        id="idothers"
+                        text="Others"
+                    />
+                </HBox>
+                <HBox id="_IDGenHBox11">
+                    <VBox id="idLableFirstnamehbox">
+                        <Label
+                            id="idLableFirstname"
+                            text="First Name:"
+                            class="LabelHomepageFragmentSignup"
+                        />
+                        <Label
+                            id="idLableLastname"
+                            text="Last Name:"
+                            class="LabelHomepageFragmentSignup2"
+                        />
+                        <Label
+                            id="idLableEmployeeno"
+                            text="Employee No:"
+                            class="LabelHomepageFragmentSignup3"
+
+                        />
+                        <Label
+                            id="idLableMobileno"
+                            text="Mobile No:"
+                            class="LabelHomepageFragmentSignup4"
+                        />
+                        <Label
+                            id="idLableEmailID"
+                            text="Email Id:"
+                            class="LabelHomepageFragmentSignup5"
+                        />
+                    </VBox>
+                    <Text id="_IDGenText16" width="0.3rem"></Text>
+                    <VBox id="idLableLastnamehbox">
+                        <Input
+                            id="idFirstnameInput"
+                            value="{}"
+                        />
+                        <Input
+                            id="idLastnameInput"
+                            value="{}"
+                        />
+                        <Input
+                            id="idEmployeenoInput"
+                            value="{}"
+                        />
+                        <Input
+                            id="idMobilenoInput"
+                            value="{}"
+                        />
+                        <Input
+                            id="idEmailIDInput"
+                            value="{}"
+                        />
+                    </VBox>
+                </HBox>
+            </form:SimpleForm>
+        </content>
+        <HBox
+            id="_IDgenhboxcontainersingup"
+            justifyContent="Center"
+        >
+            <!-- Centering buttons -->
+            <Button
+                id="idsignupcreateButton"
+                text="Create"
+                press="oncreatesingupPress"
+                type="Unstyled"
+                class="sapUiTinyMarginEnd signupCreatebutton"
+            />
+            <Button
+                id="idsignupcancelButton"
+                text="Cancel"
+                press="oncancelsignupPress"
+                type="Unstyled"
+                visible="true"
+                class="sapUiTinyMarginEnd textbold"
+            />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>
