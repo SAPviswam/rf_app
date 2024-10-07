@@ -9,16 +9,17 @@
     id="idUserDetails"
     class="UserDetailsDialog"
     contentHeight="35%"
+    
 >
     <VBox id="idUserdetailsVBox" class="sapUiSmallMargin" >
         <Label id="idUsername" text="User name" />
-        <Text id="idUsernameText" text="Viswa" class="sapUiSmallMarginBottom"/>
+        <Text id="idUsernameText" text="{profile>/Name}" class="sapUiSmallMarginBottom"/>
 
         <Label id="idUserMobileno" text="Phone no" />
-        <Text id="idUserMobilenoText" text="Viswa" class="sapUiSmallMarginBottom"/>
+        <Text id="idUserMobilenoText" text="{profile>/Number}" class="sapUiSmallMarginBottom"/>
 
         <Label id="idUseremail" text="Email" />
-        <Text id="idUseremailText" text="Viswa"/>
+        <Text id="idUseremailText" text="{profile>/Email}"/>
     </VBox>
     <Button id="idUserdetailsclose" text="Close" press="onCloseUSerDetailsDialog" class="sapUiSmallMarginBegin" />
 </Dialog>
