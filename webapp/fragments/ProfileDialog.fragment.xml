@@ -8,7 +8,7 @@
         placement="Bottom"
         verticalScrolling="false"
         horizontalScrolling="false"
-        class="sapUiResponsivePadding"
+        class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
         contentWidth="200px"
         title="Profile:"
     >
@@ -68,7 +68,7 @@
                         icon="sap-icon://settings"
                         text="Default Settings"
                         type="Transparent"
-                        press="onResetDefaultPress"
+                        press="onResetToDefaultPress"
                     />
                     <Button
                         id="idThemesButton"
