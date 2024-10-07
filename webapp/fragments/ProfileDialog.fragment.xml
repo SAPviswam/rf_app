@@ -36,11 +36,11 @@
                     >
                         <Text
                             id="idProfileName"
-                            text="Name"
+                            text="{profile>/Name}"
                         />
                         <Link
                             id="idProfileNumber"
-                            text="1234567890"
+                            text="{profile>/Number}"
                         />
                     </VBox>
                 </HBox>
