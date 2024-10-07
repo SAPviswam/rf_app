@@ -607,21 +607,21 @@
                 },
                 "TargetResourcePage": {
                     "viewType": "XML",
-                    "transition": "slide",
+                    "transition": "flip",
                     "clearControlAggregation": false,
                     "viewId": "ResourcePage",
                     "viewName": "ResourcePage"
                 },
                 "TargetSupervisorPage": {
                     "viewType": "XML",
-                    "transition": "slide",
+                    "transition": "fade",
                     "clearControlAggregation": false,
                     "viewId": "Supervisor",
                     "viewName": "Supervisor"
                 },
                 "TargetHuQueryPage": {
                     "viewType": "XML",
-                    "transition": "slide",
+                    "transition": "fade",
                     "clearControlAggregation": false,
                     "viewId": "HuQuery",
                     "viewName": "HuQuery"
@@ -754,7 +754,7 @@
                 },
                 "TargetBillofLading": {
                     "viewType": "XML",
-                    "transition": "slide",
+                    "transition": "Base",
                     "clearControlAggregation": false,
                     "viewId": "BillofLading",
                     "viewName": "BillofLading"

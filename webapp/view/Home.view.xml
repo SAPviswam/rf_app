@@ -1,15 +1,55 @@
 <mvc:View
-    controllerName="com.app.rfapp.controller.Home"
+    xmlns:unified="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form"
+   controllerName="com.app.rfapp.controller.Home"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
+    xmlns:ndc="sap.ndc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:layout="sap.ui.layout"
-    xmlns:cssgrid="sap.ui.layout.cssgrid"
     xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+   displayBlock="true"
+    height="100%"
+   xmlns:layout="sap.ui.layout"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+ 
 >
-    <Page id="pageHome">
-        <content>
+    <tnt:ToolPage id="pageHome">
+        <tnt:header>
+            <tnt:ToolHeader id="idtntpageHome">
+                <Button
+                    id="idBackBtnInPageHome"
+                    icon="sap-icon://nav-back"
+                    press="onBackBtnInHomePage"
+                    visible="true"
+                />
+                <Image
+                    id="id_GenImage1PageHome"
+                    height="1.5rem"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparatorPageHome"
+                />
+                <ToolbarSpacer id="idToolbarSpacerPageHomePageHome">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData1PageHome"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="id_GenAvatar1PageHome"
+                    displaySize="XS"
+                    press="onHomePageAvatarPressed"
+                    tooltip="Profile"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
             <FlexBox
                 id="_IDGenFlexBoxHome"
                 height="100%"
@@ -18,9 +58,8 @@
             >
                 <VBox
                     id="environmentButtonsHBoxHome"
-                    class="sapUiSmallMarginTop sapUiLargeMargin boxContainer"
+                    class="sapUiSmallMarginTop boxContainer"
                     alignItems="Center"
-                    width="23%"
                 >
                     <HBox
                         id="idHboxHome"
@@ -73,7 +112,7 @@
                             />
                         </VBox>
                     </HBox>
-                    <HBox
+                     <HBox
                         id="_IDGenHBox69"
                         justifyContent="Start"
                     >
@@ -105,7 +144,7 @@
                         />
                     </HBox>
                 </VBox>
-            </FlexBox>
-        </content>
-    </Page>
+            </FlexBox>  
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>

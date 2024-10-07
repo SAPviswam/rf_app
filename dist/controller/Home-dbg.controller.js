@@ -5,20 +5,32 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/core/BusyIndicator",
-    "sap/ui/Device"
+    "sap/ui/Device",
+    "sap/ui/core/UIComponent"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator,Device) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device,UIComponent) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
-                this.bOtpVerified = false;
+                this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
+                console.log(this.isTablet)
 
-                var sUsername = localStorage.getItem("username");
-                var sPassword = localStorage.getItem("password");
-                var bAutoSave = localStorage.getItem("autoSave") === "true";
+                this.bOtpVerified = false;
+                const huValue = localStorage.getItem("warehouseNo");
+                const userIdValue = localStorage.getItem("resource");
+
+                if (huValue) {
+                    this.byId("idHUInput").setValue(huValue);
+                }
+                if (userIdValue) {
+                    this.byId("idUserIDInput").setValue(userIdValue);
+                }
+                // var sUsername = localStorage.getItem("username");
+                // var sPassword = localStorage.getItem("password");
+                // var bAutoSave = localStorage.getItem("autoSave") === "true";
 
                 // if (sUsername) {
                 //     this.getView().byId("idUserIDInput").setValue(sUsername);
@@ -40,18 +52,47 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarHome").setWidth("25%");
-                        this.byId("idImageLogoAvatarHome").setHeight("45%");
+                        this.byId("idImageLogoAvatarHome").setWidth("42.5%");
+                        this.byId("idImageLogoAvatarHome").setHeight("45.5%");
+                        this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
-    
-                    } else {
+
+                    } 
+                    else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
                         // this.byId("idImageLogoAvatarHome").setHeight("35%");
                     }
+                }
+                else if (Device.system.tablet) {
+                    this.byId("environmentButtonsHBoxHome").setWidth("40%");
+                }
+                else{
+                    this.byId("environmentButtonsHBoxHome").setWidth("23%");
+                }
+
+            },
+            onSelectCheckBox: function (oEvent) {
+                const isSelected = oEvent.getParameter("selected");
+
+                if (isSelected) {
+                    // Save the current input values to localStorage
+                    const huInput = this.byId("idHUInput").getValue();
+                    const userIdInput = this.byId("idUserIDInput").getValue();
+
+                    localStorage.setItem("warehouseNo", huInput);
+                    localStorage.setItem("resource", userIdInput);
+
+                    MessageToast.show("Auto Save enabled. Your details will be saved.");
+                } else {
+                    // Optionally clear the saved values if unchecked
+                    localStorage.removeItem("warehouseNo");
+                    localStorage.removeItem("resource");
+
+                    MessageToast.show("Auto Save disabled. Your details will not be saved.");
                 }
             },
             onInitialDetailsLoad: async function (oEvent1) {
@@ -172,6 +213,18 @@ sap.ui.define([
                 } catch (error) {
                     MessageToast.show("An error occurred while checking the user.");
                 }
+            },
+            _onUserDetailsFetched: function (oData) {
+                // Assuming oData contains username, email, and phone number
+                var oUserDetails = {
+                    username: oData.username,
+                    email: oData.email,
+                    mobileno: oData.mobileno
+                };
+
+                // Set the user details to a model for binding in the view
+                var oUserModel = new sap.ui.model.json.JSONModel(oUserDetails);
+                this.getView().setModel(oUserModel, "userDetails");
             },
 
             onClearPress: function () {
@@ -501,10 +554,10 @@ sap.ui.define([
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID },Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID },Animation)
                         }
 
                     }.bind(this),
@@ -590,8 +643,7 @@ sap.ui.define([
                     }
                 });
             },
-
-            validateEmail: function(email) {
+            validateEmail: function (email) {
                 // Regular expression for validating an email address
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
                 return re.test(email);  // Returns true if valid, false otherwise
@@ -607,10 +659,38 @@ sap.ui.define([
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
                 }
+            },
+            onBackBtnInHomePage: function (){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+             
+            },
+            onLogoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+ 
+            },
+           onHomePageAvatarPressed: function (oEvent) {
+            if (!this._oPopover) {
+                this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
+                this.getView().addDependent(this._oPopover);
+                this.getView().byId("idTileViewButton").setVisible(false);
             }
+            // Open popover near the avatar
+            this._oPopover.openBy(oEvent.getSource());
+           
+        },
 
-
-
+        onCloseDialogInHomePage: function () {
+            this._pProfileDialog.then(function (oDialog) {
+                oDialog.close();
+            });
+        },
+        onSignoutPressed: function (){
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InitialScreen", { id: this.ID });
+         
+        },
         });
     });
 

@@ -11,6 +11,10 @@
     displayBlock="false"
     height="100%"
 >
+	<NavContainer
+			navigationFinished="onNavigationFinished"
+			id="navCon"
+			class="navContainerControl sapUiSmallMarginBottom">
     <tnt:ToolPage id="idToolPageP">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderP">
@@ -45,17 +49,23 @@
                     tooltip="Change Background Color"
                     visible="false"
                 />
-                <Button
+                <!-- <Button
                     id="idMainthemeBtn"
                     text="Theme"
                     press="onMainThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
+                /> -->
+                <Button
+                    id="idCancelEditButtonResource"
+                    text="Exit edit mode"
+                    press="onCancelEditPress"
+                    visible="false"
                 />
                 <Button
                     id="idCancelButtonResource"
-                    text="Cancel"
+                    text="Exit theme mode"
                     press="onCancelPressThemeMode"
                     visible="false"
                 />
@@ -155,14 +165,14 @@
                     press="onUnloadingByConsignmentOrderTilePress"
                     visible="false"
                 />
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_deconsolidation_title"
                         text="Deconsolidation"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
 
                 <GenericTile
                     id="id_createputawayhusfordeconsolidation"
@@ -215,14 +225,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_putaway_title"
                         text="Putaway"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_putawaybyhu"
                     class="sapUiTinyMargin"
@@ -243,6 +253,7 @@
                     header="Putaway By WO"
                     press="onPutawayByWOPress"
                     visible="false"
+                    subheader="Putaway By WO"
                 />
                 <GenericTile
                     id="id_confiramtioncorrectionst"
@@ -252,14 +263,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_receivingofhanndlingunits_title"
                         text="Receiving Of Hanndling Units"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_receivingofhubydelivery"
                     class="sapUiTinyMargin"
@@ -331,14 +342,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_setreadyforwarehouseprocessing_title"
                         text="Set Ready for warehouse processing"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
 
                 <GenericTile
                     id="id_setreadyforwhprocessingbybol"
@@ -355,14 +366,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_picking_title"
                         text="Picking"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_pickingbysystemguided"
                     class="sapUiTinyMargin"
@@ -398,14 +409,14 @@
                     press="onPickingByHUPress"
                     visible="false"
                 />
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_packing_title"
                         text="Packing"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_createshippinghu"
                     class="sapUiTinyMargin"
@@ -426,6 +437,7 @@
                     header="Automatically Repack HU Item"
                     press="onAutomaticallyRepackHUItemPress"
                     visible="false"
+                    subheader="Automatically Repack HU Item"
                 />
                 <GenericTile
                     id="id_createshippinghuwowc"
@@ -463,14 +475,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_loading_title"
                         text="Loading"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_loadhuctW"
                     class="sapUiTinyMargin"
@@ -549,14 +561,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_pickpoint_title"
                         text="Pick Point"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_creationofsinglehu"
                     class="sapUiTinyMargin"
@@ -578,14 +590,14 @@
                     press="onHUMaintenancePress"
                     visible="false"
                 />
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_consumption_title"
                         text="Consumption"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_consumptionbymanufacturingorder"
                     class="sapUiTinyMargin"
@@ -607,14 +619,14 @@
                     press="onReversalofconsumptionbyMOBinPress"
                     visible="false"
                 />
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_distributionequipment_title"
                         text="Distribution Equipment"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
 
                 <GenericTile
                     id="id_loadbyhuautoposassignment"
@@ -645,14 +657,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_inventorycounting_title"
                         text="Inventory Counting"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_inventorycountingguied"
                     class="sapUiTinyMargin"
@@ -682,14 +694,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_adhocwtcreations_title"
                         text="Adhoc WT creations"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_replenishmentforfixedbins"
                     class="sapUiTinyMargin"
@@ -726,14 +738,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_queries_title"
                         text="Queries"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_huquery"
                     class="sapUiTinyMargin"
@@ -804,14 +816,14 @@
                     press="onHUStockOverviewQueryPress"
                     visible="false"
                 />
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_qualitymanagement_title"
                         text="Quality Management"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
 
                 <GenericTile
                     id="id_productinspectionbyhu"
@@ -828,14 +840,14 @@
                     visible="false"
                 />
 
-                <VBox>
+                <!-- <VBox>
                     <Title
                         id="id_resourcemanagement_title"
                         text="Resource Management"
                         visible="false"
                     />
                     <HBox />
-                </VBox>
+                </VBox> -->
                 <GenericTile
                     id="id_changequeue"
                     class="sapUiTinyMargin"
@@ -1006,6 +1018,54 @@
                     />
                 </VBox>
             </Dialog>
+            <Dialog
+                id="IdEditTileDetailsDialogResource"
+                title="Edit The Tile Deatils:"
+                contentHeight="30%"
+            >
+                <customHeader>
+                    <Bar id="idTileDeatilsDialogHeaderResource">
+                        <contentLeft>
+                            <Title
+                                id="idTextEditTileDetailsResource"
+                                text="Edit Tile details:"
+                            />
+                        </contentLeft>
+                        <contentRight>
+                            <Button
+                                id="idSaveTileDetailsButtonResource"
+                                text="Save"
+                                press="onPressSaveTileEditDeatils"
+                                type="Transparent"
+                                visible="true"
+                            />
+                            <Button
+                                id="idDeclineTileDeialsEditButtonResource"
+                                icon="sap-icon://decline"
+                                press="onCloseEditingTileDetailsDialog"
+                                type="Transparent"
+                                visible="true"
+                            />
+                        </contentRight>
+                    </Bar>
+                </customHeader>
+                <form:SimpleForm id="idSimpleformTileDetails">
+                    <VBox id="idVBoxTileDeatsils">
+                        <Label
+                            id="idTileHeaderLabel"
+                            text="Header:"
+                        />
+                        <Input id="idInputTileHeaderResorce" />
+                        <Label id="idEmptyTileDetails" />
+                        <Label
+                            id="idTileSubHeaderTiledetails"
+                            text="Sub Header:"
+                        />
+                        <Input id="idInputSubHeaderResource" />
+                    </VBox>
+                </form:SimpleForm>
+            </Dialog>
         </tnt:mainContents>
     </tnt:ToolPage>
+    		</NavContainer>
 </mvc:View>
