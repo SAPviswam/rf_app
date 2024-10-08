@@ -6,10 +6,12 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/BusyIndicator",
     "sap/ui/Device",
-    "sap/ui/core/UIComponent"
+    "sap/ui/core/UIComponent",
+    "sap/m/Popover",
+    "sap/ui/core/Fragment"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator, Device,UIComponent) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device, UIComponent, Popover, Fragment) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
@@ -60,7 +62,7 @@ sap.ui.define([
                         this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
 
-                    } 
+                    }
                     else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
@@ -70,7 +72,7 @@ sap.ui.define([
                 else if (Device.system.tablet) {
                     this.byId("environmentButtonsHBoxHome").setWidth("40%");
                 }
-                else{
+                else {
                     this.byId("environmentButtonsHBoxHome").setWidth("23%");
                 }
 
@@ -214,41 +216,36 @@ sap.ui.define([
                     MessageToast.show("An error occurred while checking the user.");
                 }
             },
-            _onUserDetailsFetched: function (oData) {
-                // Assuming oData contains username, email, and phone number
-                var oUserDetails = {
-                    username: oData.username,
-                    email: oData.email,
-                    mobileno: oData.mobileno
-                };
-
-                // Set the user details to a model for binding in the view
-                var oUserModel = new sap.ui.model.json.JSONModel(oUserDetails);
-                this.getView().setModel(oUserModel, "userDetails");
-            },
-
             onClearPress: function () {
                 var oView = this.getView();
                 oView.byId("idUserIDInput").setValue("");
                 oView.byId("idPasswordInput").setValue("");
             },
             //-------------------------------------------------------------------------- Signup logic--------------------------------------------------------------------------
-            /*Loading Signup Fragment */
-            onPressSignupBtn: async function () {
-                this.oSignupForm ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.SignUpDetails"
-                })
-                this.oSignupForm.open();
-            },
-            /*Close Signup Form */
-            oncancelsignupPress: function () {
-                this.oSignupForm.close();
-            },
 
+            // /*Loading Signup Fragment */
+            onPressSignupBtn: async function () {
+                // Check if the signup form fragment is already created
+                if (!this.oSignupForm) {
+                    // Load the fragment and set it as a property of the controller
+                    this.oSignupForm = sap.ui.xmlfragment("com.app.rfapp.fragments.SignUpDetails", this);
+
+                    // Add the fragment as a dependent to the view
+                    this.getView().addDependent(this.oSignupForm);
+                }
+                // Open the signup form fragment
+                await this.oSignupForm.open();
+            },
+            // /*Close Signup Form */
+            oncancelsignupPress: function () {
+                // Close the signup form fragment
+                if (this.oSignupForm) {
+                    this.oSignupForm.close();
+                }
+            },
             onVerify: function () {
                 // Get the phone number from the input field
                 var sPhoneNumber = this.byId("idInputPhoneNumber").getValue();
-
                 // Basic validation to ensure the phone number is entered
                 if (!sPhoneNumber) {
                     sap.m.MessageToast.show("Please enter a valid phone number.");
@@ -549,15 +546,16 @@ sap.ui.define([
 
             onPressConnectButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
+                this.getView().getModel().refresh()
                 oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID },Animation)
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID }, Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID },Animation)
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID }, Animation)
                         }
 
                     }.bind(this),
@@ -660,37 +658,123 @@ sap.ui.define([
                     return "Others";
                 }
             },
-            onBackBtnInHomePage: function (){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
-             
-            },
             onLogoutPressedInHomePage: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { id: this.ID });
- 
-            },
-           onHomePageAvatarPressed: function (oEvent) {
-            if (!this._oPopover) {
-                this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
-                this.getView().addDependent(this._oPopover);
-                this.getView().byId("idTileViewButton").setVisible(false);
-            }
-            // Open popover near the avatar
-            this._oPopover.openBy(oEvent.getSource());
-           
-        },
 
-        onCloseDialogInHomePage: function () {
-            this._pProfileDialog.then(function (oDialog) {
-                oDialog.close();
-            });
-        },
-        onSignoutPressed: function (){
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("InitialScreen", { id: this.ID });
-         
-        },
+            },
+            onBackBtnInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
+            onSignoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
+            onHomePageAvatarPressed: async function (oEvent) {
+                debugger;
+
+                if (!this._oPopover) {
+                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+                    this.getView().addDependent(this._oPopover)
+                }
+                // Open popover near the avatar
+                await this._oPopover.openBy(oEvent.getSource());
+                var This = this;
+
+                // Get the model (assuming it's an OData model)
+                var oModel1 = this.getOwnerComponent().getModel();
+
+                // Read data using OData model
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        //let oUser = oData.Users.toLowerCase();
+
+                        //if (oUser === "resource") {
+                        var oProfileData = {
+                            Name: oData.Resourcename, // Assuming this is the field you want to bind
+                            Number: oData.Phonenumber// Add a fallback if 'ContactNumber' is missing
+                        };
+
+                        // Bind data to the popover
+                        var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
+                        This._oPopover.setModel(oPopoverModel, "profile");
+                        // } else {
+                        //     MessageToast.show("User is not a resource.");
+                        // }
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+            },
+
+            onCloseDialogInHomePage: function () {
+                this._oPopover.then(function (oDialog) {
+                    oDialog.close();
+                    oDialog.destroy();
+                });
+            },
+            onAccountDetailsPressedInHomePage: function () {
+                var oView = this.getView();
+                if (!(this.byId("idUserDetails"))) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function (oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                        oDialog.open();
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+
+                var that = this; // Preserves the correct context of 'this'
+
+                var oModelRead = this.getOwnerComponent().getModel();
+
+                // Read data using OData model
+                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        // let oUser = oData.Users.toLowerCase();
+
+                        // if (oUser === "resource") {
+                        var oProfileDialogData = {
+                            Id: oData.Resourceid,
+                            Name: oData.Resourcename,
+                            Email: oData.Email,
+                            Number: oData.Phonenumber // Assuming this is the field you want to bind
+                        };
+
+                        // Bind data to the dialog (use 'that' instead of 'This')
+                        var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
+                        that.byId("idUserDetails").setModel(oPopoverModel, "profile");
+                        // } else {
+                        //     MessageToast.show("User is not a resource.");
+                        // }
+                    },
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    },
+                });
+
+            },
+            onCloseUSerDetailsDialog: function () {
+                this.byId("idUserDetails").close();
+            },
+            onSignoutPressed: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
         });
     });
 

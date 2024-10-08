@@ -648,8 +648,9 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 25% !important;
 }
-
-
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d;
+}
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
@@ -699,7 +700,6 @@ margin-right: 15%;
         width: auto !important; /* Reset width for larger screens */
     }
 }
-
 
 
 

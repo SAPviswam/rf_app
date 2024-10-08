@@ -648,8 +648,9 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 25% !important;
 }
-
-
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d;
+}
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
@@ -686,6 +687,35 @@ margin-right: 15%;
     color: orange;
 }
 
+/* Styles for Config Login */
+
+.boxContainerlogin {
+    margin-top: 5% !important;
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important;
+    width: auto !important;
+}
+.boxContainerhome {
+    margin-bottom: 2%;
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important;
+    padding-bottom: 1rem;
+    width: 23% !important;
+}
+ 
+.capModelRFTextlogin {
+    color: #ed731dd2 !important;
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
+ 
+.moveRight {
+    margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
+}
+/* Styles for Config Login end*/
 
 @media (max-width: 600px) {
     #idSlotsTableHeader1 .sapMBtn {
