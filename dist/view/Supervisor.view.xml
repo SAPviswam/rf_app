@@ -23,6 +23,7 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
+                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -30,11 +31,17 @@
                         />
                     </layoutData>
                 </Button>
-                <Label
+                <Image
+                    id="_IDGenImage_supervisor"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- <Label
                     id="idRFScreenHeading"
                     class="Heading"
                     text="RF SCREEN"
-                />
+                /> -->
                 <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                 <ToolbarSpacer id="spacer">
                     <layoutData>
@@ -45,7 +52,7 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-                <ComboBox
+                <!-- <ComboBox
                     id="idLanguageSelectorComboBox"
                     change="onLanguageChange"
                     visible="false"
@@ -78,15 +85,30 @@
                     id="idBtnLanguageChange"
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
+                /> -->
+                <!-- <Button
+                    id="themeButton"
+                    text="Background Theme"
+                    press="onOpenThemeDialog"
+                    icon="sap-icon://palette"
+                    tooltip="Change Theme Color"
+                    visible="false"
                 />
                 <Button
-                    id="themeButton"
+                    id="themeButton3"
                     text="Theme"
-                    press="onOpenThemeDialog"
+                    press="onThemeButton"
                     icon="sap-icon://palette"
                     tooltip="Change Theme Color"
                     visible="true"
                 />
+                <Button
+                    id="CancelButton"
+                    text="Cancel"
+                    press="onCancel"
+                    visible="false"
+                /> -->
+
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
                     press="onNotificationPress"
@@ -99,6 +121,21 @@
                         />
                     </customData>
                 </Button> -->
+                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayout_supervisor"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar_supervisor"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
@@ -154,323 +191,28 @@
             >
                 <pages>
                     <ScrollContainer
-                        id="pageSV1"
-                        horizontal="true"
-                        vertical="true"
-                        height="100%"
-                        class="sapUiContent"
-                    >
-                        <!-- <ToolbarSpacer id="_IDGenToolbarSpacerArea" /> -->
-
-                        <!-- <Button
-                            id="idnewprocessArea"
-                            text="NewProcessArea"
-                            press="onPressCreateArea"
-                            type="Success"
-                        /> -->
-                        <FlexBox
-                            id="_IDGenFlexBox"
-                            justifyContent="End"
-                            class="sapUiSmallMarginTop"
-                        >
-                            <!-- <Button
-                                id="idnewprocessArea"
-                                text="NewProcessArea"
-                                press="onPressCreateArea"
-                                type="Success"
-                            /> -->
-                        </FlexBox>
-
-                        <VBox
-                            id="idAssignslots"
-                            class="sapUiSmallMargin boxContainer3"
-                        >
-                            <Title
-                                id="_IDHeadLabel"
-                                text="Admin page"
-                                class="sapUiSmallMarginTopHeading"
-                            />
-                            <FlexBox
-                                id="_IDField1"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idempID"
-                                    text="Employee ID:"
-                                    labelFor="idEmppInput"
-                                    required="true"
-                                />
-                                <Input
-                                    id="idEmppInput"
-                                    placeholder="Enter Employee ID"
-                                    class="Inputs"
-                                    liveChange="onEmployeeIdLiveChange"
-                                />
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField4"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idName"
-                                    text="Name:"
-                                    labelFor="idNameInput"
-                                    required="true"
-                                />
-                                <Input
-                                    editable="true"
-                                    id="idNameInput"
-                                    placeholder="Enter Name"
-                                    class="Inputs"
-                                />
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField3"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idEmail"
-                                    text="Email:"
-                                    labelFor="idEmailInput"
-                                />
-                                <Input
-                                    editable="true"
-                                    id="idEmailInput"
-                                    placeholder="Enter Email"
-                                    class="Inputs"
-                                />
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField36"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idPhone"
-                                    text="Phone:"
-                                    labelFor="idPhoneInput"
-                                    required="true"
-                                />
-                                <HBox
-                                    id="_IDGenHBox9"
-                                    justifyContent="SpaceBetween"
-                                >
-                                    <Input
-                                        editable="true"
-                                        id="idPhoneInput"
-                                        placeholder="Enter Phone"
-                                        class="Inputs"
-                                    />
-                                    <core:Icon
-                                        id="verficationIdicon"
-                                        src="sap-icon://accept"
-                                        size="150%"
-                                        color="#008000"
-                                        visible="false"
-                                    />
-                                </HBox>
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField420"
-                                justifyContent="End"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <HBox
-                                    id="_IDGenHBox10"
-                                    justifyContent="SpaceBetween"
-                                >
-                                    <Input
-                                        id="idOtpInputsv"
-                                        placeholder="Enter OTP..."
-                                        visible="false"
-                                        valueLiveUpdate="true"
-                                        liveChange="onSubmitOtp"
-                                        width="100%"
-                                        editable="true"
-                                    />
-
-                                    <Button
-                                        id="getotpsv"
-                                        text="Get OTP"
-                                        press="onGetOTP"
-                                        type="Emphasized"
-                                        width="80px"
-                                        visible="false"
-                                    />
-                                </HBox>
-                            </FlexBox>
-
-                            <FlexBox
-                                id="_IDField345"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idLableRoesurcetype"
-                                    text="Resource Type"
-                                    required="true"
-                                />
-                                <ComboBox
-                                    id="idRoesurcetypeInput"
-                                    editable="true"
-                                >
-                                    <core:Item
-                                        id="_IDGenItemPermanentEmployee"
-                                        key="PermanentEmployee"
-                                        text="Permanent Employee"
-                                    />
-
-                                    <core:Item
-                                        id="_IDGenItemtemporaryemployee"
-                                        key="temporaryemployee"
-                                        text="Contract Employee"
-                                    />
-                                </ComboBox>
-
-                                <!--  OUTBOUND  -->
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField2"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idAreaLabel"
-                                    text="Process Area:"
-                                    labelFor="idAreaInput"
-                                    required="true"
-                                />
-                                <MultiComboBox
-                                    id="AreaSelect"
-                                    items="{path: '/ProcessAreaSet'}"
-                                    selectionChange="onCheckBoxSelect"
-                                >
-                                    <core:Item
-                                        class="dropdown"
-                                        id="_IDGenItem5"
-                                        key="{Processarea}"
-                                        text="{Processarea}"
-                                    />
-                                </MultiComboBox>
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField33"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idGroup"
-                                    text="Group:"
-                                    labelFor="idGroupInput"
-                                    required="true"
-                                />
-                                <MultiComboBox
-                                    id="GroupSelect"
-                                    items="{path: '/ProcessAreaSet'}"
-                                    visible="false"
-                                    selectionChange="onCheckBoxSelectGroup"
-                                >
-                                    <core:Item
-                                        class="dropdown"
-                                        id="_IDGenItem4"
-                                        key="{Processgroup}"
-                                        text="{Processgroup}"
-                                    />
-                                </MultiComboBox>
-                            </FlexBox>
-                            <FlexBox
-                                id="_IDField34"
-                                justifyContent="SpaceBetween"
-                                alignItems="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Label
-                                    id="idQueue"
-                                    text="Queue:"
-                                    labelFor="idQueueSelect"
-                                    required="true"
-                                />
-                                <MultiComboBox
-                                    id="_IDGenComboBox10"
-                                    placeholder="Select Queue from Dropdown.."
-                                    class="Inputs"
-                                    items="{path: '/ProcessAreaSet'}"
-                                    visible="false"
-                                    selectionChange="onCheckBoxSelectQueue"
-                                >
-                                    <core:Item
-                                        class="dropdown"
-                                        id="_IDGenItem22"
-                                        key="{Queue}"
-                                        text="{Queue}"
-                                    />
-                                </MultiComboBox>
-
-                                <!--  OUTBOUND  -->
-                            </FlexBox>
-
-                            <FlexBox
-                                id="_IDField6"
-                                justifyContent="Center"
-                                class="sapUiSmallMarginTop"
-                            >
-                                <Button
-                                    id="idButtonApprove"
-                                    text="Approve"
-                                    type="Unstyled"
-                                    press="onApprovePress"
-                                    class="SubmitBtnFromVendorPage"
-                                    width="auto"
-                                />
-                                <ToolbarSpacer
-                                    id="toolspacer"
-                                    width="10px"
-                                />
-                                <!-- <Button
-                                    id="idButtonReject"
-                                    text="Reject"
-                                    type="Reject"
-                                    press="onResetPress"
-                                    class="ClearBtnFromVendorPage"
-                                    width="auto"
-                                /> -->
-                            </FlexBox>
-                            <Label id="idEmptyRow" />
-                        </VBox>
-                    </ScrollContainer>
-
-                    <ScrollContainer
                         id="pageSV2"
-                        horizontal="false"
                         vertical="true"
                         height="100%"
-                        class="sapUiContentPadding"
+                        width="100%"
+                        horizontal="true"
                     >
                         <Table
                             id="idRequestedData"
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
-                            mode="MultiSelect"
-                            class="Allslotsclasstable"
+                            selectionChange="onRowSelect"
+                            mode="SingleSelectLeft"
+                            growingScrollToLoad="true"
+                            growing="true"
+                            width="40%"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idSlotsTableHeader1">
                                     <Title
                                         id="idTableHeaderTitle1"
                                         text="Requested Data"
-                                        class="Titles"
                                     />
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
@@ -499,28 +241,67 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <columns>
-                                <Column id="idEmployeeId">
+                                <Column
+                                    id="idEmployeeId"
+                                    width="12em"
+                                >
                                     <Title
                                         id="idtitleEmpID"
                                         text="Resource Id"
                                     />
                                 </Column>
-                                <Column id="idEmployeename">
+                                <Column
+                                    id="idEmployeename"
+                                >
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column id="idResourceType">
+                                <Column
+                                    id="idResourceType"
+                                >
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column id="idPhonenumber">
+                                <Column
+                                    id="idPhonenumber"
+                                >
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
+                                    />
+                                </Column>
+                                <Column id="idEmail">
+                                    <Title
+                                        id="idEmailtitle"
+                                        text="Email"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idProcessArea"
+                                >
+                                    <Title
+                                        id="idProcessAreatitle"
+                                        text="Process Area"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idProcessGroup"
+                                >
+                                    <Title
+                                        id="idProcessgrouptitle"
+                                        text="Group"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idProcessQueue"
+                                >
+                                    <Title
+                                        id="idProcessQueuetitle"
+                                        text="Queue"
                                     />
                                 </Column>
                             </columns>
@@ -546,6 +327,53 @@
                                             id="idPhoneNumberValue"
                                             text="{Phonenumber}"
                                         />
+                                        <Text
+                                            id="idEmailValue"
+                                            text="{Email}"
+                                        />
+
+                                        <MultiComboBox
+                                            id="idProcessAreaValue"
+                                            items="{path: '/ProcessAreaSet'}"
+                                            selectionChange="onSelectTableProcesAarea"
+                                            visible="false"
+                                            maxWidth="20%"
+                                        >
+                                            <core:Item
+                                                class="dropdown"
+                                                id="_IDGenItemProcessarea1"
+                                                key="{Processarea}"
+                                                text="{Processarea}"
+                                            />
+                                        </MultiComboBox>
+                                        <MultiComboBox
+                                            id="idGroupSelect1"
+                                            items="{path: '/ProcessAreaSet'}"
+                                            selectionChange="onSelectTableGroup"
+                                            visible="false"
+                                        >
+                                            <core:Item
+                                                class="dropdown"
+                                                id="_IDGenItemProcessgroup1"
+                                                key="{Processgroup}"
+                                                text="{Processgroup}"
+                                            />
+                                        </MultiComboBox>
+                                        <MultiComboBox
+                                            id="idQueueSelect1"
+                                            placeholder="Select Queue from Dropdown.."
+                                            class="Inputs"
+                                            items="{path: '/ProcessAreaSet'}"
+                                            visible="false"
+                                            selectionChange="onSelectTableQueue"
+                                        >
+                                            <core:Item
+                                                class="dropdown"
+                                                id="_IDGenItemQueue1"
+                                                key="{Queue}"
+                                                text="{Queue}"
+                                            />
+                                        </MultiComboBox>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -553,9 +381,9 @@
                     </ScrollContainer>
                     <ScrollContainer
                         id="pageSV3"
-                        horizontal="false"
+                        horizontal="true"
                         vertical="true"
-                        height="100%"
+                        height="400px"
                         class="sapUiContentPadding"
                     >
                         <Table
@@ -564,6 +392,10 @@
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
+                            growing="true"
+                            class="Allslotsclasstable"
+                            width="auto"
+                            sticky="ColumnHeaders"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -571,9 +403,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <!-- <ToolbarSpacer
-                                        id="idUsersInfoToolbarSpace"
-                                    />
+                                    <ToolbarSpacer />
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -586,27 +416,18 @@
                                             />
                                         </layoutData>
                                     </SearchField>
-<Button
-                                        id="idBtnEd2"
-                                        tooltip="Approve"
-                                        text="Approve"
-                                        type="Accept"
-                                        press="onUpdateUserBtnPress"
-                                    />
                                     <Button
-                                        id="idBtnEdi"
-                                        tooltip="Reject"
-                                        text="Reject"
-                                        type="Reject"
-                                        press="onUpdateUserBtnPress"
-                                    /> -->
+                                        id="idBtnSelectFields"
+                                        text="Select Fields"
+                                        press="onSelectFieldsPress"
+                                    />
                                 </OverflowToolbar>
                             </headerToolbar>
 
                             <columns>
                                 <Column
-                                    id="idRDEmpIdCol"
-                                    width="15%"
+                                    id="idresourceid"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
@@ -614,8 +435,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDEmpNameCol"
-                                    width="20%"
+                                    id="idresourcename"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmpNameTitle"
@@ -623,8 +444,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDAreaCol"
-                                    width="10%"
+                                    id="idarea"
+                                    width="150px"
                                 >
                                     <Title
                                         id="idRDAreaColTitle"
@@ -632,8 +453,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDGroupCol"
-                                    width="10%"
+                                    id="idgroup"
+                                    width="350px"
                                 >
                                     <Title
                                         id="idRDGroupTitle"
@@ -641,8 +462,9 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDResourceTypeCol"
-                                    width="18%"
+                                    id="idresourcetype"
+                                    width="100px"
+
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -650,35 +472,25 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDEmailCol"
-                                    width="10%"
+                                    id="idemail"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmailTitle"
                                         text="Email"
                                     />
                                 </Column>
-
                                 <Column
-                                    id="idRDPhoneNoCol"
-                                    width="15%"
+                                    id="idphonenumber"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDPhoneNoTitle"
                                         text="Phone Number"
                                     />
                                 </Column>
-
-                                <!-- <Column
-                                    id="idPasswordCol1"
-                                    width="13%"
-                                >
-                                    <Title
-                                        id="idPasswordTitl1e"
-                                        text="Password"
-                                    />
-                                </Column> -->
                             </columns>
+
                             <items>
                                 <ColumnListItem id="idRDEmpIdColListItem">
                                     <cells>
@@ -710,21 +522,6 @@
                                             id="idRDPhoneNoColValue"
                                             text="{Phonenumber}"
                                         />
-
-                                        <!-- <Text
-                                            id="idRDPasswordColValue"
-                                            text="{Password}"
-                                        />
-
-                                        <Text
-                                            id="idUserQueueColValue"
-                                            text="{Queue}"
-                                        />
-
-                                        <Text
-                                            id="idRDExpiredDateColValue"
-                                            text="{Expirydate}"
-                                        /> -->
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -742,64 +539,50 @@
                             id="idUnloadingByDelivery1"
                             header="Unloading By Delivery"
                             press="OnPressUnloadByDelivery"
-                            class="sapUiTinyMargin"
-                        >
-                           
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByShipment1"
                             header="Unloading By Shipment"
                             press="onUnloadingByShipmentPress"
-                            class="sapUiTinyMargin"
-                        >
-                            
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByTransportUnit1"
                             header="Unloading By Transport Unit"
                             press="onUnloadingByTUPress"
-                            class="sapUiTinyMargin"
-                        >
-                           
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByASN1"
                             header="Unloading By ASN"
                             press="onUnloadingBYASN"
-                            class="sapUiTinyMargin"
-                        >
-                           
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByDoor1"
                             header="Unloading By Door"
                             press="onUnloadingByDoorTilePress"
-                            class="sapUiTinyMargin"
-                        >
-                           
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByBillOfLading1"
                             header="Unloading By Bill of Lading"
                             press="onUnloadingByBillofLadingPress"
-                            class="sapUiTinyMargin"
-                        >
-                           
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
 
                         <GenericTile
                             id="idUnloadingByConsigmentOrder1"
                             header="Unloading By Consigment Order"
                             press="onUnloadingByConsignmentOrderTilePress"
-                            class="sapUiTinyMargin"
-                        >
-                            
-                        </GenericTile>
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                        />
                     </ScrollContainer>
                     <ScrollContainer
                         id="idpage2"
@@ -812,47 +595,47 @@
                             id="idCreatePutawayHusforDeconsolidation1"
                             header="Create Putaway Hus for Deconsolidation"
                             press="onCreatePutawayHusforDeconsolidation"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idCreatePutawayHusManually1"
                             header="Create Putaway Hus Manually"
                             press="onCreatePutawayHusManually"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idDeconsolidationAutomatically1"
                             header="Deconsolidation Automatically"
                             press="onDeconsolidationAutomaticallypress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idDeconsolidateManually1"
                             header="Deconsolidate Manually"
                             press="onDeconsolidationManuallypress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idHUOverview1"
                             header="HU Overview"
                             press="onHUOverview"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idCreatePutawayHUManually1"
                             header="Create Putaway HU Manually (W/O WC)"
                             press="onCreatePutawayHUManually"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
                             press="ondHUMaintenance"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -860,25 +643,25 @@
                         horizontal="false"
                         vertical="true"
                         height="100%"
-                        class="sapUiContentPadding"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                     >
                         <GenericTile
                             id="idPutawayByHU1"
                             header="Putaway By HU"
                             press="onPutawayByHU"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idPutawayByHUClustered1"
                             header="Putaway By HU (Clustered)"
                             press="onPutawayByHUClustered"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idPutawayByWO1"
                             header="Putaway By WO"
                             press="onTilePress"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         >
                             <TileContent id="idTileContentPutaway">
                                 <Button
@@ -893,7 +676,7 @@
                             id="idConfiramtionCorrections1"
                             header="Confiramtion Corrections"
                             press="onConfiramtionCorrections"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -908,67 +691,67 @@
                             id="idReceivingofHUbyDelivery1"
                             header="Receiving of HU by Delivery"
                             press="onReceivingofHUbyDelivery"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyShipment1"
                             header="Receiving of HU by Shipment"
                             press="onReceivingofHUbyShipment"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyTU1"
                             header="Receiving of HU by TU"
                             press="onReceivingofHUbyTU"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                         <GenericTile
                             id="idReceivingofHUbyASN1"
                             header="Receiving of HU by ASN"
                             press="onReceivingofHUbyASN"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofHUbyDoor1"
                             header="Receiving of HU by Door"
                             press="onReceivingofHUbyDoor"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofHUbyManufacturingOrder1"
                             header="Receiving of HU by Manufacturing Order"
                             press="onReceivingofHUbyManufacturingOrder"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivingofTUorDoor1"
                             header="Receiving of TU/Door (TW)"
                             press="onReceivingofTUorDoor"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idUnloadHUCTW1"
                             header="Unload HUC (TW)"
                             press="onUnloadHUCTW"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivinogfHUbyBillofLading1"
                             header="Receiving of HU by Bill of Lading"
                             press="onReceivingofHUbyBillofLading"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idReceivinogfHUbyConsignementOrder1"
                             header="Receiving of HU by Consignement Order"
                             press="onReceivingofHUbyConsignementOrder"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -984,14 +767,14 @@
                             id="idSetReadyForWHProcessingByBOL1"
                             header="Set Ready For WH Processing By BOL"
                             press="onSetReadyForWHProcessingByBOL"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
 
                         <GenericTile
                             id="idSetReadyForWHProcessingByCO1"
                             header="Set Ready For WH Processing By CO"
                             press="onPressSetReadyForWHProcessingByCO"
-                            class="sapUiTinyMargin"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1075,14 +858,14 @@
                             id="_IDGenGenericTile"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU"
-                            press="press"
+                            press="onPressManuallyRepackHU"
                         />
 
                         <GenericTile
                             id="_IDGenGenericTileRepackHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually Repack HU Item"
-                            press="press"
+                            press="onManuallyRepackHUItemPress"
                         />
 
                         <GenericTile
@@ -1096,7 +879,7 @@
                             id="_IDGenGenericTilere-PackAllHU"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Manually re-pack all HU items"
-                            press="press"
+                            press="onPressManuallyRepackAllHUItems"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1201,14 +984,14 @@
                             id="_IDGenGenericTilePickPoint"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Pick Point"
-                            press="press"
+                            press="onPressPickPoint"
                         />
 
                         <GenericTile
                             id="_IDHUMaintenance"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="HU Maintenance"
-                            press="press"
+                            press="onPressHUMaintenance"
                         />
                     </ScrollContainer>
                     <ScrollContainer
@@ -1251,33 +1034,25 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Load By HU - Man. Pos. Assigment"
                             press="OnpressLoadbyHUManPosAssiognment"
-
                         />
-                         <GenericTile
-                            id="IDGenGenericTile322"
-                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Load By HU - Auto. Pos. Assigment"
-                            press="OnpressLoadbyHUAutoPosAssiognment"
-                        />
-                         <GenericTile
-                            id="IDGenGenericTile322"
-                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                            header="Load By HU - Auto. Pos. Assigment"
-                            press="OnpressLoadbyHUAutoPosAssiognment"
-                        />
-
                         <GenericTile
-                            id="IDGenGenericTile33"
+                            id="IDGenGenericTile322"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                            header="Load By HU - Auto. Pos. Assigment"
+                            press="OnpressLoadbyHUAutoPosAssiognment"
+                        />
+                        <GenericTile
+                            id="IDGenGenericTile3222"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Change Loading/Unloading Details"
-                            press="onChangeLoadingUnloadingDetails"
+                            press="OnpressChangeLoadingUnloadingDetails"
                         />
 
                         <GenericTile
                             id="IDGenGenericTile34"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Unload By HU"
-                            press="press"
+                            press="onUnloadByHUPress"
                         />
                     </ScrollContainer>
                     <ScrollContainer

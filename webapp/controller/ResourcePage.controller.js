@@ -6,17 +6,17 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/library",
     "sap/m/MessageToast",
-     "sap/ui/core/UIComponent",
-     "sap/ui/core/Fragment"  
+    "sap/ui/core/UIComponent",
+    "sap/ui/core/Fragment"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast,UIComponent,Fragment) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment) {
 
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
 
                 // Initialize JSON Model
                 var oModel = new JSONModel();
@@ -31,9 +31,520 @@ sap.ui.define([
                 }.bind(this));
 
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                this.Themecall = false; // Initialize theme call flag
+                this.EditCall = false;
+                this._currentTileId = null;
+            },
+            onResourceDetailsLoad: async function (oEvent1) {
+        
+                const { id } = oEvent1.getParameter("arguments");
+        
+                this.ID = id;
+        
+              },
+              
+
+
+            onAfterRendering: function () {
+                // Apply stored theme color
+                var sStoredThemeColor = localStorage.getItem("themeColor");
+                if (sStoredThemeColor) this.applyThemeColor(sStoredThemeColor);
+
+                // Apply stored tile colors
+                var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+                for (var sTileId in tileColors) {
+                    var sColor = tileColors[sTileId];
+                    var oTile = this.byId(this._extractLocalId(sTileId));
+
+                    if (oTile) {
+                        (function (oTile, sColor) {
+                            oTile.addEventDelegate({
+                                onAfterRendering: function () {
+                                    var oTileDom = oTile.getDomRef();
+                                    if (oTileDom) oTileDom.style.backgroundColor = sColor;
+                                }
+                            });
+                        })(oTile, sColor);
+                    }
+                }
+                // Apply stored view setting
+                var sStoredView = localStorage.getItem("selectedView");
+                if (sStoredView) {
+                    // Get the ScrollContainer and its content
+                    var oTilesContainer = this.byId("idScrollContainer1");
+                    var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+                    aTiles.forEach(function (oTile) {
+                        // Check if the content is a GenericTile before proceeding
+                        if (oTile.isA("sap.m.GenericTile")) {
+                            // Remove any previous size-related CSS classes
+                            oTile.removeStyleClass("largeIcons");
+                            oTile.removeStyleClass("mediumIcons");
+                            oTile.removeStyleClass("smallIcons");
+
+                            // Apply the stored size class
+                            switch (sStoredView) {
+                                case "LargeIcons":
+                                    oTile.addStyleClass("largeIcons");
+                                    break;
+                                case "MediumIcons":
+                                    oTile.addStyleClass("mediumIcons");
+                                    break;
+                                case "SmallIcons":
+                                    oTile.addStyleClass("smallIcons");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    });
+                    oTilesContainer.rerender();
+                }
+                // Apply stored tile details (header and subheader)
+                var tileIds = Object.keys(localStorage).filter(key => key.startsWith('tile_'));
+                tileIds.forEach(function (tileKey) {
+                    // Extract the tile ID from the key
+                    var tileId = tileKey.replace('tile_', '');
+                    var storedTileData = JSON.parse(localStorage.getItem(tileKey));
+                    // Retrieve the tile by ID
+                    var oTile = this.byId(this._extractLocalId(tileId));
+                    // Apply the stored data to the tile if the tile exists
+                    if (oTile && storedTileData) {
+                        oTile.setHeader(storedTileData.header || "");
+                        oTile.setSubheader(storedTileData.subHeader || "");
+                    }
+                }.bind(this));
+            },
+            //Themes Btn from Profile click... 
+            // test old theme button
+            onPressThemesResourceE: function () {
+                this.Themecall = !this.Themecall; // Toggle the state
+                if (this.Themecall) {
+                    // Theme mode activated
+                    this.byId("idCancelButtonResource").setVisible(true);
+                    this.byId("idthemeBackGroundButton").setVisible(true);
+                    sap.m.MessageToast.show("Theme mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idCancelButtonResource").setVisible(false);
+                    this.byId("idthemeBackGroundButton").setVisible(false);
+                    sap.m.MessageToast.show("Theme mode deactivated.");
+                }
+            },
+            onChatbotButtonPress: function () {
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4");
+            },
+            onResetToDefaultPress: function () {
+                sap.m.MessageBox.warning("Reset to default settings ?", {
+                    title: "Default settings",
+                    actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+                    onClose: function (status) {
+                        if (status === sap.m.MessageBox.Action.OK) {
+                            localStorage.clear();
+                            sap.m.MessageToast.show("Settings reset to default.");
+                            window.location.reload();
+                        } else {
+                            MessageToast.show("Reset to default settings cancelled.");    
+                        }
+                    }
+                });
 
             },
+            onEditTileNamePress: function () {
+                if (this.Themecall) {
+                    sap.m.MessageBox.information("Please exit from theme mode first")
+                    return;
+                }
+                this.EditCall = !this.EditCall; // Toggle the state
+                if (this.EditCall) {
+                    // Theme mode activated
+                    this.byId("idCancelEditButtonResource").setVisible(true);
+                    sap.m.MessageToast.show("Edit mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idCancelEditButtonResource").setVisible(false);
+                    sap.m.MessageToast.show("Edit mode deactivated.");
+                }
+            },
+            //Main Background Btn...
+            onBackgroundThemeBtn: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            onCancelPressThemeMode: function () {
+                //this.byId("idMainthemeBtn").setVisible(true);
+                this.byId("idCancelButtonResource").setVisible(false);
+                this.byId("idthemeBackGroundButton").setVisible(false);
+                this.Themecall = false;
+                sap.m.MessageToast.show("Theme mode Deactivated.");
+            },
+            onCancelEditPress: function () {
+                this.byId("idCancelEditButtonResource").setVisible(false);
+                this.EditCall = false;
+                sap.m.MessageToast.show("Edit mode Deactivated.");
+            },
+            //closing theme dialog when press on tile...
+            onCancelColorDialog: function () {
+                this.byId("idthemeTileDialogResource").close();
+                this.resetDialogBox();
+            },
+            onApplyColor: function () {
+                var oView = this.getView();
+                var oColorPicker = oView.byId("idcolorPickerResource");
+                var sColorPickerValue = oColorPicker.getColorString();
+                var aSelectedColors = [];
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
 
+                // Collect selected colors from checkboxes
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox && oItem.getSelected()) {
+                        var sColorValue = oItem.getCustomData()[0].getValue(); // Get color from custom data
+                        aSelectedColors.push(sColorValue);
+                    }
+                });
+                // Handle cases where checkboxes are selected
+                if (aSelectedColors.length > 0) {
+                    if (aSelectedColors.length > 1) {
+                        sap.m.MessageToast.show("You can only select one color.");
+                        return;
+                    }
+                    if (oColorPicker.getVisible()) {
+                        sap.m.MessageToast.show("Please deselect the checkbox before using the custom color picker.");
+                        return;
+                    }
+                    var sSelectedColor = aSelectedColors[0]; // Get the selected color from checkbox
+                    if (this._currentTileId) {
+                        this.applyColorToTile(this._currentTileId, sSelectedColor);
+                        sap.m.MessageToast.show("Tile color applied successfully!");
+                        this._currentTileId = null;
+                    } else {
+                        this.applyThemeColor(sSelectedColor);
+                        sap.m.MessageToast.show("Theme color applied successfully!");
+                    }
+                } else if (this._isValidColor(sColorPickerValue)) {
+                    // If no checkbox is selected, apply the color from the color picker
+                    if (this._currentTileId) {
+                        this.applyColorToTile(this._currentTileId, sColorPickerValue);
+                        sap.m.MessageToast.show("Tile color applied successfully!");
+                        this._currentTileId = null;
+                    } else {
+                        this.applyThemeColor(sColorPickerValue);
+                        sap.m.MessageToast.show("Theme color applied successfully!");
+                    }
+                } else {
+                    sap.m.MessageToast.show("Invalid color format. Please use a valid color code.");
+                }
+                // Deactivate any flag and reset dialog
+                //this.Themecall = false; // Deactivate the flag after applying
+                this.resetDialogBox();
+
+                // Close the dialog and reset background and cancel buttons
+                this.byId("idthemeTileDialogResource").close();
+                //this.byId("themeButton").setVisible(false);
+                //this.byId("CancelButton").setVisible(false);
+                //this.byId("themeButton3").setVisible(true);
+            },
+            applyColorToTile: function (sTileId, sColor) {
+                var oTile = this.byId(sTileId);
+                if (!oTile) return;
+
+                var oTileDomRef = oTile.getDomRef();
+                if (oTileDomRef) {
+                    oTileDomRef.style.backgroundColor = sColor;
+
+                    // Update localStorage with tile color
+                    var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+                    tileColors[sTileId] = sColor;
+                    localStorage.setItem("tileColors", JSON.stringify(tileColors));
+                }
+            },
+            applyThemeColor: function (sColor) {
+                debugger
+                var aElements = [
+                    this.byId("idScrollContainer1"),
+                ];
+
+                // Remove any existing style element for the theme
+                var sStyleId = "customThemeStyle";
+                var oOldStyle = document.getElementById(sStyleId);
+                if (oOldStyle) {
+                    oOldStyle.remove();
+                }
+
+                // Create a new style element and apply the color
+                var oStyle = document.createElement("style");
+                oStyle.id = sStyleId;
+                oStyle.textContent = ".customTheme { background-color: " + sColor + " !important; }";
+                document.head.appendChild(oStyle);
+
+                // Add the custom theme class to the elements
+                aElements.forEach(function (oElement) {
+                    if (oElement) {
+                        oElement.addStyleClass("customTheme");
+                    }
+                });
+                localStorage.setItem("themeColor", sColor);
+            },
+            onColorOptionSelect: function (oEvent) {
+                var oSelectedCheckBox = oEvent.getSource();
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
+                // Deselect all other checkboxes except the currently selected one
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox && oItem !== oSelectedCheckBox) {
+                        oItem.setSelected(false);
+                    }
+                });
+                // Hide the color picker if a checkbox is selected, show if deselected
+                var isCheckBoxSelected = oSelectedCheckBox.getSelected();
+                this.byId("idcolorPickerResource").setVisible(!isCheckBoxSelected);
+            },
+            // Reset the dialog box when canceled or after applying the color
+            resetDialogBox: function () {
+                var oView = this.getView();
+                var oColorPicker = oView.byId("idcolorPickerResource");
+                var oColorOptions = this.byId("colorOptionsResource").getItems();
+
+                // Deselect all checkboxes
+                oColorOptions.forEach(function (oItem) {
+                    if (oItem instanceof sap.m.CheckBox) {
+                        oItem.setSelected(false);
+                    }
+                });
+                // Reset the color picker to its default value
+                oColorPicker.setColorString("#FFFFFF");
+                oColorPicker.setVisible(true);
+            },
+            // Helper function to extract the local ID of a tile
+            _extractLocalId: function (sTileId) {
+                return sTileId.split("--").pop();
+            },
+            _isValidColor: function (sColor) {
+                var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
+                var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
+                return hexRegex.test(sColor) || rgbRegex.test(sColor);
+            },
+            //opens theme dialog when click on tile...
+            onBackgroundTilePopOverThemeBtn: function () {
+                this._currentTileId = this._currentTile.getId();
+                this.byId("idthemeTileDialogResource").open();
+            },
+            _openTilePopover: function () {
+                debugger
+                if (!this._tilePopover) {
+                    this._tilePopover = new sap.m.Popover({
+                        title: "Tile Options",
+                        content: [
+                            new sap.m.Button({
+                                icon: "sap-icon://edit",
+                                type: "Transparent",
+                                text: "Rename",
+                                press: this.onPressRenameTile.bind(this) // Bind the context
+                            }),
+                            new sap.m.Button({
+                                icon: "sap-icon://palette",
+                                type: "Transparent",
+                                text: "Theme",
+                                press: this.onBackgroundTilePopOverThemeBtn.bind(this) // Bind the context for the theme button
+                            })
+                        ],
+                        placement: sap.m.PlacementType.Right,
+                        //afterOpen: this._onPopoverAfterOpen.bind(this)
+                    });
+                }
+                this._tilePopover.openBy(this._currentTile);
+                this.TileHeader = this._currentTile.getHeader();
+                this.TileSubHeader = this._currentTile.mProperties.subheader;
+            },
+            onPressRenameTile: async function () {
+                debugger
+                this.TileHeader = this._currentTile.getHeader();
+                this.TileSubHeader = this._currentTile.mProperties.subheader;
+                await this.getView().byId("IdEditTileDetailsDialogResource").open();
+                this.byId("idInputTileHeaderResorce").setValue(this.TileHeader);
+                this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
+                // Open the rename dialog
+            },
+            onPressSaveTileEditDeatils: function () {
+                debugger
+                var sNewHeader = this.byId("idInputTileHeaderResorce").getValue();
+                var sNewSubHeader = this.byId("idInputSubHeaderResource").getValue();
+
+                // Update the tile details
+                if (this._currentTile) {
+                    var tileId = this._currentTile.getId();
+                    this._currentTile.setHeader(sNewHeader);
+                    this._currentTile.setSubheader(sNewSubHeader);
+
+                    // Create an object to store the updated tile data
+                    var tileData = {
+                        header: sNewHeader,
+                        subHeader: sNewSubHeader // Store the new subheader
+                    };
+                    // Save the updated tile details in localStorage
+                    localStorage.setItem(`tile_${tileId}`, JSON.stringify(tileData)); // Save tile data as a string in localStorage
+                    this.byId("IdEditTileDetailsDialogResource").close();
+                    sap.m.MessageToast.show("Tile details updated successfully!");
+                }
+            },
+            onCloseEditingTileDetailsDialog: function () {
+                this.byId("IdEditTileDetailsDialogResource").close();
+            },
+            //Tile View setting When press on profile...
+            onPressTileViewSettings: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this.oTileViewSettings) {
+                    this.oTileViewSettings = sap.ui.xmlfragment("com.app.rfapp.fragments.UserTileView", this);
+                    this.getView().addDependent(this.oTileViewSettings);
+                }
+                // Open popover near the language button
+                this.oTileViewSettings.openBy(oEvent.getSource());
+            },
+            onPressTileViewLargeIcons: function () {
+                this.onPressTileViewResizeIcons("LargeIcons");
+            },
+            onPressTileViewMediumIcons: function () {
+                this.onPressTileViewResizeIcons("MediumIcons");
+            },
+            onPressTileViewSmallIcons: function () {
+                this.onPressTileViewResizeIcons("SmallIcons");
+            },
+            //CallBack function every Tile view....
+            onPressTileViewResizeIcons: function (sSelectedKey) {
+                var oTilesContainer = this.byId("idScrollContainer1");
+                var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+                // Save the selected key to localStorage
+                localStorage.setItem("selectedView", sSelectedKey);
+                // Loop through each tile and apply the appropriate style class based on the selected view
+                aTiles.forEach(function (oTile) {
+                    // Check if the content is a GenericTile before proceeding
+                    if (oTile.isA("sap.m.GenericTile")) {
+                        // Remove any previous size-related CSS classes
+                        oTile.removeStyleClass("largeIcons");
+                        oTile.removeStyleClass("mediumIcons");
+                        oTile.removeStyleClass("smallIcons");
+
+                        // Apply the selected size class
+                        switch (sSelectedKey) {
+                            case "LargeIcons":
+                                oTile.addStyleClass("largeIcons");
+                                break;
+                            case "MediumIcons":
+                                oTile.addStyleClass("mediumIcons");
+                                break;
+                            case "SmallIcons":
+                                oTile.addStyleClass("smallIcons");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+                oTilesContainer.rerender();
+            },
+            //Language Transulation PopOver Profile...
+            onPressLanguageTranslation: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this._oLanguagePopover) {
+                    this._oLanguagePopover = sap.ui.xmlfragment("com.app.rfapp.fragments.LanguageTransulations", this);
+                    this.getView().addDependent(this._oLanguagePopover);
+                }
+                // Open popover near the language button
+                this._oLanguagePopover.openBy(oEvent.getSource());
+            },
+            onLanguageSelect: function (oEvent) {
+                // Get the selected button text
+                var sLanguage = oEvent.getSource().getText();
+            
+                // Define the message based on the selected language
+                var sSpeechText = "";
+                
+                switch (sLanguage) {
+                    case "English":
+                        sSpeechText = "You have chosen English language.";
+                        break;
+                    case "Hindi":
+                        sSpeechText = "आपने हिंदी भाषा चुनी है।"; // Speech for Hindi
+                        break;
+                    case "Spanish":
+                        sSpeechText = "Has elegido el idioma español."; // Speech for Spanish
+                        break;
+                    case "French":
+                        sSpeechText = "Vous avez choisi la langue française."; // Speech for French
+                        break;
+                    default:
+                        sSpeechText = "Language selection failed.";
+                }
+                
+                // Use Web Speech API to make the sound announcement
+                this._announceLanguageSelection(sSpeechText);
+            
+                // Close the popover after selection
+                this._oPopover.close();
+            },
+            
+            // Function to handle sound announcements
+            _announceLanguageSelection: function(speechText) {
+                if ('speechSynthesis' in window) {
+                    var speech = new SpeechSynthesisUtterance(speechText);
+                    
+                    // Optional: Set the language of the speech
+                    if (speechText.includes("हिंदी")) {
+                        speech.lang = 'hi-IN'; // Hindi language setting
+                    } else if (speechText.includes("español")) {
+                        speech.lang = 'es-ES'; // Spanish language setting
+                    } else if (speechText.includes("française")) {
+                        speech.lang = 'fr-FR'; // French language setting
+                    } else {
+                        speech.lang = 'en-US'; // English as default
+                    }
+                    
+                    window.speechSynthesis.speak(speech);
+                } else {
+                    console.log("Speech Synthesis not supported in this browser.");
+                }
+            },
+            
+
+            // Theme press from profile 
+
+            onPressThemesResource: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this._oThemeSelectPopover) {
+                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
+                    this.getView().addDependent(this._oThemeSelectPopover);
+                }
+                // Open popover near the language button
+                this._oThemeSelectPopover.openBy(oEvent.getSource());
+            },
+
+            // on Background theme select 
+
+            onBackGroudThemeSelect: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            // on Background theme select 
+
+            onBackGroudThemeSelect: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            // on Tile theme select 
+
+            onTileThemeSelect: function () {
+                if (this.EditCall) {
+                    sap.m.MessageBox.information("Please exit from edit mode first")
+                    return;
+                }
+                this.Themecall = !this.Themecall; // Toggle the state
+                if (this.Themecall) {
+                    // Theme mode activated
+                    this.byId("idCancelButtonResource").setVisible(true);
+                    // this.byId("idthemeBackGroundButton").setVisible(true);
+                    sap.m.MessageToast.show("Theme mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idCancelButtonResource").setVisible(false);
+                    // this.byId("idthemeBackGroundButton").setVisible(false);
+                    sap.m.MessageToast.show("Theme mode deactivated.");
+                }
+            },
 
             onResourceDetailsLoad: async function (oEvent1) {
 
@@ -85,8 +596,6 @@ sap.ui.define([
                 //   const sToolPage = this. getView().byId("toolPage");
                 //   sToolPage.bindElement(`/(${id})`);
 
-
-                debugger;
                 var that = this;
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
@@ -98,16 +607,16 @@ sap.ui.define([
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var area = oData.Area;
-                        var areaArray = area.split(",").map(item => item.trim()); // Split and trim each area
+                        var areaArray = area.split(",").map(item => item.trim());
                         var ogroup = oData.Resourcegroup;
-                        var groupArray = ogroup.split(",").map(item => item.trim()); // Split and trim each group
+                        var groupArray = ogroup.split(",").map(item => item.trim());
 
-                        groupArray.forEach(function (group) {
+                        // groupArray.forEach(function (group) {
 
-                            let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
-                            let loGroup = oGroup.toLowerCase();
-                            that.getView().byId(`id_${loGroup}_title`).setVisible(true)
-                        })
+                        //     let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
+                        //     let loGroup = oGroup.toLowerCase();
+                        //     that.getView().byId(`id_${loGroup}_title`).setVisible(true)
+                        // })
 
                         var oresourceType = oData.Queue;
                         var oResourceArray = oresourceType.split(",").map(item => item.trim())
@@ -123,7 +632,7 @@ sap.ui.define([
 
                         // Loop through navigation data
                         aNavigationData.forEach(function (oProcess) {
-                            var processVisible = false; // Flag to track visibility for each process
+                            var processVisible = false;
 
                             // Loop through areaArray
                             areaArray.forEach(function (areaArray1) {
@@ -161,7 +670,6 @@ sap.ui.define([
                         MessageToast.show("User does not exist");
                     }
                 });
-
             },
 
             onItemSelect: function (oEvent) {
@@ -208,129 +716,462 @@ sap.ui.define([
                 } else {
                     oToggleButton.setTooltip('Small Size Navigation');
                 }
-            }, 
-            onManuallyRepackHUPress : function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackHU",{id:this.ID});
-            
             },
-            onManuallyRepackHUItemPress : function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
-            },
+            onManuallyRepackHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
 
-            onPutawayByHUPress: function () {
-             
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayByHU",{id:this.ID});
-            },
-            onReceivingofHUbyConsignementOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("Receivingofhubyco",{id:this.ID});
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
 
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackHU", { id: this.ID });
+                }
+            },
+            onManuallyRepackHUItemPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
 
-            },
-            onManuallyRepackHUItemPress:function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteManuallyRepackingByHuItems",{id:this.ID});
-            },
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
 
-            onWTQuerybyWOPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWO", { id: this.ID });
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
+                }
             },
-            onReceivingofHUbyDeliveryPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyDelivery",{id:this.ID});
-            },
-            onReceivingofHUbymanufacturingOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyManufacturingOrder",{id:this.ID});
-            },
-            onRecevingofTUDoorTWPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RecevingOfHUbyTUorDoor",{id:this.ID});
-            },
-            onReceivingofHUbyASNPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyASN",{id:this.ID});
-            },
-            onReceivingofHUbyShipmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyShipment",{id:this.ID});
-            },
-            onReceivingofHUbyTUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingofHUbyTU",{id:this.ID});
-            },
+            onPutawayByHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
 
-            onUnloadingByDoorTilePress: function () {
-                // BusyIndicator.show(3);
-                // setTimeout(function () {
-                //     // Navigate to another page (user page)
-                //     var oRouter = this.getOwnerComponent().getRouter();
-                //     oRouter.navTo("UnloadingByDoor");
-                //     BusyIndicator.hide();
-                //   }.bind(this), 2000); 
-                var oRouter = this.getOwnerComponent().getRouter();
-                    oRouter.navTo("UnloadingByDoor",{id:this.ID});
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
 
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RoutePutawayByHU", { id: this.ID });
+                }
             },
-            onUnloadingByConsignmentOrderTilePress: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("UnloadingByConsignmentOrder",{id:this.ID});
+            onReceivingofHUbyConsignementOrderPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
 
-            },
-            onChangeQueueTilePress: function () {
-                debugger
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("ChangeQueue",{id:this.ID});
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
 
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("Receivingofhubyco", { id: this.ID });
+                    
+                }
             },
-            onChangeResourceGroupTilePress:function(){
-                const oRoute =this.getOwnerComponent().getRouter()
-                oRoute.navTo("ChangeResourceGroup",{id:this.ID})
+            onManuallyRepackHUItemPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteManuallyRepackingByHuItems", { id: this.ID });
+                }
             },
-            onUnloadingbyBillofLadingPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByBillofLading",{id:this.ID});
+            onWTQuerybyWOPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByWO", { id: this.ID });
+                }
             },
-            onDeconsolidationAutomaticallyPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationAutomatically",{id:this.ID});
+            onReceivingofHUbyDeliveryPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyDelivery", { id: this.ID });
+                }
             },
-            onDeconsolidateManuallyPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("DeconsolidationManually",{id:this.ID});
+            onReceivingofHUbymanufacturingOrderPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyManufacturingOrder", { id: this.ID });
+                }
             },
-            onAdhocInventoryCreationPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocInventoryCreation",{id:this.ID});
+            onRecevingofTUDoorTWPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RecevingOfHUbyTUorDoor", { id: this.ID });
+                }
             },
-            onCreationOfSingleHUpress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreationOfSingleHU",{id:this.ID});
+            onReceivingofHUbyASNPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
+                }
             },
-            onMaintainHUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("MaintainHU",{id:this.ID});
+            onReceivingofHUbyShipmentPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
+                }
             },
-            onReversalofConsumptionbyMOHUPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReversalofConsumptionbyMObyHU",{id:this.ID});
+            onReceivingofHUbyTUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
+                }
             },
-            onUnloadingByShipmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByShipment",{id:this.ID});
+            onUnloadingByDoorTilePress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByDoor", { id: this.ID });
+                }
             },
-            onUnloadingByTransportUnitPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("UnloadingByTU",{id:this.ID});
+            onUnloadingByConsignmentOrderTilePress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
+                }
+            },
+            onChangeQueueTilePress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeQueue", { id: this.ID });
+                }
+            },
+            onChangeResourceGroupTilePress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeResourceGroup", { id: this.ID });
+                }
+            },
+            onUnloadingbyBillofLadingPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
+                }
+            },
+            onDeconsolidationAutomaticallyPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
+                }
+            },
+            onDeconsolidateManuallyPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("DeconsolidationManually", { id: this.ID });
+                }
+            },
+            onAdhocInventoryCreationPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocInventoryCreation", { id: this.ID });
+                }
+            },
+            onCreationOfSingleHUpress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreationOfSingleHU", { id: this.ID });
+                }
+            },
+            onMaintainHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("MaintainHU", { id: this.ID });
+                }
+            },
+            onReversalofConsumptionbyMOHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
+                }
+            },
+            onUnloadingByShipmentPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByShipment", { id: this.ID });
+                }
+            },
+            onUnloadingByTransportUnitPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadingByTU", { id: this.ID });
+                }
             },
 
             // onSBQPAvatarPressed: function () {
             //     var oView = this.getView();
-    
+
             //     // Create the dialog lazily
             //     if (!this._pProfileDialog) {
             //         this._pProfileDialog = Fragment.load({
@@ -342,172 +1183,728 @@ sap.ui.define([
             //             return oDialog;
             //         });
             //     }
-    
+
             //     this._pProfileDialog.then(function (oDialog) {
             //         oDialog.open();
             //     });
             // },
-            onSBQPAvatarPressed: function(oEvent) {
-                
-              
-                
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
-                    this.getView().addDependent(this._oPopover);
-                }
-                // Open popover near the avatar
-                this._oPopover.openBy(oEvent.getSource());
+            onSBQPAvatarPressed: function (oEvent) {
+                debugger;
             
-        },
-    
-            onCloseDialog: function () {
-                this._pProfileDialog.then(function (oDialog) {
-                    oDialog.close();
+                // Reference to the current instance
+                var This = this;
+            
+                // Get the model (assuming it's an OData model)
+                var oModel1 = this.getOwnerComponent().getModel();
+            
+                // Read data using OData model
+                oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        let oUser = oData.Users.toLowerCase();
+            
+                        if (oUser === "resource") {
+                            var oProfileData = {
+                                Name: oData.Resourcename, // Assuming this is the field you want to bind
+                                Number: oData.Phonenumber // Add a fallback if 'ContactNumber' is missing
+                            };
+            
+                            // Bind data to the popover
+                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
+            
+                            // Check if the popover is already created
+                            if (!This._oPopover) {
+                                This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
+                                This.getView().addDependent(This._oPopover);
+                            }
+            
+                            // Now that the popover exists, set the model
+                            This._oPopover.setModel(oPopoverModel, "profile");
+            
+                            // Open popover near the avatar
+                            This._oPopover.openBy(oEvent.getSource());
+                        } else {
+                            MessageToast.show("User is not a resource.");
+                        }
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
                 });
             },
+            
+
+
+
+            onProfilePressed: function() {
+                debugger;
+                var oView = this.getView();
+            
+                // Save reference to 'this'
+                var that = this; // Preserves the correct context of 'this'
+            
+                var oModelRead = this.getOwnerComponent().getModel();
+            
+                // Read data using OData model
+                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function(oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        let oUser = oData.Users.toLowerCase();
+            
+                        if (oUser === "resource") {
+                            var oProfileDialogData = {
+                                Id: oData.Resourceid,
+                                Name: oData.Resourcename,
+                                Email: oData.Email,
+                                Number: oData.Phonenumber // Assuming this is the field you want to bind
+                            };
+            
+                            // Bind data to the dialog (use 'that' instead of 'This')
+                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
+                            that.byId("idUserDetails").setModel(oPopoverModel, "profile");
+                        } else {
+                            MessageToast.show("User is not a resource.");
+                        }
+                    },
+                    error: function() {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+
     
+                // Check if the dialog already exists
+                if (!this.byId("idUserDetails")) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function(oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                       var Oopen = oDialog.open();
+                        if(Oopen){
+                             // Reference to the current instance
+               
+          
+                // Get the model (assuming it's an OData model)
+                
+                        }
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+            },
+
+
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
             },
-    
+
             onLogoutPress: function () {
                 sap.m.MessageToast.show("Logging out...");
                 // Add actual logout logic here
             },
-            
-            onRecevinngofHUbyBillofLadingPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteBillofLading",{id:this.ID});
+            onRecevinngofHUbyBillofLadingPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteBillofLading", { id: this.ID });
+                }
             },
-            onCreateShippingHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHU",{id:this.ID});
+            onCreateShippingHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateShippingHU", { id: this.ID });
+                }
             },
-            onCreateShippingHUWOWCPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateShippingHUWOWC",{id:this.ID});
+            onCreateShippingHUWOWCPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateShippingHUWOWC", { id: this.ID });
+                }
             },
-            //Putaway By WO Tile..
-            onPutawayByWOPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("PutawayByWO", { id: this.ID });
+            onPutawayByWOPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("PutawayByWO", { id: this.ID });
+                }
             },
-            //AvailableHandlingunitsOnBinQuery Tile...
-            onAvailableHandlingunitsonbinqueryPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
+            onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
+                }
             },
-            //WTQueryByHU Tile...
-            onWTquerybyHUPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByHU", { id: this.ID });
+            onAutomaticallyRepackHUItemPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
+                }
             },
-            onWTQueryByWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT",{id:this.ID});
+            onSetReadyforWHprocessingbyCOPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+                }
             },
-            onCreateandConfirmAdhocHUWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocHu",{id:this.ID});
+            onWTquerybyHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByHU", { id: this.ID });
+                }
             },
-            onCreateandConfirmAdhocProductWTPress:function(){
+            onWTQueryByWTPress: function () {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                }else{
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreateConfirmAdhocProduct",{id:this.ID});
+                oRouter.navTo("WTQueryByWT", { id: this.ID });
+                }
             },
-            onSerialnumberLocationPress:function(){
+            onCreateandConfirmAdhocProductWTPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
+                }
+            },
+            onSerialnumberLocationPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("SerialNumberLocation", { id: this.ID });
+                }
+            },
+            onStockBinQuerybyProductPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
+                }
+            },
+            onCreateAdhocHUWTPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocHuWt", { id: this.ID });
+                }
+            },
+            onCreateAdhocProductWTPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AdhocProductWt", { id: this.ID });
+                }
+            },
+            onReceivingofHUbyDoorPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ReceivingOfHuByDoor", { id: this.ID });
+                }
+            },
+            onStockBinQuerybyBinPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("StockBinQueryByBin", { id: this.ID });
+                }
+            },
+            onHUQueryPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HuQuery", { id: this.ID });
+                }
+            },
+            onUnloadingByDeliveryPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    // Proceed with normal navigation
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadByDelivery", { id: this.ID });
+                }
+            },
+            onUnloadingByASNPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
+                }
+            },
+            onWTQuerybyQueuePress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByQueue", { id: this.ID });
+                }
+            },
+            onPickPointPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("PickPoint", { id: this.ID });
+                }
+            },
+            onManuallyrepackallHUitemsPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
+                }
+            },
+            onHUStockOverviewQueryPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
+                }
+            },
+            onConsumptionByManufacturingOrderPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ConsumptionByManufacturingOrder", { id: this.ID });
+                }
+            },
+            onCreatePutawayHusforDeconsolidationPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreatePutawayHusforDeconsolidate", { id: this.ID });
+                }
+            },
+            onCreatePutawayHusManuallyPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreatePutawayHusManually", { id: this.ID });
+                }
+            },
+            onLoadByHUManPosAssigmentPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("LoadbyHUManPosAssiognment", { id: this.ID });
+                }
+            },
+            onPutawayByHUClusteredPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RoutePutawayHuClustered", { id: this.ID });
+                }
+            },
+            onAutomaticallyRepackHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AutomaticallyRepackHu", { id: this.ID });
+                }
+            },
+            onLoadByHUAutoPosAssignmentPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("LoadbyHUAutoPosAssiognment", { id: this.ID });
+                }
+            },
+
+            onProductInspectionByHUPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByHU", { id: this.ID });
+                }
+            },
+
+
+            onProductInspectionByStorageBinPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+                }
+            },
+
+            onProductInspectionByStorageBinPress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SerialNumberLocation",{id:this.ID});
+                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-            onStockBinQuerybyProductPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByProduct",{id:this.ID});
-            },
-            onCreateAdhocHUWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocHuWt",{id:this.ID});
-            },
-            onCreateAdhocProductWTPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AdhocProductWt",{id:this.ID});
-            },
-            onReceivingofHUbyDoorPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ReceivingOfHuByDoor",{id:this.ID});
-            },
-            onStockBinQuerybyBinPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByBin",{id:this.ID});
-            },
-            onHUQueryPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HuQuery",{id:this.ID});
-            },
-            onUnloadingByDeliveryPress:function(){ 
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("UnloadByDelivery",{id:this.ID});                 
-            }, 
+           
+    
+                    
  
-            onUnloadingByASNPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteUnloadingASNDetails",{id:this.ID});
-            },
-            onWTQuerybyQueuePress:function(){ 
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("WTQueryByQueue",{id:this.ID});                 
-            }, 
 
-            // onDeconsolidationAutomaticallyPress:function(){
-            //     var oRouter = UIComponent.getRouterFor(this); 
-            //     oRouter.navTo("DeconsAuto",{id:this.ID});   
-            // }
-            onPickPointPress:function(){ 
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("PickPoint",{id:this.ID});                 
-            }, 
-            onManuallyrepackallHUitemsPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ManuallyRepackAllHUItems",{id:this.ID});
+            onCloseUSerDetailsDialog: function () {
+                this.byId("idUserDetails").close();
             },
-            onHUStockOverviewQueryPress:function(){
+            onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("HUStockOverviewQuery",{id:this.ID});
-            },
-            onConsumptionByManufacturingOrderPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ConsumptionByManufacturingOrder",{id:this.ID});
-            },
-
-            onCreatePutawayHusforDeconsolidationPress: function(){
-                debugger
-                var oRouter = UIComponent.getRouterFor(this); 
-                oRouter.navTo("CreatePutawayHusforDeconsolidate",{id:this.ID});        
-            },
-            onCreatePutawayHusManuallyPress: function() {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CreatePutawayHusManually",{id:this.ID});
+                oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
 
-            onLoadByHUManPosAssigmentPress: function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("LoadbyHUManPosAssiognment",{id:this.ID});
-        },
-
-            onPutawayByHUClusteredPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("RoutePutawayHuClustered",{id:this.ID});
-            },
-            onAutomaticallyRepackHUPress:function() {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("AutomaticallyRepackHu",{id:this.ID});
-            },
-
-            onLoadByHUAutoPosAssignmentPress:function(){
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("LoadbyHUAutoPosAssiognment",{id:this.ID});
-            },
 
         });
     });

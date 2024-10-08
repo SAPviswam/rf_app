@@ -6,30 +6,37 @@
 >
     <Dialog
         id="idconnectsapdialogbox_CS"
-        resizable="false"
+        resizable="true"
         draggable="true"
         contentWidth="25%"
-        class="boxContainerInChangePassword"
-        showHeader="false"
+        class="boxContainer"
+        initialFocus="idUserInput_CS"
     >
-<VBox class="B25" alignItems="Center">
-    <Image
-        id="_IDGenImage_CS"
-        src="https://artihcus.com/assets/img/AG-logo.png"
-        width="25%"
-        height="10%"
-        class="sapUiSmallMarginBegin"
-     
-    />
-    <VBox alignContent="Start" alignItems="Start" >
-    <Title
-        id="_IDTitleconnectsap_CS"
-        text="CAPmodel RF"
-        class="capModelRFTextdialog sapUiTinyMarginBottom"
-    />
-    </VBox>
-</VBox>
-       
+        <customHeader >
+            <Bar
+                id="_IDBar1coonectsap_CS"
+                class="TitlecustomHeader"
+            >
+                <contentLeft>
+                    <!-- Logo -->
+                    <Image
+                        id="_IDGenImage_CS"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="85%"
+                        height="60%"
+                    />
+                    </contentLeft>
+                    <!-- Title -->
+                    <contentMiddle>
+                    <Title
+                        id="_IDTitleconnectsap_CS"
+                        text="CAPmodel RF"
+                        class="capModelRFTextdialog"
+                    />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        
         <content>
             <form:SimpleForm
                 id="idconnecttosapDetailsForm_CS"
@@ -50,7 +57,7 @@
                 <VBox
                     id="SAPlogonform1"
                     width="72%"
-                    class="connecttoSAPform sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop"
+                    class="connecttoSAPform sapUiMediumMargin" 
                 >
                 <VBox
                     id="SAPlogonform2"
@@ -83,7 +90,7 @@
                     </VBox>
                         <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="85%"
+                            width="90.5%"
                             selectedKey="en"
                             class="comboCS"
                         >
@@ -108,7 +115,7 @@
                         value="400"
                         placeholder=""
                         class="customInput"
-                        width="100%"
+                        width="105%"
                         editable="false"
                     />
                     </VBox>
@@ -119,8 +126,8 @@
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
-                           
-                            width="85%"
+                            width="90%"
+                            type="Unstyled"
                             press="onLogOnPress"
                         />
                         <HBox class="sapUiSmallMarginEnd">
@@ -132,8 +139,11 @@
                         class="sapUiSmallMarginEnd"
                         press="onChangePasswordBtn"
                         />
-                        <Button text="Cancel"
-                        press="onPressCancleSapLogon"/>
+                        <Link id="IDlogoncancelbutton"
+                        text="Cancel"
+                        press="onPressCancleSapLogon"
+                        class="cancelbutton"
+                       />
                         </HBox>
                         </VBox>
  

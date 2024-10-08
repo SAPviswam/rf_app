@@ -566,9 +566,12 @@
           "pattern": "LoadbyHUAutoPosAssiognment/{id}",
           "target": [
             "TargetLoadbyHUAutoPosAssiognment"
-          ]
+ 
+            ]
+  
         },
         {
+ 
           "name": "RouteChangeLoadingUnloadingDetails",
           "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
           "target": [
@@ -607,21 +610,21 @@
         },
         "TargetResourcePage": {
           "viewType": "XML",
-          "transition": "slide",
+          "transition": "flip",
           "clearControlAggregation": false,
           "viewId": "ResourcePage",
           "viewName": "ResourcePage"
         },
         "TargetSupervisorPage": {
           "viewType": "XML",
-          "transition": "slide",
+          "transition": "fade",
           "clearControlAggregation": false,
           "viewId": "Supervisor",
           "viewName": "Supervisor"
         },
         "TargetHuQueryPage": {
           "viewType": "XML",
-          "transition": "slide",
+          "transition": "fade",
           "clearControlAggregation": false,
           "viewId": "HuQuery",
           "viewName": "HuQuery"
@@ -754,7 +757,7 @@
         },
         "TargetBillofLading": {
           "viewType": "XML",
-          "transition": "slide",
+          "transition": "Base",
           "clearControlAggregation": false,
           "viewId": "BillofLading",
           "viewName": "BillofLading"
@@ -1025,6 +1028,27 @@
           "viewId": "UnloadByHu",
           "viewName": "UnloadByHu"
         
+        },
+        "TargetAutomaticallyRepackHu":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AutomaticallyRepackHu",
+          "viewName": "AutomaticallyRepackHu"
+        },
+        "TargetConsumptionByManufacturingOrder":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ConsumptionByManufacturingOrder",
+          "viewName": "ConsumptionByManufacturingOrder"
+        },
+        "TargetReversalofConsumptionbyMO_Bin":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReversalofConsumptionbyMO_Bin",
+          "viewName": "ReversalofConsumptionbyMO_Bin"
         }
       }
     },
