@@ -111,8 +111,10 @@
 </EntityType>
 <EntityType Name="Configure_System" sap:content-version="1">
 <Key>
-<PropertyRef Name="InstanceNumber"/>
+<PropertyRef Name="Uuid"/>
 </Key>
+<Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Uuid" Type="Edm.String" Nullable="false" MaxLength="36" sap:unicode="false" sap:label="Unique Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="InstanceNumber" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Instance Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="SystemId" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="System ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -132,12 +134,12 @@
 <End Type="ZEWM_RFUI_SRV_01.Huitms" Multiplicity="*" Role="ToRole_Hu_headers_to_item"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_Hu_headers_to_item">
-<PropertyRef Name="HuidentTop"/>
 <PropertyRef Name="Huident"/>
+<PropertyRef Name="HuidentTop"/>
 </Principal>
 <Dependent Role="ToRole_Hu_headers_to_item">
-<PropertyRef Name="HuidentTop"/>
 <PropertyRef Name="Huident"/>
+<PropertyRef Name="HuidentTop"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -155,8 +157,8 @@
 <End EntitySet="HuitmsSet" Role="ToRole_Hu_headers_to_item"/>
 </AssociationSet>
 </EntityContainer>
-<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://VHCALAKECI.ARTIHCUS.COM:44306/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
-<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://VHCALAKECI.ARTIHCUS.COM:44306/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/$metadata"/>
 </Schema>
 </edmx:DataServices>
 </edmx:Edmx>

@@ -132,7 +132,7 @@ sap.ui.define([
             },
             //CHATBOT 
             onChatbotButtonPress: function () {
-                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4");
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
             },
             onResetToDefaultPress: function () {
                 sap.m.MessageBox.warning("Reset to default settings ?", {
@@ -791,24 +791,6 @@ sap.ui.define([
                     
                 }
             },
-            onManuallyRepackHUItemPress: function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("RouteManuallyRepackingByHuItems", { id: this.ID });
-                }
-            },
             onWTQuerybyWOPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1133,6 +1115,25 @@ sap.ui.define([
                     oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
                 }
             },
+            onReversalofconsumptionbyMOBinPress: function (oEvent) {
+                debugger
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteReversalofConsumptionbyMO_Bin", { id: this.ID });
+                }
+            },
             onUnloadingByShipmentPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1431,6 +1432,78 @@ sap.ui.define([
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+                }
+            },
+            onSetReadyforWHprocessingbyBOLPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WHProcessingByBOL", { id: this.ID });
+                }
+            },
+            onCreateandConfirmAdhocHUWTPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
+                }
+            },
+            onUnloadByHUPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadByHu", { id: this.ID });
+                }
+            },
+            onChangeLoadingUnloadingDetailsPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeLoadingUnloadingDetails", { id: this.ID });
                 }
             },
             onWTquerybyHUPress: function (oEvent) {
@@ -1867,8 +1940,6 @@ sap.ui.define([
                     oRouter.navTo("ProductInspectionByHU", { id: this.ID });
                 }
             },
-
-
             onProductInspectionByStorageBinPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1887,16 +1958,23 @@ sap.ui.define([
                     oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
             },
-
-            onProductInspectionByStorageBinPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            onHUMaintenanceInDeconsolidation: function (oEvent) {
+                debugger
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
+                }
             },
-           
-    
-                    
- 
-
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
@@ -1905,7 +1983,5 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
-
-
         });
     });

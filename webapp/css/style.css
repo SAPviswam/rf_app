@@ -143,9 +143,8 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: auto !important;
-   
-    /* padding-bottom: 4rem; */
 }
+
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
