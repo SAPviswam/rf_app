@@ -81,6 +81,7 @@
 }
  
 .capModelRFTextdialog {
+  
     color: #ed731dd2 !important;
 }
 .dialogButton {
@@ -135,14 +136,35 @@
     width: auto !important;
     /* padding-bottom: 4rem; */
 }
+.boxContainerlogin {
+    margin-top: 5% !important;
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important; 
+    width: auto !important;
+}
+.boxContainerhome {
+    margin-bottom: 2%;
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    width: 23% !important;
+}
+
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
 }
-
+.capModelRFTextlogin {
+    color: #ed731dd2 !important;
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
 .capModelRFText {
     color: #ed731dd2 !important;
-    margin-top: 25px !important; /* Adjust margin to position it below the title */
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
     font-size: 1em !important; /* Optional: adjust font size */
     margin-left: 30px !important;
 }
@@ -698,6 +720,10 @@ margin-right: 20%;
 .VboxChangePassword {
 margin-right: 15%;
 }
+.moveRight {
+    margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
+}
+
 
 
 
