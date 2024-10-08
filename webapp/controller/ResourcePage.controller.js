@@ -1891,18 +1891,23 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-           
-    
-                    
- 
-
+     
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
             onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
-
+    //             history.pushState(null, null, location.href);
+    // history.back();
+                // var oRouter = UIComponent.getRouterFor(this);
+                // oRouter.navTo("InitialScreen", { id: this.ID },true);
+                var oRouter = this.getOwnerComponent().getRouter();
+    
+                // Navigate to Page1 and replace the current entry in history
+                oRouter.navTo("InitialScreen", { id: this.ID }, true); // Replace history entry
+                
+                // Optionally, you can also clear the history stack completely:
+                history.pushState(null, null, location.href);
+                
             },
 
 

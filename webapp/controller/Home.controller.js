@@ -195,10 +195,10 @@ sap.ui.define([
 
                                     if (oUser === "supervisor") {
 
-                                        that.getRouter().navTo("Supervisor", { id: sResourceId });
+                                        that.getRouter().navTo("Supervisor", { id: sResourceId },true);
                                     }
                                     else {
-                                        that.getRouter().navTo("RouteResourcePage", { id: sResourceId });
+                                        that.getRouter().navTo("RouteResourcePage", { id: sResourceId },true);
                                     }
 
                                 }
@@ -670,7 +670,10 @@ sap.ui.define([
             },
             onSignoutPressedInHomePage: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
+                oRouter.navTo("InitialScreen", { id: this.ID }, true);
+                // if (window.history && window.history.replaceState) {
+                //     window.history.replaceState(null, document.title, window.location.href);
+                // }
 
             },
             onHomePageAvatarPressed: async function (oEvent) {
