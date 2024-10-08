@@ -9,6 +9,8 @@
         draggable="true"
         contentWidth="25%"
         class="boxContainersignup"
+        initialFocus="idFirstnameInput"
+      
     >
         <customHeader>
             <Bar
@@ -88,6 +90,7 @@
                             id="idLableEmployeeno"
                             text="Employee No:"
                             class="LabelHomepageFragmentSignup3"
+
                         />
                         <Label
                             id="idLableMobileno"

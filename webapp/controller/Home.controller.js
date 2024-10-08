@@ -5,10 +5,11 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/core/BusyIndicator",
-    "sap/ui/Device"
+    "sap/ui/Device",
+    "sap/ui/core/UIComponent"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator, Device) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device,UIComponent) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
@@ -20,7 +21,7 @@ sap.ui.define([
                 this.bOtpVerified = false;
                 const huValue = localStorage.getItem("warehouseNo");
                 const userIdValue = localStorage.getItem("resource");
-    
+
                 if (huValue) {
                     this.byId("idHUInput").setValue(huValue);
                 }
@@ -59,8 +60,7 @@ sap.ui.define([
                         this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
 
-                    }
-
+                    } 
                     else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
@@ -75,23 +75,23 @@ sap.ui.define([
                 }
 
             },
-            onSelectCheckBox: function(oEvent) {
+            onSelectCheckBox: function (oEvent) {
                 const isSelected = oEvent.getParameter("selected");
-    
+
                 if (isSelected) {
                     // Save the current input values to localStorage
                     const huInput = this.byId("idHUInput").getValue();
                     const userIdInput = this.byId("idUserIDInput").getValue();
-    
+
                     localStorage.setItem("warehouseNo", huInput);
                     localStorage.setItem("resource", userIdInput);
-                    
+
                     MessageToast.show("Auto Save enabled. Your details will be saved.");
                 } else {
                     // Optionally clear the saved values if unchecked
                     localStorage.removeItem("warehouseNo");
                     localStorage.removeItem("resource");
-                    
+
                     MessageToast.show("Auto Save disabled. Your details will not be saved.");
                 }
             },
@@ -213,6 +213,18 @@ sap.ui.define([
                 } catch (error) {
                     MessageToast.show("An error occurred while checking the user.");
                 }
+            },
+            _onUserDetailsFetched: function (oData) {
+                // Assuming oData contains username, email, and phone number
+                var oUserDetails = {
+                    username: oData.username,
+                    email: oData.email,
+                    mobileno: oData.mobileno
+                };
+
+                // Set the user details to a model for binding in the view
+                var oUserModel = new sap.ui.model.json.JSONModel(oUserDetails);
+                this.getView().setModel(oUserModel, "userDetails");
             },
 
             onClearPress: function () {
@@ -542,10 +554,10 @@ sap.ui.define([
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID },Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID },Animation)
                         }
 
                     }.bind(this),
@@ -631,7 +643,6 @@ sap.ui.define([
                     }
                 });
             },
-
             validateEmail: function (email) {
                 // Regular expression for validating an email address
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
@@ -648,10 +659,38 @@ sap.ui.define([
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
                 }
+            },
+            onBackBtnInHomePage: function (){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+             
+            },
+            onLogoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+ 
+            },
+           onHomePageAvatarPressed: function (oEvent) {
+            if (!this._oPopover) {
+                this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
+                this.getView().addDependent(this._oPopover);
+                this.getView().byId("idTileViewButton").setVisible(false);
             }
+            // Open popover near the avatar
+            this._oPopover.openBy(oEvent.getSource());
+           
+        },
 
-
-
+        onCloseDialogInHomePage: function () {
+            this._pProfileDialog.then(function (oDialog) {
+                oDialog.close();
+            });
+        },
+        onSignoutPressed: function (){
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InitialScreen", { id: this.ID });
+         
+        },
         });
     });
 
