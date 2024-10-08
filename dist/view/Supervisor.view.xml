@@ -23,6 +23,7 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
+                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -30,11 +31,17 @@
                         />
                     </layoutData>
                 </Button>
-                <Label
+                <Image
+                    id="_IDGenImage_supervisor"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- <Label
                     id="idRFScreenHeading"
                     class="Heading"
                     text="RF SCREEN"
-                />
+                /> -->
                 <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                 <ToolbarSpacer id="spacer">
                     <layoutData>
@@ -79,7 +86,7 @@
                     icon="sap-icon://translate"
                     press="onPressLanguageChangeApp"
                 /> -->
-                <Button
+                <!-- <Button
                     id="themeButton"
                     text="Background Theme"
                     press="onOpenThemeDialog"
@@ -100,7 +107,7 @@
                     text="Cancel"
                     press="onCancel"
                     visible="false"
-                />
+                /> -->
 
                 <!-- <Button id="idNotificationButton"
                     icon="sap-icon://bell"
@@ -114,6 +121,21 @@
                         />
                     </customData>
                 </Button> -->
+                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayout_supervisor"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar_supervisor"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
@@ -170,28 +192,27 @@
                 <pages>
                     <ScrollContainer
                         id="pageSV2"
-                        horizontal="true"
                         vertical="true"
-                        height="auto"
-                        class="sapUiContentPadding"
+                        height="100%"
+                        width="100%"
+                        horizontal="true"
                     >
                         <Table
                             id="idRequestedData"
                             alternateRowColors="true"
                             backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
-                            mode="MultiSelect"
-                            class="Allslotsclasstable"
+                            selectionChange="onRowSelect"
+                            mode="SingleSelectLeft"
                             growingScrollToLoad="true"
                             growing="true"
-                            width="450px"
+                            width="40%"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idSlotsTableHeader1">
                                     <Title
                                         id="idTableHeaderTitle1"
                                         text="Requested Data"
-                                        class="Titles"
                                     />
                                     <ToolbarSpacer
                                         id="idUsersInfoToolbarSpacer"
@@ -220,43 +241,64 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <columns>
-                                <Column id="idEmployeeId">
+                                <Column
+                                    id="idEmployeeId"
+                                    width="12em"
+                                >
                                     <Title
                                         id="idtitleEmpID"
                                         text="Resource Id"
                                     />
                                 </Column>
-                                <Column id="idEmployeename">
+                                <Column
+                                    id="idEmployeename"
+                                >
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column id="idResourceType">
+                                <Column
+                                    id="idResourceType"
+                                >
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column id="idPhonenumber">
+                                <Column
+                                    id="idPhonenumber"
+                                >
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
                                     />
                                 </Column>
-                                <Column id="idProcessArea">
+                                <Column id="idEmail">
+                                    <Title
+                                        id="idEmailtitle"
+                                        text="Email"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idProcessArea"
+                                >
                                     <Title
                                         id="idProcessAreatitle"
                                         text="Process Area"
                                     />
                                 </Column>
-                                <Column id="idProcessGroup">
+                                <Column
+                                    id="idProcessGroup"
+                                >
                                     <Title
                                         id="idProcessgrouptitle"
                                         text="Group"
                                     />
                                 </Column>
-                                <Column id="idProcessQueue">
+                                <Column
+                                    id="idProcessQueue"
+                                >
                                     <Title
                                         id="idProcessQueuetitle"
                                         text="Queue"
@@ -285,15 +327,17 @@
                                             id="idPhoneNumberValue"
                                             text="{Phonenumber}"
                                         />
-                                        <!-- <Input
-                                            id="idProcessAreaValue"
-                                            visible="true"
-                                            value="{Area}"
-                                        /> -->
+                                        <Text
+                                            id="idEmailValue"
+                                            text="{Email}"
+                                        />
+
                                         <MultiComboBox
                                             id="idProcessAreaValue"
                                             items="{path: '/ProcessAreaSet'}"
                                             selectionChange="onSelectTableProcesAarea"
+                                            visible="false"
+                                            maxWidth="20%"
                                         >
                                             <core:Item
                                                 class="dropdown"
@@ -339,7 +383,7 @@
                         id="pageSV3"
                         horizontal="true"
                         vertical="true"
-                        height="auto"
+                        height="400px"
                         class="sapUiContentPadding"
                     >
                         <Table
@@ -350,7 +394,8 @@
                             growingScrollToLoad="true"
                             growing="true"
                             class="Allslotsclasstable"
-                            width="450px" 
+                            width="auto"
+                            sticky="ColumnHeaders"
                         >
                             <headerToolbar>
                                 <OverflowToolbar id="idUsersInfoHeade">
@@ -358,9 +403,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <!-- <ToolbarSpacer
-                                        id="idUsersInfoToolbarSpace"
-                                    />
+                                    <ToolbarSpacer />
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -373,27 +416,18 @@
                                             />
                                         </layoutData>
                                     </SearchField>
-<Button
-                                        id="idBtnEd2"
-                                        tooltip="Approve"
-                                        text="Approve"
-                                        type="Accept"
-                                        press="onUpdateUserBtnPress"
-                                    />
                                     <Button
-                                        id="idBtnEdi"
-                                        tooltip="Reject"
-                                        text="Reject"
-                                        type="Reject"
-                                        press="onUpdateUserBtnPress"
-                                    /> -->
+                                        id="idBtnSelectFields"
+                                        text="Select Fields"
+                                        press="onSelectFieldsPress"
+                                    />
                                 </OverflowToolbar>
                             </headerToolbar>
- 
+
                             <columns>
                                 <Column
-                                    id="idRDEmpIdCol"
-                                    width="10%"
+                                    id="idresourceid"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmpIdTitle"
@@ -401,8 +435,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDEmpNameCol"
-                                    width="10%"
+                                    id="idresourcename"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmpNameTitle"
@@ -410,8 +444,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDAreaCol"
-                                    width="10%"
+                                    id="idarea"
+                                    width="150px"
                                 >
                                     <Title
                                         id="idRDAreaColTitle"
@@ -419,8 +453,8 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDGroupCol"
-                                    width="25%"
+                                    id="idgroup"
+                                    width="350px"
                                 >
                                     <Title
                                         id="idRDGroupTitle"
@@ -428,8 +462,9 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDResourceTypeCol"
-                                    width="12%"
+                                    id="idresourcetype"
+                                    width="100px"
+
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -437,35 +472,25 @@
                                     />
                                 </Column>
                                 <Column
-                                    id="idRDEmailCol"
-                                    width="10%"
+                                    id="idemail"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDEmailTitle"
                                         text="Email"
                                     />
                                 </Column>
- 
                                 <Column
-                                    id="idRDPhoneNoCol"
-                                    width="15%"
+                                    id="idphonenumber"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idRDPhoneNoTitle"
                                         text="Phone Number"
                                     />
                                 </Column>
- 
-                                <!-- <Column
-                                    id="idPasswordCol1"
-                                    width="13%"
-                                >
-                                    <Title
-                                        id="idPasswordTitl1e"
-                                        text="Password"
-                                    />
-                                </Column> -->
                             </columns>
+
                             <items>
                                 <ColumnListItem id="idRDEmpIdColListItem">
                                     <cells>
@@ -497,21 +522,6 @@
                                             id="idRDPhoneNoColValue"
                                             text="{Phonenumber}"
                                         />
- 
-                                        <!-- <Text
-                                            id="idRDPasswordColValue"
-                                            text="{Password}"
-                                        />
- 
-                                        <Text
-                                            id="idUserQueueColValue"
-                                            text="{Queue}"
-                                        />
- 
-                                        <Text
-                                            id="idRDExpiredDateColValue"
-                                            text="{Expirydate}"
-                                        /> -->
                                     </cells>
                                 </ColumnListItem>
                             </items>

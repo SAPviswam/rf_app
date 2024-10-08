@@ -5,20 +5,34 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/core/BusyIndicator",
-    "sap/ui/Device"
+    "sap/ui/Device",
+    "sap/ui/core/UIComponent",
+    "sap/m/Popover",
+    "sap/ui/core/Fragment"
 
 ],
-    function (Controller, MessageBox, MessageToast, BusyIndicator,Device) {
+    function (Controller, MessageBox, MessageToast, BusyIndicator, Device, UIComponent, Popover, Fragment) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
-                this.bOtpVerified = false;
+                this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
+                console.log(this.isTablet)
 
-                var sUsername = localStorage.getItem("username");
-                var sPassword = localStorage.getItem("password");
-                var bAutoSave = localStorage.getItem("autoSave") === "true";
+                this.bOtpVerified = false;
+                const huValue = localStorage.getItem("warehouseNo");
+                const userIdValue = localStorage.getItem("resource");
+
+                if (huValue) {
+                    this.byId("idHUInput").setValue(huValue);
+                }
+                if (userIdValue) {
+                    this.byId("idUserIDInput").setValue(userIdValue);
+                }
+                // var sUsername = localStorage.getItem("username");
+                // var sPassword = localStorage.getItem("password");
+                // var bAutoSave = localStorage.getItem("autoSave") === "true";
 
                 // if (sUsername) {
                 //     this.getView().byId("idUserIDInput").setValue(sUsername);
@@ -40,31 +54,48 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
-                if (Device.system.phone){
+                if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarHome").setWidth("25%");
-                        this.byId("idImageLogoAvatarHome").setHeight("45%");
+                        this.byId("idImageLogoAvatarHome").setWidth("42.5%");
+                        this.byId("idImageLogoAvatarHome").setHeight("45.5%");
+                        this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
-    
-                    } else {
+
+                    }
+                    else {
                         // Non-iPhone phones
                         // this.byId("idImageLogoAvatarHome").setWidth("85%");
                         // this.byId("idImageLogoAvatarHome").setHeight("35%");
                     }
                 }
-                $(document).on("keydown", this.HomeFunctionKeysPress.bind(this));
-                this.isActive = true;
-            },
-            HomeFunctionKeysPress: function (event) {
-                if (event.key === "Enter") {
-                    this.EnterKeyPressforHome();
-                    event.preventDefault();
-
+                else if (Device.system.tablet) {
+                    this.byId("environmentButtonsHBoxHome").setWidth("40%");
                 }
+                else {
+                    this.byId("environmentButtonsHBoxHome").setWidth("23%");
+                }
+
             },
-            EnterKeyPressforHome: function () {
-                this.onPressConnectButton();
+            onSelectCheckBox: function (oEvent) {
+                const isSelected = oEvent.getParameter("selected");
+
+                if (isSelected) {
+                    // Save the current input values to localStorage
+                    const huInput = this.byId("idHUInput").getValue();
+                    const userIdInput = this.byId("idUserIDInput").getValue();
+
+                    localStorage.setItem("warehouseNo", huInput);
+                    localStorage.setItem("resource", userIdInput);
+
+                    MessageToast.show("Auto Save enabled. Your details will be saved.");
+                } else {
+                    // Optionally clear the saved values if unchecked
+                    localStorage.removeItem("warehouseNo");
+                    localStorage.removeItem("resource");
+
+                    MessageToast.show("Auto Save disabled. Your details will not be saved.");
+                }
             },
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -185,29 +216,36 @@ sap.ui.define([
                     MessageToast.show("An error occurred while checking the user.");
                 }
             },
-
             onClearPress: function () {
                 var oView = this.getView();
                 oView.byId("idUserIDInput").setValue("");
                 oView.byId("idPasswordInput").setValue("");
             },
             //-------------------------------------------------------------------------- Signup logic--------------------------------------------------------------------------
-            /*Loading Signup Fragment */
-            onPressSignupBtn: async function () {
-                this.oSignupForm ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.SignUpDetails"
-                })
-                this.oSignupForm.open();
-            },
-            /*Close Signup Form */
-            oncancelsignupPress: function () {
-                this.oSignupForm.close();
-            },
 
+            // /*Loading Signup Fragment */
+            onPressSignupBtn: async function () {
+                // Check if the signup form fragment is already created
+                if (!this.oSignupForm) {
+                    // Load the fragment and set it as a property of the controller
+                    this.oSignupForm = sap.ui.xmlfragment("com.app.rfapp.fragments.SignUpDetails", this);
+
+                    // Add the fragment as a dependent to the view
+                    this.getView().addDependent(this.oSignupForm);
+                }
+                // Open the signup form fragment
+                await this.oSignupForm.open();
+            },
+            // /*Close Signup Form */
+            oncancelsignupPress: function () {
+                // Close the signup form fragment
+                if (this.oSignupForm) {
+                    this.oSignupForm.close();
+                }
+            },
             onVerify: function () {
                 // Get the phone number from the input field
                 var sPhoneNumber = this.byId("idInputPhoneNumber").getValue();
-
                 // Basic validation to ensure the phone number is entered
                 if (!sPhoneNumber) {
                     sap.m.MessageToast.show("Please enter a valid phone number.");
@@ -508,15 +546,16 @@ sap.ui.define([
 
             onPressConnectButton: function () {
                 var oModel = this.getOwnerComponent().getModel();
+                this.getView().getModel().refresh()
                 oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID }, Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID })
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID }, Animation)
                         }
 
                     }.bind(this),
@@ -602,8 +641,7 @@ sap.ui.define([
                     }
                 });
             },
-
-            validateEmail: function(email) {
+            validateEmail: function (email) {
                 // Regular expression for validating an email address
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
                 return re.test(email);  // Returns true if valid, false otherwise
@@ -619,10 +657,124 @@ sap.ui.define([
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
                 }
-            }
+            },
+            onLogoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
 
+            },
+            onBackBtnInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
 
+            },
+            onSignoutPressedInHomePage: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
 
+            },
+            onHomePageAvatarPressed: async function (oEvent) {
+                debugger;
+
+                if (!this._oPopover) {
+                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+                    this.getView().addDependent(this._oPopover)
+                }
+                // Open popover near the avatar
+                await this._oPopover.openBy(oEvent.getSource());
+                var This = this;
+
+                // Get the model (assuming it's an OData model)
+                var oModel1 = this.getOwnerComponent().getModel();
+
+                // Read data using OData model
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        //let oUser = oData.Users.toLowerCase();
+
+                        //if (oUser === "resource") {
+                        var oProfileData = {
+                            Name: oData.Resourcename, // Assuming this is the field you want to bind
+                            Number: oData.Phonenumber// Add a fallback if 'ContactNumber' is missing
+                        };
+
+                        // Bind data to the popover
+                        var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
+                        This._oPopover.setModel(oPopoverModel, "profile");
+                        // } else {
+                        //     MessageToast.show("User is not a resource.");
+                        // }
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+            },
+
+            onCloseDialogInHomePage: function () {
+                this._oPopover.then(function (oDialog) {
+                    oDialog.close();
+                    oDialog.destroy();
+                });
+            },
+            onAccountDetailsPressedInHomePage: function () {
+                var oView = this.getView();
+                if (!(this.byId("idUserDetails"))) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function (oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                        oDialog.open();
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+
+                var that = this; // Preserves the correct context of 'this'
+
+                var oModelRead = this.getOwnerComponent().getModel();
+
+                // Read data using OData model
+                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        // let oUser = oData.Users.toLowerCase();
+
+                        // if (oUser === "resource") {
+                        var oProfileDialogData = {
+                            Id: oData.Resourceid,
+                            Name: oData.Resourcename,
+                            Email: oData.Email,
+                            Number: oData.Phonenumber // Assuming this is the field you want to bind
+                        };
+
+                        // Bind data to the dialog (use 'that' instead of 'This')
+                        var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
+                        that.byId("idUserDetails").setModel(oPopoverModel, "profile");
+                        // } else {
+                        //     MessageToast.show("User is not a resource.");
+                        // }
+                    },
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    },
+                });
+
+            },
+            onCloseUSerDetailsDialog: function () {
+                this.byId("idUserDetails").close();
+            },
+            onSignoutPressed: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("InitialScreen", { id: this.ID });
+
+            },
         });
     });
 
