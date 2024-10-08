@@ -1939,8 +1939,6 @@ sap.ui.define([
                     oRouter.navTo("ProductInspectionByHU", { id: this.ID });
                 }
             },
-
-
             onProductInspectionByStorageBinPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1959,16 +1957,23 @@ sap.ui.define([
                     oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
             },
-
-            onProductInspectionByStorageBinPress: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            onHUMaintenanceInDeconsolidation: function (oEvent) {
+                debugger
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
+                }
             },
-           
-    
-                    
- 
-
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
@@ -1977,7 +1982,5 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
-
-
         });
     });

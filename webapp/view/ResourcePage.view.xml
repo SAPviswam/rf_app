@@ -221,7 +221,7 @@
                     id="id_humaintenance1"
                     class="sapUiTinyMargin"
                     header="HU Maintenance"
-                    press="onHUMaintenancePress"
+                    press="onHUMaintenanceInDeconsolidation"
                     visible="false"
                 />
 
