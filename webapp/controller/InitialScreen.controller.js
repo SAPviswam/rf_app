@@ -116,7 +116,8 @@ sap.ui.define([
                 }
                 else if (Device.system.tablet) {
                     this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
-                    this.byId("LoginButton_CS").setWidth("92%");
+                    this.byId("LoginButton_CS").setWidth("90.5%");
+                    this.byId("idRouterStringInput_CS").setWidth("106%");
                 }
 
 
