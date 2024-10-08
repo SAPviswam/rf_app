@@ -216,41 +216,36 @@ sap.ui.define([
                     MessageToast.show("An error occurred while checking the user.");
                 }
             },
-            _onUserDetailsFetched: function (oData) {
-                // Assuming oData contains username, email, and phone number
-                var oUserDetails = {
-                    username: oData.username,
-                    email: oData.email,
-                    mobileno: oData.mobileno
-                };
-
-                // Set the user details to a model for binding in the view
-                var oUserModel = new sap.ui.model.json.JSONModel(oUserDetails);
-                this.getView().setModel(oUserModel, "userDetails");
-            },
-
             onClearPress: function () {
                 var oView = this.getView();
                 oView.byId("idUserIDInput").setValue("");
                 oView.byId("idPasswordInput").setValue("");
             },
             //-------------------------------------------------------------------------- Signup logic--------------------------------------------------------------------------
-            /*Loading Signup Fragment */
-            onPressSignupBtn: async function () {
-                this.oSignupForm ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.SignUpDetails"
-                })
-                this.oSignupForm.open();
-            },
-            /*Close Signup Form */
-            oncancelsignupPress: function () {
-                this.oSignupForm.close();
-            },
 
+            // /*Loading Signup Fragment */
+            onPressSignupBtn: async function () {
+                // Check if the signup form fragment is already created
+                if (!this.oSignupForm) {
+                    // Load the fragment and set it as a property of the controller
+                    this.oSignupForm = sap.ui.xmlfragment("com.app.rfapp.fragments.SignUpDetails", this);
+
+                    // Add the fragment as a dependent to the view
+                    this.getView().addDependent(this.oSignupForm);
+                }
+                // Open the signup form fragment
+                await this.oSignupForm.open();
+            },
+            // /*Close Signup Form */
+            oncancelsignupPress: function () {
+                // Close the signup form fragment
+                if (this.oSignupForm) {
+                    this.oSignupForm.close();
+                }
+            },
             onVerify: function () {
                 // Get the phone number from the input field
                 var sPhoneNumber = this.byId("idInputPhoneNumber").getValue();
-
                 // Basic validation to ensure the phone number is entered
                 if (!sPhoneNumber) {
                     sap.m.MessageToast.show("Please enter a valid phone number.");
@@ -686,7 +681,7 @@ sap.ui.define([
                     this.getView().addDependent(this._oPopover)
                 }
                 // Open popover near the avatar
-               await this._oPopover.openBy(oEvent.getSource());
+                await this._oPopover.openBy(oEvent.getSource());
                 var This = this;
 
                 // Get the model (assuming it's an OData model)
