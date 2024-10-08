@@ -7,9 +7,10 @@ sap.ui.define([
     "sap/m/library",
     "sap/m/MessageToast",
     "sap/ui/core/UIComponent",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/core/routing/History"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History) {
 
         "use strict";
 
@@ -36,13 +37,13 @@ sap.ui.define([
                 this._currentTileId = null;
             },
             onResourceDetailsLoad: async function (oEvent1) {
-        
+
                 const { id } = oEvent1.getParameter("arguments");
-        
+
                 this.ID = id;
-        
-              },
-              
+
+            },
+
 
 
             onAfterRendering: function () {
@@ -143,7 +144,7 @@ sap.ui.define([
                             sap.m.MessageToast.show("Settings reset to default.");
                             window.location.reload();
                         } else {
-                            MessageToast.show("Reset to default settings cancelled.");    
+                            MessageToast.show("Reset to default settings cancelled.");
                         }
                     }
                 });
@@ -452,10 +453,10 @@ sap.ui.define([
             onLanguageSelect: function (oEvent) {
                 // Get the selected button text
                 var sLanguage = oEvent.getSource().getText();
-            
+
                 // Define the message based on the selected language
                 var sSpeechText = "";
-                
+
                 switch (sLanguage) {
                     case "English":
                         sSpeechText = "You have chosen English language.";
@@ -472,19 +473,19 @@ sap.ui.define([
                     default:
                         sSpeechText = "Language selection failed.";
                 }
-                
+
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
-            
+
                 // Close the popover after selection
                 this._oPopover.close();
             },
-            
+
             // Function to handle sound announcements
-            _announceLanguageSelection: function(speechText) {
+            _announceLanguageSelection: function (speechText) {
                 if ('speechSynthesis' in window) {
                     var speech = new SpeechSynthesisUtterance(speechText);
-                    
+
                     // Optional: Set the language of the speech
                     if (speechText.includes("हिंदी")) {
                         speech.lang = 'hi-IN'; // Hindi language setting
@@ -495,13 +496,13 @@ sap.ui.define([
                     } else {
                         speech.lang = 'en-US'; // English as default
                     }
-                    
+
                     window.speechSynthesis.speak(speech);
                 } else {
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
-            
+
 
             // Theme press from profile 
 
@@ -787,7 +788,7 @@ sap.ui.define([
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("Receivingofhubyco", { id: this.ID });
-                    
+
                 }
             },
             onManuallyRepackHUItemPress: function (oEvent) {
@@ -1190,37 +1191,37 @@ sap.ui.define([
             // },
             onSBQPAvatarPressed: function (oEvent) {
                 debugger;
-            
+
                 // Reference to the current instance
                 var This = this;
-            
+
                 // Get the model (assuming it's an OData model)
                 var oModel1 = this.getOwnerComponent().getModel();
-            
+
                 // Read data using OData model
                 oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         // Assuming 'Users' and 'Resourceid' are available in the oData response
                         let oUser = oData.Users.toLowerCase();
-            
+
                         if (oUser === "resource") {
                             var oProfileData = {
                                 Name: oData.Resourcename, // Assuming this is the field you want to bind
                                 Number: oData.Phonenumber // Add a fallback if 'ContactNumber' is missing
                             };
-            
+
                             // Bind data to the popover
                             var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
-            
+
                             // Check if the popover is already created
                             if (!This._oPopover) {
                                 This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
                                 This.getView().addDependent(This._oPopover);
                             }
-            
+
                             // Now that the popover exists, set the model
                             This._oPopover.setModel(oPopoverModel, "profile");
-            
+
                             // Open popover near the avatar
                             This._oPopover.openBy(oEvent.getSource());
                         } else {
@@ -1232,25 +1233,25 @@ sap.ui.define([
                     }
                 });
             },
-            
 
 
 
-            onProfilePressed: function() {
+
+            onProfilePressed: function () {
                 debugger;
                 var oView = this.getView();
-            
+
                 // Save reference to 'this'
                 var that = this; // Preserves the correct context of 'this'
-            
+
                 var oModelRead = this.getOwnerComponent().getModel();
-            
+
                 // Read data using OData model
                 oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function(oData) {
+                    success: function (oData) {
                         // Assuming 'Users' and 'Resourceid' are available in the oData response
                         let oUser = oData.Users.toLowerCase();
-            
+
                         if (oUser === "resource") {
                             var oProfileDialogData = {
                                 Id: oData.Resourceid,
@@ -1258,7 +1259,7 @@ sap.ui.define([
                                 Email: oData.Email,
                                 Number: oData.Phonenumber // Assuming this is the field you want to bind
                             };
-            
+
                             // Bind data to the dialog (use 'that' instead of 'This')
                             var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
                             that.byId("idUserDetails").setModel(oPopoverModel, "profile");
@@ -1266,12 +1267,12 @@ sap.ui.define([
                             MessageToast.show("User is not a resource.");
                         }
                     },
-                    error: function() {
+                    error: function () {
                         MessageToast.show("User does not exist");
                     }
                 });
 
-    
+
                 // Check if the dialog already exists
                 if (!this.byId("idUserDetails")) {
                     // Load the fragment asynchronously
@@ -1279,16 +1280,16 @@ sap.ui.define([
                         id: oView.getId(),
                         name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
                         controller: this
-                    }).then(function(oDialog) {
+                    }).then(function (oDialog) {
                         // Add the dialog to the view
                         oView.addDependent(oDialog);
-                       var Oopen = oDialog.open();
-                        if(Oopen){
-                             // Reference to the current instance
-               
-          
-                // Get the model (assuming it's an OData model)
-                
+                        var Oopen = oDialog.open();
+                        if (Oopen) {
+                            // Reference to the current instance
+
+
+                            // Get the model (assuming it's an OData model)
+
                         }
                     });
                 } else {
@@ -1463,9 +1464,9 @@ sap.ui.define([
                     // this.onBackgroundTilePopOverThemeBtn();
                     this.onBackgroundTilePopOverThemeBtn()
 
-                }else{
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("WTQueryByWT", { id: this.ID });
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByWT", { id: this.ID });
                 }
             },
             onCreateandConfirmAdhocProductWTPress: function (oEvent) {
@@ -1891,23 +1892,35 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-     
+            onSetReadyforWHprocessingbyBOLPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WHProcessingByBOL", { id: this.ID });
+            },
+            onCreateandConfirmAdhocHUWTPress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
+            },
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
             onSignoutPressed: function () {
-    //             history.pushState(null, null, location.href);
-    // history.back();
+                //             history.pushState(null, null, location.href);
+                // history.back();
                 // var oRouter = UIComponent.getRouterFor(this);
                 // oRouter.navTo("InitialScreen", { id: this.ID },true);
-                var oRouter = this.getOwnerComponent().getRouter();
-    
-                // Navigate to Page1 and replace the current entry in history
-                oRouter.navTo("InitialScreen", { id: this.ID }, true); // Replace history entry
-                
+                // var oRouter = this.getOwnerComponent().getRouter();
+                // var oHistory = History.getInstance();
+                // var sPreviousHash = oHistory.getPreviousHash();
+
+                // if (sPreviousHash !== undefined) {
+                //     window.history.go(-1);
+                // } else {
+                    // Navigate to Page1 and replace the current entry in history
+                    oRouter.navTo("InitialScreen", { id: this.ID }, true); // Replace history entry
+                // }
                 // Optionally, you can also clear the history stack completely:
-                history.pushState(null, null, location.href);
-                
+                //history.pushState(null, null, location.href);
+
             },
 
 
