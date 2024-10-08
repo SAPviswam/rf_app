@@ -63,13 +63,13 @@
                             <Input
                                 id="idUsernameInput_cl"
                                 placeholder="username"
-                                width="7rem"
+                                width="100%"
                                 editable="true"
                             />
                             <Input
                                 id="idUserIDInput_cl"
                                 placeholder="password"
-                                width="7rem"
+                                width="100%"
                                  editable="true"
                             />
                         </VBox>
