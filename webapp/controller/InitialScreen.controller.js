@@ -40,7 +40,8 @@ sap.ui.define([
                 else if (Device.system.tablet) {
                     this.byId("environmentButtonsHBox").setWidth("40%");
                 }
-
+                $(document).on("keydown", this.FunctionKeysPress.bind(this));
+                this.isActive = true;
             },
         
             FunctionKeysPress: function (event) {
