@@ -106,6 +106,13 @@
     padding-bottom: 1rem;
     width: 23% !important;
 }
+.boxContainerhome{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    width: 23% !important;
+}
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
     user-select: none !important; /* Prevent text selection */
@@ -130,6 +137,13 @@
     width: 40% !important;
 }
 .boxContainer2 {
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important; 
+    width: auto !important;
+    /* padding-bottom: 4rem; */
+}
+.boxContainerlogin {
     border-bottom: 2px solid #ed731dd2 !important;
     /* Add border width, style, and color */
     padding: auto !important; 
@@ -221,6 +235,10 @@
     width: 100%; /* Default to full width */
     padding: 0; /* Default padding */
 }
+.boxContainerhome{
+    width: 100%; /* Default to full width */
+    padding: 0; /* Default padding */
+}
 
 .boxContainer3 {
     width: auto; /* Default width */
@@ -231,8 +249,21 @@
     padding: 0; /* Default padding */
     width: auto; /* Default width */
 }
+.boxContainerlogin {
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
+}
+.boxContainerhome{
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
+}
 
 .capModelRFText {
+    font-size: 1.5em; /* Default font size */
+}
+.capModelRFTextlogin{
     font-size: 1.5em; /* Default font size */
 }
 
@@ -254,6 +285,10 @@
         width: 85% !important; /* Full width on mobile */
         padding: 0 !important; /* Adjust padding */
     }
+    .boxContainerhome {
+        width: 85% !important; /* Full width on mobile */
+        padding: 0 !important; /* Adjust padding */
+    }
     .boxContainer3 {
         width: auto !important; /* Full width on mobile */
         padding: 0 !important; /* Adjust padding */
@@ -263,7 +298,22 @@
         padding: 0 !important; 
         width: auto !important;
     }
+    .boxContainerlogin {
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important; 
+        width: auto !important;
+    }
+    .boxContainerhome{
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important; 
+        width: auto !important;
+    }
     .capModelRFText {
+        font-size: 1.2em; /* Increase font size for better readability */
+        margin-left: 10px; /* Adjust left margin */
+        margin-top: 15px; /* Adjust top margin */
+    }
+    .capModelRFTextlogin{
         font-size: 1.2em; /* Increase font size for better readability */
         margin-left: 10px; /* Adjust left margin */
         margin-top: 15px; /* Adjust top margin */
@@ -290,6 +340,11 @@
         font-size: 1.3em; /* Adjust font size */
         margin-left: 5%; /* Adjust left margin */
     }
+    .capModelRFTextlogin {
+        font-size: 1.3em; /* Adjust font size */
+        margin-left: 5%; /* Adjust left margin */
+    }
+
     .button {
         width: 90%; /* Slightly narrower buttons */
         margin-left: auto; /* Center button */
@@ -309,7 +364,16 @@
         width: 90% !important; /* Maintain good width */
         
     }
+    .boxContainerhome {
+        width: 90% !important; /* Maintain good width */
+        
+    }
+
     .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .capModelRFTextlogin {
         font-size: 1.4em; /* Adjust font size */
         margin-left: 10px; /* Adjust left margin */
     }
@@ -329,7 +393,14 @@
     .boxContainer {
         width: 90% !important; /* Maintain good width */
     }
+    .boxContainerhome {
+        width: 90% !important; /* Maintain good width */
+    }
     .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .capModelRFTextlogin {
         font-size: 1.4em; /* Adjust font size */
         margin-left: 10px; /* Adjust left margin */
     }
@@ -723,6 +794,11 @@ margin-right: 15%;
 .moveRight {
     margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
 }
+
+.Signupcard{
+    margin-right: 30%;
+}
+
 
 
 

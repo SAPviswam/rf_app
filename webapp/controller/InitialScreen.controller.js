@@ -87,6 +87,7 @@ sap.ui.define([
                 }
             },
             handleLinksapPress: async function () {
+                
                 debugger
                 // Load the SAP connection fragment if it hasn't been loaded yet
                 this.oConnetSap ??= await this.loadFragment({
@@ -112,6 +113,7 @@ sap.ui.define([
             },
             _attachFocusToInputsforlogon: function() {
                 var aInputIds = [
+
                     "idUserInput_CS",
                     "idSystemIdInput",
                     "idLanguageSelectorMultiComboBox_CS",

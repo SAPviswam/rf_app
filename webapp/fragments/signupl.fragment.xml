@@ -1,0 +1,122 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idconnectsapdialogbox_fg"
+        resizable="true"
+        draggable="true"
+        contentWidth="25%"
+        class="boxContainer"
+    >
+        <customHeader>
+            <Bar
+                id="idBar_fg"
+                class="TitlecustomHeader"
+            >
+                <contentLeft>
+                    <!-- Logo -->
+                    <Image
+                        id="idLogoImage_fg"
+                        src="https://artihcus.com/assets/img/AG-logo.png"
+                        width="85%"
+                        height="60%"
+                    />
+                </contentLeft>
+                <!-- Title -->
+                <contentMiddle>
+                    <Title
+                        id="idTitle_fg"
+                        text="CAPmodel RF"
+                        class="capModelRFTextdialog"
+                    />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <form:SimpleForm
+                id="idForm_fg"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                emptySpanXL="1"
+                emptySpanL="1"
+                emptySpanM="1"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="1"
+            >
+                <VBox
+                    id="idVBox1_fg"
+                    width="72%"
+                    class="sapUiLargeMarginEnd sapUiLargeMarginBegin  sapUiSmallMarginTop"
+                >
+                    <VBox
+                        id="idVBox2_fg"
+                        width="100%"
+                        class="sapUiSmallMargin"
+                    >
+                        <VBox alignItems="Center" 
+                        class="Signupcard"
+                        >
+                            <!-- User Input -->
+                            <Input
+                                id="idUserInput_fg"
+                                value="{}"
+                                placeholder="User"
+                                class="customInput"
+                                width="115%"
+                            />
+                            <!-- Password Input -->
+                            <Input
+                                id="idPasswordInput_fg"
+                                type="Email"
+                                placeholder="Email"
+                                width="115%"
+                            />
+                            <Input
+                                id="idPasswordInput_fg11"
+                                type="Password"
+                                placeholder="Password"
+                                width="115%"
+                            />
+                            <Input
+                                id="idPasswordInput_fg1"
+                                type="Password"
+                                placeholder="confirm password"
+                                width="115%"
+                            />
+                        </VBox>
+                        <HBox
+                            id="idHBoxForgot_cl1"
+                            justifyContent="Center"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop"
+                        >
+                            <Button
+                                id="idchangequeue_cl11"
+                                text="Signup"
+                                type="Default"
+                                press="onPressCancleSapLogon"
+                            />
+                            <Text width="0.5rem" />
+                            <Button
+                                id="idchangequeue_cl111"
+                                text="cancel"
+                                type="Default"
+                                press="onpresscancel"
+                            />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </form:SimpleForm>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
