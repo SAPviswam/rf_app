@@ -24,8 +24,8 @@ sap.ui.define([
                 if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarinitial").setWidth("22%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("28%");
+                        this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+                        this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
                         // this.byId("initialscreentitle").setMarginRight("25%")
                         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
                         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
@@ -40,36 +40,16 @@ sap.ui.define([
                 else if (Device.system.tablet) {
                     this.byId("environmentButtonsHBox").setWidth("40%");
                 }
-                $(document).on("keydown", this.FunctionKeysPress.bind(this));
-                this.isActive = true;
             },
-        
-            FunctionKeysPress: function (event) {
-                if (event.key === "F1") {
-                    this.handleAddPressfragment();
-                    event.preventDefault();
 
-                }
-                else if (event.key === "F2") {
-                    this.handleEditPressfragment();
-                    event.preventDefault();
-                }
-                else if (event.key === "F4") {
-                    this.handleDeletePressfragment();
-                    event.preventDefault();
-                }
-            },
-            onTouchEnd: function (oEvent) {
-                // Cleanup if necessary
-            },
-            handleAddPressfragment: function () {
+            onSave:function(){
                 this.handleLinksapPress();
             },
-            handleEditPressfragment: async function () {
-                await this.onEditConfiguredSystem();
-            },
-            handleDeletePressfragment: function () {
+            onDelete:function(){
                 this.onDeleteConfiguredSystem();
+            },
+            onEdit: async function(){
+                await this.onEditConfiguredSystem();
             },
             onsapCancelPress: function () {
                 this.oConfigSap.close();
@@ -92,8 +72,8 @@ sap.ui.define([
 
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("_IDGenImage_CS").setWidth("18%");
-                        this.byId("_IDGenImage_CS").setHeight("35%");
+                        this.byId("_IDGenImage_CS").setWidth("25.5%");
+                        this.byId("_IDGenImage_CS").setHeight("50.5%");
                         this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("78.5%");
                         this.byId("LoginButton_CS").setWidth("78.5%");
                         this.byId("LoginButton_CS").setHeight("100%");
@@ -117,8 +97,7 @@ sap.ui.define([
                 }
                 else if (Device.system.tablet) {
                     this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
-                    this.byId("LoginButton_CS").setWidth("90.5%");
-                    this.byId("idRouterStringInput_CS").setWidth("106%");
+                    this.byId("LoginButton_CS").setWidth("92%");
                 }
 
 
