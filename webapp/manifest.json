@@ -71,6 +71,17 @@
         "sap.ushell": {}
       }
     },
+    "commands": {
+			"Save": {
+				"shortcut": "F1"
+			},
+			"Delete": {
+				"shortcut": "F4"
+			},
+      "Edit": {
+				"shortcut": "F2"
+			}
+		},
     "contentDensities": {
       "compact": true,
       "cozy": true
