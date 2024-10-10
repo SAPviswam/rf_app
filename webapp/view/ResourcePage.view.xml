@@ -217,6 +217,7 @@
                         visible="false"
                     />
 
+
                     <GenericTile
                         id="id_humaintenance1"
                         class="sapUiTinyMargin"
@@ -224,6 +225,8 @@
                         press="onHUMaintenancePress"
                         visible="false"
                     />
+
+
 
                     <!-- <VBox>
                     <Title

@@ -16,7 +16,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
 
                 // Initialize JSON Model
                 var oModel = new JSONModel();
@@ -35,6 +35,16 @@ sap.ui.define([
                 this.EditCall = false;
                 this._currentTileId = null;
             },
+            onResourceDetailsLoad: async function (oEvent1) {
+        
+                const { id } = oEvent1.getParameter("arguments");
+        
+                this.ID = id;
+        
+              },
+              
+
+
             onAfterRendering: function () {
                 // Apply stored theme color
                 var sStoredThemeColor = localStorage.getItem("themeColor");
@@ -121,10 +131,26 @@ sap.ui.define([
                 }
             },
             onChatbotButtonPress: function () {
-                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4");
+            },
+            onResetToDefaultPress: function () {
+                sap.m.MessageBox.warning("Reset to default settings ?", {
+                    title: "Default settings",
+                    actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+                    onClose: function (status) {
+                        if (status === sap.m.MessageBox.Action.OK) {
+                            localStorage.clear();
+                            sap.m.MessageToast.show("Settings reset to default.");
+                            window.location.reload();
+                        } else {
+                            MessageToast.show("Reset to default settings cancelled.");    
+                        }
+                    }
+                });
+
             },
             onEditTileNamePress: function () {
-                if(this.Themecall){
+                if (this.Themecall) {
                     sap.m.MessageBox.information("Please exit from theme mode first")
                     return;
                 }
@@ -502,7 +528,7 @@ sap.ui.define([
             // on Tile theme select 
 
             onTileThemeSelect: function () {
-                if(this.EditCall){
+                if (this.EditCall) {
                     sap.m.MessageBox.information("Please exit from edit mode first")
                     return;
                 }
@@ -697,7 +723,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -715,7 +741,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -733,7 +759,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -751,7 +777,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -770,7 +796,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -788,7 +814,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -806,7 +832,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -824,7 +850,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -842,7 +868,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -860,7 +886,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -878,7 +904,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -896,7 +922,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -914,7 +940,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -932,7 +958,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -950,7 +976,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -968,7 +994,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -986,7 +1012,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1004,7 +1030,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1022,7 +1048,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1040,7 +1066,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1058,7 +1084,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1076,7 +1102,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1094,7 +1120,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1112,7 +1138,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1130,7 +1156,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1163,19 +1189,114 @@ sap.ui.define([
             //     });
             // },
             onSBQPAvatarPressed: function (oEvent) {
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", this);
-                    this.getView().addDependent(this._oPopover);
-                }
-                // Open popover near the avatar
-                this._oPopover.openBy(oEvent.getSource());
-            },
-
-            onCloseDialog: function () {
-                this._pProfileDialog.then(function (oDialog) {
-                    oDialog.close();
+                debugger;
+            
+                // Reference to the current instance
+                var This = this;
+            
+                // Get the model (assuming it's an OData model)
+                var oModel1 = this.getOwnerComponent().getModel();
+            
+                // Read data using OData model
+                oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        let oUser = oData.Users.toLowerCase();
+            
+                        if (oUser === "resource") {
+                            var oProfileData = {
+                                Name: oData.Resourcename, // Assuming this is the field you want to bind
+                                Number: oData.Phonenumber // Add a fallback if 'ContactNumber' is missing
+                            };
+            
+                            // Bind data to the popover
+                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
+            
+                            // Check if the popover is already created
+                            if (!This._oPopover) {
+                                This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
+                                This.getView().addDependent(This._oPopover);
+                            }
+            
+                            // Now that the popover exists, set the model
+                            This._oPopover.setModel(oPopoverModel, "profile");
+            
+                            // Open popover near the avatar
+                            This._oPopover.openBy(oEvent.getSource());
+                        } else {
+                            MessageToast.show("User is not a resource.");
+                        }
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
                 });
             },
+            
+
+
+
+            onProfilePressed: function() {
+                debugger;
+                var oView = this.getView();
+            
+                // Save reference to 'this'
+                var that = this; // Preserves the correct context of 'this'
+            
+                var oModelRead = this.getOwnerComponent().getModel();
+            
+                // Read data using OData model
+                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function(oData) {
+                        // Assuming 'Users' and 'Resourceid' are available in the oData response
+                        let oUser = oData.Users.toLowerCase();
+            
+                        if (oUser === "resource") {
+                            var oProfileDialogData = {
+                                Id: oData.Resourceid,
+                                Name: oData.Resourcename,
+                                Email: oData.Email,
+                                Number: oData.Phonenumber // Assuming this is the field you want to bind
+                            };
+            
+                            // Bind data to the dialog (use 'that' instead of 'This')
+                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
+                            that.byId("idUserDetails").setModel(oPopoverModel, "profile");
+                        } else {
+                            MessageToast.show("User is not a resource.");
+                        }
+                    },
+                    error: function() {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+
+    
+                // Check if the dialog already exists
+                if (!this.byId("idUserDetails")) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function(oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                       var Oopen = oDialog.open();
+                        if(Oopen){
+                             // Reference to the current instance
+               
+          
+                // Get the model (assuming it's an OData model)
+                
+                        }
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+            },
+
 
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
@@ -1191,7 +1312,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1209,7 +1330,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1227,7 +1348,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1240,58 +1361,112 @@ sap.ui.define([
                 }
             },
             onPutawayByWOPress: function (oEvent) {
-                if (this.Themecall) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
-                    this.onBackgroundTilePopOverThemeBtn();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("PutawayByWO", { id: this.ID });
                 }
             },
             onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
-                if (this.Themecall) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
-                    this.onBackgroundTilePopOverThemeBtn();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
                 }
             },
             onAutomaticallyRepackHUItemPress: function (oEvent) {
-                if (this.Themecall) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
-                    this.onBackgroundTilePopOverThemeBtn();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
                 }
             },
             onSetReadyforWHprocessingbyCOPress: function (oEvent) {
-                if (this.Themecall) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
-                    this.onBackgroundTilePopOverThemeBtn();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
                 }
             },
             onWTquerybyHUPress: function (oEvent) {
-                if (this.Themecall) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
-                    this.onBackgroundTilePopOverThemeBtn();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByHU", { id: this.ID });
                 }
             },
             onWTQueryByWTPress: function () {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                }else{
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("WTQueryByWT", { id: this.ID });
+                }
             },
             onCreateandConfirmAdhocProductWTPress: function (oEvent) {
                 if (this.EditCall) {
@@ -1299,7 +1474,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1317,7 +1492,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1335,7 +1510,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1353,7 +1528,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1371,7 +1546,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1389,7 +1564,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1407,7 +1582,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1425,7 +1600,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1443,7 +1618,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1462,7 +1637,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1480,7 +1655,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1498,7 +1673,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1516,7 +1691,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1534,7 +1709,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1552,7 +1727,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1570,7 +1745,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1588,7 +1763,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1606,7 +1781,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1624,7 +1799,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1642,7 +1817,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1660,7 +1835,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1679,7 +1854,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1699,7 +1874,7 @@ sap.ui.define([
                     this.onPressRenameTile()
 
                 }
-               else if (this.Themecall) {
+                else if (this.Themecall) {
                     // Get the ID of the pressed tile
                     this._currentTile = oEvent.getSource();
                     // Open the theme dialog for tile color selection
@@ -1716,26 +1891,9 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-                        onProfilePressed: function () {
-                var oView = this.getView();
- 
-                // Check if the dialog already exists
-                if (!this.byId("idUserDetails")) {
-                    // Load the fragment asynchronously
-                    Fragment.load({
-                        id: oView.getId(),
-                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
-                        controller: this
-                    }).then(function (oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
-                        oDialog.open();
-                    });
-                } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
-                }
-            },
+           
+    
+                    
  
 
             onCloseUSerDetailsDialog: function () {

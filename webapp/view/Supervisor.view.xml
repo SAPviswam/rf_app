@@ -23,6 +23,7 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
+                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -30,11 +31,17 @@
                         />
                     </layoutData>
                 </Button>
-                <Label
+                <Image
+                    id="_IDGenImage_supervisor"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- <Label
                     id="idRFScreenHeading"
                     class="Heading"
                     text="RF SCREEN"
-                />
+                /> -->
                 <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                 <ToolbarSpacer id="spacer">
                     <layoutData>
@@ -114,6 +121,21 @@
                         />
                     </customData>
                 </Button> -->
+                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayout_supervisor"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Avatar
+                    id="_IDGenAvatar_supervisor"
+                    displaySize="XS"
+                    press="onAvatarPressed"
+                    tooltip="Profile"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
@@ -612,7 +634,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>

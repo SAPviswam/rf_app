@@ -143,9 +143,8 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: auto !important;
-   
-    /* padding-bottom: 4rem; */
 }
+
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
@@ -697,8 +696,9 @@ background-color: rgb(9, 8, 8) !important;
     padding-bottom: 1rem;
     width: 25% !important;
 }
-
-
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d;
+}
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
