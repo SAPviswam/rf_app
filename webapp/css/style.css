@@ -308,33 +308,53 @@
 }
 /* these are for theme colors for options... */
 .colorCheckBox {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 36px !important;
+    height: 36px !important;
+    margin-right: 7px;
     display: inline-block;
     border-color: black !important;
 }
 .redCheckBox .sapMCbBg {
     background-color: red !important;
+    height: 20px;
+    width: 20px;
 }
 .blackCheckBox .sapMCbBg {
     background-color: black !important;
+    height: 20px;
+    width: 20px;
 }
 .greenCheckBox .sapMCbBg {
     background-color: green !important;
+    height: 20px;
+    width: 20px;
 }
 .whiteCheckBox .sapMCbBg {
     background-color: white !important;
+    height: 20px;
+    width: 20px;
 }
 .purpleCheckBox .sapMCbBg {
     background-color: purple !important;
+    height: 20px;
+    width: 20px;
 }
 .blueCheckBox .sapMCbBg {
-    background-color: blue !important;
+    background-color: blue!important;
+    height: 20px;
+    width: 20px;
 }
 .YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
+    height: 20px;
+    width: 20px;
 }
+.LabelTileNamecolour{
+    font-weight: bolder;
+}
+
+
+
 .textFieldsAF {
     padding-bottom: 1rem;
 
@@ -552,11 +572,40 @@
     height: 80px !important;
     font-size: auto !important;
 }
-.TileViewPopOver{
-    background-color: orange !important;
+.listgridIcons {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    align-items: center;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: -2rem !important;
 }
-
-
+.listgridIcons .sapMGTHeader {
+    margin-left: 10px; /* Space between tile and header */
+}
+.tileSelected {
+    border: 3px solid rgb(255, 120, 9) !important;
+    /* Customize this color and thickness as needed */
+    box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
+    animation: shake 0.35s ease infinite !important;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 
 
