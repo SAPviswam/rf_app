@@ -1605,11 +1605,8 @@ sap.ui.define([
             onCloseDialog: function () {
                 this._pProfileDialog.then(function (oDialog) {
                     oDialog.close();
-
-            
-
-
-
+                })
+            },
             onProfilePressed: function() {
                 debugger;
                 var oView = this.getView();
