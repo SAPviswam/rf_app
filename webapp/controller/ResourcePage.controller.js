@@ -1432,6 +1432,78 @@ sap.ui.define([
                     oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
                 }
             },
+            onSetReadyforWHprocessingbyBOLPress: function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WHProcessingByBOL", { id: this.ID });
+                }
+            },
+            onCreateandConfirmAdhocHUWTPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
+                }
+            },
+            onUnloadByHUPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("UnloadByHu", { id: this.ID });
+                }
+            },
+            onChangeLoadingUnloadingDetailsPress : function (oEvent) {
+                if (this.EditCall) {
+                    this._currentTile = oEvent.getSource();
+                    this.onPressRenameTile()
+
+                }
+                else if (this.Themecall) {
+                    // Get the ID of the pressed tile
+                    this._currentTile = oEvent.getSource();
+                    // Open the theme dialog for tile color selection
+                    // this.onBackgroundTilePopOverThemeBtn();
+                    this.onBackgroundTilePopOverThemeBtn()
+
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ChangeLoadingUnloadingDetails", { id: this.ID });
+                }
+            },
             onWTquerybyHUPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();

@@ -93,6 +93,7 @@
                             id="idROHDHbox1"
                             justifyContent="Start"
                         >
+                        <HBox >
                             <Label
                                 id="idROHDDeliveryNoLabel"
                                 text="Delivery Number: "
@@ -118,6 +119,7 @@
                                     text="Submit"
                                     press="onPressROHDSubmitbtn"
                                 />
+                            </HBox>
                             </HBox>
                         </VBox>
                     </f:SimpleForm>

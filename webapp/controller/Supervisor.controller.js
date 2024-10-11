@@ -32,6 +32,7 @@ sap.ui.define(
 
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onSupervisorDetailsLoad, this);
+
                 this._isThemeMode = false;
                 this.Themecall = false;
 
@@ -1437,6 +1438,7 @@ sap.ui.define(
             //     oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
 
             // },
+            
             onApprovePress: function () {
              var Empid = this.byId("idEmppInput").getValue();
                 var isValid = true;
