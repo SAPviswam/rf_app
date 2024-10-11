@@ -314,17 +314,17 @@
     border-color: black !important;
 }
 .redCheckBox .sapMCbBg {
-    background-color: red !important;
+    background-color: lightcoral !important;
     height: 20px;
     width: 20px;
 }
 .blackCheckBox .sapMCbBg {
-    background-color: black !important;
+    background-color: lightgray !important;
     height: 20px;
     width: 20px;
 }
 .greenCheckBox .sapMCbBg {
-    background-color: green !important;
+    background-color: lime !important;
     height: 20px;
     width: 20px;
 }
@@ -334,17 +334,17 @@
     width: 20px;
 }
 .purpleCheckBox .sapMCbBg {
-    background-color: purple !important;
+    background-color: thistle !important;
     height: 20px;
     width: 20px;
 }
 .blueCheckBox .sapMCbBg {
-    background-color: blue!important;
+    background-color: lightblue !important;
     height: 20px;
     width: 20px;
 }
 .YellowCheckBox .sapMCbBg {
-    background-color: yellow !important;
+    background-color:  #ffad16ea !important;
     height: 20px;
     width: 20px;
 }
