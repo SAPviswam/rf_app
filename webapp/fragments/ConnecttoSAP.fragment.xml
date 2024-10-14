@@ -5,12 +5,13 @@
 >
     <Dialog
         id="idconnectsapdialogbox"
-        resizable="false"
+        resizable="true"
         draggable="true"
         contentWidth="30%"
         class="boxContainer"
+        initialFocus="idDescriptionInput"
     >
-        <customHeader>
+        <customHeader >
             <Bar id="_IDBar1coonectsap" class="TitlecustomHeader">
                 <contentMiddle>
                     <!-- Logo -->
@@ -79,6 +80,7 @@
                         placeholder="Enter Description..."
                         class="customInput"
                         width="100%"
+                        
                     />
                 </HBox>
  
@@ -182,7 +184,6 @@
                     />
                 </HBox>
 
- 
                 <!-- Checkboxes for Description, System ID, and Client -->
                 <HBox
                     id="hboxCheckboxes"

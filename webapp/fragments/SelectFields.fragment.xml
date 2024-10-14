@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="idSelectFieldsDialog" title="Select Fields" stretch="false">
+        <VBox>
+            <CheckBox text="Resource Id" select="onSelect" />
+            <CheckBox text="Resource Name" select="onSelect" />
+            <CheckBox text="Area" select="onSelect"/>
+            <CheckBox text="Group"  select="onSelect"/>
+            <CheckBox text="Resource Type" select="onSelect"/>
+            <CheckBox text="Email" select="onSelect"/>
+            <CheckBox text="Phone Number" select="onSelect"/>
+        </VBox>
+       
+        <HBox >
+            <Button text="Save" press="onSaveFieldsPress"  class="sapUiSmallMargin"/>
+            <Button text="Cancel" press="onCancelInRequesteddataTablePress"  class="sapUiSmallMargin" />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

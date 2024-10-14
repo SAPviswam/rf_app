@@ -76,6 +76,7 @@
                         columnsL="2"
                         columnsM="1"
                         class="sapUiResponsiveMargin"
+                        width="70%"
                     >
                         <Label
                             id="_IDGenCSHUWOWCLabel"
@@ -171,6 +172,7 @@
                         columnsL="2"
                         columnsM="1"
                         class="sapUiResponsiveMargin"
+                        width="70%"
                     >
                         <Label
                             id="_IDGenCSHUWOWCLabel2"
@@ -215,7 +217,7 @@
                             maxLength="10"
                             width="200px"
                         />
-                    <VBox id="_IDvboxcshu">
+                    <VBox id="_IDvboxcshu" alignItems="Center">
                         <Button
                             id="_IDonsaveCSHUWOWC"
                             text="Save"

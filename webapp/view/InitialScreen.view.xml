@@ -2,9 +2,53 @@
     controllerName="com.app.rfapp.controller.InitialScreen"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m"
 >
     <Page id="pageInitial">
+        <dependents>
+            <core:CommandExecution
+                id="idcommandsave"
+                command="Save"
+                enabled="true"
+                execute=".onSave"
+            />
+            <core:CommandExecution
+            id="idcommandDelete"
+                command="Delete"
+                enabled="true"
+                execute=".onDelete"
+            />
+            <core:CommandExecution
+            id="idcommandEdit"
+                command="Edit"
+                enabled="true"
+                execute=".onEdit"
+            />
+        </dependents>
+        <VBox class="sapUiSmallMargin" visible="false" id="idVboxcmd">
+            <Button
+                text="Save"
+                id="idbuttoncmdsave"
+                press="cmd:Save"
+                tooltip="Save"
+                visible="false"
+            />
+            <Button
+                text="Delete"
+                id="idbuttoncmdDelete"
+                press="cmd:Delete"
+                tooltip="Delete"
+                visible="false"
+            />
+            <Button
+                text="Edit"
+                press="cmd:Edit"
+                id="idbuttoncmdEdit"
+                tooltip="Edit"
+                visible="false"
+            />
+        </VBox>
         <content>
             <FlexBox
                 id="_IDGenFlexBoxInitial"
@@ -17,7 +61,10 @@
                     class="sapUiSmallMargin boxContainer"
                     alignItems="Center"
                 >
-                    <VBox id="idvboxnavbuttons">
+                    <VBox
+                        id="idvboxnavbuttons"
+                        width="auto"
+                    >
                         <HBox
                             id="idHboxinitial"
                             alignContent="Start"
@@ -36,6 +83,7 @@
                                 id="initialscreentitle"
                                 text="CAPmodel RF"
                                 class="capModelRFText sapUiSmallMarginBottom"
+                                textAlign="Center"
                             />
                         </HBox>
                         <!-- New HBox for buttons directly below the logo -->
@@ -44,8 +92,7 @@
                             alignContent="Start"
                             class="sapUiTinyMarginBegin"
                         >
-                        
-<!--                             <Button
+                            <!--                             <Button
                                 id="idButtonAdd"
                                 icon="sap-icon://add"
                                 tooltip="Add"
@@ -75,7 +122,11 @@
                                     type="Transparent"
                                     class="Butns"
                                 />
-                                <Text id="idbuttontext" text="Add" class="InitialButton67" />
+                                <Text
+                                    id="idbuttontext"
+                                    text="Add"
+                                    class="InitialButton67"
+                                />
                             </VBox>
                             <VBox id="idbuttonvbox2">
                                 <Button
@@ -86,7 +137,11 @@
                                     type="Transparent"
                                     class="Butns"
                                 />
-                                <Text id="idbuttontext1" text="Edit" class="InitialButton67" />
+                                <Text
+                                    id="idbuttontext1"
+                                    text="Edit"
+                                    class="InitialButton67"
+                                />
                             </VBox>
                             <VBox id="idbuttonvbox3">
                                 <Button
@@ -97,7 +152,11 @@
                                     type="Transparent"
                                     class="Butns"
                                 />
-                                <Text id="idbuttontext2" text="Delete" class="InitialButton67" />
+                                <Text
+                                    id="idbuttontext2"
+                                    text="Delete"
+                                    class="InitialButton67"
+                                />
                             </VBox>
                         </HBox>
 
@@ -105,10 +164,11 @@
                     </VBox>
 
                     <!-- Link for configuring SAP system -->
-                    <Link
+                    <Button
                         id="_IDCofiguresapLink"
                         text="Configure SAP system"
                         press="handleLinksapPress"
+                        type="Transparent"
                     />
                     <HBox id="IDhboxnavup">
                         <Button
