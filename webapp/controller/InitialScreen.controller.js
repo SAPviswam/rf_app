@@ -40,6 +40,7 @@ sap.ui.define([
                 else if (Device.system.tablet) {
                     this.byId("environmentButtonsHBox").setWidth("40%");
                 }
+                
             },
 
             onSave:function(){
@@ -717,7 +718,7 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
+                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
