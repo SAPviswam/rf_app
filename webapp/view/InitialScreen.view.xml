@@ -117,7 +117,7 @@
                                 <Button
                                     id="idButtonAdd"
                                     icon="sap-icon://add"
-                                    tooltip="Add"
+                                    tooltip="Add."
                                     press="handleAddPress"
                                     type="Transparent"
                                     class="Butns"
