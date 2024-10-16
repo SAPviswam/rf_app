@@ -71,6 +71,7 @@
                             text="Configure SAP System"
                         />
                     </VBox>
+
                     <!-- vbox for left side text -->
                     <VBox class="div">
                         <html:div>
@@ -91,11 +92,12 @@
                 <VBox
                     id="idBtnsVbox_InitialView"
                     class="ConfigBtnsHbox"
+                
                 >
                     <!-- hbox for add, edit and delete buttons -->
                     <HBox
                         id="idBtnsHbox_InitialView"
-                        class="ConfigBtnsHbox"
+                        class="sapUiMediumMarginBegin"
                     >
                         <!-- vbox for add button -->
                         <VBox
@@ -123,7 +125,7 @@
                                 class="btn"
                                 icon="sap-icon://edit"
                                 tooltip="edit"
-                                press="editPress_InitialView"
+                                press="onEditConfiguredSystem"
                                 type="Transparent"
                             />
                             <Text
@@ -139,7 +141,7 @@
                                 class="btn"
                                 icon="sap-icon://delete"
                                 tooltip="delete"
-                                press="deletePress_InitialView"
+                                press="onDeleteConfiguredSystem"
                                 type="Transparent"
                             />
                             <Text
@@ -149,15 +151,46 @@
                             />
                         </VBox>
                     </HBox>
-                    <!-- button for configure sap system -->
-                    <Button
-                        id="idBtnConfSAPsys_InitialView"
-                        class="BtnConfSAPsys"
-                        text="Configure SAP System"
-                        tooltip="configure SAP System"
-                        press="ConfigureSapSystemPress_InitialView"
-                        type="Transparent"
-                    />
+
+                    <!-- new UI AddOns from past view start-->
+                    <VBox
+                        id="environmentButtonsHBox"
+                        class="sapUiSmallMargin"
+                        alignItems="Center"
+                    >
+                        <!-- button for configure sap system -->
+                        <Button
+                            id="idBtnConfSAPsys_InitialView"
+                            class=""
+                            text="Configure SAP System"
+                            tooltip="configure SAP System"
+                            press="AddPress_InitialView"
+                            type="Transparent"
+                        />
+                        <!-- Link for configuring SAP system -->
+                        <HBox id="IDhboxnavup">
+                            <Button
+                                id="upNavigationButtonId"
+                                icon="sap-icon://navigation-up-arrow"
+                                tooltip="Previous"
+                                press="onNavNext"
+                                visible="false"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHboxNavigation"
+                            alignContent="Start"
+                            class="sapUiSmallMarginTop"
+                        >
+                            <Button
+                                id="downNavigationButtonId"
+                                icon="sap-icon://navigation-down-arrow"
+                                tooltip="Next"
+                                press="onNavPrevious"
+                            />
+                        </HBox>
+                    </VBox>
+                    <!-- new UI AddOns from past view end-->
                 </VBox>
 
                 <!-- vbox for add edit and creating configure sap system -->
@@ -169,7 +202,7 @@
                 >
                     <!-- hbox for description field -->
 
-                    <HBox id="hboxDescription">
+                    <HBox id="idhboxDescription">
                         <Label
                             id="idLableDescription_InitialView"
                             text="Description:"
@@ -178,7 +211,7 @@
                         />
                         <Input
                             id="idDescriptionInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Enter Description..."
                             class="customInput"
                             width="100%"
@@ -187,7 +220,7 @@
 
                     <!-- hbox for System Id field -->
 
-                    <HBox id="hboxSystemId">
+                    <HBox id="iDhboxSystemId">
                         <Label
                             id="idLableSystemId_InitialView"
                             text="System Id:"
@@ -196,7 +229,7 @@
                         />
                         <Input
                             id="idSystemIdInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="ID"
                             maxLength="3"
                             width="100%"
@@ -206,7 +239,7 @@
 
                     <!-- hbox for Instance Number field -->
 
-                    <HBox id="hboxInstanceNumber">
+                    <HBox id="ighboxInstanceNumber">
                         <Label
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
@@ -215,7 +248,7 @@
                         />
                         <Input
                             id="idInstanceNumberInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Num"
                             maxLength="3"
                             width="100%"
@@ -233,7 +266,7 @@
                         />
                         <Input
                             id="idClientInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Client"
                             maxLength="3"
                             width="100%"
@@ -251,7 +284,7 @@
                         />
                         <Input
                             id="idApplicationServerInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Enter Application server..."
                             class="customInput"
                             width="100%"
@@ -269,7 +302,7 @@
                         />
                         <Input
                             id="idRouterStringInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Enter Router String..."
                             class="customInput"
                             width="100%"
@@ -285,7 +318,7 @@
                         />
                         <Input
                             id="idServiceInput_InitialView"
-                            value="{}"
+                            value=""
                             placeholder="Enter Service..."
                             class="customInput"
                             width="100%"
@@ -311,7 +344,7 @@
                         width="85%"
                     >
                         <Button
-                            id="idconnectsapcancelButton_InitialView"
+                            id="idConnectsapClearButton_InitialView"
                             text="Clear"
                             press="onClearconnectSAPPress"
                             type="Unstyled"
@@ -348,7 +381,6 @@
                         />
                     </HBox>
                 </VBox>
-            
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
