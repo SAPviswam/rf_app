@@ -835,7 +835,42 @@ sap.ui.define([
                         MessageBox.error("Error retrieving user data.");
                     }
                 });
-            }
+            },
+            
+            // New UI snippets
+
+            AddPress_InitialView:function(){
+                this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                this.getView().byId("idBtnsVbox_InitialView").setVisible(false);
+              },
+      
+      
+              onBackconnectSAPPress:function(){
+                this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
+                this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
+              },
+      
+      
+              onFinishconnectSAPPress:function(){
+                this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
+                this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
+              },
+      
+      
+              onClearconnectSAPPress:function(){
+                this.getView().byId("idDescriptionInput_InitialView").setValue("");
+                this.getView().byId("idSystemIdInput_InitialView").setValue("");
+                this.getView().byId("idInstanceNumberInput_InitialView").setValue("");
+                this.getView().byId("idClientInput_InitialView").setValue("");
+                this.getView().byId("idApplicationServerInput_InitialView").setValue("");
+                this.getView().byId("idRouterStringInput_InitialView").setValue("");
+                this.getView().byId("idServiceInput_InitialView").setValue("");
+                this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
+      
+              }
+      
+
+            // New UI snippets end
 
         })
     });
