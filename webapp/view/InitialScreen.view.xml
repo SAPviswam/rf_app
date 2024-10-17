@@ -92,7 +92,6 @@
                 <VBox
                     id="idBtnsVbox_InitialView"
                     class="ConfigBtnsHbox"
-                
                 >
                     <!-- hbox for add, edit and delete buttons -->
                     <HBox
@@ -330,11 +329,11 @@
                         id="idhboxCheckboxes_InitialView"
                         class="sapUiSmallMargin"
                     > -->
-                        <CheckBox
-                            id="idCheckboxDescription_InitialView"
-                            class="checkBoxText sapUiSmallMarginTop sapUiSmallMarginBottom"
-                            text="Description as System ID/Client"
-                        />
+                    <CheckBox
+                        id="idCheckboxDescription_InitialView"
+                        class="checkBoxText sapUiSmallMarginTop sapUiSmallMarginBottom"
+                        text="Description as System ID/Client"
+                    />
                     <!-- </HBox> -->
 
                     <!--hbox for clear edit cancel help and finish buttons in configure sap systems-->
