@@ -775,6 +775,7 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
+
         });
     });
 

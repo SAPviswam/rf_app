@@ -29,11 +29,12 @@ sap.ui.define([
                         MessageToast.show("Failed to load data.");
                     }
                 }.bind(this));
-
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-                this.Themecall = false; // Initialize theme call flag
+
+                this.Themecall = false;
                 this.EditCall = false;
-                this._currentTileId = null;
+                this._currentTile = null;
+                this._selectedTiles = [];
             },
             onResourceDetailsLoad: async function (oEvent1) {
         
@@ -114,26 +115,10 @@ sap.ui.define([
                     }
                 }.bind(this));
             },
-            //Themes Btn from Profile click... 
-            // test old theme button
-            onPressThemesResourceE: function () {
-                this.Themecall = !this.Themecall; // Toggle the state
-                if (this.Themecall) {
-                    // Theme mode activated
-                    this.byId("idCancelButtonResource").setVisible(true);
-                    this.byId("idthemeBackGroundButton").setVisible(true);
-                    sap.m.MessageToast.show("Theme mode activated.");
-                } else {
-                    // Theme mode deactivated
-                    this.byId("idCancelButtonResource").setVisible(false);
-                    this.byId("idthemeBackGroundButton").setVisible(false);
-                    sap.m.MessageToast.show("Theme mode deactivated.");
-                }
-            },
-            //CHATBOT 
             onChatbotButtonPress: function () {
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
             },
+
             onResetToDefaultPress: function () {
                 sap.m.MessageBox.warning("Reset to default settings ?", {
                     title: "Default settings",
@@ -158,35 +143,138 @@ sap.ui.define([
                 this.EditCall = !this.EditCall; // Toggle the state
                 if (this.EditCall) {
                     // Theme mode activated
+                    this.byId("idBtnListView").setVisible(false);
                     this.byId("idCancelEditButtonResource").setVisible(true);
                     sap.m.MessageToast.show("Edit mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idCancelEditButtonResource").setVisible(false);
+                    this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Edit mode deactivated.");
                 }
             },
-            //Main Background Btn...
-            onBackgroundThemeBtn: function () {
-                this.byId("idthemeTileDialogResource").open();
+            //Rename Dailog Box..
+            onPressRenameTile: async function () {
+                debugger
+                this.TileHeader = this._currentTile.getHeader();
+                this.TileSubHeader = this._currentTile.mProperties.subheader;
+                await this.getView().byId("IdEditTileDetailsDialogResource").open();
+                this.byId("idInputTileHeaderResource").setValue(this.TileHeader);
+                this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
             },
-            onCancelPressThemeMode: function () {
-                //this.byId("idMainthemeBtn").setVisible(true);
-                this.byId("idCancelButtonResource").setVisible(false);
-                this.byId("idthemeBackGroundButton").setVisible(false);
-                this.Themecall = false;
-                sap.m.MessageToast.show("Theme mode Deactivated.");
+            onPressSaveTileEditDetails: function () {
+                debugger
+                var sNewHeader = this.byId("idInputTileHeaderResource").getValue();
+                var sNewSubHeader = this.byId("idInputSubHeaderResource").getValue();
+
+                // Update the tile details
+                if (this._currentTile) {
+                    var tileId = this._currentTile.getId();
+                    this._currentTile.setHeader(sNewHeader);
+                    this._currentTile.setSubheader(sNewSubHeader);
+
+                    var tileData = {
+                        header: sNewHeader,
+                        subHeader: sNewSubHeader // Store the new subheader
+                    };
+                    // Save the updated tile details in localStorage
+                    localStorage.setItem(`tile_${tileId}`, JSON.stringify(tileData)); // Save tile data as a string in localStorage
+                    this.byId("IdEditTileDetailsDialogResource").close();
+                    sap.m.MessageToast.show("Tile details updated successfully!");
+                }
+            },
+            onCloseEditingTileDetailsDialog: function () {
+                this.byId("IdEditTileDetailsDialogResource").close();
             },
             onCancelEditPress: function () {
                 this.byId("idCancelEditButtonResource").setVisible(false);
+                this.byId("idBtnListView").setVisible(true);
                 this.EditCall = false;
                 sap.m.MessageToast.show("Edit mode Deactivated.");
             },
-            //closing theme dialog when press on tile...
+            // Theme press from profile 
+            onPressThemesBtnFromProfile: function (oEvent) {
+                debugger
+                // Check if the popover already exists, if not create it
+                if (!this._oThemeSelectPopover) {
+                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
+                    this.getView().addDependent(this._oThemeSelectPopover);
+                }
+                // Open popover near the language button
+                this._oThemeSelectPopover.openBy(oEvent.getSource());
+            },
+            //Background theme select 
+            onBackGroudThemeSelect: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            //Tile selcect btn from Profile Popover...
+            onTileThemeSelect: function () {
+                // Check if edit mode is active
+                if (this.EditCall) {
+                    sap.m.MessageBox.information("Please exit from edit mode first");
+                    return;
+                }
+                // Toggle the Themecall state
+                this.Themecall = !this.Themecall;
+
+                if (this.Themecall) {
+                    this.byId("idExitThemeModeResource").setVisible(true); // Show the Exit Theme button
+                    this.byId("idTileThemesModeOpen").setVisible(true); // Show the Open Theme button
+                    this.byId("idBtnListView").setVisible(false); // Show the Open Theme button
+                    sap.m.MessageToast.show("Theme mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idExitThemeModeResource").setVisible(false); // Hide the Exit Theme button
+                    this.byId("idTileThemesModeOpen").setVisible(false); // Hide the Open Theme button
+                    this.byId("idBtnListView").setVisible(true);
+                    sap.m.MessageToast.show("Theme mode deactivated.");
+                }
+            },
+            //Closing Theme Dailog Box...
             onCancelColorDialog: function () {
                 this.byId("idthemeTileDialogResource").close();
                 this.resetDialogBox();
+                this._selectedTiles = [];
             },
+            //After Selecting Multiple Tiles opens theme dialog box to select colour...
+            onPressTileThemesModeOpenDailog: function () {
+                debugger
+                var selectedTiles = this._selectedTiles || [];
+                // Check if any tiles are selected
+                if (selectedTiles.length === 0) {
+                    sap.m.MessageToast.show("Please select at least one tile to apply a color.");
+                    return;
+                }
+                // Extract only the IDs from the selected tiles
+                this._selectedTileIds = selectedTiles.map(function (tile) {
+                    return tile.getId();
+                });
+                this.byId("idthemeTileDialogResource").open();
+            },
+            //Exit from Theme Mode...
+            onPressExitTileThemesMode: function () {
+                this.Themecall = false; // Deactivate theme call
+                // Deselect all tiles visually
+                if (this._selectedTiles && this._selectedTiles.length > 0) {
+                    this._selectedTiles.forEach(function (oTile) {
+                        oTile.removeStyleClass("tileSelected");
+                    });
+                }
+                // Clear the array of selected tiles
+                this._selectedTiles = [];
+                // Reset button visibility as needed
+                this.byId("idBtnListView").setVisible(true);
+                this.byId("idTileThemesModeOpen").setVisible(false);
+                this.byId("idExitThemeModeResource").setVisible(false);
+                // Optionally, close the theme dialog if it's open
+                var oDialog = this.byId("idthemeTileDialogResource");
+                if (oDialog && oDialog.isOpen()) {
+                    oDialog.close();
+                }
+                this.resetDialogBox();
+                sap.m.MessageToast.show("Theme mode Exited!");
+            },
+            //Apply btn ThemeDailog Box...
             onApplyColor: function () {
                 var oView = this.getView();
                 var oColorPicker = oView.byId("idcolorPickerResource");
@@ -201,7 +289,8 @@ sap.ui.define([
                         aSelectedColors.push(sColorValue);
                     }
                 });
-                // Handle cases where checkboxes are selected
+
+                // If a color is selected from checkboxes
                 if (aSelectedColors.length > 0) {
                     if (aSelectedColors.length > 1) {
                         sap.m.MessageToast.show("You can only select one color.");
@@ -211,54 +300,32 @@ sap.ui.define([
                         sap.m.MessageToast.show("Please deselect the checkbox before using the custom color picker.");
                         return;
                     }
-                    var sSelectedColor = aSelectedColors[0]; // Get the selected color from checkbox
-                    if (this._currentTileId) {
-                        this.applyColorToTile(this._currentTileId, sSelectedColor);
-                        sap.m.MessageToast.show("Tile color applied successfully!");
-                        this._currentTileId = null;
+
+                    var sSelectedColor = aSelectedColors[0];
+                    if (this.Themecall) {
+                        // If tile theme mode is active, apply the color to the tiles
+                        this.applyColorToTiles(sSelectedColor);
                     } else {
+                        // Apply the color as the background theme
                         this.applyThemeColor(sSelectedColor);
-                        sap.m.MessageToast.show("Theme color applied successfully!");
+                        sap.m.MessageToast.show("Background color applied successfully!");
                     }
                 } else if (this._isValidColor(sColorPickerValue)) {
                     // If no checkbox is selected, apply the color from the color picker
-                    if (this._currentTileId) {
-                        this.applyColorToTile(this._currentTileId, sColorPickerValue);
-                        sap.m.MessageToast.show("Tile color applied successfully!");
-                        this._currentTileId = null;
+                    if (this.Themecall) {
+                        this.applyColorToTiles(sColorPickerValue);
                     } else {
                         this.applyThemeColor(sColorPickerValue);
-                        sap.m.MessageToast.show("Theme color applied successfully!");
+                        sap.m.MessageToast.show("Background color applied successfully!");
                     }
                 } else {
                     sap.m.MessageToast.show("Invalid color format. Please use a valid color code.");
                 }
-                // Deactivate any flag and reset dialog
-                //this.Themecall = false; // Deactivate the flag after applying
                 this.resetDialogBox();
-
-                // Close the dialog and reset background and cancel buttons
                 this.byId("idthemeTileDialogResource").close();
-                //this.byId("themeButton").setVisible(false);
-                //this.byId("CancelButton").setVisible(false);
-                //this.byId("themeButton3").setVisible(true);
             },
-            applyColorToTile: function (sTileId, sColor) {
-                var oTile = this.byId(sTileId);
-                if (!oTile) return;
-
-                var oTileDomRef = oTile.getDomRef();
-                if (oTileDomRef) {
-                    oTileDomRef.style.backgroundColor = sColor;
-
-                    // Update localStorage with tile color
-                    var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
-                    tileColors[sTileId] = sColor;
-                    localStorage.setItem("tileColors", JSON.stringify(tileColors));
-                }
-            },
+            //For Background Theme and Callback function from "onApplyColor"...
             applyThemeColor: function (sColor) {
-                debugger
                 var aElements = [
                     this.byId("idScrollContainer1"),
                 ];
@@ -283,6 +350,33 @@ sap.ui.define([
                     }
                 });
                 localStorage.setItem("themeColor", sColor);
+            },
+            //Tiles Color Callback function from "onApplyColor"
+            applyColorToTiles: function (sColor) {
+                if (!this._selectedTiles || this._selectedTiles.length === 0) {
+                    sap.m.MessageToast.show("No tiles selected for color application.");
+                    return;
+                }
+
+                this._selectedTiles.forEach(function (oTile) {
+                    var oTileDomRef = oTile.getDomRef();
+                    if (oTileDomRef) {
+                        oTileDomRef.style.backgroundColor = sColor;
+
+                        // Update localStorage with tile color
+                        var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
+                        tileColors[oTile.getId()] = sColor;
+                        localStorage.setItem("tileColors", JSON.stringify(tileColors));
+                    }
+                });
+                if (this._selectedTiles && this._selectedTiles.length > 0) {
+                    this._selectedTiles.forEach(function (oTile) {
+                        oTile.removeStyleClass("tileSelected");
+                    });
+                }
+                sap.m.MessageToast.show("Colors applied to selected tiles successfully!");
+                // Reset the selected tiles array after applying the colors
+                this._selectedTiles = [];
             },
             onColorOptionSelect: function (oEvent) {
                 var oSelectedCheckBox = oEvent.getSource();
@@ -322,72 +416,6 @@ sap.ui.define([
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
                 return hexRegex.test(sColor) || rgbRegex.test(sColor);
             },
-            //opens theme dialog when click on tile...
-            onBackgroundTilePopOverThemeBtn: function () {
-                this._currentTileId = this._currentTile.getId();
-                this.byId("idthemeTileDialogResource").open();
-            },
-            _openTilePopover: function () {
-                debugger
-                if (!this._tilePopover) {
-                    this._tilePopover = new sap.m.Popover({
-                        title: "Tile Options",
-                        content: [
-                            new sap.m.Button({
-                                icon: "sap-icon://edit",
-                                type: "Transparent",
-                                text: "Rename",
-                                press: this.onPressRenameTile.bind(this) // Bind the context
-                            }),
-                            new sap.m.Button({
-                                icon: "sap-icon://palette",
-                                type: "Transparent",
-                                text: "Theme",
-                                press: this.onBackgroundTilePopOverThemeBtn.bind(this) // Bind the context for the theme button
-                            })
-                        ],
-                        placement: sap.m.PlacementType.Right,
-                        //afterOpen: this._onPopoverAfterOpen.bind(this)
-                    });
-                }
-                this._tilePopover.openBy(this._currentTile);
-                this.TileHeader = this._currentTile.getHeader();
-                this.TileSubHeader = this._currentTile.mProperties.subheader;
-            },
-            onPressRenameTile: async function () {
-                debugger
-                this.TileHeader = this._currentTile.getHeader();
-                this.TileSubHeader = this._currentTile.mProperties.subheader;
-                await this.getView().byId("IdEditTileDetailsDialogResource").open();
-                this.byId("idInputTileHeaderResorce").setValue(this.TileHeader);
-                this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
-                // Open the rename dialog
-            },
-            onPressSaveTileEditDeatils: function () {
-                debugger
-                var sNewHeader = this.byId("idInputTileHeaderResorce").getValue();
-                var sNewSubHeader = this.byId("idInputSubHeaderResource").getValue();
-
-                // Update the tile details
-                if (this._currentTile) {
-                    var tileId = this._currentTile.getId();
-                    this._currentTile.setHeader(sNewHeader);
-                    this._currentTile.setSubheader(sNewSubHeader);
-
-                    // Create an object to store the updated tile data
-                    var tileData = {
-                        header: sNewHeader,
-                        subHeader: sNewSubHeader // Store the new subheader
-                    };
-                    // Save the updated tile details in localStorage
-                    localStorage.setItem(`tile_${tileId}`, JSON.stringify(tileData)); // Save tile data as a string in localStorage
-                    this.byId("IdEditTileDetailsDialogResource").close();
-                    sap.m.MessageToast.show("Tile details updated successfully!");
-                }
-            },
-            onCloseEditingTileDetailsDialog: function () {
-                this.byId("IdEditTileDetailsDialogResource").close();
-            },
             //Tile View setting When press on profile...
             onPressTileViewSettings: function (oEvent) {
                 // Check if the popover already exists, if not create it
@@ -409,6 +437,14 @@ sap.ui.define([
             },
             //CallBack function every Tile view....
             onPressTileViewResizeIcons: function (sSelectedKey) {
+                if (this.Themecall) {
+                    sap.m.MessageToast.show("Please exit Theme mode.");
+                    return;
+                }
+                if (this.EditCall) {
+                    sap.m.MessageToast.show("Please exit Edit mode.");
+                    return;
+                }
                 var oTilesContainer = this.byId("idScrollContainer1");
                 var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
                 // Save the selected key to localStorage
@@ -438,7 +474,99 @@ sap.ui.define([
                         }
                     }
                 });
-                oTilesContainer.rerender();
+                // oTilesContainer.rerender();
+                // var oModel = this.getView().getModel();
+                // oModel.refresh(true);
+            },
+            onPressListGridViewsResource: async function () {
+                debugger;
+                const oModel1 = this.getOwnerComponent().getModel();
+                const userId = this.ID; // Assuming this.ID is set when loading user data
+                const oTilesContainer = this.byId("idScrollContainer1");
+                let userTiles = [];
+                let currentView = localStorage.getItem("currentView") || "DefaultView";
+
+                // Fetch user tiles from the backend
+                await new Promise((resolve, reject) => {
+                    oModel1.read(`/RESOURCESSet('${userId}')`, {
+                        success: function (oData) {
+                            const tiles = oData.Queue; // Adjust this based on your data structure
+                            // Clean up tile names: remove spaces and convert to lowercase
+                            userTiles = tiles.split(',')
+                                .map(item => item.trim().toLowerCase().replace(/\s+/g, ''));
+                            resolve();
+                        },
+                        error: function () {
+                            MessageToast.show("Error loading user tiles");
+                            reject();
+                        }
+                    });
+                });
+
+                // Extract and clean frontend tile IDs
+                const frontEndTileIds = oTilesContainer.getContent()
+                    .filter(oTile => oTile.isA("sap.m.GenericTile")) // Ensure it's a GenericTile
+                    .map(oTile => {
+                        const sTileId = oTile.getId();
+                        const localId = this._extractLocalId(sTileId);
+                        return localId.replace("id_", "").toLowerCase();
+                    });
+
+                // Match frontend tile IDs with backend queue tile names
+                const matchedTiles = frontEndTileIds.filter(tileId => userTiles.includes(tileId));
+
+                // Get the original tile objects for the matched tile IDs
+                const matchedTileIds = matchedTiles.map(tileId => {
+                    const matchedTile = oTilesContainer.getContent().find(oTile => {
+                        const sTileId = oTile.getId();
+                        const localId = this._extractLocalId(sTileId);
+                        return localId.replace("id_", "").toLowerCase() === tileId;
+                    });
+                    return matchedTile ? matchedTile.getId() : null; // Get the original ID or null if not found
+                }).filter(id => id !== null); // Filter out any null values
+
+                console.log("Matched Tile IDs:", matchedTileIds); // Log the matched tile IDs
+
+                // Toggle between ListGridView and DefaultView
+                if (currentView === "DefaultView") {
+                    localStorage.setItem("currentView", "ListGridView");
+
+                    // Adjust layout to list/grid view
+                    oTilesContainer.getContent().forEach((oTile) => {
+                        if (oTile.isA("sap.m.GenericTile")) {
+                            // Apply list/grid specific style
+                            oTile.removeStyleClass("largeIcons mediumIcons smallIcons").addStyleClass("listgridIcons");
+
+                            // const oTileHeader = oTile.getHeader();
+                            // const oTileSubheader = oTile.getSubheader();
+
+                            // // Create a new container to hold the header and subheader
+                            // const oHeaderContainer = new sap.m.VBox({
+                            //     items: [
+                            //         new sap.m.Text({ text: oTileHeader }),
+                            //         new sap.m.Text({ text: oTileSubheader })
+                            //     ]
+                            // });
+
+                            // // Add the header container beside the tile
+                            // oTile.setHeader(""); // Clear the header since we are setting it in a new container
+                            // oTile.addContent(oHeaderContainer);
+                        }
+                    });
+                } else {
+                    // Reset to the stored view
+                    localStorage.setItem("currentView", "DefaultView");
+                    // Retrieve the previously stored view
+                    const sStoredView = localStorage.getItem("selectedView") || "selectedView";
+                    // Adjust back to grid view
+                    oTilesContainer.getContent().forEach((oTile) => {
+                        if (oTile.isA("sap.m.GenericTile")) {
+                            // Restore the original size class for the grid view
+                            oTile.removeStyleClass("listgridIcons").addStyleClass(sStoredView);
+                        }
+                    });
+                    oTilesContainer.rerender();
+                }
             },
             //Language Transulation PopOver Profile...
             onPressLanguageTranslation: function (oEvent) {
@@ -453,10 +581,10 @@ sap.ui.define([
             onLanguageSelect: function (oEvent) {
                 // Get the selected button text
                 var sLanguage = oEvent.getSource().getText();
-            
+
                 // Define the message based on the selected language
                 var sSpeechText = "";
-                
+
                 switch (sLanguage) {
                     case "English":
                         sSpeechText = "You have chosen English language.";
@@ -473,19 +601,18 @@ sap.ui.define([
                     default:
                         sSpeechText = "Language selection failed.";
                 }
-                
+
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
-            
                 // Close the popover after selection
                 this._oPopover.close();
             },
-            
+
             // Function to handle sound announcements
-            _announceLanguageSelection: function(speechText) {
+            _announceLanguageSelection: function (speechText) {
                 if ('speechSynthesis' in window) {
                     var speech = new SpeechSynthesisUtterance(speechText);
-                    
+
                     // Optional: Set the language of the speech
                     if (speechText.includes("हिंदी")) {
                         speech.lang = 'hi-IN'; // Hindi language setting
@@ -496,14 +623,12 @@ sap.ui.define([
                     } else {
                         speech.lang = 'en-US'; // English as default
                     }
-                    
+
                     window.speechSynthesis.speak(speech);
                 } else {
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
-            
-
             // Theme press from profile 
 
             onPressThemesResource: function (oEvent) {
@@ -719,397 +844,622 @@ sap.ui.define([
                 }
             },
             onManuallyRepackHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackHU", { id: this.ID });
                 }
             },
             onManuallyRepackHUItemPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
                 }
             },
             onPutawayByHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RoutePutawayByHU", { id: this.ID });
                 }
             },
             onReceivingofHUbyConsignementOrderPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("Receivingofhubyco", { id: this.ID });
-                    
+
+                }
+            },
+            onManuallyRepackHUItemPress: function (oEvent) {
+                var oTile = oEvent.getSource();
+                if (this.EditCall) {
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("RouteManuallyRepackingByHuItems", { id: this.ID });
                 }
             },
             onWTQuerybyWOPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
 
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByWO", { id: this.ID });
                 }
             },
             onReceivingofHUbyDeliveryPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyDelivery", { id: this.ID });
                 }
             },
             onReceivingofHUbymanufacturingOrderPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyManufacturingOrder", { id: this.ID });
                 }
             },
             onRecevingofTUDoorTWPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RecevingOfHUbyTUorDoor", { id: this.ID });
                 }
             },
             onReceivingofHUbyASNPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
                 }
             },
             onReceivingofHUbyShipmentPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
                 }
             },
             onReceivingofHUbyTUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingofHUbyTU", { id: this.ID });
                 }
             },
             onUnloadingByDoorTilePress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByDoor", { id: this.ID });
                 }
             },
             onUnloadingByConsignmentOrderTilePress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByConsignmentOrder", { id: this.ID });
                 }
             },
             onChangeQueueTilePress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ChangeQueue", { id: this.ID });
                 }
             },
             onChangeResourceGroupTilePress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ChangeResourceGroup", { id: this.ID });
                 }
             },
             onUnloadingbyBillofLadingPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByBillofLading", { id: this.ID });
                 }
             },
             onDeconsolidationAutomaticallyPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("DeconsolidationAutomatically", { id: this.ID });
                 }
             },
             onDeconsolidateManuallyPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("DeconsolidationManually", { id: this.ID });
                 }
             },
             onAdhocInventoryCreationPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocInventoryCreation", { id: this.ID });
                 }
             },
             onCreationOfSingleHUpress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreationOfSingleHU", { id: this.ID });
                 }
             },
             onMaintainHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("MaintainHU", { id: this.ID });
                 }
             },
             onReversalofConsumptionbyMOHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReversalofConsumptionbyMObyHU", { id: this.ID });
@@ -1135,42 +1485,59 @@ sap.ui.define([
                 }
             },
             onUnloadingByShipmentPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByShipment", { id: this.ID });
                 }
             },
             onUnloadingByTransportUnitPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("UnloadingByTU", { id: this.ID });
                 }
             },
-
             // onSBQPAvatarPressed: function () {
             //     var oView = this.getView();
 
@@ -1234,10 +1601,12 @@ sap.ui.define([
                     }
                 });
             },
-            
 
-
-
+            onCloseDialog: function () {
+                this._pProfileDialog.then(function (oDialog) {
+                    oDialog.close();
+                })
+            },
             onProfilePressed: function() {
                 debugger;
                 var oView = this.getView();
@@ -1271,6 +1640,7 @@ sap.ui.define([
                     error: function() {
                         MessageToast.show("User does not exist");
                     }
+
                 });
 
     
@@ -1309,221 +1679,218 @@ sap.ui.define([
                 // Add actual logout logic here
             },
             onRecevinngofHUbyBillofLadingPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RouteBillofLading", { id: this.ID });
                 }
             },
             onCreateShippingHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateShippingHU", { id: this.ID });
                 }
             },
             onCreateShippingHUWOWCPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateShippingHUWOWC", { id: this.ID });
                 }
             },
             onPutawayByWOPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("PutawayByWO", { id: this.ID });
                 }
             },
-            onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
+            onWTquerybyHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("WTQueryByHU", { id: this.ID });
                 }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
+            },
+            onSetReadyforWHprocessingbyCOPress: function (oEvent) {
+                var oTile = oEvent.getSource();
+                if (this.EditCall) {
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
+                }
+            },
+            onAutomaticallyRepackHUItemPress: function (oEvent) {
+                var oTile = oEvent.getSource();
+                if (this.EditCall) {
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
+                }
+            },
+            onAvailableHandlingunitsonbinqueryPress: function (oEvent) {
+                var oTile = oEvent.getSource();
+                if (this.EditCall) {
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
 
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AvailableHandlingUnitsOnBinQuery", { id: this.ID });
                 }
             },
-            onAutomaticallyRepackHUItemPress: function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("AutomaticallyRepackHUItem", { id: this.ID });
-                }
-            },
-            onSetReadyforWHprocessingbyCOPress: function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("SetReadyforWHProcessingByCO", { id: this.ID });
-                }
-            },
-            onSetReadyforWHprocessingbyBOLPress: function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("WHProcessingByBOL", { id: this.ID });
-                }
-            },
-            onCreateandConfirmAdhocHUWTPress : function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("CreateConfirmAdhocHu", { id: this.ID });
-                }
-            },
-            onUnloadByHUPress : function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("UnloadByHu", { id: this.ID });
-                }
-            },
-            onChangeLoadingUnloadingDetailsPress : function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("ChangeLoadingUnloadingDetails", { id: this.ID });
-                }
-            },
-            onWTquerybyHUPress: function (oEvent) {
-                if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("WTQueryByHU", { id: this.ID });
-                }
-            },
             onWTQueryByWTPress: function () {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1543,162 +1910,242 @@ sap.ui.define([
                 }
             },
             onCreateandConfirmAdhocProductWTPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
                 }
             },
             onSerialnumberLocationPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("SerialNumberLocation", { id: this.ID });
                 }
             },
             onStockBinQuerybyProductPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
-
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
                 }
             },
             onCreateAdhocHUWTPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocHuWt", { id: this.ID });
                 }
             },
             onCreateAdhocProductWTPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AdhocProductWt", { id: this.ID });
                 }
             },
             onReceivingofHUbyDoorPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ReceivingOfHuByDoor", { id: this.ID });
                 }
             },
             onStockBinQuerybyBinPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("StockBinQueryByBin", { id: this.ID });
                 }
             },
             onHUQueryPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("HuQuery", { id: this.ID });
                 }
             },
             onUnloadingByDeliveryPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     // Proceed with normal navigation
                     var oRouter = UIComponent.getRouterFor(this);
@@ -1706,216 +2153,325 @@ sap.ui.define([
                 }
             },
             onUnloadingByASNPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RouteUnloadingASNDetails", { id: this.ID });
                 }
             },
             onWTQuerybyQueuePress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
 
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("WTQueryByQueue", { id: this.ID });
                 }
             },
             onPickPointPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("PickPoint", { id: this.ID });
                 }
             },
             onManuallyrepackallHUitemsPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ManuallyRepackAllHUItems", { id: this.ID });
                 }
             },
             onHUStockOverviewQueryPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("HUStockOverviewQuery", { id: this.ID });
                 }
             },
             onConsumptionByManufacturingOrderPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ConsumptionByManufacturingOrder", { id: this.ID });
                 }
             },
             onCreatePutawayHusforDeconsolidationPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreatePutawayHusforDeconsolidate", { id: this.ID });
                 }
             },
             onCreatePutawayHusManuallyPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("CreatePutawayHusManually", { id: this.ID });
                 }
             },
             onLoadByHUManPosAssigmentPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("LoadbyHUManPosAssiognment", { id: this.ID });
                 }
             },
             onPutawayByHUClusteredPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("RoutePutawayHuClustered", { id: this.ID });
                 }
             },
             onAutomaticallyRepackHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("AutomaticallyRepackHu", { id: this.ID });
                 }
             },
             onLoadByHUAutoPosAssignmentPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("LoadbyHUAutoPosAssiognment", { id: this.ID });
@@ -1923,23 +2479,60 @@ sap.ui.define([
             },
 
             onProductInspectionByHUPress: function (oEvent) {
+                var oTile = oEvent.getSource();
                 if (this.EditCall) {
-                    this._currentTile = oEvent.getSource();
-                    this.onPressRenameTile()
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
 
-                }
-                else if (this.Themecall) {
-                    // Get the ID of the pressed tile
-                    this._currentTile = oEvent.getSource();
-                    // Open the theme dialog for tile color selection
-                    // this.onBackgroundTilePopOverThemeBtn();
-                    this.onBackgroundTilePopOverThemeBtn()
-
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("ProductInspectionByHU", { id: this.ID });
                 }
             },
+            onProductInspectionByStorageBinPress: function (oEvent) {
+                var oTile = oEvent.getSource();
+                if (this.EditCall) {
+                    this._currentTile = oTile;
+                    this.onPressRenameTile();
+                } else if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+
+                    // Check if the tile is already selected
+                    var iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        // Remove the tile from the selected array and remove the highlight
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+                }
+            },
+
             onProductInspectionByStorageBinPress: function (oEvent) {
                 if (this.EditCall) {
                     this._currentTile = oEvent.getSource();
@@ -1958,6 +2551,26 @@ sap.ui.define([
                     oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
             },
+            onProfilePressed: function () {
+                var oView = this.getView();
+                if (!this.byId("idUserDetails")) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function (oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                        oDialog.open();
+                    });
+                }
+              else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+            },
+
             onHUMaintenanceInDeconsolidation: function (oEvent) {
                 debugger
                 if (this.EditCall) {
@@ -1970,6 +2583,7 @@ sap.ui.define([
                     // Open the theme dialog for tile color selection
                     // this.onBackgroundTilePopOverThemeBtn();
                     this.onBackgroundTilePopOverThemeBtn()
+
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
                     oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
