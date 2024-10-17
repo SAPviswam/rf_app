@@ -72,13 +72,13 @@
 }
 
 
-.buttonContainer {
+/* .buttonContainer {
     border-radius: 0rem !important;
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+    margin-top: 20px; 
     background-color: black;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
-}
+} */
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
@@ -173,14 +173,14 @@
     color: white; /* Set text color for better visibility */
 }
 
-.buttonContainer {
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+/* .buttonContainer {
+    margin-top: 20px; 
     background-color: black;
     margin-left: 1.7rem;
     margin-right: 2.5rem;
     margin-bottom: 0.5rem;
  
-}
+} */
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
@@ -751,6 +751,36 @@ margin-right: 15%;
 
 
 /*New UI initial view styles start*/
+
+.dialogButton_sapconnect{
+    color:rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5) ;
+    border-radius: 10px;
+    border :0px;
+ 
+}
+
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+.BtnConfSAPsys .sapMBtnInner {
+    color: orange; /* Change this to your desired color */
+}
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d !important;
+}
+
 .div{
     position: absolute; 
     left: 8%; 
@@ -842,6 +872,9 @@ margin-right: 15%;
     color: rgb(0, 0, 0);
     font-weight: bold !important;
     font-size: larger !important;
+}
+.checkbox{
+    margin-right: 30vw;
 }
 
 /*New UI initial view styles end*/

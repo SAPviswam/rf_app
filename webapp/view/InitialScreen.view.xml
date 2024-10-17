@@ -326,29 +326,29 @@
                     </HBox>
 
                     <!-- Checkboxes for Description, System ID, and Client -->
-                    <HBox
+                    <!-- <HBox
                         id="idhboxCheckboxes_InitialView"
-                        class="sapUiSmallMargin Checkbox"
-                    >
+                        class="sapUiSmallMargin"
+                    > -->
                         <CheckBox
                             id="idCheckboxDescription_InitialView"
-                            class="checkBoxText"
+                            class="checkBoxText sapUiSmallMarginTop sapUiSmallMarginBottom"
                             text="Description as System ID/Client"
                         />
-                    </HBox>
+                    <!-- </HBox> -->
 
                     <!--hbox for clear edit cancel help and finish buttons in configure sap systems-->
                     <HBox
                         id="iDgenhboxcontainer_InitialView"
-                        class="buttonContainer"
+                        class=""
                         width="85%"
                     >
                         <Button
-                            id="idConnectsapClearButton_InitialView"
+                            id="idconnectsapcancelButton_InitialView"
                             text="Clear"
                             press="onClearconnectSAPPress"
                             type="Unstyled"
-                            class="dialogButton sapUiSmallMarginEnd"
+                            class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idconnectsapeditButton_InitialView"
@@ -356,28 +356,28 @@
                             press="onEditconnectSAPPress"
                             type="Unstyled"
                             visible="false"
-                            class="dialogButton sapUiSmallMarginEnd"
+                            class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idconnectsapbackButton_InitialView"
                             text="Cancel"
                             type="Unstyled"
                             press="onBackconnectSAPPress"
-                            class="dialogButton sapUiSmallMarginEnd"
+                            class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idconnectsapfinishButton_InitialView"
                             text="Finish"
                             type="Unstyled"
                             press="onFinishconnectSAPPress"
-                            class="dialogButton sapUiSmallMarginEnd"
+                            class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idhelpconnectsapButton_InitialView"
                             text="Help"
                             type="Unstyled"
                             press="onHelpconnectsapDialog"
-                            class="dialogButton"
+                            class="dialogButton_sapconnect"
                         />
                     </HBox>
                 </VBox>

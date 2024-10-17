@@ -8,8 +8,9 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/ui/core/Fragment"
 ],
-    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator) {
+    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator,Fragment) {
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
@@ -253,18 +254,40 @@ sap.ui.define([
                 // Get the OData model
                 var oModel = this.getOwnerComponent().getModel();
                 // Read existing entries to check uniqueness
+
+                // // test
+                // if (sQuery && sQuery.length > 0) {
+                //     var filterVehicle = new Filter("vehicleNumber", FilterOperator.Contains, sQuery);
+                //     var filterSlot = new Filter("slotNumber/slotNumbers", FilterOperator.Contains, sQuery)
+
+                //     var filterName = new Filter("driverName", FilterOperator.Contains, sQuery);
+                //     var filterMobile = new Filter("driverMobile", FilterOperator.Contains, sQuery);
+                //     var filterDelivery = new Filter("deliveryType", FilterOperator.Contains, sQuery);
+                //     var filterVendor = new Filter("vendor_Name", FilterOperator.Contains, sQuery);
+
+                //     var allFilter = new Filter([filterVehicle, filterSlot, filterName, filterMobile, filterDelivery, filterVendor]);
+                // }
+
+                // // update list binding
+                // var oList = this.byId("idAssignedTable");
+                // var oBinding = oList.getBinding("items");
+                // oBinding.filter(allFilter);
+
+                // // test
+                var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
+                var oClient = new Filter("Client", FilterOperator.EQ, sClient);
+                var allFilter = new Filter([oDescription, oClient]);
                 oModel.read("/ServiceSet", {
-                    filters: [new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription)],
-                    filters: [new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient)],
+                    filters: [allFilter],
                     success: function (oData) {
                         // Initialize an array to hold error messages
                         var errorMessages = [];
                         // Check for duplicates and populate error messages
                         if (oData.results.length > 0) {
-                            if (oData.results.some(entry => entry.Client === sClient)) {
+                            if (oData.results[0].Client === sClient) {
                                 errorMessages.push("The Client must be unique.");
                             }
-                            if (oData.results.some(entry => entry.Description === sDescription)) {
+                            if (oData.results[0].Description === sDescription) {
                                 errorMessages.push("The Description must be unique.");
                             }
                             if (errorMessages.length > 0) {
@@ -900,8 +923,43 @@ sap.ui.define([
                 this.getView().byId("idServiceInput_InitialView").setValue("");
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
 
-            }
+            },
 
+               // test
+               onAvatarPressed: async function (oEvent) {
+                debugger;
+
+                if (!this._oPopover) {
+                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+                    this.getView().addDependent(this._oPopover)
+                }
+                // Open popover near the avatar
+                await this._oPopover.openBy(oEvent.getSource());
+            },
+            onAccountDetailsPressedInHomePage: function () {
+                var oView = this.getView();
+                if (!(this.byId("idUserDetails"))) {
+                    // Load the fragment asynchronously
+                    Fragment.load({
+                        id: oView.getId(),
+                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+                        controller: this
+                    }).then(function (oDialog) {
+                        // Add the dialog to the view
+                        oView.addDependent(oDialog);
+                        oDialog.open();
+                    });
+                } else {
+                    // If the dialog already exists, just open it
+                    this.byId("idUserDetails").open();
+                }
+            },
+
+            onCloseUSerDetailsDialog: function () {
+                this.byId("idUserDetails").close();
+            },
+
+            // test
 
             // New UI snippets end
 
