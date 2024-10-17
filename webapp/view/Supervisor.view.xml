@@ -634,8 +634,8 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
-                            class="sapUiTinyMargin"
+                            press="onHUMaintenanceInDeconsolidation"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
                     <ScrollContainer

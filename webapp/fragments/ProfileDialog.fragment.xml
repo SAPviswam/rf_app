@@ -75,7 +75,7 @@
                         icon="sap-icon://palette"
                         text="Themes"
                         type="Transparent"
-                        press="onPressThemesResource"
+                        press="onPressThemesBtnFromProfile"
                     />
                     <Button
                         id="idLanguageButton"
@@ -90,6 +90,7 @@
                         text="Tile View"
                         type="Transparent"
                         press="onPressTileViewSettings"
+                        visible="true"
                     />
                     <Button
                         id="idHelpButton"
