@@ -57,8 +57,8 @@ sap.ui.define([
                 if (Device.system.phone) {
                     if (this.isIPhone) {
                         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarHome").setWidth("42.5%");
-                        this.byId("idImageLogoAvatarHome").setHeight("45.5%");
+                        this.byId("idImageLogoAvatarHome").setWidth("22%");
+                        this.byId("idImageLogoAvatarHome").setHeight("28%");
                         this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
                         // this.byId("initialscreentitle").setMarginRight("25%")
 
@@ -775,6 +775,7 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
+
         });
     });
 
