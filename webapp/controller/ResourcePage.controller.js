@@ -605,6 +605,7 @@ sap.ui.define([
 
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
+            
                 // Close the popover after selection
                 this._oPopover.close();
             },
@@ -630,6 +631,8 @@ sap.ui.define([
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
+            
+
             // Theme press from profile 
 
             onPressThemesResource: function (oEvent) {
@@ -1602,12 +1605,10 @@ sap.ui.define([
                     }
                 });
             },
+            
 
-            onCloseDialog: function () {
-                this._pProfileDialog.then(function (oDialog) {
-                    oDialog.close();
-                })
-            },
+
+
             onProfilePressed: function() {
                 debugger;
                 var oView = this.getView();
@@ -2587,9 +2588,19 @@ sap.ui.define([
 
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
             },
+
+            onProductInspectionByStorageBinPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            },
+           
+    
+                    
+ 
+
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
