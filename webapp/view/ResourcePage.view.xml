@@ -882,6 +882,17 @@
                                 />
                             </contentLeft>
                             <contentRight>
+                                <unified:FileUploader
+                                    id="idBrowseImgfileUploaderTilesBG"
+                                    icon="sap-icon://background"
+                                    change="onFileUploadChange"
+                                    fileType="jpg,png,jpeg,gif"
+                                    maximumFileSize="1"
+                                    buttonOnly="true"
+                                    buttonText=" "
+                                    mimeType="image/jpeg,image/png,image/gif"
+                                    visible="true"
+                                />
                                 <Button
                                     id="applyColorButtonResource"
                                     text="Apply"
@@ -899,15 +910,6 @@
                             </contentRight>
                         </Bar>
                     </customHeader>
-                    <!-- <unified:FileUploader
-                            id="idBrowseImgfileUploader"
-                            icon="sap-icon://background"
-                            tooltip="Upload an image to apply as tile background"
-                            change="onFileUploadChange"
-                            fileType="jpg,png,jpeg,gif"
-                            maximumFileSize="2"
-                            uploadOnChange="false"
-                        /> -->
                     <VBox
                         id="idVBox1796Resource"
                         class="sapUiSmallMargin"
@@ -1011,8 +1013,6 @@
                                     />
                                 </customData>
                             </CheckBox>
-                            <!-- <Button id="idCustomethemeSelection" press="onPressCustomeTheme" icon="sap-icon://palette" type="Transparent"></Button> -->
-                            <!-- Add more color options as needed -->
                         </HBox>
                         <unified:ColorPicker
                             id="idcolorPickerResource"
