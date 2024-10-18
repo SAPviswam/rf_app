@@ -91,17 +91,38 @@
     padding: 8px 16px; /* Optional: Add padding for better button size */
     border: 1px solid transparent; /* Ensure border is transparent to maintain the look */
 }
+.boxContainer3 {
+    border-radius: 1rem !important;
+     border: 2px solid #090909d2 !important;
+    /* Add border width, style, and color */
+    padding: 1rem !important;
+    width: 40% !important;
+}
 .boxContainer {
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
-    width: 23% !important;
+    /* width: 23% !important; */
 }
+@media only screen and (min-width: 1024px) {
+    .boxContainer {
+        border-radius: 0rem !important;
+        border: 2px solid #ed731dd2 !important;
+        padding: auto !important; 
+        padding-bottom: 1rem;
+        width: 23% !important;
+    }
+}
+
 .TitlecustomHeader{
-    border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* For Safari */
+    -moz-user-select: none !important; /* For Firefox */
+    -ms-user-select: none !important; /* For Internet Explorer/Edge */
 }
+    
 .InitialButton67{
     margin-left: 0.5rem;
     font-size: x-small;
@@ -110,7 +131,7 @@
 .Butns{
     margin-left: 0.3rem;
 }
-.boxContainersupervisor {
+.boxContainer3 {
     border-radius: 1rem !important;
      border: 2px solid #090909d2 !important; 
     /* Add border width, style, and color */
@@ -122,8 +143,8 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: auto !important;
-    /* padding-bottom: 4rem; */
 }
+
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
@@ -175,11 +196,46 @@
 .logo{
     margin-top: 7%;
     margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+      
 }
 
 .dropdown {
-    width: 100%;
+    width: 80%;
 }
+/* General styles for all devices */
+
+
+.boxContainer3 {
+    width: auto; /* Default width */
+}
+
+.boxContainer2 {
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    width: 100% !;
+}
+
+.capModelRFText {
+    font-size: 1.5em; /* Default font size */
+}
+
+.button {
+    margin-left: 5%; /* Default left margin */
+    width: auto; /* Default width */
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+.logo {
+    margin-top: 7%;
+    margin-left: 7%;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive styles for tablets and mobile devices */
+
+
 @media (max-width: 600px) {
     .boxContainer {
         width:  85%!important; /* Full width on mobile */
@@ -192,7 +248,7 @@
     .boxContainer2 {
         border-bottom: 2px solid #ed731dd2 !important;
         /* Add border width, style, and color */
-        padding: auto !important; 
+        padding: auto !important;
         width: auto !important;
     }
     .capModelRFText {
@@ -200,20 +256,37 @@
         margin-left: 10px; /* Adjust left margin */
         margin-top: 15px; /* Adjust top margin */
     }
-
+ 
     .button {
         margin-left: 5% !important; /* Reduce left margin on mobile */
         width: 100%; /* Full width buttons on mobile */
         margin-bottom: 10px; /* Add space between buttons */
     }
-
+ 
     .logo {
-        margin-top: 12%; /* Adjust logo margin for mobile */
-        margin-left: 12%; /* Center logo on mobile */
+        margin-top: 7%; /* Adjust logo margin for mobile */
+        margin-left: 7%; /* Center logo on mobile */
         width: 100%; /* Logo full width on mobile */
         height: auto; /* Maintain aspect ratio */
     }
 }
+ 
+.iphoneMarginLeft {
+    margin: 2% !important;
+}
+
+
+.iphoneMarginSapLogon{
+    margin: 0%;
+}
+
+.iphoneInitialTitle{
+    padding: 0%;
+}
+.tabletBoxContainer{
+    width: 150%;
+}
+
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
     color: rgb(243, 15, 15) !important; /* Remove default border */
@@ -234,33 +307,53 @@
 }
 /* these are for theme colors for options... */
 .colorCheckBox {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 36px !important;
+    height: 36px !important;
+    margin-right: 7px;
     display: inline-block;
     border-color: black !important;
 }
 .redCheckBox .sapMCbBg {
     background-color: red !important;
+    height: 20px;
+    width: 20px;
 }
 .blackCheckBox .sapMCbBg {
     background-color: black !important;
+    height: 20px;
+    width: 20px;
 }
 .greenCheckBox .sapMCbBg {
     background-color: green !important;
+    height: 20px;
+    width: 20px;
 }
 .whiteCheckBox .sapMCbBg {
     background-color: white !important;
+    height: 20px;
+    width: 20px;
 }
 .purpleCheckBox .sapMCbBg {
     background-color: purple !important;
+    height: 20px;
+    width: 20px;
 }
 .blueCheckBox .sapMCbBg {
-    background-color: blue !important;
+    background-color: blue!important;
+    height: 20px;
+    width: 20px;
 }
 .YellowCheckBox .sapMCbBg {
     background-color: yellow !important;
+    height: 20px;
+    width: 20px;
 }
+.LabelTileNamecolour{
+    font-weight: bolder;
+}
+
+
+
 .textFieldsAF {
     padding-bottom: 1rem;
 
@@ -271,6 +364,8 @@
   .classUOMbyASn{
     margin-top: 16%;
   }
+
+  
 
 
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
@@ -377,7 +472,7 @@
 .UnitsofMeasure {
     margin-top: 0.4rem;
 }
-/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+/* ScrollContainers Page2 & Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
    ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
    ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
    ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
@@ -458,9 +553,58 @@
         width: auto !important; /* Adjust labels */
     }
 }
-
-
-
+.onProfileOptions{
+    margin-left: -0.2rem !important;
+}
+.largeIcons{
+    width: 150px !important;
+    height: 150px !important;
+    font-size: auto !important;
+}
+.mediumIcons{
+    width: 110px !important;
+    height: 110px !important;
+    font-size: auto !important;
+}
+.smallIcons{
+    width: 80px !important;
+    height: 80px !important;
+    font-size: auto !important;
+}
+.listgridIcons {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    align-items: center;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: -2rem !important;
+}
+.listgridIcons .sapMGTHeader {
+    margin-left: 10px; /* Space between tile and header */
+}
+.tileSelected {
+    border: 3px solid rgb(255, 120, 9) !important;
+    /* Customize this color and thickness as needed */
+    box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
+    animation: shake 0.35s ease infinite !important;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 
 
@@ -513,6 +657,97 @@ background-color: rgb(9, 8, 8) !important;
 }
 .sapUiResponsivePadding .sapUiTinyMarginEnd {
     margin-right: 5px;
+ 
 }
+
+
+/* CSS Methods For SIGNUP Fragment */
+.LabelHomePage{
+    margin-top: 0.3rem;
+}
+.LabelHomepageFragmentSignup{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup2{
+    margin-top: 0.8rem;
+}
+.LabelHomepageFragmentSignup3{
+    margin-top: 0.7rem;
+}
+.LabelHomepageFragmentSignup4{
+    margin-top: 0.5rem;
+}
+.LabelHomepageFragmentSignup5{
+    margin-top: 0.7rem;
+}
+.signupCreatebutton {
+    background-color: darkorange;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+    border-color:  darkorange !important;
+    font-weight: bold !important;
+}
+.textbold{
+    font-weight: bold;
+}
+.boxContainersignup{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important; 
+    padding-bottom: 1rem;
+    width: 25% !important;
+}
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d;
+}
+.noHeaderDialog .sapMDialogTitle {
+    display: none;
+}
+/* .connecttoSAPform{
+    border-radius: 0rem !important;
+    background-color: #c9dbe9;
+} */
+.logonbutton{
+    background-color:#5496cd;
+    border: 2px solid #5496cd !important;
+    color:  #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* .cancelbutton{
+    background-color: #fbf6f6;
+    border: 2px solid #ffffff !important;
+    color:rgba(24, 24, 237, 0.852) !important;
+    margin-top: 0.2rem;
+} */
+
+/* .comboCS{
+margin-left: 20%;
+margin-right: 20%;
+} */
+/* .changePassword{
+    font-size: 90%;
+} */
+
+.VboxChangePassword {
+margin-right: 15%;
+}
+.UserDetailsDialog{
+    background-color: orange !important;
+    color: orange;
+}
+
+
+@media (max-width: 600px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: 100% !important; /* Make buttons full-width on smaller screens */
+        margin-bottom: 10px !important; /* Add spacing between buttons */
+    }
+}
+
+@media (min-width: 601px) {
+    #idSlotsTableHeader1 .sapMBtn {
+        width: auto !important; /* Reset width for larger screens */
+    }
+}
+
 
 

@@ -1,16 +1,25 @@
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+     "sap/ui/Device"
   ],
-  function (BaseController,MessageToast) {
+  function (BaseController,MessageToast,Device) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.PutawayByHU", {
       onInit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+          // Attach media change handler for screen size adjustments
+          Device.media.attachHandler(this.onResize, this);
+            
     },
+
+
+
+   
+
     onResourceDetailsLoad: async function (oEvent1) {
         const { id } = oEvent1.getParameter("arguments");
             this.ID = id;
