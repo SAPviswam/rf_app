@@ -82,6 +82,9 @@
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
+    margin-right: 8%;
+  
+   
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */

@@ -7,9 +7,10 @@ sap.ui.define([
     "sap/m/library",
     "sap/m/MessageToast",
     "sap/ui/core/UIComponent",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/core/routing/History"
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History) {
 
         "use strict";
 
@@ -40,6 +41,7 @@ sap.ui.define([
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
             },
+
             onAfterRendering: function () {
                 debugger
                 // Apply stored background color
@@ -735,6 +737,7 @@ sap.ui.define([
 
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
+            
                 // Close the popover after selection
                 this._oPopover.close();
             },
@@ -760,6 +763,51 @@ sap.ui.define([
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
+
+            // Theme press from profile 
+
+            onPressThemesResource: function (oEvent) {
+                // Check if the popover already exists, if not create it
+                if (!this._oThemeSelectPopover) {
+                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
+                    this.getView().addDependent(this._oThemeSelectPopover);
+                }
+                // Open popover near the language button
+                this._oThemeSelectPopover.openBy(oEvent.getSource());
+            },
+
+            // on Background theme select 
+
+            onBackGroudThemeSelect: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            // on Background theme select 
+
+            onBackGroudThemeSelect: function () {
+                this.byId("idthemeTileDialogResource").open();
+            },
+            // on Tile theme select 
+
+            onTileThemeSelect: function () {
+                if (this.EditCall) {
+                    sap.m.MessageBox.information("Please exit from edit mode first")
+                    return;
+                }
+                this.Themecall = !this.Themecall; // Toggle the state
+                if (this.Themecall) {
+                    // Theme mode activated
+                    this.byId("idCancelButtonResource").setVisible(true);
+                    // this.byId("idthemeBackGroundButton").setVisible(true);
+                    sap.m.MessageToast.show("Theme mode activated.");
+                } else {
+                    // Theme mode deactivated
+                    this.byId("idCancelButtonResource").setVisible(false);
+                    // this.byId("idthemeBackGroundButton").setVisible(false);
+                    sap.m.MessageToast.show("Theme mode deactivated.");
+                }
+            },
+
+
             onResourceDetailsLoad: async function (oEvent1) {
 
                 // const { id } = oEvent1.getParameter("arguments");
@@ -1702,6 +1750,7 @@ sap.ui.define([
                     oDialog.close();
                 })
             },
+
             onProfilePressed: function() {
                 debugger;
                 var oView = this.getView();
@@ -1995,6 +2044,7 @@ sap.ui.define([
                     if (!this._selectedTiles) {
                         this._selectedTiles = [];
                     }
+
 
                     // Check if the tile is already selected
                     var iTileIndex = this._selectedTiles.indexOf(oTile);
@@ -2698,9 +2748,19 @@ sap.ui.define([
                     }
                 } else {
                     var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
+                    oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
                 }
             },
+
+            onProductInspectionByStorageBinPress: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
+            },
+           
+    
+                    
+ 
+
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },

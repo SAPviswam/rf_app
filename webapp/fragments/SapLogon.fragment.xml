@@ -64,8 +64,8 @@
                     width="100%"
                     class="sapUiSmallMargin"
                 >
-
-
+ 
+ 
                 <VBox alignItems="Start">
                     <!-- User Input -->
                     <Input
@@ -88,7 +88,7 @@
                             width="120px"
                         />
                     </VBox>
-                        <Select
+                        <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
                             width="90.5%"
                             selectedKey="en"
@@ -106,9 +106,9 @@
                                     text="SP-Spanish"
                                 />
                             </items>
-                        </Select>
-
-
+                        </ComboBox>
+ 
+ 
                    <VBox alignItems="Start">
                     <Input
                         id="idRouterStringInput_CS"
@@ -119,21 +119,20 @@
                         editable="false"
                     />
                     </VBox>
-                    
-
+                   
+ 
                     <!-- Log On Button -->
-                        
+                       
                         <Button
                             id="LoginButton_CS"
                             text="Log On"
                             width="90%"
                             type="Unstyled"
                             press="onLogOnPress"
-                            class="logonbutton"
                         />
                         <HBox class="sapUiSmallMarginEnd">
-                    
-                    
+                   
+                   
                         <Link
                         id="IDchangePassword"
                         text="Change Password"
@@ -147,10 +146,10 @@
                        />
                         </HBox>
                         </VBox>
-
-
+ 
+ 
                     <!-- Change Password Link -->
-                    
+                   
                     </VBox>
             </form:SimpleForm>
         </content>

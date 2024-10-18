@@ -41,35 +41,10 @@ sap.ui.define([
                 else if (Device.system.tablet) {
                     this.byId("environmentButtonsHBox").setWidth("40%");
                 }
-                this._handleKeyDownBound = this._handleKeyDown.bind(this);
-                document.addEventListener("keydown", this._handleKeyDownBound);
+                
             },
 
-            _handleKeyDown: function (oEvent) {
-                if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
-                    oEvent.preventDefault();
-                }
-                if (this.getView().getId() === "pageInitial") {
-                    switch (oEvent.key) {
-                        case "F1":
-                            this.onSave();
-                            break;
-                        case "F4":
-                            this.onDelete();
-                            break;
-                        case "F2":
-                            this.onEdit();
-                            break;
-                    }
-                }
-            },
-
-            onExit: function () {
-                // Clean up the event listener when the controller is destroyed
-                document.removeEventListener("keydown", this._handleKeyDownBound);
-            },
-
-            onSave: function () {
+            onSave:function(){
                 this.handleLinksapPress();
             },
             onDelete: function () {
@@ -916,7 +891,7 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
+                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
