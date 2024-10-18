@@ -137,13 +137,13 @@ sap.ui.define([
                 }.bind(this));
 
                 // Apply the stored profile picture
-                // var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                // if (sStoredProfileImage) {
-                //     var oAvatarControl = this.byId("id_GenAvatar1P");
-                //     if (oAvatarControl) {
-                //         oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image as the Avatar source
-                //     }
-                // }
+                var sStoredProfileImage = localStorage.getItem("userProfileImage");
+                if (sStoredProfileImage) {
+                    var oAvatarControl = this.byId("id_GenAvatar1P");
+                    if (oAvatarControl) {
+                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
+                    }
+                }
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
@@ -1702,69 +1702,72 @@ sap.ui.define([
                     oDialog.close();
                 })
             },
-            onProfilePressed: function() {
-                debugger;
-                var oView = this.getView();
+            onPressAccountDetails: async function () {
+                const oModel1 = this.getOwnerComponent().getModel();
+                const userId = this.ID;
 
-                // Save reference to 'this'
-                var that = this; // Preserves the correct context of 'this'
-
-                var oModelRead = this.getOwnerComponent().getModel();
-
-                // Read data using OData model
-                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function (oData) {
-                        // Assuming 'Users' and 'Resourceid' are available in the oData response
-                        let oUser = oData.Users.toLowerCase();
-
-                        if (oUser === "resource") {
-                            var oProfileDialogData = {
-                                Id: oData.Resourceid,
-                                Name: oData.Resourcename,
-                                Email: oData.Email,
-                                Number: oData.Phonenumber // Assuming this is the field you want to bind
-                            };
-
-                            // Bind data to the dialog (use 'that' instead of 'This')
-                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileDialogData);
-                            that.byId("idUserDetails").setModel(oPopoverModel, "profile");
-                        } else {
-                            MessageToast.show("User is not a resource.");
-                        }
-                    },
-                    error: function () {
-                        MessageToast.show("User does not exist");
-                    }
-
-                });
-
-
-                // Check if the dialog already exists
-                if (!this.byId("idUserDetails")) {
-                    // Load the fragment asynchronously
-                    Fragment.load({
-                        id: oView.getId(),
-                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
-                        controller: this
-                    }).then(function (oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
-                        var Oopen = oDialog.open();
-                        if (Oopen) {
-                            // Reference to the current instance
-
-
-                            // Get the model (assuming it's an OData model)
-
+                // Fetch user details from the backend
+                await new Promise((resolve, reject) => {
+                    oModel1.read(`/RESOURCESSet('${userId}')`, {
+                        success: function (oData) {
+                            const userDetails = oData; // Adjust this based on your data structure
+                            // Set user data in a new model or update existing model
+                            const oUserModel = new sap.ui.model.json.JSONModel(userDetails);
+                            this.getView().setModel(oUserModel, "oUserModel"); // Set the model with name
+                            resolve();
+                        }.bind(this), // Bind this to ensure the context is correct
+                        error: function () {
+                            MessageToast.show("Error loading user tiles");
+                            reject();
                         }
                     });
-                } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
+                });
+
+                if (!this._oDialog) {
+                    this._oDialog = sap.ui.xmlfragment("com.app.rfapp.fragments.UserDetails", this);
+                    this.getView().addDependent(this._oDialog); // Makes sure the dialog is cleaned up when the view is destroyed
+                }
+                this._oDialog.open();
+                var sStoredProfileImage = localStorage.getItem("userProfileImage");
+                if (sStoredProfileImage) {
+                    var oProfileAvatarControl = this._oDialog.mAggregations.content[0].mAggregations.items[0];
+                    if (oProfileAvatarControl) {
+                        oProfileAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image as the Avatar source
+                    }
                 }
             },
+            onPressDeclineProfileDetailsDailog: function () {
+                if (this._oDialog) {
+                    this._oDialog.close();
+                }
+            },
+            onFileUploadForProfileImage: function (oEvent) {
+                this._oSelectedFile = oEvent.getParameter("files") && oEvent.getParameter("files")[0];
+                MessageToast.show("Image Selected. now press on Save!")
+            },
+            onPressSaveUserProfileImage: function () {
+                if (this._oSelectedFile) {
+                    var oReader = new FileReader();
+                    var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
+                    var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
+                    var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
 
+                    // Set up the onload event for the FileReader
+                    oReader.onload = function (oEvent) {
+                        var sBase64Image = oEvent.target.result;
+                        oImageControl1.setSrc(sBase64Image);
+                        oImageControl2.setSrc(sBase64Image);
+                        oImageControl3.setSrc(sBase64Image);
+                        localStorage.setItem("userProfileImage", sBase64Image);
+                        MessageToast.show("Profile image updated successfully!");
+                    };
 
+                    // Read the selected file as a Data URL (base64 string)
+                    oReader.readAsDataURL(this._oSelectedFile);
+                } else {
+                    MessageToast.show("Please select an image to upload.");
+                }
+            },
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
             },

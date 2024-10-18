@@ -9,7 +9,7 @@
         verticalScrolling="false"
         horizontalScrolling="false"
         class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
-        contentWidth="200px"
+        contentWidth="210px"
         title="Profile:"
     >
         <form:SimpleForm
@@ -23,8 +23,9 @@
                 >
                     <Avatar
                         id="idProfileAvatar"
-                        displaySize="XS"
-                        tooltip="Profile"
+                        displaySize="S"
+                        class="profileAvatar1234"
+                        press="onPressProfileImageAvatar"
                     />
                     <Label
                         id="idLabelEmptyInProfile"
@@ -54,7 +55,7 @@
                         icon="sap-icon://person-placeholder"
                         text="Account Details"
                         type="Transparent"
-                        press="onProfilePressed"
+                        press="onPressAccountDetails"
                     />
                     <Button
                         id="idEditButton"
