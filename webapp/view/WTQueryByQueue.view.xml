@@ -351,7 +351,7 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+             
                 >
                 <VBox >
                     <Title text="Product Description" />
@@ -415,7 +415,7 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                  
                 >
                     <VBox>
                         <HBox  alignContent="Center" alignItems="Center">
@@ -604,7 +604,7 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                
                 >
                     <VBox>
                         <HBox alignContent="Center" alignItems="Center">
@@ -793,7 +793,7 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                 
                 >
 <VBox>
                         <HBox alignContent="Center" alignItems="Center">

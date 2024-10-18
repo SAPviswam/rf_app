@@ -72,16 +72,16 @@
       }
     },
     "commands": {
-			"Save": {
-				"shortcut": "F1"
-			},
-			"Delete": {
-				"shortcut": "F4"
-			},
+      "Save": {
+        "shortcut": "F1"
+      },
+      "Delete": {
+        "shortcut": "F4"
+      },
       "Edit": {
-				"shortcut": "F2"
-			}
-		},
+        "shortcut": "F2"
+      }
+    },
     "contentDensities": {
       "compact": true,
       "cozy": true
@@ -118,8 +118,15 @@
       },
       "routes": [
         {
-          "name": "InitialScreen",
+          "name": "ConfigLogin",
           "pattern": ":?query:",
+          "target": [
+            "TargetConfigLogin"
+          ]
+        },
+        {
+          "name": "InitialScreen",
+          "pattern": "InitialScreen",
           "target": [
             "TargetInitialScreen"
           ]
@@ -577,12 +584,9 @@
           "pattern": "LoadbyHUAutoPosAssiognment/{id}",
           "target": [
             "TargetLoadbyHUAutoPosAssiognment"
- 
-            ]
-  
+          ]
         },
         {
- 
           "name": "RouteChangeLoadingUnloadingDetails",
           "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
           "target": [
@@ -591,6 +595,13 @@
         }
       ],
       "targets": {
+        "TargetConfigLogin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ConfigLogin",
+          "viewName": "ConfigLogin"
+        },
         "TargetInitialScreen": {
           "viewType": "XML",
           "transition": "slide",
@@ -1038,23 +1049,22 @@
           "clearControlAggregation": false,
           "viewId": "UnloadByHu",
           "viewName": "UnloadByHu"
-        
         },
-        "TargetAutomaticallyRepackHu":{
+        "TargetAutomaticallyRepackHu": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "AutomaticallyRepackHu",
           "viewName": "AutomaticallyRepackHu"
         },
-        "TargetConsumptionByManufacturingOrder":{
+        "TargetConsumptionByManufacturingOrder": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "ConsumptionByManufacturingOrder",
           "viewName": "ConsumptionByManufacturingOrder"
         },
-        "TargetReversalofConsumptionbyMO_Bin":{
+        "TargetReversalofConsumptionbyMO_Bin": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
