@@ -975,7 +975,23 @@ margin-right: 15%;
     margin-right: 30vw;
 }
 
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+
 /*New UI initial view styles end*/
+
 
 /* Add background image to the ScrollContainer */
 #idScrollContainer1_configPage {
@@ -1038,4 +1054,5 @@ margin-right: 15%;
     font-weight: bold;   /* Makes the title bold */
     text-align: center;  /* Centers the text */
 }
+
 
