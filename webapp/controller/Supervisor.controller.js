@@ -45,7 +45,7 @@ sap.ui.define(
                 }
                 else if (Device.system.phone) {
                     this.byId("idRequestedData").setWidth("600px");
-                    this.byId("idUserDataTable").setWidth("2200px");
+                     this.byId("idUserDataTable").setWidth("3500px");
                 }
  
             },
@@ -2008,11 +2008,11 @@ sap.ui.define(
             //     oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
     
             // },
-            // OnPressStockBinQueryByBin: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("StockBinQueryByBin", { id: this.ID });
+            OnPressStockBinQueryByBin: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByBin", { id: this.ID });
 
-            // },
+            },
             // onReceivingofHUbyASN: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });
@@ -2571,5 +2571,60 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
             // }
+
+
+            // search functionality in User data
+            onSearch: async function (oEvent) {
+                var sQuery = oEvent.getParameter("newValue").trim().toLowerCase(); // Convert the query to lower case
+                var oTable = this.byId("idUserDataTable"); // ID of your Table
+            
+                try {
+                    var oModel = this.getOwnerComponent().getModel(); // Assuming the model is bound to the view
+                    var sPath = "/RESOURCESSet"; // Your EntitySet path
+            
+                    // Fetch the data from the OData service
+                    var aAllData = await new Promise((resolve, reject) => {
+                        oModel.read(sPath, {
+                            success: function (oData) {
+                                resolve(oData.results);
+                            },
+                            error: function (oError) {
+                                console.error("Failed to fetch all data:", oError);
+                                reject(oError);
+                            }
+                        });
+                    });
+            
+                    // If there's a search query, filter the data based on the query
+                    var aFilteredData;
+                    if (sQuery) {
+                        aFilteredData = aAllData.filter(function (oItem) {
+                            return (oItem.Resourceid && oItem.Resourceid.toLowerCase().includes(sQuery)) ||
+                                (oItem.Resourcetype && oItem.Resourcetype.toLowerCase().includes(sQuery)) ||
+                                (oItem.Resourcename && oItem.Resourcename.toLowerCase().includes(sQuery)) ||
+                                (oItem.Area && oItem.Area.toLowerCase().includes(sQuery)) ||
+                                (oItem.Resourcegroup && oItem.Resourcegroup.toLowerCase().includes(sQuery)) ||
+                                (oItem.Lname && oItem.Lname.toLowerCase().includes(sQuery)) ||
+                                (oItem.Phonenumber && oItem.Phonenumber.includes(sQuery)) || // Assuming phone numbers should be case insensitive
+                                (oItem.Queue && oItem.Queue.toLowerCase().includes(sQuery));
+                        });
+                    } else {
+                        aFilteredData = aAllData; // No search query, use all data
+                    }
+            
+                    // Create a new JSON model with the filtered data
+                    var oFilteredModel = new sap.ui.model.json.JSONModel(aFilteredData);
+            
+                    // Bind the filtered model to the table
+                    oTable.setModel(oFilteredModel);
+                    oTable.bindItems({
+                        path: "/",
+                        template: oTable.getBindingInfo("items").template
+                    });
+            
+                } catch (error) {
+                    console.error("Error fetching or filtering data:", error);
+                }
+            }, 
         });
     });
