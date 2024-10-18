@@ -147,10 +147,10 @@
 <Property Name="IdatuT" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="LI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Ivnum" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="IvDo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="IvPos" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="IvDo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="MovedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Mvt Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="MovedTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Mvt Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="MovedDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Mvt Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="MovedTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Mvt Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="ClearedTime" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Clearing Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="ClearedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Clearing Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ClearedDate" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Clearing Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="UnitW" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Weight Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 <NavigationProperty Name="BINQHeadSet" Relationship="ZEWM_RFUI_SRV_01.BinItemtoHead" FromRole="FromRole_BinItemtoHead" ToRole="ToRole_BinItemtoHead"/>
 </EntityType>

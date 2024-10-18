@@ -75,7 +75,7 @@
                         icon="sap-icon://palette"
                         text="Themes"
                         type="Transparent"
-                        press="onPressThemesBtnFromProfile"
+                        press="onPressThemesResource"
                     />
                     <Button
                         id="idLanguageButton"
