@@ -82,6 +82,9 @@
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
+    margin-right: 8%;
+  
+   
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
@@ -314,17 +317,17 @@
     border-color: black !important;
 }
 .redCheckBox .sapMCbBg {
-    background-color: red !important;
+    background-color: lightcoral !important;
     height: 20px;
     width: 20px;
 }
 .blackCheckBox .sapMCbBg {
-    background-color: black !important;
+    background-color: lightgray !important;
     height: 20px;
     width: 20px;
 }
 .greenCheckBox .sapMCbBg {
-    background-color: green !important;
+    background-color: lime !important;
     height: 20px;
     width: 20px;
 }
@@ -334,17 +337,17 @@
     width: 20px;
 }
 .purpleCheckBox .sapMCbBg {
-    background-color: purple !important;
+    background-color: thistle !important;
     height: 20px;
     width: 20px;
 }
 .blueCheckBox .sapMCbBg {
-    background-color: blue!important;
+    background-color: lightblue !important;
     height: 20px;
     width: 20px;
 }
 .YellowCheckBox .sapMCbBg {
-    background-color: yellow !important;
+    background-color:  #ffad16ea !important;
     height: 20px;
     width: 20px;
 }
@@ -584,7 +587,6 @@
 }
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
-    /* Customize this color and thickness as needed */
     box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
     animation: shake 0.35s ease infinite !important;
 }
@@ -735,6 +737,35 @@ margin-right: 15%;
     color: orange;
 }
 
+/* Styles for Config Login */
+
+.boxContainerlogin {
+    margin-top: 5% !important;
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important;
+    width: auto !important;
+}
+.boxContainerhome {
+    margin-bottom: 2%;
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important;
+    padding-bottom: 1rem;
+    width: 23% !important;
+}
+ 
+.capModelRFTextlogin {
+    color: #ed731dd2 !important;
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
+ 
+.moveRight {
+    margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
+}
+/* Styles for Config Login end*/
 
 @media (max-width: 600px) {
     #idSlotsTableHeader1 .sapMBtn {
