@@ -144,6 +144,7 @@ sap.ui.define([
         },
 
         success: function (odata) {
+          console.log(odata)
 
           var oView = that.getView();
           oView.byId("idSBQBBinInput").setValue(odata.Lgtyp);
@@ -159,7 +160,36 @@ sap.ui.define([
           oView.byId("idSBQBStackInput").setValue(odata.Fcapa);
           oView.byId("idSBQBBinAisleInputUOM").setValue(odata.UnitW);
           oView.byId("idSBQBinLevelInputUOM").setValue(odata.UnitV);
+          oView.byId("idinput_MovementId_BQB").setValue(odata.MovedDate);
+          oView.byId("idinput_LastChanged_BQB").setValue(odata.ClearedDate);
+          oView.byId("idinput_MovementId_LI_BQB").setValue(odata.IdatuD);
+          oView.byId("idinput_LastChanged_LI_BQB").setValue(odata.Ivnum);
+          oView.byId("idinput_Movementcbt_LI_BQB").setValue(odata.IvPos);
 
+          function convertMillisecondsToTime(milliseconds) {
+            // Calculate total seconds
+            let totalSeconds = Math.floor(milliseconds / 1000);
+        
+            // Calculate hours, minutes, and seconds
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+        
+            // Format as HH:MM:SS
+            return (
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0')
+            );
+        }
+        
+        // Example usage
+        const milliseconds = odata.MovedTime.ms;
+        const milliseconds1 = odata.ClearedTime.ms;
+        const milliseconds2 = odata.IdatuT.ms;
+        oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
+        oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
+        oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
