@@ -191,16 +191,15 @@
                 >
                     <Table
                         id="idBinDataTable"
-                        alternateRowColors="true"
                         growingScrollToLoad="true"
                     >
                         <columns>
-                            <Column id="idProd.NoCol">
+                            <!-- <Column id="idProd.NoCol">
                                 <Title
                                     id="idProd.NoTitle"
                                     text="Prod.No"
                                 />
-                            </Column>
+                            </Column> -->
                             <Column id="idProductCol">
                                 <Title
                                     id="idProductTitle"
@@ -223,9 +222,9 @@
                         <items>
                             <ColumnListItem id="idBinColListItem">
                                 <cells>
-                                    <Text id="idProd.NoValue" />
+                                    <!-- <Text id="idProd.NoValue"/> -->
                                     <Text id="idProductColValue" />
-                                    <Text id="idQtyColValue" />
+                                    <Text id="idQtyColValue"  />
                                     <Text id="idQtyUOMColValue" />
                                 </cells>
                             </ColumnListItem>
