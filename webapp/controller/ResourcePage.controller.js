@@ -1772,6 +1772,11 @@ sap.ui.define([
                                 Email: oData.Email,
                                 Number: oData.Phonenumber // Assuming this is the field you want to bind
                             };
+                        }
+                    }
+                });
+                
+            },
 
             onPressAccountDetails: async function () {
                 const oModel1 = this.getOwnerComponent().getModel();

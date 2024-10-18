@@ -77,7 +77,6 @@
                 <!-- Title -->
                 <Text text="Application Login" 
                       class="loginTitle" 
-                      design="Bold" 
                       textAlign="Center" 
                       width="100%"/>
                       
