@@ -882,6 +882,17 @@
                                 />
                             </contentLeft>
                             <contentRight>
+                                <unified:FileUploader
+                                    id="idBrowseImgfileUploaderTilesBG"
+                                    icon="sap-icon://background"
+                                    change="onFileUploadChange"
+                                    fileType="jpg,png,jpeg,gif"
+                                    maximumFileSize="1"
+                                    buttonOnly="true"
+                                    buttonText=" "
+                                    mimeType="image/jpeg,image/png,image/gif"
+                                    visible="true"
+                                />
                                 <Button
                                     id="applyColorButtonResource"
                                     text="Apply"
@@ -899,15 +910,6 @@
                             </contentRight>
                         </Bar>
                     </customHeader>
-                    <!-- <unified:FileUploader
-                            id="idBrowseImgfileUploader"
-                            icon="sap-icon://background"
-                            tooltip="Upload an image to apply as tile background"
-                            change="onFileUploadChange"
-                            fileType="jpg,png,jpeg,gif"
-                            maximumFileSize="2"
-                            uploadOnChange="false"
-                        /> -->
                     <VBox
                         id="idVBox1796Resource"
                         class="sapUiSmallMargin"
@@ -923,7 +925,7 @@
                                     <core:CustomData
                                         id="idcustomedata1Resource"
                                         key="red"
-                                        value="red"
+                                        value="lightcoral"
                                     />
                                 </customData>
                             </CheckBox>
@@ -937,7 +939,7 @@
                                     <core:CustomData
                                         id="idcustomedata2Resource"
                                         key="black"
-                                        value="black"
+                                        value="lightgray"
                                     />
                                 </customData>
                             </CheckBox>
@@ -951,7 +953,7 @@
                                     <core:CustomData
                                         id="idcustomedata3Resource"
                                         key="green"
-                                        value="green"
+                                        value="lightgreen"
                                     />
                                 </customData>
                             </CheckBox>
@@ -979,7 +981,7 @@
                                     <core:CustomData
                                         id="idcustomedata5Resource"
                                         key="purple"
-                                        value="purple"
+                                        value="thistle"
                                     />
                                 </customData>
                             </CheckBox>
@@ -993,7 +995,7 @@
                                     <core:CustomData
                                         id="idcustomedata6Resource"
                                         key="blue"
-                                        value="blue"
+                                        value="lightblue"
                                     />
                                 </customData>
                             </CheckBox>
@@ -1006,13 +1008,11 @@
                                 <customData>
                                     <core:CustomData
                                         id="idcustomedata7Resource"
-                                        key="yellow"
-                                        value="yellow"
+                                        key="Orange"
+                                        value="rgba(255, 173, 22, 0.918)"
                                     />
                                 </customData>
                             </CheckBox>
-                            <!-- <Button id="idCustomethemeSelection" press="onPressCustomeTheme" icon="sap-icon://palette" type="Transparent"></Button> -->
-                            <!-- Add more color options as needed -->
                         </HBox>
                         <unified:ColorPicker
                             id="idcolorPickerResource"

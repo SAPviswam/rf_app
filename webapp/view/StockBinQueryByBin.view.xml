@@ -192,6 +192,7 @@
                     <Table
                         id="idBinDataTable"
                         growingScrollToLoad="true"
+                        
                     >
                         <columns>
                             <!-- <Column id="idProd.NoCol">
@@ -220,9 +221,8 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem id="idBinColListItem">
+                            <ColumnListItem id="idBinColListItem" type="Navigation">
                                 <cells>
-                                    <!-- <Text id="idProd.NoValue"/> -->
                                     <Text id="idProductColValue" />
                                     <Text id="idQtyColValue"  />
                                     <Text id="idQtyUOMColValue" />
@@ -528,20 +528,25 @@
                 >
                     <Table
                         id="idBinListDataTable"
-                        alternateRowColors="true"
                         growingScrollToLoad="true"
                     >
                         <columns>
                             <Column id="idHUCol">
                                 <Title
                                     id="idHUTitle"
-                                    text="Prod.No"
+                                    text="HU.No"
                                 />
                             </Column>
                             <Column id="idListProductCol">
                                 <Title
                                     id="idListProductTitle"
-                                    text="Product"
+                                    text="HU Type"
+                                />
+                            </Column>
+                             <Column id="idListflagCol">
+                                <Title
+                                    id="idListFlagTitle"
+                                    text="open WT"
                                 />
                             </Column>
                            
@@ -551,6 +556,7 @@
                                 <cells>
                                     <Text id="idHUValue" />
                                     <Text id="idListProductColValue" />
+                                    <Text id="idListflagColValue" />
                                 </cells>
                             </ColumnListItem>
                         </items>
