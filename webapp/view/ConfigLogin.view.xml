@@ -1,102 +1,102 @@
 <mvc:View
+    xmlns:form="sap.ui.layout.form"
     controllerName="com.app.rfapp.controller.ConfigLogin"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
+    xmlns:ndc="sap.ndc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:layout="sap.ui.layout"
-    xmlns:cssgrid="sap.ui.layout.cssgrid"
     xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
 >
-    <Page id="pageHome_cl">
-        <content>
-            <FlexBox
-                id="_IDGenFlexBoxHome_cl"
-                height="100%"
-                direction="Column"
-                alignItems="Center"
-            >
-                <VBox
-                    id="environmentButtonsHBoxHome_cl"
-                    class="sapUiSmallMarginTop boxContainerhome"
-                    alignItems="Center"
-                >
-                    <HBox
-                        id="idHboxHome_cl"
-                        alignContent="Start"
-                        class="boxContainerlogin"
-                        width="auto"
-                        height="20%"
-                    >
-                        <Image
-                            id="idImageLogoAvatarHome_cl"
-                            src="https://artihcus.com/assets/img/AG-logo.png"
-                            class="sapUiSmallMarginEnd logo"
-                            width="85%"
-                            height="35%"
+    <tnt:ToolPage id="idRfconfigPage01ToolPage">
+        <!-- Header -->
+        <tnt:header>
+            <tnt:ToolHeader id="idRfconfigPage01ToolHeader">
+                <!-- Artihcus Logo -->
+
+                <Image
+                    id="idArtihcus_configPage"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- CAPmodel RF Title -->
+                <Title
+                    id="idTitle_configPage"
+                    class="title"
+                    text="CAPmodel RF"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_configPage"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_configPage">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData_configPage"
+                            priority="NeverOverflow"
+                            minWidth="20px"
                         />
-                      <Title
-                                id="initialscreentitle1"
-                                text="CAPmodel RF"
-                                class="capModelRFTextlogin sapUiSmallMarginBottom"
-                           
-                            />
-                    </HBox>
-                    <Label id="idlabelempty_cl" width="0.5rem" />
-                    <HBox id="idhboxwah_cl">
-                        <VBox id="_IDGenHBox26_cl">
-                            <Label
-                                id="idLabelHU_cl"
-                                text="Username:"
-                                labelFor="idHUInput_cl"
-                                class="LabelHomePage"
-                            />
-                            <Label
-                                id="idLabelUserID_cl"
-                                text="password:"
-                                labelFor="idUserIDInput_cl"
-                                class="sapUiSmallMarginTop LabelHomePage"
-                            />
-                        </VBox>
-                        <Text id="idtext_cl" width="0.4rem"></Text>
-                        <VBox id="_IDGenHBox32_cl">
-                            <Input
-                                id="idUsernameInput_cl"
-                                placeholder="username"
-                                width="7rem"
-                                editable="true"
-                            />
-                            <Input
-                                id="idUserIDInput_cl"
-                                placeholder="password"
-                                width="7rem"
-                                 editable="true"
-                            />
-                        </VBox>
-                    </HBox>
+                    </layoutData>
+                </ToolbarSpacer>
                
-                    <HBox
-                        id="idHBoxForgot_cl"
-                        justifyContent="Center"
-                        alignItems="Center"
-                        class="sapUiSmallMarginTop moveRight"
-                    >
-                        <Button
-                            id="idchangequeue_cl1"
-                            text="Signup"
-                            type="Default"
-                            press="onpresssignup"
-                        />
-                         <Text width="0.5rem" />
-                        <Button
-                            id="idchangequeue_cl"
-                            text="Login"
-                            type="Default"
-                            press="onpresslogin"
-                        />
-                    </HBox>
-                </VBox>
-            </FlexBox>
-        </content>
-    </Page>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <!-- scroll container for total view -->
+      <ScrollContainer
+    id="idScrollContainer1_configPage"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="customBackground"
+    visible="true"
+>
+    <VBox
+        class="contentContainer"
+        justifyContent="Center"
+        alignItems="Center"
+        fitContainer="true"
+        height="100%"
+        width="100%"
+    >
+        <!-- Use an HBox to center the whiteBox -->
+        <HBox
+            justifyContent="Center"
+            alignItems="Center"
+            height="100%" 
+            class="paddingBox" 
+        >
+            <VBox
+                class="whiteBox"
+                width="350px"  
+                height="250px" 
+                alignItems="Center"
+                justifyContent="Center"
+            >
+                <!-- Title -->
+                <Text text="Application Login" 
+                      class="loginTitle" 
+                      design="Bold" 
+                      textAlign="Center" 
+                      width="100%"/>
+                      
+                <!-- Input Fields Start Here -->
+                <Input id="UserID" width="100%" value="111010"  class="orangeInput" editable="false"/>
+                <Input id="Password" type="Password" value="........" width="100%" placeholder="Enter Password" class="orangeInput" editable="false"/>
+                <VBox height="10px"/>
+                <!-- Submit Button -->
+                <HBox justifyContent="Center" alignItems="Center">
+                <Button text="SignUP" press="onpressSignup" width="100%"   />
+                <ToolbarSpacer width="1rem"></ToolbarSpacer>
+                <Button text="Login" press="onpresslogin" width="100%"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollContainer>
+
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>
