@@ -72,13 +72,13 @@
 }
 
 
-.buttonContainer {
+/* .buttonContainer {
     border-radius: 0rem !important;
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+    margin-top: 20px; 
     background-color: black;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
-}
+} */
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
@@ -173,14 +173,14 @@
     color: white; /* Set text color for better visibility */
 }
 
-.buttonContainer {
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+/* .buttonContainer {
+    margin-top: 20px; 
     background-color: black;
     margin-left: 1.7rem;
     margin-right: 2.5rem;
     margin-bottom: 0.5rem;
  
-}
+} */
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
@@ -750,4 +750,132 @@ margin-right: 15%;
 }
 
 
+/*New UI initial view styles start*/
+
+.dialogButton_sapconnect{
+    color:rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5) ;
+    border-radius: 10px;
+    border :0px;
+ 
+}
+
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+.BtnConfSAPsys .sapMBtnInner {
+    color: orange; /* Change this to your desired color */
+}
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d !important;
+}
+
+.div{
+    position: absolute; 
+    left: 8%; 
+    top: 48%;
+    width: 41%; 
+    transform: translateY(-50%);
+   
+}
+
+
+.configtitle{
+    position: absolute; 
+    left: 8%; 
+    top: 40%;
+    width: 35%; 
+    transform: translateY(-50%);
+}
+
+/* Media Query for Tablets */
+@media (max-width: 900px) and (min-width: 600px) {
+    .configtitle {
+        left: 5%;    /* Adjust left position */
+        width: 50%;  /* Adjust width for better layout */
+        top: 32.5%;    /* Optional: adjust top position */
+    }
+
+    .ConfigBtnsHbox {
+        right: 10%;    /* Adjust right position */
+        top: 30%;      /* Adjust top position */
+          /* Optional: change width for better layout */
+    }
+
+    .vboxAdd {
+        margin-left: 50%; /* Adjust horizontal alignment */
+        margin-top: 30%; /* Add margin to push it down */
+    }
+
+}
+
+.span{
+    color:orange;
+}
+
+.ConfigBtnsHbox {
+    position: fixed;
+    right: 13%;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 100; /* Ensure it’s on top of other elements */
+}
+
+.title {
+    position: absolute; 
+    left: 45%;
+    color: orange; 
+    align-content: center;    
+}
+
+.BtnConfSAPsys {
+    margin-top: 45%; /* Adjust the value as needed */
+}
+
+.btn{
+    margin-left: 0.5rem;
+    pointer-events: auto; 
+    cursor: pointer;
+}
+
+.vboxAdd{
+    margin-left: 65%;
+    
+}
+
+.dialogButton{
+    color:rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5) ;
+    border-radius: 11px;
+}
+
+.RFconfigTitleTab{
+    top: 33%;
+}
+
+.configTextVbox{
+    width: 45%;
+}
+
+.checkBoxText{
+    color: rgb(0, 0, 0);
+    font-weight: bold !important;
+    font-size: larger !important;
+}
+.checkbox{
+    margin-right: 30vw;
+}
+
+/*New UI initial view styles end*/
 
