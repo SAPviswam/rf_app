@@ -52,12 +52,30 @@
         >
             <Avatar
                 id="idUserProfileImage"
-                src="https://th.bing.com/th/id/OIP.hCfHyL8u8XAbreXuaiTMQgHaHZ?rs=1pid=ImgDetMain"
                 displayShape="Circle"
                 displaySize="XL"
                 class="profileAvatar"
-                press="onPressProfileImageAvatar"
             />
+            <HBox id="idHBoxBtnsForDeleteUpdate">
+                <Button
+                    id="idBtnUploadImageforProfile"
+                    text="Upload"
+                    icon="sap-icon://upload"
+                    press="onPressUploadProfilePic"
+                    type="Transparent"
+                />
+                <Label
+                    id="idEmptylabelforBtns"
+                    width="1.3rem"
+                />
+                <Button
+                    id="idBtnDeleteImageforProfile"
+                    text="Delete"
+                    icon="sap-icon://delete"
+                    press="onPressDeleteProfilePic"
+                    type="Transparent"
+                />
+            </HBox>
             <VBox
                 id="VBox2UserDetails_ResourcePage"
                 class="profileDetails"
