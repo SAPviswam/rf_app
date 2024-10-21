@@ -10,6 +10,7 @@ sap.ui.define(
       return Controller.extend("com.app.rfapp.controller.ConfigLogin", {
         onInit: function() {
         },
+        
         onpresslogin:function() {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("InitialScreen");

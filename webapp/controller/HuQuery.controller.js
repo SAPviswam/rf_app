@@ -458,8 +458,7 @@
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
                            HUI: oDetails[i].HuidentI,
-                            
-                            HU: oDetails[i].Tophu,
+                            HU: odata.Parent,
                           SLNO:i+1
                         });
                     }
