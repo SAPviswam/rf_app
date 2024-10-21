@@ -952,6 +952,21 @@ margin-right: 15%;
     margin-right: 30vw;
 }
 
+
+/* begin of sap logon fragment CSS  */
+.vboxSapLagon{
+    padding:10%
+}
+
+.vboxSapLagonForDesktop{
+    padding:15%
+}
+/* end of sap logon fragment CSS  */
+
+ 
+
+
+
 .TitleMQ{
     margin-right: 20%;
     margin-top:10% ;
@@ -968,6 +983,7 @@ margin-right: 15%;
  
 
 /*New UI initial view styles end*/
+
 
 
 /* Add background image to the ScrollContainer */
