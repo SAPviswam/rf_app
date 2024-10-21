@@ -200,7 +200,7 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem
+                            <!-- <ColumnListItem
                                 id="IDGenBinNumbersColumnListItem1_AHUOBQ"
                                 class="AlternateRowColor"
                             >
@@ -218,7 +218,7 @@
                                         text="{Drivername}"
                                     />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </VBox>
