@@ -672,6 +672,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+            <Button
+                    id="idBackButton_BinQBin"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBackfromView"
+                />
                 <form:SimpleForm
                     id="simpleform4_SBQB_extra"
                     layout="ResponsiveGridLayout"
