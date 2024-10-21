@@ -73,13 +73,7 @@ sap.ui.define([
                 // }
 
 
-                if(Device.system.phone){
-                    this.getView().byId("IdMainVbox_InitialView").setVisible(false);
-                    this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
-                    this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
-                   }
-                
-            },
+
 
             onSave:function(){
                 this.handleLinksapPress();
