@@ -191,7 +191,7 @@
                     <Table
                         id="idBinDataTable"
                         growingScrollToLoad="true"
-                        
+                        selectionChange="onSelectmaterial"
                     >
                         <columns>
                             <!-- <Column id="idProd.NoCol">
