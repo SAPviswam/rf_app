@@ -118,8 +118,15 @@
             },
             "routes": [
                 {
-                    "name": "InitialScreen",
+                    "name": "ConfigLogin",
                     "pattern": ":?query:",
+                    "target": [
+                        "TargetConfigLogin"
+                    ]
+                },
+                {
+                    "name": "InitialScreen",
+                    "pattern": "InitialScreen",
                     "target": [
                         "TargetInitialScreen"
                     ]
@@ -588,6 +595,13 @@
                 }
             ],
             "targets": {
+                "TargetConfigLogin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ConfigLogin",
+                    "viewName": "ConfigLogin"
+                },
                 "TargetInitialScreen": {
                     "viewType": "XML",
                     "transition": "slide",

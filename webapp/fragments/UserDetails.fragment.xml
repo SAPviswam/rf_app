@@ -1,26 +1,134 @@
 <core:FragmentDefinition
+    xmlns:unified="sap.ui.unified"
+    xmlns:vk="sap.ui.vk"
     xmlns:core="sap.ui.core"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
 >
-<Dialog
-    title="User Details"
-    id="idUserDetails"
-    class="UserDetailsDialog sapMPopover sapMIBar sapMHeader-CTX"
-   
-   
->
-    <VBox id="idUserdetailsVBox" class="sapUiSmallMargin" >
-        <Label id="idUsername" text="User name" />
-        <Text id="idUsernameText" text="{profile>/Name}" class="sapUiSmallMarginBottom"/>
- 
-        <Label id="idUserMobileno" text="Phone no" />
-        <Text id="idUserMobilenoText" text="{profile>/Number}" class="sapUiSmallMarginBottom"/>
- 
-        <Label id="idUseremail" text="Email" />
-        <Text id="idUseremailText" text="{profile>/Email}"/>
-    </VBox>
-    <Button id="idUserdetailsclose" text="Close" press="onCloseUSerDetailsDialog" class="sapUiSmallMarginBegin" />
-</Dialog>
+    <Dialog
+        id="idProfileDetailsDailogBox"
+        title="Profile Details"
+        class="userProfileDialog"
+        contentWidth="25%"
+        contentHeight="68%"
+    >
+        <customHeader>
+            <Bar id="BarUserDetails_ResourcePage">
+                <contentLeft>
+                    <Title
+                        id="PersonTileUserDetails_ResourcePage"
+                        text="Profile Detials:"
+                    />
+                </contentLeft>
+                <contentRight>
+                    <unified:FileUploader
+                        id="idProfileImageFileUploader"
+                        buttonText=" "
+                        icon="sap-icon://camera"
+                        fileType="jpg,png,jpeg"
+                        change="onFileUploadForProfileImage"
+                        placeholder="Only allowes:jpg,png,jpeg"
+                        buttonOnly="true"
+                        visible="true"
+                    />
+                    <Button
+                        id="idSaveBtnUserProfilePicture"
+                        text="Save"
+                        press="onPressSaveUserProfileImage"
+                        visible="true"
+                    />
+                    <Button
+                        id="declineBtnUserDetails_ResourcePage"
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        press="onPressDeclineProfileDetailsDailog"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <VBox
+            id="VBox1UserDetails_ResourcePage"
+            class="profileCard"
+        >
+            <Avatar
+                id="idUserProfileImage"
+                src="https://th.bing.com/th/id/OIP.hCfHyL8u8XAbreXuaiTMQgHaHZ?rs=1pid=ImgDetMain"
+                displayShape="Circle"
+                displaySize="XL"
+                class="profileAvatar"
+                press="onPressProfileImageAvatar"
+            />
+            <VBox
+                id="VBox2UserDetails_ResourcePage"
+                class="profileDetails"
+            >
+                <HBox id="idHBox1UserDetails_ResourcePage">
+                    <VBox
+                        id="VBox3UserDetails_ResourcePage"
+                        alignItems="End"
+                    >
+                        <Text
+                            id="idResourceIDUserDetails_ResourcePage"
+                            text="Resource ID:"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idNameUserDetails_ResourcePage"
+                            text="Name:"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idMobileUserDetails_ResourcePage"
+                            text="Mobile:"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idEmailUserDetails_ResourcePage"
+                            text="Email:"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idDisegnetionUserDetails_ResourcePage"
+                            text="Disegnation:"
+                            class="profileDetailItem"
+                        />
+                    </VBox>
+                    <Text
+                        id="idEmptyTextUserDetails_ResourcePage"
+                        width="0.7rem"
+                    />
+                    <VBox
+                        id="idVBox4UserDetails_ResourcePage"
+                        alignItems="Start"
+                    >
+                        <Text
+                            id="idInpuTextUsrIDUserDetails_ResourcePage"
+                            text="{oUserModel>/Resourceid}"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idinputTextResouname_ResourcePage"
+                            text="{oUserModel>/Resourcename}"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idInputUserphone_ResourcePage"
+                            text="{oUserModel>/Phonenumber}"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idInputEmailUserDetails_ResourcePage"
+                            text="{oUserModel>/Email}"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idinputResourceTypeUserDetails_ResourcePage"
+                            text="{oUserModel>/Resourcetype}"
+                            class="profileDetailItem"
+                        />
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </Dialog>
 </core:FragmentDefinition>
