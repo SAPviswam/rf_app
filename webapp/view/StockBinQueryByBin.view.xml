@@ -103,6 +103,7 @@
                     <Input
                         id="_IDBinGenInput1_SBQB"
                         placeholder="Enter Bin Number"
+                        liveChange="onPressBinSubmit"
                     />
                     <HBox
                         id="_idBinHBox_unknw_SBQB"
@@ -118,12 +119,12 @@
                             />
                         <VBox id="qrCodePlaceholder_SBQB" class="sapUiSmallMarginTop" />
                         <!-- Submit Button -->
-                        <Button
+                        <!-- <Button
                             id="_IDBinGenSubmitButton_SBQB"
                             text="Submit"
                             class="sapUiTinyMarginEnd"
                             press="onPressBinSubmit"
-                        />
+                        /> -->
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
