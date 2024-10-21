@@ -105,9 +105,9 @@ sap.ui.define(
 
                 //Hide the Table Of Bin Numbers Page2
                 oScrollContainer2.setVisible(false);
-            },
+            }, 
 
-
+ 
 
         });
     }
