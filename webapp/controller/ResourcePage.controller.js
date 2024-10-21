@@ -1736,6 +1736,14 @@ sap.ui.define([
 
                             // Open popover near the avatar
                             This._oPopover.openBy(oEvent.getSource());
+                            //Apply the stored profile pic for the PopOver...
+                            var sStoredProfileImage = localStorage.getItem("userProfileImage");
+                            if (sStoredProfileImage) {
+                                var oProfilepicPopOverPerson = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
+                                if (oProfilepicPopOverPerson) {
+                                    oProfilepicPopOverPerson.setSrc(sStoredProfileImage);
+                                }
+                            }
                         } else {
                             MessageToast.show("User is not a resource.");
                         }
@@ -1750,34 +1758,7 @@ sap.ui.define([
                     oDialog.close();
                 })
             },
-          onProfilePressed: function() {
-                debugger;
-                var oView = this.getView();
-
-                // Save reference to 'this'
-                var that = this; // Preserves the correct context of 'this'
-
-                var oModelRead = this.getOwnerComponent().getModel();
-
-                // Read data using OData model
-                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function (oData) {
-                        // Assuming 'Users' and 'Resourceid' are available in the oData response
-                        let oUser = oData.Users.toLowerCase();
-
-                        if (oUser === "resource") {
-                            var oProfileDialogData = {
-                                Id: oData.Resourceid,
-                                Name: oData.Resourcename,
-                                Email: oData.Email,
-                                Number: oData.Phonenumber // Assuming this is the field you want to bind
-                            };
-                        }
-                    }
-                });
-                
-            },
-
+            //Accout Deatils press function...
             onPressAccountDetails: async function () {
                 const oModel1 = this.getOwnerComponent().getModel();
                 const userId = this.ID;
@@ -1817,32 +1798,73 @@ sap.ui.define([
                     this._oDialog.close();
                 }
             },
-            onFileUploadForProfileImage: function (oEvent) {
-                this._oSelectedFile = oEvent.getParameter("files") && oEvent.getParameter("files")[0];
-                MessageToast.show("Image Selected. now press on Save!")
+            //Dailog Changing the profile pic...
+            onPressProfileImageAvatar: function () {
+                var fileInput = document.createElement("input");
+                fileInput.type = "file";
+                fileInput.accept = "image/*";
+                fileInput.style.display = "none";
+
+                // Add an event listener to handle the file selection
+                fileInput.addEventListener("change", (event) => {
+                    var selectedFile = event.target.files[0];
+                    if (selectedFile) {
+                        var reader = new FileReader();
+                        reader.onload = (e) => {
+                            var selectedImageBase64 = e.target.result; // Get the base64 encoded image
+                            var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
+                            var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
+                            var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
+                            // Set the src for each image control
+                            oImageControl1.setSrc(selectedImageBase64);
+                            oImageControl2.setSrc(selectedImageBase64);
+                            oImageControl3.setSrc(selectedImageBase64);
+
+                            // Store the image in localStorage
+                            localStorage.setItem("userProfileImage", selectedImageBase64);
+                            sap.m.MessageToast.show("Profile image updated successfully!");
+                        };
+                        reader.readAsDataURL(selectedFile);
+                    }
+                });
+                fileInput.click();
             },
-            onPressSaveUserProfileImage: function () {
-                if (this._oSelectedFile) {
-                    var oReader = new FileReader();
-                    var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-                    var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
-                    var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
+            //from Popover click function...
+            onPressPopoverProfileImageAvatar: function () {
+                debugger
+                var fileInput = document.createElement("input");
+                fileInput.type = "file";
+                fileInput.accept = "image/*";
+                fileInput.style.display = "none";
 
-                    // Set up the onload event for the FileReader
-                    oReader.onload = function (oEvent) {
-                        var sBase64Image = oEvent.target.result;
-                        oImageControl1.setSrc(sBase64Image);
-                        oImageControl2.setSrc(sBase64Image);
-                        oImageControl3.setSrc(sBase64Image);
-                        localStorage.setItem("userProfileImage", sBase64Image);
-                        MessageToast.show("Profile image updated successfully!");
-                    };
+                // Add event listener to handle the file selection
+                fileInput.addEventListener("change", (event) => {
+                    var selectedFile = event.target.files[0];
+                    if (selectedFile) {
+                        var oReader = new FileReader();
+                        // Set up the onload event for FileReader
+                        oReader.onload = (oEvent) => {
+                            var sBase64Image = oEvent.target.result;
+                            var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
+                            var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
+                            var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
 
-                    // Read the selected file as a Data URL (base64 string)
-                    oReader.readAsDataURL(this._oSelectedFile);
-                } else {
-                    MessageToast.show("Please select an image to upload.");
-                }
+                            // Set the image sources for the controls
+                            oImageControl1.setSrc(sBase64Image);
+                            oImageControl2.setSrc(sBase64Image);
+                            oImageControl3.setSrc(sBase64Image);
+
+                            // Store the image in localStorage
+                            localStorage.setItem("userProfileImage", sBase64Image);
+                            MessageToast.show("Profile image updated successfully!");
+                        };
+                        // Read the selected file as a Data URL (base64 string)
+                        oReader.readAsDataURL(selectedFile);
+                    } else {
+                        MessageToast.show("Please select an image to upload.");
+                    }
+                });
+                fileInput.click();
             },
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
