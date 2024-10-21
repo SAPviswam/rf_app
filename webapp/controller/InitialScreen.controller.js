@@ -607,7 +607,7 @@ sap.ui.define([
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
 
-                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?`, {
+                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?` , {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -954,6 +954,7 @@ sap.ui.define([
             },
             onChangePasswordBtn: async function () {
                 var oView = this.getView();
+               
                 var sResourceId = oView.byId("idUserInput_CS").getValue(); // Get the Resource ID from user input
                 this.sResourceID = sResourceId;
                 if (!sResourceId) {
@@ -964,6 +965,12 @@ sap.ui.define([
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
+                if(Device.system.phone){
+                    oView.byId("ChangePwd_CP").setWidth("96%")
+                }
+                else if(Device.system.tablet){
+                    oView.byId("ChangePwd_CP").setWidth("85%")
+                }
                 var oModel = this.getView().getModel(); // Get your OData model
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
