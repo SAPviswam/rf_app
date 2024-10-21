@@ -1,9 +1,10 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
-        'sap/m/MessageToast'
+       'sap/m/MessageToast'
     ],
     function(Controller,MessageToast) {
+
       "use strict";
  
       return Controller.extend("com.app.rfapp.controller.ConfigLogin", {
@@ -15,6 +16,7 @@ sap.ui.define(
         },
         onpressSignup:function(){
           MessageToast.show("you click on SignUp button");
+
         }
       });
     }

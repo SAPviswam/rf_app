@@ -6,39 +6,18 @@
 >
     <Dialog
         id="idconnectsapdialogbox_CS"
-        resizable="true"
-        draggable="true"
-        contentWidth="25%"
-        class="boxContainer"
+        resizable="false"
+        draggable="false"
+        contentWidth="35%"
+        class="boxContainer sapMPopover sapMIBar sapMHeader-CTX"
         initialFocus="idUserInput_CS"
+        title="SAP Connection"
     >
-        <customHeader >
-            <Bar
-                id="_IDBar1coonectsap_CS"
-                class="TitlecustomHeader"
-            >
-                <contentLeft>
-                    <!-- Logo -->
-                    <Image
-                        id="_IDGenImage_CS"
-                        src="https://artihcus.com/assets/img/AG-logo.png"
-                        width="85%"
-                        height="60%"
-                    />
-                    </contentLeft>
-                    <!-- Title -->
-                    <contentMiddle>
-                    <Title
-                        id="_IDTitleconnectsap_CS"
-                        text="CAPmodel RF"
-                        class="capModelRFTextdialog"
-                    />
-                </contentMiddle>
-            </Bar>
-        </customHeader>
-        
+       
+       
         <content>
             <form:SimpleForm
+            
                 id="idconnecttosapDetailsForm_CS"
                 editable="true"
                 layout="ResponsiveGridLayout"
@@ -56,43 +35,38 @@
             >
                 <VBox
                     id="SAPlogonform1"
-                    width="72%"
-                    class="connecttoSAPform sapUiMediumMargin" 
+                     width="100%"
+                     class="vboxSapLagon"
+                   alignContent="Center"
+                  
+             
                 >
-                <VBox
-                    id="SAPlogonform2"
-                    width="100%"
-                    class="sapUiSmallMargin"
-                >
- 
- 
-                <VBox alignItems="Start">
-                    <!-- User Input -->
-                    <Input
+       
+<Input
                         id="idUserInput_CS"
                         value="{}"
                         placeholder="User"
-                        class="customInput"
-                        width="105%"
+        width="100%"
                     />
-                    <!-- Password Input -->
+   <!-- Password Input -->
                     <Input
                         id="idSPasswordInput_CS"
                         type="Password"
                         placeholder="Password"
-                        width="105%"
+                         width="100%"
                     />
                         <Label
                             id="idLableInstanceNumber_CS"
                             text="Language"
-                            width="120px"
+                            width="110%"
                         />
-                    </VBox>
-                        <ComboBox
+
+                  <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
-                            width="90.5%"
+                             width="100%"
                             selectedKey="en"
-                            class="comboCS"
+                            class="customInput"
+                           
                         >
                             <items>
                                 <core:Item
@@ -107,51 +81,45 @@
                                 />
                             </items>
                         </ComboBox>
- 
- 
-                   <VBox alignItems="Start">
-                    <Input
+  <Input
+
                         id="idRouterStringInput_CS"
                         value="400"
                         placeholder=""
-                        class="customInput"
-                        width="105%"
+                        
+                        width="100%"
                         editable="false"
                     />
-                    </VBox>
-                   
- 
-                    <!-- Log On Button -->
-                       
-                        <Button
+                     <Button
                             id="LoginButton_CS"
                             text="Log On"
-                            width="90%"
-                            type="Unstyled"
+                            width="100%"
+                            type="Emphasized"
                             press="onLogOnPress"
+                            class="sapUiTinyMarginTop"
                         />
-                        <HBox class="sapUiSmallMarginEnd">
+                    <HBox  justifyContent="SpaceBetween">
                    
                    
                         <Link
                         id="IDchangePassword"
                         text="Change Password"
-                        class="sapUiSmallMarginEnd"
+                
                         press="onChangePasswordBtn"
                         />
+                        
                         <Link id="IDlogoncancelbutton"
                         text="Cancel"
+                      
                         press="onPressCancleSapLogon"
-                        class="cancelbutton"
+                        
                        />
                         </HBox>
-                        </VBox>
- 
- 
-                    <!-- Change Password Link -->
-                   
+                                                                
+
                     </VBox>
             </form:SimpleForm>
         </content>
     </Dialog>
 </core:FragmentDefinition>
+

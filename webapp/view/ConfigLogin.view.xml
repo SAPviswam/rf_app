@@ -44,7 +44,7 @@
         </tnt:header>
         <tnt:mainContents>
             <!-- scroll container for total view -->
-      <ScrollContainer
+    <ScrollContainer
     id="idScrollContainer1_configPage"
     horizontal="false"
     vertical="true"
@@ -69,27 +69,37 @@
         >
             <VBox
                 class="whiteBox"
-                width="350px"  
-                height="250px" 
+                width="400px"  
+                height="300px" 
                 alignItems="Center"
                 justifyContent="Center"
             >
                 <!-- Title -->
                 <Text text="Application Login" 
                       class="loginTitle" 
-                      design="Bold" 
                       textAlign="Center" 
                       width="100%"/>
-                      
-                <!-- Input Fields Start Here -->
-                <Input id="UserID" width="100%" value="111010"  class="orangeInput" editable="false"/>
-                <Input id="Password" type="Password" value="........" width="100%" placeholder="Enter Password" class="orangeInput" editable="false"/>
-                <VBox height="10px"/>
-                <!-- Submit Button -->
+                
+                <!-- Input Fields Start Here (Label + Input side by side) -->
+                <HBox width="100%" alignItems="Center" class="inputRow">
+                    <ToolbarSpacer width="6rem"/> <!-- Add some space on the left -->
+                    <Label text="User ID" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" width="60px" />
+                    <Input id="UserID" width="60%" value="111010" class="orangeInput sapUiTinyMarginTop" editable="false" />
+                </HBox>
+                
+                <HBox width="100%" alignItems="Center" class="inputRow">
+                    <ToolbarSpacer width="6rem"/> <!-- Add some space on the left -->
+                    <Label text="Password" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"  width="60px"/>
+                    <Input id="Password" type="Password" value="........" width="60%" placeholder="Enter Password" class="orangeInput sapUiTinyMarginTop" editable="false"/>
+                </HBox>
+
+                <VBox height="20px"/> <!-- Increase space between fields and buttons -->
+
+                <!-- Submit Buttons -->
                 <HBox justifyContent="Center" alignItems="Center">
-                <Button text="SignUP" press="onpressSignup" width="100%"   />
-                <ToolbarSpacer width="1rem"></ToolbarSpacer>
-                <Button text="Login" press="onpresslogin" width="100%"/>
+                    <Button text="Signup" press="onpressSignup" width="100%"/>
+                    <ToolbarSpacer width="1rem"/>
+                    <Button text="Login" press="onpresslogin" width="100%"/>
                 </HBox>
             </VBox>
         </HBox>
@@ -97,6 +107,9 @@
 </ScrollContainer>
 
 
+
+
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
+

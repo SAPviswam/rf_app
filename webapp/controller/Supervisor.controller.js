@@ -2332,11 +2332,11 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("SerialNumberLocation");
             // },
-            // OnPressSerialnumberLocation: function () {
-            //     var oRouter = UIComponent.getRouterFor(this)
-            //     oRouter.navTo("SerialNumberLocation", { id: this.ID });
+            OnPressSerialnumberLocation: function () {
+                var oRouter = UIComponent.getRouterFor(this)
+                oRouter.navTo("SerialNumberLocation", { id: this.ID });
 
-            // },
+            },
             // OnPressWTQuerybyWT: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("WTQueryByWT", { id: this.ID });
@@ -2391,11 +2391,11 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
             // },
-            // OnPressStockOrBinQuerybyProduct: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
+            OnPressStockOrBinQuerybyProduct: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
 
-            // },
+            },
 
             // onDeconsolidationAutomatically: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
