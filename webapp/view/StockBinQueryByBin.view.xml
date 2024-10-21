@@ -180,7 +180,6 @@
                     />
                     <HBox id="idBinDetails">
                     <Input id="_IDBinDetailsGenInput1_SBQB" editable="false"/>
-                    <Input id="_IDBinDetailsGenInput2_SBQB" width="30%"/>
                     </HBox>
                 </f:SimpleForm>
                 <Panel
@@ -192,7 +191,7 @@
                     <Table
                         id="idBinDataTable"
                         growingScrollToLoad="true"
-                        
+                        selectionChange="onSelectmaterial"
                     >
                         <columns>
                             <!-- <Column id="idProd.NoCol">
@@ -221,13 +220,10 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem id="idBinColListItem" type="Navigation">
+                            <!-- <ColumnListItem id="idBinColListItem" type="Navigation">
                                 <cells>
-                                    <Text id="idProductColValue" />
-                                    <Text id="idQtyColValue"  />
-                                    <Text id="idQtyUOMColValue" />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                     <HBox id="idActionButtons" >
@@ -463,6 +459,110 @@
                                 editable="false"
                             />
                         </HBox>
+                         <HBox
+                            id="idhbox_Movemed"
+                            width="100%"
+                        >
+                            <Label
+                                id="idLable_LastMoved_BQB"
+                                text="LM"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idinput_MovementId_BQB"
+                                value=""
+                                editable="false"
+                                width="6rem"
+                            />
+                            <Label
+                                id="idlabelfor_space_BQB"
+                                width="0.3rem"
+                            />
+                            <Input
+                                id="idinput_Movement_BQB"
+                                value=""
+                                editable="false"
+                                width="5rem"
+                            />
+                            <Label
+                                id="idLablespace_bqb"
+                                width="1.5rem"
+                            />
+                            <Label
+                                id="idLable_LastChanged_BQB"
+                                text="LC"
+                                width="56Px"
+                            />
+                            <Input
+                                id="idinput_LastChanged_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Label
+                                id="idlabelfor_spacelastchanged_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movementcbt_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idhbox_Movemed_LI"
+                            width="100%"
+                        >
+                            <Label
+                                id="idLable_LastMoved_LI_BQB"
+                                text="LI"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idinput_MovementId_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idlabelfor_space_LI_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movement_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                            <Label
+                                id="idLablespace_LI_bqb"
+                                width="1.5rem"
+                            />
+                            <Label
+                                id="idLable_LastChanged_LI_BQB"
+                                text="IvDo"
+                                width="35Px"
+                            />
+                            <Input
+                                id="idinput_LastChanged_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Label
+                                id="idlabelfor_spacelastchanged_LI_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movementcbt_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                        </HBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -552,13 +652,13 @@
                            
                         </columns>
                         <items>
-                            <ColumnListItem id="idBinListColListItem">
+                            <!-- <ColumnListItem id="idBinListColListItem">
                                 <cells>
                                     <Text id="idHUValue" />
                                     <Text id="idListProductColValue" />
                                     <Text id="idListflagColValue" />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </Panel>
@@ -572,6 +672,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+            <Button
+                    id="idBackButton_BinQBin"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBackfromView"
+                />
                 <form:SimpleForm
                     id="simpleform4_SBQB_extra"
                     layout="ResponsiveGridLayout"

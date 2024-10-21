@@ -25,7 +25,7 @@
                         id="idProfileAvatar"
                         displaySize="S"
                         class="profileAvatar1234"
-                        press="onPressProfileImageAvatar"
+                        press="onPressPopoverProfileImageAvatar"
                     />
                     <Label
                         id="idLabelEmptyInProfile"
