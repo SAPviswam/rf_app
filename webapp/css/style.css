@@ -906,5 +906,17 @@ margin-right: 15%;
     margin-right: 30vw;
 }
 
-/*New UI initial view styles end*/
+/* begin of sap logon fragment CSS  */
+.vboxSapLagon{
+    padding:10%
+}
+
+.vboxSapLagonForDesktop{
+    padding:15%
+}
+/* end of sap logon fragment CSS  */
+
+ 
+
+
 
