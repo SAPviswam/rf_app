@@ -262,7 +262,7 @@ sap.ui.define([
                 }
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").open();
-            },            
+            },
             //Tile selcect btn from Profile Popover...
             onTileThemeSelect: function () {
                 // Check if edit mode is active
@@ -481,24 +481,24 @@ sap.ui.define([
                 if (aFiles.length > 0) {
                     var oFile = aFiles[0];
                     var reader = new FileReader();
-            
+
                     reader.onload = function (e) {
                         // Save the uploaded image source as base64 string
                         this._uploadedImageSrc = e.target.result;
-            
+
                         // Hide color picker and color options after an image is selected
                         this.byId("idcolorPickerResource").setVisible(false);
                         this.byId("colorOptionsResource").setVisible(false);
                         MessageToast.show("Image selected. Now press 'Apply' to save!");
                     }.bind(this);
-            
+
                     reader.readAsDataURL(oFile);
                 } else {
                     this.byId("idcolorPickerResource").setVisible(true);
                     this.byId("colorOptionsResource").setVisible(true);
                     MessageToast.show("No image selected. Please choose an image.");
                 }
-            }, 
+            },
             onColorOptionSelect: function (oEvent) {
                 var oSelectedCheckBox = oEvent.getSource();
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
@@ -738,7 +738,7 @@ sap.ui.define([
 
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
-            
+
                 // Close the popover after selection
                 this._oPopover.close();
             },
@@ -1800,7 +1800,7 @@ sap.ui.define([
                 }
             },
             //Dailog Changing the profile pic...
-            onPressProfileImageAvatar: function () {
+            onPressUploadProfilePic: function () {
                 var fileInput = document.createElement("input");
                 fileInput.type = "file";
                 fileInput.accept = "image/*";
@@ -1866,6 +1866,17 @@ sap.ui.define([
                     }
                 });
                 fileInput.click();
+            },
+            //Deleting the Profile Images...
+            onPressDeleteProfilePic: function () {
+                var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
+                var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
+                var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
+                oImageControl1.setSrc("");
+                oImageControl2.setSrc("");
+                oImageControl3.setSrc("");
+                localStorage.removeItem("userProfileImage");
+                sap.m.MessageToast.show("Profile image deleted successfully!");
             },
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
@@ -2809,10 +2820,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-           
-    
-                    
- 
+
+
+
+
 
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
