@@ -124,7 +124,9 @@ sap.ui.define([
                 new sap.m.Text({ text: "{Matnr}" }),  // Product Number
                 new sap.m.Text({ text: "{Quan}" }),   // Quantity
                 new sap.m.Text({ text: "{Meins}" })   // UOM
-              ]
+              ],
+              type: "Navigation",
+              press: [that.onSelectMaterial, that]
             })
           });
         },
@@ -180,19 +182,19 @@ sap.ui.define([
 
             // Format as HH:MM:SS
             return (
-                String(hours).padStart(2, '0') + ':' +
-                String(minutes).padStart(2, '0') + ':' +
-                String(seconds).padStart(2, '0')
+              String(hours).padStart(2, '0') + ':' +
+              String(minutes).padStart(2, '0') + ':' +
+              String(seconds).padStart(2, '0')
             );
-        }
+          }
 
-        // Example usage
-        const milliseconds = odata.MovedTime.ms;
-        const milliseconds1 = odata.ClearedTime.ms;
-        const milliseconds2 = odata.IdatuT.ms;
-        oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
-        oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
-        oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
+          // Example usage
+          const milliseconds = odata.MovedTime.ms;
+          const milliseconds1 = odata.ClearedTime.ms;
+          const milliseconds2 = odata.IdatuT.ms;
+          oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
+          oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
+          oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -247,7 +249,6 @@ sap.ui.define([
                 new sap.m.Text({ text: "{Letyp}" }),   // Quantity
                 new sap.m.Text({ text: "{Flgmove}" })   // UOM
               ],
-              type : "Navigation"
             })
           });
         },
@@ -255,6 +256,53 @@ sap.ui.define([
           sap.m.MessageToast.show("Error fetching products.");
         }
       });
+    },
+
+    onSelectMaterial: function (oEvent) {
+      var oView = this.getView();
+
+      // Hide the ScrollContainer
+      oView.byId("page2_SBQB").setVisible(false);
+      oView.byId("page1_SBQB_extra_BinDetails").setVisible(true);
+
+      var oModel = this.getView().getModel(); // Assuming you have a model set up
+      oModel.read(`/BINQItemSet('${this.sBinNumber}')`, {
+        urlParameters: {
+          "$expand": "BINQHeadSet",
+          "$format": "json"
+        },
+
+        success: function (odata) {
+          var aMaterials = odata.BINQHeadSet.results;
+
+          var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
+
+          var oSelectedMaterial = aMaterials.find(function (material) {
+            return material.Matnr === sSelectedMatnr;
+          });
+          console.log(odata)
+          if (oSelectedMaterial) {
+            // Update the UI with the selected material's details
+            oView.byId("idSBQBBinInput_extra").setValue(odata.Lgtyp);
+            oView.byId("idSBQBStoreTypeInput_extra").setValue(odata.Lgber);
+            oView.byId("idSBQBNoOfHuInput_extra").setValue(odata.MaxWeight);
+            oView.byId("idSBQBBinAisleInput_extra").setValue(odata.Weight);
+            oView.byId("idSBQBMaxWInput_extra").setValue(odata.MaxVolume);
+            oView.byId("idSBQBBinLevelInput_extra").setValue(odata.Volum);
+            oView.byId("idSBQBMaxVInput_extra").setValue(oSelectedMaterial.Matnr);  // Selected material number
+            oView.byId("idinput_binqbin_AQty").setValue(oSelectedMaterial.Quan);  // Selected material quantity
+            oView.byId("idinput_binqbin_Uom").setValue(oSelectedMaterial.Meins);  // Selected material UOM
+          } else {
+            sap.m.MessageToast.show("Material not found.");
+          }
+        }, error: function () {
+          sap.m.MessageToast.show("Error fetching products.");
+        }
+      });
+    },
+    onPressBackfromView: function () {
+      this.getView().byId("page2_SBQB").setVisible(true);
+      this.getView().byId("page1_SBQB_extra_BinDetails").setVisible(false);
     },
 
 
