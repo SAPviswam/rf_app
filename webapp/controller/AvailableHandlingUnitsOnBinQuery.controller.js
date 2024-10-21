@@ -73,6 +73,7 @@ sap.ui.define(
 
             //Submit Btn from ScrollContainer Page 1=> idPage1_AHUOBQ..
             onSubmitPress_AHUOBQ: function () {
+              
                 // Get the input value from the input field
                 var oView = this.getView();
                 var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
