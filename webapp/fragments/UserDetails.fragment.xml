@@ -21,22 +21,6 @@
                     />
                 </contentLeft>
                 <contentRight>
-                    <!-- <unified:FileUploader
-                        id="idProfileImageFileUploader"
-                        buttonText=" "
-                        icon="sap-icon://camera"
-                        fileType="jpg,png,jpeg"
-                        change="onFileUploadForProfileImage"
-                        placeholder="Only allowes:jpg,png,jpeg"
-                        buttonOnly="true"
-                        visible="true"
-                    />
-                    <Button
-                        id="idSaveBtnUserProfilePicture"
-                        text="Save"
-                        press="onPressSaveUserProfileImage"
-                        visible="true"
-                    /> -->
                     <Button
                         id="declineBtnUserDetails_ResourcePage"
                         icon="sap-icon://decline"
