@@ -30,6 +30,7 @@
           
             this._setFocus();
             
+            
         },
         onResourceDetailsLoad:function(oEvent1){
             var that = this;
@@ -91,7 +92,7 @@
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
 
-                oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
+                oModel.read(`/HudetailsSet('${oHuValue}')`, {
                     success: function (odata) {
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("icon2").setVisible(true);
@@ -166,7 +167,7 @@
 
         // Function to populate HU details when successful
         _populateHUDetails: function (odata) {
-            this.byId("_IDGenInput2").setValue(odata.Huident);
+            this.byId("_IDGenInput2").setValue(odata.Tophu);
             this.byId("_IDGenInput3").setValue(odata.Letyp);
             this.byId("_IDGenInputLength").setValue(odata.Length);
             this.byId("_IDGenInputWidth").setValue(odata.Width);
@@ -174,7 +175,7 @@
             this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
             this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
             this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-            this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+            this.byId("_IDGenInputWeightsMeasurement").setValue(odata.UnitGw);
             this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
         },
@@ -285,6 +286,59 @@
 
         },
         onHUHierarchyPress: function () {
+            var oHu=this.getView().byId("_IDGenInput2").getValue()
+            var oModel = this.getOwnerComponent().getModel();
+            var that=this
+            oModel.read(`/HudetailsSet('${oHu}')`, {
+                urlParameters: {
+                    "$expand": "Hudetails_ItemSet",
+                    "$format": "json"
+                },
+               
+                success: function (odata) {
+                    console.log(odata);
+                   
+       
+                    // Get the product details from the response
+                    let oDetails = odata.Hudetails_ItemSet.results;
+                    console.log(oDetails);
+       
+                    // Prepare an array for binding
+                    var aProductDetails = [];
+       
+                    // Loop through the results and push them into the array
+                    for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                           HUI: oDetails[i].HuidentI,
+                            
+                            HU: odata.Tophu,
+                          SLNO:i+1
+                        });
+                    }
+       
+                    // Create a JSON model with the product details array
+                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+       
+                    // Set the model to the table
+                    that.byId("simpleTable").setModel(oProductModel);
+       
+                    // Bind the items aggregation of the table to the products array in the model
+                    that.byId("simpleTable").bindItems({
+                        path: "/products",
+                        template: new sap.m.ColumnListItem({
+                            cells: [
+                                new sap.m.Text({ text: "{SLNO}" }), 
+                                new sap.m.Text({ text: "{HUI}" }), 
+                                new sap.m.Text({ text: "{HU}" }),   
+                               
+                            ]
+                        })
+                    });
+                },
+                error: function () {
+                    sap.m.MessageToast.show("Error fetching products.");
+                }
+            });
 
             this.getView().byId("icon1").setVisible(false);
             this.getView().byId("icon2").setVisible(false);

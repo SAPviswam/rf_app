@@ -22,6 +22,7 @@ sap.ui.define([
                 this.arrayOfButton = [];
                 this.arrayOfClient = [];
 
+
                 if (Device.system.mobile) {
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
@@ -51,12 +52,36 @@ sap.ui.define([
                 }
             },
 
-            onExit: function () {
-                // Clean up the event listener when the controller is destroyed
-                document.removeEventListener("keydown", this._handleKeyDownBound);
+                // if (Device.system.phone) {
+                //     if (this.isIPhone) {
+                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+                //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+                //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
+                //         // this.byId("initialscreentitle").setMarginRight("25%")
+                //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+                //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+
+
+                //     } else {
+                //         // Non-iPhone phones
+                //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
+                //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
+                //     }
+                // }
+                // else if (Device.system.tablet) {
+                //     this.byId("environmentButtonsHBox").setWidth("40%");
+                // }
+
+
+                if(Device.system.phone){
+                    this.getView().byId("IdMainVbox_InitialView").setVisible(false);
+                    this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
+                    this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
+                   }
+                
             },
 
-            onSave: function () {
+            onSave:function(){
                 this.handleLinksapPress();
             },
             onDelete: function () {
@@ -916,7 +941,7 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId })
+                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");

@@ -60,6 +60,7 @@
                             text="Language"
                             width="110%"
                         />
+
                   <ComboBox
                             id="idLanguageSelectorMultiComboBox_CS"
                              width="100%"
@@ -81,6 +82,7 @@
                             </items>
                         </ComboBox>
   <Input
+
                         id="idRouterStringInput_CS"
                         value="400"
                         placeholder=""
@@ -114,10 +116,10 @@
                        />
                         </HBox>
                                                                 
+
                     </VBox>
             </form:SimpleForm>
         </content>
     </Dialog>
 </core:FragmentDefinition>
- 
- 
+
