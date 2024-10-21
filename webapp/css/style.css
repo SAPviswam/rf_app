@@ -102,7 +102,7 @@
     width: 40% !important;
 }
 .boxContainer {
-    border-radius: 0rem !important;
+    border-radius: 1rem !important;
     border: 2px solid #ed731dd2 !important;
     padding: auto !important; 
     padding-bottom: 1rem;
@@ -110,7 +110,7 @@
 }
 @media only screen and (min-width: 1024px) {
     .boxContainer {
-        border-radius: 0rem !important;
+        border-radius: 1rem !important;
         border: 2px solid #ed731dd2 !important;
         padding: auto !important; 
         padding-bottom: 1rem;
@@ -607,6 +607,50 @@
         transform: rotate(0deg);
     }
 }
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+.profileAvatar {
+    border-radius: 55%;
+    margin-bottom: 15px;
+    border: 4px solid #fff;
+    position: relative;
+}
+.profileAvatar1234:hover::after {
+    content: ""; /* Unicode for the camera icon (from SAP icons) */
+    font-family: "SAP-icons";
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.profileDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #111;
+    border-radius: 8px;
+    padding: 10px;
+    width: 110%;
+    color: #fff;
+}
+.profileDetailItem {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #eceaea;
+    font-weight: normal;
+}
 
 
 
@@ -908,7 +952,39 @@ margin-right: 15%;
     margin-right: 30vw;
 }
 
+
+/* begin of sap logon fragment CSS  */
+.vboxSapLagon{
+    padding:10%
+}
+
+.vboxSapLagonForDesktop{
+    padding:15%
+}
+/* end of sap logon fragment CSS  */
+
+ 
+
+
+
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+
 /*New UI initial view styles end*/
+
+
 
 /* Add background image to the ScrollContainer */
 #idScrollContainer1_configPage {
@@ -971,4 +1047,5 @@ margin-right: 15%;
     font-weight: bold;   /* Makes the title bold */
     text-align: center;  /* Centers the text */
 }
+
 

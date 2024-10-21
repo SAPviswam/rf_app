@@ -10,7 +10,7 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/ui/core/Fragment"
 ],
-    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator,Fragment) {
+    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment) {
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
@@ -22,27 +22,58 @@ sap.ui.define([
                 this.arrayOfButton = [];
                 this.arrayOfClient = [];
 
-                if (Device.system.phone) {
-                    if (this.isIPhone) {
-                        // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
-                        // this.byId("initialscreentitle").setMarginRight("25%")
-                        this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
-                        this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
 
+                if (Device.system.mobile) {
+                    this.getView().byId("IdMainVbox_InitialView").setVisible(false);
+                    this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
+                    this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
+                }
 
-                    } else {
-                        // Non-iPhone phones
-                        this.byId("idImageLogoAvatarinitial").setWidth("90%");
-                        this.byId("idImageLogoAvatarinitial").setHeight("35%");
+                this._handleKeyDownBound = this._handleKeyDown.bind(this);
+                document.addEventListener("keydown", this._handleKeyDownBound);
+            },
+
+            _handleKeyDown: function (oEvent) {
+                if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
+                    oEvent.preventDefault();
+                }
+                if (this.getView().getId() === "pageInitial") {
+                    switch (oEvent.key) {
+                        case "F1":
+                            this.onSave();
+                            break;
+                        case "F4":
+                            this.onDelete();
+                            break;
+                        case "F2":
+                            this.onEdit();
+                            break;
                     }
                 }
-                else if (Device.system.tablet) {
-                    this.byId("environmentButtonsHBox").setWidth("40%");
-                }
-                
             },
+
+                // if (Device.system.phone) {
+                //     if (this.isIPhone) {
+                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+                //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+                //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
+                //         // this.byId("initialscreentitle").setMarginRight("25%")
+                //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+                //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+
+
+                //     } else {
+                //         // Non-iPhone phones
+                //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
+                //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
+                //     }
+                // }
+                // else if (Device.system.tablet) {
+                //     this.byId("environmentButtonsHBox").setWidth("40%");
+                // }
+
+
+
 
             onSave:function(){
                 this.handleLinksapPress();
@@ -70,37 +101,50 @@ sap.ui.define([
                 this.onUserLogin();
 
 
+                // if (Device.system.phone) {
+
+                //     if (this.isIPhone) {
+                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+                //         // this.byId("_IDGenImage_CS").setWidth("25.5%");
+                //         // this.byId("_IDGenImage_CS").setHeight("50.5%");
+                //         // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("78.5%");
+                //         // this.byId("LoginButton_CS").setWidth("78.5%");
+                //         // this.byId("LoginButton_CS").setHeight("100%");
+
+                //         // Add margin-left by applying a CSS class
+                //         // this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
+                //         // this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
+
+                //         // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("75%");
+                //         // this.byId("LoginButton_CS").setWidth("75%");
+
+
+                //     }
+                //     else {
+                //         this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
+                //         this.byId("LoginButton_CS").setWidth("85%");
+                //         // Non-iPhone phones
+                //         // this.byId("_IDGenImage_CS").setWidth("90%");
+                //         // this.byId("_IDGenImage_CS").setHeight("35%");
+                //     }
+                // }
+                // else if (Device.system.tablet) {
+                //     this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
+                //     this.byId("LoginButton_CS").setWidth("92%");
+                // }
+
+                // responsive code for switching over the different devices of sap logon fragment
                 if (Device.system.phone) {
-
                     if (this.isIPhone) {
-                        // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("_IDGenImage_CS").setWidth("25.5%");
-                        this.byId("_IDGenImage_CS").setHeight("50.5%");
-                        this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("78.5%");
-                        this.byId("LoginButton_CS").setWidth("78.5%");
-                        this.byId("LoginButton_CS").setHeight("100%");
-
-                        // Add margin-left by applying a CSS class
-                        this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
-                        this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
-
-                        // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("75%");
-                        // this.byId("LoginButton_CS").setWidth("75%");
-
-
+                        this.getView().byId("LoginButton_CS").setHeight("500px");
                     }
-                    else {
-                        this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
-                        this.byId("LoginButton_CS").setWidth("85%");
-                        // Non-iPhone phones
-                        // this.byId("_IDGenImage_CS").setWidth("90%");
-                        // this.byId("_IDGenImage_CS").setHeight("35%");
-                    }
+                    this.getView().byId("LoginButton_CS").setWidth("100%");
                 }
-                else if (Device.system.tablet) {
-                    this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
-                    this.byId("LoginButton_CS").setWidth("92%");
+                else if(Device.system.Desktop) {
+
+                    this.getView().byId("SAPlogonform1").addStyleClass("vboxSapLagonForDesktop");
                 }
+
 
 
             },
@@ -173,10 +217,10 @@ sap.ui.define([
                 var sRouterString = oView.byId("idRouterStringInput_InitialView").getValue();
                 var sService = oView.byId("idServiceInput_InitialView").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
-               
+
                 // Get the OData model
                 var oModel = this.getOwnerComponent().getModel();
-           
+
                 // Check for existing combinations in Configure_SystemSet
                 oModel.read("/Configure_SystemSet", {
                     filters: [
@@ -191,7 +235,7 @@ sap.ui.define([
                             entry.SystemId === sSystemId &&
                             entry.InstanceNo === sInstanceNumber
                         );
-           
+
                         // Read existing entries to check uniqueness in ServiceSet
                         oModel.read("/ServiceSet", {
                             filters: [
@@ -201,7 +245,7 @@ sap.ui.define([
                             success: function (oData) {
                                 // Initialize an array to hold error messages
                                 var errorMessages = [];
-           
+
                                 // Check for duplicates and populate error messages
                                 if (oData.results.length > 0) {
                                     if (oData.results.some(entry => entry.Client === sClient)) {
@@ -210,14 +254,14 @@ sap.ui.define([
                                     if (oData.results.some(entry => entry.Description === sDescription)) {
                                         errorMessages.push("The Description must be unique.");
                                     }
-                                   
+
                                     // Show error messages if duplicates are found
                                     if (errorMessages.length > 0) {
                                         MessageToast.show(errorMessages.join("\n"));
                                         return; // Exit the function if duplicates are found
                                     }
                                 }
-           
+
                                 // Create a new button for the configured SAP system
                                 var oNewButton = new sap.m.Button({
                                     type: "Emphasized",
@@ -229,18 +273,18 @@ sap.ui.define([
                                         })
                                     ]
                                 });
-           
+
                                 // Set the button text based on the checkbox state
                                 oNewButton.setText(oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription);
-           
+
                                 // Attach single click event for CRUD operations
                                 oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, sDescription, sSystemId, sClient));
-                               
+
                                 // Attach double click event for opening SAP logon
                                 oNewButton.attachBrowserEvent("dblclick", function () {
                                     this.LoadSapLogon();
                                 }.bind(this));
-           
+
                                 // Create entry for OData service
                                 var oEntry = {
                                     Description: sDescription,
@@ -252,7 +296,7 @@ sap.ui.define([
                                     SapService: sService,
                                     DescriptionB: (oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription)
                                 };
-           
+
                                 // Only proceed with creation if combination exists
                                 if (!isCombinationExists) {
                                     // Save to OData service
@@ -260,16 +304,16 @@ sap.ui.define([
                                         success: function () {
                                             MessageToast.show("Configured system saved successfully.");
                                             this.clearInputFields(oView);
-                                           
+
                                             // Get the HBox that holds the buttons
                                             var oHomePage = oView.byId("environmentButtonsHBox");
-                                           
+
                                             // Find the reference link to insert after
                                             var oLink = oView.byId("_IDCofiguresapLink");
-                                           
+
                                             // Insert the new button after the link
                                             oHomePage.insertItem(oNewButton, oHomePage.indexOfItem(oLink) + 1);
-                                           
+
                                             window.location.reload();
                                         }.bind(this), // Ensure 'this' context is correct
                                         error: function (oError) {
@@ -279,7 +323,7 @@ sap.ui.define([
                                 } else {
                                     MessageToast.show("The combination of Client, System ID, and Instance Number must exist in Configure_SystemSet before creating a new entry.");
                                 }
-           
+
                                 // Close the dialog after saving or showing an error message
                                 this.onCloseconnectsap();
                             }.bind(this), // Ensure 'this' context is correct
@@ -293,8 +337,8 @@ sap.ui.define([
                     }
                 });
             },
- 
-                // check the below old snippet for finishing connection (Srilekha) remove 's' in the press event 
+
+            // check the below old snippet for finishing connection (Srilekha) remove 's' in the press event 
 
             onFinishconnectSAPPresss: function () {
                 debugger
@@ -563,7 +607,7 @@ sap.ui.define([
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
 
-                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?`, {
+                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?` , {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -910,6 +954,7 @@ sap.ui.define([
             },
             onChangePasswordBtn: async function () {
                 var oView = this.getView();
+               
                 var sResourceId = oView.byId("idUserInput_CS").getValue(); // Get the Resource ID from user input
                 this.sResourceID = sResourceId;
                 if (!sResourceId) {
@@ -920,6 +965,12 @@ sap.ui.define([
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
+                if(Device.system.phone){
+                    oView.byId("ChangePwd_CP").setWidth("96%")
+                }
+                else if(Device.system.tablet){
+                    oView.byId("ChangePwd_CP").setWidth("85%")
+                }
                 var oModel = this.getView().getModel(); // Get your OData model
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
@@ -1034,8 +1085,8 @@ sap.ui.define([
 
             },
 
-               // test
-               onAvatarPressed: async function (oEvent) {
+            // test
+            onAvatarPressed: async function (oEvent) {
                 debugger;
 
                 if (!this._oPopover) {

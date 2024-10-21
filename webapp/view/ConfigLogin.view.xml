@@ -77,7 +77,6 @@
                 <!-- Title -->
                 <Text text="Application Login" 
                       class="loginTitle" 
-                      design="Bold" 
                       textAlign="Center" 
                       width="100%"/>
                 
@@ -113,3 +112,4 @@
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
+

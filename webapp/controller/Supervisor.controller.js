@@ -2332,11 +2332,11 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("SerialNumberLocation");
             // },
-            // OnPressSerialnumberLocation: function () {
-            //     var oRouter = UIComponent.getRouterFor(this)
-            //     oRouter.navTo("SerialNumberLocation", { id: this.ID });
+            OnPressSerialnumberLocation: function () {
+                var oRouter = UIComponent.getRouterFor(this)
+                oRouter.navTo("SerialNumberLocation", { id: this.ID });
 
-            // },
+            },
             // OnPressWTQuerybyWT: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("WTQueryByWT", { id: this.ID });
@@ -2360,7 +2360,7 @@ sap.ui.define(
 
             // CHATBOT
             onChatbotButtonPress: function () {
-                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4", "_self");
             },
 
             // onPressPickPoint: function () {
@@ -2391,11 +2391,11 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
             // },
-            // OnPressStockOrBinQuerybyProduct: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
+            OnPressStockOrBinQuerybyProduct: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
 
-            // },
+            },
 
             // onDeconsolidationAutomatically: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
