@@ -708,6 +708,22 @@ background-color: rgb(9, 8, 8) !important;
 
 
 /* CSS Methods For SIGNUP Fragment */
+.RFLoginText{
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
+.checkBoxforAutosave{
+    margin-left: 3rem !important;
+    margin-right: 1rem !important;
+}
+@media only screen and (max-width: 600px) {
+    .responsiveGif {
+        display: none !important;
+    }
+    .ConfigBtnsHbox{
+        margin-right: 3rem;
+    }
+}
 .LabelHomePage{
     margin-top: 0.3rem;
 }

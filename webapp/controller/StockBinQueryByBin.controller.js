@@ -16,7 +16,6 @@ sap.ui.define([
       var that = this;
       const { id } = oEvent1.getParameter("arguments");
       this.ID = id;
-      console.log(this.ID);
     },
     onPressBinBackToHome: async function () {
       var oRouter = UIComponent.getRouterFor(this);
@@ -215,7 +214,6 @@ sap.ui.define([
         },
 
         success: function (odata) {
-          console.log(odata);
           that.getView().byId("_IDBinListDetailsGenInput1_SBQB").setValue(that.sBinNumber);
           let oDetails = odata.BINQHeadSet.results;
 
@@ -280,7 +278,6 @@ sap.ui.define([
           var oSelectedMaterial = aMaterials.find(function (material) {
             return material.Matnr === sSelectedMatnr;
           });
-          console.log(odata)
           if (oSelectedMaterial) {
             // Update the UI with the selected material's details
             oView.byId("idSBQBBinInput_extra").setValue(odata.Lgtyp);
