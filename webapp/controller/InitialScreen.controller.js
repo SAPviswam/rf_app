@@ -23,7 +23,7 @@ sap.ui.define([
                 this.arrayOfClient = [];
 
 
-                if (Device.system.mobile) {
+                if (Device.system.phone) {
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
@@ -52,30 +52,30 @@ sap.ui.define([
                 }
             },
 
-                // if (Device.system.phone) {
-                //     if (this.isIPhone) {
-                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
-                //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
-                //         // this.byId("initialscreentitle").setMarginRight("25%")
-                //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
-                //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+            // if (Device.system.phone) {
+            //     if (this.isIPhone) {
+            //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+            //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+            //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
+            //         // this.byId("initialscreentitle").setMarginRight("25%")
+            //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+            //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
 
 
-                //     } else {
-                //         // Non-iPhone phones
-                //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
-                //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
-                //     }
-                // }
-                // else if (Device.system.tablet) {
-                //     this.byId("environmentButtonsHBox").setWidth("40%");
-                // }
+            //     } else {
+            //         // Non-iPhone phones
+            //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
+            //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
+            //     }
+            // }
+            // else if (Device.system.tablet) {
+            //     this.byId("environmentButtonsHBox").setWidth("40%");
+            // }
 
 
 
 
-            onSave:function(){
+            onSave: function () {
                 this.handleLinksapPress();
             },
             onDelete: function () {
@@ -140,8 +140,16 @@ sap.ui.define([
                     }
                     this.getView().byId("LoginButton_CS").setWidth("100%");
                 }
-                else if(Device.system.Desktop) {
-
+                else if (Device.system.desktop) {
+                    var oButton = this.byId("LoginButton_CS");
+                    oButton.$().find(".sapMBtnInner").css({
+                        height: "2rem",
+                        "min-width": "2rem",
+                        "display": "flex",           // Use flexbox for centering
+                        "align-items": "center",     // Center vertically
+                        "justify-content": "center",  // Center horizontally
+                        "text-align": "center"
+                    });
                     this.getView().byId("SAPlogonform1").addStyleClass("vboxSapLagonForDesktop");
                 }
 

@@ -953,15 +953,16 @@ margin-right: 15%;
 }
 
 
-/* begin of sap logon fragment CSS  */
+/*---------------------------------- begin of sap logon fragment CSS --------------------------------------------------- */
 .vboxSapLagon{
-    padding:10%
+    padding:10%;
 }
 
 .vboxSapLagonForDesktop{
-    padding:15%
+    padding:15%;
 }
-/* end of sap logon fragment CSS  */
+
+/*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
  
 
