@@ -1051,8 +1051,9 @@ margin-right: 15%;
 
 /* Other existing styles */
 .whiteBox {
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
     border-radius: 8px;
     padding: 5px; /* Slightly increased padding */
     z-index: 1; /* Ensure the card stays above the background image */
