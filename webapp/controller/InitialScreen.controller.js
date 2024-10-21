@@ -20,6 +20,7 @@ sap.ui.define([
                 this.aAllButtons = [];
                 this.currentIndex = 0;
                 this.arrayOfButton = [];
+                this.arrayOfDescription=[];
                 this.arrayOfClient = [];
 
 
@@ -225,6 +226,13 @@ sap.ui.define([
                 var sRouterString = oView.byId("idRouterStringInput_InitialView").getValue();
                 var sService = oView.byId("idServiceInput_InitialView").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
+
+if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
+    MessageToast.show("Please enter the mandatory fields");
+ return
+}
+
+
 
                 // Get the OData model
                 var oModel = this.getOwnerComponent().getModel();
@@ -573,20 +581,22 @@ sap.ui.define([
                         oButton.setType("Emphasized")
                         this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton)
                         this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client)
-
+                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description )
 
                     }
                     else {
                         this.arrayOfButton.push(oButton);
                         oButton.setType("Accept")
-                        this.arrayOfClient.push(Client)
+                        this.arrayOfClient.push(Client);
+                        this.arrayOfDescription.push(description);
                     }
 
                 }
                 else {
                     this.arrayOfButton.push(oButton);
                     oButton.setType("Accept")
-                    this.arrayOfClient.push(Client)
+                    this.arrayOfClient.push(Client);
+                    this.arrayOfDescription.push(description);
                 }
                 console.log(this.arrayOfButton);
 
@@ -614,8 +624,14 @@ sap.ui.define([
 
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
-
-                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?` , {
+                if(this.arrayOfDescription.length > 1){
+                    var oString = this.arrayOfDescription.length
+                }
+                else{
+                    var oString = this.arrayOfDescription[0];
+                }
+               
+                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?` , {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -654,7 +670,8 @@ sap.ui.define([
                                             element.setType("Emphasized")
                                         });
                                         this.arrayOfButton = [];
-                                        this.arrayOfClient = []
+                                        this.arrayOfClient = [];
+                                        this.arrayOfDescription = [];
                                         that.updateDisplayedButtons();
                                     }.bind(that), // Ensure 'this' context is correct
                                     error: function (oError) {
@@ -663,7 +680,8 @@ sap.ui.define([
                                             element.setType("Emphasized")
                                         });
                                         this.arrayOfButton = [];
-                                        this.arrayOfClient = []
+                                        this.arrayOfClient = [];
+                                        this.arrayOfDescription = [];
                                         console.error(oError);
                                     }
                                 });
@@ -716,6 +734,7 @@ sap.ui.define([
                             });
                             this.arrayOfButton = [];
                             this.arrayOfClient = [];
+                            this.arrayOfDescription = [];
                         }
                     }.bind(that) // Bind the controller context
                 });

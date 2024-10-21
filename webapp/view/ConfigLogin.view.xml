@@ -68,7 +68,7 @@
             class="paddingBox" 
         >
             <VBox
-                class="whiteBox"
+                
                 width="400px"  
                 height="300px" 
                 alignItems="Center"
