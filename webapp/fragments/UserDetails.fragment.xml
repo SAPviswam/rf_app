@@ -21,7 +21,7 @@
                     />
                 </contentLeft>
                 <contentRight>
-                    <unified:FileUploader
+                    <!-- <unified:FileUploader
                         id="idProfileImageFileUploader"
                         buttonText=" "
                         icon="sap-icon://camera"
@@ -36,7 +36,7 @@
                         text="Save"
                         press="onPressSaveUserProfileImage"
                         visible="true"
-                    />
+                    /> -->
                     <Button
                         id="declineBtnUserDetails_ResourcePage"
                         icon="sap-icon://decline"
