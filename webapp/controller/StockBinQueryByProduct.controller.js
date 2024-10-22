@@ -187,6 +187,7 @@ sap.ui.define(
             sap.m.MessageToast.show("Error fetching products.");
           }
         });
+      },
       onSBQPPreDePress:function(){
         this.getView().byId("idSBQPsecondSC").setVisible(false);
         this.getView().byId("idSBQPThirdSC").setVisible(true);
