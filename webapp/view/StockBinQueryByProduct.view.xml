@@ -170,7 +170,7 @@
                                 </HBox>
                             </HBox>
                         </VBox>
-<VBox class="sapUiMediumMarginBottom"></VBox>
+                          <VBox class="sapUiMediumMarginBottom"></VBox>
                         <VBox
                             alignItems="Center"
                             justifyContent="Center"
