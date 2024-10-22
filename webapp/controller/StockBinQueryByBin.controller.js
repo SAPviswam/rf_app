@@ -54,13 +54,13 @@ sap.ui.define([
     // },
     onScanSuccess: function (oEvent) {
       // Get the scanned bin number from the event
-      var sScannedBinNumber = oEvent.getParameter("text"); // Assuming this is how you get the scanned text
+      var sScannedBinNumber = oEvent.getParameter("text"); 
 
       // Set the scanned value into the input field
       this.getView().byId("_IDBinGenInput1_SBQB").setValue(sScannedBinNumber);
 
       // Call the submit function to fetch products
-      this.onPressBinSubmit(); // Call your existing submit function
+      this.onPressBinSubmit(); 
     },
     onPressBinSubmit: function () {
       // Get the input value from the input field
@@ -152,8 +152,6 @@ sap.ui.define([
         },
 
         success: function (odata) {
-          console.log(odata)
-
           var oView = that.getView();
           oView.byId("idSBQBBinInput").setValue(odata.Lgtyp);
           oView.byId("idSBQBMaxVInput").setValue(odata.MaxVolume);
@@ -262,6 +260,7 @@ sap.ui.define([
     },
 
     onSelectMaterial: function (oEvent) {
+      
       var oView = this.getView();
 
       var oModel = this.getView().getModel(); // Assuming you have a model set up
@@ -277,6 +276,7 @@ sap.ui.define([
           var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
 
           var oSelectedMaterial = aMaterials.find(function (material) {
+
             return material.Matnr === sSelectedMatnr;
           });
           if (oSelectedMaterial) {

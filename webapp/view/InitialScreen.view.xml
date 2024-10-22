@@ -64,16 +64,21 @@
                     class="configTextVbox sapUiLargeMargin"
                 >
                     <!-- vbox for subtitle "Configure Sap System" -->
-                    <VBox class="configtitle">
-                        <Title
+                    <!-- <VBox class="configtitle"> -->
+                        <!-- <Title
+                            id="IdSubTitle_InitialView"
+                            class="configSubTitle"
+                            text="Configure SAP System"
+                        /> -->
+                    <!-- </VBox> -->
+
+                    <!-- vbox for left side text -->
+                    <VBox class="div">
+                    <Title
                             id="IdSubTitle_InitialView"
                             class="configSubTitle"
                             text="Configure SAP System"
                         />
-                    </VBox>
-
-                    <!-- vbox for left side text -->
-                    <VBox class="div">
                         <html:div>
                             Set the
                             <html:span

@@ -223,26 +223,41 @@ sap.ui.define([
             },
             //-------------------------------------------------------------------------- Signup logic--------------------------------------------------------------------------
 
-            // /*Loading Signup Fragment */
-            onPressSignupBtn: async function () {
-                // Check if the signup form fragment is already created
-                if (!this.oSignupForm) {
-                    // Load the fragment and set it as a property of the controller
-                    this.oSignupForm = sap.ui.xmlfragment("com.app.rfapp.fragments.SignUpDetails", this);
+            // // /*Loading Signup Fragment */
+            // onPressSignupBtn: async function () {
+            //     // Check if the signup form fragment is already created
+            //     if (!this.oSignupForm) {
+            //         // Load the fragment and set it as a property of the controller
+            //         this.oSignupForm = sap.ui.xmlfragment("com.app.rfapp.fragments.SignUpDetails", this);
 
-                    // Add the fragment as a dependent to the view
-                    this.getView().addDependent(this.oSignupForm);
-                }
-                // Open the signup form fragment
-                await this.oSignupForm.open();
+            //         // Add the fragment as a dependent to the view
+            //         this.getView().addDependent(this.oSignupForm);
+            //     }
+            //     // Open the signup form fragment
+            //     await this.oSignupForm.open();
+            // },
+            // // /*Close Signup Form */
+            // oncancelsignupPress: function () {
+            //     // Close the signup form fragment
+            //     if (this.oSignupForm) {
+            //         this.oSignupForm.close();
+            //     }
+            // },
+
+            onPressSignupBtn:function(){
+                this.getView().byId("idVBoxInputFields_HomeView").setVisible(false);
+                this.getView().byId("createResourceVbox").setVisible(true);
+
             },
-            // /*Close Signup Form */
-            oncancelsignupPress: function () {
-                // Close the signup form fragment
-                if (this.oSignupForm) {
-                    this.oSignupForm.close();
-                }
+
+            oncancelsignupPress:function(){
+                this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
+                this.getView().byId("createResourceVbox").setVisible(false);
+
             },
+
+
+
             onVerify: function () {
                 // Get the phone number from the input field
                 var sPhoneNumber = this.byId("idInputPhoneNumber").getValue();

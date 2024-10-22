@@ -112,7 +112,7 @@ sap.ui.define(
                       if (oDetails[i].Huident) {
                         aProductDetails.push({
                             Huident: oDetails[i].Huident,
-                            Letyp: oDetails[i].Letyp,
+                            Matnr: oDetails[i].Matnr,
                             Flgmove: oDetails[i].Flgmove
                         });
                       }
@@ -131,9 +131,11 @@ sap.ui.define(
                       template: new sap.m.ColumnListItem({
                         cells: [
                           new sap.m.Text({ text: "{Huident}" }),  // Hu
-                          new sap.m.Text({ text: "{Letyp}" }),   // 
+                          new sap.m.Text({ text: "{Matnr}" }),   // 
                           new sap.m.Text({ text: "{Flgmove}" })   // 
-                        ]
+                        ],
+                        type: "Navigation",
+                        press: [that.onSelectproduct, that]
                       })
                     });
                   },
@@ -156,18 +158,44 @@ sap.ui.define(
             },
 
             //Prod Description Btn from ScrollContainer Page 2=>idPage2BinNoTable_AHUOBQ
-            onPressProductDescriptionBtn: function () {
-                var oScrollContainer4 = this.byId("idPage4PrdDecsription_AHUOBQ");
-                var oScrollContainer2 = this.byId("idPage2BinNoTable_AHUOBQ");
+            onSelectproduct: function (oEvent) {
+              var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
 
-                // show the Product Description Page4
-                oScrollContainer4.setVisible(true);
+              var oModel = this.getView().getModel();
+              oModel.read(`/ProductHeadSet('${sSelectedMatnr}')`, {
+                urlParameters: {
+                  "$expand": "ProductHeadtoItem",
+                  "$format": "json"
+                },
+                success: (odata) => {
+                  console.log(odata);
 
-                //Hide the Table Of Bin Numbers Page2
-                oScrollContainer2.setVisible(false);
-            }, 
+                  var aBindetails = odata.ProductHeadtoItem.results;
+       
+                  // var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
+       
+                  // if(odata.ProductHeadtoItem.results.Matnr === sSelectedMatnr){
+                    // Update the UI with the selected material's details
 
- 
+                    for (var i = 0; i < aBindetails.length; i++) {
+                      if (aBindetails[i].Matnr === sSelectedMatnr) {
+                        this.getView().byId("idTotalWaitInput_AHUOBQ").setValue(odata.GWeight);
+                        this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
+                      }
+                    }
+                   
+                  // } else {
+                  //   sap.m.MessageToast.show("Material not found.");
+                  // }
+                  this.byId("idPage4PrdDecsription_AHUOBQ").setVisible(true);
+                  this.byId("idPage2BinNoTable_AHUOBQ").setVisible(false);
+
+                },
+                error: function () {
+                  sap.m.MessageToast.show("Error fetching products.");
+                }
+              });
+            },
 
         });
     }
