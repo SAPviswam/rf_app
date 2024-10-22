@@ -17,7 +17,38 @@ sap.ui.define(
         const { id } = oEvent1.getParameter("arguments");
         this.ID = id;
         console.log(this.ID);
+
+    },
+      onSBQPfirstBackBtnPress:async function(){
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
       },
+     
+    
+     
+      onSBQPSecondBackBtnPress:function(){
+            this.getView().byId("idSBQPFirstSC").setVisible(true)
+            this.getView().byId("idSBQPsecondSC").setVisible(false)
+            this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
+            this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+           
+      },
+
+
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
         var oModel1 = this.getOwnerComponent().getModel();
@@ -150,6 +181,13 @@ sap.ui.define(
             sap.m.MessageToast.show("Error fetching products.");
           }
         });
+
+      },
+      onSBQPPreDePress:function(){
+        this.getView().byId("idSBQPsecondSC").setVisible(false);
+        this.getView().byId("idSBQPThirdSC").setVisible(true);
+        this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
+        this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
       },
       onSBQPThirdBackBtnPress: function () {
         this.getView().byId("idSBQPsecondSC").setVisible(true);
@@ -157,6 +195,7 @@ sap.ui.define(
         this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
         this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
       },
+
       onSelectBin: function (oEvent) {
         var oModel = this.getView().getModel();
         oModel.read(`/ProductHeadSet('${this.sProductNo}')`, {
@@ -199,6 +238,13 @@ sap.ui.define(
           }
         });
       },
+      onSBQPBinDePress: function () {
+        this.getView().byId("idSBQPsecondSC").setVisible(false);
+        this.getView().byId("idSBQPFourthSC").setVisible(true);
+        this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
+        this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
+        this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
+      },
       onSBQPFourthBackBtnPress: function () {
         this.getView().byId("idSBQPFourthbackbtn").setVisible(false);
         this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
@@ -208,3 +254,4 @@ sap.ui.define(
     });
   }
 );
+
