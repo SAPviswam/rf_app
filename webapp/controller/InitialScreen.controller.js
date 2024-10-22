@@ -625,8 +625,6 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
 
-                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?`, {
-
                 if(this.arrayOfDescription.length > 1){
                     var oString = this.arrayOfDescription.length
                 }
