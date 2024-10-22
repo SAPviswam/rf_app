@@ -28,6 +28,12 @@ sap.ui.define([
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
+                   
+                }
+                else if(Device.system.tablet){
+                    this.getView().byId("IdSubTitle_InitialView").addStyleClass("InitialScreenTitle");
+                    
+                    
                 }
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
@@ -1028,12 +1034,12 @@ sap.ui.define([
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
-                if (Device.system.phone) {
-                    oView.byId("ChangePwd_CP").setWidth("96%")
-                }
-                else if (Device.system.tablet) {
-                    oView.byId("ChangePwd_CP").setWidth("85%")
-                }
+                // if (Device.system.phone) {
+                //     oView.byId("ChangePwd_CP").setWidth("96%")
+                // }
+                // else if (Device.system.tablet) {
+                //     oView.byId("ChangePwd_CP").setWidth("85%")
+                // }
                 var oModel = this.getView().getModel(); // Get your OData model
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
