@@ -20,7 +20,7 @@ sap.ui.define([
                 this.aAllButtons = [];
                 this.currentIndex = 0;
                 this.arrayOfButton = [];
-                this.arrayOfDescription=[];
+                this.arrayOfDescription = [];
                 this.arrayOfClient = [];
 
 
@@ -32,6 +32,18 @@ sap.ui.define([
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
+
+
+            },
+            onAfterRendering: function () {
+                // Apply the stored profile picture
+                var sStoredProfileImage = localStorage.getItem("userProfileImage");
+                if (sStoredProfileImage) {
+                    var oAvatarControl = this.byId("IDRAvatarInitialScreenView");
+                    if (oAvatarControl) {
+                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
+                    }
+                }
             },
 
             _handleKeyDown: function (oEvent) {
@@ -227,10 +239,10 @@ sap.ui.define([
                 var sService = oView.byId("idServiceInput_InitialView").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
 
-if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
-    MessageToast.show("Please enter the mandatory fields");
- return
-}
+                if (!(sDescription && sSystemId && sInstanceNumber && sClient)) {
+                    MessageToast.show("Please enter the mandatory fields");
+                    return
+                }
 
 
 
@@ -581,7 +593,7 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                         oButton.setType("Emphasized")
                         this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton)
                         this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client)
-                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description )
+                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description)
 
                     }
                     else {
@@ -625,14 +637,14 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
 
-                if(this.arrayOfDescription.length > 1){
+                if (this.arrayOfDescription.length > 1) {
                     var oString = this.arrayOfDescription.length
                 }
-                else{
+                else {
                     var oString = this.arrayOfDescription[0];
                 }
-               
-                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?` , {
+
+                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
 
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -1113,38 +1125,38 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
             },
 
             // test
-            onAvatarPressed: async function (oEvent) {
-                debugger;
+            // onAvatarPressed: async function (oEvent) {
+            //     debugger;
 
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
-                    this.getView().addDependent(this._oPopover)
-                }
-                // Open popover near the avatar
-                await this._oPopover.openBy(oEvent.getSource());
-            },
-            onAccountDetailsPressedInHomePage: function () {
-                var oView = this.getView();
-                if (!(this.byId("idUserDetails"))) {
-                    // Load the fragment asynchronously
-                    Fragment.load({
-                        id: oView.getId(),
-                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
-                        controller: this
-                    }).then(function (oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
-                        oDialog.open();
-                    });
-                } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
-                }
-            },
+            //     if (!this._oPopover) {
+            //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+            //         this.getView().addDependent(this._oPopover)
+            //     }
+            //     // Open popover near the avatar
+            //     await this._oPopover.openBy(oEvent.getSource());
+            // },
+            // onAccountDetailsPressedInHomePage: function () {
+            //     var oView = this.getView();
+            //     if (!(this.byId("idUserDetails"))) {
+            //         // Load the fragment asynchronously
+            //         Fragment.load({
+            //             id: oView.getId(),
+            //             name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+            //             controller: this
+            //         }).then(function (oDialog) {
+            //             // Add the dialog to the view
+            //             oView.addDependent(oDialog);
+            //             oDialog.open();
+            //         });
+            //     } else {
+            //         // If the dialog already exists, just open it
+            //         this.byId("idUserDetails").open();
+            //     }
+            // },
 
-            onCloseUSerDetailsDialog: function () {
-                this.byId("idUserDetails").close();
-            },
+            // onCloseUSerDetailsDialog: function () {
+            //     this.byId("idUserDetails").close();
+            // },
 
             // test
 

@@ -16,13 +16,13 @@
             <Bar id="BarUserDetails_ResourcePage">
                 <contentLeft>
                     <Title
-                        id="PersonTileUserDetails_ResourcePage"
+                        id="idPersonTileUserDetails_ResourcePage"
                         text="Profile Detials:"
                     />
                 </contentLeft>
                 <contentRight>
                     <Button
-                        id="declineBtnUserDetails_ResourcePage"
+                        id="iddeclineBtnUserDetails_ResourcePage"
                         icon="sap-icon://decline"
                         type="Transparent"
                         press="onPressDeclineProfileDetailsDailog"
@@ -31,7 +31,7 @@
             </Bar>
         </customHeader>
         <VBox
-            id="VBox1UserDetails_ResourcePage"
+            id="idVBox1UserDetails_ResourcePage"
             class="profileCard"
         >
             <Avatar
