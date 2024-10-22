@@ -2324,19 +2324,19 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
             // },
-            // OnPressWTQuerybyWO: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("WTQueryByWO", { id: this.ID });
-            // },
+            OnPressWTQuerybyWO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO", { id: this.ID });
+            },
             // OnPressSerialnumberLocation: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("SerialNumberLocation");
             // },
-            OnPressSerialnumberLocation: function () {
-                var oRouter = UIComponent.getRouterFor(this)
-                oRouter.navTo("SerialNumberLocation", { id: this.ID });
+            // OnPressSerialnumberLocation: function () {
+            //     var oRouter = UIComponent.getRouterFor(this)
+            //     oRouter.navTo("SerialNumberLocation", { id: this.ID });
 
-            },
+            // },
             // OnPressWTQuerybyWT: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("WTQueryByWT", { id: this.ID });
