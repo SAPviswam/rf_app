@@ -96,7 +96,7 @@
                             width="100%"
                             type="Emphasized"
                             press="onLogOnPress"
-                            class="sapUiTinyMarginTop"
+                            class="sapUiTinyMarginTop logonButtonInSapLogon"
                         />
                     <HBox  justifyContent="SpaceBetween">
                    
