@@ -150,8 +150,9 @@ sap.ui.define([
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
             },
+            //CHATBOT
             onChatbotButtonPress: function () {
-                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4", "_self");
             },
 
             onResetToDefaultPress: function () {

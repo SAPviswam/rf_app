@@ -54,27 +54,27 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onInitialDetailsLoad, this);
 
-                if (Device.system.phone) {
-                    if (this.isIPhone) {
-                        // Targeting iPhones (common pixel density for Retina displays and screen width)
-                        this.byId("idImageLogoAvatarHome").setWidth("22%");
-                        this.byId("idImageLogoAvatarHome").setHeight("28%");
-                        this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
-                        // this.byId("initialscreentitle").setMarginRight("25%")
+                // if (Device.system.phone) {
+                //     if (this.isIPhone) {
+                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+                //         this.byId("idImageLogoAvatarHome").setWidth("22%");
+                //         this.byId("idImageLogoAvatarHome").setHeight("28%");
+                //         this.byId("idImageLogoAvatarHome").addStyleClass("iphoneMarginLeft");
+                //         // this.byId("initialscreentitle").setMarginRight("25%")
 
-                    }
-                    else {
-                        // Non-iPhone phones
-                        // this.byId("idImageLogoAvatarHome").setWidth("85%");
-                        // this.byId("idImageLogoAvatarHome").setHeight("35%");
-                    }
-                }
-                else if (Device.system.tablet) {
-                    this.byId("environmentButtonsHBoxHome").setWidth("40%");
-                }
-                else {
-                    this.byId("environmentButtonsHBoxHome").setWidth("23%");
-                }
+                //     }
+                //     else {
+                //         // Non-iPhone phones
+                //         // this.byId("idImageLogoAvatarHome").setWidth("85%");
+                //         // this.byId("idImageLogoAvatarHome").setHeight("35%");
+                //     }
+                // }
+                // else if (Device.system.tablet) {
+                //     this.byId("environmentButtonsHBoxHome").setWidth("40%");
+                // }
+                // else {
+                //     this.byId("environmentButtonsHBoxHome").setWidth("23%");
+                // }
 
             },
             onSelectCheckBox: function (oEvent) {

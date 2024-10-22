@@ -73,15 +73,75 @@ sap.ui.define(
 
             //Submit Btn from ScrollContainer Page 1=> idPage1_AHUOBQ..
             onSubmitPress_AHUOBQ: function () {
-                var oScrollContainer1 = this.byId("idPage1_AHUOBQ");
-                var oScrollContainer2 = this.byId("idPage2BinNoTable_AHUOBQ");
-
-                // Hide the Scanner Page1
-                oScrollContainer1.setVisible(false);
-
-                // Show the Bin Table Page2
-                oScrollContainer2.setVisible(true);
-            },
+              
+                // Get the input value from the input field
+                var oView = this.getView();
+                var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
+                this.sBinNumber = sBinNumber;
+          
+                // Check if bin number is provided
+                if (!sBinNumber) {
+                  sap.m.MessageToast.show("Please enter a bin number.");
+                  return;
+                }
+          
+                // Call your backend service to fetch products for this bin
+                var oModel = this.getView().getModel(); // Assuming you have a model set up
+                var that = this;
+          
+                oModel.read(`/BINQItemSet('${sBinNumber}')`, {
+                  urlParameters: {
+                    "$expand": "BINQHeadSet",
+                    "$format": "json"
+                  },
+          
+                  success: function (odata) {
+                    console.log(odata);
+                    that.getView().byId("idPage1_AHUOBQ").setVisible(false);
+                    that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
+                    that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
+          
+                    // Get the product details from the response
+                    let oDetails = odata.BINQHeadSet.results;
+          
+                    // Prepare an array for binding
+                    var aProductDetails = [];
+          
+                    // Loop through the results and push them into the array
+                    for (var i = 0; i < oDetails.length; i++) {
+                      if (oDetails[i].Huident) {
+                        aProductDetails.push({
+                            Huident: oDetails[i].Huident,
+                            Letyp: oDetails[i].Letyp,
+                            Flgmove: oDetails[i].Flgmove
+                        });
+                      }
+                    }
+          
+                    
+                    // Create a JSON model with the product details array
+                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+          
+                    // Set the model to the table
+                    that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
+          
+                    // Bind the items aggregation of the table to the products array in the model
+                    that.byId("idBinNumTable_AHUOBQ").bindItems({
+                      path: "/products",
+                      template: new sap.m.ColumnListItem({
+                        cells: [
+                          new sap.m.Text({ text: "{Huident}" }),  // Hu
+                          new sap.m.Text({ text: "{Letyp}" }),   // 
+                          new sap.m.Text({ text: "{Flgmove}" })   // 
+                        ]
+                      })
+                    });
+                  },
+                  error: function () {
+                    sap.m.MessageToast.show("Error fetching products.");
+                  }
+                });
+              },
 
             //HUContent Btn from ScrollContainer Page 2=>idPage2BinNoTable_AHUOBQ
             onPressHUContentBtn: function () {
@@ -105,9 +165,9 @@ sap.ui.define(
 
                 //Hide the Table Of Bin Numbers Page2
                 oScrollContainer2.setVisible(false);
-            },
+            }, 
 
-
+ 
 
         });
     }

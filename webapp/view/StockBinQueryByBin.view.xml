@@ -103,6 +103,7 @@
                     <Input
                         id="_IDBinGenInput1_SBQB"
                         placeholder="Enter Bin Number"
+                        liveChange="onPressBinSubmit"
                     />
                     <HBox
                         id="_idBinHBox_unknw_SBQB"
@@ -118,12 +119,12 @@
                             />
                         <VBox id="qrCodePlaceholder_SBQB" class="sapUiSmallMarginTop" />
                         <!-- Submit Button -->
-                        <Button
+                        <!-- <Button
                             id="_IDBinGenSubmitButton_SBQB"
                             text="Submit"
                             class="sapUiTinyMarginEnd"
                             press="onPressBinSubmit"
-                        />
+                        /> -->
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
@@ -180,7 +181,6 @@
                     />
                     <HBox id="idBinDetails">
                     <Input id="_IDBinDetailsGenInput1_SBQB" editable="false"/>
-                    <Input id="_IDBinDetailsGenInput2_SBQB" width="30%"/>
                     </HBox>
                 </f:SimpleForm>
                 <Panel
@@ -192,7 +192,7 @@
                     <Table
                         id="idBinDataTable"
                         growingScrollToLoad="true"
-                        
+                        selectionChange="onSelectmaterial"
                     >
                         <columns>
                             <!-- <Column id="idProd.NoCol">
@@ -221,13 +221,10 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem id="idBinColListItem" type="Navigation">
+                            <!-- <ColumnListItem id="idBinColListItem" type="Navigation">
                                 <cells>
-                                    <Text id="idProductColValue" />
-                                    <Text id="idQtyColValue"  />
-                                    <Text id="idQtyUOMColValue" />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                     <HBox id="idActionButtons" >
@@ -463,6 +460,110 @@
                                 editable="false"
                             />
                         </HBox>
+                         <HBox
+                            id="idhbox_Movemed"
+                            width="100%"
+                        >
+                            <Label
+                                id="idLable_LastMoved_BQB"
+                                text="LM"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idinput_MovementId_BQB"
+                                value=""
+                                editable="false"
+                                width="6rem"
+                            />
+                            <Label
+                                id="idlabelfor_space_BQB"
+                                width="0.3rem"
+                            />
+                            <Input
+                                id="idinput_Movement_BQB"
+                                value=""
+                                editable="false"
+                                width="5rem"
+                            />
+                            <Label
+                                id="idLablespace_bqb"
+                                width="1.5rem"
+                            />
+                            <Label
+                                id="idLable_LastChanged_BQB"
+                                text="LC"
+                                width="56Px"
+                            />
+                            <Input
+                                id="idinput_LastChanged_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Label
+                                id="idlabelfor_spacelastchanged_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movementcbt_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idhbox_Movemed_LI"
+                            width="100%"
+                        >
+                            <Label
+                                id="idLable_LastMoved_LI_BQB"
+                                text="LI"
+                                width="60Px"
+                            />
+                            <Input
+                                id="idinput_MovementId_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idlabelfor_space_LI_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movement_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                            <Label
+                                id="idLablespace_LI_bqb"
+                                width="1.5rem"
+                            />
+                            <Label
+                                id="idLable_LastChanged_LI_BQB"
+                                text="IvDo"
+                                width="35Px"
+                            />
+                            <Input
+                                id="idinput_LastChanged_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Label
+                                id="idlabelfor_spacelastchanged_LI_BQB"
+                                width="0.5rem"
+                            />
+                            <Input
+                                id="idinput_Movementcbt_LI_BQB"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                        </HBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -552,16 +653,301 @@
                            
                         </columns>
                         <items>
-                            <ColumnListItem id="idBinListColListItem">
+                            <!-- <ColumnListItem id="idBinListColListItem">
                                 <cells>
                                     <Text id="idHUValue" />
                                     <Text id="idListProductColValue" />
                                     <Text id="idListflagColValue" />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </Panel>
+            </ScrollContainer>
+            <ScrollContainer
+                id="page1_SBQB_extra_BinDetails"
+                width="100%"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                class="sapUiContentPadding"
+                visible="true"
+            >
+            <Button
+                    id="idBackButton_BinQBin"
+                    icon="sap-icon://nav-back"
+                    type="Transparent"
+                    press="onPressBackfromView"
+                />
+                <form:SimpleForm
+                    id="simpleform4_SBQB_extra"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <VBox
+                        id="idVboxbinQuerybin_extra"
+                        alignItems="Start"
+                        justifyContent="Center"
+                        width="100%"
+                    >
+                        <VBox id="idVboxbinQuerybin_extra1" />
+                        <HBox id="idHboxbinQuerybin_extra1">
+                            <Label
+                                id="idSTypLabel_Extra"
+                                text="STyp :"
+                            />
+                            <Input
+                                id="idSBQBBinInput_extra"
+                                value=""
+                                editable="false"
+                                width="5rem"
+                            />
+                            <Label
+                                id="idLabelBqb_extra"
+                                text=""
+                                width="2rem"
+                            />
+                            <Label
+                                id="idSBQBStorTypeLabel_extra"
+                                text="SSec:"
+                            />
+                            <Input
+                                id="idSBQBStoreTypeInput_extra"
+                                value=""
+                                editable="false"
+                                width="5rem"
+                            />
+                            <Label
+                                id="idLabelBqb_extra1"
+                                text=""
+                                width="2rem"
+                            />
+                            <Label
+                                id="idSBQBStorTypeLabel1_extra"
+                                text="BT:"
+                            />
+                            <Input
+                                id="idSBQBStoreTypeInput1_extra"
+                                value=""
+                                editable="false"
+                                width="4rem"
+                            />
+                        </HBox>
+                        <HBox id="idHboxSc1_binQbin">
+                            <Label
+                                id="idSBQBNoOfHuLabel_extra"
+                                text="MaxW:"
+                            />
+                            <Input
+                                id="idSBQBNoOfHuInput_extra"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idlabelspace_space_binqbin"
+                                text=""
+                                width="2rem"
+                            />
+                            <Label
+                                id="idSBQBBinAisleLabel_extra"
+                                text="ActW:"
+                            />
+                            <Input
+                                id="idSBQBBinAisleInput_extra"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idLable_space2_binqbin"
+                                width="2rem"
+                            />
+                            <Input
+                                id="idSBQBBinAisleInputUOM_extra"
+                                value=""
+                                width="5rem"
+                                editable="false"
+                            />
+                        </HBox>
+                        <HBox id="idHbox_binqbin_extra3">
+                            <Label
+                                id="idSBQBMaxWLabel_extra1"
+                                text="MaxV :"
+                            />
+                            <Input
+                                id="idSBQBMaxWInput_extra"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idLable_space_binqbin4"
+                                text=""
+                                width="2rem"
+                            />
+                            <Label
+                                id="idSBQBBinLevelLabel_extra5"
+                                text="ActV :"
+                            />
+                            <Input
+                                id="idSBQBBinLevelInput_extra"
+                                value=""
+                                editable="false"
+                                width="8rem"
+                            />
+                            <Label
+                                id="idLable_space3_binqbin"
+                                width="2rem"
+                            />
+                            <Input
+                                id="idSBQBinLevelInputUOM_extra"
+                                value=""
+                                width="5rem"
+                                editable="false"
+                            />
+                        </HBox>
+                        <HBox id="idHbox_binqbin5">
+                            <Input
+                                id="idSBQBMaxVInput_extra"
+                                value=""
+                                editable="false"
+                                width="30rem"
+                            />
+                        </HBox>
+                        <HBox id="idHbox_binQbin_5">
+                            <Label
+                                id="idlabel_binqbin_Aqty"
+                                text="AQty :"
+                            />
+                            <Input
+                                id="idinput_binqbin_AQty"
+                                value=""
+                                editable="false"
+                                width="6rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space1"
+                                width="1.3rem"
+                            />
+                            <Input
+                                id="idinput_binqbin_Uom"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space2"
+                                width="5rem"
+                            />
+                             <Label
+                                id="idlabel_binqbin_PB"
+                                text="PB :"
+                            />
+                            <Input
+                                id="idinput_binqbin_PB"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space3"
+                                width="2rem"
+                            />
+                             <Label
+                                id="idlabel_binqbin_RB"
+                                text="RB :"
+                            />
+                            <Input
+                                id="idinput_binqbin_RB"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                        </HBox>
+                        <HBox id="idHbox_binQbin_6">
+                            <Label
+                                id="idlabel_binqbin_Batch"
+                                text="BTch :"
+                            />
+                            <Input
+                                id="idinput_binqbin_Btch"
+                                value=""
+                                editable="false"
+                                width="6rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space9"
+                                width="1.3rem"
+                            />
+                            <Input
+                                id="idinput_binqbin_Uom1"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space10"
+                                width="5rem"
+                            />
+                             <Label
+                                id="idlabel_binqbin_Styp"
+                                text="STyp:"
+                            />
+                            <Input
+                                id="idinput_binqbin_Styp"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space11"
+                                width="2rem"
+                            />
+                             <Label
+                                id="idlabel_binqbin_IA"
+                                text="IA :"
+                            />
+                            <Input
+                                id="idinput_binqbin_IA"
+                                value=""
+                                editable="false"
+                                width="3rem"
+                            />
+                        </HBox>
+                        <HBox id="idHbox_binQbin_12">
+                            <Label
+                                id="idlabel_binqbin_OWnr"
+                                text="OWnr :"
+                            />
+                            <Input
+                                id="idinput_binqbin_OWnr"
+                                value=""
+                                editable="false"
+                                width="11rem"
+                            />
+                            <Label
+                                id="idLable_binQbin_space14"
+                                width="3rem"
+                            />
+                            <Label
+                                id="idlabel_binqbin_PEnt"
+                                text="PEnt :"
+                            />
+                            <Input
+                                id="idinput_binqbin_PEnt"
+                                value=""
+                                editable="false"
+                                width="11rem"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
