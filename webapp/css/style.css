@@ -708,6 +708,22 @@ background-color: rgb(9, 8, 8) !important;
 
 
 /* CSS Methods For SIGNUP Fragment */
+.RFLoginText{
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
+.checkBoxforAutosave{
+    margin-left: 3rem !important;
+    margin-right: 1rem !important;
+}
+@media only screen and (max-width: 600px) {
+    .responsiveGif {
+        display: none !important;
+    }
+    .ConfigBtnsHbox{
+        margin-right: 3rem;
+    }
+}
 .LabelHomePage{
     margin-top: 0.3rem;
 }
@@ -953,15 +969,16 @@ margin-right: 15%;
 }
 
 
-/* begin of sap logon fragment CSS  */
+/*---------------------------------- begin of sap logon fragment CSS --------------------------------------------------- */
 .vboxSapLagon{
-    padding:10%
+    padding:10%;
 }
 
 .vboxSapLagonForDesktop{
-    padding:15%
+    padding:15%;
 }
-/* end of sap logon fragment CSS  */
+
+/*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
  
 
@@ -1034,8 +1051,9 @@ margin-right: 15%;
 
 /* Other existing styles */
 .whiteBox {
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
     border-radius: 8px;
     padding: 5px; /* Slightly increased padding */
     z-index: 1; /* Ensure the card stays above the background image */
