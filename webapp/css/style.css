@@ -1049,7 +1049,7 @@ margin-right: 15%;
     margin-left: 5rem; /* Adjust the value to move it further right */
 }
 .paddingBox {
-    padding-top: 100px; /* Adjust the value to move the card further down */
+    padding-top: 150px; /* Adjust the value to move the card further down */
 }
 
 /* Other existing styles */
@@ -1067,6 +1067,13 @@ margin-right: 15%;
     color: #333;         /* Title color */
     font-weight: bold;   /* Makes the title bold */
     text-align: center;  /* Centers the text */
+}
+.whiteBorderBox {
+    background-color: #ffffff; /* White background for the box */
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 5px; /* Padding inside the box */
 }
 
 

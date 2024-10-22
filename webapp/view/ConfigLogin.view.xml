@@ -68,9 +68,9 @@
             class="paddingBox" 
         >
             <VBox
-                
-                width="400px"  
-                height="300px" 
+                class="whiteBorderBox"  
+                width="300px"  
+                height="200px" 
                 alignItems="Center"
                 justifyContent="Center"
             >
@@ -82,13 +82,13 @@
                 
                 <!-- Input Fields Start Here (Label + Input side by side) -->
                 <HBox width="100%" alignItems="Center" class="inputRow">
-                    <ToolbarSpacer width="6rem"/> <!-- Add some space on the left -->
+                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
                     <Label text="User ID" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" width="60px" />
                     <Input id="UserID" width="60%" value="111010" class="orangeInput sapUiTinyMarginTop" editable="false" />
                 </HBox>
                 
                 <HBox width="100%" alignItems="Center" class="inputRow">
-                    <ToolbarSpacer width="6rem"/> <!-- Add some space on the left -->
+                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
                     <Label text="Password" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"  width="60px"/>
                     <Input id="Password" type="Password" value="........" width="60%" placeholder="Enter Password" class="orangeInput sapUiTinyMarginTop" editable="false"/>
                 </HBox>
