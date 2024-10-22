@@ -66,6 +66,8 @@ sap.ui.define([
       // Get the input value from the input field
       var oView = this.getView();
       var sBinNumber = oView.byId("_IDBinGenInput1_SBQB").getValue();
+
+      sBinNumber = sBinNumber.toUpperCase();
       this.sBinNumber = sBinNumber;
 
       // Check if bin number is provided
@@ -86,48 +88,53 @@ sap.ui.define([
 
         success: function (odata) {
           console.log(odata)
-          that.getView().byId("page1_SBQB").setVisible(false);
-          that.getView().byId("page2_SBQB").setVisible(true);
-          that.getView().byId("_IDBinDetailsGenInput1_SBQB").setValue(sBinNumber);
+          if (odata.Lgpla === sBinNumber) {
+            that.getView().byId("page1_SBQB").setVisible(false);
+            that.getView().byId("page2_SBQB").setVisible(true);
+            that.getView().byId("_IDBinDetailsGenInput1_SBQB").setValue(sBinNumber);
 
-          // Get the product details from the response
-          let oDetails = odata.BINQHeadSet.results;
+            // Get the product details from the response
+            let oDetails = odata.BINQHeadSet.results;
 
-          // Prepare an array for binding
-          var aProductDetails = [];
+            // Prepare an array for binding
+            var aProductDetails = [];
 
-          // Loop through the results and push them into the array
-          for (var i = 0; i < oDetails.length; i++) {
-            if (oDetails[i].Matnr) {
-              aProductDetails.push({
-                Matnr: oDetails[i].Matnr,
-                Lgpla: oDetails[i].Lgpla,
-                Quan: oDetails[i].Quan,
-                Meins: oDetails[i].Meins
-              });
+            // Loop through the results and push them into the array
+            for (var i = 0; i < oDetails.length; i++) {
+              if (oDetails[i].Matnr) {
+                aProductDetails.push({
+                  Matnr: oDetails[i].Matnr,
+                  Lgpla: oDetails[i].Lgpla,
+                  Quan: oDetails[i].Quan,
+                  Meins: oDetails[i].Meins
+                });
+              }
             }
+
+
+            // Create a JSON model with the product details array
+            var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+
+            // Set the model to the table
+            that.byId("idBinDataTable").setModel(oProductModel);
+
+            // Bind the items aggregation of the table to the products array in the model
+            that.byId("idBinDataTable").bindItems({
+              path: "/products",
+              template: new sap.m.ColumnListItem({
+                cells: [
+                  new sap.m.Text({ text: "{Matnr}" }),  // Product Number
+                  new sap.m.Text({ text: "{Quan}" }),   // Quantity
+                  new sap.m.Text({ text: "{Meins}" })   // UOM
+                ],
+                type: "Navigation",
+                press: [that.onSelectMaterial, that]
+              })
+            });
+          } else {
+            // If no matching bin number found, show a message
+            sap.m.MessageToast.show("No products found for the entered bin number.");
           }
-
-
-          // Create a JSON model with the product details array
-          var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-
-          // Set the model to the table
-          that.byId("idBinDataTable").setModel(oProductModel);
-
-          // Bind the items aggregation of the table to the products array in the model
-          that.byId("idBinDataTable").bindItems({
-            path: "/products",
-            template: new sap.m.ColumnListItem({
-              cells: [
-                new sap.m.Text({ text: "{Matnr}" }),  // Product Number
-                new sap.m.Text({ text: "{Quan}" }),   // Quantity
-                new sap.m.Text({ text: "{Meins}" })   // UOM
-              ],
-              type: "Navigation",
-              press: [that.onSelectMaterial, that]
-            })
-          });
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -135,9 +142,6 @@ sap.ui.define([
       });
     },
     onPressBinDetails: function () {
-      this.getView().byId("page2_SBQB").setVisible(false);
-      this.getView().byId("page3_SBQB").setVisible(true);
-
       var oModel = this.getView().getModel(); // Assuming you have a model set up
       var that = this;
 
@@ -194,6 +198,8 @@ sap.ui.define([
           oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
           oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
           oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
+          that.getView().byId("page2_SBQB").setVisible(false);
+          that.getView().byId("page3_SBQB").setVisible(true);
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -201,9 +207,6 @@ sap.ui.define([
       });
     },
     onPressList: function () {
-      this.getView().byId("page2_SBQB").setVisible(false);
-      this.getView().byId("page4_SBQB").setVisible(true);
-
       var oModel = this.getView().getModel(); // Assuming you have a model set up
       var that = this;
 
@@ -249,6 +252,8 @@ sap.ui.define([
               ],
             })
           });
+          that.getView().byId("page2_SBQB").setVisible(false);
+          that.getView().byId("page4_SBQB").setVisible(true);
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -258,10 +263,6 @@ sap.ui.define([
 
     onSelectMaterial: function (oEvent) {
       var oView = this.getView();
-
-      // Hide the ScrollContainer
-      oView.byId("page2_SBQB").setVisible(false);
-      oView.byId("page1_SBQB_extra_BinDetails").setVisible(true);
 
       var oModel = this.getView().getModel(); // Assuming you have a model set up
       oModel.read(`/BINQItemSet('${this.sBinNumber}')`, {
@@ -288,10 +289,17 @@ sap.ui.define([
             oView.byId("idSBQBBinLevelInput_extra").setValue(odata.Volum);
             oView.byId("idSBQBMaxVInput_extra").setValue(oSelectedMaterial.Matnr);  // Selected material number
             oView.byId("idinput_binqbin_AQty").setValue(oSelectedMaterial.Quan);  // Selected material quantity
-            oView.byId("idinput_binqbin_Uom").setValue(oSelectedMaterial.Meins);  // Selected material UOM
+            oView.byId("idinput_binqbin_Uom").setValue(oSelectedMaterial.Meins);
+            oView.byId("idinput_binqbin_OWnr").setValue(oSelectedMaterial.Owner);
+            oView.byId("idinput_binqbin_PEnt").setValue(oSelectedMaterial.Entitled);
+            oView.byId("idinput_binqbin_Styp").setValue(oSelectedMaterial.Cat);
           } else {
             sap.m.MessageToast.show("Material not found.");
           }
+
+          // Hide the ScrollContainer
+          oView.byId("page2_SBQB").setVisible(false);
+          oView.byId("page1_SBQB_extra_BinDetails").setVisible(true);
         }, error: function () {
           sap.m.MessageToast.show("Error fetching products.");
         }

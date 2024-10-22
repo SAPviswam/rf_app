@@ -624,6 +624,9 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
 
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
+
+                MessageBox.warning(`Delete the ${this.arrayOfButton.length} selected system?`, {
+
                 if(this.arrayOfDescription.length > 1){
                     var oString = this.arrayOfDescription.length
                 }
@@ -632,6 +635,7 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 }
                
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?` , {
+
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -758,11 +762,6 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 });
                 this.isEditButtonPressed = true
 
-                // New UI modification start
-                this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                this.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                // New UI modification end
-
                 // await this.handleLinksapPress();
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
@@ -786,6 +785,9 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                             that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
                             that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
                         }
+                        // New UI modification start
+                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
                     }
                 });
             },
@@ -981,7 +983,7 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
             },
             onChangePasswordBtn: async function () {
                 var oView = this.getView();
-               
+
                 var sResourceId = oView.byId("idUserInput_CS").getValue(); // Get the Resource ID from user input
                 this.sResourceID = sResourceId;
                 if (!sResourceId) {
@@ -992,10 +994,10 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
-                if(Device.system.phone){
+                if (Device.system.phone) {
                     oView.byId("ChangePwd_CP").setWidth("96%")
                 }
-                else if(Device.system.tablet){
+                else if (Device.system.tablet) {
                     oView.byId("ChangePwd_CP").setWidth("85%")
                 }
                 var oModel = this.getView().getModel(); // Get your OData model
