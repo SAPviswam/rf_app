@@ -203,12 +203,12 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
            
                 // Check for existing combinations in Configure_SystemSet
+                const aSystemId = new Filter("SystemId",FilterOperator.EQ, sSystemId),
+                aClient = new Filter("Client", sap.ui.model.FilterOperator.EQ, sClient),
+                aInstanceNumber = new Filter("InstanceNumber", FilterOperator.EQ, sInstanceNumber),
+                aAllFilters = new Filter([aSystemId, aClient, aInstanceNumber]);
                 oModel.read("/Configure_SystemSet", {
-                    filters: [
-                        new sap.ui.model.Filter("SystemId", sap.ui.model.FilterOperator.EQ, sSystemId),
-                        new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient),
-                        new sap.ui.model.Filter("InstanceNumber", sap.ui.model.FilterOperator.EQ, sInstanceNumber)
-                    ],
+                    filters: [aAllFilters],
                     success: function (oData) {
                         // Check if the combination exists
                         var isCombinationExists = oData.results.some(entry =>
@@ -218,11 +218,11 @@ sap.ui.define([
                         );
            
                         // Read existing entries to check uniqueness in ServiceSet
+                        var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
+                        var oClient = new Filter("Client", FilterOperator.EQ, sClient);
+                        var allFilter = new Filter([oDescription, oClient]);
                         oModel.read("/ServiceSet", {
-                            filters: [
-                                new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription),
-                                new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient)
-                            ],
+                            filters: [allFilter],
                             success: function (oData) {
                                 // Initialize an array to hold error messages
                                 var errorMessages = [];
@@ -389,25 +389,6 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
                 // Read existing entries to check uniqueness
 
-                // // test
-                // if (sQuery && sQuery.length > 0) {
-                //     var filterVehicle = new Filter("vehicleNumber", FilterOperator.Contains, sQuery);
-                //     var filterSlot = new Filter("slotNumber/slotNumbers", FilterOperator.Contains, sQuery)
-
-                //     var filterName = new Filter("driverName", FilterOperator.Contains, sQuery);
-                //     var filterMobile = new Filter("driverMobile", FilterOperator.Contains, sQuery);
-                //     var filterDelivery = new Filter("deliveryType", FilterOperator.Contains, sQuery);
-                //     var filterVendor = new Filter("vendor_Name", FilterOperator.Contains, sQuery);
-
-                //     var allFilter = new Filter([filterVehicle, filterSlot, filterName, filterMobile, filterDelivery, filterVendor]);
-                // }
-
-                // // update list binding
-                // var oList = this.byId("idAssignedTable");
-                // var oBinding = oList.getBinding("items");
-                // oBinding.filter(allFilter);
-
-                // // test
                 var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
                 var oClient = new Filter("Client", FilterOperator.EQ, sClient);
                 var allFilter = new Filter([oDescription, oClient]);
@@ -425,7 +406,7 @@ sap.ui.define([
                                 errorMessages.push("The Description must be unique.");
                             }
                             if (errorMessages.length > 0) {
-                                MessageToast.show(errorMessages.join("\n"));
+                                MessageBox.information(errorMessages.join("\n"));
                                 return; // Exit the function if duplicates are found
                             }
                         }
@@ -745,14 +726,14 @@ sap.ui.define([
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
-                var sDescription = oView.byId("idDescriptionInput").getValue();
-                var sSystemId = oView.byId("idSystemIdInput").getValue();
-                var sInstanceNumber = oView.byId("idInstanceNumberInput").getValue();
-                var sClient = oView.byId("idClientInput").getValue();
-                var sApplicationServer = oView.byId("idApplicationServerInput").getValue();
-                var sRouterString = oView.byId("idRouterStringInput").getValue();
-                var sService = oView.byId("idServiceInput").getValue();
-                var oCheckbox = oView.byId("idCheckboxDescription");
+                var sDescription = oView.byId("idDescriptionInput_InitialView").getValue();
+                var sSystemId = oView.byId("idSystemIdInput_InitialView").getValue();
+                var sInstanceNumber = oView.byId("idInstanceNumberInput_InitialView").getValue();
+                var sClient = oView.byId("idClientInput_InitialView").getValue();
+                var sApplicationServer = oView.byId("idApplicationServerInput_InitialView").getValue();
+                var sRouterString = oView.byId("idRouterStringInput_InitialView").getValue();
+                var sService = oView.byId("idServiceInput_InitialView").getValue();
+                var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
                 var oButton = this.selectedButton;
                 // Perform validation checks
                 if (!sSystemId) {
