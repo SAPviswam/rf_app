@@ -25,6 +25,7 @@
                         id="idProfileAvatarInHomePage"
                         displaySize="XS"
                         tooltip="Profile"
+                        press="onPressPopoverProfileAvatarHomeScreen"
                     />
                     <Label
                         id="idLabelEmptyInProfileInHomePage"
