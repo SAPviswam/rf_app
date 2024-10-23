@@ -9,6 +9,34 @@ sap.ui.define([
         getRouter: function () {
             return this.getOwnerComponent().getRouter();
         },
+        onInit: function () {
+            // Apply the stored profile image to all avatars in the app
+            this.applyStoredProfileImage();
+        },
+        applyStoredProfileImage: function () {
+            var This = this;
+            var oView = This.getView();
+        
+            // Retrieve the stored profile image from localStorage
+            var storedImage = localStorage.getItem("userProfileImage");
+        
+            // If there is no stored image, do nothing
+            if (!storedImage) {
+                return;
+            }
+        
+            // Find all avatar and image controls by a common class (e.g., avatarImage)
+            var allAvatarsAndImages = oView.findElements(true, function (element) {
+                return element.isA("sap.m.Avatar");
+            });
+        
+            // Loop through all found avatar/image controls and apply the stored image
+            allAvatarsAndImages.forEach(function (control) {
+                if (control.isA("sap.m.Avatar")) {
+                    control.setSrc(storedImage);
+                }
+            });
+        },        
 
         createData: function (oModel, oPayload, sPath) {
             return new Promise((resolve, reject) => {
@@ -53,18 +81,18 @@ sap.ui.define([
             var oModel1 = this.getOwnerComponent().getModel();
 
             // Default popover visibility model
-            var oPopoverVisibility = {
-                showAccountDetails: oPopoverContext?.showAccountDetails || false,
-                showEditTile: oPopoverContext?.showEditTile || false,
-                showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
-                showThemes: oPopoverContext?.showThemes || false,
-                showLanguage: oPopoverContext?.showLanguage || false,
-                showTileView: oPopoverContext?.showTileView || false,
-                showHelp: oPopoverContext?.showHelp || false,
-                showSignOut: oPopoverContext?.showSignOut || false
-            };            
+            // var oPopoverVisibility = {
+            //     showAccountDetails: oPopoverContext?.showAccountDetails || false,
+            //     showEditTile: oPopoverContext?.showEditTile || false,
+            //     showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
+            //     showThemes: oPopoverContext?.showThemes || false,
+            //     showLanguage: oPopoverContext?.showLanguage || false,
+            //     showTileView: oPopoverContext?.showTileView || false,
+            //     showHelp: oPopoverContext?.showHelp || false,
+            //     showSignOut: oPopoverContext?.showSignOut || false
+            // };            
             // Create a model for popover visibility
-            var oPopoverVisibilityModel = new sap.ui.model.json.JSONModel(oPopoverVisibility);
+            //var oPopoverVisibilityModel = new sap.ui.model.json.JSONModel(oPopoverVisibility);
 
             oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
@@ -82,19 +110,10 @@ sap.ui.define([
                         }
                         // Set both the profile and visibility models to the popover
                         This._oPopover.setModel(oProfileModel, "profile");
-                        This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
+                        //This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
 
                         // Open the popover near the avatar after the data is set
                         This._oPopover.openBy(oEvent.getSource());
-
-                        // // Apply the stored profile pic for the PopOver (if available)
-                        // var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                        // if (sStoredProfileImage) {
-                        //     var oProfilepicPopOverPerson = This._oPopover.getAggregation("content")[0].getItems()[0].getItems()[0];
-                        //     if (oProfilepicPopOverPerson) {
-                        //         oProfilepicPopOverPerson.setSrc(sStoredProfileImage);
-                        //     }
-                        // }
                     } else {
                         sap.m.MessageToast.show("User is not a resource.");
                     }
@@ -104,46 +123,9 @@ sap.ui.define([
                 }
             });
             // Set the visibility model to the popover even before opening (if needed)
-            if (This._oPopover) {
-                This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
-            }
-        },
-        //from Popover click function...
-        onPressPopoverProfileImageAvatar: function () {
-            debugger
-            var fileInput = document.createElement("input");
-            fileInput.type = "file";
-            fileInput.accept = "image/*";
-            fileInput.style.display = "none";
-
-            // Add event listener to handle the file selection
-            fileInput.addEventListener("change", (event) => {
-                var selectedFile = event.target.files[0];
-                if (selectedFile) {
-                    var oReader = new FileReader();
-                    // Set up the onload event for FileReader
-                    oReader.onload = (oEvent) => {
-                        var sBase64Image = oEvent.target.result;
-                        var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-                        var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
-                        var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
-
-                        // Set the image sources for the controls
-                        oImageControl1.setSrc(sBase64Image);
-                        oImageControl2.setSrc(sBase64Image);
-                        oImageControl3.setSrc(sBase64Image);
-
-                        // Store the image in localStorage
-                        localStorage.setItem("userProfileImage", sBase64Image);
-                        MessageToast.show("Profile image updated successfully!");
-                    };
-                    // Read the selected file as a Data URL (base64 string)
-                    oReader.readAsDataURL(selectedFile);
-                } else {
-                    MessageToast.show("Please select an image to upload.");
-                }
-            });
-            fileInput.click();
+            // if (This._oPopover) {
+            //     This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
+            // }
         },
         //Account Details press function from popover
         onPressAccountDetails: async function () {
@@ -171,80 +153,115 @@ sap.ui.define([
                 this.UserDetailsFragment = await this.loadFragment("UserDetails"); // Load your fragment asynchronously
             }
             this.UserDetailsFragment.open();
-            // var sStoredProfileImage = localStorage.getItem("userProfileImage");
-            // if (sStoredProfileImage) {
-            //     var oProfileAvatarControl = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-            //     if (oProfileAvatarControl) {
-            //         oProfileAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image as the Avatar source
-            //     }
-            // }
+            this.applyStoredProfileImage();
         },
         onPressDeclineProfileDetailsDailog: function () {
             if (this.UserDetailsFragment) {
                 this.UserDetailsFragment.close();
             }
         },
-        //Dailog Changing the profile pic...
-        onPressUploadProfilePic: function () {
-            debugger;
+        //Hover Effect btn function(from Popover)...
+        onPressPopoverProfileImageAvatar: function () {
             var This = this;
             var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = "image/*";
             fileInput.style.display = "none";
-
-            // Add an event listener to handle the file selection
+        
+            // Add event listener to handle the file selection
             fileInput.addEventListener("change", (event) => {
                 var selectedFile = event.target.files[0];
                 if (selectedFile) {
                     var reader = new FileReader();
+                    // Set up the onload event for FileReader
                     reader.onload = (e) => {
                         var selectedImageBase64 = e.target.result; // Get the base64 encoded image
-
-                        //var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-                        //var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
-                        var oHomePageImageControl = this.byId("id_GenAvatar1PageHome");
-                        var oResourcePageImageControl = this.byId("id_GenAvatar1P");
-                        var oInitialScreenImageControl = this.byId("IDRAvatarInitialScreenView");
-
-                        // Set the src for each image control
-                        // if (oImageControl1) {
-                        //     oImageControl1.setSrc(selectedImageBase64);
-                        // }
-                        // if (oImageControl2) {
-                        //     oImageControl2.setSrc(selectedImageBase64);
-                        // }
-                        if (oHomePageImageControl) {
-                            oHomePageImageControl.setSrc(selectedImageBase64);
-                        }
-                        if (oResourcePageImageControl) {
-                            oResourcePageImageControl.setSrc(selectedImageBase64);
-                        }
-                        if (oInitialScreenImageControl) {
-                            oInitialScreenImageControl.setSrc(selectedImageBase64);
-                        }
-
-                        // Store the image in localStorage
+                        
+                        // Clear the previous image from localStorage
+                        localStorage.removeItem("userProfileImage");
+        
+                        // Update all avatar images with the new base64 image
+                        This.updateAllAvatarImages(selectedImageBase64);
+        
+                        // Store the new image in localStorage
                         localStorage.setItem("userProfileImage", selectedImageBase64);
                         sap.m.MessageToast.show("Profile image updated successfully!");
                     };
+                    // Read the selected file as a Data URL (base64 string)
                     reader.readAsDataURL(selectedFile);
+                } else {
+                    sap.m.MessageToast.show("Please select an image to upload.");
                 }
             });
-
             fileInput.click();
         },
+        //Upload btn from the dailog..
+        onPressUploadProfilePic: function () {
+            var This = this;
+            var fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.accept = "image/*";
+            fileInput.style.display = "none";
+        
+            // Add event listener to handle the file selection
+            fileInput.addEventListener("change", (event) => {
+                var selectedFile = event.target.files[0];
+                if (selectedFile) {
+                    var reader = new FileReader();
+                    // Set up the onload event for FileReader
+                    reader.onload = (e) => {
+                        var selectedImageBase64 = e.target.result; // Get the base64 encoded image
+                        localStorage.removeItem("userProfileImage");
+        
+                        // Update all avatar images with the new base64 image
+                        This.updateAllAvatarImages(selectedImageBase64);
+        
+                        // Store the new image in localStorage
+                        localStorage.setItem("userProfileImage", selectedImageBase64);
+                        sap.m.MessageToast.show("Profile image updated successfully!");
+                    };
+                    // Read the selected file as a Data URL (base64 string)
+                    reader.readAsDataURL(selectedFile);
+                } else {
+                    sap.m.MessageToast.show("Please select an image to upload.");
+                }
+            });
+            fileInput.click();
+        },
+        updateAllAvatarImages: function (imageBase64) {
+            var This = this;
+            var oView = This.getView();
+        
+            // Find all avatar controls by checking if they are instances of sap.m.Avatar
+            var allAvatarImages = oView.findElements(true, function (element) {
+                return element.isA("sap.m.Avatar");
+            });
+        
+            // Loop through all found avatar controls and update their image source
+            allAvatarImages.forEach(function (avatarControl) {
+                avatarControl.setSrc(imageBase64);
+            });
+        },        
         //Deleting the Profile Images...
         onPressDeleteProfilePic: function () {
-            var oHomePageImageControl = this.byId("id_GenAvatar1PageHome");
-            var oResourcePageImageControl = this.byId("id_GenAvatar1P");
-            var oInitialScreenImageControl = this.byId("IDRAvatarInitialScreenView");
-            oHomePageImageControl.setSrc("");
-            oResourcePageImageControl.setSrc("");
-            oInitialScreenImageControl.setSrc("");
+            this.clearAllAvatarImages();
             localStorage.removeItem("userProfileImage");
-            sap.m.MessageToast.show("Profile image deleted successfully!");
+            sap.m.MessageToast.show("Profile image removed successfully!");
         },
+        clearAllAvatarImages: function () {
+            var This = this;
+            var oView = This.getView();
+    
+            var allAvatarImagesRemoving = oView.findElements(true, function (element) {
+                return element.isA("sap.m.Avatar");
+            });
+
+            // Loop through all found avatar controls and update their image source
+            allAvatarImagesRemoving.forEach(function (avatarControl) {
+                avatarControl.setSrc("");
+            });
+            window.location.reload();
+        }
 
     })
 

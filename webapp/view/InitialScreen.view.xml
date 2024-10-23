@@ -41,7 +41,7 @@
                 </ToolbarSpacer>
                 <!-- Avatar -->
                 <Avatar
-                    id="IDRAvatarInitialScreenView"
+                    id="idImageAvatarInitialScreen"
                     displaySize="XS"
                     tooltip="Profile"
                 />

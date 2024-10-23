@@ -70,7 +70,7 @@
                         visible="false"
                     />
                     <Avatar
-                        id="id_GenAvatar1P"
+                        id="idImageMainAvatarResourcepage"
                         displaySize="XS"
                         press="onSBQPAvatarPressedResourcePage"
                         tooltip="Profile"
