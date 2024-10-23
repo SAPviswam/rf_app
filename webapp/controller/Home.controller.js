@@ -16,6 +16,9 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
+                
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
                 console.log(this.isTablet)
@@ -75,25 +78,15 @@ sap.ui.define([
                 // else {
                 //     this.byId("environmentButtonsHBoxHome").setWidth("23%");
                 // }
-
-            },
-            onAfterRendering: function () {
-                // Apply the stored profile picture
-                var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                if (sStoredProfileImage) {
-                    var oAvatarControl = this.byId("id_GenAvatar1PageHome");
-                    if (oAvatarControl) {
-                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
-                    }
-                }
+                
             },
             //Profile click function..
-            onHomePageAvatarPressed: function (oEvent) {
-                this.onPressAvatarPopOverBaseFunction(oEvent, {
-                    showAccountDetails: true,
-                    showSignOut: true
-                });
-            },
+            // onHomePageAvatarPressed: function (oEvent) {
+            //     this.onPressAvatarPopOverBaseFunction(oEvent, {
+            //         showAccountDetails: true,
+            //         showSignOut: true
+            //     });
+            // },
             onSelectCheckBox: function (oEvent) {
                 const isSelected = oEvent.getParameter("selected");
 
