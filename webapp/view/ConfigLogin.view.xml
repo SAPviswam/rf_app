@@ -1,0 +1,115 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.rfapp.controller.ConfigLogin"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc="sap.ndc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+>
+    <tnt:ToolPage id="idRfconfigPage01ToolPage">
+        <!-- Header -->
+        <tnt:header>
+            <tnt:ToolHeader id="idRfconfigPage01ToolHeader">
+                <!-- Artihcus Logo -->
+
+                <Image
+                    id="idArtihcus_configPage"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- CAPmodel RF Title -->
+                <Title
+                    id="idTitle_configPage"
+                    class="title"
+                    text="CAPmodel RF"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_configPage"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_configPage">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData_configPage"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+               
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <!-- scroll container for total view -->
+    <ScrollContainer
+    id="idScrollContainer1_configPage"
+    horizontal="false"
+    vertical="true"
+    height="100%"
+    class="customBackground"
+    visible="true"
+>
+    <VBox
+        class="contentContainer"
+        justifyContent="Center"
+        alignItems="Center"
+        fitContainer="true"
+        height="100%"
+        width="100%"
+    >
+        <!-- Use an HBox to center the whiteBox -->
+        <HBox
+            justifyContent="Center"
+            alignItems="Center"
+            height="100%" 
+            class="paddingBox" 
+        >
+            <VBox
+                class="whiteBorderBox"  
+                width="300px"  
+                height="200px" 
+                alignItems="Center"
+                justifyContent="Center"
+            >
+                <!-- Title -->
+                <Text text="Application Login" 
+                      class="loginTitle" 
+                      textAlign="Center" 
+                      width="100%"/>
+                
+                <!-- Input Fields Start Here (Label + Input side by side) -->
+                <HBox width="100%" alignItems="Center" class="inputRow">
+                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
+                    <Label text="User ID" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" width="60px" />
+                    <Input id="UserID" width="60%" value="111010" class="orangeInput sapUiTinyMarginTop" editable="false" />
+                </HBox>
+                
+                <HBox width="100%" alignItems="Center" class="inputRow">
+                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
+                    <Label text="Password" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"  width="60px"/>
+                    <Input id="Password" type="Password" value="........" width="60%" placeholder="Enter Password" class="orangeInput sapUiTinyMarginTop" editable="false"/>
+                </HBox>
+
+                <VBox height="20px"/> <!-- Increase space between fields and buttons -->
+
+                <!-- Submit Buttons -->
+                <HBox justifyContent="Center" alignItems="Center">
+                    <Button text="Signup" press="onpressSignup" width="100%"/>
+                    <ToolbarSpacer width="1rem"/>
+                    <Button text="Login" press="onpresslogin" width="100%"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollContainer>
+
+
+
+
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+

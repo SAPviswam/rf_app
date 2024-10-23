@@ -200,7 +200,7 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem
+                            <!-- <ColumnListItem
                                 id="IDGenBinNumbersColumnListItem1_AHUOBQ"
                                 class="AlternateRowColor"
                             >
@@ -218,7 +218,7 @@
                                         text="{Drivername}"
                                     />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </VBox>
@@ -369,7 +369,7 @@
                             />
                             <Label
                                 id="idTotalWait_AHUOBQ"
-                                text="Total Wait"
+                                text="Total Weight"
                                 class="formLabelPage4_AHUOBQ"
                             />
                             <HBox id="idHBoxTotalWaite_AHUOBQ">
@@ -389,7 +389,7 @@
                             </HBox>
                             <Label
                                 id="idTotalValue_AHUOBQ"
-                                text="Total Value"
+                                text="Total Volume"
                                 class="formLabelPage4_AHUOBQ"
                             />
                             <HBox id="idHBoxTotalValue_AHUOBQ">

@@ -41,9 +41,8 @@
                 </ToolbarSpacer>
                 <!-- Avatar -->
                 <Avatar
-                    id="IDRAvatar_InitialView"
+                    id="IDRAvatarInitialScreenView"
                     displaySize="XS"
-                    press="onAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -64,16 +63,21 @@
                     class="configTextVbox sapUiLargeMargin"
                 >
                     <!-- vbox for subtitle "Configure Sap System" -->
-                    <VBox class="configtitle">
-                        <Title
+                    <!-- <VBox class="configtitle"> -->
+                        <!-- <Title
+                            id="IdSubTitle_InitialView"
+                            class="configSubTitle"
+                            text="Configure SAP System"
+                        /> -->
+                    <!-- </VBox> -->
+
+                    <!-- vbox for left side text -->
+                    <VBox class="div">
+                    <Title
                             id="IdSubTitle_InitialView"
                             class="configSubTitle"
                             text="Configure SAP System"
                         />
-                    </VBox>
-
-                    <!-- vbox for left side text -->
-                    <VBox class="div">
                         <html:div>
                             Set the
                             <html:span
@@ -205,13 +209,15 @@
                         <Label
                             id="idLableDescription_InitialView"
                             text="Description:"
-                            width="120px"
+                            width="125px"
+                             required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
                             id="idDescriptionInput_InitialView"
                             value=""
                             placeholder="Enter Description..."
+                            required="true"
                             class="customInput"
                             width="100%"
                         />
@@ -223,7 +229,8 @@
                         <Label
                             id="idLableSystemId_InitialView"
                             text="System Id:"
-                            width="120px"
+                            width="125px"
+                             required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
@@ -232,6 +239,7 @@
                             placeholder="ID"
                             maxLength="3"
                             width="100%"
+                            required="true"
                             liveChange="ongetSAPPress"
                         />
                     </HBox>
@@ -242,13 +250,15 @@
                         <Label
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
-                            width="120px"
+                            width="125px"
+                             required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
                             id="idInstanceNumberInput_InitialView"
                             value=""
                             placeholder="Num"
+                            required="true"
                             maxLength="3"
                             width="100%"
                         />
@@ -260,12 +270,14 @@
                         <Label
                             id="idLableClient_InitialView"
                             text="Client:"
-                            width="120px"
+                            width="125px"
+                             required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
                             id="idClientInput_InitialView"
                             value=""
+                             required="true"
                             placeholder="Client"
                             maxLength="3"
                             width="100%"
@@ -278,12 +290,14 @@
                         <Label
                             id="idLableApplicationServer_InitialView"
                             text="Application server:"
-                            width="120px"
+                            width="125px"
+                             required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
                             id="idApplicationServerInput_InitialView"
                             value=""
+                             required="true"
                             placeholder="Enter Application server..."
                             class="customInput"
                             width="100%"
@@ -296,12 +310,14 @@
                         <Label
                             id="idLableRouterString_InitialView"
                             text="SAP Router String:"
-                            width="120px"
+                            width="125px"
+                            
                             class="sapUiTinyMarginTop"
                         />
                         <Input
                             id="idRouterStringInput_InitialView"
                             value=""
+                             
                             placeholder="Enter Router String..."
                             class="customInput"
                             width="100%"
@@ -312,7 +328,8 @@
                         <Label
                             id="idLableService_InitialView"
                             text="SAP Service:"
-                            width="120px"
+                            width="125px"
+                           
                             class="sapUiTinyMarginTop"
                         />
                         <Input
@@ -320,6 +337,7 @@
                             value=""
                             placeholder="Enter Service..."
                             class="customInput"
+                            
                             width="100%"
                         />
                     </HBox>

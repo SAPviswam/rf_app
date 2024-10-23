@@ -352,7 +352,7 @@
                 <Table
                     id="HuDetailsTable"
                     inset="false"
-                    items="{/productData}"
+                   
                     growing="true"
                     growingScrollToLoad="true"
                     mode="None"
@@ -434,10 +434,10 @@
                 <Table
                     id="simpleTable"
                     inset="false"
-                    items="{/tableData}"
+                    
                     growing="true"
                     growingScrollToLoad="true"
-                    mode="None"
+                    mode="SingleSelectMaster"
                 >
                     <columns>
                         <Column id="_IDGenColumn6">
@@ -467,8 +467,8 @@
                     </columns>
 
                     <items>
-                        <ColumnListItem id="_IDGenColumnListItem2">
-                            <cells>
+                        <ColumnListItem id="_IDGenColumnListItem2" navigated="true">
+                            <cells >
                                 <Text
                                     id="_IDGenText11"
                                     text="{serialNo}"

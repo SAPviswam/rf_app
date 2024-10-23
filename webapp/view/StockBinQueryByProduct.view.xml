@@ -73,6 +73,7 @@
                 visible="true"
             >
                 <form:SimpleForm
+                    id="idProductBinQbin"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -82,32 +83,36 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                <VBox alignContent="Center"
-                        alignItems="Center">
-                        <Title text="Stock Bin Query By Product"></Title>
-                        <VBox class="sapUiTinyMarginBottom"></VBox>
-                    <HBox
-                        id="idSBQPHbox"
-                        class="sapUiMediumMargin"
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
                     >
-
-                        <Label
-                            id="idSBQProductLabel"
-                            text="Product"
-                            width="70px"
-                            class="sapUiTinyMargin"
-                        />
-                        <Input
-                            id="idSBQProductInput"
-                            value=""
-                            liveChange="onSBQProductLiveChange"
-                        />
-                        <Button
-                            id="idSBQProductScannerBtn"
-                            icon="sap-icon://bar-code"
-                            press="onSBQProductBarcodeScanner"
-                        />
-                    </HBox>
+                        <Title text="Stock Bin Query By Product" />
+                        <VBox class="sapUiTinyMarginBottom" />
+                        <HBox
+                            id="idSBQPHbox"
+                            class="sapUiMediumMargin"
+                        >
+                            <Label
+                                id="idSBQProductLabel"
+                                text="Product"
+                                width="70px"
+                                class="sapUiTinyMargin"
+                            />
+                            <Input
+                                id="idSBQProductInput"
+                                value=""
+                                liveChange="onpressProductsubmit"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <ndc:BarcodeScannerButton
+                                id="_IDBinGenScanButton_SBQProduct"
+                                scanSuccess="onScanSuccessProduct"
+                                scanFail="onScanError"
+                                dialogTitle="Barcode Scanner"
+                                class="sapUiTinyMarginBegin"
+                            />
+                        </HBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -120,7 +125,7 @@
                 visible="false"
             >
                 <form:SimpleForm
-                    id="simpleform2"
+                    id="simpleform2_binQueryByProduct"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -128,7 +133,6 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
                 >
                     <VBox
                         alignItems="Center"
@@ -150,7 +154,6 @@
                                     id="idSBQProductLabel2"
                                     text="Product"
                                     width="70Px"
-                                    
                                 />
                                 <HBox
                                     id="idSBQPLabelHbox2"
@@ -170,7 +173,7 @@
                                 </HBox>
                             </HBox>
                         </VBox>
-<VBox class="sapUiMediumMarginBottom"></VBox>
+                        <VBox class="sapUiMediumMarginBottom" />
                         <VBox
                             alignItems="Center"
                             justifyContent="Center"
@@ -184,46 +187,42 @@
                                 <Table
                                     id="idSBQPTable"
                                     growing="true"
-                                    growingScrollToLoad="true"
+                                    growingThreshold="5"
                                     mode="None"
                                     width="100%"
+                                    alternateRowColors="true"
                                 >
+                                    <headerToolbar>
+                                        <OverflowToolbar
+                                            id="idSlotsTableHeader"
+                                        />
+                                    </headerToolbar>
                                     <columns>
-                                        <Column id="idSBQPBinNoColumn">
-                                            <Text
-                                                id="idSBQPBinNoText"
-                                                text="Bin No"
-                                            />
-                                        </Column>
                                         <Column id="idSBQPBinColumn">
                                             <Text
                                                 id="idSBQPBinText"
-                                                text="Bin"
+                                                text="Bin No"
                                             />
                                         </Column>
                                         <Column id="idSBQPColumn">
                                             <Text
                                                 id="idSBQPText"
-                                                text="P"
+                                                text="Stock"
                                             />
                                         </Column>
                                         <Column id="idSBQPPcColumn">
                                             <Text
                                                 id="idSBQPPcText"
-                                                text="pc"
+                                                text="UOM"
                                             />
                                         </Column>
                                     </columns>
 
                                     <items>
-                                        <ColumnListItem
+                                        <!-- <ColumnListItem
                                             id="idGenSBQPColumnListItem"
                                         >
                                             <cells>
-                                                <Text
-                                                    id="idSBQPBinNoCell"
-                                                    text=""
-                                                />
                                                 <Text
                                                     id="idSBQPBinCell"
                                                     text=""
@@ -237,7 +236,7 @@
                                                     text=""
                                                 />
                                             </cells>
-                                        </ColumnListItem>
+                                        </ColumnListItem> -->
                                     </items>
                                 </Table>
                             </HBox>
@@ -277,7 +276,7 @@
                 visible="false"
             >
                 <form:SimpleForm
-                    id="simpleform3"
+                    id="simpleform3_binQproduct"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -285,7 +284,6 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
                 >
                     <VBox
                         alignItems="Center"
@@ -294,6 +292,13 @@
                     >
                         <Title text="Product Description" />
                         <VBox class="sapUiLargeMarginBottom" />
+                        <HBox id="idhbox_Production">
+                            <Input
+                                id="idInput_BinQProduct_Product"
+                                width="20rem"
+                                editable="false"
+                            />
+                        </HBox>
                         <HBox>
                             <Label
                                 id="idSBQPEANLabel"
@@ -303,10 +308,13 @@
                             <Input
                                 id="idSBQPEANInput"
                                 value=""
+                                editable="false"
                             />
+                            <Label id="idLableSpace_BinQproduct" width="2rem"></Label>
                             <Input
                                 id="idSBQPEANInput2"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
 
@@ -319,10 +327,12 @@
                             <Input
                                 id="idSBQPTotWInput"
                                 value=""
+                                editable="false"
                             />
+                             <Label id="idLableSpace_BinQproduct1" width="2rem"></Label>
                             <Input
                                 id="idSBQPTotWInput2"
-                                value="KG"
+                                editable="false"
                             />
                         </HBox>
 
@@ -335,10 +345,12 @@
                             <Input
                                 id="idSBQPTotVInput"
                                 value=""
+                                editable="false"
                             />
+                             <Label id="idLableSpace_BinQproduct3" width="2rem"></Label>
                             <Input
                                 id="idSBQPTotVInput2"
-                                value="L"
+                                editable="false"
                             />
                         </HBox>
                     </VBox>
@@ -353,7 +365,7 @@
                 visible="false"
             >
                 <form:SimpleForm
-                    id="simpleform4"
+                    id="idsimpleform4_BinQProduct"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -361,7 +373,6 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
                 >
                     <VBox
                         alignItems="Center"
@@ -378,6 +389,7 @@
                             <Input
                                 id="idSBQPBinInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
@@ -391,6 +403,7 @@
                             <Input
                                 id="idSBQPStoreTypeInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
 
@@ -403,8 +416,9 @@
                             <Input
                                 id="idSBQPQtyWInput"
                                 value=""
+                                editable="false"
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -416,19 +430,21 @@
                             <Input
                                 id="idSBQPStorSecInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQNoOfHuLabel"
+                                id="idSBQNoOfHuLabel_binQproduct"
                                 text="No of Hu's"
                                 width="90Px"
                             />
                             <Input
                                 id="idSBQPNoOfHuInput"
                                 value=""
+                                editable="false"
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -440,21 +456,23 @@
                             <Input
                                 id="idSBQPBinAisleInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxWLabel"
+                                id="idSBQMaxWLabel_binQueryProduct"
                                 text="MaxW"
                                 width="90Px"
                             />
                             <Input
                                 id="idSBQPMaxWInput"
                                 value=""
+                                editable="false"
                             />
-                            
-                            <Text text="KG"/>
-                             <Label
+
+                            <Text text="KG" />
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -466,20 +484,22 @@
                             <Input
                                 id="idSBQPBinLevelInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxVLabel"
+                                id="idSBQMaxVLabel_BinQueryByProduct"
                                 text="MaxV"
                                 width="90Px"
                             />
                             <Input
                                 id="idSBQPMaxVInput"
                                 value=""
+                                editable="false"
                             />
-                            <Text text="M3"/>
-                             <Label
+                            <Text text="M3" />
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -491,6 +511,7 @@
                             <Input
                                 id="idSBQPStackInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                     </VBox>

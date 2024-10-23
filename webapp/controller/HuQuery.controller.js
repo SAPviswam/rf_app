@@ -10,6 +10,8 @@
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
 
         onInit: function () {
+            const oTable = this.getView().byId("simpleTable");
+            oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             var oProductDescriptionHeader = this.byId("_IDGenText5");
@@ -30,6 +32,50 @@
           
             this._setFocus();
             
+            
+        },
+        onRowDoubleClick: function () {
+            var oSelected = this.byId("simpleTable").getSelectedItem();
+            console.log(oSelected.getBindingContext().getObject());
+            var oObj=oSelected.getBindingContext().getObject()
+            this.onSelectRow(oObj.HUI);
+           
+        },
+        onSelectRow:function(oHui){
+            this.getView().byId("_IDGenButton1122").setVisible(false);
+            this.getView().byId("_IDGenButton1111").setVisible(true)
+            this.getView().byId("icon4").setVisible(false);
+            this.getView().byId("icon2").setVisible(true)
+            if (oHui) {
+                // Call OData service to validate the HU value
+                var oModel = this.getOwnerComponent().getModel();
+                var that = this;
+
+                oModel.read(`/HudetailsSet('${oHui}')`, {
+                    urlParameters: {
+                        "$expand": "Hudetails_ItemSet",
+                        "$format": "json"
+                    },
+                    success: function (odata) {
+                        // If HU exists, show icon2 and hide icon1
+                        // that.getView().byId("icon2").setVisible(true);
+                        // that.getView().byId("icon1").setVisible(false);
+                        // that.getView().byId("_IDGenButton1111").setVisible(true);
+                        // that.getView().byId("_IDGenButton1122").setVisible(false);
+                        // that.getView().byId("_IDGenButton1133").setVisible(false);
+                        // Optionally, you can also populate fields here based on the result
+                        that._populateHUDetails(odata);
+                    },
+                    error: function (oError) {
+                        // Show error message if HU is not found    
+                    }
+                });
+            } else {
+                // Reset view if input is cleared
+                this.getView().byId("icon2").setVisible(false);
+                this.getView().byId("icon1").setVisible(true);
+            }
+
         },
         onResourceDetailsLoad:function(oEvent1){
             var that = this;
@@ -45,7 +91,7 @@
             }
         },
 
-         onBeforeRendering: function() {
+        onBeforeRendering: function() {
             this.getView().byId("_IDGenButton1133").setVisible(true);   
 
         },
@@ -91,7 +137,11 @@
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
 
-                oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
+                oModel.read(`/HudetailsSet('${oHuValue}')`, {
+                    urlParameters: {
+                        "$expand": "Hudetails_ItemSet",
+                        "$format": "json"
+                    },
                     success: function (odata) {
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("icon2").setVisible(true);
@@ -116,57 +166,57 @@
         },
 
         // Function to populate HU details when successful
-        _populateHUDetails: function (odata) {
-            this.byId("_IDGenInput2").setValue(odata.Huident);
-            this.byId("_IDGenInput3").setValue(odata.Letyp);
-            this.byId("_IDGenInputLength").setValue(odata.Length);
-            this.byId("_IDGenInputWidth").setValue(odata.Width);
-            this.byId("_IDGenInputHeight").setValue(odata.Height);
-            this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-            this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-            this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-            this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-            this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-            this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-        },
-        onLiveHuProcess: function (scannedText) {
-            var oInput = parseInt(scannedText);
-            var oHuValue = oInput;
+        // _populateHUDetails: function (odata) {
+        //     this.byId("_IDGenInput2").setValue(odata.Huident);
+        //     this.byId("_IDGenInput3").setValue(odata.Letyp);
+        //     this.byId("_IDGenInputLength").setValue(odata.Length);
+        //     this.byId("_IDGenInputWidth").setValue(odata.Width);
+        //     this.byId("_IDGenInputHeight").setValue(odata.Height);
+        //     this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
+        //     this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
+        //     this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
+        //     this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+        //     this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
+        //     this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+        // },
+        // onLiveHuProcess: function (scannedText) {
+        //     var oInput = parseInt(scannedText);
+        //     var oHuValue = oInput;
 
-            if (oHuValue) {
-                // Call OData service to validate the HU value
-                var oModel = this.getOwnerComponent().getModel();
-                var that = this;
+        //     if (oHuValue) {
+        //         // Call OData service to validate the HU value
+        //         var oModel = this.getOwnerComponent().getModel();
+        //         var that = this;
 
-                oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
-                    success: function (odata) {
-                        // If HU exists, show icon2 and hide icon1
-                        that.getView().byId("icon2").setVisible(true);
-                        that.getView().byId("icon1").setVisible(false);
+        //         oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
+        //             success: function (odata) {
+        //                 // If HU exists, show icon2 and hide icon1
+        //                 that.getView().byId("icon2").setVisible(true);
+        //                 that.getView().byId("icon1").setVisible(false);
 
-                        // Optionally, you can also populate fields here based on the result
-                        that._populateHUDetails(odata);
-                        that.getView().byId("_IDGenButton1111").setVisible(true);
-                        that.getView().byId("_IDGenButton1122").setVisible(false);
-                        that.getView().byId("_IDGenButton1133").setVisible(false);
-                    },
-                    error: function (oError) {
-                        // Show error message if HU is not found
+        //                 // Optionally, you can also populate fields here based on the result
+        //                 that._populateHUDetails(odata);
+        //                 that.getView().byId("_IDGenButton1111").setVisible(true);
+        //                 that.getView().byId("_IDGenButton1122").setVisible(false);
+        //                 that.getView().byId("_IDGenButton1133").setVisible(false);
+        //             },
+        //             error: function (oError) {
+        //                 // Show error message if HU is not found
                       
                         
                         
-                    }
-                });
-            } else {
-                // Reset view if input is cleared
-                this.getView().byId("icon2").setVisible(false);
-                this.getView().byId("icon1").setVisible(true);
-            }
-        },
+        //             }
+        //         });
+        //     } else {
+        //         // Reset view if input is cleared
+        //         this.getView().byId("icon2").setVisible(false);
+        //         this.getView().byId("icon1").setVisible(true);
+        //     }
+        // },
 
         // Function to populate HU details when successful
         _populateHUDetails: function (odata) {
-            this.byId("_IDGenInput2").setValue(odata.Huident);
+            this.byId("_IDGenInput2").setValue(odata.Tophu);
             this.byId("_IDGenInput3").setValue(odata.Letyp);
             this.byId("_IDGenInputLength").setValue(odata.Length);
             this.byId("_IDGenInputWidth").setValue(odata.Width);
@@ -174,7 +224,7 @@
             this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
             this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
             this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-            this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
+            this.byId("_IDGenInputWeightsMeasurement").setValue(odata.UnitGw);
             this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
         },
@@ -250,7 +300,6 @@
         //         }
         //     })
 
-
         // },
         Onpressback3:async function(){
             var oRouter = UIComponent.getRouterFor(this);
@@ -273,7 +322,107 @@
             },
         
         onHUContentPress: function () {
+            var oHu=this.getView().byId("_IDGenInput2").getValue();
+            var oModel = this.getOwnerComponent().getModel();
+            var that=this
+            oModel.read(`/HudetailsSet('${oHu}')`, {
+                urlParameters: {
+                    "$expand": "Hudetails_ItemSet",
+                    "$format": "json"
+                },
+                success: function (odata) {
+                    // If HU exists, show icon2 and hide icon1
+                    if(odata.Top===true){
+                        console.log("True")
+                          // Get the product details from the response
+                    let oDetails = odata.Hudetails_ItemSet.results;
+                    console.log(oDetails);
+       
+                    // Prepare an array for binding
+                    var aProductDetails = [];
+       
+                    // Loop through the results and push them into the array
+                    for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                           Product: oDetails[i].Matnr,
+                            Quantity: oDetails[i].Qty,
+                          SLNO:i+1,
+                          Uom: oDetails[i].Meins,
+                          Pd:oDetails[i].Maktx
 
+                        });
+                    }
+       
+                    // Create a JSON model with the product details array
+                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+       
+                    // Set the model to the table
+                    that.byId("HuDetailsTable").setModel(oProductModel);
+       
+                    // Bind the items aggregation of the table to the products array in the model
+                    that.byId("HuDetailsTable").bindItems({
+                        path: "/products",
+                        template: new sap.m.ColumnListItem({
+                            cells: [
+                                new sap.m.Text({ text: "{SLNO}" }), 
+                                new sap.m.Text({ text: "{Product}" }), 
+                                new sap.m.Text({ text: "{Quantity}" }),   
+                                new sap.m.Text({ text: "{Uom}" }),
+                                new sap.m.Text({ text: "{Pd}" }),
+                               
+                            ]
+                        })
+                    });
+                    }
+                    else {
+                        
+                      console.log(false)
+                      let oDetails = odata.Hudetails_ItemSet.results;
+                      console.log(oDetails);
+                      oDetails = oDetails.filter(item => item.HuidentI== oHu)
+                      // Prepare an array for binding
+                      var aProductDetails = [];
+         
+                      // Loop through the results and push them into the array
+                      for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                           Product: oDetails[i].Matnr,
+                            Quantity: oDetails[i].Qty,
+                          SLNO:i+1,
+                          Uom: oDetails[i].Meins,
+                          Pd:oDetails[i].Maktx
+
+                        });
+                    }
+         
+                      // Create a JSON model with the product details array
+                      var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+         
+                      // Set the model to the table
+                      that.byId("HuDetailsTable").setModel(oProductModel);
+         
+                      // Bind the items aggregation of the table to the products array in the model
+                      that.byId("HuDetailsTable").bindItems({
+                          path: "/products",
+                          template: new sap.m.ColumnListItem({
+                              cells: [
+                                  new sap.m.Text({ text: "{SLNO}" }), 
+                                  new sap.m.Text({ text: "{Product}" }), 
+                                  new sap.m.Text({ text: "{Quantity}" }),   
+                                  new sap.m.Text({ text: "{Uom}" }),
+                                  new sap.m.Text({ text: "{Pd}" }),
+                                 
+                              ]
+                          })
+                      });
+                    }
+                },
+                error: function (oError) {
+                    // Show error message if HU is not found
+                   console.log(oError)
+                    
+                }
+            });
 
             this.getView().byId("icon1").setVisible(false);
             this.getView().byId("icon2").setVisible(false);
@@ -285,6 +434,58 @@
 
         },
         onHUHierarchyPress: function () {
+            var oHu=this.getView().byId("_IDGenInput2").getValue()
+            var oModel = this.getOwnerComponent().getModel();
+            var that=this
+            oModel.read(`/HudetailsSet('${oHu}')`, {
+                urlParameters: {
+                    "$expand": "Hudetails_ItemSet",
+                    "$format": "json"
+                },
+               
+                success: function (odata) {
+                    console.log(odata);
+                   
+       
+                    // Get the product details from the response
+                    let oDetails = odata.Hudetails_ItemSet.results;
+                    console.log(oDetails);
+       
+                    // Prepare an array for binding
+                    var aProductDetails = [];
+       
+                    // Loop through the results and push them into the array
+                    for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                           HUI: oDetails[i].HuidentI,
+                            HU: odata.Parent,
+                          SLNO:i+1
+                        });
+                    }
+       
+                    // Create a JSON model with the product details array
+                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+       
+                    // Set the model to the table
+                    that.byId("simpleTable").setModel(oProductModel);
+       
+                    // Bind the items aggregation of the table to the products array in the model
+                    that.byId("simpleTable").bindItems({
+                        path: "/products",
+                        template: new sap.m.ColumnListItem({
+                            cells: [
+                                new sap.m.Text({ text: "{SLNO}" }), 
+                                new sap.m.Text({ text: "{HUI}" }), 
+                                new sap.m.Text({ text: "{HU}" }),   
+                               
+                            ]
+                        })
+                    });
+                },
+                error: function () {
+                    sap.m.MessageToast.show("Error fetching products.");
+                }
+            });
 
             this.getView().byId("icon1").setVisible(false);
             this.getView().byId("icon2").setVisible(false);
