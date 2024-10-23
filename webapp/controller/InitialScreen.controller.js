@@ -38,6 +38,18 @@ sap.ui.define([
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
+
+
+            },
+            onAfterRendering: function () {
+                // Apply the stored profile picture
+                var sStoredProfileImage = localStorage.getItem("userProfileImage");
+                if (sStoredProfileImage) {
+                    var oAvatarControl = this.byId("IDRAvatarInitialScreenView");
+                    if (oAvatarControl) {
+                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
+                    }
+                }
             },
 
             _handleKeyDown: function (oEvent) {
@@ -292,7 +304,6 @@ sap.ui.define([
                     sap.m.MessageToast.show("Please enter correct data");
                     return;
                 }
-
 
 
                 // Get the OData model
@@ -1148,38 +1159,38 @@ sap.ui.define([
             },
 
             // test
-            onAvatarPressed: async function (oEvent) {
-                debugger;
+            // onAvatarPressed: async function (oEvent) {
+            //     debugger;
 
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
-                    this.getView().addDependent(this._oPopover)
-                }
-                // Open popover near the avatar
-                await this._oPopover.openBy(oEvent.getSource());
-            },
-            onAccountDetailsPressedInHomePage: function () {
-                var oView = this.getView();
-                if (!(this.byId("idUserDetails"))) {
-                    // Load the fragment asynchronously
-                    Fragment.load({
-                        id: oView.getId(),
-                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
-                        controller: this
-                    }).then(function (oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
-                        oDialog.open();
-                    });
-                } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
-                }
-            },
+            //     if (!this._oPopover) {
+            //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+            //         this.getView().addDependent(this._oPopover)
+            //     }
+            //     // Open popover near the avatar
+            //     await this._oPopover.openBy(oEvent.getSource());
+            // },
+            // onAccountDetailsPressedInHomePage: function () {
+            //     var oView = this.getView();
+            //     if (!(this.byId("idUserDetails"))) {
+            //         // Load the fragment asynchronously
+            //         Fragment.load({
+            //             id: oView.getId(),
+            //             name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+            //             controller: this
+            //         }).then(function (oDialog) {
+            //             // Add the dialog to the view
+            //             oView.addDependent(oDialog);
+            //             oDialog.open();
+            //         });
+            //     } else {
+            //         // If the dialog already exists, just open it
+            //         this.byId("idUserDetails").open();
+            //     }
+            // },
 
-            onCloseUSerDetailsDialog: function () {
-                this.byId("idUserDetails").close();
-            },
+            // onCloseUSerDetailsDialog: function () {
+            //     this.byId("idUserDetails").close();
+            // },
 
             // test
 

@@ -48,7 +48,6 @@
                 <Avatar
                     id="id_GenAvatar1PageHome"
                     displaySize="XS"
-                    press="onHomePageAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

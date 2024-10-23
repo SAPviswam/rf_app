@@ -41,9 +41,8 @@
                 </ToolbarSpacer>
                 <!-- Avatar -->
                 <Avatar
-                    id="IDRAvatar_InitialView"
+                    id="IDRAvatarInitialScreenView"
                     displaySize="XS"
-                    press="onAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
