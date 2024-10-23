@@ -163,116 +163,133 @@
                     >
                         <VBox>
                             <HBox
+                                id="idSecScHbox_UbHu"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
                                 <!-- Scan HU Label -->
                                 <Label
+                                    id="idDstBin_UbHu"
                                     text="DstBin"
                                     class="ScanHumargin"
                                     width="100%"
                                 />
-                                <VBox width="5%" />
-                                <Input width="70px" />
-                                <Label width="20px" />
-                                <Input width="150px" />
-                                <Label width="20px" />
-                                <Input width="70px" />
+                                <VBox width="5%" id="idSecScVbox2" />
+                                <Input width="70px" id="idsecScInput1"/>
+                                <Label width="20px" id="idsecScLabel1"/>
+                                <Input width="150px" id="idsecScInput2" />
+                                <Label width="20px" id="idSecScLsbel2" />
+                                <Input width="70px" id="idsecScInput3" />
                             </HBox>
 
                             <HBox
+                                id="idSecScHbox2"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="PSA" />
-                                <VBox width="8%" />
-                                <Input width="240px" />
+                                <Label text="PSA" id="idLabelPSA"/>
+                                <VBox width="8%" id="idSecScVbox3"/>
+                                <Input width="240px" id="idSecScInput4" />
                             </HBox>
                             <HBox
                                 alignContent="Center"
                                 alignItems="Center"
+                                id="idSecScHbox3"
                             >
-                                <Label text="HU Pos" />
-                                <VBox width="4%" />
-                                <Input width="240px" />
+                                <Label text="HU Pos" id="idLabelHuPos"/>
+                                <VBox width="4%" id="idSecScVbox3" />
+                                <Input width="240px" id="idSecScInput5" />
                             </HBox>
                             <HBox
+                                id="idSecScHbox4"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="Srce HU" />
-                                <VBox width="3%" />
-                                <Input width="240px" />
+                                <Label text="Srce HU" id="idLabelSrcHu" />
+                                <VBox width="3%" id="idSecScVbox4" />
+                                <Input width="240px" id="idSecScInput6" />
                             </HBox>
                             <HBox
+                                id="idSecScHbox5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
                                 <!-- Scan HU Label -->
-                                <Label text="Product" />
-                                <VBox width="4%" />
-                                <Input width="70px" />
-                                <Label width="20px" />
-                                <Input width="150px" />
+                                <Label text="Product" id="idsecScLabel3" />
+                                <VBox width="4%" id="idSecScVbox5"/>
+                                <Input width="70px" id="idSecScInput7"/>
+                                <Label width="20px" id="idSecScLabel4"/>
+                                <Input width="150px" id="idSecScInput8" />
                             </HBox>
 
                             <HBox
+                                id="idSecScHbox6"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="Pro Text" />
-                                <VBox width="4%" />
-                                <Input width="240px" />
+                                <Label text="Pro Text" id="idLabelProText" />
+                                <VBox width="4%" id="idSecScVbox6"/>
+                                <Input width="240px" id="idSecScInput9"/>
                             </HBox>
                             <HBox
+                                id="idSecScHbox7"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="Batch" />
-                                <VBox width="7%" />
-                                <Input width="240px" />
+                                <Label text="Batch" id="idSecScLabel4"/>
+                                <VBox width="7%" id="idSecScVbox7"/>
+                                <Input width="240px" id="idSecScInput10" />
                             </HBox>
 
                             <HBox
+                                id="idSecScHbox8"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="SpaceAround"
                             >
                                 <Button
+                                    id="idListForHusBtnPress"
                                     text="List for Hus"
                                     press="onPressListForHus"
                                 />
                                 <Button
+                                    id="idOnPressTOlBtn"
                                     text="Transfer Order List"
                                     press="onPressTOL"
                                 />
                             </HBox>
 
                             <HBox
+                                id="idSecScHbox9"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="SpaceAround"
                             >
                                 <Button
+                                    id="idSecScWodetailsBtn"
                                     text="WO Details"
                                     press="onPressWODetails"
                                 />
                                 <Button
+                                    id="idDistEquipTowinGVehBtn"
                                     text="Distribution Equipment Towing Vehicle"
                                     press="onPressDETV"
                                 />
                             </HBox>
 
                             <HBox
+                                id="idSecScHbox10"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="SpaceAround"
                             >
                                 <Button
+                                    id="idSecScSkipCurrentStorageBinBtn"
                                     text="Skip Current Storage Bin"
                                     press="onPressSkipCureentStorageBin"
                                 />
                                 <Button
+                                    id="idSkipCurrentWarehouseTaskBtn"
                                     text="Skip Current Warehouse Task"
                                     press="onPressSkipCurrentWarehouseTask"
                                 />
@@ -307,28 +324,31 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox>
+                        <VBox id="idThirdSCVbox1">
                             <HBox
+                                id="idThirdScHbox1"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="HU " />
-                              <VBox width="14%"></VBox>
-                                <Input width="200px" editable="false" />
+                                <Label text="HU " id="idLabelHu"/>
+                              <VBox width="14%" id="idThirdScVbox2"></VBox>
+                                <Input width="200px" editable="false" id="idThirdScInput1"/>
                             </HBox>
                             <HBox
+                                id="idThirdScHbox2"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="Final Bin " />
-                              <VBox width="3%"></VBox>
-                                <Input width="200px" editable="false"/>
+                                <Label text="Final Bin " id="idFinalBinLabel"/>
+                              <VBox width="3%" id="idThirdScVbox3"></VBox>
+                                <Input width="200px" editable="false" id="idThirdScInput2"/>
                             </HBox>
                             <HBox
+                                id="idThirdScHbox3"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="Dest Bin " />
+                                <Label text="Dest Bin " id="idthirdScDestBinLabel" />
                               <VBox width="3%"></VBox>
                                 <Input width="200px" />
                             </HBox>
@@ -364,6 +384,7 @@
                     >
                         <VBox>
                             <HBox
+                                id="idFourthScHbox1"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -612,67 +633,74 @@
                     >
                         <VBox>
                             <HBox
+                                id="idFifthScHbox1"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input editable="false" id="idFifthScInput1"></Input>
+                            <VBox width="5%" id="idFifthScVbox1"></VBox>
+                             <Input editable="false" id="idFifthScInput2"></Input>
                              </HBox>
                                <HBox
+                                id="idFifthScHbox2"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input editable="false" id="idFifthScInput3" ></Input>
+                            <VBox width="5%" id="idFifthScVbox2"></VBox>
+                             <Input editable="false" id="idFifthScInput4"></Input>
                              </HBox>
                                <HBox
+                               id="idFifthScHbox3"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input id="idFifthScInput4" editable="false" ></Input>
+                            <VBox id="idFifthScVbox3" width="5%"></VBox>
+                             <Input editable="false" id="idFifthScInput5"></Input>
                              </HBox>
                                <HBox
+                               id="idFifthHbox4"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input id="idFifthScInput5" editable="false" ></Input>
+                            <VBox width="5%" id="idFifthScVbox4"></VBox>
+                             <Input id="idFifthScInput6" editable="false"></Input>
                              </HBox>
                                <HBox
+                                id="idFifthScHbox5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input editable="false" id="idFifthScInput7"></Input>
+                            <VBox width="5%" id="idFifthScVbox5"></VBox>
+                             <Input editable="false" id="idFifthScInput8"></Input>
                              </HBox>
                                <HBox
+                               id="idFifthScHbox6"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input editable="false" id="idFifthScInput9"></Input>
+                            <VBox width="5%" id="idFifthScVbox6"></VBox>
+                             <Input editable="false" id="idFifthScInput10"></Input>
                              </HBox>
                                <HBox
+                               id="idFifthScHbox7"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
 
-                            <Input editable="false" ></Input>
-                            <VBox width="5%"></VBox>
-                             <Input editable="false"></Input>
+                            <Input editable="false" id="idFifthScInput11"></Input>
+                            <VBox width="5%" id="idFifhScVbox7"></VBox>
+                             <Input editable="false" id="idFifthScInput12"></Input>
                              </HBox>
                         </VBox>
                     </f:SimpleForm>
@@ -706,38 +734,42 @@
                     >
                         <VBox>
                             <HBox
+                                id="idSixScHbox1"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="TopHUs"></Label>
-                                 <VBox width="5%"></VBox>
-                                <Input width="30%"></Input>
+                                <Label text="TopHUs" id="idTopHusLabel"></Label>
+                                 <VBox width="5%" id="idSixScVbox1"></VBox>
+                                <Input width="30%" id="idSixScInput1"></Input>
                              </HBox>
                              <HBox
+                                id="idSixScHbox2"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="open WTs"></Label>
-                                 <VBox width="2%"></VBox>
-                                <Input width="30%"></Input>
+                                <Label text="open WTs" id="idOpenWtsLabel"></Label>
+                                 <VBox width="2%" id="idSixScVbox2"></VBox>
+                                <Input width="30%" id="idSixScInput2"></Input>
                              </HBox>
                              <HBox
+                                id="idsixScHbox3"
                                 alignContent="Center"
                                
                             >
-                                <Label text="WO Unld"></Label>
-                                <VBox width="3%"></VBox>
-                                <Input width="30%"></Input>
-                                <VBox width="3%"></VBox>
-                                 <Input width="80%"></Input>
+                                <Label text="WO Unld" id="idWoUnldLabel"></Label>
+                                <VBox width="3%" id="idSixScVbox3"></VBox>
+                                <Input width="30%" id="idSixScInput3"></Input>
+                                <VBox width="3%" id="idSixScVbox4"></VBox>
+                                 <Input width="80%" id="idSixScInput4"></Input>
                              </HBox>
                              <HBox
+                                id="idSixScHbox4"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label text="A. Srce"></Label>
-                                 <VBox width="6%"></VBox>
-                                <Input width="50%"></Input>
+                                <Label text="A. Srce" id="idAsrceLabel"></Label>
+                                 <VBox width="6%" id="idSixScVbox5"></VBox>
+                                <Input width="50%" id="idSixScInput5"></Input>
                              </HBox>
                         </VBox>
                     </f:SimpleForm>
