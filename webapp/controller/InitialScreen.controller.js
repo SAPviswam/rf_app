@@ -28,6 +28,12 @@ sap.ui.define([
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
+                   
+                }
+                else if(Device.system.tablet){
+                    this.getView().byId("IdSubTitle_InitialView").addStyleClass("InitialScreenTitle");
+                    
+                    
                 }
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
@@ -239,11 +245,65 @@ sap.ui.define([
                 var sService = oView.byId("idServiceInput_InitialView").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
 
-                if (!(sDescription && sSystemId && sInstanceNumber && sClient)) {
+                if (!(sSystemId && sInstanceNumber && sClient)) {
                     MessageToast.show("Please enter the mandatory fields");
                     return
                 }
 
+                var bValid = true;
+                var bAllFieldsFilled = true;
+                // Validate Description only if the checkbox is not selected
+                if (!oCheckbox.getSelected() && !sDescription) {
+                    oView.byId("idDescriptionInput_InitialView").setValueState("Error");
+                    oView.byId("idDescriptionInput_InitialView").setValueStateText("Description is mandatory when checkbox is not selected.");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idDescriptionInput_InitialView").setValueState("None");
+                }
+                if (!sSystemId) {
+                    oView.byId("idSystemIdInput_InitialView").setValueState("Error");
+                    oView.byId("idSystemIdInput_InitialView").setValueStateText("System ID must be a 3-digit value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idSystemIdInput_InitialView").setValueState("None");
+                }
+                // Validate Instance Number
+                if (!sInstanceNumber || !/^\d{2}$/.test(sInstanceNumber)) {
+                    oView.byId("idInstanceNumberInput_InitialView").setValueState("Error");
+                    oView.byId("idInstanceNumberInput_InitialView").setValueStateText("Instance Number must be a 2-digit numeric value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idInstanceNumberInput_InitialView").setValueState("None");
+                }
+
+                // Validate Client ID
+                if (!sClient || !/^\d{3}$/.test(sClient)) {
+                    oView.byId("idClientInput_InitialView").setValueState("Error");
+                    oView.byId("idClientInput_InitialView").setValueStateText("Client ID must be a 3-digit numeric value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idClientInput_InitialView").setValueState("None");
+                }
+                if (!sApplicationServer) {
+                    oView.byId("idApplicationServerInput_InitialView").setValueState("Error");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idApplicationServerInput_InitialView").setValueState("None");
+                }
+                // Display appropriate message
+                if (!bAllFieldsFilled) {
+                    sap.m.MessageToast.show("Please fill all mandatory details");
+                    return;
+                }
+                if (!bValid) {
+                    sap.m.MessageToast.show("Please enter correct data");
+                    return;
+                }
 
 
                 // Get the OData model
@@ -436,25 +496,6 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
                 // Read existing entries to check uniqueness
 
-                // // test
-                // if (sQuery && sQuery.length > 0) {
-                //     var filterVehicle = new Filter("vehicleNumber", FilterOperator.Contains, sQuery);
-                //     var filterSlot = new Filter("slotNumber/slotNumbers", FilterOperator.Contains, sQuery)
-
-                //     var filterName = new Filter("driverName", FilterOperator.Contains, sQuery);
-                //     var filterMobile = new Filter("driverMobile", FilterOperator.Contains, sQuery);
-                //     var filterDelivery = new Filter("deliveryType", FilterOperator.Contains, sQuery);
-                //     var filterVendor = new Filter("vendor_Name", FilterOperator.Contains, sQuery);
-
-                //     var allFilter = new Filter([filterVehicle, filterSlot, filterName, filterMobile, filterDelivery, filterVendor]);
-                // }
-
-                // // update list binding
-                // var oList = this.byId("idAssignedTable");
-                // var oBinding = oList.getBinding("items");
-                // oBinding.filter(allFilter);
-
-                // // test
                 var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
                 var oClient = new Filter("Client", FilterOperator.EQ, sClient);
                 var allFilter = new Filter([oDescription, oClient]);
@@ -1004,12 +1045,12 @@ sap.ui.define([
                 this.oConfigSapCP ??= await this.loadFragment({
                     name: "com.app.rfapp.fragments.ChangePassword"
                 });
-                if (Device.system.phone) {
-                    oView.byId("ChangePwd_CP").setWidth("96%")
-                }
-                else if (Device.system.tablet) {
-                    oView.byId("ChangePwd_CP").setWidth("85%")
-                }
+                // if (Device.system.phone) {
+                //     oView.byId("ChangePwd_CP").setWidth("96%")
+                // }
+                // else if (Device.system.tablet) {
+                //     oView.byId("ChangePwd_CP").setWidth("85%")
+                // }
                 var oModel = this.getView().getModel(); // Get your OData model
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
@@ -1104,13 +1145,6 @@ sap.ui.define([
                 this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
                 this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
             },
-
-
-            //   onFinishconnectSAPPress:function(){
-            //     this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
-            //     this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-            //   },
-
 
             onClearconnectSAPPress: function () {
                 this.getView().byId("idDescriptionInput_InitialView").setValue("");

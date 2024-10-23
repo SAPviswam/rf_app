@@ -1,152 +1,3 @@
-<!-- <mvc:View
-    xmlns:unified="sap.ui.unified"
-    xmlns:form="sap.ui.layout.form"
-   controllerName="com.app.rfapp.controller.Home"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:ndc="sap.ndc"
-    xmlns="sap.m"
-    xmlns:tnt="sap.tnt"
-    xmlns:core="sap.ui.core"
-   displayBlock="true"
-    height="100%"
-   xmlns:layout="sap.ui.layout"
-    xmlns:cssgrid="sap.ui.layout.cssgrid"
- 
->
-    <tnt:ToolPage id="pageHome">
-        <tnt:header>
-            <tnt:ToolHeader id="idtntpageHome">
-                <Button
-                    id="idBackBtnInPageHome"
-                    icon="sap-icon://nav-back"
-                    press="onBackBtnInHomePage"
-                    visible="true"
-                />
-                <Image
-                    id="id_GenImage1PageHome"
-                    height="1.5rem"
-                    class="sapUiTinyMarginBegin"
-                    src="https://artihcus.com/assets/img/AG-logo.png"
-                />
-                <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorPageHome"
-                />
-                <ToolbarSpacer id="idToolbarSpacerPageHomePageHome">
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutData1PageHome"
-                            priority="NeverOverflow"
-                            minWidth="20px"
-                        />
-                    </layoutData>
-                    </ToolbarSpacer>
-                <Avatar
-                    id="id_GenAvatar1PageHome"
-                    displaySize="XS"
-                    press="onHomePageAvatarPressed"
-                    tooltip="Profile"
-                />
-            </tnt:ToolHeader>
-        </tnt:header>
-        <tnt:mainContents>
-            <FlexBox
-                id="_IDGenFlexBoxHome"
-                height="100%"
-                direction="Column"
-                alignItems="Center"
-            >
-                <VBox
-                    id="environmentButtonsHBoxHome"
-                    class="sapUiSmallMarginTop boxContainer"
-                    alignItems="Center"
-                >
-                    <HBox
-                        id="idHboxHome"
-                        alignContent="Start"
-                        class="boxContainer2"
-                        width="auto"
-                        height="20%"
-                    >
-                        <Image
-                            id="idImageLogoAvatarHome"
-                            src="https://artihcus.com/assets/img/AG-logo.png"
-                            class="sapUiSmallMarginEnd logo"
-                            width="85%"
-                             height="35%"
-                        />
-                        <Title
-                            id="Homescreentitle"
-                            text="CAPmodel RF"
-                            class="capModelRFText sapUiSmallMarginBottom"
-                        />
-                    </HBox>
-                    <Label id="idlabelempty" width="0.5rem" />
-                    <HBox id="idhboxwah">
-                        <VBox id="_IDGenHBox26">
-                            <Label
-                                id="idLabelHU"
-                                text="Warehouse No:"
-                                labelFor="idHUInput"
-                                class="LabelHomePage"
-                            />
-                            <Label
-                                id="idLabelUserID"
-                                text="Resource:"
-                                labelFor="idUserIDInput"
-                                class="sapUiSmallMarginTop LabelHomePage"
-                            />
-                        </VBox>
-                        <Text id="idtext" width="0.4rem"></Text>
-                        <VBox id="_IDGenHBox32">
-                            <MultiInput
-                                id="idHUInput"
-                                width="7rem"
-                                  value="1710"
-                                editable="true"
-                            />
-                            <Input
-                                id="idUserIDInput"
-                                width="7rem"
-                               
-                            />
-                        </VBox>
-                    </HBox>
-                    <HBox
-                        id="_IDGenHBox69"
-                        justifyContent="Center"
-                    >
-                        <CheckBox
-                            id="_IDGenCheckBox"
-                            text="Auto Save"
-                            select="onSelectCheckBox"
-                        />
-                        <Button text="Enter" type="Emphasized" press="onPressConnectButton"></Button>
-                    </HBox>
-                    <HBox
-                        id="idHBoxForgot"
-                        justifyContent="Center"
-                        alignItems="Center"
-                        class="sapUiSmallMarginTop"
-                    >
-                        <Button
-                            id="idButtonSignUp"
-                            text="Create Resource"
-                            press="onPressSignupBtn"
-                            class="onSignupClassBtn"
-                            type="Transparent"
-                        />
-                        <Button
-                            id="idchangequeue"
-                             text="Change Queue"
-                            type="Transparent"
-                        />
-                    </HBox>
-                </VBox>
-            </FlexBox>  
-        </tnt:mainContents>
-    </tnt:ToolPage>
-</mvc:View> -->
 <mvc:View
     xmlns:unified="sap.ui.unified"
     xmlns:form="sap.ui.layout.form"
@@ -224,21 +75,40 @@
                     </VBox>
 
                     <!-- hbox for gif and input fields -->
-                    <HBox id="idMainContentHBox_HomeView" justifyContent="Center" alignItems="Center">
-                        
+                    <HBox
+                        id="idMainContentHBox_HomeView"
+                        justifyContent="Center"
+                        alignItems="Center"
+                    >
                         <!-- VBox for the GIF on the left side -->
-                        <VBox id="idVBoxGif_HomeView" width="50%" alignItems="Center" justifyContent="Center">
+                        <VBox
+                            id="idVBoxGif_HomeView"
+                            width="50%"
+                            class="vboxResponsiveGif"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
                             <html:img
                                 id="idGif_HomeView"
                                 src="https://i.postimg.cc/T3f7VXg2/original-9a173a2b6a9bf5aa8bfe43a0abb9dfff-2.gif"
-                                style="width:750px; height:auto; max-width:800%;"
+                                style="width:650px; height:400px; max-width:800%;"
                                 class="responsiveGif"
                             />
                         </VBox>
-                        
+<VBox  alignItems="End"  width="70%"
+                            
+                            class="ConfigBtnsHbox">
                         <!-- VBox for the input fields on the right side -->
-                        <VBox id="idVBoxInputFields_HomeView" width="50%" alignItems="End" class ="ConfigBtnsHbox">
-                         <Title text="RF Login" class="RFLoginText" textAlign="Initial" level="H2" />
+                        <VBox
+                            id="idVBoxInputFields_HomeView"
+                           alignItems="Center"
+                        >
+                            <Title
+                                text="RF Login"
+                                class="RFLoginText"
+                               
+                                level="H2"
+                            />
                             <!-- Labels and Inputs for Warehouse No and Resource -->
                             <HBox id="idhboxFields_HomeView">
                                 <VBox>
@@ -263,7 +133,7 @@
                                     <MultiInput
                                         id="idHUInput"
                                         width="7rem"
-                                        value="1710"
+                                        value="AWHE"
                                         editable="true"
                                     />
                                     <Input
@@ -272,7 +142,7 @@
                                     />
                                 </VBox>
                             </HBox>
-                            
+
                             <!-- hbox for auto-save checkbox and next button -->
                             <HBox
                                 id="_IDGenHBox69"
@@ -290,7 +160,7 @@
                                     class="checkBoxforAutosave"
                                 />
                             </HBox>
-                            
+
                             <!-- hbox for create resource and change queue buttons -->
                             <HBox
                                 id="idHBoxForgot"
@@ -313,10 +183,133 @@
                             </HBox>
                         </VBox>
 
+                        <VBox
+                            id="createResourceVbox"
+                            visible="false"
+                           class="homeScreenCreateResourceVbox"
+                        >
+                        <VBox alignContent="Center" alignItems="Center">
+                        <Title id="idCreateResource" class="createSourceTitle" text="Create Resource" textAlign="Center"></Title>
+                        </VBox>
+                            <Text
+                                id="idresourcetext"
+                                text="Resource Type:"
+                                textAlign="Initial"
+                                class="textbold sapUiSmallMarginTop"
+                            />
+                            <HBox id="idresourcecheckbox">
+                                <Text
+                                    id="_IDGenText14"
+                                    width="0.3rem"
+                                />
+                                <RadioButton
+                                    id="idinternal"
+                                    text="Internal"
+                                />
+                                <Text
+                                    id="_IDGenText15"
+                                    width="0.6rem"
+                                />
+                                <RadioButton
+                                    id="idexternal"
+                                    text="External"
+                                />
+                                <Text
+                                    id="_IDGenText17"
+                                    width="0.8rem"
+                                />
+                                <RadioButton
+                                    id="idothers"
+                                    text="Others"
+                                />
+                            </HBox>
+
+                            <HBox id="_IDGenHBox11">
+                                <VBox id="idLableFirstnamehbox">
+                                    <Label
+                                        id="idLableFirstname"
+                                        text="First Name:"
+                                        class="LabelHomepageFragmentSignup"
+                                    />
+                                    <Label
+                                        id="idLableLastname"
+                                        text="Last Name:"
+                                        class="LabelHomepageFragmentSignup2"
+                                    />
+                                    <Label
+                                        id="idLableEmployeeno"
+                                        text="Employee No:"
+                                        class="LabelHomepageFragmentSignup3"
+                                    />
+                                    <Label
+                                        id="idLableMobileno"
+                                        text="Mobile No:"
+                                        class="LabelHomepageFragmentSignup4"
+                                    />
+                                    <Label
+                                        id="idLableEmailID"
+                                        text="Email Id:"
+                                        class="LabelHomepageFragmentSignup5"
+                                    />
+                                </VBox>
+                                <Text
+                                    id="_IDGenText16"
+                                    width="0.3rem"
+                                />
+                                <VBox id="idLableLastnamehbox">
+                                    <Input
+                                        id="idFirstnameInput"
+                                        value="{}"
+                                        width="100%"
+                                    />
+                                    <Input
+                                        id="idLastnameInput"
+                                        value="{}"
+                                        width="100%"
+                                    />
+                                    <Input
+                                        id="idEmployeenoInput"
+                                        value="{}"
+                                        width="100%"
+                                    />
+                                    <Input
+                                        id="idMobilenoInput"
+                                        value="{}"
+                                        width="100%"
+                                    />
+                                    <Input
+                                        id="idEmailIDInput"
+                                        value="{}"
+                                        width="100%"
+                                    />
+                                </VBox>
+                            </HBox>
+                            <HBox
+                                id="_IDgenhboxcontainersingup"
+                                justifyContent="Center"
+                            >
+                                <!-- Centering buttons  -->
+                                <Button
+                                    id="idsignupcreateButton"
+                                    text="Create"
+                                    press="oncreatesingupPress"
+                                    type="Unstyled"
+                                    class="sapUiTinyMarginEnd signupCreatebutton sapUiSmallMarginTop"
+                                />
+                                <Button
+                                    id="idsignupcancelButton"
+                                    text="Cancel"
+                                    press="oncancelsignupPress"
+                                    type="Unstyled"
+                                    visible="true"
+                                    class="sapUiTinyMarginEnd textbold signupCreatebutton sapUiSmallMarginTop"
+                                />
+                            </HBox>
+                        </VBox>
+                        </VBox>
                     </HBox>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
-

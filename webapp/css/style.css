@@ -681,6 +681,9 @@
     }
 }
 
+.vboxResponsiveGif{
+    margin-right: 30%;
+}
 
 /* unloading by door end*/
 
@@ -720,8 +723,11 @@ background-color: rgb(9, 8, 8) !important;
         display: none !important;
     }
     .ConfigBtnsHbox{
-        margin-right: 3rem;
+        margin-right: 3rem !important;
     }
+}
+.responsiveGif{
+     margin-right: 35rem !important;
 }
 .LabelHomePage{
     margin-top: 0.3rem;
@@ -749,6 +755,7 @@ background-color: rgb(9, 8, 8) !important;
 }
 .textbold{
     font-weight: bold;
+   
 }
 .boxContainersignup{
     border-radius: 0rem !important;
@@ -763,10 +770,12 @@ background-color: rgb(9, 8, 8) !important;
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
-/* .connecttoSAPform{
-    border-radius: 0rem !important;
-    background-color: #c9dbe9;
-} */
+.connecttoSAPform{
+    /* border-radius: 0rem !important;
+    background-color: #c9dbe9; */
+  margin-left: 5%;
+   margin-right: 5%;
+}
 .logonbutton{
     background-color:#5496cd;
     border: 2px solid #5496cd !important;
@@ -850,13 +859,7 @@ margin-right: 15%;
  
 }
 
-.TitleMQ{
-    margin-right: 20%;
-    margin-top:10% ;
-    position: fixed;
-    right: 10%;
-    top: 10%;
-}
+
  
 .VboxAddConfig{
     margin-left: 5%; /* Adjust horizontal alignment */
@@ -874,7 +877,7 @@ margin-right: 15%;
 .div{
     position: absolute; 
     left: 8%; 
-    top: 48%;
+    top: 40%;
     width: 41%; 
     transform: translateY(-50%);
    
@@ -888,6 +891,19 @@ margin-right: 15%;
     width: 35%; 
     transform: translateY(-50%);
 }
+
+
+/* .TitleTablet{
+    position: absolute; 
+    left: 8%;
+    width: 50%; 
+    transform: translateY(-50%);
+} */
+
+.InitialScreenTitle{
+    margin-bottom: 3%;
+}
+
 
 /* Media Query for Tablets */
 @media (max-width: 900px) and (min-width: 600px) {
@@ -920,6 +936,14 @@ margin-right: 15%;
     top: 42%;
     transform: translateY(-50%);
     z-index: 100; /* Ensure it’s on top of other elements */
+}
+
+.ConfigBtnsVbox{
+    position: fixed;
+    right: 10%;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 100; 
 }
 
 .title {
@@ -968,6 +992,14 @@ margin-right: 15%;
 }
 
 
+.changePasswordCancelBtn{
+    text-align: center;
+}
+
+.vboxCancelBtn{
+    align-items: center;
+}
+
 /*---------------------------------- begin of sap logon fragment CSS --------------------------------------------------- */
 .vboxSapLagon{
     padding:10%;
@@ -987,8 +1019,8 @@ margin-right: 15%;
     margin-right: 20%;
     margin-top:10% ;
     position: fixed;
-    right: 10%;
-    top: 10%;
+    right: 5%;
+    top: 30%;
 }
  
 .VboxAddConfig{
@@ -1045,7 +1077,7 @@ margin-right: 15%;
     margin-left: 5rem; /* Adjust the value to move it further right */
 }
 .paddingBox {
-    padding-top: 100px; /* Adjust the value to move the card further down */
+    padding-top: 150px; /* Adjust the value to move the card further down */
 }
 
 /* Other existing styles */
@@ -1064,5 +1096,22 @@ margin-right: 15%;
     font-weight: bold;   /* Makes the title bold */
     text-align: center;  /* Centers the text */
 }
+.whiteBorderBox {
+    background-color: #ffffff; /* White background for the box */
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 5px; /* Padding inside the box */
+}
 
-
+.homeScreenCreateResourceVbox{
+    border: 2px solid #000; /* Change the color and width as needed */
+    padding: 20px;          /* Optional: adds space inside the border */
+    border-radius: 5px;
+    margin-left: 50%;
+}
+.createSourceTitle{
+    color:rgb(248, 162, 3);
+    justify-content: center;
+    justify-items: center;
+}
