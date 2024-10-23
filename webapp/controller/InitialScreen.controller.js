@@ -885,9 +885,12 @@ sap.ui.define([
 
                 // First read the values if entered unique values if entered uniquely.
 
-                var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
+                const  oDescription = new Filter("Description", FilterOperator.EQ, sDescription),
+                 oClient = new Filter("Client", FilterOperator.EQ, sClient),
+                 aAllFilters = new Filter([oClient,oDescription]);
+
                 oModel.read("/ServiceSet", {
-                    filters: [oDescription],
+                    filters: [aAllFilters],
                     success: function (oData) {
                         // Initialize an array to hold error messages
                         var errorMessages = [];
@@ -905,7 +908,7 @@ sap.ui.define([
                                 entry.AppServer === sApplicationServer &&
                                 entry.SapRouterStr === sRouterString &&
                                 entry.SapService === sService)) {
-                                MessageToast.show("No changes made cancel to exit.")
+                                MessageToast.show("No changes made cancel to exit")
                                 return;
                             } 
                            

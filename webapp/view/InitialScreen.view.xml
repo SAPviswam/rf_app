@@ -259,7 +259,7 @@
                             value=""
                             placeholder="Num"
                             required="true"
-                            maxLength="3"
+                            maxLength="2"
                             width="100%"
                         />
                     </HBox>
