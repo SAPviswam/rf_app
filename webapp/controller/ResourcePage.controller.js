@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/m/Popover",
@@ -8,9 +8,10 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/UIComponent",
     "sap/ui/core/Fragment",
-    "sap/ui/core/routing/History"
+    "sap/ui/core/routing/History",
+    "sap/m/GenericTile",
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History, GenericTile) {
 
         "use strict";
 
@@ -36,6 +37,7 @@ sap.ui.define([
                 this.EditCall = false;
                 this._currentTile = null;
                 this._selectedTiles = [];
+               
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -146,6 +148,8 @@ sap.ui.define([
                         oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
                     }
                 }
+                
+                console.log(this.oPopover)
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
@@ -874,12 +878,14 @@ sap.ui.define([
                         var ogroup = oData.Resourcegroup;
                         var groupArray = ogroup.split(",").map(item => item.trim());
 
-                        // groupArray.forEach(function (group) {
+                        groupArray.forEach(function (group) {
 
-                        //     let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
-                        //     let loGroup = oGroup.toLowerCase();
-                        //     that.getView().byId(`id_${loGroup}_title`).setVisible(true)
-                        // })
+                            let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
+                            let loGroup = oGroup.toLowerCase();
+                            that.getView().byId(`id_${loGroup}_title`).setVisible(true)
+                           
+                           
+                        })
 
                         var oresourceType = oData.Queue;
                         var oResourceArray = oresourceType.split(",").map(item => item.trim())
@@ -934,7 +940,160 @@ sap.ui.define([
                     }
                 });
             },
-
+            // onGenericTilePress: async function(oEvent) {
+            //     if (!this._oPopover) {
+            //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+            //         this.getView().addDependent(this._oPopover);
+            //     }
+            
+            //     // Open popover at the tile position
+            //     await this._oPopover.openBy(oEvent.getSource());
+            //     let oRadioButton = this.getView().byId("idGenericTilePressPopover");
+               
+            //     console.log("RadioButton Found: ", oRadioButton);
+            //     var oModel1 = this.getOwnerComponent().getModel();
+            //     await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+            //         success: function(oData) {
+            //             var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                    
+            //             oResourceArray.forEach(function(queue) {
+            //                 let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+            //                 let lOQueue = oQueue.toLowerCase();
+            //                 let radioButtonId = `id_${lOQueue}`;
+                    
+            //                 let oRadioButton = this.getView().byId("idGenericTilePressPopover");
+            //                 console.log("RadioButton ID: ", radioButtonId);
+            //                 console.log("RadioButton Found: ", oRadioButton);
+                            
+            //                 if (oRadioButton) {
+            //                     oRadioButton.setVisible(true);
+            //                     console.log("Setting RadioButton to visible");
+            //                 } else {
+            //                     console.log("RadioButton not found");
+            //                 }
+            //             }, this);
+            //         }
+            //         .bind(this),
+            //         error: function() {
+            //             MessageToast.show("User does not exist");
+            //         }
+            //     });
+            // },
+            onGenericTilePress: async function(oEvent) {
+                var oGenericTileName=oEvent.oSource.mProperties.header;
+                var oQueueArray=[]
+                if (!this._oPopover) {
+                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+                    this.getView().addDependent(this._oPopover);
+                }
+                const aOptions = []
+                this._oPopover.setTitle(oGenericTileName)
+                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                oVBox.destroyItems(); // Clear existing items
+            
+                // Create radio buttons dynamically
+                // const aOptions = ["Option 1", "Option 2", "Option 3"]; // Define your options
+                
+                var oModel1 = this.getOwnerComponent().getModel();
+                await oModel1.read("/ProcessAreaSet", {
+                    success: function(oData) {
+                        oData.results.forEach(element => {
+                            if(element.Processgroup===oGenericTileName){
+                                oQueueArray.push(element.Queue.toUpperCase())
+                            }
+                        });
+                         oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                            success: function(oData) {
+                                var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                            
+                                oResourceArray.forEach(function(queue) {
+                                    let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                                    let lOQueue = oQueue.toLowerCase();
+                                    if(oQueueArray.includes(queue)){
+                                        aOptions.push(queue)
+                                    }
+                                   
+                                });
+                                aOptions.forEach((sOption) => {
+                                    const oRadioButton = new sap.m.RadioButton({
+                                        text: sOption,
+                                        select: this.onRadioButtonSelect.bind(this)
+                                    });
+                                    oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                                });
+                            }
+                            .bind(this),
+                            error: function() {
+                                MessageToast.show("User does not exist");
+                            }
+                        });
+                
+                        
+                    }
+                    .bind(this),
+                    error: function() {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+                console.log(oQueueArray);
+                    // await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    //     success: function(oData) {
+                    //         var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                        
+                    //         oResourceArray.forEach(function(queue) {
+                    //             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                    //             let lOQueue = oQueue.toLowerCase();
+                    //             if(oQueueArray.includes(queue)){
+                    //                 aOptions.push(queue)
+                    //             }
+                               
+                    //         });
+                    //         aOptions.forEach((sOption) => {
+                    //             const oRadioButton = new sap.m.RadioButton({
+                    //                 text: sOption,
+                    //                 select: this.onRadioButtonSelect.bind(this)
+                    //             });
+                    //             oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                    //         });
+                    //     }
+                    //     .bind(this),
+                    //     error: function() {
+                    //         MessageToast.show("User does not exist");
+                    //     }
+                    // });
+            
+                // Clear any existing content in the VBox
+               
+            
+                // Open popover at the tile position
+                await this._oPopover.openBy(oEvent.getSource());
+            },
+            
+            
+            onRadioButtonSelect: function() {
+                // Get the VBox that contains the radio buttons
+                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                const aItems = oVBox.getItems(); // Get all items in the VBox
+            
+                // Loop through the items to find the selected radio button
+                let selectedText = '';
+                aItems.forEach((oItem) => {
+                    if (oItem.getSelected()) { // Check if the radio button is selected
+                        
+                        selectedText = oItem.getText().replace(/[^a-zA-Z0-9]/g, '').toUpperCase(); // Get the text of the selected radio button
+                    }
+                });
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo(`${selectedText}`, { id: this.ID });
+                if (selectedText) {
+                    console.log("Selected:", selectedText);
+                    // Add your logic based on the selected text here
+                }
+            },
+            
+            
+            
+            
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 this.byId("pageContainer1").to(this.getView().createId(oItem.getKey()));
