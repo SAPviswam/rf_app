@@ -35,19 +35,22 @@ sap.ui.define([
             },
 
             _handleKeyDown: function (oEvent) {
-                if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
+                // Prevent default action for specific function keys
+                if (["F1", "F2", "F4"].includes(oEvent.key)) {
                     oEvent.preventDefault();
                 }
-                if (this.getView().getId() === "pageInitial") {
+
+                // Check if the current view is the specified one
+                if (this.getView().getId() === "container-com.app.rfapp---InitialScreen") {
                     switch (oEvent.key) {
                         case "F1":
-                            this.onSave();
+                            this.onSavef1Press();
                             break;
                         case "F4":
-                            this.onDelete();
+                            this.onDeletef4press();
                             break;
                         case "F2":
-                            this.onEdit();
+                            this.onEditf2press();
                             break;
                     }
                 }
@@ -72,17 +75,13 @@ sap.ui.define([
             // else if (Device.system.tablet) {
             //     this.byId("environmentButtonsHBox").setWidth("40%");
             // }
-
-
-
-
-            onSave: function () {
-                this.handleLinksapPress();
+            onSavef1Press: async function () {
+                await this.AddPress_InitialView();
             },
-            onDelete: function () {
+            onDeletef4press: function () {
                 this.onDeleteConfiguredSystem();
             },
-            onEdit: async function () {
+            onEditf2press: async function () {
                 await this.onEditConfiguredSystem();
             },
             onsapCancelPress: function () {
