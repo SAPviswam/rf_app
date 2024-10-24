@@ -3,8 +3,9 @@
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
     "sap/m/MessageToast", // Import MessageToast for user feedback
-    "sap/ui/core/UIComponent"
-], function (Controller,Device, MessageToastFra,UIComponent) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/model/odata/v2/ODataModel"
+], function (Controller,Device, MessageToastFra,UIComponent,ODataModel) {
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
@@ -29,10 +30,16 @@
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
             }
         
-          
             this._setFocus();
-            
-            
+            var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_YARDMANAGEMENT_SRV/", { 
+                headers: { 
+                    "Authorization": "Basic " + btoa("Sreedhars:Sreedhar191729"), 
+                    "sap-client": "100" 
+                } 
+
+            }); 
+
+            this.getView().setModel(oModel);
         },
         onRowDoubleClick: function () {
             var oSelected = this.byId("simpleTable").getSelectedItem();
@@ -139,6 +146,7 @@
 
                 oModel.read(`/HudetailsSet('${oHuValue}')`, {
                     urlParameters: {
+
                         "$expand": "Hudetails_ItemSet",
                         "$format": "json"
                     },
