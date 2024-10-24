@@ -681,16 +681,6 @@
     }
 }
 
-.vboxResponsiveGif{
-    margin-right: 60%;
-    background-image: url("../Image/chatWomen.png");
-    background-size:auto; /* Adjust as needed */
-    background-repeat: no-repeat;
-    background-position: center center; /* Adjust as needed */
-    width: 100%;
-    height: 100%;
-}
-
 /* unloading by door end*/
 
 
@@ -733,7 +723,8 @@ background-color: rgb(9, 8, 8) !important;
     }
 }
 .responsiveGif{
-     margin-right: 35rem !important;
+  
+     /* margin-right: 35rem !important; */
 }
 .LabelHomePage{
     margin-top: 0.3rem;
@@ -1136,4 +1127,21 @@ margin-right: 15%;
 .VboxRfLoginTab{
     margin-top :7% !important;
    
+}
+
+.TextVboxForTab{
+    margin-bottom: 10%;
+    margin-left: 120%;
+}
+
+.rfLoginVbox{
+    left: 60%;
+}
+
+.vboxResponsiveGif{
+    margin-right: 40%;
+}
+
+.vboxResponsiveGifTab{
+    padding: 2%;
 }

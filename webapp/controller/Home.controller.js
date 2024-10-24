@@ -37,11 +37,19 @@ sap.ui.define([
                 if (Device.system.tablet) {
                    // this.getView().byId("idVBoxGif_HomeView").addStyleClass("VboxGifTab");
                    // this.getView().byId("idhboxFields_HomeView").addStyleClass("VboxRfLoginTab");
-                   this.getView().byId("idMainContentVBox_HomeView").setVisible(true);
+                   //this.getView().byId("idMainContentVBox_HomeView").setVisible(true);
+                   this.getView().byId("idVBoxGif_HomeViewTab").setVisible(true);
+                   this.getView().byId("idVBoxGif_HomeView").setVisible(false);
+                   // this.getView().byId("idVBoxGif_HomeViewTab").addStyleClass("imageVboxForTab");
+                    this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("TextVboxForTab");
                     
                 }
                 else if(Device.system.phone){
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
+                }
+                else{
+                    this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);
+                    this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("ConfigBtnsHbox");
                 }
 
 

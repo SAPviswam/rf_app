@@ -79,8 +79,9 @@
                         id="idMainContentHBox_HomeView"
                         justifyContent="Center"
                         alignItems="Center"
+                        
                     >
-                    <VBox id="idMainContentVBox_HomeView">
+                   
                         <!-- VBox for the GIF on the left side -->
                         <VBox
                             id="idVBoxGif_HomeView"
@@ -91,7 +92,7 @@
                         >
                             <html:img
                                 id="idGif_HomeView"
-                                src="Images/Animate intro gif.gif"
+                                src="Images/Gif animation 1.gif"
                                 style="width:1000px; height:700px; max-width:800%;"
                                 class="responsiveGif"
                             />
@@ -100,7 +101,7 @@
                         id="idVboxRfLogin_HomeView"
                             alignItems="End"
                             width="70%"
-                            class="ConfigBtnsHbox"
+                           
                         >
                             <!-- VBox for the input fields on the right side -->
                             <VBox
@@ -318,8 +319,25 @@
                                 </HBox>
                             </VBox>
                         </VBox>
-                        </VBox>
+                        
                     </HBox>
+
+                    <VBox
+                            id="idVBoxGif_HomeViewTab"
+                            width="60%"
+                            class="vboxResponsiveGifTab"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            visible="false"
+
+                        >
+                            <html:img
+                                id="idGif_HomeViewTab"
+                                src="Images/Gif animation 1.gif"
+                                style="width:600px; height:580px; max-width:800%;"
+                                class="responsiveGifTab"
+                            />
+                        </VBox>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>
