@@ -3,8 +3,9 @@
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
     "sap/m/MessageToast", // Import MessageToast for user feedback
-    "sap/ui/core/UIComponent"
+    "sap/ui/core/UIComponent",
 ], function (Controller,Device, MessageToastFra,UIComponent) {
+
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
@@ -29,10 +30,7 @@
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
             }
         
-          
             this._setFocus();
-            
-            
         },
         onRowDoubleClick: function () {
             var oSelected = this.byId("simpleTable").getSelectedItem();
@@ -139,6 +137,7 @@
 
                 oModel.read(`/HudetailsSet('${oHuValue}')`, {
                     urlParameters: {
+
                         "$expand": "Hudetails_ItemSet",
                         "$format": "json"
                     },
@@ -153,9 +152,7 @@
                         that._populateHUDetails(odata);
                     },
                     error: function (oError) {
-                        // Show error message if HU is not found
-                       
-                        
+                        // Show error message if HU is not found 
                     }
                 });
             } else {

@@ -127,6 +127,7 @@ sap.ui.define(
           }
         });
       },
+
       onSBQPSecondBackBtnPress: function () {
         this.getView().byId("idSBQPFirstSC").setVisible(true)
         this.getView().byId("idSBQPsecondSC").setVisible(false)
