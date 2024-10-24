@@ -153,14 +153,14 @@
           ]
         },
         {
-          "name": "HuQuery",
+          "name": "HUQUERY",
           "pattern": "HuQuery/{id}",
           "target": [
             "TargetHuQueryPage"
           ]
         },
         {
-          "name": "StockBinQueryByBin",
+          "name": "STOCKBINQUERYBYBIN",
           "pattern": "StockBinQueryByBin/{id}",
           "target": [
             "TargetStockBinQueryByBin"
@@ -188,7 +188,7 @@
           ]
         },
         {
-          "name": "AdhocHuWt",
+          "name": "CREATEADHOCHUWT",
           "pattern": "AdhocHuWt/{id}",
           "target": [
             "TargetAdhocHuWt"
@@ -440,7 +440,7 @@
           ]
         },
         {
-          "name": "WTQueryByQueue",
+          "name": "WTQUERYBYQUEUE",
           "pattern": "WTQueryByQueue/{id}",
           "target": [
             "TargetWTQueryByQueue"
@@ -559,7 +559,7 @@
           ]
         },
         {
-          "name": "UnloadByHu",
+          "name": "UNLOADBYHU",
           "pattern": "UnloadByHu/{id}",
           "target": [
             "TargetUnloadByHu"

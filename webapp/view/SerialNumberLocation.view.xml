@@ -105,18 +105,23 @@
                                 id="idSNLroductLabel"
                                 text="Product"
                                 width="100px"
-                                 class="sapUiTinyMargin"
+                                class="sapUiTinyMargin"
 
                             />
                             <Input
                                 id="idSNLproductInput"
                                 value=""
-                                liveChange="onSNLproductLiveChange"
                             />
                             <Button
                                 id="idSNLproductScannerBtn"
                                 icon="sap-icon://bar-code"
                                 press="onSNLproductBarcodeScanner"
+                            />
+                            <Button
+                                id="idSNLproductSubbitBtn"
+                                text="Submit"
+                                press="onSNLproductLiveChange"
+                                type="Emphasized"
                             />
                         </HBox>
                     </VBox>
