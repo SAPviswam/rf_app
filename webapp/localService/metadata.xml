@@ -99,7 +99,7 @@
 </Key>
 <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WhsNo." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Matnr40" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Serid" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="SN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="oDetails[i].Matnr40" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="SN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Matid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="ProTxt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Huident" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="HU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
