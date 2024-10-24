@@ -1,16 +1,13 @@
 
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/PDFViewer",
-    "sap/ui/model/json/JSONModel",
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/core/Fragment"
 ],
-    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment) {
+    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
@@ -90,10 +87,7 @@ sap.ui.define([
             // else if (Device.system.tablet) {
             //     this.byId("environmentButtonsHBox").setWidth("40%");
             // }
-
-
-
-
+            
             onSave: function () {
                 this.handleLinksapPress();
             },
