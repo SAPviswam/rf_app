@@ -63,11 +63,7 @@
                             type="Transparent"
                             press="onPressBackBtnPage1_AHUOBQ"
                         />
-                        <Title
-                            id="id_AHUOBQ"
-                            text="Available Handling Units On Bin Query:"
-                            level="H2"
-                        />
+                        
                     </HBox>
                     <VBox
                         id="idVBoxBinNumber_AHUOBQ"
@@ -184,7 +180,7 @@
                                     id="IDGenText001_AHUOBQ"
                                     text="HU Number:"
                                     class="HedingNameColor"
-                                />
+                                /> 
                             </Column>
                             <Column id="IDGenColumn002_AHUOBQ">
                                 <Text
