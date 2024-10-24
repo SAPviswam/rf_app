@@ -2,8 +2,9 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/Device",
   "sap/m/MessageToast", // Import MessageToast for user feedback
-  "sap/ui/core/UIComponent"
-], function (Controller, Device, MessageToast, UIComponent) {
+  "sap/ui/core/UIComponent",
+  "sap/ui/model/odata/ODataModel",
+], function (Controller, Device, MessageToast, UIComponent,ODataModel) {
   "use strict";
   return Controller.extend("com.app.rfapp.controller.StockBinQueryByBin", {
     onInit: function () {
@@ -29,6 +30,7 @@ sap.ui.define([
           else {
             oRouter.navTo("Supervisor", { id: this.ID });
           }
+          this.getView().byId("_IDBinGenInput1_SBQB").setValue("");
         }.bind(this),
         error: function () {
           MessageToast.show("User does not exist");
@@ -110,8 +112,6 @@ sap.ui.define([
                 });
               }
             }
-
-
             // Create a JSON model with the product details array
             var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
 
@@ -131,10 +131,11 @@ sap.ui.define([
                 press: [that.onSelectMaterial, that]
               })
             });
-          } else {
-            // If no matching bin number found, show a message
-            sap.m.MessageToast.show("No products found for the entered bin number.");
           }
+          //  else {
+          //   // If no matching bin number found, show a message
+          //   sap.m.MessageToast.show("No products found for the entered bin number.");
+          // }
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
