@@ -169,7 +169,7 @@
                                 <Label width="60px" />
                                 <Input width="40px" />
                                 <Label width="40px" />
-                                <Input  width="40px"/>
+                                <Input  width="40px"/>  
                                  <Label width="10px"/>
 
                                 <Button icon="sap-icon://slim-arrow-down" />
