@@ -13,8 +13,6 @@
         initialFocus="idUserInput_CS"
         title="SAP Connection"
     >
-       
-       
         <content>
             <form:SimpleForm
             
@@ -96,7 +94,7 @@
                             width="100%"
                             type="Emphasized"
                             press="onLogOnPress"
-                            class="sapUiTinyMarginTop"
+                            class="sapUiTinyMarginTop logonButtonInSapLogon"
                         />
                     <HBox  justifyContent="SpaceBetween">
                    
@@ -104,19 +102,17 @@
                         <Link
                         id="IDchangePassword"
                         text="Change Password"
-                
+                        class="sapUiSmallMarginTop"
                         press="onChangePasswordBtn"
                         />
                         
                         <Link id="IDlogoncancelbutton"
                         text="Cancel"
-                      
+                        class="sapUiSmallMarginTop"
                         press="onPressCancleSapLogon"
                         
                        />
                         </HBox>
-                                                                
-
                     </VBox>
             </form:SimpleForm>
         </content>

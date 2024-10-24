@@ -3,7 +3,7 @@
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
     "sap/m/MessageToast", // Import MessageToast for user feedback
-    "sap/ui/core/UIComponent"
+    "sap/ui/core/UIComponent",
 ], function (Controller,Device, MessageToastFra,UIComponent) {
     "use strict";
 
@@ -31,8 +31,6 @@
         
           
             this._setFocus();
-            
-            
         },
         onRowDoubleClick: function () {
             var oSelected = this.byId("simpleTable").getSelectedItem();
@@ -153,9 +151,7 @@
                         that._populateHUDetails(odata);
                     },
                     error: function (oError) {
-                        // Show error message if HU is not found
-                       
-                        
+                        // Show error message if HU is not found 
                     }
                 });
             } else {
@@ -458,8 +454,7 @@
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
                            HUI: oDetails[i].HuidentI,
-                            
-                            HU: oDetails[i].Tophu,
+                            HU: odata.Parent,
                           SLNO:i+1
                         });
                     }

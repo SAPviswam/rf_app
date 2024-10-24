@@ -70,14 +70,14 @@
                         visible="false"
                     />
                     <Avatar
-                        id="id_GenAvatar1P"
+                        id="idImageMainAvatarResourcepage"
                         displaySize="XS"
-                        press="onSBQPAvatarPressed"
+                        press="onSBQPAvatarPressedResourcePage"
                         tooltip="Profile"
                     />
                 </tnt:ToolHeader>
             </tnt:header>
-            <tnt:mainContents>      
+            <tnt:mainContents>
                 <ScrollContainer
                     id="idScrollContainer1"
                     horizontal="true"
@@ -108,13 +108,12 @@
                         height="100%"
 
                     > -->
-                    <VBox>
+                    <VBox id="idUnloadingTile">
                         <Title
                             id="id_unloading_title"
                             text="Unloading"
                             visible="false"
                         />
-                        <HBox />
                     </VBox>
                     
                     <GenericTile
@@ -218,7 +217,6 @@
                         visible="false"
                     />
 
-
                     <GenericTile
                         id="id_humaintenance1"
                         class="sapUiTinyMargin"
@@ -226,8 +224,6 @@
                         press="onHUMaintenancePress"
                         visible="false"
                     /> -->
-
-
 
                     <!-- <VBox>
                     <Title
