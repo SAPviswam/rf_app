@@ -683,7 +683,13 @@
 }
 
 .vboxResponsiveGif{
-    margin-right: 30%;
+    margin-right: 60%;
+    background-image: url("../Image/chatWomen.png");
+    background-size:auto; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center center; /* Adjust as needed */
+    width: 100%;
+    height: 100%;
 }
 
 /* unloading by door end*/
@@ -724,7 +730,8 @@ background-color: rgb(9, 8, 8) !important;
         display: none !important;
     }
     .ConfigBtnsHbox{
-        margin-right: 3rem;
+      margin-right: 2rem;
+       justify-content: end;
     }
 }
 .LabelHomePage{
@@ -746,9 +753,6 @@ background-color: rgb(9, 8, 8) !important;
     margin-top: 0.7rem;
 }
 .signupCreatebutton {
-    background-color: darkorange;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
-    border-color:  darkorange !important;
     font-weight: bold !important;
 }
 .textbold{
@@ -951,6 +955,14 @@ margin-right: 15%;
     align-content: center;    
 }
 
+.titleMobile{
+    left: 35%;
+}
+
+.titleMobile_home{
+    left:38%;
+}
+
 .BtnConfSAPsys {
     margin-top: 45%; /* Adjust the value as needed */
 }
@@ -1105,4 +1117,15 @@ margin-right: 15%;
     color:rgb(248, 162, 3);
     justify-content: center;
     justify-items: center;
+}
+
+.VboxGifTab{
+    margin-top:90%;
+    width:200px;
+    height:500px;
+}
+
+.VboxRfLoginTab{
+    margin-top :7% !important;
+   
 }

@@ -30,6 +30,19 @@ sap.ui.define([
                 if (userIdValue) {
                     this.byId("idUserIDInput").setValue(userIdValue);
                 }
+
+                if (Device.system.tablet) {
+                   // this.getView().byId("idVBoxGif_HomeView").addStyleClass("VboxGifTab");
+                   // this.getView().byId("idhboxFields_HomeView").addStyleClass("VboxRfLoginTab");
+                   this.getView().byId("idMainContentVBox_HomeView").setVisible(true);
+                    
+                }
+                else if(Device.system.phone){
+                    this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
+                }
+
+
+
                 // var sUsername = localStorage.getItem("username");
                 // var sPassword = localStorage.getItem("password");
                 // var bAutoSave = localStorage.getItem("autoSave") === "true";
