@@ -10,12 +10,11 @@
     displayBlock="true"
     height="100%"
 >
-    <tnt:ToolPage id="idRfconfigPageToolPage">
+    <tnt:ToolPage id="idRfconfigPageToolPage_InitialView">
         <!-- Header -->
         <tnt:header>
-            <tnt:ToolHeader id="idRfconfigPageToolHeader">
+            <tnt:ToolHeader id="idRfconfigPageToolHeader_InitialView">
                 <!-- Artihcus Logo -->
-
                 <Image
                     id="idArtihcus_InitialView"
                     class="sapUiTinyMarginBegin"
@@ -41,7 +40,7 @@
                 </ToolbarSpacer>
                 <!-- Avatar -->
                 <Avatar
-                    id="idImageAvatarInitialScreen"
+                    id="idImageAvatarInitialScreen_InitialView"
                     displaySize="XS"
                     tooltip="Profile"
                 />
@@ -62,17 +61,7 @@
                     id="IdMainVbox_InitialView"
                     class="configTextVbox sapUiLargeMargin"
                 >
-                    <!-- vbox for subtitle "Configure Sap System" -->
-                    <!-- <VBox class="configtitle"> -->
-                        <!-- <Title
-                            id="IdSubTitle_InitialView"
-                            class="configSubTitle"
-                            text="Configure SAP System"
-                        /> -->
-                    <!-- </VBox> -->
-
-                    <!-- vbox for left side text -->
-                    <VBox class="div">
+                    <VBox id="idVboxDescription_InitialView" class="div">
                     <Title
                             id="IdSubTitle_InitialView"
                             class="configSubTitle"
@@ -81,7 +70,7 @@
                         <html:div>
                             Set the
                             <html:span
-                                id="sapn"
+                                id="idSapnDesc_InitialView"
                                 class="span"
                             >
                                 System Parameters
@@ -122,7 +111,7 @@
                             />
                         </VBox>
                         <!-- vbox for edit button -->
-                        <VBox>
+                        <VBox id="idButtonsVbox_InitialView">
                             <Button
                                 id="idBtnEdit_InitialView"
                                 class="btn"
@@ -138,7 +127,7 @@
                             />
                         </VBox>
                         <!-- vbox for delete button -->
-                        <VBox>
+                        <VBox id="idDelBtnVBox_InitialView">
                             <Button
                                 id="idBtnDelete_InitialView"
                                 class="btn"
@@ -157,7 +146,7 @@
 
                     <!-- new UI AddOns from past view start-->
                     <VBox
-                        id="environmentButtonsHBox"
+                        id="idEnvironmentButtonsHBox_InitialView"
                         class="sapUiSmallMargin"
                         alignItems="Center"
                     >
@@ -171,9 +160,9 @@
                             type="Transparent"
                         />
                         <!-- Link for configuring SAP system -->
-                        <HBox id="IDhboxnavup">
+                        <HBox id="IDhboxnavup_InitialView">
                             <Button
-                                id="upNavigationButtonId"
+                                id="idUpNavigationButton_InitialView"
                                 icon="sap-icon://navigation-up-arrow"
                                 tooltip="Previous"
                                 press="onNavNext"
@@ -181,12 +170,12 @@
                             />
                         </HBox>
                         <HBox
-                            id="idHboxNavigation"
+                            id="idHboxNavigation_InitialView"
                             alignContent="Start"
                             class="sapUiSmallMarginTop"
                         >
                             <Button
-                                id="downNavigationButtonId"
+                                id="idDownNavigationButton_InitialView"
                                 icon="sap-icon://navigation-down-arrow"
                                 tooltip="Next"
                                 press="onNavPrevious"
@@ -225,7 +214,7 @@
 
                     <!-- hbox for System Id field -->
 
-                    <HBox id="iDhboxSystemId">
+                    <HBox id="iDhboxSystem_InitialView">
                         <Label
                             id="idLableSystemId_InitialView"
                             text="System Id:"
@@ -246,7 +235,7 @@
 
                     <!-- hbox for Instance Number field -->
 
-                    <HBox id="ighboxInstanceNumber">
+                    <HBox id="ighboxInstanceNumber_initialView">
                         <Label
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
@@ -343,11 +332,6 @@
                         />
                     </HBox>
 
-                    <!-- Checkboxes for Description, System ID, and Client -->
-                    <!-- <HBox
-                        id="idhboxCheckboxes_InitialView"
-                        class="sapUiSmallMargin"
-                    > -->
                     <CheckBox
                         id="idCheckboxDescription_InitialView"
                         class="checkBoxText sapUiSmallMarginTop sapUiSmallMarginBottom"
