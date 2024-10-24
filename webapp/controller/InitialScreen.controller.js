@@ -6,8 +6,11 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/ui/core/Fragment",
+    "sap/ui/model/odata/ODataModel",
 ],
-    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
+    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment,ODataModel) {
+
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
@@ -38,6 +41,16 @@ sap.ui.define([
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
+              
+                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", { 
+                    headers: { 
+                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"), 
+                        "sap-client": "100" 
+                    } 
+                }); 
+                this.getView().setModel(oModel); 
+            },
+
 
             },
             _handleKeyDown: function (oEvent) {

@@ -149,6 +149,7 @@ sap.ui.define(
           }
         });
       },
+
       onSBQPSecondBackBtnPress: function () {
         this.getView().byId("idSBQPFirstSC").setVisible(true)
         this.getView().byId("idSBQPsecondSC").setVisible(false)
@@ -183,12 +184,7 @@ sap.ui.define(
         });
 
       },
-      onSBQPPreDePress:function(){
-        this.getView().byId("idSBQPsecondSC").setVisible(false);
-        this.getView().byId("idSBQPThirdSC").setVisible(true);
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
-      },
+
       onSBQPThirdBackBtnPress: function () {
         this.getView().byId("idSBQPsecondSC").setVisible(true);
         this.getView().byId("idSBQPThirdSC").setVisible(false);
