@@ -50,12 +50,6 @@
                         visible="false"
                     />
                     <Button
-                        id="idBtnListView"
-                        press="onPressListGridViewsResource"
-                        icon="sap-icon://grid"
-                        tooltip="ListView"
-                    />
-                    <Button
                         id="idTileThemesModeOpen"
                         text="Open Theme"
                         press="onPressTileThemesModeOpenDailog"
@@ -68,6 +62,18 @@
                         icon="sap-icon://decline"
                         press="onPressExitTileThemesMode"
                         visible="false"
+                    />
+                    <Button
+                        id="idBtnListViewResourcePage"
+                        icon="sap-icon://menu"
+                        tooltip="List View"
+                        press="onPressListViewsResource"
+                    />
+                    <Button
+                        id="idBtnGridViewResourcePage"
+                        icon="sap-icon://grid"
+                        tooltip="Grid View"
+                        press="onPressGridViewsResource"
                     />
                     <Avatar
                         id="idImageMainAvatarResourcepage"

@@ -22,10 +22,10 @@
                     alignItems="Start"
                 >
                     <Avatar
-                        id="idImagePopoverAvatarResourcepage"
+                        id="idAvatarProfilePopoverImage"
                         displaySize="S"
-                        class="profileAvatar1234"
                         press="onPressPopoverProfileImageAvatar"
+                        class="profileAvatar1234"
                     />
                     <Label
                         id="idUserDeatilsLabel4"

@@ -172,13 +172,11 @@ sap.ui.define([
                 this.EditCall = !this.EditCall; // Toggle the state
                 if (this.EditCall) {
                     // Theme mode activated
-                    this.byId("idBtnListView").setVisible(false);
                     this.byId("idCancelEditButtonResource").setVisible(true);
                     sap.m.MessageToast.show("Edit mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idCancelEditButtonResource").setVisible(false);
-                    this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Edit mode deactivated.");
                 }
             },
@@ -265,13 +263,11 @@ sap.ui.define([
                 if (this.Themecall) {
                     this.byId("idExitThemeModeResource").setVisible(true); // Show the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(true); // Show the Open Theme button
-                    this.byId("idBtnListView").setVisible(false); // Show the Open Theme button
                     sap.m.MessageToast.show("Theme mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idExitThemeModeResource").setVisible(false); // Hide the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(false); // Hide the Open Theme button
-                    this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Theme mode deactivated.");
                 }
             },
@@ -595,95 +591,63 @@ sap.ui.define([
                 // var oModel = this.getView().getModel();
                 // oModel.refresh(true);
             },
-            onPressListGridViewsResource: async function () {
-                debugger;
-                const oModel1 = this.getOwnerComponent().getModel();
-                const userId = this.ID; // Assuming this.ID is set when loading user data
+            //Grid and List Views...
+            onPressGridViewsResource: async function () {
                 const oTilesContainer = this.byId("idScrollContainer1");
+                const aTiles = oTilesContainer.getContent();
+                // Fetch matched tiles asynchronously
+                const matchedTiles = await this.getMatchedTiles();
+                aTiles.forEach(tile => {
+                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
+                    if (matchedTiles.includes(tileId)) {
+                        //tile.removeStyleClass("listViewTile");
+                        tile.removeStyleClass("listViewIcons");
+                        tile.addStyleClass("gridViewIcons");
+                    }
+                });
+                //this.byId("idBtnGridViewResourcePage").setVisible(false);
+                //this.byId("idBtnListViewResourcePage").setVisible(true);
+            },
+            onPressListViewsResource: async function () {
+                debugger
+                const oTilesContainer = this.byId("idScrollContainer1");
+                const aTiles = oTilesContainer.getContent();
+                // Fetch matched tiles asynchronously
+                const matchedTiles = await this.getMatchedTiles();
+                aTiles.forEach(tile => {
+                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
+                    if (matchedTiles.includes(tileId)) {
+                        tile.removeStyleClass("gridViewIcons");
+                        //tile.addStyleClass("listViewTile");
+                        tile.addStyleClass("listViewIcons");
+                        // const tileHeader = tile.getHeader();
+                        // tileHeader.addStyleClass("listViewHeader");
+                    }
+                });
+                //this.byId("idBtnListViewResourcePage").setVisible(false);
+                //this.byId("idBtnGridViewResourcePage").setVisible(true);
+            },
+            getMatchedTiles: async function () {
+                const oModel1 = this.getOwnerComponent().getModel();
+                const userId = this.ID;
                 let userTiles = [];
-                let currentView = localStorage.getItem("currentView") || "DefaultView";
 
-                // Fetch user tiles from the backend
+                // Use a Promise to handle the async operation
                 await new Promise((resolve, reject) => {
                     oModel1.read(`/RESOURCESSet('${userId}')`, {
                         success: function (oData) {
-                            const tiles = oData.Queue; // Adjust this based on your data structure
-                            // Clean up tile names: remove spaces and convert to lowercase
+                            const tiles = oData.Queue; // Adjust according to your data structure
                             userTiles = tiles.split(',')
                                 .map(item => item.trim().toLowerCase().replace(/\s+/g, ''));
-                            resolve();
+                            resolve();  // Resolve the promise when data is ready
                         },
                         error: function () {
                             MessageToast.show("Error loading user tiles");
-                            reject();
+                            reject(); // Reject the promise on error
                         }
                     });
                 });
-
-                // Extract and clean frontend tile IDs
-                const frontEndTileIds = oTilesContainer.getContent()
-                    .filter(oTile => oTile.isA("sap.m.GenericTile")) // Ensure it's a GenericTile
-                    .map(oTile => {
-                        const sTileId = oTile.getId();
-                        const localId = this._extractLocalId(sTileId);
-                        return localId.replace("id_", "").toLowerCase();
-                    });
-
-                // Match frontend tile IDs with backend queue tile names
-                const matchedTiles = frontEndTileIds.filter(tileId => userTiles.includes(tileId));
-
-                // Get the original tile objects for the matched tile IDs
-                const matchedTileIds = matchedTiles.map(tileId => {
-                    const matchedTile = oTilesContainer.getContent().find(oTile => {
-                        const sTileId = oTile.getId();
-                        const localId = this._extractLocalId(sTileId);
-                        return localId.replace("id_", "").toLowerCase() === tileId;
-                    });
-                    return matchedTile ? matchedTile.getId() : null; // Get the original ID or null if not found
-                }).filter(id => id !== null); // Filter out any null values
-
-                console.log("Matched Tile IDs:", matchedTileIds); // Log the matched tile IDs
-
-                // Toggle between ListGridView and DefaultView
-                if (currentView === "DefaultView") {
-                    localStorage.setItem("currentView", "ListGridView");
-
-                    // Adjust layout to list/grid view
-                    oTilesContainer.getContent().forEach((oTile) => {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            // Apply list/grid specific style
-                            oTile.removeStyleClass("largeIcons mediumIcons smallIcons").addStyleClass("listgridIcons");
-
-                            // const oTileHeader = oTile.getHeader();
-                            // const oTileSubheader = oTile.getSubheader();
-
-                            // // Create a new container to hold the header and subheader
-                            // const oHeaderContainer = new sap.m.VBox({
-                            //     items: [
-                            //         new sap.m.Text({ text: oTileHeader }),
-                            //         new sap.m.Text({ text: oTileSubheader })
-                            //     ]
-                            // });
-
-                            // // Add the header container beside the tile
-                            // oTile.setHeader(""); // Clear the header since we are setting it in a new container
-                            // oTile.addContent(oHeaderContainer);
-                        }
-                    });
-                } else {
-                    // Reset to the stored view
-                    localStorage.setItem("currentView", "DefaultView");
-                    // Retrieve the previously stored view
-                    const sStoredView = localStorage.getItem("selectedView") || "selectedView";
-                    // Adjust back to grid view
-                    oTilesContainer.getContent().forEach((oTile) => {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            // Restore the original size class for the grid view
-                            oTile.removeStyleClass("listgridIcons").addStyleClass(sStoredView);
-                        }
-                    });
-                    oTilesContainer.rerender();
-                }
+                return userTiles;
             },
             //Language Transulation PopOver Profile...
             onPressLanguageTranslation: function (oEvent) {
