@@ -37,6 +37,7 @@ sap.ui.define([
                 this.EditCall = false;
                 this._currentTile = null;
                 this._selectedTiles = [];
+                this.applyStoredProfileImage();
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -138,15 +139,6 @@ sap.ui.define([
                         oTile.setSubheader(storedTileData.subHeader || "");
                     }
                 }.bind(this));
-
-                // Apply the stored profile picture
-                var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                if (sStoredProfileImage) {
-                    var oAvatarControl = this.byId("id_GenAvatar1P");
-                    if (oAvatarControl) {
-                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
-                    }
-                }
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
@@ -231,17 +223,7 @@ sap.ui.define([
                 sap.m.MessageToast.show("Edit mode Deactivated.");
             },
             // Theme press from profile 
-            onPressThemesResource: function (oEvent) {
-                // Check if the popover already exists, if not create it
-                if (!this._oThemeSelectPopover) {
-                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
-                    this.getView().addDependent(this._oThemeSelectPopover);
-                }
-                // Open popover near the language button
-                this._oThemeSelectPopover.openBy(oEvent.getSource());
-            },
-            // Theme press from profile 
-            onPressThemesBtnFromProfile: function (oEvent) {
+            onPressThemesBtnFromProfilePopover: function (oEvent) {
                 debugger
                 // Check if the popover already exists, if not create it
                 if (!this._oThemeSelectPopover) {
@@ -263,6 +245,12 @@ sap.ui.define([
                 }
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").open();
+            },
+            //Closing Theme Dailog Box...
+            onCancelColorDialog: function () {
+                this.resetDialogBox();
+                //this._selectedTiles = [];
+                this.byId("idthemeTileDialogResource").close();
             },
             //Tile selcect btn from Profile Popover...
             onTileThemeSelect: function () {
@@ -286,12 +274,6 @@ sap.ui.define([
                     this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Theme mode deactivated.");
                 }
-            },
-            //Closing Theme Dailog Box...
-            onCancelColorDialog: function () {
-                this.resetDialogBox();
-                //this._selectedTiles = [];
-                this.byId("idthemeTileDialogResource").close();
             },
             //After Selecting Multiple Tiles opens theme dialog box to select colour...
             onPressTileThemesModeOpenDailog: function () {
@@ -765,51 +747,6 @@ sap.ui.define([
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
-
-            // Theme press from profile 
-
-            onPressThemesResource: function (oEvent) {
-                // Check if the popover already exists, if not create it
-                if (!this._oThemeSelectPopover) {
-                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
-                    this.getView().addDependent(this._oThemeSelectPopover);
-                }
-                // Open popover near the language button
-                this._oThemeSelectPopover.openBy(oEvent.getSource());
-            },
-
-            // on Background theme select 
-
-            onBackGroudThemeSelect: function () {
-                this.byId("idthemeTileDialogResource").open();
-            },
-            // on Background theme select 
-
-            onBackGroudThemeSelect: function () {
-                this.byId("idthemeTileDialogResource").open();
-            },
-            // on Tile theme select 
-
-            onTileThemeSelect: function () {
-                if (this.EditCall) {
-                    sap.m.MessageBox.information("Please exit from edit mode first")
-                    return;
-                }
-                this.Themecall = !this.Themecall; // Toggle the state
-                if (this.Themecall) {
-                    // Theme mode activated
-                    this.byId("idCancelButtonResource").setVisible(true);
-                    // this.byId("idthemeBackGroundButton").setVisible(true);
-                    sap.m.MessageToast.show("Theme mode activated.");
-                } else {
-                    // Theme mode deactivated
-                    this.byId("idCancelButtonResource").setVisible(false);
-                    // this.byId("idthemeBackGroundButton").setVisible(false);
-                    sap.m.MessageToast.show("Theme mode deactivated.");
-                }
-            },
-
-
             onResourceDetailsLoad: async function (oEvent1) {
 
                 // const { id } = oEvent1.getParameter("arguments");
@@ -1687,6 +1624,7 @@ sap.ui.define([
 
             //Avatar btn from Resource Page...
             onSBQPAvatarPressedResourcePage: function (oEvent) {
+                this.applyStoredProfileImage();
                 this.onPressAvatarPopOverBaseFunction(oEvent, {
                     showAccountDetails: true,
                     showEditTile: true,

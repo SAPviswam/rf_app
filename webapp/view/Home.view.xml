@@ -46,7 +46,7 @@
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="id_GenAvatar1PageHome"
+                    id="idImageAvatarHomeScreen"
                     displaySize="XS"
                     tooltip="Profile"
                 />

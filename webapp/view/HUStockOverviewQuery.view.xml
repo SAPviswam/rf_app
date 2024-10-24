@@ -119,8 +119,14 @@
                             <Input id="idinputhusovqhu"
                             width="200px"
                                 class="sapUiTinyMarginBegin"
-                                liveChange="onHUInputChange"
+                                
                             />
+                             <Button
+                    id="idSubmitButton"
+                    text="Submit"
+                    press="onSubmitButtonPress"
+                    class="sapUiTinyMarginBegin"
+                />
                         </HBox>
                     </f:SimpleForm>
                 </VBox>
@@ -169,7 +175,7 @@
                                 <Label width="60px" />
                                 <Input width="40px" />
                                 <Label width="40px" />
-                                <Input  width="40px"/>  
+                                <Input  width="40px"/>
                                  <Label width="10px"/>
 
                                 <Button icon="sap-icon://slim-arrow-down" />
@@ -284,155 +290,97 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox 
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <f:SimpleForm
-                        id="thirdsimpleFormHUStockOverviewQuery"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
-                        columnsM="1"
+               <VBox id="idVBoxBinNumbertable_HUSOQ1345">
+                    <HBox id="idBinNumberHBox_HUSOQ14356">
+                        <Label
+                            id="idBinNumberLable_HUSOQ1234"
+                            text="HU:"
+                            class="BinNumberTableLabel_HUSOQ"
+                        />
+                        <Input
+                            id="idBinNumberInput_HUSOQ11"
+                            class="BinNumberInput"
+                        />
+                        <Input
+                            id="idBinNumberInput_HUSOQ121"
+                            class="BinNumberInput"
+                        />
+                        <Input
+                            id="idBinNumberInput_HUSOQ131"
+                            class="BinNumberInput"
+                        />
+                        <Input
+                            id="idBinNumberInput_HUSOQ141"
+                            class="BinNumberInput"
+                        />
+                    </HBox>
+                    <Toolbar
+                        id="TB4_HUSOQ11"
+                        class="HeaderToolBar"
                     >
-                        <VBox 
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
-                            <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
+                        <Title
+                            id="Title1455896_HUSOQ11"
+                            text=" Table:"
+                        />
+                        <ToolbarSpacer id="IDGenToolbar345_HUSOQ112" />
+                         <Button id="buttonid1" press="onPressHUINformationPress" text="HU Information"></Button>
+                            <Button  id="buttonid2" press="onPressHUQuerystockprodinfoPress" text="HU Query Stock/Prod info"></Button>
+                            <Button  id="buttonid3" press="onTopHupress" text="Top HU"></Button>
+                       
+                       
+                    </Toolbar>
+                    <Table
+                        id="idBinNumTable_AHUOB12Q1"
+                        width="100%"
+                        mode="SingleSelectLeft" 
+                        selectionChange="onSelectionChange"
+                    >
+                        <columns>
+                            <Column id="IDGenColumn001_AHUOB23Q1">
+                                <Text
+                                    id="IDGenText001_AHUO23BQ1"
+                                    text="S.no"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn002_AHUwqerOBQ1">
+                                <Text
+                                    id="IDGenText002_AHertUOBQ1"
+                                    text="HU_IND"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn003_AHWERUOBQ1">
+                                <Text
+                                    id="IDGenText003_AHUOEWRTBQ1"
+                                    text="MAT_HU"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                           
+                        </columns>
+                        <items>
+                            <!-- <ColumnListItem
+                                id="IDGenBinNumbersColumnListItem1_HUSOQ"
+                                class="AlternateRowColor"
                             >
-                                <Label text="HU:" />
-                                <Input width="70px" />
-                                   <Label width="40px" />      
-                                <Input width="40px"   />
-                                   <Label width="20px" />  
-                                <Input  width="40px" />
-                                   <Label width="20px" />  
-                                <Input width="60px" />
-                                
-                               
-                            </HBox>
-                            <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px"/>
-                                <Input width="20px" />
-                                 <Label width="20px"/>
-                                <Input  width="20px"/>
-                                 <Label width="55px"/>
-                                <Input width="95px" />
-                                 <Label width="25px"/>
-                               
-                                
-                                <Button icon="sap-icon://slim-arrow-down" />
-                                 <Label width="10px"/>
-                                <Button icon="sap-icon://slim-arrow-up" />
-                            </HBox>
-                             <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                              <Label width="20px"/>
-                                <Input width="20px" />
-                                 <Label width="20px"/>
-                                <Input  width="20px"/>
-                                 <Label width="55px"/>
-                                <Input width="95px" />
-                                 <Label width="25px"/>
-                               
-                                
-                              
-                            </HBox>
-                             <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                 <Label width="20px"/>
-                                <Input width="20px" />
-                                 <Label width="20px"/>
-                                <Input  width="20px"/>
-                                 <Label width="55px"/>
-                                <Input width="95px" />
-                                 <Label width="25px"/>
-                               
-                            </HBox>
-                             <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                              <Label width="20px"/>
-                                <Input width="20px" />
-                                 <Label width="20px"/>
-                                <Input  width="20px"/>
-                                 <Label width="55px"/>
-                                <Input width="95px" />
-                                 <Label width="25px"/>
-                               
-                              
-                            </HBox>
-                             <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                              <Label width="20px"/>
-                                <Input width="20px" />
-                                 <Label width="20px"/>
-                                <Input  width="20px"/>
-                                 <Label width="55px"/>
-                                <Input width="95px" />
-                                 <Label width="25px"/>
-                               
-                                
-                              
-                            </HBox>
-                             <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                              <Label width="250px"/>
-                               
-                                <Input width="70px" />
-                                 
-                               
-                                
-                              
-                            </HBox>
-                            <HBox >
-                            <Button press="onPressHUINformationPress" text="HU Information"></Button>
-                            <Button press="onPressHUQuerystockprodinfoPress" text="HU Query Stock/Prod info"></Button>
-                            <Button press="onTopHupress" text="Top HU"></Button>
-                            </HBox>
-                            </VBox>
-                    </f:SimpleForm>
+                                <cells>
+                                    <Text
+                                        id="IDGenBinNoTableText1_HUSOQ"
+                                        text="{Vendorname}"
+                                    />
+                                    <Text
+                                        id="IDGenBinNoTableText2_HUSOQ"
+                                        text="{Vendornumber}"
+                                    />
+                                    <Text
+                                        id="IDGenBinNoTableText3_HUSOQ"
+                                        text="{Drivername}"
+                                    />
+                                </cells>
+                            </ColumnListItem> -->
+                        </items>
+                    </Table>
                 </VBox>
             </ScrollContainer>
              <ScrollContainer
@@ -444,7 +392,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox 
+                <VBox id="vboxid"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -460,117 +408,140 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox 
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                    <VBox 
+    alignContent="Center"
+    alignItems="Center"
+    id="vboxMain"
+>
 
-                        <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-                        
-                        <Label text="Pkmt" ></Label>
-                        <VBox width="3%"></VBox>
-                        <Input ></Input>
-                         
-                           <VBox width="10%"></VBox>
-                        <Label text="Htyp"></Label>
-                        <VBox width="3%"></VBox>
-                          <Input ></Input>
-                        </HBox>
-                         <HBox 
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-                        
-                        <Label text="Totw"></Label>
-                        <VBox width="3%"></VBox>
-                        <Input  width="20PX"></Input>
-                         <VBox width="18%"></VBox>
-                       <Input  width="20PX"></Input>
-                       <VBox width="18%"></VBox>
-                        <Label text="Totv"></Label>
-                        <VBox width="3%"></VBox>
-                           <Input  width="20PX"></Input>
-                          <VBox width="18%"></VBox>
-                           <Input  width="40PX"></Input>
-                        </HBox>
-                        <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-                        
-                        <Label text="MaxW"></Label>
-                          <VBox width="1%"></VBox>
-                        <Input width="1%"></Input>
-                         <Label  width="3%" ></Label>
-                        <Label text="MaxV"></Label>
-                        <Label  width="1%" ></Label>
-                          <Input width="1%"></Input>
-                            <Label  width="3%" ></Label>
-                        </HBox>
-                        <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-                        
-                        <Label text="TarW"></Label>
-                          <VBox width="2%"></VBox>
-                        <Input width="1%"></Input>
-                          <Label  width="3%" ></Label>
-                        <Label text="TarV"></Label>
-                          <Input width="1%"></Input>
-                            <Label  width="3%" ></Label>
-                        </HBox>
-                        <HBox >
-                            <Label id="er"   width="5%" ></Label>
-                            <Input ></Input>
-                              <Label  width="3%" ></Label>
-                             <Input ></Input>
-                               <Label  width="1%" ></Label>
-                              <Input ></Input>
-                              <Label  width="1%" ></Label>
-                               <Input ></Input>
-                               <Label  width="3%" ></Label>
-                        </HBox>
-                         <HBox alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom" >
-                         <Label text="Top"></Label>
-                            <Input ></Input>
-                             <Label text="Lwst"></Label>
-                             <Input ></Input>
-                              <Label text="Move"></Label>
-                              <Input ></Input>
-                               <Label text="Stat"></Label>
-                               <Input ></Input>
-                                <Input ></Input>
-                        </HBox>
-                        <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-                        
-                        <Label text="Bin"></Label>
-                        <Input ></Input>
-                        <Label text="CGrp"></Label>
-                         <Input width="2%" ></Input>
-                          <Label Width="3%"></Label> 
-                        </HBox>
-                         </VBox>
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox1"
+    >
+        <Label text="Pkmt" id="labelPkmt"></Label>
+        <VBox width="3%" id="vboxSpacer1"></VBox>
+        <Input id="inputPkmt"></Input>
+
+        <VBox width="10%" id="vboxSpacer2"></VBox>
+        <Label text="Htyp" id="labelHtyp"></Label>
+        <VBox width="3%" id="vboxSpacer3"></VBox>
+        <Input id="inputHtyp"></Input>
+    </HBox>
+
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox2"
+    >
+        <Label text="Totw" id="labelTotw"></Label>
+        <VBox width="3%" id="vboxSpacer4"></VBox>
+        <Input id="inputTotw1" width="20PX"></Input>
+        <VBox width="18%" id="vboxSpacer5"></VBox>
+        <Input id="inputTotw2" width="20PX"></Input>
+        <VBox width="18%" id="vboxSpacer6"></VBox>
+
+        <Label text="Totv" id="labelTotv"></Label>
+        <VBox width="3%" id="vboxSpacer7"></VBox>
+        <Input id="inputTotv1" width="20PX"></Input>
+        <VBox width="18%" id="vboxSpacer8"></VBox>
+        <Input id="inputTotv2" width="40PX"></Input>
+    </HBox>
+
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox3"
+    >
+        <Label text="MaxW" id="labelMaxW"></Label>
+        <VBox width="1%" id="vboxSpacer9"></VBox>
+        <Input id="inputMaxW" width="1%"></Input>
+        <Label id="labelMaxWSpacer" width="3%"></Label>
+
+        <Label text="MaxV" id="labelMaxV"></Label>
+        <Label id="labelMaxVSpacer" width="1%"></Label>
+        <Input id="inputMaxV" width="1%"></Input>
+        <Label id="labelMaxVEndSpacer" width="3%"></Label>
+    </HBox>
+
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox4"
+    >
+        <Label text="TarW" id="labelTarW"></Label>
+        <VBox width="2%" id="vboxSpacer10"></VBox>
+        <Input id="inputTarW" width="1%"></Input>
+        <Label id="labelTarWSpacer" width="3%"></Label>
+
+        <Label text="TarV" id="labelTarV"></Label>
+        <Input id="inputTarV" width="1%"></Input>
+        <Label id="labelTarVEndSpacer" width="3%"></Label>
+    </HBox>
+
+    <HBox 
+        id="hbox5"
+    >
+        <Label id="labelEr" width="5%"></Label>
+        <Input id="inputEr1"></Input>
+        <Label id="labelErSpacer1" width="3%"></Label>
+        <Input id="inputEr2"></Input>
+        <Label id="labelErSpacer2" width="1%"></Label>
+        <Input id="inputEr3"></Input>
+        <Label id="labelErSpacer3" width="1%"></Label>
+        <Input id="inputEr4"></Input>
+        <Label id="labelErEndSpacer" width="3%"></Label>
+    </HBox>
+
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox6"
+    >
+        <Label text="Top" id="labelTop"></Label>
+        <Input id="inputTop"></Input>
+        <Label text="Lwst" id="labelLwst"></Label>
+        <Input id="inputLwst"></Input>
+        <Label text="Move" id="labelMove"></Label>
+        <Input id="inputMove"></Input>
+        <Label text="Stat" id="labelStat"></Label>
+        <Input id="inputStat1"></Input>
+        <Input id="inputStat2"></Input>
+    </HBox>
+
+    <HBox 
+        alignContent="Center"
+        alignItems="Center"
+        justifyContent="Start"
+        width="100%"
+        class="sapUiSmallMarginBottom"
+        id="hbox7"
+    >
+        <Label text="Bin" id="labelBin1"></Label>
+        <Input id="inputBin1"></Input>
+        <Label text="CGrp" id="labelCGrp"></Label>
+        <Input id="inputCGrp" width="2%"></Input>
+        <Label id="labelCGrpEndSpacer" width="3%"></Label>
+    </HBox>
+
+</VBox>
+
+
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -583,128 +554,135 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox 
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <f:SimpleForm
-                        id="fifthsimpleFormHUStockOverviewQuery"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
-                        columnsM="1"
-                    >
-                        <VBox 
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+               <VBox id="vboxidd"
+    alignContent="Center"
+    alignItems="Center"
+>
+    <f:SimpleForm
+        id="fifthsimpleFormHUStockOverviewQuery"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        class="sapUiResponsiveMargin"
+        labelSpanL="3"
+        labelSpanM="3"
+        emptySpanL="4"
+        emptySpanM="4"
+        columnsL="1"
+        columnsM="1"
+    >
+        <VBox 
+            alignContent="Center"
+            alignItems="Center"
+            id="vboxCenter"
+        >
 
-                        <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxPro"
+            >
+                <Label text="Pro" id="labelPro"></Label>
+                <Input width="150px" id="inputPro"></Input>
+                <Label width="20px" id="spacerLabel1"></Label> 
+                <Input width="70px" id="inputProSmall"></Input>
+            </HBox>
 
-            <Label text="Pro"></Label>
-             
-            <Input width="150px" ></Input>
-            <Label width="20px"></Label> 
-            <Input width="70px" ></Input>
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxLargeInput"
+            >
+                <Label width="20px" id="spacerLabel2"></Label> 
+                <Input width="250px" id="inputLarge"></Input>
+            </HBox>
 
-                                </HBox>
- <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxStypBin"
+            >
+                <Label text="Styp" id="labelStyp"></Label>
+                <Input width="70px" id="inputStyp"></Input>
+                <Label width="20px" id="spacerLabel3"></Label> 
+                <Label text="Bin" id="labelBin"></Label>
+                <Label width="20px" id="spacerLabel4"></Label> 
+                <Input width="120px" id="inputBin"></Input>
+            </HBox>
 
-             <Label width="20px"></Label> 
-            <Input width="250px"></Input>
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxAqty"
+            >
+                <Label text="Aqty" id="labelAqty"></Label>
+                <Input width="70px" id="inputAqty"></Input>
+                <Label width="60px" id="spacerLabel5"></Label> 
+                <Input width="20px" id="inputAqtySmall"></Input>
+            </HBox>
 
-                                </HBox>
-                                 <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxBtchStyp"
+            >
+                <Label text="Btch" id="labelBtch"></Label>
+                <Input width="70px" id="inputBtch"></Input>
+                <Label width="60px" id="spacerLabel6"></Label> 
+                <Input width="40px" id="inputBtchSmall"></Input>
+                <Label text="Styp" id="labelStyp2"></Label>
+                <Input width="50px" id="inputStyp2"></Input>
+            </HBox>
 
-            <Label text="Styp"></Label>
-            <Input width="70px" ></Input>
-              <Label width="20px"></Label> 
-            <Label text="Bin"></Label>
-              <Label width="20px"></Label> 
-            <Input  width="120px"></Input>
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxOwnrPent"
+            >
+                <Label text="Ownr" id="labelOwnr"></Label>
+                <Input width="70px" id="inputOwnr"></Input>
+                <Label width="10px" id="spacerLabel7"></Label> 
+                <Label text="Pent" id="labelPent"></Label>
+                <Label width="20px" id="spacerLabel8"></Label> 
+                <Input width="70px" id="inputPent"></Input>
+            </HBox>
 
-                                </HBox>
- <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
+            <HBox 
+                alignContent="Center"
+                alignItems="Center"
+                justifyContent="Start"
+                width="100%"
+                class="sapUiSmallMarginBottom"
+                id="hboxMiscInputs"
+            >
+                <Input width="70px" id="inputMisc1"></Input>
+                <Label width="60px" id="spacerLabel9"></Label>
+                <Input width="20px" id="inputMisc2"></Input>
+                <Label width="30px" id="spacerLabel10"></Label> 
+                <Input width="20px" id="inputMisc3"></Input>
+            </HBox>
 
-            <Label text="Aqty"></Label>
-             <Input width="70px" ></Input>
-              <Label width="60px"></Label> 
-            <Input  width="20px" ></Input>
+        </VBox>
+    </f:SimpleForm>
+</VBox>
 
-                                </HBox>
-                                <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-
-            <Label text="Btch"></Label>
-           <Input width="70px" ></Input>
-            <Label width="60px"></Label> 
-            <Input  width="40px" ></Input>
-            <Label text="Styp"></Label>
-            <Input  width="50px"></Input>
-
-                                </HBox>
-                                 <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-
-            <Label text="Ownr"></Label>
-            <Input width="70px" ></Input>
-             <Label width="10px"></Label> 
-            <Label text="Pent"></Label>
-              <Label width="20px"></Label> 
-        <Input  width="70px"></Input>
-
-                                </HBox>
-                                <HBox 
-                         alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom">
-
-           
-            <Input width="70px" ></Input>
-             <Label width="60px" ></Label>
-            <Input width="20px"></Input>
-                <Label width="30px"></Label> 
-            <Input width="20px"></Input>
-
-                                </HBox>
- </VBox>
-                    </f:SimpleForm>
-                </VBox>
             </ScrollContainer>
 
         </tnt:mainContents>
