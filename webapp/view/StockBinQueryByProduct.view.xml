@@ -165,11 +165,7 @@
                                     <Input
                                         id="idSBQProductInput2"
                                         value=""
-                                    />
-                                    <Input
-                                        id="idSBQEmptyInput"
-                                        value=""
-                                    />
+                                    /> 
                                 </HBox>
                             </HBox>
                         </VBox>
@@ -219,24 +215,6 @@
                                     </columns>
 
                                     <items>
-                                        <!-- <ColumnListItem
-                                            id="idGenSBQPColumnListItem"
-                                        >
-                                            <cells>
-                                                <Text
-                                                    id="idSBQPBinCell"
-                                                    text=""
-                                                />
-                                                <Text
-                                                    id="idSBQPpCell"
-                                                    text=""
-                                                />
-                                                <Text
-                                                    id="idSBQPpc"
-                                                    text=""
-                                                />
-                                            </cells>
-                                        </ColumnListItem> -->
                                     </items>
                                 </Table>
                             </HBox>
@@ -254,13 +232,6 @@
                                 text="Prd De"
                                 class="sapUiTinyMargin"
                                 press="onSBQPPreDePress"
-                            />
-
-                            <Button
-                                id="idSBQPBinDe"
-                                text="Bin De"
-                                class="sapUiTinyMargin"
-                                press="onSBQPBinDePress"
                             />
                         </HBox>
                     </VBox>
