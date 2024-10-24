@@ -8,21 +8,21 @@
     <Dialog
         id="idProfileDetailsDailogBox"
         title="Profile Details"
-        class="userProfileDialog"
+        class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
         contentWidth="25%"
-        contentHeight="68%"
+        contentHeight="60%"
     >
         <customHeader>
             <Bar id="BarUserDetails_ResourcePage">
                 <contentLeft>
                     <Title
-                        id="PersonTileUserDetails_ResourcePage"
+                        id="idPersonTileUserDetails_ResourcePage"
                         text="Profile Detials:"
                     />
                 </contentLeft>
                 <contentRight>
                     <Button
-                        id="declineBtnUserDetails_ResourcePage"
+                        id="iddeclineBtnUserDetails_ResourcePage"
                         icon="sap-icon://decline"
                         type="Transparent"
                         press="onPressDeclineProfileDetailsDailog"
@@ -31,11 +31,11 @@
             </Bar>
         </customHeader>
         <VBox
-            id="VBox1UserDetails_ResourcePage"
+            id="idVBox1UserDetails_ResourcePage"
             class="profileCard"
         >
             <Avatar
-                id="idUserProfileImage"
+                id="idImageAccontDetailsAvatarResourcePage"
                 displayShape="Circle"
                 displaySize="XL"
                 class="profileAvatar"
@@ -54,7 +54,7 @@
                 />
                 <Button
                     id="idBtnDeleteImageforProfile"
-                    text="Delete"
+                    text="Remove"
                     icon="sap-icon://delete"
                     press="onPressDeleteProfilePic"
                     type="Transparent"
@@ -63,11 +63,12 @@
             <VBox
                 id="VBox2UserDetails_ResourcePage"
                 class="profileDetails"
+                alignItems="Center"
             >
                 <HBox id="idHBox1UserDetails_ResourcePage">
                     <VBox
                         id="VBox3UserDetails_ResourcePage"
-                        alignItems="End"
+                        alignItems="Start"
                     >
                         <Text
                             id="idResourceIDUserDetails_ResourcePage"

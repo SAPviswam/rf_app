@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core"
 >
     <Popover
-        id="idProfilePopover"
+        id="idPopoverUserDetails"
         placement="Bottom"
         verticalScrolling="false"
         horizontalScrolling="false"
@@ -13,99 +13,106 @@
         title="Profile:"
     >
         <form:SimpleForm
-            id="idSimpleFormProfile"
+            id="idSimpleFormUserdetails"
             backgroundDesign="Solid"
         >
-            <VBox id="idVBoxProfile">
+            <VBox id="idVBoxUserdetails">
                 <HBox
-                    id="idProfileHeaderHBox"
+                    id="idUserDeatilsHBox"
                     alignItems="Start"
                 >
                     <Avatar
-                        id="idProfileAvatar"
+                        id="idImagePopoverAvatarResourcepage"
                         displaySize="S"
                         class="profileAvatar1234"
                         press="onPressPopoverProfileImageAvatar"
                     />
                     <Label
-                        id="idLabelEmptyInProfile"
+                        id="idUserDeatilsLabel4"
                         width="1rem"
                     />
                     <VBox
-                        id="idProfileInfoVBox"
+                        id="idUserDeatilsVBox11"
                         alignItems="Start"
                     >
                         <Text
-                            id="idProfileName"
+                            id="idUserDeatilsTextName"
                             text="{profile>/Name}"
                         />
                         <Link
-                            id="idProfileNumber"
+                            id="idUserDeatilsPhoneLink"
                             text="{profile>/Number}"
                         />
                     </VBox>
                 </HBox>
                 <VBox
-                    id="idProfileOptionsVBox"
+                    id="idUserDeatilsVBox12"
                     alignItems="Start"
                     class="onProfileOptions"
                 >
                     <Button
-                        id="idProfileButton"
+                        id="idUserDeatilsButtonAccountDetails"
                         icon="sap-icon://person-placeholder"
                         text="Account Details"
                         type="Transparent"
                         press="onPressAccountDetails"
+                        visible="{popoverModel>/showAccountDetails}"
                     />
                     <Button
-                        id="idEditButton"
+                        id="idUserDeatilsButton1Edit"
                         icon="sap-icon://edit"
                         text="Edit Tile"
                         type="Transparent"
                         press="onEditTileNamePress"
+                        visible="{popoverModel>/showEditTile}"
                     />
                     <Button
-                        id="idResetDefault"
+                        id="idUserDeatilsButton3Seetings"
                         icon="sap-icon://settings"
                         text="Default Settings"
                         type="Transparent"
                         press="onResetToDefaultPress"
+                        visible="{popoverModel>/showDefaultSettings}"
                     />
                     <Button
-                        id="idThemesButton"
+                        id="idUserDeatilsButton4Pallete"
                         icon="sap-icon://palette"
                         text="Themes"
                         type="Transparent"
-                        press="onPressThemesResource"
+                        press="onPressThemesBtnFromProfilePopover"
+                        visible="{popoverModel>/showThemes}"
                     />
                     <Button
-                        id="idLanguageButton"
+                        id="idUserDeatilsButton5Transulate"
                         icon="sap-icon://translate"
                         text="Language"
                         type="Transparent"
                         press="onPressLanguageTranslation"
+                        visible="{popoverModel>/showLanguage}"
                     />
                     <Button
-                        id="idTileViewButton"
+                        id="idUserDeatilsButton6View"
                         icon="sap-icon://my-view"
                         text="Tile View"
                         type="Transparent"
                         press="onPressTileViewSettings"
-                        visible="true"
+                        visible="{popoverModel>/showTileView}"
                     />
                     <Button
-                        id="idHelpButton"
+                        id="idUserDeatilsButton7Help"
                         icon="sap-icon://sys-help"
                         text="Help"
                         type="Transparent"
                         press="onChatbotButtonPress"
+                        visible="{popoverModel>/showHelp}"
                     />
                     <Button
-                        id="idSignoutButton"
+                        id="idUserDeatilsButton8Logout"
                         icon="sap-icon://log"
                         text="Sign Out"
                         type="Transparent"
                         press="onSignoutPressed"
+                        visible="{popoverModel>/showSignOut}"
                     />
                 </VBox>
             </VBox>

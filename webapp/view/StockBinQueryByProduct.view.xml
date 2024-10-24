@@ -102,17 +102,15 @@
                             <Input
                                 id="idSBQProductInput"
                                 value=""
+                                liveChange="onpressProductsubmit"
+                                class="sapUiTinyMarginEnd"
                             />
-                            <Button
-                                id="idSBQProductScannerBtn"
-                                icon="sap-icon://bar-code"
-                                press="onSBQProductBarcodeScanner"
-                            />
-                            <Button
-                                id="idbuttontext"
-                                text="sub"
-                                type="Emphasized"
-                                press="onpressProductsubmit"
+                            <ndc:BarcodeScannerButton
+                                id="_IDBinGenScanButton_SBQProduct"
+                                scanSuccess="onScanSuccessProduct"
+                                scanFail="onScanError"
+                                dialogTitle="Barcode Scanner"
+                                class="sapUiTinyMarginBegin"
                             />
                         </HBox>
                     </VBox>
@@ -391,6 +389,7 @@
                             <Input
                                 id="idSBQPBinInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
@@ -404,6 +403,7 @@
                             <Input
                                 id="idSBQPStoreTypeInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
 
@@ -416,6 +416,7 @@
                             <Input
                                 id="idSBQPQtyWInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
@@ -429,6 +430,7 @@
                             <Input
                                 id="idSBQPStorSecInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
@@ -440,6 +442,7 @@
                             <Input
                                 id="idSBQPNoOfHuInput"
                                 value=""
+                                editable="false"
                             />
                             <Label
                                 text=""
@@ -453,6 +456,7 @@
                             <Input
                                 id="idSBQPBinAisleInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
@@ -464,6 +468,7 @@
                             <Input
                                 id="idSBQPMaxWInput"
                                 value=""
+                                editable="false"
                             />
 
                             <Text text="KG" />
@@ -479,6 +484,7 @@
                             <Input
                                 id="idSBQPBinLevelInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                         <HBox>
@@ -490,6 +496,7 @@
                             <Input
                                 id="idSBQPMaxVInput"
                                 value=""
+                                editable="false"
                             />
                             <Text text="M3" />
                             <Label
@@ -504,6 +511,7 @@
                             <Input
                                 id="idSBQPStackInput"
                                 value=""
+                                editable="false"
                             />
                         </HBox>
                     </VBox>
