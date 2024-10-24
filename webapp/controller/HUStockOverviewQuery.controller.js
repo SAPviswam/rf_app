@@ -38,9 +38,11 @@ sap.ui.define(
                     MessageToast.show("User does not exist");
                 }
             });
+            
            
         },
-        onHUInputChange:function(){
+        
+        onSubmitButtonPress:function(){
             this.getView().byId("idScforFirstHUStockOverviewQuery").setVisible(false);
             this.getView().byId("idHUStockOverviewQueryfirstbackbtn").setVisible(false);
             this.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(true);

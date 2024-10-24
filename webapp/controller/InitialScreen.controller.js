@@ -1,26 +1,26 @@
 
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/m/PDFViewer",
-    "sap/ui/model/json/JSONModel",
+    "./BaseController",
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/core/Fragment"
 ],
-    function (Controller, PDFViewer, JSONModel, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment) {
+    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+                //Profile Image updating(from Base Controller)...
+                this.applyStoredProfileImage();
+
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
                 this.loadConfiguredSystems();
                 this.aAllButtons = [];
                 this.currentIndex = 0;
                 this.arrayOfButton = [];
-                this.arrayOfDescription=[];
+                this.arrayOfDescription = [];
                 this.arrayOfClient = [];
 
 
@@ -31,17 +31,18 @@ sap.ui.define([
                     this.getView().byId("idTitle_InitialView").addStyleClass("titleMobile");
                     
                    
+
                 }
-                else if(Device.system.tablet){
+                else if (Device.system.tablet) {
                     this.getView().byId("IdSubTitle_InitialView").addStyleClass("InitialScreenTitle");
-                    
-                    
+
+
                 }
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
-            },
 
+            },
             _handleKeyDown: function (oEvent) {
                 if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
                     oEvent.preventDefault();
@@ -61,29 +62,6 @@ sap.ui.define([
                 }
             },
 
-            // if (Device.system.phone) {
-            //     if (this.isIPhone) {
-            //         // Targeting iPhones (common pixel density for Retina displays and screen width)
-            //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
-            //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
-            //         // this.byId("initialscreentitle").setMarginRight("25%")
-            //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
-            //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
-
-
-            //     } else {
-            //         // Non-iPhone phones
-            //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
-            //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
-            //     }
-            // }
-            // else if (Device.system.tablet) {
-            //     this.byId("environmentButtonsHBox").setWidth("40%");
-            // }
-
-
-
-
             onSave: function () {
                 this.handleLinksapPress();
             },
@@ -99,48 +77,15 @@ sap.ui.define([
             LoadSapLogon: async function () {
 
                 // Load the fragment if it hasn't been loaded yet
-                this.oConfigSap ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.SapLogon"
-                });
+                this.oConfigSap ??= await this.loadFragment(
+                    "SapLogon"
+                );
 
                 // Open the dialog
                 this.oConfigSap.open();
 
                 // Call the user login function
                 this.onUserLogin();
-
-
-                // if (Device.system.phone) {
-
-                //     if (this.isIPhone) {
-                //         // Targeting iPhones (common pixel density for Retina displays and screen width)
-                //         // this.byId("_IDGenImage_CS").setWidth("25.5%");
-                //         // this.byId("_IDGenImage_CS").setHeight("50.5%");
-                //         // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("78.5%");
-                //         // this.byId("LoginButton_CS").setWidth("78.5%");
-                //         // this.byId("LoginButton_CS").setHeight("100%");
-
-                //         // Add margin-left by applying a CSS class
-                //         // this.byId("_IDGenImage_CS").addStyleClass("iphoneMarginSapLogon");
-                //         // this.byId("_IDTitleconnectsap_CS").addStyleClass("iphoneMarginSapLogon");
-
-                //         // this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("75%");
-                //         // this.byId("LoginButton_CS").setWidth("75%");
-
-
-                //     }
-                //     else {
-                //         this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("85%");
-                //         this.byId("LoginButton_CS").setWidth("85%");
-                //         // Non-iPhone phones
-                //         // this.byId("_IDGenImage_CS").setWidth("90%");
-                //         // this.byId("_IDGenImage_CS").setHeight("35%");
-                //     }
-                // }
-                // else if (Device.system.tablet) {
-                //     this.byId("idLanguageSelectorMultiComboBox_CS").setWidth("91%");
-                //     this.byId("LoginButton_CS").setWidth("92%");
-                // }
 
                 // responsive code for switching over the different devices of sap logon fragment
                 if (Device.system.phone) {
@@ -175,24 +120,11 @@ sap.ui.define([
                     MessageToast.show("Please deselect the buttons");
                     return
                 }
-                // Load the SAP connection fragment if it hasn't been loaded yet
-                // this.oConnetSap ??= await this.loadFragment({
-                //     name: "com.app.rfapp.fragments.ConnecttoSAP"
-                // });
 
                 // Set button visibility
                 this.getView().byId("idconnectsapfinishButton").setVisible(true);
                 this.getView().byId("idconnectsapeditButton").setVisible(false);
 
-                // this.oConnetSap.open();
-
-                // var oDialog = this.byId("idconnectsapdialogbox");
-                // if (oDialog) {
-                //     oDialog.attachAfterOpen(function () {
-                //         this.byId("idDescriptionInput").focus();
-                //     }.bind(this));
-
-                // }
             },
             handleAddPress: async function () {
                 await this.handleLinksapPress();
@@ -235,23 +167,76 @@ sap.ui.define([
                 var sService = oView.byId("idServiceInput_InitialView").getValue();
                 var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
 
-if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
-    MessageToast.show("Please enter the mandatory fields");
- return
-}
+                if (!(sSystemId && sInstanceNumber && sClient)) {
+                    MessageToast.show("Please enter the mandatory fields");
+                    return
+                }
+                var bValid = true;
+                var bAllFieldsFilled = true;
+                // Validate Description only if the checkbox is not selected
+                if (!oCheckbox.getSelected() && !sDescription) {
+                    oView.byId("idDescriptionInput_InitialView").setValueState("Error");
+                    oView.byId("idDescriptionInput_InitialView").setValueStateText("Description is mandatory when checkbox is not selected.");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idDescriptionInput_InitialView").setValueState("None");
+                }
+                if (!sSystemId) {
+                    oView.byId("idSystemIdInput_InitialView").setValueState("Error");
+                    oView.byId("idSystemIdInput_InitialView").setValueStateText("System ID must be a 3-digit value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idSystemIdInput_InitialView").setValueState("None");
+                }
+                // Validate Instance Number
+                if (!sInstanceNumber || !/^\d{2}$/.test(sInstanceNumber)) {
+                    oView.byId("idInstanceNumberInput_InitialView").setValueState("Error");
+                    oView.byId("idInstanceNumberInput_InitialView").setValueStateText("Instance Number must be a 2-digit numeric value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idInstanceNumberInput_InitialView").setValueState("None");
+                }
 
+                // Validate Client ID
+                if (!sClient || !/^\d{3}$/.test(sClient)) {
+                    oView.byId("idClientInput_InitialView").setValueState("Error");
+                    oView.byId("idClientInput_InitialView").setValueStateText("Client ID must be a 3-digit numeric value");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idClientInput_InitialView").setValueState("None");
+                }
+                if (!sApplicationServer) {
+                    oView.byId("idApplicationServerInput_InitialView").setValueState("Error");
+                    bValid = false;
+                    bAllFieldsFilled = false;
+                } else {
+                    oView.byId("idApplicationServerInput_InitialView").setValueState("None");
+                }
+                // Display appropriate message
+                if (!bAllFieldsFilled) {
+                    sap.m.MessageToast.show("Please fill all mandatory details");
+                    return;
+                }
+                if (!bValid) {
+                    sap.m.MessageToast.show("Please enter correct data");
+                    return;
+                }
 
 
                 // Get the OData model
                 var oModel = this.getOwnerComponent().getModel();
 
                 // Check for existing combinations in Configure_SystemSet
+                const aSystemId = new Filter("SystemId", FilterOperator.EQ, sSystemId),
+                    aClient = new Filter("Client", sap.ui.model.FilterOperator.EQ, sClient),
+                    aInstanceNumber = new Filter("InstanceNumber", FilterOperator.EQ, sInstanceNumber),
+                    aAllFilters = new Filter([aSystemId, aClient, aInstanceNumber]);
                 oModel.read("/Configure_SystemSet", {
-                    filters: [
-                        new sap.ui.model.Filter("SystemId", sap.ui.model.FilterOperator.EQ, sSystemId),
-                        new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient),
-                        new sap.ui.model.Filter("InstanceNumber", sap.ui.model.FilterOperator.EQ, sInstanceNumber)
-                    ],
+                    filters: [aAllFilters],
                     success: function (oData) {
                         // Check if the combination exists
                         var isCombinationExists = oData.results.some(entry =>
@@ -261,11 +246,11 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                         );
 
                         // Read existing entries to check uniqueness in ServiceSet
+                        var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
+                        var oClient = new Filter("Client", FilterOperator.EQ, sClient);
+                        var allFilter = new Filter([oDescription, oClient]);
                         oModel.read("/ServiceSet", {
-                            filters: [
-                                new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription),
-                                new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, sClient)
-                            ],
+                            filters: [allFilter],
                             success: function (oData) {
                                 // Initialize an array to hold error messages
                                 var errorMessages = [];
@@ -274,14 +259,18 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                                 if (oData.results.length > 0) {
                                     if (oData.results.some(entry => entry.Client === sClient)) {
                                         errorMessages.push("The Client must be unique.");
+                                        oView.byId("idClientInput_InitialView").setValueState("Error");
+                                        oView.byId("idClientInput_InitialView").setValueStateText("Please enter unique value.");
                                     }
                                     if (oData.results.some(entry => entry.Description === sDescription)) {
                                         errorMessages.push("The Description must be unique.");
+                                        oView.byId("idDescriptionInput_InitialView").setValueState("Error");
+                                        oView.byId("idDescriptionInput_InitialView").setValueStateText("Please enter unique value");
                                     }
 
                                     // Show error messages if duplicates are found
                                     if (errorMessages.length > 0) {
-                                        MessageToast.show(errorMessages.join("\n"));
+                                        MessageBox.information(errorMessages.join("\n"));
                                         return; // Exit the function if duplicates are found
                                     }
                                 }
@@ -432,25 +421,6 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 var oModel = this.getOwnerComponent().getModel();
                 // Read existing entries to check uniqueness
 
-                // // test
-                // if (sQuery && sQuery.length > 0) {
-                //     var filterVehicle = new Filter("vehicleNumber", FilterOperator.Contains, sQuery);
-                //     var filterSlot = new Filter("slotNumber/slotNumbers", FilterOperator.Contains, sQuery)
-
-                //     var filterName = new Filter("driverName", FilterOperator.Contains, sQuery);
-                //     var filterMobile = new Filter("driverMobile", FilterOperator.Contains, sQuery);
-                //     var filterDelivery = new Filter("deliveryType", FilterOperator.Contains, sQuery);
-                //     var filterVendor = new Filter("vendor_Name", FilterOperator.Contains, sQuery);
-
-                //     var allFilter = new Filter([filterVehicle, filterSlot, filterName, filterMobile, filterDelivery, filterVendor]);
-                // }
-
-                // // update list binding
-                // var oList = this.byId("idAssignedTable");
-                // var oBinding = oList.getBinding("items");
-                // oBinding.filter(allFilter);
-
-                // // test
                 var oDescription = new Filter("Description", FilterOperator.EQ, sDescription);
                 var oClient = new Filter("Client", FilterOperator.EQ, sClient);
                 var allFilter = new Filter([oDescription, oClient]);
@@ -466,9 +436,10 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                             }
                             if (oData.results[0].Description === sDescription) {
                                 errorMessages.push("The Description must be unique.");
+
                             }
                             if (errorMessages.length > 0) {
-                                MessageToast.show(errorMessages.join("\n"));
+                                MessageBox.information(errorMessages.join("\n"));
                                 return; // Exit the function if duplicates are found
                             }
                         }
@@ -589,7 +560,7 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                         oButton.setType("Emphasized")
                         this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton)
                         this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client)
-                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description )
+                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description)
 
                     }
                     else {
@@ -633,14 +604,14 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 // console.log(this.arrayOfClient)
                 var that = this; // Store reference to 'this' for use in callbacks
 
-                if(this.arrayOfDescription.length > 1){
+                if (this.arrayOfDescription.length > 1) {
                     var oString = this.arrayOfDescription.length
                 }
-                else{
+                else {
                     var oString = this.arrayOfDescription[0];
                 }
-               
-                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?` , {
+
+                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
 
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -771,6 +742,7 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 // await this.handleLinksapPress();
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
+                this.getView().byId("idClientInput_InitialView").setEditable(false);
                 // var oButtonText = this.sdedescription;
                 var oModel = this.getView().getModel();
                 var that = this;
@@ -799,14 +771,14 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
-                var sDescription = oView.byId("idDescriptionInput").getValue();
-                var sSystemId = oView.byId("idSystemIdInput").getValue();
-                var sInstanceNumber = oView.byId("idInstanceNumberInput").getValue();
-                var sClient = oView.byId("idClientInput").getValue();
-                var sApplicationServer = oView.byId("idApplicationServerInput").getValue();
-                var sRouterString = oView.byId("idRouterStringInput").getValue();
-                var sService = oView.byId("idServiceInput").getValue();
-                var oCheckbox = oView.byId("idCheckboxDescription");
+                var sDescription = oView.byId("idDescriptionInput_InitialView").getValue();
+                var sSystemId = oView.byId("idSystemIdInput_InitialView").getValue();
+                var sInstanceNumber = oView.byId("idInstanceNumberInput_InitialView").getValue();
+                var sClient = oView.byId("idClientInput_InitialView").getValue();
+                var sApplicationServer = oView.byId("idApplicationServerInput_InitialView").getValue();
+                var sRouterString = oView.byId("idRouterStringInput_InitialView").getValue();
+                var sService = oView.byId("idServiceInput_InitialView").getValue();
+                var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
                 var oButton = this.selectedButton;
                 // Perform validation checks
                 if (!sSystemId) {
@@ -829,34 +801,88 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 if (oCheckbox.getSelected()) {
                     sDescription = sSystemId + " / " + sClient;
                 }
-                // Update button text
-                oButton.setText(sDescription);
-                // Create an object with updated values, setting both Description and DescriptionB
-                var oUpdatedData = {
-                    Description: sDescription,
-                    DescriptionB: sDescription,  // Ensure DescriptionB is updated to the same value
-                    SystemId: sSystemId,
-                    InstanceNo: sInstanceNumber,
-                    Client: sClient,
-                    AppServer: sApplicationServer,
-                    SapRouterStr: sRouterString,
-                    SapService: sService
-                };
+
                 var that = this;
                 var oModel = this.getView().getModel();
-                // Update the entry in OData service
-                oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
-                    success: function () {
-                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
-                        that.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-                        sap.m.MessageToast.show("system Configuration updated successfully");
-                        that.clearInputFields(oView);
-                        // that.onCloseconnectsap(); // Close the dialog after updating
+
+                // First read the values if entered unique values if entered uniquely.
+
+                const  oDescription = new Filter("Description", FilterOperator.EQ, sDescription),
+                 oClient = new Filter("Client", FilterOperator.EQ, sClient),
+                 aAllFilters = new Filter([oClient,oDescription]);
+
+                oModel.read("/ServiceSet", {
+                    filters: [aAllFilters],
+                    success: function (oData) {
+                        // Initialize an array to hold error messages
+                        var errorMessages = [];
+                       
+                        // if no changes made
+                        // if (oData.results.length > 0) {
+                            
+                        // }
+
+                        // Check for duplicates and populate error messages
+                        if (oData.results.length > 0) {
+                            if (oData.results.some(entry => entry.Description === sDescription &&
+                                entry.Client === sClient && entry.SystemId === sSystemId &&
+                                entry.InstanceNo === sInstanceNumber &&
+                                entry.AppServer === sApplicationServer &&
+                                entry.SapRouterStr === sRouterString &&
+                                entry.SapService === sService)) {
+                                MessageToast.show("No changes made cancel to exit")
+                                return;
+                            } 
+                           
+                            if (oData.results.some(entry => entry.Description === sDescription && entry.Client !== sClient)) {
+                                errorMessages.push("Description already exists.");
+                                oView.byId("idDescriptionInput_InitialView").setValueState("Error");
+                                oView.byId("idDescriptionInput_InitialView").setValueStateText("Description already exists");
+                            } else {
+                                oView.byId("idDescriptionInput_InitialView").setValueState("None");
+                            }
+
+                            // Show error messages if duplicates are found
+                            if (errorMessages.length > 0) {
+                                MessageBox.information(errorMessages.join("\n"));
+                                return; // Exit the function if duplicates are found
+                            }
+                            // Update button text
+                            oButton.setText(sDescription);
+                            // Create an object with updated values, setting both Description and DescriptionB
+                            var oUpdatedData = {
+                                Description: sDescription,
+                                DescriptionB: sDescription,  // Ensure DescriptionB is updated to the same value
+                                SystemId: sSystemId,
+                                InstanceNo: sInstanceNumber,
+                                Client: sClient,
+                                AppServer: sApplicationServer,
+                                SapRouterStr: sRouterString,
+                                SapService: sService
+                            };
+                            // Update the entry in OData service
+                            oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
+                                success: function () {
+                                    that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
+                                    that.getView().byId("idBtnsVbox_InitialView").setVisible(true);
+                                    sap.m.MessageToast.show("system Configuration updated successfully");
+                                    that.clearInputFields(oView);
+                                    // that.onCloseconnectsap(); // Close the dialog after updating
+                                },
+                                error: function (oError) {
+                                    sap.m.MessageToast.show("Error updating data.");
+                                }
+                            });
+                        } else {
+                            MessageToast.show("Data not found")
+                        }
+                        that.getView().byId("idClientInput_InitialView").setEditable(false);
+
                     },
                     error: function (oError) {
-                        sap.m.MessageToast.show("Error updating data.");
+                        MessageBox.error("Error while reading data ", oError.messagew)
                     }
-                });
+                })
             },
 
             // past UI snippet to close the sap connection dailog
@@ -1099,14 +1125,9 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
                 this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
                 this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
+                this.getView().byId("idClientInput_InitialView").setEditable(true);
+
             },
-
-
-            //   onFinishconnectSAPPress:function(){
-            //     this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
-            //     this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-            //   },
-
 
             onClearconnectSAPPress: function () {
                 this.getView().byId("idDescriptionInput_InitialView").setValue("");
@@ -1121,38 +1142,38 @@ if(!(sDescription && sSystemId && sInstanceNumber && sClient)){
             },
 
             // test
-            onAvatarPressed: async function (oEvent) {
-                debugger;
+            // onAvatarPressed: async function (oEvent) {
+            //     debugger;
 
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
-                    this.getView().addDependent(this._oPopover)
-                }
-                // Open popover near the avatar
-                await this._oPopover.openBy(oEvent.getSource());
-            },
-            onAccountDetailsPressedInHomePage: function () {
-                var oView = this.getView();
-                if (!(this.byId("idUserDetails"))) {
-                    // Load the fragment asynchronously
-                    Fragment.load({
-                        id: oView.getId(),
-                        name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
-                        controller: this
-                    }).then(function (oDialog) {
-                        // Add the dialog to the view
-                        oView.addDependent(oDialog);
-                        oDialog.open();
-                    });
-                } else {
-                    // If the dialog already exists, just open it
-                    this.byId("idUserDetails").open();
-                }
-            },
+            //     if (!this._oPopover) {
+            //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.AvatarInHomepage", this);
+            //         this.getView().addDependent(this._oPopover)
+            //     }
+            //     // Open popover near the avatar
+            //     await this._oPopover.openBy(oEvent.getSource());
+            // },
+            // onAccountDetailsPressedInHomePage: function () {
+            //     var oView = this.getView();
+            //     if (!(this.byId("idUserDetails"))) {
+            //         // Load the fragment asynchronously
+            //         Fragment.load({
+            //             id: oView.getId(),
+            //             name: "com.app.rfapp.fragments.UserDetails", // Adjust to your namespace
+            //             controller: this
+            //         }).then(function (oDialog) {
+            //             // Add the dialog to the view
+            //             oView.addDependent(oDialog);
+            //             oDialog.open();
+            //         });
+            //     } else {
+            //         // If the dialog already exists, just open it
+            //         this.byId("idUserDetails").open();
+            //     }
+            // },
 
-            onCloseUSerDetailsDialog: function () {
-                this.byId("idUserDetails").close();
-            },
+            // onCloseUSerDetailsDialog: function () {
+            //     this.byId("idUserDetails").close();
+            // },
 
             // test
 

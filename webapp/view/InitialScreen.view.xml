@@ -41,9 +41,8 @@
                 </ToolbarSpacer>
                 <!-- Avatar -->
                 <Avatar
-                    id="IDRAvatar_InitialView"
+                    id="idImageAvatarInitialScreen"
                     displaySize="XS"
-                    press="onAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -260,7 +259,7 @@
                             value=""
                             placeholder="Num"
                             required="true"
-                            maxLength="3"
+                            maxLength="2"
                             width="100%"
                         />
                     </HBox>
@@ -282,6 +281,7 @@
                             placeholder="Client"
                             maxLength="3"
                             width="100%"
+                            editable="true"
                         />
                     </HBox>
 
