@@ -1,6 +1,8 @@
 
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
+    "sap/m/PDFViewer",
+    "sap/ui/model/json/JSONModel",
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
@@ -11,6 +13,9 @@ sap.ui.define([
         "use strict";
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+                //Profile Image updating(from Base Controller)...
+                this.applyStoredProfileImage();
+
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
                 this.loadConfiguredSystems();
@@ -36,19 +41,7 @@ sap.ui.define([
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
 
-
             },
-            onAfterRendering: function () {
-                // Apply the stored profile picture
-                var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                if (sStoredProfileImage) {
-                    var oAvatarControl = this.byId("IDRAvatarInitialScreenView");
-                    if (oAvatarControl) {
-                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
-                    }
-                }
-            },
-
             _handleKeyDown: function (oEvent) {
                 if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
                     oEvent.preventDefault();
@@ -103,9 +96,9 @@ sap.ui.define([
             LoadSapLogon: async function () {
 
                 // Load the fragment if it hasn't been loaded yet
-                this.oConfigSap ??= await this.loadFragment({
-                    name: "com.app.rfapp.fragments.SapLogon"
-                });
+                this.oConfigSap ??= await this.loadFragment(
+                    "SapLogon"
+                );
 
                 // Open the dialog
                 this.oConfigSap.open();
