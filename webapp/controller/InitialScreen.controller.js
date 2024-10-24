@@ -1,6 +1,7 @@
 
 sap.ui.define([
     "./BaseController",
+    
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
@@ -53,31 +54,57 @@ sap.ui.define([
 
             },
             _handleKeyDown: function (oEvent) {
-                if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
+                // Prevent default action for specific function keys
+                if (["F1", "F2", "F4"].includes(oEvent.key)) {
                     oEvent.preventDefault();
                 }
-                if (this.getView().getId() === "pageInitial") {
+
+                // Check if the current view is the specified one
+                if (this.getView().getId() === "container-com.app.rfapp---InitialScreen") {
                     switch (oEvent.key) {
                         case "F1":
-                            this.onSave();
+                            this.onSavef1Press();
                             break;
                         case "F4":
-                            this.onDelete();
+                            this.onDeletef4press();
                             break;
                         case "F2":
-                            this.onEdit();
+                            this.onEditf2press();
                             break;
                     }
                 }
             },
 
+            // if (Device.system.phone) {
+            //     if (this.isIPhone) {
+            //         // Targeting iPhones (common pixel density for Retina displays and screen width)
+            //         this.byId("idImageLogoAvatarinitial").setWidth("42.5%");
+            //         this.byId("idImageLogoAvatarinitial").setHeight("45.5%");
+            //         // this.byId("initialscreentitle").setMarginRight("25%")
+            //         this.byId("idImageLogoAvatarinitial").addStyleClass("iphoneMarginLeft");
+            //         this.byId("initialscreentitle").addStyleClass("iphoneInitialTitle");
+
+
+            //     } else {
+            //         // Non-iPhone phones
+            //         this.byId("idImageLogoAvatarinitial").setWidth("90%");
+            //         this.byId("idImageLogoAvatarinitial").setHeight("35%");
+            //     }
+            // }
+            // else if (Device.system.tablet) {
+            //     this.byId("environmentButtonsHBox").setWidth("40%");
+            // }
+
+
+
+
             onSave: function () {
                 this.handleLinksapPress();
             },
-            onDelete: function () {
+            onDeletef4press: function () {
                 this.onDeleteConfiguredSystem();
             },
-            onEdit: async function () {
+            onEditf2press: async function () {
                 await this.onEditConfiguredSystem();
             },
             onsapCancelPress: function () {
