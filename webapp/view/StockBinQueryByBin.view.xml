@@ -118,13 +118,6 @@
                                 dialogTitle="Barcode Scanner"
                             />
                         <VBox id="qrCodePlaceholder_SBQB" class="sapUiSmallMarginTop" />
-                        <!-- Submit Button -->
-                        <!-- <Button
-                            id="_IDBinGenSubmitButton_SBQB"
-                            text="Submit"
-                            class="sapUiTinyMarginEnd"
-                            press="onPressBinSubmit"
-                        /> -->
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
@@ -193,14 +186,10 @@
                         id="idBinDataTable"
                         growingScrollToLoad="true"
                         selectionChange="onSelectmaterial"
+                        growingThreshold="10"
+                        growing="true"
                     >
                         <columns>
-                            <!-- <Column id="idProd.NoCol">
-                                <Title
-                                    id="idProd.NoTitle"
-                                    text="Prod.No"
-                                />
-                            </Column> -->
                             <Column id="idProductCol">
                                 <Title
                                     id="idProductTitle"
@@ -221,10 +210,6 @@
                             </Column>
                         </columns>
                         <items>
-                            <!-- <ColumnListItem id="idBinColListItem" type="Navigation">
-                                <cells>
-                                </cells>
-                            </ColumnListItem> -->
                         </items>
                     </Table>
                     <HBox id="idActionButtons" >
@@ -653,13 +638,6 @@
                            
                         </columns>
                         <items>
-                            <!-- <ColumnListItem id="idBinListColListItem">
-                                <cells>
-                                    <Text id="idHUValue" />
-                                    <Text id="idListProductColValue" />
-                                    <Text id="idListflagColValue" />
-                                </cells>
-                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </Panel>

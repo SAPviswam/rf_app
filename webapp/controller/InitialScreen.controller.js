@@ -1,17 +1,28 @@
 
 sap.ui.define([
     "./BaseController",
+    
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/ui/core/Fragment",
+    "sap/ui/model/odata/ODataModel",
 ],
-    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator) {
+    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment,ODataModel) {
         "use strict";
+
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
+                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", { 
+                    headers: { 
+                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"), 
+                        "sap-client": "100" 
+                    } 
+                }); 
+                this.getView().setModel(oModel); 
                 this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
@@ -27,6 +38,7 @@ sap.ui.define([
                 this.arrayOfClient = [];
 
 
+
                 if (Device.system.phone) {
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
@@ -39,22 +51,26 @@ sap.ui.define([
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
+              
 
             },
             _handleKeyDown: function (oEvent) {
-                if (oEvent.key === "F1" || oEvent.key === "F2" || oEvent.key === "F4") {
+                // Prevent default action for specific function keys
+                if (["F1", "F2", "F4"].includes(oEvent.key)) {
                     oEvent.preventDefault();
                 }
-                if (this.getView().getId() === "pageInitial") {
+
+                // Check if the current view is the specified one
+                if (this.getView().getId() === "container-com.app.rfapp---InitialScreen") {
                     switch (oEvent.key) {
                         case "F1":
-                            this.onSave();
+                            this.onSavef1Press();
                             break;
                         case "F4":
-                            this.onDelete();
+                            this.onDeletef4press();
                             break;
                         case "F2":
-                            this.onEdit();
+                            this.onEditf2press();
                             break;
                     }
                 }
