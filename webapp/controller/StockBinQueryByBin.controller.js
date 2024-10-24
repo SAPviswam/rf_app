@@ -260,6 +260,7 @@ sap.ui.define([
     },
 
     onSelectMaterial: function (oEvent) {
+      
       var oView = this.getView();
 
       var oModel = this.getView().getModel(); // Assuming you have a model set up
@@ -275,6 +276,7 @@ sap.ui.define([
           var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
 
           var oSelectedMaterial = aMaterials.find(function (material) {
+
             return material.Matnr === sSelectedMatnr;
           });
           if (oSelectedMaterial) {
