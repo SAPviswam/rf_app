@@ -840,7 +840,7 @@ sap.ui.define([
 
                             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
                             let lOQueue = oQueue.toLowerCase();
-                            that.getView().byId(`id_${lOQueue}`).setVisible(true)
+                           // that.getView().byId(`id_${lOQueue}`).setVisible(true)
                         })
 
                         var aNavigationData = oModel.getProperty("/navigation");
@@ -928,13 +928,13 @@ sap.ui.define([
             onGenericTilePress: async function(oEvent) {
                 var oGenericTileName=oEvent.oSource.mProperties.header;
                 var oQueueArray=[]
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
-                    this.getView().addDependent(this._oPopover);
+                if (!this._oPopoverGt) {
+                    this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+                    this.getView().addDependent(this._oPopoverGt);
                 }
                 const aOptions = []
-                this._oPopover.setTitle(oGenericTileName)
-                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                this._oPopoverGt.setTitle(oGenericTileName)
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 oVBox.destroyItems(); // Clear existing items
             
                 // Create radio buttons dynamically
@@ -1012,13 +1012,13 @@ sap.ui.define([
                
             
                 // Open popover at the tile position
-                await this._oPopover.openBy(oEvent.getSource());
+                await this._oPopoverGt.openBy(oEvent.getSource());
             },
             
             
             onRadioButtonSelect: function() {
                 // Get the VBox that contains the radio buttons
-                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 const aItems = oVBox.getItems(); // Get all items in the VBox
             
                 // Loop through the items to find the selected radio button

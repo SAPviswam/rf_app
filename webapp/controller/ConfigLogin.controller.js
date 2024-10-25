@@ -15,10 +15,12 @@ sap.ui.define(
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("InitialScreen");
         },
+
         onpressSignup:function(){
           MessageToast.show("you click on SignUp button");
 
         }
+
       });
     }
   );

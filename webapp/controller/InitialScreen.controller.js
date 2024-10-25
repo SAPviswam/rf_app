@@ -1,16 +1,14 @@
 
 sap.ui.define([
-    "./BaseController",
-    
+    "./BaseController", 
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/core/Fragment",
     "sap/ui/model/odata/ODataModel",
 ],
-    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, Fragment,ODataModel) {
+    function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
@@ -43,6 +41,9 @@ sap.ui.define([
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
+                    this.getView().byId("idTitle_InitialView").addStyleClass("titleMobile");
+                    
+                   
 
                 }
                 else if (Device.system.tablet) {
@@ -125,6 +126,7 @@ sap.ui.define([
             },
             onFinishconnectSAPPress: function () {
                 // Get the dialog and its input fields
+
                 var oView = this.getView();
                 var sDescription = oView.byId("idDescriptionInput_InitialView").getValue();
                 var sSystemId = oView.byId("idSystemIdInput_InitialView").getValue();
