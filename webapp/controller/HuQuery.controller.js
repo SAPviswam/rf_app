@@ -341,7 +341,7 @@
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
                            Product: oDetails[i].Matnr,
-                            Quantity: oDetails[i].Qty,
+                            Quantity: oDetails[i].Quan,
                           SLNO:i+1,
                           Uom: oDetails[i].Meins,
                           Pd:oDetails[i].Maktx
