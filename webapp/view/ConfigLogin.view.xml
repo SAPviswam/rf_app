@@ -37,8 +37,50 @@
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
+
+                      <Title
+                                id="initialscreentitle1"
+                                text="CAPmodel RF"
+                                class="capModelRFTextlogin sapUiSmallMarginBottom"
+                           
+                            />
+                    </HBox>
+                    <Label id="idlabelempty_cl" width="0.5rem" />
+                    <HBox id="idhboxwah_cl">
+                        <VBox id="_IDGenHBox26_cl">
+                            <Label
+                                id="idLabelHU_cl"
+                                text="Username:"
+                                labelFor="idHUInput_cl"
+                                class="LabelHomePage"
+                            />
+                            <Label
+                                id="idLabelUserID_cl"
+                                text="password:"
+                                labelFor="idUserIDInput_cl"
+                                class="sapUiSmallMarginTop LabelHomePage"
+                            />
+                        </VBox>
+                        <Text id="idtext_cl" width="0.4rem"></Text>
+                        <VBox id="_IDGenHBox32_cl">
+                            <Input
+                                id="idUsernameInput_cl"
+                                placeholder="username"
+                                width="100%"
+                                editable="true"
+                            />
+                            <Input
+                                id="idUserIDInput_cl"
+                                placeholder="password"
+                                width="100%"
+                                 editable="true"
+                            />
+                        </VBox>
+                    </HBox>
+
                     </layoutData>
                 </ToolbarSpacer>
+
                
             </tnt:ToolHeader>
         </tnt:header>

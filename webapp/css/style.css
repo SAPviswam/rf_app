@@ -10,7 +10,7 @@
     height: 100vh;
     padding: 0; /* Adjust padding as needed */
 }
-
+ 
 /* Center the login container */
 .mainContainer {
     display: flex;
@@ -20,7 +20,7 @@
     height: 100%;
     /* Ensure the container takes full height */
 }
-
+ 
 /* Style the login container */
 .loginContainer {
     background-color: rgba(119, 176, 240, 0.5);
@@ -33,7 +33,7 @@
     transition: all 0.5s ease-out;
     margin: 0; /* Remove margin to center properly */
 }
-
+ 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .loginContainer {
@@ -41,21 +41,21 @@
         margin: 0 2rem;
     }
 }
-
+ 
 @media (max-width: 480px) {
     .loginContainer {
         padding: 1rem;
         margin: 0;
     }
 }
-
+ 
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
-
+ 
 /* Supervisor Page Start */
 .sapUiSmallMarginTop {
     margin-top: 1rem;
 }
-
+ 
 .sapUiSmallMargin {
     border: 1cm;
 }
@@ -72,7 +72,9 @@
 }
 
 
+
 /* .buttonContainer {
+
     border-radius: 0rem !important;
     margin-top: 20px; 
     background-color: black;
@@ -81,6 +83,7 @@
 } */
  
 .capModelRFTextdialog {
+ 
     color: #ed731dd2 !important;
     margin-right: 8%;
   
@@ -104,20 +107,30 @@
 .boxContainer {
     border-radius: 1rem !important;
     border: 2px solid #ed731dd2 !important;
-    padding: auto !important; 
+    padding: auto !important;
     padding-bottom: 1rem;
-    /* width: 23% !important; */
+    width: 23% !important;
 }
+
+/*.boxContainerhome{
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important;
+    padding-bottom: 1rem;
+    width: 23% !important;
+}*/
+/*
 @media only screen and (min-width: 1024px) {
     .boxContainer {
         border-radius: 1rem !important;
         border: 2px solid #ed731dd2 !important;
-        padding: auto !important; 
+        padding: auto !important;
         padding-bottom: 1rem;
         width: 23% !important;
     }
-}
 
+}
+*/
 .TitlecustomHeader{
     border: 2px solid #ed731dd2 !important;
     user-select: none !important; /* Prevent text selection */
@@ -125,7 +138,7 @@
     -moz-user-select: none !important; /* For Firefox */
     -ms-user-select: none !important; /* For Internet Explorer/Edge */
 }
-    
+   
 .InitialButton67{
     margin-left: 0.5rem;
     font-size: x-small;
@@ -136,26 +149,54 @@
 }
 .boxContainer3 {
     border-radius: 1rem !important;
-     border: 2px solid #090909d2 !important; 
+     border: 2px solid #090909d2 !important;
     /* Add border width, style, and color */
-    padding: 2rem !important; 
+    padding: 2rem !important;
     width: 40% !important;
 }
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2 !important;
     /* Add border width, style, and color */
-    padding: auto !important; 
+    padding: auto !important;
     width: auto !important;
+    /* padding-bottom: 4rem; */
+}
+.boxContainerlogin {
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important;
+    width: auto !important;
+    /* padding-bottom: 4rem; */
+}
+.boxContainerlogin {
+    margin-top: 5% !important;
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important;
+    width: auto !important;
+}
+.boxContainerhome {
+    margin-bottom: 2%;
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important;
+    padding-bottom: 1rem;
+    width: 23% !important;
 }
 
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
 }
-
+.capModelRFTextlogin {
+    color: #ed731dd2 !important;
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
 .capModelRFText {
     color: #ed731dd2 !important;
-    margin-top: 25px !important; /* Adjust margin to position it below the title */
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
     font-size: 1em !important; /* Optional: adjust font size */
     margin-left: 30px !important;
 }
@@ -176,6 +217,7 @@
     color: white; /* Set text color for better visibility */
 }
 
+
 /* .buttonContainer {
     margin-top: 20px; 
     background-color: black;
@@ -184,6 +226,7 @@
     margin-bottom: 0.5rem;
  
 } */
+
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
@@ -195,63 +238,94 @@
 .Inputs {
     width: 100%
 }
-
+ 
 .logo{
     margin-top: 7%;
     margin-left: 7%;
     max-width: 100%;
     height: auto; /* Maintain aspect ratio */
-      
+     
 }
-
+ 
 .dropdown {
     width: 80%;
 }
 /* General styles for all devices */
-
-
+.boxContainer {
+    width: 100%; /* Default to full width */
+    padding: 0; /* Default padding */
+}
+.boxContainerhome{
+    width: 100%; /* Default to full width */
+    padding: 0; /* Default padding */
+}
+ 
 .boxContainer3 {
     width: auto; /* Default width */
 }
-
+ 
 .boxContainer2 {
     border-bottom: 2px solid #ed731dd2; /* Border style */
-    width: 100% !;
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
 }
-
+.boxContainerlogin {
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
+}
+.boxContainerhome{
+    border-bottom: 2px solid #ed731dd2; /* Border style */
+    padding: 0; /* Default padding */
+    width: auto; /* Default width */
+}
+ 
 .capModelRFText {
     font-size: 1.5em; /* Default font size */
 }
-
+.capModelRFTextlogin{
+    font-size: 1.5em; /* Default font size */
+}
+ 
 .button {
     margin-left: 5%; /* Default left margin */
     width: auto; /* Default width */
     margin-bottom: 10px; /* Space between buttons */
 }
-
+ 
 .logo {
     margin-top: 7%;
     margin-left: 7%;
     max-width: 100%;
     height: auto; /* Maintain aspect ratio */
 }
-
-/* Responsive styles for tablets and mobile devices */
-
-
+/* General mobile styles */
 @media (max-width: 600px) {
     .boxContainer {
-        width:  85%!important; /* Full width on mobile */
-        padding: auto !important; /* Adjust padding */
+        width: 85% !important; /* Full width on mobile */
+        padding: 0 !important; /* Adjust padding */
+    }
+    .boxContainerhome {
+        width: 85% !important; /* Full width on mobile */
+        padding: 0 !important; /* Adjust padding */
     }
     .boxContainer3 {
         width: auto !important; /* Full width on mobile */
-        padding: auto !important; /* Adjust padding */
+        padding: 0 !important; /* Adjust padding */
     }
     .boxContainer2 {
-        border-bottom: 2px solid #ed731dd2 !important;
-        /* Add border width, style, and color */
-        padding: auto !important;
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important;
+        width: auto !important;
+    }
+    .boxContainerlogin {
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important;
+        width: auto !important;
+    }
+    .boxContainerhome{
+        border-bottom: 2px solid #ed731dd2 !important; /* Add border */
+        padding: 0 !important;
         width: auto !important;
     }
     .capModelRFText {
@@ -259,37 +333,111 @@
         margin-left: 10px; /* Adjust left margin */
         margin-top: 15px; /* Adjust top margin */
     }
- 
+    .capModelRFTextlogin{
+        font-size: 1.2em; /* Increase font size for better readability */
+        margin-left: 10px; /* Adjust left margin */
+        margin-top: 15px; /* Adjust top margin */
+    }
     .button {
         margin-left: 5% !important; /* Reduce left margin on mobile */
         width: 100%; /* Full width buttons on mobile */
         margin-bottom: 10px; /* Add space between buttons */
     }
- 
     .logo {
-        margin-top: 7%; /* Adjust logo margin for mobile */
-        margin-left: 7%; /* Center logo on mobile */
-        width: 100%; /* Logo full width on mobile */
+        margin-top: 7%;
+        margin-left: 7%;
+        max-width: 100%;
         height: auto; /* Maintain aspect ratio */
     }
 }
  
-.iphoneMarginLeft {
-    margin: 2% !important;
+/* Media query for iPhone 14 */
+@media (min-width: 390px) and (max-width: 430px) {
+    .boxContainer {
+        width: 90% !important; /* Slightly narrower */
+    }
+    .capModelRFText {
+        font-size: 1.3em; /* Adjust font size */
+        margin-left: 5%; /* Adjust left margin */
+    }
+    .capModelRFTextlogin {
+        font-size: 1.3em; /* Adjust font size */
+        margin-left: 5%; /* Adjust left margin */
+    }
+ 
+    .button {
+        width: 90%; /* Slightly narrower buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 5%; /* Adjust top margin */
+        margin-left: auto; /* Center alignment */
+        margin-right: auto; /* Center alignment */
+        max-width: 80%; /* Adjust logo size */
+    }
 }
-
-
-.iphoneMarginSapLogon{
-    margin: 0%;
+ 
+/* Media query for iPad Mini */
+@media (min-width: 768px) and (max-width: 800px) {
+    .boxContainer {
+        width: 90% !important; /* Maintain good width */
+       
+    }
+    .boxContainerhome {
+        width: 90% !important; /* Maintain good width */
+       
+    }
+ 
+    .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .capModelRFTextlogin {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .button {
+        width: 85%; /* Wider buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 6%; /* Adjust margins */
+        max-width: 75%; /* Adjust logo size */
+    }
 }
-
-.iphoneInitialTitle{
-    padding: 0%;
+ 
+/* Media query for iPad Air */
+@media (min-width: 820px) and (max-width: 840px) {
+    .boxContainer {
+        width: 90% !important; /* Maintain good width */
+    }
+    .boxContainerhome {
+        width: 90% !important; /* Maintain good width */
+    }
+    .capModelRFText {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .capModelRFTextlogin {
+        font-size: 1.4em; /* Adjust font size */
+        margin-left: 10px; /* Adjust left margin */
+    }
+    .button {
+        width: 80%; /* Wider buttons */
+        margin-left: auto; /* Center button */
+        margin-right: auto; /* Center button */
+    }
+    .logo {
+        margin-top: 6%; /* Adjust margins */
+        max-width: 75%; /* Adjust logo size */
+    }
 }
-.tabletBoxContainer{
-    width: 150%;
-}
-
+ 
+ 
+ 
+ 
 .orangeButtonText {
     background-color: rgb(238, 176, 7) !important; /* Set background color to orange */
     color: rgb(243, 15, 15) !important; /* Remove default border */
@@ -359,36 +507,36 @@
 
 .textFieldsAF {
     padding-bottom: 1rem;
-
+ 
 }
-
-
-  
+ 
+ 
+ 
   .classUOMbyASn{
     margin-top: 16%;
   }
-
-  
-
-
+ 
+ 
+ 
+ 
 /*--------------------------------------------------------------------- Supervisor Page End ---------------------------------------------------------------------*/
-
+ 
 /*---------------------------------------------------------------------Resource Page Start ---------------------------------------------------------------------*/
-
-
+ 
+ 
 /*---------------------------------------------------------------------Resource Page End ---------------------------------------------------------------------*/
-
-
+ 
+ 
 /*-----------------------------Reciving Of Hu by ASN   Start----------------------------------*/
 .ScanHumargin {
     margin-top: 20%;
     margin-right: 2000% !important;
 }
-
+ 
 .ItemLabel {
     margin-top: 14%;
     margin-right: 2000% !important;
-
+ 
 }
 .classUOMbyASn{
     margin-top: 16%;
@@ -396,27 +544,27 @@
 }
 .classExpiryHUbyASn{
     margin-top: 16%;
-    margin-right: 2000% !important;   
+    margin-right: 2000% !important;  
 }
 .classitemnoHUbyASn{
     margin-top: 16%;
-    margin-right: 2000% !important;     
+    margin-right: 2000% !important;    
 }
-
+ 
 /*-----------------------------Reciving Of Hu by ASN   End----------------------------------*/
-
-
+ 
+ 
 /*-----------------New HU FROM BBOL-------------------------*/
 .classUOMbyASn {
     margin-top: 16%;
 }
-
+ 
 /*---------------------------------------------------------------------Putaway by hu ---------------------------------------------------------------------*/
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 /*......These are(4Tiles) for "PutawayByWO Tile=>Page1" & "AvailableHandlingUnitsonBinQuery Tile=>Page1" & "WTQueryByHU Tile=>Page1" & "AutomaticallyRepackHUItem Tile=>Page1" ......*/
 .putawayContainer_PBYWO,.BinQueryContainer_AHUOBQ, .WTQueryBYHUContainer_WTQBYHU,.AutoRepackHUIContainer_ARHUI {
     height: 100%;
@@ -475,9 +623,9 @@
 .UnitsofMeasure {
     margin-top: 0.4rem;
 }
-/* ScrollContainers Page2 & Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
+/* ScrollContainers Page5 & Page6 & Page7 CSS methods from PutawayByWO Tile..&&
    ScrollContainers Page3 & Page4 From AHUOBQ(AvaialbleHandlingUnitsOnBinQuery) Tile.. &&
-   ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. && 
+   ScrollContainers Page3 & Page4 From WTQBYHU(WTQueryByHU) Tile.. &&
    ScrollContainers Page4 & Page5 & Page8 & Page9 From ARHUI(Automatically RepackHUItem) Tile.. */
 .Page2HUDetailsContainer_PBYWO, .verifyHuNumberContainer, .MainVBoxGR, .MainVBoxUnLoad, .ThirdPageContainer_AHUOBQ, .Page4PrdDescriptionContainer_AHUOBQ, .ThirdPageContainerWT_WTQBYHU, .Page4ContainerPD_WTQBYHU, .Page4AutoRHUIContainer_ARHUI, .Page5AutoRHUIContainer_ARHUI, .Page8AutoRHUIContainer_ARHUI, .Page9AutoRHUIContainer_ARHUI {
     display: flex;
@@ -512,7 +660,7 @@
 }
 .BinNumberTableLabel_AHUOBQ,.HUNumberTableLabel_WTQBYHU, .WTDetailsLabelPage4_WTQBYHU, .PDLabelPage4_WTQBYHU{
     font-weight: bold;
-    margin-top: 0.5rem; 
+    margin-top: 0.5rem;
     margin-right: 0.3rem;
 }
 .TextLableUnits_AHUOBQ{
@@ -651,48 +799,48 @@
     font-weight: bold;
 }
 
-
-
-
-
 /* ---------------------------------------------------------------------Receving Of HU By Delivery-------------------------------------------------------- */
 .ScanDeliverymargin {
     margin-top: 12%;
     margin-right: 2000% !important;
 }
-
+ 
 .ItemLabel {
     margin-top: 12%;
     margin-right: 2000% !important;
 }
-
-
+ 
+ 
 /* unloading by door start*/
 .titles_UBYD {
     margin-left: 30vw;
 }
-
+ 
 /* Media query for mobile devices */
 @media only screen and (max-width: 767px) {
     /* Styles for mobile phones */
-
+ 
     .titles_UBYD {
         margin-left: 20vw;
     }
 }
 
+.vboxResponsiveGif{
+    margin-right: 30%;
+}
+
 /* unloading by door end*/
-
-
-
+ 
+ 
+ 
 /* unloading by door end*/
-
-
+ 
+ 
 /* unloading by door end*/
 .ToolHeader{
 background-color: rgb(9, 8, 8) !important;
 }
-
+ 
 .customDialogHeader {
     background-color: orange !important;
 }
@@ -703,8 +851,8 @@ background-color: rgb(9, 8, 8) !important;
     margin-right: 5px;
  
 }
-
-
+ 
+ 
 /* CSS Methods For SIGNUP Fragment */
 .RFLoginText{
     margin-right: 5rem;
@@ -754,13 +902,12 @@ background-color: rgb(9, 8, 8) !important;
 .boxContainersignup{
     border-radius: 0rem !important;
     border: 2px solid #ed731dd2 !important;
-    padding: auto !important; 
+    padding: auto !important;
     padding-bottom: 1rem;
     width: 25% !important;
 }
-.sapMPopover .sapMIBar.sapMHeader-CTX {
-    background-color: #ec792d;
-}
+ 
+ 
 .noHeaderDialog .sapMDialogTitle {
     display: none;
 }
@@ -777,12 +924,12 @@ background-color: rgb(9, 8, 8) !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /* .cancelbutton{
-    background-color: #fbf6f6;
-    border: 2px solid #ffffff !important;
+    background-color: #c9dbe9;
+    border: 2px solid #c9dbe9 !important;
     color:rgba(24, 24, 237, 0.852) !important;
     margin-top: 0.2rem;
 } */
-
+ 
 /* .comboCS{
 margin-left: 20%;
 margin-right: 20%;
@@ -790,42 +937,15 @@ margin-right: 20%;
 /* .changePassword{
     font-size: 90%;
 } */
-
+ 
 .VboxChangePassword {
 margin-right: 15%;
 }
-.UserDetailsDialog{
-    background-color: orange !important;
-    color: orange;
-}
-
-/* Styles for Config Login */
-
-.boxContainerlogin {
-    margin-top: 5% !important;
-    border-bottom: 2px solid #ed731dd2 !important;
-    /* Add border width, style, and color */
-    padding: auto !important;
-    width: auto !important;
-}
-.boxContainerhome {
-    margin-bottom: 2%;
-    border-radius: 0rem !important;
-    border: 2px solid #ed731dd2 !important;
-    padding: auto !important;
-    padding-bottom: 1rem;
-    width: 23% !important;
-}
- 
-.capModelRFTextlogin {
-    color: #ed731dd2 !important;
-    margin-top: 3% !important; /* Adjust margin to position it below the title */
-    font-size: 1em !important; /* Optional: adjust font size */
-    margin-left: 30px !important;
-}
- 
 .moveRight {
     margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
+}
+.Signupcard{
+    margin-right: 30%;
 }
 /* Styles for Config Login end*/
 
@@ -851,10 +971,7 @@ margin-right: 15%;
     border-radius: 10px;
     border :0px;
  
-}
-
-
- 
+} 
 .VboxAddConfig{
     margin-left: 5%; /* Adjust horizontal alignment */
     margin-top: 8%;
@@ -1013,10 +1130,6 @@ margin-right: 15%;
 
 /*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
- 
-
-
-
 .TitleMQ{
     margin-right: 20%;
     margin-top:10% ;
@@ -1118,6 +1231,7 @@ margin-right: 15%;
     justify-items: center;
 }
 
+
 .VboxGifTab{
     margin-top:90%;
     width:200px;
@@ -1145,3 +1259,4 @@ margin-right: 15%;
 .vboxResponsiveGifTab{
     padding: 2%;
 }
+
