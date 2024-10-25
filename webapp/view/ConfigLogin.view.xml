@@ -9,6 +9,7 @@
     xmlns:core="sap.ui.core"
     displayBlock="true"
     height="100%"
+    
 >
     <tnt:ToolPage id="idRfconfigPage01ToolPage">
         <!-- Header -->
@@ -69,8 +70,8 @@
         >
             <VBox
                 class="whiteBorderBox"  
-                width="300px"  
-                height="200px" 
+                width="350px"  
+                height="250px" 
                 alignItems="Center"
                 justifyContent="Center"
             >
