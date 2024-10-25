@@ -8,7 +8,7 @@
         placement="Bottom"
         verticalScrolling="false"
         horizontalScrolling="false"
-        class="sapUiResponsivePadding"
+        class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
         contentWidth="200px"
         title="Profile:"
     >
@@ -25,6 +25,7 @@
                         id="idProfileAvatarInHomePage"
                         displaySize="XS"
                         tooltip="Profile"
+                        press="onPressPopoverProfileAvatarHomeScreen"
                     />
                     <Label
                         id="idLabelEmptyInProfileInHomePage"

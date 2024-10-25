@@ -52,7 +52,6 @@ sap.ui.define(
 
                 // show the second page
                 oScrollContainer2.setVisible(true);
-
                 //Hide the third Page scroll container
                 oScrollContainer3.setVisible(false);
             },

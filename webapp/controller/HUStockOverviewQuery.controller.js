@@ -8,9 +8,9 @@ sap.ui.define(
  
       return BaseController.extend("com.app.rfapp.controller.HUStockOverviewQuery", {
         onInit: function() {
+            
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-            
         },
         onResourceDetailsLoad: async function (oEvent1) {
             const { id } = oEvent1.getParameter("arguments");
@@ -38,9 +38,11 @@ sap.ui.define(
                     MessageToast.show("User does not exist");
                 }
             });
+            
            
         },
-        onHUInputChange:function(){
+        
+        onSubmitButtonPress:function(){
             this.getView().byId("idScforFirstHUStockOverviewQuery").setVisible(false);
             this.getView().byId("idHUStockOverviewQueryfirstbackbtn").setVisible(false);
             this.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(true);

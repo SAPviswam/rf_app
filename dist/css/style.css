@@ -72,16 +72,19 @@
 }
 
 
-.buttonContainer {
+/* .buttonContainer {
     border-radius: 0rem !important;
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+    margin-top: 20px; 
     background-color: black;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
-}
+} */
  
 .capModelRFTextdialog {
     color: #ed731dd2 !important;
+    margin-right: 8%;
+  
+   
 }
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
@@ -143,9 +146,8 @@
     /* Add border width, style, and color */
     padding: auto !important; 
     width: auto !important;
-   
-    /* padding-bottom: 4rem; */
 }
+
 .checkBoxText .sapMCbLabel {
     font-weight: bold; /* Make the checkbox label text bold */
     color: #333;
@@ -174,14 +176,14 @@
     color: white; /* Set text color for better visibility */
 }
 
-.buttonContainer {
-    margin-top: 20px; /* Optional: add some spacing between buttons */
+/* .buttonContainer {
+    margin-top: 20px; 
     background-color: black;
     margin-left: 1.7rem;
     margin-right: 2.5rem;
     margin-bottom: 0.5rem;
  
-}
+} */
 .dialogButton {
     background-color: black !important; /* Set button background color to black */
     border-radius: 12px !important; /* Adjusted for more pronounced curve */
@@ -308,33 +310,53 @@
 }
 /* these are for theme colors for options... */
 .colorCheckBox {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 36px !important;
+    height: 36px !important;
+    margin-right: 7px;
     display: inline-block;
     border-color: black !important;
 }
 .redCheckBox .sapMCbBg {
-    background-color: red !important;
+    background-color: lightcoral !important;
+    height: 20px;
+    width: 20px;
 }
 .blackCheckBox .sapMCbBg {
-    background-color: black !important;
+    background-color: lightgray !important;
+    height: 20px;
+    width: 20px;
 }
 .greenCheckBox .sapMCbBg {
-    background-color: green !important;
+    background-color: lime !important;
+    height: 20px;
+    width: 20px;
 }
 .whiteCheckBox .sapMCbBg {
     background-color: white !important;
+    height: 20px;
+    width: 20px;
 }
 .purpleCheckBox .sapMCbBg {
-    background-color: purple !important;
+    background-color: thistle !important;
+    height: 20px;
+    width: 20px;
 }
 .blueCheckBox .sapMCbBg {
-    background-color: blue !important;
+    background-color: lightblue !important;
+    height: 20px;
+    width: 20px;
 }
 .YellowCheckBox .sapMCbBg {
-    background-color: yellow !important;
+    background-color:  #ffad16ea !important;
+    height: 20px;
+    width: 20px;
 }
+.LabelTileNamecolour{
+    font-weight: bolder;
+}
+
+
+
 .textFieldsAF {
     padding-bottom: 1rem;
 
@@ -552,11 +574,106 @@
     height: 80px !important;
     font-size: auto !important;
 }
-.TileViewPopOver{
-    background-color: orange !important;
+.listgridIcons {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    align-items: center;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: -2rem !important;
 }
-
-
+.listgridIcons .sapMGTHeader {
+    margin-left: 10px; /* Space between tile and header */
+}
+.tileSelected {
+    border: 3px solid rgb(255, 120, 9) !important;
+    box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
+    animation: shake 0.35s ease infinite !important;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: linear-gradient(to right, #ff5f6d, #ffc371); */
+    padding: 20px;
+    border-radius: 10px;
+    width: 338px;
+    height: 432px;
+    margin: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.profileAvatar {
+    border-radius: 55%;
+    margin-bottom: 15px;
+    border: 4px solid #fff;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.profileAvatar:hover::after {
+    content: ""; /* Unicode for the camera icon (from SAP icons) */
+    font-family: "SAP-icons";
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.profileAvatar1234:hover::after {
+    content: ""; /* Unicode for the camera icon (from SAP icons) */
+    font-family: "SAP-icons";
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.profileDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #111;
+    border-radius: 8px;
+    padding: 10px;
+    width: 110%;
+    color: #fff;
+}
+.profileDetailItem {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #eceaea;
+    font-weight: normal;
+}
 
 
 
@@ -687,6 +804,35 @@ margin-right: 15%;
     color: orange;
 }
 
+/* Styles for Config Login */
+
+.boxContainerlogin {
+    margin-top: 5% !important;
+    border-bottom: 2px solid #ed731dd2 !important;
+    /* Add border width, style, and color */
+    padding: auto !important;
+    width: auto !important;
+}
+.boxContainerhome {
+    margin-bottom: 2%;
+    border-radius: 0rem !important;
+    border: 2px solid #ed731dd2 !important;
+    padding: auto !important;
+    padding-bottom: 1rem;
+    width: 23% !important;
+}
+ 
+.capModelRFTextlogin {
+    color: #ed731dd2 !important;
+    margin-top: 3% !important; /* Adjust margin to position it below the title */
+    font-size: 1em !important; /* Optional: adjust font size */
+    margin-left: 30px !important;
+}
+ 
+.moveRight {
+    margin-left: 5rem;  /* Adjust the value to move the buttons further to the right */
+}
+/* Styles for Config Login end*/
 
 @media (max-width: 600px) {
     #idSlotsTableHeader1 .sapMBtn {
@@ -701,5 +847,212 @@ margin-right: 15%;
     }
 }
 
+
+/*New UI initial view styles start*/
+
+.dialogButton_sapconnect{
+    color:rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5) ;
+    border-radius: 10px;
+    border :0px;
+ 
+}
+
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+.BtnConfSAPsys .sapMBtnInner {
+    color: orange; /* Change this to your desired color */
+}
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d !important;
+}
+
+.div{
+    position: absolute; 
+    left: 8%; 
+    top: 48%;
+    width: 41%; 
+    transform: translateY(-50%);
+   
+}
+
+
+.configtitle{
+    position: absolute; 
+    left: 8%; 
+    top: 40%;
+    width: 35%; 
+    transform: translateY(-50%);
+}
+
+/* Media Query for Tablets */
+@media (max-width: 900px) and (min-width: 600px) {
+    .configtitle {
+        left: 5%;    /* Adjust left position */
+        width: 50%;  /* Adjust width for better layout */
+        top: 32.5%;    /* Optional: adjust top position */
+    }
+
+    .ConfigBtnsHbox {
+        right: 10%;    /* Adjust right position */
+        top: 30%;      /* Adjust top position */
+          /* Optional: change width for better layout */
+    }
+
+    .vboxAdd {
+        margin-left: 50%; /* Adjust horizontal alignment */
+        margin-top: 30%; /* Add margin to push it down */
+    }
+
+}
+
+.span{
+    color:orange;
+}
+
+.ConfigBtnsHbox {
+    position: fixed;
+    right: 13%;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 100; /* Ensure it’s on top of other elements */
+}
+
+.title {
+    position: absolute; 
+    left: 45%;
+    color: orange; 
+    align-content: center;    
+}
+
+.BtnConfSAPsys {
+    margin-top: 45%; /* Adjust the value as needed */
+}
+
+.btn{
+    margin-left: 0.5rem;
+    pointer-events: auto; 
+    cursor: pointer;
+}
+
+.vboxAdd{
+    margin-left: 65%;
+    
+}
+
+.dialogButton{
+    color:rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5) ;
+    border-radius: 11px;
+}
+
+.RFconfigTitleTab{
+    top: 33%;
+}
+
+.configTextVbox{
+    width: 45%;
+}
+
+.checkBoxText{
+    color: rgb(0, 0, 0);
+    font-weight: bold !important;
+    font-size: larger !important;
+}
+.checkbox{
+    margin-right: 30vw;
+}
+
+.TitleMQ{
+    margin-right: 20%;
+    margin-top:10% ;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+}
+ 
+.VboxAddConfig{
+    margin-left: 5%; /* Adjust horizontal alignment */
+    margin-top: 8%;
+    margin-right: 4%;/* Add margin to push it down */
+}
+ 
+
+/*New UI initial view styles end*/
+
+
+/* Add background image to the ScrollContainer */
+#idScrollContainer1_configPage {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/012/963/199/non_2x/subtle-faded-circles-abstract-orange-background-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Ensure proper stacking of elements */
+}
+
+/* Styling for the white card */
+.whiteBox {
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px; /* Slightly increased padding */
+    z-index: 1; /* Ensure the card stays above the background image */
+}
+
+/* Orange styling for input fields */
+.orangeInput input {
+   
+    color: black; /* Black text */
+    border: 2px solid #F7A120; /* Orange border */
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.orangeInput::placeholder {
+    color: #F7A120; /* Orange placeholder */
+    opacity: 1; /* Fully visible placeholder */
+}
+.customBackground {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/012/963/199/non_2x/subtle-faded-circles-abstract-orange-background-vector.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    height: 100vh !important; /* Full viewport height */
+    width: 100% !important;   /* Full width */
+}
+.actionbuttons {
+    margin-left: 5rem; /* Adjust the value to move it further right */
+}
+.paddingBox {
+    padding-top: 100px; /* Adjust the value to move the card further down */
+}
+
+/* Other existing styles */
+.whiteBox {
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 5px; /* Slightly increased padding */
+    z-index: 1; /* Ensure the card stays above the background image */
+}
+.loginTitle {
+    margin-bottom: 15px; /* Space between the title and the input fields */
+    font-size: 18px;     /* Font size of the title */
+    color: #333;         /* Title color */
+    font-weight: bold;   /* Makes the title bold */
+    text-align: center;  /* Centers the text */
+}
 
 

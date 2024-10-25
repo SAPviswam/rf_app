@@ -23,7 +23,6 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
-                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -121,7 +120,7 @@
                         />
                     </customData>
                 </Button> -->
-                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                <ToolbarSpacer id="idToolbarSpacer_supervisor">
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idOverflowToolbarLayout_supervisor"
@@ -250,25 +249,19 @@
                                         text="Resource Id"
                                     />
                                 </Column>
-                                <Column
-                                    id="idEmployeename"
-                                >
+                                <Column id="idEmployeename">
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column
-                                    id="idResourceType"
-                                >
+                                <Column id="idResourceType">
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column
-                                    id="idPhonenumber"
-                                >
+                                <Column id="idPhonenumber">
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
@@ -280,25 +273,19 @@
                                         text="Email"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessArea"
-                                >
+                                <Column id="idProcessArea">
                                     <Title
                                         id="idProcessAreatitle"
                                         text="Process Area"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessGroup"
-                                >
+                                <Column id="idProcessGroup">
                                     <Title
                                         id="idProcessgrouptitle"
                                         text="Group"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessQueue"
-                                >
+                                <Column id="idProcessQueue">
                                     <Title
                                         id="idProcessQueuetitle"
                                         text="Queue"
@@ -464,7 +451,6 @@
                                 <Column
                                     id="idresourcetype"
                                     width="100px"
-
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -634,7 +620,7 @@
                         <GenericTile
                             id="idHUMaintenance1"
                             header="HU Maintenance"
-                            press="ondHUMaintenance"
+                            press="onHUMaintenanceInDeconsolidation"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                         />
                     </ScrollContainer>
@@ -662,16 +648,7 @@
                             header="Putaway By WO"
                             press="onTilePress"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                        >
-                            <TileContent id="idTileContentPutaway">
-                                <Button
-                                    id="idBtnPutawayByWO"
-                                    press="onPaletteIconPress"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="idConfiramtionCorrections1"
                             header="Confiramtion Corrections"
@@ -1102,16 +1079,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
                             header="Replenishment for fixed Bins"
                             press="onTileSelect"
-                        >
-                            <TileContent id="idTileContent0">
-                                <Button
-                                    id="idBtn"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
 
                         <GenericTile
                             id="IDCreateAdhocHUWT"
@@ -1180,18 +1148,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Available Handling units on bin query"
                             press="OnPressAvailableHandlingUnitsOnBinQuery"
-                        >
-                            <TileContent
-                                id="idTileContentHandlingunitsonbinquery"
-                            >
-                                <Button
-                                    id="idBtnHandlingunitsonbinquery"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="IDWTQuerybyWO"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
@@ -1215,16 +1172,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT query by HU"
                             press="OnPressWTquerybyHU"
-                        >
-                            <TileContent id="idTileContentWTquerybyHU">
-                                <Button
-                                    id="idBtnWTquerybyHU"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="IDHUStockOverviewQuery"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"

@@ -31,7 +31,7 @@ sap.ui.define(
                 error: function () {
                     MessageToast.show("User does not exist");
                 }
-              
+             
             });
            
         },
@@ -40,13 +40,14 @@ sap.ui.define(
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationfirstbackbtn").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationThirdbackbtn").setVisible(false);
         },
         onHuMaintanaceInDeconsolidationSecondBackBtnPress: function () {
             this.getView().byId("idHuMaintanaceInDeconsolidationFirstSC").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationfirstbackbtn").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(false);
-            
+           
         },
         onHUinHuMaintanaceValidationInSecond: function () {
             this.getView().byId("idHuMaintanaceInDeconsolidationThirdSC").setVisible(true);
@@ -59,6 +60,8 @@ sap.ui.define(
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationThirdbackbtn").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationfirstbackbtn").setVisible(false);
+           
         },
         onPressTransportInHuMaintanaceThirdSc:function () {
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthSC").setVisible(true);
@@ -66,27 +69,29 @@ sap.ui.define(
             this.getView().byId("idHuMaintanaceInDeconsolidationThirdbackbtn").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthbackbtn").setVisible(true);
         },
+      
         onHuMaintanaceInDeconsolidationFourthBackBtnPress:function () {
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthSC").setVisible(false);
-            this.getView().byId("idHuMaintanaceInDeconsolidationThirdSC").setVisible(true);
-            this.getView().byId("idHuMaintanaceInDeconsolidationThirdbackbtn").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthbackbtn").setVisible(false);
-
+ 
         },
         onPrintPressInHuMaintanaceInDeconsolidationInThird:function() {
             this.getView().byId("idHuMaintanaceInDeconsolidationThirdSC").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationThirdbackbtn").setVisible(false);
-            this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(true); 
+            this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationFourthbackbtn").setVisible(false);
+            this.getView().byId("idHuMaintanaceInDeconsolidationfirstbackbtn").setVisible(false);
         },
         onPressTransportBtnInHuMaintananceSecond:function () {
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondSC").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationSecondbackbtn").setVisible(false);
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthbackbtn").setVisible(true);
             this.getView().byId("idHuMaintanaceInDeconsolidationFourthSC").setVisible(true);
+            this.getView().byId("idHuMaintanaceInDeconsolidationfirstbackbtn").setVisible(false);
         },
       });
     }
   );
- 
- 

@@ -117,16 +117,16 @@
                             <Label
                                 id="idWorkcenterinHuMaintanacek"
                                 text="Work Center :"
-                                class="ScanHumargin"
+                              class="ScanHumargin"
+                                width="100px"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idWorkcenterinHuMaintanaceInputk"
                                 placeholder="Enter Work center..."
-                                class="sapUiTinyMarginBegin"
+                               class="sapUiSmallMarginTop"
                                 width="150px"
-                                liveChange="onLiveWorkcenterinHuMaintanaceValidation"
-                               
+                                liveChange="onLiveWorkcenterinHuMaintanaceValidation"  
                             />
                            
                         </HBox>
@@ -141,7 +141,7 @@
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
-                visible="true"
+                visible="false"
             >
                 <VBox
                     id="HuMaintanaceInDeconsolidationSecond"
@@ -180,19 +180,22 @@
                            
                         </HBox>
                         <HBox>
-                        <Button 
+                        <Button
                           id="idReturnBtnInHuMaintanaceInDeconsolidation"
                         text="Return"
+                        class="sapUiSmallMarginEnd"
                         />
-                        <Button 
+                        <Button
                           id="idDeleteBtnInHuMaintanaceInDeconsolidation"
                         text="Delete"
+                         class="sapUiSmallMarginEnd"
                         />
-                        <Button 
+                        <Button
                           id="idPrintBtnInHuMaintanaceInDeconsolidation"
                         text="Print"
+                          class="sapUiSmallMarginEnd"
                         />
-                        <Button 
+                        <Button
                         id="idTransportBtnInHuMaintanaceInDeconsolidation"
                         text="Transport"
                         press="onPressTransportBtnInHuMaintananceSecond"
@@ -201,14 +204,14 @@
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
-
-             <ScrollContainer
+ 
+           <ScrollContainer
                 id="idHuMaintanaceInDeconsolidationThirdSC"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
-                visible="true"
+                visible="false"
             >
                 <VBox
                     id="HuMaintanaceInDeconsolidationThird"
@@ -217,7 +220,7 @@
                     class="centerContent"
                 >
                     <f:SimpleForm
-                        id="HuMaintanaceInDeconsolidatioThirdForm1"
+                        id="HuMaintanaceInDeconsolidationThirdForm1"
                         layout="ResponsiveGridLayout"
                         editable="true"
                         class="sapUiResponsiveMargin"
@@ -227,142 +230,143 @@
                         emptySpanM="4"
                         columnsL="1"
                         columnsM="1"
-                        justifyContent="Start"
                     >
-                    <VBox>
-                        <HBox id="HboxinThirdsc" justifyContent="Start">
-                            <!-- Scan HU Label -->
-                            <Label
-                                id="idHUinHuMaintanaceThirdSck"
-                                text="HU :"
-                                class="ScanHumargin"
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idHUinHuMaintanaceInputThirdSck"
-                                placeholder="Enter HU..."
-                                class="sapUiTinyMarginBegin"
+                        <VBox>
+                           <HBox>
+                                <Label
+                                    text="Hu"
+                                     id="idHUinHuMaintanaceThirdSck"
+                                    width="70px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                 id="idHUinHuMaintanaceInputThirdSck"
+                                 placeholder="Enter HU..."
+                                    width="150px"
+                                   
+                                />
+                                <Label
+                                    width="50px"
+                                    class="ScanHumargin"
+                                />
                                
+                            </HBox>
+                            <HBox>
+                                <Label
+                                    id="idProctypeinHuMaintanaceThirdSck"
+                                    text="Proc Type"
+                                    width="70px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                    width="50px"
+                                     id="idProctypeHuMaintanaceInputThirdSck"
+                                     placeholder="Enter Proctype..."
+                                />
+                                <Label width="10px" />
+                                <Label
+                                   id="idreasonHuMaintanaceThirdSck"
+                                   text="Reason"
+                       
+                                    width="50px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                    width="50px"
+                                     id="idreasonBinHuMaintanaceInputThirdSck"
+                     
+                                />
                                
-                            />
-                           
-                        </HBox>
-                           <HBox id="HboxinThirdscrowsc" justifyContent="Start">
-                            <!-- Scan HU Label -->
-                            <Label
-                                id="idProctypeinHuMaintanaceThirdSck"
-                                text="Proctype :"
-                               
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idProctypeHuMaintanaceInputThirdSck"
-                                placeholder="Enter Proctype..."
-                              
-                               
-                               
-                            />
-                             <Label
-                                id="idreasonHuMaintanaceThirdSck"
-                                text="reason :"
-                               
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idreasonBinHuMaintanaceInputThirdSck"
-                                placeholder="Enter reason..."
-                              
-                               
-                               
-                            />
-                           
-                        </HBox>
-                          
-                           <HBox id="HboxinFourthscrowsc" justifyContent="Start">
-                            <!-- Scan HU Label -->
-                            <Label
+                            </HBox>
+                                    <HBox>
+                                <Label
+                                   
                                 id="idHutypeinHuMaintanaceThirdSck"
-                                text="HuType :"
+                                    text="Hu Type"
+                                    width="70px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                               id="idHuTypeHuMaintanaceInputThirdSck"
+               
+                                    width="50px"
+                                    editable="false"
+                                />
+                                <Label width="10px" />
+                                <Label
+                                 
+                                    width="50px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                    width="50px"
+                                    editable="false"
+                                />
+                                <Label width="10px" />
+                                <Label
+                                 
+                                    width="40px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                    width="50px"
+                                    editable="false"
+                                />
                                
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idHuTypeHuMaintanaceInputThirdSck"
-                                placeholder="Enter HuType..."
-                            />
-                             <Label
-                                id="idHuType11HuMaintanaceThirdSck" 
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idHuType11BinHuMaintanaceInputThirdSck"
-                               
-                            />
-                              <Label
-                                id="idHuType2211HuMaintanaceThirdSck" 
-                            />
-                            <!-- Input Field -->
-                            <Input
-                                id="idHuType1222221BinHuMaintanaceInputThirdSck"
-                               
-                            />
-                           
-                        </HBox>
-                            <HBox id="HboxinFifthsc" justifyContent="Start">
-                            <!-- Scan HU Label -->
-                            <Label
+                            </HBox>
+                            <HBox>
+                                <Label
+                                 
                                 id="iddestBinInHUMaintanaceThirdSck"
-                                text="Dest Bin :"
-                                class="ScanHumargin"
-                            />
-                            <!-- Input Field -->
-                            <Input
+                                    text="Dest Bin"
+                                    width="70px"
+                                    class="ScanHumargin"
+                                />
+                                <Input
+                                   
                                 id="idDestBininHuMaintanaceInputThirdSck"
-                                placeholder="Enter Dest Bin..."
-                                class="sapUiTinyMarginBegin"
-                               
-                               
-                            />
+                                    width="100px"
+                                    editable="false"
+                                />
                            
-                        </HBox>
-                        
-                        <HBox>
-                        <Button 
-                          id="idReturnBtnInHuMaintanaceInDeconsolidationThird"
+                            </HBox>
+                              <HBox  justifyContent="Start">
+                    <Button
+                        id="idReturnBtnInHuMaintanaceInDeconsolidationThird"
                         text="Return"
-                        />
-                        <Button 
-                          id="idDeleteBtnInHuMaintanaceInDeconsolidationThird"
+                    />
+                    <Button
+                        id="idDeleteBtnInHuMaintanaceInDeconsolidationThird"
                         text="Delete"
-                        />
-                        <Button 
-                          id="idPrintBtnInHuMaintanaceInDeconsolidationThird"
+                    />
+                    <Button
+                        id="idPrintBtnInHuMaintanaceInDeconsolidationThird"
                         text="Print"
                         press="onPrintPressInHuMaintanaceInDeconsolidationInThird"
-                        />
-                        <Button 
+                    />
+                    <Button
                         id="idTransportBtnInHuMaintanaceInDeconsolidationThird"
                         text="Transport"
                         press="onPressTransportInHuMaintanaceThirdSc"
-                        />
-                         <Button 
+                    />
+                    <Button
                         id="idSaveBtnInHuMaintanaceInDeconsolidation"
                         text="Save"
-                        />
-                        </HBox>
-                          </VBox>
+                    />
+                </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
  
-
+ 
  <ScrollContainer
                 id="idHuMaintanaceInDeconsolidationFourthSC"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
-                visible="true"
+                visible="false"
             >
                 <VBox
                     id="HuMaintanaceInDeconsolidationFourth"
@@ -387,45 +391,55 @@
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeinHuMaintanaceThirdSck1"
-                                text="Hu :"  
+                                text="Hu :"
+                                  class="ScanHumargin"  
+                                  width="40px"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idPHutypeHuMaintanaceInputThirdSck1"
-                                placeholder="Enter Hu..."  
+                     
+                                width="100px"
                             />
                              <Label
                                 id="idreasonHuMaintanaceThirdSck111"
-                                text="reason :"
-                                visible="false" 
+                           
+                               
+                                width="50px"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idreasonBinHuMaintanaceInputThirdSck11"
-                                placeholder="Enter reason..."
+                         
+                                width="100px"
                             />
-                           
+                           <Label width="30px"/>
                         </HBox>
                               <HBox id="HboxinFourthscrowsc1" justifyContent="Start">
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeFourthscinHuMaintanaceThirdSck1"
                                 text="SrcB"  
+                                width="40px"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idPHutypeFourthscHuMaintanaceInputThirdSck1"
-                                placeholder="Enter SrcB..."  
+                         
+                                width="100px"
                             />
+                            <Label width="10px"/>
                              <Label
                                 id="idreasonFourthscHuMaintanaceThirdSck111"
-                                text="CnsG :"
-                            
+                                text="CnsG"
+                                  class="ScanHumargin"
+                                  width="40px"
+                           
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idreasonBinFourthscHuMaintanaceInputThirdSck11"
-                           
+                            width="100px"
                             />
                            
                         </HBox>
@@ -434,6 +448,8 @@
                             <Label
                                 id="idHUtypeFourthThinHuMaintanaceThirdSck1"
                                 text="Towt"  
+                                  class="ScanHumargin"
+                                    width="40px"
                                
                             />
                             <!-- Input Field -->
@@ -442,10 +458,12 @@
                                 placeholder="Enter Hu..."  
                                    width="50px"
                             />
+                            <Label width="3px"/>
                              <Label
                                 id="idreasonFourthThHuMaintanaceThirdSck111"
-                           text="MaxW" 
+                           text="MaxW"
                                   width="50px"
+                                    class="ScanHumargin"
                             />
                             <!-- Input Field -->
                             <Input
@@ -455,8 +473,8 @@
                            
                             <Label
                                 id="idreasonFourthThHuMaintanaceThirdSck11122"
-                               
-                              
+                                 class="ScanHumargin"
+                             
                                  width="50px"
                             />
                             <!-- Input Field -->
@@ -469,19 +487,23 @@
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeFourthFSinHuMaintanaceThirdSck1"
-                               text="Totv" 
-                             
+                               text="Totv"
+                                 class="ScanHumargin"
+                               width="40px"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idPHutypeFourthFSHuMaintanaceInputThirdSck1"
                                 placeholder="Enter Hu..."  
                                   width="50px"
+                                   
                             />
+                             <Label width="3px"/>
                              <Label
                                 id="idreasonFourthFSHuMaintanaceThirdSck111"
-                              text="MaxV" 
+                              text="MaxV"
                                 width="50px"
+                                  class="ScanHumargin"
                             />
                             <!-- Input Field -->
                             <Input
@@ -491,7 +513,7 @@
                            
                             <Label
                                 id="idreasonFourthFSHuMaintanaceThirdSck11122"
-                              
+                                class="ScanHumargin"
                                   width="50px"
                             />
                             <!-- Input Field -->
@@ -504,8 +526,9 @@
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeFourthFIveinHuMaintanaceThirdSck1"
-                               
-                            text="leng" 
+                                 class="ScanHumargin"
+                            text="leng"
+                                width="40px"
                             />
                             <!-- Input Field -->
                             <Input
@@ -515,7 +538,7 @@
                             />
                              <Label
                                 id="idreasonFourthFIveHuMaintanaceThirdSck111"
-                              
+                                class="ScanHumargin"
                                   width="50px"
                             />
                             <!-- Input Field -->
@@ -526,8 +549,9 @@
                            
                             <Label
                                 id="idreasonFourtFIveHuMaintanaceThirdSck11122"
-                              text="Exvo" 
+                              text="Exvo"
                                  width="50px"
+                                   class="ScanHumargin"
                             />
                             <!-- Input Field -->
                             <Input
@@ -536,7 +560,7 @@
                             />
                               <Input
                                 id="idreasonBinFourthFIVEHuMaintanaceInputThirdSck1133"
-                                width="20px"
+                                width="5px"
                                 placeholder="%"
                             />
                         </HBox>
@@ -544,7 +568,9 @@
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeFourthSixinHuMaintanaceThirdSck1"
-                             text="Widt" 
+                             text="Widt"
+                               class="ScanHumargin"
+                                 width="40px"
                              
                             />
                             <!-- Input Field -->
@@ -562,8 +588,9 @@
                            
                             <Label
                                 id="idreasonFourtSixHuMaintanaceThirdSck11122"
-                               text="ExWt" 
+                               text="ExWt"
                                 width="50px"
+                                  class="ScanHumargin"
                             />
                             <!-- Input Field -->
                             <Input
@@ -572,7 +599,7 @@
                             />
                               <Input
                                 id="idreasonBinFourthSixHuMaintanaceInputThirdSck1133"
-                               width="20px"
+                               width="10px"
                                 placeholder="%"
                             />
                         </HBox>
@@ -580,8 +607,10 @@
                             <!-- Scan HU Label -->
                             <Label
                                 id="idHUtypeFourthSeveninHuMaintanaceThirdSck1"
-                           text="Heig" 
-                              
+                           text="Heig"
+                             class="ScanHumargin"
+                               width="40px"
+                             
                             />
                             <!-- Input Field -->
                             <Input
@@ -598,22 +627,19 @@
                          
                             <Label
                                 id="idreasonFourtSevenHuMaintanaceThirdSck11122"
-                                text="lgoPs" 
+                                text="LogPos"
                                 width="50px"
+                                  class="ScanHumargin"
                             />
                             <!-- Input Field -->
                             <Input
                                 id="idreasonBinFourthSevenHuMaintanaceInputThirdSck113"
                             width="50px"
                             />
-                              <Input
-                                id="idreasonBinFourthSevenHuMaintanaceInputThirdSck1133"
-                               width="20px"
-                               placeholder="%"
-                            />
+                           
                         </HBox>
-                        
-                
+                       
+               
                    </VBox>
                     </f:SimpleForm>
                 </VBox>
@@ -621,4 +647,3 @@
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
- 

@@ -63,11 +63,7 @@
                             type="Transparent"
                             press="onPressBackBtnPage1_AHUOBQ"
                         />
-                        <Title
-                            id="id_AHUOBQ"
-                            text="Available Handling Units On Bin Query:"
-                            level="H2"
-                        />
+                        
                     </HBox>
                     <VBox
                         id="idVBoxBinNumber_AHUOBQ"
@@ -175,6 +171,8 @@
                     <Table
                         id="idBinNumTable_AHUOBQ"
                         width="100%"
+                        mode="SingleSelectLeft" 
+                        selectionChange="onSelectionChange"
                     >
                         <columns>
                             <Column id="IDGenColumn001_AHUOBQ">
@@ -182,7 +180,7 @@
                                     id="IDGenText001_AHUOBQ"
                                     text="HU Number:"
                                     class="HedingNameColor"
-                                />
+                                /> 
                             </Column>
                             <Column id="IDGenColumn002_AHUOBQ">
                                 <Text
@@ -200,7 +198,7 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem
+                            <!-- <ColumnListItem
                                 id="IDGenBinNumbersColumnListItem1_AHUOBQ"
                                 class="AlternateRowColor"
                             >
@@ -218,7 +216,7 @@
                                         text="{Drivername}"
                                     />
                                 </cells>
-                            </ColumnListItem>
+                            </ColumnListItem> -->
                         </items>
                     </Table>
                 </VBox>
@@ -277,7 +275,7 @@
                             />
                             <Input
                                 id="idHUProdNumInput_AHUOBQ"
-                                width="5rem"
+                                width="10rem"
                                 class="sapUiTinyMarginEnd"
                             />
                             <Label
@@ -369,42 +367,39 @@
                             />
                             <Label
                                 id="idTotalWait_AHUOBQ"
-                                text="Total Wait"
+                                text="Total Weight"
                                 class="formLabelPage4_AHUOBQ"
                             />
                             <HBox id="idHBoxTotalWaite_AHUOBQ">
                                 <Input
                                     id="idTotalWaitInput_AHUOBQ"
-                                    width="60%"
+                                    maxLength="25"
+                            width="70px"
                                 />
-                                <Label
-                                    id="idTextTotalWaiteKG_AHUOBQ"
-                                    text="KG:"
-                                    class="TextLableUnits_AHUOBQ"
-                                />
+                               
                                 <Input
                                     id="idKGUnits_AHUOBQ"
-                                    width="60%"
+                                    maxLength="25"
+                            width="70px"
                                 />
                             </HBox>
+                    
                             <Label
                                 id="idTotalValue_AHUOBQ"
-                                text="Total Value"
+                                text="Total Volume"
                                 class="formLabelPage4_AHUOBQ"
                             />
                             <HBox id="idHBoxTotalValue_AHUOBQ">
                                 <Input
                                     id="idTotalValueInput_AHUOBQ"
-                                    width="60%"
+                                  maxLength="25"
+                            width="70px"
                                 />
-                                <Label
-                                    id="idTextTotalValue_AHUOBQ"
-                                    text="L:"
-                                    class="TextLableUnits_AHUOBQ"
-                                />
+                              
                                 <Input
                                     id="idInputL_AHUOBQ"
-                                    width="60%"
+                                    maxLength="25"
+                            width="70px"
                                 />
                             </HBox>
                         </form:SimpleForm>
