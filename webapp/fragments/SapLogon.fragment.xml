@@ -15,7 +15,6 @@
     >
         <content>
             <form:SimpleForm
-            
                 id="idconnecttosapDetailsForm_CS"
                 editable="true"
                 layout="ResponsiveGridLayout"
@@ -33,89 +32,79 @@
             >
                 <VBox
                     id="SAPlogonform1"
-                     width="100%"
-                     class="vboxSapLagon"
-                   alignContent="Center"
-                  
-             
+                    width="100%"
+                    class="vboxSapLagon"
+                    alignContent="Center"
                 >
-       
-<Input
+                    <Input
                         id="idUserInput_CS"
                         value="{}"
                         placeholder="User"
-        width="100%"
+                        width="100%"
                     />
-   <!-- Password Input -->
+                    <!-- Password Input -->
                     <Input
                         id="idSPasswordInput_CS"
                         type="Password"
                         placeholder="Password"
-                         width="100%"
+                        width="100%"
                     />
-                        <Label
-                            id="idLableInstanceNumber_CS"
-                            text="Language"
-                            width="110%"
-                        />
+                    <Label
+                        id="idLableInstanceNumber_CS"
+                        text="Language"
+                        width="110%"
+                    />
 
-                  <ComboBox
-                            id="idLanguageSelectorMultiComboBox_CS"
-                             width="100%"
-                            selectedKey="en"
-                            class="customInput"
-                           
-                        >
-                            <items>
-                                <core:Item
-                                    id="idCoreItemEnglishLanguage_CS"
-                                    key="en"
-                                    text="EN-English"
-                                />
-                                <core:Item
-                                    id="idCoreItemSpanishLanguage_CS"
-                                    key="es"
-                                    text="SP-Spanish"
-                                />
-                            </items>
-                        </ComboBox>
-  <Input
-
+                    <ComboBox
+                        id="idLanguageSelectorMultiComboBox_CS"
+                        width="100%"
+                        selectedKey="en"
+                        class="customInput"
+                    >
+                        <items>
+                            <core:Item
+                                id="idCoreItemEnglishLanguage_CS"
+                                key="en"
+                                text="EN-English"
+                            />
+                            <core:Item
+                                id="idCoreItemSpanishLanguage_CS"
+                                key="es"
+                                text="SP-Spanish"
+                            />
+                        </items>
+                    </ComboBox>
+                    <Input
                         id="idRouterStringInput_CS"
                         value="400"
                         placeholder=""
-                        
                         width="100%"
                         editable="false"
                     />
-                     <Button
-                            id="LoginButton_CS"
-                            text="Log On"
-                            width="100%"
-                            type="Emphasized"
-                            press="onLogOnPress"
-                            class="sapUiTinyMarginTop logonButtonInSapLogon"
-                        />
-                    <HBox  justifyContent="SpaceBetween">
-                   
-                   
+                    <Button
+                        id="LoginButton_CS"
+                        text="Log On"
+                        width="100%"
+                        type="Emphasized"
+                        press="onLogOnPress"
+                        class="sapUiTinyMarginTop logonButtonInSapLogon"
+                    />
+                    <HBox justifyContent="SpaceBetween">
                         <Link
-                        id="IDchangePassword"
-                        text="Change Password"
-                        class="sapUiSmallMarginTop"
-                        press="onChangePasswordBtn"
+                            id="IDchangePassword"
+                            text="Change Password"
+                            class="sapUiSmallMarginTop"
+                            press="onChangePasswordBtn"
                         />
-                        
-                        <Link id="IDlogoncancelbutton"
-                        text="Cancel"
-                        class="sapUiSmallMarginTop"
-                        press="onPressCancleSapLogon"
-                        
-                       />
-                        </HBox>
-                    </VBox>
+                        <Link
+                            id="IDlogoncancelbutton"
+                            text="Cancel"
+                            class="sapUiSmallMarginTop"
+                            press="onPressCancleSapLogon"
+                        />
+                    </HBox>
+                </VBox>
             </form:SimpleForm>
         </content>
     </Dialog>
 </core:FragmentDefinition>
-

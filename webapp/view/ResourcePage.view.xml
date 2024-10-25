@@ -115,21 +115,22 @@
                             visible="false"
                         />
                     </VBox>
+                    
                     <GenericTile
-                        id="id_unloadingbydelivery"
+                        id="id_Unloading"
                         class="sapUiTinyMargin sapUiResponsivePadding"
-                        header="Unloading By Delivery"
-                        press="onUnloadingByDeliveryPress"
+                        header="Unloading"
+                        press="onGenericTitlePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_unlodingbyshipment"
                         class="sapUiTinyMargin"
                         header="Unloading By Shipment"
                         press="onUnloadingByShipmentPress"
                         visible="false"
-                    />
-                    <GenericTile
+                    /> -->
+                    <!-- <GenericTile
                         id="id_unloadingbytransportunit"
                         class="sapUiTinyMargin"
                         header="Unloading By Transport Unit"
@@ -163,7 +164,7 @@
                         header="Unloading By Consigment Order"
                         press="onUnloadingByConsignmentOrderTilePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_deconsolidation_title"
@@ -174,13 +175,13 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_createputawayhusfordeconsolidation"
+                        id="id_deconsolidation_title"
                         class="sapUiTinyMargin"
-                        header="Create Putaway Hus for Deconsolidation"
-                        press="onCreatePutawayHusforDeconsolidationPress"
+                        header="Deconsolidation"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_createputawayhusmanually"
                         class="sapUiTinyMargin"
                         header="Create Putaway Hus Manually"
@@ -222,7 +223,7 @@
                         header="HU Maintenance"
                         press="onHUMaintenancePress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -233,13 +234,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_putawaybyhu"
+                        id="id_putaway_title"
                         class="sapUiTinyMargin"
-                        header="Putaway By HU"
-                        press="onPutawayByHUPress"
+                        header="Putaway"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_putawaybyhuclustered"
                         class="sapUiTinyMargin"
                         header="Putaway By HU (Clustered)"
@@ -260,7 +261,7 @@
                         header="Confiramtion Corrections"
                         press="onConfiramtionCorrectionsPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -271,13 +272,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_receivingofhubydelivery"
+                        id="id_receivingofhanndlingunits_title"
                         class="sapUiTinyMargin"
-                        header="Receiving of HU by Delivery"
-                        press="onReceivingofHUbyDeliveryPress"
+                        header="Receiving Of Hanndling Units"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_receivingofhubyshipment"
                         class="sapUiTinyMargin"
                         header="Receiving of HU by Shipment"
@@ -339,7 +340,7 @@
                         header="Receiving of HU by Consignment Order"
                         press="onReceivingofHUbyConsignementOrderPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -351,19 +352,19 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_setreadyforwhprocessingbybol"
+                        id="id_setreadyforwarehouseprocessing_title"
                         class="sapUiTinyMargin"
-                        header="Set Ready for WH processing by BOL"
-                        press="onSetReadyforWHprocessingbyBOLPress"
+                        header="Set Ready for warehouse processing"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_setreadyforwhprocessingbyco"
                         class="sapUiTinyMargin"
                         header="Set Ready for WH processing by CO"
                         press="onSetReadyforWHprocessingbyCOPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -374,13 +375,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_pickingbysystemguided"
+                        id="id_picking_title"
                         class="sapUiTinyMargin"
-                        header="Picking By system Guided"
-                        press="onPickingBysystemGuidedPress"
+                        header="Picking"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_systemguidedbyqueue"
                         class="sapUiTinyMargin"
                         header="System Guided By queue"
@@ -407,7 +408,7 @@
                         header="Picking By HU"
                         press="onPickingByHUPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_packing_title"
@@ -417,13 +418,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_createshippinghu"
+                        id="id_packing_title"
                         class="sapUiTinyMargin"
-                        header="Create Shipping HU"
-                        press="onCreateShippingHUPress"
+                        header="Packing"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_automaticallyrepackhu"
                         class="sapUiTinyMargin"
                         header="Automatically Repack HU"
@@ -472,7 +473,7 @@
                         header="Manually re-pack all HU items"
                         press="onManuallyrepackallHUitemsPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -483,13 +484,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_loadhuctW"
+                        id="id_loading_title"
                         class="sapUiTinyMargin"
-                        header="Load HUC(TW)"
-                        press="onLoadHUCTWPress"
+                        header="Loading"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_loadingbydelivery"
                         class="sapUiTinyMargin"
                         header="Loading By Delivery"
@@ -558,7 +559,7 @@
                         header="Loading By Consignment order"
                         press="onLoadingByConsignmentorderPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -569,13 +570,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_creationofsinglehu"
+                        id="id_pickpoint_title"
                         class="sapUiTinyMargin"
-                        header="Creation Of Single HU"
-                        press="onCreationOfSingleHUpress"
+                        header="Pick Point"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_pickpoint"
                         class="sapUiTinyMargin"
                         header="Pick Point"
@@ -588,7 +589,7 @@
                         header="HU Maintenance"
                         press="onHUMaintenancePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_consumption_title"
@@ -598,13 +599,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_consumptionbymanufacturingorder"
+                        id="id_consumption_title"
                         class="sapUiTinyMargin"
-                        header="Consumption By Manufacturing Order"
-                        press="onConsumptionByManufacturingOrderPress"
+                        header="Consumption"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_reversalofconsumptionbymohu"
                         class="sapUiTinyMargin"
                         header="Reversal of Consumption by MO (HU)"
@@ -617,7 +618,7 @@
                         header="Reversal of consumption by MO (Bin)"
                         press="onReversalofconsumptionbyMOBinPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_distributionequipment_title"
@@ -628,13 +629,13 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_loadbyhuautoposassignment"
+                        id="id_distributionequipment_title"
                         class="sapUiTinyMargin"
-                        header="Load By HU - Auto.Pos.Assignment"
-                        press="onLoadByHUAutoPosAssignmentPress"
+                        header="Distribution Equipment"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_loadbyhumanposassignment"
                         class="sapUiTinyMargin"
                         header="Load By HU - Man.Pos.Assignment"
@@ -654,7 +655,7 @@
                         header="Unload By HU"
                         press="onUnloadByHUPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -665,13 +666,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_inventorycountingguied"
+                        id="id_inventorycounting_title"
                         class="sapUiTinyMargin"
-                        header="Inventory Counting Guied"
-                        press="onInventoryCountingGuiedPress"
+                        header="Inventory Counting"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_inventorycountingmanual"
                         class="sapUiTinyMargin"
                         header="Inventory Counting Manual"
@@ -691,7 +692,7 @@
                         header="Adhoc Inventory Counting"
                         press="onAdhocInventoryCountingPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -702,17 +703,17 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_replenishmentforfixedbins"
+                        id="id_adhocwtcreations_title"
                         class="sapUiTinyMargin"
-                        header="Replenishment for fixed Bins"
-                        press="onReplenishmentforfixedBinsPress"
+                        header="Adhoc WT creations"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_createadhochuwt"
                         class="sapUiTinyMargin"
-                        header="Create Adhoc HU WT"
-                        press="onCreateAdhocHUWTPress"
+                        header="Replenishment for fixed Bins"
+                        press=""
                         visible="false"
                     />
                     <GenericTile
@@ -735,7 +736,7 @@
                         header="Create and Confirm Adhoc Product WT"
                         press="onCreateandConfirmAdhocProductWTPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -746,13 +747,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_huquery"
+                        id="id_queries_title"
                         class="sapUiTinyMargin"
-                        header="HU Query"
-                        press="onHUQueryPress"
+                        header="Queries"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_stockbinquerybybin"
                         class="sapUiTinyMargin"
                         header="Stock/Bin Query by Bin"
@@ -814,7 +815,7 @@
                         header="HU Stock Overview Query"
                         press="onHUStockOverviewQueryPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_qualitymanagement_title"
@@ -825,19 +826,20 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_productinspectionbyhu"
+                      id="id_qualitymanagement_title"
+
                         class="sapUiTinyMargin"
-                        header="Product Inspection By HU"
-                        press="onProductInspectionByHUPress"
+                        header="Quality Management"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_productinspectionbystoragebin"
                         class="sapUiTinyMargin"
                         header="Product Inspection By Storage Bin"
                         press="onProductInspectionByStorageBinPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -848,19 +850,19 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_changequeue"
+                        id="id_resourcemanagement_title"
                         class="sapUiTinyMargin"
-                        header="Change Queue"
-                        press="onChangeQueueTilePress"
+                        header="Resource Management"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_changeresourcegroup"
                         class="sapUiTinyMargin"
                         header="Change Resource Group"
                         press="onChangeResourceGroupTilePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- </ScrollContainer> -->
                     <!-- </form:SimpleForm> -->
                 </ScrollContainer>

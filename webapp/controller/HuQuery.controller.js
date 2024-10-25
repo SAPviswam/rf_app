@@ -5,6 +5,7 @@
     "sap/m/MessageToast", // Import MessageToast for user feedback
     "sap/ui/core/UIComponent",
 ], function (Controller,Device, MessageToastFra,UIComponent) {
+
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
@@ -29,7 +30,6 @@
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
             }
         
-          
             this._setFocus();
         },
         onRowDoubleClick: function () {
@@ -137,6 +137,7 @@
 
                 oModel.read(`/HudetailsSet('${oHuValue}')`, {
                     urlParameters: {
+
                         "$expand": "Hudetails_ItemSet",
                         "$format": "json"
                     },
