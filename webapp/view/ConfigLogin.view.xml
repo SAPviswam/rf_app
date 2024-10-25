@@ -15,7 +15,6 @@
         <tnt:header>
             <tnt:ToolHeader id="idRfconfigPage01ToolHeader">
                 <!-- Artihcus Logo -->
-
                 <Image
                     id="idArtihcus_configPage"
                     class="sapUiTinyMarginBegin"
@@ -37,50 +36,8 @@
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
-
-                      <Title
-                                id="initialscreentitle1"
-                                text="CAPmodel RF"
-                                class="capModelRFTextlogin sapUiSmallMarginBottom"
-                           
-                            />
-                    </HBox>
-                    <Label id="idlabelempty_cl" width="0.5rem" />
-                    <HBox id="idhboxwah_cl">
-                        <VBox id="_IDGenHBox26_cl">
-                            <Label
-                                id="idLabelHU_cl"
-                                text="Username:"
-                                labelFor="idHUInput_cl"
-                                class="LabelHomePage"
-                            />
-                            <Label
-                                id="idLabelUserID_cl"
-                                text="password:"
-                                labelFor="idUserIDInput_cl"
-                                class="sapUiSmallMarginTop LabelHomePage"
-                            />
-                        </VBox>
-                        <Text id="idtext_cl" width="0.4rem"></Text>
-                        <VBox id="_IDGenHBox32_cl">
-                            <Input
-                                id="idUsernameInput_cl"
-                                placeholder="username"
-                                width="100%"
-                                editable="true"
-                            />
-                            <Input
-                                id="idUserIDInput_cl"
-                                placeholder="password"
-                                width="100%"
-                                 editable="true"
-                            />
-                        </VBox>
-                    </HBox>
-
                     </layoutData>
                 </ToolbarSpacer>
-
                
             </tnt:ToolHeader>
         </tnt:header>
@@ -106,37 +63,37 @@
         <HBox
             justifyContent="Center"
             alignItems="Center"
-            height="100%" 
-            class="paddingBox" 
+            height="100%"
+            class="paddingBox"
         >
             <VBox
                 class="whiteBorderBox"  
                 width="300px"  
-                height="200px" 
+                height="200px"
                 alignItems="Center"
                 justifyContent="Center"
             >
                 <!-- Title -->
-                <Text text="Application Login" 
-                      class="loginTitle" 
-                      textAlign="Center" 
+                <Text text="Application Login"
+                      class="loginTitle"
+                      textAlign="Center"
                       width="100%"/>
-                
+               
                 <!-- Input Fields Start Here (Label + Input side by side) -->
                 <HBox width="100%" alignItems="Center" class="inputRow">
                     <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
                     <Label text="User ID" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" width="60px" />
                     <Input id="UserID" width="60%" value="111010" class="orangeInput sapUiTinyMarginTop" editable="false" />
                 </HBox>
-                
+               
                 <HBox width="100%" alignItems="Center" class="inputRow">
                     <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
                     <Label text="Password" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"  width="60px"/>
                     <Input id="Password" type="Password" value="........" width="60%" placeholder="Enter Password" class="orangeInput sapUiTinyMarginTop" editable="false"/>
                 </HBox>
-
+ 
                 <VBox height="20px"/> <!-- Increase space between fields and buttons -->
-
+ 
                 <!-- Submit Buttons -->
                 <HBox justifyContent="Center" alignItems="Center">
                     <Button text="Signup" press="onpressSignup" width="100%"/>
@@ -147,11 +104,13 @@
         </HBox>
     </VBox>
 </ScrollContainer>
-
-
-
-
+ 
+ 
+ 
+ 
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
-
+ 
+ 
+ 
