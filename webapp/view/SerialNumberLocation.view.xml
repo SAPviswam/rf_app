@@ -70,7 +70,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            <ScrollContainer
+           <ScrollContainer
                 id="idSNLFirstSC"
                 horizontal="false"
                 vertical="true"
@@ -92,24 +92,31 @@
                         alignContent="Center"
                         alignItems="Center"
                     >
-
-
-                    <Title text="Serial Number Location"></Title>
-                        <VBox class="sapUiTinyMarginBottom"></VBox>
-
+                        <Title text="Serial Number Location" />
+                        <VBox class="sapUiTinyMarginBottom" >
+ 
                         <HBox
-                            id="idSNLHbox"
-                            class="sapUiMediumMargin"
                         >
                             <Label
                                 id="idSNLroductLabel"
                                 text="Product"
                                 width="100px"
                                 class="sapUiTinyMargin"
-
                             />
                             <Input
                                 id="idSNLproductInput"
+                                value=""
+                            />
+                            </HBox>
+                            <HBox>
+                            <Label
+                                id="idSNLSerialNoLabel"
+                                text="Serial N0"
+                                width="100px"
+                                class="sapUiTinyMargin"
+                            />
+                            <Input
+                                id="idSNLSerialNoInput"
                                 value=""
                             />
                             <Button
@@ -124,9 +131,11 @@
                                 type="Emphasized"
                             />
                         </HBox>
+                        </VBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
+
             <ScrollContainer
                 id="idSNLsecondSC"
                 horizontal="false"
@@ -225,11 +234,13 @@
 
                         <VBox class="sapUiMediumMarginBottom"></VBox>
 
- <HBox
+                            <HBox
                                 alignItems="Center"
                                 justifyContent="Center"
                                 width="100%"
                             >
+
+                                
                                 <Table
                                     id="idSNLTable"
                                     growing="true"

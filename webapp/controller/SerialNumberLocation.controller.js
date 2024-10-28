@@ -6,6 +6,7 @@ sap.ui.define(
     ],
     function(BaseController,MessageToast,UIComponent) {
       "use strict";
+
   
       return BaseController.extend("com.app.rfapp.controller.SerialNumberLocation", {
         onInit: function() {
@@ -37,75 +38,82 @@ sap.ui.define(
                     }
                 });
         },
-        onSNLproductLiveChange:function () {
-              
-            // Get the input value from the input field
-            var oView = this.getView();
-            var sProductNumber = oView.byId("idSNLproductInput").getValue();
-            this.sProductNumber = sProductNumber;
-      
-            // Check if bin number is provided
-            if (!sProductNumber) {
-              sap.m.MessageToast.show("Please enter a Product.");
+        onSNLproductLiveChange: function () {
+          // Get the input values from the input fields
+          var oView = this.getView();
+          var sProductNumber = oView.byId("idSNLproductInput").getValue();
+          var sSerialNumber = oView.byId("idSNLSerialNoInput").getValue();
+         
+          // Ensure both product number and serial number are provided
+          if (!sProductNumber || !sSerialNumber) {
+              sap.m.MessageToast.show("Please enter both Product and Serial Number");
               return;
-            }
-      
-            // Call your backend service to fetch products for this bin
-            var oModel = this.getView().getModel(); // Assuming you have a model set up
-            var that = this;
-      
-            oModel.read(`/SerialNoLocationSet('${sProductNumber}')`, {
+          }
+     
+          // Call your backend service to fetch products based on the provided keys
+          var oModel = this.getView().getModel();
+          var that = this;
+     
+          // Construct the request URL using the provided format
+          var sRequestUrl = `/SerialNoLocationSet(Matnr40='${sProductNumber}',Serid='${sSerialNumber}')`;
+ 
+     
+          // Perform the read operation
+          oModel.read(sRequestUrl, {
               success: function (odata) {
-                console.log(odata);
-                that.getView().byId("idSNLFirstSC").setVisible(false);
-                that.getView().byId("idSNLsecondSC").setVisible(true);
-                that.getView().byId("idSNLProInput").setEditable(false);
-                that.getView().byId("idSNLSecondBackBtn").setVisible(true);
-                that.getView().byId("idSNLfirstBackBtn").setVisible(false);
-                that.getView().byId("idSNLProInput").setValue(sProductNumber);
-      
-                // Get the product details from the response
-                let oDetails = odata.SerialNoLocationSet.results;
-      
-                // Prepare an array for binding
-                // var aProductDetails = [];
-      
-                // // Loop through the results and push them into the array
-                // for (var i = 0; i < oDetails.length; i++) {
-                //   if (oDetails[i].Huident) {
-                //     aProductDetails.push({
-                //         Huident: oDetails[i].Huident,
-                //         Matnr: oDetails[i].Matnr,
-                //         Flgmove: oDetails[i].Flgmove
-                //     });
-                //   }
-                // }
-      
-                
-                // Create a JSON model with the product details array
-                // var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-      
-                // // Set the model to the table
-                // that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
-      
-                // // Bind the items aggregation of the table to the products array in the model
-                // that.byId("idBinNumTable_AHUOBQ").bindItems({
-                //   path: "/products",
-                //   template: new sap.m.ColumnListItem({
-                //     cells: [
-                //       new sap.m.Text({ text: "{Huident}" }),  // Hu
-                //       new sap.m.Text({ text: "{Matnr}" }),   // 
-                //       new sap.m.Text({ text: "{Flgmove}" })   // 
-                //     ],
-                  
-                //   })
-                // });
+                  console.log(odata);
+                  that.getView().byId("idSNLfirstBackBtn").setVisible(false);
+                  that.getView().byId("idSNLFirstSC").setVisible(false);
+                  that.getView().byId("idSNLthirdSC").setVisible(true);
+                  that.getView().byId("idSNLsecondSC").setVisible(false);
+                  that.getView().byId("idSNLProInput1").setEditable(false);
+                  that.getView().byId("idSNLsnoInput1").setEditable(false);
+                  that.getView().byId("idSNLSecondBackBtn").setVisible(false);
+                  that.getView().byId("idSNLthirdBackBtn").setVisible(true);
+                  that.getView().byId("idSNLSerialNoInput").setValue(sSerialNumber);
+     
+                  // Check if any results were returned
+                  // let oDetails = odata.SerialNoLocationSet.results;
+                  // if (!oDetails || oDetails.length === 0) {
+                  //     sap.m.MessageToast.show("No data found for the given Product and Serial Number.");
+                  //     return;
+                  // }
+     
+                  // Prepare an array for binding
+                  // var aProductDetails = [];
+     
+                  // Loop through the results and push them into the array
+                  // Create a JSON model with the product details array
+                  var oProductModel = new sap.ui.model.json.JSONModel(odata);
+ 
+                  if (odata.Matnr40 === odata.Serid) {
+                    oProductModel.push({
+                        Lgpla:odata.Lgpla,
+                        Lgtyp:odata.Lgtyp,
+                        Lgber:odata.Lgber
+                    });
+                }
+     
+                  // Set the model to the table
+                  that.byId("idSNLTable").setModel(oProductModel);
+     
+                  // Bind the items aggregation of the table to the products array in the model
+                  that.byId("idSNLTable").bindItems({
+                      path: "/products",
+                      template: new sap.m.ColumnListItem({
+                          cells: [
+                              new sap.m.Text({ text: "{Lgpla}" }),  // Location
+                              new sap.m.Text({ text: "{Lgtyp}" }),  // Type
+                              new sap.m.Text({ text: "{Lgber}" })    // Bin
+                          ]
+                      })
+                  });
               },
               error: function () {
-                sap.m.MessageToast.show("Error fetching products.");
+                  sap.m.MessageToast.show("Error fetching products.");
               }
-            });
-          },
+          });
+      },
         onSNLSecondBackBtnPress:function(){
             this.getView().byId("idSNLFirstSC").setVisible(true);
             this.getView().byId("idSNLsecondSC").setVisible(false);
