@@ -39,7 +39,6 @@
                         />
                     </layoutData>
                 </ToolbarSpacer>
-               
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
@@ -109,6 +108,7 @@
  
  
  
+            
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
