@@ -136,10 +136,6 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
-                    alignContent="Center"
-                    alignItems="Center"
-                >
                     <form:SimpleForm
                         id="idWtQBWoSF2"
                         layout="ResponsiveGridLayout"
@@ -222,7 +218,6 @@
                         /> -->
                         </VBox>
                     </form:SimpleForm>
-                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhThirdsc"

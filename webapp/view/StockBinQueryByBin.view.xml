@@ -59,48 +59,27 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBacktoHome"
-                    text="Back"
-                    type="Transparent"
-                    press="onPressBinBackToHome"
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="idToolbarLayoutData1"
+                        priority="NeverOverflow"
+                    />
+                </layoutData>
+                <VBox
+                    id="qrCodePlaceholder_SBQB"
+                    alignItems="Center"
+                    alignContent="Center"
                 >
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idToolbarLayoutData1"
-                            priority="NeverOverflow"
-                        />
-                    </layoutData>
-                </Button>
-                <Text
-                    id="idBinDetailsText1"
-                    text="Bin"
-                    class="sapUiTinyMarginTop sapUiSmallMarginBegin"
-                />
-                <f:SimpleForm
-                    id="idBinSimpleForm_SBQB"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                    singleContainerFullSize="false"
-                    class="FormBack"
-                >
-                    <VBox
-                        id="qrCodePlaceholder_SBQB"
-                        alignItems="Center"
-                        justifyContent="Center"
-                        class="centerContent"
+                    <f:SimpleForm
+                        id="idBinSimpleForm_SBQB"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                        columnsXL="1"
                     >
                         <HBox
                             id="_idBinHBox_unknw_SBQB"
@@ -117,7 +96,6 @@
                                 liveChange="onPressBinSubmit"
                                 width="15rem"
                             />
-                            <!-- Barcode Scan Button -->
                             <ndc:BarcodeScannerButton
                                 id="_IDBinGenScanButton_SBQB"
                                 scanSuccess="onScanSuccess"
@@ -125,9 +103,15 @@
                                 inputLiveUpdate="onScanLiveupdate"
                                 dialogTitle="Barcode Scanner"
                             />
-                        </HBox>
-                    </VBox>
-                </f:SimpleForm>
+                            <Button
+                                id="idNavBacktoHome"
+                                text="Back"
+                                type="Transparent"
+                                press="onPressBinBackToHome"
+                            />
+                            </HBox>
+                    </f:SimpleForm>
+                </VBox>
             </ScrollContainer>
 
             <ScrollContainer
@@ -139,54 +123,55 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idNavBacktoBin"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                    press="onPressBinBackToBin"
-                >
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idToolbarLayoutData2"
-                            priority="NeverOverflow"
-                        />
-                    </layoutData>
-                </Button>
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="idToolbarLayoutData2"
+                        priority="NeverOverflow"
+                    />
+                </layoutData>
                 <Text
                     id="idBinDetailsText2"
                     text="Bin Product Details"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
-                <f:SimpleForm
-                    id="simpleForm_SBQB"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                    singleContainerFullSize="false"
-                    class="FormBack"
+                <VBox id="idVboxSBQBB1"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <Label
-                        id="_IDBinDetailsGenLabel_SBQB"
-                        text="Bin"
-                    />
-                    <HBox id="idBinDetails">
-                        <Input
-                            id="_IDBinDetailsGenInput1_SBQB"
-                            editable="false"
-                        />
-                    </HBox>
-                </f:SimpleForm>
+                    <f:SimpleForm
+                        id="simpleForm_SBQB"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        class="FormBack"
+                    >
+                        <HBox id="idHboxSBQBB1">
+                            <Label
+                                id="_IDBinDetailsGenLabel_SBQB"
+                                text="Bin:"
+                                class="sapUiTinyMarginTop"
+                            />
+                            <HBox id="idBinDetails">
+                                <Input
+                                    id="_IDBinDetailsGenInput1_SBQB"
+                                    editable="false"
+                                />
+                            </HBox>
+                        </HBox>
+                    </f:SimpleForm>
+                </VBox>
                 <Panel
                     id="idPanel_SBQB"
                     headerText=""
@@ -200,6 +185,31 @@
                         growingThreshold="5"
                         growing="true"
                     >
+                        <headerToolbar>
+                            <OverflowToolbar id="idBinTableHeader">
+                                <ToolbarSpacer id="idTableHeaderSpacer" />
+                                <Button
+                                    id="idNavBacktoBin"
+                                    text="Back"
+                                    type="Transparent"
+                                    press="onPressBinBackToBin"
+                                />
+                                <Button
+                                    id="idBinDetailsButton"
+                                    text="BinDe"
+                                    type="Emphasized"
+                                    press="onPressBinDetails"
+                                    class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
+                                />
+                                <Button
+                                    id="idListButton"
+                                    text="HU List"
+                                    type="Emphasized"
+                                    press="onPressList"
+                                    class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+                                />
+                            </OverflowToolbar>
+                        </headerToolbar>
                         <columns>
                             <Column id="idProductCol">
                                 <Title
@@ -222,22 +232,7 @@
                         </columns>
                         <items />
                     </Table>
-                    <HBox id="idActionButtons">
-                        <Button
-                            id="idBinDetailsButton"
-                            text="BinDe"
-                            type="Emphasized"
-                            press="onPressBinDetails"
-                            class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
-                        />
-                        <Button
-                            id="idListButton"
-                            text="HU List"
-                            type="Emphasized"
-                            press="onPressList"
-                            class="sapUiSmallMarginTop sapUiTinyMarginBottom"
-                        />
-                    </HBox>
+                    <HBox id="idActionButtons" />
                 </Panel>
             </ScrollContainer>
             <ScrollContainer
@@ -282,7 +277,6 @@
                         justifyContent="Center"
                         width="100%"
                     >
-                        <VBox />
                         <HBox>
                             <Label
                                 id="idSTypLabel"
