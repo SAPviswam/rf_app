@@ -109,18 +109,18 @@
 
                     > -->
                     <VBox id="idUnloadingTile">
-                        <Title
+                        <!-- <Title
                             id="id_unloading_title"
                             text="Unloading"
                             visible="false"
-                        />
+                        /> -->
                     </VBox>
                     
                     <GenericTile
-                        id="id_Unloading"
+                        id="id_unloading_title"
                         class="sapUiTinyMargin sapUiResponsivePadding"
                         header="Unloading"
-                        press="onGenericTitlePress"
+                        press="onGenericTilePress"
                         visible="false"
                     />
                     <!-- <GenericTile
