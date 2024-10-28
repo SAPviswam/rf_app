@@ -1,7 +1,5 @@
-
 sap.ui.define([
     "./BaseController",
-    
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
@@ -54,24 +52,31 @@ sap.ui.define([
               
 
             },
+            onExit: function() {
+                // Remove the event listener when the controller is destroyed
+                document.removeEventListener("keydown", this._handleKeyDownBound);
+            },
             _handleKeyDown: function (oEvent) {
                 // Prevent default action for specific function keys
                 if (["F1", "F2", "F4"].includes(oEvent.key)) {
-                    oEvent.preventDefault();
-                }
-
-                // Check if the current view is the specified one
-                if (this.getView().getId() === "container-com.app.rfapp---InitialScreen") {
-                    switch (oEvent.key) {
-                        case "F1":
-                            this.onSavef1Press();
-                            break;
-                        case "F4":
-                            this.onDeletef4press();
-                            break;
-                        case "F2":
-                            this.onEditf2press();
-                            break;
+                    oEvent.preventDefault(); // Prevent default browser actions
+    
+                    // Check if the active page is the InitialScreen
+                    var activePageId = this.getView().getId(); 
+                    var toolPageId = "container-com.app.rfapp---InitialScreen"; 
+                    if (activePageId === toolPageId) {
+                        // Perform actions based on the key pressed
+                        switch (oEvent.key) {
+                            case "F1":
+                                this.AddPress_InitialView();
+                                break;
+                            case "F2":
+                                this.onEditConfiguredSystem();
+                                break;
+                            case "F4":
+                                this.onDeleteConfiguredSystem();
+                                break;
+                        }
                     }
                 }
             },
