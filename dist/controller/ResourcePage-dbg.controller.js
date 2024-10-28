@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/m/Popover",
@@ -8,9 +8,10 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/UIComponent",
     "sap/ui/core/Fragment",
-    "sap/ui/core/routing/History"
+    "sap/ui/core/routing/History",
+    "sap/m/GenericTile",
 ],
-    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History) {
+    function (Controller, Device, JSONModel, Popover, Button, library, MessageToast, UIComponent, Fragment, History, GenericTile) {
 
         "use strict";
 
@@ -36,6 +37,7 @@ sap.ui.define([
                 this.EditCall = false;
                 this._currentTile = null;
                 this._selectedTiles = [];
+                this.applyStoredProfileImage();
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -146,12 +148,16 @@ sap.ui.define([
                         oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
                     }
                 }
+                
+                console.log(this.oPopover)
+
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
             },
+            //CHATBOT
             onChatbotButtonPress: function () {
-                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/f05493db-d9e4-4bb4-8c10-7d4d681e7823", "_self");
+                window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4", "_self");
             },
 
             onResetToDefaultPress: function () {
@@ -229,17 +235,7 @@ sap.ui.define([
                 sap.m.MessageToast.show("Edit mode Deactivated.");
             },
             // Theme press from profile 
-            onPressThemesResource: function (oEvent) {
-                // Check if the popover already exists, if not create it
-                if (!this._oThemeSelectPopover) {
-                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
-                    this.getView().addDependent(this._oThemeSelectPopover);
-                }
-                // Open popover near the language button
-                this._oThemeSelectPopover.openBy(oEvent.getSource());
-            },
-            // Theme press from profile 
-            onPressThemesBtnFromProfile: function (oEvent) {
+            onPressThemesBtnFromProfilePopover: function (oEvent) {
                 debugger
                 // Check if the popover already exists, if not create it
                 if (!this._oThemeSelectPopover) {
@@ -261,7 +257,13 @@ sap.ui.define([
                 }
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").open();
-            },            
+            },
+            //Closing Theme Dailog Box...
+            onCancelColorDialog: function () {
+                this.resetDialogBox();
+                //this._selectedTiles = [];
+                this.byId("idthemeTileDialogResource").close();
+            },
             //Tile selcect btn from Profile Popover...
             onTileThemeSelect: function () {
                 // Check if edit mode is active
@@ -284,12 +286,6 @@ sap.ui.define([
                     this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Theme mode deactivated.");
                 }
-            },
-            //Closing Theme Dailog Box...
-            onCancelColorDialog: function () {
-                this.resetDialogBox();
-                //this._selectedTiles = [];
-                this.byId("idthemeTileDialogResource").close();
             },
             //After Selecting Multiple Tiles opens theme dialog box to select colour...
             onPressTileThemesModeOpenDailog: function () {
@@ -480,24 +476,24 @@ sap.ui.define([
                 if (aFiles.length > 0) {
                     var oFile = aFiles[0];
                     var reader = new FileReader();
-            
+
                     reader.onload = function (e) {
                         // Save the uploaded image source as base64 string
                         this._uploadedImageSrc = e.target.result;
-            
+
                         // Hide color picker and color options after an image is selected
                         this.byId("idcolorPickerResource").setVisible(false);
                         this.byId("colorOptionsResource").setVisible(false);
                         MessageToast.show("Image selected. Now press 'Apply' to save!");
                     }.bind(this);
-            
+
                     reader.readAsDataURL(oFile);
                 } else {
                     this.byId("idcolorPickerResource").setVisible(true);
                     this.byId("colorOptionsResource").setVisible(true);
                     MessageToast.show("No image selected. Please choose an image.");
                 }
-            }, 
+            },
             onColorOptionSelect: function (oEvent) {
                 var oSelectedCheckBox = oEvent.getSource();
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
@@ -737,7 +733,7 @@ sap.ui.define([
 
                 // Use Web Speech API to make the sound announcement
                 this._announceLanguageSelection(sSpeechText);
-            
+
                 // Close the popover after selection
                 this._oPopover.close();
             },
@@ -763,51 +759,6 @@ sap.ui.define([
                     console.log("Speech Synthesis not supported in this browser.");
                 }
             },
-
-            // Theme press from profile 
-
-            onPressThemesResource: function (oEvent) {
-                // Check if the popover already exists, if not create it
-                if (!this._oThemeSelectPopover) {
-                    this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
-                    this.getView().addDependent(this._oThemeSelectPopover);
-                }
-                // Open popover near the language button
-                this._oThemeSelectPopover.openBy(oEvent.getSource());
-            },
-
-            // on Background theme select 
-
-            onBackGroudThemeSelect: function () {
-                this.byId("idthemeTileDialogResource").open();
-            },
-            // on Background theme select 
-
-            onBackGroudThemeSelect: function () {
-                this.byId("idthemeTileDialogResource").open();
-            },
-            // on Tile theme select 
-
-            onTileThemeSelect: function () {
-                if (this.EditCall) {
-                    sap.m.MessageBox.information("Please exit from edit mode first")
-                    return;
-                }
-                this.Themecall = !this.Themecall; // Toggle the state
-                if (this.Themecall) {
-                    // Theme mode activated
-                    this.byId("idCancelButtonResource").setVisible(true);
-                    // this.byId("idthemeBackGroundButton").setVisible(true);
-                    sap.m.MessageToast.show("Theme mode activated.");
-                } else {
-                    // Theme mode deactivated
-                    this.byId("idCancelButtonResource").setVisible(false);
-                    // this.byId("idthemeBackGroundButton").setVisible(false);
-                    sap.m.MessageToast.show("Theme mode deactivated.");
-                }
-            },
-
-
             onResourceDetailsLoad: async function (oEvent1) {
 
                 // const { id } = oEvent1.getParameter("arguments");
@@ -873,12 +824,14 @@ sap.ui.define([
                         var ogroup = oData.Resourcegroup;
                         var groupArray = ogroup.split(",").map(item => item.trim());
 
-                        // groupArray.forEach(function (group) {
+                        groupArray.forEach(function (group) {
 
-                        //     let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
-                        //     let loGroup = oGroup.toLowerCase();
-                        //     that.getView().byId(`id_${loGroup}_title`).setVisible(true)
-                        // })
+                            let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
+                            let loGroup = oGroup.toLowerCase();
+                            that.getView().byId(`id_${loGroup}_title`).setVisible(true)
+                           
+                           
+                        })
 
                         var oresourceType = oData.Queue;
                         var oResourceArray = oresourceType.split(",").map(item => item.trim())
@@ -887,7 +840,7 @@ sap.ui.define([
 
                             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
                             let lOQueue = oQueue.toLowerCase();
-                            that.getView().byId(`id_${lOQueue}`).setVisible(true)
+                           // that.getView().byId(`id_${lOQueue}`).setVisible(true)
                         })
 
                         var aNavigationData = oModel.getProperty("/navigation");
@@ -933,7 +886,160 @@ sap.ui.define([
                     }
                 });
             },
-
+            // onGenericTilePress: async function(oEvent) {
+            //     if (!this._oPopover) {
+            //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+            //         this.getView().addDependent(this._oPopover);
+            //     }
+            
+            //     // Open popover at the tile position
+            //     await this._oPopover.openBy(oEvent.getSource());
+            //     let oRadioButton = this.getView().byId("idGenericTilePressPopover");
+               
+            //     console.log("RadioButton Found: ", oRadioButton);
+            //     var oModel1 = this.getOwnerComponent().getModel();
+            //     await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+            //         success: function(oData) {
+            //             var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                    
+            //             oResourceArray.forEach(function(queue) {
+            //                 let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+            //                 let lOQueue = oQueue.toLowerCase();
+            //                 let radioButtonId = `id_${lOQueue}`;
+                    
+            //                 let oRadioButton = this.getView().byId("idGenericTilePressPopover");
+            //                 console.log("RadioButton ID: ", radioButtonId);
+            //                 console.log("RadioButton Found: ", oRadioButton);
+                            
+            //                 if (oRadioButton) {
+            //                     oRadioButton.setVisible(true);
+            //                     console.log("Setting RadioButton to visible");
+            //                 } else {
+            //                     console.log("RadioButton not found");
+            //                 }
+            //             }, this);
+            //         }
+            //         .bind(this),
+            //         error: function() {
+            //             MessageToast.show("User does not exist");
+            //         }
+            //     });
+            // },
+            onGenericTilePress: async function(oEvent) {
+                var oGenericTileName=oEvent.oSource.mProperties.header;
+                var oQueueArray=[]
+                if (!this._oPopoverGt) {
+                    this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+                    this.getView().addDependent(this._oPopoverGt);
+                }
+                const aOptions = []
+                this._oPopoverGt.setTitle(oGenericTileName)
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
+                oVBox.destroyItems(); // Clear existing items
+            
+                // Create radio buttons dynamically
+                // const aOptions = ["Option 1", "Option 2", "Option 3"]; // Define your options
+                
+                var oModel1 = this.getOwnerComponent().getModel();
+                await oModel1.read("/ProcessAreaSet", {
+                    success: function(oData) {
+                        oData.results.forEach(element => {
+                            if(element.Processgroup===oGenericTileName){
+                                oQueueArray.push(element.Queue.toUpperCase())
+                            }
+                        });
+                         oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                            success: function(oData) {
+                                var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                            
+                                oResourceArray.forEach(function(queue) {
+                                    let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                                    let lOQueue = oQueue.toLowerCase();
+                                    if(oQueueArray.includes(queue)){
+                                        aOptions.push(queue)
+                                    }
+                                   
+                                });
+                                aOptions.forEach((sOption) => {
+                                    const oRadioButton = new sap.m.RadioButton({
+                                        text: sOption,
+                                        select: this.onRadioButtonSelect.bind(this)
+                                    });
+                                    oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                                });
+                            }
+                            .bind(this),
+                            error: function() {
+                                MessageToast.show("User does not exist");
+                            }
+                        });
+                
+                        
+                    }
+                    .bind(this),
+                    error: function() {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+                console.log(oQueueArray);
+                    // await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    //     success: function(oData) {
+                    //         var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                        
+                    //         oResourceArray.forEach(function(queue) {
+                    //             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                    //             let lOQueue = oQueue.toLowerCase();
+                    //             if(oQueueArray.includes(queue)){
+                    //                 aOptions.push(queue)
+                    //             }
+                               
+                    //         });
+                    //         aOptions.forEach((sOption) => {
+                    //             const oRadioButton = new sap.m.RadioButton({
+                    //                 text: sOption,
+                    //                 select: this.onRadioButtonSelect.bind(this)
+                    //             });
+                    //             oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                    //         });
+                    //     }
+                    //     .bind(this),
+                    //     error: function() {
+                    //         MessageToast.show("User does not exist");
+                    //     }
+                    // });
+            
+                // Clear any existing content in the VBox
+               
+            
+                // Open popover at the tile position
+                await this._oPopoverGt.openBy(oEvent.getSource());
+            },
+            
+            
+            onRadioButtonSelect: function() {
+                // Get the VBox that contains the radio buttons
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
+                const aItems = oVBox.getItems(); // Get all items in the VBox
+            
+                // Loop through the items to find the selected radio button
+                let selectedText = '';
+                aItems.forEach((oItem) => {
+                    if (oItem.getSelected()) { // Check if the radio button is selected
+                        
+                        selectedText = oItem.getText().replace(/[^a-zA-Z0-9]/g, '').toUpperCase(); // Get the text of the selected radio button
+                    }
+                });
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo(`${selectedText}`, { id: this.ID });
+                if (selectedText) {
+                    console.log("Selected:", selectedText);
+                    // Add your logic based on the selected text here
+                }
+            },
+            
+            
+            
+            
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 this.byId("pageContainer1").to(this.getView().createId(oItem.getKey()));
@@ -1682,168 +1788,22 @@ sap.ui.define([
                     oRouter.navTo("UnloadingByTU", { id: this.ID });
                 }
             },
-            // onSBQPAvatarPressed: function () {
-            //     var oView = this.getView();
 
-            //     // Create the dialog lazily
-            //     if (!this._pProfileDialog) {
-            //         this._pProfileDialog = Fragment.load({
-            //             id: oView.getId(),
-            //             name: "com.app.rfapp.fragments.ProfileDialog",
-            //             controller: this
-            //         }).then(function (oDialog) {
-            //             oView.addDependent(oDialog);
-            //             return oDialog;
-            //         });
-            //     }
-
-            //     this._pProfileDialog.then(function (oDialog) {
-            //         oDialog.open();
-            //     });
-            // },
-            onSBQPAvatarPressed: function (oEvent) {
-                debugger;
-
-                // Reference to the current instance
-                var This = this;
-
-                // Get the model (assuming it's an OData model)
-                var oModel1 = this.getOwnerComponent().getModel();
-
-                // Read data using OData model
-                oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function (oData) {
-                        // Assuming 'Users' and 'Resourceid' are available in the oData response
-                        let oUser = oData.Users.toLowerCase();
-
-                        if (oUser === "resource") {
-                            var oProfileData = {
-                                Name: oData.Resourcename, // Assuming this is the field you want to bind
-                                Number: oData.Phonenumber // Add a fallback if 'ContactNumber' is missing
-                            };
-
-                            // Bind data to the popover
-                            var oPopoverModel = new sap.ui.model.json.JSONModel(oProfileData);
-
-                            // Check if the popover is already created
-                            if (!This._oPopover) {
-                                This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
-                                This.getView().addDependent(This._oPopover);
-                            }
-
-                            // Now that the popover exists, set the model
-                            This._oPopover.setModel(oPopoverModel, "profile");
-
-                            // Open popover near the avatar
-                            This._oPopover.openBy(oEvent.getSource());
-                        } else {
-                            MessageToast.show("User is not a resource.");
-                        }
-                    }.bind(this),
-                    error: function () {
-                        MessageToast.show("User does not exist");
-                    }
+            //Avatar btn from Resource Page...
+            onSBQPAvatarPressedResourcePage: function (oEvent) {
+                this.applyStoredProfileImage();
+                this.onPressAvatarPopOverBaseFunction(oEvent, {
+                    showAccountDetails: true,
+                    showEditTile: true,
+                    showDefaultSettings: true,
+                    showThemes: true,
+                    showLanguage: true,
+                    showTileView: true,
+                    showHelp: true,
+                    showSignOut: true
                 });
             },
-            onCloseDialog: function () {
-                this._pProfileDialog.then(function (oDialog) {
-                    oDialog.close();
-                })
-            },
-          onProfilePressed: function() {
-                debugger;
-                var oView = this.getView();
-
-                // Save reference to 'this'
-                var that = this; // Preserves the correct context of 'this'
-
-                var oModelRead = this.getOwnerComponent().getModel();
-
-                // Read data using OData model
-                oModelRead.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function (oData) {
-                        // Assuming 'Users' and 'Resourceid' are available in the oData response
-                        let oUser = oData.Users.toLowerCase();
-
-                        if (oUser === "resource") {
-                            var oProfileDialogData = {
-                                Id: oData.Resourceid,
-                                Name: oData.Resourcename,
-                                Email: oData.Email,
-                                Number: oData.Phonenumber // Assuming this is the field you want to bind
-                            };
-                        }
-                    }
-                });
-                
-            },
-
-            onPressAccountDetails: async function () {
-                const oModel1 = this.getOwnerComponent().getModel();
-                const userId = this.ID;
-
-                // Fetch user details from the backend
-                await new Promise((resolve, reject) => {
-                    oModel1.read(`/RESOURCESSet('${userId}')`, {
-                        success: function (oData) {
-                            const userDetails = oData; // Adjust this based on your data structure
-                            // Set user data in a new model or update existing model
-                            const oUserModel = new sap.ui.model.json.JSONModel(userDetails);
-                            this.getView().setModel(oUserModel, "oUserModel"); // Set the model with name
-                            resolve();
-                        }.bind(this), // Bind this to ensure the context is correct
-                        error: function () {
-                            MessageToast.show("Error loading user tiles");
-                            reject();
-                        }
-                    });
-                });
-
-                if (!this._oDialog) {
-                    this._oDialog = sap.ui.xmlfragment("com.app.rfapp.fragments.UserDetails", this);
-                    this.getView().addDependent(this._oDialog); // Makes sure the dialog is cleaned up when the view is destroyed
-                }
-                this._oDialog.open();
-                var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                if (sStoredProfileImage) {
-                    var oProfileAvatarControl = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-                    if (oProfileAvatarControl) {
-                        oProfileAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image as the Avatar source
-                    }
-                }
-            },
-            onPressDeclineProfileDetailsDailog: function () {
-                if (this._oDialog) {
-                    this._oDialog.close();
-                }
-            },
-            onFileUploadForProfileImage: function (oEvent) {
-                this._oSelectedFile = oEvent.getParameter("files") && oEvent.getParameter("files")[0];
-                MessageToast.show("Image Selected. now press on Save!")
-            },
-            onPressSaveUserProfileImage: function () {
-                if (this._oSelectedFile) {
-                    var oReader = new FileReader();
-                    var oImageControl1 = this._oDialog.mAggregations.content[0].mAggregations.items[0];
-                    var oImageControl2 = this._oPopover.mAggregations.content[0]._aElements[0].mAggregations.items[0].mAggregations.items[0];
-                    var oImageControl3 = this.oView.mAggregations.content[0].mAggregations.pages[0].mAggregations.header.mAggregations.content[8];
-
-                    // Set up the onload event for the FileReader
-                    oReader.onload = function (oEvent) {
-                        var sBase64Image = oEvent.target.result;
-                        oImageControl1.setSrc(sBase64Image);
-                        oImageControl2.setSrc(sBase64Image);
-                        oImageControl3.setSrc(sBase64Image);
-                        localStorage.setItem("userProfileImage", sBase64Image);
-                        MessageToast.show("Profile image updated successfully!");
-                    };
-
-                    // Read the selected file as a Data URL (base64 string)
-                    oReader.readAsDataURL(this._oSelectedFile);
-                } else {
-                    MessageToast.show("Please select an image to upload.");
-                }
-            },
+            //Accout Deatils press function...
             onMyAccountPress: function () {
                 sap.m.MessageToast.show("Navigating to My Account...");
             },
@@ -2786,10 +2746,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
-           
-    
-                    
- 
+
+
+
+
 
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
