@@ -219,8 +219,7 @@ sap.ui.define([
               aHUDetails.push({
                 Huident: oDetails[i].Huident,
                 Letyp: oDetails[i].Letyp,
-                Flgmove: oDetails[i].Flgmove
-
+                Flgmove: that.getStatusText(oDetails[i].Flgmove)
               });
             }
           }
@@ -301,5 +300,10 @@ sap.ui.define([
       this.getView().byId("page2_SBQB").setVisible(true);
       this.getView().byId("page1_SBQB_extra_BinDetails").setVisible(false);
     },
+    getStatusText: function (statusCode) {
+      if (typeof statusCode === 'boolean') {
+        return statusCode ? 'yes' : 'No';
+    }
+  }
   });
 });

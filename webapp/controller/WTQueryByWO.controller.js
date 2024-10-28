@@ -141,11 +141,11 @@ sap.ui.define(
                             // Loop through the results and push them into the array
                             for (var i = 0; i < oDetails.length; i++) {
 
-                        let statusText = that.getStatusText(oDetails[i].Tostat);
+                      //  let statusText = that.getStatusText(oDetails[i].Status);
 
                                 aWarehouseOrderDetails.push({
                                     Tanum: oDetails[i].Tanum,
-                                    Tostat: statusText,
+                                    Tostat: that.getStatusText(odata.Status),
                                     ConfBy: odata.CreatedBy
                                 });
                             }

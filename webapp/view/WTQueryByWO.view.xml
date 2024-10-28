@@ -14,44 +14,38 @@
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderWtQBWo">
                 <Button
-                    id="idWtQBWofirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBWofirstBackBtnPress"
-                    visible="true"
-                />
-                <Button
                     id="idWtQBWoSecondbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoSecondBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoThirdbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoThirdBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoFourthbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoFourthBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoFifthbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoFifthBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoSixththbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoSixthBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoSevenththbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoSeventhBackBtnPress"
                     visible="false"
                 />
@@ -105,9 +99,12 @@
                         columnsM="1"
                         columnsXL="1"
                     >
+                    <VBox >
                         <HBox
                             alignContent="Center"
                             alignItems="Center"
+                            class="sapUiSmallMargin"
+                            justifyContent="Center"
                         >
                             <Label
                                 id="idWtQBWoWhLabel"
@@ -119,12 +116,26 @@
                                 value=""
                                 liveChange="onWtQBWoWhLiveChange"
                             />
+                        </HBox>
+                        <HBox
+                        alignContent="Center"
+                            alignItems="Center"
+                            class="sapUiTinyMargin"
+                            justifyContent="Center">
                             <Button
                                 id="idWtQBWoWhScannerBtn"
                                 icon="sap-icon://bar-code"
                                 press="onWtQBWoWhBarcodeScanner"
                             />
+                            <Button
+                                id="idWtQBWofirstbackbtn"
+                                text="Back"
+                                press="onWtQBWofirstBackBtnPress"
+                                visible="true"
+                                class="sapUiSmallMarginBegin"
+                            />
                         </HBox>
+                        </VBox>
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -136,88 +147,88 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                    <form:SimpleForm
-                        id="idWtQBWoSF2"
-                        layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
-                        columnsM="1"
-                        columnsXL="1"
+                <form:SimpleForm
+                    id="idWtQBWoSF2"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                    columnsXL="1"
+                >
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
                     >
-                        <VBox
+                        <HBox
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoWh2Label"
-                                    text="WareHouse Order"
-                                    width="120px"
-                                />
-                                <Input
-                                    id="idWtQBWoWh2Input"
-                                    value=""
-                                    editable="false"
-                                />
-                                <Button
-                                    id="WtQBWoOpenBtn"
-                                    text="Open"
-                                    press="onWtQBWoOpenBtnPress"
-                                />
-                                <Button
-                                    id="WtQBWoConfBtn"
-                                    text="Conf"
-                                    press="onWtQBWoConfBtnPress"
-                                />
-                                <Button
-                                    id="WtQBWoAllBtn"
-                                    text="All"
-                                    press="onWtQBWoAllBtnPress"
-                                />
-                            </HBox>
-                            <Table
-                                id="idWtQBWoWhTable"
-                                growing="true"
-                                growingThreshold="6"
-                                mode="SingleSelectMaster"
-                                selectionChange="onSelectWarehouseTask"
-                            >
-                                <columns>
-                                    <Column id="idWtQBWoWhWtsCol">
-                                        <Text
-                                            id="idWtQBWoWhWtsText"
-                                            text="WT's"
-                                        />
-                                    </Column>
-                                    <Column id="idWtQBWoWhWtsColstatus">
-                                        <Text
-                                            id="idWtQBWoWhWtsTextstatus"
-                                            text="WT Status"
-                                        />
-                                    </Column>
-                                    <Column id="idWtQBWoWhWtNoCol">
-                                        <Text
-                                            id="idWtQBWoWhWtNoText"
-                                            text="WT Created By"
-                                        />
-                                    </Column>
-                                </columns>
+                            <Label
+                                id="idWtQBWoWh2Label"
+                                text="WareHouse Order"
+                                width="120px"
+                            />
+                            <Input
+                                id="idWtQBWoWh2Input"
+                                value=""
+                                editable="false"
+                            />
+                            <Button
+                                id="WtQBWoOpenBtn"
+                                text="Open"
+                                press="onWtQBWoOpenBtnPress"
+                            />
+                            <Button
+                                id="WtQBWoConfBtn"
+                                text="Conf"
+                                press="onWtQBWoConfBtnPress"
+                            />
+                            <Button
+                                id="WtQBWoAllBtn"
+                                text="All"
+                                press="onWtQBWoAllBtnPress"
+                            />
+                        </HBox>
+                        <Table
+                            id="idWtQBWoWhTable"
+                            growing="true"
+                            growingThreshold="6"
+                            mode="SingleSelectMaster"
+                            selectionChange="onSelectWarehouseTask"
+                        >
+                            <columns>
+                                <Column id="idWtQBWoWhWtsCol">
+                                    <Text
+                                        id="idWtQBWoWhWtsText"
+                                        text="WT's"
+                                    />
+                                </Column>
+                                <Column id="idWtQBWoWhWtsColstatus">
+                                    <Text
+                                        id="idWtQBWoWhWtsTextstatus"
+                                        text="WT Status"
+                                    />
+                                </Column>
+                                <Column id="idWtQBWoWhWtNoCol">
+                                    <Text
+                                        id="idWtQBWoWhWtNoText"
+                                        text="WT Created By"
+                                    />
+                                </Column>
+                            </columns>
 
-                                <items />
-                            </Table>
-                            <!-- <Button
+                            <items />
+                        </Table>
+                        <!-- <Button
                             id="idBtn"
                             text="text"
                             press="onBtnPress"
                         /> -->
-                        </VBox>
-                    </form:SimpleForm>
+                    </VBox>
+                </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhThirdsc"
@@ -474,8 +485,6 @@
                         columnsXL="1"
                     >
                         <VBox>
-                            <Title text="Product Description" />
-
                             <HBox
                                 alignContent="Center"
                                 alignItems="Center"

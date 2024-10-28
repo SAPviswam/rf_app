@@ -66,7 +66,7 @@
                     />
                 </layoutData>
                 <VBox
-                    id="qrCodePlaceholder_SBQB"
+                    id="idVbox_StockBinQuerybyBin1"
                     alignItems="Center"
                     alignContent="Center"
                 >
@@ -81,35 +81,48 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <HBox
-                            id="_idBinHBox_unknw_SBQB"
-                            class="sapTinyMarginEnd"
+                        <VBox
+                            id="idVbox_StockBinQuerybyBin2"
+                            alignContent="Center"
+                            alignItems="Center"
                         >
-                            <Label
-                                id="_IDBinGenLabel1_SBQB"
-                                text="Bin:"
-                                class="sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="_IDBinGenInput1_SBQB"
-                                placeholder="Enter Bin Number"
-                                liveChange="onPressBinSubmit"
-                                width="15rem"
-                            />
-                            <ndc:BarcodeScannerButton
-                                id="_IDBinGenScanButton_SBQB"
-                                scanSuccess="onScanSuccess"
-                                scanFail="onScanError"
-                                inputLiveUpdate="onScanLiveupdate"
-                                dialogTitle="Barcode Scanner"
-                            />
-                            <Button
-                                id="idNavBacktoHome"
-                                text="Back"
-                                type="Transparent"
-                                press="onPressBinBackToHome"
-                            />
+                            <HBox
+                                id="idHbox_StockBinQuerybyBin1"
+                                class="sapUiSmallMargin"
+                            >
+                                <Label
+                                    id="_IDBinGenLabel1_SBQB"
+                                    text="Bin:"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="_IDBinGenInput1_SBQB"
+                                    placeholder="Enter Bin Number"
+                                    liveChange="onPressBinSubmit"
+                                    width="15rem"
+                                />
+                                  </HBox>
+                                <HBox
+                                    id="idHbox_StockBinQuerybyBin2"
+                                    justifyContent="Center"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <ndc:BarcodeScannerButton
+                                        id="_IDBinGenScanButton_SBQB"
+                                        scanSuccess="onScanSuccess"
+                                        scanFail="onScanError"
+                                        inputLiveUpdate="onScanLiveupdate"
+                                        dialogTitle="Barcode Scanner"
+                                    />
+                                    <Button
+                                        id="idNavBacktoHome"
+                                        text="Back"
+                                        type="Transparent"
+                                        press="onPressBinBackToHome"
+                                    />
                             </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -134,7 +147,8 @@
                     text="Bin Product Details"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
-                <VBox id="idVboxSBQBB1"
+                <VBox
+                    id="idVbox_StockBinQuerybyBin3"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -157,13 +171,13 @@
                         singleContainerFullSize="false"
                         class="FormBack"
                     >
-                        <HBox id="idHboxSBQBB1">
+                        <HBox id="idHbox_StockBinQuerybyBin3">
                             <Label
                                 id="_IDBinDetailsGenLabel_SBQB"
                                 text="Bin:"
                                 class="sapUiTinyMarginTop"
                             />
-                            <HBox id="idBinDetails">
+                            <HBox id="idHbox_StockBinQuerybyBin4">
                                 <Input
                                     id="_IDBinDetailsGenInput1_SBQB"
                                     editable="false"
@@ -191,7 +205,7 @@
                                 <Button
                                     id="idNavBacktoBin"
                                     text="Back"
-                                    type="Transparent"
+                                    type="Emphasized"
                                     press="onPressBinBackToBin"
                                 />
                                 <Button
@@ -199,14 +213,12 @@
                                     text="BinDe"
                                     type="Emphasized"
                                     press="onPressBinDetails"
-                                    class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
                                 />
                                 <Button
                                     id="idListButton"
                                     text="HU List"
                                     type="Emphasized"
                                     press="onPressList"
-                                    class="sapUiSmallMarginTop sapUiTinyMarginBottom"
                                 />
                             </OverflowToolbar>
                         </headerToolbar>
@@ -232,7 +244,7 @@
                         </columns>
                         <items />
                     </Table>
-                    <HBox id="idActionButtons" />
+                    <HBox id="idHbox_StockBinQuerybyBin5" />
                 </Panel>
             </ScrollContainer>
             <ScrollContainer
@@ -272,12 +284,12 @@
                     columnsL="2"
                     columnsM="1"
                 >
-                    <VBox
+                    <VBox id="idVbox_StockBinQuerybyBin4"
                         alignItems="Start"
                         justifyContent="Center"
                         width="100%"
                     >
-                        <HBox>
+                        <HBox id="idHbox_StockBinQuerybyBin">
                             <Label
                                 id="idSTypLabel"
                                 text="STyp"
@@ -318,7 +330,7 @@
                             />
                         </HBox>
 
-                        <HBox>
+                        <HBox id="idHbox_StockBinQuerybyBin6">
                             <Label
                                 id="idSBQBQtyLabel"
                                 text="MHU"
@@ -358,7 +370,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox>
+                        <HBox id="idHbox_StockBinQuerybyBin7">
                             <Label
                                 id="idSBQBNoOfHuLabel"
                                 text="MaxW"
@@ -390,7 +402,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox>
+                        <HBox id="idHbox_StockBinQuerybyBin8">
                             <Label
                                 id="idSBQBMaxWLabel"
                                 text="MaxV"
@@ -423,7 +435,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox>
+                        <HBox id="idHbox_StockBinQuerybyBin9">
                             <Label
                                 id="idSBQBMaxVLabel"
                                 text="MaxC"
@@ -450,7 +462,7 @@
                             />
                         </HBox>
                         <HBox
-                            id="idhbox_Movemed"
+                            id="idHbox_StockBinQuerybyBin10"
                             width="100%"
                         >
                             <Label
@@ -502,7 +514,7 @@
                             />
                         </HBox>
                         <HBox
-                            id="idhbox_Movemed_LI"
+                            id="idHbox_StockBinQuerybyBin11"
                             width="100%"
                         >
                             <Label
@@ -565,19 +577,12 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idNavBacktoList"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                    press="onPressBackfromBinList"
-                >
-                    <layoutData>
-                        <OverflowToolbarLayoutData
-                            id="idToolbarLayoutData4"
-                            priority="NeverOverflow"
-                        />
-                    </layoutData>
-                </Button>
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="idToolbarLayoutData4"
+                        priority="NeverOverflow"
+                    />
+                </layoutData>
                 <Text
                     id="idBinDetailsText4"
                     text="HU List"
@@ -606,7 +611,7 @@
                         id="_IDListBinDetailsGenLabel_SBQB"
                         text="Bin"
                     />
-                    <HBox id="idBinListDetails">
+                    <HBox id="idHbox_StockBinQuerybyBin12">
                         <Input
                             id="_IDBinListDetailsGenInput1_SBQB"
                             editable="false"
@@ -625,6 +630,17 @@
                         growingThreshold="10"
                         growing="true"
                     >
+                        <headerToolbar>
+                            <OverflowToolbar id="idBinTableHeader1">
+                                <ToolbarSpacer id="idTableHeaderSpacer1" />
+                                <Button
+                                    id="idNavBacktoList"
+                                    text="Back"
+                                    type="Emphasized"
+                                    press="onPressBackfromBinList"
+                                />
+                            </OverflowToolbar>
+                        </headerToolbar>
                         <columns>
                             <Column id="idHUCol">
                                 <Title
@@ -675,13 +691,13 @@
                     columnsM="1"
                 >
                     <VBox
-                        id="idVboxbinQuerybin_extra"
+                        id="idVbox_StockBinQuerybyBin5"
                         alignItems="Start"
                         justifyContent="Center"
                         width="100%"
                     >
-                        <VBox id="idVboxbinQuerybin_extra1" />
-                        <HBox id="idHboxbinQuerybin_extra1">
+                        <VBox id="idVbox_StockBinQuerybyBin6" />
+                        <HBox id="idHbox_StockBinQuerybyBin20">
                             <Label
                                 id="idSTypLabel_Extra"
                                 text="STyp :"
@@ -723,7 +739,7 @@
                                 width="4rem"
                             />
                         </HBox>
-                        <HBox id="idHboxSc1_binQbin">
+                        <HBox id="idHbox_StockBinQuerybyBin13">
                             <Label
                                 id="idSBQBNoOfHuLabel_extra"
                                 text="MaxW:"
@@ -760,7 +776,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox id="idHbox_binqbin_extra3">
+                        <HBox id="idHbox_StockBinQuerybyBin14">
                             <Label
                                 id="idSBQBMaxWLabel_extra1"
                                 text="MaxV :"
@@ -797,7 +813,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox id="idHbox_binqbin5">
+                        <HBox id="idHbox_StockBinQuerybyBin15">
                             <Input
                                 id="idSBQBMaxVInput_extra"
                                 value=""
@@ -805,7 +821,7 @@
                                 width="30rem"
                             />
                         </HBox>
-                        <HBox id="idHbox_binQbin_5">
+                        <HBox id="idHbox_StockBinQuerybyBin16">
                             <Label
                                 id="idlabel_binqbin_Aqty"
                                 text="AQty :"
@@ -855,7 +871,7 @@
                                 width="3rem"
                             />
                         </HBox>
-                        <HBox id="idHbox_binQbin_6">
+                        <HBox id="idHbox_StockBinQuerybyBin18">
                             <Label
                                 id="idlabel_binqbin_Batch"
                                 text="BTch :"
@@ -905,7 +921,7 @@
                                 width="3rem"
                             />
                         </HBox>
-                        <HBox id="idHbox_binQbin_12">
+                        <HBox id="idHbox_StockBinQuerybyBin17">
                             <Label
                                 id="idlabel_binqbin_OWnr"
                                 text="OWnr :"

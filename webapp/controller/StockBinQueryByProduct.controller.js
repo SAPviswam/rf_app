@@ -38,8 +38,6 @@ sap.ui.define(
             });
       },
      
-    
-     
       onSBQPSecondBackBtnPress:function(){
             this.getView().byId("idSBQPFirstSC").setVisible(true)
             this.getView().byId("idSBQPsecondSC").setVisible(false)
@@ -47,8 +45,6 @@ sap.ui.define(
             this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
            
       },
-
-
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
         var oModel1 = this.getOwnerComponent().getModel();
