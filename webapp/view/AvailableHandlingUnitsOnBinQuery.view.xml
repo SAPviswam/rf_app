@@ -63,11 +63,7 @@
                             type="Transparent"
                             press="onPressBackBtnPage1_AHUOBQ"
                         />
-                        <Title
-                            id="id_AHUOBQ"
-                            text="Available Handling Units On Bin Query:"
-                            level="H2"
-                        />
+                        
                     </HBox>
                     <VBox
                         id="idVBoxBinNumber_AHUOBQ"

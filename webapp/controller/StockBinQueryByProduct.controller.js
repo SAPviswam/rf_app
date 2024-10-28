@@ -18,7 +18,37 @@ sap.ui.define(
         this.ID = id;
         console.log(this.ID);
 
+    },
+      onSBQPfirstBackBtnPress:async function(){
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
       },
+     
+    
+     
+      onSBQPSecondBackBtnPress:function(){
+            this.getView().byId("idSBQPFirstSC").setVisible(true)
+            this.getView().byId("idSBQPsecondSC").setVisible(false)
+            this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
+            this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+           
+      },
+
+
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
         var oModel1 = this.getOwnerComponent().getModel();
@@ -31,41 +61,19 @@ sap.ui.define(
             else {
               oRouter.navTo("Supervisor", { id: this.ID });
             }
+            this.getView().byId("idSBQProductInput").setValue("")
           }.bind(this),
           error: function () {
             MessageToast.show("User does not exist");
           }
         });
       },
-
-
-
       onSBQPSecondBackBtnPress: function () {
         this.getView().byId("idSBQPFirstSC").setVisible(true)
         this.getView().byId("idSBQPsecondSC").setVisible(false)
         this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
         this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
 
-      },
-
-
-      onSBQPfirstBackBtnPress: async function () {
-        var oRouter = UIComponent.getRouterFor(this);
-        var oModel1 = this.getOwnerComponent().getModel();
-        await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-          success: function (oData) {
-            let oUser = oData.Users.toLowerCase()
-            if (oUser === "resource") {
-              oRouter.navTo("RouteResourcePage", { id: this.ID });
-            }
-            else {
-              oRouter.navTo("Supervisor", { id: this.ID });
-            }
-          }.bind(this),
-          error: function () {
-            MessageToast.show("User does not exist");
-          }
-        });
       },
       onScanSuccessProduct: function (oEvent) {
         // Get the scanned bin number from the event
@@ -182,9 +190,7 @@ sap.ui.define(
             sap.m.MessageToast.show("Error fetching products.");
           }
         });
-
       },
-
       onSBQPThirdBackBtnPress: function () {
         this.getView().byId("idSBQPsecondSC").setVisible(true);
         this.getView().byId("idSBQPThirdSC").setVisible(false);
