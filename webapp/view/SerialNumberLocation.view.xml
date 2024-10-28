@@ -19,7 +19,7 @@
                     press="onSNLfirxtBackBtnPress"
                     visible="true"
                 />
-                 <Button
+                <Button
                     id="idSNLSecondBackBtn"
                     icon="sap-icon://nav-back"
                     press="onSNLSecondBackBtnPress"
@@ -92,33 +92,46 @@
                         alignContent="Center"
                         alignItems="Center"
                     >
-
-
-                    <Title text="Serial Number Location"></Title>
-                        <VBox class="sapUiTinyMarginBottom"></VBox>
+                        <Title text="Serial Number Location" />
+                        <VBox class="sapUiTinyMarginBottom" >
 
                         <HBox
-                            id="idSNLHbox"
-                            class="sapUiMediumMargin"
                         >
                             <Label
                                 id="idSNLroductLabel"
                                 text="Product"
                                 width="100px"
-                                 class="sapUiTinyMargin"
-
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idSNLproductInput"
                                 value=""
-                                liveChange="onSNLproductLiveChange"
+                            />
+                            </HBox>
+                            <HBox>
+                            <Label
+                                id="idSNLSerialNoLabel"
+                                text="Serial N0"
+                                width="100px"
+                                class="sapUiTinyMargin"
+                            />
+                            <Input
+                                id="idSNLSerialNoInput"
+                                value=""
                             />
                             <Button
                                 id="idSNLproductScannerBtn"
                                 icon="sap-icon://bar-code"
                                 press="onSNLproductBarcodeScanner"
                             />
+                            <Button
+                                id="idSNLproductSubbitBtn"
+                                text="Submit"
+                                press="onSNLproductLiveChange"
+                                type="Emphasized"
+                            />
                         </HBox>
+                        </VBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -141,15 +154,16 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <VBox alignContent="Center" alignItems="Center">
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
                         <HBox>
                             <Label
                                 id="idSNLPro"
                                 text="Product"
                                 width="100px"
-
-                                 class="sapUiTinyMargin"
-
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idSNLProInput"
@@ -161,9 +175,7 @@
                                 id="idSNLSno"
                                 text="Serial Number"
                                 width="100px"
-
-                                 class="sapUiTinyMargin"
-
+                                class="sapUiTinyMargin"
                             />
                             <Input
                                 id="idSNLsnoInput"
@@ -193,7 +205,10 @@
                     columnsM="1"
                     columnsS="1"
                 >
-                    <VBox alignContent="Center" alignItems="Center">
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
                         <HBox>
                             <Label
                                 id="idSNLPro1"
@@ -214,78 +229,76 @@
                             <Input
                                 id="idSNLsnoInput1"
                                 value=""
-                               
                             />
                         </HBox>
 
-                        <VBox class="sapUiMediumMarginBottom"></VBox>
+                        <VBox class="sapUiMediumMarginBottom" />
 
- <HBox
-                                alignItems="Center"
-                                justifyContent="Center"
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
+                        >
+                            <Table
+                                id="idSNLTable"
+                                growing="true"
+                                growingScrollToLoad="true"
                                 width="100%"
+                                mode="SingleSelectLeft"
+                                selectionChange="onSelectionChange"
                             >
-                                <Table
-                                    id="idSNLTable"
-                                    growing="true"
-                                    growingScrollToLoad="true"
-                                    mode="None"
-                                    width="100%"
-                                >
-                                    <columns>
-                                        <Column id="idSNLBinNoColumn">
-                                            <Text
-                                                id="idSNLBinNoText"
-                                                text="Bin No"
-                                            />
-                                        </Column>
-                                        <Column id="idSNLBinColumn">
-                                            <Text
-                                                id="idSNLBinText"
-                                                text="Bin"
-                                            />
-                                        </Column>
-                                        <Column id="idSNLColumn">
-                                            <Text
-                                                id="idSNLText"
-                                                text="P"
-                                            />
-                                        </Column>
-                                        <Column id="idSNLPcColumn">
-                                            <Text
-                                                id="idSNLPcText"
-                                                text="pc"
-                                            />
-                                        </Column>
-                                    </columns>
+                                <columns>
+                                    <Column id="idSNLBinNoColumn">
+                                        <Text
+                                            id="idSNLBinNoText"
+                                            text="Bin No"
+                                        />
+                                    </Column>
+                                    <Column id="idSNLBinColumn">
+                                        <Text
+                                            id="idSNLBinText"
+                                            text="Bin"
+                                        />
+                                    </Column>
+                                    <Column id="idSNLColumn">
+                                        <Text
+                                            id="idSNLText"
+                                            text="P"
+                                        />
+                                    </Column>
+                                    <Column id="idSNLPcColumn">
+                                        <Text
+                                            id="idSNLPcText"
+                                            text="pc"
+                                        />
+                                    </Column>
+                                </columns>
 
-                                    <items>
-                                        <ColumnListItem
-                                            id="idGenSNLColumnListItem"
-                                        >
-                                            <cells>
-                                                <Text
-                                                    id="idSNLBinNoCell"
-                                                    text=""
-                                                />
-                                                <Text
-                                                    id="idSNLBinCell"
-                                                    text=""
-                                                />
-                                                <Text
-                                                    id="idSNLpCell"
-                                                    text=""
-                                                />
-                                                <Text
-                                                    id="idSNLpc"
-                                                    text=""
-                                                />
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
-                            </HBox>
- <VBox class="sapUiLargeMarginBottom" />
+                                <items>
+                                    <!-- <ColumnListItem id="idGenSNLColumnListItem">
+                                        <cells>
+                                            <Text
+                                                id="idSNLBinNoCell"
+                                                text=""
+                                            />
+                                            <Text
+                                                id="idSNLBinCell"
+                                                text=""
+                                            />
+                                            <Text
+                                                id="idSNLpCell"
+                                                text=""
+                                            />
+                                            <Text
+                                                id="idSNLpc"
+                                                text=""
+                                            />
+                                        </cells>
+                                    </ColumnListItem> -->
+                                </items>
+                            </Table>
+                        </HBox>
+                        <VBox class="sapUiLargeMarginBottom" />
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
@@ -304,12 +317,11 @@
                                 class="sapUiTinyMargin"
                                 press="onSNLBinDePress"
                             />
-                            
                         </HBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
-             <ScrollContainer
+            <ScrollContainer
                 id="idSNLfourthSC"
                 horizontal="false"
                 vertical="true"
@@ -345,7 +357,7 @@
                                 id="idSNLSnoInput"
                                 value=""
                             />
-                            </HBox>
+                        </HBox>
                         <HBox>
                             <Label
                                 id="idSNLEANLabel"
@@ -434,7 +446,6 @@
                             <Label
                                 text=""
                                 width="30px"
-
                             />
                             <Label
                                 id="idSNLStorTypeLabel"
@@ -457,10 +468,9 @@
                                 id="idSNLQtyWInput"
                                 value=""
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
-
                             />
                             <Label
                                 id="idSNLStorSecLabel"
@@ -482,10 +492,9 @@
                                 id="idSNLNoOfHuInput"
                                 value=""
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
-
                             />
                             <Label
                                 id="idSNLBinAisleLabel"
@@ -499,7 +508,7 @@
                         </HBox>
                         <HBox>
                             <Label
-                                id="idSBQMaxWLabel" 
+                                id="idSBQMaxWLabel"
                                 text="MaxW"
                                 width="90Px"
                             />
@@ -507,12 +516,11 @@
                                 id="idSNLMaxWInput"
                                 value=""
                             />
-                            
-                            <Text text="KG"/>
-                             <Label
+
+                            <Text text="KG" />
+                            <Label
                                 text=""
                                 width="30px"
-
                             />
                             <Label
                                 id="idSNLBinLevelLabel"
@@ -534,11 +542,10 @@
                                 id="idSNLMaxVInput"
                                 value=""
                             />
-                            <Text text="M3"/>
-                             <Label
+                            <Text text="M3" />
+                            <Label
                                 text=""
                                 width="30px"
-
                             />
                             <Label
                                 id="idSNLStackLabel"
