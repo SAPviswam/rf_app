@@ -944,7 +944,7 @@ sap.ui.define([
                 await oModel1.read("/ProcessAreaSet", {
                     success: function(oData) {
                         oData.results.forEach(element => {
-                            if(element.Processgroup===oGenericTileName){
+                            if(element.Processgroup.toUpperCase()===oGenericTileName.toUpperCase()){
                                 oQueueArray.push(element.Queue.toUpperCase())
                             }
                         });
