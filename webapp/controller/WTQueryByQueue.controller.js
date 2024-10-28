@@ -43,8 +43,6 @@ sap.ui.define(
             
         },
  
-       
- 
         onWtQBQueueThirdBackBtnPress:function(){
             this.getView().byId("idWtQBQueueWhThirdsc").setVisible(false);
             this.getView().byId("idWtQBQueueFirstSC").setVisible(true);
