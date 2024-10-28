@@ -61,7 +61,7 @@
             >
                 <Button
                     id="idNavBacktoHome"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     type="Transparent"
                     press="onPressBinBackToHome"
                 >
@@ -96,29 +96,37 @@
                     singleContainerFullSize="false"
                     class="FormBack"
                 >
-                    <Label
-                        id="_IDBinGenLabel1_SBQB"
-                        text="Bin"
-                    />
-                    <Input
-                        id="_IDBinGenInput1_SBQB"
-                        placeholder="Enter Bin Number"
-                        liveChange="onPressBinSubmit"
-                    />
-                    <HBox
-                        id="_idBinHBox_unknw_SBQB"
-                        class="sapTinyMarginEnd"
+                    <VBox
+                        id="qrCodePlaceholder_SBQB"
+                        alignItems="Center"
+                        justifyContent="Center"
+                        class="centerContent"
                     >
-                        <!-- Barcode Scan Button -->
-                             <ndc:BarcodeScannerButton
+                        <HBox
+                            id="_idBinHBox_unknw_SBQB"
+                            class="sapTinyMarginEnd"
+                        >
+                            <Label
+                                id="_IDBinGenLabel1_SBQB"
+                                text="Bin:"
+                                class="sapUiTinyMarginTop"
+                            />
+                            <Input
+                                id="_IDBinGenInput1_SBQB"
+                                placeholder="Enter Bin Number"
+                                liveChange="onPressBinSubmit"
+                                width="15rem"
+                            />
+                            <!-- Barcode Scan Button -->
+                            <ndc:BarcodeScannerButton
                                 id="_IDBinGenScanButton_SBQB"
                                 scanSuccess="onScanSuccess"
                                 scanFail="onScanError"
                                 inputLiveUpdate="onScanLiveupdate"
                                 dialogTitle="Barcode Scanner"
                             />
-                        <VBox id="qrCodePlaceholder_SBQB" class="sapUiSmallMarginTop" />
-                    </HBox>
+                        </HBox>
+                    </VBox>
                 </f:SimpleForm>
             </ScrollContainer>
 
@@ -173,7 +181,10 @@
                         text="Bin"
                     />
                     <HBox id="idBinDetails">
-                    <Input id="_IDBinDetailsGenInput1_SBQB" editable="false"/>
+                        <Input
+                            id="_IDBinDetailsGenInput1_SBQB"
+                            editable="false"
+                        />
                     </HBox>
                 </f:SimpleForm>
                 <Panel
@@ -186,7 +197,7 @@
                         id="idBinDataTable"
                         growingScrollToLoad="true"
                         selectionChange="onSelectmaterial"
-                        growingThreshold="10"
+                        growingThreshold="5"
                         growing="true"
                     >
                         <columns>
@@ -209,24 +220,23 @@
                                 />
                             </Column>
                         </columns>
-                        <items>
-                        </items>
+                        <items />
                     </Table>
-                    <HBox id="idActionButtons" >
-                    <Button
-                        id="idBinDetailsButton"
-                        text="BinDe"
-                        type="Emphasized"
-                        press="onPressBinDetails"
-                        class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
-                    />
-                     <Button
-                        id="idListButton"
-                        text="List"
-                        type="Emphasized"
-                        press="onPressList"
-                        class="sapUiSmallMarginTop sapUiTinyMarginBottom"
-                    />
+                    <HBox id="idActionButtons">
+                        <Button
+                            id="idBinDetailsButton"
+                            text="BinDe"
+                            type="Emphasized"
+                            press="onPressBinDetails"
+                            class="sapUiSmallMarginTop sapUiTinyMarginBottom sapUiTinyMarginEnd"
+                        />
+                        <Button
+                            id="idListButton"
+                            text="HU List"
+                            type="Emphasized"
+                            press="onPressList"
+                            class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+                        />
                     </HBox>
                 </Panel>
             </ScrollContainer>
@@ -257,7 +267,7 @@
                     text="Bin Details"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
-                 <form:SimpleForm
+                <form:SimpleForm
                     id="simpleform4_SBQB"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
@@ -272,7 +282,7 @@
                         justifyContent="Center"
                         width="100%"
                     >
-                        <VBox  />
+                        <VBox />
                         <HBox>
                             <Label
                                 id="idSTypLabel"
@@ -307,7 +317,7 @@
                                 text="BT"
                                 width="60Px"
                             />
-                             <Input
+                            <Input
                                 id="idSBQBStoreTypeInput1"
                                 value=""
                                 editable="false"
@@ -325,7 +335,7 @@
                                 value=""
                                 editable="false"
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -338,7 +348,8 @@
                                 id="idSBQBStorSecInput"
                                 value=""
                                 editable="false"
-                            /><Label
+                            />
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -347,7 +358,7 @@
                                 text="Sect"
                                 width="60Px"
                             />
-                             <Input
+                            <Input
                                 id="idSBQBStoreTypeInput2"
                                 value=""
                                 editable="false"
@@ -364,7 +375,7 @@
                                 value=""
                                 editable="false"
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -376,7 +387,7 @@
                             <Input
                                 id="idSBQBBinAisleInput"
                                 value=""
-                                 editable="false"
+                                editable="false"
                             />
                             <Input
                                 id="idSBQBBinAisleInputUOM"
@@ -396,11 +407,10 @@
                                 value=""
                                 editable="false"
                             />
-                            
-                             <Label
+
+                            <Label
                                 text=""
                                 width="30px"
-                                
                             />
                             <Label
                                 id="idSBQBBinLevelLabel"
@@ -411,7 +421,7 @@
                                 id="idSBQBBinLevelInput"
                                 value=""
                                 editable="false"
-                            /> 
+                            />
                             <Input
                                 id="idSBQBinLevelInputUOM"
                                 value=""
@@ -430,7 +440,7 @@
                                 value=""
                                 editable="false"
                             />
-                             <Label
+                            <Label
                                 text=""
                                 width="30px"
                             />
@@ -445,7 +455,7 @@
                                 editable="false"
                             />
                         </HBox>
-                         <HBox
+                        <HBox
                             id="idhbox_Movemed"
                             width="100%"
                         >
@@ -576,7 +586,7 @@
                 </Button>
                 <Text
                     id="idBinDetailsText4"
-                    text="Product List"
+                    text="HU List"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
                 <f:SimpleForm
@@ -603,7 +613,10 @@
                         text="Bin"
                     />
                     <HBox id="idBinListDetails">
-                    <Input id="_IDBinListDetailsGenInput1_SBQB" editable="false"/>
+                        <Input
+                            id="_IDBinListDetailsGenInput1_SBQB"
+                            editable="false"
+                        />
                     </HBox>
                 </f:SimpleForm>
                 <Panel
@@ -615,6 +628,8 @@
                     <Table
                         id="idBinListDataTable"
                         growingScrollToLoad="true"
+                        growingThreshold="10"
+                        growing="true"
                     >
                         <columns>
                             <Column id="idHUCol">
@@ -629,16 +644,14 @@
                                     text="HU Type"
                                 />
                             </Column>
-                             <Column id="idListflagCol">
+                            <Column id="idListflagCol">
                                 <Title
                                     id="idListFlagTitle"
                                     text="open WT"
                                 />
                             </Column>
-                           
                         </columns>
-                        <items>
-                        </items>
+                        <items />
                     </Table>
                 </Panel>
             </ScrollContainer>
@@ -651,7 +664,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-            <Button
+                <Button
                     id="idBackButton_BinQBin"
                     icon="sap-icon://nav-back"
                     type="Transparent"
@@ -823,7 +836,7 @@
                                 id="idLable_binQbin_space2"
                                 width="5rem"
                             />
-                             <Label
+                            <Label
                                 id="idlabel_binqbin_PB"
                                 text="PB :"
                             />
@@ -837,7 +850,7 @@
                                 id="idLable_binQbin_space3"
                                 width="2rem"
                             />
-                             <Label
+                            <Label
                                 id="idlabel_binqbin_RB"
                                 text="RB :"
                             />
@@ -873,7 +886,7 @@
                                 id="idLable_binQbin_space10"
                                 width="5rem"
                             />
-                             <Label
+                            <Label
                                 id="idlabel_binqbin_Styp"
                                 text="STyp:"
                             />
@@ -887,7 +900,7 @@
                                 id="idLable_binQbin_space11"
                                 width="2rem"
                             />
-                             <Label
+                            <Label
                                 id="idlabel_binqbin_IA"
                                 text="IA :"
                             />

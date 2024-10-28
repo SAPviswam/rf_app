@@ -169,13 +169,28 @@
                                     value=""
                                     editable="false"
                                 />
+                                <Button
+                                    id="WtQBWoOpenBtn"
+                                    text="Open"
+                                    press="onWtQBWoOpenBtnPress"
+                                />
+                                <Button
+                                    id="WtQBWoConfBtn"
+                                    text="Conf"
+                                    press="onWtQBWoConfBtnPress"
+                                />
+                                <Button
+                                    id="WtQBWoAllBtn"
+                                    text="All"
+                                    press="onWtQBWoAllBtnPress"
+                                />
                             </HBox>
                             <Table
                                 id="idWtQBWoWhTable"
                                 growing="true"
                                 growingThreshold="6"
                                 mode="SingleSelectMaster"
-                                selectionChange="onSelectionChange"
+                                selectionChange="onSelectWarehouseTask"
                             >
                                 <columns>
                                     <Column id="idWtQBWoWhWtsCol">
@@ -190,17 +205,15 @@
                                             text="WT Status"
                                         />
                                     </Column>
-                                       <Column id="idWtQBWoWhWtNoCol">
+                                    <Column id="idWtQBWoWhWtNoCol">
                                         <Text
                                             id="idWtQBWoWhWtNoText"
-                                            text="WT Confirmed By"
+                                            text="WT Created By"
                                         />
                                     </Column>
                                 </columns>
 
-                                <items>
-            
-                                </items>
+                                <items />
                             </Table>
                             <!-- <Button
                             id="idBtn"
@@ -261,7 +274,7 @@
                                 />
                                 <Input
                                     id="idWtQBWoWTitAllInput"
-                                    value="ALL"
+                                    value=""
                                 />
                             </HBox>
 
@@ -282,10 +295,19 @@
                                 <Label
                                     id="idWtQBWoStsLabel"
                                     text="Sts"
-                                    width="50px"
+                                    width="20px"
                                 />
                                 <Input
                                     id="idWtQBWoStsInput"
+                                    value=""
+                                />
+                                <Label
+                                    id="idWtQBWoStypLabel"
+                                    text="STyp"
+                                    width="20px"
+                                />
+                                <Input
+                                    id="idWtQBWoStypInput"
                                     value=""
                                 />
                                 <Label width="30px" />
@@ -427,21 +449,6 @@
                                         text="Detail"
                                         press="onWtQBWoDetailBtnPress"
                                     />
-                                    <Button
-                                        id="WtQBWoOpenBtn"
-                                        text="Open"
-                                        press="onWtQBWoOpenBtnPress"
-                                    />
-                                    <Button
-                                        id="WtQBWoConfBtn"
-                                        text="Conf"
-                                        press="onWtQBWoConfBtnPress"
-                                    />
-                                    <Button
-                                        id="WtQBWoAllBtn"
-                                        text="All"
-                                        press="onWtQBWoAllBtnPress"
-                                    />
                                 </HBox>
                             </VBox>
                         </VBox>
@@ -515,7 +522,7 @@
                                 />
                                 <Input
                                     id="idWtQBWOPcInput"
-                                    value="PC"
+                                    value=""
                                 />
                                 <Label width="20px" />
                                 <Label
@@ -642,7 +649,7 @@
                                 />
                                 <Input
                                     id="idWtQBWoWTitAllInput2"
-                                    value="Open"
+                                    value=""
                                 />
                             </HBox>
                             <HBox
@@ -875,7 +882,7 @@
                                 />
                                 <Input
                                     id="idWtQBWoWTitAllInput3"
-                                    value="Conf"
+                                    value=""
                                 />
                             </HBox>
 

@@ -49,11 +49,6 @@ sap.ui.define([
       this.getView().byId("page2_SBQB").setVisible(true);
       this.getView().byId("page4_SBQB").setVisible(false);
     },
-    // onPressList: function () {
-    //   this.getView().byId("page2_SBQB").setVisible(false);
-    //   this.getView().byId("page3_SBQB").setVisible(false);
-    //   this.getView().byId("page4_SBQB").setVisible(true);
-    // },
     onScanSuccess: function (oEvent) {
       // Get the scanned bin number from the event
       var sScannedBinNumber = oEvent.getParameter("text"); 
@@ -132,10 +127,6 @@ sap.ui.define([
               })
             });
           }
-          //  else {
-          //   // If no matching bin number found, show a message
-          //   sap.m.MessageToast.show("No products found for the entered bin number.");
-          // }
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
