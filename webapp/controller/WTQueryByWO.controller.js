@@ -10,8 +10,6 @@ sap.ui.define(
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-                // const oTable = this.getView().byId("idWtQBWoWhTable");
-                // oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -65,36 +63,18 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoFourthbackbtn").setVisible(false);
 
             },
-            // onWtQBWoOpenBtnPress: function () {
-            //     this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-            //     this.getView().byId("idWtQBWoWhFifthsc").setVisible(true);
-            //     this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-            //     this.getView().byId("idWtQBWoFifthbackbtn").setVisible(true);
-            // },
             onWtQBWoFifthBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
                 this.getView().byId("idWtQBWoWhFifthsc").setVisible(false);
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoFifthbackbtn").setVisible(false)
             },
-            // onWtQBWoConfBtnPress: function () {
-            //     this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-            //     this.getView().byId("idWtQBWoWhSixthsc").setVisible(true);
-            //     this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-            //     this.getView().byId("idWtQBWoSixththbackbtn").setVisible(true);
-            // },
             onWtQBWoSixthBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
                 this.getView().byId("idWtQBWoWhSixthsc").setVisible(false);
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoSixththbackbtn").setVisible(false)
             },
-            // onWtQBWoAllBtnPress: function () {
-            //     this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-            //     this.getView().byId("idWtQBWoWhSeventhsc").setVisible(true);
-            //     this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-            //     this.getView().byId("idWtQBWoSevenththbackbtn").setVisible(true);
-            // },
 
             onWtQBWoSeventhBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
@@ -112,7 +92,7 @@ sap.ui.define(
 
                 // Check if bin number is provided
                 if (!sWarehouseorder) {
-                    sap.m.MessageToast.show("Please enter a bin number.");
+                    sap.m.MessageToast.show("Please enter a WarehouseOrder");
                     return;
                 }
                 this.onFetchWHTaskDetails(sWarehouseorder);
