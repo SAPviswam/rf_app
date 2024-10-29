@@ -58,14 +58,14 @@
                         press="onPressAccountDetails"
                         visible="{popoverModel>/showAccountDetails}"
                     />
-                    <Button
+                    <!-- <Button
                         id="idUserDeatilsButton1Edit"
                         icon="sap-icon://edit"
                         text="Edit Tile"
                         type="Transparent"
                         press="onEditTileNamePress"
                         visible="{popoverModel>/showEditTile}"
-                    />
+                    /> -->
                     <Button
                         id="idUserDeatilsButton3Seetings"
                         icon="sap-icon://settings"
