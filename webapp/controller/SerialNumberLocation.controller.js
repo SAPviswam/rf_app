@@ -39,7 +39,8 @@ sap.ui.define(
                     }
                 });
         },
-        onSNLproductLiveChange: function () {
+
+        onSubmitpress: function () {
           // Get the input values from the input fields
           var oView = this.getView();
           var sProductNumber = oView.byId("idSNLproductInput").getValue();
@@ -62,14 +63,8 @@ sap.ui.define(
           oModel.read(sRequestUrl, {
               success: function (odata) {
                   console.log(odata);
-                  that.getView().byId("idSNLfirstBackBtn").setVisible(false);
                   that.getView().byId("idSNLFirstSC").setVisible(false);
                   that.getView().byId("idSNLthirdSC").setVisible(true);
-                  that.getView().byId("idSNLsecondSC").setVisible(false);
-                  that.getView().byId("idSNLProInput1").setEditable(false);
-                  that.getView().byId("idSNLsnoInput1").setEditable(false);
-                  that.getView().byId("idSNLSecondBackBtn").setVisible(false);
-                  that.getView().byId("idSNLthirdBackBtn").setVisible(true);
                   that.getView().byId("idSNLSerialNoInput").setValue(sSerialNumber);
       
                   // Create a new JSON model to hold the data
@@ -248,31 +243,26 @@ sap.ui.define(
         });
     },
         onSNLthirdBackBtnPress:function(){
-            this.getView().byId("idSNLfirstBackBtn").setVisible(true);
-            this.getView().byId("idSNLthirdBackBtn").setVisible(false);
             this.getView().byId("idSNLthirdSC").setVisible(false);
             this.getView().byId("idSNLFirstSC").setVisible(true);
 
         },
-        
+        onpresshudetails:function(){
+            this.getView().byId("idSNLfourthSC").setVisible(true);
+            this.getView().byId("idSNLthirdSC").setVisible(false);
+        },
 
         onSNLfourthBackBtnPress:function(){
             this.getView().byId("idSNLthirdSC").setVisible(true);
             this.getView().byId("idSNLfourthSC").setVisible(false);
-            this.getView().byId("idSNLfourthBackBtn").setVisible(false);
-            this.getView().byId("idSNLthirdBackBtn").setVisible(true);
         },
-        onSNLBinDePress:function(){
+        onpressBindetails:function(){
             this.getView().byId("idSNLthirdSC").setVisible(false);
             this.getView().byId("idSNLFifthSC").setVisible(true);
-            this.getView().byId("idSNLfifthBackBtn").setVisible(true);
-            this.getView().byId("idSNLthirdBackBtn").setVisible(false);
         },
         onSNLfifthBackBtnPress:function(){
             this.getView().byId("idSNLthirdSC").setVisible(true);
             this.getView().byId("idSNLFifthSC").setVisible(false);
-            this.getView().byId("idSNLfifthBackBtn").setVisible(false);
-            this.getView().byId("idSNLthirdBackBtn").setVisible(true);
         }
       });
     }
