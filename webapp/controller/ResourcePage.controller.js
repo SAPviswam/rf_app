@@ -2747,13 +2747,10 @@ sap.ui.define([
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
 
-
-
-
-
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
+            
             onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { id: this.ID });

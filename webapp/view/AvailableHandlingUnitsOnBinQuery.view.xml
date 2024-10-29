@@ -51,45 +51,54 @@
                 <VBox
                     id="id_AHUOBQformBox"
                     class="BinQueryContainer_AHUOBQ"
+                    justifyContent="Center"
+                    alignItems="Center"
                 >
                     <HBox
                         id="id_AHUOBQTitle"
                         class="BinQueryTitle_AHUOBQ"
                         alignItems="Center"
-                    >
-                        <Button
-                            id="Id_AHUOBQPage"
-                            icon="sap-icon://nav-back"
-                            type="Transparent"
-                            press="onPressBackBtnPage1_AHUOBQ"
-                        />
-                        
-                    </HBox>
+                        justifyContent="Center"
+                    />
+
                     <VBox
                         id="idVBoxBinNumber_AHUOBQ"
                         class="formContainer_AHUOBQ"
+                        justifyContent="Center"
+                        alignItems="Center"
                     >
                         <VBox
                             id="idVBOXFormBox_AHUOBQ"
                             class="formBox_AHUOBQ"
+                            justifyContent="Center"
+                            alignItems="Center"
                         >
-                            <Label
-                                id="idLableBinNumber_AHUOBQ"
-                                text="Bin Number:"
-                                class="formLabel_AHUOBQ"
-                            />
+                            <!-- Bin Number Label and Input Field -->
                             <HBox
                                 id="idHBox_AHUOBQ"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="auto"
+                                justifyContent="Center"
+                                width="100%"
                             >
+                                <Label
+                                    id="idLableBinNumber_AHUOBQ"
+                                    text="Bin Number:"
+                                    class="formLabel_AHUOBQ sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idInput_AHUOBQ"
                                     placeholder="Enter Bin no..."
                                     liveChange="onLiveChange"
-                                    width="120%"
+                                    width="80%"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
+                            </HBox>
+
+                            <!-- Buttons Aligned Under Input Field -->
+                            <HBox
+                                justifyContent="Center"
+                                class="sapUiSmallMarginTop"
+                            >
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
@@ -102,12 +111,21 @@
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="Submit"
                                     press="onSubmitPress_AHUOBQ"
+                                    class="sapUiTinyMarginBegin"
+                                />
+                                <Button
+                                    id="Id_AHUOBQPage"
+                                    text="Back"
+                                    type="Transparent"
+                                    press="onPressBackBtnPage1_AHUOBQ"
+                                    class="sapUiTinyMarginBegin"
                                 />
                             </HBox>
                         </VBox>
                     </VBox>
                 </VBox>
             </ScrollContainer>
+
             <ScrollContainer
                 id="idPage2BinNoTable_AHUOBQ"
                 horizontal="false"
@@ -116,13 +134,6 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idBackBtn2_AHUOBQ"
-                    press="onBackPressBinNumbersTable"
-                    class="sapUiTinyMarginBottom"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
                 <VBox id="idVBoxBinNumbertable_AHUOBQ">
                     <HBox id="idBinNumberHBox_AHUOBQ">
                         <Label
@@ -145,6 +156,12 @@
                         />
                         <ToolbarSpacer id="IDGenToolbar345_AHUOBQ" />
                         <Button
+                            id="idBackBtn2_AHUOBQ"
+                            press="onBackPressBinNumbersTable"
+                            text="Back"
+                            type="Transparent"
+                        />
+                        <Button
                             id="idBtnProductDescription_AHUOBQ"
                             text="Prod Description"
                             press="onPressProductDescriptionBtn"
@@ -161,17 +178,11 @@
                             press="onRefreshBinNumberTable"
                             icon="sap-icon://synchronize"
                         />
-                        <SearchField
-                            id="idSearchFieldBinnumberTable_AHUOBQ"
-                            liveChange="onLiveBinNumberTAble"
-                            placeholder="Search Anything..."
-                            width="25%"
-                        />
                     </Toolbar>
                     <Table
                         id="idBinNumTable_AHUOBQ"
                         width="100%"
-                        mode="SingleSelectLeft" 
+                        mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
                     >
                         <columns>
@@ -180,7 +191,7 @@
                                     id="IDGenText001_AHUOBQ"
                                     text="HU Number:"
                                     class="HedingNameColor"
-                                /> 
+                                />
                             </Column>
                             <Column id="IDGenColumn002_AHUOBQ">
                                 <Text
@@ -229,13 +240,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idBackBtn_AHUOBQ"
-                    press="onBackPressHUContentsAHUOBQ"
-                    class="sapUiTinyMarginBottom"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
+               
                 <VBox
                     id="idThirdPageContainer_AHUOBQ"
                     class="ThirdPageContainer_AHUOBQ"
@@ -249,7 +254,7 @@
                     />
                     <VBox
                         id="idThirdBoxHuContent_AHUOBQ"
-                        class="ThirdFormBoxHUContent_AHUOBQ"
+
                     >
                         <form:SimpleForm
                             id="idSimpleFormThirdPage_AHUOBQ"
@@ -315,7 +320,15 @@
                                 id="idBinInputThirdPage_AHUOBQ"
                                 width="7rem"
                             />
+                            <Button
+                    id="idBackBtn_AHUOBQ"
+                    press="onBackPressHUContentsAHUOBQ"
+                    class="sapUiTinyMarginBottom"
+                   text="Back"
+                    type="Transparent"
+                />
                         </form:SimpleForm>
+                         
                     </VBox>
                 </VBox>
             </ScrollContainer>
@@ -327,12 +340,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idBackBtnProductDescrption_AHUOBQ"
-                    press="onBackPressProductDescription"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
+               
                 <VBox
                     id="idVerifyHuNumberContainer_AHUOBQ"
                     class="Page4PrdDescriptionContainer_AHUOBQ"
@@ -346,7 +354,7 @@
                     />
                     <VBox
                         id="idPrdDescriptionBox_AHUOBQ"
-                        class="Page4PrdDescrpitionBox_AHUOBQ"
+                       
                     >
                         <form:SimpleForm
                             id="idSimpleFormVerifyHuNumber_AHUOBQ"
@@ -374,16 +382,16 @@
                                 <Input
                                     id="idTotalWaitInput_AHUOBQ"
                                     maxLength="25"
-                            width="70px"
+                                    width="70px"
                                 />
-                               
+
                                 <Input
                                     id="idKGUnits_AHUOBQ"
                                     maxLength="25"
-                            width="70px"
+                                    width="70px"
                                 />
                             </HBox>
-                    
+
                             <Label
                                 id="idTotalValue_AHUOBQ"
                                 text="Total Volume"
@@ -392,16 +400,22 @@
                             <HBox id="idHBoxTotalValue_AHUOBQ">
                                 <Input
                                     id="idTotalValueInput_AHUOBQ"
-                                  maxLength="25"
-                            width="70px"
+                                    maxLength="25"
+                                    width="70px"
                                 />
-                              
+
                                 <Input
                                     id="idInputL_AHUOBQ"
                                     maxLength="25"
-                            width="70px"
+                                    width="70px"
                                 />
                             </HBox>
+                             <Button
+                    id="idBackBtnProductDescrption_AHUOBQ"
+                    press="onBackPressProductDescription"
+                    text="Back"
+                    type="Transparent"
+                />
                         </form:SimpleForm>
                     </VBox>
                 </VBox>
