@@ -78,15 +78,17 @@ sap.ui.define(
                         that.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(true);
                         that.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(true);
                       that.getView().byId("idBinNumberI_nput_HUSOQ11").setValue(sHUNumber);
-                      that.getView().byId("idBinNumberInp_ut_HUSOQ121").setValue(odata.NumIt);
-                      that.getView().byId("idBinNum_berInput_HUSOQ131").setValue(odata.NumHu);
-                      that.getView().byId("idBinNumbe_rInput_HUSOQ141").setValue(odata.TopInd);
+                      
 
 
                       
           
                       // Get the product details from the response
                       let oDetails = odata.HUheadtoItems.results;
+
+                      that.getView().byId("idBinNumberInp_ut_HUSOQ121").setValue(oDetails[0].NumIt);
+                      that.getView().byId("idBinNum_berInput_HUSOQ131").setValue(oDetails[0].NumHu);
+                      that.getView().byId("idBinNumbe_rInput_HUSOQ141").setValue(oDetails[0].TopInd);
           
                       // Prepare an array for binding
                       var aProductDetails = [];
@@ -188,6 +190,10 @@ sap.ui.define(
       
                   // Get the product details from the response
                   let oDetails = odata.HUheadtoItems.results;
+
+                  that.getView().byId("idBinNumberInput_HUSOQ121").setValue(oDetails[0].NumIt);
+                   that.getView().byId("idBinNumberInput_HUSOQ131").setValue(oDetails[0].NumHu);
+                   that.getView().byId("idBinNumberInput_HUSOQ141").setValue(oDetails[0].TopInd);
       
                   // Prepare an array for binding
                   var aProductDetails = [];
@@ -276,7 +282,7 @@ sap.ui.define(
 
                    let oDetails = odata.HUheadtoItems.results;
 
-                   that.getView().byId("inputPkmt").setValue(odata.Pmat);
+                   that.getView().byId("inputPkmt").setValue(oDetails[0].Pmat);
                    that.getView().byId("inputHtyp").setValue(oDetails[0].Letyp);
                    that.getView().byId("inputTotw1").setValue(oDetails[0].GWeight);
                    that.getView().byId("inputTotw2").setValue(oDetails[0].UnitGw);
