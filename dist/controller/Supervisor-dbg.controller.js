@@ -2324,10 +2324,10 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("ReceivingofHUbyShipment", { id: this.ID });
             // },
-            // OnPressWTQuerybyWO: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("WTQueryByWO", { id: this.ID });
-            // },
+            OnPressWTQuerybyWO: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("WTQueryByWO", { id: this.ID });
+            },
             // OnPressSerialnumberLocation: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("SerialNumberLocation");
@@ -2391,11 +2391,11 @@ sap.ui.define(
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("CreateConfirmAdhocProduct", { id: this.ID });
             // },
-            // OnPressStockOrBinQuerybyProduct: function () {
-            //     var oRouter = UIComponent.getRouterFor(this);
-            //     oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
+            OnPressStockOrBinQuerybyProduct: function () {
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("StockBinQueryByProduct", { id: this.ID });
 
-            // },
+            },
 
             // onDeconsolidationAutomatically: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
