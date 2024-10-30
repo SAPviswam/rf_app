@@ -14,44 +14,20 @@
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderWtQBWo">
                 <Button
-                    id="idWtQBWofirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBWofirstBackBtnPress"
-                    visible="true"
-                />
-                <Button
-                    id="idWtQBWoSecondbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBWoSecondBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBWoThirdbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBWoThirdBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBWoFourthbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBWoFourthBackBtnPress"
-                    visible="false"
-                />
-                <Button
                     id="idWtQBWoFifthbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoFifthBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoSixththbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoSixthBackBtnPress"
                     visible="false"
                 />
                 <Button
                     id="idWtQBWoSevenththbackbtn"
-                    icon="sap-icon://nav-back"
+                    text="Back"
                     press="onWtQBWoSeventhBackBtnPress"
                     visible="false"
                 />
@@ -90,7 +66,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -105,26 +81,44 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <HBox
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
-                            <Label
-                                id="idWtQBWoWhLabel"
-                                text="WareHouse Order"
-                                width="120px"
-                            />
-                            <Input
-                                id="idWtQBWoWhInput"
-                                value=""
-                                liveChange="onWtQBWoWhLiveChange"
-                            />
-                            <Button
-                                id="idWtQBWoWhScannerBtn"
-                                icon="sap-icon://bar-code"
-                                press="onWtQBWoWhBarcodeScanner"
-                            />
-                        </HBox>
+                        <VBox id="idVbox_WTQueryByWO1">
+                            <HBox id="idHbox_WTQueryByWO1"
+                                alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiSmallMargin"
+                                justifyContent="Center"
+                            >
+                                <Label
+                                    id="idWtQBWoWhLabel"
+                                    text="WareHouse Order"
+                                    width="120px"
+                                />
+                                <Input
+                                    id="idWtQBWoWhInput"
+                                    value=""
+                                    liveChange="onWtQBWoWhLiveChange"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_WTQueryByWO2"
+                                alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center"
+                            >
+                                <Button
+                                    id="idWtQBWoWhScannerBtn"
+                                    icon="sap-icon://bar-code"
+                                    press="onWtQBWoWhBarcodeScanner"
+                                />
+                                <Button
+                                    id="idWtQBWofirstbackbtn"
+                                    text="Back"
+                                    press="onWtQBWofirstBackBtnPress"
+                                    visible="true"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+                        </VBox>
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -137,6 +131,7 @@
                 visible="false"
             >
                 <VBox
+                    id="idVbox_WTQueryByWO2"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -151,65 +146,86 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox
+                        <HBox id="idHbox_WTQueryByWO3">
+                            <Label
+                                id="idWtQBWoWh2Label"
+                                text="WareHouse Order"
+                                width="120px"
+                                class="sapUiTinyMarginTop"
+                            />
+                            <Input
+                                id="idWtQBWoWh2Input"
+                                value=""
+                                editable="false"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHbox_WTQueryByWO4"
+                            justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoWh2Label"
-                                    text="WareHouse Order"
-                                    width="120px"
-                                />
-                                <Input
-                                    id="idWtQBWoWh2Input"
-                                    value=""
-                                    editable="false"
-                                />
-                            </HBox>
-                            <Table
-                                id="idWtQBWoWhTable"
-                                growing="true"
-                                growingThreshold="6"
-                                mode="SingleSelectMaster"
-                                selectionChange="onSelectionChange"
-                            >
-                                <columns>
-                                    <Column id="idWtQBWoWhWtsCol">
-                                        <Text
-                                            id="idWtQBWoWhWtsText"
-                                            text="WT's"
-                                        />
-                                    </Column>
-                                    <Column id="idWtQBWoWhWtsColstatus">
-                                        <Text
-                                            id="idWtQBWoWhWtsTextstatus"
-                                            text="WT Status"
-                                        />
-                                    </Column>
-                                       <Column id="idWtQBWoWhWtNoCol">
-                                        <Text
-                                            id="idWtQBWoWhWtNoText"
-                                            text="WT Confirmed By"
-                                        />
-                                    </Column>
-                                </columns>
-
-                                <items>
-            
-                                </items>
-                            </Table>
-                            <!-- <Button
-                            id="idBtn"
-                            text="text"
-                            press="onBtnPress"
-                        /> -->
-                        </VBox>
+                            <Button
+                                id="WtQBWoOpenBtn"
+                                text="Open"
+                                press="onWtQBWoOpenBtnPress"
+                            />
+                            <Button
+                                id="WtQBWoConfBtn"
+                                text="Conf"
+                                press="onWtQBWoConfBtnPress"
+                            />
+                            <Button
+                                id="WtQBWoAllBtn"
+                                text="All"
+                                press="onWtQBWoAllBtnPress"
+                            />
+                            <Button
+                                id="idWtQBWoSecondbackbtn"
+                                text="Back"
+                                press="onWtQBWoSecondBackBtnPress"
+                                visible="false"
+                            />
+                        </HBox>
                     </form:SimpleForm>
                 </VBox>
+                <Panel
+                    id="idPanel_WTQBWO"
+                    headerText=""
+                    visible="true"
+                    class="sapUiSmallMarginTop"
+                >
+                    <Table
+                        id="idWtQBWoWhTable"
+                        growing="true"
+                        growingThreshold="6"
+                        mode="SingleSelectMaster"
+                        selectionChange="onSelectWarehouseTask"
+                    >
+                        <columns>
+                            <Column id="idWtQBWoWhWtsCol">
+                                <Text
+                                    id="idWtQBWoWhWtsText"
+                                    text="WT's"
+                                />
+                            </Column>
+                            <Column id="idWtQBWoWhWtsColstatus">
+                                <Text
+                                    id="idWtQBWoWhWtsTextstatus"
+                                    text="WT Status"
+                                />
+                            </Column>
+                            <Column id="idWtQBWoWhWtNoCol">
+                                <Text
+                                    id="idWtQBWoWhWtNoText"
+                                    text="WT Created By"
+                                />
+                            </Column>
+                        </columns>
+
+                        <items />
+                    </Table>
+                </Panel>
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhThirdsc"
@@ -219,7 +235,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO3"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -234,8 +250,8 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox>
-                            <HBox
+                        <VBox id="idVbox_WTQueryByWO4">
+                            <HBox id="idHbox_WTQueryByWO5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -247,6 +263,7 @@
                                 <Input
                                     id="idWtQBWowtInput"
                                     value=""
+                                    width="140px"
                                 />
 
                                 <Label width="20px" />
@@ -258,14 +275,19 @@
                                 <Input
                                     id="idWtQBWoWTitInput"
                                     value=""
+                                    width="50px"
+                                    
                                 />
+                                <Label width="10px" />
                                 <Input
                                     id="idWtQBWoWTitAllInput"
-                                    value="ALL"
+                                    value=""
+                                    width="90px"
                                 />
+                                
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO6"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -277,30 +299,42 @@
                                 <Input
                                     id="idWtQBWowtsInput"
                                     value=""
+                                    width="50px"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWoStsLabel"
                                     text="Sts"
-                                    width="50px"
+                                    width="20px"
                                 />
                                 <Input
                                     id="idWtQBWoStsInput"
                                     value=""
+                                    width="50px"
                                 />
-                                <Label width="30px" />
+                                <Label
+                                    id="idWtQBWoStypLabel"
+                                    text="STyp"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idWtQBWoStypInput"
+                                    value=""
+                                    width="50px"
+                                />
                                 <Label
                                     id="idWtQBWoPtypLabel"
                                     text="Ptyp"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWoPtypInput"
                                     value=""
+                                    width="70px"
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO7"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -312,6 +346,7 @@
                                 <Input
                                     id="idWtQBWoSproInput"
                                     value=""
+                                    width="50px"
                                 />
                                 <Label width="20px" />
                                 <Label
@@ -322,14 +357,16 @@
                                 <Input
                                     id="idWtQBWoActyInput"
                                     value=""
+                                    width="50px"
                                 />
                                 <Input
                                     id="idWtQBWoActyEmpInput"
                                     value=""
+                                    width="200px"
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO8"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -341,14 +378,16 @@
                                 <Input
                                     id="idWtQBWoProInput"
                                     value=""
+                                    width="290px"
                                 />
                                 <Input
                                     id="idWtQBWoProEmpInput"
                                     value=""
+                                    width="50px"
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO9"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -367,7 +406,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO10"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -386,7 +425,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO11"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -398,29 +437,33 @@
                                 <Input
                                     id="idWtQBWoCdatInput"
                                     value=""
+                                    width="100px"
                                 />
                                 <Input
                                     id="idWtQBWoCdatnput"
                                     value=""
+                                    width="100px"
                                 />
-                                <Label width="20px" />
+                                <Label width="10px" />
                                 <Label
                                     id="idWtQBWoCusrLabel"
                                     text="Cusr"
-                                    width="50px"
+                                    width="30px"
                                 />
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
+                                    width="120px"
                                 />
                             </HBox>
-                            <VBox
+                            <VBox id="idVbox_WTQueryByWO5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <HBox
+                                <HBox id="idHbox_WTQueryByWO12"
                                     alignContent="Center"
                                     alignItems="Center"
+
                                 >
                                     <Button
                                         id="WtQBWoDetailBtn"
@@ -428,19 +471,10 @@
                                         press="onWtQBWoDetailBtnPress"
                                     />
                                     <Button
-                                        id="WtQBWoOpenBtn"
-                                        text="Open"
-                                        press="onWtQBWoOpenBtnPress"
-                                    />
-                                    <Button
-                                        id="WtQBWoConfBtn"
-                                        text="Conf"
-                                        press="onWtQBWoConfBtnPress"
-                                    />
-                                    <Button
-                                        id="WtQBWoAllBtn"
-                                        text="All"
-                                        press="onWtQBWoAllBtnPress"
+                                        id="idWtQBWoThirdbackbtn"
+                                        text="Back"
+                                        press="onWtQBWoThirdBackBtnPress"
+                                        visible="false"
                                     />
                                 </HBox>
                             </VBox>
@@ -456,7 +490,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO6"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -471,10 +505,8 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox>
-                            <Title text="Product Description" />
-
-                            <HBox
+                        <VBox id="idVbox_WTQueryByWO7">
+                            <HBox id="idHbox_WTQueryByWO13"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -486,6 +518,7 @@
                                 <Input
                                     id="idWtQBWOwoInput"
                                     value=""
+                                    width="120px"
                                 />
 
                                 <Label width="20px" />
@@ -498,9 +531,10 @@
                                 <Input
                                     id="idWtQBWOEstpInput"
                                     value=""
+                                    width="120px"
                                 />
                             </HBox>
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO14"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -512,24 +546,27 @@
                                 <Input
                                     id="idWtQBWOSqtyInput"
                                     value=""
+                                    width="120px"
                                 />
                                 <Input
                                     id="idWtQBWOPcInput"
-                                    value="PC"
+                                    value=""
+                                    width="50px"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWOBtchLabel"
                                     text="Btch"
-                                    width="60px"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idWtQBWOBtchInput"
                                     value=""
+                                    width="120px"
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO15"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -541,20 +578,22 @@
                                 <Input
                                     id="idWtQBWOOwnerInput"
                                     value=""
+                                    width="80px"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWOPEntLabel"
                                     text="PEnt"
-                                    width="60px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWOPEntInput"
                                     value=""
+                                    width="80px"
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO16"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -566,6 +605,7 @@
                                 <Input
                                     id="idWtQBWOHuWtInput"
                                     value=""
+                                    width="80px"
                                 />
                                 <Label width="20px" />
                                 <Label
@@ -576,8 +616,9 @@
                                 <Input
                                     id="idWtQBWOHTypeInput"
                                     value=""
+                                    width="80px"
                                 />
-                                <Label width="20px" />
+                                <Label width="10px" />
                                 <Label
                                     id="idWtQBWOWhHuLabel"
                                     text="Wh Hu"
@@ -586,8 +627,25 @@
                                 <Input
                                     id="idWtQBWOWhHuInput"
                                     value=""
+                                    width="40px"
                                 />
                             </HBox>
+                            <VBox id="idVbox_WTQueryByWO8"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox id="idHbox_WTQueryByWO17"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <Button
+                                        id="idWtQBWoFourthbackbtn"
+                                        text="Back"
+                                        press="onWtQBWoFourthBackBtnPress"
+                                        visible="false"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -600,7 +658,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO9"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -615,8 +673,8 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox>
-                            <HBox
+                        <VBox id="idVbox_WTQueryByWO10">
+                            <HBox id="idHbox_WTQueryByWO18"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -642,10 +700,10 @@
                                 />
                                 <Input
                                     id="idWtQBWoWTitAllInput2"
-                                    value="Open"
+                                    value=""
                                 />
                             </HBox>
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO19"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -682,7 +740,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO20"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -711,7 +769,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO21"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -730,7 +788,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO22"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -749,7 +807,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO23"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -768,7 +826,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO24"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -797,7 +855,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO25"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -834,7 +892,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO11"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -849,8 +907,8 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox>
-                            <HBox
+                        <VBox id="idVbox_WTQueryByWO12">
+                            <HBox id="idHbox_WTQueryByW26"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -875,11 +933,11 @@
                                 />
                                 <Input
                                     id="idWtQBWoWTitAllInput3"
-                                    value="Conf"
+                                    value=""
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO27"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -914,7 +972,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO28"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -944,7 +1002,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO29"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -963,7 +1021,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO30"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -982,7 +1040,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO31"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -1001,7 +1059,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO32"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -1030,7 +1088,7 @@
                                 />
                             </HBox>
 
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO33"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -1067,7 +1125,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <VBox id="idVbox_WTQueryByWO13"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -1082,8 +1140,8 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox>
-                            <HBox
+                        <VBox id="idVbox_WTQueryByWO14">
+                            <HBox id="idHbox_WTQueryByWO34"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -1097,7 +1155,7 @@
                                     value=""
                                 />
                             </HBox>
-                            <HBox
+                            <HBox id="idHbox_WTQueryByWO35"
                                 alignContent="Center"
                                 alignItems="Center"
                             >

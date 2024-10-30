@@ -7,6 +7,7 @@ sap.ui.define(
     ],
     function(BaseController,MessageToast,UIComponent,JSONModel) {
       "use strict";
+
   
       return BaseController.extend("com.app.rfapp.controller.SerialNumberLocation", {
         onInit: function() {

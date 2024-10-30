@@ -13,34 +13,10 @@
     <tnt:ToolPage id="idToolPageSBQP">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderSBQP">
-                <Button
-                    id="idSBQPfirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onSBQPfirstBackBtnPress"
-                    visible="true"
-                />
-                <Button
-                    id="idSBQPSecondbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onSBQPSecondBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idSBQPThirdbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onSBQPThirdBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idSBQPFourthbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onSBQPFourthBackBtnPress"
-                    visible="false"
-                />
                 <Image
                     id="_IDGenImage1SBQP"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin"
+                    class="sapUiTinyMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
@@ -72,49 +48,73 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <form:SimpleForm
-                    id="idProductBinQbin"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                    columnsS="1"
+                <VBox
+                    id="idVbox_StockBinQuerybyProduct16"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <VBox
-                        alignContent="Center"
-                        alignItems="Center"
+                    <form:SimpleForm
+                        id="idProductBinQbin"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
                     >
-                        <Title text="Stock Bin Query By Product" />
-                        <VBox class="sapUiTinyMarginBottom" />
-                        <HBox
-                            id="idSBQPHbox"
-                            class="sapUiMediumMargin"
+                        <VBox
+                            id="idVbox_StockBinQuerybyProduct1"
+                            alignContent="Center"
+                            alignItems="Center"
                         >
-                            <Label
-                                id="idSBQProductLabel"
-                                text="Product"
-                                width="70px"
-                                class="sapUiTinyMargin"
-                            />
-                            <Input
-                                id="idSBQProductInput"
-                                value=""
-                                liveChange="onpressProductsubmit"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <ndc:BarcodeScannerButton
-                                id="_IDBinGenScanButton_SBQProduct"
-                                scanSuccess="onScanSuccessProduct"
-                                scanFail="onScanError"
-                                dialogTitle="Barcode Scanner"
-                                class="sapUiTinyMarginBegin"
-                            />
-                        </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                            <HBox
+                                id="idSBQPHbox"
+                                class="sapUiSmallMargin"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idSBQProductLabel"
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMargin"
+                                />
+                                <Input
+                                    id="idSBQProductInput"
+                                    value=""
+                                    liveChange="onpressProductsubmit"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct17"
+                                justifyContent="Center"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSBQPfirstbackbtn"
+                                    text="Back"
+                                    press="onSBQPfirstBackBtnPress"
+                                    visible="true"
+                                    tooltip="Back"
+                                    type="Emphasized"
+                                />
+                                <!-- <Label
+                                    id="IdLabel_StockBinQuerybyProduct_Space_1"
+                                    text=""
+                                    width="25px"
+                                /> -->
+                                <ndc:BarcodeScannerButton
+                                    id="_IDBinGenScanButton_SBQProduct"
+                                    scanSuccess="onScanSuccessProduct"
+                                    scanFail="onScanError"
+                                    dialogTitle="Barcode Scanner"
+                                    class="sapUiTinyMarginBegin"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idSBQPsecondSC"
@@ -135,12 +135,14 @@
                     columnsM="1"
                 >
                     <VBox
+                        id="idTitle_StockBinQuerybyProduct3"
                         alignItems="Center"
                         justifyContent="Center"
                         width="100%"
                         height="100%"
                     >
                         <VBox
+                            id="idVbox_StockBinQuerybyProduct4"
                             alignItems="Center"
                             justifyContent="Center"
                             width="100%"
@@ -160,22 +162,26 @@
                                     alignItems="Center"
                                     justifyContent="SpaceBetween"
                                     width="100%"
-                                    style="display: flex; justify-content: center; align-items: center;"
                                 >
                                     <Input
                                         id="idSBQProductInput2"
                                         value=""
-                                    /> 
+                                    />
                                 </HBox>
                             </HBox>
                         </VBox>
-                        <VBox class="sapUiMediumMarginBottom" />
                         <VBox
+                            id="idTitle_StockBinQuerybyProduct5"
+                            class="sapUiMediumMarginBottom"
+                        />
+                        <VBox
+                            id="idVbox_StockBinQuerybyProduct6"
                             alignItems="Center"
                             justifyContent="Center"
                             width="100%"
                         >
                             <HBox
+                                id="idHbox_StockBinQuerybyProduct8"
                                 alignItems="Center"
                                 justifyContent="Center"
                                 width="100%"
@@ -190,8 +196,30 @@
                                 >
                                     <headerToolbar>
                                         <OverflowToolbar
-                                            id="idSlotsTableHeader"
-                                        />
+                                            id="idTableHeader_StockBinQbyProduct"
+                                        >
+                                            <Title
+                                                id="idTableHeaderTitle_StockBinQbyProduct"
+                                                text="Bin Details"
+                                            />
+                                            <ToolbarSpacer
+                                                id="idTableHeaderSpaceremptable"
+                                            />
+                                            <Button
+                                                id="idSBQPSecondbackbtn"
+                                                type="Emphasized"
+                                                press="onSBQPSecondBackBtnPress"
+                                                visible="false"
+                                                text="Back"
+                                            />
+                                            <Button
+                                                id="idSBQPprdDe"
+                                                text="Prd De"
+                                                class="sapUiTinyMargin"
+                                                press="onSBQPPreDePress"
+                                                type="Emphasized"
+                                            />
+                                        </OverflowToolbar>
                                     </headerToolbar>
                                     <columns>
                                         <Column id="idSBQPBinColumn">
@@ -214,26 +242,10 @@
                                         </Column>
                                     </columns>
 
-                                    <items>
-                                    </items>
+                                    <items />
                                 </Table>
                             </HBox>
                         </VBox>
-
-                        <!-- Buttons -->
-                        <VBox class="sapUiLargeMarginBottom" />
-                        <HBox
-                            alignItems="Center"
-                            justifyContent="Center"
-                            width="100%"
-                        >
-                            <Button
-                                id="idSBQPprdDe"
-                                text="Prd De"
-                                class="sapUiTinyMargin"
-                                press="onSBQPPreDePress"
-                            />
-                        </HBox>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -246,86 +258,123 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <form:SimpleForm
-                    id="simpleform3_binQproduct"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
+                <VBox
+                    id="idVbox_StockBinQuerybyProduct17"
+                    justifyContent="Center"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <VBox
-                        alignItems="Center"
-                        justifyContent="Center"
-                        width="100%"
+                    <form:SimpleForm
+                        id="simpleform3_binQproduct"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
                     >
-                        <Title text="Product Description" />
-                        <VBox class="sapUiLargeMarginBottom" />
-                        <HBox id="idhbox_Production">
-                            <Input
-                                id="idInput_BinQProduct_Product"
-                                width="20rem"
-                                editable="false"
+                        <VBox
+                            id="idVbox_StockBinQuerybyProduct12"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
+                        >
+                            <Title
+                                id="idTitle_StockBinQuerybyProduct12"
+                                text="Product Description"
                             />
-                        </HBox>
-                        <HBox>
-                            <Label
-                                id="idSBQPEANLabel"
-                                text="EAN/UPC"
-                                width="70Px"
+                            <VBox
+                                id="idVbox_StockBinQuerybyProduct13"
+                                class="sapUiLargeMarginBottom"
                             />
-                            <Input
-                                id="idSBQPEANInput"
-                                value=""
-                                editable="false"
-                            />
-                            <Label id="idLableSpace_BinQproduct" width="2rem"></Label>
-                            <Input
-                                id="idSBQPEANInput2"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
+                            <HBox id="idhbox_Production">
+                                <Input
+                                    id="idInput_BinQProduct_Product"
+                                    width="20rem"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyProduct12">
+                                <Label
+                                    id="idSBQPEANLabel"
+                                    text="EAN/UPC"
+                                    width="70Px"
+                                />
+                                <Input
+                                    id="idSBQPEANInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idLableSpace_BinQproduct"
+                                    width="2rem"
+                                />
+                                <Input
+                                    id="idSBQPEANInput2"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
 
-                        <HBox>
-                            <Label
-                                id="idSBQPTotWLabel"
-                                text="TotW"
-                                width="70Px"
-                            />
-                            <Input
-                                id="idSBQPTotWInput"
-                                value=""
-                                editable="false"
-                            />
-                             <Label id="idLableSpace_BinQproduct1" width="2rem"></Label>
-                            <Input
-                                id="idSBQPTotWInput2"
-                                editable="false"
-                            />
-                        </HBox>
+                            <HBox id="idHbox_StockBinQuerybyProduct13">
+                                <Label
+                                    id="idSBQPTotWLabel"
+                                    text="TotW"
+                                    width="70Px"
+                                />
+                                <Input
+                                    id="idSBQPTotWInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idLableSpace_BinQproduct1"
+                                    width="2rem"
+                                />
+                                <Input
+                                    id="idSBQPTotWInput2"
+                                    editable="false"
+                                />
+                            </HBox>
 
-                        <HBox>
-                            <Label
-                                id="idSBQPTotVLabel"
-                                text="TotV"
-                                width="70Px"
-                            />
-                            <Input
-                                id="idSBQPTotVInput"
-                                value=""
-                                editable="false"
-                            />
-                             <Label id="idLableSpace_BinQproduct3" width="2rem"></Label>
-                            <Input
-                                id="idSBQPTotVInput2"
-                                editable="false"
-                            />
-                        </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                            <HBox id="idHbox_StockBinQuerybyProduct">
+                                <Label
+                                    id="idSBQPTotVLabel"
+                                    text="TotV"
+                                    width="70Px"
+                                />
+                                <Input
+                                    id="idSBQPTotVInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idLableSpace_BinQproduct3"
+                                    width="2rem"
+                                />
+                                <Input
+                                    id="idSBQPTotVInput2"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct19"
+                                justifyContent="Center"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSBQPThirdbackbtn"
+                                    text="Back"
+                                    type="Emphasized"
+                                    press="onSBQPThirdBackBtnPress"
+                                    visible="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
                 id="idSBQPFourthSC"
@@ -335,158 +384,228 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <form:SimpleForm
-                    id="idsimpleform4_BinQProduct"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
+                <VBox
+                    id="idVbox_StockBinQuerybyProduct21"
+                    justifyContent="Center"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <VBox
-                        alignItems="Center"
-                        justifyContent="Center"
-                        width="100%"
+                    <form:SimpleForm
+                        id="idsimpleform4_BinQProduct"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
                     >
-                        <VBox class="sapUiLargeMarginBottom" />
-                        <HBox>
-                            <Label
-                                id="idSBQPBinLabel"
-                                text="Bin"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPBinInput"
-                                value=""
-                                editable="false"
-                            />
-                            <Label
-                                text=""
-                                width="30px"
-                            />
-                            <Label
-                                id="idSBQPStorTypeLabel"
-                                text="StorageType"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPStoreTypeInput"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
-
-                        <HBox>
-                            <Label
-                                id="idSBQPQtyLabel"
-                                text="Qty"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPQtyWInput"
-                                value=""
-                                editable="false"
-                            />
-                            <Label
-                                text=""
-                                width="30px"
-                            />
-                            <Label
-                                id="idSBQPStorSecLabel"
-                                text="Storage Sec"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPStorSecInput"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
-                        <HBox>
-                            <Label
-                                id="idSBQNoOfHuLabel_binQproduct"
-                                text="No of Hu's"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPNoOfHuInput"
-                                value=""
-                                editable="false"
-                            />
-                            <Label
-                                text=""
-                                width="30px"
-                            />
-                            <Label
-                                id="idSBQPBinAisleLabel"
-                                text="Bin Aisle"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPBinAisleInput"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
-                        <HBox>
-                            <Label
-                                id="idSBQMaxWLabel_binQueryProduct"
-                                text="MaxW"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPMaxWInput"
-                                value=""
-                                editable="false"
+                        <VBox
+                            id="idVbox_StockBinQuerybyProduct14"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
+                        >
+                            <VBox
+                                class="sapUiLargeMarginBottom"
+                                id="idVbox_StockBinQuerybyProduct15"
                             />
 
-                            <Text text="KG" />
-                            <Label
-                                text=""
-                                width="30px"
-                            />
-                            <Label
-                                id="idSBQPBinLevelLabel"
-                                text="Bin Level"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPBinLevelInput"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
-                        <HBox>
-                            <Label
-                                id="idSBQMaxVLabel_BinQueryByProduct"
-                                text="MaxV"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPMaxVInput"
-                                value=""
-                                editable="false"
-                            />
-                            <Text text="M3" />
-                            <Label
-                                text=""
-                                width="30px"
-                            />
-                            <Label
-                                id="idSBQPStackLabel"
-                                text="Stack"
-                                width="90Px"
-                            />
-                            <Input
-                                id="idSBQPStackInput"
-                                value=""
-                                editable="false"
-                            />
-                        </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct1"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Label
+                                    id="idSBQPBinLabel"
+                                    text="Bin"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPBinInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Label
+                                    id="idSBQPStorTypeLabel"
+                                    text="Storage Type"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPStoreTypeInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct2"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Label
+                                    id="idSBQPQtyLabel"
+                                    text="Qty"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPQtyWInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct1"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Label
+                                    id="idSBQPStorSecLabel"
+                                    text="Storage Sec"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPStorSecInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct4"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Label
+                                    id="idSBQNoOfHuLabel_binQproduct"
+                                    text="No of Hu's"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPNoOfHuInput"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct2"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Label
+                                    id="idSBQPBinAisleLabel"
+                                    text="Bin Aisle"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPBinAisleInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct5"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Label
+                                    id="idSBQMaxWLabel_binQueryProduct"
+                                    text="MaxW"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPMaxWInput"
+                                    value=""
+                                    editable="false"
+                                    width="74px"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct_Space_uom1"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idSBQPMaxWInput_Weight_Uom"
+                                    value=""
+                                    editable="false"
+                                    width="74px"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct3"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Label
+                                    id="idSBQPBinLevelLabel"
+                                    text="Bin Level"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPBinLevelInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct6"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Label
+                                    id="idSBQMaxVLabel_BinQueryByProduct"
+                                    text="MaxV"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPMaxVInput"
+                                    value=""
+                                    editable="false"
+                                    width="74px"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct_Space_uom2"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idSBQPMaxWInput_Volume_Uom"
+                                    value=""
+                                    editable="false"
+                                    width="74px"
+                                />
+                                <Label
+                                    id="IdLabel_StockBinQuerybyProduct4"
+                                    text=""
+                                    width="30px"
+                                />
+                                <Label
+                                    id="idSBQPStackLabel"
+                                    text="Stack"
+                                    width="90px"
+                                />
+                                <Input
+                                    id="idSBQPStackInput"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox_StockBinQuerybyProduct20"
+                                justifyContent="Center"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSBQPFourthbackbtn"
+                                    type="Emphasized"
+                                    press="onSBQPFourthBackBtnPress"
+                                    visible="false"
+                                    text="Back"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>

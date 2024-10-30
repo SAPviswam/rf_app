@@ -144,148 +144,117 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
-                    id="idvboxhusovq1"
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <f:SimpleForm
-                        id="secondsimpleFormHUStockOverviewQuery"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
-                        columnsM="1"
+                <VBox id="idVBoxBinNumberta_ble_HUSOQ1345">
+                    <HBox id="idBinNumber_HBox_HUSOQ14356">
+                        <Label
+                            id="idBinNumber_Lable_HUSOQ1234"
+                            text="HU:"
+                            class="BinNumberTableLabel_HUSOQ"
+                        />
+                        <Input
+                            id="idBinNumberI_nput_HUSOQ11"
+                            class="BinNumberInput"
+                        />
+                        <Input
+                            id="idBinNumberInp_ut_HUSOQ121"
+                            class="BinNumberInput"
+                        />
+
+                        <Input
+                            id="idBinNum_berInput_HUSOQ131"
+                            class="BinNumberInput"
+                        />
+                        <Input
+                            id="idBinNumbe_rInput_HUSOQ141"
+                            class="BinNumberInput"
+                        />
+                    </HBox>
+                    <Toolbar
+                        id="TB4_HUSO_Q11"
+                        class="HeaderToolBar"
                     >
-                        <VBox
-                            id="idvboxhusovq2"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
-                            <HBox
-                                id="idhboxhusovq2"
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label
-                                    id="idlabelhusovqhu"
-                                    text="HU:"
+                        <Title
+                            id="Title1_455896_HUSOQ11"
+                            text=" Table:"
+                        />
+                        <ToolbarSpacer id="IDGenToolbar_345_HUSOQ112" />
+                        <Button
+                            press="onPressHUQueryList"
+                            text="HU Query List"
+                        />
+                    </Toolbar>
+                    <Table
+                        id="idBinNumTable_AHUOB12Q11"
+                        width="100%"
+                        selectionChange="onSelectionChange"
+                    >
+                        <columns>
+                            <Column id="IDGenColumn001_AHUOB23Q11">
+                                <Text
+                                    id="IDGenText001_AHUO23BQ11"
+                                    text="MATNR"
+                                    class="HedingNameColor"
                                 />
-                                <Input width="20px" />
-                                <Label width="40px" />
-                                <Input width="20px" />
-                                <Label width="60px" />
-                                <Input width="40px" />
-                                <Label width="40px" />
-                                <Input width="40px" />
-                                <Label width="10px" />
-
-                                <Button icon="sap-icon://slim-arrow-down" />
-
-                                <Button icon="sap-icon://slim-arrow-up" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="100px" />
-                                <Label width="40px" />
-                                <Input width="130px" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="20px" />
-                                <Label width="40px" />
-                                <Input width="20px" />
-                                <Label width="60px" />
-                                <Input width="40px" />
-                                <Label width="40px" />
-                                <Input width="40px" />
-                                <Label width="10px" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="100px" />
-                                <Label width="40px" />
-                                <Input width="130px" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="20px" />
-                                <Label width="40px" />
-                                <Input width="20px" />
-                                <Label width="60px" />
-                                <Input width="40px" />
-                                <Label width="40px" />
-                                <Input width="40px" />
-                                <Label width="10px" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="100px" />
-                                <Label width="40px" />
-                                <Input width="130px" />
-                            </HBox>
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                            >
-                                <Label width="20px" />
-                                <Input width="20px" />
-                                <Label width="40px" />
-                                <Input width="20px" />
-                                <Label width="60px" />
-                                <Input width="40px" />
-                                <Label width="40px" />
-                                <Input width="40px" />
-                                <Label width="10px" />
-                            </HBox>
-                            <HBox>
-                                <Button
-                                    press="onPressHUQueryList"
-                                    text="HU Query List"
+                            </Column>
+                            <Column id="IDGenColumn002_AHUwqerOBQ11">
+                                <Text
+                                    id="IDGenText002_AHertUOBQ11"
+                                    text="MAKTX"
+                                    class="HedingNameColor"
                                 />
-                            </HBox>
-                        </VBox>
-                    </f:SimpleForm>
+                            </Column>
+                            <Column id="IDGenColumn003_AHWERUOBQ111">
+                                <Text
+                                    id="IDGenText003_AHUOEWRTBQ11"
+                                    text="NISTA_D"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn003_AHWERUOBQ1111">
+                                <Text
+                                    id="IDGenText003_AHUOEWRTBQ111"
+                                    text="ALTME"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn003__AHWERUOBQ11_113">
+                                <Text
+                                    id="IDGenText003_AHUOE_WRTBQ1131"
+                                    text="BATCH"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+
+                            <Column id="IDGenColumn003__AHWERUOBQ11113">
+                                <Text
+                                    id="IDGenText003_AHUOEWRTBQ1131"
+                                    text="CAT"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                            <!-- <ColumnListItem
+                                id="IDGenBinNumbersColumnListItem1_HUSOQ"
+                                class="AlternateRowColor"
+                            >
+                                <cells>
+                                    <Text
+                                        id="IDGenBinNoTableText1_HUSOQ"
+                                        text="{Vendorname}"
+                                    />
+                                    <Text
+                                        id="IDGenBinNoTableText2_HUSOQ"
+                                        text="{Vendornumber}"
+                                    />
+                                    <Text
+                                        id="IDGenBinNoTableText3_HUSOQ"
+                                        text="{Drivername}"
+                                    />
+                                </cells>
+                            </ColumnListItem> -->
+                        </items>
+                    </Table>
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
@@ -349,17 +318,16 @@
                     <Table
                         id="idBinNumTable_AHUOB12Q1"
                         width="100%"
-                        mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
                     >
                         <columns>
-                            <Column id="IDGenColumn001_AHUOB23Q1">
+                            <!-- <Column id="IDGenColumn001_AHUOB23Q1">
                                 <Text
                                     id="IDGenText001_AHUO23BQ1"
                                     text="S.no"
                                     class="HedingNameColor"
                                 />
-                            </Column>
+                            </Column> -->
                             <Column id="IDGenColumn002_AHUwqerOBQ1">
                                 <Text
                                     id="IDGenText002_AHertUOBQ1"
@@ -408,285 +376,355 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
-                    id="vboxid"
-                    alignContent="Center"
-                    alignItems="Center"
+                 <f:SimpleForm
+                    id="idProductDeaisForm_1"
+                    layout="ResponsiveGridLayout"
+                    editable="true"
+                    columnsL="2"
+                    columnsM="1"
                 >
-                    <f:SimpleForm
-                        id="fourthsimpleFormHUStockOverviewQuery"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
-                        columnsM="1"
-                    >
-                        <VBox
-                            alignContent="Center"
-                            alignItems="Center"
-                            id="vboxMain"
+              <Label
+                        id="idHubyASNLabelQ_RCMHU1"
+                        text="pkmt"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhbx_RCMHU1">
+                        <Input
+                            id="inputPkmt"
+                            maxLength="30"
+                            width="150px"
+                        />
+                        <HBox
+                            id="_IDGenHBox571"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUobox__RCMHU1"
+                            class="customLabelSpacing"
                         >
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox1"
-                            >
-                                <Label
-                                    text="Pkmt"
-                                    id="labelPkmt"
-                                />
-                                <VBox
-                                    width="3%"
-                                    id="vboxSpacer1"
-                                />
-                                <Input id="inputPkmt" />
-
-                                <VBox
-                                    width="10%"
-                                    id="vboxSpacer2"
-                                />
-                                <Label
-                                    text="Htyp"
-                                    id="labelHtyp"
-                                />
-                                <VBox
-                                    width="3%"
-                                    id="vboxSpacer3"
-                                />
-                                <Input id="inputHtyp" />
-                            </HBox>
-
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox2"
-                            >
-                                <Label
-                                    text="Totw"
-                                    id="labelTotw"
-                                />
-                                <VBox
-                                    width="3%"
-                                    id="vboxSpacer4"
-                                />
-                                <Input
-                                    id="inputTotw1"
-                                    width="20PX"
-                                />
-                                <VBox
-                                    width="18%"
-                                    id="vboxSpacer5"
-                                />
-                                <Input
-                                    id="inputTotw2"
-                                    width="20PX"
-                                />
-                                <VBox
-                                    width="18%"
-                                    id="vboxSpacer6"
-                                />
-
-                                <Label
-                                    text="Totv"
-                                    id="labelTotv"
-                                />
-                                <VBox
-                                    width="3%"
-                                    id="vboxSpacer7"
-                                />
-                                <Input
-                                    id="inputTotv1"
-                                    width="20PX"
-                                />
-                                <VBox
-                                    width="18%"
-                                    id="vboxSpacer8"
-                                />
-                                <Input
-                                    id="inputTotv2"
-                                    width="40PX"
-                                />
-                            </HBox>
-
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox3"
-                            >
-                                <Label
-                                    text="MaxW"
-                                    id="labelMaxW"
-                                />
-                                <VBox
-                                    width="1%"
-                                    id="vboxSpacer9"
-                                />
-                                <Input
-                                    id="inputMaxW"
-                                    width="1%"
-                                />
-                                <Label
-                                    id="labelMaxWSpacer"
-                                    width="3%"
-                                />
-
-                                <Label
-                                    text="MaxV"
-                                    id="labelMaxV"
-                                />
-                                <Label
-                                    id="labelMaxVSpacer"
-                                    width="1%"
-                                />
-                                <Input
-                                    id="inputMaxV"
-                                    width="1%"
-                                />
-                                <Label
-                                    id="labelMaxVEndSpacer"
-                                    width="3%"
-                                />
-                            </HBox>
-
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox4"
-                            >
-                                <Label
-                                    text="TarW"
-                                    id="labelTarW"
-                                />
-                                <VBox
-                                    width="2%"
-                                    id="vboxSpacer10"
-                                />
-                                <Input
-                                    id="inputTarW"
-                                    width="1%"
-                                />
-                                <Label
-                                    id="labelTarWSpacer"
-                                    width="3%"
-                                />
-
-                                <Label
-                                    text="TarV"
-                                    id="labelTarV"
-                                />
-                                <Input
-                                    id="inputTarV"
-                                    width="1%"
-                                />
-                                <Label
-                                    id="labelTarVEndSpacer"
-                                    width="3%"
-                                />
-                            </HBox>
-
-                            <HBox id="hbox5">
-                                <Label
-                                    id="labelEr"
-                                    width="5%"
-                                />
-                                <Input id="inputEr1" />
-                                <Label
-                                    id="labelErSpacer1"
-                                    width="3%"
-                                />
-                                <Input id="inputEr2" />
-                                <Label
-                                    id="labelErSpacer2"
-                                    width="1%"
-                                />
-                                <Input id="inputEr3" />
-                                <Label
-                                    id="labelErSpacer3"
-                                    width="1%"
-                                />
-                                <Input id="inputEr4" />
-                                <Label
-                                    id="labelErEndSpacer"
-                                    width="3%"
-                                />
-                            </HBox>
-
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox6"
-                            >
-                                <Label
-                                    text="Top"
-                                    id="labelTop"
-                                />
-                                <Input id="inputTop" />
-                                <Label
-                                    text="Lwst"
-                                    id="labelLwst"
-                                />
-                                <Input id="inputLwst" />
-                                <Label
-                                    text="Move"
-                                    id="labelMove"
-                                />
-                                <Input id="inputMove" />
-                                <Label
-                                    text="Stat"
-                                    id="labelStat"
-                                />
-                                <Input id="inputStat1" />
-                                <Input id="inputStat2" />
-                            </HBox>
-
-                            <HBox
-                                alignContent="Center"
-                                alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
-                                class="sapUiSmallMarginBottom"
-                                id="hbox7"
-                            >
-                                <Label
-                                    text="Bin"
-                                    id="labelBin1"
-                                />
-                                <Input id="inputBin1" />
-                                <Label
-                                    text="CGrp"
-                                    id="labelCGrp"
-                                />
-                                <Input
-                                    id="inputCGrp"
-                                    width="2%"
-                                />
-                                <Label
-                                    id="labelCGrpEndSpacer"
-                                    width="3%"
-                                />
-                            </HBox>
-                        </VBox>
-                    </f:SimpleForm>
-                </VBox>
+                            <Label
+                                id="idHubyASNomabel__RCMHU1"
+                                text="Htyp:"
+                                class="sapUiTinyMarginEnd classUOMbyASn"
+                            />
+                            <Input
+                                id="inputHtyp"
+                                maxLength="30"
+                                width="64px"
+                              
+                            />
+                        </HBox>
+                       
+                       
+                    </HBox>
+                    <Label
+                        id="idHubyASNLabl23ty_RMHU"
+                        text="Totw"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyrtgyinputhRCMU">
+                        <Input
+                            id="inputTotw1"
+                            maxLength="30"
+                            width="50px"
+                           
+                        />
+                        <HBox
+                            id="_IDGentyyuHBox59"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyAyuiSNHUuobo_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyrtyuiASuomLbe__RCMHU" />
+                            <Input
+                                id="inputTotw2"
+                                maxLength="30"
+                                width="50px"
+                                
+                            />
+                        </HBox>
+                         <HBox
+                            id="_IDGentyyuHfgBox59"
+                            width="10px"
+                        />
+                       <Label
+                        id="idHubyASqwrt45y6NLabl23ty_RMHU"
+                        text="Totv"
+                          class="classUOMbyASn"
+                    />
+                    <HBox id="IDqtyrtgyinpusderftgythRCMU">
+                        <Input
+                            id="inputTotv1"
+                            maxLength="30"
+                            width="50px"
+                           
+                        />
+                        <HBox
+                            id="_IDGenertytyyuHBox59"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyAyrty6uuiSNHUuobo_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyrtyrtyuiASuomLbe__RCMHU" />
+                            <Input
+                                id="inputTotv2"
+                                maxLength="30"
+                                width="50px"
+                                
+                            />
+                        </HBox>
+                    </HBox>
+                    </HBox>
+                    
+                    <Label
+                        id="idHubyAShrtjyNLabelQ_RCMHU"
+                        text="MaxW"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyindhrftputhbx_RCMHU">
+                        <Input
+                            id="inputMaxW"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox
+                            id="_IDGenHjmBox57"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUukliobox__RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNomyyabel__RCMHU"
+                                text="MaxV:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputMaxV"
+                                maxLength="30"
+                                width="64px"
+                                
+                            />
+                        </HBox>
+                        
+                    </HBox>
+                     <Label
+                        id="idHubyAShWR4ETrtjyNLabelQ_RCMHU"
+                        text="TarW"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyindhrfWR4Ttputhbx_RCMHU">
+                        <Input
+                            id="inputTarW"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox
+                            id="_IDGenHjETREmBox57"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUETRukliobox__RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNETREomyyabel__RCMHU"
+                                text="TarV:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputTarV"
+                                maxLength="30"
+                                width="64px"
+                             
+                            />
+                        </HBox>
+                        
+                    </HBox>
+                   
+                    <Label
+                        id="idHubyASNLablfty_RMHU"
+                       
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinputhRfCMU">
+                        <Input
+                            id="inputEr1"
+                            maxLength="30"
+                            width="100px"
+                           
+                        />
+                        <HBox
+                            id="_IDGejnHBox59"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUjuobo_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyASuomLfjgbe__RCMHU" />
+                            <Input
+                                id="inputEr2"
+                                maxLength="30"
+                                width="64px"
+                            
+                            />
+                        </HBox>
+                        <HBox
+                            id="_IDGehgjnHBox60"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUugjhomox1_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyASNhgjhum1Lbel__RCMHU" />
+                            <Input
+                                id="inputEr3"
+                                maxLength="30"
+                                width="64px"
+                         
+                            />
+                        </HBox>
+                        <HBox
+                            id="_IDGenHjhkBox61"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUomokjhkx1_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyASNkjhko1Lael__RCMHU" />
+                            <Input
+                                id="inputEr4"
+                                maxLength="30"
+                                width="64px"
+                 
+                            />
+                        </HBox>
+                    </HBox>
+                    <Label
+                        id="idHubyAShrWETtjyNLabelQ_RCMHU"
+                        text="Top"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyindhrftWEYputhbx_RCMHU">
+                        <Input
+                            id="inputTop"
+                            maxLength="30"
+                            width="100px"
+                        />
+                        <HBox
+                            id="_IDGenHYTRYUjmBox57"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUuRYTRkliobox__RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNoYTRYmyyabel__RCMHU"
+                                text="Lwst:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputLwst"
+                                maxLength="30"
+                                width="64px"
+                                
+                            />
+                        </HBox>
+                        <HBox
+                            id="_IDGenHYTRYUjmretBox57"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUugtfhRYTRkliobox__RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASNoYdhftTRYmyyabel__RCMHU"
+                                text="Move:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputMove"
+                                maxLength="30"
+                                width="64px"
+                                
+                            />
+                        </HBox>
+                        <HBox
+                            id="_IDGenHYTRYhyUjmretBox57"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNHUugrhttfhRYTRkliobox__RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASewfterNoYdhftTRYmyyabel__RCMHU"
+                                text="Stat:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputStat1"
+                                maxLength="30"
+                                width="64px"
+                                
+                            />
+                             <HBox
+                            id="idHubyAyrty6uuEGHiSNHUuobo_RCMHU"
+                            class="customLabelSpacing"
+                        >
+                            <Label id="idHubyrtyrtyuiWERTHYASuomLbe__RCMHU" />
+                            <Input
+                                id="inputStat2"
+                                maxLength="30"
+                                width="50px"
+                                
+                            />
+                        </HBox>
+                        </HBox>
+                    </HBox>
+                     <Label
+                        id="idHubyASNLSDFGabelQ_RCMHU1"
+                        text="Bin"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <HBox id="IDqtyinpSDFGuthbx_RCMHU1">
+                        <Input
+                            id="inputBin1"
+                            maxLength="30"
+                            width="150px"
+                        />
+                        <HBox
+                            id="_IDGenSDFHBox571"
+                            width="10px"
+                        />
+                        <HBox
+                            id="idHubyASNSADFHUobox__RCMHU1"
+                            class="customLabelSpacing"
+                        >
+                            <Label
+                                id="idHubyASSDFGTNomabel__RCMHU1"
+                                text="CGrp:"
+                                class="classUOMbyASn"
+                            />
+                            <Input
+                                id="inputCGrp"
+                                maxLength="30"
+                                width="64px"
+                              
+                            />
+                        </HBox>      
+                    </HBox>                   
+                </f:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
                 id="idScforFifthHUStockOverviewQuery"
@@ -818,7 +856,7 @@
                                     id="spacerLabel5"
                                 />
                                 <Input
-                                    width="20px"
+                                    width="100px"
                                     id="inputAqtySmall"
                                 />
                             </HBox>
@@ -844,7 +882,7 @@
                                     id="spacerLabel6"
                                 />
                                 <Input
-                                    width="40px"
+                                    width="100px"
                                     id="inputBtchSmall"
                                 />
                                 <Label
@@ -904,19 +942,19 @@
                                     id="inputMisc1"
                                 />
                                 <Label
-                                    width="60px"
+                                    width="10px"
                                     id="spacerLabel9"
                                 />
                                 <Input
-                                    width="20px"
+                                    width="290px"
                                     id="inputMisc2"
                                 />
                                 <Label
-                                    width="30px"
+                                    width="20px"
                                     id="spacerLabel10"
                                 />
                                 <Input
-                                    width="20px"
+                                    width="100px"
                                     id="inputMisc3"
                                 />
                             </HBox>

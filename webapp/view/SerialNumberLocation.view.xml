@@ -70,7 +70,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            <ScrollContainer
+           <ScrollContainer
                 id="idSNLFirstSC"
                 horizontal="false"
                 vertical="true"
@@ -135,6 +135,7 @@
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
+
             <ScrollContainer
                 id="idSNLsecondSC"
                 horizontal="false"
@@ -234,45 +235,44 @@
 
                         <VBox class="sapUiMediumMarginBottom" />
 
-                        <HBox
-                            alignItems="Center"
-                            justifyContent="Center"
-                            width="100%"
-                        >
-                            <Table
-                                id="idSNLTable"
-                                growing="true"
-                                growingScrollToLoad="true"
+ <HBox
+                                alignItems="Center"
+                                justifyContent="Center"
                                 width="100%"
-                                mode="SingleSelectLeft"
-                                selectionChange="onSelectionChange"
                             >
-                                <columns>
-                                    <Column id="idSNLBinNoColumn">
-                                        <Text
-                                            id="idSNLBinNoText"
-                                            text="Bin No"
-                                        />
-                                    </Column>
-                                    <Column id="idSNLBinColumn">
-                                        <Text
-                                            id="idSNLBinText"
-                                            text="Bin"
-                                        />
-                                    </Column>
-                                    <Column id="idSNLColumn">
-                                        <Text
-                                            id="idSNLText"
-                                            text="P"
-                                        />
-                                    </Column>
-                                    <Column id="idSNLPcColumn">
-                                        <Text
-                                            id="idSNLPcText"
-                                            text="pc"
-                                        />
-                                    </Column>
-                                </columns>
+                                <Table
+                                    id="idSNLTable"
+                                    growing="true"
+                                    growingScrollToLoad="true"
+                                    mode="None"
+                                    width="100%"
+                                >
+                                    <columns>
+                                        <Column id="idSNLBinNoColumn">
+                                            <Text
+                                                id="idSNLBinNoText"
+                                                text="Bin No"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLBinColumn">
+                                            <Text
+                                                id="idSNLBinText"
+                                                text="Bin"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLColumn">
+                                            <Text
+                                                id="idSNLText"
+                                                text="P"
+                                            />
+                                        </Column>
+                                        <Column id="idSNLPcColumn">
+                                            <Text
+                                                id="idSNLPcText"
+                                                text="pc"
+                                            />
+                                        </Column>
+                                    </columns>
 
                                 <items>
                                     <!-- <ColumnListItem id="idGenSNLColumnListItem">
