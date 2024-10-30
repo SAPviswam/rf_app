@@ -22,12 +22,7 @@
     <tnt:ToolPage id="idToolPageHUStockOverviewQuery">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHUStockOverviewQuery_MHU">
-                <Button
-                    id="idHUStockOverviewQueryfirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onHUStockOverviewQueryfirstBackBtnPress"
-                    visible="true"
-                />
+               
                 <Button
                     id="idHUStockOverviewQuerySecondbackbtn"
                     icon="sap-icon://nav-back"
@@ -124,13 +119,26 @@
                                 width="200px"
                                 class="sapUiTinyMarginBegin"
                             />
+                             </HBox>
+                             <HBox
+                                justifyContent="Center"
+                                class="sapUiSmallMarginTop"
+                            >
                             <Button
                                 id="idSubmitButton"
                                 text="Submit"
                                 press="onSubmitButtonPress"
                                 class="sapUiTinyMarginBegin"
                             />
-                        </HBox>
+                             <Button
+                    id="idHUStockOverviewQueryfirstbackbtn"
+                    
+                    press="onHUStockOverviewQueryfirstBackBtnPress"
+                    text="Back"
+                    visible="true"
+                />
+                  </HBox>
+                       
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -149,7 +157,7 @@
                         <Label
                             id="idBinNumber_Lable_HUSOQ1234"
                             text="HU:"
-                            class="BinNumberTableLabel_HUSOQ"
+                            class="sapUiTinyMargin"
                         />
                         <Input
                             id="idBinNumberI_nput_HUSOQ11"
@@ -272,7 +280,7 @@
                         <Label
                             id="idBinNumberLable_HUSOQ1234"
                             text="HU:"
-                            class="BinNumberTableLabel_HUSOQ"
+                            class="sapUiTinyMargin"
                         />
                         <Input
                             id="idBinNumberInput_HUSOQ11"
