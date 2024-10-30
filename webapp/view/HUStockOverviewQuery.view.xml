@@ -194,7 +194,6 @@
                     <Table
                         id="idBinNumTable_AHUOB12Q11"
                         width="100%"
-                        mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
                     >
                         <columns>
@@ -327,7 +326,6 @@
                     <Table
                         id="idBinNumTable_AHUOB12Q1"
                         width="100%"
-                        mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
                     >
                         <columns>

@@ -1,6 +1,5 @@
-
 sap.ui.define([
-    "./BaseController", 
+    "./BaseController",
     "sap/ui/Device",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
@@ -14,21 +13,21 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
-                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", { 
-                    headers: { 
-                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"), 
-                        "sap-client": "100" 
-                    } 
-                }); 
-                this.getView().setModel(oModel); 
+                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+                    headers: {
+                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
+                        "sap-client": "100"
+                    }
+                });
+                this.getView().setModel(oModel);
                 this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
-                
+
                 // load configured systems from the backend
                 this.loadConfiguredSystems();
-                
+
                 this.aAllButtons = [];
                 this.currentIndex = 0;
                 this.arrayOfButton = [];
@@ -42,8 +41,8 @@ sap.ui.define([
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
                     this.getView().byId("idTitle_InitialView").addStyleClass("titleMobile");
-                    
-                   
+
+
 
                 }
                 else if (Device.system.tablet) {
@@ -52,27 +51,34 @@ sap.ui.define([
 
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
-              
 
+
+            },
+            onExit: function() {
+                // Remove the event listener when the controller is destroyed
+                document.removeEventListener("keydown", this._handleKeyDownBound);
             },
             _handleKeyDown: function (oEvent) {
                 // Prevent default action for specific function keys
                 if (["F1", "F2", "F4"].includes(oEvent.key)) {
-                    oEvent.preventDefault();
-                }
-
-                // Check if the current view is the specified one
-                if (this.getView().getId() === "container-com.app.rfapp---InitialScreen") {
-                    switch (oEvent.key) {
-                        case "F1":
-                            this.onSavef1Press();
-                            break;
-                        case "F4":
-                            this.onDeletef4press();
-                            break;
-                        case "F2":
-                            this.onEditf2press();
-                            break;
+                    oEvent.preventDefault(); // Prevent default browser actions
+    
+                    // Check if the active page is the InitialScreen
+                    var activePageId = this.getView().getId(); 
+                    var toolPageId = "container-com.app.rfapp---InitialScreen"; 
+                    if (activePageId === toolPageId) {
+                        // Perform actions based on the key pressed
+                        switch (oEvent.key) {
+                            case "F1":
+                                this.AddPress_InitialView();
+                                break;
+                            case "F2":
+                                this.onEditConfiguredSystem();
+                                break;
+                            case "F4":
+                                this.onDeleteConfiguredSystem();
+                                break;
+                        }
                     }
                 }
             },
@@ -397,23 +403,34 @@ sap.ui.define([
                                     success: function () {
                                         MessageToast.show("Configured system deleted successfully.");
 
-                                        // Remove the button from the UI
+                                        // Remove selected the buttons from the UI
+                                        debugger
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        oHomePage.removeItem(that.selectedButton); // Remove the selected button
-                                        var index = that.aAllButtons.indexOf(that.selectedButton);
-                                        if (index !== -1) {
-                                            that.aAllButtons.splice(index, 1); // Remove button from array
-                                        }
-                                        // Clear selection
-                                        that.selectedButton = null;
-                                        that.updateDisplayedButtons()
+                                        this.arrayOfButton.forEach((currentButton) => {
+                                            oHomePage.removeItem(currentButton); // Remove the selected button
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                            that.updateDisplayedButtons()
 
-                                        var index = that.aAllButtons.indexOf(that.selectedButton);
-                                        if (index !== -1) {
-                                            that.aAllButtons.splice(index, 1); // Remove button from array
-                                        }
-                                        // Clear selection
-                                        that.selectedButton = null;
+                                            // TEST
+                                            // if(that.aAllButtons.length % 3 ===0){
+                                            //     this.onNavPrevious()
+                                            // }
+                                            // TEST
+                                            
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                        })
+
+                                     
                                         this.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
@@ -665,6 +682,13 @@ sap.ui.define([
                         oHomePage.addItem(this.aAllButtons[i]);
                     }
                 }
+                // TEST
+                // if(this.aAllButtons.length <= 3 ){
+                //     this.onNavPrevious()
+                //     this.getView().byId("idUpNavigationButton_InitialView").setVisible(false); // Hide down navigation button
+                // }
+                // TEST
+
                 if (this.currentIndex + 3 >= this.aAllButtons.length) {
                     this.getView().byId("idDownNavigationButton_InitialView").setVisible(false); // Hide down navigation button
                 } else {
@@ -734,7 +758,7 @@ sap.ui.define([
                     return;
                 }
                 // Load the Change Password fragment if not already loaded
-                this.oConfigSapCP ??= await this.loadFragment("ChangePassword");               
+                this.oConfigSapCP ??= await this.loadFragment("ChangePassword");
                 var oModel = this.getView().getModel(); // Get your OData model
                 // Read user data based on Resource ID
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
@@ -767,8 +791,8 @@ sap.ui.define([
                     MessageToast.show("Please enter password");
                     return;
                 }
-                 // Check if the new passwords match
-                 if (sNewPassword !== sConfirmPassword) {
+                // Check if the new passwords match
+                if (sNewPassword !== sConfirmPassword) {
                     MessageBox.error("Passwords do not match. Please try again.");
                     return;
                 }

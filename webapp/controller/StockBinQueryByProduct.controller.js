@@ -18,6 +18,32 @@ sap.ui.define(
         this.ID = id;
         console.log(this.ID);
 
+    },
+      onSBQPfirstBackBtnPress:async function(){
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
+      },
+     
+      onSBQPSecondBackBtnPress:function(){
+            this.getView().byId("idSBQPFirstSC").setVisible(true)
+            this.getView().byId("idSBQPsecondSC").setVisible(false)
+            this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
+            this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+           
       },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
@@ -195,7 +221,9 @@ sap.ui.define(
               this.getView().byId("idSBQPStackInput").setValue(oSelectedBinDetails.Stack);
               this.getView().byId("idSBQPBinLevelInput").setValue(oSelectedBinDetails.LvlV);
               this.getView().byId("idSBQPMaxWInput").setValue(odata.GWeight);
+              this.getView().byId("idSBQPMaxWInput_Weight_Uom").setValue(odata.UnitGw);
               this.getView().byId("idSBQPMaxVInput").setValue(odata.GVolume);
+              this.getView().byId("idSBQPMaxWInput_Volume_Uom").setValue(odata.UnitGv);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
@@ -210,16 +238,16 @@ sap.ui.define(
           }
         });
       },
-      onSBQPBinDePress: function () {
-        this.getView().byId("idSBQPsecondSC").setVisible(false);
-        this.getView().byId("idSBQPFourthSC").setVisible(true);
-        this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
-      },
+      // onSBQPBinDePress: function () {
+      //   this.getView().byId("idSBQPsecondSC").setVisible(false);
+      //   this.getView().byId("idSBQPFourthSC").setVisible(true);
+      //   this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
+      //   this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
+      //   this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
+      // },
       onSBQPFourthBackBtnPress: function () {
         this.getView().byId("idSBQPFourthbackbtn").setVisible(false);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
+        this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
         this.getView().byId("idSBQPsecondSC").setVisible(true);
         this.getView().byId("idSBQPFourthSC").setVisible(false);
       }
