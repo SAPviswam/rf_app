@@ -75,9 +75,9 @@
                             >
                                 <Label
                                     id="idSBQProductLabel"
-                                    text="Product"
+                                    text="Product:"
                                     width="70px"
-                                    class="sapUiTinyMargin"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQProductInput"
@@ -99,11 +99,6 @@
                                     tooltip="Back"
                                     type="Emphasized"
                                 />
-                                <!-- <Label
-                                    id="IdLabel_StockBinQuerybyProduct_Space_1"
-                                    text=""
-                                    width="25px"
-                                /> -->
                                 <ndc:BarcodeScannerButton
                                     id="_IDBinGenScanButton_SBQProduct"
                                     scanSuccess="onScanSuccessProduct"
@@ -154,8 +149,9 @@
                             >
                                 <Label
                                     id="idSBQProductLabel2"
-                                    text="Product"
+                                    text="Product:"
                                     width="70Px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <HBox
                                     id="idSBQPLabelHbox2"
@@ -291,15 +287,16 @@
                             <HBox id="idhbox_Production">
                                 <Input
                                     id="idInput_BinQProduct_Product"
-                                    width="20rem"
+                                    width="30rem"
                                     editable="false"
                                 />
                             </HBox>
                             <HBox id="idHbox_StockBinQuerybyProduct12">
                                 <Label
                                     id="idSBQPEANLabel"
-                                    text="EAN/UPC"
+                                    text="EAN/UPC:"
                                     width="70Px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPEANInput"
@@ -320,8 +317,9 @@
                             <HBox id="idHbox_StockBinQuerybyProduct13">
                                 <Label
                                     id="idSBQPTotWLabel"
-                                    text="TotW"
+                                    text="TotW:"
                                     width="70Px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPTotWInput"
@@ -341,8 +339,9 @@
                             <HBox id="idHbox_StockBinQuerybyProduct">
                                 <Label
                                     id="idSBQPTotVLabel"
-                                    text="TotV"
+                                    text="TotV:"
                                     width="70Px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPTotVInput"
@@ -406,6 +405,10 @@
                             justifyContent="Center"
                             width="100%"
                         >
+                         <Title
+                                id="idTitle_StockBinQuerybyProduct13"
+                                text="Bin Details"
+                            />
                             <VBox
                                 class="sapUiLargeMarginBottom"
                                 id="idVbox_StockBinQuerybyProduct15"
@@ -417,8 +420,9 @@
                             >
                                 <Label
                                     id="idSBQPBinLabel"
-                                    text="Bin"
+                                    text="Bin:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPBinInput"
@@ -432,8 +436,9 @@
                                 />
                                 <Label
                                     id="idSBQPStorTypeLabel"
-                                    text="Storage Type"
+                                    text="Storage Type:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPStoreTypeInput"
@@ -448,8 +453,9 @@
                             >
                                 <Label
                                     id="idSBQPQtyLabel"
-                                    text="Qty"
+                                    text="Qty:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPQtyWInput"
@@ -463,8 +469,9 @@
                                 />
                                 <Label
                                     id="idSBQPStorSecLabel"
-                                    text="Storage Sec"
+                                    text="Storage Sec:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPStorSecInput"
@@ -479,8 +486,9 @@
                             >
                                 <Label
                                     id="idSBQNoOfHuLabel_binQproduct"
-                                    text="No of Hu's"
+                                    text="No of Hu's:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPNoOfHuInput"
@@ -494,8 +502,9 @@
                                 />
                                 <Label
                                     id="idSBQPBinAisleLabel"
-                                    text="Bin Aisle"
+                                    text="Bin Aisle:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPBinAisleInput"
@@ -510,25 +519,26 @@
                             >
                                 <Label
                                     id="idSBQMaxWLabel_binQueryProduct"
-                                    text="MaxW"
+                                    text="MaxW:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPMaxWInput"
                                     value=""
                                     editable="false"
-                                    width="74px"
+                                    width="65px"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct_Space_uom1"
                                     text=""
-                                    width="30px"
+                                    width="20px"
                                 />
                                 <Input
                                     id="idSBQPMaxWInput_Weight_Uom"
                                     value=""
                                     editable="false"
-                                    width="74px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct3"
@@ -537,8 +547,9 @@
                                 />
                                 <Label
                                     id="idSBQPBinLevelLabel"
-                                    text="Bin Level"
+                                    text="Bin Level:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPBinLevelInput"
@@ -553,25 +564,26 @@
                             >
                                 <Label
                                     id="idSBQMaxVLabel_BinQueryByProduct"
-                                    text="MaxV"
+                                    text="MaxV:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPMaxVInput"
                                     value=""
                                     editable="false"
-                                    width="74px"
+                                    width="65px"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct_Space_uom2"
                                     text=""
-                                    width="30px"
+                                    width="20px"
                                 />
                                 <Input
                                     id="idSBQPMaxWInput_Volume_Uom"
                                     value=""
                                     editable="false"
-                                    width="74px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct4"
@@ -580,8 +592,9 @@
                                 />
                                 <Label
                                     id="idSBQPStackLabel"
-                                    text="Stack"
+                                    text="Stack:"
                                     width="90px"
+                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
                                 <Input
                                     id="idSBQPStackInput"
