@@ -888,7 +888,7 @@ background-color: rgb(9, 8, 8) !important;
     }
 }
 .responsiveGif{
-  
+    
      /* margin-right: 35rem !important; */
 }
 .LabelHomePage{
@@ -1277,3 +1277,12 @@ margin-right: 15%;
     padding: 2%;
 }
 
+/* Home View starts */
+.rfLoginVboxMobile{
+    left: 35%;
+}
+
+.createResource_Home_mobile{
+    left:50%;
+}
+/* Home View endss */
