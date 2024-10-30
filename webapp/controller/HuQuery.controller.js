@@ -416,6 +416,19 @@
 //                     // Prepare an array for binding
 //                     var aProductDetails = [];
        
+
+                    // Loop through the results and push them into the array
+                    for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                           Product: oDetails[i].Matnr,
+                            Quantity: oDetails[i].Quan,
+                          SLNO:i+1,
+                          Uom: oDetails[i].Meins,
+                          Pd:oDetails[i].Maktx
+
+                        });
+                    }
+
 //                     // Loop through the results and push them into the array
 //                     for (var i = 0; i < oDetails.length; i++) {
 //                         aProductDetails.push({
@@ -427,6 +440,7 @@
 
 //                         });
 //                     }
+
        
 //                     // Create a JSON model with the product details array
 //                     var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
