@@ -1286,3 +1286,41 @@ margin-right: 15%;
     left:50%;
 }
 /* Home View endss */
+
+/* WT Query by WO View */
+/* For mobile devices */
+@media (max-width: 480px) {
+    .sapUiContentPadding {
+        padding: 10px !important;
+    }
+
+    .sapMLabel {
+        width: auto !important; /* Allow labels to take up necessary space */
+    }
+
+    .sapMInput {
+        width: 100% !important; /* Full width inputs */
+        margin-bottom: 10px !important; /* Spacing between inputs */
+    }
+    .sapMInput1 {
+        width: 200% !important; /* Full width inputs */
+    }
+
+    /* Adjust Button styles */
+    #WtQBWoDetailBtn,
+    #idWtQBWoThirdbackbtn {
+        width: 100%; /* Full width for buttons */
+    }
+}
+
+/* For tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .sapMInput {
+        width: 70% !important; 
+    }
+
+    .sapMLabel {
+        width: auto !important; 
+    }
+}
+

@@ -259,6 +259,7 @@
                                     id="idWtQBWowtLabel"
                                     text="WT"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWowtInput"
@@ -272,12 +273,14 @@
                                     id="idWtQBWoWTitLabel"
                                     text="WTit"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoWTitInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                     
                                 />
                                 <Label width="10px" />
@@ -286,6 +289,7 @@
                                     value=""
                                     width="90px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 
                             </HBox>
@@ -298,46 +302,54 @@
                                     id="idWtQBWowtsLabel"
                                     text="WTs"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWowtsInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWoStsLabel"
                                     text="Sts"
                                     width="20px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoStsInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label
                                     id="idWtQBWoStypLabel"
                                     text="STyp"
                                     width="40px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoStypInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label
                                     id="idWtQBWoPtypLabel"
                                     text="Ptyp"
                                     width="40px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoPtypInput"
                                     value=""
                                     width="93px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -355,24 +367,28 @@
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWoActyLabel"
                                     text="Acty"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoActyInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWoActyEmpInput"
                                     value=""
                                     width="195px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -384,18 +400,21 @@
                                     id="idWtQBWoProLabel"
                                     text="Pro"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoProInput"
                                     value=""
                                     width="290px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWoProEmpInput"
                                     value=""
                                     width="75px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -406,6 +425,7 @@
                                 <Label
                                     id="idWtQBWoSbinLabel"
                                     text="Sbin"
+                                    class="sapMLabel"
                                     width="50px"
                                     
                                 />
@@ -413,12 +433,14 @@
                                     id="idWtQBWoSbinInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
                                     width="193px"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -430,17 +452,20 @@
                                     id="idWtQBWoDbinLabel"
                                     text="Dbin"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoDbinInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
                                     width="193px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -452,30 +477,35 @@
                                     id="idWtQBWoCdatLabel"
                                     text="Cdat"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoCdatInput"
                                     value=""
                                     width="100px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWoCdatnput"
                                     value=""
                                     width="100px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="10px" />
                                 <Label
                                     id="idWtQBWoCusrLabel"
                                     text="Cusr"
                                     width="30px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
                                     width="120px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
                             <VBox id="idVbox_WTQueryByWO5"
@@ -523,7 +553,7 @@
                         labelSpanM="4"
                         emptySpanL="1"
                         emptySpanM="1"
-                        columnsL="2"
+                        columnsL="1"
                         columnsM="1"
                         columnsXL="1"
                     >
@@ -536,12 +566,14 @@
                                     id="idWtQBWOWoLabel"
                                     text="WO"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOwoInput"
                                     value=""
                                     width="120px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
 
                                 <Label width="20px" />
@@ -550,12 +582,14 @@
                                     id="idWtQBWOEstpLabel"
                                     text="ESTP"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOEstpInput"
                                     value=""
                                     width="150px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
                             <HBox id="idHbox_WTQueryByWO14"
@@ -566,30 +600,35 @@
                                     id="idWtQBWOSqtyLabel"
                                     text="Sqty"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOSqtyInput"
                                     value=""
                                     width="120px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWOPcInput"
                                     value=""
                                     width="50px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWOBtchLabel"
                                     text="Btch"
                                     width="50px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOBtchInput"
                                     value=""
                                     width="110px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -601,24 +640,28 @@
                                     id="idWtQBWOOwnerLabel"
                                     text="Owner"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOOwnerInput"
                                     value=""
                                     width="80px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWOPEntLabel"
                                     text="PEnt"
                                     width="40px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOPEntInput"
                                     value=""
                                     width="80px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
 
@@ -630,36 +673,42 @@
                                     id="idWtQBWOHuWtLabel"
                                     text="HuWt"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOHuWtInput"
                                     value=""
                                     width="80px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="20px" />
                                 <Label
                                     id="idWtQBWOHtypeLabel"
                                     text="H Type"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOHTypeInput"
                                     value=""
                                     width="80px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                                 <Label width="10px" />
                                 <Label
                                     id="idWtQBWOWhHuLabel"
                                     text="Wh Hu"
                                     width="60px"
+                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOWhHuInput"
                                     value=""
                                     width="40px"
                                     editable="false"
+                                    class="sapMInput"
                                 />
                             </HBox>
                             <VBox id="idVbox_WTQueryByWO8"
