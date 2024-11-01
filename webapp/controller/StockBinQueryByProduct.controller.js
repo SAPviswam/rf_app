@@ -221,7 +221,9 @@ sap.ui.define(
               this.getView().byId("idSBQPStackInput").setValue(oSelectedBinDetails.Stack);
               this.getView().byId("idSBQPBinLevelInput").setValue(oSelectedBinDetails.LvlV);
               this.getView().byId("idSBQPMaxWInput").setValue(odata.GWeight);
+              this.getView().byId("idSBQPMaxWInput_Weight_Uom").setValue(odata.UnitGw);
               this.getView().byId("idSBQPMaxVInput").setValue(odata.GVolume);
+              this.getView().byId("idSBQPMaxWInput_Volume_Uom").setValue(odata.UnitGv);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
@@ -245,7 +247,7 @@ sap.ui.define(
       // },
       onSBQPFourthBackBtnPress: function () {
         this.getView().byId("idSBQPFourthbackbtn").setVisible(false);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
+        this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
         this.getView().byId("idSBQPsecondSC").setVisible(true);
         this.getView().byId("idSBQPFourthSC").setVisible(false);
       }

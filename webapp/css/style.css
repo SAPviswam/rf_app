@@ -722,16 +722,33 @@
     height: 80px !important;
     font-size: auto !important;
 }
-.listgridIcons {
-    display: flex;
-    flex-direction: row; /* Align items in a row */
-    align-items: center;
+gridViewIcons {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: auto !important;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+}
+.listViewIcons {
     width: 50px !important;
     height: 50px !important;
-    font-size: -2rem !important;
+    font-size: 0rem !important;
+    display: flex;
+    flex-direction: column;
 }
-.listgridIcons .sapMGTHeader {
-    margin-left: 10px; /* Space between tile and header */
+.listViewTile {
+    display: flex;
+    align-items: center; /* Align the icon and header horizontally */
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; /* Optional: separate tiles with a border */
+}
+.listViewHeader {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 20px;
 }
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
@@ -871,7 +888,7 @@ background-color: rgb(9, 8, 8) !important;
     }
 }
 .responsiveGif{
-  
+    
      /* margin-right: 35rem !important; */
 }
 .LabelHomePage{
@@ -1260,3 +1277,12 @@ margin-right: 15%;
     padding: 2%;
 }
 
+/* Home View starts */
+.rfLoginVboxMobile{
+    left: 35%;
+}
+
+.createResource_Home_mobile{
+    left:50%;
+}
+/* Home View endss */
