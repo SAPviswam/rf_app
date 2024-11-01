@@ -174,7 +174,6 @@ sap.ui.define([
                         }
                     }
                 });
-
             },
             onEditTileNamePress: function () {
                 if (this.Themecall) {

@@ -118,7 +118,7 @@
                                 <Button
                                     id="idNavBacktoHome"
                                     text="Back"
-                                    type="Transparent"
+                                    type="Emphasized"
                                     press="onPressBinBackToHome"
                                 />
                             </HBox>
@@ -294,7 +294,7 @@
                                     id="idSTypLabel"
                                     text="STyp"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBBinInput"
@@ -310,7 +310,7 @@
                                     id="idSBQBStorTypeLabel"
                                     text="SSec"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput"
@@ -326,7 +326,7 @@
                                     id="idSBQBStorTypeLabel1"
                                     text="BT"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput1"
@@ -341,7 +341,7 @@
                                     id="idSBQBQtyLabel"
                                     text="MHU"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBQtyWInput"
@@ -357,7 +357,7 @@
                                     id="idSBQBStorSecLabel"
                                     text="AcHU"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBStorSecInput"
@@ -373,7 +373,7 @@
                                     id="idSBQBStorTypeLabel2"
                                     text="Sect"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput2"
@@ -387,7 +387,7 @@
                                     id="idSBQBNoOfHuLabel"
                                     text="MaxW"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBNoOfHuInput"
@@ -398,13 +398,12 @@
                                 <Label
                                     text=""
                                     width="30px"
-                                    
                                 />
                                 <Label
                                     id="idSBQBBinAisleLabel"
                                     text="ActW"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInput"
@@ -424,7 +423,7 @@
                                     id="idSBQBMaxWLabel"
                                     text="MaxV"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBMaxWInput"
@@ -441,7 +440,7 @@
                                     id="idSBQBBinLevelLabel"
                                     text="ActV"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBBinLevelInput"
@@ -461,7 +460,7 @@
                                     id="idSBQBMaxVLabel"
                                     text="MaxC"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBMaxVInput"
@@ -477,7 +476,7 @@
                                     id="idSBQBStackLabel"
                                     text="Av. C"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idSBQBStackInput"
@@ -494,7 +493,7 @@
                                     id="idLable_LastMoved_BQB"
                                     text="LM"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idinput_MovementId_BQB"
@@ -519,8 +518,8 @@
                                 <Label
                                     id="idLable_LastChanged_BQB"
                                     text="LC"
-                                    width="50Px"
-                                    class ="sapUiTinyMarginTop"
+                                    width="30Px"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idinput_LastChanged_BQB"
@@ -537,7 +536,7 @@
                                     id="idinput_Movementcbt_BQB"
                                     value=""
                                     editable="false"
-                                    width="5rem"
+                                    width="6rem"
                                 />
                             </HBox>
                             <HBox
@@ -548,7 +547,7 @@
                                     id="idLable_LastMoved_LI_BQB"
                                     text="LI"
                                     width="60Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idinput_MovementId_LI_BQB"
@@ -574,7 +573,7 @@
                                     id="idLable_LastChanged_LI_BQB"
                                     text="IvDo"
                                     width="35Px"
-                                    class ="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idinput_LastChanged_LI_BQB"
@@ -591,7 +590,7 @@
                                     id="idinput_Movementcbt_LI_BQB"
                                     value=""
                                     editable="false"
-                                    width="4rem"
+                                    width="6rem"
                                 />
                             </HBox>
                             <!-- <HBox justifyContent="Center" alignContent="Center" >
@@ -605,15 +604,13 @@
                                 <HBox
                                     id="idHbox_StockBinQuerybyBin25"
                                     alignItems="Center"
-                                
                                 >
-                                 <Button
+                                    <Button
                                         id="idNavBacktoBinProductDetaails"
                                         text="Back"
-                                        type="Transparent"
+                                        type="Emphasized"
                                         press="onPressBinBacktoProductDetaails"
                                     />
-                                   
                                 </HBox>
                             </VBox>
                         </VBox>
@@ -719,37 +716,33 @@
             </ScrollContainer>
             <ScrollContainer
                 id="page1_SBQB_extra_BinDetails"
-                width="100%"
                 height="100%"
                 horizontal="false"
                 vertical="true"
                 class="sapUiContentPadding"
-                visible="true"
+                visible="false"
             >
-                <Button
-                    id="idBackButton_BinQBin"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                    press="onPressBackfromView"
-                />
-                <form:SimpleForm
-                    id="simpleform4_SBQB_extra"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
+                <VBox
+                    id="idVbox_StockBinQuerybyBin5"
+                    alignItems="Center"
+                    alignContent="Center"
                 >
-                    <VBox
-                        id="idVbox_StockBinQuerybyBin5"
-                        alignItems="Start"
-                        justifyContent="Center"
-                        width="100%"
+                    <form:SimpleForm
+                        id="simpleform4_SBQB_extra"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
                     >
-                        <VBox id="idVbox_StockBinQuerybyBin6" />
-                        <HBox id="idHbox_StockBinQuerybyBin20">
+                        <VBox id="idVbox_StockBinQuerybyBin6">
+                        <HBox
+                            id="idHbox_StockBinQuerybyBin20"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
                             <Label
                                 id="idSTypLabel_Extra"
                                 text="STyp :"
@@ -999,8 +992,26 @@
                                 width="11rem"
                             />
                         </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                        <VBox
+                            id="idVbox_StockBinQuerybyBin13"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox
+                                id="idHbox_StockBinQuerybyBin26"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idBackButton_BinQBin"
+                                    text="Back"
+                                    type="Emphasized"
+                                    press="onPressBackfromView"
+                                />
+                            </HBox>
+                        </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
