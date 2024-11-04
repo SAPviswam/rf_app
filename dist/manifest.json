@@ -153,91 +153,91 @@
                     ]
                 },
                 {
-                    "name": "HuQuery",
+                    "name": "HUQUERY",
                     "pattern": "HuQuery/{id}",
                     "target": [
                         "TargetHuQueryPage"
                     ]
                 },
                 {
-                    "name": "StockBinQueryByBin",
+                    "name": "STOCKBINQUERYBYBIN",
                     "pattern": "StockBinQueryByBin/{id}",
                     "target": [
                         "TargetStockBinQueryByBin"
                     ]
                 },
                 {
-                    "name": "ReceivingofHUbyASN",
+                    "name": "RECEIVINGOFHUBYASN",
                     "pattern": "ReceivingofHUbyASN/{id}",
                     "target": [
                         "TargetReceivingofHUbyASN"
                     ]
                 },
                 {
-                    "name": "RouteUnloadingASNDetails",
+                    "name": "UNLOADINGBYASN",
                     "pattern": "UnloadingASNDetails/{id}",
                     "target": [
                         "TargetUnloadingASNDetails"
                     ]
                 },
                 {
-                    "name": "UnloadByDelivery",
+                    "name": "UNLOADINGBYDELIVERY",
                     "pattern": "UnloadByDelivery/{id}",
                     "target": [
                         "TargetUnloadByDelivery"
                     ]
                 },
                 {
-                    "name": "AdhocHuWt",
+                    "name": "CREATEADHOCHUWT",
                     "pattern": "AdhocHuWt/{id}",
                     "target": [
                         "TargetAdhocHuWt"
                     ]
                 },
                 {
-                    "name": "ReceivingOfHuByDoor",
+                    "name": "RECEIVINGOFHUBYDOOR",
                     "pattern": "ReceivingOfHuByDoor/{id}",
                     "target": [
                         "TargetReceivingOfHuByDoor"
                     ]
                 },
                 {
-                    "name": "UnloadingByDoor",
+                    "name": "UNLOADINGBYDOOR",
                     "pattern": "UnloadingByDoor/{id}",
                     "target": [
                         "TargetUnloadingByDoor"
                     ]
                 },
                 {
-                    "name": "ChangeQueue",
+                    "name": "CHANGEQUEUE",
                     "pattern": "ChangeQueue/{id}",
                     "target": [
                         "TargetChangeQueue"
                     ]
                 },
                 {
-                    "name": "ChangeResourceGroup",
+                    "name": "CHANGERESOURCEGROUP",
                     "pattern": "ChangeResourceGroup/{id}",
                     "target": [
                         "TargetChangeResourceGroup"
                     ]
                 },
                 {
-                    "name": "UnloadingByConsignmentOrder",
+                    "name": "UNLOADINGBYCONSIGNMENTORDER",
                     "pattern": "UnloadingByConsignmentOrder/{id}",
                     "target": [
                         "TargetUnloadingByConsignmentOrder"
                     ]
                 },
                 {
-                    "name": "RoutePutawayByHU",
+                    "name": "PUTAWAYBYHU",
                     "pattern": "RoutePutawayByHU/{id}",
                     "target": [
                         "TargetPutawayByHU"
                     ]
                 },
                 {
-                    "name": "ManuallyRepackingByHUItem",
+                    "name": "MANUALLYREPACKHUITEM",
                     "pattern": "ManuallyRepackingByHUItem/{id}",
                     "target": [
                         "TargetManuallyRepackingByHUItem"
@@ -251,98 +251,98 @@
                     ]
                 },
                 {
-                    "name": "RecevingOfHUbyDelivery",
+                    "name": "RECEIVINGOFHUBYDELIVERY",
                     "pattern": "RecevingOfHUbyDelivery/{id}",
                     "target": [
                         "TargetRecevingOfHUbyDelivery"
                     ]
                 },
                 {
-                    "name": "ReversalofConsumptionbyMObyHU",
+                    "name": "REVERSALOFCONSUMPTIONBYMOHU",
                     "pattern": "ReversalofConsumptionbyMObyHU/{id}",
                     "target": [
                         "TargetReversalofConsumptionbyMObyHU"
                     ]
                 },
                 {
-                    "name": "UnloadingByBillofLading",
+                    "name": "UNLOADINGBYBILLOFLADING",
                     "pattern": "UnloadingByBillofLading/{id}",
                     "target": [
                         "TargetUnloadingByBillofLading"
                     ]
                 },
                 {
-                    "name": "AdhocInventoryCreation",
+                    "name": "ADHOCINVENTORYCREATION",
                     "pattern": "AdhocInventoryCreation/{id}",
                     "target": [
                         "TargetAdhocInventoryCreation"
                     ]
                 },
                 {
-                    "name": "CreationOfSingleHU",
+                    "name": "CREATIONOFSINGLEHU",
                     "pattern": "CreationOfSingleHU/{id}",
                     "target": [
                         "TargetCreationOfSingleHU"
                     ]
                 },
                 {
-                    "name": "DeconsolidationAutomatically",
+                    "name": "DECONSOLIDATIONAUTOMATICALLY",
                     "pattern": "DeconsolidationAutomatically/{id}",
                     "target": [
                         "TargetDeconsolidationAutomatically"
                     ]
                 },
                 {
-                    "name": "DeconsolidationManually",
+                    "name": "DECONSOLIDATEMANUALLY",
                     "pattern": "DeconsolidationManually/{id}",
                     "target": [
                         "TargetDeconsolidationManually"
                     ]
                 },
                 {
-                    "name": "UnloadingByShipment",
+                    "name": "UNLOADINGBYSHIPMENT",
                     "pattern": "UnloadingByShipment/{id}",
                     "target": [
                         "TargetUnloadingByShipment"
                     ]
                 },
                 {
-                    "name": "UnloadingByTU",
+                    "name": "UNLOADINGBYTRANSPORTUNIT",
                     "pattern": "UnloadingByTU/{id}",
                     "target": [
                         "TargetUnloadingByTU"
                     ]
                 },
                 {
-                    "name": "PutawayByWO",
+                    "name": "PUTAWAYBYWO",
                     "pattern": "PutawayByWO/{id}",
                     "target": [
                         "TargetPutawayByWO"
                     ]
                 },
                 {
-                    "name": "AvailableHandlingUnitsOnBinQuery",
+                    "name": "AVAILABLEHANDLINGUNITSONBINQUERY",
                     "pattern": "AvailableHandlingUnitsOnBinQuery/{id}",
                     "target": [
                         "TargetAvailableHandlingUnitsOnBinQuery"
                     ]
                 },
                 {
-                    "name": "WTQueryByHU",
+                    "name": "WTQUERYBYHU",
                     "pattern": "WTQueryByHU/{id}",
                     "target": [
                         "TargetWTQueryByHU"
                     ]
                 },
                 {
-                    "name": "AutomaticallyRepackHUItem",
+                    "name": "AUTOMATICALLYREPACKHUITEM",
                     "pattern": "AutomaticallyRepackHUItem/{id}",
                     "target": [
                         "TargetAutomaticallyRepackHUItem"
                     ]
                 },
                 {
-                    "name": "SetReadyforWHProcessingByCO",
+                    "name": "SETREADYFORWHPROCESSINGBYCO",
                     "pattern": "SetReadyforWHProcessingByCO/{id}",
                     "target": [
                         "TargetSetReadyforWHProcessingByCO"
@@ -356,14 +356,14 @@
                     ]
                 },
                 {
-                    "name": "MaintainHU",
+                    "name": "MAINTAINHU",
                     "pattern": "MaintainHU/{id}",
                     "target": [
                         "TargetMaintainHU"
                     ]
                 },
                 {
-                    "name": "RecevingOfHUbyManufacturingOrder",
+                    "name": "RECEIVINGOFHUBYMANUFACTURINGORDER",
                     "pattern": "RecevingOfHUbyManufacturingOrder/{id}",
                     "target": [
                         "TargetRecevingOfHUbyManufacturingOrder"
@@ -384,70 +384,70 @@
                     ]
                 },
                 {
-                    "name": "StockBinQueryByProduct",
+                    "name": "STOCKBINQUERYBYPRODUCT",
                     "pattern": "StockBinQueryByProduct/{id}",
                     "target": [
                         "TargetStockBinQueryByProduct"
                     ]
                 },
                 {
-                    "name": "Receivingofhubyco",
+                    "name": "RECEIVINGOFHUBYCONSIGNMENTORDER",
                     "pattern": "Receivingofhubyco/{id}",
                     "target": [
                         "TargetRecevingofHUbyConsignemntOrder"
                     ]
                 },
                 {
-                    "name": "ReceivingofHUbyShipment",
+                    "name": "RECEIVINGOFHUBYSHIPMENT",
                     "pattern": "ReceivingofHUbyShipment/{id}",
                     "target": [
                         "TargetReceivingofHUbyShipment"
                     ]
                 },
                 {
-                    "name": "WTQueryByWO",
+                    "name": "WTQUERYBYWO",
                     "pattern": "WTQueryByWO/{id}",
                     "target": [
                         "TargetWTQueryByWO"
                     ]
                 },
                 {
-                    "name": "RecevingOfHUbyTUorDoor",
+                    "name": "RECEIVINGOFHUDOORTW",
                     "pattern": "RecevingOfHUbyTUorDoor/{id}",
                     "target": [
                         "TargetRecevingOfHUbyTUorDoor"
                     ]
                 },
                 {
-                    "name": "ReceivingofHUbyTU",
+                    "name": "RECEIVINGOFHUBYTU",
                     "pattern": "ReceivingofHUbyTU/{id}",
                     "target": [
                         "TargetReceivingofHUbyTU"
                     ]
                 },
                 {
-                    "name": "SerialNumberLocation",
+                    "name": "SERIALNUMBERLOCATION",
                     "pattern": "SerialNumberLocation/{id}",
                     "target": [
                         "TargetSerialNumberLocation"
                     ]
                 },
                 {
-                    "name": "WTQueryByWT",
+                    "name": "WTQUERYBYWT",
                     "pattern": "WTQueryByWT/{id}",
                     "target": [
                         "TargetWTQueryByWT"
                     ]
                 },
                 {
-                    "name": "WTQueryByQueue",
+                    "name": "WTQUERYBYQUEUE",
                     "pattern": "WTQueryByQueue/{id}",
                     "target": [
                         "TargetWTQueryByQueue"
                     ]
                 },
                 {
-                    "name": "CreateShippingHU",
+                    "name": "CREATESHIPPINGHU",
                     "pattern": "CreateShippingHU/{id}",
                     "target": [
                         "TargetCreateShippingHU"
@@ -461,63 +461,63 @@
                     ]
                 },
                 {
-                    "name": "PickPoint",
+                    "name": "PICKPOINT",
                     "pattern": "PickPoint/{id}",
                     "target": [
                         "TargetPickPoint"
                     ]
                 },
                 {
-                    "name": "ManuallyRepackAllHUItems",
+                    "name": "MANUALLYREPACKALLHUITEMS",
                     "pattern": "ManuallyRepackAllHUItems/{id}",
                     "target": [
                         "TargetManuallyRepackAllHUItems"
                     ]
                 },
                 {
-                    "name": "LoadbyHUManPosAssiognment",
+                    "name": "LOADBYHUMANPOSASSIGNMENT",
                     "pattern": "LoadbyHUManPosAssiognment/{id}",
                     "target": [
                         "TargetLoadbyHUManPosAssiognment"
                     ]
                 },
                 {
-                    "name": "ManuallyRepackHU",
+                    "name": "MANUALLYREPACKHUITEM",
                     "pattern": "ManuallyRepackHU/{id}",
                     "target": [
                         "TargetManuallyRepackHU"
                     ]
                 },
                 {
-                    "name": "DeconsAuto",
+                    "name": "DECONSOLIDATIONAUTOMATICALLY",
                     "pattern": "DeconsAuto/{id}",
                     "target": [
                         "TargetDeconsAuto"
                     ]
                 },
                 {
-                    "name": "CreatePutawayHusforDeconsolidate",
+                    "name": "CREATEPUTAWAYHUSFORDECONSOLIDATION",
                     "pattern": "CreatePutawayHusforDeconsolidate/{id}",
                     "target": [
                         "TargetCreatePutawayHusforDeconsolidate"
                     ]
                 },
                 {
-                    "name": "HUStockOverviewQuery",
+                    "name": "HUSTOCKOVERVIEWQUERY",
                     "pattern": "HUStockOverviewQuery/{id}",
                     "target": [
                         "TargetHUStockOverviewQuery"
                     ]
                 },
                 {
-                    "name": "CreatePutawayHusManually",
+                    "name": "CREATEPUTAWAYHUSMANUALLY",
                     "pattern": "CreatePutawayHusManually/{id}",
                     "target": [
                         "TargetCreatePutawayHusManually"
                     ]
                 },
                 {
-                    "name": "ProductInspectionByHU",
+                    "name": "PRODUCTINSPECTIONBYHU",
                     "pattern": "ProductInspectionByHU/{id}",
                     "target": [
                         "TargetProductInspectionByHU"
@@ -531,21 +531,21 @@
                     ]
                 },
                 {
-                    "name": "ProductInspectionByStorageBin",
+                    "name": "PRODUCTINSPECTIONBYSTORAGEBIN",
                     "pattern": "ProductInspectionByStorageBin/{id}",
                     "target": [
                         "TargetProductInspectionByStorageBin"
                     ]
                 },
                 {
-                    "name": "ConsumptionByManufacturingOrder",
+                    "name": "CONSUMPTIONBYMANUFACTURINGORDER",
                     "pattern": "ConsumptionByManufacturingOrder/{id}",
                     "target": [
                         "TargetConsumptionByManufacturingOrder"
                     ]
                 },
                 {
-                    "name": "RoutePutawayHuClustered",
+                    "name": "PUTAWAYBYHUCLUSTERED",
                     "pattern": "RoutePutawayHuClustered/{id}",
                     "target": [
                         "TargetRoutePutawayHuClustered"
@@ -559,35 +559,35 @@
                     ]
                 },
                 {
-                    "name": "UnloadByHu",
+                    "name": "UNLOADBYHU",
                     "pattern": "UnloadByHu/{id}",
                     "target": [
                         "TargetUnloadByHu"
                     ]
                 },
                 {
-                    "name": "RouteReversalofConsumptionbyMO_Bin",
+                    "name": "REVERSALOFCONSUMPTIONBYMOBIN",
                     "pattern": "ReversalofConsumptionbyMO_Bin/{id}",
                     "target": [
                         "TargetReversalofConsumptionbyMO_Bin"
                     ]
                 },
                 {
-                    "name": "AutomaticallyRepackHu",
+                    "name": "AUTOMATICALLYREPACKHU",
                     "pattern": "AutomaticallyRepackHu/{id}",
                     "target": [
                         "TargetAutomaticallyRepackHu"
                     ]
                 },
                 {
-                    "name": "LoadbyHUAutoPosAssiognment",
+                    "name": "LOADBYHUAUTOPOSASSIGNMENT",
                     "pattern": "LoadbyHUAutoPosAssiognment/{id}",
                     "target": [
                         "TargetLoadbyHUAutoPosAssiognment"
                     ]
                 },
                 {
-                    "name": "RouteChangeLoadingUnloadingDetails",
+                    "name": "CHANGELOADINGUNLOADINGDETAILS",
                     "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
                     "target": [
                         "TargetRouteChangeLoadingUnloadingDetails"

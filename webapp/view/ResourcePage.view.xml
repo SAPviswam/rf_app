@@ -50,12 +50,6 @@
                         visible="false"
                     />
                     <Button
-                        id="idBtnListView"
-                        press="onPressListGridViewsResource"
-                        icon="sap-icon://grid"
-                        tooltip="ListView"
-                    />
-                    <Button
                         id="idTileThemesModeOpen"
                         text="Open Theme"
                         press="onPressTileThemesModeOpenDailog"
@@ -69,6 +63,18 @@
                         press="onPressExitTileThemesMode"
                         visible="false"
                     />
+                    <!-- <Button
+                        id="idBtnListViewResourcePage"
+                        icon="sap-icon://menu"
+                        tooltip="List View"
+                        press="onPressListViewsResource"
+                    />
+                    <Button
+                        id="idBtnGridViewResourcePage"
+                        icon="sap-icon://grid"
+                        tooltip="Grid View"
+                        press="onPressGridViewsResource"
+                    /> -->
                     <Avatar
                         id="idImageMainAvatarResourcepage"
                         displaySize="XS"
@@ -109,18 +115,18 @@
 
                     > -->
                     <VBox id="idUnloadingTile">
-                        <Title
+                        <!-- <Title
                             id="id_unloading_title"
                             text="Unloading"
                             visible="false"
-                        />
+                        /> -->
                     </VBox>
                     
                     <GenericTile
-                        id="id_Unloading"
+                        id="id_unloading_title"
                         class="sapUiTinyMargin sapUiResponsivePadding"
                         header="Unloading"
-                        press="onGenericTitlePress"
+                        press="onGenericTilePress"
                         visible="false"
                     />
                     <!-- <GenericTile

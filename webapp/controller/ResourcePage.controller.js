@@ -148,7 +148,7 @@ sap.ui.define([
                         oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
                     }
                 }
-                
+
                 console.log(this.oPopover)
 
             },
@@ -174,7 +174,6 @@ sap.ui.define([
                         }
                     }
                 });
-
             },
             onEditTileNamePress: function () {
                 if (this.Themecall) {
@@ -184,13 +183,11 @@ sap.ui.define([
                 this.EditCall = !this.EditCall; // Toggle the state
                 if (this.EditCall) {
                     // Theme mode activated
-                    this.byId("idBtnListView").setVisible(false);
                     this.byId("idCancelEditButtonResource").setVisible(true);
                     sap.m.MessageToast.show("Edit mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idCancelEditButtonResource").setVisible(false);
-                    this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Edit mode deactivated.");
                 }
             },
@@ -223,14 +220,14 @@ sap.ui.define([
                     this.byId("IdEditTileDetailsDialogResource").close();
                     sap.m.MessageToast.show("Tile details updated successfully!");
                 }
-                window.reload();
+                window.location.reload();
             },
             onCloseEditingTileDetailsDialog: function () {
                 this.byId("IdEditTileDetailsDialogResource").close();
             },
             onCancelEditPress: function () {
                 this.byId("idCancelEditButtonResource").setVisible(false);
-                this.byId("idBtnListView").setVisible(true);
+                //this.byId("idBtnListView").setVisible(true);
                 this.EditCall = false;
                 sap.m.MessageToast.show("Edit mode Deactivated.");
             },
@@ -277,13 +274,11 @@ sap.ui.define([
                 if (this.Themecall) {
                     this.byId("idExitThemeModeResource").setVisible(true); // Show the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(true); // Show the Open Theme button
-                    this.byId("idBtnListView").setVisible(false); // Show the Open Theme button
                     sap.m.MessageToast.show("Theme mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idExitThemeModeResource").setVisible(false); // Hide the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(false); // Hide the Open Theme button
-                    this.byId("idBtnListView").setVisible(true);
                     sap.m.MessageToast.show("Theme mode deactivated.");
                 }
             },
@@ -315,7 +310,7 @@ sap.ui.define([
                 // Clear the array of selected tiles
                 this._selectedTiles = [];
                 // Reset button visibility as needed
-                this.byId("idBtnListView").setVisible(true);
+                //this.byId("idBtnListView").setVisible(true);
                 this.byId("idTileThemesModeOpen").setVisible(false);
                 this.byId("idExitThemeModeResource").setVisible(false);
                 // Optionally, close the theme dialog if it's open
@@ -607,95 +602,63 @@ sap.ui.define([
                 // var oModel = this.getView().getModel();
                 // oModel.refresh(true);
             },
-            onPressListGridViewsResource: async function () {
-                debugger;
-                const oModel1 = this.getOwnerComponent().getModel();
-                const userId = this.ID; // Assuming this.ID is set when loading user data
+            //Grid and List Views...
+            onPressGridViewsResource: async function () {
                 const oTilesContainer = this.byId("idScrollContainer1");
+                const aTiles = oTilesContainer.getContent();
+                // Fetch matched tiles asynchronously
+                const matchedTiles = await this.getMatchedTiles();
+                aTiles.forEach(tile => {
+                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
+                    if (matchedTiles.includes(tileId)) {
+                        //tile.removeStyleClass("listViewTile");
+                        tile.removeStyleClass("listViewIcons");
+                        tile.addStyleClass("gridViewIcons");
+                    }
+                });
+                //this.byId("idBtnGridViewResourcePage").setVisible(false);
+                //this.byId("idBtnListViewResourcePage").setVisible(true);
+            },
+            onPressListViewsResource: async function () {
+                debugger
+                const oTilesContainer = this.byId("idScrollContainer1");
+                const aTiles = oTilesContainer.getContent();
+                // Fetch matched tiles asynchronously
+                const matchedTiles = await this.getMatchedTiles();
+                aTiles.forEach(tile => {
+                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
+                    if (matchedTiles.includes(tileId)) {
+                        tile.removeStyleClass("gridViewIcons");
+                        //tile.addStyleClass("listViewTile");
+                        tile.addStyleClass("listViewIcons");
+                        // const tileHeader = tile.getHeader();
+                        // tileHeader.addStyleClass("listViewHeader");
+                    }
+                });
+                //this.byId("idBtnListViewResourcePage").setVisible(false);
+                //this.byId("idBtnGridViewResourcePage").setVisible(true);
+            },
+            getMatchedTiles: async function () {
+                const oModel1 = this.getOwnerComponent().getModel();
+                const userId = this.ID;
                 let userTiles = [];
-                let currentView = localStorage.getItem("currentView") || "DefaultView";
 
-                // Fetch user tiles from the backend
+                // Use a Promise to handle the async operation
                 await new Promise((resolve, reject) => {
                     oModel1.read(`/RESOURCESSet('${userId}')`, {
                         success: function (oData) {
-                            const tiles = oData.Queue; // Adjust this based on your data structure
-                            // Clean up tile names: remove spaces and convert to lowercase
+                            const tiles = oData.Queue; // Adjust according to your data structure
                             userTiles = tiles.split(',')
                                 .map(item => item.trim().toLowerCase().replace(/\s+/g, ''));
-                            resolve();
+                            resolve();  // Resolve the promise when data is ready
                         },
                         error: function () {
                             MessageToast.show("Error loading user tiles");
-                            reject();
+                            reject(); // Reject the promise on error
                         }
                     });
                 });
-
-                // Extract and clean frontend tile IDs
-                const frontEndTileIds = oTilesContainer.getContent()
-                    .filter(oTile => oTile.isA("sap.m.GenericTile")) // Ensure it's a GenericTile
-                    .map(oTile => {
-                        const sTileId = oTile.getId();
-                        const localId = this._extractLocalId(sTileId);
-                        return localId.replace("id_", "").toLowerCase();
-                    });
-
-                // Match frontend tile IDs with backend queue tile names
-                const matchedTiles = frontEndTileIds.filter(tileId => userTiles.includes(tileId));
-
-                // Get the original tile objects for the matched tile IDs
-                const matchedTileIds = matchedTiles.map(tileId => {
-                    const matchedTile = oTilesContainer.getContent().find(oTile => {
-                        const sTileId = oTile.getId();
-                        const localId = this._extractLocalId(sTileId);
-                        return localId.replace("id_", "").toLowerCase() === tileId;
-                    });
-                    return matchedTile ? matchedTile.getId() : null; // Get the original ID or null if not found
-                }).filter(id => id !== null); // Filter out any null values
-
-                console.log("Matched Tile IDs:", matchedTileIds); // Log the matched tile IDs
-
-                // Toggle between ListGridView and DefaultView
-                if (currentView === "DefaultView") {
-                    localStorage.setItem("currentView", "ListGridView");
-
-                    // Adjust layout to list/grid view
-                    oTilesContainer.getContent().forEach((oTile) => {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            // Apply list/grid specific style
-                            oTile.removeStyleClass("largeIcons mediumIcons smallIcons").addStyleClass("listgridIcons");
-
-                            // const oTileHeader = oTile.getHeader();
-                            // const oTileSubheader = oTile.getSubheader();
-
-                            // // Create a new container to hold the header and subheader
-                            // const oHeaderContainer = new sap.m.VBox({
-                            //     items: [
-                            //         new sap.m.Text({ text: oTileHeader }),
-                            //         new sap.m.Text({ text: oTileSubheader })
-                            //     ]
-                            // });
-
-                            // // Add the header container beside the tile
-                            // oTile.setHeader(""); // Clear the header since we are setting it in a new container
-                            // oTile.addContent(oHeaderContainer);
-                        }
-                    });
-                } else {
-                    // Reset to the stored view
-                    localStorage.setItem("currentView", "DefaultView");
-                    // Retrieve the previously stored view
-                    const sStoredView = localStorage.getItem("selectedView") || "selectedView";
-                    // Adjust back to grid view
-                    oTilesContainer.getContent().forEach((oTile) => {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            // Restore the original size class for the grid view
-                            oTile.removeStyleClass("listgridIcons").addStyleClass(sStoredView);
-                        }
-                    });
-                    oTilesContainer.rerender();
-                }
+                return userTiles;
             },
             //Language Transulation PopOver Profile...
             onPressLanguageTranslation: function (oEvent) {
@@ -829,8 +792,8 @@ sap.ui.define([
                             let oGroup = group.replace(/[^a-zA-Z0-9]/g, '');
                             let loGroup = oGroup.toLowerCase();
                             that.getView().byId(`id_${loGroup}_title`).setVisible(true)
-                           
-                           
+
+
                         })
 
                         var oresourceType = oData.Queue;
@@ -840,7 +803,7 @@ sap.ui.define([
 
                             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
                             let lOQueue = oQueue.toLowerCase();
-                            that.getView().byId(`id_${lOQueue}`).setVisible(true)
+                            // that.getView().byId(`id_${lOQueue}`).setVisible(true)
                         })
 
                         var aNavigationData = oModel.getProperty("/navigation");
@@ -891,26 +854,26 @@ sap.ui.define([
             //         this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
             //         this.getView().addDependent(this._oPopover);
             //     }
-            
+
             //     // Open popover at the tile position
             //     await this._oPopover.openBy(oEvent.getSource());
             //     let oRadioButton = this.getView().byId("idGenericTilePressPopover");
-               
+
             //     console.log("RadioButton Found: ", oRadioButton);
             //     var oModel1 = this.getOwnerComponent().getModel();
             //     await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
             //         success: function(oData) {
             //             var oResourceArray = oData.Queue.split(",").map(item => item.trim());
-                    
+
             //             oResourceArray.forEach(function(queue) {
             //                 let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
             //                 let lOQueue = oQueue.toLowerCase();
             //                 let radioButtonId = `id_${lOQueue}`;
-                    
+
             //                 let oRadioButton = this.getView().byId("idGenericTilePressPopover");
             //                 console.log("RadioButton ID: ", radioButtonId);
             //                 console.log("RadioButton Found: ", oRadioButton);
-                            
+
             //                 if (oRadioButton) {
             //                     oRadioButton.setVisible(true);
             //                     console.log("Setting RadioButton to visible");
@@ -925,40 +888,66 @@ sap.ui.define([
             //         }
             //     });
             // },
-            onGenericTilePress: async function(oEvent) {
-                var oGenericTileName=oEvent.oSource.mProperties.header;
-                var oQueueArray=[]
-                if (!this._oPopover) {
-                    this._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
-                    this.getView().addDependent(this._oPopover);
+            onGenericTilePress: async function (oEvent) {
+                const oTile = oEvent.getSource();
+                var oGenericTileName = oEvent.oSource.mProperties.header;
+                var oQueueArray = []
+                // Check for edit mode
+                // if (this.EditCall) {
+                //     this._currentTile = oTile;
+                //     this.onPressRenameTile();
+                //     return;
+                // }
+
+                // Check for theme mode
+                if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
+                    }
+                    const iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
+                    }
+                    return;
+                }
+
+                if (!this._oPopoverGt) {
+                    this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+                    this.getView().addDependent(this._oPopoverGt);
                 }
                 const aOptions = []
-                this._oPopover.setTitle(oGenericTileName)
-                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                this._oPopoverGt.setTitle(oGenericTileName)
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 oVBox.destroyItems(); // Clear existing items
-            
+
                 // Create radio buttons dynamically
                 // const aOptions = ["Option 1", "Option 2", "Option 3"]; // Define your options
-                
+
                 var oModel1 = this.getOwnerComponent().getModel();
                 await oModel1.read("/ProcessAreaSet", {
-                    success: function(oData) {
+                    success: function (oData) {
                         oData.results.forEach(element => {
-                            if(element.Processgroup===oGenericTileName){
+                            if (element.Processgroup.toUpperCase() === oGenericTileName.toUpperCase()) {
                                 oQueueArray.push(element.Queue.toUpperCase())
                             }
                         });
-                         oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                            success: function(oData) {
+                        oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                            success: function (oData) {
                                 var oResourceArray = oData.Queue.split(",").map(item => item.trim());
-                            
-                                oResourceArray.forEach(function(queue) {
+
+                                oResourceArray.forEach(function (queue) {
                                     let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
                                     let lOQueue = oQueue.toLowerCase();
-                                    if(oQueueArray.includes(queue)){
+                                    if (oQueueArray.includes(queue)) {
                                         aOptions.push(queue)
                                     }
-                                   
+
                                 });
                                 aOptions.forEach((sOption) => {
                                     const oRadioButton = new sap.m.RadioButton({
@@ -968,64 +957,64 @@ sap.ui.define([
                                     oVBox.addItem(oRadioButton); // Add the radio button to the VBox
                                 });
                             }
-                            .bind(this),
-                            error: function() {
+                                .bind(this),
+                            error: function () {
                                 MessageToast.show("User does not exist");
                             }
                         });
-                
-                        
+
+
                     }
-                    .bind(this),
-                    error: function() {
+                        .bind(this),
+                    error: function () {
                         MessageToast.show("User does not exist");
                     }
                 });
                 console.log(oQueueArray);
-                    // await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                    //     success: function(oData) {
-                    //         var oResourceArray = oData.Queue.split(",").map(item => item.trim());
-                        
-                    //         oResourceArray.forEach(function(queue) {
-                    //             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
-                    //             let lOQueue = oQueue.toLowerCase();
-                    //             if(oQueueArray.includes(queue)){
-                    //                 aOptions.push(queue)
-                    //             }
-                               
-                    //         });
-                    //         aOptions.forEach((sOption) => {
-                    //             const oRadioButton = new sap.m.RadioButton({
-                    //                 text: sOption,
-                    //                 select: this.onRadioButtonSelect.bind(this)
-                    //             });
-                    //             oVBox.addItem(oRadioButton); // Add the radio button to the VBox
-                    //         });
-                    //     }
-                    //     .bind(this),
-                    //     error: function() {
-                    //         MessageToast.show("User does not exist");
-                    //     }
-                    // });
-            
+                // await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                //     success: function(oData) {
+                //         var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+
+                //         oResourceArray.forEach(function(queue) {
+                //             let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                //             let lOQueue = oQueue.toLowerCase();
+                //             if(oQueueArray.includes(queue)){
+                //                 aOptions.push(queue)
+                //             }
+
+                //         });
+                //         aOptions.forEach((sOption) => {
+                //             const oRadioButton = new sap.m.RadioButton({
+                //                 text: sOption,
+                //                 select: this.onRadioButtonSelect.bind(this)
+                //             });
+                //             oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                //         });
+                //     }
+                //     .bind(this),
+                //     error: function() {
+                //         MessageToast.show("User does not exist");
+                //     }
+                // });
+
                 // Clear any existing content in the VBox
-               
-            
+
+
                 // Open popover at the tile position
-                await this._oPopover.openBy(oEvent.getSource());
+                await this._oPopoverGt.openBy(oEvent.getSource());
             },
-            
-            
-            onRadioButtonSelect: function() {
+
+
+            onRadioButtonSelect: function () {
                 // Get the VBox that contains the radio buttons
-                const oVBox = this._oPopover.getContent()[0]; // Assuming the VBox is the first content
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 const aItems = oVBox.getItems(); // Get all items in the VBox
-            
+
                 // Loop through the items to find the selected radio button
                 let selectedText = '';
                 aItems.forEach((oItem) => {
                     if (oItem.getSelected()) { // Check if the radio button is selected
-                        
+
                         selectedText = oItem.getText().replace(/[^a-zA-Z0-9]/g, '').toUpperCase(); // Get the text of the selected radio button
                     }
                 });
@@ -1036,10 +1025,10 @@ sap.ui.define([
                     // Add your logic based on the selected text here
                 }
             },
-            
-            
-            
-            
+
+
+
+
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 this.byId("pageContainer1").to(this.getView().createId(oItem.getKey()));
@@ -2747,13 +2736,10 @@ sap.ui.define([
                 oRouter.navTo("ProductInspectionByStorageBin", { id: this.ID });
             },
 
-
-
-
-
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
+            
             onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { id: this.ID });

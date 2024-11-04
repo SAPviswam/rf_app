@@ -49,11 +49,6 @@ sap.ui.define([
       this.getView().byId("page2_SBQB").setVisible(true);
       this.getView().byId("page4_SBQB").setVisible(false);
     },
-    // onPressList: function () {
-    //   this.getView().byId("page2_SBQB").setVisible(false);
-    //   this.getView().byId("page3_SBQB").setVisible(false);
-    //   this.getView().byId("page4_SBQB").setVisible(true);
-    // },
     onScanSuccess: function (oEvent) {
       // Get the scanned bin number from the event
       var sScannedBinNumber = oEvent.getParameter("text"); 
@@ -132,10 +127,6 @@ sap.ui.define([
               })
             });
           }
-          //  else {
-          //   // If no matching bin number found, show a message
-          //   sap.m.MessageToast.show("No products found for the entered bin number.");
-          // }
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -228,8 +219,7 @@ sap.ui.define([
               aHUDetails.push({
                 Huident: oDetails[i].Huident,
                 Letyp: oDetails[i].Letyp,
-                Flgmove: oDetails[i].Flgmove
-
+                Flgmove: that.getStatusText(oDetails[i].Flgmove)
               });
             }
           }
@@ -298,7 +288,7 @@ sap.ui.define([
             sap.m.MessageToast.show("Material not found.");
           }
 
-          // Hide the ScrollContainer
+          // Hide the ScrollContainerpage1_SBQB_extra_BinDetails
           oView.byId("page2_SBQB").setVisible(false);
           oView.byId("page1_SBQB_extra_BinDetails").setVisible(true);
         }, error: function () {
@@ -310,5 +300,10 @@ sap.ui.define([
       this.getView().byId("page2_SBQB").setVisible(true);
       this.getView().byId("page1_SBQB_extra_BinDetails").setVisible(false);
     },
+    getStatusText: function (statusCode) {
+      if (typeof statusCode === 'boolean') {
+        return statusCode ? 'yes' : 'No';
+    }
+  }
   });
 });
