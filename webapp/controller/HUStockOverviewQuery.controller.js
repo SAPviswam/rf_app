@@ -179,10 +179,10 @@ sap.ui.define(
                     that.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(false);
                     that.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(true);
                     that.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(true);
-                   that.getView().byId("idBinNumberInput_HUSOQ11").setValue(sHUNumber);
-                   that.getView().byId("idBinNumberInput_HUSOQ121").setValue(odata.NumIt);
-                   that.getView().byId("idBinNumberInput_HUSOQ131").setValue(odata.NumHu);
-                   that.getView().byId("idBinNumberInput_HUSOQ141").setValue(odata.TopInd);
+                    that.getView().byId("idBinNumberInput_HUSOQ11").setValue(sHUNumber);
+                    that.getView().byId("idBinNumberInput_HUSOQ121").setValue(odata.NumIt);
+                    that.getView().byId("idBinNumberInput_HUSOQ131").setValue(odata.NumHu);
+                    that.getView().byId("idBinNumberInput_HUSOQ141").setValue(odata.TopInd);
 
 
                   
@@ -192,8 +192,8 @@ sap.ui.define(
                   let oDetails = odata.HUheadtoItems.results;
 
                   that.getView().byId("idBinNumberInput_HUSOQ121").setValue(oDetails[0].NumIt);
-                   that.getView().byId("idBinNumberInput_HUSOQ131").setValue(oDetails[0].NumHu);
-                   that.getView().byId("idBinNumberInput_HUSOQ141").setValue(oDetails[0].TopInd);
+                  that.getView().byId("idBinNumberInput_HUSOQ131").setValue(oDetails[0].NumHu);
+                  that.getView().byId("idBinNumberInput_HUSOQ141").setValue(oDetails[0].TopInd);
       
                   // Prepare an array for binding
                   var aProductDetails = [];
