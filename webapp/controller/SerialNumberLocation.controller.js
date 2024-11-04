@@ -39,71 +39,128 @@ sap.ui.define(
                     }
                 });
         },
-
         onSubmitpress: function () {
-          // Get the input values from the input fields
-          var oView = this.getView();
-          var sProductNumber = oView.byId("idSNLproductInput").getValue();
-          var sSerialNumber = oView.byId("idSNLSerialNoInput").getValue();
-      
-          // Ensure both product number and serial number are provided
-          if (!sProductNumber || !sSerialNumber) {
-              sap.m.MessageToast.show("Please enter both Product and Serial Number");
-              return;
-          }
-      
-          // Call your backend service to fetch products based on the provided keys
-          var oModel = this.getView().getModel();
-          var that = this;
-      
-          // Construct the request URL using the provided format
-          var sRequestUrl = `/SerialNoLocationSet(Matnr40='${sProductNumber}',Serid='${sSerialNumber}')`;
-      
-          // Perform the read operation
-          oModel.read(sRequestUrl, {
-              success: function (odata) {
-                  console.log(odata);
-                  that.getView().byId("idSNLFirstSC").setVisible(false);
-                  that.getView().byId("idSNLthirdSC").setVisible(true);
-                  that.getView().byId("idSNLSerialNoInput").setValue(sSerialNumber);
-      
-                  // Create a new JSON model to hold the data
-            const oLocalModel = new sap.ui.model.json.JSONModel();
+            // Get the input values from the input fields
+            var oView = this.getView();
+            var sProductNumber = oView.byId("idSNLproductInput").getValue();
+            var sSerialNumber = oView.byId("idSNLSerialNoInput").getValue();
+        
+            // Ensure both product number and serial number are provided
+            if (!sProductNumber || !sSerialNumber) {
+                sap.m.MessageToast.show("Please enter both Product and Serial Number");
+                return;
 
-            // Assuming 'odata' contains the properties you need
-            // If 'odata' is a single object, wrap it in an array to bind it to the table
-            oLocalModel.setData({
-                items: [
-                    {
-                        Binno: odata.Lgtyp,
-                        Bin: odata.Lgpla,
-                        product: odata.Matnr40,
-                        pc: odata.Altme
-                    }
-                ]
-            });
+            }
+        
+            // Call your backend service to fetch products based on the provided keys
+            var oModel = this.getView().getModel();
+            var that = this;
+        
+            // Construct the request URL using the provided format
+            var sRequestUrl = `/SerialNoLocationSet(Matnr40='${sProductNumber}',Serid='${sSerialNumber}')`;
+        
+            // Perform the read operation
+            oModel.read(sRequestUrl, {
+                success: function (odata) {
+                    console.log(odata);
+                    that.getView().byId("idSNLFirstSC").setVisible(false);
+                    that.getView().byId("idSNLthirdSC").setVisible(true);
+        
+                    // Set the values to the corresponding SimpleForm input fields
+                    that.getView().byId("idProductInput_AIC1_").setValue(odata.Matnr40); // Product (HU)
+                    that.getView().byId("input_").setValue(odata.Location); // Location
+                    that.getView().byId("idProductInput__AIC1_").setValue(odata.Nista); 
+                    that.getView().byId("input___").setValue(odata.Charg); 
+                    that.getView().byId("inpufgt___").setValue(odata.Owner); 
+                    that.getView().byId("inpufsdfgt___").setValue(odata.Coo); 
+                    that.getView().byId("idProductdfghInput__AIC1_").setValue(odata.Coo); 
+                    that.getView().byId("inpudfgt___").setValue(odata.Coo); 
+                    that.getView().byId("inpudfghfgt___").setValue(odata.Coo); 
+                    that.getView().byId("idProdwertyuctInput_AIC1_").setValue(odata.Coo);
+                    that.getView().byId("inpwerut_").setValue(odata.Coo); 
+                    that.getView().byId("inputTsdftgop").setValue(odata.Coo); 
+                    that.getView().byId("inputftghyLwst").setValue(odata.Coo); 
+                    that.getView().byId("inpurtyutMove").setValue(odata.Coo); 
 
-            // Set the JSON model to the view
-            that.getView().setModel(oLocalModel, "oLocalModel");
+                     
 
-            // Bind the items aggregation of the table to the local model
-            that.byId("idSNLTable").bindItems({
-                path: "oLocalModel>/items", // Path to the items array in your local model
-                template: new sap.m.ColumnListItem({
-                    cells: [
-                        new sap.m.Text({ text: "{oLocalModel>Binno}" }), // Bin No
-                        new sap.m.Text({ text: "{oLocalModel>Bin}" }),
-                        new sap.m.Text({ text: "{oLocalModel>product}" }), // Bin
-                        new sap.m.Text({ text: "{oLocalModel>pc}" })      // pc
-                    ]
-                })
+
+
+
+               // Additional fields can be mapped similarly
+                },
+                error: function () {
+                    sap.m.MessageToast.show("Error fetching products.");
+                }
             });
         },
-        error: function () {
-            sap.m.MessageToast.show("Error fetching products.");
-        }
-    });
-},
+        
+
+//         onSubmitpress: function () {
+//           // Get the input values from the input fields
+//           var oView = this.getView();
+//           var sProductNumber = oView.byId("idSNLproductInput").getValue();
+//           var sSerialNumber = oView.byId("idSNLSerialNoInput").getValue();
+      
+//           // Ensure both product number and serial number are provided
+//           if (!sProductNumber || !sSerialNumber) {
+//               sap.m.MessageToast.show("Please enter both Product and Serial Number");
+//               return;
+//           }
+      
+//           // Call your backend service to fetch products based on the provided keys
+//           var oModel = this.getView().getModel();
+//           var that = this;
+      
+//           // Construct the request URL using the provided format
+//           var sRequestUrl = `/SerialNoLocationSet(Matnr40='${sProductNumber}',Serid='${sSerialNumber}')`;
+      
+//           // Perform the read operation
+//           oModel.read(sRequestUrl, {
+//               success: function (odata) {
+//                   console.log(odata);
+//                   that.getView().byId("idSNLFirstSC").setVisible(false);
+//                   that.getView().byId("idSNLthirdSC").setVisible(true);
+//                   that.getView().byId("idSNLSerialNoInput").setValue(sSerialNumber);
+      
+//                   // Create a new JSON model to hold the data
+//             const oLocalModel = new sap.ui.model.json.JSONModel();
+
+//             // Assuming 'odata' contains the properties you need
+//             // If 'odata' is a single object, wrap it in an array to bind it to the table
+//             oLocalModel.setData({
+//                 items: [
+//                     {
+//                         Binno: odata.Lgtyp,
+                        
+//                         Bin: odata.Lgpla,
+//                         product: odata.Matnr40,
+//                         pc: odata.Altme
+//                     }
+//                 ]
+//             });
+
+//             // Set the JSON model to the view
+//             that.getView().setModel(oLocalModel, "oLocalModel");
+
+//             // Bind the items aggregation of the table to the local model
+//             that.byId("idSNLTable").bindItems({
+//                 path: "oLocalModel>/items", // Path to the items array in your local model
+//                 template: new sap.m.ColumnListItem({
+//                     cells: [
+//                         new sap.m.Text({ text: "{oLocalModel>Binno}" }), // Bin No
+//                         new sap.m.Text({ text: "{oLocalModel>Bin}" }),
+//                         new sap.m.Text({ text: "{oLocalModel>product}" }), // Bin
+//                         new sap.m.Text({ text: "{oLocalModel>pc}" })      // pc
+//                     ]
+//                 })
+//             });
+//         },
+//         error: function () {
+//             sap.m.MessageToast.show("Error fetching products.");
+//         }
+//     });
+// },
         // onSNLsnoLiveChange:function () {
               
         //     // Get the input value from the input field
