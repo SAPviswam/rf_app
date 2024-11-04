@@ -57,6 +57,10 @@ sap.ui.define(
         var sProductNo = oView.byId("idSBQProductInput").getValue();
         this.sProductNo = sProductNo;
 
+        if (sProductNo.length < 10) {
+          return;
+        }
+
         sProductNo = sProductNo.toUpperCase();
         this.sProductNo = sProductNo;
 
@@ -76,6 +80,7 @@ sap.ui.define(
           },
 
           success: function (odata) {
+            console.log(odata)
             if (odata.Matnr === sProductNo) {
               that.getView().byId("idSBQPFirstSC").setVisible(false);
               that.getView().byId("idSBQPsecondSC").setVisible(true);
@@ -117,13 +122,19 @@ sap.ui.define(
                   press: [that.onSelectBin, that]
                 })
               });
+              that.lastValidSubmission = new Date();
             }
             else {
-              sap.m.MessageToast.show("Enter the Valid Product.");
+              // Check if enough time has passed since the last valid submission
+              if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) { // 3000 ms = 3 seconds
+                sap.m.MessageToast.show("Enter a Valid Product.");
+              }
             }
           },
           error: function () {
-            sap.m.MessageToast.show("Error fetching products.");
+            if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) {
+              sap.m.MessageToast.show("Error fetching product data.");
+            }
           }
         });
       },
@@ -183,6 +194,10 @@ sap.ui.define(
             var oSelectedBinDetails = aBindetails.find(function (Bin) {
               return Bin.Lgpla === sSelectedLgpla;
             });
+            //Remove preceding spaces and zeros.
+            var Aisle = oSelectedBinDetails.Aisle.trimStart();
+            var Stack = oSelectedBinDetails.Stack.trimStart();
+            var LvlV = oSelectedBinDetails.LvlV.trimStart();
 
             if (oSelectedBinDetails) {
               // Update the UI with the selected material's details
@@ -191,9 +206,9 @@ sap.ui.define(
               this.getView().byId("idSBQPQtyWInput").setValue(oSelectedBinDetails.Nista);
               this.getView().byId("idSBQPStorSecInput").setValue(oSelectedBinDetails.Lgber);
               this.getView().byId("idSBQPNoOfHuInput").setValue(oSelectedBinDetails.Anzle);
-              this.getView().byId("idSBQPBinAisleInput").setValue(oSelectedBinDetails.Aisle);
-              this.getView().byId("idSBQPStackInput").setValue(oSelectedBinDetails.Stack);
-              this.getView().byId("idSBQPBinLevelInput").setValue(oSelectedBinDetails.LvlV);
+              this.getView().byId("idSBQPBinAisleInput").setValue(Aisle);
+              this.getView().byId("idSBQPStackInput").setValue(Stack);
+              this.getView().byId("idSBQPBinLevelInput").setValue(LvlV);
               this.getView().byId("idSBQPMaxWInput").setValue(odata.GWeight);
               this.getView().byId("idSBQPMaxWInput_Weight_Uom").setValue(odata.UnitGw);
               this.getView().byId("idSBQPMaxVInput").setValue(odata.GVolume);
