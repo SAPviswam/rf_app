@@ -83,7 +83,7 @@
                                 <Label
                                     id="idLableBinNumber_AHUOBQ"
                                     text="Bin Number:"
-                                    class="formLabel_AHUOBQ sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idInput_AHUOBQ"
@@ -93,11 +93,13 @@
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                             </HBox>
+                            
 
                             <!-- Buttons Aligned Under Input Field -->
                             <HBox
                                 justifyContent="Center"
                                 class="sapUiSmallMarginTop"
+
                             >
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
@@ -120,6 +122,7 @@
                                     press="onPressBackBtnPage1_AHUOBQ"
                                     class="sapUiTinyMarginBegin"
                                 />
+                                
                             </HBox>
                         </VBox>
                     </VBox>

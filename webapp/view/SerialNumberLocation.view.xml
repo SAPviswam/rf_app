@@ -56,9 +56,12 @@
                 visible="true"
             >
                 <VBox
+
                     id="idVbox_StockBinQuerybyBin12"
                     alignItems="Center"
                     alignContent="Center"
+                    
+r
                 >
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
@@ -74,12 +77,14 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
+
                             <VBox class="sapUiTinyMarginBottom">
                                 <HBox>
                                     <Label
                                         id="idSNLroductLabel"
                                         text="Product"
                                         width="100px"
+
                                         class="sapUiTinyMargin"
                                     />
                                     <Input
@@ -98,6 +103,7 @@
                                         id="idSNLSerialNoInput"
                                         value=""
                                     />
+
                                 </HBox>
                                 <HBox
                                     id="idVbox_StockBinQuerybyBin123"
@@ -123,6 +129,7 @@
                                         class="sapUiTinyMargin"
                                     />
                                 </HBox>
+
                             </VBox>
                         </VBox>
                     </form:SimpleForm>
@@ -136,11 +143,13 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+
                 <VBox
                     id="idVbox_StockBinQuerybyBin52"
                     alignItems="Center"
                     alignContent="Center"
                 >
+
                     <form:SimpleForm
                         id="simpleform3"
                         layout="ResponsiveGridLayout"
@@ -327,6 +336,7 @@
                                     class="sapUiTinyMarginEnd"
                                 />
                             </HBox>
+
                             <Label id="idNextEnterLabgel_UOBL" />
                             <HBox justifyContent="Center">
                                 <Button
@@ -347,6 +357,31 @@
                                 />
                             </HBox>
                         </VBox>
+
+<!--                             <HBox
+                                id="_IDGenHjhfkBox61"
+                                width="10px"
+                            />
+                        </HBox>
+                        <Label id="idNextEnterLabgel_UOBL" />
+                        <HBox>
+                            <Button
+                                text="HU Details"
+                                press="onpresshudetails"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                text="Bin Details"
+                                press="onpressBindetails"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                    id="idSNLthirdBackBtn"
+                    text="Back"
+                    press="onSNLthirdBackBtnPress"
+                />
+                        </HBox> -->
+
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -359,6 +394,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+
                 <VBox
                     id="idVbox_StockBinQuerybyBin78"
                     alignItems="Center"
@@ -742,6 +778,7 @@
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
+
             </ScrollContainer>
             <ScrollContainer
                 id="idSNLFifthSC"
@@ -751,6 +788,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
+
                 <VBox
                     id="idVbox"
                     alignItems="Center"
@@ -1165,7 +1203,7 @@
                             </HBox>
                         </VBox>
                     </form:SimpleForm>
-                </VBox>
+                </VBox>           
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>

@@ -14,14 +14,12 @@ sap.ui.define([
                 const oTable = this.getView().byId("idTable_UBYTU");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
                 const oRouter = this.getOwnerComponent().getRouter();
-
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             },
             onResourceDetailsLoad: async function (oEvent1) {
 
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
-
             },
             onRowDoubleClick: function () {
                 debugger

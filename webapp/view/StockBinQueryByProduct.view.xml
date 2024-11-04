@@ -91,6 +91,14 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
+                                
+                                <ndc:BarcodeScannerButton
+                                    id="_IDBinGenScanButton_SBQProduct"
+                                    scanSuccess="onScanSuccessProduct"
+                                    scanFail="onScanError"
+                                    dialogTitle="Barcode Scanner"
+                                    
+                                />
                                 <Button
                                     id="idSBQPfirstbackbtn"
                                     text="Back"
@@ -98,13 +106,7 @@
                                     visible="true"
                                     tooltip="Back"
                                     type="Emphasized"
-                                />
-                                <ndc:BarcodeScannerButton
-                                    id="_IDBinGenScanButton_SBQProduct"
-                                    scanSuccess="onScanSuccessProduct"
-                                    scanFail="onScanError"
-                                    dialogTitle="Barcode Scanner"
-                                    class="sapUiTinyMarginBegin"
+                                    class="sapUiSmallMarginBegin"
                                 />
                             </HBox>
                         </VBox>
@@ -181,11 +183,12 @@
                                 alignItems="Center"
                                 justifyContent="Center"
                                 width="100%"
+                                
                             >
                                 <Table
                                     id="idSBQPTable"
                                     growing="true"
-                                    growingThreshold="5"
+                                    growingThreshold="10"
                                     mode="None"
                                     width="100%"
                                     alternateRowColors="true"
@@ -218,19 +221,19 @@
                                         </OverflowToolbar>
                                     </headerToolbar>
                                     <columns>
-                                        <Column id="idSBQPBinColumn">
+                                        <Column id="idSBQPBinColumn" >
                                             <Text
                                                 id="idSBQPBinText"
                                                 text="Bin No"
                                             />
                                         </Column>
-                                        <Column id="idSBQPColumn">
+                                        <Column id="idSBQPColumn" >
                                             <Text
                                                 id="idSBQPText"
                                                 text="Stock"
                                             />
                                         </Column>
-                                        <Column id="idSBQPPcColumn">
+                                        <Column id="idSBQPPcColumn" >
                                             <Text
                                                 id="idSBQPPcText"
                                                 text="UOM"
@@ -254,12 +257,13 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox
+                <!-- <VBox
                     id="idVbox_StockBinQuerybyProduct17"
                     justifyContent="Center"
                     alignContent="Center"
                     alignItems="Center"
-                >
+                    width="auto"
+                > -->
                     <form:SimpleForm
                         id="simpleform3_binQproduct"
                         layout="ResponsiveGridLayout"
@@ -279,15 +283,16 @@
                             <Title
                                 id="idTitle_StockBinQuerybyProduct12"
                                 text="Product Description"
+                                class="sapUiTinyMargin sapUiSmallMarginBottom"
                             />
-                            <VBox
+                            <!-- <VBox
                                 id="idVbox_StockBinQuerybyProduct13"
                                 class="sapUiLargeMarginBottom"
-                            />
+                            /> -->
                             <HBox id="idhbox_Production">
                                 <Input
                                     id="idInput_BinQProduct_Product"
-                                    width="30rem"
+                                    width="250px"
                                     editable="false"
                                 />
                             </HBox>
@@ -302,15 +307,18 @@
                                     id="idSBQPEANInput"
                                     value=""
                                     editable="false"
+                                    width="73px"
                                 />
                                 <Label
                                     id="idLableSpace_BinQproduct"
-                                    width="2rem"
+                                    width="1rem"
                                 />
                                 <Input
                                     id="idSBQPEANInput2"
                                     value=""
                                     editable="false"
+                                    width="73px"
+                                    
                                 />
                             </HBox>
 
@@ -325,14 +333,16 @@
                                     id="idSBQPTotWInput"
                                     value=""
                                     editable="false"
+                                    width="73px"
                                 />
                                 <Label
                                     id="idLableSpace_BinQproduct1"
-                                    width="2rem"
+                                    width="1rem"
                                 />
                                 <Input
                                     id="idSBQPTotWInput2"
                                     editable="false"
+                                    width="73px"
                                 />
                             </HBox>
 
@@ -347,14 +357,16 @@
                                     id="idSBQPTotVInput"
                                     value=""
                                     editable="false"
+                                    width="73px"
                                 />
                                 <Label
                                     id="idLableSpace_BinQproduct3"
-                                    width="2rem"
+                                    width="1rem"
                                 />
                                 <Input
                                     id="idSBQPTotVInput2"
                                     editable="false"
+                                    width="73px"
                                 />
                             </HBox>
                             <HBox
@@ -362,6 +374,7 @@
                                 justifyContent="Center"
                                 alignContent="Center"
                                 alignItems="Center"
+                                class="sapUiTinyMargin sapUiTinyMarginTop"
                             >
                                 <Button
                                     id="idSBQPThirdbackbtn"
@@ -373,7 +386,7 @@
                             </HBox>
                         </VBox>
                     </form:SimpleForm>
-                </VBox>
+                <!-- </VBox> -->
             </ScrollContainer>
             <ScrollContainer
                 id="idSBQPFourthSC"
@@ -408,12 +421,8 @@
                          <Title
                                 id="idTitle_StockBinQuerybyProduct13"
                                 text="Bin Details"
+                                class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
-                            <VBox
-                                class="sapUiLargeMarginBottom"
-                                id="idVbox_StockBinQuerybyProduct15"
-                            />
-
                             <HBox
                                 id="idHbox_StockBinQuerybyProduct1"
                                 class="sapUiTinyMarginBottom"
@@ -421,13 +430,15 @@
                                 <Label
                                     id="idSBQPBinLabel"
                                     text="Bin:"
-                                    width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="80px"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPBinInput"
                                     value=""
                                     editable="false"
+                                    width="100px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct"
@@ -438,12 +449,14 @@
                                     id="idSBQPStorTypeLabel"
                                     text="Storage Type:"
                                     width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPStoreTypeInput"
                                     value=""
                                     editable="false"
+                                    width="90px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                             </HBox>
 
@@ -454,13 +467,15 @@
                                 <Label
                                     id="idSBQPQtyLabel"
                                     text="Qty:"
-                                    width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="80px"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPQtyWInput"
                                     value=""
                                     editable="false"
+                                    width="100px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct1"
@@ -471,12 +486,14 @@
                                     id="idSBQPStorSecLabel"
                                     text="Storage Sec:"
                                     width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPStorSecInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInputBinQuerybyProduct"
+                                    width="90px"
                                 />
                             </HBox>
 
@@ -487,13 +504,15 @@
                                 <Label
                                     id="idSBQNoOfHuLabel_binQproduct"
                                     text="No of Hu's:"
-                                    width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="80px"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPNoOfHuInput"
                                     value=""
                                     editable="false"
+                                    width="100px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct2"
@@ -504,12 +523,14 @@
                                     id="idSBQPBinAisleLabel"
                                     text="Bin Aisle:"
                                     width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPBinAisleInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInputBinQuerybyProduct"
+                                    width="90px"
                                 />
                             </HBox>
 
@@ -520,14 +541,15 @@
                                 <Label
                                     id="idSBQMaxWLabel_binQueryProduct"
                                     text="MaxW:"
-                                    width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="80px"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPMaxWInput"
                                     value=""
                                     editable="false"
-                                    width="65px"
+                                    width="40px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct_Space_uom1"
@@ -538,7 +560,8 @@
                                     id="idSBQPMaxWInput_Weight_Uom"
                                     value=""
                                     editable="false"
-                                    width="70px"
+                                    width="40px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct3"
@@ -549,12 +572,14 @@
                                     id="idSBQPBinLevelLabel"
                                     text="Bin Level:"
                                     width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPBinLevelInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInputBinQuerybyProduct"
+                                    width="90px"
                                 />
                             </HBox>
 
@@ -565,14 +590,15 @@
                                 <Label
                                     id="idSBQMaxVLabel_BinQueryByProduct"
                                     text="MaxV:"
-                                    width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="80px"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPMaxVInput"
                                     value=""
                                     editable="false"
-                                    width="65px"
+                                    width="40px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct_Space_uom2"
@@ -583,7 +609,8 @@
                                     id="idSBQPMaxWInput_Volume_Uom"
                                     value=""
                                     editable="false"
-                                    width="70px"
+                                    width="40px"
+                                    class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="IdLabel_StockBinQuerybyProduct4"
@@ -594,12 +621,14 @@
                                     id="idSBQPStackLabel"
                                     text="Stack:"
                                     width="90px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSBQPStackInput"
                                     value=""
                                     editable="false"
+                                    class="sapMInputBinQuerybyProduct"
+                                    width="90px"
                                 />
                             </HBox>
                             <HBox
