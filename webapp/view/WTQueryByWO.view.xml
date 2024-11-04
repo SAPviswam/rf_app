@@ -268,7 +268,7 @@
                                     editable="false"
                                 />
 
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel8" width="20px" />
                                 <Label
                                     id="idWtQBWoWTitLabel"
                                     text="WTit"
@@ -283,7 +283,7 @@
                                     class="sapMInput"
                                     
                                 />
-                                <Label width="10px" />
+                                <Label id="idEmptyLabel9" width="10px" />
                                 <Input
                                     id="idWtQBWoWTitAllInput"
                                     value=""
@@ -311,7 +311,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel10" width="20px" />
                                 <Label
                                     id="idWtQBWoStsLabel"
                                     text="Sts"
@@ -369,7 +369,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel11" width="20px" />
                                 <Label
                                     id="idWtQBWoActyLabel"
                                     text="Acty"
@@ -493,7 +493,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="10px" />
+                                <Label id="idEmptyLabel12" width="10px" />
                                 <Label
                                     id="idWtQBWoCusrLabel"
                                     text="Cusr"
@@ -576,7 +576,7 @@
                                     class="sapMInput"
                                 />
 
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel13" width="20px" />
 
                                 <Label
                                     id="idWtQBWOEstpLabel"
@@ -616,7 +616,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel14" width="20px" />
                                 <Label
                                     id="idWtQBWOBtchLabel"
                                     text="Btch"
@@ -649,7 +649,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel15" width="20px" />
                                 <Label
                                     id="idWtQBWOPEntLabel"
                                     text="PEnt"
@@ -682,7 +682,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="20px" />
+                                <Label id="idEmptyLabel16" width="20px" />
                                 <Label
                                     id="idWtQBWOHtypeLabel"
                                     text="H Type"
@@ -696,7 +696,7 @@
                                     editable="false"
                                     class="sapMInput"
                                 />
-                                <Label width="10px" />
+                                <Label id="idEmptyLabel17" width="10px" />
                                 <Label
                                     id="idWtQBWOWhHuLabel"
                                     text="Wh Hu"

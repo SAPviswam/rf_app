@@ -142,11 +142,11 @@
                         priority="NeverOverflow"
                     />
                 </layoutData>
-                <Text
+                <!-- <Text
                     id="idBinDetailsText2"
-                    text="Bin Product Details"
+                    text="Product Details"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
-                />
+                /> -->
                 <VBox
                     id="idVbox_StockBinQuerybyBin3"
                     alignContent="Center"
@@ -263,11 +263,11 @@
                     />
                 </layoutData>
 
-                <Text
+                <!-- <Text
                     id="idBinDetailsText3"
                     text="Bin Details"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
-                />
+                /> -->
                 <VBox
                     id="idVbox_StockBinQuerybyBin"
                     alignContent="Center"
@@ -303,7 +303,7 @@
                                     width="140px"
                                     class="sapMInput"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel1"
                                     text=""
                                     width="30px"
                                 />
@@ -320,7 +320,7 @@
                                     class="sapMInput"
                                     width="100px"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel"
                                     text=""
                                     width="30px"
                                 />
@@ -353,7 +353,7 @@
                                     width="120px"
                                     class="sapMInput"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel2"
                                     text=""
                                     width="30px"
                                 />
@@ -370,7 +370,7 @@
                                     width="120px"
                                     class="sapMInput"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel3"
                                     text=""
                                     width="30px"
                                 />
@@ -402,7 +402,7 @@
                                     width="150px"
                                     class="sapMInput"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel4"
                                     text=""
                                     width="30px"
                                 />
@@ -442,7 +442,7 @@
                                     class="sapMInput"
                                 />
 
-                                <Label
+                                <Label id="idEmptyLabel5"
                                     text=""
                                     width="30px"
                                 />
@@ -481,7 +481,7 @@
                                     width="180px"
                                     class="sapMInput"
                                 />
-                                <Label
+                                <Label id="idEmptyLabel6"
                                     text=""
                                     width="30px"
                                 />
@@ -673,8 +673,6 @@
                     columnsXL="1"
                     columnsL="1"
                     columnsM="1"
-                    singleContainerFullSize="false"
-                    class="FormBack"
                 >
                     <Label
                         id="_IDListBinDetailsGenLabel_SBQB"
@@ -1068,7 +1066,7 @@
                                     press="onPressBackfromView"
                                 />
                             </HBox>
-                        </VBox>
+                          </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
