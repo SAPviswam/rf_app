@@ -126,7 +126,7 @@ sap.ui.define(
                                 aWarehouseOrderDetails.push({
                                     Tanum: oDetails[i].Tanum,
                                     Tostat: that.getStatusText(odata.Status),
-                                    ConfBy: odata.CreatedBy
+                                    ConfBy: oDetails[i].ConfBy
                                 });
                             }
                             // Create a JSON model with the product details array
@@ -302,8 +302,10 @@ sap.ui.define(
                                     cells: [
                                         new sap.m.Text({ text: "{Tanum}" }),
                                         new sap.m.Text({ text: "Open" }),  // Set status text as 'Open'
-                                        new sap.m.Text({ text: "{ConfBy}" })
-                                    ]
+                                        new sap.m.Text({ text: "{CreatedBy}" })
+                                    ],
+                                    type: "Navigation",
+                                    press: [that.onSelectWarehouseTask, that]
                                 })
                             });
 
@@ -347,7 +349,9 @@ sap.ui.define(
                                         new sap.m.Text({ text: "{Tanum}" }),
                                         new sap.m.Text({ text: "Confirmed" }),  // Set status text as 'Open'
                                         new sap.m.Text({ text: "{ConfBy}" })
-                                    ]
+                                    ],
+                                    type: "Navigation",
+                                    press: [that.onSelectWarehouseTask, that]
                                 })
                             });
 

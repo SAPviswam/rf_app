@@ -288,7 +288,7 @@ sap.ui.define([
             sap.m.MessageToast.show("Material not found.");
           }
 
-          // Hide the ScrollContainer
+          // Hide the ScrollContainerpage1_SBQB_extra_BinDetails
           oView.byId("page2_SBQB").setVisible(false);
           oView.byId("page1_SBQB_extra_BinDetails").setVisible(true);
         }, error: function () {
