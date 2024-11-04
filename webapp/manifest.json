@@ -244,7 +244,7 @@
           ]
         },
         {
-          "name": "RouteBillofLading",
+          "name": "RECEVINNGOFHUBYBILLOFLADING",
           "pattern": "BillofLading/{id}",
           "target": [
             "TargetBillofLading"
@@ -293,7 +293,7 @@
           ]
         },
         {
-          "name": "DECONSOLIDATEMANUALLY",
+          "name": "DECONSOLIDATIONMANUALLY",
           "pattern": "DeconsolidationManually/{id}",
           "target": [
             "TargetDeconsolidationManually"
@@ -454,7 +454,7 @@
           ]
         },
         {
-          "name": "CreateShippingHUWOWC",
+          "name": "CREATESHIPPINGHUWOWC",
           "pattern": "CreateShippingHUWOWC/{id}",
           "target": [
             "TargetCreateShippingHUWOWC"
@@ -486,13 +486,6 @@
           "pattern": "ManuallyRepackHU/{id}",
           "target": [
             "TargetManuallyRepackHU"
-          ]
-        },
-        {
-          "name": "DECONSOLIDATIONAUTOMATICALLY",
-          "pattern": "DeconsAuto/{id}",
-          "target": [
-            "TargetDeconsAuto"
           ]
         },
         {

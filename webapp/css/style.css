@@ -1273,6 +1273,10 @@ margin-right: 15%;
     padding: 2%;
 }
 
+
+/*------     Stock Bin Query by Product - Start          -------*/
+/********      Stock Bin Query by Product - End         *****/
+
 /* Home View starts */
 .rfLoginVboxMobile{
     left: 35%;
@@ -1282,6 +1286,7 @@ margin-right: 15%;
     left:50%;
 }
 /* Home View endss */
+
 
 /* WT Query by WO View */
 /* For mobile devices */
@@ -1319,4 +1324,5 @@ margin-right: 15%;
         width: auto !important; 
     }
 }
+
 
