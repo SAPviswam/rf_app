@@ -307,7 +307,7 @@
                     ]
                 },
                 {
-                    "name": "UnloadingByTU",
+                    "name": "UNLOADINGBYTRANSPORTUNIT",
                     "pattern": "UnloadingByTU/{id}",
                     "target": [
                         "TargetUnloadingByTU"
@@ -412,7 +412,7 @@
                     ]
                 },
                 {
-                    "name": "RecevingOfHUbyTUorDoor",
+                    "name": "RECEIVINGOFHUDOORTW",
                     "pattern": "RecevingOfHUbyTUorDoor/{id}",
                     "target": [
                         "TargetRecevingOfHUbyTUorDoor"

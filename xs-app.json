@@ -5,7 +5,7 @@
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
-      "destination": "RF_App",
+      "destination": "RF_App_100",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
