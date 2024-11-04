@@ -114,7 +114,7 @@
                                     id="idWtQBWofirstbackbtn"
                                     text="Back"
                                     press="onWtQBWofirstBackBtnPress"
-                                    visible="true"
+                                    type="Emphasized"
                                     class="sapUiSmallMarginBegin"
                                 />
                             </HBox>
@@ -169,21 +169,28 @@
                                 id="WtQBWoOpenBtn"
                                 text="Open"
                                 press="onWtQBWoOpenBtnPress"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
                             />
                             <Button
                                 id="WtQBWoConfBtn"
                                 text="Conf"
                                 press="onWtQBWoConfBtnPress"
+                                type="Emphasized"
+                                class="sapUiTinyMarginEnd"
                             />
                             <Button
                                 id="WtQBWoAllBtn"
                                 text="All"
                                 press="onWtQBWoAllBtnPress"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
                             />
                             <Button
                                 id="idWtQBWoSecondbackbtn"
                                 text="Back"
                                 press="onWtQBWoSecondBackBtnPress"
+                                type="Emphasized"
                                 visible="false"
                             />
                         </HBox>
@@ -257,7 +264,7 @@
                             >
                                 <Label
                                     id="idWtQBWowtLabel"
-                                    text="WT"
+                                    text="WT:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -271,7 +278,7 @@
                                 <Label id="idEmptyLabel8" width="20px" />
                                 <Label
                                     id="idWtQBWoWTitLabel"
-                                    text="WTit"
+                                    text="WTit:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -300,7 +307,7 @@
                             >
                                 <Label
                                     id="idWtQBWowtsLabel"
-                                    text="WTs"
+                                    text="WTs:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -314,8 +321,8 @@
                                 <Label id="idEmptyLabel10" width="20px" />
                                 <Label
                                     id="idWtQBWoStsLabel"
-                                    text="Sts"
-                                    width="20px"
+                                    text="Sts:"
+                                    width="30px"
                                     class="sapMLabel"
                                 />
                                 <Input
@@ -327,7 +334,7 @@
                                 />
                                 <Label
                                     id="idWtQBWoStypLabel"
-                                    text="STyp"
+                                    text="STyp:"
                                     width="40px"
                                     class="sapMLabel"
                                 />
@@ -340,7 +347,7 @@
                                 />
                                 <Label
                                     id="idWtQBWoPtypLabel"
-                                    text="Ptyp"
+                                    text="Ptyp:"
                                     width="40px"
                                     class="sapMLabel"
                                 />
@@ -359,7 +366,7 @@
                             >
                                 <Label
                                     id="idWtQBWoSproLabel"
-                                    text="Spro"
+                                    text="Spro:"
                                     width="50px"
                                 />
                                 <Input
@@ -372,7 +379,7 @@
                                 <Label id="idEmptyLabel11" width="20px" />
                                 <Label
                                     id="idWtQBWoActyLabel"
-                                    text="Acty"
+                                    text="Acty:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -398,7 +405,7 @@
                             >
                                 <Label
                                     id="idWtQBWoProLabel"
-                                    text="Pro"
+                                    text="Pro:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -424,7 +431,7 @@
                             >
                                 <Label
                                     id="idWtQBWoSbinLabel"
-                                    text="Sbin"
+                                    text="Sbin:"
                                     class="sapMLabel"
                                     width="50px"
                                     
@@ -450,7 +457,7 @@
                             >
                                 <Label
                                     id="idWtQBWoDbinLabel"
-                                    text="Dbin"
+                                    text="Dbin:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -475,7 +482,7 @@
                             >
                                 <Label
                                     id="idWtQBWoCdatLabel"
-                                    text="Cdat"
+                                    text="Cdat:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -496,8 +503,8 @@
                                 <Label id="idEmptyLabel12" width="10px" />
                                 <Label
                                     id="idWtQBWoCusrLabel"
-                                    text="Cusr"
-                                    width="30px"
+                                    text="Cusr:"
+                                    width="40px"
                                     class="sapMLabel"
                                 />
                                 <Input
@@ -521,12 +528,16 @@
                                         id="WtQBWoDetailBtn"
                                         text="Detail"
                                         press="onWtQBWoDetailBtnPress"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginEnd"
                                     />
                                     <Button
                                         id="idWtQBWoThirdbackbtn"
                                         text="Back"
                                         press="onWtQBWoThirdBackBtnPress"
                                         visible="false"
+                                        type="Emphasized"
+                                        
                                     />
                                 </HBox>
                             </VBox>
@@ -564,7 +575,7 @@
                             >
                                 <Label
                                     id="idWtQBWOWoLabel"
-                                    text="WO"
+                                    text="WO:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -580,7 +591,7 @@
 
                                 <Label
                                     id="idWtQBWOEstpLabel"
-                                    text="ESTP"
+                                    text="ESTP:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -598,7 +609,7 @@
                             >
                                 <Label
                                     id="idWtQBWOSqtyLabel"
-                                    text="Sqty"
+                                    text="Sqty:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -619,7 +630,7 @@
                                 <Label id="idEmptyLabel14" width="20px" />
                                 <Label
                                     id="idWtQBWOBtchLabel"
-                                    text="Btch"
+                                    text="Btch:"
                                     width="50px"
                                     class="sapMLabel"
                                 />
@@ -638,7 +649,7 @@
                             >
                                 <Label
                                     id="idWtQBWOOwnerLabel"
-                                    text="Owner"
+                                    text="Owner:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -652,7 +663,7 @@
                                 <Label id="idEmptyLabel15" width="20px" />
                                 <Label
                                     id="idWtQBWOPEntLabel"
-                                    text="PEnt"
+                                    text="PEnt:"
                                     width="40px"
                                     class="sapMLabel"
                                 />
@@ -671,7 +682,7 @@
                             >
                                 <Label
                                     id="idWtQBWOHuWtLabel"
-                                    text="HuWt"
+                                    text="HuWt:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -685,7 +696,7 @@
                                 <Label id="idEmptyLabel16" width="20px" />
                                 <Label
                                     id="idWtQBWOHtypeLabel"
-                                    text="H Type"
+                                    text="H Type:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -699,7 +710,7 @@
                                 <Label id="idEmptyLabel17" width="10px" />
                                 <Label
                                     id="idWtQBWOWhHuLabel"
-                                    text="Wh Hu"
+                                    text="Wh Hu:"
                                     width="60px"
                                     class="sapMLabel"
                                 />
@@ -724,6 +735,7 @@
                                         text="Back"
                                         press="onWtQBWoFourthBackBtnPress"
                                         visible="false"
+                                        type="Emphasized"
                                     />
                                 </HBox>
                             </VBox>
