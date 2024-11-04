@@ -13,7 +13,7 @@
     <tnt:ToolPage id="idToolPageWtQBWt">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderWtQBWt">
-                <Button
+                <!-- <Button
                     id="idWtQBWtfirstbackbtn"
                     icon="sap-icon://nav-back"
                     press="onWtQBWtfirstBackBtnPress"
@@ -30,7 +30,7 @@
                     icon="sap-icon://nav-back"
                     press="onWtQBWtThirdBackBtnPress"
                     visible="false"
-                />
+                /> -->
                
                 <Image
                     id="_IDGenImage1WtQBWt"
@@ -91,17 +91,27 @@
                             value=""
                             liveChange="onWtQBWtWhLiveChange"
                         />
+                        <!-- <Button
+                            id="idWtQBWtWhScannerBtn"
+                            icon="sap-icon://bar-code"
+                            press="onWtQBWtWhBarcodeScanner"
+                        /> -->
+                    </HBox>
+                    <HBox alignContent="Center" alignItems="Center">
+                        
                         <Button
                             id="idWtQBWtWhScannerBtn"
                             icon="sap-icon://bar-code"
                             press="onWtQBWtWhBarcodeScanner"
+                            class="sapUiTinyMarginEnd"
                         />
+                        <Button text="Back" press="onPressFirstBackButton"></Button>
                     </HBox>
                     </VBox>
                 </form:SimpleForm>
                  </VBox>
             </ScrollContainer>
-           
+            
             <ScrollContainer
                 id="idWtQBWtWhSecondsc"
                 horizontal="false"
@@ -285,6 +295,12 @@
                                 id="WtQBWtDetailBtn"
                                 text="Detail"
                                 press="onWtQBWtDetailBtnPress"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Button
+                                id="WtQBWtDetailBackBtn"
+                                text="Back"
+                                press="onPressSecondBackButton"
                             />
                            
                         </HBox>
@@ -330,11 +346,11 @@
                     <Label id="idWtQBWtSqtyLabel" text="Sqty"  width="60px" ></Label>
                     <Input id="idWtQBWtSqtyInput" value=""></Input>
                     <Input id="idWtQBWtPcInput" value="PC"></Input>
-                       <Label width="20px"></Label>
+                    <Label width="20px"></Label>
                     <Label id="idWtQBWtBtchLabel" text="Btch"  width="60px" ></Label>
                     <Input id="idWtQBWtBtchInput" value=""></Input>
                     </HBox>
- 
+
                     <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWtOwnerLabel" text="Owner"  width="60px" ></Label>
                     <Input id="idWtQBWtOwnerInput" value=""></Input>
@@ -353,6 +369,17 @@
                     <Label id="idWtQBWtWhHuLabel" text="Wh Hu"  width="60px"></Label>
                     <Input id="idWtQBWtWhHuInput" value=""></Input>
                     </HBox>
+                     <VBox alignContent="Center" alignItems="Center" >
+                    <HBox  justifyContent="Center">
+                           
+                            <Button
+                                
+                                text="Back"
+                                press="onPressThirdBackButton"
+                            />
+                           
+                        </HBox>
+                    </VBox>
                     </VBox>
                 </form:SimpleForm>
                  </VBox>
