@@ -15,7 +15,7 @@ sap.ui.define(
             const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
         },
-        onWtQBWtfirstBackBtnPress:async function(){
+        onPressFirstBackButton:async function(){
             var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
@@ -49,8 +49,8 @@ sap.ui.define(
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("idWtQBWtFirstSC").setVisible(false);
                 that.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-                that.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
-                that.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
+                // that.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
+                // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
                         // Optionally, you can also populate fields here based on the result
                         that.getView().byId("idWtQBWtwtInput").setValue(odata.Tanum);
                         that.getView().byId("idWtQBWtWTitInput").setValue(odata.Tapos);
@@ -80,15 +80,15 @@ sap.ui.define(
             }
                 this.getView().byId("idWtQBWtFirstSC").setVisible(false);
                 this.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-                this.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
-                this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
+                // this.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
+                // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
             
         },
-        onWtQBWtSecondBackBtnPress:function(){
+        onPressSecondBackButton:function(){
             this.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
             this.getView().byId("idWtQBWtFirstSC").setVisible(true);
-            this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-            this.getView().byId("idWtQBWtfirstbackbtn").setVisible(true);
+            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
+            // this.getView().byId("idWtQBWtfirstbackbtn").setVisible(true);
            
         },
         onWtQBWtDetailBtnPress:function(){
@@ -106,8 +106,8 @@ sap.ui.define(
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
                         that.getView().byId("idWtQBWtWhThirdsc").setVisible(true);
-                        that.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-                        that.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
+                        // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
+                        // that.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
                         // Optionally, you can also populate fields here based on the result
                         that.getView().byId("idWtQBWtwoInput").setValue(odata.Who);
                         that.getView().byId("idWtQBWtOwnerInput").setValue(odata.Owner);
@@ -127,15 +127,15 @@ sap.ui.define(
             }
             this.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
             this.getView().byId("idWtQBWtWhThirdsc").setVisible(true);
-            this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-            this.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
+            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
+            // this.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
            
         },
-        onWtQBWtThirdBackBtnPress:function(){
+        onPressThirdBackButton:function(){
             this.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
             this.getView().byId("idWtQBWtWhThirdsc").setVisible(false);
-            this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
-            this.getView().byId("idWtQBWtThirdbackbtn").setVisible(false);
+            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
+            // this.getView().byId("idWtQBWtThirdbackbtn").setVisible(false);
            
         },
     
