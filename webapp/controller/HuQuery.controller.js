@@ -20,14 +20,21 @@
             this.getView().setModel(oModel);
             var i18nModel = this.getOwnerComponent().getModel("i18n");
             var oQuantityHeader = this.byId("_IDGenText3");
+            var oHigherLevelHu = this.byId("_IDGenLabel6");
+            var oHighestLevelHu = this.byId("_IDGenLabel7");
             var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
             
             if (Device.system.phone) {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
+                oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("hlHu"));
+                oHighestLevelHu.setText(i18nModel.getResourceBundle().getText("hstlHu"));
+
             } else {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("quantity"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
+                oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("higherLevelHu"));
+                oHighestLevelHu.setText(i18nModel.getResourceBundle().getText("highestLevelHu"));
             }
         
             this._setFocus();
@@ -40,8 +47,8 @@
            
         },
         onSelectRow:function(oHui){
-            this.getView().byId("_IDGenButton1122").setVisible(false);
-            this.getView().byId("_IDGenButton1111").setVisible(true)
+            //this.getView().byId("_IDGenButton1122").setVisible(false);
+            //this.getView().byId("_IDGenButton1111").setVisible(true)
             this.getView().byId("icon4").setVisible(false);
             this.getView().byId("icon2").setVisible(true)
             if (oHui) {
@@ -90,7 +97,7 @@
         },
 
         onBeforeRendering: function() {
-            this.getView().byId("_IDGenButton1133").setVisible(true);   
+            //this.getView().byId("_IDGenButton1133").setVisible(true);   
 
         },
         onItemSelect: function (oEvent) {
@@ -145,9 +152,9 @@
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("icon2").setVisible(true);
                         that.getView().byId("icon1").setVisible(false);
-                        that.getView().byId("_IDGenButton1111").setVisible(true);
-                        that.getView().byId("_IDGenButton1122").setVisible(false);
-                        that.getView().byId("_IDGenButton1133").setVisible(false);
+                        // that.getView().byId("_IDGenButton1111").setVisible(true);
+                        // //that.getView().byId("_IDGenButton1122").setVisible(false);
+                        // that.getView().byId("_IDGenButton1133").setVisible(false);
                         // Optionally, you can also populate fields here based on the result
                         that._populateHUDetails(odata);
                     },
@@ -298,7 +305,7 @@
         //     })
 
         // },
-        Onpressback3:async function(){
+        onPressBackButtonFirstSC:async function(){
             var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
@@ -316,6 +323,18 @@
                     }
                 });
          
+            },
+            onPressBackButtonSecondSC:function(){
+                this.getView().byId("icon1").setVisible(true);
+                this.getView().byId("icon2").setVisible(false)
+            },
+            onPressBackButtonThirdSC:function(){
+                this.getView().byId("icon2").setVisible(true);
+                this.getView().byId("icon3").setVisible(false)
+            },
+            onPressBackButtonFourthSC:function(){
+                this.getView().byId("icon2").setVisible(true);
+                this.getView().byId("icon4").setVisible(false)
             },
         
         onHUContentPress: function () {
@@ -425,9 +444,9 @@
             this.getView().byId("icon2").setVisible(false);
             this.getView().byId("icon3").setVisible(true);
             this.getView().byId("icon4").setVisible(false);
-            this.getView().byId("_IDGenButton1111").setVisible(false);
-            this.getView().byId("_IDGenButton1122").setVisible(true);
-            this.getView().byId("_IDGenButton1133").setVisible(false);
+            //this.getView().byId("_IDGenButton1111").setVisible(false);
+            //this.getView().byId("_IDGenButton1122").setVisible(true);
+            //this.getView().byId("_IDGenButton1133").setVisible(false);
 
         },
         onHUHierarchyPress: function () {
@@ -488,9 +507,9 @@
             this.getView().byId("icon2").setVisible(false);
             this.getView().byId("icon3").setVisible(false);
             this.getView().byId("icon4").setVisible(true);
-            this.getView().byId("_IDGenButton1111").setVisible(false);
-            this.getView().byId("_IDGenButton1122").setVisible(true);
-   this.getView().byId("_IDGenButton1133").setVisible(false);
+            //this.getView().byId("_IDGenButton1111").setVisible(false);
+           // this.getView().byId("_IDGenButton1122").setVisible(true);
+   //this.getView().byId("_IDGenButton1133").setVisible(false);
           
         },
 
@@ -501,8 +520,8 @@
             this.getView().byId("icon2").setVisible(true);
             this.getView().byId("icon3").setVisible(false);
             this.getView().byId("icon4").setVisible(false);
-            this.getView().byId("_IDGenButton1111").setVisible(true);
-            this.getView().byId("_IDGenButton1122").setVisible(false);
+            //this.getView().byId("_IDGenButton1111").setVisible(true);
+            //this.getView().byId("_IDGenButton1122").setVisible(false);
             this.byId("_IDGenInput1").setValue("");
 
 
@@ -514,8 +533,8 @@
             this.getView().byId("icon3").setVisible(false);
             this.getView().byId("icon4").setVisible(false);
             this.byId("_IDGenInput1").setValue("");
-            this.getView().byId("_IDGenButton1133").setVisible(true);
-            this.getView().byId("_IDGenButton1111").setVisible(false);
+            // this.getView().byId("_IDGenButton1133").setVisible(true);
+            // this.getView().byId("_IDGenButton1111").setVisible(false);
          
 
         },
