@@ -260,6 +260,7 @@
 <Property Name="Height" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Height" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="BINQHead" sap:content-version="1">
+
 <Key>
 <PropertyRef Name="Lgpla"/>
 </Key>
