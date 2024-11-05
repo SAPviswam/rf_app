@@ -48,9 +48,9 @@ sap.ui.define(
                     success: function (odata) {
                         // If HU exists, show icon2 and hide icon1
                         that.getView().byId("idWtQBWtFirstSC").setVisible(false);
-                that.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-                // that.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
-                // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
+                        that.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
+                        // that.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
+                        // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
                         // Optionally, you can also populate fields here based on the result
                         that.getView().byId("idWtQBWtwtInput").setValue(odata.Tanum);
                         that.getView().byId("idWtQBWtWTitInput").setValue(odata.Tapos);
