@@ -275,12 +275,6 @@ sap.ui.define(
                 oComboBox.setVisible(!bVisible);
             },
 
-
-
-
-
-
-
             onRefreshRequestedData: function () {
                 this.onRequestedData();
                 this.onUserData();
@@ -2008,11 +2002,6 @@ sap.ui.define(
             //     oRouter.navTo("HuMaintanaceInDeconsolidation", { id: this.ID });
     
             // },
-            OnPressStockBinQueryByBin: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("StockBinQueryByBin", { id: this.ID });
-
-            },
             // onReceivingofHUbyASN: function () {
             //     var oRouter = UIComponent.getRouterFor(this);
             //     oRouter.navTo("ReceivingofHUbyASN", { id: this.ID });

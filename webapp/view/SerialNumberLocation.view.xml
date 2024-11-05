@@ -61,7 +61,6 @@
                     alignItems="Center"
                     alignContent="Center"
                     
-r
                 >
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
