@@ -366,7 +366,7 @@
                             labelSpanM="4"
                             columnsL="1"
                             columnsM="1"
-                        >
+                        > 
                             <Label
                                 id="idEANUPC_AHUOBQ"
                                 text="EAN/UPC"
