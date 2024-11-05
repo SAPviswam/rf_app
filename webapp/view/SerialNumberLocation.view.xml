@@ -61,7 +61,6 @@
                     alignItems="Center"
                     alignContent="Center"
                     
-r
                 >
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
@@ -652,9 +651,8 @@ r
                                 />
                                 <HBox id="IDqtyindhrftWEYsuthbx_RCMHU">
                                     <Input
-                                        id="inputTops"
-                                        maxLength="30"
-                                        width="100px"
+                                        id="inputTops" 
+                                        width="40px"
                                     />
                                     <HBox
                                         id="_IDGenHYTRYUjmBsox57"
@@ -671,8 +669,7 @@ r
                                         />
                                         <Input
                                             id="inputsLwst"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="40px"
                                         />
                                     </HBox>
                                     <HBox
@@ -690,8 +687,7 @@ r
                                         />
                                         <Input
                                             id="inputsMove"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="60px"
                                         />
                                     </HBox>
                                     <HBox
@@ -709,8 +705,7 @@ r
                                         />
                                         <Input
                                             id="inputSstat1"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="40px"
                                         />
                                         <HBox
                                             id="idHubyAyrty6uuEGHiSNHsUuobo_RCMHU"
@@ -721,8 +716,7 @@ r
                                             />
                                             <Input
                                                 id="inpustStat2"
-                                                maxLength="30"
-                                                width="50px"
+                                                width="40px"
                                             />
                                         </HBox>
                                     </HBox>
