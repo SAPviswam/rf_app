@@ -722,16 +722,33 @@
     height: 80px !important;
     font-size: auto !important;
 }
-.listgridIcons {
-    display: flex;
-    flex-direction: row; /* Align items in a row */
-    align-items: center;
+gridViewIcons {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: auto !important;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+}
+.listViewIcons {
     width: 50px !important;
     height: 50px !important;
-    font-size: -2rem !important;
+    font-size: 0rem !important;
+    display: flex;
+    flex-direction: column;
 }
-.listgridIcons .sapMGTHeader {
-    margin-left: 10px; /* Space between tile and header */
+.listViewTile {
+    display: flex;
+    align-items: center; /* Align the icon and header horizontally */
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; /* Optional: separate tiles with a border */
+}
+.listViewHeader {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 20px;
 }
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
@@ -869,10 +886,6 @@ background-color: rgb(9, 8, 8) !important;
     .ConfigBtnsHbox{
         margin-right: 3rem !important;
     }
-}
-.responsiveGif{
-  
-     /* margin-right: 35rem !important; */
 }
 .LabelHomePage{
     margin-top: 0.3rem;
@@ -1259,4 +1272,57 @@ margin-right: 15%;
 .vboxResponsiveGifTab{
     padding: 2%;
 }
+
+
+/*------     Stock Bin Query by Product - Start          -------*/
+/********      Stock Bin Query by Product - End         *****/
+
+/* Home View starts */
+.rfLoginVboxMobile{
+    left: 35%;
+}
+
+.createResource_Home_mobile{
+    left:50%;
+}
+/* Home View endss */
+
+
+/* WT Query by WO View */
+/* For mobile devices */
+@media (max-width: 480px) {
+    .sapUiContentPadding {
+        padding: 10px !important;
+    }
+
+    .sapMLabel {
+        width: auto !important; /* Allow labels to take up necessary space */
+    }
+
+    .sapMInput {
+        width: 100% !important; /* Full width inputs */
+        margin-bottom: 10px !important; /* Spacing between inputs */
+    }
+    .sapMInput1 {
+        width: 200% !important; /* Full width inputs */
+    }
+
+    /* Adjust Button styles */
+    #WtQBWoDetailBtn,
+    #idWtQBWoThirdbackbtn {
+        width: 100%; /* Full width for buttons */
+    }
+}
+
+/* For tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .sapMInput {
+        width: 70% !important; 
+    }
+
+    .sapMLabel {
+        width: auto !important; 
+    }
+}
+
 
