@@ -147,6 +147,7 @@
                         <Input
                             id="idBinNumberInput_AHUOBQ"
                             class="BinNumberInput"
+                            editable="false"
                         />
                     </HBox>
                     <Toolbar
@@ -284,6 +285,7 @@
                             <Input
                                 id="idHUNumInput_AHUOBQ"
                                 width="10rem"
+                                editable="false"
                             />
                             </HBox>
                             <HBox alignContent="Center"
@@ -300,6 +302,7 @@
                                 id="idHUProdNumInput_AHUOBQ"
                                 width="10rem"
                                 class="sapUiTinyMarginEnd"
+                                 editable="false"
                             />
                             </HBox>
                             <HBox alignContent="Center"
@@ -316,6 +319,7 @@
                                 id="idSectionInput_AHUOBQ"
                                 width="5rem"
                                 class="sapUiTinyMarginEnd"
+                                 editable="false"
                             />
                             </HBox>
                             <HBox alignContent="Center"
@@ -331,6 +335,7 @@
                             <Input
                                 id="idDocInputThirdPage_AHUOBQ"
                                 width="7rem"
+                                 editable="false"
                             />
                             </HBox>
                             <HBox alignContent="Center"
@@ -346,6 +351,7 @@
                             <Input
                                 id="idQtyInputThirdPage_AHUOBQ"
                                 width="7rem"
+                                 editable="false"
                             />
                             </HBox>
                             <HBox alignContent="Center"
@@ -362,6 +368,7 @@
                             <Input
                                 id="idBinInputThirdPage_AHUOBQ"
                                 width="7rem"
+                                 editable="false"
                             />
                             </HBox>
                             <Button
@@ -430,6 +437,7 @@
                             <Input
                                 id="idHuInput_AHUOBQ"
                                 width="85%"
+                                 editable="false"
                             />
                             </HBox>
                              <HBox
@@ -448,12 +456,14 @@
                                     id="idTotalWaitInput_AHUOBQ"
                                     maxLength="25"
                                     width="70px"
+                                     editable="false"
                                 />
 
                                 <Input
                                     id="idKGUnits_AHUOBQ"
                                     maxLength="25"
                                     width="70px"
+                                     editable="false"
                                 />
                             </HBox>
 </HBox>
@@ -472,12 +482,14 @@
                                     id="idTotalValueInput_AHUOBQ"
                                     maxLength="25"
                                     width="70px"
+                                     editable="false"
                                 />
 
                                 <Input
                                     id="idInputL_AHUOBQ"
                                     maxLength="25"
                                     width="70px"
+                                     editable="false"
                                 />
                             </HBox>
                             </HBox>
