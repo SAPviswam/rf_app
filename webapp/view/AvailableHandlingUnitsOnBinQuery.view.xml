@@ -408,6 +408,7 @@
                         <form:SimpleForm
                             id="idSimpleFormVerifyHuNumber_AHUOBQ"
                             layout="ResponsiveGridLayout"
+
                             editable="true"
                         class="sapUiResponsiveMargin"
                            labelSpanL="3"

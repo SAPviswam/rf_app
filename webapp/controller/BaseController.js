@@ -16,27 +16,27 @@ sap.ui.define([
         applyStoredProfileImage: function () {
             var This = this;
             var oView = This.getView();
-        
+
             // Retrieve the stored profile image from localStorage
             var storedImage = localStorage.getItem("userProfileImage");
-        
+
             // If there is no stored image, do nothing
             if (!storedImage) {
                 return;
             }
-        
+
             // Find all avatar and image controls by a common class (e.g., avatarImage)
             var allAvatarsAndImages = oView.findElements(true, function (element) {
                 return element.isA("sap.m.Avatar");
             });
-        
+
             // Loop through all found avatar/image controls and apply the stored image
             allAvatarsAndImages.forEach(function (control) {
                 if (control.isA("sap.m.Avatar")) {
                     control.setSrc(storedImage);
                 }
             });
-        },        
+        },
 
         createData: function (oModel, oPayload, sPath) {
             return new Promise((resolve, reject) => {
@@ -79,20 +79,21 @@ sap.ui.define([
             var This = this;
             var oView = this.getView();
             var oModel1 = this.getOwnerComponent().getModel();
+            var oComponent = this.getOwnerComponent();
 
-            // Default popover visibility model
-            // var oPopoverVisibility = {
-            //     showAccountDetails: oPopoverContext?.showAccountDetails || false,
-            //     showEditTile: oPopoverContext?.showEditTile || false,
-            //     showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
-            //     showThemes: oPopoverContext?.showThemes || false,
-            //     showLanguage: oPopoverContext?.showLanguage || false,
-            //     showTileView: oPopoverContext?.showTileView || false,
-            //     showHelp: oPopoverContext?.showHelp || false,
-            //     showSignOut: oPopoverContext?.showSignOut || false
-            // };            
-            // Create a model for popover visibility
-            //var oPopoverVisibilityModel = new sap.ui.model.json.JSONModel(oPopoverVisibility);
+            //Default popover visibility model
+            var oPopoverVisibility = {
+                showAccountDetails: oPopoverContext?.showAccountDetails || false,
+                showEditTile: oPopoverContext?.showEditTile || false,
+                showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
+                showThemes: oPopoverContext?.showThemes || false,
+                showLanguage: oPopoverContext?.showLanguage || false,
+                showTileView: oPopoverContext?.showTileView || false,
+                showHelp: oPopoverContext?.showHelp || false,
+                showSignOut: oPopoverContext?.showSignOut || false
+            };
+            //Create a model for popover visibility
+            var oPopoverVisibilityModel = new sap.ui.model.json.JSONModel(oPopoverVisibility);
 
             oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
@@ -104,13 +105,18 @@ sap.ui.define([
                         };
                         var oProfileModel = new sap.ui.model.json.JSONModel(oProfileData);
 
-                        if (!This._oPopover) {
-                            This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
-                            oView.addDependent(This._oPopover);
+                        if (This._oPopover) {
+                            This._oPopover.destroy();
+                            This._oPopover = null;
                         }
-                        // Set both the profile and visibility models to the popover
+
+                        This._oPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.ProfileDialog", This);
+                        oView.addDependent(This._oPopover);
                         This._oPopover.setModel(oProfileModel, "profile");
-                        //This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
+                        This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
+
+                        // Save the new popover instance in the component
+                        oComponent.setPopover(This._oPopover);
 
                         // Open the popover near the avatar after the data is set
                         This._oPopover.openBy(oEvent.getSource());
@@ -123,9 +129,9 @@ sap.ui.define([
                 }
             });
             // Set the visibility model to the popover even before opening (if needed)
-            // if (This._oPopover) {
-            //     This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
-            // }
+            if (This._oPopover) {
+                This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
+            }
         },
         //Account Details press function from popover
         onPressAccountDetails: async function () {
@@ -153,7 +159,7 @@ sap.ui.define([
                 this.UserDetailsFragment = await this.loadFragment("UserDetails"); // Load your fragment asynchronously
             }
             this.UserDetailsFragment.open();
-            this.applyStoredProfileImage();
+            // this.applyStoredProfileImage();
         },
         onPressDeclineProfileDetailsDailog: function () {
             if (this.UserDetailsFragment) {
@@ -167,7 +173,7 @@ sap.ui.define([
             fileInput.type = "file";
             fileInput.accept = "image/*";
             fileInput.style.display = "none";
-        
+
             // Add event listener to handle the file selection
             fileInput.addEventListener("change", (event) => {
                 var selectedFile = event.target.files[0];
@@ -176,13 +182,13 @@ sap.ui.define([
                     // Set up the onload event for FileReader
                     reader.onload = (e) => {
                         var selectedImageBase64 = e.target.result; // Get the base64 encoded image
-                        
+
                         // Clear the previous image from localStorage
                         localStorage.removeItem("userProfileImage");
-        
+
                         // Update all avatar images with the new base64 image
                         This.updateAllAvatarImages(selectedImageBase64);
-        
+
                         // Store the new image in localStorage
                         localStorage.setItem("userProfileImage", selectedImageBase64);
                         sap.m.MessageToast.show("Profile image updated successfully!");
@@ -202,7 +208,7 @@ sap.ui.define([
             fileInput.type = "file";
             fileInput.accept = "image/*";
             fileInput.style.display = "none";
-        
+
             // Add event listener to handle the file selection
             fileInput.addEventListener("change", (event) => {
                 var selectedFile = event.target.files[0];
@@ -212,10 +218,10 @@ sap.ui.define([
                     reader.onload = (e) => {
                         var selectedImageBase64 = e.target.result; // Get the base64 encoded image
                         localStorage.removeItem("userProfileImage");
-        
+
                         // Update all avatar images with the new base64 image
                         This.updateAllAvatarImages(selectedImageBase64);
-        
+
                         // Store the new image in localStorage
                         localStorage.setItem("userProfileImage", selectedImageBase64);
                         sap.m.MessageToast.show("Profile image updated successfully!");
@@ -231,17 +237,17 @@ sap.ui.define([
         updateAllAvatarImages: function (imageBase64) {
             var This = this;
             var oView = This.getView();
-        
+
             // Find all avatar controls by checking if they are instances of sap.m.Avatar
             var allAvatarImages = oView.findElements(true, function (element) {
                 return element.isA("sap.m.Avatar");
             });
-        
+
             // Loop through all found avatar controls and update their image source
             allAvatarImages.forEach(function (avatarControl) {
                 avatarControl.setSrc(imageBase64);
             });
-        },        
+        },
         //Deleting the Profile Images...
         onPressDeleteProfilePic: function () {
             this.clearAllAvatarImages();
@@ -251,7 +257,7 @@ sap.ui.define([
         clearAllAvatarImages: function () {
             var This = this;
             var oView = This.getView();
-    
+
             var allAvatarImagesRemoving = oView.findElements(true, function (element) {
                 return element.isA("sap.m.Avatar");
             });
