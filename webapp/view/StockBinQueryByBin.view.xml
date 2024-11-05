@@ -767,13 +767,13 @@
                             <Label
                                 id="idSTypLabel_Extra"
                                 text="STyp :"
-                                class="sapUiTinyMarginTop sapMLabel"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBBinInput_extra"
                                 value=""
                                 editable="false"
-                                width="5rem"
+                                width="8.3rem"
                                 class="sapMInput"
                             />
                             <Label
@@ -785,15 +785,14 @@
                             <Label
                                 id="idSBQBStorTypeLabel_extra"
                                 text="SSec:"
-                                class="sapUiTinyMarginTop sapMLabel"
-                                width="60px"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBStoreTypeInput_extra"
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="5rem"
+                                width="8rem"
                             />
                             <Label
                                 id="idLabelBqb_extra1"
@@ -804,13 +803,13 @@
                             <Label
                                 id="idSBQBStorTypeLabel1_extra"
                                 text="BT:"
-                                class="sapUiTinyMarginTop sapMLabel"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBStoreTypeInput1_extra"
                                 value=""
                                 editable="false"
-                                width="4rem"
+                                width="3.9rem"
                                 class="sapMInput"
                             />
                         </HBox>
@@ -947,7 +946,7 @@
                                 id="idinput_binqbin_PB"
                                 value=""
                                 editable="false"
-                                width="3rem"
+                                width="3.5rem"
                                 class="sapMInput"
                             />
                             <Label
@@ -1020,14 +1019,14 @@
                                 id="idinput_binqbin_IA"
                                 value=""
                                 editable="false"
-                                width="3rem"
+                                width="3.5rem"
                                 class="sapMInput"
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin17">
                             <Label
                                 id="idlabel_binqbin_OWnr"
-                                text="OWnr :"
+                                text="OWnr:"
                                 class="sapMLabel sapUiTinyMarginTop"
                             />
                             <Input
@@ -1035,7 +1034,7 @@
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="11rem"
+                                width="10.3rem"
                             />
                             <Label
                                 id="idLable_binQbin_space14"
@@ -1051,7 +1050,7 @@
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="11rem"
+                                width="12rem"
                             />
                         </HBox>
                         <VBox

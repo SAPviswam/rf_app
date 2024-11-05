@@ -265,10 +265,11 @@ sap.ui.define([
           var aMaterials = odata.BINQHeadSet.results;
 
           var sSelectedMatnr = oEvent.getSource().getBindingContext().getProperty("Matnr");
+          var sSelectedQuan = oEvent.getSource().getBindingContext().getProperty("Quan");
 
           var oSelectedMaterial = aMaterials.find(function (material) {
 
-            return material.Matnr === sSelectedMatnr;
+            return (material.Matnr === sSelectedMatnr && material.Quan === sSelectedQuan) ;
           });
           if (oSelectedMaterial) {
             // Update the UI with the selected material's details
@@ -278,7 +279,7 @@ sap.ui.define([
             oView.byId("idSBQBBinAisleInput_extra").setValue(odata.Weight);
             oView.byId("idSBQBMaxWInput_extra").setValue(odata.MaxVolume);
             oView.byId("idSBQBBinLevelInput_extra").setValue(odata.Volum);
-            oView.byId("idSBQBMaxVInput_extra").setValue(oSelectedMaterial.Matnr);  // Selected material number
+            oView.byId("idSBQBMaxVInput_extra").setValue(oSelectedMaterial.Maktx);  // Selected material number
             oView.byId("idinput_binqbin_AQty").setValue(oSelectedMaterial.Quan);  // Selected material quantity
             oView.byId("idinput_binqbin_Uom").setValue(oSelectedMaterial.Meins);
             oView.byId("idinput_binqbin_OWnr").setValue(oSelectedMaterial.Owner);
