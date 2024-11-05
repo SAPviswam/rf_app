@@ -60,7 +60,7 @@
                     id="idVbox_StockBinQuerybyBin12"
                     alignItems="Center"
                     alignContent="Center"
-                    
+
                 >
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
@@ -403,9 +403,9 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idSNLfourthSC"
-                width="100%"
+            
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
@@ -419,9 +419,14 @@
                     <form:SimpleForm
                         id="idProductDeaisFrorm_1"
                         layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
                         editable="true"
                         columnsL="2"
                         columnsM="1"
+                        columnsS = "1"
                     >
                         <VBox>
                             <!-- 1ST ROW -->
