@@ -52,7 +52,7 @@
                 columnsM="1"
                 singleContainerFullSize="false"
             >
-                <HBox id="idresourcecheckbox">
+                <!-- <HBox id="idresourcecheckbox">
                     <Text
                         id="idresourcetext"
                         text="Resource Type:"
@@ -73,8 +73,8 @@
                         id="idothers"
                         text="Others"
                     />
-                </HBox>
-                <HBox id="_IDGenHBox11">
+                </HBox> -->
+                <!-- <HBox id="_IDGenHBox11">
                     <VBox id="idLableFirstnamehbox">
                         <Label
                             id="idLableFirstname"
@@ -126,14 +126,14 @@
                             value="{}"
                         />
                     </VBox>
-                </HBox>
+                </HBox> -->
             </form:SimpleForm>
         </content>
-        <HBox
+        <!-- <HBox
             id="_IDgenhboxcontainersingup"
             justifyContent="Center"
         >
-            <!-- Centering buttons -->
+             Centering buttons 
             <Button
                 id="idsignupcreateButton"
                 text="Create"
@@ -149,6 +149,6 @@
                 visible="true"
                 class="sapUiTinyMarginEnd textbold"
             />
-        </HBox>
+        </HBox> -->
     </Dialog>
 </core:FragmentDefinition>

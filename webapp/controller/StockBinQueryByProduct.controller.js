@@ -18,6 +18,32 @@ sap.ui.define(
         this.ID = id;
         console.log(this.ID);
 
+    },
+      onSBQPfirstBackBtnPress:async function(){
+        var oRouter = UIComponent.getRouterFor(this);
+            var oModel1 = this.getOwnerComponent().getModel();
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser=oData.Users.toLowerCase()
+                    if(oUser ===  "resource"){
+                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                    }
+                    else{
+                    oRouter.navTo("Supervisor",{id:this.ID});
+                }
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");
+                }
+            });
+      },
+     
+      onSBQPSecondBackBtnPress:function(){
+            this.getView().byId("idSBQPFirstSC").setVisible(true)
+            this.getView().byId("idSBQPsecondSC").setVisible(false)
+            this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
+            this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+           
       },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
@@ -57,6 +83,10 @@ sap.ui.define(
         var sProductNo = oView.byId("idSBQProductInput").getValue();
         this.sProductNo = sProductNo;
 
+        if (sProductNo.length < 10) {
+          return;
+        }
+
         sProductNo = sProductNo.toUpperCase();
         this.sProductNo = sProductNo;
 
@@ -76,6 +106,7 @@ sap.ui.define(
           },
 
           success: function (odata) {
+            console.log(odata)
             if (odata.Matnr === sProductNo) {
               that.getView().byId("idSBQPFirstSC").setVisible(false);
               that.getView().byId("idSBQPsecondSC").setVisible(true);
@@ -117,13 +148,19 @@ sap.ui.define(
                   press: [that.onSelectBin, that]
                 })
               });
+              that.lastValidSubmission = new Date();
             }
             else {
-              sap.m.MessageToast.show("Enter the Valid Product.");
+              // Check if enough time has passed since the last valid submission
+              if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) { // 3000 ms = 3 seconds
+                sap.m.MessageToast.show("Enter a Valid Product.");
+              }
             }
           },
           error: function () {
-            sap.m.MessageToast.show("Error fetching products.");
+            if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) {
+              sap.m.MessageToast.show("Error fetching product data.");
+            }
           }
         });
       },
@@ -183,6 +220,10 @@ sap.ui.define(
             var oSelectedBinDetails = aBindetails.find(function (Bin) {
               return Bin.Lgpla === sSelectedLgpla;
             });
+            //Remove preceding spaces and zeros.
+            var Aisle = oSelectedBinDetails.Aisle.trimStart();
+            var Stack = oSelectedBinDetails.Stack.trimStart();
+            var LvlV = oSelectedBinDetails.LvlV.trimStart();
 
             if (oSelectedBinDetails) {
               // Update the UI with the selected material's details
@@ -191,11 +232,13 @@ sap.ui.define(
               this.getView().byId("idSBQPQtyWInput").setValue(oSelectedBinDetails.Nista);
               this.getView().byId("idSBQPStorSecInput").setValue(oSelectedBinDetails.Lgber);
               this.getView().byId("idSBQPNoOfHuInput").setValue(oSelectedBinDetails.Anzle);
-              this.getView().byId("idSBQPBinAisleInput").setValue(oSelectedBinDetails.Aisle);
-              this.getView().byId("idSBQPStackInput").setValue(oSelectedBinDetails.Stack);
-              this.getView().byId("idSBQPBinLevelInput").setValue(oSelectedBinDetails.LvlV);
+              this.getView().byId("idSBQPBinAisleInput").setValue(Aisle);
+              this.getView().byId("idSBQPStackInput").setValue(Stack);
+              this.getView().byId("idSBQPBinLevelInput").setValue(LvlV);
               this.getView().byId("idSBQPMaxWInput").setValue(odata.GWeight);
+              this.getView().byId("idSBQPMaxWInput_Weight_Uom").setValue(odata.UnitGw);
               this.getView().byId("idSBQPMaxVInput").setValue(odata.GVolume);
+              this.getView().byId("idSBQPMaxWInput_Volume_Uom").setValue(odata.UnitGv);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
@@ -210,16 +253,16 @@ sap.ui.define(
           }
         });
       },
-      onSBQPBinDePress: function () {
-        this.getView().byId("idSBQPsecondSC").setVisible(false);
-        this.getView().byId("idSBQPFourthSC").setVisible(true);
-        this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
-      },
+      // onSBQPBinDePress: function () {
+      //   this.getView().byId("idSBQPsecondSC").setVisible(false);
+      //   this.getView().byId("idSBQPFourthSC").setVisible(true);
+      //   this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
+      //   this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
+      //   this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
+      // },
       onSBQPFourthBackBtnPress: function () {
         this.getView().byId("idSBQPFourthbackbtn").setVisible(false);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(true);
+        this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
         this.getView().byId("idSBQPsecondSC").setVisible(true);
         this.getView().byId("idSBQPFourthSC").setVisible(false);
       }

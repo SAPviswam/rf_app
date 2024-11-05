@@ -10,8 +10,6 @@ sap.ui.define(
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-                // const oTable = this.getView().byId("idWtQBWoWhTable");
-                // oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -38,14 +36,6 @@ sap.ui.define(
                     }
                 });
             },
-            // onWtQBWoWhLiveChange: function () {
-            //     this.getView().byId("idWtQBWoFirstSC").setVisible(false);
-            //     this.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
-            //     var oWHO = this.getView().byId("idWtQBWoWhInput").getValue();
-            //     this.getView().byId("idWtQBWoWh2Input").setValue(oWHO);
-            //     this.getView().byId("idWtQBWoWh2Input").setEditable(false);
-            // },
-
             onWtQBWoSecondBackBtnPress: function () {
                 this.getView().byId("idWtQBWoFirstSC").setVisible(true);
                 this.getView().byId("idWtQBWoWhSecondsc").setVisible(false);
@@ -66,13 +56,6 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
 
             },
-            onWtQBWoDetailBtnPress: function () {
-                this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-                this.getView().byId("idWtQBWoWhFourthsc").setVisible(true);
-                this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-                this.getView().byId("idWtQBWoFourthbackbtn").setVisible(true);
-
-            },
             onWtQBWoFourthBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
                 this.getView().byId("idWtQBWoWhFourthsc").setVisible(false);
@@ -80,47 +63,17 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoFourthbackbtn").setVisible(false);
 
             },
-            onWtQBWoOpenBtnPress: function () {
-                this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-                this.getView().byId("idWtQBWoWhFifthsc").setVisible(true);
-                this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-                this.getView().byId("idWtQBWoFifthbackbtn").setVisible(true);
-            },
             onWtQBWoFifthBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
                 this.getView().byId("idWtQBWoWhFifthsc").setVisible(false);
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoFifthbackbtn").setVisible(false)
             },
-            onWtQBWoConfBtnPress: function () {
-                this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-                this.getView().byId("idWtQBWoWhSixthsc").setVisible(true);
-                this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-                this.getView().byId("idWtQBWoSixththbackbtn").setVisible(true);
-            },
             onWtQBWoSixthBackBtnPress: function () {
                 this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
                 this.getView().byId("idWtQBWoWhSixthsc").setVisible(false);
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoSixththbackbtn").setVisible(false)
-            },
-            onSelectionChange: function (oEvent) {
-
-                var oTable = this.getView().byId("idWtQBWoWhTable");
-                var oSelectedItem = oTable.getSelectedItem();
-
-                if (oSelectedItem) {
-                    this.getView().byId("idWtQBWoWhThirdsc").setVisible(true);
-                    this.getView().byId("idWtQBWoWhSecondsc").setVisible(false);
-                    this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
-                    this.getView().byId("idWtQBWoSecondbackbtn").setVisible(false);
-                }
-            },
-            onWtQBWoAllBtnPress: function () {
-                this.getView().byId("idWtQBWoWhThirdsc").setVisible(false);
-                this.getView().byId("idWtQBWoWhSeventhsc").setVisible(true);
-                this.getView().byId("idWtQBWoThirdbackbtn").setVisible(false);
-                this.getView().byId("idWtQBWoSevenththbackbtn").setVisible(true);
             },
 
             onWtQBWoSeventhBackBtnPress: function () {
@@ -139,10 +92,12 @@ sap.ui.define(
 
                 // Check if bin number is provided
                 if (!sWarehouseorder) {
-                    sap.m.MessageToast.show("Please enter a bin number.");
+                    sap.m.MessageToast.show("Please enter a WarehouseOrder");
                     return;
                 }
-
+                this.onFetchWHTaskDetails(sWarehouseorder);
+            },
+            onFetchWHTaskDetails: function (sWarehouseorder) {
                 // Call your backend service to fetch products for this bin
                 var oModel = this.getView().getModel(); // Assuming you have a model set up
                 var that = this;
@@ -154,7 +109,6 @@ sap.ui.define(
                     },
 
                     success: function (odata) {
-                        console.log(odata)
                         if (odata.Who === sWarehouseorder) {
                             that.getView().byId("idWtQBWoWh2Input").setValue(sWarehouseorder);
 
@@ -167,31 +121,11 @@ sap.ui.define(
                             // Loop through the results and push them into the array
                             for (var i = 0; i < oDetails.length; i++) {
 
-                                // Determine status text based on Tostat value
-                                let statusText;
-                                switch (oDetails[i].Tostat) {
-                                    case 'C':
-                                        statusText = 'Confirmed';
-                                        break;
-                                    case 'A':
-                                        statusText = 'Canceled';
-                                        break;
-                                    case 'B':
-                                        statusText = 'Locked';
-                                        break;
-                                    case 'D':
-                                        statusText = 'In process';
-                                        break;
-                                    case '':
-                                        statusText = 'Open';
-                                        break;
-                                    default:
-                                        statusText = oDetails[i].Tostat; // Keep original if not C or A
-                                }
+                      //  let statusText = that.getStatusText(oDetails[i].Status);
 
                                 aWarehouseOrderDetails.push({
                                     Tanum: oDetails[i].Tanum,
-                                    Tostat: statusText,
+                                    Tostat: that.getStatusText(odata.Status),
                                     ConfBy: oDetails[i].ConfBy
                                 });
                             }
@@ -218,18 +152,240 @@ sap.ui.define(
                             that.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
                             that.getView().byId("idWtQBWofirstbackbtn").setVisible(false);
                             that.getView().byId("idWtQBWoSecondbackbtn").setVisible(true);
-                            oView.byId("idWtQBWoWhInput").setValue("");
-                        } 
-                        // else {
-                        //     // If no matching bin number found, show a message
-                        //     sap.m.MessageToast.show("No Warehousetasks found for the Warehouseorder.");
-                        // }
+                            that.getView().byId("idWtQBWoWhInput").setValue("");
+                        }
                     },
                     error: function () {
                         sap.m.MessageToast.show("Error fetching products.");
                     }
                 });
             },
+            onSelectWarehouseTask: function (oEvent) {
+                var oView = this.getView();
+                var oModel = this.getView().getModel(); // Assuming you have a model set up
+                var that = this;
+                oModel.read(`/WarehouseOrderSet('${this.sWarehouseorder}')`, {
+                    urlParameters: {
+                        "$expand": "WarehouseOrdertoTask",
+                        "$format": "json"
+                    },
+
+                    success: function (odata) {
+                        console.log(odata)
+
+                        var aWarehousetask = odata.WarehouseOrdertoTask.results;
+
+                        var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum");
+
+                        var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
+
+                            return WarehouseTask.Tanum === sSelectedWT;
+                        });
+                        if (oSelectedWT) {
+                            oView.byId("idWtQBWowtInput").setValue(oSelectedWT.Tanum);
+                            oView.byId("idWtQBWoWTitInput").setValue(oSelectedWT.Tapos);
+                            oView.byId("idWtQBWowtsInput").setValue(odata.Numwt);
+                            oView.byId("idWtQBWoStsInput").setValue(oSelectedWT.Tostat);
+                            oView.byId("idWtQBWoStypInput").setValue(oSelectedWT.Trart);
+                            oView.byId("idWtQBWoPtypInput").setValue(oSelectedWT.Procty);  // Selected material number
+                            oView.byId("idWtQBWoSproInput").setValue(oSelectedWT.Prces);  // Selected material quantity
+                            oView.byId("idWtQBWoActyInput").setValue(oSelectedWT.ActType);
+                            oView.byId("idWtQBWoActyEmpInput").setValue(oSelectedWT.Idplate);
+                            oView.byId("idWtQBWoProInput").setValue(oSelectedWT.Matnr);
+                            oView.byId("idWtQBWoProEmpInput").setValue(oSelectedWT.HazmatInd);
+                            oView.byId("idWtQBWoSbinInput").setValue(oSelectedWT.Vlpla);
+                            oView.byId("idWtQBWoSbinEmpInput").setValue(oSelectedWT.Vlenr);
+                            oView.byId("idWtQBWoDbinInput").setValue(oSelectedWT.Nlpla);
+                            oView.byId("idWtQBWoDbinEmpInput").setValue(oSelectedWT.Nlenr);
+                            oView.byId("idWtQBWoCdatInput").setValue(oSelectedWT.ConfD);
+                            oView.byId("idWtQBWoCusrInput").setValue(oSelectedWT.ConfBy);
+
+                            function convertMillisecondsToTime(milliseconds) {
+                                // Calculate total seconds
+                                let totalSeconds = Math.floor(milliseconds / 1000);
+
+                                // Calculate hours, minutes, and seconds
+                                const hours = Math.floor(totalSeconds / 3600);
+                                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                                const seconds = totalSeconds % 60;
+
+                                // Format as HH:MM:SS
+                                return (
+                                    String(hours).padStart(2, '0') + ':' +
+                                    String(minutes).padStart(2, '0') + ':' +
+                                    String(seconds).padStart(2, '0')
+                                );
+                            }
+                            that.oSelectedWT = sSelectedWT;
+                            const milliseconds = oSelectedWT.ConfT.ms;
+                            oView.byId("idWtQBWoCdatnput").setValue(convertMillisecondsToTime(milliseconds));
+                            oView.byId("idWtQBWoWTitAllInput").setValue(that.getStatusText(oSelectedWT.Tostat));
+                        } else {
+                            sap.m.MessageToast.show("WarehouseTask not found.");
+                        }
+                        oView.byId("idWtQBWoWhThirdsc").setVisible(true);
+                        oView.byId("idWtQBWoWhSecondsc").setVisible(false);
+                        oView.byId("idWtQBWoThirdbackbtn").setVisible(true);
+                        oView.byId("idWtQBWoSecondbackbtn").setVisible(false);
+                    }, error: function () {
+                        sap.m.MessageToast.show("Error fetching products.");
+                    }
+                });
+            },
+            onWtQBWoDetailBtnPress: function () {
+                var oView = this.getView();
+                var oModel = this.getView().getModel();
+                var that = this // Assuming you have a model set up
+                var oSelectedWTs = that.oSelectedWT;
+                oModel.read(`/WarehouseOrderSet('${this.sWarehouseorder}')`, {
+                    urlParameters: {
+                        "$expand": "WarehouseOrdertoTask",
+                        "$format": "json"
+                    },
+
+                    success: function (odata) {
+                        console.log(odata)
+                        var aWarehousetask = odata.WarehouseOrdertoTask.results;
+
+                        var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
+
+                            return WarehouseTask.Tanum === oSelectedWTs;
+                        });
+                        oView.byId("idWtQBWoWhThirdsc").setVisible(false);
+                        oView.byId("idWtQBWoWhFourthsc").setVisible(true);
+                        oView.byId("idWtQBWoThirdbackbtn").setVisible(false);
+                        oView.byId("idWtQBWoFourthbackbtn").setVisible(true);
+                        if (oSelectedWT) {
+                            oView.byId("idWtQBWOwoInput").setValue(odata.Who);
+                            oView.byId("idWtQBWOEstpInput").setValue(oSelectedWT.Procs);
+                            oView.byId("idWtQBWOSqtyInput").setValue(oSelectedWT.Vsola);
+                            oView.byId("idWtQBWOPcInput").setValue(oSelectedWT.Altme);
+                            oView.byId("idWtQBWOOwnerInput").setValue(oSelectedWT.Owner);
+                            oView.byId("idWtQBWOPEntInput").setValue(oSelectedWT.Entitled);
+                            oView.byId("idWtQBWOHuWtInput").setValue(oSelectedWT.Flghuto);
+                            oView.byId("idWtQBWOHTypeInput").setValue(oSelectedWT.Letyp);
+                        }
+
+                    }, error: function () {
+                        sap.m.MessageToast.show("Error fetching products.");
+                    }
+                });
+            },
+            onWtQBWoOpenBtnPress: function () {
+                var oView = this.getView();
+                var sWarehouseorder = oView.byId("idWtQBWoWh2Input").getValue();
+
+                var oModel = this.getView().getModel();
+                var that = this;
+
+                // Fetch the warehouse order details
+                oModel.read(`/WarehouseOrderSet('${sWarehouseorder}')`, {
+                    urlParameters: {
+                        "$expand": "WarehouseOrdertoTask",
+                        "$format": "json"
+                    },
+                    success: function (odata) {
+                        if (odata.Who === sWarehouseorder) {
+                            let oDetails = odata.WarehouseOrdertoTask.results;
+
+                            // Filter for open tasks
+                            let aOpenTasks = oDetails.filter(task => task.Tostat === '');
+
+                            // Create a JSON model with the filtered tasks
+                            var oWarehouse = new sap.ui.model.json.JSONModel({ Warehouseorder: aOpenTasks });
+
+                            // Set and bind the model to the table
+                            that.byId("idWtQBWoWhTable").setModel(oWarehouse);
+                            that.byId("idWtQBWoWhTable").bindItems({
+                                path: "/Warehouseorder",
+                                template: new sap.m.ColumnListItem({
+                                    cells: [
+                                        new sap.m.Text({ text: "{Tanum}" }),
+                                        new sap.m.Text({ text: "Open" }),  // Set status text as 'Open'
+                                        new sap.m.Text({ text: "{CreatedBy}" })
+                                    ],
+                                    type: "Navigation",
+                                    press: [that.onSelectWarehouseTask, that]
+                                })
+                            });
+
+                            // Show the relevant UI components
+                            that.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
+                        }
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Error fetching open tasks.");
+                    }
+                });
+            },
+            onWtQBWoConfBtnPress: function () {
+                var oView = this.getView();
+                var sWarehouseorder = oView.byId("idWtQBWoWh2Input").getValue();
+                var oModel = this.getView().getModel();
+                var that = this;
+
+                // Fetch the warehouse order details
+                oModel.read(`/WarehouseOrderSet('${sWarehouseorder}')`, {
+                    urlParameters: {
+                        "$expand": "WarehouseOrdertoTask",
+                        "$format": "json"
+                    },
+                    success: function (odata) {
+                        if (odata.Who === sWarehouseorder) {
+                            let oDetails = odata.WarehouseOrdertoTask.results;
+
+                            // Filter for open tasks
+                            let aOpenTasks = oDetails.filter(task => task.Tostat === 'C');
+
+                            // Create a JSON model with the filtered tasks
+                            var oWarehouse = new sap.ui.model.json.JSONModel({ Warehouseorder: aOpenTasks });
+
+                            // Set and bind the model to the table
+                            that.byId("idWtQBWoWhTable").setModel(oWarehouse);
+                            that.byId("idWtQBWoWhTable").bindItems({
+                                path: "/Warehouseorder",
+                                template: new sap.m.ColumnListItem({
+                                    cells: [
+                                        new sap.m.Text({ text: "{Tanum}" }),
+                                        new sap.m.Text({ text: "Confirmed" }),  // Set status text as 'Open'
+                                        new sap.m.Text({ text: "{ConfBy}" })
+                                    ],
+                                    type: "Navigation",
+                                    press: [that.onSelectWarehouseTask, that]
+                                })
+                            });
+
+                            // Show the relevant UI components
+                            that.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
+                        }
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Error fetching open tasks.");
+                    }
+                });
+            },
+            onWtQBWoAllBtnPress: function () {
+                var oView = this.getView();
+                var sWarehouseorder = oView.byId("idWtQBWoWh2Input").getValue();
+                this.onFetchWHTaskDetails(sWarehouseorder);
+            },
+            getStatusText: function (statusCode) {
+                switch (statusCode) {
+                    case 'C':
+                        return 'Confirmed';
+                    case 'A':
+                        return 'Canceled';
+                    case 'B':
+                        return 'Locked';
+                    case 'D':
+                        return 'In process';
+                    case '':
+                        return 'Open';
+                    default:
+                        return statusCode; // Return original if no match found
+                }
+            }
+
 
         });
     }
