@@ -45,6 +45,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                 <Title
+                    id="idTitle_HuQuery"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorAdhocHuquery"
                 />
@@ -201,6 +206,7 @@
                             <Label
                                 id="_IDGenLabel8"
                                 text="Length"
+                                 class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputLength"
@@ -215,6 +221,7 @@
                             <Label
                                 id="_IDGenLabel9"
                                 text="Width"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputWidth"
@@ -229,6 +236,7 @@
                             <Label
                                 id="_IDGenLabel10"
                                 text="Height"
+                               class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputHeight"
@@ -243,6 +251,7 @@
                             <Label
                                 id="_IDGenLabel11"
                                 text="Units"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputMeasurement"
@@ -269,6 +278,7 @@
                             <Label
                                 id="_IDGenLabel12"
                                 text="Tare"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputTareWeight"
@@ -283,6 +293,7 @@
                             <Label
                                 id="_IDGenLabel13"
                                 text="Net"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputNetWeight"
@@ -297,6 +308,7 @@
                             <Label
                                 id="_IDGenLabel14"
                                 text="Gross"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputGrossWeight"
@@ -311,6 +323,7 @@
                             <Label
                                 id="_IDGenLabel15"
                                 text="Units"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="_IDGenInputWeightsMeasurement"
@@ -329,7 +342,7 @@
                     <Input
                         id="_IDGenInput33"
                         placeholder="Enter Volume..."
-                        width="80px"
+                        width="200px"
                     />
 
                     <!-- Location and Action Buttons -->
@@ -380,7 +393,6 @@
                 <Table
                     id="HuDetailsTable"
                     inset="false"
-                   
                     growing="true"
                     growingScrollToLoad="true"
                     mode="None"

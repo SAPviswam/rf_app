@@ -98,7 +98,7 @@
                             />
                         </VBox>
                         <VBox
-                        id="idVboxRfLogin_HomeView"
+                            id="idVboxRfLogin_HomeView"
                             alignItems="End"
                             width="70%"
                            
