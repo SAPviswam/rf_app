@@ -63,6 +63,7 @@
                     
 
                 >
+                
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
                         labelSpanL="4"
@@ -113,6 +114,7 @@
                                         id="idSNLfirstBackBtn"
                                         text="Back"
                                         press="onSNLfirxtBackBtnPress"
+                                        type="Emphasized"
                                         class="sapUiTinyMargin"
                                     />
                                     <Button
@@ -125,7 +127,7 @@
                                         id="idSNLproductSubbitBtn"
                                         text="Submit"
                                         press="onSubmitpress"
-                                        type="Emphasized"
+                                        
                                         class="sapUiTinyMargin"
                                     />
                                 </HBox>
