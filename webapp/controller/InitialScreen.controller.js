@@ -41,6 +41,11 @@ sap.ui.define([
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
                     this.getView().byId("idTitle_InitialView").addStyleClass("titleMobile");
+                    // this.getView().byId("idLableDescription_InitialView").addStyleClass("labelMobile");
+                    // this.getView().byId("idLableSystemId_InitialView").addStyleClass("labelMobile");
+                    // this.getView().byId("idLableInstanceNumber_InitialView").addStyleClass("labelMobile");
+                    // this.getView().byId("idLableClient_InitialView").addStyleClass("labelMobile");
+
 
 
 
@@ -261,6 +266,7 @@ sap.ui.define([
                                     ]
                                 });
 
+ 
                                 // Set the button text based on the checkbox state
                                 oNewButton.setText(oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription);
 

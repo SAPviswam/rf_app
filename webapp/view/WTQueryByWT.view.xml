@@ -38,6 +38,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                 <Title
+                    id="idTitle_WtQueryByWt"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorWtQBWt"
                 />
@@ -132,15 +137,18 @@
                     columnsM="1"
                 >
                     <VBox alignContent="Center" >
-                        <HBox alignContent="Center" alignItems="Center">
+                        <HBox >
                             <Label
                                 id="idWtQBWtwtLabel"
                                 text="WT:"
                                 width="50px"
+                                  class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWtwtInput"
                                 value=""
+                                 width="120px"
+                                 editable="false"
                             />
  
                              <Label width="20px"></Label>
@@ -148,44 +156,55 @@
                                 id="idWtQBWtWTitLabel"
                                 text="WTit:"
                                 width="50px"
+                                  class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWtWTitInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                           
                         </HBox>
  
-                        <HBox alignContent="Center" alignItems="Center">
+                        <HBox >
                             <Label
                                 id="idWtQBWtwtsLabel"
                                 text="WTs:"
                                 width="50px"
+                                  class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWtwtsInput"
-                                
+                                width="120px"
                                 value=""
+                                editable="false"
                             />
                         <Label width="20px"></Label>
                             <Label
                                 id="idWtQBWtStsLabel"
                                 text="Sts:"
                                 width="50px"
+                                  class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWtStsInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                        <Label width="30px"></Label>
                             <Label
                                 id="idWtQBWtPtypLabel"
                                 text="Ptyp:"
                                 width="50px"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWtPtypInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                         </HBox>
  
@@ -198,6 +217,8 @@
                             <Input
                                 id="idWtQBWtSproInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                             <Label width="20px"></Label>
                             <Label
@@ -208,10 +229,14 @@
                             <Input
                                 id="idWtQBWtActyInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                             <Input
                                 id="idWtQBWtActyEmpInput"
                                 value=""
+                                width="200px"
+                                editable="false"
                             />
                        
                         </HBox>
@@ -225,10 +250,14 @@
                             <Input
                                 id="idWtQBWtProInput"
                                 value=""
+                                width="310px"
+                                editable="false"
                             />
                             <Input
                                 id="idWtQBWtProEmpInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                         </HBox>
  
@@ -241,10 +270,14 @@
                             <Input
                                 id="idWtQBWtSbinInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                             <Input
                                 id="idWtQBWtSbinEmpInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                         </HBox>
  
@@ -257,10 +290,14 @@
                             <Input
                                 id="idWtQBWtDbinInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                             <Input
                                 id="idWtQBWtDbinEmpInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                         </HBox>
  
@@ -273,10 +310,14 @@
                             <Input
                                 id="idWtQBWtCdatInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                             <Input
                                 id="idWtQBWtCdatnput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                        <Label width="20px"></Label>
                             <Label
@@ -287,6 +328,8 @@
                             <Input
                                 id="idWtQBWtCusrInput"
                                 value=""
+                                width="120px"
+                                editable="false"
                             />
                         </HBox>
         <VBox alignContent="Center" alignItems="Center" >
@@ -330,44 +373,43 @@
                     columnsS="1"
                 >
                 <VBox >
-                    <Title text="Product Description" />
-                   
-                    <HBox alignContent="Center" alignItems="Center">
-                    <Label id="idWtQBWtWoLabel" text="WO" width="60px" ></Label>
-                    <Input id="idWtQBWtwoInput" value=""></Input>
+                    <Title text="Product Description" />   
+                    <HBox >
+                    <Label id="idWtQBWtWoLabel" text="WO" width="50px" class="sapUiTinyMarginTop" ></Label>
+                    <Input id="idWtQBWtwoInput"  width="100px" editable="false" value=""></Input>
  
-                    <Label width="20px"></Label>
+                    <Label width="50px"></Label>
  
-                    <Label id="idWtQBWtEstpLabel" text="ESTP"  width="60px" ></Label>
-                    <Input id="idWtQBWtEstpInput" value=""></Input>
+                    <Label id="idWtQBWtEstpLabel" text="ESTP" class="sapUiTinyMarginTop" width="50px" ></Label>
+                    <Input id="idWtQBWtEstpInput"  width="100px" editable="false" value=""></Input>
  
                     </HBox>
-                     <HBox alignContent="Center" alignItems="Center" >
-                    <Label id="idWtQBWtSqtyLabel" text="Sqty"  width="60px" ></Label>
-                    <Input id="idWtQBWtSqtyInput" value=""></Input>
-                    <Input id="idWtQBWtPcInput" value="PC"></Input>
-                    <Label width="20px"></Label>
-                    <Label id="idWtQBWtBtchLabel" text="Btch"  width="60px" ></Label>
-                    <Input id="idWtQBWtBtchInput" value=""></Input>
+                     <HBox  >
+                    <Label id="idWtQBWtSqtyLabel" text="Sqty"  class="sapUiTinyMarginTop" width="50px" ></Label>
+                    <Input id="idWtQBWtSqtyInput" editable="false"  width="100px" value=""></Input>
+                    <Input id="idWtQBWtPcInput" editable="false" width="40px" value="PC"></Input>
+                    <Label width="10px"></Label>
+                    <Label id="idWtQBWtBtchLabel" text="Btch"  class="sapUiTinyMarginTop" width="50px" ></Label>
+                    <Input id="idWtQBWtBtchInput" editable="false"  width="100px" value=""></Input>
                     </HBox>
 
-                    <HBox alignContent="Center" alignItems="Center" >
-                    <Label id="idWtQBWtOwnerLabel" text="Owner"  width="60px" ></Label>
-                    <Input id="idWtQBWtOwnerInput" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWtPEntLabel" text="PEnt"  width="60px" ></Label>
-                    <Input id="idWtQBWtPEntInput" value=""></Input>
+                    <HBox  >
+                    <Label id="idWtQBWtOwnerLabel" text="Owner" width="50px" class="sapUiTinyMarginTop"  ></Label>
+                    <Input id="idWtQBWtOwnerInput" editable="false" width="100px" value=""></Input>
+                     <Label width="50px"></Label>
+                    <Label id="idWtQBWtPEntLabel" text="PEnt" class="sapUiTinyMarginTop" width="50px" ></Label>
+                    <Input id="idWtQBWtPEntInput" editable="false" width="100px" value=""></Input>
                     </HBox>
  
-                     <HBox alignContent="Center" alignItems="Center" >
-                    <Label id="idWtQBWtHuWtLabel" text="HuWt"  width="60px" ></Label>
-                    <Input id="idWtQBWtHuWtInput" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWtHtypeLabel" text="H Type"  width="60px"></Label>
-                    <Input id="idWtQBWtHTypeInput" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWtWhHuLabel" text="Wh Hu"  width="60px"></Label>
-                    <Input id="idWtQBWtWhHuInput" value=""></Input>
+                     <HBox  >
+                    <Label id="idWtQBWtHuWtLabel" text="HuWt" class="sapUiTinyMarginTop" width="50px" ></Label>
+                    <Input id="idWtQBWtHuWtInput" editable="false" width="100px" value=""></Input>
+                     <Label width="50px"></Label>
+                    <Label id="idWtQBWtHtypeLabel" text="H Type" class="sapUiTinyMarginTop"  width="50px"></Label>
+                    <Input id="idWtQBWtHTypeInput" editable="false"  width="100px" value=""></Input>
+                     <Label width="30px"></Label>
+                    <Label id="idWtQBWtWhHuLabel" text="Wh Hu" class="sapUiTinyMarginTop" width="50px"></Label>
+                    <Input id="idWtQBWtWhHuInput" editable="false" width="100px"  value=""></Input>
                     </HBox>
                      <VBox alignContent="Center" alignItems="Center" >
                     <HBox  justifyContent="Center">

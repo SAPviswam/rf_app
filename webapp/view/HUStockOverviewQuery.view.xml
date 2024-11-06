@@ -22,6 +22,11 @@
     <tnt:ToolPage id="idToolPageHUStockOverviewQuery">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHUStockOverviewQuery_MHU">
+            <Title
+                    id="idTitle_InitialViewHUSOQ"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <Image
                     id="_IDGenImage1HUStockOverviewQuery"
                     height="1.5rem"
@@ -59,19 +64,6 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <VBox
-                    id="id_AHUOBQformB_ox"
-                    class="BinQueryContainer_AHUOBQ"
-                    justifyContent="Center"
-                    alignItems="Center"
-                >
-                    <HBox
-                        id="id_AHUOBQTitl_e"
-                        class="BinQueryTitle_AHUOBQ"
-                        alignItems="Center"
-                        justifyContent="Center"
-                    />
-
                     <VBox
                         id="idVBoxBinNumber_AHUOB_Q"
                         class="formContainer_AHUOBQ"
@@ -108,14 +100,14 @@
                             <!-- Buttons Aligned Under Input Field -->
                             <HBox
                                 justifyContent="Center"
-                                class="sapUiSmallMarginTop"
+                                
                             >
                             <Button
                                     id="idHUStockOverviewQueryfirstbackbtn"
                                     text="Back"
                                     type="Emphasized"
                                     press="onHUStockOverviewQueryfirstBackBtnPress"
-                                    class="sapUiTinyMarginBegin"
+                                    class="sapUiTinyMargin"
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHU_OBQ"
@@ -123,19 +115,18 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate_AHUOBQ_"
                                     dialogTitle="Enter Bin Number:"
-                                    class="Scannerbtn_AHUOBQ"
+                                    class="sapUiTinyMargin"
                                 />
                                 <Button
                                     id="idSubmitButton"
                                     text="Submit"
                                     press="onSubmitButtonPress"
-                                    class="sapUiTinyMarginBegin"
+                                    class="sapUiTinyMargin"
                                 />
                                 
                             </HBox>
                         </VBox>
                     </VBox>
-                </VBox>
             </ScrollContainer>
 
             <ScrollContainer
@@ -407,12 +398,6 @@
                     class="Page4PrdDescriptionContainer_AHUOBQ"
                     justifyContent="Center"
                 >
-                    <!-- <Title
-                        id="idPrdDescripti_onTitle_AHUOBQ"
-                        text="HU Information:"
-                        level="H2"
-                        class="formHeaderPage4PrdDescription_AHUOBQ"
-                    /> -->
 
                     <f:SimpleForm
                         id="idProductDeaisForm_1"
@@ -440,9 +425,9 @@
                             >
                                 <Label
                                     id="idHubyASNLabelQ_RCMHU1"
-                                    text="pkmt"
+                                    text="pkmt:"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyinputhbx_RCMHU1">
                                     <Input
@@ -485,9 +470,9 @@
                                     <!-- Totw label and fields in the same HBox -->
                                     <Label
                                         id="idHubyASNLabl23ty_RMHU"
-                                        text="Totw"
+                                        text="Totw:"
                                         class="sapUiTinyMarginEnd"
-                                        width="40px"
+                                        width="45px"
                                     />
                                     <Input
                                         id="inputTotw1"
@@ -515,7 +500,7 @@
                                     <!-- Totv label and fields in the same HBox -->
                                     <Label
                                         id="idHubyASqwrt45y6NLabl23ty_RMHU"
-                                        text="Totv"
+                                        text="Totv:"
                                         class="sapUiTinyMarginEnd"
                                     />
                                     <Input
@@ -546,9 +531,9 @@
                             >
                                 <Label
                                     id="idHubyAShrtjyNLabelQ_RCMHU"
-                                    text="MaxW"
+                                    text="MaxW:"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyindhrftputhbx_RCMHU">
                                     <Input
@@ -588,9 +573,9 @@
                             >
                                 <Label
                                     id="idHubyAShWR4ETrtjyNLabelQ_RCMHU"
-                                    text="TarW"
+                                    text="TarW:"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyindhrfWR4Ttputhbx_RCMHU">
                                     <Input
@@ -631,7 +616,7 @@
                                 <Label
                                     id="idHubyASNLablfty_RMHU"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyinputhRfCMU">
                                     <Input
@@ -704,9 +689,9 @@
                             >
                                 <Label
                                     id="idHubyAShrWETtjyNLabelQ_RCMHU"
-                                    text="Top"
+                                    text="Top:"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyindhrftWEYputhbx_RCMHU">
                                     <Input
@@ -802,7 +787,7 @@
                                     id="idHubyASNLSDFGabelQ_RCMHU1"
                                     text="Bin"
                                     class="sapUiTinyMarginEnd"
-                                    width="40px"
+                                    width="45px"
                                 />
                                 <HBox id="IDqtyinpSDFGuthbx_RCMHU1">
                                     <Input
@@ -888,7 +873,7 @@
                                 id="hboxPro"
                             >
                                 <Label
-                                    text="Pro"
+                                    text="Pro:"
                                     id="labelPro"
                               width="40px"
                                 />
@@ -936,7 +921,7 @@
                                 id="hboxStypBin"
                             >
                                 <Label
-                                    text="Styp"
+                                    text="Styp:"
                                     id="labelStyp"
                                        width="40px"
                                 />
@@ -950,7 +935,7 @@
                                     id="spacerLabel3"
                                 />
                                 <Label
-                                    text="Bin"
+                                    text="Bin:"
                                     id="labelBin"
                                 />
                                 <Label
@@ -972,7 +957,7 @@
                                 id="hboxAqty"
                             >
                                 <Label
-                                    text="Aqty"
+                                    text="Aqty:"
                                     id="labelAqty"
                                       width="40px"
                                 />
@@ -1000,7 +985,7 @@
                                 id="hboxBtchStyp"
                             >
                                 <Label
-                                    text="Btch"
+                                    text="Btch:"
                                     id="labelBtch"
                                       width="40px"
                                 />
@@ -1019,7 +1004,7 @@
                                      editable="false"
                                 />
                                 <Label
-                                    text="Styp"
+                                    text="Styp:"
                                     id="labelStyp2"
                                 />
                                 <Input
@@ -1037,7 +1022,7 @@
                                 id="hboxOwnrPent"
                             >
                                 <Label
-                                    text="Ownr"
+                                    text="Ownr:"
                                     id="labelOwnr"
                                     width="40px"
                                 />
@@ -1051,7 +1036,7 @@
                                     id="spacerLabel7"
                                 />
                                 <Label
-                                    text="Pent"
+                                    text="Pent:"
                                     id="labelPent"
                                 />
                                 <Label

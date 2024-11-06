@@ -47,7 +47,10 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            <!-- scroll container for total view -->
+
+        
+          
+         <!-- scroll container for total view -->
             <ScrollContainer
                 id="idScrollContainer1_InitialView"
                 horizontal="false"
@@ -56,6 +59,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+
                 <!-- vbox for sub title and left side text -->
                 <VBox
                     id="IdMainVbox_InitialView"
@@ -192,14 +196,16 @@
                     id="idConfigSapSysVbox_InitialView"
                     visible="false"
                 >
+
+                
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
                         <Label
                             id="idLableDescription_InitialView"
                             text="Description:"
-                            width="125px"
-                             required="true"
+                            width="8rem"
+                            required="true"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
@@ -218,7 +224,7 @@
                         <Label
                             id="idLableSystemId_InitialView"
                             text="System Id:"
-                            width="125px"
+                            width="8rem"
                              required="true"
                             class="sapUiTinyMarginTop"
                         />
@@ -239,7 +245,7 @@
                         <Label
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
-                            width="125px"
+                            width="8rem"
                              required="true"
                             class="sapUiTinyMarginTop"
                         />
@@ -259,7 +265,7 @@
                         <Label
                             id="idLableClient_InitialView"
                             text="Client:"
-                            width="125px"
+                            width="8rem"
                              required="true"
                             class="sapUiTinyMarginTop"
                         />
@@ -280,7 +286,7 @@
                         <Label
                             id="idLableApplicationServer_InitialView"
                             text="Application server:"
-                            width="125px"
+                            width="8rem"
                              required="true"
                             class="sapUiTinyMarginTop"
                         />
@@ -300,7 +306,7 @@
                         <Label
                             id="idLableRouterString_InitialView"
                             text="SAP Router String:"
-                            width="125px"
+                            width="8rem"
                             
                             class="sapUiTinyMarginTop"
                         />
@@ -318,7 +324,7 @@
                         <Label
                             id="idLableService_InitialView"
                             text="SAP Service:"
-                            width="125px"
+                            width="8rem"
                            
                             class="sapUiTinyMarginTop"
                         />
@@ -383,7 +389,9 @@
                         />
                     </HBox>
                 </VBox>
-            </ScrollContainer>
+                </ScrollContainer>
+           
+            
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
