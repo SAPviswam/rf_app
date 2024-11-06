@@ -37,6 +37,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                <Title
+                    id="idTitle_WTQBWOView"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorWtQBWo"
                 />
@@ -445,7 +450,7 @@
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
-                                    width="193px"
+                                    width="190px"
                                     class="sapMInput"
                                 />
                             </HBox>
@@ -469,7 +474,7 @@
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
-                                    width="193px"
+                                    width="190px"
                                     editable="false"
                                     class="sapMInput"
                                 />
@@ -509,7 +514,7 @@
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
-                                    width="120px"
+                                    width="111px"
                                     editable="false"
                                     class="sapMInput"
                                 />
