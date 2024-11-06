@@ -117,7 +117,7 @@ sap.ui.define(
                         aProductDetails.push({
                             Huident: oDetails[i].Huident,
                             Matnr: oDetails[i].Matnr,
-                            Flgmove: oDetails[i].Flgmove
+                            Flgmove: that.getStatusText(oDetails[i].Flgmove)
                         });
                       }
                     }
@@ -269,6 +269,11 @@ sap.ui.define(
                     sap.m.MessageToast.show("Error fetching products.");
                 }
             });
+        },
+        getStatusText: function (statusCode) {
+            if (typeof statusCode === 'boolean') {
+              return statusCode ? 'yes' : 'No';
+          }
         }
         
         });

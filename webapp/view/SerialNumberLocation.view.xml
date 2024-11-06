@@ -849,9 +849,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyAShrWsETtjyNLabeslQ_RCMHU"
-                                    text="Styp"
+                                    text="Styp:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyindhrfstWEYsuthbx_RCMHU">
                                     <Input
@@ -926,9 +926,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyAShrWsETtjSyNLabeslQ_RCMHU"
-                                    text="MHU"
+                                    text="MHU:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyindhrfstWEYsSuthbx_RCMHU">
                                     <Input
@@ -1003,9 +1003,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyrAShrtjdyNLabelQ_RCMHU"
-                                    text="MaxW"
+                                    text="MaxW:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyindhrrftpduthbx_RCMHU">
                                     <Input
@@ -1045,9 +1045,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyrASShrtjdyNLabelQ_RCMHU"
-                                    text="MaxV"
+                                    text="MaxV:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyindhSrrftpduthbx_RCMHU">
                                     <Input
@@ -1088,9 +1088,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyrASShsrtjdyNLabelQ_RCMHU"
-                                    text="Maxc"
+                                    text="Maxc:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyindhSrsrftpduthbx_RCMHU">
                                     <Input
@@ -1125,9 +1125,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyASNLabl23raty_RMHU"
-                                    text="LM"
+                                    text="LM:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyrtgyrinSputhRCMU">
                                     <Input
@@ -1158,7 +1158,7 @@
                                     />
                                     <Label
                                         id="idHubyASqwrtS45y6NLrabl23ty_RMHU"
-                                        text="LC"
+                                        text="LC:"
                                         class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     />
                                     <HBox id="IDqtyrtgyDinpursderftgythRCMU">
@@ -1191,9 +1191,9 @@
                             <HBox>
                                 <Label
                                     id="idHubyASNLDabl23raty_RMHU"
-                                    text="LI"
+                                    text="LI:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="40px"
+                                    width="43px"
                                 />
                                 <HBox id="IDqtyrtDgyrinSputhRCMU">
                                     <Input
@@ -1224,7 +1224,7 @@
                                     />
                                     <Label
                                         id="idHubyASqwrtS45y6NLDrabl23ty_RMHU"
-                                        text="IVDO"
+                                        text="IVDO:"
                                         class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     />
                                     <HBox id="IDqtyrtgyDinpDursderftgythRCMU">
