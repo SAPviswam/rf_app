@@ -13,13 +13,13 @@
     <tnt:ToolPage id="idToolPageSNL">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderSNL">
-                <Button
-                    id="idSNLSecondBackBtn"
-                    icon="sap-icon://nav-back"
-                    press="onSNLSecondBackBtnPress"
-                    visible="false"
+                
+                 <Title
+                    id="idTitle_InitialViewsnl"
+                    class="title"
+                    text="CAPmodel RF"
                 />
-
+                
                 <Image
                     id="_IDGenImage1SNL"
                     height="1.5rem"

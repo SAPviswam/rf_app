@@ -13,6 +13,12 @@
     <tnt:ToolPage id="idToolPage_AHUOBQ">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeader_AHUOBQ">
+
+                <Title
+                    id="idTitle_InitialViewAHUOBQ"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <Image
                     id="_IDGenImage1_AHUOBQ"
                     height="1.5rem"
@@ -176,11 +182,6 @@
                             text="HUContent"
                             press="onPressHUContentBtn"
                             tooltip="HU Content"
-                        />
-                        <Button
-                            id="idRefrehshBtnBinNumberTable_AHUOBQ"
-                            press="onRefreshBinNumberTable"
-                            icon="sap-icon://synchronize"
                         />
                     </Toolbar>
                     <Table
