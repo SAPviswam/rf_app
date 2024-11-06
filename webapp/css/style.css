@@ -1073,7 +1073,7 @@ margin-right: 15%;
 .title {
     position: absolute; 
     left: 45%;
-    color: orange; 
+    color: hsl(29, 100%, 50%); 
     align-content: center;    
 }
 
@@ -1144,10 +1144,10 @@ margin-right: 15%;
 /*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
 .TitleMQ{
-    margin-right: 20%;
+    margin-right: 35%;
     margin-top:10% ;
     position: fixed;
-    right: 5%;
+    right: 10%;
     top: 30%;
 }
  
@@ -1236,8 +1236,11 @@ margin-right: 15%;
     border: 2px solid #000; /* Change the color and width as needed */
     padding: 20px;          /* Optional: adds space inside the border */
     border-radius: 5px;
-    margin-left: 50%;
+    margin-left: 50% !important;
 }
+
+
+
 .createSourceTitle{
     color:rgb(248, 162, 3);
     justify-content: center;
@@ -1285,6 +1288,10 @@ margin-right: 15%;
 .createResource_Home_mobile{
     left:50%;
 }
+
+.createResourceVbox_Mobile_Home{
+    left:70%;
+}
 /* Home View endss */
 
 
@@ -1325,4 +1332,8 @@ margin-right: 15%;
     }
 }
 
+/* .sapConfigButton_InitialView{
+ background-color: rgb(249, 126, 3) !important;
+ color: #000 !important;
+} */
 
