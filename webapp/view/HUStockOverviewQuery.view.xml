@@ -22,6 +22,11 @@
     <tnt:ToolPage id="idToolPageHUStockOverviewQuery">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderHUStockOverviewQuery_MHU">
+            <Title
+                    id="idTitle_InitialViewHUSOQ"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <Image
                     id="_IDGenImage1HUStockOverviewQuery"
                     height="1.5rem"
