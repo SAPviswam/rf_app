@@ -95,6 +95,7 @@ sap.ui.define(
                 oModel.read(`/BINQItemSet('${sBinNumber}')`, {
                   urlParameters: {
                     "$expand": "BINQHeadSet",
+                    
                     "$format": "json"
                   },
           

@@ -231,6 +231,8 @@
             this.byId("_IDGenInputWeightsMeasurement").setValue(odata.UnitGw);
             this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+            this.byId("idPackagingMaterialInput").setValue(odata.Pmat);
+            this.byId("_IDGenInput313").setValue(odata.Vlpla);
         },
 
         // Submit button logic (if necessary)
@@ -361,7 +363,7 @@
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
                            Product: oDetails[i].Matnr,
-                            Quantity: oDetails[i].Qty,
+                            Quantity: oDetails[i].Quan,
                           SLNO:i+1,
                           Uom: oDetails[i].Meins,
                           Pd:oDetails[i].Maktx

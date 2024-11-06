@@ -60,8 +60,7 @@
                     id="idVbox_StockBinQuerybyBin12"
                     alignItems="Center"
                     alignContent="Center"
-                    
-r
+
                 >
                     <form:SimpleForm
                         layout="ResponsiveGridLayout"
@@ -114,6 +113,7 @@ r
                                         text="Back"
                                         press="onSNLfirxtBackBtnPress"
                                         class="sapUiTinyMargin"
+                                        type="Emphasized"
                                     />
                                     <Button
                                         id="idSNLproductScannerBtn"
@@ -125,7 +125,6 @@ r
                                         id="idSNLproductSubbitBtn"
                                         text="Submit"
                                         press="onSubmitpress"
-                                        type="Emphasized"
                                         class="sapUiTinyMargin"
                                     />
                                 </HBox>
@@ -175,6 +174,7 @@ r
                                     maxLength="25"
                                     class="sapUiTinyMarginEnd"
                                     width="100px"
+                                    editable="false"
                                 />
                                 <Label id="asdfgUI" />
                                 <Input
@@ -182,6 +182,7 @@ r
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="_IDGenHBox14__">
@@ -196,6 +197,7 @@ r
                                     class="sapUiTinyMarginEnd"
                                     maxLength="25"
                                     width="50px"
+                                    editable="false"
                                 />
 
                                 <Label id="asdfgUI_" />
@@ -204,12 +206,14 @@ r
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
 
                                 <Label id="asdfgfghjUI_" />
                                 <Input
                                     id="inpufgt___"
                                     width="110px"
+                                    editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
 
@@ -219,6 +223,7 @@ r
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="_IDGenHBofghx14__">
@@ -233,6 +238,7 @@ r
                                     maxLength="25"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                                 <Label id="asdfgsdUI_" />
                                 <Input
@@ -240,6 +246,7 @@ r
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
 
                                 <Label id="asdfgfgdfghhjUI_" />
@@ -248,6 +255,7 @@ r
                                     maxLength="25"
                                     width="40px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="_IDGenwertHBox14_">
@@ -262,6 +270,7 @@ r
                                     maxLength="25"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
 
                                 <Label id="asdwertfgUI" />
@@ -270,6 +279,7 @@ r
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="IDqtyindhdfgrftWEYputhbx_RCMHU">
@@ -284,6 +294,7 @@ r
                                     maxLength="30"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
 
                                 <Label
@@ -296,6 +307,7 @@ r
                                     maxLength="30"
                                     width="64px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
 
                                 <Label
@@ -308,6 +320,7 @@ r
                                     maxLength="30"
                                     width="64px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="IDqtyinputhRffCMU">
@@ -321,6 +334,7 @@ r
                                     maxLength="30"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                                 <Label id="idHubyfASuomLfjgbe__RCMHU" />
                                 <Input
@@ -328,12 +342,14 @@ r
                                     maxLength="30"
                                     width="64px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                                 <Label id="idHubyASNhfgjhum1Lbel__RCMHU" />
                                 <Input
                                     id="inpfutEr3"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
+                                    editable="false"
                                 />
                             </HBox>
 
@@ -387,9 +403,9 @@ r
             </ScrollContainer>
             <ScrollContainer
                 id="idSNLfourthSC"
-                width="100%"
+            
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
@@ -403,9 +419,14 @@ r
                     <form:SimpleForm
                         id="idProductDeaisFrorm_1"
                         layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
                         editable="true"
                         columnsL="2"
                         columnsM="1"
+                        columnsS = "1"
                     >
                         <VBox>
                             <!-- 1ST ROW -->
@@ -421,6 +442,7 @@ r
                                         id="inputPrkmt"
                                         maxLength="30"
                                         width="150px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenHBorx571"
@@ -439,6 +461,7 @@ r
                                             id="inputHrtyp"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -456,6 +479,7 @@ r
                                         id="inputTortw1"
                                         maxLength="30"
                                         width="50px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGentryyuHBox59"
@@ -472,6 +496,7 @@ r
                                             id="inputTrotw2"
                                             maxLength="30"
                                             width="50px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -487,6 +512,7 @@ r
                                         <Input
                                             id="inputToutv1"
                                             width="60px"
+                                            editable="false"
                                         />
                                         <HBox
                                             id="_IDGenertytyryuHBox59"
@@ -503,6 +529,7 @@ r
                                                 id="inpurtTotv2"
                                                 maxLength="30"
                                                 width="50px"
+                                                editable="false"
                                             />
                                         </HBox>
                                     </HBox>
@@ -521,6 +548,7 @@ r
                                         id="inputrMaxW"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGernHjmBox57"
@@ -539,6 +567,7 @@ r
                                             id="inputrMaxV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -556,6 +585,7 @@ r
                                         id="inputTarrW"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenHjETRrEmBox57"
@@ -574,6 +604,7 @@ r
                                             id="inputTrarV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -590,6 +621,7 @@ r
                                         id="inputrEr1"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGejrnHBox59"
@@ -604,6 +636,7 @@ r
                                             id="inputEsr2"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -621,6 +654,7 @@ r
                                             id="inputEsr3"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -638,6 +672,7 @@ r
                                             id="inputsEr4"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -652,9 +687,9 @@ r
                                 />
                                 <HBox id="IDqtyindhrftWEYsuthbx_RCMHU">
                                     <Input
-                                        id="inputTops"
-                                        maxLength="30"
-                                        width="100px"
+                                        id="inputTops" 
+                                        width="40px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenHYTRYUjmBsox57"
@@ -671,8 +706,8 @@ r
                                         />
                                         <Input
                                             id="inputsLwst"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="40px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -690,8 +725,8 @@ r
                                         />
                                         <Input
                                             id="inputsMove"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="60px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -709,8 +744,8 @@ r
                                         />
                                         <Input
                                             id="inputSstat1"
-                                            maxLength="30"
-                                            width="64px"
+                                            width="40px"
+                                            editable="false"
                                         />
                                         <HBox
                                             id="idHubyAyrty6uuEGHiSNHsUuobo_RCMHU"
@@ -721,8 +756,8 @@ r
                                             />
                                             <Input
                                                 id="inpustStat2"
-                                                maxLength="30"
-                                                width="50px"
+                                                width="40px"
+                                                editable="false"
                                             />
                                         </HBox>
                                     </HBox>
@@ -740,6 +775,7 @@ r
                                     <Input
                                         id="inputsBin1"
                                         maxLength="30"
+                                        editable="false"
                                         width="150px"
                                     />
                                     <HBox
@@ -759,6 +795,7 @@ r
                                             id="inputCsGrp"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -819,6 +856,7 @@ r
                                         id="inputTsops"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenHYTRsYUjmBsox57"
@@ -837,6 +875,7 @@ r
                                             id="inpustsLwst"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -856,6 +895,7 @@ r
                                             id="inputssMove"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -875,6 +915,7 @@ r
                                             id="inputSsstat1"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -892,6 +933,7 @@ r
                                         id="inputTSsops"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenHYDTRsYUjmBsox57"
@@ -910,6 +952,7 @@ r
                                             id="inpusstsLwst"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -929,6 +972,7 @@ r
                                             id="inputdssMove"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -948,6 +992,7 @@ r
                                             id="inputWSsstat1"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -965,6 +1010,7 @@ r
                                         id="inpuStrMaxW"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGernHjSmBox57"
@@ -982,11 +1028,13 @@ r
                                         <Input
                                             id="inpuStrMaxV"
                                             width="90px"
+                                            editable="false"
                                         />
                                         <Input
                                             id="inpuSdtrMaxV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -1004,6 +1052,7 @@ r
                                         id="inpuSStrMaxW"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGerSnHjSmBox57"
@@ -1022,11 +1071,13 @@ r
                                             id="inpucSdtrMaxV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                         <Input
                                             id="inpuSddtrMaxV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -1044,6 +1095,7 @@ r
                                         id="inpuSSstrMaxW"
                                         maxLength="30"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGerSnHsjSmBox57"
@@ -1062,6 +1114,7 @@ r
                                             id="inpucSsdtrMaxV"
                                             maxLength="30"
                                             width="64px"
+                                            editable="false"
                                         />
                                     </HBox>
                                 </HBox>
@@ -1078,6 +1131,7 @@ r
                                     <Input
                                         id="inpuStTortw1"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenStryyuHBox59"
@@ -1093,6 +1147,7 @@ r
                                         <Input
                                             id="inpuStTrotw2"
                                             width="100px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -1108,6 +1163,7 @@ r
                                         <Input
                                             id="inputToDutv1"
                                             width="110px"
+                                            editable="false"
                                         />
                                         <HBox
                                             id="_IDGenertyDtyryuHBox59"
@@ -1123,6 +1179,7 @@ r
                                             <Input
                                                 id="inpurtSToDtv2"
                                                 width="100px"
+                                                editable="false"
                                             />
                                         </HBox>
                                     </HBox>
@@ -1140,6 +1197,7 @@ r
                                     <Input
                                         id="inpuStTDortw1"
                                         width="100px"
+                                        editable="false"
                                     />
                                     <HBox
                                         id="_IDGenStryyDuHBox59"
@@ -1155,6 +1213,7 @@ r
                                         <Input
                                             id="inpuStDTrotw2"
                                             width="100px"
+                                            editable="false"
                                         />
                                     </HBox>
                                     <HBox
@@ -1170,6 +1229,7 @@ r
                                         <Input
                                             id="inputToDDtv1"
                                             width="100px"
+                                            editable="false"
                                         />
                                         <HBox
                                             id="_IDGenertyDtyDryuHBox59"
@@ -1185,6 +1245,7 @@ r
                                             <Input
                                                 id="inpurtToDtv2"
                                                 width="100px"
+                                                editable="false"
                                             />
                                         </HBox>
                                     </HBox>
