@@ -16,7 +16,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
                 //Profile image updating(from BaseController)...
-                this.applyStoredProfileImage();
+                //this.applyStoredProfileImage();
                 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);

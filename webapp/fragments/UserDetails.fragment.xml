@@ -1,4 +1,5 @@
 <core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
     xmlns:unified="sap.ui.unified"
     xmlns:vk="sap.ui.vk"
     xmlns:core="sap.ui.core"
@@ -10,7 +11,7 @@
         title="Profile Details"
         class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
         contentWidth="25%"
-        contentHeight="60%"
+        contentHeight="65%"
     >
         <customHeader>
             <Bar id="BarUserDetails_ResourcePage">
@@ -50,7 +51,26 @@
                 />
                 <Label
                     id="idEmptylabelforBtns"
-                    width="1.3rem"
+                    width="1rem"
+                />
+                <Button
+                    id="idBtnEditDetailsforProfile"
+                    text="Edit"
+                    icon="sap-icon://edit"
+                    press="onPressEditProfileDetails"
+                    type="Transparent"
+                />
+                <Button
+                    id="idBtnSaveProfileDetails"
+                    text="Save"
+                    icon="sap-icon://save"
+                    press="onPressSaveProfileDetails"
+                    type="Transparent"
+                    visible="false"
+                />
+                <Label
+                    id="idEmptylabelforBtns123"
+                    width="1rem"
                 />
                 <Button
                     id="idBtnDeleteImageforProfile"
@@ -59,59 +79,67 @@
                     press="onPressDeleteProfilePic"
                     type="Transparent"
                 />
+                <Button
+                    id="idBtnCancelProfileDetails"
+                    text="Cancel"
+                    icon="sap-icon://decline"
+                    press="onPressCancelProfileDetails"
+                    type="Transparent"
+                    visible="false"
+                />
             </HBox>
-            <VBox
-                id="VBox2UserDetails_ResourcePage"
-                class="profileDetails"
-                alignItems="Center"
-            >
-                <HBox id="idHBox1UserDetails_ResourcePage">
-                    <VBox
-                        id="VBox3UserDetails_ResourcePage"
-                        alignItems="Start"
+            <VBox id="VBox2UserDetails_ResourcePage">
+                <form:SimpleForm
+                    id="idSimplformProfileDetails"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    adjustLabelSpan="false"
+                >
+                    <HBox
+                        id="idHBoxResourceIDProfileDetails"
+                        alignContent="Center"
                     >
                         <Text
                             id="idResourceIDUserDetails_ResourcePage"
                             text="Resource ID:"
+                            width="6rem"
                             class="profileDetailItem"
                         />
-                        <Text
-                            id="idNameUserDetails_ResourcePage"
-                            text="Name:"
-                            class="profileDetailItem"
-                        />
-                        <Text
-                            id="idMobileUserDetails_ResourcePage"
-                            text="Mobile:"
-                            class="profileDetailItem"
-                        />
-                        <Text
-                            id="idEmailUserDetails_ResourcePage"
-                            text="Email:"
-                            class="profileDetailItem"
-                        />
-                        <Text
-                            id="idDisegnetionUserDetails_ResourcePage"
-                            text="Disegnation:"
-                            class="profileDetailItem"
-                        />
-                    </VBox>
-                    <Text
-                        id="idEmptyTextUserDetails_ResourcePage"
-                        width="0.7rem"
-                    />
-                    <VBox
-                        id="idVBox4UserDetails_ResourcePage"
-                        alignItems="Start"
-                    >
                         <Text
                             id="idInpuTextUsrIDUserDetails_ResourcePage"
                             text="{oUserModel>/Resourceid}"
                             class="profileDetailItem"
                         />
+                    </HBox>
+                    <HBox
+                        id="idHBoxNameProfileDetails"
+                        alignContent="Center"
+                    >
                         <Text
-                            id="idinputTextResouname_ResourcePage"
+                            id="idNameUserDetails_ResourcePage"
+                            text="Name:"
+                            width="6rem"
+                            class="profileDetailItem"
+                        />
+                        <Text
+                            id="idInputTextResouname_ResourcePage"
                             text="{oUserModel>/Resourcename}"
+                            class="profileDetailItem"
+                        />
+                        <Input
+                            id="idInputName_ResourcePage"
+                            value="{oUserModel>/Resourcename}"
+                            visible="false"
+                        />
+                    </HBox>
+                    <HBox
+                        id="idHBoxMobileProfileDetails"
+                        alignContent="Center"
+                    >
+                        <Text
+                            id="idMobileUserDetails_ResourcePage"
+                            text="Mobile:"
+                            width="6rem"
                             class="profileDetailItem"
                         />
                         <Text
@@ -119,9 +147,41 @@
                             text="{oUserModel>/Phonenumber}"
                             class="profileDetailItem"
                         />
+                        <Input
+                            id="idInputPhoneNumber_ResourcePage"
+                            value="{oUserModel>/Phonenumber}"
+                            visible="false"
+                        />
+                    </HBox>
+                    <HBox
+                        id="idHBoxEmialProfileDetails"
+                        alignContent="Center"
+                    >
+                        <Text
+                            id="idEmailUserDetails_ResourcePage"
+                            text="Email:"
+                            width="6rem"
+                            class="profileDetailItem"
+                        />
                         <Text
                             id="idInputEmailUserDetails_ResourcePage"
                             text="{oUserModel>/Email}"
+                            class="profileDetailItem"
+                        />
+                        <Input
+                            id="idInputEmail_ResourcePage"
+                            value="{oUserModel>/Email}"
+                            visible="false"
+                        />
+                    </HBox>
+                    <HBox
+                        id="idHBoxDesignationProfileDetails"
+                        alignContent="Center"
+                    >
+                        <Text
+                            id="idDisegnetionUserDetails_ResourcePage"
+                            text="Designation:"
+                            width="6rem"
                             class="profileDetailItem"
                         />
                         <Text
@@ -129,8 +189,8 @@
                             text="{oUserModel>/Resourcetype}"
                             class="profileDetailItem"
                         />
-                    </VBox>
-                </HBox>
+                    </HBox>
+                </form:SimpleForm>
             </VBox>
         </VBox>
     </Dialog>

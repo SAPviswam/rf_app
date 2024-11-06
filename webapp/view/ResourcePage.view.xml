@@ -63,7 +63,7 @@
                         press="onPressExitTileThemesMode"
                         visible="false"
                     />
-                    <!-- <Button
+                    <Button
                         id="idBtnListViewResourcePage"
                         icon="sap-icon://menu"
                         tooltip="List View"
@@ -74,7 +74,7 @@
                         icon="sap-icon://grid"
                         tooltip="Grid View"
                         press="onPressGridViewsResource"
-                    /> -->
+                    />
                     <Avatar
                         id="idImageMainAvatarResourcepage"
                         displaySize="XS"

@@ -38,6 +38,8 @@ sap.ui.define([
                 this._currentTile = null;
                 this._selectedTiles = [];
                 this.applyStoredProfileImage();
+                this.byId("idBtnListViewResourcePage").setVisible(true);
+                this.byId("idBtnGridViewResourcePage").setVisible(false);
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -173,10 +175,14 @@ sap.ui.define([
                 if (this.EditCall) {
                     // Theme mode activated
                     this.byId("idCancelEditButtonResource").setVisible(true);
+                    this.byId("idBtnListViewResourcePage").setVisible(false);
+                    this.byId("idBtnGridViewResourcePage").setVisible(false);
                     sap.m.MessageToast.show("Edit mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idCancelEditButtonResource").setVisible(false);
+                    this.byId("idBtnListViewResourcePage").setVisible(true);
+                    this.byId("idBtnGridViewResourcePage").setVisible(false);
                     sap.m.MessageToast.show("Edit mode deactivated.");
                 }
             },
@@ -263,11 +269,15 @@ sap.ui.define([
                 if (this.Themecall) {
                     this.byId("idExitThemeModeResource").setVisible(true); // Show the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(true); // Show the Open Theme button
+                    this.byId("idBtnListViewResourcePage").setVisible(false);
+                    this.byId("idBtnGridViewResourcePage").setVisible(false);
                     sap.m.MessageToast.show("Theme mode activated.");
                 } else {
                     // Theme mode deactivated
                     this.byId("idExitThemeModeResource").setVisible(false); // Hide the Exit Theme button
                     this.byId("idTileThemesModeOpen").setVisible(false); // Hide the Open Theme button
+                    this.byId("idBtnListViewResourcePage").setVisible(true);
+                    this.byId("idBtnGridViewResourcePage").setVisible(false);
                     sap.m.MessageToast.show("Theme mode deactivated.");
                 }
             },
@@ -299,7 +309,8 @@ sap.ui.define([
                 // Clear the array of selected tiles
                 this._selectedTiles = [];
                 // Reset button visibility as needed
-                //this.byId("idBtnListView").setVisible(true);
+                this.byId("idBtnListViewResourcePage").setVisible(false);
+                this.byId("idBtnGridViewResourcePage").setVisible(true);
                 this.byId("idTileThemesModeOpen").setVisible(false);
                 this.byId("idExitThemeModeResource").setVisible(false);
                 // Optionally, close the theme dialog if it's open
@@ -592,62 +603,235 @@ sap.ui.define([
                 // oModel.refresh(true);
             },
             //Grid and List Views...
-            onPressGridViewsResource: async function () {
+            onPressGridViewsResource: function () {
                 const oTilesContainer = this.byId("idScrollContainer1");
                 const aTiles = oTilesContainer.getContent();
-                // Fetch matched tiles asynchronously
-                const matchedTiles = await this.getMatchedTiles();
-                aTiles.forEach(tile => {
-                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
-                    if (matchedTiles.includes(tileId)) {
-                        //tile.removeStyleClass("listViewTile");
-                        tile.removeStyleClass("listViewIcons");
-                        tile.addStyleClass("gridViewIcons");
+                // Remove all content and re-add tiles in grid format
+                oTilesContainer.removeAllContent();
+                // Iterate through the HBoxes to get the original tiles back
+                aTiles.forEach(oHBox => {
+                    if (oHBox.isA("sap.m.HBox")) {
+                        const tileObject = oHBox.getItems()[0];  // The tile object within the HBox
+                        tileObject.removeStyleClass("listViewIcons");
+                        tileObject.addStyleClass("gridViewIcons");
+                        // Re-add tile directly to the container for grid view
+                        oTilesContainer.addContent(tileObject);
                     }
                 });
-                //this.byId("idBtnGridViewResourcePage").setVisible(false);
-                //this.byId("idBtnListViewResourcePage").setVisible(true);
+                this.byId("idBtnListViewResourcePage").setVisible(true);
+                this.byId("idBtnGridViewResourcePage").setVisible(false);
             },
             onPressListViewsResource: async function () {
-                debugger
                 const oTilesContainer = this.byId("idScrollContainer1");
                 const aTiles = oTilesContainer.getContent();
-                // Fetch matched tiles asynchronously
-                const matchedTiles = await this.getMatchedTiles();
-                aTiles.forEach(tile => {
-                    const tileId = this._extractLocalId(tile.getId()).toLowerCase().replace("id_", "");
-                    if (matchedTiles.includes(tileId)) {
-                        tile.removeStyleClass("gridViewIcons");
-                        //tile.addStyleClass("listViewTile");
-                        tile.addStyleClass("listViewIcons");
-                        // const tileHeader = tile.getHeader();
-                        // tileHeader.addStyleClass("listViewHeader");
-                    }
-                });
-                //this.byId("idBtnListViewResourcePage").setVisible(false);
-                //this.byId("idBtnGridViewResourcePage").setVisible(true);
-            },
-            getMatchedTiles: async function () {
+                // Fetch headers asynchronously (assuming headers are a comma-separated list)
+                const headers = await this.getHeaders();
+                // Remove existing tiles and their content
+                oTilesContainer.removeAllContent();
+                // Fetch user tiles from the backend
                 const oModel1 = this.getOwnerComponent().getModel();
                 const userId = this.ID;
                 let userTiles = [];
-
+                await new Promise((resolve, reject) => {
+                    oModel1.read(`/RESOURCESSet('${userId}')`, {
+                        success: function (oData) {
+                            const tiles = oData.Resourcegroup;
+                            userTiles = tiles.split(',')
+                                .map(item => item.trim().toLowerCase().replace(/\s+/g, '') + "_title");
+                            resolve();
+                        },
+                        error: function () {
+                            MessageToast.show("Error loading user tiles");
+                            reject();
+                        }
+                    });
+                });
+                // Extract and clean frontend tile IDs
+                const frontEndTileIds = aTiles
+                    .filter(oTile => oTile.isA("sap.m.GenericTile")) // Ensure it's a GenericTile
+                    .map(oTile => {
+                        const sTileId = oTile.getId();
+                        const localId = this._extractLocalId(sTileId);
+                        return localId.replace("id_", "").toLowerCase();
+                    });
+                // Match frontend tile IDs with backend queue tile names and retain both tile and header
+                const matchedTiles = frontEndTileIds.map(frontEndTileId => {
+                    const tileIndex = userTiles.indexOf(frontEndTileId);
+                    if (tileIndex !== -1) {
+                        return {
+                            tileId: frontEndTileId,
+                            tileObject: aTiles.find(oTile => {
+                                const sTileId = oTile.getId();
+                                const localId = this._extractLocalId(sTileId);
+                                return localId.replace("id_", "").toLowerCase() === frontEndTileId;
+                            }),
+                            headerText: headers[tileIndex] // Assign the correct header based on backend match
+                        };
+                    }
+                    return null;
+                }).filter(item => item !== null); // Filter out null matches
+                // Process matched tiles: Add headers beside the matched tiles
+                matchedTiles.forEach(({ tileObject, headerText }) => {
+                    const oHBox = new sap.m.HBox({
+                        items: [
+                            tileObject.addStyleClass("listViewIcons"),  // Add style to the existing tile (icon)
+                            new sap.m.Text({
+                                text: headerText
+                            }).addStyleClass("listViewHeader")  // Add CSS class to style the header
+                        ]
+                    }).addStyleClass("tileContainer");  // Style the HBox for alignment
+                    // Add the new HBox with both tile and header to the ScrollContainer
+                    oTilesContainer.addContent(oHBox);  // This replaces the old tiles with HBoxes
+                });
+                this.byId("idBtnListViewResourcePage").setVisible(false);
+                this.byId("idBtnGridViewResourcePage").setVisible(true);
+            },
+            getHeaders: async function () {
+                const oModel1 = this.getOwnerComponent().getModel();
+                const userId = this.ID;
+                let headers = [];
                 // Use a Promise to handle the async operation
                 await new Promise((resolve, reject) => {
                     oModel1.read(`/RESOURCESSet('${userId}')`, {
                         success: function (oData) {
-                            const tiles = oData.Queue; // Adjust according to your data structure
-                            userTiles = tiles.split(',')
-                                .map(item => item.trim().toLowerCase().replace(/\s+/g, ''));
-                            resolve();  // Resolve the promise when data is ready
+                            const tiles = oData.Resourcegroup;
+                            headers = tiles.split(',').map(item => item.trim());
+                            resolve();
                         },
                         error: function () {
                             MessageToast.show("Error loading user tiles");
-                            reject(); // Reject the promise on error
+                            reject();  // Reject the promise on error
                         }
                     });
                 });
-                return userTiles;
+                return headers;
+            },
+            onPressEditProfileDetails: function () {
+                // Hide the "Upload", "Delete", and "Edit" buttons
+                this.byId("idBtnUploadImageforProfile").setVisible(false);
+                this.byId("idBtnDeleteImageforProfile").setVisible(false);
+                this.byId("idBtnEditDetailsforProfile").setVisible(false);
+
+                this.byId("idInputTextResouname_ResourcePage").setVisible(false);
+                this.byId("idInputUserphone_ResourcePage").setVisible(false);
+                this.byId("idInputEmailUserDetails_ResourcePage").setVisible(false);
+
+                // Show the "Save" and "Cancel" buttons
+                this.byId("idBtnSaveProfileDetails").setVisible(true);
+                this.byId("idBtnCancelProfileDetails").setVisible(true);
+
+                this.byId("idInputName_ResourcePage").setVisible(true);
+                this.byId("idInputPhoneNumber_ResourcePage").setVisible(true);
+                this.byId("idInputEmail_ResourcePage").setVisible(true);
+
+            },
+            onPressSaveProfileDetails: async function () {
+                debugger
+                var userId = this.ID; // Assuming this is defined as the user ID for the current session
+                var oModel = this.getView().getModel();
+            
+                // Get the input values
+                var sName = this.byId("idInputName_ResourcePage").getValue();
+                var sPhone = this.byId("idInputPhoneNumber_ResourcePage").getValue();
+                var sEmail = this.byId("idInputEmail_ResourcePage").getValue();
+            
+                // Validation checks for empty fields
+                if (!sName || !sPhone || !sEmail) {
+                    this.byId("idInputName_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idInputPhoneNumber_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idInputEmail_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    sap.m.MessageBox.error("All fields are required.");
+                    return;
+                }
+            
+                // Validate name, phone number, and email
+                var bValid = true;
+                if (sName.length < 3) {
+                    this.byId("idInputName_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idInputName_ResourcePage").setValueStateText("Name should be at least 3 letters!");
+                    bValid = false;
+                }
+            
+                var phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(sPhone)) {
+                    this.byId("idInputPhoneNumber_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idInputPhoneNumber_ResourcePage").setValueStateText("Phone number should be exactly 10 digits!");
+                    bValid = false;
+                }
+            
+                var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailRegex.test(sEmail)) {
+                    this.byId("idInputEmail_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idInputEmail_ResourcePage").setValueStateText("Invalid email format!");
+                    bValid = false;
+                }
+            
+                if (!bValid) return;
+            
+                // Retrieve all resources for validation
+                try {
+                    const existingResources = await new Promise((resolve, reject) => {
+                        oModel.read("/RESOURCESSet", {
+                            success: (oData) => resolve(oData.results),
+                            error: reject
+                        });
+                    });
+            
+                    // Check if any of the existing resources, except the current user, already use the entered phone number
+                    if (existingResources.some(resource => resource.Phonenumber === sPhone && resource.Resourceid !== userId)) {
+                        sap.m.MessageBox.error("Phone number is already used. Please enter a different phone number.");
+                        return;
+                    }
+            
+                    // Proceed with updating the resource details
+                    var sEntityPath = `/RESOURCESSet('${userId}')`;
+                    var oPayload = {
+                        Resourcename: sName,
+                        Phonenumber: sPhone,
+                        Email: sEmail
+                    };
+            
+                    await new Promise((resolve, reject) => {
+                        oModel.update(sEntityPath, oPayload, {
+                            success: resolve,
+                            error: reject
+                        });
+                    });
+            
+                    sap.m.MessageToast.show("Profile updated successfully!");
+            
+                    // Hide buttons and show text fields
+                    this.byId("idBtnSaveProfileDetails").setVisible(false);
+                    this.byId("idBtnCancelProfileDetails").setVisible(false);
+                    this.byId("idBtnEditDetailsforProfile").setVisible(true);
+                    this.byId("idInputName_ResourcePage").setVisible(false);
+                    this.byId("idInputPhoneNumber_ResourcePage").setVisible(false);
+                    this.byId("idInputEmail_ResourcePage").setVisible(false);
+                    this.byId("idInputTextResouname_ResourcePage").setVisible(true);
+                    this.byId("idInputUserphone_ResourcePage").setVisible(true);
+                    this.byId("idInputEmailUserDetails_ResourcePage").setVisible(true);
+            
+                } catch (error) {
+                    sap.m.MessageToast.show("Error updating profile or fetching data.");
+                }
+            },                                    
+            onPressCancelProfileDetails: function () {
+                // Show the "Upload", "Delete", and "Edit" buttons
+                this.byId("idBtnUploadImageforProfile").setVisible(true);
+                this.byId("idBtnDeleteImageforProfile").setVisible(true);
+                this.byId("idBtnEditDetailsforProfile").setVisible(true);
+
+                this.byId("idInputName_ResourcePage").setVisible(false);
+                this.byId("idInputPhoneNumber_ResourcePage").setVisible(false);
+                this.byId("idInputEmail_ResourcePage").setVisible(false);
+
+                // Hide the "Save" and "Cancel" buttons
+                this.byId("idBtnSaveProfileDetails").setVisible(false);
+                this.byId("idBtnCancelProfileDetails").setVisible(false);
+
+                this.byId("idInputTextResouname_ResourcePage").setVisible(true);
+                this.byId("idInputUserphone_ResourcePage").setVisible(true);
+                this.byId("idInputEmailUserDetails_ResourcePage").setVisible(true);
             },
             //Language Transulation PopOver Profile...
             onPressLanguageTranslation: function (oEvent) {
@@ -1776,7 +1960,7 @@ sap.ui.define([
                     oComponent.getPopover().destroy();
                     oComponent.setPopover(null);
                 }
-                
+
                 this.onPressAvatarPopOverBaseFunction(oEvent, {
                     showAccountDetails: true,
                     showEditTile: true,
