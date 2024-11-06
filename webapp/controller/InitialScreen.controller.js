@@ -85,9 +85,7 @@ sap.ui.define([
             LoadSapLogon: async function () {
 
                 // Load the fragment if it hasn't been loaded yet
-                this.oConfigSap ??= await this.loadFragment(
-                    "SapLogon"
-                );
+                this.oConfigSap ??= await this.loadFragment("SapLogon");
 
                 // Open the dialog
                 this.oConfigSap.open();
@@ -414,14 +412,7 @@ sap.ui.define([
                                             }
                                             // Clear selection
                                             currentButton = null;
-                                            that.updateDisplayedButtons()
-
-                                            // TEST
-                                            // if(that.aAllButtons.length % 3 ===0){
-                                            //     this.onNavPrevious()
-                                            // }
-                                            // TEST
-                                            
+                                            that.updateDisplayedButtons()   
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
                                                 that.aAllButtons.splice(index, 1); // Remove button from array
