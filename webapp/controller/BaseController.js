@@ -247,6 +247,7 @@ sap.ui.define([
             allAvatarImages.forEach(function (avatarControl) {
                 avatarControl.setSrc(imageBase64);
             });
+            window.location.reload();
         },
         //Deleting the Profile Images...
         onPressDeleteProfilePic: function () {

@@ -127,7 +127,7 @@
                             class="profileDetailItem"
                         />
                         <Input
-                            id="idInputName_ResourcePage"
+                            id="idFrontandInputName_ResourcePage"
                             value="{oUserModel>/Resourcename}"
                             visible="false"
                         />
@@ -148,7 +148,7 @@
                             class="profileDetailItem"
                         />
                         <Input
-                            id="idInputPhoneNumber_ResourcePage"
+                            id="idFrontandInputPhoneNumber_ResourcePage"
                             value="{oUserModel>/Phonenumber}"
                             visible="false"
                         />
@@ -169,7 +169,7 @@
                             class="profileDetailItem"
                         />
                         <Input
-                            id="idInputEmail_ResourcePage"
+                            id="idFrontandInputEmail_ResourcePage"
                             value="{oUserModel>/Email}"
                             visible="false"
                         />
