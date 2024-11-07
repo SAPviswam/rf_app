@@ -707,6 +707,7 @@
 .onProfileOptions{
     margin-left: -0.2rem !important;
 }
+/* For the Tile View settings  */
 .largeIcons{
     width: 150px !important;
     height: 150px !important;
@@ -722,20 +723,17 @@
     height: 80px !important;
     font-size: auto !important;
 }
-gridViewIcons {
-    width: 60px !important;
-    height: 60px !important;
-    font-size: auto !important;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 15px;
-}
+/* For the list form view to tiles */
 .listViewIcons {
     width: 50px !important;
     height: 50px !important;
-    font-size: 0rem !important;
     display: flex;
     flex-direction: column;
+}
+/* Hide the title and subtitle within the tile */
+.listViewIcons .sapMGTTitle,
+.listViewIcons .sapMGTSubTitle {
+    display: none !important;
 }
 .listViewHeader {
     font-size: 16px;
@@ -748,6 +746,7 @@ gridViewIcons {
     align-items: center;
     margin: 10px 0;
 }
+/* for the selected tiles add some effects like vibrations */
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
     box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
@@ -770,6 +769,7 @@ gridViewIcons {
         transform: rotate(0deg);
     }
 }
+/* Hover effect for the profilepicture when move on the cursor */
 .profileAvatar1234:hover::after {
     content: ""; /* Unicode for the camera icon (from SAP icons) */
     font-family: "SAP-icons";
@@ -797,16 +797,6 @@ gridViewIcons {
     border: 4px solid #fff;
     position: relative;
 }
-/* profileDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 8px;
-    padding: 10px;
-    width: 95%;
-    border-radius: 10px;
-} */
 .profileDetailItem {
     margin: auto;
     font-size: 0.9em;

@@ -47,7 +47,7 @@
                         <layoutData>
                             <OverflowToolbarLayoutData
                                 id="idOverflowToolbarLayoutData1P"
-                                priority="NeverOverflow"
+                                priority="AlwaysOverflow"
                                 minWidth="20px"
                             />
                         </layoutData>

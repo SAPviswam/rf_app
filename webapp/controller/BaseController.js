@@ -132,6 +132,7 @@ sap.ui.define([
             if (This._oPopover) {
                 This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
             }
+            this.applyStoredProfileImage();
         },
         //Account Details press function from popover
         onPressAccountDetails: async function () {
@@ -159,12 +160,13 @@ sap.ui.define([
                 this.UserDetailsFragment = await this.loadFragment("UserDetails"); // Load your fragment asynchronously
             }
             this.UserDetailsFragment.open();
-            // this.applyStoredProfileImage();
+            this.applyStoredProfileImage();
         },
         onPressDeclineProfileDetailsDailog: function () {
             if (this.UserDetailsFragment) {
                 this.UserDetailsFragment.close();
             }
+            this.onPressCancelProfileDetails();
         },
         //Hover Effect btn function(from Popover)...
         onPressPopoverProfileImageAvatar: function () {
@@ -268,7 +270,154 @@ sap.ui.define([
                 avatarControl.setSrc("");
             });
             window.location.reload();
-        }
+        },
+        //Edit Btn for Profile details changing...
+        onPressEditProfileDetails: function () {
+            this._originalName = this.byId("idInputTextResouname_ResourcePage").getText();
+            this._originalPhone = this.byId("idInputUserphone_ResourcePage").getText();
+            this._originalEmail = this.byId("idInputEmailUserDetails_ResourcePage").getText();
+
+            // Hide view-only fields and show editable input fields
+            this.byId("idInputTextResouname_ResourcePage").setVisible(false);
+            this.byId("idInputUserphone_ResourcePage").setVisible(false);
+            this.byId("idInputEmailUserDetails_ResourcePage").setVisible(false);
+
+            this.byId("idFrontandInputName_ResourcePage").setVisible(true).setValue(this._originalName);
+            this.byId("idFrontandInputPhoneNumber_ResourcePage").setVisible(true).setValue(this._originalPhone);
+            this.byId("idFrontandInputEmail_ResourcePage").setVisible(true).setValue(this._originalEmail);
+
+            // Toggle button visibility
+            this.byId("idBtnUploadImageforProfile").setVisible(false);
+            this.byId("idBtnDeleteImageforProfile").setVisible(false);
+            this.byId("idBtnEditDetailsforProfile").setVisible(false);
+            this.byId("idBtnSaveProfileDetails").setVisible(true);
+            this.byId("idBtnCancelProfileDetails").setVisible(true);
+        },
+        onPressSaveProfileDetails: async function () {
+            debugger
+            var userId = this.ID; // Assuming this is defined as the user ID for the current session
+            var oModel = this.getOwnerComponent().getModel();
+
+            // Get the input values
+            var sName = this.byId("idFrontandInputName_ResourcePage").getValue();
+            var sPhone = this.byId("idFrontandInputPhoneNumber_ResourcePage").getValue();
+            var sEmail = this.byId("idFrontandInputEmail_ResourcePage").getValue();
+
+            var bValid = true;
+
+            // Check for empty or too-short values in Name field
+            if (!sName || sName.length < 3) {
+                this.byId("idFrontandInputName_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                this.byId("idFrontandInputName_ResourcePage").setValueStateText(sName ? "Name should be at least 3 letters!" : "Name is required!");
+                bValid = false;
+            } else {
+                this.byId("idFrontandInputName_ResourcePage").setValueState(sap.ui.core.ValueState.None);
+            }
+
+            // Check for empty or too-short values in Phone field
+            var phoneRegex = /^\d{10}$/;
+            if (!sPhone || sPhone.length < 3 || !phoneRegex.test(sPhone)) {
+                this.byId("idFrontandInputPhoneNumber_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                this.byId("idFrontandInputPhoneNumber_ResourcePage").setValueStateText(sPhone ? "Phone number should be 10 digits!" : "Phone number is required!");
+                bValid = false;
+            } else {
+                this.byId("idFrontandInputPhoneNumber_ResourcePage").setValueState(sap.ui.core.ValueState.None);
+            }
+
+            // Check for empty or too-short values in Email field
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!sEmail || sEmail.length < 3 || !emailRegex.test(sEmail)) {
+                this.byId("idFrontandInputEmail_ResourcePage").setValueState(sap.ui.core.ValueState.Error);
+                this.byId("idFrontandInputEmail_ResourcePage").setValueStateText(sEmail ? "Invalid email format!" : "Email is required!");
+                bValid = false;
+            } else {
+                this.byId("idFrontandInputEmail_ResourcePage").setValueState(sap.ui.core.ValueState.None);
+            }
+
+            // If any field is invalid, show an error message and return
+            if (!bValid) {
+                sap.m.MessageBox.error("Please correct the highlighted errors.");
+                return;
+            }
+
+
+            // Retrieve all resources for validation
+            var sEntityPath = `/RESOURCESSet('${userId}')`;
+            try {
+                const currentUserData = await new Promise((resolve, reject) => {
+                    oModel.read(sEntityPath, {
+                        success: (oData) => resolve(oData),
+                        error: (oError) => reject(oError)
+                    });
+                });
+
+                // Check if the phone number has been changed
+                if (currentUserData.Phonenumber !== sPhone) {
+                    const existingResources = await new Promise((resolve, reject) => {
+                        oModel.read(`/RESOURCESSet`, {
+                            success: (oData) => resolve(oData.results),
+                            error: (oError) => reject(oError)
+                        });
+                    });
+
+                    // Check if the new phone number is already used by another resource
+                    if (existingResources.some(resource => resource.Phonenumber === sPhone && resource.Resourceid !== userId)) {
+                        sap.m.MessageBox.error("Phone number is already used. Please enter a different phone number.");
+                        return;
+                    }
+                }
+
+                // Proceed with updating the resource details
+                var sEntityPath = `/RESOURCESSet('${userId}')`;
+                var oPayload = {
+                    Resourcename: sName,
+                    Phonenumber: sPhone,
+                    Email: sEmail
+                };
+
+                await new Promise((resolve, reject) => {
+                    oModel.update(sEntityPath, oPayload, {
+                        success: resolve,
+                        error: reject
+                    });
+                });
+
+                sap.m.MessageToast.show("Profile updated successfully!");
+
+                // Hide buttons and show text fields
+                this.byId("idBtnSaveProfileDetails").setVisible(false);
+                this.byId("idBtnCancelProfileDetails").setVisible(false);
+                this.byId("idBtnEditDetailsforProfile").setVisible(true);
+                this.byId("idBtnUploadImageforProfile").setVisible(true);
+                this.byId("idBtnDeleteImageforProfile").setVisible(true);
+                this.byId("idFrontandInputName_ResourcePage").setVisible(false);
+                this.byId("idFrontandInputPhoneNumber_ResourcePage").setVisible(false);
+                this.byId("idFrontandInputEmail_ResourcePage").setVisible(false);
+                this.byId("idInputTextResouname_ResourcePage").setVisible(true);
+                this.byId("idInputUserphone_ResourcePage").setVisible(true);
+                this.byId("idInputEmailUserDetails_ResourcePage").setVisible(true);
+            } catch (error) {
+                sap.m.MessageToast.show("Error updating profile or fetching data.");
+            }
+        },
+        //Cancel the Profile Details Changing...
+        onPressCancelProfileDetails: function () {
+            this.byId("idInputTextResouname_ResourcePage").setText(this._originalName).setVisible(true);
+            this.byId("idInputUserphone_ResourcePage").setText(this._originalPhone).setVisible(true);
+            this.byId("idInputEmailUserDetails_ResourcePage").setText(this._originalEmail).setVisible(true);
+
+            // Hide editable input fields
+            this.byId("idFrontandInputName_ResourcePage").setVisible(false);
+            this.byId("idFrontandInputPhoneNumber_ResourcePage").setVisible(false);
+            this.byId("idFrontandInputEmail_ResourcePage").setVisible(false);
+
+            // Restore button visibility
+            this.byId("idBtnUploadImageforProfile").setVisible(true);
+            this.byId("idBtnDeleteImageforProfile").setVisible(true);
+            this.byId("idBtnEditDetailsforProfile").setVisible(true);
+            this.byId("idBtnSaveProfileDetails").setVisible(false);
+            this.byId("idBtnCancelProfileDetails").setVisible(false);
+        },
 
     })
 
