@@ -229,7 +229,7 @@
                             <Column id="idWtQBWoWhWtNoCol">
                                 <Text
                                     id="idWtQBWoWhWtNoText"
-                                    text="WT Created By"
+                                    text="WT Confimed By"
                                 />
                             </Column>
                         </columns>
