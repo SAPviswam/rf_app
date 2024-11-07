@@ -11,10 +11,11 @@
     height="100%"
 >
     <tnt:ToolPage id="idToolPage_AHUOBQ">
+
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeader_AHUOBQ">
                 <Title
-                    id="idTitle_InitialViewAHUOBQ"
+                    id="idTitle_InitialView_AHUOBQ"
                     class="title"
                     text="CAPmodel RF"
                 />
@@ -88,6 +89,7 @@
 
                             <!-- Buttons Aligned Under Input Field -->
                             <HBox
+                            id="IdHBox_AHUOBQ"
                                 justifyContent="Center"
                                 class="sapUiSmallMarginTop"
                             >
@@ -106,7 +108,7 @@
                                     class="sapUiTinyMarginBegin"
                                 />
                                 <Button
-                                    id="Id_AHUOBQPage"
+                                    id="IdBackbutton_AHUOBQ"
                                     text="Back"
                                     type="Transparent"
                                     press="onPressBackBtnPage1_AHUOBQ"
@@ -143,10 +145,10 @@
                         class="HeaderToolBar"
                     >
                         <Title
-                            id="Title1455896_AHUOBQ"
+                            id="idTitle_AHUOBQ"
                             text="Bin Number Table:"
                         />
-                        <ToolbarSpacer id="IDGenToolbar345_AHUOBQ" />
+                        <ToolbarSpacer id="IDToolbarsapcer_AHUOBQ" />
                         <Button
                             id="idBackBtn2_AHUOBQ"
                             press="onBackPressBinNumbersTable"
@@ -182,39 +184,21 @@
                             </Column>
                             <Column id="IDGenColumn002_AHUOBQ">
                                 <Text
-                                    id="IDGenText002_AHUOBQ"
+                                    id="IDGenTextt_AHUOBQ"
                                     text="Product"
                                     class="HedingNameColor"
                                 />
                             </Column>
-                            <Column id="IDGenColumn003_AHUOBQ">
+                            <Column id="IDGenColumn_AHUOBQ">
                                 <Text
-                                    id="IDGenText003_AHUOBQ"
+                                    id="IDGenText_AHUOBQ"
                                     text="(X)OpenWT"
                                     class="HedingNameColor"
                                 />
                             </Column>
                         </columns>
                         <items>
-                            <!-- <ColumnListItem
-                                id="IDGenBinNumbersColumnListItem1_AHUOBQ"
-                                class="AlternateRowColor"
-                            >
-                                <cells>
-                                    <Text
-                                        id="IDGenBinNoTableText1_AHUOBQ"
-                                        text="{Vendorname}"
-                                    />
-                                    <Text
-                                        id="IDGenBinNoTableText2_AHUOBQ"
-                                        text="{Vendornumber}"
-                                    />
-                                    <Text
-                                        id="IDGenBinNoTableText3_AHUOBQ"
-                                        text="{Drivername}"
-                                    />
-                                </cells>
-                            </ColumnListItem> -->
+                           
                         </items>
                     </Table>
                 </VBox>
@@ -232,12 +216,7 @@
                     class="ThirdPageContainer_AHUOBQ"
                     justifyContent="Center"
                 >
-                    <!-- <Title
-                        id="idThirdPageTitle_AHUOBQ"
-                        text="HU Content:"
-                        level="H2"
-                        class="ThirdPageformHeaderHUContent_AHUOBQ"
-                    /> -->
+                    
 
                     <form:SimpleForm
                         id="idSimpleFormThirdPage_AHUOBQ"
@@ -252,10 +231,12 @@
                         columnsM="1"
                     >
                         <VBox
+                        id="idVBox_AHUOBQ"
                             alignItems="Center"
                             alignContent="Center"
                         >
                             <HBox
+                              id="idHBox1_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -274,6 +255,7 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox2_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -293,6 +275,7 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox3_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -312,6 +295,7 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox4_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -330,6 +314,7 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox5_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -348,6 +333,7 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox6_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -389,12 +375,7 @@
                     class="Page4PrdDescriptionContainer_AHUOBQ"
                     justifyContent="Center"
                 >
-                    <!-- <Title
-                        id="idPrdDescriptionTitle_AHUOBQ"
-                        text="Product Description:"
-                        level="H2"
-                        class="formHeaderPage4PrdDescription_AHUOBQ"
-                    /> -->
+                  
 
                     <form:SimpleForm
                         id="idSimpleFormVerifyHuNumber_AHUOBQ"
@@ -411,9 +392,10 @@
                         <VBox
                             alignContent="Center"
                             alignItems="Center"
-                            id="vb_ox_Center"
+                            id="idVBox7_AHUOBQ"
                         >
                             <HBox
+                              id="idHBox7_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -432,20 +414,21 @@
                                 />
                             </HBox>
                             <HBox
+                              id="idHBox8_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
                                 width="100%"
                             >
                                 <Label
-                                    id="idTotalWait_AHUOBQ"
+                                    id="idTotalWeight_AHUOBQ"
                                     text="Total Weight:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop "
                                     width="90px"
                                 />
                                 <HBox id="idHBoxTotalWaite_AHUOBQ">
                                     <Input
-                                        id="idTotalWaitInput_AHUOBQ"
+                                        id="idTotalWeightInput_AHUOBQ"
                                         maxLength="25"
                                         width="70px"
                                         editable="false"
@@ -460,6 +443,7 @@
                                 </HBox>
                             </HBox>
                             <HBox
+                              id="idHBox9_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
