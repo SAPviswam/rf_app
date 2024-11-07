@@ -5,6 +5,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/ui/model/odata/v2/ODataModel",
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
@@ -12,6 +13,8 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
+               
+                this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
@@ -33,9 +36,6 @@ sap.ui.define([
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
                     this.getView().byId("idConfigSapSysVbox_InitialView").addStyleClass("VboxAddConfig");
                     this.getView().byId("idTitle_InitialView").addStyleClass("titleMobile");
-
-
-
                 }
                 else if (Device.system.tablet) {
                     this.getView().byId("IdSubTitle_InitialView").addStyleClass("InitialScreenTitle");
@@ -46,18 +46,27 @@ sap.ui.define([
 
 
             },
-            onExit: function() {
+            onExit: function () {
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
+            },
+            load_100_Client_Metadata: function(){
+                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+                    headers: {
+                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
+                        "sap-client": "100"
+                    }
+                });
+                this.getView().setModel(oModel);
             },
             _handleKeyDown: function (oEvent) {
                 // Prevent default action for specific function keys
                 if (["F1", "F2", "F4"].includes(oEvent.key)) {
                     oEvent.preventDefault(); // Prevent default browser actions
-    
+
                     // Check if the active page is the InitialScreen
-                    var activePageId = this.getView().getId(); 
-                    var toolPageId = "container-com.app.rfapp---InitialScreen"; 
+                    var activePageId = this.getView().getId();
+                    var toolPageId = "container-com.app.rfapp---InitialScreen";
                     if (activePageId === toolPageId) {
                         // Perform actions based on the key pressed
                         switch (oEvent.key) {
@@ -77,9 +86,7 @@ sap.ui.define([
             LoadSapLogon: async function () {
 
                 // Load the fragment if it hasn't been loaded yet
-                this.oConfigSap ??= await this.loadFragment(
-                    "SapLogon"
-                );
+                this.oConfigSap ??= await this.loadFragment("SapLogon");
 
                 // Open the dialog
                 this.oConfigSap.open();
@@ -255,6 +262,7 @@ sap.ui.define([
                                     ]
                                 });
 
+
                                 // Set the button text based on the checkbox state
                                 oNewButton.setText(oCheckbox.getSelected() ? (sSystemId + " / " + sClient) : sDescription);
 
@@ -407,13 +415,6 @@ sap.ui.define([
                                             // Clear selection
                                             currentButton = null;
                                             that.updateDisplayedButtons()
-
-                                            // TEST
-                                            // if(that.aAllButtons.length % 3 ===0){
-                                            //     this.onNavPrevious()
-                                            // }
-                                            // TEST
-                                            
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
                                                 that.aAllButtons.splice(index, 1); // Remove button from array
@@ -422,7 +423,7 @@ sap.ui.define([
                                             currentButton = null;
                                         })
 
-                                     
+
                                         this.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
@@ -458,6 +459,7 @@ sap.ui.define([
             },
             onEditConfiguredSystem: async function () {
 
+
                 if (this.arrayOfButton.length > 1) {
                     MessageToast.show("Please select only one system to edit");
                     return
@@ -472,35 +474,39 @@ sap.ui.define([
                 });
                 this.isEditButtonPressed = true
 
-                // await this.handleLinksapPress();
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
-                // var oButtonText = this.sdedescription;
                 var oModel = this.getView().getModel();
                 var that = this;
-                oModel.read("/ServiceSet", {
-                    //filters: [new sap.ui.model.Filter("DescriptionB", sap.ui.model.FilterOperator.EQ, oButtonText)],
-                    success: function (oData) {
-                        var aButtons = oData.results;
-                        function checkButton(v) {
-                            return v.DescriptionB === oButtonText;
+                    
+                // load 100 client meta data
+                this.load_100_Client_Metadata();
+                
+                    oModel.read("/ServiceSet", {
+                        success: function (oData) {
+                            var aButtons = oData.results;
+                            function checkButton(v) {
+                                return v.DescriptionB === oButtonText;
+                            }
+                            var oButtonedit = aButtons.filter(checkButton);
+                            if (oButtonedit) {
+                                that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
+                                that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
+                                that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
+                                that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
+                                that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
+                                that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
+                                that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
+                            }
+                            // New UI modification start
+                            that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                            that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
+                        },
+                        error: function (oError) {
+                            MessageBox.error("Error while reading data " + oError.message)
                         }
-                        var oButtonedit = aButtons.filter(checkButton);
-                        if (oButtonedit) {
-                            that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
-                            that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
-                            that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
-                            that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
-                            that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
-                            that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
-                            that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
-                        }
-                        // New UI modification start
-                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                    }
-                });
+                    });
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
@@ -549,11 +555,6 @@ sap.ui.define([
                     success: function (oData) {
                         // Initialize an array to hold error messages
                         var errorMessages = [];
-
-                        // if no changes made
-                        // if (oData.results.length > 0) {
-
-                        // }
 
                         // Check for duplicates and populate error messages
                         if (oData.results.length > 0) {
@@ -674,13 +675,6 @@ sap.ui.define([
                         oHomePage.addItem(this.aAllButtons[i]);
                     }
                 }
-                // TEST
-                // if(this.aAllButtons.length <= 3 ){
-                //     this.onNavPrevious()
-                //     this.getView().byId("idUpNavigationButton_InitialView").setVisible(false); // Hide down navigation button
-                // }
-                // TEST
-
                 if (this.currentIndex + 3 >= this.aAllButtons.length) {
                     this.getView().byId("idDownNavigationButton_InitialView").setVisible(false); // Hide down navigation button
                 } else {

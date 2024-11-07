@@ -127,7 +127,7 @@
 
         async function initializeWebChat() {
             try {
-                console.log("Initializing WebChat...");
+                // console.log("Initializing WebChat...");
                 const tokenEndpointURL = new URL('https://3bd0c5463479ee37947a994cb68f12.d3.environment.api.powerplatform.com/powervirtualagents/botsbyschema/cre6d_copilot1/directline/token?api-version=2022-03-01-preview');
                 const apiVersion = tokenEndpointURL.searchParams.get('api-version');
 
@@ -150,8 +150,8 @@
                         .then(({ token }) => token)
                 ]);
 
-                console.log("Direct Line URL:", directLineURL);
-                console.log("Token retrieved successfully.");
+                // console.log("Direct Line URL:", directLineURL);
+                // console.log("Token retrieved successfully.");
 
                 directLine = WebChat.createDirectLine({
                     domain: new URL('v3/directline', directLineURL),
@@ -173,16 +173,16 @@
                     styleOptions
                 }, document.getElementById('webchat'));
 
-                console.log("WebChat rendered successfully.");
+                // console.log("WebChat rendered successfully.");
             } catch (error) {
-                console.error('Error initializing WebChat:', error);
+                // console.error('Error initializing WebChat:', error);
                 alert(`Error initializing WebChat: ${error.message}`);
             }
         }
 
         async function clearChat() {
             try {
-                console.log("Clearing WebChat...");
+                // console.log("Clearing WebChat...");
 
                 // End DirectLine connection
                 if (directLine) {
@@ -194,16 +194,16 @@
                 const webchatDiv = document.getElementById('webchat');
                 webchatDiv.innerHTML = ''; // Clear previous chat
 
-                console.log("WebChat content cleared.");
+                // console.log("WebChat content cleared.");
 
                 // Give the system a short break before reinitializing
                 setTimeout(async () => {
-                    console.log("Reinitializing WebChat...");
+                    // console.log("Reinitializing WebChat...");
                     await initializeWebChat(); // Reinitialize chat after clearing
                 }, 300); // Delay to ensure everything clears out
 
             } catch (error) {
-                console.error('Error clearing WebChat:', error);
+                // console.error('Error clearing WebChat:', error);
                 alert(`Error clearing WebChat: ${error.message}`);
             }
         }
