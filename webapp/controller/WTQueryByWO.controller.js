@@ -95,9 +95,9 @@ sap.ui.define(
                     sap.m.MessageToast.show("Please enter a WarehouseOrder");
                     return;
                 }
-                this.onFetchWHTaskDetails(sWarehouseorder);
+                this.onFetchWHTaskDetails(sWarehouseorder,"all");
             },
-            onFetchWHTaskDetails: function (sWarehouseorder) {
+            onFetchWHTaskDetails: function (sWarehouseorder,filterStatus) {
                 // Call your backend service to fetch products for this bin
                 var oModel = this.getView().getModel(); // Assuming you have a model set up
                 var that = this;
@@ -117,6 +117,7 @@ sap.ui.define(
 
                             // Prepare an array for binding
                             var aWarehouseOrderDetails = [];
+                            
 
                             // Loop through the results and push them into the array
                             for (var i = 0; i < oDetails.length; i++) {
