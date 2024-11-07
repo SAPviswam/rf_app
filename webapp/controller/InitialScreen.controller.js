@@ -406,7 +406,7 @@ sap.ui.define([
                                         // Remove selected the buttons from the UI
                                         debugger
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        this.arrayOfButton.forEach((currentButton) => {
+                                        that.arrayOfButton.forEach((currentButton) => {
                                             oHomePage.removeItem(currentButton); // Remove the selected button
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
@@ -424,22 +424,22 @@ sap.ui.define([
                                         })
 
 
-                                        this.arrayOfButton.forEach(element => {
+                                        that.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
-                                        this.arrayOfButton = [];
-                                        this.arrayOfClient = [];
-                                        this.arrayOfDescription = [];
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
                                         that.updateDisplayedButtons();
                                     }.bind(that), // Ensure 'this' context is correct
                                     error: function (oError) {
                                         MessageToast.show("Error deleting configured system.");
-                                        this.arrayOfButton.forEach(element => {
+                                        that.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
-                                        this.arrayOfButton = [];
-                                        this.arrayOfClient = [];
-                                        this.arrayOfDescription = [];
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
                                         console.error(oError);
                                     }
                                 });
@@ -477,12 +477,11 @@ sap.ui.define([
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
-                var oModel = this.getView().getModel();
-                var that = this;
+                
                     
                 // load 100 client meta data
-                this.load_100_Client_Metadata();
-                
+               var oModel= this.getOwnerComponent().getModel();
+               var that = this;
                     oModel.read("/ServiceSet", {
                         success: function (oData) {
                             var aButtons = oData.results;
@@ -745,19 +744,20 @@ sap.ui.define([
                 }
                 // Load the Change Password fragment if not already loaded
                 this.oConfigSapCP ??= await this.loadFragment("ChangePassword");
-                var oModel = this.getView().getModel(); // Get your OData model
+                var oModel = this.getOwnerComponent().getModel(); // Get your OData model
                 // Read user data based on Resource ID
+                const that = this
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
                     success: function (oData) {
                         // Assuming 'Resourcename' is the property that holds the resource name
                         var sResourceName = oData.Resourcename; // Adjust property name as necessary
-                        this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
-                        this.onUserLogin();
-                        this.oConfigSapCP.open(); // Open the dialog after setting the value
-                        this.onPressCancleSapLogon();
+                        that.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
+                        that.onUserLogin();
+                        that.oConfigSapCP.open(); // Open the dialog after setting the value
+                        that.onPressCancleSapLogon();
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
-                        MessageBox.error("Error retrieving user data. Please try again later.");
+                        MessageBox.information("No user found.");
                     }
 
                 });
