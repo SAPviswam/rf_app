@@ -103,7 +103,7 @@
                             <Button
                                 id="idBtnAdd_InitialView"
                                 class="btn"
-                                icon="sap-icon://add"
+                                icon="sap-icon://sys-add"
                                 tooltip="Add"
                                 press="AddPress_InitialView"
                                 type="Transparent"

@@ -5,7 +5,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/odata/v2/ODataModel",
+    "sap/ui/model/odata/v2/ODataModel"
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
@@ -406,7 +406,7 @@ sap.ui.define([
                                         // Remove selected the buttons from the UI
                                         debugger
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        this.arrayOfButton.forEach((currentButton) => {
+                                        that.arrayOfButton.forEach((currentButton) => {
                                             oHomePage.removeItem(currentButton); // Remove the selected button
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
@@ -424,23 +424,23 @@ sap.ui.define([
                                         })
 
 
-                                        this.arrayOfButton.forEach(element => {
+                                        that.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
-                                        this.arrayOfButton = [];
-                                        this.arrayOfClient = [];
-                                        this.arrayOfDescription = [];
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
                                         that.updateDisplayedButtons();
                                     }.bind(that), // Ensure 'this' context is correct
                                     error: function (oError) {
+                                        console.error(oError);
                                         MessageToast.show("Error deleting configured system.");
-                                        this.arrayOfButton.forEach(element => {
+                                        that.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
                                         });
-                                        this.arrayOfButton = [];
-                                        this.arrayOfClient = [];
-                                        this.arrayOfDescription = [];
-                                        console.error(oError);
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
                                     }
                                 });
                             });
