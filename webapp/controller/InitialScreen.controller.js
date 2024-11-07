@@ -5,7 +5,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/odata/v2/ODataModel",
+    "sap/ui/model/odata/v2/ODataModel"
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
@@ -433,6 +433,7 @@ sap.ui.define([
                                         that.updateDisplayedButtons();
                                     }.bind(that), // Ensure 'this' context is correct
                                     error: function (oError) {
+                                        console.error(oError);
                                         MessageToast.show("Error deleting configured system.");
                                         that.arrayOfButton.forEach(element => {
                                             element.setType("Emphasized")
@@ -440,7 +441,10 @@ sap.ui.define([
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
                                         that.arrayOfDescription = [];
+<<<<<<< HEAD
                                         console.error(oError);
+=======
+>>>>>>> 5802ae993d328ef8d40d8c5ddc362e740dcaae76
                                     }
                                 });
                             });
