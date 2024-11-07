@@ -156,6 +156,7 @@ sap.ui.define(
                     filteredTasks = this._oWarehouseOrderData.tasks; // For 'all', no filtering
                 }
 
+
                 // Map filtered tasks to a simpler format
                 var aWarehouseOrderDetails = filteredTasks.map(function (task) {
                     return {
@@ -164,6 +165,7 @@ sap.ui.define(
                         ConfBy: task.ConfBy // Task confirmation by
                     };
                 });
+
 
                 // Create a JSON model for the filtered tasks
                 var oWarehouse = new sap.ui.model.json.JSONModel({ WarehouseOrder: aWarehouseOrderDetails });
@@ -208,7 +210,6 @@ sap.ui.define(
                         console.log(odata);
                         var aWarehousetask = odata.WarehouseOrdertoTask.results;
                         var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum"); // Get selected task number
-
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
