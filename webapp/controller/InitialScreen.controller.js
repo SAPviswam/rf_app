@@ -5,13 +5,13 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/odata/ODataModel",
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+                //Profile Image updating(from Base Controller)...
                
                 this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
@@ -753,6 +753,7 @@ sap.ui.define([
                         this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
                         this.onUserLogin();
                         this.oConfigSapCP.open(); // Open the dialog after setting the value
+                        this.onPressCancleSapLogon();
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
                         MessageBox.error("Error retrieving user data. Please try again later.");
