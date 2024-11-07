@@ -5,7 +5,6 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/odata/ODataModel",
 ],
     function (Controller, Device, MessageToast, MessageBox, Filter, FilterOperator, ODataModel) {
         "use strict";
@@ -13,13 +12,6 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
-                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-                    headers: {
-                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
-                        "sap-client": "100"
-                    }
-                });
-                this.getView().setModel(oModel);
                 this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
@@ -768,6 +760,7 @@ sap.ui.define([
                         this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
                         this.onUserLogin();
                         this.oConfigSapCP.open(); // Open the dialog after setting the value
+                        this.onPressCancleSapLogon();
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
                         MessageBox.error("Error retrieving user data. Please try again later.");
