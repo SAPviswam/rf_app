@@ -46,7 +46,8 @@ sap.ui.define([
                 else if(Device.system.phone){
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("rfLoginVboxMobile");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile")
+                    this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
+                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home")
                 }
                 else{
                     this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);

@@ -25,12 +25,21 @@
                         press="onSBQPFourthBackBtnPress"
                         visible="false"
                     />
+                    <!-- Artihcus Logo -->
                     <Image
                         id="id_GenImage1P"
                         height="1.5rem"
                         class="sapUiTinyMarginBegin"
                         src="https://artihcus.com/assets/img/AG-logo.png"
                     />
+
+                    <!-- CAPmodel RF Title -->
+                    <Title
+                        id="IdTitle_ResourceView"
+                        class="title"
+                        text="CAPmodel RF"
+                    />
+
                     <tnt:ToolHeaderUtilitySeparator
                         id="idToolHeaderUtilitySeparatorP"
                     />
@@ -74,7 +83,9 @@
                         icon="sap-icon://grid"
                         tooltip="Grid View"
                         press="onPressGridViewsResource"
-                    />
+                    /> 
+
+                    <!-- Avatar -->
                     <Avatar
                         id="idImageMainAvatarResourcepage"
                         displaySize="XS"
@@ -121,7 +132,7 @@
                             visible="false"
                         /> -->
                     </VBox>
-                    
+
                     <GenericTile
                         id="id_unloading_title"
                         class="sapUiTinyMargin sapUiResponsivePadding"
@@ -832,8 +843,7 @@
                 </VBox> -->
 
                     <GenericTile
-                      id="id_qualitymanagement_title"
-
+                        id="id_qualitymanagement_title"
                         class="sapUiTinyMargin"
                         header="Quality Management"
                         press="onGenericTilePress"
