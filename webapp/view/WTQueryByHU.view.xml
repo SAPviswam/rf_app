@@ -19,6 +19,12 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+
+                 <Title
+                    id="idTitle_WtQueryByHu"
+                    text="CAPModel RF"
+                    class="title"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorWTQueryByHU"
                 />
@@ -57,17 +63,7 @@
                         class="WTQueryByHUTitle_WTQBYHU"
                         alignItems="Center"
                     >
-                        <Button
-                            id="IdPage1BackBtnWTQueryBYHU"
-                            icon="sap-icon://nav-back"
-                            type="Transparent"
-                            press="onPressBackBtnPage1_WTQBYHU"
-                        />
-                        <Title
-                            id="idWTQueryByHU_WTQBYHU"
-                            text="WT Query By HU:"
-                            level="H2"
-                        />
+
                     </HBox>
                     <VBox
                         id="idVBoxWTQueryByHU_WTQBYHU"
@@ -77,11 +73,7 @@
                             id="idVBOXWTQueryByHU_WTQBYHU"
                             class="formBox_WTQBYHU"
                         >
-                            <Label
-                                id="idLableWTQUeryByHu_WTQBYHU"
-                                text="WT Query By HU:"
-                                class="formLabel_WTQBYHU"
-                            />
+                            
                             <HBox
                                 id="idHBoxWTQueryByHU_WTQBYHU"
                                 alignItems="Center"
@@ -89,26 +81,44 @@
                                 justifyContent="Start"
                                 width="auto"
                             >
+                            <Label
+                                id="idLableWTQUeryByHu_WTQBYHU"
+                                text="HU:"
+                                width="3rem"
+                                class="sapUiTinyMarginTop"
+                            />
                                 <Input
                                     id="idInputWTQueryByHU_WTQBYHU"
                                     placeholder="Enter Warehouse order no..."
                                     liveChange="onLiveChange"
                                     width="120%"
                                 />
+                                </HBox>
+                                <HBox justifyContent="Center">
+                                 <Button
+                            id="IdPage1BackBtnWTQueryBYHU"
+                            text="Back"
+                            type="Emphasized"
+                            class="sapUiSmallMarginEnd"
+                            press="onPressBackBtnPage1_WTQBYHU"
+                        />
                                 <ndc:BarcodeScannerButton
                                     id="idScannerBtnPage1_WTQBYHU"
                                     scanSuccess="onScanSuccess"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Enter Warehouse Order Number:"
-                                    class="Scannerbtn_WTQBYHU"
+                                    class="sapUiSmallMarginEnd"
                                 />
                                 <Button
                                     id="idSubmitBtnWTQueryByHU_WTQBYHU"
                                     text="Submit"
+                                    class="sapUiSmallMarginEnd"
                                     press="onSubmitPressPage1_WTQBYHU"
                                 />
-                            </HBox>
+                           
+                        </HBox>
+                       
                         </VBox>
                     </VBox>
                 </VBox>
@@ -121,13 +131,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idBackBtnPage2_WTQBYHU"
-                    press="onBackPressHUNumbersTable"
-                    class="sapUiTinyMarginBottom"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
+               
                 <VBox id="idVBoxHUNumbertable_WTQBYHU">
                     <HBox id="idHUNumberHBox_WTQBYHU">
                         <Label
@@ -155,17 +159,20 @@
                             text="WT"
                             type="Transparent"
                         />
-                        <Button
-                            id="idRefrehshBtnHUNumberTable_WTQBYHU"
-                            press="onRefreshHUNumberTable"
-                            icon="sap-icon://synchronize"
-                        />
+                      
                         <SearchField
                             id="idSearchFieldHUnumberTable_WTQBYHU"
                             liveChange="onLiveHUNumberTAble"
                             placeholder="Search Anything..."
                             width="25%"
                         />
+                    <Button
+                    id="idBackBtnPage2_WTQBYHU"
+                    press="onBackPressHUNumbersTable"
+                    class="sapUiTinyMarginBottom"
+                    text="Back"
+                    type="Emphasized"
+                />
                     </Toolbar>
                     <Table
                         id="idHUNumTable_WTQBYHU"
@@ -216,28 +223,22 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idBackBtnPage3_WTQBYHU"
-                    press="onBackPressBtnWTDetails_WTQBYHU"
-                    class="sapUiTinyMarginBottom"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
+              
                 <VBox
                     id="FormContainerPage3"
                     justifyContent="Center"
                     alignItems="Center"
-                    class="ThirdPageContainerWT_WTQBYHU"
+                    
                 >
                     <Title
                         id="idWarhouseTaskTitle"
                         text="Warehouse Task:"
                         level="H2"
-                        class="ThirdPageformHeaderWTDetails_WTQBYHU"
+                       
                     />
                     <VBox
                         id="idVBox01Page3_WTQBYHU"
-                        class="ThirdPageFormBoxWTDetails_WTQBYHU"
+                        
                     >
                         <form:SimpleForm
                             id="idSimpleForm_WTQBYHU"
@@ -252,16 +253,19 @@
                                     <Label
                                         id="idLabelPage3_WTQBYHU"
                                         text="WT:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
+                                        
                                     />
                                     <Input
                                         id="idInputWT"
                                         width="10rem"
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelWTIt"
                                         text="WTIt:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
+                                        
                                     />
                                     <Input
                                         id="idInputWTIt"
@@ -272,25 +276,28 @@
                                     <Label
                                         id="idLabelWTs"
                                         text="WTs:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
+                                      
                                     />
                                     <Input
                                         id="idInputWTs"
                                         width="10rem"
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelSts"
                                         text="Sts:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputSts"
                                         width="10rem"
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelPtyp"
                                         text="Ptyp:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputPtyp"
@@ -301,69 +308,91 @@
                                     <Label
                                         id="idLabelSpro"
                                         text="Spro:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputSpro"
                                         width="10rem"
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelActy"
                                         text="Acty:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputActy"
-                                        width="20rem"
+                                        width="10rem"
+                                    />
+                                      <Input
+                                        id="idInputActy2"
+                                        width="10rem"
                                     />
                                 </HBox>
                                 <HBox id="idHBox04Page3_WTQBYHU">
                                     <Label
                                         id="idLabelPro"
                                         text="Pro:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                       width="50px"
                                     />
                                     <Input
                                         id="idInputPro"
-                                        width="20rem"
+                                        width="10rem"
+                                    />
+                                    <Input
+                                        id="idInputPro2"
+                                        width="10rem"
                                     />
                                 </HBox>
                                 <HBox id="idHBox05Page3_WTQBYHU">
                                     <Label
                                         id="idLabelSbin"
                                         text="Sbin:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputSbin"
-                                        width="20rem"
+                                        width="10rem"
+                                    />
+                                    <Input
+                                        id="idInputSbin1"
+                                        width="10rem"
                                     />
                                 </HBox>
                                 <HBox id="idHBox06Page3_WTQBYHU">
                                     <Label
                                         id="idLabelDbin"
                                         text="Dbin:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputDbin"
-                                        width="20rem"
+                                        width="10rem"
+                                    />
+                                    <Input
+                                        id="idInputDbin1"
+                                        width="10rem"
                                     />
                                 </HBox>
                                 <HBox id="idHBox07Page3_WTQBYHU">
                                     <Label
                                         id="idLabelCdat"
                                         text="Cdat:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputCdat"
                                         width="10rem"
                                     />
+                                    <Input
+                                        id="idInputCdat1"
+                                        width="10rem"
+                                    />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelCusr"
                                         text="Cusr:"
-                                        class="WTDetailsLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputCusr"
@@ -372,8 +401,15 @@
                                 </HBox>
                                 <HBox
                                     id="idHBox08Page3_WTQBYHU"
-                                    justifyContent="End"
+                                    justifyContent="Center"
                                 >
+                                  <Button
+                    id="idBackBtnPage3_WTQBYHU"
+                    press="onBackPressBtnWTDetails_WTQBYHU"
+                    class="sapUiTinyMarginEnd"
+                    text="Back"
+                    type="Emphasized"
+                />
                                     <Button
                                         id="idBtnDetailPage3_WTQBYHU"
                                         text="Detail"
@@ -394,28 +430,22 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <Button
-                    id="idBackBtnPage4PD_WTQBYHU"
-                    press="onBackPressBtnProductDetails_WTQBYHU"
-                    class="sapUiTinyMarginBottom"
-                    icon="sap-icon://nav-back"
-                    type="Transparent"
-                />
+               
                 <VBox
                     id="FormContainerPage4PD"
                     justifyContent="Center"
                     alignItems="Center"
-                    class="Page4ContainerPD_WTQBYHU"
+                  
                 >
                     <Title
                         id="idProductDescriptionTitle"
                         text="Product Description:"
                         level="H2"
-                        class="Page4formHeaderPD_WTQBYHU"
+                       
                     />
                     <VBox
                         id="idVBox01Page4PD_WTQBYHU"
-                        class="Page4FormBoxPD_WTQBYHU"
+                        
                     >
                         <form:SimpleForm
                             id="idSimpleFormPage4PD_WTQBYHU"
@@ -430,17 +460,18 @@
                                     <Label
                                         id="idLabelPage4WO_WTQBYHU"
                                         text="WO:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputWO_WTQBYHU"
                                         width="10rem"
                                     />
+                                    <Label width="10px"/>
                                     <Label
                                         id="idLabelPage4ESTP_WTQBYHU"
                                         text="ESTP:"
-                                        class="PDLabelPage4_WTQBYHU"
-                                    />
+                                        width="50px"
+                                  />
                                     <Input
                                         id="idInputESTP_WTQBYHU"
                                         width="10rem"
@@ -450,45 +481,44 @@
                                     <Label
                                         id="idLabelPage4SQTY_WTQBYHU"
                                         text="SQTY:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                          width="50px"
                                     />
                                     <Input
                                         id="idInputSQTY_WTQBYHU"
-                                        width="7rem"
+                                        width="10rem"
                                     />
-                                    <Label
-                                        id="idLabelPage4PC_WTQBYHU"
-                                        text="PC:"
-                                        class="PDLabelPage4_WTQBYHU"
-                                    />
+                                    
                                     <Input
                                         id="idInputPC_WTQBYHU"
-                                        width="7rem"
+                                        width="10rem"
+                                        value=""
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelPage4Batch_WTQBYHU"
                                         text="Batch:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputBatch_WTQBYHU"
-                                        width="7rem"
+                                        width="10rem"
                                     />
                                 </HBox>
                                 <HBox id="idHBox03Page4_WTQBYHU">
                                     <Label
                                         id="idLabelPage4Owner_WTQBYHU"
                                         text="Owner:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputOwner_WTQBYHU"
                                         width="10rem"
                                     />
+                                    <Label width="10px"></Label>
                                     <Label
                                         id="idLabelPage4PENT_WTQBYHU"
                                         text="PEnt:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputPENT_WTQBYHU"
@@ -499,31 +529,43 @@
                                     <Label
                                         id="idLabelPage4HUWT_WTQBYHU"
                                         text="HUWT:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputHUWT_WTQBYHU"
-                                        width="7rem"
+                                        width="10rem"
                                     />
+                                         <Label width="10px"></Label>
                                     <Label
                                         id="idLabelPage4HTYPE_WTQBYHU"
                                         text="H Type:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputHTYPE_WTQBYHU"
-                                        width="7rem"
+                                        width="10rem"
                                     />
+                                         <Label width="10px"></Label>
                                     <Label
                                         id="idLabelPage4WHHU_WTQBYHU"
                                         text="Wh HU:"
-                                        class="PDLabelPage4_WTQBYHU"
+                                        width="50px"
                                     />
                                     <Input
                                         id="idInputWHHU_WTQBYHU"
-                                        width="15rem"
+                                        width="10rem"
                                     />
                                 </HBox>
+                                <HBox justifyContent="Center">
+
+ <Button
+                    id="idBackBtnPage4PD_WTQBYHU"
+                    press="onBackPressBtnProductDetails_WTQBYHU"
+                    class="sapUiTinyMarginBottom"
+                    text="Back"
+                    type="Emphasized"
+                />
+</HBox>
                             </VBox>
                         </form:SimpleForm>
                     </VBox>

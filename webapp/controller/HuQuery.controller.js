@@ -1,558 +1,343 @@
-
-  sap.ui.define([
+sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/Device",
-    "sap/m/MessageToast", // Import MessageToast for user feedback
     "sap/ui/core/UIComponent",
-], function (Controller,Device, MessageToastFra,UIComponent) {
-
+], function (Controller, Device, UIComponent) {
+ 
     "use strict";
-
+ 
     return Controller.extend("com.app.rfapp.controller.HuQuery", {
-
+ 
+        // Initializing the controller
         onInit: function () {
-            const oTable = this.getView().byId("simpleTable");
-            oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
-            const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-            var oProductDescriptionHeader = this.byId("_IDGenText5");
-            var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
-            this.getView().setModel(oModel);
-            var i18nModel = this.getOwnerComponent().getModel("i18n");
-            var oQuantityHeader = this.byId("_IDGenText3");
-            var oHigherLevelHu = this.byId("_IDGenLabel6");
-            var oHighestLevelHu = this.byId("_IDGenLabel7");
-            var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
-            
+
+            const oRouter = this.getOwnerComponent().getRouter();  // Getting the router object
+            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this); // Attach a route event to handle route changes
+           
+            // Setting up the UI model for the view
+            var oProductDescriptionHeader = this.byId("idPrDesText_HuQuery");  // Get Product Description header element
+            var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json")); // Create JSON model with data from 'data1.json'
+            this.getView().setModel(oModel);  // Set the model for the view
+           
+            // Setting up i18n model for language-specific resources
+            var i18nModel = this.getOwnerComponent().getModel("i18n");  // Fetch i18n model
+            var oQuantityHeader = this.byId("idQuanText_HuQuery");  // Get Quantity header element
+            var oHigherLevelHu = this.byId("idHlHuLabel_HuQuery");  // Get Higher Level HU label
+            var oHighestLevelHu = this.byId("idHlestHuLabel_HuQuery");  // Get Highest Level HU label
+ 
+            // Conditional text for mobile devices (phone)
             if (Device.system.phone) {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("hlHu"));
                 oHighestLevelHu.setText(i18nModel.getResourceBundle().getText("hstlHu"));
-
             } else {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("quantity"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("higherLevelHu"));
                 oHighestLevelHu.setText(i18nModel.getResourceBundle().getText("highestLevelHu"));
             }
-        
-            this._setFocus();
         },
-        onRowDoubleClick: function () {
-            var oSelected = this.byId("simpleTable").getSelectedItem();
-            console.log(oSelected.getBindingContext().getObject());
-            var oObj=oSelected.getBindingContext().getObject()
-            this.onSelectRow(oObj.HUI);
-           
+ 
+        // Handler for selecting a particular warehouse transfer (WT)
+        onSelectParticularWT: async function (oEvent) {
+            const { HU } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();  // Get the HU value
+            console.log(HU);  // Log the HU value for debugging
+            this.onSelectRow(HU);  // Call onSelectRow with the HU value
         },
-        onSelectRow:function(oHui){
-            //this.getView().byId("_IDGenButton1122").setVisible(false);
-            //this.getView().byId("_IDGenButton1111").setVisible(true)
-            this.getView().byId("icon4").setVisible(false);
-            this.getView().byId("icon2").setVisible(true)
+ 
+        // Function to handle selection of a row (HU)
+        onSelectRow: function (oHui) {
+            this.getView().byId("idFourthSc_HuQuery").setVisible(false);  // Hide fourth screen
+            this.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
+ 
             if (oHui) {
                 // Call OData service to validate the HU value
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
-
+ 
                 oModel.read(`/HudetailsSet('${oHui}')`, {
                     urlParameters: {
-                        "$expand": "Hudetails_ItemSet",
-                        "$format": "json"
+                        "$expand": "Hudetails_ItemSet",  // Expand the related details set
+                        "$format": "json"  // Fetch response in JSON format
                     },
                     success: function (odata) {
-                        // If HU exists, show icon2 and hide icon1
-                        // that.getView().byId("icon2").setVisible(true);
-                        // that.getView().byId("icon1").setVisible(false);
-                        // that.getView().byId("_IDGenButton1111").setVisible(true);
-                        // that.getView().byId("_IDGenButton1122").setVisible(false);
-                        // that.getView().byId("_IDGenButton1133").setVisible(false);
-                        // Optionally, you can also populate fields here based on the result
-                        that._populateHUDetails(odata);
+                        that._populateHUDetails(odata);  // Populate HU details on success
                     },
                     error: function (oError) {
-                        // Show error message if HU is not found    
+                        // Handle error if HU is not found    
                     }
                 });
             } else {
-                // Reset view if input is cleared
-                this.getView().byId("icon2").setVisible(false);
-                this.getView().byId("icon1").setVisible(true);
-            }
-
-        },
-        onResourceDetailsLoad:function(oEvent1){
-            var that = this;
-            const { id } = oEvent1.getParameter("arguments");
-            this.ID = id;
-            console.log(this.ID);
-        },
-
-        _setFocus: function() {
-            var oInput = this.byId("_IDGenInput1");
-            if (oInput) {
-                oInput.focus();
+                // Reset the view if input is cleared
+                this.getView().byId("idSecondSc_HuQuery").setVisible(false);
+                this.getView().byId("idFirstSc_HuQuery").setVisible(true);
             }
         },
-
-        onBeforeRendering: function() {
-            //this.getView().byId("_IDGenButton1133").setVisible(true);   
-
+ 
+        // Load resource details on route pattern match
+        onResourceDetailsLoad: function (oEvent1) {
+            const { id } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
+            this.ID = id;  // Save ID for later use
         },
-        onItemSelect: function (oEvent) {
-            var oItem = oEvent.getParameter("item");
-            this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
-        },
-        onScanSuccess: function(oEvent) {
-            debugger
-            // Get the scanned text from the event
-            var scannedText = oEvent.getParameter("text");
+ 
+        // Scan success handler for barcode scanning
+        onScanSuccess: function (oEvent) {
+            var scannedText = oEvent.getParameter("text");  // Get the scanned text
             var othis = this;
-        
-            // Check if the scan was cancelled
+ 
             if (oEvent.getParameter("cancelled")) {
-                // Show a message toast if the scan is cancelled
+                // Show a message toast if scan was cancelled
                 sap.m.MessageToast.show("Scan cancelled", { duration: 1000 });
             } else if (scannedText) {
-                // If the scanned text exists, find the input field by its ID
-                var oInput = this.byId("_IDGenInput1"); // Assuming the input field ID is '_IDGenInput1'
-                
-                // Update the input field's value with the scanned text
+                // Update input field with the scanned text
+                var oInput = this.byId("idScanHuInput_HuQuery");
                 oInput.setValue(scannedText);
-        
-                // Optionally, display a success message
-                sap.m.MessageToast.show("Scanned successfully: " + scannedText);
-                othis.onLiveHuProcess(scannedText);
+                sap.m.MessageToast.show("Scanned successfully: " + scannedText);  // Show a success message
+                othis.onLiveHuProcess(scannedText);  // Process the scanned HU
             } else {
-                // If no text is scanned, set the input field to empty
-                this.byId("_IDGenInput1").setValue("");
+                // Show a message if no barcode text found
+                this.byId("idScanHuInput_HuQuery").setValue("");
                 sap.m.MessageToast.show("No barcode text found", { duration: 1000 });
             }
         },
-        
-        // Live validation logic
+ 
+        // Live validation logic for HU input
         onLiveHuValidation: function (oEvent) {
-            debugger
             var oInput = oEvent.getSource();
-            var oHuValue = oInput.getValue().trim();
-
+            var oHuValue = oInput.getValue().trim();  // Get and trim the HU input value
+ 
             if (oHuValue) {
                 // Call OData service to validate the HU value
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
-
+ 
                 oModel.read(`/HudetailsSet('${oHuValue}')`, {
                     urlParameters: {
-
-                        "$expand": "Hudetails_ItemSet",
-                        "$format": "json"
+                        "$expand": "Hudetails_ItemSet",  // Expand related details
+                        "$format": "json"  // Get response in JSON format
                     },
                     success: function (odata) {
-                        // If HU exists, show icon2 and hide icon1
-                        that.getView().byId("icon2").setVisible(true);
-                        that.getView().byId("icon1").setVisible(false);
-                        // that.getView().byId("_IDGenButton1111").setVisible(true);
-                        // //that.getView().byId("_IDGenButton1122").setVisible(false);
-                        // that.getView().byId("_IDGenButton1133").setVisible(false);
-                        // Optionally, you can also populate fields here based on the result
-                        that._populateHUDetails(odata);
+                        that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
+                        that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
+                        that._populateHUDetails(odata);  // Populate HU details
                     },
                     error: function (oError) {
-                        // Show error message if HU is not found 
+                        // Handle error if HU is not found
                     }
                 });
             } else {
                 // Reset view if input is cleared
-                this.getView().byId("icon2").setVisible(false);
-                this.getView().byId("icon1").setVisible(true);
+                this.getView().byId("idSecondSc_HuQuery").setVisible(false);
+                this.getView().byId("idFirstSc_HuQuery").setVisible(true);
             }
         },
-
-        // Function to populate HU details when successful
-        // _populateHUDetails: function (odata) {
-        //     this.byId("_IDGenInput2").setValue(odata.Huident);
-        //     this.byId("_IDGenInput3").setValue(odata.Letyp);
-        //     this.byId("_IDGenInputLength").setValue(odata.Length);
-        //     this.byId("_IDGenInputWidth").setValue(odata.Width);
-        //     this.byId("_IDGenInputHeight").setValue(odata.Height);
-        //     this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-        //     this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-        //     this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-        //     this.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-        //     this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-        //     this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-        // },
-        // onLiveHuProcess: function (scannedText) {
-        //     var oInput = parseInt(scannedText);
-        //     var oHuValue = oInput;
-
-        //     if (oHuValue) {
-        //         // Call OData service to validate the HU value
-        //         var oModel = this.getOwnerComponent().getModel();
-        //         var that = this;
-
-        //         oModel.read(`/Hu_ContentSet('${oHuValue}')`, {
-        //             success: function (odata) {
-        //                 // If HU exists, show icon2 and hide icon1
-        //                 that.getView().byId("icon2").setVisible(true);
-        //                 that.getView().byId("icon1").setVisible(false);
-
-        //                 // Optionally, you can also populate fields here based on the result
-        //                 that._populateHUDetails(odata);
-        //                 that.getView().byId("_IDGenButton1111").setVisible(true);
-        //                 that.getView().byId("_IDGenButton1122").setVisible(false);
-        //                 that.getView().byId("_IDGenButton1133").setVisible(false);
-        //             },
-        //             error: function (oError) {
-        //                 // Show error message if HU is not found
-                      
-                        
-                        
-        //             }
-        //         });
-        //     } else {
-        //         // Reset view if input is cleared
-        //         this.getView().byId("icon2").setVisible(false);
-        //         this.getView().byId("icon1").setVisible(true);
-        //     }
-        // },
-
-        // Function to populate HU details when successful
+ 
+        // Function to populate HU details on success
         _populateHUDetails: function (odata) {
-            this.byId("_IDGenInput2").setValue(odata.Tophu);
-            this.byId("_IDGenInput3").setValue(odata.Letyp);
-            this.byId("_IDGenInputLength").setValue(odata.Length);
-            this.byId("_IDGenInputWidth").setValue(odata.Width);
-            this.byId("_IDGenInputHeight").setValue(odata.Height);
-            this.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-            this.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-            this.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-            this.byId("_IDGenInputWeightsMeasurement").setValue(odata.UnitGw);
+            this.byId("idHuInput_HuQuery").setValue(odata.Tophu);
+            this.byId("idHuTypeInput_HuQuery").setValue(odata.Letyp);
+            this.byId("idLenInput_HuQuery").setValue(odata.Length);
+            this.byId("idWidthInput_HuQuery").setValue(odata.Width);
+            this.byId("idHeightInput_HuQuery").setValue(odata.Height);
+            this.byId("idTareWtInput_HuQuery").setValue(odata.TWeight);
+            this.byId("idNetWtInput_HuQuery").setValue(odata.NWeight);
+            this.byId("idGWtInput_HuQuery").setValue(odata.GWeight);
+            this.byId("idUnitInput_HuQuery").setValue(odata.UnitGw);
             this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
             this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+            this.byId("idPackagingMaterialInput_HuQuery").setValue(odata.Pmat);
+            this.byId("idLocInput_HuQuery").setValue(odata.Vlpla);
         },
-
-        // Submit button logic (if necessary)
-        // Onpresssubmit: function () {
-        // // Submit button logic (if necessary)
-        // Onpresssubmit: function () {
-
-        //     this.getView().byId("icon1").setVisible(false);
-        //     this.getView().byId("icon2").setVisible(true);
-        //     this.getView().byId("_IDGenButton1111").setVisible(true);
-        //     this.getView().byId("_IDGenButton1133").setVisible(false);
-        //     var oHu = this.byId("_IDGenInput1").getValue();
-        //     debugger
-        //     /**Getting Model */
-        //     var oModel = this.getOwnerComponent().getModel();
-        //     var that = this;
-            
-        //     oModel.read(`/Hu_ContentSet('${oHu}')`, {
-        //         success: function (odata) {
-                    
-                  
-        //            /* odata.Matid
-        //             odata.Quan
-        //             odata.Meins
-                   
-                    
-                  
-                   
-                    
-                   
-        //             odata.UnitLwh
-        //             odata.UnitGw
-                    
-                //     odata.UnitTv
-                //     odata.Lgpla 
-                //     that.byId("_IDGenInput2").setValue(odata.Huident);
-                //     that.byId("_IDGenInput3").setValue( odata.Letyp);
-                //     that.byId("_IDGenInputLength").setValue(odata.Length);
-                //     that.byId("_IDGenInputWidth").setValue(odata.Width);
-                //     that.byId("_IDGenInputHeight").setValue(odata.Height);
-                //     that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-                //     that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-                //     that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-                //     that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-                //     that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-                //     that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-                //     that.getView().byId("icon1").setVisible(false);
-                //     that.getView().byId("icon2").setVisible(true);
-                //     that.getView().byId("_IDGenButton1111").setVisible(true);
-                // }, error: function (oError) {
-                   
-        //             odata.UnitTv
-        //             odata.Lgpla */
-        //             that.byId("_IDGenInput2").setValue(odata.Huident);
-        //             that.byId("_IDGenInput3").setValue( odata.Letyp);
-        //             that.byId("_IDGenInputLength").setValue(odata.Length);
-        //             that.byId("_IDGenInputWidth").setValue(odata.Width);
-        //             that.byId("_IDGenInputHeight").setValue(odata.Height);
-        //             that.byId("_IDGenInputTareWeight").setValue(odata.TWeight);
-        //             that.byId("_IDGenInputNetWeight").setValue(odata.NWeight);
-        //             that.byId("_IDGenInputGrossWeight").setValue(odata.GWeight);
-        //             that.byId("_IDGenInputweightsMesurement").setValue(odata.UnitGw);
-        //             that.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-        //             that.byId("_IDGenInputMesurement").setValue(odata.GVolume);
-        //             that.getView().byId("icon1").setVisible(false);
-        //             that.getView().byId("icon2").setVisible(true);
-        //             that.getView().byId("_IDGenButton1111").setVisible(true);
-        //         }, error: function (oError) {
-        //             sap.m.MessageBox.error("Error");
-
-        //         }
-        //     })
-
-        // },
-        onPressBackButtonFirstSC:async function(){
-            var oRouter = UIComponent.getRouterFor(this);
-                var oModel1 = this.getOwnerComponent().getModel();
-                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                    success: function (oData) {
-                        let oUser=oData.Users.toLowerCase()
-                        if(oUser ===  "resource"){
-                            oRouter.navTo("RouteResourcePage",{id:this.ID});
-                        }
-                        else{
-                        oRouter.navTo("Supervisor",{id:this.ID});
+ 
+        // Handler for pressing the "Back" button from the first screen
+        onPressBackButtonFirstSC: async function () {
+            var oRouter = UIComponent.getRouterFor(this);  // Get the router
+            var oModel1 = this.getOwnerComponent().getModel();  // Get the OData model
+ 
+            // Fetch resource details from OData service
+            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                success: function (oData) {
+                    let oUser = oData.Users.toLowerCase();  // Get user role
+                    if (oUser === "resource") {
+                        oRouter.navTo("RouteResourcePage", { id: this.ID });  // Navigate to Resource page
+                    } else {
+                        oRouter.navTo("Supervisor", { id: this.ID });  // Navigate to Supervisor page
                     }
-                    }.bind(this),
-                    error: function () {
-                        MessageToast.show("User does not exist");
-                    }
-                });
-         
-            },
-            onPressBackButtonSecondSC:function(){
-                this.getView().byId("icon1").setVisible(true);
-                this.getView().byId("icon2").setVisible(false)
-            },
-            onPressBackButtonThirdSC:function(){
-                this.getView().byId("icon2").setVisible(true);
-                this.getView().byId("icon3").setVisible(false)
-            },
-            onPressBackButtonFourthSC:function(){
-                this.getView().byId("icon2").setVisible(true);
-                this.getView().byId("icon4").setVisible(false)
-            },
-        
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("User does not exist");  // Show error if user doesn't exist
+                }
+            });
+        },
+ 
+        // Back button handlers for second, third, and fourth screens
+        onPressBackButtonSecondSC: function () {
+            this.getView().byId("idFirstSc_HuQuery").setVisible(true);  // Show first screen
+            this.getView().byId("idSecondSc_HuQuery").setVisible(false);  // Hide second screen
+        },
+        onPressBackButtonThirdSC: function () {
+            this.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
+            this.getView().byId("idThirdSc_HuQuery").setVisible(false);  // Hide third screen
+        },
+        onPressBackButtonFourthSC: function () {
+            this.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
+            this.getView().byId("idFourthSc_HuQuery").setVisible(false);  // Hide fourth screen
+        },
+ 
+        // Handler for HU content press
         onHUContentPress: function () {
-            var oHu=this.getView().byId("_IDGenInput2").getValue();
-            var oModel = this.getOwnerComponent().getModel();
-            var that=this
+            var oHu = this.getView().byId("idHuInput_HuQuery").getValue();  // Get HU input value
+            var oModel = this.getOwnerComponent().getModel();  // Get the OData model
+            var that = this;
+ 
+            // Call OData service to fetch HU details
             oModel.read(`/HudetailsSet('${oHu}')`, {
                 urlParameters: {
-                    "$expand": "Hudetails_ItemSet",
-                    "$format": "json"
+                    "$expand": "Hudetails_ItemSet",  // Expand related items
+                    "$format": "json"  // Response format JSON
                 },
                 success: function (odata) {
-                    // If HU exists, show icon2 and hide icon1
-                    if(odata.Top===true){
-                        console.log("True")
-                          // Get the product details from the response
-                    let oDetails = odata.Hudetails_ItemSet.results;
-                    console.log(oDetails);
-       
-                    // Prepare an array for binding
-                    var aProductDetails = [];
-       
-                    // Loop through the results and push them into the array
-                    for (var i = 0; i < oDetails.length; i++) {
-                        aProductDetails.push({
-                           Product: oDetails[i].Matnr,
-                            Quantity: oDetails[i].Qty,
-                          SLNO:i+1,
-                          Uom: oDetails[i].Meins,
-                          Pd:oDetails[i].Maktx
-
+                    if (odata.Top === true) {
+                        // Handle case where HU is a top-level HU
+                        let oDetails = odata.Hudetails_ItemSet.results;
+                        console.log(oDetails);  // Log the product details
+ 
+                        // Prepare an array for binding to the table
+                        var aProductDetails = [];
+                        for (var i = 0; i < oDetails.length; i++) {
+                            aProductDetails.push({
+                                Product: oDetails[i].Matnr,
+                                Quantity: oDetails[i].Quan,
+                                SLNO: i + 1,
+                                Uom: oDetails[i].Meins,
+                                Pd: oDetails[i].Maktx
+                            });
+                        }
+ 
+                        // Set model to the product details table
+                        var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                        that.byId("HuDetailsTable_HuQuery").setModel(oProductModel);
+ 
+                        // Bind table items to the product details model
+                        that.byId("HuDetailsTable_HuQuery").bindItems({
+                            path: "/products",
+                            template: new sap.m.ColumnListItem({
+                                cells: [
+                                    new sap.m.Text({ text: "{SLNO}" }),
+                                    new sap.m.Text({ text: "{Product}" }),
+                                    new sap.m.Text({ text: "{Quantity}" }),
+                                    new sap.m.Text({ text: "{Uom}" }),
+                                    new sap.m.Text({ text: "{Pd}" }),
+                                ]
+                            })
                         });
-                    }
-       
-                    // Create a JSON model with the product details array
-                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-       
-                    // Set the model to the table
-                    that.byId("HuDetailsTable").setModel(oProductModel);
-       
-                    // Bind the items aggregation of the table to the products array in the model
-                    that.byId("HuDetailsTable").bindItems({
-                        path: "/products",
-                        template: new sap.m.ColumnListItem({
-                            cells: [
-                                new sap.m.Text({ text: "{SLNO}" }), 
-                                new sap.m.Text({ text: "{Product}" }), 
-                                new sap.m.Text({ text: "{Quantity}" }),   
-                                new sap.m.Text({ text: "{Uom}" }),
-                                new sap.m.Text({ text: "{Pd}" }),
-                               
-                            ]
-                        })
-                    });
-                    }
-                    else {
-                        
-                      console.log(false)
-                      let oDetails = odata.Hudetails_ItemSet.results;
-                      console.log(oDetails);
-                      oDetails = oDetails.filter(item => item.HuidentI== oHu)
-                      // Prepare an array for binding
-                      var aProductDetails = [];
-         
-                      // Loop through the results and push them into the array
-                      for (var i = 0; i < oDetails.length; i++) {
-                        aProductDetails.push({
-                           Product: oDetails[i].Matnr,
-                            Quantity: oDetails[i].Qty,
-                          SLNO:i+1,
-                          Uom: oDetails[i].Meins,
-                          Pd:oDetails[i].Maktx
-
+                    } else {
+                        // Handle case for non-top-level HU
+                        let oDetails = odata.Hudetails_ItemSet.results;
+                        console.log(oDetails);  // Log details
+                        oDetails = oDetails.filter(item => item.HuidentI == oHu);  // Filter based on HU identifier
+ 
+                        // Prepare array for binding
+                        var aProductDetails = [];
+                        for (var i = 0; i < oDetails.length; i++) {
+                            aProductDetails.push({
+                                Product: oDetails[i].Matnr,
+                                Quantity: oDetails[i].Qty,
+                                SLNO: i + 1,
+                                Uom: oDetails[i].Meins,
+                                Pd: oDetails[i].Maktx
+                            });
+                        }
+ 
+                        // Set the model to the table and bind items
+                        var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                        that.byId("HuDetailsTable_HuQuery").setModel(oProductModel);
+                        that.byId("HuDetailsTable_HuQuery").bindItems({
+                            path: "/products",
+                            template: new sap.m.ColumnListItem({
+                                cells: [
+                                    new sap.m.Text({ text: "{SLNO}" }),
+                                    new sap.m.Text({ text: "{Product}" }),
+                                    new sap.m.Text({ text: "{Quantity}" }),
+                                    new sap.m.Text({ text: "{Uom}" }),
+                                    new sap.m.Text({ text: "{Pd}" }),
+                                ]
+                            })
                         });
-                    }
-         
-                      // Create a JSON model with the product details array
-                      var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-         
-                      // Set the model to the table
-                      that.byId("HuDetailsTable").setModel(oProductModel);
-         
-                      // Bind the items aggregation of the table to the products array in the model
-                      that.byId("HuDetailsTable").bindItems({
-                          path: "/products",
-                          template: new sap.m.ColumnListItem({
-                              cells: [
-                                  new sap.m.Text({ text: "{SLNO}" }), 
-                                  new sap.m.Text({ text: "{Product}" }), 
-                                  new sap.m.Text({ text: "{Quantity}" }),   
-                                  new sap.m.Text({ text: "{Uom}" }),
-                                  new sap.m.Text({ text: "{Pd}" }),
-                                 
-                              ]
-                          })
-                      });
                     }
                 },
                 error: function (oError) {
-                    // Show error message if HU is not found
-                   console.log(oError)
-                    
+                    // Handle error if HU not found
+                    console.log(oError);  // Log the error
                 }
             });
-
-            this.getView().byId("icon1").setVisible(false);
-            this.getView().byId("icon2").setVisible(false);
-            this.getView().byId("icon3").setVisible(true);
-            this.getView().byId("icon4").setVisible(false);
-            //this.getView().byId("_IDGenButton1111").setVisible(false);
-            //this.getView().byId("_IDGenButton1122").setVisible(true);
-            //this.getView().byId("_IDGenButton1133").setVisible(false);
-
+ 
+            // Switch to the third screen view
+            this.getView().byId("idFirstSc_HuQuery").setVisible(false);
+            this.getView().byId("idSecondSc_HuQuery").setVisible(false);
+            this.getView().byId("idThirdSc_HuQuery").setVisible(true);
+            this.getView().byId("idFourthSc_HuQuery").setVisible(false);
         },
+ 
+        // Handler for HU hierarchy press
         onHUHierarchyPress: function () {
-            var oHu=this.getView().byId("_IDGenInput2").getValue()
-            var oModel = this.getOwnerComponent().getModel();
-            var that=this
+            var oHu = this.getView().byId("idHuInput_HuQuery").getValue();  // Get HU value
+            var oModel = this.getOwnerComponent().getModel();  // Get OData model
+            var that = this;
+ 
+            // Call OData service to fetch HU hierarchy details
             oModel.read(`/HudetailsSet('${oHu}')`, {
                 urlParameters: {
-                    "$expand": "Hudetails_ItemSet",
-                    "$format": "json"
+                    "$expand": "Hudetails_ItemSet",  // Expand related item set
+                    "$format": "json"  // Response format JSON
                 },
-               
                 success: function (odata) {
-                    console.log(odata);
+                    console.log(odata);  // Log the data response
                    
-       
                     // Get the product details from the response
                     let oDetails = odata.Hudetails_ItemSet.results;
-                    console.log(oDetails);
-       
-                    // Prepare an array for binding
+                    console.log(oDetails);  // Log the details
+                   
+                    // Prepare array for binding to the table
                     var aProductDetails = [];
-       
-                    // Loop through the results and push them into the array
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
-                           HUI: oDetails[i].HuidentI,
+                            HUI: oDetails[i].HuidentI,
                             HU: odata.Parent,
-                          SLNO:i+1
+                            SLNO: i + 1
                         });
                     }
-       
-                    // Create a JSON model with the product details array
+ 
+                    // Create a JSON model with the hierarchy details
                     var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-       
-                    // Set the model to the table
-                    that.byId("simpleTable").setModel(oProductModel);
-       
-                    // Bind the items aggregation of the table to the products array in the model
-                    that.byId("simpleTable").bindItems({
+                    that.byId("idSimpleTable_HuQuery").setModel(oProductModel);
+ 
+                    // Bind the table items to the hierarchy model
+                    that.byId("idSimpleTable_HuQuery").bindItems({
                         path: "/products",
                         template: new sap.m.ColumnListItem({
                             cells: [
-                                new sap.m.Text({ text: "{SLNO}" }), 
-                                new sap.m.Text({ text: "{HUI}" }), 
-                                new sap.m.Text({ text: "{HU}" }),   
-                               
+                                new sap.m.Text({ text: "{SLNO}" }),
+                                new sap.m.Text({ text: "{HUI}" }),
+                                new sap.m.Text({ text: "{HU}" }),
                             ]
                         })
                     });
                 },
                 error: function () {
-                    sap.m.MessageToast.show("Error fetching products.");
+                    sap.m.MessageToast.show("Error fetching products.");  // Show error message
                 }
             });
-
-            this.getView().byId("icon1").setVisible(false);
-            this.getView().byId("icon2").setVisible(false);
-            this.getView().byId("icon3").setVisible(false);
-            this.getView().byId("icon4").setVisible(true);
-            //this.getView().byId("_IDGenButton1111").setVisible(false);
-           // this.getView().byId("_IDGenButton1122").setVisible(true);
-   //this.getView().byId("_IDGenButton1133").setVisible(false);
-          
+ 
+            // Switch to fourth screen
+            this.getView().byId("idFirstSc_HuQuery").setVisible(false);
+            this.getView().byId("idSecondSc_HuQuery").setVisible(false);
+            this.getView().byId("idThirdSc_HuQuery").setVisible(false);
+            this.getView().byId("idFourthSc_HuQuery").setVisible(true);
         },
-
-
-        Onpressback1: function () {
-           debugger
-            this.getView().byId("icon1").setVisible(false);
-            this.getView().byId("icon2").setVisible(true);
-            this.getView().byId("icon3").setVisible(false);
-            this.getView().byId("icon4").setVisible(false);
-            //this.getView().byId("_IDGenButton1111").setVisible(true);
-            //this.getView().byId("_IDGenButton1122").setVisible(false);
-            this.byId("_IDGenInput1").setValue("");
-
-
-        },
-        Onpressback2: function () {
-
-            this.getView().byId("icon1").setVisible(true);
-            this.getView().byId("icon2").setVisible(false);
-            this.getView().byId("icon3").setVisible(false);
-            this.getView().byId("icon4").setVisible(false);
-            this.byId("_IDGenInput1").setValue("");
-            // this.getView().byId("_IDGenButton1133").setVisible(true);
-            // this.getView().byId("_IDGenButton1111").setVisible(false);
-         
-
-        },
-        Submit: function () {
-
-        },
-        onAfterRendering: function () {
-            var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
-            if (oInput) {
-                setTimeout(function () {
-                    oInput.focus();
-                }, 100); // Adjust the delay if needed
-            }
-        }
-
-        
-
-
+ 
     });
 });
-  
+ 
+ 

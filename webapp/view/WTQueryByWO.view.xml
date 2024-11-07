@@ -37,6 +37,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                <Title
+                    id="idTitle_WTQBWOView"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorWtQBWo"
                 />
@@ -90,7 +95,7 @@
                             >
                                 <Label
                                     id="idWtQBWoWhLabel"
-                                    text="WareHouse Order"
+                                    text="WareHouse Order:"
                                     width="120px"
                                 />
                                 <Input
@@ -126,6 +131,7 @@
                 id="idWtQBWoWhSecondsc"
                 horizontal="false"
                 vertical="true"
+                width="100%"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
@@ -146,16 +152,14 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <HBox id="idHbox_WTQueryByWO3">
+                        <HBox id="idHbox_WTQueryByWO3" justifyContent="Center">
                             <Label
                                 id="idWtQBWoWh2Label"
-                                text="WareHouse Order"
-                                width="120px"
+                                text="WareHouse Order:"
                                 class="sapUiTinyMarginTop"
                             />
                             <Input
                                 id="idWtQBWoWh2Input"
-                                value=""
                                 editable="false"
                             />
                         </HBox>
@@ -354,7 +358,7 @@
                                 <Input
                                     id="idWtQBWoPtypInput"
                                     value=""
-                                    width="93px"
+                                    width="83px"
                                     editable="false"
                                     class="sapMInput"
                                 />
@@ -510,7 +514,7 @@
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
-                                    width="120px"
+                                    width="111px"
                                     editable="false"
                                     class="sapMInput"
                                 />
