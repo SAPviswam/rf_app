@@ -388,7 +388,7 @@
                                     value=""
                                     width="50px"
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoActyEmpInput"
@@ -414,7 +414,7 @@
                                     value=""
                                     width="290px"
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoProEmpInput"
@@ -440,14 +440,14 @@
                                     id="idWtQBWoSbinInput"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
-                                    width="193px"
-                                    class="sapMInput"
+                                    width="182px"
+                                    class="sapMInput sapUiTinyMarginBegin"
                                 />
                             </HBox>
 
@@ -465,14 +465,14 @@
                                     id="idWtQBWoDbinInput"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
-                                    width="193px"
+                                    width="182px"
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginBegin"
                                 />
                             </HBox>
 
@@ -489,16 +489,16 @@
                                 <Input
                                     id="idWtQBWoCdatInput"
                                     value=""
-                                    width="100px"
+                                    width="90px"
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoCdatnput"
                                     value=""
                                     width="100px"
                                     editable="false"
-                                    class="sapMInput"
+                                    class="sapMInput sapUiTinyMarginBegin"
                                 />
                                 <Label id="idEmptyLabel12" width="10px" />
                                 <Label

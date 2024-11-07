@@ -121,7 +121,7 @@ sap.ui.define(
                             // Loop through the results and push them into the array
                             for (var i = 0; i < oDetails.length; i++) {
 
-                      //  let statusText = that.getStatusText(oDetails[i].Status);
+                                //  let statusText = that.getStatusText(oDetails[i].Status);
 
                                 aWarehouseOrderDetails.push({
                                     Tanum: oDetails[i].Tanum,
@@ -174,11 +174,8 @@ sap.ui.define(
                         console.log(odata)
 
                         var aWarehousetask = odata.WarehouseOrdertoTask.results;
-
                         var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum");
-
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
-
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
                         if (oSelectedWT) {
