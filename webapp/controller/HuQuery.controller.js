@@ -19,8 +19,10 @@
             var oModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/app/rfapp/model/data1.json"));
             this.getView().setModel(oModel);
             var i18nModel = this.getOwnerComponent().getModel("i18n");
-            var oQuantityHeader = this.byId("_IDGenText3");
+            var oQuantityHeader = this.byId("_IDGenText3"); 
+            var oQuantityHeader = this.byId("_IDGenText3"); 
             var oHigherLevelHu = this.byId("_IDGenLabel6");
+            var oHighestLevelHu = this.byId("_IDGenLabel7");
             var oHighestLevelHu = this.byId("_IDGenLabel7");
             var oInput = this.byId("_IDGenInput1"); // Replace with your input field ID
             
