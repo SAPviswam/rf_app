@@ -29,6 +29,12 @@ function (UIComponent, Device, models) {
 
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
+        },
+        getPopover: function () {
+            return this._oPopover;
+        },
+        setPopover: function (oPopover) {
+            this._oPopover = oPopover;
         }
     });
 }

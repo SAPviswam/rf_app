@@ -28,7 +28,9 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+
                 <!-- title -->
+
                  <Title
                     id="idTitle_HuQuery"
                     class="title"

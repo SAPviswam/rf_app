@@ -28,6 +28,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                <Title
+                    id="idTitle_SBQBBView"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorPutawayByWO_SBQB"
                 />
@@ -296,14 +301,14 @@
                                 <Label
                                     id="idSTypLabel"
                                     text="STyp:"
-                                    width="60Px"
+                                    width="65Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBBinInput"
                                     value=""
                                     editable="false"
-                                    width="150px"
+                                    width="170px"
                                     class="sapMInput"
                                 />
                                 <Label id="idEmptyLabel1"
@@ -313,7 +318,7 @@
                                 <Label
                                     id="idSBQBStorTypeLabel"
                                     text="SSec:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
@@ -321,7 +326,7 @@
                                     value=""
                                     editable="false"
                                     class="sapMInput"
-                                    width="100px"
+                                    width="80px"
                                 />
                                 <Label id="idEmptyLabel"
                                     text=""
@@ -346,14 +351,14 @@
                                 <Label
                                     id="idSBQBQtyLabel"
                                     text="MHU:"
-                                    width="60Px"
+                                    width="65Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBQtyWInput"
                                     value=""
                                     editable="false"
-                                    width="150px"
+                                    width="170px"
                                     class="sapMInput"
                                 />
                                 <Label id="idEmptyLabel2"
@@ -363,14 +368,14 @@
                                 <Label
                                     id="idSBQBStorSecLabel"
                                     text="AcHU:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBStorSecInput"
                                     value=""
                                     editable="false"
-                                    width="100px"
+                                    width="80px"
                                     class="sapMInput"
                                 />
                                 <Label id="idEmptyLabel3"
@@ -412,14 +417,14 @@
                                 <Label
                                     id="idSBQBBinAisleLabel"
                                     text="ActW:"
-                                    width="50Px"
+                                    width="40Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInput"
                                     value=""
                                     editable="false"
-                                    width="150px"
+                                    width="155px"
                                     class="sapMInput"
                                 />
                                 <Input
@@ -452,14 +457,14 @@
                                 <Label
                                     id="idSBQBBinLevelLabel"
                                     text="ActV:"
-                                    width="50Px"
+                                    width="40Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBBinLevelInput"
                                     value=""
                                     editable="false"
-                                    width="150px"
+                                    width="160px"
                                     class="sapMInput"
                                 />
                                 <Input
@@ -481,7 +486,7 @@
                                     id="idSBQBMaxVInput"
                                     value=""
                                     editable="false"
-                                    width="200px"
+                                    width="175px"
                                     class="sapMInput"
                                 />
                                 <Label id="idEmptyLabel6"
@@ -491,14 +496,14 @@
                                 <Label
                                     id="idSBQBStackLabel"
                                     text="Av.C:"
-                                    width="60Px"
+                                    width="40Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBStackInput"
                                     value=""
                                     editable="false"
-                                    width="180px"
+                                    width="220px"
                                     class="sapMInput"
                                 />
                             </HBox>
@@ -537,7 +542,7 @@
                                 <Label
                                     id="idLable_LastChanged_BQB"
                                     text="LC:"
-                                    width="30Px"
+                                    width="35Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
@@ -555,7 +560,7 @@
                                     id="idinput_Movementcbt_BQB"
                                     value=""
                                     editable="false"
-                                    width="6rem"
+                                    width="7.5rem"
                                     class="sapMInput"
                                 />
                             </HBox>
@@ -613,7 +618,7 @@
                                     value=""
                                     editable="false"
                                     class="sapMInput"
-                                    width="6rem"
+                                    width="7.5rem"
                                 />
                             </HBox>
                             <!-- <HBox justifyContent="Center" alignContent="Center" >
@@ -767,13 +772,13 @@
                             <Label
                                 id="idSTypLabel_Extra"
                                 text="STyp :"
-                                class="sapUiTinyMarginTop sapMLabel"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBBinInput_extra"
                                 value=""
                                 editable="false"
-                                width="5rem"
+                                width="8.3rem"
                                 class="sapMInput"
                             />
                             <Label
@@ -785,15 +790,14 @@
                             <Label
                                 id="idSBQBStorTypeLabel_extra"
                                 text="SSec:"
-                                class="sapUiTinyMarginTop sapMLabel"
-                                width="60px"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBStoreTypeInput_extra"
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="5rem"
+                                width="8rem"
                             />
                             <Label
                                 id="idLabelBqb_extra1"
@@ -804,13 +808,13 @@
                             <Label
                                 id="idSBQBStorTypeLabel1_extra"
                                 text="BT:"
-                                class="sapUiTinyMarginTop sapMLabel"
+                                class="sapMLabel"
                             />
                             <Input
                                 id="idSBQBStoreTypeInput1_extra"
                                 value=""
                                 editable="false"
-                                width="4rem"
+                                width="3.9rem"
                                 class="sapMInput"
                             />
                         </HBox>
@@ -936,7 +940,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space2"
-                                width="5rem"
+                                width="3.5rem"
                             />
                             <Label
                                 id="idlabel_binqbin_PB"
@@ -952,7 +956,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space3"
-                                width="2rem"
+                                width="4rem"
                             />
                             <Label
                                 id="idlabel_binqbin_RB"
@@ -993,7 +997,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space10"
-                                width="5rem"
+                                width="3rem"
                             />
                             <Label
                                 id="idlabel_binqbin_Styp"
@@ -1009,7 +1013,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space11"
-                                width="2rem"
+                                width="4.2rem"
                             />
                             <Label
                                 id="idlabel_binqbin_IA"
@@ -1027,7 +1031,7 @@
                         <HBox id="idHbox_StockBinQuerybyBin17">
                             <Label
                                 id="idlabel_binqbin_OWnr"
-                                text="OWnr :"
+                                text="OWnr:"
                                 class="sapMLabel sapUiTinyMarginTop"
                             />
                             <Input
@@ -1035,7 +1039,7 @@
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="11rem"
+                                width="10.3rem"
                             />
                             <Label
                                 id="idLable_binQbin_space14"
@@ -1051,7 +1055,7 @@
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="11rem"
+                                width="12rem"
                             />
                         </HBox>
                         <VBox

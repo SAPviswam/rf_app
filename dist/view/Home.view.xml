@@ -49,6 +49,7 @@
                     id="idImageAvatarHomeScreen"
                     displaySize="XS"
                     tooltip="Profile"
+                    press="onHomePageAvatarPressed"
                 />
             </tnt:ToolHeader>
         </tnt:header>
@@ -98,7 +99,7 @@
                             />
                         </VBox>
                         <VBox
-                        id="idVboxRfLogin_HomeView"
+                            id="idVboxRfLogin_HomeView"
                             alignItems="End"
                             width="70%"
                            
