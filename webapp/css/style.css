@@ -640,7 +640,7 @@
     margin-bottom: 1.5rem;
 }
 /* Box around the form */
-.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .ThirdPageFormBoxWTDetails_WTQBYHU, .Page4FormBoxPD_WTQBYHU, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
+.Page2FormBox_PBYWO, .verifyHuNumberBox, .GoodsReceiptFormBox, .UnLoadPageFormBox, .ThirdFormBoxHUContent_AHUOBQ, .Page4PrdDescrpitionBox_AHUOBQ, .Page4FormBox_ARHUI, .Page5FormBox_ARHUI, .Page8FormBox_ARHUI, .Page9FormBox_ARHUI {
     border: 2px solid black;
     padding: 20px;
     border-radius: 8px;
@@ -1331,7 +1331,9 @@ margin-right: 15%;
         width: auto !important; 
     }
 }
-
+.Simpleform_secSc_HuQuery{
+   margin-left:30% !important;
+}
 /* .sapConfigButton_InitialView{
  background-color: rgb(249, 126, 3) !important;
  color: #000 !important;
