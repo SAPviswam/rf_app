@@ -12,14 +12,8 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
-                //Profile Image updating(from Base Controller)...
-                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-                    headers: {
-                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
-                        "sap-client": "100"
-                    }
-                });
-                this.getView().setModel(oModel);
+               
+                this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
@@ -54,6 +48,15 @@ sap.ui.define([
             onExit: function () {
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
+            },
+            load_100_Client_Metadata: function(){
+                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+                    headers: {
+                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
+                        "sap-client": "100"
+                    }
+                });
+                this.getView().setModel(oModel);
             },
             _handleKeyDown: function (oEvent) {
                 // Prevent default action for specific function keys
@@ -455,6 +458,7 @@ sap.ui.define([
             },
             onEditConfiguredSystem: async function () {
 
+
                 if (this.arrayOfButton.length > 1) {
                     MessageToast.show("Please select only one system to edit");
                     return
@@ -474,11 +478,12 @@ sap.ui.define([
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
                 var oModel = this.getView().getModel();
                 var that = this;
-                try {
-
+                    
+                // load 100 client meta data
+                this.load_100_Client_Metadata();
+                
                     oModel.read("/ServiceSet", {
                         success: function (oData) {
-                            MessageBox.success("Read call success locally")
                             var aButtons = oData.results;
                             function checkButton(v) {
                                 return v.DescriptionB === oButtonText;
@@ -498,12 +503,9 @@ sap.ui.define([
                             that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
                         },
                         error: function (oError) {
-                            MessageBox.error("Error while reading data", oError.message)
+                            MessageBox.error("Error while reading data " + oError.message)
                         }
                     });
-                } catch (error) {
-                    MessageBox.error("Found Error:", error)
-                }
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
