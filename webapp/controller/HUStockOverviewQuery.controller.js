@@ -382,7 +382,12 @@ sap.ui.define(
             this.getView().byId("idScforFifthHUStockOverviewQuery").setVisible(false);
             this.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(true);
             this.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(true);   
+        },
+        getStatusText: function (statusCode) {
+          if (typeof statusCode === 'boolean') {
+            return statusCode ? 'yes' : 'No';
         }
+      }
       });
     }
   );

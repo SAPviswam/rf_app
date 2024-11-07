@@ -82,7 +82,6 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoSevenththbackbtn").setVisible(false);
             },
-            
             // Handler for Warehouse Order input change event
             onWtQBWoWhLiveChange: function () {
                 // Get the input value from the input field

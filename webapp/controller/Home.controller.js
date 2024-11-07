@@ -46,7 +46,8 @@ sap.ui.define([
                 else if(Device.system.phone){
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("rfLoginVboxMobile");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile")
+                    this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
+                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home")
                 }
                 else{
                     this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);
@@ -104,7 +105,6 @@ sap.ui.define([
             },
             //Profile click function..
             onHomePageAvatarPressed: function (oEvent) {
-                this.applyStoredProfileImage();
                 var oComponent = this.getOwnerComponent();
 
                 // Destroy the existing popover if it exists
@@ -116,6 +116,7 @@ sap.ui.define([
                     showAccountDetails: true,
                     showSignOut: true
                 });
+                this.applyStoredProfileImage();
             },
             onSelectCheckBox: function (oEvent) {
                 const isSelected = oEvent.getParameter("selected");

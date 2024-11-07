@@ -140,17 +140,6 @@ sap.ui.define([
                     }
                 }.bind(this));
 
-                // Apply the stored profile picture
-                var sStoredProfileImage = localStorage.getItem("userProfileImage");
-                if (sStoredProfileImage) {
-                    var oAvatarControl = this.byId("id_GenAvatar1P");
-                    if (oAvatarControl) {
-                        oAvatarControl.setSrc(sStoredProfileImage);  // Set the stored image to profile picture.
-                    }
-                }
-
-                console.log(this.oPopover)
-
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
@@ -1780,7 +1769,14 @@ sap.ui.define([
 
             //Avatar btn from Resource Page...
             onSBQPAvatarPressedResourcePage: function (oEvent) {
-                this.applyStoredProfileImage();
+                debugger
+                var oComponent = this.getOwnerComponent();
+                // Destroy the existing popover if it exists
+                if (oComponent.getPopover()) {
+                    oComponent.getPopover().destroy();
+                    oComponent.setPopover(null);
+                }
+                
                 this.onPressAvatarPopOverBaseFunction(oEvent, {
                     showAccountDetails: true,
                     showEditTile: true,
@@ -1791,6 +1787,7 @@ sap.ui.define([
                     showHelp: true,
                     showSignOut: true
                 });
+                this.applyStoredProfileImage();
             },
             //Accout Deatils press function...
             onMyAccountPress: function () {
@@ -2739,7 +2736,7 @@ sap.ui.define([
             onCloseUSerDetailsDialog: function () {
                 this.byId("idUserDetails").close();
             },
-            
+
             onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { id: this.ID });
