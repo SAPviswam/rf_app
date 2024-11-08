@@ -330,7 +330,10 @@
                     columnsS="1"
                 >
                 <VBox >
-                    <Title text="Product Description" />
+                <HBox >
+               
+                    <Input id="idWtQBWtProductDiscriptioInput" value=""></Input>
+                    </HBox>
                    
                     <HBox alignContent="Center" alignItems="Center">
                     <Label id="idWtQBWtWoLabel" text="WO" width="60px" ></Label>
@@ -345,7 +348,7 @@
                      <HBox alignContent="Center" alignItems="Center" >
                     <Label id="idWtQBWtSqtyLabel" text="Sqty"  width="60px" ></Label>
                     <Input id="idWtQBWtSqtyInput" value=""></Input>
-                    <Input id="idWtQBWtPcInput" value="PC"></Input>
+                    <Input id="idWtQBWtPcInput" ></Input>
                     <Label width="20px"></Label>
                     <Label id="idWtQBWtBtchLabel" text="Btch"  width="60px" ></Label>
                     <Input id="idWtQBWtBtchInput" value=""></Input>

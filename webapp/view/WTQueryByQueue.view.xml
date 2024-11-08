@@ -90,7 +90,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-             <VBox alignContent="Center" alignItems="Center">
+             <VBox alignContent="Center" alignItems="Center" class="sapUiLargeMargin">
                 <form:SimpleForm
                     id="idWtQBQueueSF1"
                     layout="ResponsiveGridLayout"
