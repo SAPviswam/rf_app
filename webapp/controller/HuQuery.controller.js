@@ -121,9 +121,11 @@ sap.ui.define([
                         if(odata.HUheadtoItems.results.length>0){
                             that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
                         that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
+
                         that._populateHUDetails(odata);  // Populate HU details
                         }
                         
+
                     },
                     error: function (oError) {
                         // Handle error if HU is not found

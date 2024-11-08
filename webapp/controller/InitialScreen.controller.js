@@ -13,7 +13,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
-               
+
                 this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
 
@@ -50,7 +50,7 @@ sap.ui.define([
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
             },
-            load_100_Client_Metadata: function(){
+            load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
                         "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
@@ -386,9 +386,7 @@ sap.ui.define([
                 else {
                     var oString = this.arrayOfDescription[0];
                 }
-
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
-
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -440,7 +438,9 @@ sap.ui.define([
                                         });
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
+
                                         that.arrayOfDescription = [];
+
                                     }
                                 });
                             });
