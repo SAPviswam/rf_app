@@ -439,6 +439,10 @@ sap.ui.define([
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
                                         that.arrayOfDescription = [];
+<<<<<<< HEAD
+                                        console.error(oError);
+=======
+>>>>>>> 5802ae993d328ef8d40d8c5ddc362e740dcaae76
                                     }
                                 });
                             });
@@ -475,36 +479,35 @@ sap.ui.define([
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
-                var oModel = this.getView().getModel();
-                var that = this;
-
+                
+                    
                 // load 100 client meta data
-                this.load_100_Client_Metadata();
-
-                oModel.read("/ServiceSet", {
-                    success: function (oData) {
-                        var aButtons = oData.results;
-                        function checkButton(v) {
-                            return v.DescriptionB === oButtonText;
+               var oModel= this.getOwnerComponent().getModel();
+               var that = this;
+                    oModel.read("/ServiceSet", {
+                        success: function (oData) {
+                            var aButtons = oData.results;
+                            function checkButton(v) {
+                                return v.DescriptionB === oButtonText;
+                            }
+                            var oButtonedit = aButtons.filter(checkButton);
+                            if (oButtonedit) {
+                                that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
+                                that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
+                                that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
+                                that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
+                                that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
+                                that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
+                                that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
+                            }
+                            // New UI modification start
+                            that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                            that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
+                        },
+                        error: function (oError) {
+                            MessageBox.error("Error while reading data " + oError.message)
                         }
-                        var oButtonedit = aButtons.filter(checkButton);
-                        if (oButtonedit) {
-                            that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
-                            that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
-                            that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
-                            that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
-                            that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
-                            that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
-                            that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
-                        }
-                        // New UI modification start
-                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                    },
-                    error: function (oError) {
-                        MessageBox.error("Error while reading data " + oError.message)
-                    }
-                });
+                    });
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
@@ -743,19 +746,20 @@ sap.ui.define([
                 }
                 // Load the Change Password fragment if not already loaded
                 this.oConfigSapCP ??= await this.loadFragment("ChangePassword");
-                var oModel = this.getView().getModel(); // Get your OData model
+                var oModel = this.getOwnerComponent().getModel(); // Get your OData model
                 // Read user data based on Resource ID
+                const that = this
                 oModel.read("/RESOURCESSet('" + sResourceId + "')", {
                     success: function (oData) {
                         // Assuming 'Resourcename' is the property that holds the resource name
                         var sResourceName = oData.Resourcename; // Adjust property name as necessary
-                        this.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
-                        this.onUserLogin();
-                        this.oConfigSapCP.open(); // Open the dialog after setting the value
-                        this.onPressCancleSapLogon();
+                        that.byId("idUserInput_CP").setValue(sResourceName); // Set the resource name in the input field
+                        that.onUserLogin();
+                        that.oConfigSapCP.open(); // Open the dialog after setting the value
+                        that.onPressCancleSapLogon();
                     }.bind(this), // Bind 'this' to maintain context
                     error: function () {
-                        MessageBox.error("Error retrieving user data. Please try again later.");
+                        MessageBox.information("No user found.");
                     }
 
                 });
