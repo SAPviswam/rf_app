@@ -587,7 +587,7 @@
                                 <Title
                                     id="idTitle1_WTQuerybyQueue"
                                     text="Product Details"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    class="sapUiTinyMargin"
                                 />
                             </VBox>
                             <HBox id="idHbox25_WTQuerybyQueue">
