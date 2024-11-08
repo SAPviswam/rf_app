@@ -13,7 +13,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
                 //Profile Image updating(from Base Controller)...
-               
+
                 this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
 
@@ -50,7 +50,7 @@ sap.ui.define([
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
             },
-            load_100_Client_Metadata: function(){
+            load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
                         "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
@@ -386,9 +386,7 @@ sap.ui.define([
                 else {
                     var oString = this.arrayOfDescription[0];
                 }
-
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
-
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
@@ -479,34 +477,34 @@ sap.ui.define([
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
                 var oModel = this.getView().getModel();
                 var that = this;
-                    
+
                 // load 100 client meta data
                 this.load_100_Client_Metadata();
-                
-                    oModel.read("/ServiceSet", {
-                        success: function (oData) {
-                            var aButtons = oData.results;
-                            function checkButton(v) {
-                                return v.DescriptionB === oButtonText;
-                            }
-                            var oButtonedit = aButtons.filter(checkButton);
-                            if (oButtonedit) {
-                                that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
-                                that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
-                                that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
-                                that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
-                                that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
-                                that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
-                                that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
-                            }
-                            // New UI modification start
-                            that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                            that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                        },
-                        error: function (oError) {
-                            MessageBox.error("Error while reading data " + oError.message)
+
+                oModel.read("/ServiceSet", {
+                    success: function (oData) {
+                        var aButtons = oData.results;
+                        function checkButton(v) {
+                            return v.DescriptionB === oButtonText;
                         }
-                    });
+                        var oButtonedit = aButtons.filter(checkButton);
+                        if (oButtonedit) {
+                            that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
+                            that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
+                            that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
+                            that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
+                            that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
+                            that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
+                            that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
+                        }
+                        // New UI modification start
+                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
+                    },
+                    error: function (oError) {
+                        MessageBox.error("Error while reading data " + oError.message)
+                    }
+                });
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();

@@ -157,11 +157,11 @@
                         <!-- button for configure sap system -->
                         <Button
                             id="idBtnConfSAPsys_InitialView"
-                            class=""
+                            class="configureSapBtn_InitialView"
                             text="Configure SAP System"
                             tooltip="configure SAP System"
                             press="AddPress_InitialView"
-                            type="Transparent"
+                            type="Unstyled"
                         />
                         <!-- Link for configuring SAP system -->
                         <HBox id="IDhboxnavup_InitialView">
