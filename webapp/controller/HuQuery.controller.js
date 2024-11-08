@@ -56,9 +56,9 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
  
-                oModel.read(`/HudetailsSet('${oHui}')`, {
+                oModel.read(`/HandlingUnitNHSet('${oHui}')`, {
                     urlParameters: {
-                        "$expand": "Hudetails_ItemSet",  // Expand the related details set
+                        "$expand": "HUheadtoItems",  // Expand the related details set
                         "$format": "json"  // Fetch response in JSON format
                     },
                     success: function (odata) {
@@ -106,21 +106,24 @@ sap.ui.define([
         onLiveHuValidation: function (oEvent) {
             var oInput = oEvent.getSource();
             var oHuValue = oInput.getValue().trim();  // Get and trim the HU input value
- 
+            
             if (oHuValue) {
                 // Call OData service to validate the HU value
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
  
-                oModel.read(`/HudetailsSet('${oHuValue}')`, {
+                oModel.read(`/HandlingUnitNHSet('${oHuValue}')`, {
                     urlParameters: {
-                        "$expand": "Hudetails_ItemSet",  // Expand related details
+                        "$expand": "HUheadtoItems",  // Expand related details
                         "$format": "json"  // Get response in JSON format
                     },
                     success: function (odata) {
-                        that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
+                        if(odata.HUheadtoItems.results.length>0){
+                            that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
                         that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
                         that._populateHUDetails(odata);  // Populate HU details
+                        }
+                        
                     },
                     error: function (oError) {
                         // Handle error if HU is not found
@@ -135,7 +138,7 @@ sap.ui.define([
  
         // Function to populate HU details on success
         _populateHUDetails: function (odata) {
-            this.byId("idHuInput_HuQuery").setValue(odata.Tophu);
+            this.byId("idHuInput_HuQuery").setValue(odata.Huident);
             this.byId("idHuTypeInput_HuQuery").setValue(odata.Letyp);
             this.byId("idLenInput_HuQuery").setValue(odata.Length);
             this.byId("idWidthInput_HuQuery").setValue(odata.Width);
@@ -144,10 +147,10 @@ sap.ui.define([
             this.byId("idNetWtInput_HuQuery").setValue(odata.NWeight);
             this.byId("idGWtInput_HuQuery").setValue(odata.GWeight);
             this.byId("idUnitInput_HuQuery").setValue(odata.UnitGw);
-            this.byId("_IDGenInputMesurement").setValue(odata.UnitLwh);
-            this.byId("_IDGenInputMesurement").setValue(odata.GVolume);
+            this.byId("idUnitsInput_HuQuery").setValue(odata.UnitLwh);
+            this.byId("idVolumeInput_HuQuery").setValue(odata.GVolume);
             this.byId("idPackagingMaterialInput_HuQuery").setValue(odata.Pmat);
-            this.byId("idLocInput_HuQuery").setValue(odata.Vlpla);
+            this.byId("idLocInput_HuQuery").setValue(odata.Wsbin);
         },
  
         // Handler for pressing the "Back" button from the first screen
@@ -192,15 +195,15 @@ sap.ui.define([
             var that = this;
  
             // Call OData service to fetch HU details
-            oModel.read(`/HudetailsSet('${oHu}')`, {
+            oModel.read(`/HandlingUnitNHSet('${oHu}')`, {
                 urlParameters: {
-                    "$expand": "Hudetails_ItemSet",  // Expand related items
+                    "$expand": "HUheadtoItems",  // Expand related items
                     "$format": "json"  // Response format JSON
                 },
                 success: function (odata) {
                     if (odata.Top === true) {
                         // Handle case where HU is a top-level HU
-                        let oDetails = odata.Hudetails_ItemSet.results;
+                        let oDetails = odata.HUheadtoItems.results;
                         console.log(oDetails);  // Log the product details
  
                         // Prepare an array for binding to the table
@@ -208,9 +211,9 @@ sap.ui.define([
                         for (var i = 0; i < oDetails.length; i++) {
                             aProductDetails.push({
                                 Product: oDetails[i].Matnr,
-                                Quantity: oDetails[i].Quan,
+                                Quantity: parseFloat(oDetails[i].Nista),
                                 SLNO: i + 1,
-                                Uom: oDetails[i].Meins,
+                                Uom: oDetails[i].Altme,
                                 Pd: oDetails[i].Maktx
                             });
                         }
@@ -234,18 +237,19 @@ sap.ui.define([
                         });
                     } else {
                         // Handle case for non-top-level HU
-                        let oDetails = odata.Hudetails_ItemSet.results;
+                        let oDetails = odata.HUheadtoItems.results;
                         console.log(oDetails);  // Log details
-                        oDetails = oDetails.filter(item => item.HuidentI == oHu);  // Filter based on HU identifier
+                        oDetails = oDetails.filter(item => item.Huident == oHu);  // Filter based on HU identifier
  
                         // Prepare array for binding
                         var aProductDetails = [];
                         for (var i = 0; i < oDetails.length; i++) {
                             aProductDetails.push({
+                               
                                 Product: oDetails[i].Matnr,
-                                Quantity: oDetails[i].Qty,
+                                Quantity: parseFloat(oDetails[i].Nista),
                                 SLNO: i + 1,
-                                Uom: oDetails[i].Meins,
+                                Uom: oDetails[i].Altme,
                                 Pd: oDetails[i].Maktx
                             });
                         }
@@ -287,24 +291,24 @@ sap.ui.define([
             var that = this;
  
             // Call OData service to fetch HU hierarchy details
-            oModel.read(`/HudetailsSet('${oHu}')`, {
+            oModel.read(`/HandlingUnitNHSet('${oHu}')`, {
                 urlParameters: {
-                    "$expand": "Hudetails_ItemSet",  // Expand related item set
+                    "$expand": "HUheadtoItems",  // Expand related item set
                     "$format": "json"  // Response format JSON
                 },
                 success: function (odata) {
                     console.log(odata);  // Log the data response
                    
                     // Get the product details from the response
-                    let oDetails = odata.Hudetails_ItemSet.results;
+                    let oDetails = odata.HUheadtoItems.results;
                     console.log(oDetails);  // Log the details
                    
                     // Prepare array for binding to the table
                     var aProductDetails = [];
                     for (var i = 0; i < oDetails.length; i++) {
                         aProductDetails.push({
-                            HUI: oDetails[i].HuidentI,
-                            HU: odata.Parent,
+                            HUI: oDetails[i].Huident,
+                            HU: odata.Tophu,
                             SLNO: i + 1
                         });
                     }

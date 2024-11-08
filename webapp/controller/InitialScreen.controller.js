@@ -441,10 +441,6 @@ sap.ui.define([
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
                                         that.arrayOfDescription = [];
-<<<<<<< HEAD
-                                        console.error(oError);
-=======
->>>>>>> 5802ae993d328ef8d40d8c5ddc362e740dcaae76
                                     }
                                 });
                             });
