@@ -89,7 +89,7 @@ sap.ui.define(
 
                       that.getView().byId("idBinNumberInputBinInput_HUSOQ").setValue(oDetails[0].NumIt);
                       that.getView().byId("idBinNumberInputBinNumberInput_HUSOQ").setValue(oDetails[0].NumHu);
-                      that.getView().byId("idBinNumberInputBinNumInput_HUSOQ").setValue(oDetails[0].TopInd);
+                      that.getView().byId("idBinNumberInputBinNumInput_HUSOQ").setValue(oDetails[0].Top);
           
                       // Prepare an array for binding
                       var aProductDetails = [];
@@ -186,7 +186,7 @@ sap.ui.define(
                     that.getView().byId("idBinNumberforlabelInput_HUSOQ").setValue(sHUNumber);
                     that.getView().byId("idBinNumberforbinnumbernput_HUSOQ").setValue(odata.NumIt);
                     that.getView().byId("idBinNumbinnumbernput_HUSOQ").setValue(odata.NumHu);
-                    that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(odata.TopInd);
+                    that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(odata.Top);
 
 
                   
@@ -197,7 +197,7 @@ sap.ui.define(
 
                   that.getView().byId("idBinNumberforbinnumbernput_HUSOQ").setValue(oDetails[0].NumIt);
                   that.getView().byId("idBinNumbinnumbernput_HUSOQ").setValue(oDetails[0].NumHu);
-                  that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(oDetails[0].TopInd);
+                  that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(oDetails[0].Top);
       
                   // Prepare an array for binding
                   var aProductDetails = [];

@@ -91,29 +91,31 @@
                             <HBox
                             id="IdHBox_AHUOBQ"
                                 justifyContent="Center"
-                                class="sapUiSmallMarginTop"
+                               
                             >
+                             <Button
+                                    id="IdBackbutton_AHUOBQ"
+                                    text="Back"
+                                    type="Emphasized"
+                                    press="onPressBackBtnPage1_AHUOBQ"
+                                    class="sapUiTinyMargin"
+                                />
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate_AHUOBQ"
                                     dialogTitle="Enter Bin Number:"
-                                    class="Scannerbtn_AHUOBQ"
+                                    class="sapUiTinyMargin"
                                 />
                                 <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="Submit"
                                     press="onSubmitPress_AHUOBQ"
-                                    class="sapUiTinyMarginBegin"
+                                    class="sapUiTinyMargin"
+                                    
                                 />
-                                <Button
-                                    id="IdBackbutton_AHUOBQ"
-                                    text="Back"
-                                    type="Transparent"
-                                    press="onPressBackBtnPage1_AHUOBQ"
-                                    class="sapUiTinyMarginBegin"
-                                />
+                               
                             </HBox>
                         </VBox>
                     </VBox>
@@ -153,7 +155,7 @@
                             id="idBackBtn2_AHUOBQ"
                             press="onBackPressBinNumbersTable"
                             text="Back"
-                            type="Transparent"
+                            type="Emphasized"
                         />
                         <Button
                             id="idBtnProductDescription_AHUOBQ"
@@ -356,7 +358,7 @@
                                 press="onBackPressHUContentsAHUOBQ"
                                 class="sapUiTinyMarginBottom"
                                 text="Back"
-                                type="Transparent"
+                                type="Emphasized"
                             />
                         </VBox>
                     </form:SimpleForm>
@@ -476,7 +478,7 @@
                                 id="idBackBtnProductDescrption_AHUOBQ"
                                 press="onBackPressProductDescription"
                                 text="Back"
-                                type="Transparent"
+                                type="Emphasized"
                             />
                         </VBox>
                     </form:SimpleForm>
