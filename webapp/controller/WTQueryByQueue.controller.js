@@ -201,7 +201,18 @@ sap.ui.define(
                             oView.byId("idInput5_WTQuerybyQueue").setValue(oSelectedWT.Vlenr);
                             oView.byId("idInput__Dbin_WTQuerybyQueue").setValue(oSelectedWT.Nlpla);
                             oView.byId("idInput6_WTQuerybyQueue").setValue(oSelectedWT.Nlenr);
-                            oView.byId("idInput_Cdat_WTQuerybyQueue").setValue(oSelectedWT.ConfD);
+
+                            var rawDate = oSelectedWT.ConfD;
+                            var year = rawDate.substring(0, 4);
+                            var month = rawDate.substring(4, 6) - 1; 
+                            var day = rawDate.substring(6, 8);
+                            var formattedDate = new Date(year, month, day);
+
+                            // Use Intl.DateTimeFormat to format the date (e.g., "MM/DD/YYYY")
+                            var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                            var formattedDateString = new Intl.DateTimeFormat('en-US', options).format(formattedDate);
+                            // Set the value to the input field
+                            oView.byId("idInput_Cdat_WTQuerybyQueue").setValue(formattedDateString);
                             oView.byId("idInput_Cusr_WTQuerybyQueue").setValue(oSelectedWT.ConfBy);
 
                             function convertMillisecondsToTime(milliseconds) {
@@ -222,7 +233,7 @@ sap.ui.define(
                             }
                             that.oSelectedWT = sSelectedWT;
                             const milliseconds = oSelectedWT.ConfT.ms;
-                            oView.byId("idInput_Cdat_WTQuerybyQueue").setValue(convertMillisecondsToTime(milliseconds));
+                            oView.byId("idInput7_WTQuerybyQueue").setValue(convertMillisecondsToTime(milliseconds));
                             oView.byId("idInput_WTQuerybyQueue").setValue(that.getStatusText(oSelectedWT.Tostat));
                         } else {
                             sap.m.MessageToast.show("WarehouseTask not found.");
