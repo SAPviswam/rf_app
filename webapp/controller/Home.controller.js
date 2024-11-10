@@ -9,7 +9,6 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/m/Popover",
     "sap/ui/core/Fragment"
-
 ],
     function (Controller, MessageBox, MessageToast, BusyIndicator, Device, UIComponent, Popover, Fragment) {
         "use strict";
@@ -105,12 +104,20 @@ sap.ui.define([
                 
             },
             //Profile click function..
-            // onHomePageAvatarPressed: function (oEvent) {
-            //     this.onPressAvatarPopOverBaseFunction(oEvent, {
-            //         showAccountDetails: true,
-            //         showSignOut: true
-            //     });
-            // },
+            onHomePageAvatarPressed: function (oEvent) {
+                this.applyStoredProfileImage();
+                var oComponent = this.getOwnerComponent();
+
+                // Destroy the existing popover if it exists
+                if (oComponent.getPopover()) {
+                    oComponent.getPopover().destroy();
+                    oComponent.setPopover(null);
+                }
+                this.onPressAvatarPopOverBaseFunction(oEvent, {
+                    showAccountDetails: true,
+                    showSignOut: true
+                });
+            },
             onSelectCheckBox: function (oEvent) {
                 const isSelected = oEvent.getParameter("selected");
 

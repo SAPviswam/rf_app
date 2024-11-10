@@ -49,6 +49,7 @@
                     id="idImageAvatarHomeScreen"
                     displaySize="XS"
                     tooltip="Profile"
+                    press="onHomePageAvatarPressed"
                 />
             </tnt:ToolHeader>
         </tnt:header>

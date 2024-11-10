@@ -10,6 +10,7 @@ sap.ui.define([
  
         // Initializing the controller
         onInit: function () {
+
             const oRouter = this.getOwnerComponent().getRouter();  // Getting the router object
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this); // Attach a route event to handle route changes
            
