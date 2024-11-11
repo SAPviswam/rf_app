@@ -242,50 +242,51 @@
                             <columns>
                                 <Column
                                     id="idEmployeeId"
-                                    width="12em"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idtitleEmpID"
                                         text="Resource Id"
+                                        
                                     />
                                 </Column>
-                                <Column id="idEmployeename">
+                                <Column id="idEmployeename"  width="20em" >
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column id="idResourceType">
+                                <Column id="idResourceType" width="20em"   >
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column id="idPhonenumber">
+                                <Column id="idPhonenumber"  width="12em">
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
                                     />
                                 </Column>
-                                <Column id="idEmail">
+                                <Column id="idEmail" width="30em" >
                                     <Title
                                         id="idEmailtitle"
                                         text="Email"
                                     />
                                 </Column>
-                                <Column id="idProcessArea">
+                                <Column id="idProcessArea" width="50em">
                                     <Title
                                         id="idProcessAreatitle"
                                         text="Process Area"
                                     />
                                 </Column>
-                                <Column id="idProcessGroup">
+                                <Column id="idProcessGroup"  width="50em" >
                                     <Title
                                         id="idProcessgrouptitle"
                                         text="Group"
                                     />
                                 </Column>
-                                <Column id="idProcessQueue">
+                                <Column id="idProcessQueue" width="50em" >
                                     <Title
                                         id="idProcessQueuetitle"
                                         text="Queue"
