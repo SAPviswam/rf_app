@@ -226,12 +226,12 @@
                                     text="WT Status"
                                 />
                             </Column>
-                            <Column id="idWtQBWoWhWtNoCol">
+                            <!-- <Column id="idWtQBWoWhWtNoCol">
                                 <Text
                                     id="idWtQBWoWhWtNoText"
                                     text="WT Confimed By"
                                 />
-                            </Column>
+                            </Column> -->
                         </columns>
 
                         <items />

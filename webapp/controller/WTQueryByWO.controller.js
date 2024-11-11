@@ -82,7 +82,6 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoSevenththbackbtn").setVisible(false);
             },
-            
             // Handler for Warehouse Order input change event
             onWtQBWoWhLiveChange: function () {
                 // Get the input value from the input field
@@ -178,8 +177,7 @@ sap.ui.define(
                     template: new sap.m.ColumnListItem({
                         cells: [
                             new sap.m.Text({ text: "{Tanum}" }),   // Display task number
-                            new sap.m.Text({ text: "{Tostat}" }),  // Display task status
-                            new sap.m.Text({ text: "{ConfBy}" })   // Display who confirmed the task
+                            new sap.m.Text({ text: "{Tostat}" })  // Display task status
                         ],
                         type: "Navigation",   // Enable navigation on row click
                         press: [that.onSelectWarehouseOrderTask, that] // Event handler for row press
@@ -210,9 +208,7 @@ sap.ui.define(
                     success: function (odata) {
                         console.log(odata);
                         var aWarehousetask = odata.WarehouseOrdertoTask.results;
-                      
                         var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum"); // Get selected task number
-                      
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
@@ -234,8 +230,18 @@ sap.ui.define(
                             oView.byId("idWtQBWoSbinEmpInput").setValue(oSelectedWT.Vlenr);
                             oView.byId("idWtQBWoDbinInput").setValue(oSelectedWT.Nlpla);
                             oView.byId("idWtQBWoDbinEmpInput").setValue(oSelectedWT.Nlenr);
-                            oView.byId("idWtQBWoCdatInput").setValue(oSelectedWT.ConfD);
                             oView.byId("idWtQBWoCusrInput").setValue(oSelectedWT.ConfBy);
+
+                            // Input date in YYYYMMDD format
+                            const inputDate = oSelectedWT.ConfD ;
+
+                            // Extract year, month, and day
+                            const year = inputDate.substring(0, 4);
+                            const month = inputDate.substring(4, 6);
+                            const day = inputDate.substring(6, 8);
+
+                            // Format into DD:MM:YYYY
+                            const formattedDate = `${day}:${month}:${year}`;
 
                             // Convert and format milliseconds to HH:MM:SS format
                             function convertMillisecondsToTime(milliseconds) {
@@ -255,6 +261,7 @@ sap.ui.define(
                             const milliseconds = oSelectedWT.ConfT.ms;
                             oView.byId("idWtQBWoCdatnput").setValue(convertMillisecondsToTime(milliseconds));
                             oView.byId("idWtQBWoWTitAllInput").setValue(that.getStatusText(oSelectedWT.Tostat));
+                            oView.byId("idWtQBWoCdatInput").setValue(formattedDate);
                         } else {
                             // Show a message if the selected task is not found
                             sap.m.MessageToast.show("WarehouseTask not found.");
@@ -353,17 +360,13 @@ sap.ui.define(
                     case 'A':
                         return 'Canceled';
                     case 'B':
-                        return 'Locked';
-                    case 'D':
-                        return 'In process';
+                        return 'Waiting';
                     case '':
                         return 'Open'; // Default to 'Open' if no status
                     default:
                         return statusCode; // Return original if no match found
                 }
             }
-
-
         });
     }
 );
