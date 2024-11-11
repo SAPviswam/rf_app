@@ -120,7 +120,7 @@ sap.ui.define([
                     success: function (odata) {
                         that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
                         that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
-                        that.
+                        // that.
                         (odata);  // Populate HU details
                     },
                     error: function (oError) {
