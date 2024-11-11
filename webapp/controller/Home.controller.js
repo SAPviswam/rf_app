@@ -105,7 +105,6 @@ sap.ui.define([
             },
             //Profile click function..
             onHomePageAvatarPressed: function (oEvent) {
-                this.applyStoredProfileImage();
                 var oComponent = this.getOwnerComponent();
 
                 // Destroy the existing popover if it exists
@@ -117,6 +116,7 @@ sap.ui.define([
                     showAccountDetails: true,
                     showSignOut: true
                 });
+                this.applyStoredProfileImage();
             },
             onSelectCheckBox: function (oEvent) {
                 const isSelected = oEvent.getParameter("selected");
