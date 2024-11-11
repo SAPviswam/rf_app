@@ -147,6 +147,7 @@ sap.ui.define([
           var oView = that.getView();
           oView.byId("idSBQBBinInput").setValue(odata.Lgtyp);
           oView.byId("idSBQBMaxVInput").setValue(odata.MaxVolume);
+          oView.byId("idSBQBStoreTypeInput1").setValue(odata.Lptyp); 
           oView.byId("idSBQBStoreTypeInput").setValue(odata.Lgber);
           oView.byId("idSBQBQtyWInput").setValue(odata.Ivnum);
           oView.byId("idSBQBStorSecInput").setValue(odata.Anzle);
@@ -158,36 +159,36 @@ sap.ui.define([
           oView.byId("idSBQBStackInput").setValue(odata.Fcapa);
           oView.byId("idSBQBBinAisleInputUOM").setValue(odata.UnitW);
           oView.byId("idSBQBinLevelInputUOM").setValue(odata.UnitV);
-          oView.byId("idinput_MovementId_BQB").setValue(odata.MovedDate);
-          oView.byId("idinput_LastChanged_BQB").setValue(odata.ClearedDate);
-          oView.byId("idinput_MovementId_LI_BQB").setValue(odata.IdatuD);
-          oView.byId("idinput_LastChanged_LI_BQB").setValue(odata.Ivnum);
-          oView.byId("idinput_Movementcbt_LI_BQB").setValue(odata.IvPos);
+          // oView.byId("idinput_MovementId_BQB").setValue(odata.MovedDate);
+          // oView.byId("idinput_LastChanged_BQB").setValue(odata.ClearedDate);
+          // oView.byId("idinput_MovementId_LI_BQB").setValue(odata.IdatuD);
+          // oView.byId("idinput_LastChanged_LI_BQB").setValue(odata.Ivnum);
+          // oView.byId("idinput_Movementcbt_LI_BQB").setValue(odata.IvPos);
 
-          function convertMillisecondsToTime(milliseconds) {
-            // Calculate total seconds
-            let totalSeconds = Math.floor(milliseconds / 1000);
+          // function convertMillisecondsToTime(milliseconds) {
+          //   // Calculate total seconds
+          //   let totalSeconds = Math.floor(milliseconds / 1000);
 
-            // Calculate hours, minutes, and seconds
-            const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
+          //   // Calculate hours, minutes, and seconds
+          //   const hours = Math.floor(totalSeconds / 3600);
+          //   const minutes = Math.floor((totalSeconds % 3600) / 60);
+          //   const seconds = totalSeconds % 60;
 
-            // Format as HH:MM:SS
-            return (
-              String(hours).padStart(2, '0') + ':' +
-              String(minutes).padStart(2, '0') + ':' +
-              String(seconds).padStart(2, '0')
-            );
-          }
+          //   // Format as HH:MM:SS
+          //   return (
+          //     String(hours).padStart(2, '0') + ':' +
+          //     String(minutes).padStart(2, '0') + ':' +
+          //     String(seconds).padStart(2, '0')
+          //   );
+          // }
 
           // Example usage
-          const milliseconds = odata.MovedTime.ms;
-          const milliseconds1 = odata.ClearedTime.ms;
-          const milliseconds2 = odata.IdatuT.ms;
-          oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
-          oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
-          oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
+          // const milliseconds = odata.MovedTime.ms;
+          // const milliseconds1 = odata.ClearedTime.ms;
+          // const milliseconds2 = odata.IdatuT.ms;
+          // oView.byId("idinput_Movement_BQB").setValue(convertMillisecondsToTime(milliseconds));
+          // oView.byId("idinput_Movementcbt_BQB").setValue(convertMillisecondsToTime(milliseconds1));
+          // oView.byId("idinput_Movement_LI_BQB").setValue(convertMillisecondsToTime(milliseconds2));
           that.getView().byId("page2_SBQB").setVisible(false);
           that.getView().byId("page3_SBQB").setVisible(true);
         },
@@ -275,6 +276,7 @@ sap.ui.define([
             // Update the UI with the selected material's details
             oView.byId("idSBQBBinInput_extra").setValue(odata.Lgtyp);
             oView.byId("idSBQBStoreTypeInput_extra").setValue(odata.Lgber);
+            oView.byId("idSBQBStoreTypeInput1_extra").setValue(odata.Lptyp); 
             oView.byId("idSBQBNoOfHuInput_extra").setValue(odata.MaxWeight);
             oView.byId("idSBQBBinAisleInput_extra").setValue(odata.Weight);
             oView.byId("idSBQBMaxWInput_extra").setValue(odata.MaxVolume);

@@ -438,8 +438,9 @@ sap.ui.define([
                                         });
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
+
                                         that.arrayOfDescription = [];
-                                        console.error(oError);
+
                                     }
                                 });
                             });
