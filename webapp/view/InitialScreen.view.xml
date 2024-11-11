@@ -201,7 +201,7 @@
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
-                     <Text text="*" class="sapUiTinyMarginTop star"/>
+                     <Text id="idTextMandt1_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableDescription_InitialView"
                             text="Description:"
@@ -225,7 +225,7 @@
                     <!-- hbox for System Id field -->
 
                     <HBox id="iDhboxSystem_InitialView">
-                    <Text text="*" class="sapUiTinyMarginTop star"/>
+                    <Text id="idTextMandt2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableSystemId_InitialView"
                             text="System Id:"
@@ -247,7 +247,7 @@
                     <!-- hbox for Instance Number field -->
 
                     <HBox id="ighboxInstanceNumber_initialView">
-                    <Text text="*" class="sapUiTinyMarginTop star"/>
+                    <Text id="idTextMandt3_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
@@ -268,7 +268,7 @@
                     <!--hbox for Client field -->
 
                     <HBox id="idhboxClient_InitialView">
-                    <Text text="*" class="sapUiTinyMarginTop star"/>
+                    <Text id="idTextMandt4_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableClient_InitialView"
                             text="Client:"
@@ -290,7 +290,7 @@
                     <!-- hbox for Application server field -->
 
                     <HBox id="idhboxApplicationServer_InitialView">
-                    <Text text="*" class="sapUiTinyMarginTop star"/>
+                    <Text id="idTextMandt5_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableApplicationServer_InitialView"
                             text="Application server:"
