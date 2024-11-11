@@ -335,7 +335,7 @@
                                 <Label
                                     id="idSBQBStorTypeLabel1"
                                     text="BT:"
-                                    width="60Px"
+                                    width="30Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
@@ -343,7 +343,7 @@
                                     value=""
                                     editable="false"
                                     class="sapMInput"
-                                    width="40px"
+                                    width="70px"
                                 />
                             </HBox>
 
@@ -385,14 +385,14 @@
                                 <Label
                                     id="idSBQBStorTypeLabel2"
                                     text="Sect:"
-                                    width="60Px"
+                                    width="40Px"
                                     class="sapUiTinyMarginTop sapMLabel"
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput2"
                                     value=""
                                     editable="false"
-                                    width="40px"
+                                    width="60px"
                                     class="sapMInput"
                                 />
                             </HBox>
@@ -507,7 +507,7 @@
                                     class="sapMInput"
                                 />
                             </HBox>
-                            <HBox
+                            <!-- <HBox
                                 id="idHbox_StockBinQuerybyBin10"
                                 width="100%"
                             >
@@ -620,7 +620,7 @@
                                     class="sapMInput"
                                     width="7.5rem"
                                 />
-                            </HBox>
+                            </HBox> -->
                             <!-- <HBox justifyContent="Center" alignContent="Center" >
                             
                             </HBox> -->
@@ -665,6 +665,11 @@
                     text="HU List"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
                 />
+                <VBox
+                    id="idVbox_StockBinQuerybyBin9"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
                 <f:SimpleForm
                     id="simpleForm_SBQB2"
                     editable="true"
@@ -682,17 +687,20 @@
                     columnsL="1"
                     columnsM="1"
                 >
+                <HBox id="idHbox_StockBinQuerybyBin12">
                     <Label
                         id="_IDListBinDetailsGenLabel_SBQB"
-                        text="Bin"
+                        text="Bin:"
+                        class="sapUiTinyMarginTop"
+
                     />
-                    <HBox id="idHbox_StockBinQuerybyBin12">
                         <Input
                             id="_IDBinListDetailsGenInput1_SBQB"
                             editable="false"
                         />
                     </HBox>
                 </f:SimpleForm>
+                </VBox>
                 <Panel
                     id="idListPanel_SBQB"
                     headerText=""
@@ -802,7 +810,7 @@
                             <Label
                                 id="idLabelBqb_extra1"
                                 text=""
-                                width="2rem"
+                                width="1rem"
                              
                             />
                             <Label
@@ -814,8 +822,8 @@
                                 id="idSBQBStoreTypeInput1_extra"
                                 value=""
                                 editable="false"
-                                width="3.9rem"
                                 class="sapMInput"
+                                width="80px"
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin13">
@@ -851,15 +859,15 @@
                             />
                             <Label
                                 id="idLable_space2_binqbin"
-                                width="2rem"
+                                width="2.2rem"
                                
                             />
                             <Input
                                 id="idSBQBBinAisleInputUOM_extra"
                                 value=""
-                                width="5rem"
                                 editable="false"
                                 class="sapMInput"
+                                width="80px"
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin14">
@@ -900,9 +908,10 @@
                             <Input
                                 id="idSBQBinLevelInputUOM_extra"
                                 value=""
-                                width="5rem"
                                 editable="false"
                                 class="sapMInput"
+                                width="80px"
+                                
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin15">
@@ -956,7 +965,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space3"
-                                width="4rem"
+                                width="3rem"
                             />
                             <Label
                                 id="idlabel_binqbin_RB"
@@ -967,8 +976,8 @@
                                 id="idinput_binqbin_RB"
                                 value=""
                                 editable="false"
-                                width="3rem"
                                 class="sapMInput"
+                                width="80px"
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin18">
@@ -1013,7 +1022,7 @@
                             />
                             <Label
                                 id="idLable_binQbin_space11"
-                                width="4.2rem"
+                                width="3rem"
                             />
                             <Label
                                 id="idlabel_binqbin_IA"
@@ -1024,8 +1033,8 @@
                                 id="idinput_binqbin_IA"
                                 value=""
                                 editable="false"
-                                width="3rem"
                                 class="sapMInput"
+                                width="80px"
                             />
                         </HBox>
                         <HBox id="idHbox_StockBinQuerybyBin17">
@@ -1055,7 +1064,7 @@
                                 value=""
                                 editable="false"
                                 class="sapMInput"
-                                width="12rem"
+                                width="13rem"
                             />
                         </HBox>
                         <VBox
