@@ -394,7 +394,7 @@ sap.ui.define([
                             this.arrayOfButton.forEach(element => {
                             });
                             // Delete from OData service
-                            var oModel = that.getView().getModel(); // Get the OData model
+                            var oModel= this.getOwnerComponent().getModel(); // Get the OData model
                             this.arrayOfClient.forEach(element => {
                                 var sPath = "/ServiceSet('" + element + "')";
                                 oModel.remove(sPath, {
