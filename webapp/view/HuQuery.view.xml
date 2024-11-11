@@ -91,10 +91,11 @@
                             justifyContent="Start"
                         >
                             <!-- Scan HU Label -->
-                            <Label
+                            <Text
                                 id="idScanHuLabel_HuQuery"
                                 text="Scan HU :"
-                                class="ScanHumargin"
+                                width="70px"
+                        
                                
                             />
                             <!-- Input Field -->
@@ -146,11 +147,11 @@
                  <VBox id="idSecScVbox2_HuQuery" justifyContent="Start" >
                     <!-- HU Number Field -->
                     <HBox id="idSecScHbox1_HuQuery">
-                    <Label
+                    <Text
                         id="idHuLabel_HuQuery"
                         text="HU:"
-                        class="sapUiTinyMarginTop"
-                        width="4rem"
+                        
+                        width="70px"
                        
                     />
                     <Input
@@ -164,10 +165,10 @@
  
                     <!-- HU Type Field -->
                      <HBox id="idSecScHbox2_HuQuery" >
-                    <Label
+                    <Text
                         id="idHuTypeLabel_HuQuery"
                         text="HU Type:"
-                        class="sapUiTinyMarginTop"
+                       
                          width="70px"
                     />
                     <Input
@@ -180,10 +181,10 @@
  
                      <!-- packing material -->
                       <HBox id="idSecScHbox3_HuQuery">
-                    <Label
+                    <Text
                         id="idPackagingMaterialLabel_HuQuery"
                         text="PKMT:"
-                        class="sapUiTinyMarginTop"
+                        
                         width="70px"
                     />
                     <Input
@@ -202,10 +203,11 @@
                    
                         <!-- Length Input -->
  
-                            <Label
+                            <Text
                                 id="idLengthLabel_HuQuery"
                                 text="L:"
-                                 class="sapUiTinyMarginTop"
+                                width="30px"
+                                
                                  
                             />
                             <Input
@@ -216,10 +218,11 @@
                                 class="sapUiTinyMarginEnd"
                             />
                        <!-- width -->
-                            <Label
+                            <Text
                                 id="idWidthLabel_HuQuery"
                                 text="W:"
-                               class="sapUiTinyMarginTop"
+                                width="30px"
+                              
                             />
                             <Input
                                 id="idWidthInput_HuQuery"
@@ -231,10 +234,11 @@
                        
                         <!-- Height Input -->
                  
-                            <Label
+                            <Text
                                 id="idHeightLabel_HuQuery"
                                 text="H:"
-                               class="sapUiTinyMarginTop"
+                                width="30px"
+                               
                             />
                             <Input
                                 id="idHeightInput_HuQuery"
@@ -246,10 +250,11 @@
                      
                         <!-- Height Measurements -->
                
-                            <Label
+                            <Text
                                 id="idUnitsLabel_HuQuery"
                                 text="Units:"
-                               class="sapUiTinyMarginTop"
+                                width="50px"
+                              
                             />
                             <Input
                                 id="idUnitsInput_HuQuery"
@@ -269,10 +274,11 @@
                      
                         <!-- Tare Weight Input -->
                      
-                            <Label
+                            <Text
                                 id="idTareWtLabel_HuQuery"
                                 text="Tw:"
-                                class="sapUiTinyMarginTop"
+                                width="30px"
+                                
                             />
                             <Input
                                 id="idTareWtInput_HuQuery"
@@ -284,10 +290,11 @@
                    
                         <!-- Net Weight Input -->
                  
-                            <Label
+                            <Text
                                 id="idNetWtLabel_HuQuery"
                                 text="Nw:"
-                               class="sapUiTinyMarginTop"
+                                  width="30px"
+                              
                             />
                             <Input
                                 id="idNetWtInput_HuQuery"
@@ -299,10 +306,11 @@
                        
                         <!-- Gross Weight Input -->
                        
-                            <Label
+                            <Text
                                 id="idGwLabel_HuQuery"
                                 text="Gw:"
-                               class="sapUiTinyMarginTop"
+                                width="30px"
+                               
                             />
                             <Input
                                 id="idGWtInput_HuQuery"
@@ -314,10 +322,11 @@
                      
                         <!-- Weight Measurements -->
      
-                            <Label
+                            <Text
                                 id="idUnotsLabel_HuQuery"
                                 text="Units:"
-                                class="sapUiTinyMarginTop"
+                                  width="50px"
+                               
                             />
                             <Input
                                 id="idUnitInput_HuQuery"
@@ -328,10 +337,10 @@
                     </HBox>
  
                     <HBox id="idSecScHbox6_HuQuery">
-                    <Label
+                    <Text
                         id="idVolumeLabel_HuQuery"
                         text="Volume:"
-                        class="sapUiTinyMarginTop"
+                        
                         width="70px"
                     />
                     <Input
@@ -342,10 +351,10 @@
  </HBox>
                     <!-- Location and Action Buttons -->
                   <HBox id="idSecScHbox7_HuQuery">
-                    <Label
+                    <Text
                         id="idLocationLabel_HuQuery"
                         text="Location:"
-                        class="sapUiTinyMarginTop"
+                       
                         width="70px"
                     />
                      <Input
@@ -401,6 +410,7 @@
                     growing="true"
                     growingScrollToLoad="true"
                     mode="None"
+                    
                 >
                 <headerToolbar>
                                 <OverflowToolbar id="idOverflowToolBar_HuQuery">
@@ -520,8 +530,6 @@
                                                 priority="NeverOverflow"
                                             />
                                         </layoutData>
-                                 
-                                   
                                     <Button
                                     id="idFourthBackBtn_HuQuery"
                                        
@@ -536,7 +544,7 @@
                     <columns>
                         <Column id="idColumn_HuQuery">
                             <header>
-                                <Label
+                                <Text
                                     id="idSnoLabel_HuQuery"
                                     text="S.No"
                                 />
@@ -544,7 +552,7 @@
                         </Column>
                         <Column id="idHlHu_HuQuery">
                             <header>
-                                <Label
+                                <Text
                                     id="idHlHuLabel_HuQuery"
                                     text="Higher Level HU"
                                 />
@@ -552,7 +560,7 @@
                         </Column>
                         <Column id="idHlestHu_HuQuery">
                             <header>
-                                <Label
+                                <Text
                                     id="idHlestHuLabel_HuQuery"
                                     text="Highest Level HU"
                                 />
