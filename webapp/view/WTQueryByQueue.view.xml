@@ -13,53 +13,17 @@
     <tnt:ToolPage id="idToolPageWtQBQueue">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderWtQBQueue">
-                <Button
-                    id="idWtQBQueuefirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueuefirstBackBtnPress"
-                    visible="true"
-                />
-                <Button
-                    id="idWtQBQueueSecondbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueSecondBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBQueueThirdbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueThirdBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBQueueFourthbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueFourthBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBQueueFifthbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueFifthBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBQueueSixththbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueSixthBackBtnPress"
-                    visible="false"
-                />
-                 <Button
-                    id="idWtQBQueueSevenththbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onWtQBQueueSeventhBackBtnPress"
-                    visible="false"
-                />
                 <Image
                     id="_IDGenImage1WtQBQueue"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!--Title -->
+                <Title
+                    id="idTitle_WTQuerybyQueue"
+                    class="title"
+                    text="CAPmodel RF"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorWtQBQueue"
@@ -82,6 +46,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
+            <!--Scroll Container for First view (Queue)-->
             <ScrollContainer
                 id="idWtQBQueueFirstSC"
                 horizontal="false"
@@ -90,39 +55,63 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-             <VBox alignContent="Center" alignItems="Center" class="sapUiLargeMargin">
-                <form:SimpleForm
-                    id="idWtQBQueueSF1"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                   
+                <VBox
+                    id="idVbox_WTQuerybyQueue"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <HBox alignContent="Center" alignItems="Center">
-                        <Label
-                            id="idWtQBQueueWhLabel"
-                            text="Queue"
-                            width="120px"
-                        />
-                        <Input
-                            id="idWtQBQueueWhInput"
-                            value=""
-                            liveChange="onWtQBQueueWhLiveChange"
-                        />
-                        <Button
-                            id="idWtQBQueueWhScannerBtn"
-                            icon="sap-icon://bar-code"
-                            press="onWtQBQueueWhBarcodeScanner"
-                        />
-                    </HBox>
-                </form:SimpleForm>
-                </VBox >
+                    <form:SimpleForm
+                        id="idWtQBQueueSF1"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHbox_WTQuerybyQueue"
+                            alignContent="Center"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
+                            <Label
+                                id="idWtQBQueueWhLabel"
+                                text="Queue"
+                                width="50px"
+                            />
+                            <Input
+                                id="idWtQBQueueWhInput"
+                                value=""
+                                liveChange="onWtQBQueueWhLiveChange"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHbox_WTQuerybyQueue1"
+                            justifyContent="Center"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <ndc:BarcodeScannerButton
+                                id="IDBinGenScanButton_WTQuerybyQueue"
+                                scanSuccess="onScanSuccessQueue"
+                                scanFail="onScanError"
+                                dialogTitle="Barcode Scanner"
+                            />
+                            <Button
+                                id="idWtQBQueuefirstbackbtn"
+                                text="Back"
+                                press="onWtQBQueuefirstBackBtnPress"
+                                visible="true"
+                                type="Emphasized"
+                                class="sapUiSmallMarginBegin"
+                            />
+                        </HBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
-           
+            <!--Scroll Container for Second view (Warehouse Tasks)-->
             <ScrollContainer
                 id="idWtQBQueueWhThirdsc"
                 horizontal="false"
@@ -131,208 +120,109 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-            <VBox alignContent="Center" alignItems="Center">
-                <form:SimpleForm
-                    id="idWtQBQueueSF3"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                  
+                <VBox
+                    id="idVbox_WTQuerybyQueue1"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <VBox>
-                        <HBox alignContent="Center" alignItems="Center">
+                    <form:SimpleForm
+                        id="idWtQBQueueSF3"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <HBox
+                            id="idHbox_WTQuerybyQueue3"
+                            justifyContent="Center"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
                             <Label
-                                id="idWtQBQueuewtLabel"
-                                text="WT"
-                                width="50px"
+                                id="idLabel_WTQuerybyQueue"
+                                text="Queue"
+                                width="60px"
+                                class="sapUiTinyMarginTop"
                             />
                             <Input
-                                id="idWtQBQueuewtInput"
+                                id="idInput_Wt_WTQuerybyQueue"
                                 value=""
-                            />
- 
-                             <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueWTitLabel"
-                                text="WTit"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueWTitInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueWTitAllInput"
-                                value="ALL"
-                            />
-                   
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueuewtsLabel"
-                                text="WTs"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuewtsInput"
-                                value=""
-                            />
-                        <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueStsLabel"
-                                text="Sts"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueStsInput"
-                                value=""
-                            />
-                       <Label width="30px"></Label>
-                            <Label
-                                id="idWtQBQueuePtypLabel"
-                                text="Ptyp"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuePtypInput"
-                                value=""
+                                editable="false"
                             />
                         </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSproLabel"
-                                text="Spro"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSproInput"
-                                value=""
-                            />
-                            <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueActyLabel"
-                                text="Acty"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueActyInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueActyEmpInput"
-                                value=""
-                            />
-                       
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueProLabel"
-                                text="Pro"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueProInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueProEmpInput"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSbinLabel"
-                                text="Sbin"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSbinInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueSbinEmpInput"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueDbinLabel"
-                                text="Dbin"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueDbinInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueDbinEmpInput"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueCdatLabel"
-                                text="Cdat"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCdatInput"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueCdatnput"
-                                value=""
-                            />
-                       <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueCusrLabel"
-                                text="Cusr"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCusrInput"
-                                value=""
-                            />
-                        </HBox>
-                <VBox alignContent="Center" alignItems="Center" >
-                        <HBox alignContent="Center" alignItems="Center">
+                        <HBox
+                            id="idHbox_WTQuerybyQueue4"
+                            justifyContent="Center"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
                             <Button
-                                id="WtQBQueueDetailBtn"
-                                text="Detail"
-                                press="onWtQBQueueDetailBtnPress"
-                            />
-                            <Button
-                                id="WtQBQueueOpenBtn"
+                                id="IdButton_Open_WTQuerybyQueue"
                                 text="Open"
-                                press="onWtQBQueueOpenBtnPress"
+                                press="onOpenWTQuerybyQueue"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
                             />
                             <Button
-                                id="WtQBQueueConfBtn"
+                                id="IdButton_Conf_WTQuerybyQueue"
                                 text="Conf"
-                                press="onWtQBQueueConfBtnPress"
+                                press="onConfWTQuerybyQueue"
+                                type="Emphasized"
+                                class="sapUiTinyMarginEnd"
                             />
                             <Button
-                                id="WtQBQueueAllBtn"
+                                id="IdButton_All_WTQuerybyQueue"
                                 text="All"
-                                press="onWtQBQueueAllBtnPress"
+                                press="onAllWTQuerybyQueue"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
                             />
-                           
+                            <Button
+                                id="IdButton_Back_WTQuerybyQueue"
+                                text="Back"
+                                press="onBackWTQuerybyQueue"
+                                type="Emphasized"
+                                visible="false"
+                            />
                         </HBox>
-                         </VBox>
-                    </VBox>
-                </form:SimpleForm>
-                 </VBox>
+                    </form:SimpleForm>
+                </VBox>
+                <Panel
+                    id="idPanel_WTQuerybyQueue"
+                    headerText=""
+                    visible="true"
+                    class="sapUiSmallMarginTop"
+                >
+                    <!--Table for the Warhouse Tasks-->
+                    <Table
+                        id="idTableWTQuerybyQueue"
+                        growing="true"
+                        growingThreshold="6"
+                        mode="SingleSelectMaster"
+                        selectionChange="onSelectWarehouseTaskQueue"
+                    >
+                        <columns>
+                            <Column id="idColumn_WTQuerybyQueue">
+                                <Text
+                                    id="idText_WTQuerybyQueue"
+                                    text="WT's"
+                                />
+                            </Column>
+                            <Column id="idColumn_WTStatus_WTQuerybyQueue">
+                                <Text
+                                    id="idText_WTStatus_WTQuerybyQueue"
+                                    text="WT Status"
+                                />
+                            </Column>
+                        </columns>
+                        <items />
+                    </Table>
+                </Panel>
             </ScrollContainer>
+            <!--Scroll Container for Third view (Warehouse Task Details)-->
             <ScrollContainer
                 id="idWtQBQueueWhFourthsc"
                 horizontal="false"
@@ -341,63 +231,330 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-             <VBox alignContent="Center" alignItems="Center" >
-                <form:SimpleForm
-                    id="idWtQBQueueSF4"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-             
+                <VBox
+                    id="idVbox0_WTQuerybyQueue"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                <VBox >
-                    <Title text="Product Description" />
-                   
-                    <HBox alignContent="Center" alignItems="Center" >
-                    <Label id="idWtQBWOQueueLabel" text="WO" width="60px" ></Label>
-                    <Input id="idWtQBWOwoInputtt" value=""></Input>
- 
-                    <Label width="20px"></Label>
- 
-                    <Label id="idWtQBWOEstpLabelll" text="ESTP"  width="60px" ></Label>
-                    <Input id="idWtQBWOEstpInputt" value=""></Input>
- 
-                    </HBox>
-                     <HBox alignContent="Center" alignItems="Center"  >
-                    <Label id="idWtQBWOSqtyLabell" text="Sqty"  width="60px" ></Label>
-                    <Input id="idWtQBWOSqtyInputt" value=""></Input>
-                    <Input id="idWtQBWOPcInputt" value="PC"></Input>
-                       <Label width="20px"></Label>
-                    <Label id="idWtQBWOBtchLabell" text="Btch"  width="60px" ></Label>
-                    <Input id="idWtQBWOBtchInputt" value=""></Input>
-                    </HBox>
- 
-                    <HBox alignContent="Center" alignItems="Center"  >
-                    <Label id="idWtQBWOOwnerLabell" text="Owner"  width="60px" ></Label>
-                    <Input id="idWtQBWOOwnerInputt" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWOPEntLabell" text="PEnt"  width="60px" ></Label>
-                    <Input id="idWtQBWOPEntInputt" value=""></Input>
-                    </HBox>
- 
-                     <HBox alignContent="Center" alignItems="Center"  >
-                    <Label id="idWtQBWOHuWtLabell" text="HuWt"  width="60px" ></Label>
-                    <Input id="idWtQBWOHuWtInputt" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWOHtypeLabell" text="H Type"  width="60px"></Label>
-                    <Input id="idWtQBWOHTypeInputt" value=""></Input>
-                     <Label width="20px"></Label>
-                    <Label id="idWtQBWOWhHuLabell" text="Wh Hu"  width="60px"></Label>
-                    <Input id="idWtQBWOWhHuInputt" value=""></Input>
-                    </HBox>
-                    </VBox>
-                </form:SimpleForm>
-             </VBox>
+                    <form:SimpleForm
+                        id="idWtQBQueueSF4"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox id="idVbox_WTQuerybyQueue2">
+                            <HBox
+                                id="idHbox_WTQuerybyQueue5"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_WT_WTQuerybyQueue"
+                                    text="WT:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_WT_WTQuerybyQueue"
+                                    value=""
+                                    width="140px"
+                                    editable="false"
+                                />
+
+                                <Label
+                                    id="idLabel_Space_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_WTit_WTQuerybyQueue"
+                                    text="WTit:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_WTit_WTQuerybyQueue"
+                                    value=""
+                                    width="50px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_Space1_WTQuerybyQueue"
+                                    width="10px"
+                                />
+                                <Input
+                                    id="idInput_WTQuerybyQueue"
+                                    value=""
+                                    width="85px"
+                                    editable="false"
+                                    class="sapMInput sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox7_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_WTs_WTQuerybyQueue"
+                                    text="WTs:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_WTs_WTQuerybyQueue"
+                                    value=""
+                                    width="50px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_Space2_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_STs_WTQuerybyQueue"
+                                    text="Sts:"
+                                    width="30px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_STs_WTQuerybyQueue"
+                                    value=""
+                                    width="50px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_STyp_WTQuerybyQueue"
+                                    text="STyp:"
+                                    width="40px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_STyp_WTQuerybyQueue"
+                                    value=""
+                                    width="50px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_PTyp_WTQuerybyQueue"
+                                    text="Ptyp:"
+                                    width="40px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_PTyp_WTQuerybyQueue"
+                                    value=""
+                                    width="93px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox8_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Spro_WTQuerybyQueue"
+                                    text="Spro:"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idInput_Spro_WTQuerybyQueue"
+                                    value=""
+                                    width="50px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_Space3_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_Acty_WTQuerybyQueue"
+                                    text="Acty:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Acty_WTQuerybyQueue"
+                                    value=""
+                                    width="70px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput3_WTQuerybyQueue"
+                                    value=""
+                                    width="175px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox9_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Pro_WTQuerybyQueue"
+                                    text="Pro:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Pro_WTQuerybyQueue"
+                                    value=""
+                                    width="290px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput4_WTQuerybyQueue"
+                                    value=""
+                                    width="75px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox10_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Sbin_WTQuerybyQueue"
+                                    text="Sbin:"
+                                    class="sapMLabel"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idInput_Sbin_WTQuerybyQueue"
+                                    value=""
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput5_WTQuerybyQueue"
+                                    value=""
+                                    editable="false"
+                                    width="175px"
+                                    class="sapMInput sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox11_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Dbin_WTQuerybyQueue"
+                                    text="Dbin:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput__Dbin_WTQuerybyQueue"
+                                    value=""
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput6_WTQuerybyQueue"
+                                    value=""
+                                    width="175px"
+                                    editable="false"
+                                    class="sapMInput sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox12_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Cdat_WTQuerybyQueue"
+                                    text="Cdat:"
+                                    width="50px"
+                                    class="sapMLabel "
+                                />
+                                <Input
+                                    id="idInput_Cdat_WTQuerybyQueue"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput7_WTQuerybyQueue"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Label
+                                    id="idLabel_Space4_WTQuerybyQueue"
+                                    width="10px"
+                                />
+                                <Label
+                                    id="idLabel_Cusr_WTQuerybyQueue"
+                                    text="Cusr:"
+                                    width="40px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Cusr_WTQuerybyQueue"
+                                    value=""
+                                    width="130px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+                            <VBox
+                                id="idVbox4_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idHbox13_WTQuerybyQueue"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <Button
+                                        id="idButton_Details_WTQuerybyQueue"
+                                        text="Detail"
+                                        press="onWtQBWoDetailBtnPress"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="idWtQBQueueThirdbackbtn"
+                                        text="Back"
+                                        press="onWtQBQueueSecondBackBtnPress"
+                                        type="Emphasized"
+                                        visible="false"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
-                     <ScrollContainer
+            <!--Scroll Container for Fourth view (Product Details)-->
+            <ScrollContainer
                 id="idWtQBQueueWhFifthsc"
                 horizontal="false"
                 vertical="true"
@@ -405,421 +562,337 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-             <VBox alignContent="Center" alignItems="Center" >
-                <form:SimpleForm
-                    id="idWtQBQueueSF5"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                  
+                <VBox
+                    id="idVbox5_WTQuerybyQueue"
+                    alignContent="Center"
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
                 >
-                    <VBox>
-                        <HBox  alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueuewtLabel2"
-                                text="WT"
-                                width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuewtInput2"
-                                value=""
-                            />
-                            <Label width="20px"/>
- 
-                            <Label
-                                id="idWtQBQueueWTitLabel2"
-                                text="WTit"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueWTitInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueWTitAllInput2"
-                                value="Open"
-                            />
-                       
-                        </HBox>
-  <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueuewtsLabel2"
-                                text="WTs"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuewtsInput2"
-                                value=""
-                            />
- 
-                             <Label width="20px"/>
-                       
-                            <Label
-                                id="idWtQBQueueStsLabel2"
-                                text="Sts"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueStsInput2"
-                                value=""
-                            />
-                         <Label width="30px"/>
-                            <Label
-                                id="idWtQBQueuePtypLabel2"
-                                text="Ptyp"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuePtypInput2"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSproLabel2"
-                                text="Spro"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSproInput2"
-                                value=""
-                            />
-                              <Label width="20px"/>
-                            <Label
-                                id="idWtQBQueueActyLabel2"
-                                text="Acty"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueActyInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueActyEmpInput2"
-                                value=""
-                            />
-                       
-                        </HBox>
-                     
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueProLabel2"
-                                text="Pro"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueProInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueProEmpInput2"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSbinLabel2"
-                                text="Sbin"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSbinInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueSbinEmpInput2"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueDbinLabel2"
-                                text="Dbin"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueDbinInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueDbinEmpInput2"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueCdatLabel2"
-                                text="Cdat"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCdatInput2"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueCdatnput2"
-                                value=""
-                            />
-                        <Label width="20px"/>
-                            <Label
-                                id="idWtQBQueueCusrLabel2"
-                                text="Cusr"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCusrInput2"
-                                value=""
-                            />
-                        </HBox>
- 
-                       
-                    </VBox>
-                </form:SimpleForm>
-                </VBox>
-            </ScrollContainer>
-            <ScrollContainer
-                id="idWtQBQueueWhSixthsc"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-            <VBox alignContent="Center" alignItems="Center" >
-                <form:SimpleForm
-                    id="idWtQBQueueSF6"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                
-                >
-                    <VBox>
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueuewtLabel3"
-                                text="WT"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuewtInput3"
-                                value=""
-                            />
-                            <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueWTitLabel3"
-                                text="WTit"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueWTitInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueWTitAllInput3"
-                                value="Conf"
-                            />
-                       
- 
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueuewtsLabel3"
-                                text="WTs"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuewtsInput3"
-                                value=""
-                            />
-                       <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueueStsLabel3"
-                                text="Sts"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueStsInput3"
-                                value=""
-                            />
-                         <Label width="20px"></Label>
-                            <Label
-                                id="idWtQBQueuePtypLabel3"
-                                text="Ptyp"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueuePtypInput3"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSproLabel3"
-                                text="Spro"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSproInput3"
-                                value=""
-                            />
-<Label width="20px"></Label>
-                         
-                            <Label
-                                id="idWtQBQueueActyLabel3"
-                                text="Acty"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueActyInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueActyEmpInput3"
-                                value=""
-                            />
-                        </HBox>
-                       
-                     
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueProLabel3"
-                                text="Pro"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueProInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueProEmpInput3"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueSbinLabel3"
-                                text="Sbin"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueSbinInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueSbinEmpInput3"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueDbinLabel3"
-                                text="Dbin"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueDbinInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueDbinEmpInput3"
-                                value=""
-                            />
-                        </HBox>
- 
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBQueueCdatLabel3"
-                                text="Cdat"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCdatInput3"
-                                value=""
-                            />
-                            <Input
-                                id="idWtQBQueueCdatnput3"
-                                value=""
-                            />
-                     
-                            <Label
-                                id="idWtQBQueueCusrLabel3"
-                                text="Cusr"
-                                 width="50px"
-                            />
-                            <Input
-                                id="idWtQBQueueCusrInput3"
-                                value=""
-                            />
-                        </HBox>
- 
-                      
-                    </VBox>
-                </form:SimpleForm>
-                </VBox>
-            </ScrollContainer>
-             <ScrollContainer
-                id="idWtQBQueueWhSeventhsc"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-            <VBox alignContent="Center" alignItems="Center">
-                <form:SimpleForm
-                    id="idWtQBQueueSF7"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                 
-                >
-<VBox>
-                        <HBox alignContent="Center" alignItems="Center">
-                            <Label
-                                id="idWtQBWhorLabell"
-                                text="Warehouse Order"
-                                width="150px"
-                            />
-                            <Input  
-                                id="idWtQBWhorInputt"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox alignContent="Center" alignItems="Center">
-                        <Button id="idWtQBQueueWtnobtn" text="WT.No" press="onWtQBQueueWtnobtnPress"></Button>
-                         <Button id="idWtQBQueueOpenWtbtn" text="WT.No" press="onWtQBQueueOpenwtbtnPress"></Button>
-                       <Label width="30px"></Label>
-                        <Button id="idWtQBQueueWtno2btn" text="WT.No" press="onWtQBQueueWtno2btnPress"></Button>
-                         <Button id="idWtQBQueueConfWtbtn" text="WT.No" press="onWtQBQueueConfwtbtnPress"></Button>
-                        </HBox>
+                    <form:SimpleForm
+                        id="idWtQBQueueSF5"
+                        layout="ResponsiveGridLayout"
+                        width="100%"
+                    >
+                        <VBox
+                            id="idVbox3_WTQuerybyQueue"
+                            width="100%"
+                        >
+                            <VBox
+                                id="idVbox14_WTQuerybyQueue"
+                                justifyContent="Center"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Title
+                                    id="idTitle1_WTQuerybyQueue"
+                                    text="Product Details"
+                                    class="sapUiTinyMargin"
+                                />
+                            </VBox>
+                            <HBox id="idHbox25_WTQuerybyQueue">
+                                <Label
+                                    id="idLabel_ProdDisc_WTQuerybyQueue"
+                                    width="45px"
+                                />
+                                <Input
+                                    id="idInput_ProdDisc_WTQuerybyQueue"
+                                    value=""
+                                    width="280px"
+                                    editable="false"
+                                    class="sapMInput sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox14_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Wo_WTQuerybyQueue"
+                                    text="WO:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Wo_WTQuerybyQueue"
+                                    value=""
+                                    width="120px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+
+                                <Label
+                                    id="idLabel_Space13_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_ESTP_WTQuerybyQueue"
+                                    text="ESTP:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_ESTP_WTQuerybyQueue"
+                                    value=""
+                                    width="150px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Label
+                                    id="idLabel_SLED_WTQuerybyQueue"
+                                    text="SLED:"
+                                    width="40px"
+                                    class="sapMLabel sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput_SLED_WTQuerybyQueue"
+                                    value=""
+                                    width="110px"
+                                    editable="false"
+                                    class="sapMInput "
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox15_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Sqty_WTQuerybyQueue"
+                                    text="Sqty:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Sqty_WTQuerybyQueue"
+                                    value=""
+                                    width="120px"
+                                    editable="false"
+                                    class="sapMInput sapUiSmallMarginEnd"
+                                />
+                                <Input
+                                    id="idInput21_WTQuerybyQueue"
+                                    value=""
+                                    width="95px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel_Space21_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_Btch_WTQuerybyQueue"
+                                    text="Btch:"
+                                    width="50px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="IdInput_Btch_WTQuerybyQueue"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Input
+                                    id="IdInput26_WTQuerybyQueue"
+                                    value=""
+                                    width="90px"
+                                    editable="false"
+                                    class="sapMInput sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+                            <HBox id="idHbox26_WTQuerybyQueue">
+                                <Label
+                                    id="idLabel_Qu_WTQuerybyQueue"
+                                    text="Qu:"
+                                    width="60px"
+                                    class="sapMLabel sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idInput_Qu_WTQuerybyQueue"
+                                    value=""
+                                    width="120px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Label
+                                    id="idLabel_Space27_WTQuerybyQueue"
+                                    width="10px"
+                                />
+                                <Label
+                                    id="idLabel_CGrp_WTQuerybyQueue"
+                                    text="CGrp:"
+                                    width="50px"
+                                    class="sapMLabel sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="IdInput_CGrp_WTQuerybyQueue"
+                                    value=""
+                                    width="110px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox22_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_Owner_WTQuerybyQueue"
+                                    text="Owner:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_Owner_WTQuerybyQueue"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="IdLabel22_Space_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_PEnt_WTQuerybyQueue"
+                                    text="PEnt:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_PEnt_WTQuerybyQueue"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHbox23_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel_HuWt_WTQuerybyQueue"
+                                    text="HuWt:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_HuWt_WTQuerybyQueue"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="idLabel23_Space_WTQuerybyQueue"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idLabel_HType_WTQuerybyQueue"
+                                    text="H Type:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_HType_WTQuerybyQueue"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                                <Label
+                                    id="IdLabel24_Space_WTQuerybyQueue"
+                                    width="10px"
+                                />
+                                <Label
+                                    id="idLabel_WhHu_WTQuerybyQueue"
+                                    text="Wh Hu:"
+                                    width="60px"
+                                    class="sapMLabel"
+                                />
+                                <Input
+                                    id="idInput_WhHu_WTQuerybyQueue"
+                                    value=""
+                                    width="40px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Label
+                                    id="idLabel_CR_WTQuerybyQueue"
+                                    text="C/R:"
+                                    width="30px"
+                                    class="sapMLabel sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput_CR_WTQuerybyQueue"
+                                    value=""
+                                    width="60px"
+                                    editable="false"
+                                    class="sapMInput"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox28_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idLabel25_Space_WTQuerybyQueue"
+                                    width="60px"
+                                />
+                                <Input
+                                    id="idInput29_WTQuerybyQueue"
+                                    value=""
+                                    width="130px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput30_WTQuerybyQueue"
+                                    value=""
+                                    width="130px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginBeign sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idInput31_WTQuerybyQueue"
+                                    value=""
+                                    width="130px"
+                                    editable="false"
+                                    class="sapMInput sapUiTinyMarginBeign"
+                                />
+                            </HBox>
+                            <VBox
+                                id="idVbox21_WTQuerybyQueue"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idHbox24_WTQuerybyQueue"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <Button
+                                        id="idButton4_Back_WTQuerybyQueue"
+                                        text="Back"
+                                        press="onPressBackWTQuerybyQueue"
+                                        visible="false"
+                                        type="Emphasized"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
-                </form:SimpleForm>
+                    </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
- 
- 
