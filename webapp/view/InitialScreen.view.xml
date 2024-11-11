@@ -103,7 +103,7 @@
                             <Button
                                 id="idBtnAdd_InitialView"
                                 class="btn"
-                                icon="sap-icon://add"
+                                icon="sap-icon://sys-add"
                                 tooltip="Add"
                                 press="AddPress_InitialView"
                                 type="Transparent"
@@ -157,11 +157,11 @@
                         <!-- button for configure sap system -->
                         <Button
                             id="idBtnConfSAPsys_InitialView"
-                            class=""
+                            class="configureSapBtn_InitialView"
                             text="Configure SAP System"
                             tooltip="configure SAP System"
                             press="AddPress_InitialView"
-                            type="Transparent"
+                            type="Unstyled"
                         />
                         <!-- Link for configuring SAP system -->
                         <HBox id="IDhboxnavup_InitialView">
@@ -201,33 +201,38 @@
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
-                        <Label
+                     <Text id="idTextMandt1_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableDescription_InitialView"
                             text="Description:"
-                            width="8rem"
-                            required="true"
+                             width="8rem"
                             class="sapUiTinyMarginTop"
                         />
+                       
                         <Input
                             id="idDescriptionInput_InitialView"
                             value=""
                             placeholder="Enter Description..."
-                            required="true"
                             class="customInput"
                             width="100%"
+                            required="true"   
+                            valueState="None"  
+                            valueStateText="required."
+
                         />
                     </HBox>
 
                     <!-- hbox for System Id field -->
 
                     <HBox id="iDhboxSystem_InitialView">
-                        <Label
+                    <Text id="idTextMandt2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableSystemId_InitialView"
                             text="System Id:"
-                            width="8rem"
-                             required="true"
+                             width="8rem"
                             class="sapUiTinyMarginTop"
                         />
+                         
                         <Input
                             id="idSystemIdInput_InitialView"
                             value=""
@@ -242,13 +247,14 @@
                     <!-- hbox for Instance Number field -->
 
                     <HBox id="ighboxInstanceNumber_initialView">
-                        <Label
+                    <Text id="idTextMandt3_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableInstanceNumber_InitialView"
                             text="Instance Number:"
-                            width="8rem"
-                             required="true"
+                             width="8rem"
                             class="sapUiTinyMarginTop"
                         />
+                          
                         <Input
                             id="idInstanceNumberInput_InitialView"
                             value=""
@@ -262,13 +268,14 @@
                     <!--hbox for Client field -->
 
                     <HBox id="idhboxClient_InitialView">
-                        <Label
+                    <Text id="idTextMandt4_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableClient_InitialView"
                             text="Client:"
-                            width="8rem"
-                             required="true"
+                             width="8rem"
                             class="sapUiTinyMarginTop"
                         />
+                        
                         <Input
                             id="idClientInput_InitialView"
                             value=""
@@ -283,13 +290,14 @@
                     <!-- hbox for Application server field -->
 
                     <HBox id="idhboxApplicationServer_InitialView">
-                        <Label
+                    <Text id="idTextMandt5_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableApplicationServer_InitialView"
                             text="Application server:"
-                            width="8rem"
-                             required="true"
                             class="sapUiTinyMarginTop"
+                            width="8rem"
                         />
+                       
                         <Input
                             id="idApplicationServerInput_InitialView"
                             value=""
@@ -303,31 +311,31 @@
                     <!-- hbox for sap router string field -->
 
                     <HBox id="idhboxRouterString_InitialView">
-                        <Label
+                        <Text
                             id="idLableRouterString_InitialView"
-                            text="SAP Router String:"
-                            width="8rem"
-                            
+                            text="SAP Router String: "
                             class="sapUiTinyMarginTop"
+                            width="8.3rem"
                         />
+                         
                         <Input
                             id="idRouterStringInput_InitialView"
                             value=""
-                             
                             placeholder="Enter Router String..."
                             class="customInput"
+                            
                             width="100%"
                         />
                     </HBox>
                     <!--hbox for Service field-->
                     <HBox id="idhboxService_InitialView">
-                        <Label
+                        <Text
                             id="idLableService_InitialView"
-                            text="SAP Service:"
-                            width="8rem"
-                           
+                            text="SAP Service: "
+                            width="8.3rem"
                             class="sapUiTinyMarginTop"
                         />
+                         
                         <Input
                             id="idServiceInput_InitialView"
                             value=""
@@ -360,7 +368,7 @@
                         />
                         <Button
                             id="idconnectsapeditButton_InitialView"
-                            text="Edit"
+                            text="Save"
                             press="onEditconnectSAPPress"
                             type="Unstyled"
                             visible="false"

@@ -10,36 +10,35 @@
     displayBlock="true"
     height="100%"
 >
-    <tnt:ToolPage id="idToolPageSNL">
+    <tnt:ToolPage id="idToolPage_SNL">
         <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderSNL">
-                
-                 <Title
-                    id="idTitle_InitialViewsnl"
+            <tnt:ToolHeader id="idtntToolHeader_SNL">
+                <Title
+                    id="idTitle_InitialView_SNL"
                     class="title"
                     text="CAPmodel RF"
                 />
-                
+
                 <Image
-                    id="_IDGenImage1SNL"
+                    id="_IDGenImage1_SNL"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
                 <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorSNL"
+                    id="idToolHeaderUtilitySeparato_SNL"
                 />
-                <ToolbarSpacer id="idToolbarSpacerSNL">
+                <ToolbarSpacer id="idToolbarSpacer_SNL">
                     <layoutData>
                         <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutData1SNL"
+                            id="idOverflowToolbarLayoutData_SNL"
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="_IDGenAvatar1SNL"
+                    id="_IDGenAvatar1_SNL"
                     displaySize="XS"
                     press="onSNLAvatarPressed"
                     tooltip="Profile"
@@ -48,7 +47,7 @@
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
-                id="idSNLFirstSC"
+                id="idFirstSC_SNL"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -56,14 +55,12 @@
                 visible="true"
             >
                 <VBox
-
-                    id="idVbox_StockBinQuerybyBin12"
+                    id="idVbox1_SNL"
                     alignItems="Center"
                     alignContent="Center"
-
                 >
-                
                     <form:SimpleForm
+                        id="idSf1_SNL"
                         layout="ResponsiveGridLayout"
                         labelSpanL="4"
                         labelSpanM="4"
@@ -71,87 +68,84 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
-                        columnsS="1"
                     >
                         <VBox
+                            id="idVbox2_SNL"
                             alignContent="Center"
                             alignItems="Center"
                         >
-
-                            <VBox class="sapUiTinyMarginBottom">
-                                <HBox>
-                                    <Label
-                                        id="idSNLroductLabel"
-                                        text="Product"
-                                        width="100px"
-
+                            <VBox
+                                id="idVbox3_SNL"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <HBox id="idHbox1_SNL">
+                                    <Text
+                                        id="idProductLabel_SNL"
+                                        text="Product:"
+                                        width="60px"
                                         class="sapUiTinyMargin"
                                     />
                                     <Input
-                                        id="idSNLproductInput"
+                                        id="idproductInput_SNL"
                                         value=""
                                     />
                                 </HBox>
-                                <HBox>
-                                    <Label
-                                        id="idSNLSerialNoLabel"
-                                        text="Serial N0"
-                                        width="100px"
+                                <HBox id="idHbox2_SNL">
+                                    <Text
+                                        id="idSerialNoLabel_SNL"
+                                        text="SerialNo:"
+                                        width="60px"
                                         class="sapUiTinyMargin"
                                     />
                                     <Input
-                                        id="idSNLSerialNoInput"
+                                        id="idSerialNoInput_SNL"
                                         value=""
                                     />
-
                                 </HBox>
                                 <HBox
-                                    id="idVbox_StockBinQuerybyBin123"
+                                    id="idVbox4_SNL"
                                     justifyContent="Center"
                                 >
                                     <Button
-                                        id="idSNLfirstBackBtn"
+                                        id="idfirstBackBtn_SNL"
                                         text="Back"
                                         press="onSNLfirxtBackBtnPress"
                                         type="Emphasized"
                                         class="sapUiTinyMargin"
                                     />
                                     <Button
-                                        id="idSNLproductScannerBtn"
+                                        id="idproductScannerBtn_SNL"
                                         icon="sap-icon://bar-code"
                                         press="onSNLproductBarcodeScanner"
                                         class="sapUiTinyMargin"
                                     />
                                     <Button
-                                        id="idSNLproductSubbitBtn"
+                                        id="idSNLproductSubbitBtn_SNL"
                                         text="Submit"
                                         press="onSubmitpress"
                                         class="sapUiTinyMargin"
                                     />
                                 </HBox>
-
                             </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idSNLthirdSC"
+                id="idthirdSC_SNL"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
-
                 <VBox
-                    id="idVbox_StockBinQuerybyBin52"
+                    id="idVbox5_SNL"
                     alignItems="Center"
                     alignContent="Center"
                 >
-
                     <form:SimpleForm
-                        id="simpleform3"
+                        id="idsimpleform3_SNL"
                         layout="ResponsiveGridLayout"
                         labelSpanL="4"
                         labelSpanM="4"
@@ -159,266 +153,244 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
-                        columnsS="1"
                     >
-                        <VBox>
-                            <HBox id="_IDGenHBox14_">
-                                <Label
-                                    id="idProductLa_bel__AIC1"
+                        <VBox id="idVbox6_SNL">
+                            <HBox id="idHbox3_SNL">
+                                <Text
+                                    id="idHULabelid_SNL"
                                     text="HU:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
                                 <Input
-                                    id="idProductInput_AIC1_"
+                                    id="idHUInput_SNL"
                                     maxLength="25"
                                     class="sapUiTinyMarginEnd"
                                     width="100px"
                                     editable="false"
                                 />
-                                <Label id="asdfgUI" />
+                                <Text id="idLabel1_SNL" />
                                 <Input
-                                    id="input_"
+                                    id="idInput1_SNL"
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="_IDGenHBox14__">
-                                <Label
-                                    id="idProductLa_bel___AIC1"
+                            <HBox id="idHbox4_SNL">
+                                <Text
+                                    id="idLocLabel_SNL"
                                     text="Loc:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    id="idProductInput__AIC1_"
+                                    id="idLocInput_SNL"
                                     class="sapUiTinyMarginEnd"
                                     maxLength="25"
                                     width="50px"
                                     editable="false"
                                 />
 
-                                <Label id="asdfgUI_" />
+                                <Text id="idLabel3_SNL" />
                                 <Input
-                                    id="input___"
+                                    id="idlgberInput3_SNL"
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
 
-                                <Label id="asdfgfghjUI_" />
+                                <Text id="idLabel4_SNL" />
                                 <Input
-                                    id="inpufgt___"
+                                    id="idLgplaInput_SNL"
                                     width="110px"
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="asdfgsdffghjUI_" />
+                                <Text id="idLabel5_SNL" />
                                 <Input
-                                    id="inpufsdfgt___"
+                                    id="idLocktypeInput_SNL"
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="_IDGenHBofghx14__">
-                                <Label
-                                    id="idProdu_ctLa_bel___AIC1"
+                            <HBox id="idHbox5_SNL">
+                                <Text
+                                    id="idAqtylabel_SNL"
                                     text="Aqty:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    id="idProductdfghInput__AIC1_"
+                                    id="idAqtyinput_SNL"
                                     maxLength="25"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="asdfgsdUI_" />
+                                <Text id="iLabel6_SNL" />
                                 <Input
-                                    id="inpudfgt___"
+                                    id="idAltmeinput_SNL"
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
 
-                                <Label id="asdfgfgdfghhjUI_" />
+                                <Text id="iLabel7_SNL" />
                                 <Input
-                                    id="inpudfghfgt___"
+                                    id="idCatinput_SNL"
                                     maxLength="25"
                                     width="40px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="_IDGenwertHBox14_">
-                                <Label
-                                    id="idProductertyLa_bel__AIC1"
+                            <HBox id="idHbox6_SNL">
+                                <Text
+                                    id="iLabel8_SNL"
                                     text="Batch:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    id="idProdwertyuctInput_AIC1_"
+                                    id="idCharginput_SNL"
                                     maxLength="25"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
 
-                                <Label id="asdwertfgUI" />
+                                <Text id="iLabel9_SNL" />
                                 <Input
-                                    id="inpwerut_"
+                                    id="idBrestrinput_SNL"
                                     maxLength="25"
                                     width="50px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="IDqtyindhdfgrftWEYputhbx_RCMHU">
-                                <Label
-                                    id="idHubyAShrWETtjfghjyNLabelQ_RCMHU"
+                            <HBox id="idHbox7_SNL">
+                                <Text
+                                    id="idOwnerLabel_SNL"
                                     text="Owner:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    id="inputTsdftgop"
+                                    id="idOwnerinput_SNL"
                                     maxLength="30"
                                     width="100px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
+                                    class="sapUiTinyMarginEnd"
                                 />
 
-                                <Label
-                                    id="idHubyASNtyoYTRYmyyabel__RCMHU"
+                                <Text
+                                    id="idPentLabel_SNL"
                                     text="Pent:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    width="40px"
+
                                 />
                                 <Input
-                                    id="inputftghyLwst"
+                                    id="idEntitledinput_SNL"
                                     maxLength="30"
                                     width="64px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
 
-                                <Label
-                                    id="idHubyASrftgyNoYdhftTRYmyyabel__RCMHU"
+                                <Text
+                                    id="idCooLabel_SNL"
                                     text="Coo:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    width="40px"
                                 />
                                 <Input
-                                    id="inpurtyutMove"
+                                    id="idCooinput_SNL"
                                     maxLength="30"
                                     width="64px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="IDqtyinputhRffCMU">
-                                <Label
-                                    id="idHubyASNLardgfblfty_RMHU"
+                            <HBox id="idHbox8_SNL">
+                                <Text
+                                    id="idLabel9_SNL"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
-                                    id="inputEfr1"
+                                    id="idDocCatinput_SNL"
                                     maxLength="30"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="idHubyfASuomLfjgbe__RCMHU" />
+                                <Text id="idLabel10_SNL" />
                                 <Input
-                                    id="infputEr2"
+                                    id="idDocNoinput_SNL"
                                     maxLength="30"
                                     width="64px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="idHubyASNhfgjhum1Lbel__RCMHU" />
+                                <Text id="idLabel11_SNL" />
                                 <Input
-                                    id="inpfutEr3"
+                                    id="idItemNoinput_SNL"
                                     width="100px"
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
 
-                            <Label id="idNextEnterLabgel_UOBL" />
-                            <HBox justifyContent="Center">
+                            <Text id="idLabel12_SNL" />
+                            <HBox
+                                id="idHbox9_SNL"
+                                justifyContent="Center"
+                            >
                                 <Button
-                                    id="idSNLthirdBackBtn"
+                                    id="idthirdBackBtn_SNL"
                                     text="Back"
                                     press="onSNLthirdBackBtnPress"
                                     type="Emphasized"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Button
+                                    id="idHudetailsbtn_SNL"
                                     text="HU Details"
                                     press="onpresshudetails"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Button
+                                    id="idBindetailsbtn_SNL"
                                     text="Bin Details"
                                     press="onpressBindetails"
                                 />
                             </HBox>
                         </VBox>
-
-<!--                             <HBox
-                                id="_IDGenHjhfkBox61"
-                                width="10px"
-                            />
-                        </HBox>
-                        <Label id="idNextEnterLabgel_UOBL" />
-                        <HBox>
-                            <Button
-                                text="HU Details"
-                                press="onpresshudetails"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <Button
-                                text="Bin Details"
-                                press="onpressBindetails"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <Button
-                    id="idSNLthirdBackBtn"
-                    text="Back"
-                    press="onSNLthirdBackBtnPress"
-                />
-                        </HBox> -->
-
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idSNLfourthSC"
-            
+                id="idfourthSC_SNL"
                 height="100%"
                 horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
             >
-
                 <VBox
-                    id="idVbox_StockBinQuerybyBin78"
+                    id="idVbox12_SNL"
                     alignItems="Center"
                     alignContent="Center"
                 >
                     <form:SimpleForm
-                        id="idProductDeaisFrorm_1"
+                        id="idSF3_SNL"
                         layout="ResponsiveGridLayout"
                         labelSpanL="4"
                         labelSpanM="4"
@@ -427,39 +399,39 @@
                         editable="true"
                         columnsL="2"
                         columnsM="1"
-                        columnsS = "1"
+                        columnsS="1"
                     >
-                        <VBox>
+                        <VBox id="idVbox13_SNL">
                             <!-- 1ST ROW -->
-                            <HBox>
+                            <HBox id="idVbox14_SNL">
                                 <Label
-                                    id="idHubyASNLabelQr_RCMHU1"
+                                    id="idPkmtLabel_SNL"
                                     text="pkmt:"
                                     width="50px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyinputhrbx_RCMHU1">
+                                <HBox id="idHbox14_SNL">
                                     <Input
-                                        id="inputPrkmt"
+                                        id="idPkmtinput_SNL"
                                         maxLength="30"
                                         width="150px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenHBorx571"
+                                        id="idHbox15_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHrUobox__RCMHU1"
+                                        id="idHbox16_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyArSNomabel__RCMHU1"
+                                            id="idHtypLabel_SNL"
                                             text="Htyp:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputHrtyp"
+                                            id="idHtypinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -468,66 +440,62 @@
                                 </HBox>
                             </HBox>
                             <!-- 2ND ROW -->
-                            <HBox>
+                            <HBox id="idHbox17_SNL">
                                 <Label
-                                    id="idHubyASNLabl23rty_RMHU"
+                                    id="idTotwLabel_SNL"
                                     text="Totw:"
                                     width="50px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyrtgyrinputhRCMU">
+                                <HBox id="idHbox18_SNL">
                                     <Input
-                                        id="inputTortw1"
+                                        id="idTotwinput_SNL"
                                         maxLength="30"
                                         width="50px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGentryyuHBox59"
+                                        id="idHbox19_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyAyuiSNHUuorbo_RCMHU"
+                                        id="idHbox20_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label
-                                            id="idHubyrtryuiASuomLbe__RCMHU"
-                                        />
+                                        <Label id="idLabel13_SNL" />
                                         <Input
-                                            id="inputTrotw2"
+                                            id="idUnitGWinput_SNL"
                                             maxLength="30"
                                             width="50px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGentyyurHfgBox59"
+                                        id="idHbox21_SNL"
                                         width="10px"
                                     />
                                     <Label
-                                        id="idHubyASqwrt45y6NLrabl23ty_RMHU"
+                                        id="idTotVLabel_SNL"
                                         text="Totv:"
                                         class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     />
-                                    <HBox id="IDqtyrtgyinpursderftgythRCMU">
+                                    <HBox id="idHbox22_SNL">
                                         <Input
-                                            id="inputToutv1"
+                                            id="idTotVinput_SNL"
                                             width="60px"
                                             editable="false"
                                         />
                                         <HBox
-                                            id="_IDGenertytyryuHBox59"
+                                            id="idHbox24_SNL"
                                             width="10px"
                                         />
                                         <HBox
-                                            id="idHubyAyrty6uruiSNHUuobo_RCMHU"
+                                            id="idHbox25_SNL"
                                             class="customLabelSpacing"
                                         >
-                                            <Label
-                                                id="idHubyrtyrrtyuiASuomLbe__RCMHU"
-                                            />
+                                            <Label id="idLabel14_SNL" />
                                             <Input
-                                                id="inpurtTotv2"
+                                                id="idUnitsGVinput_SNL"
                                                 maxLength="30"
                                                 width="50px"
                                                 editable="false"
@@ -537,34 +505,35 @@
                                 </HBox>
                             </HBox>
                             <!-- 3RD ROW -->
-                            <HBox>
+                            <HBox id="idHbox26_SNL">
                                 <Label
-                                    id="idHubyrAShrtjyNLabelQ_RCMHU"
+                                    id="idMaxWLabel_SNL"
                                     text="MaxW:"
                                     width="50px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyindhrrftputhbx_RCMHU">
+                                <HBox id="idHbox27_SNL">
                                     <Input
-                                        id="inputrMaxW"
+                                        id="idMaxWinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGernHjmBox57"
-                                        width="10px" />
+                                        id="idHbox28_SNL"
+                                        width="10px"
+                                    />
                                     <HBox
-                                        id="idHubyArSNHUukliobox__RCMHU"
+                                        id="idHbox29_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyArSNomyyabel__RCMHU"
+                                            id="idMaxVLabel_SNL"
                                             text="MaxV:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputrMaxV"
+                                            id="idMaxVinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -573,35 +542,35 @@
                                 </HBox>
                             </HBox>
                             <!-- 4TH ROW -->
-                            <HBox>
+                            <HBox id="idHbox30_SNL">
                                 <Label
-                                    id="idHubyAShWR4ETrrtjyNLabelQ_RCMHU"
+                                    id="idTarWLabel_SNL"
                                     text="TarW:"
                                     width="50px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyindhrfWRr4Ttputhbx_RCMHU">
+                                <HBox id="idHbox31_SNL">
                                     <Input
-                                        id="inputTarrW"
+                                        id="idTarWinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenHjETRrEmBox57"
+                                        id="idHbox32_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUErTRukliobox__RCMHU"
+                                        id="idHbox33_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASNErTREomyyabel__RCMHU"
+                                            id="idTarVLabel_SNL"
                                             text="TarV:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputTrarV"
+                                            id="idTarVinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -610,66 +579,62 @@
                                 </HBox>
                             </HBox>
                             <!-- 5TH ROW -->
-                            <HBox>
+                            <HBox id="idHbox34_SNL">
                                 <Label
-                                    width="50px"
-                                    id="idHubyASNLablftry_RMHU"
+                                    id="idLabel15_SNL"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    width="50px"
                                 />
-                                <HBox id="IDqtyinputrhRfCMU">
+                                <HBox id="idHbox35_SNL">
                                     <Input
-                                        id="inputrEr1"
+                                        id="idLengthinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGejrnHBox59"
+                                        id="idHbox36_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNrHUjuobo_RCMHU"
+                                        id="idHbox37_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label id="idHubyrASuomLfjgbe__RCMHU" />
+                                        <Label id="idLabel16_SNL" />
                                         <Input
-                                            id="inputEsr2"
+                                            id="idWidthinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGehgjnsHBox60"
+                                        id="idHbox38_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUugjhosmox1_RCMHU"
+                                        id="idHbox39_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label
-                                            id="idHubyASNhgjhusm1Lbel__RCMHU"
-                                        />
+                                        <Label id="idLabel17_SNL" />
                                         <Input
-                                            id="inputEsr3"
+                                            id="idHeightinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHjhkBsox61"
+                                        id="idHbox40_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHsUomokjhkx1_RCMHU"
+                                        id="idHbox41_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label
-                                            id="idHubyASNkjhsko1Lael__RCMHU"
-                                        />
+                                        <Label id="idLabel18_SNL" />
                                         <Input
-                                            id="inputsEr4"
+                                            id="idUnitlwhinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -678,84 +643,82 @@
                                 </HBox>
                             </HBox>
                             <!-- 6TH ROW -->
-                            <HBox>
+                            <HBox id="idHbox42_SNL">
                                 <Label
+                                    id="idTopLabel_SNL"
                                     width="50px"
-                                    id="idHubyAShrWETtjyNLabeslQ_RCMHU"
                                     text="Top:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyindhrftWEYsuthbx_RCMHU">
+                                <HBox id="idHbox43_SNL">
                                     <Input
-                                        id="inputTops" 
+                                        id="idTopinput_SNL"
                                         width="40px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenHYTRYUjmBsox57"
+                                        id="idHbox44_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUuRYTRklisobox__RCMHU"
+                                        id="idHbox45_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASNoYTRYmsyyabel__RCMHU"
+                                            id="idLwstLabel_SNL"
                                             text="Lwst:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputsLwst"
+                                            id="idLwstinput_SNL"
                                             width="40px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRYUjmsretBox57"
+                                        id="idHbox46_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUugtfhRYTsRkliobox__RCMHU"
+                                        id="idHbox47_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASNoYdhftTsRYmyyabel__RCMHU"
+                                            id="idMoveLabel_SNL"
                                             text="Move:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputsMove"
+                                            id="idMoveinput_SNL"
                                             width="60px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRYhysUjmretBox57"
+                                        id="idHbox48_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUugrhttfhRYTRksliobox__RCMHU"
+                                        id="idHbox49_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASewfterNoYdhftsTRYmyyabel__RCMHU"
+                                            id="idStatLabel_SNL"
                                             text="Stat:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputSstat1"
+                                            id="idStatinput_SNL"
                                             width="40px"
                                             editable="false"
                                         />
                                         <HBox
-                                            id="idHubyAyrty6uuEGHiSNHsUuobo_RCMHU"
+                                            id="idHbox50_SNL"
                                             class="customLabelSpacing"
                                         >
-                                            <Label
-                                                id="idHubyrtyrtyuiWERTsHYASuomLbe__RCMHU"
-                                            />
+                                            <Label id="idLabel19_SNL" />
                                             <Input
-                                                id="inpustStat2"
+                                                id="idHazmatIndinput_SNL"
                                                 width="40px"
                                                 editable="false"
                                             />
@@ -764,35 +727,35 @@
                                 </HBox>
                             </HBox>
                             <!-- 7TH ROW -->
-                            <HBox>
+                            <HBox id="idHbox51_SNL">
                                 <Label
-                                    id="idHubyASNLSDFGasbelQ_RCMHU1"
+                                    id="idBinLabel_SNL"
                                     text="Bin:"
                                     width="50px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
-                                <HBox id="IDqtyinpSDFGutshbx_RCMHU1">
+                                <HBox id="idHbox52_SNL">
                                     <Input
-                                        id="inputsBin1"
+                                        id="idBininput_SNL"
                                         maxLength="30"
                                         editable="false"
                                         width="150px"
                                     />
                                     <HBox
-                                        id="_IDGenSDFHBosx571"
+                                        id="idHbox53_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNSADFHssUobox__RCMHU1"
+                                        id="idHbox54_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASSDFGTNsomabel__RCMHU1"
+                                            id="idCGrpLabel_SNL"
                                             text="CGrp:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputCsGrp"
+                                            id="idCGrpinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -802,11 +765,12 @@
                             </HBox>
 
                             <HBox
+                                id="idHbox55_SNL"
                                 justifyContent="Center"
                                 class="sapUiSmallMarginTop"
                             >
                                 <Button
-                                    id="idSNLfourthBackBtn"
+                                    id="idfourthBackBtn_SNL"
                                     text="Back"
                                     press="onSNLfourthBackBtnPress"
                                     type="Emphasized"
@@ -815,24 +779,22 @@
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
-
             </ScrollContainer>
             <ScrollContainer
-                id="idSNLFifthSC"
+                id="idFifthSC_SNL"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
-
                 <VBox
-                    id="idVbox"
+                    id="idVbox21_SNL"
                     alignItems="Center"
                     alignContent="Center"
                 >
                     <form:SimpleForm
-                        id="simpleform5"
+                        id="idsimpleform_SNL"
                         layout="ResponsiveGridLayout"
                         labelSpanL="4"
                         labelSpanM="4"
@@ -842,77 +804,77 @@
                         columnsM="1"
                         columnsS="1"
                     >
-                        <VBox>
+                        <VBox id="idVbox22_SNL">
                             <!-- 1st row -->
-                            <HBox>
+                            <HBox id="idHbox56_SNL">
                                 <Label
-                                    id="idHubyAShrWsETtjyNLabeslQ_RCMHU"
+                                    id="idStypLabel_SNL"
                                     text="Styp:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyindhrfstWEYsuthbx_RCMHU">
+                                <HBox id="idHbox57_SNL">
                                     <Input
-                                        id="inputTsops"
+                                        id="idStypinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenHYTRsYUjmBsox57"
+                                        id="idHbox58_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUusRYTRklisobox__RCMHU"
+                                        id="idHbox59_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASsNoYTRYmsyyabel__RCMHU"
+                                            id="idSSecLabel_SNL"
                                             text="S Sec:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inpustsLwst"
+                                            id="idSSecinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRYsUjmsretBox57"
+                                        id="idHbox60_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUusgtfhRYTsRkliobox__RCMHU"
+                                        id="idHbox61_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASNoYdshftTsRYmyyabel__RCMHU"
+                                            id="idBTLabel_SNL"
                                             text="BT:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputssMove"
+                                            id="idBTinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRYhyssUjmretBox57"
+                                        id="idHbox62_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUusgrhttfhRYTRksliobox__RCMHU"
+                                        id="idHbox63_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASewftserNoYdhftsTRYmyyabel__RCMHU"
+                                            id="idPBLabel_SNL"
                                             text="PB:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputSsstat1"
+                                            id="idPBinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -921,75 +883,75 @@
                                 </HBox>
                             </HBox>
                             <!-- 2nd row -->
-                            <HBox>
+                            <HBox id="idHbox64_SNL">
                                 <Label
-                                    id="idHubyAShrWsETtjSyNLabeslQ_RCMHU"
+                                    id="idMHULabel_SNL"
                                     text="MHU:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyindhrfstWEYsSuthbx_RCMHU">
+                                <HBox id="idHbox65_SNL">
                                     <Input
-                                        id="inputTSsops"
+                                        id="idMHUinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenHYDTRsYUjmBsox57"
+                                        id="idHbox66_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNDHUusRYTRklisobox__RCMHU"
+                                        id="idHbox67_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASsDNoYTRYmsyyabel__RCMHU"
+                                            id="idAchuLabel_SNL"
                                             text="Achu:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inpusstsLwst"
+                                            id="idAchuinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRsYsUjmsretBox57"
+                                        id="idHbox68_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUussgtfhRYTsRkliobox__RCMHU"
+                                        id="idHbox69_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyASNosYdshftTsRYmyyabel__RCMHU"
+                                            id="idSectLabel_SNL"
                                             text="Sect:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputdssMove"
+                                            id="idSectinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGenHYTRdYhyssUjmretBox57"
+                                        id="idHbox70_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyASNHUdusgrhttfhRYTRksliobox__RCMHU"
+                                        id="idHbox71_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyAdSewftserNoYdhftsTRYmyyabel__RCMHU"
+                                            id="idRBLabel_SNL"
                                             text="RB:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inputWSsstat1"
+                                            id="idRBinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -998,40 +960,40 @@
                                 </HBox>
                             </HBox>
                             <!-- 3rd row -->
-                            <HBox>
+                            <HBox id="idHbox72_SNL">
                                 <Label
-                                    id="idHubyrAShrtjdyNLabelQ_RCMHU"
+                                    id="idMaxWLabel1_SNL"
                                     text="MaxW:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyindhrrftpduthbx_RCMHU">
+                                <HBox id="idHbox73_SNL">
                                     <Input
-                                        id="inpuStrMaxW"
+                                        id="idMaxWinput1_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGernHjSmBox57"
+                                        id="idHbox74_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyArSNHUSukliobox__RCMHU"
+                                        id="idHbox75_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyArSSNomyyabel__RCMHU"
+                                            id="idActwLabel1_SNL"
                                             text="Actw:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inpuStrMaxV"
+                                            id="idActwinput_SNL"
                                             width="90px"
                                             editable="false"
                                         />
                                         <Input
-                                            id="inpuSdtrMaxV"
+                                            id="idUnitWinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -1040,41 +1002,41 @@
                                 </HBox>
                             </HBox>
                             <!-- 4th row -->
-                            <HBox>
+                            <HBox id="idHbox76_SNL">
                                 <Label
-                                    id="idHubyrASShrtjdyNLabelQ_RCMHU"
+                                    id="idMaxVLabel1_SNL"
                                     text="MaxV:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyindhSrrftpduthbx_RCMHU">
+                                <HBox id="idHbox77_SNL">
                                     <Input
-                                        id="inpuSStrMaxW"
+                                        id="idMaxVinput1_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGerSnHjSmBox57"
+                                        id="idHbox78_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyAdrSNHUSukliobox__RCMHU"
+                                        id="idHbox79_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyArdSSNomyyabel__RCMHU"
+                                            id="idActVLabel_SNL"
                                             text="ActV:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inpucSdtrMaxV"
+                                            id="idActVinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
                                         />
                                         <Input
-                                            id="inpuSddtrMaxV"
+                                            id="idUnitVinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -1083,35 +1045,35 @@
                                 </HBox>
                             </HBox>
                             <!-- 5th row -->
-                            <HBox>
+                            <HBox id="idHbox80_SNL">
                                 <Label
-                                    id="idHubyrASShsrtjdyNLabelQ_RCMHU"
+                                    id="idMaxcLabel_SNL"
                                     text="Maxc:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyindhSrsrftpduthbx_RCMHU">
+                                <HBox id="idHbox81_SNL">
                                     <Input
-                                        id="inpuSSstrMaxW"
+                                        id="idMaxcinput_SNL"
                                         maxLength="30"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGerSnHsjSmBox57"
+                                        id="idHbox82_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyAdrSsNHUSukliobox__RCMHU"
+                                        id="idHbox83_SNL"
                                         class="customLabelSpacing"
                                     >
                                         <Label
-                                            id="idHubyArdsSSNomyyabel__RCMHU"
+                                            id="idAvcLabel_SNL"
                                             text="Av.c:"
                                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                         />
                                         <Input
-                                            id="inpucSsdtrMaxV"
+                                            id="idAvcinput_SNL"
                                             maxLength="30"
                                             width="64px"
                                             editable="false"
@@ -1120,64 +1082,60 @@
                                 </HBox>
                             </HBox>
                             <!-- 6th row -->
-                            <HBox>
+                            <HBox id="idHbox84_SNL">
                                 <Label
-                                    id="idHubyASNLabl23raty_RMHU"
+                                    id="idLMLabel_SNL"
                                     text="LM:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
                                 <HBox id="IDqtyrtgyrinSputhRCMU">
                                     <Input
-                                        id="inpuStTortw1"
+                                        id="idLMinput_SNL"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenStryyuHBox59"
+                                        id="idHbox85_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyAyuiSSNHUuorbo_RCMHU"
+                                        id="idHbox86_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label
-                                            id="idHubSyrtryuiASuomLbe__RCMHU"
-                                        />
+                                        <Label id="idLabel22_SNL" />
                                         <Input
-                                            id="inpuStTrotw2"
+                                            id="idMovedTimeinput_SNL"
                                             width="100px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGentyySurHfgBox59"
+                                        id="idHbox87_SNL"
                                         width="10px"
                                     />
                                     <Label
-                                        id="idHubyASqwrtS45y6NLrabl23ty_RMHU"
+                                        id="idLCLabel_SNL"
                                         text="LC:"
                                         class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     />
                                     <HBox id="IDqtyrtgyDinpursderftgythRCMU">
                                         <Input
-                                            id="inputToDutv1"
+                                            id="idLCinput_SNL"
                                             width="110px"
                                             editable="false"
                                         />
                                         <HBox
-                                            id="_IDGenertyDtyryuHBox59"
+                                            id="idHbox88_SNL"
                                             width="10px"
                                         />
                                         <HBox
-                                            id="idHubyAyrty6urDuiSNHUuobo_RCMHU"
+                                            id="idHbox89_SNL"
                                             class="customLabelSpacing"
                                         >
-                                            <Label
-                                                id="idHubyrtyrDrtyuiASuomLbe__RCMHU"
-                                            />
+                                            <Label id="idLabel23_SNL" />
                                             <Input
-                                                id="inpurtSToDtv2"
+                                                id="idChangedTimeinput_SNL"
                                                 width="100px"
                                                 editable="false"
                                             />
@@ -1186,64 +1144,60 @@
                                 </HBox>
                             </HBox>
                             <!-- 7th row -->
-                            <HBox>
+                            <HBox id="idHbox90_SNL">
                                 <Label
-                                    id="idHubyASNLDabl23raty_RMHU"
+                                    id="idLILabel_SNL"
                                     text="LI:"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     width="43px"
                                 />
-                                <HBox id="IDqtyrtDgyrinSputhRCMU">
+                                <HBox id="idHbox91_SNL">
                                     <Input
-                                        id="inpuStTDortw1"
+                                        id="idLIinput_SNL"
                                         width="100px"
                                         editable="false"
                                     />
                                     <HBox
-                                        id="_IDGenStryyDuHBox59"
+                                        id="idHbox92_SNL"
                                         width="10px"
                                     />
                                     <HBox
-                                        id="idHubyAyuiSSNHUuoDrbo_RCMHU"
+                                        id="idHbox93_SNL"
                                         class="customLabelSpacing"
                                     >
-                                        <Label
-                                            id="idHubSyrDtryuiASuomLbe__RCMHU"
-                                        />
+                                        <Label id="idLabel24_SNL" />
                                         <Input
-                                            id="inpuStDTrotw2"
+                                            id="idIdatuTinput_SNL"
                                             width="100px"
                                             editable="false"
                                         />
                                     </HBox>
                                     <HBox
-                                        id="_IDGentyySuDrHfgBox59"
+                                        id="idHbox94_SNL"
                                         width="10px"
                                     />
                                     <Label
-                                        id="idHubyASqwrtS45y6NLDrabl23ty_RMHU"
+                                        id="idIVDOLabel_SNL"
                                         text="IVDO:"
                                         class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     />
-                                    <HBox id="IDqtyrtgyDinpDursderftgythRCMU">
+                                    <HBox id="idHbox95_SNL">
                                         <Input
-                                            id="inputToDDtv1"
+                                            id="idIVDOinput_SNL"
                                             width="100px"
                                             editable="false"
                                         />
                                         <HBox
-                                            id="_IDGenertyDtyDryuHBox59"
+                                            id="idHbox96_SNL"
                                             width="10px"
                                         />
                                         <HBox
-                                            id="idHubyAyrty6urDDuiSNHUuobo_RCMHU"
+                                            id="idHbox97_SNL"
                                             class="customLabelSpacing"
                                         >
-                                            <Label
-                                                id="idHubyrtyDrDrtyuiASuomLbe__RCMHU"
-                                            />
+                                            <Label id="idLabel25_SNL" />
                                             <Input
-                                                id="inpurtToDtv2"
+                                                id="idIvPosinput_SNL"
                                                 width="100px"
                                                 editable="false"
                                             />
@@ -1252,11 +1206,12 @@
                                 </HBox>
                             </HBox>
                             <HBox
+                                id="idHbox98_SNL"
                                 justifyContent="Center"
                                 class="sapUiSmallMarginTop"
                             >
                                 <Button
-                                    id="idSNLfifthBackBtn"
+                                    id="idfifthBackBtn_SNL"
                                     text="Back"
                                     press="onSNLfifthBackBtnPress"
                                     type="Emphasized"
@@ -1264,7 +1219,7 @@
                             </HBox>
                         </VBox>
                     </form:SimpleForm>
-                </VBox>           
+                </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
