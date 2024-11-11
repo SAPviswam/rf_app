@@ -39,10 +39,10 @@ sap.ui.define(
       },
      
       onSBQPSecondBackBtnPress:function(){
-            this.getView().byId("idSBQPFirstSC").setVisible(true)
-            this.getView().byId("idSBQPsecondSC").setVisible(false)
-            this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
-            this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+            this.getView().byId("idFirstSC_SBQP").setVisible(true)
+            this.getView().byId("idsecondSC_SBQP").setVisible(false)
+            this.getView().byId("idfirstbackbtn_SBQP").setVisible(true)
+            this.getView().byId("idSecondbackbtn_SBQP").setVisible(false)
            
       },
       onSBQPfirstBackBtnPress: async function () {
@@ -57,7 +57,7 @@ sap.ui.define(
             else {
               oRouter.navTo("Supervisor", { id: this.ID });
             }
-            this.getView().byId("idSBQProductInput").setValue("")
+            this.getView().byId("idProductinput_SBQP").setValue("")
           }.bind(this),
           error: function () {
             MessageToast.show("User does not exist");
@@ -65,22 +65,23 @@ sap.ui.define(
         });
       },
       onSBQPSecondBackBtnPress: function () {
-        this.getView().byId("idSBQPFirstSC").setVisible(true)
-        this.getView().byId("idSBQPsecondSC").setVisible(false)
-        this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+        this.getView().byId("idFirstSC_SBQP").setVisible(true)
+        this.getView().byId("idsecondSC_SBQP").setVisible(false)
+        this.getView().byId("idfirstbackbtn_SBQP").setVisible(true)
+        this.getView().byId("idSecondbackbtn_SBQP").setVisible(false)
 
       },
+      //scanner
       onScanSuccessProduct: function (oEvent) {
         // Get the scanned bin number from the event
         var sScannedProduct = oEvent.getParameter("text");
-        this.getView().byId("idSBQProductInput").setValue(sScannedProduct);
+        this.getView().byId("idProductinput_SBQP").setValue(sScannedProduct);
         this.onpressProductsubmit();
       },
 
       onpressProductsubmit: function () {
         var oView = this.getView();
-        var sProductNo = oView.byId("idSBQProductInput").getValue();
+        var sProductNo = oView.byId("idProductinput_SBQP").getValue();
         this.sProductNo = sProductNo;
 
         if (sProductNo.length < 10) {
@@ -108,12 +109,12 @@ sap.ui.define(
           success: function (odata) {
             console.log(odata)
             if (odata.Matnr === sProductNo) {
-              that.getView().byId("idSBQPFirstSC").setVisible(false);
-              that.getView().byId("idSBQPsecondSC").setVisible(true);
-              that.getView().byId("idSBQPfirstbackbtn").setVisible(false);
-              that.getView().byId("idSBQPSecondbackbtn").setVisible(true);
-              that.getView().byId("idSBQProductInput2").setEditable(false);
-              that.getView().byId("idSBQProductInput2").setValue(sProductNo);
+              that.getView().byId("idFirstSC_SBQP").setVisible(false);
+              that.getView().byId("idsecondSC_SBQP").setVisible(true);
+              that.getView().byId("idfirstbackbtn_SBQP").setVisible(false);
+              that.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
+              that.getView().byId("idProductinput2_SBQP").setEditable(false);
+              that.getView().byId("idProductinput2_SBQP").setValue(sProductNo);
 
               // Get the product details from the response
               let oDetails = odata.ProductHeadtoItem.results;
@@ -133,10 +134,10 @@ sap.ui.define(
               var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
 
               // Set the model to the table
-              that.byId("idSBQPTable").setModel(oProductModel);
+              that.byId("idTable_SBQP").setModel(oProductModel);
 
               // Bind the items aggregation of the table to the products array in the model
-              that.byId("idSBQPTable").bindItems({
+              that.byId("idTable_SBQP").bindItems({
                 path: "/products",
                 template: new sap.m.ColumnListItem({
                   cells: [
@@ -166,10 +167,10 @@ sap.ui.define(
       },
 
       onSBQPSecondBackBtnPress: function () {
-        this.getView().byId("idSBQPFirstSC").setVisible(true)
-        this.getView().byId("idSBQPsecondSC").setVisible(false)
-        this.getView().byId("idSBQPfirstbackbtn").setVisible(true)
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(false)
+        this.getView().byId("idFirstSC_SBQP").setVisible(true)
+        this.getView().byId("idsecondSC_SBQP").setVisible(false)
+        this.getView().byId("idfirstbackbtn_SBQP").setVisible(true)
+        this.getView().byId("idSecondbackbtn_SBQP").setVisible(false)
 
       },
       onSBQPPreDePress: function () {
@@ -182,16 +183,16 @@ sap.ui.define(
           },
           success: function (odata) {
             var oView = that.getView();
-            oView.byId("idInput_BinQProduct_Product").setValue(odata.Maktx);
-            oView.byId("idSBQPTotWInput").setValue(odata.GWeight);
-            oView.byId("idSBQPTotWInput2").setValue(odata.UnitGw);
-            oView.byId("idSBQPTotVInput").setValue(odata.GVolume);
-            oView.byId("idSBQPTotVInput2").setValue(odata.UnitGv);
+            oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
+            oView.byId("idTotWinput_SBQP").setValue(odata.GWeight);
+            oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
+            oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
+            oView.byId("idUnitGVinput_SBQP").setValue(odata.UnitGv);
 
-            that.getView().byId("idSBQPsecondSC").setVisible(false);
-            that.getView().byId("idSBQPThirdSC").setVisible(true);
-            that.getView().byId("idSBQPSecondbackbtn").setVisible(false);
-            that.getView().byId("idSBQPThirdbackbtn").setVisible(true);
+            that.getView().byId("idsecondSC_SBQP").setVisible(false);
+            that.getView().byId("idThirdSC_SBQP").setVisible(true);
+            that.getView().byId("idSecondbackbtn_SBQP").setVisible(false);
+            that.getView().byId("idThirdbackbtn_SBQP").setVisible(true);
           },
           error: function () {
             sap.m.MessageToast.show("Error fetching products.");
@@ -199,10 +200,10 @@ sap.ui.define(
         });
       },
       onSBQPThirdBackBtnPress: function () {
-        this.getView().byId("idSBQPsecondSC").setVisible(true);
-        this.getView().byId("idSBQPThirdSC").setVisible(false);
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
-        this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
+        this.getView().byId("idsecondSC_SBQP").setVisible(true);
+        this.getView().byId("idThirdSC_SBQP").setVisible(false);
+        this.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
+        this.getView().byId("idThirdbackbtn_SBQP").setVisible(false);
       },
 
       onSelectBin: function (oEvent) {
@@ -227,44 +228,38 @@ sap.ui.define(
 
             if (oSelectedBinDetails) {
               // Update the UI with the selected material's details
-              this.getView().byId("idSBQPBinInput").setValue(oSelectedBinDetails.Lgpla);
-              this.getView().byId("idSBQPStoreTypeInput").setValue(oSelectedBinDetails.Lgtyp);
-              this.getView().byId("idSBQPQtyWInput").setValue(oSelectedBinDetails.Nista);
-              this.getView().byId("idSBQPStorSecInput").setValue(oSelectedBinDetails.Lgber);
-              this.getView().byId("idSBQPNoOfHuInput").setValue(oSelectedBinDetails.Anzle);
-              this.getView().byId("idSBQPBinAisleInput").setValue(Aisle);
-              this.getView().byId("idSBQPStackInput").setValue(Stack);
-              this.getView().byId("idSBQPBinLevelInput").setValue(LvlV);
-              this.getView().byId("idSBQPMaxWInput").setValue(odata.GWeight);
-              this.getView().byId("idSBQPMaxWInput_Weight_Uom").setValue(odata.UnitGw);
-              this.getView().byId("idSBQPMaxVInput").setValue(odata.GVolume);
-              this.getView().byId("idSBQPMaxWInput_Volume_Uom").setValue(odata.UnitGv);
+              this.getView().byId("idBininput_SBQP").setValue(oSelectedBinDetails.Lgpla);
+              this.getView().byId("idStorageTypeInput_SBQP").setValue(oSelectedBinDetails.Lgtyp);
+              this.getView().byId("idQtyInput_SBQP").setValue(oSelectedBinDetails.Nista);
+              this.getView().byId("idSSecinput_SBQP").setValue(oSelectedBinDetails.Lgber);
+              this.getView().byId("idNoOfHuInput_SBQP").setValue(oSelectedBinDetails.Anzle);
+              this.getView().byId("idBinAisleinput_SBQP").setValue(Aisle);
+              this.getView().byId("idStackinput_SBQP").setValue(Stack);
+              this.getView().byId("idBinLevelinput_SBQP").setValue(LvlV);
+              this.getView().byId("idMaxWInput_SBQP").setValue(odata.GWeight);
+              this.getView().byId("idUnitGwInput_SBQP").setValue(odata.UnitGw);
+              this.getView().byId("idMaxVinput_SBQP").setValue(odata.GVolume);
+              this.getView().byId("idUnitGvInput_SBQP").setValue(odata.UnitGv);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
-            this.getView().byId("idSBQPsecondSC").setVisible(false);
-            this.getView().byId("idSBQPFourthSC").setVisible(true);
-            this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
-            this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
-            this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
+            this.getView().byId("idsecondSC_SBQP").setVisible(false);
+            this.getView().byId("idFourthSC_SBQP").setVisible(true);
+            this.getView().byId("idFourthbackbtn_SBQP").setVisible(true);
+            this.getView().byId("idThirdbackbtn_SBQP").setVisible(false);
+            this.getView().byId("idSecondbackbtn_SBQP").setVisible(false);
           },
           error: function () {
             sap.m.MessageToast.show("Error fetching products.");
           }
         });
       },
-      // onSBQPBinDePress: function () {
-      //   this.getView().byId("idSBQPsecondSC").setVisible(false);
-      //   this.getView().byId("idSBQPFourthSC").setVisible(true);
-      //   this.getView().byId("idSBQPFourthbackbtn").setVisible(true);
-      //   this.getView().byId("idSBQPThirdbackbtn").setVisible(false);
-      //   this.getView().byId("idSBQPSecondbackbtn").setVisible(false);
-      // },
+
       onSBQPFourthBackBtnPress: function () {
-        this.getView().byId("idSBQPFourthbackbtn").setVisible(false);
-        this.getView().byId("idSBQPSecondbackbtn").setVisible(true);
-        this.getView().byId("idSBQPsecondSC").setVisible(true);
-        this.getView().byId("idSBQPFourthSC").setVisible(false);
+        this.getView().byId("idFourthbackbtn_SBQP").setVisible(false);
+        this.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
+        this.getView().byId("idsecondSC_SBQP").setVisible(true);
+        this.getView().byId("idFourthSC_SBQP").setVisible(false);
       }
     });
   }

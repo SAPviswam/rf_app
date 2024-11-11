@@ -226,6 +226,7 @@
 
                     <HBox id="iDhboxSystem_InitialView">
                     <Text id="idStar2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+
                         <Text
                             id="idLableSystemId_InitialView"
                             text="System Id:"
@@ -368,7 +369,7 @@
                         />
                         <Button
                             id="idconnectsapeditButton_InitialView"
-                            text="Edit"
+                            text="Save"
                             press="onEditconnectSAPPress"
                             type="Unstyled"
                             visible="false"
