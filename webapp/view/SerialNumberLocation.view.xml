@@ -79,10 +79,10 @@
                                 class="sapUiTinyMarginBottom"
                             >
                                 <HBox id="idHbox1_SNL">
-                                    <Label
+                                    <Text
                                         id="idProductLabel_SNL"
-                                        text="Product"
-                                        width="100px"
+                                        text="Product:"
+                                        width="60px"
                                         class="sapUiTinyMargin"
                                     />
                                     <Input
@@ -91,10 +91,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHbox2_SNL">
-                                    <Label
+                                    <Text
                                         id="idSerialNoLabel_SNL"
-                                        text="Serial N0"
-                                        width="100px"
+                                        text="SerialNo:"
+                                        width="60px"
                                         class="sapUiTinyMargin"
                                     />
                                     <Input
@@ -156,10 +156,10 @@
                     >
                         <VBox id="idVbox6_SNL">
                             <HBox id="idHbox3_SNL">
-                                <Label
+                                <Text
                                     id="idHULabelid_SNL"
                                     text="HU:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
 
@@ -170,7 +170,7 @@
                                     width="100px"
                                     editable="false"
                                 />
-                                <Label id="idLabel1_SNL" />
+                                <Text id="idLabel1_SNL" />
                                 <Input
                                     id="idInput1_SNL"
                                     maxLength="25"
@@ -180,10 +180,10 @@
                                 />
                             </HBox>
                             <HBox id="idHbox4_SNL">
-                                <Label
+                                <Text
                                     id="idLocLabel_SNL"
                                     text="Loc:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -194,7 +194,7 @@
                                     editable="false"
                                 />
 
-                                <Label id="idLabel3_SNL" />
+                                <Text id="idLabel3_SNL" />
                                 <Input
                                     id="idlgberInput3_SNL"
                                     maxLength="25"
@@ -203,7 +203,7 @@
                                     editable="false"
                                 />
 
-                                <Label id="idLabel4_SNL" />
+                                <Text id="idLabel4_SNL" />
                                 <Input
                                     id="idLgplaInput_SNL"
                                     width="110px"
@@ -211,7 +211,7 @@
                                     class="sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="idLabel5_SNL" />
+                                <Text id="idLabel5_SNL" />
                                 <Input
                                     id="idLocktypeInput_SNL"
                                     maxLength="25"
@@ -221,10 +221,10 @@
                                 />
                             </HBox>
                             <HBox id="idHbox5_SNL">
-                                <Label
+                                <Text
                                     id="idAqtylabel_SNL"
                                     text="Aqty:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -234,7 +234,7 @@
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="iLabel6_SNL" />
+                                <Text id="iLabel6_SNL" />
                                 <Input
                                     id="idAltmeinput_SNL"
                                     maxLength="25"
@@ -243,7 +243,7 @@
                                     editable="false"
                                 />
 
-                                <Label id="iLabel7_SNL" />
+                                <Text id="iLabel7_SNL" />
                                 <Input
                                     id="idCatinput_SNL"
                                     maxLength="25"
@@ -253,10 +253,10 @@
                                 />
                             </HBox>
                             <HBox id="idHbox6_SNL">
-                                <Label
+                                <Text
                                     id="iLabel8_SNL"
                                     text="Batch:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -267,7 +267,7 @@
                                     editable="false"
                                 />
 
-                                <Label id="iLabel9_SNL" />
+                                <Text id="iLabel9_SNL" />
                                 <Input
                                     id="idBrestrinput_SNL"
                                     maxLength="25"
@@ -277,51 +277,52 @@
                                 />
                             </HBox>
                             <HBox id="idHbox7_SNL">
-                                <Label
+                                <Text
                                     id="idOwnerLabel_SNL"
                                     text="Owner:"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idOwnerinput_SNL"
                                     maxLength="30"
                                     width="100px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
+                                    class="sapUiTinyMarginEnd"
                                 />
 
-                                <Label
+                                <Text
                                     id="idPentLabel_SNL"
                                     text="Pent:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    width="40px"
+
                                 />
                                 <Input
                                     id="idEntitledinput_SNL"
                                     maxLength="30"
                                     width="64px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
 
-                                <Label
+                                <Text
                                     id="idCooLabel_SNL"
                                     text="Coo:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idCooinput_SNL"
                                     maxLength="30"
                                     width="64px"
-                                    class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
                             </HBox>
                             <HBox id="idHbox8_SNL">
-                                <Label
+                                <Text
                                     id="idLabel9_SNL"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idDocCatinput_SNL"
@@ -330,7 +331,7 @@
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="idLabel10_SNL" />
+                                <Text id="idLabel10_SNL" />
                                 <Input
                                     id="idDocNoinput_SNL"
                                     maxLength="30"
@@ -338,7 +339,7 @@
                                     class="sapUiTinyMarginEnd"
                                     editable="false"
                                 />
-                                <Label id="idLabel11_SNL" />
+                                <Text id="idLabel11_SNL" />
                                 <Input
                                     id="idItemNoinput_SNL"
                                     width="100px"
@@ -347,7 +348,7 @@
                                 />
                             </HBox>
 
-                            <Label id="idLabel12_SNL" />
+                            <Text id="idLabel12_SNL" />
                             <HBox
                                 id="idHbox9_SNL"
                                 justifyContent="Center"

@@ -14,20 +14,21 @@
     >
         <customHeader>
             <Bar>
-                 <contentMiddle>
+                 <contentLeft>
                     <FlexBox
                         id="flexboxHeader"
                         alignItems="Baseline"
                         justifyContent="Center"
                         width="100%">
-                        <Text id="_IDGenTextSAPLogon" text="SAP Connection" textAlign="Center" class="sapMHeader-CTX1" />
+                        <Text id="_IDGenTextSAPLogon" text="SAP Connection" class="sapMHeader-CTX1" />
                     </FlexBox>
-                </contentMiddle>
+                </contentLeft>
                     <contentRight>
                     <Button
                         id="CancelButton_Header"
-                        icon="sap-icon://decline"
+                        icon="sap-icon://sys-cancel"
                         type="Transparent"
+                        tooltip="Close"
                         press="onPressCancleSapLogon"
                     />
                 </contentRight>
