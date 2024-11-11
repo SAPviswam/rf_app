@@ -109,12 +109,15 @@ sap.ui.define(
                         // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
                         // that.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
                         // Optionally, you can also populate fields here based on the result
+                        that.getView().byId("idWtQBWtProductDiscriptioInput").setValue(odata.Maktx);
                         that.getView().byId("idWtQBWtwoInput").setValue(odata.Who);
                         that.getView().byId("idWtQBWtOwnerInput").setValue(odata.Owner);
                         that.getView().byId("idWtQBWtPEntInput").setValue(odata.Entitled);
                         that.getView().byId("idWtQBWtHTypeInput").setValue(odata.Letyp);
                         that.getView().byId("idWtQBWtWhHuInput").setValue(odata.Vlenr);
-                        
+                        that.getView().byId("idWtQBWtEstpInput").setValue(odata.Procs);
+                        that.getView().byId("idWtQBWtSqtyInput").setValue(odata.Vsola);
+                        that.getView().byId("idWtQBWtPcInput").setValue(odata.Altme)
                         
                     },
                     error: function (oError) {
