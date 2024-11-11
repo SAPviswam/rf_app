@@ -368,7 +368,7 @@
                         />
                         <Button
                             id="idconnectsapeditButton_InitialView"
-                            text="Edit"
+                            text="Save"
                             press="onEditconnectSAPPress"
                             type="Unstyled"
                             visible="false"
