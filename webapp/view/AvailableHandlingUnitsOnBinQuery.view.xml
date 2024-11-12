@@ -75,7 +75,7 @@
                             >
                                 <Label
                                     id="idLableBinNumber_AHUOBQ"
-                                    text="Bin Number:"
+                                    text="{i18n>Binnumber_Label_AHUBQ}"
                                     class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -95,7 +95,7 @@
                             >
                              <Button
                                     id="IdBackbutton_AHUOBQ"
-                                    text="Back"
+                                    text="{i18n>Back_button_AHUBQ}"
                                     type="Emphasized"
                                     press="onPressBackBtnPage1_AHUOBQ"
                                     class="sapUiTinyMargin"
@@ -110,7 +110,7 @@
                                 />
                                 <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
-                                    text="Submit"
+                                    text="{i18n>Submit_button_AHUBQ}"
                                     press="onSubmitPress_AHUOBQ"
                                     class="sapUiTinyMargin"
                                     
@@ -133,7 +133,7 @@
                     <HBox id="idBinNumberHBox_AHUOBQ">
                         <Label
                             id="idBinNumberLable_AHUOBQ"
-                            text="Bin Number:"
+                            text="{i18n>Bin_Number_Table_AHUBQ}"
                             class="BinNumberTableLabel_AHUOBQ"
                         />
                         <Input
@@ -148,24 +148,24 @@
                     >
                         <Title
                             id="idTitle_AHUOBQ"
-                            text="Bin Number Table:"
+                            text="{i18n>Bin_Number_Table_AHUBQ}"
                         />
                         <ToolbarSpacer id="IDToolbarsapcer_AHUOBQ" />
                         <Button
                             id="idBackBtn2_AHUOBQ"
                             press="onBackPressBinNumbersTable"
-                            text="Back"
+                            text="{i18n>Back_button_AHUBQ}"
                             type="Emphasized"
                         />
                         <Button
                             id="idBtnProductDescription_AHUOBQ"
-                            text="Prod Description"
+                            text="{i18n>productdescription_button_AHUBQ}"
                             press="onPressProductDescriptionBtn"
                             tooltip="Prod Description"
                         />
                         <Button
                             id="idBtnHUContentBtn_AHUOBQ"
-                            text="HUContent"
+                            text="{i18n>HUContent_button_AHUBQ}"
                             press="onPressHUContentBtn"
                             tooltip="HU Content"
                         />
@@ -181,21 +181,21 @@
                             <Column id="IDGenColumn001_AHUOBQ">
                                 <Text
                                     id="IDGenText001_AHUOBQ"
-                                    text="HU Number"
+                                    text="{i18n>HU_Number_AHUBQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn002_AHUOBQ">
                                 <Text
                                     id="IDGenTextt_AHUOBQ"
-                                    text="Product"
+                                    text="{i18n>product_AHUBQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn_AHUOBQ">
                                 <Text
                                     id="IDGenText_AHUOBQ"
-                                    text="(X)OpenWT"
+                                    text="{i18n>(X)OpenWT_AHUBQ}"
                                     class="HedingNameColor"
 
 
@@ -252,7 +252,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable1_AHUOBQ"
-                                    text="HU Number:"
+                                    text="{i18n>HU_Number_AHUBQ}"
                                   
                                     width="90px"
                                 />
@@ -272,7 +272,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable2_AHUOBQ"
-                                    text="Product:"
+                                    text="{i18n>product_AHUBQ}"
                                     
                                     width="90px"
                                 />
@@ -292,7 +292,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable3-AHUOBQ"
-                                    text="Storage Type:"
+                                    text="{i18n>storageType_Label_AHUBQ}"
                                     
                                     width="90px"
                                 />
@@ -312,7 +312,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable4"
-                                    text="Doc:"
+                                    text="{i18n>Doc_Label_AHUBQ}"
                                    
                                     width="90px"
                                 />
@@ -332,7 +332,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable5"
-                                    text="Quantity:"
+                                    text="{i18n>Quantity_Label_AHUBQ}"
                                    
                                     width="90px"
                                 />
@@ -352,7 +352,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable6"
-                                    text="Owner:"
+                                    text="{i18n>owner_Label_AHUBQ}"
                                    
                                     width="90px"
                                 />
@@ -367,7 +367,7 @@
                                 id="idBackBtn_AHUOBQ"
                                 press="onBackPressHUContentsAHUOBQ"
                                 class="sapUiTinyMarginBottom"
-                                text="Back"
+                                text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
                             />
                         </VBox>
@@ -415,9 +415,9 @@
                             >
                                 <Text
                                     id="idEANUPC_AHUOBQ"
-                                    text="EAN/UPC:"
+                                    text="{i18n>EAN/UPC_Label_AHUBQ}"
                                 
-                                    width="90px"
+                                    width="110px"
                                 />
                                 <Input
                                     id="idHuInput_AHUOBQ"
@@ -435,9 +435,9 @@
                             >
                                 <Text
                                     id="idTotalWeight_AHUOBQ"
-                                    text="Total Weight:"
+                                    text="{i18n>Total_Weight_Label_AHUBQ}"
                                     
-                                    width="90px"
+                                    width="110px"
                                 />
                                 <HBox id="idHBoxTotalWaite_AHUOBQ">
                                     <Input
@@ -466,9 +466,9 @@
                             >
                                 <Text
                                     id="idTotalValue_AHUOBQ"
-                                    text="Total Volume:"
+                                    text="{i18n>Total_Volume_Label_AHUBQ}"
                                  
-                                    width="90px"
+                                    width="110px"
                                 />
                                 <HBox id="idHBoxTotalValue_AHUOBQ">
                                     <Input
@@ -492,7 +492,7 @@
                             <Button
                                 id="idBackBtnProductDescrption_AHUOBQ"
                                 press="onBackPressProductDescription"
-                                text="Back"
+                                text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
                             />
                         </VBox>
