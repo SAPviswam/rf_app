@@ -12,6 +12,7 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+
                 //Profile Image updating(from Base Controller)...
 
                 this.load_100_Client_Metadata();
@@ -50,6 +51,24 @@ sap.ui.define([
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
             },
+
+            // Language Change 
+
+            onLanguageChange: function (oEvent) {
+                // Get selected language from dropdown
+                var sSelectedLanguage = oEvent.getSource().getSelectedKey();
+            
+                // Set the new language for the core configuration
+                sap.ui.getCore().getConfiguration().setLanguage(sSelectedLanguage);
+            
+                // Reload i18n model with the selected language
+                var oI18nModel = new sap.ui.model.resource.ResourceModel({
+                    bundleName: "com.app.rfapp.i18n.i18n",
+                    bundleLocale: sSelectedLanguage  // Set to selected language
+                });
+                this.getView().setModel(oI18nModel, "i18n");
+            },
+                        
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
