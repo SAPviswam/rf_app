@@ -45,7 +45,7 @@ sap.ui.define(
         },
         //on clicking submit button in 1st screen
         onSubmitButtonPress: function () {
-            
+            debugger;
            
                 // Get the input value from the input field
                 var oView = this.getView();
@@ -78,7 +78,7 @@ sap.ui.define(
                         that.getView().byId("idHUStockOverviewQueryfirstbackbtn_HUSOQ").setVisible(false);
                         that.getView().byId("idScforSecondHUStockOverviewQuery_HUSOQ").setVisible(true);
                         that.getView().byId("idHUStockOverviewQuerySecondbackbtn_HUSOQ").setVisible(true);
-                      that.getView().byId("idBinNumberInput_HUSOQ_HUSOQ").setValue(sHUNumber);
+                        that.getView().byId("idBinNumberInput_HUSOQ_HUSOQ").setValue(sHUNumber);
                       
 
 
@@ -151,6 +151,7 @@ sap.ui.define(
         },
         //on clicking on HUQUERYLIST button
         onPressHUQueryList:function(){
+          debugger;
             
             // Get the input value from the input field
             var oView = this.getView();
@@ -328,6 +329,7 @@ sap.ui.define(
         },
         //onclicking on HU query prod info button
         onPressHUQuerystockprodinfoPress:function(){
+           debugger;
             
             var oView = this.getView();
             var sHUNumber = oView.byId("idBinNumberforlabelInput_HUSOQ").getValue();
