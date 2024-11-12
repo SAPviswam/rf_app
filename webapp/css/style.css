@@ -1211,7 +1211,7 @@
 }
 
 .LabelHomepageFragmentSignup5 {
-    margin-top: 0.7rem;
+    margin-top: 0.8rem;
 }
 
 .signupCreatebutton {
@@ -1449,6 +1449,10 @@ margin-right: 20%;
     width: 10%;
     margin-left: 90%;
    
+}
+
+.textBoxForTab_HomeView{
+    margin-left: 30%;
 }
 
 .checkBoxText {
@@ -1740,6 +1744,7 @@ margin-right: 20%;
     background-color: blue; /* Change this to your preferred color */
     color: white;           /* Change this to your preferred color */
 }
+
 .customButtonBackground {
     color: rgb(0, 0, 0);
     background-color: rgb(250, 164, 5);
@@ -1765,12 +1770,38 @@ margin-right: 20%;
     text-align: center; /* Ensure text is centered */
 }
 
+
 /* initial View end */
 
 /* create resource starts */
 
 .star{
     color: red;
+}
+
+
+.VboxForTab{
+    left: 80%;
+}
+
+.responsiveGifTab{
+    margin-left: 33%;
+}
+
+.TextBoxForTab_HomeView{
+    left: 100%;
+}
+
+.createResourceVboxForTab_HomeView{
+    left:90%;
+}
+
+.rflogin_mobile_Home{
+    left:40%;
+}
+
+.createResource_mobile_home{
+    left:25%;
 }
 
 /* create resource ends */
