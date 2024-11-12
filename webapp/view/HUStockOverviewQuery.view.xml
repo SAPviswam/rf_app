@@ -851,7 +851,7 @@
                                 width="100%"
                                 id="hboxPro"
                             >
-                                <Label
+                                <Text
                                     text="Pro:"
                                     id="labelPro"
                                     width="40px"
@@ -860,14 +860,17 @@
                                     width="150px"
                                     id="inputPro"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
-                                <Label
-                                    width="10px"
+                                <Text
+                                   
                                     id="spacerLabel1"
+                                     class="SapUiTinyMargin"
                                 />
                                 <Input
-                                    width="70px"
+                                    width="30px"
                                     id="inputProSmall"
+                                     class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
@@ -879,7 +882,7 @@
                                 width="100%"
                                 id="hboxLargeInput"
                             >
-                                <Label
+                                <Text
                                     id="spacerLabel2"
                                     width="40px"
                                 />
@@ -887,6 +890,7 @@
                                     width="250px"
                                     id="inputLarge"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
                             </HBox>
 
@@ -897,7 +901,7 @@
                                 width="100%"
                                 id="hboxStypBin"
                             >
-                                <Label
+                                <Text
                                     text="Styp:"
                                     id="labelStyp"
                                     width="40px"
@@ -906,16 +910,18 @@
                                     width="70px"
                                     id="inputStyp"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
-                                <Label
+                                <Text
                                     width="10px"
                                     id="spacerLabel3"
                                 />
-                                <Label
+                                <Text
                                     text="Bin:"
                                     id="labelBin"
+                                     class="sapUiTinyMarginTop"
                                 />
-                                <Label
+                                <Text
                                     width="5px"
                                     id="spacerLabel4"
                                 />
@@ -923,6 +929,7 @@
                                     width="120px"
                                     id="inputBin"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
                             </HBox>
 
@@ -933,7 +940,7 @@
                                 width="100%"
                                 id="hboxAqty"
                             >
-                                <Label
+                                <Text
                                     text="Aqty:"
                                     id="labelAqty"
                                     width="40px"
@@ -942,8 +949,9 @@
                                     width="70px"
                                     id="inputAqty"
                                     editable="false"
+                                     class="sapUiTinyMarginTop"
                                 />
-                                <Label
+                                <Text
                                     width="40px"
                                     id="spacerLabel5"
                                 />
@@ -951,6 +959,7 @@
                                     width="100px"
                                     id="inputAqtySmall"
                                     editable="false"
+                                     class="sapUiTinyMarginTop"
                                 />
                             </HBox>
 
@@ -961,7 +970,7 @@
                                 width="100%"
                                 id="hboxBtchStyp"
                             >
-                                <Label
+                                <Text
                                     text="Btch:"
                                     id="labelBtch"
                                     width="40px"
@@ -970,6 +979,7 @@
                                     width="70px"
                                     id="inputBtch"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Label
                                     width="40px"
@@ -998,7 +1008,7 @@
                                 width="100%"
                                 id="hboxOwnrPent"
                             >
-                                <Label
+                                <Text
                                     text="Ownr:"
                                     id="labelOwnr"
                                     width="40px"
@@ -1007,6 +1017,7 @@
                                     width="70px"
                                     id="inputOwnr"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Label
                                     width="10px"
@@ -1034,12 +1045,17 @@
                                 width="100%"
                                 id="hboxMiscInputs"
                             >
+                            <Text
+                                    id="spacerLabel_2"
+                                    width="40px"
+                                />
                                 <Input
                                     width="70px"
                                     id="inputMisc1"
                                     editable="false"
+                                     class="sapUiTinyMarginTop"
                                 />
-                                <Label
+                                <Text
                                     width="10px"
                                     id="spacerLabel9"
                                 />
