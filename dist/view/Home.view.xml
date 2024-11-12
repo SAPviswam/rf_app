@@ -68,7 +68,7 @@
                     class="configTextVbox sapUiLargeMargin"
                 >
                     <!-- vbox for subtitle "Configure SAP System" -->
-                    <VBox class="configtitle">
+                    <VBox id="idVbox4_HomeView" class="configtitle">
                         <Title
                             id="IdSubTitle_HomeView"
                             class="configSubTitle"
@@ -93,23 +93,22 @@
                         >
                             <html:img
                                 id="idGif_HomeView"
-                                src="Images/Gif animation 1.gif"
-                                style="width:1000px; height:700px; max-width:800%;"
+                                src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJkYmQycWpiendiMHp0NWtiem16MTEzZTFrZzNja2Jua2c0OTBmNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PfmcrhvmzJZ03tE8hu/giphy-downsized-large.gif"
+                                style="width:750px; height:500px;"
                                 class="responsiveGif"
                             />
                         </VBox>
                         <VBox
                             id="idVboxRfLogin_HomeView"
-                            alignItems="End"
-                            width="70%"
-                           
+                            alignItems="End" 
                         >
                             <!-- VBox for the input fields on the right side -->
                             <VBox
                                 id="idVBoxInputFields_HomeView"
-                               
+                                class="vboxRfLogin_HomeView"
                             >
                                 <Title
+                                    id="idTitle_HomeView"
                                     text="RF Login"
                                     class="RFLoginText"
                                     level="H2"
@@ -117,7 +116,7 @@
                                 <!-- Labels and Inputs for Warehouse No and Resource -->
                                 <HBox id="idhboxFields_HomeView">
 
-                                    <VBox>
+                                    <VBox id="idVbox3_HomeView">
                                         <Label
                                             id="idLabelHU"
                                             text="Warehouse No:"
@@ -135,7 +134,7 @@
                                         id="idtext"
                                         width="0.4rem"
                                     />
-                                    <VBox>
+                                    <VBox id="idVbox2_HomeView">
                                         <MultiInput
                                             id="idHUInput"
                                             width="7rem"
@@ -160,6 +159,7 @@
                                         select="onSelectCheckBox"
                                     />
                                     <Button
+                                        id="idNextBtn_HomeView"
                                         text="Next"
                                         type="Emphasized"
                                         press="onPressConnectButton"
@@ -194,6 +194,7 @@
                                 class="homeScreenCreateResourceVbox"
                             >
                                 <VBox
+                                    id="idVbox1_HomeView"
                                     alignContent="Center"
                                     alignItems="Center"
                                 >
@@ -334,8 +335,8 @@
                         >
                             <html:img
                                 id="idGif_HomeViewTab"
-                                src="Images/Gif animation 1.gif"
-                                style="width:600px; height:580px; max-width:800%;"
+                                src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJkYmQycWpiendiMHp0NWtiem16MTEzZTFrZzNja2Jua2c0OTBmNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PfmcrhvmzJZ03tE8hu/giphy-downsized-large.gif"
+                                style="width:500px; height:500px;"
                                 class="responsiveGifTab"
                             />
                         </VBox>
