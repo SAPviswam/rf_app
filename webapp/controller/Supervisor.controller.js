@@ -937,7 +937,8 @@ sap.ui.define(
             
                                 // Add unique Processarea values to the Set
                                 aProcessAreas.forEach(function (item) {
-                                    uniqueProcessAreasSet.add(item.Processarea);
+                                    var oProccessArea = item.Processarea.charAt(0).toUpperCase() + item.Processarea.slice(1).toLowerCase();
+                                    uniqueProcessAreasSet.add(oProccessArea);
                                 });
             
                                 // Convert the Set back to an array for the JSON model

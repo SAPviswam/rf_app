@@ -24,7 +24,7 @@
                 <Title
                     id="idTitle_InitialView"
                     class="title"
-                    text="CAPmodel RF"
+                    text="{i18n>CAP_Title}"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparator_InitialView"
@@ -42,15 +42,12 @@
                 <Avatar
                     id="idImageAvatarInitialScreen_InitialView"
                     displaySize="XS"
-                    tooltip="Profile"
+                    tooltip="{i18n>Prf_Ttip_IV}"
                 />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-
-        
-          
-         <!-- scroll container for total view -->
+            <!-- scroll container for total view -->
             <ScrollContainer
                 id="idScrollContainer1_InitialView"
                 horizontal="false"
@@ -59,30 +56,46 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-
                 <!-- vbox for sub title and left side text -->
+                <!-- languages -->
+                <Select
+                    id="idlanguageSelect_IV"
+                    change="onLanguageChange"
+                >
+                    <items>
+                        <core:Item
+                            id="idCoreItem1"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItem2"
+                            key="de"
+                            text="German"
+                        />
+                    </items>
+                </Select>
+
                 <VBox
                     id="IdMainVbox_InitialView"
                     class="configTextVbox sapUiLargeMargin"
                 >
-                    <VBox id="idVboxDescription_InitialView" class="div">
-                    <Title
+                    <VBox
+                        id="idVboxDescription_InitialView"
+                        class="div"
+                    >
+                        <Title
                             id="IdSubTitle_InitialView"
                             class="configSubTitle"
-                            text="Configure SAP System"
+                            text="{i18n>configSAPSys_IV}"
                         />
-                        <html:div>
-                            Set the
-                            <html:span
-                                id="idSapnDesc_InitialView"
-                                class="span"
-                            >
-                                System Parameters
-                            </html:span>
-                            as required,If you want Description with combination
-                            System ID/Client select " Description as System
-                            ID/Client " checkbox
-                        </html:div>
+                        <!-- test -->
+                        <Text
+                            id="idScreenDes_InitialView"
+                            text="{path: 'i18n>ScreenDescri_IV', formatter: ''}"
+                        />
+
+                        <!-- test -->
                     </VBox>
                 </VBox>
                 <!--Main vbox for add, edit, delete and configure sap system buttons  -->
@@ -103,15 +116,15 @@
                             <Button
                                 id="idBtnAdd_InitialView"
                                 class="btn"
-                                icon="sap-icon://add"
-                                tooltip="Add"
+                                icon="sap-icon://sys-add"
+                                tooltip="{i18n>add_Ttip_IV}"
                                 press="AddPress_InitialView"
                                 type="Transparent"
                             />
                             <Text
                                 id="idBtnText_InitialView"
                                 class="btn"
-                                text="Add"
+                                text="{i18n>add_Des_IV}"
                             />
                         </VBox>
                         <!-- vbox for edit button -->
@@ -120,13 +133,13 @@
                                 id="idBtnEdit_InitialView"
                                 class="btn"
                                 icon="sap-icon://edit"
-                                tooltip="edit"
+                                tooltip="{i18n>edit_Ttip_IV}"
                                 press="onEditConfiguredSystem"
                                 type="Transparent"
                             />
                             <Text
                                 id="idBtnEditText_InitialView"
-                                text="Edit"
+                                text="{i18n>edit_Des_IV}"
                                 class="btn"
                             />
                         </VBox>
@@ -136,13 +149,13 @@
                                 id="idBtnDelete_InitialView"
                                 class="btn"
                                 icon="sap-icon://delete"
-                                tooltip="delete"
+                                tooltip="{i18n>del_Ttip_IV}"
                                 press="onDeleteConfiguredSystem"
                                 type="Transparent"
                             />
                             <Text
                                 id="idDeleteText_InitialView"
-                                text="Delete"
+                                text="{i18n>del_Des_IV}"
                                 class="btn"
                             />
                         </VBox>
@@ -157,18 +170,18 @@
                         <!-- button for configure sap system -->
                         <Button
                             id="idBtnConfSAPsys_InitialView"
-                            class=""
-                            text="Configure SAP System"
-                            tooltip="configure SAP System"
+                            class="configureSapBtn_InitialView"
+                            text="{i18n>configSAPSys_IV}"
+                            tooltip="{i18n>configSAPSys_IV}"
                             press="AddPress_InitialView"
-                            type="Transparent"
+                            type="Unstyled"
                         />
                         <!-- Link for configuring SAP system -->
                         <HBox id="IDhboxnavup_InitialView">
                             <Button
                                 id="idUpNavigationButton_InitialView"
                                 icon="sap-icon://navigation-up-arrow"
-                                tooltip="Previous"
+                                tooltip="{i18n>previous_Ttip_IV}"
                                 press="onNavNext"
                                 visible="false"
                             />
@@ -181,7 +194,7 @@
                             <Button
                                 id="idDownNavigationButton_InitialView"
                                 icon="sap-icon://navigation-down-arrow"
-                                tooltip="Next"
+                                tooltip="{i18n>next_Ttip_IV}"
                                 press="onNavPrevious"
                             />
                         </HBox>
@@ -196,42 +209,47 @@
                     id="idConfigSapSysVbox_InitialView"
                     visible="false"
                 >
-
-                
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
-                        <Label
+
+                     <Text id="idStar1_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+
+                        <Text
                             id="idLableDescription_InitialView"
-                            text="Description:"
+                            text="{i18n>des_Txt_IV}"
                             width="8rem"
-                            required="true"
                             class="sapUiTinyMarginTop"
                         />
+
                         <Input
                             id="idDescriptionInput_InitialView"
                             value=""
-                            placeholder="Enter Description..."
-                            required="true"
+                            placeholder="{i18n>enterDes_IV}"
                             class="customInput"
                             width="100%"
+                            required="true"
+                            valueState="None"
+                            valueStateText="{i18n>required_IV}"
                         />
                     </HBox>
 
                     <!-- hbox for System Id field -->
 
                     <HBox id="iDhboxSystem_InitialView">
-                        <Label
+                    <Text id="idStar2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+
+                        <Text
                             id="idLableSystemId_InitialView"
-                            text="System Id:"
+                            text="{i18n>sysId_Txt_IV}"
                             width="8rem"
-                             required="true"
                             class="sapUiTinyMarginTop"
                         />
+
                         <Input
                             id="idSystemIdInput_InitialView"
                             value=""
-                            placeholder="ID"
+                            placeholder="{i18n>Id_PlaceHldr_IV}"
                             maxLength="3"
                             width="100%"
                             required="true"
@@ -242,17 +260,18 @@
                     <!-- hbox for Instance Number field -->
 
                     <HBox id="ighboxInstanceNumber_initialView">
-                        <Label
+                    <Text id="idStar3_InitialView"  text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableInstanceNumber_InitialView"
-                            text="Instance Number:"
+                            text="{i18n>InstanceNum_Txt_IV}"
                             width="8rem"
-                             required="true"
                             class="sapUiTinyMarginTop"
                         />
+
                         <Input
                             id="idInstanceNumberInput_InitialView"
                             value=""
-                            placeholder="Num"
+                            placeholder="{i18n>num_PlaceHldr_IV}"
                             required="true"
                             maxLength="2"
                             width="100%"
@@ -262,18 +281,19 @@
                     <!--hbox for Client field -->
 
                     <HBox id="idhboxClient_InitialView">
-                        <Label
+                    <Text id="idStar4_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableClient_InitialView"
-                            text="Client:"
+                            text="{i18n>client_Txt_IV}"
                             width="8rem"
-                             required="true"
                             class="sapUiTinyMarginTop"
                         />
+
                         <Input
                             id="idClientInput_InitialView"
                             value=""
-                             required="true"
-                            placeholder="Client"
+                            required="true"
+                            placeholder="{i18n>client_PlaceHldr_IV}"
                             maxLength="3"
                             width="100%"
                             editable="true"
@@ -283,18 +303,19 @@
                     <!-- hbox for Application server field -->
 
                     <HBox id="idhboxApplicationServer_InitialView">
-                        <Label
+                    <Text id="idStar5_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
                             id="idLableApplicationServer_InitialView"
-                            text="Application server:"
-                            width="8rem"
-                             required="true"
+                            text="{i18n>app_server_Txt_IV}"
                             class="sapUiTinyMarginTop"
+                            width="8rem"
                         />
+
                         <Input
                             id="idApplicationServerInput_InitialView"
                             value=""
-                             required="true"
-                            placeholder="Enter Application server..."
+                            required="true"
+                            placeholder="{i18n>AppSrv_PlaceHldr_IV}"
                             class="customInput"
                             width="100%"
                             maxLength="200"
@@ -303,37 +324,35 @@
                     <!-- hbox for sap router string field -->
 
                     <HBox id="idhboxRouterString_InitialView">
-                        <Label
+                        <Text
                             id="idLableRouterString_InitialView"
-                            text="SAP Router String:"
-                            width="8rem"
-                            
+                            text="{i18n>SAPRouterStr_Txt_IV}"
                             class="sapUiTinyMarginTop"
+                            width="8.3rem"
                         />
+
                         <Input
                             id="idRouterStringInput_InitialView"
                             value=""
-                             
-                            placeholder="Enter Router String..."
+                            placeholder="{i18n>entrRouterStr_PlaceHldr_IV}"
                             class="customInput"
                             width="100%"
                         />
                     </HBox>
                     <!--hbox for Service field-->
                     <HBox id="idhboxService_InitialView">
-                        <Label
+                        <Text
                             id="idLableService_InitialView"
-                            text="SAP Service:"
-                            width="8rem"
-                           
+                            text="{i18n>SAPSrvc_Txt_IV}"
+                            width="8.3rem"
                             class="sapUiTinyMarginTop"
                         />
+
                         <Input
                             id="idServiceInput_InitialView"
                             value=""
-                            placeholder="Enter Service..."
+                            placeholder="{i18n>entrSvr_PlaceHldr_IV}"
                             class="customInput"
-                            
                             width="100%"
                         />
                     </HBox>
@@ -341,7 +360,7 @@
                     <CheckBox
                         id="idCheckboxDescription_InitialView"
                         class="checkBoxText sapUiSmallMarginTop sapUiSmallMarginBottom"
-                        text="Description as System ID/Client"
+                        text="{i18n>desAsClient_ChkBx_IV}"
                     />
                     <!-- </HBox> -->
 
@@ -353,14 +372,14 @@
                     >
                         <Button
                             id="idconnectsapcancelButton_InitialView"
-                            text="Clear"
+                            text="{i18n>clear_Btn_IV}"
                             press="onClearconnectSAPPress"
                             type="Unstyled"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idconnectsapeditButton_InitialView"
-                            text="Edit"
+                            text="{i18n>save_Btn_IV}"
                             press="onEditconnectSAPPress"
                             type="Unstyled"
                             visible="false"
@@ -368,30 +387,28 @@
                         />
                         <Button
                             id="idconnectsapbackButton_InitialView"
-                            text="Cancel"
+                            text="{i18n>cancel_Btn_IV}"
                             type="Unstyled"
                             press="onBackconnectSAPPress"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idconnectsapfinishButton_InitialView"
-                            text="Finish"
+                            text="{i18n>finish_Btn_IV}"
                             type="Unstyled"
                             press="onFinishconnectSAPPress"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
                             id="idhelpconnectsapButton_InitialView"
-                            text="Help"
+                            text="{i18n>help_Btn_IV}"
                             type="Unstyled"
                             press="onHelpconnectsapDialog"
                             class="dialogButton_sapconnect"
                         />
                     </HBox>
                 </VBox>
-                </ScrollContainer>
-           
-            
+            </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>

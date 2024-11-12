@@ -1,147 +1,158 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
-        "sap/ui/core/UIComponent"
+        "sap/ui/core/mvc/Controller", // Base controller for UI5 controllers
+        "sap/ui/core/UIComponent" // To access routing functionalities
     ],
-    function(BaseController,UIComponent) {
-      "use strict";
- 
-      return BaseController.extend("com.app.rfapp.controller.WTQueryByWT", {
-        onInit: function() {
-            const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-        },
-        onResourceDetailsLoad: async function (oEvent1) {
-            const { id } = oEvent1.getParameter("arguments");
-                this.ID = id;
-        },
-        onPressFirstBackButton:async function(){
-            var oRouter = UIComponent.getRouterFor(this);
-            var oModel1 = this.getOwnerComponent().getModel();
-            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                success: function (oData) {
-                    let oUser=oData.Users.toLowerCase()
-                    if(oUser ===  "resource"){
-                        oRouter.navTo("RouteResourcePage",{id:this.ID});
-                    }
-                    else{
-                    oRouter.navTo("Supervisor",{id:this.ID});
-                }
-                }.bind(this),
-                error: function () {
-                    MessageToast.show("User does not exist");
-                }
-            });
-           
-        },
-        onWtQBWtWhLiveChange:function(oEvent){
-            var oInput = oEvent.getSource();
-            var oHuValue = oInput.getValue().trim();
+    function (BaseController, UIComponent) {
+        "use strict";
 
-            if (oHuValue) {
-                // Call OData service to validate the HU value
-                var oModel = this.getOwnerComponent().getModel();
-                var that = this;
+        return BaseController.extend("com.app.rfapp.controller.WTQueryByWT", {
+            // Controller initialization, called when the controller is instantiated
+            onInit: function () {
+                const oRouter = this.getOwnerComponent().getRouter(); // Get the router from the owner component
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this); // Attach route match event to handler
+            },
 
-                oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
-                   
-                    success: function (odata) {
-                        // If HU exists, show icon2 and hide icon1
-                        that.getView().byId("idWtQBWtFirstSC").setVisible(false);
-                        that.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-                        // that.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
-                        // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
-                        // Optionally, you can also populate fields here based on the result
-                        that.getView().byId("idWtQBWtwtInput").setValue(odata.Tanum);
-                        that.getView().byId("idWtQBWtWTitInput").setValue(odata.Tapos);
-                        that.getView().byId("idWtQBWtwtsInput").setValue(odata.Numwt);
-                        that.getView().byId("idWtQBWtStsInput").setValue(odata.Tostat);
-                        that.getView().byId("idWtQBWtPtypInput").setValue(odata.Procty);
-                        that.getView().byId("idWtQBWtSproInput").setValue(odata.Prces);
-                        that.getView().byId("idWtQBWtActyInput").setValue(odata.ActType);
-                        that.getView().byId("idWtQBWtProInput").setValue(odata.Matnr);
-                        that.getView().byId("idWtQBWtProEmpInput").setValue(odata.HazmatInd);
-                        that.getView().byId("idWtQBWtSbinInput").setValue(odata.Vlpla);
-                        that.getView().byId("idWtQBWtSbinEmpInput").setValue(odata.Vlenr);
-                        that.getView().byId("idWtQBWtDbinInput").setValue(odata.Nlpla);
-                        that.getView().byId("idWtQBWtDbinEmpInput").setValue(odata.Nlenr);
-                        that.getView().byId("idWtQBWtCdatInput").setValue(odata.ConfD);
-                        that.getView().byId("idWtQBWtCdatnput").setValue(odata.ConfT.ms);
-                        that.getView().byId("idWtQBWtCusrInput").setValue(odata.ConfBy);
-                        
-                    },
-                    error: function (oError) {
-                        // Show error message if HU is not found 
+            // Event handler for loading resource details when route pattern is matched
+            onResourceDetailsLoad: async function (oEvent1) {
+                const { id } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
+                this.ID = id; // Store the 'id' for use in other methods
+            },
+
+            // Event handler for the first back button (navigation based on user type)
+            onPressFirstBackButton: async function () {
+            var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
+                var oModel1 = this.getOwnerComponent().getModel(); // Get the model from the owner component
+
+                // Read data from the RESOURCESSet entity for the given ID
+                await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        let oUser = oData.Users.toLowerCase(); // Get the user type (resource or supervisor)
+
+                        // Navigate to different routes based on the user type
+                        if (oUser === "resource") {
+                            oRouter.navTo("RouteResourcePage", { id: this.ID }); // Route to Resource page
+                        } else {
+                            oRouter.navTo("Supervisor", { id: this.ID }); // Route to Supervisor page
+                        }
+                    }.bind(this), // Bind the success handler to the controller context
+
+                    error: function () {
+                        MessageToast.show("User does not exist"); // Show error message if the user does not exist
                     }
                 });
-            } else {
-                
-                
-            }
-                this.getView().byId("idWtQBWtFirstSC").setVisible(false);
-                this.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-                // this.getView().byId("idWtQBWtfirstbackbtn").setVisible(false);
-                // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
-            
-        },
-        onPressSecondBackButton:function(){
-            this.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
-            this.getView().byId("idWtQBWtFirstSC").setVisible(true);
-            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-            // this.getView().byId("idWtQBWtfirstbackbtn").setVisible(true);
-           
-        },
-        onWtQBWtDetailBtnPress:function(){
-            
-            var oHuValue = this.getView().byId("idWtQBWtwtInput").getValue()
+            },
 
-            if (oHuValue) {
-                // Call OData service to validate the HU value
-                var oModel = this.getOwnerComponent().getModel();
-                var that = this;
+            // Event handler for live change in the Warehouse Task (WT) input field (validates HU value)
+            onWtQBWtWhLiveChange: function (oEvent) {
+                var oInput = oEvent.getSource(); // Get the input field that triggered the event
+                var oHuValue = oInput.getValue().trim(); // Get the HU value from the input and trim any whitespace
 
-                oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
-                   
-                    success: function (odata) {
-                        // If HU exists, show icon2 and hide icon1
-                        that.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
-                        that.getView().byId("idWtQBWtWhThirdsc").setVisible(true);
-                        // that.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-                        // that.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
-                        // Optionally, you can also populate fields here based on the result
-                        that.getView().byId("idWtQBWtwoInput").setValue(odata.Who);
-                        that.getView().byId("idWtQBWtOwnerInput").setValue(odata.Owner);
-                        that.getView().byId("idWtQBWtPEntInput").setValue(odata.Entitled);
-                        that.getView().byId("idWtQBWtHTypeInput").setValue(odata.Letyp);
-                        that.getView().byId("idWtQBWtWhHuInput").setValue(odata.Vlenr);
-                        
-                        
-                    },
-                    error: function (oError) {
-                        // Show error message if HU is not found 
-                    }
-                });
-            } else {
-                
-                
+                if (oHuValue) { // Proceed if the HU value is not empty
+                    var oModel = this.getOwnerComponent().getModel(); // Get the OData model for making requests
+                    var that = this; // Preserve the controller context for the success handler
+
+                    // Call OData service to validate if the HU exists in the system
+                    oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
+                        success: function (odata) {
+                            // If HU exists, toggle screens and populate input fields with the retrieved data
+                            that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false); // Hide the first screen
+                            that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show the second screen
+
+                            // Populate the fields with the data returned from the OData service
+                            that.getView().byId("idWtQBWtwtInput_WTQueryByWT").setValue(odata.Tanum);
+                            that.getView().byId("idWtQBWtWTitInput_WTQueryByWT").setValue(odata.Tapos);
+                            that.getView().byId("idWtQBWtwtsInput_WTQueryByWT").setValue(odata.Numwt);
+                            that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(odata.Tostat);
+                            that.getView().byId("idWtQBWtPtypInput_WTQueryByWT").setValue(odata.Procty);
+                            that.getView().byId("idWtQBWtSproInput_WTQueryByWT").setValue(odata.Prces);
+                            that.getView().byId("idWtQBWtActyInput_WTQueryByWT").setValue(odata.ActType);
+                            that.getView().byId("idWtQBWtProInput_WTQueryByWT").setValue(odata.Matnr);
+                            that.getView().byId("idWtQBWtProEmpInput_WTQueryByWT").setValue(odata.HazmatInd);
+                            that.getView().byId("idWtQBWtSbinInput_WTQueryByWT").setValue(odata.Vlpla);
+                            that.getView().byId("idWtQBWtSbinEmpInput_WTQueryByWT").setValue(odata.Vlenr);
+                            that.getView().byId("idWtQBWtDbinInput_WTQueryByWT").setValue(odata.Nlpla);
+                            that.getView().byId("idWtQBWtDbinEmpInput_WTQueryByWT").setValue(odata.Nlenr);
+
+                            // Format and set the ConfD date
+                            let dateStr = odata.ConfD;
+                            let year = dateStr.slice(0, 4);
+                            let month = dateStr.slice(4, 6);
+                            let day = dateStr.slice(6, 8);
+                            let formattedDate = `${year}-${month}-${day}`;
+                            that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
+
+                            // Calculate and format the ConfT time (from milliseconds)
+                            let milliseconds = odata.ConfT.ms;
+                            let hours = Math.floor(milliseconds / (1000 * 60 * 60));
+                            let minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+                            let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+                            let timeFormatted = `${hours}:${minutes}:${seconds}`;
+                            that.getView().byId("idWtQBWtCdatnput_WTQueryByWT").setValue(timeFormatted);
+
+                            // Set the ConfBy user
+                            that.getView().byId("idWtQBWtCusrInput_WTQueryByWT").setValue(odata.ConfBy);
+                        },
+                        error: function (oError) {
+                            // Handle error if HU not found
+                        }
+                    });
+                }
+
+                // Toggle visibility of screens (no action if HU is empty)
+                this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false);
+                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true);
+            },
+
+            // Event handler for the second back button (returns to the first screen)
+            onPressSecondBackButton: function () {
+                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false); // Hide second screen
+                this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true); // Show first screen
+            },
+
+            // Event handler for the button to view more details of the warehouse task
+            onWtQBWtDetailBtnPress: function () {
+                var oHuValue = this.getView().byId("idWtQBWtwtInput_WTQueryByWT").getValue(); // Get HU value from input
+
+                if (oHuValue) { // Proceed if HU value is available
+                    var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+                    var that = this; // Preserve controller context for success handler
+
+                    // Call OData service to validate and retrieve data for the given HU
+                    oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
+                        success: function (odata) {
+                            // If HU exists, toggle screens and populate fields with data
+                            that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false); // Hide second screen
+                            that.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(true); // Show third screen
+
+                            // Populate the fields with detailed information from the OData response
+                            that.getView().byId("idWtQBWtProductDiscriptioInput_WTQueryByWT").setValue(odata.Maktx);
+                            that.getView().byId("idWtQBWtwoInput_WTQueryByWT").setValue(odata.Who);
+                            that.getView().byId("idWtQBWtOwnerInput_WTQueryByWT").setValue(odata.Owner);
+                            that.getView().byId("idWtQBWtPEntInput_WTQueryByWT").setValue(odata.Entitled);
+                            that.getView().byId("idWtQBWtHTypeInput_WTQueryByWT").setValue(odata.Letyp);
+                            that.getView().byId("idWtQBWtWhHuInput_WTQueryByWT").setValue(odata.Vlenr);
+                            that.getView().byId("idWtQBWtEstpInput_WTQueryByWT").setValue(odata.Procs);
+                            that.getView().byId("idWtQBWtSqtyInput_WTQueryByWT").setValue(odata.Vsola);
+                            that.getView().byId("idWtQBWtPcInput_WTQueryByWT").setValue(odata.Altme);
+                            that.getView().byId("idWtQBWtHuWtInput_WTQueryByWT").setValue(odata.Flghuto);
+                        },
+                        error: function (oError) {
+                            // Handle error if HU not found
+                        }
+                    });
+                }
+
+                // Toggle visibility for screen navigation
+                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
+                this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(true);
+            },
+
+            // Event handler for the third back button (returns to the second screen)
+            onPressThirdBackButton: function () {
+                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show second screen
+                this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(false); // Hide third screen
             }
-            this.getView().byId("idWtQBWtWhSecondsc").setVisible(false);
-            this.getView().byId("idWtQBWtWhThirdsc").setVisible(true);
-            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(false);
-            // this.getView().byId("idWtQBWtThirdbackbtn").setVisible(true);
-           
-        },
-        onPressThirdBackButton:function(){
-            this.getView().byId("idWtQBWtWhSecondsc").setVisible(true);
-            this.getView().byId("idWtQBWtWhThirdsc").setVisible(false);
-            // this.getView().byId("idWtQBWtSecondbackbtn").setVisible(true);
-            // this.getView().byId("idWtQBWtThirdbackbtn").setVisible(false);
-           
-        },
-    
- 
-      });
+        });
     }
-  );
- 
- 
+);
