@@ -838,12 +838,13 @@
                         emptySpanM="4"
                         columnsL="1"
                         columnsM="1"
+                        width="90%"
                     >
                         <VBox
                             alignContent="Center"
                             alignItems="Center"
                             id="vboxCenter"
-                            
+
                         >
                             <HBox
                                 alignContent="Center"
@@ -888,10 +889,10 @@
                                     width="40px"
                                 />
                                 <Input
-                                    width="250px"
                                     id="inputLarge"
                                     editable="false"
                                     class="sapUiTinyMarginTop"
+                                    width="250px"
                                 />
                             </HBox>
 
@@ -926,6 +927,7 @@
                                     width="5px"
                                     id="spacerLabel4"
                                 />
+                                
                                 <Input
                                     width="120px"
                                     id="inputBin"

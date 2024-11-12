@@ -175,6 +175,7 @@
                         width="100%"
                         mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
+                        
                     >
                         <columns>
                             <Column id="IDGenColumn001_AHUOBQ">
@@ -196,6 +197,11 @@
                                     id="IDGenText_AHUOBQ"
                                     text="(X)OpenWT"
                                     class="HedingNameColor"
+
+
+
+
+            
                                 />
                             </Column>
                         </columns>
@@ -244,16 +250,17 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable1_AHUOBQ"
                                     text="HU Number:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                  
                                     width="90px"
                                 />
                                 <Input
                                     id="idHUNumInput_AHUOBQ"
                                     width="10rem"
                                     editable="false"
+                                      class="sapUiTinyMarginTop"
                                 />
                             </HBox>
                             <HBox
@@ -263,16 +270,16 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable2_AHUOBQ"
                                     text="Product:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
                                     width="90px"
                                 />
                                 <Input
                                     id="idHUProdNumInput_AHUOBQ"
                                     width="10rem"
-                                    class="sapUiTinyMarginEnd"
+                                    class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
@@ -283,16 +290,16 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable3-AHUOBQ"
                                     text="Storage Type:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    
                                     width="90px"
                                 />
                                 <Input
                                     id="idSectionInput_AHUOBQ"
                                     width="5rem"
-                                    class="sapUiTinyMarginEnd"
+                                   class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
@@ -303,16 +310,17 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable4"
                                     text="Doc:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                   
                                     width="90px"
                                 />
                                 <Input
                                     id="idDocInputThirdPage_AHUOBQ"
                                     width="7rem"
                                     editable="false"
+                                    class="sapUiTinyMarginTop"
                                 />
                             </HBox>
                             <HBox
@@ -322,15 +330,16 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable5"
                                     text="Quantity:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                   
                                     width="90px"
                                 />
                                 <Input
                                     id="idQtyInputThirdPage_AHUOBQ"
                                     width="7rem"
+                                     class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
@@ -341,16 +350,17 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idThirdPageLable6"
                                     text="Owner:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                   
                                     width="90px"
                                 />
                                 <Input
                                     id="idBinInputThirdPage_AHUOBQ"
                                     width="7rem"
                                     editable="false"
+                                     class="sapUiTinyMarginTop"
                                 />
                             </HBox>
                             <Button
@@ -403,16 +413,17 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idEANUPC_AHUOBQ"
                                     text="EAN/UPC:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop "
+                                
                                     width="90px"
                                 />
                                 <Input
                                     id="idHuInput_AHUOBQ"
                                     width="85%"
                                     editable="false"
+                                        class="sapUiTinyMarginTop"
                                 />
                             </HBox>
                             <HBox
@@ -422,10 +433,10 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idTotalWeight_AHUOBQ"
                                     text="Total Weight:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop "
+                                    
                                     width="90px"
                                 />
                                 <HBox id="idHBoxTotalWaite_AHUOBQ">
@@ -434,6 +445,7 @@
                                         maxLength="25"
                                         width="70px"
                                         editable="false"
+                                            class="sapUiTinyMarginTop"
                                     />
 
                                     <Input
@@ -441,6 +453,7 @@
                                         maxLength="25"
                                         width="70px"
                                         editable="false"
+                                            class="sapUiTinyMarginTop"
                                     />
                                 </HBox>
                             </HBox>
@@ -451,10 +464,10 @@
                                 justifyContent="Start"
                                 width="100%"
                             >
-                                <Label
+                                <Text
                                     id="idTotalValue_AHUOBQ"
                                     text="Total Volume:"
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop "
+                                 
                                     width="90px"
                                 />
                                 <HBox id="idHBoxTotalValue_AHUOBQ">
@@ -463,6 +476,7 @@
                                         maxLength="25"
                                         width="70px"
                                         editable="false"
+                                            class="sapUiTinyMarginTop"
                                     />
 
                                     <Input
@@ -470,6 +484,7 @@
                                         maxLength="25"
                                         width="70px"
                                         editable="false"
+                                            class="sapUiTinyMarginTop"
                                     />
                                 </HBox>
                             </HBox>
