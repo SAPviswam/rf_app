@@ -62,7 +62,6 @@ sap.ui.define(
                             "$format": "json"
                         },
                         success: function (odata) {
-                            console.log(odata);
                             if (odata.Queue1 === sWarehouseQueue) {
                                 that.getView().byId("idInput_Wt_WTQuerybyQueue").setValue(sWarehouseQueue);
                                 // Store the fetched data in the controller to reuse
@@ -168,6 +167,7 @@ sap.ui.define(
                 }
             },
             onSelectWarehouseTaskQueue: function (oEvent) {
+                debugger
                 var oView = this.getView();
                 var oModel = this.getView().getModel();
                 var that = this;
@@ -179,13 +179,13 @@ sap.ui.define(
                     },
 
                     success: function (odata) {
-                        console.log(odata)
                         var aWarehousetask = odata.QueueNav.results;
                         var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum");
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
                         if (oSelectedWT) {
+                            debugger
                             oView.byId("idInput_WT_WTQuerybyQueue").setValue(oSelectedWT.Tanum);
                             oView.byId("idInput_WTit_WTQuerybyQueue").setValue(oSelectedWT.Tapos);
                             oView.byId("idInput_WTs_WTQuerybyQueue").setValue(odata.Numwt);
@@ -203,38 +203,49 @@ sap.ui.define(
                             oView.byId("idInput6_WTQuerybyQueue").setValue(oSelectedWT.Nlenr);
 
                             var rawDate = oSelectedWT.ConfD;
-                            var year = rawDate.substring(0, 4);
-                            var month = rawDate.substring(4, 6) - 1; 
-                            var day = rawDate.substring(6, 8);
-                            var formattedDate = new Date(year, month, day);
 
-                            // Use Intl.DateTimeFormat to format the date (e.g., "MM/DD/YYYY")
-                            var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-                            var formattedDateString = new Intl.DateTimeFormat('en-US', options).format(formattedDate);
-                            // Set the value to the input field
+                            // Check if the rawDate is null or empty
+                            if (!rawDate) {
+                                // If the date is invalid (null or empty), set formattedDateString to an empty string or a default value
+                                var formattedDateString = ""; // or "No date available", or any placeholder text
+                            } else {
+                                var year = rawDate.substring(0, 4);
+                                // Month is zero-indexed in JavaScript
+                                var month = rawDate.substring(4, 6) - 1;
+                                var day = rawDate.substring(6, 8);
+
+                                var formattedDate = new Date(year, month, day);
+
+                                // Manually extract the day, month, and year
+                                var dayStr = ("0" + formattedDate.getDate()).slice(-2);
+                                var monthStr = ("0" + (formattedDate.getMonth() + 1)).slice(-2);
+                                var yearStr = formattedDate.getFullYear();
+
+                                // Format as "DD.MM.YYYY"
+                                var formattedDateString = dayStr + '.' + monthStr + '.' + yearStr;
+                            }
+
+                            console.log(formattedDateString);
+
+
                             oView.byId("idInput_Cdat_WTQuerybyQueue").setValue(formattedDateString);
                             oView.byId("idInput_Cusr_WTQuerybyQueue").setValue(oSelectedWT.ConfBy);
 
-                            function convertMillisecondsToTime(milliseconds) {
-                                // Calculate total seconds
-                                let totalSeconds = Math.floor(milliseconds / 1000);
+                            var milliseconds = oSelectedWT.ConfT.ms;
+                            var totalSeconds = Math.floor(milliseconds / 1000);
+                            var hours = Math.floor(totalSeconds / 3600);
+                            var minutes = Math.floor((totalSeconds % 3600) / 60);
+                            var seconds = totalSeconds % 60;
 
-                                // Calculate hours, minutes, and seconds
-                                const hours = Math.floor(totalSeconds / 3600);
-                                const minutes = Math.floor((totalSeconds % 3600) / 60);
-                                const seconds = totalSeconds % 60;
+                            hours = hours < 10 ? '0' + hours : hours;
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            seconds = seconds < 10 ? '0' + seconds : seconds;
 
-                                // Format as HH:MM:SS
-                                return (
-                                    String(hours).padStart(2, '0') + ':' +
-                                    String(minutes).padStart(2, '0') + ':' +
-                                    String(seconds).padStart(2, '0')
-                                );
-                            }
-                            that.oSelectedWT = sSelectedWT;
-                            const milliseconds = oSelectedWT.ConfT.ms;
-                            oView.byId("idInput7_WTQuerybyQueue").setValue(convertMillisecondsToTime(milliseconds));
+                            var formattedTime = hours + ':' + minutes + ':' + seconds;
+                            oView.byId("idInput7_WTQuerybyQueue").setValue(formattedTime);
+
                             oView.byId("idInput_WTQuerybyQueue").setValue(that.getStatusText(oSelectedWT.Tostat));
+                            that.oSelectedWT = sSelectedWT;
                         } else {
                             sap.m.MessageToast.show("WarehouseTask not found.");
                         }
@@ -274,15 +285,14 @@ sap.ui.define(
                         "$format": "json"
                     },
                     success: function (odata) {
-                        console.log(odata)
                         var aWarehousetask = odata.QueueNav.results;
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === oSelectedWTs;
                         });
 
                         //Removing the Preceding Zeros
-                        var Rdocid = oSelectedWT.Rdocid.trimStart();
-                        Rdocid = Rdocid.replace(/^0+/, '');
+                        var oRdocid = oSelectedWT.Rdocid.trimStart();
+                        oRdocid = oRdocid.replace(/^0+/, '');
 
                         var Ritmid = oSelectedWT.Ritmid.trimStart();
                         Ritmid = Ritmid.replace(/^0+/, '');
@@ -305,7 +315,7 @@ sap.ui.define(
                             oView.byId("idInput_SLED_WTQuerybyQueue").setValue(oSelectedWT.Vfdat);
                             oView.byId("idInput_Qu_WTQuerybyQueue").setValue(oSelectedWT.Queue1);
                             oView.byId("idInput29_WTQuerybyQueue").setValue(oSelectedWT.Rdoccat);
-                            oView.byId("idInput30_WTQuerybyQueue").setValue(Rdocid);
+                            oView.byId("idInput30_WTQuerybyQueue").setValue(oRdocid);
                             oView.byId("idInput31_WTQuerybyQueue").setValue(Ritmid)
                         }
 
