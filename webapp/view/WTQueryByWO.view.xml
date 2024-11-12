@@ -210,8 +210,7 @@
                         id="idWtQBWoWhTable"
                         growing="true"
                         growingThreshold="6"
-                        mode="SingleSelectMaster"
-                        selectionChange="onSelectWarehouseTask"
+                        selectionChange="onSelectWarehouseTask"   
                     >
                         <columns>
                             <Column id="idWtQBWoWhWtsCol">

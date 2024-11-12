@@ -81,7 +81,9 @@
                                 <HBox id="idHbox1_SNL">
                                     <Text
                                         id="idProductLabel_SNL"
+
                                         text="{i18n>product_Label_SNL}"
+
                                         width="60px"
                                         class="sapUiTinyMargin"
                                     />
@@ -93,7 +95,9 @@
                                 <HBox id="idHbox2_SNL">
                                     <Text
                                         id="idSerialNoLabel_SNL"
+
                                         text="{i18n>serialNo_Label_SNL}"
+
                                         width="60px"
                                         class="sapUiTinyMargin"
                                     />
