@@ -115,7 +115,6 @@
                                 />
                                 <!-- Labels and Inputs for Warehouse No and Resource -->
                                 <HBox id="idhboxFields_HomeView">
-
                                     <VBox id="idVbox3_HomeView">
                                         <Label
                                             id="idLabelHU"
