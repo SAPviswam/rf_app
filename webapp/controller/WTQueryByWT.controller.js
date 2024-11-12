@@ -21,7 +21,7 @@ sap.ui.define(
 
             // Event handler for the first back button (navigation based on user type)
             onPressFirstBackButton: async function () {
-                var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
+            var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
                 var oModel1 = this.getOwnerComponent().getModel(); // Get the model from the owner component
 
                 // Read data from the RESOURCESSet entity for the given ID
