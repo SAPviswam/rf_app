@@ -118,13 +118,13 @@
                                     <VBox id="idVbox3_HomeView">
                                         <Label
                                             id="idLabelHU"
-                                            text="{i18n>WH_no}"
+                                            text="{i18n>WH_no}:"
                                             labelFor="idHUInput"
                                             class="LabelHomePage"
                                         />
                                         <Label
                                             id="idLabelUserID"
-                                            text="Resource:"
+                                            text="{i18n>Resource}:"
                                             labelFor="idUserIDInput"
                                             class="sapUiSmallMarginTop LabelHomePage"
                                         />
@@ -154,15 +154,16 @@
                                 >
                                     <CheckBox
                                         id="_IDGenCheckBox"
-                                        text="Auto Save"
+                                        text="{i18n>autosave}"
                                         select="onSelectCheckBox"
                                     />
                                     <Button
                                         id="idNextBtn_HomeView"
-                                        text="Next"
+                                        text="{i18n>next}"
                                         type="Emphasized"
                                         press="onPressConnectButton"
                                         class="checkBoxforAutosave"
+                                        
                                     />
                                 </HBox>
 
@@ -175,14 +176,15 @@
                                 >
                                     <Button
                                         id="idButtonSignUp"
-                                        text="Create Resource"
+                                        text="{i18n>createresource}"
                                         press="onPressSignupBtn"
                                         type="Transparent"
                                     />
                                     <Button
                                         id="idchangequeue"
-                                        text="Change Queue"
+                                        text="{i18n>changequeue}"
                                         type="Transparent"
+                                        press="onChangeQueuePress"
                                     />
                                 </HBox>
                             </VBox>
@@ -200,13 +202,13 @@
                                     <Title
                                         id="idCreateResource"
                                         class="createSourceTitle"
-                                        text="Create Resource"
+                                        text="{i18n>createresource}"
                                         textAlign="Center"
                                     />
                                 </VBox>
                                 <Text
                                     id="idresourcetext"
-                                    text="Resource Type:"
+                                    text="{i18n>resourcetype}:"
                                     textAlign="Initial"
                                     class="textbold sapUiSmallMarginTop"
                                 />
@@ -217,7 +219,7 @@
                                     />
                                     <RadioButton
                                         id="idinternal"
-                                        text="Internal"
+                                        text="{i18n>internal}"
                                     />
                                     <Text
                                         id="_IDGenText15"
@@ -225,7 +227,7 @@
                                     />
                                     <RadioButton
                                         id="idexternal"
-                                        text="External"
+                                        text="{i18n>external}"
                                     />
                                     <Text
                                         id="_IDGenText17"
@@ -233,7 +235,7 @@
                                     />
                                     <RadioButton
                                         id="idothers"
-                                        text="Others"
+                                        text="{i18n>others}"
                                     />
                                 </HBox>
 
@@ -241,27 +243,27 @@
                                     <VBox id="idLableFirstnamehbox">
                                         <Label
                                             id="idLableFirstname"
-                                            text="First Name:"
+                                            text="{i18n>firstname}:"
                                             class="LabelHomepageFragmentSignup"
                                         />
                                         <Label
                                             id="idLableLastname"
-                                            text="Last Name:"
+                                            text="{i18n>lastname}:"
                                             class="LabelHomepageFragmentSignup2"
                                         />
                                         <Label
                                             id="idLableEmployeeno"
-                                            text="Employee No:"
+                                            text="{i18n>employeeno}:"
                                             class="LabelHomepageFragmentSignup3"
                                         />
                                         <Label
                                             id="idLableMobileno"
-                                            text="Mobile No:"
+                                            text="{i18n>mobileno}:"
                                             class="LabelHomepageFragmentSignup4"
                                         />
                                         <Label
                                             id="idLableEmailID"
-                                            text="Email Id:"
+                                            text="{i18n>emailid}:"
                                             class="LabelHomepageFragmentSignup5"
                                         />
                                     </VBox>
@@ -304,14 +306,14 @@
                                     <!-- Centering buttons  -->
                                     <Button
                                         id="idsignupcreateButton"
-                                        text="Create"
+                                        text="{i18n>create}"
                                         press="oncreatesingupPress"
                                         type="Emphasized"
                                         class="sapUiTinyMarginEnd signupCreatebutton sapUiSmallMarginTop"
                                     />
                                     <Button
                                         id="idsignupcancelButton"
-                                        text="Cancel"
+                                        text="{i18n>cancel}"
                                         press="oncancelsignupPress"
                                         type="Emphasized"
                                         visible="true"
