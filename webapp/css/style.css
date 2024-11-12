@@ -1745,14 +1745,24 @@ margin-right: 20%;
     background-color: rgb(250, 164, 5);
     border-radius: 10px;
     border: 0px;
-    margin: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
+    width: 200px; /* Set a specific width, or you can use max-width instead */
+    font-size: 15px; /* Increase the font size for bigger text */
+    text-align: center; /* Ensure text is centered */
 }
 .buttonSelected {
-    background-color: #88f132c1; /* Default background color */
+    background-color: #c2f499; /* Default background color */
     border-radius: 10px;
     color: black; /* Default text color */
     border: 0px;
-    margin: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
+    width: 200px; /* Set a specific width, or you can use max-width instead */
+    font-size: 15px; /* Increase the font size for bigger text */
+    text-align: center; /* Ensure text is centered */
 }
 
 /* initial View end */

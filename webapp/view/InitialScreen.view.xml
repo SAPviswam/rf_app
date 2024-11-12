@@ -107,11 +107,14 @@
                     <HBox
                         id="idBtnsHbox_InitialView"
                         class="sapUiMediumMarginBegin"
+                        
                     >
                         <!-- vbox for add button -->
                         <VBox
                             id="idBtnsVbox2_InitialView"
                             class="vboxButns"
+                            justifyContent="Center"
+                            alignItems="Center"
                         >
                             <Button
                                 id="idBtnAdd_InitialView"
@@ -128,7 +131,8 @@
                             />
                         </VBox>
                         <!-- vbox for edit button -->
-                        <VBox id="idButtonsVbox_InitialView">
+                        <VBox id="idButtonsVbox_InitialView" justifyContent="Center"
+                            alignItems="Center">
                             <Button
                                 id="idBtnEdit_InitialView"
                                 class="btn"
@@ -144,7 +148,8 @@
                             />
                         </VBox>
                         <!-- vbox for delete button -->
-                        <VBox id="idDelBtnVBox_InitialView">
+                        <VBox id="idDelBtnVBox_InitialView" justifyContent="Center"
+                            alignItems="Center">
                             <Button
                                 id="idBtnDelete_InitialView"
                                 class="btn"
