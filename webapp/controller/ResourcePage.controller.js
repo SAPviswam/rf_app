@@ -309,8 +309,8 @@ sap.ui.define([
                 // Clear the array of selected tiles
                 this._selectedTiles = [];
                 // Reset button visibility as needed
-                this.byId("idBtnListViewResourcePage").setVisible(false);
-                this.byId("idBtnGridViewResourcePage").setVisible(true);
+                this.byId("idBtnListViewResourcePage").setVisible(true);
+                this.byId("idBtnGridViewResourcePage").setVisible(false);
                 this.byId("idTileThemesModeOpen").setVisible(false);
                 this.byId("idExitThemeModeResource").setVisible(false);
                 // Optionally, close the theme dialog if it's open
