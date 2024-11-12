@@ -14,7 +14,7 @@
     >
         <customHeader>
             <Bar>
-                 <contentLeft>
+                 <contentMiddle>
                     <FlexBox
                         id="flexboxHeader"
                         alignItems="Baseline"
@@ -22,7 +22,7 @@
                         width="100%">
                         <Text id="_IDGenTextSAPLogon" text="{i18n>SAPCon_Txt_IV}" class="sapMHeader-CTX1" />
                     </FlexBox>
-                </contentLeft>
+                </contentMiddle>
                     <contentRight>
                     <Button
                         id="CancelButton_Header"
@@ -113,7 +113,7 @@
                     <HBox justifyContent="Center">
                         <Link
                             id="IDchangePassword"
-                            text="{i18>chngPass_Link_IV}"
+                            text="{i18n>chngPass_Link_IV}"
                             class="sapUiSmallMarginTop"
                             press="onChangePasswordBtn"
                         />
