@@ -75,26 +75,26 @@
                         text="{i18n>lan_Txt_IV}"
                         width="110%"
                     />
-
-                    <ComboBox
+                <ComboBox
                         id="idLanguageSelectorMultiComboBox_CS"
                         width="100%"
                         selectedKey="en"
                         class="customInput"
+                        change="onLanguageChange"
                     >
-                        <items>
-                            <core:Item
-                                id="idCoreItemEnglishLanguage_CS"
-                                key="en"
-                                text="{i18n>englishLan_IV}"
-                            />
-                            <core:Item
-                                id="idCoreItemSpanishLanguage_CS"
-                                key="es"
-                                text="{i18n>germanLan_IV}"
-                            />
-                        </items>
-                    </ComboBox>
+                    <items>
+                        <core:Item
+                            id="idCoreItem1"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItem2"
+                            key="de"
+                            text="German"
+                        />
+                    </items>
+                     </ComboBox>
                     <Input
                         id="idRouterStringInput_CS"
                         value="100"
