@@ -202,7 +202,7 @@ sap.ui.define(
                       // Update the UI with the selected material's details
                       for (var i = 0; i < aBindetails.length; i++) {
                           if (aBindetails[i].Matnr === sSelectedMatnr) {
-                              this.getView().byId("idTotalWaitInput_AHUOBQ").setValue(odata.GWeight);
+                              this.getView().byId("idTotalWeightInput_AHUOBQ").setValue(odata.GWeight);
                               this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
                               this.getView().byId("idKGUnits_AHUOBQ").setValue(odata.UnitGw);
                               this.getView().byId("idInputL_AHUOBQ").setValue(odata.UnitGv);
@@ -216,9 +216,11 @@ sap.ui.define(
                   error: function () {
                       sap.m.MessageToast.show("Error fetching product details.");
                   }
+
+
               });
           },
-          
+          // On clicking HUContent Button
           onPressHUContentBtn: function () {
             var oView = this.getView();
             var oModel = oView.getModel();
