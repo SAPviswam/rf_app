@@ -767,7 +767,7 @@ sap.ui.define([
                 var sCurrentPassword = oView.byId("idSPasswordInput_CP").getValue();
                 var sNewPassword = oView.byId("idNewPasswordInput_CP").getValue();
                 var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
-                var oModel = this.getView().getModel(); // Get your model
+                var oModel = this.getOwnerComponent().getModel(); // Get your model
                 var sResourceId = this.sResourceID;
                 if (!sCurrentPassword) {
                     MessageToast.show("Please enter current password");
