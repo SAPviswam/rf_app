@@ -992,7 +992,7 @@ sap.ui.define([
                                 oResourceArray.forEach(function (queue) {
                                     let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
                                     let lOQueue = oQueue.toLowerCase();
-                                    if (oQueueArray.includes(queue)) {
+                                    if (oQueueArray.includes(queue.toUpperCase())) {
                                         aOptions.push(queue)
                                     }
 

@@ -185,6 +185,7 @@
                                         id="idchangequeue"
                                         text="{i18n>changequeue}"
                                         type="Transparent"
+                                        press="onChangeQueuePress"
                                     />
                                 </HBox>
                             </VBox>

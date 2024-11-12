@@ -743,6 +743,10 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
+            onChangeQueuePress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CHANGEQUEUE", { id: this.ID });
+            }
 
         });
     });
