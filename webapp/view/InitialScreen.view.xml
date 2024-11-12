@@ -58,7 +58,7 @@
             >
                 <!-- vbox for sub title and left side text -->
                 <!-- languages -->
-                <Select
+                <!-- <Select
                     id="idlanguageSelect_IV"
                     change="onLanguageChange"
                 >
@@ -74,7 +74,7 @@
                             text="German"
                         />
                     </items>
-                </Select>
+                </Select> -->
 
                 <VBox
                     id="IdMainVbox_InitialView"

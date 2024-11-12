@@ -119,7 +119,7 @@
                                     <VBox id="idVbox3_HomeView">
                                         <Label
                                             id="idLabelHU"
-                                            text="Warehouse No:"
+                                            text="{i18n>WH_no}"
                                             labelFor="idHUInput"
                                             class="LabelHomePage"
                                         />
