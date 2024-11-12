@@ -170,7 +170,7 @@ sap.ui.define(
               var oSelectedItem = oTable.getSelectedItem(); // Get selected item from the table
           
               if (!oSelectedItem) {
-                  sap.m.MessageToast.show("There is no product available. Please select another row.");
+                  sap.m.MessageToast.show(" Please select a row.");
                   return;
               }
           
@@ -178,7 +178,7 @@ sap.ui.define(
               
               // Check if the selected material number is valid
               if (!sSelectedMatnr) {
-                  sap.m.MessageToast.show("There is no product available. Please select another row.");
+                  sap.m.MessageToast.show("There is no product available. Please select a row.");
                   return;
               }
           
