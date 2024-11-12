@@ -212,11 +212,9 @@
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
-                        <Text
-                            id="idTextMandt1_InitialView"
-                            text="*"
-                            class="sapUiTinyMarginTop star"
-                        />
+
+                     <Text id="idStar1_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+
                         <Text
                             id="idLableDescription_InitialView"
                             text="{i18n>des_Txt_IV}"
@@ -239,11 +237,8 @@
                     <!-- hbox for System Id field -->
 
                     <HBox id="iDhboxSystem_InitialView">
-                        <Text
-                            id="idTextMandt2_InitialView"
-                            text="*"
-                            class="sapUiTinyMarginTop star"
-                        />
+                    <Text id="idStar2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+
                         <Text
                             id="idLableSystemId_InitialView"
                             text="{i18n>sysId_Txt_IV}"
@@ -265,11 +260,7 @@
                     <!-- hbox for Instance Number field -->
 
                     <HBox id="ighboxInstanceNumber_initialView">
-                        <Text
-                            id="idTextMandt3_InitialView"
-                            text="*"
-                            class="sapUiTinyMarginTop star"
-                        />
+                    <Text id="idStar3_InitialView"  text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableInstanceNumber_InitialView"
                             text="{i18n>InstanceNum_Txt_IV}"
@@ -290,11 +281,7 @@
                     <!--hbox for Client field -->
 
                     <HBox id="idhboxClient_InitialView">
-                        <Text
-                            id="idTextMandt4_InitialView"
-                            text="*"
-                            class="sapUiTinyMarginTop star"
-                        />
+                    <Text id="idStar4_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableClient_InitialView"
                             text="{i18n>client_Txt_IV}"
@@ -316,11 +303,7 @@
                     <!-- hbox for Application server field -->
 
                     <HBox id="idhboxApplicationServer_InitialView">
-                        <Text
-                            id="idTextMandt5_InitialView"
-                            text="*"
-                            class="sapUiTinyMarginTop star"
-                        />
+                    <Text id="idStar5_InitialView" text="*" class="sapUiTinyMarginTop star"/>
                         <Text
                             id="idLableApplicationServer_InitialView"
                             text="{i18n>app_server_Txt_IV}"

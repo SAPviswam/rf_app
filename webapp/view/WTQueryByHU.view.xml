@@ -33,7 +33,7 @@
                         <OverflowToolbarLayoutData
                             id="idOverflowToolbarLayoutData1_WTQueryByHU"
                             priority="NeverOverflow"
-                            minWidth="20px"
+                            minWidth="5px"
                         />
                     </layoutData>
                 </ToolbarSpacer>
@@ -54,7 +54,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <VBox alignContent="Center" alignItems="Center" class="sapUiLargeMargin">
+                <VBox id="idVboxIN_WTQBYHU" alignContent="Center" alignItems="Center" class="sapUiLargeMargin">
                 <form:SimpleForm
                     id="idSimpleform1_WTQueryByHU"
                     layout="ResponsiveGridLayout"
@@ -124,7 +124,7 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-            <VBox id="idvBoxInPage2_WTQueryByHU" alignContent="Center" alignItems="Center" >
+            <VBox id="idvBoxInPage2_WTQueryByHU" alignContent="Center" alignItems="Center" class="sapUiMediumMarginTop" >
                 <form:SimpleForm
                     id="idSimpleform2_WTQueryByHU"
                     layout="ResponsiveGridLayout"
@@ -139,7 +139,7 @@
                     <VBox   id="idVBox1_WTQueryByHU" alignContent="Center" alignItems="Center" >
 
                         <HBox  id="idHBox2_WTQueryByHU" alignContent="Center" alignItems="Center">
-                             <Label
+                             <Text
                             id="idHUNumberLable_WTQBYHU"
                             text="HU Number:"
                              width="5rem"
@@ -149,8 +149,8 @@
                             id="idHUNumberInput_WTQBYHU"
                             class="HUNumberInput"
                         />
-                        <Label width="20px"/>
-                         <Label
+                        <Text id="idSampleLabelIn_WTQBYHU" width="20px"/>
+                         <Text
                                     id="idLableWT_WTQBYHU"
                                     text="WT's:"
                                     width="3rem"
@@ -194,7 +194,7 @@
                     </VBox>
                 </form:SimpleForm>
                 </VBox>
-                <VBox id="idVBoxHUNumbertable_WTQBYHU">
+                <VBox id="idVBoxHUNumbertable_WTQBYHU" class="sapUiMediumMarginTop">
                   
                     <Table
                         id="idHUNumTable_WTQBYHU"
@@ -204,22 +204,7 @@
                         selectionChange="onSelectParticularWT"
                     >
 
-                    <headerToolbar>
-                                <OverflowToolbar id="idOverflowToolBarIn_WTQBYHU">
-                                   
-                                    <ToolbarSpacer id="idTableHeaderIn_WTQBYHU" />
-                                   
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData
-                                                id="idOverflowToolbarLayoutData_WTQBYHU"
-                                                priority="NeverOverflow"
-                                            />
-                                        </layoutData>
-                                  
-                        
-                                </OverflowToolbar>
-                            </headerToolbar>
-
+                    
                         <columns>
                             <Column id="IDWtNumberIn_WTQBYHU">
                                 <Text
@@ -249,7 +234,7 @@
                                     <Text
                                         id="IDWTSCell_WTQBYHU"
 
-                                        text="{= ${WTS} ? 'Conformed':'Open' }"
+                                        text="{= ${WTS} ? 'Confirmed':'Open' }"
                                     />
                                 </cells>
                             </ColumnListItem>
@@ -270,14 +255,10 @@
                     id="idVBoxThirdScreen_WTQBYHU"
                     justifyContent="Center"
                     alignItems="Center"
+                    class="sapUiMediumMarginTop"
                 >
-                    <Title
-                        id="idWarhouseTaskTitleIn_WTQBYHU"
-                        text="Warehouse Task:"
-                        level="H2"
-                   
-                    />
-                    <VBox id="idVBox01Page3_WTQBYHU">
+                  
+                  
                         <form:SimpleForm
                             id="idSimpleForm4_WTQBYHU"
                             layout="ResponsiveGridLayout"
@@ -288,19 +269,20 @@
                         >
                             <VBox id="idVBox02Page3_WTQBYHU">
                                 <HBox id="idHBox01Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelWT_WTQBYHU"
                                         text="WT:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
+                                   
                                     />
                                     <Input
                                         id="idInputWTIn_WTQBYHU"
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/WT}"
                                     />
-                                    <Label id="Emptylabeli9dIn_WTQBHU" width="10px" />
-                                    <Label
+                                    <Text id="Emptylabeli9dIn_WTQBHU" width="10px" />
+                                    <Text
                                         id="idLabelWTIt_WTQBYHU"
                                         text="WTIt:"
                                         width="50px"
@@ -313,10 +295,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox02Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelWTs"
                                         text="WTs:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -324,8 +306,8 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/WTs}"
                                     />
-                                    <Label id="Emptylabeli05In_WTQBHU" width="10px" />
-                                    <Label
+                                    <Text id="Emptylabeli05In_WTQBHU" width="10px" />
+                                    <Text
                                         id="idLabelStsIn_WTQBYHU"
                                         text="Sts:"
                                         width="50px"
@@ -336,24 +318,24 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/Sts}"
                                     />
-                                    <Label id="Emptylabeli01In_WTQBHU" width="10px" />
-                                    <Label
-                                        id="idLabelPtypIn_WTQBYHU"
+                                    <Text id="Emptylabeli01In_WTQBHU" width="10px" />
+                                    <Text
+                                        id="idTextPtypIn_WTQBYHU"
                                         text="Ptyp:"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
                                         id="idInputPtypIn_WTQBYHU"
-                                        width="10rem"
+                                        width="6rem"
                                         value="{localModel>/WarehouseTask/Ptyp}"
                                     />
                                 </HBox>
                                 <HBox id="idHBox03Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelSpro"
                                         text="Spro:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -361,8 +343,8 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/Spro}"
                                     />
-                                    <Label id="EmptylabeliadIn_WTQBHU" width="10px" />
-                                    <Label
+                                    <Text id="EmptylabeliadIn_WTQBHU" width="10px" />
+                                    <Text
                                         id="idLabelActyIn_WTQBYHU"
                                         text="Acty:"
                                         width="50px"
@@ -380,10 +362,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox04Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelProIn_WTQBYHU"
                                         text="Pro:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -398,10 +380,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox05Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelSbinIn_WTQBYHU"
                                         text="Sbin:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -416,10 +398,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox06Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelDbinIn_WTQBYHU"
                                         text="Dbin:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -434,10 +416,10 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox07Page3_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelCdatIn_WTQBYHU"
                                         text="Cdat:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -450,11 +432,11 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/CdatEmI}"
                                     />
-                                    <Label id="EmptyLabel" width="10px" />
-                                    <Label
+                                    <Text id="EmptyLabel" width="8px" />
+                                    <Text
                                         id="idLabelCusrIn_WTQBYHU"
                                         text="Cusr:"
-                                        width="50px"
+                                        width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <Input
@@ -482,7 +464,7 @@
                                 </HBox>
                             </VBox>
                         </form:SimpleForm>
-                    </VBox>
+                 
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
@@ -498,13 +480,9 @@
                     id="idVboxScreen4In_WTQBYHU"
                     justifyContent="Center"
                     alignItems="Center"
+                    class="sapUiMediumMarginTop"
                 >
-                    <Title
-                        id="idProductDescriptionTitleIn_WTQBYHU"
-                        text="Product Description:"
-                        level="H2"
-                    />
-                    <VBox id="idVBox01Page4PD_WTQBYHU">
+                 
                         <form:SimpleForm
                             id="idSimpleFormPage4PD_WTQBYHU"
                             layout="ResponsiveGridLayout"
@@ -514,8 +492,17 @@
                             columnsM="2"
                         >
                             <VBox id="idVBox02Page4PD_WTQBYHU">
+                              <HBox id="idHBox1Page4PD_WTQBYHU">
+                             
+                                    <Input
+                                        id="idInputProductDes_WTQBYHU"
+                                        width="350px"
+                                        value="{localModel>/WarehouseTask/PD}"
+                                    />
+                                    </HBox>
                                 <HBox id="idHBox01Page4PD_WTQBYHU">
-                                    <Label
+                                
+                                    <Text
                                         id="idLabelPage4WO_WTQBYHU"
                                         text="WO:"
                                         width="50px"
@@ -526,8 +513,8 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/WO}"
                                     />
-                                    <Label id="SampleLabelIn_WTQBYHU" width="10px" />
-                                    <Label
+                                    <Text id="SampleTextIn_WTQBYHU" width="50px" />
+                                    <Text
                                         id="idLabelPage4ESTP_WTQBYHU"
                                         text="ESTP:"
                                         width="50px"
@@ -540,7 +527,7 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox02Page4_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelPage4SQTY_WTQBYHU"
                                         text="SQTY:"
                                         width="50px"
@@ -554,12 +541,12 @@
 
                                     <Input
                                         id="idInputPC_WTQBYHU"
-                                        width="10rem"
+                                        width="2.5rem"
                                        
                                         value="{localModel>/WarehouseTask/SQTYEmI}"
                                     />
-                                    <Label  id="SampleLabelIn1_WTQBYHU" width="10px" />
-                                    <Label
+                                    <Text  id="SampleTextIn1_WTQBYHU" width="10px" />
+                                    <Text
                                         id="idLabelPage4Batch_WTQBYHU"
                                         text="Batch:"
                                         width="50px"
@@ -573,7 +560,7 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox03Page4_WTQBYHU">
-                                    <Label
+                                    <Text
                                         id="idLabelPage4Owner_WTQBYHU"
                                         text="Owner:"
                                         width="50px"
@@ -584,8 +571,8 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/Owner}"
                                     />
-                                    <Label id="idSampleLabel7_InWTQBYHU" width="10px" />
-                                    <Label
+                                    <Text id="idSampleText7_InWTQBYHU" width="50px" />
+                                    <Text
                                         id="idLabelPage4PENT_WTQBYHU"
                                         text="PEnt:"
                                         width="50px"
@@ -598,8 +585,8 @@
                                     />
                                 </HBox>
                                 <HBox id="idHBox04Page5_WTQBYHU">
-                                    <Label
-                                        id="idLabelPage4HUWT_WTQBYHU"
+                                    <Text
+                                        id="idTextPage4HUWT_WTQBYHU"
                                         text="HUWT:"
                                         width="50px"
                                            class="sapUiTinyMarginTop"
@@ -609,8 +596,8 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/HUWT}"
                                     />
-                                    <Label id="idSampleLabel07_InWTQBYHU" width="10px" />
-                                    <Label
+                                    <Text id="idSampleLabel07_InWTQBYHU" width="50px" />
+                                    <Text
                                         id="idLabelPage4HTYPE_WTQBYHU"
                                         text="H Type:"
                                         width="50px"
@@ -621,12 +608,15 @@
                                         width="10rem"
                                         value="{localModel>/WarehouseTask/H_Type}"
                                     />
-                                    <Label id="idSample1LabelIn_WTQBYHU" width="10px" />
-                                    <Label
+
+                                    </HBox >
+                                      <HBox id="idHBoxLastIn_WTQBYHU" justifyContent="End">
+                                    
+                                    <Text
                                         id="idLabelPage4WHHU_WTQBYHU"
                                         text="Wh HU:"
                                         width="50px"
-                                           class="sapUiTinyMarginTop"
+                                        class="sapUiTinyMarginTop"
                                     />
                                     <Input
                                         id="idInputWHHU_WTQBYHU"
@@ -645,7 +635,7 @@
                                 </HBox>
                             </VBox>
                         </form:SimpleForm>
-                    </VBox>
+             
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>
