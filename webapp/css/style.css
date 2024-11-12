@@ -1729,6 +1729,20 @@ margin-right: 20%;
     background-color: blue; /* Change this to your preferred color */
     color: white;           /* Change this to your preferred color */
 }
+.customButtonBackground {
+    color: rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5);
+    border-radius: 10px;
+    border: 0px;
+    margin: 0px;
+}
+.buttonSelected {
+    background-color: #88f132c1; /* Default background color */
+    border-radius: 10px;
+    color: black; /* Default text color */
+    border: 0px;
+    margin: 0px;
+}
 
 /* initial View end */
 

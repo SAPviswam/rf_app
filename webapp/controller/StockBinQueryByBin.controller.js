@@ -4,7 +4,7 @@ sap.ui.define([
   "sap/m/MessageToast", // Import MessageToast for user feedback
   "sap/ui/core/UIComponent",
   "sap/ui/model/odata/ODataModel",
-], function (Controller, Device, MessageToast, UIComponent,ODataModel) {
+], function (Controller, Device, MessageToast, UIComponent, ODataModel) {
   "use strict";
   return Controller.extend("com.app.rfapp.controller.StockBinQueryByBin", {
     onInit: function () {
@@ -51,13 +51,13 @@ sap.ui.define([
     },
     onScanSuccess: function (oEvent) {
       // Get the scanned bin number from the event
-      var sScannedBinNumber = oEvent.getParameter("text"); 
+      var sScannedBinNumber = oEvent.getParameter("text");
 
       // Set the scanned value into the input field
       this.getView().byId("_IDBinGenInput1_SBQB").setValue(sScannedBinNumber);
 
       // Call the submit function to fetch products
-      this.onPressBinSubmit(); 
+      this.onPressBinSubmit();
     },
     onPressBinSubmit: function () {
       // Get the input value from the input field
@@ -65,13 +65,18 @@ sap.ui.define([
       var sBinNumber = oView.byId("_IDBinGenInput1_SBQB").getValue();
 
       sBinNumber = sBinNumber.toUpperCase();
-      this.sBinNumber = sBinNumber;
 
       // Check if bin number is provided
       if (!sBinNumber) {
         sap.m.MessageToast.show("Please enter a bin number.");
         return;
       }
+
+      if (sBinNumber === "DECON BIN") {
+        sBinNumber = "DECON%20BIN";
+      }
+      
+      this.sBinNumber = sBinNumber;
 
       // Call your backend service to fetch products for this bin
       var oModel = this.getView().getModel(); // Assuming you have a model set up
@@ -85,10 +90,8 @@ sap.ui.define([
 
         success: function (odata) {
           console.log(odata)
-          if (odata.Lgpla === sBinNumber) {
-            that.getView().byId("page1_SBQB").setVisible(false);
-            that.getView().byId("page2_SBQB").setVisible(true);
-            that.getView().byId("_IDBinDetailsGenInput1_SBQB").setValue(sBinNumber);
+          if (odata.Lgpla === sBinNumber || sBinNumber === "DECON%20BIN") {
+            that.getView().byId("_IDBinDetailsGenInput1_SBQB").setValue(odata.Lgpla);
 
             // Get the product details from the response
             let oDetails = odata.BINQHeadSet.results;
@@ -126,7 +129,9 @@ sap.ui.define([
                 press: [that.onSelectMaterial, that]
               })
             });
-          }
+            that.getView().byId("page1_SBQB").setVisible(false);
+            that.getView().byId("page2_SBQB").setVisible(true);
+         }
         },
         error: function () {
           sap.m.MessageToast.show("Error fetching products.");
@@ -147,7 +152,7 @@ sap.ui.define([
           var oView = that.getView();
           oView.byId("idSBQBBinInput").setValue(odata.Lgtyp);
           oView.byId("idSBQBMaxVInput").setValue(odata.MaxVolume);
-          oView.byId("idSBQBStoreTypeInput1").setValue(odata.Lptyp); 
+          oView.byId("idSBQBStoreTypeInput1").setValue(odata.Lptyp);
           oView.byId("idSBQBStoreTypeInput").setValue(odata.Lgber);
           oView.byId("idSBQBQtyWInput").setValue(odata.Ivnum);
           oView.byId("idSBQBStorSecInput").setValue(odata.Anzle);
@@ -208,7 +213,7 @@ sap.ui.define([
         },
 
         success: function (odata) {
-          that.getView().byId("_IDBinListDetailsGenInput1_SBQB").setValue(that.sBinNumber);
+          that.getView().byId("_IDBinListDetailsGenInput1_SBQB").setValue(odata.Lgpla);
           let oDetails = odata.BINQHeadSet.results;
 
           // Prepare an array for binding
@@ -252,7 +257,7 @@ sap.ui.define([
     },
 
     onSelectMaterial: function (oEvent) {
-      
+
       var oView = this.getView();
 
       var oModel = this.getView().getModel(); // Assuming you have a model set up
@@ -270,13 +275,13 @@ sap.ui.define([
 
           var oSelectedMaterial = aMaterials.find(function (material) {
 
-            return (material.Matnr === sSelectedMatnr && material.Quan === sSelectedQuan) ;
+            return (material.Matnr === sSelectedMatnr && material.Quan === sSelectedQuan);
           });
           if (oSelectedMaterial) {
             // Update the UI with the selected material's details
             oView.byId("idSBQBBinInput_extra").setValue(odata.Lgtyp);
             oView.byId("idSBQBStoreTypeInput_extra").setValue(odata.Lgber);
-            oView.byId("idSBQBStoreTypeInput1_extra").setValue(odata.Lptyp); 
+            oView.byId("idSBQBStoreTypeInput1_extra").setValue(odata.Lptyp);
             oView.byId("idSBQBNoOfHuInput_extra").setValue(odata.MaxWeight);
             oView.byId("idSBQBBinAisleInput_extra").setValue(odata.Weight);
             oView.byId("idSBQBMaxWInput_extra").setValue(odata.MaxVolume);
@@ -306,7 +311,7 @@ sap.ui.define([
     getStatusText: function (statusCode) {
       if (typeof statusCode === 'boolean') {
         return statusCode ? 'yes' : 'No';
+      }
     }
-  }
   });
 });
