@@ -119,7 +119,7 @@
                                     <VBox id="idVbox3_HomeView">
                                         <Label
                                             id="idLabelHU"
-                                            text="Warehouse No:"
+                                            text="{i18n>WH_no}"
                                             labelFor="idHUInput"
                                             class="LabelHomePage"
                                         />
@@ -326,7 +326,7 @@
 
                     <VBox
                             id="idVBoxGif_HomeViewTab"
-                            width="60%"
+                            width="70%"
                             class="vboxResponsiveGifTab"
                             alignItems="Center"
                             justifyContent="Center"
@@ -336,7 +336,7 @@
                             <html:img
                                 id="idGif_HomeViewTab"
                                 src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJkYmQycWpiendiMHp0NWtiem16MTEzZTFrZzNja2Jua2c0OTBmNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PfmcrhvmzJZ03tE8hu/giphy-downsized-large.gif"
-                                style="width:500px; height:500px;"
+                                style="width:700px; height:500px;"
                                 class="responsiveGifTab"
                             />
                         </VBox>
