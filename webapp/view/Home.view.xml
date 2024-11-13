@@ -137,7 +137,7 @@
                                         <MultiInput
                                             id="idHUInput"
                                             width="7rem"
-                                            value="AWHE"
+                                            value="W001"
                                             editable="true"
                                         />
                                         <Input
