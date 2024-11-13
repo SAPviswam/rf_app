@@ -62,6 +62,7 @@
         id="idAssignedQueueTable_changeQueue"
         mode="MultiSelect"
         alternateRowColors="true"
+        items="{/resources}"
     >
  
         <headerToolbar>
@@ -80,24 +81,6 @@
                     type="Emphasized"
                     press="onAddQueueBtnPress_changeQueue"
                 />
-                <!-- Refresh button -->
-                <Button
-                    id="idRefreshBtn_changeQueue"
-                    icon="sap-icon://refresh"
-                    tooltip="Refresh Queue"
-                    type="Emphasized"
-                    press="onRefreshBtnPress_changeQueue"
-                />
-                
-                <!-- Edit button -->
-                <Button
-                    id="idEditBtn_changeQueue"
-                    icon="sap-icon://edit"
-                    tooltip="Edit Queue"
-                    type="Emphasized"
-                    press="onEditQueueBtnPress_changeQueue"
-                />
-               
                 <!-- Delete button -->
                 <Button
                     id="idDeleteBtn_changeQueue"
@@ -112,7 +95,7 @@
                     id="idBackBtn_changeQueue"
                     text="Back"
                     type="Emphasized"
-                    press="onBackBtnInHomePage"
+                    press="onBackBtnPress_changeQueue"
                 />
                
             </OverflowToolbar>
@@ -148,15 +131,15 @@
                 <cells>
                     <Text
                         id="idAreaText_changeQueue"
-                       
+                       text="{Area}"
                     />
                     <Text
                         id="idGroupText_changeQueue"
-                       
+                       text="{Group}"
                     />
                     <Text
                         id="idChangeText_changeQueue"
-                       
+                       text="{Queue}"
                     />
                    
                 </cells>
@@ -176,13 +159,17 @@
                 <f:title>
                     <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
                         <f:heading>
+                        
                             <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
+                            
                         </f:heading>
+                       
                     </f:DynamicPageTitle>
                 </f:title>
                 <!-- DynamicPage Header -->
                 <f:content>
                 <!-- Area wizards -->
+                
                     <Wizard
                         id="idProcesstWizard_changeQueue"
                         class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
