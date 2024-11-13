@@ -182,7 +182,7 @@
                             id="idProcessAreaWizard_changeQueue"
                             nextStep="ProcessGroupStep"
                             title="Select Process Area"
-                            icon="sap-icon://SAP-icons-TNT/technicalscenario"
+                            icon="sap-icon://slim-arrow-right"
                         >
                        
                            <!-- list for area -->
@@ -213,7 +213,7 @@
                             title="Select Process Group"
                              nextStep="ProcessQueueStep"
 	
-                            icon="sap-icon://group"
+                            icon="sap-icon://open-command-field"
                         >
                        
                             <!-- list for process area -->
@@ -241,7 +241,7 @@
                         <WizardStep
                             id="idProcessQueueStep_changeQueue"
                             title="Select Queue"
-                            icon="sap-icon://credit-card"
+                            icon="sap-icon://process"
                         >
 						
 						<List
