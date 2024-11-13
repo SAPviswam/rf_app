@@ -195,7 +195,7 @@
                             id="idProcessAreaWizard_changeQueue"
                             nextStep="ProcessGroupStep"
                             title="Select Process Area"
-                            icon="sap-icon://cart"
+                            icon="sap-icon://SAP-icons-TNT/technicalscenario"
                         >
                        
                            <!-- list for area -->
@@ -226,7 +226,7 @@
                             title="Select Process Group"
                              nextStep="ProcessQueueStep"
 	
-                            icon="sap-icon://money-bills"
+                            icon="sap-icon://group"
                         >
                        
                             <!-- list for process area -->

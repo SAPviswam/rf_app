@@ -41,13 +41,18 @@ sap.ui.define([
                    this.getView().byId("idVBoxGif_HomeView").setVisible(false);
                    // this.getView().byId("idVBoxGif_HomeViewTab").addStyleClass("imageVboxForTab");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("TextVboxForTab");
-                    
+                    this.getView().byId("IdMainVbox_HomeView").addStyleClass("VboxForTab");
+                    this.getView().byId("idVBoxInputFields_HomeView").addStyleClass("TextBoxForTab_HomeView");
+                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVboxForTab_HomeView")
+                   
                 }
                 else if(Device.system.phone){
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("rfLoginVboxMobile");
                     this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home")
+                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home");
+                    this.getView().byId("idVBoxInputFields_HomeView").addStyleClass("rflogin_mobile_Home");
+                    this.getView().byId("createResourceVbox").addStyleClass("createResource_mobile_home")
                 }
                 else{
                     this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);
@@ -738,6 +743,10 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
+            onChangeQueuePress:function(){
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("CHANGEQUEUE", { id: this.ID });
+            }
 
         });
     });
