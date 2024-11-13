@@ -198,12 +198,16 @@ sap.ui.define(
       tableContentDisplay: async function (oHuValue, status) {
         var that = this;
         var oModel = this.getOwnerComponent().getModel();
+        if(oHuValue){
         await oModel.read(`/HUWTHSet('${oHuValue}')`, {
           urlParameters: {
             "$expand": "HUtoWT",
             "$format": "json"
           },
           success: function (odata) {
+            if(odata.HUtoWT.results.length>0){
+
+            
             // If HU exists, populate the input field and filter tasks based on status
             that.getView().byId("idHUNumberInput_WTQBYHU").setValue(odata.Huident);
             let oDetails = odata.HUtoWT.results;
@@ -229,11 +233,12 @@ sap.ui.define(
             // Show the HU number table
             that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
             that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
-          },
+          }
+        },
           error: function (oError) {
             // Handle error if HU is not found
           }
-        });
+        });}
       },
 
       // Show warehouse task details when the corresponding button is pressed
