@@ -1209,7 +1209,7 @@
 }
 
 .LabelHomepageFragmentSignup4 {
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
 }
 
 .LabelHomepageFragmentSignup5 {
@@ -1730,3 +1730,12 @@ margin-right: 20%;
 }
 
 /* initial View end */
+
+/* create resource starts */
+
+.star{
+    color: red;
+}
+
+/* create resource ends */
+
