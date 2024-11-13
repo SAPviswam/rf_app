@@ -87,7 +87,7 @@ sap.ui.define([
                 showEditTile: oPopoverContext?.showEditTile || false,
                 showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
                 showThemes: oPopoverContext?.showThemes || false,
-                showLanguage: oPopoverContext?.showLanguage || false,
+                // showLanguage: oPopoverContext?.showLanguage || false,
                 showTileView: oPopoverContext?.showTileView || false,
                 showHelp: oPopoverContext?.showHelp || false,
                 showSignOut: oPopoverContext?.showSignOut || false
