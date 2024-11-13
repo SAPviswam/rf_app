@@ -2,94 +2,301 @@
     controllerName="com.app.rfapp.controller.ChangeQueue"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
     xmlns="sap.m"
-    xmlns:tnt="sap.tnt"
-    xmlns:f="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+	 xmlns:tnt="sap.tnt"
+    height="100%"
 >
-    <tnt:ToolPage id="idToolPagePutawayByWO_CHNGQ">
+    <tnt:ToolPage id="idToolPage_changeQueue">
+    <!-- Header section -->
+        <tnt:header>
+            <tnt:ToolHeader id="idToolHeader_changeQueue">
+               <!-- Artihcus Logo -->
+                <Image
+                    id="idArtihcusLogo_changeQueue"
+                    height="1.5rem"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- capModel RF Title -->
+                <Title
+                    id="idCapModelRfTitle_changeQueue"
+                    text="CAPmodel RF"
+                    class="title"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_changeQueue"
+                />
+                <ToolbarSpacer id="idToolbarSpacer1_changeQueue">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData_changeQueue"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <!-- Avatar title -->
+                <Avatar
+                    id="idAvatar_changeQueue"
+                    displaySize="XS"
+                    tooltip="Profile"
+                    press="onHomePageAvatarPressed"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+
         <tnt:mainContents>
-            <ScrollContainer
-                id="icon_CHNGQ"
-                width="100%"
-                height="100%"
+		<ScrollContainer
+                id="idScrollContainer1_changeQueue"
                 horizontal="false"
                 vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="true"
             >
+            <!-- Queues Table -->
+		<Table
+        id="idAssignedQueueTable_changeQueue"
+        mode="MultiSelect"
+        alternateRowColors="true"
+    >
+ 
+        <headerToolbar>
+            <OverflowToolbar id="idOverflowToolbar_changeQueue">
+            <!-- title -->
+                 <Title
+        id="idAssignedQueueTitle_changeQueue"
+        text="Assigned Queue/Work Center"
+    />
+ 
+                <ToolbarSpacer id="idToolbarSpacer_changeQueue" />
+                <!-- Add button -->
                 <Button
-                    id="_IDGenButton1111_CHNGQ"
-                    icon="sap-icon://nav-back"
-                    press="OnpressBackFromChangeQueue"
+                    id="idAddBtn_changeQueue"
+                    text="Add"
+                    type="Emphasized"
+                    press="onAddQueueBtnPress_changeQueue"
+                />
+                <!-- Refresh button -->
+                <Button
+                    id="idRefreshBtn_changeQueue"
+                    icon="sap-icon://refresh"
+                    tooltip="Refresh Queue"
+                    type="Emphasized"
+                    press="onRefreshBtnPress_changeQueue"
+                />
+                
+                <!-- Edit button -->
+                <Button
+                    id="idEditBtn_changeQueue"
+                    icon="sap-icon://edit"
+                    tooltip="Edit Queue"
+                    type="Emphasized"
+                    press="onEditQueueBtnPress_changeQueue"
+                />
+               
+                <!-- Delete button -->
+                <Button
+                    id="idDeleteBtn_changeQueue"
+                    icon="sap-icon://delete"
+                    tooltip="Delete Queue"
+                    type="Reject"
+                    press="onDeleteQueueBtnPress_changeQueue"
                 />
 
-                <VBox
-                    id="IDRHBSGenVBoxpage_CHNGQ"
-                    alignItems="Center"
-                    justifyContent="Center"
-                >
-                    <Title
-                        id="idPageTitle_CHNGQ"
-                        text="Change Queue"
-                        level="H2"
+                 <!-- Back button -->
+                 <Button
+                    id="idBackBtn_changeQueue"
+                    text="Back"
+                    type="Emphasized"
+                    press="onBackBtnInHomePage"
+                />
+               
+            </OverflowToolbar>
+        </headerToolbar>
+        <!-- columns -->
+        <columns>
+            <Column id="idAreaCol_changeQueue">
+                <Title
+                    id="idAreaTitle_changeQueue"
+                    text="Area"
+                />
+            </Column>
+            <Column id="idGroupCol_changeQueue">
+                <Title
+                    id="idGroupTitle_changeQueue"
+                    text="Group"
+                />
+            </Column>
+            <Column
+                id="idQueueCol_changeQueue"
+               
+            >
+                <Title
+                    id="idQueueTitle_changeQueue"
+                    text="Queue"
+                />
+            </Column>
+           
+        </columns>
+        <!-- cells -->
+        <items>
+            <ColumnListItem id="idColListItem_changeQueue">
+                <cells>
+                    <Text
+                        id="idAreaText_changeQueue"
+                       
                     />
-                </VBox>
-
-                <f:SimpleForm
-                    id="simpleForm1_CHNGQ"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                    singleContainerFullSize="false"
-                    
-                >
-                    <Label
-                        id="_IDGenLabel2_CHNGQ"
-                        text="Resource"
-                        class="sapUiTinyMarginEnd"
+                    <Text
+                        id="idGroupText_changeQueue"
+                       
+                    />
+                    <Text
+                        id="idChangeText_changeQueue"
+                       
+                    />
+                   
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+	</ScrollContainer>
+    <NavContainer id="idNavContainer_changeQueue" visible="false">
+        <pages>
+            <f:DynamicPage
+                id="idDynamicPage_changeQueue"
+                stickySubheaderProvider="idProcesstWizard_changeQueue"
+                class="sapUiNoContentPadding"
+                showFooter="true"
+            >
+                <!-- DynamicPage Title -->
+                <f:title>
+                    <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
+                        <f:heading>
+                            <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
+                        </f:heading>
+                    </f:DynamicPageTitle>
+                </f:title>
+                <!-- DynamicPage Header -->
+                <f:content>
+                <!-- Area wizards -->
+                    <Wizard
+                        id="idProcesstWizard_changeQueue"
+                        class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                        complete="completedHandler"
+                        height="auto"
+						showNextButton="false"
+                       
+                    >
+                        <WizardStep
+                            id="idProcessAreaWizard_changeQueue"
+                            nextStep="ProcessGroupStep"
+                            title="Select Process Area"
+                            icon="sap-icon://SAP-icons-TNT/technicalscenario"
+                        >
+                       
+                           <!-- list for area -->
+                            <List
+								id="idProcessAreaList_changeQueue"
+                               mode="MultiSelect"
+                                items="{/ProcessAreas}"
+                                enableBusyIndicator="true"
+                                delete="handleDelete"
+                                selectionChange="onSelectionChangeArea"
+                              
+                            >
+                                <StandardListItem 
+                                    id="idStandardListItem_changeQueue"
+                                    title="{Processarea}"
+                                    type="Active"
+                                    iconDensityAware="false"
+                                    iconInset="false"
+                                />
+                            </List>
+                             <!-- next button -->
+						<Button id="idNextBtn_changeQueue" press="onNextPressProcessArea" text="Next"></Button>
+                        </WizardStep>
+                        <!-- group wizard -->
+                        <WizardStep
+						
+                            id="idProcessGroupStep_changeQueue"
+                            title="Select Process Group"
+                             nextStep="ProcessQueueStep"
+	
+                            icon="sap-icon://group"
+                        >
+                       
+                            <!-- list for process area -->
+                            <List
+								id="idProcessGroupList_changeQueue"
+                               mode="MultiSelect"
+                                items="{/ProcessGroups}"
+                                enableBusyIndicator="true"
+                                delete="handleDelete"
+                                selectionChange="onSelectionChangeGroup"
+                             
+                            >
+                                <StandardListItem 
+                                    id="idStandardListItem1_changeQueue"
+                                    title="{Processgroup}"
+                                    type="Active"
+                                    iconDensityAware="false"
+                                    iconInset="false"
+                                />
+                            </List>
+                           <!-- next button -->
+						<Button id="idNext2Btn_changeQueue" press="onNextPressProcessGroup" text="Next"></Button>
+                        </WizardStep>
+                        <!-- Queue wizard -->
+                        <WizardStep
+                            id="idProcessQueueStep_changeQueue"
+                            title="Select Queue"
+                            icon="sap-icon://credit-card"
+                        >
+						
+						<List
+								id="idProcessQueueList_changeQueue"
+                                mode="MultiSelect"
+                                items="{/ProcessQueues}"
+                                enableBusyIndicator="true"
+                                delete="handleDelete"
+                               
+                            >
+                                <StandardListItem
+                                    id="idStandardListItem2_changeQueue"
+                                    title="{Processqueue}"
+                                    type="Active"
+                                    iconDensityAware="false"
+                                    iconInset="false"
+                                />
+                            </List>
+                            <!-- list for Queue -->
+<Button text="Submit" press="OnSubmitPress"></Button>
+                        </WizardStep>
                         
-                    />
-                    <Input
-                        id="_IDGenInput2_CHNGQ"
-                        placeholder="Enter Resource"
-                        maxLength="25"
-                        width="300px"
-                        editable="false"
-                    />
-                    <Label
-                        id="_IDGenLabel3_CHNGQ"
-                        text="Queue"
-                    />
-                    <Input
-                        id="_IDGenInput3_CHNGQ"
-                        placeholder="Enter Queue"
-                        maxLength="25"
-                        width="300px"
-                        editable="false"
-                    />
-
-                    <Label
-                        id="_IDGenLabel4_CHNGQ"
-                        text="NQueue"
-                    />
-                    <Input
-                        id="_IDGenInput4_CHNGQ"
-                        placeholder="Enter NQueue"
-                        maxLength="25"
-                        width="300px"
-                    />
-                </f:SimpleForm>
-            </ScrollContainer>
-        </tnt:mainContents>
+                        
+                    </Wizard>
+                </f:content>
+                <!-- DynamicPage Footer -->
+                <!-- <f:footer>
+					<OverflowToolbar>
+						<Button icon="sap-icon://message-popup"
+						        text="{messagesLength}"
+						        type="Emphasized"
+						        press="onMessageButtonPress"
+						        visible="{= !!$messagesLength}}"/>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Accept"/>
+						<Button type="Reject" text="Reject"/>
+					</OverflowToolbar>
+				</f:footer> -->
+            </f:DynamicPage>
+           
+        </pages>
+    </NavContainer>
+	</tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>

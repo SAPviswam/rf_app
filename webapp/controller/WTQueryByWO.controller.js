@@ -30,6 +30,7 @@ sap.ui.define(
                         else {
                             oRouter.navTo("Supervisor", { id: this.ID });
                         }
+                        this.getView().byId("idWtQBWoWhInput").setValue(""); // Clear input field
                     }.bind(this),
                     error: function () {
                         MessageToast.show("User does not exist");
@@ -166,7 +167,6 @@ sap.ui.define(
                     };
                 });
 
-
                 // Create a JSON model for the filtered tasks
                 var oWarehouse = new sap.ui.model.json.JSONModel({ WarehouseOrder: aWarehouseOrderDetails });
 
@@ -180,7 +180,7 @@ sap.ui.define(
                             new sap.m.Text({ text: "{Tostat}" })  // Display task status
                         ],
                         type: "Navigation",   // Enable navigation on row click
-                        press: [that.onSelectWarehouseOrderTask, that] // Event handler for row press
+                        press: [that.onSelectWarehouseTask, that] // Event handler for row press
                     })
                 });
 
@@ -189,7 +189,6 @@ sap.ui.define(
                 that.getView().byId("idWtQBWoWhSecondsc").setVisible(true);
                 that.getView().byId("idWtQBWofirstbackbtn").setVisible(false);
                 that.getView().byId("idWtQBWoSecondbackbtn").setVisible(true);
-                that.getView().byId("idWtQBWoWhInput").setValue(""); // Clear input field
             },
 
             // Handler when a warehouse order task is selected
@@ -208,7 +207,7 @@ sap.ui.define(
                     success: function (odata) {
                         console.log(odata);
                         var aWarehousetask = odata.WarehouseOrdertoTask.results;
-                        var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum"); // Get selected task number
+                        var sSelectedWT = oEvent.getSource().getBindingContext().getProperty("Tanum"); // Get selected task number
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
@@ -233,7 +232,7 @@ sap.ui.define(
                             oView.byId("idWtQBWoCusrInput").setValue(oSelectedWT.ConfBy);
 
                             // Input date in YYYYMMDD format
-                            const inputDate = oSelectedWT.ConfD ;
+                            const inputDate = oSelectedWT.ConfD;
 
                             // Extract year, month, and day
                             const year = inputDate.substring(0, 4);

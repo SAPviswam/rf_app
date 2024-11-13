@@ -17,6 +17,7 @@ sap.ui.define(
             const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
         },
+        //Back button from 1st screen
         onHUStockOverviewQueryfirstBackBtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();
@@ -42,13 +43,13 @@ sap.ui.define(
             
            
         },
-        
+        //on clicking submit button in 1st screen
         onSubmitButtonPress: function () {
-            
+            debugger;
            
                 // Get the input value from the input field
                 var oView = this.getView();
-                var sHUNumber = oView.byId("idinputhusovqhu").getValue();
+                var sHUNumber = oView.byId("idinput_HUSOQ").getValue();
           
                 sHUNumber = sHUNumber.toUpperCase();
                 
@@ -73,11 +74,11 @@ sap.ui.define(
                   success: function (odata) {
                     console.log(odata)
                     if (odata.Huident === sHUNumber) {
-                      that.getView().byId("idScforFirstHUStockOverviewQuery").setVisible(false);
-                        that.getView().byId("idHUStockOverviewQueryfirstbackbtn").setVisible(false);
-                        that.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(true);
-                        that.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(true);
-                      that.getView().byId("idBinNumberI_nput_HUSOQ11").setValue(sHUNumber);
+                      that.getView().byId("idScforFirstHUStockOverviewQuery_HUSOQ").setVisible(false);
+                        that.getView().byId("idHUStockOverviewQueryfirstbackbtn_HUSOQ").setVisible(false);
+                        that.getView().byId("idScforSecondHUStockOverviewQuery_HUSOQ").setVisible(true);
+                        that.getView().byId("idHUStockOverviewQuerySecondbackbtn_HUSOQ").setVisible(true);
+                        that.getView().byId("idBinNumberInput_HUSOQ_HUSOQ").setValue(sHUNumber);
                       
 
 
@@ -86,9 +87,9 @@ sap.ui.define(
                       // Get the product details from the response
                       let oDetails = odata.HUheadtoItems.results;
 
-                      that.getView().byId("idBinNumberInp_ut_HUSOQ121").setValue(oDetails[0].NumIt);
-                      that.getView().byId("idBinNum_berInput_HUSOQ131").setValue(oDetails[0].NumHu);
-                      that.getView().byId("idBinNumbe_rInput_HUSOQ141").setValue(oDetails[0].TopInd);
+                      that.getView().byId("idBinNumberInputBinInput_HUSOQ").setValue(oDetails[0].NumIt);
+                      that.getView().byId("idBinNumberInputBinNumberInput_HUSOQ").setValue(oDetails[0].NumHu);
+                      that.getView().byId("idBinNumberInputBinNumInput_HUSOQ").setValue(oDetails[0].Top);
           
                       // Prepare an array for binding
                       var aProductDetails = [];
@@ -96,6 +97,7 @@ sap.ui.define(
                       // Loop through the results and push them into the array
                       for (var i = 0; i < oDetails.length; i++) {
                         if (oDetails[i].Matnr) {
+
                           aProductDetails.push({
                             Matnr: oDetails[i].Matnr,
                             Maktx: oDetails[i].Maktx,
@@ -110,10 +112,10 @@ sap.ui.define(
                       var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
           
                       // Set the model to the table
-                      that.byId("idBinNumTable_AHUOB12Q11").setModel(oProductModel);
+                      that.byId("idBinNumberTableInput_HUSOQ").setModel(oProductModel);
           
                       // Bind the items aggregation of the table to the products array in the model
-                      that.byId("idBinNumTable_AHUOB12Q11").bindItems({
+                      that.byId("idBinNumberTableInput_HUSOQ").bindItems({
                         path: "/products",
                         template: new sap.m.ColumnListItem({
                           cells: [
@@ -140,17 +142,20 @@ sap.ui.define(
                 });
          
         },
+        //on clicking on back button in second screen
         onHUStockOverviewQuerySecondBackBtnPress:function(){
-            this.getView().byId("idScforFirstHUStockOverviewQuery").setVisible(true);
-            this.getView().byId("idHUStockOverviewQueryfirstbackbtn").setVisible(true);
-            this.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(false);
-            this.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(false);
+            this.getView().byId("idScforFirstHUStockOverviewQuery_HUSOQ").setVisible(true);
+            this.getView().byId("idHUStockOverviewQueryfirstbackbtn_HUSOQ").setVisible(true);
+            this.getView().byId("idScforSecondHUStockOverviewQuery_HUSOQ").setVisible(false);
+            this.getView().byId("idHUStockOverviewQuerySecondbackbtn_HUSOQ").setVisible(false);
         },
+        //on clicking on HUQUERYLIST button
         onPressHUQueryList:function(){
+          debugger;
             
             // Get the input value from the input field
             var oView = this.getView();
-            var sHUNumber = oView.byId("idBinNumberI_nput_HUSOQ11").getValue();
+            var sHUNumber = oView.byId("idBinNumberInput_HUSOQ_HUSOQ").getValue();
       
             sHUNumber = sHUNumber.toUpperCase();
             
@@ -175,14 +180,14 @@ sap.ui.define(
               success: function (odata) {
                 console.log(odata)
                 if (odata.Huident === sHUNumber) {
-                    that.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(false);
-                    that.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(false);
-                    that.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(true);
-                    that.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(true);
-                    that.getView().byId("idBinNumberInput_HUSOQ11").setValue(sHUNumber);
-                    that.getView().byId("idBinNumberInput_HUSOQ121").setValue(odata.NumIt);
-                    that.getView().byId("idBinNumberInput_HUSOQ131").setValue(odata.NumHu);
-                    that.getView().byId("idBinNumberInput_HUSOQ141").setValue(odata.TopInd);
+                    that.getView().byId("idScforSecondHUStockOverviewQuery_HUSOQ").setVisible(false);
+                    that.getView().byId("idHUStockOverviewQuerySecondbackbtn_HUSOQ").setVisible(false);
+                    that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(true);
+                    that.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(true);
+                    that.getView().byId("idBinNumberforlabelInput_HUSOQ").setValue(sHUNumber);
+                    that.getView().byId("idBinNumberforbinnumbernput_HUSOQ").setValue(odata.NumIt);
+                    that.getView().byId("idBinNumbinnumbernput_HUSOQ").setValue(odata.NumHu);
+                    that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(odata.Top);
 
 
                   
@@ -191,9 +196,9 @@ sap.ui.define(
                   // Get the product details from the response
                   let oDetails = odata.HUheadtoItems.results;
 
-                  that.getView().byId("idBinNumberInput_HUSOQ121").setValue(oDetails[0].NumIt);
-                  that.getView().byId("idBinNumberInput_HUSOQ131").setValue(oDetails[0].NumHu);
-                  that.getView().byId("idBinNumberInput_HUSOQ141").setValue(oDetails[0].TopInd);
+                  that.getView().byId("idBinNumberforbinnumbernput_HUSOQ").setValue(oDetails[0].NumIt);
+                  that.getView().byId("idBinNumbinnumbernput_HUSOQ").setValue(oDetails[0].NumHu);
+                  that.getView().byId("idBinNumbeerInput_HUSOQ").setValue(oDetails[0].Top);
       
                   // Prepare an array for binding
                   var aProductDetails = [];
@@ -211,10 +216,10 @@ sap.ui.define(
                   var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
       
                   // Set the model to the table
-                  that.byId("idBinNumTable_AHUOB12Q1").setModel(oProductModel);
+                  that.byId("idTable_HUSOQ").setModel(oProductModel);
       
                   // Bind the items aggregation of the table to the products array in the model
-                  that.byId("idBinNumTable_AHUOB12Q1").bindItems({
+                  that.byId("idTable_HUSOQ").bindItems({
                     path: "/products",
                     template: new sap.m.ColumnListItem({
                       cells: [
@@ -237,18 +242,20 @@ sap.ui.define(
             });
 
         },
+        //on clicking on back button from third screen 
         onHUStockOverviewQueryThirdBackBtnPress:function(){
-            this.getView().byId("idScforSecondHUStockOverviewQuery").setVisible(true);
-            this.getView().byId("idHUStockOverviewQuerySecondbackbtn").setVisible(true);
-            this.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(false);
-            this.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(false);
+            this.getView().byId("idScforSecondHUStockOverviewQuery_HUSOQ").setVisible(true);
+            this.getView().byId("idHUStockOverviewQuerySecondbackbtn_HUSOQ").setVisible(true);
+            this.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
+            this.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(false);
         },
+        //on clicking on HU information button
         onPressHUINformationPress:function(){
             
 
             // Get the input value from the input field
             var oView = this.getView();
-            var sHUNumber = oView.byId("idBinNumberInput_HUSOQ11").getValue();
+            var sHUNumber = oView.byId("idBinNumberforlabelInput_HUSOQ").getValue();
       
             sHUNumber = sHUNumber.toUpperCase();
             
@@ -273,11 +280,11 @@ sap.ui.define(
               success: function (odata) {
                 console.log(odata)
                 if (odata.Tophu === sHUNumber) {
-                    that.getView().byId("idHUStockOverviewQueryFourthbackbtn").setVisible(true);
-                    that.getView().byId("idScforFourthHUStockOverviewQuery").setVisible(true);
-                    that.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(false);
-                    that.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(false);
-                   that.getView().byId("idBinNumberInput_HUSOQ11").setValue(sHUNumber);
+                    that.getView().byId("idHUStockOverviewQueryFourthbackbtn_HUSOQ").setVisible(true);
+                    that.getView().byId("idScforFourthHUStockOverviewQuery_HUSOQ").setVisible(true);
+                    that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
+                    that.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(false);
+                   that.getView().byId("idBinNumberforlabelInput_HUSOQ").setValue(sHUNumber);
 
 
                    let oDetails = odata.HUheadtoItems.results;
@@ -312,17 +319,20 @@ sap.ui.define(
             });
 
         },
+        //On clicking on back button from fourth screen
         onHUStockOverviewQueryFourthBackBtnPress:function(){
-            this.getView().byId("idHUStockOverviewQueryFourthbackbtn").setVisible(false);
-            this.getView().byId("idScforFourthHUStockOverviewQuery").setVisible(false);
-            this.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(true);
-            this.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(true);
+            this.getView().byId("idHUStockOverviewQueryFourthbackbtn_HUSOQ").setVisible(false);
+            this.getView().byId("idScforFourthHUStockOverviewQuery_HUSOQ").setVisible(false);
+            this.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(true);
+            this.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(true);
             
         },
+        //onclicking on HU query prod info button
         onPressHUQuerystockprodinfoPress:function(){
+           debugger;
             
             var oView = this.getView();
-            var sHUNumber = oView.byId("idBinNumberInput_HUSOQ11").getValue();
+            var sHUNumber = oView.byId("idBinNumberforlabelInput_HUSOQ").getValue();
       
             sHUNumber = sHUNumber.toUpperCase();
             
@@ -347,10 +357,10 @@ sap.ui.define(
               success: function (odata) {
                 console.log(odata)
                 if (odata.Tophu === sHUNumber) {
-                  that.getView().byId("idHUStockOverviewQueryFifthbackbtn").setVisible(true);
-                  that.getView().byId("idScforFifthHUStockOverviewQuery").setVisible(true);
-                  that.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(false);
-                  that.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(false);
+                  that.getView().byId("idHUStockOverviewQueryFifthbackbtn_HUSOQ").setVisible(true);
+                  that.getView().byId("idScforFifthHUStockOverviewQuery_HUSOQ").setVisible(true);
+                  that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
+                  that.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(false);
 
 
                    let oDetails = odata.HUheadtoItems.results;
@@ -371,17 +381,19 @@ sap.ui.define(
                    that.getView().byId("inputMisc2").setValue(oDetails[0].StockDocno);
                    that.getView().byId("inputMisc3").setValue(oDetails[0].StockItmno);
                 }
+
               },
               error: function () {
                 sap.m.MessageToast.show("Error fetching products.");
               }
             });
         },
+        //on clicking on back button from fifth screen 
         onHUStockOverviewQueryFifthBackBtnPress:function(){
-            this.getView().byId("idHUStockOverviewQueryFifthbackbtn").setVisible(false);
-            this.getView().byId("idScforFifthHUStockOverviewQuery").setVisible(false);
-            this.getView().byId("idHUStockOverviewQueryThirdbackbtn").setVisible(true);
-            this.getView().byId("idScforThirdHUStockOverviewQuery").setVisible(true);   
+            this.getView().byId("idHUStockOverviewQueryFifthbackbtn_HUSOQ").setVisible(false);
+            this.getView().byId("idScforFifthHUStockOverviewQuery_HUSOQ").setVisible(false);
+            this.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(true);
+            this.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(true);   
         },
         getStatusText: function (statusCode) {
           if (typeof statusCode === 'boolean') {

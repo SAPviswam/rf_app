@@ -97,7 +97,7 @@
                             >
                                 <Label
                                     id="_IDBinGenLabel1_SBQB"
-                                    text="Bin:"
+                                    text="{i18n>Bin_Label_SBQBB}"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -182,7 +182,7 @@
                         <HBox id="idHbox_StockBinQuerybyBin3">
                             <Label
                                 id="_IDBinDetailsGenLabel_SBQB"
-                                text="Bin:"
+                                text="{i18n>Bin_Label_SBQBB}"
                                 class="sapUiTinyMarginTop"
                             />
                             <HBox id="idHbox_StockBinQuerybyBin4">
@@ -234,19 +234,19 @@
                             <Column id="idProductCol">
                                 <Title
                                     id="idProductTitle"
-                                    text="Product"
+                                    text="{i18n>product_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idProductQtyCol">
                                 <Title
                                     id="idProductQtyTitle"
-                                    text="Quantity"
+                                    text="{i18n>Quantity_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idProductQtyUOMCol">
                                 <Title
                                     id="idProductQtyUOMTitle"
-                                    text="UOM"
+                                    text="{i18n>UOM_TABCloumName_SBQBB}"
                                 />
                             </Column>
                         </columns>

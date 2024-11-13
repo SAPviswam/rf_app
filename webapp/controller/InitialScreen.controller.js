@@ -12,6 +12,7 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
+
                 //Profile Image updating(from Base Controller)...
 
                 this.load_100_Client_Metadata();
@@ -50,6 +51,24 @@ sap.ui.define([
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
             },
+
+            // Language Change 
+
+            onLanguageChange: function (oEvent) {
+                // Get selected language from dropdown
+                var sSelectedLanguage = oEvent.getSource().getSelectedKey();
+            
+                // Set the new language for the core configuration
+                sap.ui.getCore().getConfiguration().setLanguage(sSelectedLanguage);
+            
+                // Reload i18n model with the selected language
+                var oI18nModel = new sap.ui.model.resource.ResourceModel({
+                    bundleName: "com.app.rfapp.i18n.i18n",
+                    bundleLocale: sSelectedLanguage  // Set to selected language
+                });
+                this.getView().setModel(oI18nModel, "i18n");
+            },
+                        
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
@@ -252,7 +271,7 @@ sap.ui.define([
 
                                 // Create a new button for the configured SAP system
                                 var oNewButton = new sap.m.Button({
-                                    type: "Emphasized",
+                                    type: "Unstyled",
                                     width: "11rem",
                                     customData: [
                                         new sap.ui.core.CustomData({
@@ -268,6 +287,8 @@ sap.ui.define([
 
                                 // Attach single click event for CRUD operations
                                 oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, sDescription, sSystemId, sClient));
+
+                                oNewButton.addStyleClass("customButtonBackground");
 
                                 // Attach double click event for opening SAP logon
                                 oNewButton.attachBrowserEvent("dblclick", function () {
@@ -341,28 +362,35 @@ sap.ui.define([
             },
             onConfiguredSystemButtonPress: function (oButton, description, SystemId, Client, oEvent) {
                 this.isButtonPressed = true
+                // Check if the button is already selected
                 if (this.arrayOfButton.length >= 1) {
-                    if (oButton.getType() === "Accept") {
-                        oButton.setType("Emphasized")
-                        this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton)
-                        this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client)
-                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description)
+                    if (oButton.hasStyleClass("buttonSelected")) {
+                        // Deselect the button
+                        oButton.removeStyleClass("buttonSelected");
+                        oButton.addStyleClass("customButtonBackground");
 
-                    }
-                    else {
+                        this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton);
+                        this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client);
+                        this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description);
+                    } else {
+                        // Select the button
                         this.arrayOfButton.push(oButton);
-                        oButton.setType("Accept")
+                        oButton.removeStyleClass("customButtonBackground");
+                        oButton.addStyleClass("buttonSelected");
+
                         this.arrayOfClient.push(Client);
                         this.arrayOfDescription.push(description);
                     }
-
-                }
-                else {
+                } else {
+                    // First button press
                     this.arrayOfButton.push(oButton);
-                    oButton.setType("Accept")
+                    oButton.addStyleClass("buttonSelected"); // Set to selected
+                    oButton.removeStyleClass("customButtonBackground");
+
                     this.arrayOfClient.push(Client);
                     this.arrayOfDescription.push(description);
                 }
+
 
                 this.selectedButton = oButton;
                 this.client = Client;
@@ -423,7 +451,7 @@ sap.ui.define([
 
 
                                         that.arrayOfButton.forEach(element => {
-                                            element.setType("Emphasized")
+                                            element.setType("Unstyled")
                                         });
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
@@ -434,7 +462,7 @@ sap.ui.define([
                                         console.error(oError);
                                         MessageToast.show("Error deleting configured system.");
                                         that.arrayOfButton.forEach(element => {
-                                            element.setType("Emphasized")
+                                            element.setType("Unstyled")
                                         });
                                         that.arrayOfButton = [];
                                         that.arrayOfClient = [];
@@ -448,7 +476,7 @@ sap.ui.define([
                             MessageToast.show("Deletion cancelled.");
                             this.selectedButton = null;
                             this.arrayOfButton.forEach(element => {
-                                element.setType("Emphasized")
+                                element.setType("Unstyled")
                             });
                             this.arrayOfButton = [];
                             this.arrayOfClient = [];
@@ -477,35 +505,35 @@ sap.ui.define([
                 this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
                 this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
                 this.getView().byId("idClientInput_InitialView").setEditable(false);
-                
-                    
+
+
                 // load 100 client meta data
-               var oModel= this.getOwnerComponent().getModel();
-               var that = this;
-                    oModel.read("/ServiceSet", {
-                        success: function (oData) {
-                            var aButtons = oData.results;
-                            function checkButton(v) {
-                                return v.DescriptionB === oButtonText;
-                            }
-                            var oButtonedit = aButtons.filter(checkButton);
-                            if (oButtonedit) {
-                                that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
-                                that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
-                                that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
-                                that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
-                                that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
-                                that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
-                                that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
-                            }
-                            // New UI modification start
-                            that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                            that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                        },
-                        error: function (oError) {
-                            MessageBox.error("Error while reading data " + oError.message)
+                var oModel = this.getOwnerComponent().getModel();
+                var that = this;
+                oModel.read("/ServiceSet", {
+                    success: function (oData) {
+                        var aButtons = oData.results;
+                        function checkButton(v) {
+                            return v.DescriptionB === oButtonText;
                         }
-                    });
+                        var oButtonedit = aButtons.filter(checkButton);
+                        if (oButtonedit) {
+                            that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
+                            that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
+                            that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
+                            that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
+                            that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
+                            that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
+                            that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
+                        }
+                        // New UI modification start
+                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
+                    },
+                    error: function (oError) {
+                        MessageBox.error("Error while reading data " + oError.message)
+                    }
+                });
             },
             onEditconnectSAPPress: function () {
                 var oView = this.getView();
@@ -634,11 +662,13 @@ sap.ui.define([
                             var system = aConfiguredSystems[i]; // Get the current system
                             var oNewButton = new sap.m.Button({
                                 text: system.DescriptionB,
-                                type: "Emphasized",
+                                type: "Unstyled",
                                 width: "11rem",
                             });
                             // Attach single click event for CRUD operations
                             oNewButton.attachPress(this.onConfiguredSystemButtonPress.bind(this, oNewButton, system.Description, system.SystemId, system.Client));
+
+                            oNewButton.addStyleClass("customButtonBackground");
                             // Attach double click event for opening SAP logon
                             oNewButton.attachBrowserEvent("dblclick", function () {
                                 this.LoadSapLogon();
@@ -767,7 +797,7 @@ sap.ui.define([
                 var sCurrentPassword = oView.byId("idSPasswordInput_CP").getValue();
                 var sNewPassword = oView.byId("idNewPasswordInput_CP").getValue();
                 var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
-                var oModel = this.getView().getModel(); // Get your model
+                var oModel = this.getOwnerComponent().getModel(); // Get your model
                 var sResourceId = this.sResourceID;
                 if (!sCurrentPassword) {
                     MessageToast.show("Please enter current password");
@@ -854,6 +884,14 @@ sap.ui.define([
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
 
             },
+            onHelpconnectsapDialog:function(){
+                var filepath = "/webapp/docs/How%20to%20Edit%20SAP%20Configure%20System.pdf";
+                var link = document.createElement("a");
+                link.href = filepath;
+                link.download = "How to Edit SAP Configure System.pdf"
+                link.click();
+                MessageToast.show("File Downloaded");
+            }
 
             // New UI snippets end
 

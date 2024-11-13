@@ -1140,9 +1140,7 @@
     }
 }
 
-.vboxResponsiveGif {
-    margin-right: 30%;
-}
+
 
 /* unloading by door end*/
 
@@ -1213,7 +1211,7 @@
 }
 
 .LabelHomepageFragmentSignup5 {
-    margin-top: 0.7rem;
+    margin-top: 0.8rem;
 }
 
 .signupCreatebutton {
@@ -1448,7 +1446,13 @@ margin-right: 20%;
 }
 
 .configTextVbox {
-    width: 45%;
+    width: 10%;
+    margin-left: 90%;
+   
+}
+
+.textBoxForTab_HomeView{
+    margin-left: 30%;
 }
 
 .checkBoxText {
@@ -1603,10 +1607,15 @@ margin-right: 20%;
 .homeScreenCreateResourceVbox {
     border: 2px solid #000;
     /* Change the color and width as needed */
-    padding: 20px;
+    padding: 15px;
     /* Optional: adds space inside the border */
     border-radius: 5px;
-    margin-left: 50% !important;
+    margin-right: 0.1%;
+    
+}
+
+.vboxRfLogin_HomeView{
+   margin-left: 111%; 
 }
 
 
@@ -1639,12 +1648,19 @@ margin-right: 20%;
 }
 
 .vboxResponsiveGif {
-    margin-right: 40%;
+    margin-left:10%;
 }
 
 .vboxResponsiveGifTab {
-    padding: 2%;
+    padding: 3%;
+    margin-left: 100%;
 }
+
+.responsiveGif{
+    margin-left: 35%;
+
+}
+
 
 
 /*------     Stock Bin Query by Product - Start          -------*/
@@ -1729,12 +1745,63 @@ margin-right: 20%;
     color: white;           /* Change this to your preferred color */
 }
 
+.customButtonBackground {
+    color: rgb(0, 0, 0);
+    background-color: rgb(250, 164, 5);
+    border-radius: 10px;
+    border: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
+    width: 200px; /* Set a specific width, or you can use max-width instead */
+    font-size: 15px; /* Increase the font size for bigger text */
+    text-align: center; /* Ensure text is centered */
+}
+.buttonSelected {
+    background-color: #c2f499; /* Default background color */
+    border-radius: 10px;
+    color: black; /* Default text color */
+    border: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
+    width: 200px; /* Set a specific width, or you can use max-width instead */
+    font-size: 15px; /* Increase the font size for bigger text */
+    text-align: center; /* Ensure text is centered */
+}
+
+
 /* initial View end */
 
 /* create resource starts */
 
 .star{
     color: red;
+}
+
+
+.VboxForTab{
+    left: 80%;
+}
+
+.responsiveGifTab{
+    margin-left: 33%;
+}
+
+.TextBoxForTab_HomeView{
+    left: 100%;
+}
+
+.createResourceVboxForTab_HomeView{
+    left:90%;
+}
+
+.rflogin_mobile_Home{
+    left:40%;
+}
+
+.createResource_mobile_home{
+    left:25%;
 }
 
 /* create resource ends */

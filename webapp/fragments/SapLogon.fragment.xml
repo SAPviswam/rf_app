@@ -14,21 +14,21 @@
     >
         <customHeader>
             <Bar>
-                 <contentLeft>
+                 <contentMiddle>
                     <FlexBox
                         id="flexboxHeader"
                         alignItems="Baseline"
                         justifyContent="Center"
                         width="100%">
-                        <Text id="_IDGenTextSAPLogon" text="SAP Connection" class="sapMHeader-CTX1" />
+                        <Text id="_IDGenTextSAPLogon" text="{i18n>SAPCon_Txt_IV}" class="sapMHeader-CTX1" />
                     </FlexBox>
-                </contentLeft>
+                </contentMiddle>
                     <contentRight>
                     <Button
                         id="CancelButton_Header"
                         icon="sap-icon://sys-cancel"
                         type="Transparent"
-                        tooltip="Close"
+                        tooltip="{i18n>close_Ttip_IV}"
                         press="onPressCancleSapLogon"
                     />
                 </contentRight>
@@ -60,41 +60,41 @@
                     <Input
                         id="idUserInput_CS"
                         value="{}"
-                        placeholder="User"
+                        placeholder="{i18n>user_PlaceHldr}"
                         width="100%"
                     />
                     <!-- Password Input -->
                     <Input
                         id="idSPasswordInput_CS"
                         type="Password"
-                        placeholder="Password"
+                        placeholder="{i18n>pswrd_PlaceHldr_IV}"
                         width="100%"
                     />
                     <Label
                         id="idLableInstanceNumber_CS"
-                        text="Language"
+                        text="{i18n>lan_Txt_IV}"
                         width="110%"
                     />
-
-                    <ComboBox
+                <ComboBox
                         id="idLanguageSelectorMultiComboBox_CS"
                         width="100%"
                         selectedKey="en"
                         class="customInput"
+                        change="onLanguageChange"
                     >
-                        <items>
-                            <core:Item
-                                id="idCoreItemEnglishLanguage_CS"
-                                key="en"
-                                text="EN-English"
-                            />
-                            <core:Item
-                                id="idCoreItemSpanishLanguage_CS"
-                                key="es"
-                                text="SP-Spanish"
-                            />
-                        </items>
-                    </ComboBox>
+                    <items>
+                        <core:Item
+                            id="idCoreItem1"
+                            key="en"
+                            text="English"
+                        />
+                        <core:Item
+                            id="idCoreItem2"
+                            key="de"
+                            text="German"
+                        />
+                    </items>
+                     </ComboBox>
                     <Input
                         id="idRouterStringInput_CS"
                         value="100"
@@ -104,7 +104,7 @@
                     />
                     <Button
                         id="LoginButton_CS"
-                        text="Log On"
+                        text="{i18n>logOn_Txt_IV}"
                         width="100%"
                         type="Emphasized"
                         press="onLogOnPress"
@@ -113,7 +113,7 @@
                     <HBox justifyContent="Center">
                         <Link
                             id="IDchangePassword"
-                            text="Change Password"
+                            text="{i18n>chngPass_Link_IV}"
                             class="sapUiSmallMarginTop"
                             press="onChangePasswordBtn"
                         />
