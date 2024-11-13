@@ -157,15 +157,23 @@
             >
                 <!-- DynamicPage Title -->
                 <f:title>
-                    <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
-                        <f:heading>
-                        
-                            <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
-                            
-                        </f:heading>
-                       
-                    </f:DynamicPageTitle>
-                </f:title>
+                <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
+                    <f:heading>
+                        <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
+                    </f:heading>
+                    <!-- Back button in the title section -->
+                    <f:actions>
+                        <Button
+                        id="idBackBtnWizard_changeQueue"
+                            icon="sap-icon://nav-back"
+                            text="Back"
+                            press="onBackPressInWizard"
+                            type="Emphasized"
+                        />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+               
                 <!-- DynamicPage Header -->
                 <f:content>
                 <!-- Area wizards -->
