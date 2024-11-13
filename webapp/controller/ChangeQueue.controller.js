@@ -461,6 +461,25 @@ sap.ui.define([
     
 			// Clear the selection (unselect all items)
 			oList.removeSelections(true);
+		},
+// for clearing the area group and queues
+		OnClearPress_changeQueue:function(){
+			var oWizard = this.byId("idProcesstWizard_changeQueue");
+			var oFirstStep = oWizard.getSteps()[0];
+			oWizard.setCurrentStep(oFirstStep);
+			oWizard.goToStep(oFirstStep);
+			var oList = this.byId("idProcessAreaList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
+			var oList = this.byId("idProcessGroupList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
+			var oList = this.byId("idProcessQueueList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
 		}
 		
 	});
