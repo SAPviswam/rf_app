@@ -268,7 +268,8 @@
                                 />
                             </List>
                             <!-- list for Queue -->
-<Button text="Submit" press="OnSubmitPress"></Button>
+<Button id="idSubmitBtn_changeQueue" class="sapUiSmallMarginEnd" text="Submit" press="OnSubmitPress"></Button>
+<Button id="idClearBtn_changeQueue" text="Clear" press="OnClearPress_changeQueue"></Button>
                         </WizardStep>
                         
                         
