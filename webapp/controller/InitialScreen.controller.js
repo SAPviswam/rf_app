@@ -57,10 +57,10 @@ sap.ui.define([
             onLanguageChange: function (oEvent) {
                 // Get selected language from dropdown
                 var sSelectedLanguage = oEvent.getSource().getSelectedKey();
-            
+
                 // Set the new language for the core configuration
                 sap.ui.getCore().getConfiguration().setLanguage(sSelectedLanguage);
-            
+
                 // Reload i18n model with the selected language
                 var oI18nModel = new sap.ui.model.resource.ResourceModel({
                     bundleName: "com.app.rfapp.i18n.i18n",
@@ -68,7 +68,7 @@ sap.ui.define([
                 });
                 this.getView().setModel(oI18nModel, "i18n");
             },
-                        
+
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
@@ -422,7 +422,7 @@ sap.ui.define([
                             this.arrayOfButton.forEach(element => {
                             });
                             // Delete from OData service
-                            var oModel= this.getOwnerComponent().getModel(); // Get the OData model
+                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             this.arrayOfClient.forEach(element => {
                                 var sPath = "/ServiceSet('" + element + "')";
                                 oModel.remove(sPath, {
@@ -475,8 +475,9 @@ sap.ui.define([
                         } else {
                             MessageToast.show("Deletion cancelled.");
                             this.selectedButton = null;
-                            this.arrayOfButton.forEach(element => {
-                                element.setType("Unstyled")
+                            this.arrayOfButton.forEach(oButton => {
+                                oButton.removeStyleClass("buttonSelected");
+                                oButton.addStyleClass("customButtonBackground");
                             });
                             this.arrayOfButton = [];
                             this.arrayOfClient = [];
