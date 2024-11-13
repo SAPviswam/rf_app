@@ -201,7 +201,6 @@
                                 enableBusyIndicator="true"
                                 delete="handleDelete"
                                 selectionChange="onSelectionChangeArea"
-                              
                             >
                                 <StandardListItem 
                                     id="idStandardListItem_changeQueue"
