@@ -325,14 +325,11 @@ sap.ui.define([
 				var selectedData = aSelectedItems.map(function (oItem) {
 					// Access the binding context of the selected item
 					var oBindingContext = oItem.getBindingContext();
-
 					// Get the "Processarea" data (or any other property you want)
 					return oBindingContext.getProperty("Processqueue");
 				});
-
 				// Log or process the selected data
 				console.log("Selected Process Groups:", selectedData);
-
 				// Optionally, show a message toast with the selected data
 				//MessageToast.show("Selected Process Areas: " + selectedData.join(", "));
 			
@@ -444,6 +441,26 @@ sap.ui.define([
 			} else {
 				sap.m.MessageToast.show("Please Select atleast on Queue");
 			}
+		},
+		onBackPressInWizard:function(){
+			this.getView().byId("idScrollContainer1_changeQueue").setVisible(true);
+			this.getView().byId("idNavContainer_changeQueue").setVisible(false);
+			var oWizard = this.byId("idProcesstWizard_changeQueue");
+			var oFirstStep = oWizard.getSteps()[0];
+			oWizard.setCurrentStep(oFirstStep);
+			oWizard.goToStep(oFirstStep);
+			var oList = this.byId("idProcessAreaList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
+			var oList = this.byId("idProcessGroupList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
+			var oList = this.byId("idProcessQueueList_changeQueue");
+    
+			// Clear the selection (unselect all items)
+			oList.removeSelections(true);
 		}
 		
 	});
