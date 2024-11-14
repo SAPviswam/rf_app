@@ -54,48 +54,47 @@
                 horizontal="true"
                 vertical="true"
                 height="100%"
-               
                 class="sapUiContentPadding"
                 visible="true"
             >
+                <HBox
+                    id="idHboxTitle_changeQueue"
+                    class="floatingTitle sapUiSmallMarginLeft"
+                    justifyContent="SpaceBetween"
+                >
+                    <Title
+                        id="idAssignedQueueTitle_changeQueue"
+                        text="Assigned Queue"
+                        class="sapUiTinyMarginTop sapUiSmallMarginLeft"
+                    />
+                    <HBox id="idHboxButtons_changeQueue">
+                        <Button
+                            id="idAddBtn_changeQueue"
+                            text="Add"
+                            type="Emphasized"
+                            press="onAddQueueBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <!-- Delete button -->
+                        <Button
+                            id="idDeleteBtn_changeQueue"
+                            icon="sap-icon://delete"
+                            tooltip="Delete Queue"
+                            type="Reject"
+                            press="onDeleteQueueBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
 
-             
-             <HBox  class="floatingTitle sapUiSmallMarginLeft" justifyContent="SpaceBetween" >
-
-                            <Title
-                                id="idAssignedQueueTitle_changeQueue"
-                                text="Assigned Queue"
-                                 class="sapUiTinyMarginTop sapUiSmallMarginLeft"
-                            />
-                            <HBox >
-                             <Button
-                                id="idAddBtn_changeQueue"
-                                text="Add"
-                                type="Emphasized"
-                                press="onAddQueueBtnPress_changeQueue"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <!-- Delete button -->
-                            <Button
-                                id="idDeleteBtn_changeQueue"
-                                icon="sap-icon://delete"
-                                tooltip="Delete Queue"
-                                type="Reject"
-                                press="onDeleteQueueBtnPress_changeQueue"
-                                class="sapUiTinyMarginEnd"
-                            />
-
-                            <!-- Back button -->
-                            <Button
-                                id="idBackBtn_changeQueue"
-                                text="Back"
-                                type="Emphasized"
-                                press="onBackBtnPress_changeQueue"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            </HBox>
-                            </HBox>
-                           
+                        <!-- Back button -->
+                        <Button
+                            id="idBackBtn_changeQueue"
+                            text="Back"
+                            type="Emphasized"
+                            press="onBackBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </HBox>
 
                 <!-- Queues Table -->
                 <Table
@@ -105,25 +104,31 @@
                     alternateRowColors="true"
                     items="{/resources}"
                     class="sapUiMediumMarginTop"
-                    
                 >
-                    
-                    
                     <!-- columns -->
                     <columns>
-                        <Column id="idAreaCol_changeQueue" width="40%">
+                        <Column
+                            id="idAreaCol_changeQueue"
+                            width="40%"
+                        >
                             <Title
                                 id="idAreaTitle_changeQueue"
                                 text="Area"
                             />
                         </Column>
-                        <Column id="idGroupCol_changeQueue" width="70%">
+                        <Column
+                            id="idGroupCol_changeQueue"
+                            width="70%"
+                        >
                             <Title
                                 id="idGroupTitle_changeQueue"
                                 text="Group"
                             />
                         </Column>
-                        <Column id="idQueueCol_changeQueue" width="90%">
+                        <Column
+                            id="idQueueCol_changeQueue"
+                            width="90%"
+                        >
                             <Title
                                 id="idQueueTitle_changeQueue"
                                 text="Queue"
