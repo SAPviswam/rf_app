@@ -50,12 +50,12 @@
 <Key>
 <PropertyRef Name="Matnr"/>
 </Key>
-<Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Anzle" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="0" sap:unicode="false" sap:label="No. of HUs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WhsNo." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Aisle" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Bin Aisle" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WhsNo." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Stack" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Bin Stack" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="LvlV" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Bin Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Matid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Prod." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Lgtyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="StoTyp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -172,8 +172,8 @@
 <Key>
 <PropertyRef Name="Resourceid"/>
 </Key>
-<Property Name="Lname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Backgroundimage" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Background Image" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Loginfirst" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Users" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Resourceid" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="EMPLOYEE ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -182,7 +182,7 @@
 <Property Name="Validity" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Resourcename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Area" Type="Edm.String" Nullable="false" MaxLength="150" sap:unicode="false" sap:label="AREA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Resourcegroup" Type="Edm.String" Nullable="false" MaxLength="256" sap:unicode="false" sap:label="GROUP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Resourcegroup" Type="Edm.String" Nullable="false" MaxLength="500" sap:unicode="false" sap:label="GROUP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="EMAIL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Phonenumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PHONENUMBER" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Notification" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="NOTIFICATION" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -191,7 +191,7 @@
 <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="PASSWORD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Approveddate" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="APPROVED DATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Expirydate" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="EXPIRY DATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Queue" Type="Edm.String" Nullable="false" MaxLength="256" sap:unicode="false" sap:label="QUEUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Queue" Type="Edm.String" Nullable="false" MaxLength="500" sap:unicode="false" sap:label="QUEUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="Configure_System" sap:content-version="1">
 <Key>
@@ -239,13 +239,13 @@
 <PropertyRef Name="Tophu"/>
 <PropertyRef Name="HuidentI"/>
 </Key>
-<Property Name="Letyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="HTyp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Tophu" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Pmat" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Pack. Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Tophu" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Letyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="HTyp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Vlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="SrcBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Itemno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Item Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Nlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="DstBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Itemno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Item Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="HuidentI" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Altme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Alternatve Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
@@ -267,8 +267,8 @@
 <Key>
 <PropertyRef Name="Lgpla"/>
 </Key>
-<Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Owner" Type="Edm.String" Nullable="false" MaxLength="28" sap:unicode="false" sap:label="Owner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Entitled" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PtyEnt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Product" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -317,8 +317,8 @@
 <Key>
 <PropertyRef Name="Who"/>
 </Key>
-<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="WO Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Who" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="WO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="WO Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CreatedAt" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Numwt" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WTs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
