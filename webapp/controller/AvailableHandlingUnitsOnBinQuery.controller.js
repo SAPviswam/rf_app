@@ -101,6 +101,7 @@ sap.ui.define(
           
                   success: function (odata) {
                     console.log(odata);
+                    if(odata.Lgpla === sBinNumber) {
                     that.getView().byId("idPage1_AHUOBQ").setVisible(false);
                     that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
                     that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
@@ -141,6 +142,9 @@ sap.ui.define(
                       
                       })
                     });
+                } else {
+                    sap.m.MessageToast.show("Enter a Valid Binnumber.");
+                }
                   },
                   error: function () {
                     sap.m.MessageToast.show("Error fetching products.");

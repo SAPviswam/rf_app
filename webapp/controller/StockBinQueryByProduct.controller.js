@@ -84,9 +84,9 @@ sap.ui.define(
         var sProductNo = oView.byId("idProductinput_SBQP").getValue();
         this.sProductNo = sProductNo;
 
-        if (sProductNo.length < 10) {
-          return;
-        }
+        // if (sProductNo.length < 10) {
+        //   return;
+        // }
 
         sProductNo = sProductNo.toUpperCase();
         this.sProductNo = sProductNo;
@@ -107,7 +107,7 @@ sap.ui.define(
           },
 
           success: function (odata) {
-            console.log(odata)
+            console.log(odata);
             if (odata.Matnr === sProductNo) {
               that.getView().byId("idFirstSC_SBQP").setVisible(false);
               that.getView().byId("idsecondSC_SBQP").setVisible(true);
@@ -115,34 +115,40 @@ sap.ui.define(
               that.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
               that.getView().byId("idProductinput2_SBQP").setEditable(false);
               that.getView().byId("idProductinput2_SBQP").setValue(sProductNo);
-
+          
               // Get the product details from the response
               let oDetails = odata.ProductHeadtoItem.results;
-
+          
+              // Filter out items where Lgpla is empty or null
+              let aFilteredProductDetails = oDetails.filter(function (item) {
+                return item.Lgpla && item.Lgpla.trim() !== '';
+              });
+          
               // Prepare an array for binding
               var aProductDetails = [];
-
-              // Loop through the results and push them into the array
-              for (var i = 0; i < oDetails.length; i++) {
+          
+              // Loop through the filtered results and push them into the array
+              for (var i = 0; i < aFilteredProductDetails.length; i++) {
                 aProductDetails.push({
-                  Lgpla: oDetails[i].Lgpla,
-                  Nista: oDetails[i].Nista,
-                  Altme: oDetails[i].Altme
+                  Lgpla: aFilteredProductDetails[i].Lgpla,
+                  Nista: aFilteredProductDetails[i].Nista,
+                  Altme: aFilteredProductDetails[i].Altme
                 });
               }
-              // Create a JSON model with the product details array
+          
+              // Create a JSON model with the filtered product details array
               var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-
+          
               // Set the model to the table
               that.byId("idTable_SBQP").setModel(oProductModel);
-
+          
               // Bind the items aggregation of the table to the products array in the model
               that.byId("idTable_SBQP").bindItems({
                 path: "/products",
                 template: new sap.m.ColumnListItem({
                   cells: [
                     new sap.m.Text({ text: "{Lgpla}" }),  // Bins
-                    new sap.m.Text({ text: "{Nista}" }),   // Pices
+                    new sap.m.Text({ text: "{Nista}" }),   // Pieces
                     new sap.m.Text({ text: "{Altme}" })   // UOM
                   ],
                   type: "Navigation",
@@ -150,10 +156,9 @@ sap.ui.define(
                 })
               });
               that.lastValidSubmission = new Date();
-            }
-            else {
+            } else {
               // Check if enough time has passed since the last valid submission
-              if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) { // 3000 ms = 3 seconds
+              if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) { // 9000 ms = 9 seconds
                 sap.m.MessageToast.show("Enter a Valid Product.");
               }
             }
