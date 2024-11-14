@@ -1,7 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
-    
+        //"sap/ui/core/mvc/Controller"
+    "./BaseController",
     ],
     function (BaseController) {
         "use strict";
@@ -12,7 +12,11 @@ sap.ui.define(
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             
             },
-            
+            //Avata Press function with Helper function...
+            onPressAvatarAHUOBQ: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;

@@ -82,14 +82,14 @@
                         press="onPressThemesBtnFromProfilePopover"
                         visible="{popoverModel>/showThemes}"
                     />
-                    <Button
+                    <!-- <Button
                         id="idUserDeatilsButton5Transulate"
                         icon="sap-icon://translate"
                         text="Language"
                         type="Transparent"
                         press="onPressLanguageTranslation"
                         visible="{popoverModel>/showLanguage}"
-                    />
+                    /> -->
                     <Button
                         id="idUserDeatilsButton6View"
                         icon="sap-icon://my-view"
