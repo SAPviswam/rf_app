@@ -2,12 +2,14 @@
 
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
+	"sap/ui/Device",
 	"sap/ui/model/json/JSONModel",
 	"sap/f/library",
 	"sap/m/MessageBox",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageToast"
-], function (Controller, JSONModel, library, MessageBox, Fragment, MessageToast) {
+], function (Controller,Device, JSONModel, library, MessageBox, Fragment,MessageToast) {
+
 	"use strict";
 	var history = {
 		prevPaymentSelect: null,
@@ -16,9 +18,15 @@ sap.ui.define([
 
 	return Controller.extend("com.app.rfapp.controller.ChangeQueue", {
 		onInit: function () {
-			this.processGroupArray = [];
+
 			this.processAreaArray = [];
 
+			if (Device.system.phone) {
+				this.getView().byId("idAssignedQueueTable_changeQueue").setWidth("200%");
+				
+			}
+
+			this.processGroupArray = [];
 			var oModel = this.getOwnerComponent().getModel();
 			this.getView().setModel(oModel)
 			oModel.read("/ProcessAreaSet", {
