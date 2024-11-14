@@ -370,7 +370,7 @@
           ]
         },
         {
-          "name": "CreateConfirmAdhocHu",
+          "name": "CREATEANDCONFIRMADHOCHUWT",
           "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"

@@ -11,6 +11,11 @@ sap.ui.define(
       onInit: function () {
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+
+        this._timeoutID = null;
+
+        this._cachedProductNumbers = {};
+        this._cacheExpiryTime = 60000;
       },
       onResourceDetailsLoad: function (oEvent1) {
         var that = this;
@@ -18,32 +23,6 @@ sap.ui.define(
         this.ID = id;
         console.log(this.ID);
 
-    },
-      onSBQPfirstBackBtnPress:async function(){
-        var oRouter = UIComponent.getRouterFor(this);
-            var oModel1 = this.getOwnerComponent().getModel();
-            await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                success: function (oData) {
-                    let oUser=oData.Users.toLowerCase()
-                    if(oUser ===  "resource"){
-                        oRouter.navTo("RouteResourcePage",{id:this.ID});
-                    }
-                    else{
-                    oRouter.navTo("Supervisor",{id:this.ID});
-                }
-                }.bind(this),
-                error: function () {
-                    MessageToast.show("User does not exist");
-                }
-            });
-      },
-     
-      onSBQPSecondBackBtnPress:function(){
-            this.getView().byId("idFirstSC_SBQP").setVisible(true)
-            this.getView().byId("idsecondSC_SBQP").setVisible(false)
-            this.getView().byId("idfirstbackbtn_SBQP").setVisible(true)
-            this.getView().byId("idSecondbackbtn_SBQP").setVisible(false)
-           
       },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
@@ -53,17 +32,18 @@ sap.ui.define(
             let oUser = oData.Users.toLowerCase()
             if (oUser === "resource") {
               oRouter.navTo("RouteResourcePage", { id: this.ID });
+              this.getView().byId("idProductinput_SBQP").setValue("")
             }
             else {
               oRouter.navTo("Supervisor", { id: this.ID });
             }
-            this.getView().byId("idProductinput_SBQP").setValue("")
           }.bind(this),
           error: function () {
             MessageToast.show("User does not exist");
           }
         });
       },
+
       onSBQPSecondBackBtnPress: function () {
         this.getView().byId("idFirstSC_SBQP").setVisible(true)
         this.getView().byId("idsecondSC_SBQP").setVisible(false)
@@ -82,21 +62,38 @@ sap.ui.define(
       onpressProductsubmit: function () {
         var oView = this.getView();
         var sProductNo = oView.byId("idProductinput_SBQP").getValue();
-        this.sProductNo = sProductNo;
-
-        // if (sProductNo.length < 10) {
-        //   return;
-        // }
-
         sProductNo = sProductNo.toUpperCase();
+
+        // Store the product number for future use
         this.sProductNo = sProductNo;
 
+        // If the product number is empty, show the message toast and exit
         if (!sProductNo) {
-          sap.m.MessageToast.show("Please enter a bin number.");
+          sap.m.MessageToast.show("Please enter a Product.");
           return;
         }
 
-        // Call your backend service to fetch products for this bin
+        // Clear any previous timeout
+        if (this._timeoutID) {
+          clearTimeout(this._timeoutID);
+        }
+
+        // Set a new timeout to validate the product after 500ms (debounce)
+        this._timeoutID = setTimeout(function () {
+          this._validateProduct(sProductNo);
+        }.bind(this), 500);
+      },
+
+      _validateProduct: function (sProductNo) {
+        // Check if the product data is already cached and if the cache is still valid
+        var cachedProduct = this._cachedProductNumbers[sProductNo];
+        if (cachedProduct && (new Date() - cachedProduct.timestamp < this._cacheExpiryTime)) {
+          // If cached data is valid, use the cached product number
+          this._handleSuccess(cachedProduct.data, sProductNo);
+          return;
+        }
+
+        // If not cached or cache expired, make a new backend request
         var oModel = this.getView().getModel();
         var that = this;
 
@@ -105,105 +102,93 @@ sap.ui.define(
             "$expand": "ProductHeadtoItem",
             "$format": "json"
           },
-
           success: function (odata) {
             console.log(odata);
-            if (odata.Matnr === sProductNo) {
-              that.getView().byId("idFirstSC_SBQP").setVisible(false);
-              that.getView().byId("idsecondSC_SBQP").setVisible(true);
-              that.getView().byId("idfirstbackbtn_SBQP").setVisible(false);
-              that.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
-              that.getView().byId("idProductinput2_SBQP").setEditable(false);
-              that.getView().byId("idProductinput2_SBQP").setValue(sProductNo);
-          
-              // Get the product details from the response
-              let oDetails = odata.ProductHeadtoItem.results;
-          
-              // Filter out items where Lgpla is empty or null
-              let aFilteredProductDetails = oDetails.filter(function (item) {
-                return item.Lgpla && item.Lgpla.trim() !== '';
-              });
-          
-              // Prepare an array for binding
-              var aProductDetails = [];
-          
-              // Loop through the filtered results and push them into the array
-              for (var i = 0; i < aFilteredProductDetails.length; i++) {
-                aProductDetails.push({
-                  Lgpla: aFilteredProductDetails[i].Lgpla,
-                  Nista: aFilteredProductDetails[i].Nista,
-                  Altme: aFilteredProductDetails[i].Altme
-                });
-              }
-          
-              // Create a JSON model with the filtered product details array
-              var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-          
-              // Set the model to the table
-              that.byId("idTable_SBQP").setModel(oProductModel);
-          
-              // Bind the items aggregation of the table to the products array in the model
-              that.byId("idTable_SBQP").bindItems({
-                path: "/products",
-                template: new sap.m.ColumnListItem({
-                  cells: [
-                    new sap.m.Text({ text: "{Lgpla}" }),  // Bins
-                    new sap.m.Text({ text: "{Nista}" }),   // Pieces
-                    new sap.m.Text({ text: "{Altme}" })   // UOM
-                  ],
-                  type: "Navigation",
-                  press: [that.onSelectBin, that]
-                })
-              });
-              that.lastValidSubmission = new Date();
-            } else {
-              // Check if enough time has passed since the last valid submission
-              if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) { // 9000 ms = 9 seconds
-                sap.m.MessageToast.show("Enter a Valid Product.");
-              }
-            }
+
+            // Cache the product data with a timestamp for expiry validation
+            that._cachedProductNumbers[sProductNo] = {
+              data: odata,
+              timestamp: new Date()
+            };
+
+            // Handle the success callback
+            that._handleSuccess(odata, sProductNo);
           },
           error: function () {
-            if (!that.lastValidSubmission || new Date() - that.lastValidSubmission > 9000) {
-              sap.m.MessageToast.show("Error fetching product data.");
-            }
+            // Show error message if fetching product data fails
+            sap.m.MessageToast.show("Error fetching product data.");
           }
         });
       },
 
-      onSBQPSecondBackBtnPress: function () {
-        this.getView().byId("idFirstSC_SBQP").setVisible(true)
-        this.getView().byId("idsecondSC_SBQP").setVisible(false)
-        this.getView().byId("idfirstbackbtn_SBQP").setVisible(true)
-        this.getView().byId("idSecondbackbtn_SBQP").setVisible(false)
-
-      },
-      onSBQPPreDePress: function () {
-        var oModel = this.getView().getModel();
+      _handleSuccess: function (odata, sProductNo) {
         var that = this;
-        oModel.read(`/ProductHeadSet('${this.sProductNo}')`, {
-          urlParameters: {
-            "$expand": "ProductHeadtoItem",
-            "$format": "json"
-          },
-          success: function (odata) {
-            var oView = that.getView();
-            oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
-            oView.byId("idTotWinput_SBQP").setValue(odata.GWeight);
-            oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
-            oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
-            oView.byId("idUnitGVinput_SBQP").setValue(odata.UnitGv);
 
-            that.getView().byId("idsecondSC_SBQP").setVisible(false);
-            that.getView().byId("idThirdSC_SBQP").setVisible(true);
-            that.getView().byId("idSecondbackbtn_SBQP").setVisible(false);
-            that.getView().byId("idThirdbackbtn_SBQP").setVisible(true);
-          },
-          error: function () {
-            sap.m.MessageToast.show("Error fetching products.");
+        if (odata.Matnr === sProductNo) {
+          that.getView().byId("idFirstSC_SBQP").setVisible(false);
+          that.getView().byId("idsecondSC_SBQP").setVisible(true);
+          that.getView().byId("idfirstbackbtn_SBQP").setVisible(false);
+          that.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
+          that.getView().byId("idProductinput2_SBQP").setEditable(false);
+          that.getView().byId("idProductinput2_SBQP").setValue(sProductNo);
+
+          // Get the product details from the response
+          let oDetails = odata.ProductHeadtoItem.results;
+
+          // Filter out items where Lgpla is empty or null
+          let aFilteredProductDetails = oDetails.filter(function (item) {
+            return item.Lgpla && item.Lgpla.trim() !== '';
+          });
+
+          // Prepare an array for binding
+          var aProductDetails = [];
+
+          // Loop through the filtered results and push them into the array
+          for (var i = 0; i < aFilteredProductDetails.length; i++) {
+            aProductDetails.push({
+              Lgpla: aFilteredProductDetails[i].Lgpla,
+              Nista: aFilteredProductDetails[i].Nista,
+              Altme: aFilteredProductDetails[i].Altme
+            });
           }
-        });
+
+          // Create a JSON model with the filtered product details array
+          var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+
+          // Set the model to the table
+          that.byId("idTable_SBQP").setModel(oProductModel);
+
+          // Bind the items aggregation of the table to the products array in the model
+          that.byId("idTable_SBQP").bindItems({
+            path: "/products",
+            template: new sap.m.ColumnListItem({
+              cells: [
+                new sap.m.Text({ text: "{Lgpla}" }),  // Bins
+                new sap.m.Text({ text: "{Nista}" }),   // Pieces
+                new sap.m.Text({ text: "{Altme}" })   // UOM
+              ],
+              type: "Navigation",
+              press: [that.onSelectBin, that]
+            })
+          });
+          that.lastValidSubmission = new Date();
+        } else {
+          // If product number is not valid, show message toast after timeout
+          this._showInvalidProductMessageToast();
+        }
       },
+
+      _showInvalidProductMessageToast: function () {
+        if (this._timeoutIDForInvalidProduct) {
+          clearTimeout(this._timeoutIDForInvalidProduct);
+        }
+
+        // Set a timeout for the message 
+        this._timeoutIDForInvalidProduct = setTimeout(function () {
+          sap.m.MessageToast.show("Enter a Valid Product.");
+        }, 500); 
+      },
+    
       onSBQPThirdBackBtnPress: function () {
         this.getView().byId("idsecondSC_SBQP").setVisible(true);
         this.getView().byId("idThirdSC_SBQP").setVisible(false);
@@ -259,7 +244,31 @@ sap.ui.define(
           }
         });
       },
-
+      onSBQPPreDePress: function () {
+        var oModel = this.getView().getModel();
+        var that = this;
+        oModel.read(`/ProductHeadSet('${this.sProductNo}')`, {
+          urlParameters: {
+            "$expand": "ProductHeadtoItem",
+            "$format": "json"
+          },
+          success: function (odata) {
+            var oView = that.getView();
+            oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
+            oView.byId("idTotWinput_SBQP").setValue(odata.GWeight);
+            oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
+            oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
+            oView.byId("idUnitGVinput_SBQP").setValue(odata.UnitGv);
+            that.getView().byId("idsecondSC_SBQP").setVisible(false);
+            that.getView().byId("idThirdSC_SBQP").setVisible(true);
+            that.getView().byId("idSecondbackbtn_SBQP").setVisible(false);
+            that.getView().byId("idThirdbackbtn_SBQP").setVisible(true);
+          },
+          error: function () {
+            sap.m.MessageToast.show("Error fetching products.");
+          }
+        });
+      },
       onSBQPFourthBackBtnPress: function () {
         this.getView().byId("idFourthbackbtn_SBQP").setVisible(false);
         this.getView().byId("idSecondbackbtn_SBQP").setVisible(true);
