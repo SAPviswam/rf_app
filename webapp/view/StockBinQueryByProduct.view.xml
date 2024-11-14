@@ -120,11 +120,12 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idsecondSC_SBQP"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
+                
             >
                 <form:SimpleForm
                     id="idSF2_SBQP"
