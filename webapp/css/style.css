@@ -1806,3 +1806,14 @@ margin-right: 20%;
 
 /* create resource ends */
 
+.floatingTitle {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 0;
+    z-index: 10; /* Ensures it stays on top of other content */
+     /* Solid background to prevent transparency issues */
+    padding: 0.5rem; /* Optional: add padding for better spacing */
+    /* Optional: make the title bigger */
+     /* Center the title */
+}
