@@ -207,7 +207,7 @@ sap.ui.define(
                             // Check if the rawDate is null or empty
                             if (!rawDate) {
                                 // If the date is invalid (null or empty), set formattedDateString to an empty string or a default value
-                                var formattedDateString = ""; // or "No date available", or any placeholder text
+                                var formattedDateString = ""; 
                             } else {
                                 var year = rawDate.substring(0, 4);
                                 // Month is zero-indexed in JavaScript

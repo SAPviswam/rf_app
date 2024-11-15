@@ -24,8 +24,8 @@
                 <!-- CAPmodel RF Title -->
                 <Title
                     id="idTitle_configPage"
-                    class="title"
-                    text="CAPmodel RF"
+                    class="titlecap"
+                    text="{i18n>CAP_Title}"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparator_configPage"
@@ -52,58 +52,122 @@
     visible="true"
 >
     <VBox
-        class="contentContainer"
+    id="idContentContainer_configPage"
+    class="contentContainer"
+    justifyContent="Center"
+    alignItems="Center"
+    fitContainer="true"
+    height="100%"
+    width="100%"
+>
+    <!-- Use an HBox to center the whiteBox -->
+    <HBox
+        id="idPaddingBox_configPage"
         justifyContent="Center"
         alignItems="Center"
-        fitContainer="true"
         height="100%"
-        width="100%"
+        class="paddingBox"
     >
-        <!-- Use an HBox to center the whiteBox -->
-        <HBox
-            justifyContent="Center"
+        <VBox
+            id="idWhiteBorderBox_configPage"
+            class="whiteBorderBox"  
+            width="350px"  
+            height="250px"
             alignItems="Center"
-            height="100%"
-            class="paddingBox"
+            justifyContent="Center"
         >
-            <VBox
-                class="whiteBorderBox"  
-                width="350px"  
-                height="250px"
+            <!-- Title -->
+            <Text
+                id="idLoginTitle_configPage"
+                text="Application Login"
+                class="loginTitle"
+                textAlign="Center"
+                width="100%"
+            />
+           
+            <!-- Input Fields Start Here (Label + Input side by side) -->
+            <HBox
+                id="idInputRowUserID_configPage"
+                width="100%"
                 alignItems="Center"
-                justifyContent="Center"
+                class="inputRow"
             >
-                <!-- Title -->
-                <Text text="Application Login"
-                      class="loginTitle"
-                      textAlign="Center"
-                      width="100%"/>
-               
-                <!-- Input Fields Start Here (Label + Input side by side) -->
-                <HBox width="100%" alignItems="Center" class="inputRow">
-                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
-                    <Text text="User ID" width="70px" />
-                    <Input id="UserID" width="60%" value="111010" class="orangeInput sapUiTinyMarginTop" editable="false" />
-                </HBox>
-               
-                <HBox width="100%" alignItems="Center" class="inputRow">
-                    <ToolbarSpacer width="2rem"/> <!-- Add some space on the left -->
-                    <Text text="Password"   width="70px"/>
-                    <Input id="Password" type="Password" value="........" width="60%" placeholder="Enter Password" class="orangeInput sapUiTinyMarginTop" editable="false"/>
-                </HBox>
- 
-                <VBox height="20px"/> <!-- Increase space between fields and buttons -->
- 
-                <!-- Submit Buttons -->
-                <HBox justifyContent="Center" alignItems="Center">
-                    <Button text="Signup" press="onpressSignup" width="100%"/>
-                    <ToolbarSpacer width="1rem"/>
-                    <Button text="Login" press="onpresslogin" width="100%"/>
-                </HBox>
-            </VBox>
-            
-        </HBox>
-    </VBox>
+                <ToolbarSpacer
+                    id="idToolbarSpacerUserID_configPage"
+                    width="2rem"
+                /> <!-- Add some space on the left -->
+                <Text
+                    id="idUserIDLabel_configPage"
+                    text="User ID"
+                    width="70px"
+                />
+                <Input
+                    id="idUserIDInput_configPage"
+                    width="60%"
+                    value="111010"
+                    class="orangeInput sapUiTinyMarginTop"
+                    editable="false"
+                />
+            </HBox>
+           
+            <HBox
+                id="idInputRowPassword_configPage"
+                width="100%"
+                alignItems="Center"
+                class="inputRow"
+            >
+                <ToolbarSpacer
+                    id="idToolbarSpacerPassword_configPage"
+                    width="2rem"
+                /> <!-- Add some space on the left -->
+                <Text
+                    id="idPasswordLabel_configPage"
+                    text="Password"
+                    width="70px"
+                />
+                <Input
+                    id="idPasswordInput_configPage"
+                    type="Password"
+                    value="........"
+                    width="60%"
+                    placeholder="Enter Password"
+                    class="orangeInput sapUiTinyMarginTop"
+                    editable="false"
+                />
+            </HBox>
+
+            <VBox
+                id="idSpacerAfterInputs_configPage"
+                height="20px"
+            /> <!-- Increase space between fields and buttons -->
+
+            <!-- Submit Buttons -->
+            <HBox
+                id="idButtonRow_configPage"
+                justifyContent="Center"
+                alignItems="Center"
+            >
+                <Button
+                    id="idSignupButton_configPage"
+                    text="Signup"
+                    press="onpressSignup"
+                    width="100%"
+                />
+                <ToolbarSpacer
+                    id="idToolbarSpacerBetweenButtons_configPage"
+                    width="1rem"
+                />
+                <Button
+                    id="idLoginButton_configPage"
+                    text="Login"
+                    press="onpresslogin"
+                    width="100%"
+                />
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
+
 </ScrollContainer>
  
  

@@ -40,7 +40,7 @@
                 <Avatar
                     id="_IDGenAvatar1_AHUOBQ"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarAHUOBQ"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
