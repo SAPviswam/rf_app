@@ -587,10 +587,17 @@
           ]
         },
         {
+
+          "name": "HelpTourOnEditConfigSAPSystem",
+          "pattern": "RouteHelpTourOnEditConfigSAPSystem",
+          "target": [
+            "TargetRouteHelpTourOnEditConfigSAPSystem"
+
           "name": "SETREADYFORWHPROCESSINGBYBOL",
           "pattern": "SetReadyForWHProcessingByBol/{id}",
           "target": [
             "TargetSetReadyForWhProcessingByBOL"
+
           ]
         }
       ],
@@ -601,6 +608,13 @@
           "clearControlAggregation": false,
           "viewId": "ConfigLogin",
           "viewName": "ConfigLogin"
+        },
+        "TargetRouteHelpTourOnEditConfigSAPSystem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HelpTourOnEditConfigSAPSystem",
+          "viewName": "HelpTourOnEditConfigSAPSystem"
         },
         "TargetInitialScreen": {
           "viewType": "XML",
