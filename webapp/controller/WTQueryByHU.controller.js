@@ -2,7 +2,8 @@ sap.ui.define(
   [
     //"sap/ui/core/mvc/Controller",
     "./BaseController",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+   "sap/m/MessageToast"
   ],
   function (BaseController, JSONModel, MessageToast) {
     "use strict";
@@ -252,11 +253,19 @@ sap.ui.define(
             that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
             that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
           }
+                                                 else {
+                MessageToast.show("Please enter correct Hu")
+              }
         },
           error: function (oError) {
             // Handle error if HU is not found
+                                                    MessageToast.show("Please enter correct Hu")
           }
-        });}
+        });
+                                                }
+                                                 else {
+          MessageToast.show("Please enter correct Hu");
+                                                }
       },
 
       // Show warehouse task details when the corresponding button is pressed
@@ -276,11 +285,13 @@ sap.ui.define(
       },
 
       // Handle successful scan events
+      // Handle successful scan events
       onScanSuccess: function (oEvent) {
         var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
         this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue(sScannedProduct); // Set the value in the input
         this.onLiveChange();
       },
+ 
 
       clear: function () {
         this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue();
