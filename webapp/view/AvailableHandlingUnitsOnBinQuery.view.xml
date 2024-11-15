@@ -35,6 +35,7 @@
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
+                        
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
@@ -44,6 +45,7 @@
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
+
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
@@ -104,17 +106,18 @@
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
                                     scanFail="onScanError"
-                                    inputLiveUpdate="onScanLiveupdate_AHUOBQ"
+                                 
                                     dialogTitle="Enter Bin Number:"
                                     class="sapUiTinyMargin"
                                 />
-                                <Button
+                                <!-- <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="{i18n>Submit_button_AHUBQ}"
                                     press="onSubmitPress_AHUOBQ"
                                     class="sapUiTinyMargin"
                                     
-                                />
+                                /> -->
+  
                                
                             </HBox>
                         </VBox>
