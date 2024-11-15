@@ -117,13 +117,14 @@
                                         type="Emphasized"
                                         class="sapUiTinyMargin"
                                     />
-                                    <Button
+                                    <!-- <Button
                                         id="idproductScannerBtn_SNL"
                                         icon="sap-icon://bar-code"
                                         press="onSNLproductBarcodeScanner"
                                         class="sapUiTinyMargin"
-                                    />
+                                    /> -->
                                     <!-- <Button
+
                                         id="idSNLproductSubbitBtn_SNL"
                                         text="Submit"
                                         press="onSubmitpress"
