@@ -10,15 +10,109 @@ sap.ui.define(
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                this._debouncedValidate = this._debounce(this._validateBinNumber.bind(this), 500); // 500ms delay
             
             },
+            onLiveChange: function (oEvent) {
+                var sValue = oEvent.getSource().getValue().trim();
+                this._debouncedValidate(sValue);
+            },
             
+            _validateBinNumber: function (sBinNumber) {
+                if (!sBinNumber) {
+                    this._showErrorMessage("Please enter a bin number.");
+                    return;
+                }
+            
+                // Call backend service to check if bin number is valid
+                var oModel = this.getView().getModel();
+                var that = this;
+            
+                oModel.read(`/BINQItemSet('${sBinNumber}')`, {
+                    urlParameters: {
+                        "$expand": "BINQHeadSet",
+                        "$format": "json"
+                    },
+                    success: function (odata) {
+                        if (odata.Lgpla === sBinNumber) {
+                            // Clear any error message before proceeding
+                            sap.m.MessageToast.show("", { duration: 0 });
+            
+                            // Navigate to the next screen
+                            that.getView().byId("idPage1_AHUOBQ").setVisible(false);
+                            that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
+                            that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
+            
+                            // Populate product details in the table
+                            let oDetails = odata.BINQHeadSet.results;
+                            let aProductDetails = oDetails.map(detail => ({
+                                Huident: detail.Huident,
+                                Matnr: detail.Matnr,
+                                Flgmove: that.getStatusText(detail.Flgmove)
+                            }));
+            
+                            // Set data in the table's model
+                            var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                            that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
+                            that.byId("idBinNumTable_AHUOBQ").bindItems({
+                                path: "/products",
+                                template: new sap.m.ColumnListItem({
+                                    cells: [
+                                        new sap.m.Text({ text: "{Huident}" }),
+                                        new sap.m.Text({ text: "{Matnr}" }),
+                                        new sap.m.Text({ text: "{Flgmove}" })
+                                    ]
+                                })
+                            });
+                        } else {
+                            // Show error message if bin number is invalid
+                            sap.m.MessageToast.show("Enter a valid bin number.", { duration: 3000 });
+                        }
+                    },
+                    error: function () {
+                        that._showErrorMessage("Error fetching products.");
+                    }
+                });
+            },
+            
+            _debounce: function (fn, delay) {
+                var timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => fn(...args), delay);
+                };
+            },
+            
+            _showErrorMessage: function (message) {
+                sap.m.MessageToast.show(message, { duration: 3000 });
+            },
+          
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
             },
             onAfterRendering: function () {
                 this.byId("idPage1_AHUOBQ").setVisible(true);
+            },
+            onScanSuccess_AHUOBQ: function (oEvent) {
+                // Get the scanned bin number from the event parameters
+                var sScannedBinNumber = oEvent.getParameter("text");
+            
+                // Check if the bin number is empty or invalid
+                if (sScannedBinNumber) {
+                    this.byId("idInput_AHUOBQ").setValue(sScannedBinNumber);
+                    this._validateBinNumber(sScannedBinNumber); // Trigger validation immediately
+                    sap.m.MessageToast.show("Bin number scanned successfully: " + sScannedBinNumber, { duration: 3000 });
+                } else {
+                    sap.m.MessageToast.show("Invalid barcode scanned.", { duration: 3000 });
+                }
+            },
+            
+            
+    
+            onScanError_AHUOBQ: function (oEvent) {
+                // Handle scan failure
+                MessageToast.show("Scanning failed. Please try again.", { duration: 3000 });
             },
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1_AHUOBQ
             onPressBackBtnPage1_AHUOBQ: async function () {
@@ -28,13 +122,14 @@ sap.ui.define(
                     success: function (oData) {
                         if (oData.Users === "RESOURCE") {
                             oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            this.getView().byId("idInput_AHUOBQ").setValue("")
                         }
                         else {
                             oRouter.navTo("Supervisor", { id: this.ID });
                         }
                     }.bind(this),
                     error: function () {
-                        MessageToast.show("User does not exist");
+                    sap.m.MessageToast.show("User does not exist");
                     }
                 });
             },
@@ -101,6 +196,7 @@ sap.ui.define(
           
                   success: function (odata) {
                     console.log(odata);
+                    if(odata.Lgpla === sBinNumber) {
                     that.getView().byId("idPage1_AHUOBQ").setVisible(false);
                     that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
                     that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
@@ -141,6 +237,9 @@ sap.ui.define(
                       
                       })
                     });
+                } else {
+                    sap.m.MessageToast.show("Enter a Valid Binnumber.");
+                }
                   },
                   error: function () {
                     sap.m.MessageToast.show("Error fetching products.");
@@ -161,7 +260,71 @@ sap.ui.define(
                   this._selectedRowContext = null;
               }
           },
-
+          onChange: function (oEvent) {
+            var oInput = oEvent.getSource();
+            var sBinNumber = oInput.getValue().trim();
+        
+            // Check if bin number is provided
+            if (!sBinNumber) {
+                this._showErrorMessage("Please enter a bin number.");
+                return;
+            }
+        
+            // Call backend service to check if bin number is valid
+            var oModel = this.getView().getModel();
+            var that = this;
+        
+            oModel.read(`/BINQItemSet('${sBinNumber}')`, {
+                urlParameters: {
+                    "$expand": "BINQHeadSet",
+                    "$format": "json"
+                },
+                success: function (odata) {
+                    if (odata.Lgpla === sBinNumber) {
+                        // Clear any error message before proceeding
+                        sap.m.MessageToast.show("", { duration: 0 }); 
+        
+                        // Bin number is valid, proceed to the next screen
+                        that.getView().byId("idPage1_AHUOBQ").setVisible(false);
+                        that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
+                        that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
+        
+                        // Populate product details in the table
+                        let oDetails = odata.BINQHeadSet.results;
+                        let aProductDetails = oDetails.map(detail => ({
+                            Huident: detail.Huident,
+                            Matnr: detail.Matnr,
+                            Flgmove: that.getStatusText(detail.Flgmove)
+                        }));
+        
+                        // Set data in the table's model
+                        var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                        that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
+                        that.byId("idBinNumTable_AHUOBQ").bindItems({
+                            path: "/products",
+                            template: new sap.m.ColumnListItem({
+                                cells: [
+                                    new sap.m.Text({ text: "{Huident}" }),
+                                    new sap.m.Text({ text: "{Matnr}" }),
+                                    new sap.m.Text({ text: "{Flgmove}" })
+                                ]
+                            })
+                        });
+                    } else {
+                        // Show error message if bin number is invalid
+                        sap.m.MessageToast.show("Enter a valid bin number.", { duration: 3000 });
+                    }
+                },
+                error: function () {
+                    that._showErrorMessage("Error fetching products.");
+                }
+            });
+        },
+        
+        _showErrorMessage: function (message) {
+            sap.m.MessageToast.show(message, { duration: 3000 });
+        },
+        
             //Prod Description Btn from ScrollContainer Page 2=>idPage2BinNoTable_AHUOBQ
             onPressProductDescriptionBtn: function (oEvent) {
               // Get the selected row's context from the table

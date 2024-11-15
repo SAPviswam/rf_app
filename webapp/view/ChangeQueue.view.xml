@@ -62,6 +62,7 @@
         id="idAssignedQueueTable_changeQueue"
         mode="MultiSelect"
         alternateRowColors="true"
+        items="{/resources}"
     >
  
         <headerToolbar>
@@ -80,24 +81,6 @@
                     type="Emphasized"
                     press="onAddQueueBtnPress_changeQueue"
                 />
-                <!-- Refresh button -->
-                <Button
-                    id="idRefreshBtn_changeQueue"
-                    icon="sap-icon://refresh"
-                    tooltip="Refresh Queue"
-                    type="Emphasized"
-                    press="onRefreshBtnPress_changeQueue"
-                />
-                
-                <!-- Edit button -->
-                <Button
-                    id="idEditBtn_changeQueue"
-                    icon="sap-icon://edit"
-                    tooltip="Edit Queue"
-                    type="Emphasized"
-                    press="onEditQueueBtnPress_changeQueue"
-                />
-               
                 <!-- Delete button -->
                 <Button
                     id="idDeleteBtn_changeQueue"
@@ -112,7 +95,7 @@
                     id="idBackBtn_changeQueue"
                     text="Back"
                     type="Emphasized"
-                    press="onBackBtnInHomePage"
+                    press="onBackBtnPress_changeQueue"
                 />
                
             </OverflowToolbar>
@@ -148,15 +131,15 @@
                 <cells>
                     <Text
                         id="idAreaText_changeQueue"
-                       
+                       text="{Area}"
                     />
                     <Text
                         id="idGroupText_changeQueue"
-                       
+                       text="{Group}"
                     />
                     <Text
                         id="idChangeText_changeQueue"
-                       
+                       text="{Queue}"
                     />
                    
                 </cells>
@@ -174,15 +157,27 @@
             >
                 <!-- DynamicPage Title -->
                 <f:title>
-                    <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
-                        <f:heading>
-                            <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
-                        </f:heading>
-                    </f:DynamicPageTitle>
-                </f:title>
+                <f:DynamicPageTitle id="idDynamicPageTitle_changeQueue">
+                    <f:heading>
+                        <Title id="idTitleAddNewQueue_changeQueue" text="Add new Queue" />
+                    </f:heading>
+                    <!-- Back button in the title section -->
+                    <f:actions>
+                        <Button
+                        id="idBackBtnWizard_changeQueue"
+                            icon="sap-icon://nav-back"
+                            text="Back"
+                            press="onBackPressInWizard"
+                            type="Emphasized"
+                        />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+               
                 <!-- DynamicPage Header -->
                 <f:content>
                 <!-- Area wizards -->
+                
                     <Wizard
                         id="idProcesstWizard_changeQueue"
                         class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
@@ -195,7 +190,7 @@
                             id="idProcessAreaWizard_changeQueue"
                             nextStep="ProcessGroupStep"
                             title="Select Process Area"
-                            icon="sap-icon://cart"
+                            icon="sap-icon://slim-arrow-right"
                         >
                        
                            <!-- list for area -->
@@ -226,7 +221,7 @@
                             title="Select Process Group"
                              nextStep="ProcessQueueStep"
 	
-                            icon="sap-icon://money-bills"
+                            icon="sap-icon://open-command-field"
                         >
                        
                             <!-- list for process area -->
@@ -254,7 +249,7 @@
                         <WizardStep
                             id="idProcessQueueStep_changeQueue"
                             title="Select Queue"
-                            icon="sap-icon://credit-card"
+                            icon="sap-icon://process"
                         >
 						
 						<List

@@ -65,6 +65,7 @@ sap.ui.define(
             oModel.read(sRequestUrl, {
                 success: function (odata) {
                     console.log(odata);
+                    if(odata.Matnr40 === sProductNumber && odata.Serid === sSerialNumber) {
                     that.getView().byId("idFirstSC_SNL").setVisible(false);
                     that.getView().byId("idthirdSC_SNL").setVisible(true);
         
@@ -89,6 +90,9 @@ sap.ui.define(
 
 
                // Additional fields can be mapped similarly
+                    } else {
+                      sap.m.MessageToast.show("Enter a Valid Product and Serial number");
+                    }
                 },
                 error: function () {
                     sap.m.MessageToast.show("Error fetching products.");
