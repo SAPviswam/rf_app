@@ -592,6 +592,9 @@
           "pattern": "RouteHelpTourOnEditConfigSAPSystem",
           "target": [
             "TargetRouteHelpTourOnEditConfigSAPSystem"
+          ]
+        },
+        {
 
           "name": "SETREADYFORWHPROCESSINGBYBOL",
           "pattern": "SetReadyForWHProcessingByBol/{id}",
