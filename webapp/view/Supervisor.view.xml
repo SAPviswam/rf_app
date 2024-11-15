@@ -391,7 +391,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <ToolbarSpacer />
+                                    <ToolbarSpacer id="as"/>
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"

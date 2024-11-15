@@ -1852,7 +1852,6 @@ margin-right: 20%;
 }
 
 
-
 /* ----------------------Help tour On EDit Config SAP System Class Begin------------------------------------------------------*/
 
 .HeadingIn_HelpTourOnEditConfigSAPSystem{
@@ -1875,6 +1874,7 @@ margin-right: 20%;
 
 /* ----------------------Help tour On EDit Config SAP System Class END------------------------------------------------------*/
 
+
 /* Media query for tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
     .titlecap {
@@ -1889,7 +1889,6 @@ margin-right: 20%;
     }
 }
 /* config login view responsive for tablet end */
-
 .floatingTitle {
     position: fixed;
     top: 0;
@@ -1901,4 +1900,5 @@ margin-right: 20%;
     /* Optional: make the title bigger */
      /* Center the title */
 }
+
 
