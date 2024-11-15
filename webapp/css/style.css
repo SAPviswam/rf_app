@@ -1852,6 +1852,9 @@ margin-right: 20%;
 }
 
 
+
+/* change queue starts */
+
 /* ----------------------Help tour On EDit Config SAP System Class Begin------------------------------------------------------*/
 
 .HeadingIn_HelpTourOnEditConfigSAPSystem{
@@ -1889,16 +1892,30 @@ margin-right: 20%;
     }
 }
 /* config login view responsive for tablet end */
+
 .floatingTitle {
     position: fixed;
     top: 0;
     left: 1rem;
     right: 0;
+
+    z-index: 10; 
+    padding: 0.5rem;
+    
+}
+/* change queue ends */
+/* 
+.btn{
+    position:fixed;
+    
+} */
+
     z-index: 10; /* Ensures it stays on top of other content */
      /* Solid background to prevent transparency issues */
     padding: 0.5rem; /* Optional: add padding for better spacing */
     /* Optional: make the title bigger */
      /* Center the title */
 }
+
 
 
