@@ -85,7 +85,7 @@
                         >
                             <Label
                                 id="idlablehu_HUSOQ"
-                                text="HU:"
+                                text="{i18n>HU_Label_HUSOQ}"
                                 class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                             />
                             <Input
@@ -104,7 +104,7 @@
                         >
                             <Button
                                 id="idHUStockOverviewQueryfirstbackbtn_HUSOQ"
-                                text="Back"
+                                text="{i18n>Back_button_HUSOQ}"
                                 type="Emphasized"
                                 press="onHUStockOverviewQueryfirstBackBtnPress"
                                 class="sapUiTinyMargin"
@@ -119,7 +119,7 @@
                             />
                             <Button
                                 id="idSubmitButton"
-                                text="Submit"
+                                text="{i18n>Submit_button_HUSOQ}"
                                 press="onSubmitButtonPress"
                                 class="sapUiTinyMargin"
                             />
@@ -141,7 +141,7 @@
                     <HBox id="idBinNumber_HBox_HUSOQ">
                         <Label
                             id="idBinNumber_Lable_HUSOQ"
-                            text="HU:"
+                            text="{i18n>HU_Label_HUSOQ}"
                             class="sapUiTinyMargin"
                         />
                         <Input
@@ -172,12 +172,12 @@
                     >
                         <Title
                             id="Title1__HUSOQ11"
-                            text=" Table:"
+                            text="{i18n>Table_heading_HUSOQ}"
                         />
                         <ToolbarSpacer id="IDGenToolbar__HUSOQ" />
                         <Button
                             id="idHUStockOverviewQuerySecondbackbtn_HUSOQ"
-                            text="Back"
+                            text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
                             press="onHUStockOverviewQuerySecondBackBtnPress"
                             visible="false"
@@ -185,7 +185,7 @@
                         <Button
                             id="Buttonid"
                             press="onPressHUQueryList"
-                            text="HU Query List"
+                            text="{i18n>Hu_query_List_button_HUSOQ}"
                         />
                     </Toolbar>
                     <Table
@@ -197,35 +197,35 @@
                             <Column id="IDGenColumn001_HUSOQ">
                                 <Text
                                     id="IDGenText001_HUSOQ"
-                                    text="Product"
+                                    text="{i18n>product_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn002_HUSOQ">
                                 <Text
                                     id="IDGenText002_AHertUOBQ11"
-                                    text="Description"
+                                    text="{i18n>Description_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn003_HUSOQ">
                                 <Text
                                     id="IDGenText003__HUSOQ"
-                                    text="ActQty"
+                                    text="{i18n>ActQty_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn003__HUSOQ">
                                 <Text
                                     id="IDGenText003_HUSOQ"
-                                    text="Alt UOM"
+                                    text="{i18n>Alt_UOM_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGen_Column003__HUSOQ">
                                 <Text
                                     id="ID_GenText003_HUSOQ"
-                                    text="BATCH"
+                                    text="{i18n>Batch_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
@@ -233,7 +233,7 @@
                             <Column id="ID_GenColumn003_HUSOQ">
                                 <Text
                                     id="IDGenText004_HUSOQ"
-                                    text="Stock type"
+                                    text="{i18n>Stocktype_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
@@ -255,7 +255,7 @@
                     <HBox id="idBinNumberHBox_HUSOQ">
                         <Label
                             id="idBinNumberLable_HUSOQ"
-                            text="HU:"
+                            text="{i18n>HU_Label_HUSOQ}"
                             class="sapUiTinyMargin"
                         />
                         <Input
@@ -285,12 +285,12 @@
                     >
                         <Title
                             id="Title1455896_HUSOQ"
-                            text=" Table:"
+                            text="{i18n>Table_heading_HUSOQ}"
                         />
                         <ToolbarSpacer id="IDGenToolbar_HUSOQ" />
                         <Button
                             id="idHUStockOverviewQueryThirdbackbtn_HUSOQ"
-                            text="Back"
+                            text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
                             press="onHUStockOverviewQueryThirdBackBtnPress"
                             visible="false"
@@ -298,17 +298,17 @@
                         <Button
                             id="buttonid1"
                             press="onPressHUINformationPress"
-                            text="HU Information"
+                            text="{i18n>HU_Information_button_HUSOQ}"
                         />
                         <Button
                             id="buttonid2"
                             press="onPressHUQuerystockprodinfoPress"
-                            text="HU Query Stock/Prod info"
+                            text="{i18n>HU_Query_Stock}"
                         />
                         <Button
                             id="buttonid3_HUSOQ"
                             press="onTopHupress"
-                            text="Top HU"
+                            text="{i18n>Top_HU_Button_HUSOQ}"
                         />
                     </Toolbar>
                     <Table
@@ -320,14 +320,14 @@
                             <Column id="IDGenColumn005_HUSOQ">
                                 <Text
                                     id="IDGenText002_HUSOQ"
-                                    text="HU_IND"
+                                    text="{i18n>HU_IND_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDGenColumn009_HUSOQ">
                                 <Text
                                     id="IDGenText009_HUSOQ"
-                                    text="MAT_HU"
+                                    text="{i18n>MAT_HU_Columnname_HUSOQ}"
                                     class="HedingNameColor"
                                 />
                             </Column>
@@ -378,7 +378,7 @@
                             >
                                 <Text
                                     id="idHubyASNLabelQ__HUSOQ1"
-                                    text="pkmt:"
+                                    text="{i18n>PKMT_Label_HUSOQ}"
                                     width="45px"
                                 />
                                 <HBox id="IDqtyinputhbx__HUSOQ">
@@ -399,7 +399,7 @@
                                     >
                                         <Text
                                             id="idHubyASNomabel___HUSOQ"
-                                            text="Htyp:"
+                                            text="{i18n>htyp_Label_HUSOQ}"
 
                                            width="40px"
                                            class="sapUiTinyMarginTop"
@@ -427,7 +427,7 @@
                                 <!-- Totw label and fields in the same HBox -->
                                 <Text
                                     id="idTotW__HUSOQ"
-                                    text="Totw:"
+                                    text="{i18n>totw_Label_HUSOQ}"
                                     width="45px"
                                 />
                                 <Input
@@ -458,7 +458,7 @@
                                 <!-- Totv label and fields in the same HBox -->
                                 <Text
                                     id="idHubyASqwrt45y6NLabl23ty__HUSOQ"
-                                    text="Totv:"
+                                    text="{i18n>totv_Label_HUSOQ}"
                                      width="40px"
                                            class="sapUiTinyMarginTop"
                                 />
@@ -492,7 +492,7 @@
                             >
                                 <Text
                                     id="idMaxWLabel__HUSOQ"
-                                    text="MaxW:"
+                                    text="{i18n>MaxW_Label_HUSOQ}"
                                     width="45px"
                                 />
                                 <HBox id="IDqtyindhrftputhbx__HUSOQ">
@@ -513,7 +513,7 @@
                                     >
                                         <Text
                                             id="idHubyMaxVLabel___HUSOQ"
-                                            text="MaxV:"
+                                            text="{i18n>MaxV_Label_HUSOQ}"
                                              width="40px"
                                            class="sapUiTinyMarginTop"
                                         />
@@ -537,7 +537,7 @@
                             >
                                 <Text
                                     id="idforTarwLabel_HUSOQ"
-                                    text="TarW:"
+                                    text="{i18n>tarW_Label_HUSOQ}"
                                     width="45px"
                                 />
                                 <HBox id="IDHbox__HUSOQ">
@@ -558,7 +558,7 @@
                                     >
                                         <Text
                                             id="idHubyASNETREomyyabel___HUSOQ"
-                                            text="TarV:"
+                                            text="{i18n>tarv_Label_HUSOQ}"
                                              width="40px"
                                            class="sapUiTinyMarginTop"
                                         />
@@ -655,7 +655,7 @@
                             >
                                 <Text
                                     id="idHubyLabel_HUSOQ"
-                                    text="Top:"
+                                    text="{i18n>top_Label_HUSOQ}"
                                    width="45px"
                                 />
                                 <HBox id="IDqty__HUSOQ">
@@ -676,7 +676,7 @@
                                     >
                                         <Text
                                             id="idLabel___HUSOQ"
-                                            text="Lwst:"
+                                            text="{i18n>LWST_Label_HUSOQ}"
                                              width="40px"
                                            class="sapUiTinyMarginTop"
 
@@ -700,7 +700,7 @@
                                     >
                                         <Text
                                             id="idHu___HUSOQ"
-                                            text="Move:"
+                                            text="{i18n>move_Label_HUSOQ}"
                                              width="40px"
                                            class="sapUiTinyMarginTop"
                                         />
@@ -723,7 +723,7 @@
                                     >
                                         <Text
                                             id="idHumyyabel___HUSOQ"
-                                            text="Stat:"
+                                            text="{i18n>stat_Label_HUSOQ}"
                                              width="40px"
                                            class="sapUiTinyMarginTop"
                                         />
@@ -760,7 +760,7 @@
                             >
                                 <Text
                                     id="idHub__HUSOQ1"
-                                    text="Bin:"
+                                    text="{i18n>Bin_Label_HUSOQ}"
                                     width="45px"
                                 />
                                 <HBox id="ID__HUSOQ">
@@ -781,7 +781,7 @@
                                     >
                                         <Text
                                             id="id_Hu___HUSOQ"
-                                            text="CGrp:"
+                                            text="{i18n>Cgrp_Label_HUSOQ}"
                                       width="40px"
                                            class="sapUiTinyMarginTop"
                                         />
@@ -803,7 +803,7 @@
                             >
                                 <Button
                                     id="idHUStockOverviewQueryFourthbackbtn_HUSOQ"
-                                    text="Back"
+                                    text="{i18n>Back_button_HUSOQ}"
                                     type="Emphasized"
                                     press="onHUStockOverviewQueryFourthBackBtnPress"
                                     visible="false"
@@ -854,7 +854,7 @@
                                 id="hboxPro"
                             >
                                 <Text
-                                    text="Pro:"
+                                    text="{i18n>Pro_Label_HUSOQ}"
                                     id="labelPro"
                                     width="40px"
                                 />
@@ -904,7 +904,7 @@
                                 id="hboxStypBin"
                             >
                                 <Text
-                                    text="Styp:"
+                                    text="{i18n>Styp_Label_HUSOQ}"
                                     id="labelStyp"
                                     width="40px"
                                 />
@@ -919,10 +919,12 @@
                                     id="spacerLabel3"
                                 />
                                 <Label
-                                    text="Bin:"
+                                    text="{i18n>Bin_Label_HUSOQ}"
                                     id="labelBin"
                                    
                                 />
+
+
                                 <Text
                                     width="5px"
                                     id="spacerLabel4"
@@ -944,7 +946,7 @@
                                 id="hboxAqty"
                             >
                                 <Text
-                                    text="Aqty:"
+                                    text="{i18n>aqty_Label_HUSOQ}"
                                     id="labelAqty"
                                     width="40px"
                                 />
@@ -974,7 +976,7 @@
                                 id="hboxBtchStyp"
                             >
                                 <Text
-                                    text="Btch:"
+                                    text="{i18n>Btch_Label_HUSOQ}"
                                     id="labelBtch"
                                     width="40px"
                                 />
@@ -999,7 +1001,7 @@
                                     id="spacerLabel313"
                                 />
                                 <Label
-                                    text="Styp:"
+                                    text="{i18n>Styp_Label_HUSOQ}"
                                     id="labelStyp2"
                                 />
                                 <Input
@@ -1017,7 +1019,7 @@
                                 id="hboxOwnrPent"
                             >
                                 <Text
-                                    text="Ownr:"
+                                    text="{i18n>owner_Label_HUSOQ}"
                                     id="labelOwnr"
                                     width="40px"
                                 />
@@ -1032,7 +1034,7 @@
                                     id="spacerLa1bel33"
                                 />
                                 <Label
-                                    text="Pent:"
+                                    text="{i18n>pent_Label_HUSOQ}"
                                     id="labelPent"
                                 />
                                 <Label

@@ -35,7 +35,7 @@
                 <Avatar
                     id="_IDGenAvatar1_SRWHPBYCO"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarSRWHPBYCO"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

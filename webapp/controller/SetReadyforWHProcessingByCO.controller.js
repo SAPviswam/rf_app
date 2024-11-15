@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        //"sap/ui/core/mvc/Controller"
+        "./BaseController"
     ],
     function (BaseController) {
         "use strict";
@@ -14,6 +15,10 @@ sap.ui.define(
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
             },
+            //Avata Press function with Helper function...
+      onPressAvatarSRWHPBYCO: function (oEvent) {
+        this.onPressAvatarEveryTileHelperFunction(oEvent);
+      },
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
             onPressBackBtnPage1_SRWHBYCO: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();

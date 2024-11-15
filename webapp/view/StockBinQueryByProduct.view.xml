@@ -120,11 +120,12 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idsecondSC_SBQP"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
+                
             >
                 <form:SimpleForm
                     id="idSF2_SBQP"
@@ -193,7 +194,7 @@
                                 <Table
                                     id="idTable_SBQP"
                                     growing="true"
-                                    growingThreshold="10"
+                                    growingThreshold="6"
                                     mode="None"
                                     width="100%"
                                     alternateRowColors="true"
@@ -430,7 +431,7 @@
                                 id="idHbox11_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idBinLabel_SBQP"
                                     text="Bin:"
                                     width="80px"
@@ -447,8 +448,9 @@
                                     id="IdLabel4_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idStorageTypeLabel_SBQP"
                                     text="Storage Type:"
                                     width="90px"
@@ -467,7 +469,7 @@
                                 id="idHbox12_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idQtyLabel_SBQP"
                                     text="Qty:"
                                     width="80px"
@@ -484,8 +486,9 @@
                                     id="idLabel5_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idSSecLabel_SBQP"
                                     text="Storage Sec:"
                                     width="90px"
@@ -504,7 +507,7 @@
                                 id="idHbox13_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idNoOfHuLabel_SBQP"
                                     text="No of Hu's:"
                                     width="80px"
@@ -521,8 +524,9 @@
                                     id="idLabel6_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idBinAisleLabel_SBQP"
                                     text="Bin Aisle:"
                                     width="90px"
@@ -541,7 +545,7 @@
                                 id="idHbox14_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idMaxWLabel_SBQP"
                                     text="MaxW:"
                                     width="80px"
@@ -570,8 +574,9 @@
                                     id="idLabel8_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idBinLevelLabel_SBQP"
                                     text="Bin Level:"
                                     width="90px"
@@ -590,7 +595,7 @@
                                 id="idHbox15_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idMaxVLabel_SBQP"
                                     text="MaxV:"
                                     width="80px"
@@ -619,8 +624,9 @@
                                     id="idLabel10_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idStackLabel_SBQP"
                                     text="Stack:"
                                     width="90px"

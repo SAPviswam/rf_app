@@ -370,14 +370,14 @@
           ]
         },
         {
-          "name": "CreateConfirmAdhocHu",
+          "name": "CREATEANDCONFIRMADHOCHUWT",
           "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
         },
         {
-          "name": "CreateConfirmAdhocProduct",
+          "name": "CREATEANDCONFIRMADHOCPRODUCTWT",
           "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
@@ -587,10 +587,17 @@
           ]
         },
         {
+
           "name": "HelpTourOnEditConfigSAPSystem",
           "pattern": "RouteHelpTourOnEditConfigSAPSystem",
           "target": [
             "TargetRouteHelpTourOnEditConfigSAPSystem"
+
+          "name": "SETREADYFORWHPROCESSINGBYBOL",
+          "pattern": "SetReadyForWHProcessingByBol/{id}",
+          "target": [
+            "TargetSetReadyForWhProcessingByBOL"
+
           ]
         }
       ],
@@ -1077,6 +1084,13 @@
           "clearControlAggregation": false,
           "viewId": "ReversalofConsumptionbyMO_Bin",
           "viewName": "ReversalofConsumptionbyMO_Bin"
+        },
+        "TargetSetReadyForWhProcessingByBOL":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WHProcessingByBOL",
+          "viewName": "WHProcessingByBOL"
         }
       }
     },
