@@ -72,7 +72,6 @@ sap.ui.define([
             this.getView().addDependent(oFragment);
             return oFragment
         },
-
         //Base function for opening the Profile PopOver..
         onPressAvatarPopOverBaseFunction: function (oEvent, oPopoverContext) {
             debugger;
