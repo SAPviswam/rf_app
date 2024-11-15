@@ -23,6 +23,7 @@ sap.ui.define(
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
                             oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            this.getView().byId("idWtQBQueueWhInput").setValue("")
                         }
                         else {
                             oRouter.navTo("Supervisor", { id: this.ID });
