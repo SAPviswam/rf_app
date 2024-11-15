@@ -1,9 +1,15 @@
 sap.ui.define(
     [
+<<<<<<< HEAD
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/Device"
+    
+=======
         //"sap/ui/core/mvc/Controller"
     "./BaseController",
+>>>>>>> 93b6c30256257c9fa3e547e917710d8c1db17a40
     ],
-    function (BaseController) {
+    function (BaseController,Device) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.AvailableHandlingUnitsOnBinQuery", {
@@ -11,7 +17,10 @@ sap.ui.define(
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
                 this._debouncedValidate = this._debounce(this._validateBinNumber.bind(this), 500); // 500ms delay
-            
+                if (Device.system.phone) {
+                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");
+                   
+                }
             },
 
             onLiveChange: function (oEvent) {
@@ -87,6 +96,7 @@ sap.ui.define(
             _showErrorMessage: function (message) {
                 sap.m.MessageToast.show(message, { duration: 3000 });
             },
+            
           
             //Avata Press function with Helper function...
             onPressAvatarAHUOBQ: function (oEvent) {
