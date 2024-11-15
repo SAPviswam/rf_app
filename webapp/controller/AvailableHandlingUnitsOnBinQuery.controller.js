@@ -1,8 +1,13 @@
 sap.ui.define(
     [
+<<<<<<< HEAD
         "sap/ui/core/mvc/Controller",
         "sap/ui/Device"
     
+=======
+        //"sap/ui/core/mvc/Controller"
+    "./BaseController",
+>>>>>>> 93b6c30256257c9fa3e547e917710d8c1db17a40
     ],
     function (BaseController,Device) {
         "use strict";
@@ -17,6 +22,7 @@ sap.ui.define(
                    
                 }
             },
+
             onLiveChange: function (oEvent) {
                 var sValue = oEvent.getSource().getValue().trim();
                 this._debouncedValidate(sValue);
@@ -92,6 +98,12 @@ sap.ui.define(
             },
             
           
+            //Avata Press function with Helper function...
+            onPressAvatarAHUOBQ: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+
+
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
