@@ -886,12 +886,22 @@ sap.ui.define([
 
             },
             onHelpconnectsapDialog:function(){
-                var filepath = "/webapp/docs/How%20to%20Edit%20SAP%20Configure%20System.pdf";
-                var link = document.createElement("a");
-                link.href = filepath;
-                link.download = "How to Edit SAP Configure System.pdf"
-                link.click();
-                MessageToast.show("File Downloaded");
+
+
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("HelpTourOnEditConfigSAPSystem");
+
+
+
+
+
+
+                // var filepath = "/webapp/docs/How%20to%20Edit%20SAP%20Configure%20System.pdf";
+                // var link = document.createElement("a");
+                // link.href = filepath;
+                // link.download = "How to Edit SAP Configure System.pdf"
+                // link.click();
+                // MessageToast.show("File Downloaded");
             }
 
             // New UI snippets end

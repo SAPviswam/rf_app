@@ -13,6 +13,10 @@ sap.ui.define(
         onInit: function() {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+            var oView = this.getView();
+            // Attach event handler to the live change event of the product number and serial number fields
+            oView.byId("idproductInput_SNL").attachLiveChange(this.onLiveChange, this);
+            oView.byId("idSerialNoInput_SNL").attachLiveChange(this.onLiveChange, this);
         },
         onResourceDetailsLoad:function(oEvent1){
             var that = this;
@@ -20,6 +24,83 @@ sap.ui.define(
             this.ID = id;
             console.log(this.ID);
         },
+        onLiveChange: function(oEvent) {
+          var oView = this.getView();
+          var sProductNumber = oView.byId("idproductInput_SNL").getValue();
+          var sSerialNumber = oView.byId("idSerialNoInput_SNL").getValue();
+      
+          // Check if both fields are filled
+          if (!sProductNumber || !sSerialNumber) {
+              // If either of the fields is empty, show a message
+              sap.m.MessageToast.show("Both Product Number and Serial Number are required.");
+              return; // Exit early if validation fails
+          }
+      
+          // If both fields are filled, validate them
+          if (this._isValidProductNumber(sProductNumber) && this._isValidSerialNumber(sSerialNumber)) {
+              // Perform the backend read if inputs are valid
+              this._fetchProductData(sProductNumber, sSerialNumber);
+          } else {
+              // If either of the inputs is invalid, show an error message
+              sap.m.MessageToast.show("Please enter valid Product and Serial Number.");
+          }
+      },
+      
+      // Backend request to fetch data
+      _fetchProductData: function(sProductNumber, sSerialNumber) {
+          var oModel = this.getView().getModel();
+          var that = this;
+      
+          // Construct the request URL using the provided format
+          var sRequestUrl = `/SerialNoLocationSet(Matnr40='${sProductNumber}',Serid='${sSerialNumber}')`;
+      
+          // Perform the read operation
+          oModel.read(sRequestUrl, {
+              success: function (odata) {
+                  // Check the returned data
+                  if (odata.Matnr40 === sProductNumber && odata.Serid === sSerialNumber) {
+                      // Hide the first screen container and show the next screen
+                      that.getView().byId("idFirstSC_SNL").setVisible(false);
+                      that.getView().byId("idthirdSC_SNL").setVisible(true);
+      
+                      // Set the values to the corresponding SimpleForm input fields
+                      that.getView().byId("idHUInput_SNL").setValue(odata.Huident);
+                      that.getView().byId("idInput1_SNL").setValue(odata.HazmatInd); // Location
+                      that.getView().byId("idLocInput_SNL").setValue(odata.Lgtyp);
+                      that.getView().byId("idlgberInput3_SNL").setValue(odata.Lgber);
+                      that.getView().byId("idLgplaInput_SNL").setValue(odata.Lgpla);
+                      that.getView().byId("idLocktypeInput_SNL").setValue(odata.LocType);
+                      that.getView().byId("idAqtyinput_SNL").setValue(odata.Nista);
+                      that.getView().byId("idAltmeinput_SNL").setValue(odata.Altme);
+                      that.getView().byId("idCatinput_SNL").setValue(odata.Cat);
+                      that.getView().byId("idCharginput_SNL").setValue(odata.Charg);
+                      that.getView().byId("idBrestrinput_SNL").setValue(odata.Brestr);
+                      that.getView().byId("idOwnerinput_SNL").setValue(odata.Owner);
+                      that.getView().byId("idEntitledinput_SNL").setValue(odata.Entitled);
+                      that.getView().byId("idCooinput_SNL").setValue(odata.Coo);
+                      that.getView().byId("idDocCatinput_SNL").setValue(odata.StockDoccatInd);
+                      that.getView().byId("idDocNoinput_SNL").setValue(odata.StockDocno);
+                      that.getView().byId("idItemNoinput_SNL").setValue(odata.StockItmno);
+                  } else {
+                      sap.m.MessageToast.show("Invalid Product or Serial Number.");
+                  }
+              },
+              error: function () {
+                  sap.m.MessageToast.show("Error fetching product details.");
+              }
+          });
+      },
+      
+      // Custom validation functions
+      _isValidProductNumber: function(sProductNumber) {
+          // Implement your custom validation logic for product number
+          return sProductNumber && sProductNumber.length > 0;  // Simplified validation
+      },
+      
+      _isValidSerialNumber: function(sSerialNumber) {
+          // Implement your custom validation logic for serial number
+          return sSerialNumber && sSerialNumber.length > 0;  // Simplified validation
+      },
         // Back Button In ScrollContainer 1
          onSNLfirxtBackBtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
@@ -55,6 +136,7 @@ sap.ui.define(
                 return;
 
             }
+            
         
             // Call your backend service to fetch products based on the provided keys
             var oModel = this.getView().getModel();
