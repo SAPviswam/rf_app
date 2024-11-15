@@ -1,7 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
-    
+        //"sap/ui/core/mvc/Controller"
+    "./BaseController",
     ],
     function (BaseController) {
         "use strict";
@@ -13,6 +13,7 @@ sap.ui.define(
                 this._debouncedValidate = this._debounce(this._validateBinNumber.bind(this), 500); // 500ms delay
             
             },
+
             onLiveChange: function (oEvent) {
                 var sValue = oEvent.getSource().getValue().trim();
                 this._debouncedValidate(sValue);
@@ -87,6 +88,12 @@ sap.ui.define(
                 sap.m.MessageToast.show(message, { duration: 3000 });
             },
           
+            //Avata Press function with Helper function...
+            onPressAvatarAHUOBQ: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+
+
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;

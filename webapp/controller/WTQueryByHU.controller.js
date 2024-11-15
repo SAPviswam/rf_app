@@ -1,18 +1,19 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
+    //"sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/model/json/JSONModel"
   ],
   function (BaseController, JSONModel) {
     "use strict";
- 
+
     return BaseController.extend("com.app.rfapp.controller.WTQueryByHU", {
       // Initialization function
       onInit: function () {
         // Setup router to handle navigation
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-        
+
         // Create a local JSON model to hold warehouse task data
         const oLocalModel = new JSONModel({
           WarehouseTask: {
@@ -46,11 +47,14 @@ sap.ui.define(
             Wh_HU: "",
           },
         });
-        
+
         // Set the local model to the view
         this.getView().setModel(oLocalModel, "localModel");
       },
-
+      //Avata Press function with Helper function...
+      onPressAvatarWTQBYHU: function (oEvent) {
+        this.onPressAvatarEveryTileHelperFunction(oEvent);
+      },
       // Navigate back to the scanner form
       onPressBackButtonSecondSC: function () {
         this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
@@ -198,12 +202,16 @@ sap.ui.define(
       tableContentDisplay: async function (oHuValue, status) {
         var that = this;
         var oModel = this.getOwnerComponent().getModel();
+        if(oHuValue){
         await oModel.read(`/HUWTHSet('${oHuValue}')`, {
           urlParameters: {
             "$expand": "HUtoWT",
             "$format": "json"
           },
           success: function (odata) {
+            if(odata.HUtoWT.results.length>0){
+
+            
             // If HU exists, populate the input field and filter tasks based on status
             that.getView().byId("idHUNumberInput_WTQBYHU").setValue(odata.Huident);
             let oDetails = odata.HUtoWT.results;
@@ -212,7 +220,7 @@ sap.ui.define(
             } else if (status === "Conf") {
               oDetails = oDetails.filter(item => item.Tostat === "C");
             }
-            
+
             // Prepare an array for binding to the table
             var aProductDetails = [];
             for (var i = 0; i < oDetails.length; i++) {
@@ -229,11 +237,12 @@ sap.ui.define(
             // Show the HU number table
             that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
             that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
-          },
+          }
+        },
           error: function (oError) {
             // Handle error if HU is not found
           }
-        });
+        });}
       },
 
       // Show warehouse task details when the corresponding button is pressed
