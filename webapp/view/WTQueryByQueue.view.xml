@@ -115,7 +115,7 @@
             <!--Scroll Container for Second view (Warehouse Tasks)-->
             <ScrollContainer
                 id="idWtQBQueueWhThirdsc"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
@@ -203,6 +203,7 @@
                         growingThreshold="6"
                         mode="SingleSelectMaster"
                         selectionChange="onSelectWarehouseTaskQueue"
+                        width="100%"
                     >
                         <columns>
                             <Column id="idColumn_WTQuerybyQueue">

@@ -2,9 +2,10 @@ sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
+    "sap/ui/Device",
     "sap/ui/core/UIComponent"
   ],
-  function (BaseController, MessageToast, UIComponent) {
+  function (BaseController, MessageToast, Device,UIComponent ) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.StockBinQueryByProduct", {
@@ -16,6 +17,10 @@ sap.ui.define(
 
         this._cachedProductNumbers = {};
         this._cacheExpiryTime = 60000;
+        if (Device.system.phone) {
+          this.getView().byId("idTable_SBQP").setWidth("150%");
+
+        }
       },
       onResourceDetailsLoad: function (oEvent1) {
         var that = this;
@@ -186,9 +191,9 @@ sap.ui.define(
         // Set a timeout for the message 
         this._timeoutIDForInvalidProduct = setTimeout(function () {
           sap.m.MessageToast.show("Enter a Valid Product.");
-        }, 500); 
+        }, 500);
       },
-    
+
       onSBQPThirdBackBtnPress: function () {
         this.getView().byId("idsecondSC_SBQP").setVisible(true);
         this.getView().byId("idThirdSC_SBQP").setVisible(false);
