@@ -1,18 +1,20 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+    //"sap/ui/core/mvc/Controller",
+    "./BaseController",
+    "sap/ui/model/json/JSONModel",
+   "sap/m/MessageToast"
   ],
-  function (BaseController, JSONModel) {
+  function (BaseController, JSONModel, MessageToast) {
     "use strict";
- 
+
     return BaseController.extend("com.app.rfapp.controller.WTQueryByHU", {
       // Initialization function
       onInit: function () {
         // Setup router to handle navigation
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-        
+
         // Create a local JSON model to hold warehouse task data
         const oLocalModel = new JSONModel({
           WarehouseTask: {
@@ -40,21 +42,26 @@ sap.ui.define(
             SQTYEmI: "",
             Batch: "",
             Owner: "",
+            Trart: "",
             PEnt: "",
             HUWT: "",
             H_Type: "",
             Wh_HU: "",
           },
         });
-        
+
         // Set the local model to the view
         this.getView().setModel(oLocalModel, "localModel");
       },
-
+      //Avata Press function with Helper function...
+      onPressAvatarWTQBYHU: function (oEvent) {
+        this.onPressAvatarEveryTileHelperFunction(oEvent);
+      },
       // Navigate back to the scanner form
       onPressBackButtonSecondSC: function () {
         this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
         this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
+        this.clear();
       },
 
       // Load resource details based on the router event
@@ -90,19 +97,30 @@ sap.ui.define(
                 oPayload.WarehouseTask.Ptyp = element.Procty;
                 oPayload.WarehouseTask.Spro = element.Prces;
                 oPayload.WarehouseTask.Acty = element.ActType;
+                oPayload.WarehouseTask.ActyEmI = element.idplate;
+
                 oPayload.WarehouseTask.Pro = element.Matnr;
-                oPayload.WarehouseTask.ProEmI = element.HazmatInd;
+                oPayload.WarehouseTask.ProEmI = element.Hazmat_Ind;
                 oPayload.WarehouseTask.Sbin = element.Vlpla;
                 oPayload.WarehouseTask.SbinEmI = element.Vlenr;
                 oPayload.WarehouseTask.Dbin = element.Nlpla;
                 oPayload.WarehouseTask.DbinEmI = element.Nlenr;
+                oPayload.WarehouseTask.Trart = element.Trart;
 
                 // Format the confirmation date and time
                 let dateStr = element.ConfD;
                 let formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}`;
-                let milliseconds = element.ConfBy;
-                let timeFormatted = `${Math.floor(milliseconds / (1000 * 60 * 60))}:${Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60))}:${Math.floor((milliseconds % (1000 * 60)) / 1000)}`;
+                let milliseconds = element.ConfT.ms; // Assuming element.ConfT holds the milliseconds
 
+                // Calculate hours, minutes, and seconds
+                let hours = Math.floor(milliseconds / (1000 * 60 * 60));
+                let minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+
+                // Format time to ensure two digits for minutes and seconds
+                let timeFormatted = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                console.log(timeFormatted);
                 // Set formatted date and time into payload
                 oPayload.WarehouseTask.Cdat = formattedDate;
                 oPayload.WarehouseTask.CdatEmI = timeFormatted;
@@ -148,6 +166,7 @@ sap.ui.define(
             MessageToast.show("User does not exist");
           }
         });
+        this.clear();
       },
 
       // Back button logic for navigating to previous screens
@@ -172,8 +191,8 @@ sap.ui.define(
         oScrollContainer4.setVisible(false); // Hide product details
       },
 
-      // Submit action from the scanner form
-      onSubmitPressPage1_WTQBYHU: async function () {
+
+      onLiveChange: async function () {
         var oHuValue = this.getView().byId("idInputWTQueryByHU_WTQBYHU").getValue();
         this.tableContentDisplay(oHuValue); // Display the corresponding table content
       },
@@ -216,7 +235,7 @@ sap.ui.define(
             } else if (status === "Conf") {
               oDetails = oDetails.filter(item => item.Tostat === "C");
             }
-            
+
             // Prepare an array for binding to the table
             var aProductDetails = [];
             for (var i = 0; i < oDetails.length; i++) {
@@ -234,11 +253,19 @@ sap.ui.define(
             that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
             that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
           }
+                                                 else {
+                MessageToast.show("Please enter correct Hu")
+              }
         },
           error: function (oError) {
             // Handle error if HU is not found
+                                                    MessageToast.show("Please enter correct Hu")
           }
-        });}
+        });
+                                                }
+                                                 else {
+          MessageToast.show("Please enter correct Hu");
+                                                }
       },
 
       // Show warehouse task details when the corresponding button is pressed
@@ -258,11 +285,17 @@ sap.ui.define(
       },
 
       // Handle successful scan events
+      // Handle successful scan events
       onScanSuccess: function (oEvent) {
         var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
         this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue(sScannedProduct); // Set the value in the input
-        this.onSubmitPressPage1_WTQBYHU(); // Trigger submission
+        this.onLiveChange();
       },
+ 
+
+      clear: function () {
+        this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue();
+      }
     });
   }
 );

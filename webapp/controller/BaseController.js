@@ -72,7 +72,20 @@ sap.ui.define([
             this.getView().addDependent(oFragment);
             return oFragment
         },
+        onPressAvatarEveryTileHelperFunction: function (oEvent) {
+            var oComponent = this.getOwnerComponent();
 
+            // Destroy the existing popover if it exists
+            if (oComponent.getPopover()) {
+                oComponent.getPopover().destroy();
+                oComponent.setPopover(null);
+            }
+            this.onPressAvatarPopOverBaseFunction(oEvent, {
+                showAccountDetails: true,
+                showSignOut: true
+            });
+            this.applyStoredProfileImage();
+        },
         //Base function for opening the Profile PopOver..
         onPressAvatarPopOverBaseFunction: function (oEvent, oPopoverContext) {
             debugger;
@@ -87,7 +100,7 @@ sap.ui.define([
                 showEditTile: oPopoverContext?.showEditTile || false,
                 showDefaultSettings: oPopoverContext?.showDefaultSettings || false,
                 showThemes: oPopoverContext?.showThemes || false,
-                showLanguage: oPopoverContext?.showLanguage || false,
+                // showLanguage: oPopoverContext?.showLanguage || false,
                 showTileView: oPopoverContext?.showTileView || false,
                 showHelp: oPopoverContext?.showHelp || false,
                 showSignOut: oPopoverContext?.showSignOut || false

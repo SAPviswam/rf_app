@@ -30,7 +30,7 @@
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="_IDGenAvatar1PutawayByHU"
+                    id="idAvatar1CLUDTile"
                     displaySize="XS"
                     press="onAvatarPressed"
                     tooltip="Profile"
@@ -40,7 +40,7 @@
         <tnt:mainContents>
            
             <ScrollContainer
-                id="idPage7UnLoadPage"
+                id="idPage7UnLoadPage_CLUD"
                 horizontal="false"
                 vertical="true"
                 height="100%"
@@ -48,13 +48,13 @@
                 visible="true"
             >
                 <Button
-                    id="idBackBtnUnLoad"
+                    id="idBackBtnUnLoad_CLUD"
                     press="onBackPressUnLoadPage"
                     icon="sap-icon://nav-back"
                     type="Transparent"
                 />
                 <HBox
-                    id="idMainUnLoadPage"
+                    id="idMainUnLoadPage_CLUD"
                      class="MainVBoxUnLoad"
                     justifyContent="End"
                     
@@ -84,7 +84,7 @@
                                 width="12rem"
                             />
                             <Label
-                                id="idTopHusLabel"
+                                id="idTopHusLabel_CLUD"
                                 text="Top Hus"
                                 class="labelStyleUnLoad"
                             />

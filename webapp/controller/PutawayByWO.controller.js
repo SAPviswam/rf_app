@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        //"sap/ui/core/mvc/Controller"
+        "./BaseController"
     ],
     function (BaseController) {
         "use strict";
@@ -16,6 +17,10 @@ sap.ui.define(
             },
             onAfterRendering: function () {
                 this.byId("idPage1ScannerFormBox").setVisible(true);
+            },
+            //Press Function Avatar PUTAWAY BY WO...
+            onPressAvatarPBYWO: function(oEvent){
+                this.onPressAvatarEveryTileHelperFunction(oEvent);   
             },
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
             onPressBackBtnScanerFormBox: async function () {
