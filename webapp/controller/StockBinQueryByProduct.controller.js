@@ -21,6 +21,7 @@ sap.ui.define(
           this.getView().byId("idTable_SBQP").setWidth("150%");
 
         }
+
       },
       onResourceDetailsLoad: function (oEvent1) {
         var that = this;

@@ -123,6 +123,7 @@
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
+                
             >
                 <form:SimpleForm
                     id="idSF2_SBQP"
@@ -182,6 +183,7 @@
                                 width="100%"
                                 alternateRowColors="true"
                             >
+
                                 <headerToolbar>
                                     <OverflowToolbar id="idTableHeader_SBQP">
                                         <Title

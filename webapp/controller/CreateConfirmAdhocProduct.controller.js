@@ -23,7 +23,7 @@ sap.ui.define(
         //   if(this.getView().byId("idProductInput").getValue()=="800020"){
            this.getView().byId("idInitialProductPage").setVisible(false)
            this.getView().byId("idsecondProductPage").setVisible(true)
-           var ohu=this.getView().byId("idProductInput").getValue();
+           var ohu=this.getView().byId("idProductInput1_CCAP").getValue();
            this.getView().byId("idproductInput1").setValue(ohu)
            this.getView().byId("idproductInput1").setEditable(false);
            this.getView().byId("idProductfirstbackbtn").setVisible(true);

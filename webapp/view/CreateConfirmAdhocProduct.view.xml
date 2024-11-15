@@ -67,6 +67,7 @@
                 visible="true"
             >
                 <form:SimpleForm
+                  id="idSimpleform1_CCAP"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -74,12 +75,12 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+           
                 >
-                <VBox alignContent="Center"
+                <VBox id="idVBOX1_CCAP" alignContent="Center"
                         alignItems="Center" >
-                        <Title text="Create and Confirm Adhoc Product"></Title>
-                        <VBox class="sapUiTinyMarginBottom"></VBox>
+                        <Title id="idTitle_CCAP" text="Create and Confirm Adhoc Product"></Title>
+                        <VBox id="idVbox2_CCAP" class="sapUiTinyMarginBottom"></VBox>
                     <HBox
                         id="idInitialProductPage1"
                         class="sapUiMediumMargin"
@@ -91,7 +92,7 @@
                             class="sapUiTinyMargin"
                         />
                         <Input
-                            id="idProductInput"
+                            id="1_CidProductInputCAP"
                             value=""
                             liveChange="onProductLiveChange"
                         />
@@ -113,6 +114,7 @@
                 visible="false"
             >
                 <form:SimpleForm
+                id="idSimpleform2_CCAP"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -120,14 +122,14 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                    
                 >
                     <VBox
                         id="idsecondProductPage2"
                         alignContent="Center"
                         alignItems="Center"
                     >
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox1_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductLabel1"
                                 text="Product"
@@ -139,7 +141,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox2_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductSrcBinLabel1"
                                 text="Src Bin"
@@ -169,6 +171,7 @@
                 visible="false"
             >
                 <form:SimpleForm
+                  id="idSimpleform3_CCAP"
                     layout="ResponsiveGridLayout"
                     labelSpanL="4"
                     labelSpanM="4"
@@ -176,14 +179,14 @@
                     emptySpanM="1"
                     columnsL="2"
                     columnsM="1"
-                    columnsS="1"
+                   
                 >
                     <VBox
                         id="idthirdProductPage1"
                         alignContent="Center"
                         alignItems="Center"
                     >
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox3_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductLabel2"
                                 text="Product"
@@ -194,7 +197,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox4_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductSrcBinLabel2"
                                 text="Src Bin"
@@ -205,7 +208,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox5_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductAvlQtyLabel2"
                                 text="Avl Qty"
@@ -216,7 +219,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox6_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductSourceQtyLabel2"
                                 text="Source Qty"
@@ -228,7 +231,7 @@
                                 value=""
                             />
                         </HBox>
-                        <HBox class="sapUiTinyMargin">
+                        <HBox id="idHbox7_CCAP" class="sapUiTinyMargin">
                             <Label
                                 id="idProductDestBinLabel2"
                                 text="Dest Bin"
