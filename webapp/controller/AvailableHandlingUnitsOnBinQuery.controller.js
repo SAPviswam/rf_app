@@ -1,9 +1,10 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/Device"
     
     ],
-    function (BaseController) {
+    function (BaseController,Device) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.AvailableHandlingUnitsOnBinQuery", {
@@ -11,7 +12,10 @@ sap.ui.define(
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
                 this._debouncedValidate = this._debounce(this._validateBinNumber.bind(this), 500); // 500ms delay
-            
+                if (Device.system.phone) {
+                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");
+                   
+                }
             },
             onLiveChange: function (oEvent) {
                 var sValue = oEvent.getSource().getValue().trim();
@@ -86,6 +90,7 @@ sap.ui.define(
             _showErrorMessage: function (message) {
                 sap.m.MessageToast.show(message, { duration: 3000 });
             },
+            
           
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");

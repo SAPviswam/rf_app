@@ -123,12 +123,12 @@
                                         press="onSNLproductBarcodeScanner"
                                         class="sapUiTinyMargin"
                                     />
-                                    <Button
+                                    <!-- <Button
                                         id="idSNLproductSubbitBtn_SNL"
                                         text="Submit"
                                         press="onSubmitpress"
                                         class="sapUiTinyMargin"
-                                    />
+                                    /> -->
                                 </HBox>
                             </VBox>
                         </VBox>
