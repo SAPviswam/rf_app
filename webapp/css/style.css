@@ -1918,4 +1918,14 @@ margin-right: 20%;
 }
 
 
+/* HU Stock Overview Query Tabel */
+.Buttons_HUSOQ {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 0;
+    z-index: 10;
+    padding: 0.5rem;
+}
+
 
