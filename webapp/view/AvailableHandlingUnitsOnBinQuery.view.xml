@@ -41,7 +41,7 @@
                 <Avatar
                     id="_IDGenAvatar1_AHUOBQ"
                     displaySize="XS"
-                    press="onPressAvatarAHUOBQ"
+                    press="onAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -107,11 +107,14 @@
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
-                                    scanFail="onScanError"
-                                 
+                                    scanFail="onScanError_AHUOBQ"
+                                   visible="true"
                                     dialogTitle="Enter Bin Number:"
                                     class="sapUiTinyMargin"
                                 />
+ 
+
+
                                 <!-- <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="{i18n>Submit_button_AHUBQ}"
@@ -128,7 +131,7 @@
 
             <ScrollContainer
                 id="idPage2BinNoTable_AHUOBQ"
-                horizontal="true"
+                horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
@@ -176,8 +179,11 @@
                         width="100%"
                         mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
+                          growingScrollToLoad="true"
+                            growing="true"
                         
                     >
+
                         <columns>
                             <Column id="IDGenColumn001_AHUOBQ">
                                 <Text

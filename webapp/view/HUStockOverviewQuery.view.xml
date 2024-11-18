@@ -168,12 +168,14 @@
                         />
                     </HBox>
 
+
                     <HBox
                         id="idHbox45_HUSOQ"
                         class="Buttons_HUSOQ sapUiMediumMarginTop"
                         justifyContent="End"
                     >
                         <Button
+
                             id="idHUStockOverviewQuerySecondbackbtn_HUSOQ"
                             text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
@@ -186,7 +188,9 @@
                             press="onPressHUQueryList"
                             text="{i18n>Hu_query_List_button_HUSOQ}"
                         />
+
                     </HBox>
+
                     <Table
                         id="idBinNumberTableInput_HUSOQ"
                         selectionChange="onSelectionChange"
