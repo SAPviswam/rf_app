@@ -184,11 +184,8 @@
                             text="{i18n>Hu_query_List_button_HUSOQ}"
                         />
                                 </OverflowToolbar>
-                          
-                    
                     <Table
                         id="idBinNumberTableInput_HUSOQ"
-                     
                         selectionChange="onSelectionChange"
                         growingScrollToLoad="true"
                             growing="true"

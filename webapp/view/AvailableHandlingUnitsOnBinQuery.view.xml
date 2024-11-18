@@ -105,11 +105,14 @@
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
-                                    scanFail="onScanError"
-                                 
+                                    scanFail="onScanError_AHUOBQ"
+                                   visible="true"
                                     dialogTitle="Enter Bin Number:"
                                     class="sapUiTinyMargin"
                                 />
+ 
+
+
                                 <!-- <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="{i18n>Submit_button_AHUBQ}"
@@ -178,8 +181,11 @@
                         width="100%"
                         mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
+                          growingScrollToLoad="true"
+                            growing="true"
                         
                     >
+
                         <columns>
                             <Column id="IDGenColumn001_AHUOBQ">
                                 <Text

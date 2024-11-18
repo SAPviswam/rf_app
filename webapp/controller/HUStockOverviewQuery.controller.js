@@ -18,6 +18,7 @@ sap.ui.define(
 
         this._cachedProductNumbers = {};
         this._cacheExpiryTime = 60000;
+        
 
         if (Device.system.phone) {
           this.getView().byId("idBinNumberTableInput_HUSOQ").setWidth("200%");
