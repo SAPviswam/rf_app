@@ -107,6 +107,15 @@
                 >
                     <!-- columns -->
                     <columns>
+                    <Column
+                            id="idSlonoCol_changeQueue"
+                            width="40%"
+                        >
+                            <Title
+                                id="idSlonoTitle_changeQueue"
+                                text="Sl.no"
+                            />
+                        </Column>
                         <Column
                             id="idAreaCol_changeQueue"
                             width="40%"
@@ -139,6 +148,10 @@
                     <items>
                         <ColumnListItem id="idColListItem_changeQueue">
                             <cells>
+                            <Text
+                                    id="idASlonoText_changeQueue"
+                                    text="{Slno}"
+                                />
                                 <Text
                                     id="idAreaText_changeQueue"
                                     text="{Area}"
