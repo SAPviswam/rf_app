@@ -22,7 +22,7 @@ sap.ui.define([
 
 
                 if (Device.system.phone) {
-                    this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile");
+                    this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile_home");
                 }
 
                 // Initialize JSON Model
