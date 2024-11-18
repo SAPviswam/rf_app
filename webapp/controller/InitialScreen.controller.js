@@ -13,7 +13,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
 
-                //Profile Image updating(from Base Controller)...
+                //Profile Image updating(from Base Controller)...idBtnsVbox_InitialView
 
                 this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
