@@ -1176,7 +1176,7 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 3rem !important;
+    margin-left: 1rem !important;
     margin-right: 1rem !important;
 }
 
@@ -1416,7 +1416,7 @@ margin-right: 20%;
 }
 
 .titleMobile_home {
-    left: 38%;
+    left: 35%;
 }
 
 .BtnConfSAPsys {
@@ -1904,18 +1904,10 @@ margin-right: 20%;
     
 }
 /* change queue ends */
-/* 
-.btn{
-    position:fixed;
-    
-} */
 
-    z-index: 10; /* Ensures it stays on top of other content */
-     /* Solid background to prevent transparency issues */
-    padding: 0.5rem; /* Optional: add padding for better spacing */
-    /* Optional: make the title bigger */
-     /* Center the title */
+.genericTile{
+    height: 50px;
+    width:50px;
 }
-
 
 
