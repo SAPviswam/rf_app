@@ -18,7 +18,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.ResourcePage", {
             onInit: function () {
 
-                this.genericTitleName="";
+                this.genericTitleName = "";
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
 
@@ -44,14 +44,14 @@ sap.ui.define([
                 this.EditCall = false;
                 this._currentTile = null;
                 this._selectedTiles = [];
-                this.applyStoredProfileImage();
+                //this.applyStoredProfileImage();
                 this.byId("idBtnListViewResourcePage").setVisible(true);
                 this.byId("idBtnGridViewResourcePage").setVisible(false);
             },
-            onResourceDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
-                this.ID = id;
-            },
+            // onResourceDetailsLoad: async function (oEvent1) {
+            //     const { id } = oEvent1.getParameter("arguments");
+            //     this.ID = id;
+            // },
 
             onAfterRendering: function () {
                 debugger
@@ -716,7 +716,6 @@ sap.ui.define([
                 return headers;
             },
             onResourceDetailsLoad: async function (oEvent1) {
-
                 // const { id } = oEvent1.getParameter("arguments");
                 // this.ID = id;
                 // console.log(this.ID)
@@ -841,6 +840,8 @@ sap.ui.define([
                         MessageToast.show("User does not exist");
                     }
                 });
+                //For the Profile Pic loaded from backend service..
+                this.applyStoredProfileImage();
             },
             // onGenericTilePress: async function(oEvent) {
             //     if (!this._oPopover) {
@@ -882,13 +883,13 @@ sap.ui.define([
             //     });
             // },
             onGenericTilePress: async function (oEvent) {
-                
+
                 const oTile = oEvent.getSource();
                 var oGenericTileName = oEvent.oSource.mProperties.header;
-                if(this.genericTitleName===oGenericTileName){
+                if (this.genericTitleName === oGenericTileName) {
                     return
                 }
-                this.genericTitleName=oGenericTileName;
+                this.genericTitleName = oGenericTileName;
                 var oQueueArray = []
                 // Check for edit mode
                 // if (this.EditCall) {
@@ -914,13 +915,13 @@ sap.ui.define([
                     }
                     return;
                 }
-                
+
                 if (!this._oPopoverGt) {
                     this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
                     this.getView().addDependent(this._oPopoverGt);
                 }
                 const aOptions = []
-                
+
                 this._oPopoverGt.setTitle(oGenericTileName)
                 const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 oVBox.destroyItems(); // Clear existing items

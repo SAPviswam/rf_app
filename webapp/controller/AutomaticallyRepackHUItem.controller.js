@@ -14,6 +14,8 @@ sap.ui.define(
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
             },
             //Avata Press function with Helper function...
             onPressAvatarARHUI: function (oEvent) {

@@ -10,32 +10,42 @@ sap.ui.define([
             return this.getOwnerComponent().getRouter();
         },
         onInit: function () {
-            // Apply the stored profile image to all avatars in the app
-            this.applyStoredProfileImage();
+           
         },
-        applyStoredProfileImage: function () {
-            var This = this;
-            var oView = This.getView();
-
-            // Retrieve the stored profile image from localStorage
-            var storedImage = localStorage.getItem("userProfileImage");
-
-            // If there is no stored image, do nothing
-            if (!storedImage) {
-                return;
+        applyStoredProfileImage: async function () {
+            var oView = this.getView();
+            const userId = this.ID; // Assuming this.ID holds the user ID
+            var sEntityPath = `/RESOURCESSet('${userId}')`; // Entity path for user-specific data
+            var oModel = this.getOwnerComponent().getModel();
+        
+            try {
+                const userData = await new Promise((resolve, reject) => {
+                    oModel.read(sEntityPath, {
+                        success: (oData) => resolve(oData),
+                        error: (oError) => reject(oError)
+                    });
+                });
+        
+                // Extract the profile image from the `Profileimage` field
+                const storedImage = userData.Profileimage;
+                // Add the Base64 prefix if missing
+                const imageSrc = `data:image/png;base64,${storedImage}`;
+        
+                // Find all `sap.m.Avatar` controls in the view
+                var allAvatars = oView.findElements(true, function (element) {
+                    return element.isA("sap.m.Avatar");
+                });
+        
+                // Apply the stored image to each avatar
+                allAvatars.forEach(function (avatar) {
+                    avatar.setSrc(imageSrc);
+                });
+        
+                //sap.m.MessageToast.show("Profile image applied successfully.");
+            } catch (error) {
+                //sap.m.MessageToast.show("Failed to apply profile image.");
+                console.error("Error fetching user data:", error);
             }
-
-            // Find all avatar and image controls by a common class (e.g., avatarImage)
-            var allAvatarsAndImages = oView.findElements(true, function (element) {
-                return element.isA("sap.m.Avatar");
-            });
-
-            // Loop through all found avatar/image controls and apply the stored image
-            allAvatarsAndImages.forEach(function (control) {
-                if (control.isA("sap.m.Avatar")) {
-                    control.setSrc(storedImage);
-                }
-            });
         },
 
         createData: function (oModel, oPayload, sPath) {
@@ -84,6 +94,7 @@ sap.ui.define([
                 showAccountDetails: true,
                 showSignOut: true
             });
+            //Profile image updating(from BaseController)...
             this.applyStoredProfileImage();
         },
         //Base function for opening the Profile PopOver..
@@ -145,7 +156,7 @@ sap.ui.define([
             if (This._oPopover) {
                 This._oPopover.setModel(oPopoverVisibilityModel, "popoverModel");
             }
-            this.applyStoredProfileImage();
+            //this.applyStoredProfileImage();
         },
         //Account Details press function from popover
         onPressAccountDetails: async function () {
@@ -173,6 +184,7 @@ sap.ui.define([
                 this.UserDetailsFragment = await this.loadFragment("UserDetails"); // Load your fragment asynchronously
             }
             this.UserDetailsFragment.open();
+            //Profile image updating(from BaseController)...
             this.applyStoredProfileImage();
         },
         onPressDeclineProfileDetailsDailog: function () {
@@ -184,62 +196,94 @@ sap.ui.define([
         //Hover Effect btn function(from Popover)...
         onPressPopoverProfileImageAvatar: function () {
             var This = this;
+            const oModel = This.getOwnerComponent().getModel();
+            const userId = This.ID;
             var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = "image/*";
             fileInput.style.display = "none";
-
+        
             // Add event listener to handle the file selection
-            fileInput.addEventListener("change", (event) => {
+            fileInput.addEventListener("change", async (event) => {
                 var selectedFile = event.target.files[0];
                 if (selectedFile) {
                     var reader = new FileReader();
+        
                     // Set up the onload event for FileReader
-                    reader.onload = (e) => {
+                    reader.onload = async (e) => {
                         var selectedImageBase64 = e.target.result; // Get the base64 encoded image
-
-                        // Clear the previous image from localStorage
-                        localStorage.removeItem("userProfileImage");
-
+                        if (!selectedImageBase64) {
+                            sap.m.MessageToast.show("Failed to read the selected image.");
+                            return;
+                        }
+                        //localStorage.removeItem("userProfileImage");
+                        //localStorage.setItem("userProfileImage", selectedImageBase64);
+        
                         // Update all avatar images with the new base64 image
                         This.updateAllAvatarImages(selectedImageBase64);
-
-                        // Store the new image in localStorage
-                        localStorage.setItem("userProfileImage", selectedImageBase64);
-                        sap.m.MessageToast.show("Profile image updated successfully!");
+        
+                        // Clean the Base64 data for backend storage
+                        const cleanBase64 = selectedImageBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+                        const oPayload = {
+                            Profileimage: cleanBase64
+                        };
+        
+                        try {
+                            await new Promise((resolve, reject) => {
+                                oModel.update(`/RESOURCESSet('${userId}')`, oPayload, {
+                                    success: resolve,
+                                    error: reject
+                                });
+                            });
+        
+                            sap.m.MessageToast.show("Profile image updated successfully.");
+                        } catch (oError) {
+                            sap.m.MessageToast.show("Failed to update the profile image.");
+                        }
                     };
-                    // Read the selected file as a Data URL (base64 string)
                     reader.readAsDataURL(selectedFile);
                 } else {
-                    sap.m.MessageToast.show("Please select an image to upload.");
+                    sap.m.MessageToast.show("No image selected.");
                 }
             });
             fileInput.click();
         },
         //Upload btn from the dailog..
-        onPressUploadProfilePic: function () {
+        onPressUploadProfilePic: async function () {
             var This = this;
+            const oModel = This.getOwnerComponent().getModel();
+            const userId = This.ID;
+        
             var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = "image/*";
             fileInput.style.display = "none";
-
+        
             // Add event listener to handle the file selection
-            fileInput.addEventListener("change", (event) => {
+            fileInput.addEventListener("change", async (event) => {
                 var selectedFile = event.target.files[0];
                 if (selectedFile) {
                     var reader = new FileReader();
+        
                     // Set up the onload event for FileReader
-                    reader.onload = (e) => {
+                    reader.onload = async (e) => {
                         var selectedImageBase64 = e.target.result; // Get the base64 encoded image
-                        localStorage.removeItem("userProfileImage");
-
+                        //localStorage.removeItem("userProfileImage");
+        
                         // Update all avatar images with the new base64 image
                         This.updateAllAvatarImages(selectedImageBase64);
-
-                        // Store the new image in localStorage
-                        localStorage.setItem("userProfileImage", selectedImageBase64);
-                        sap.m.MessageToast.show("Profile image updated successfully!");
+                        //localStorage.setItem("userProfileImage", selectedImageBase64);
+                        const cleanBase64 = selectedImageBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+        
+                        const oPayload = {
+                            Profileimage: cleanBase64
+                        };
+                        await new Promise((resolve, reject) => {
+                            oModel.update(`/RESOURCESSet('${userId}')`, oPayload, {
+                                success: resolve,
+                                error: reject
+                            });
+                        });
                     };
                     // Read the selected file as a Data URL (base64 string)
                     reader.readAsDataURL(selectedFile);
@@ -262,13 +306,44 @@ sap.ui.define([
             allAvatarImages.forEach(function (avatarControl) {
                 avatarControl.setSrc(imageBase64);
             });
-            window.location.reload();
+            //window.location.reload();
         },
         //Deleting the Profile Images...
-        onPressDeleteProfilePic: function () {
-            this.clearAllAvatarImages();
-            localStorage.removeItem("userProfileImage");
-            sap.m.MessageToast.show("Profile image removed successfully!");
+        onPressDeleteProfilePic: async function () {
+            const This = this;
+            const oModel = This.getOwnerComponent().getModel();
+            const userId = This.ID;
+            try {
+                const sEntityPath = `/RESOURCESSet('${userId}')`;
+                const userData = await new Promise((resolve, reject) => {
+                    oModel.read(sEntityPath, {
+                        success: (oData) => resolve(oData),
+                        error: (oError) => reject(oError)
+                    });
+                });
+        
+                if (userData.Profileimage) {
+                    const oPayload = {
+                        Profileimage: "" // Clear the field in the backend
+                    };
+        
+                    await new Promise((resolve, reject) => {
+                        oModel.update(sEntityPath, oPayload, {
+                            success: resolve,
+                            error: reject
+                        });
+                    });
+        
+                    // Clear the image from UI and local storage
+                    This.clearAllAvatarImages();
+                    //localStorage.removeItem("userProfileImage");
+                    sap.m.MessageToast.show("Profile image removed successfully!");
+                } else {
+                    sap.m.MessageToast.show("No profile image found to delete.");
+                }
+            } catch (oError) {
+                console.error("Error deleting profile image:", oError);
+            }
         },
         clearAllAvatarImages: function () {
             var This = this;

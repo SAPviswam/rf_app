@@ -12,11 +12,8 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
-
-                //Profile Image updating(from Base Controller)...idBtnsVbox_InitialView
-
                 this.load_100_Client_Metadata();
-                this.applyStoredProfileImage();
+                //this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
