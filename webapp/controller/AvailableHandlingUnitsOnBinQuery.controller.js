@@ -92,13 +92,10 @@ sap.ui.define(
                 sap.m.MessageToast.show(message, { duration: 3000 });
             },
             
-          
             //Avata Press function with Helper function...
             onPressAvatarAHUOBQ: function (oEvent) {
                 this.onPressAvatarEveryTileHelperFunction(oEvent);
             },
-
-
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
