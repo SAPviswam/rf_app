@@ -132,7 +132,7 @@ sap.ui.define([
             } else {
                 // Reset view if input is cleared
                 this.getView().byId("idSecondSc_HuQuery").setVisible(false);
-                this.getView().byId("idFirstSc_HuQuery").setVisible(true);
+                this.getView().byId("idFirstSc_HuQuery").setVisible(true); 
             }
         },
  
