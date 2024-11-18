@@ -78,7 +78,7 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtWhLabel_WTQueryByWT"
                                     text="WareHouse Task:"
                                     width="120px"
@@ -101,7 +101,7 @@
                                     text="Back"
                                     press="onPressFirstBackButton"
                                 />
-<ndc:BarcodeScannerButton
+                                <ndc:BarcodeScannerButton
                                     id="idWtQBWtWhScannerBtn_WTQueryByWT"
                                     scanSuccess="onScanSuccess"
                                     scanFail="onScanError"
@@ -150,10 +150,10 @@
                             alignContent="Center"
                         >
                             <HBox id="idSecondScHbox1_WTQueryByWT">
-                                <Label
+                                <Text
                                     id="idWtQBWtwtLabel_WTQueryByWT"
                                     text="WT:"
-                                    width="50px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -162,14 +162,14 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idSecondScEmptyLabel1_WTQueryByWT"
-                                    width="20px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtWTitLabel_WTQueryByWT"
                                     text="WTit:"
-                                    width="50px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -181,10 +181,10 @@
                             </HBox>
 
                             <HBox id="idSecondScHbox2_WTQueryByWT">
-                                <Label
+                                <Text
                                     id="idWtQBWtwtsLabel_WTQueryByWT"
                                     text="WTs:"
-                                    width="50px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -193,14 +193,14 @@
                                     value=""
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idSecondScEmptyLabel2_WTQueryByWT"
-                                    width="20px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtStsLabel_WTQueryByWT"
                                     text="Sts:"
-                                    width="50px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -209,14 +209,14 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idSecondScEmptyLabel3_WTQueryByWT"
-                                    width="30px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtPtypLabel_WTQueryByWT"
                                     text="Ptyp:"
-                                    width="50px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -232,10 +232,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtSproLabel_WTQueryByWT"
                                     text="Spro:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtSproInput_WTQueryByWT"
@@ -243,14 +243,14 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idSecondScEmptyLabel5_WTQueryByWT"
-                                    width="20px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtActyLabel_WTQueryByWT"
                                     text="Acty:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtActyInput_WTQueryByWT"
@@ -258,10 +258,14 @@
                                     width="120px"
                                     editable="false"
                                 />
+                                <Text
+                                    id="idEmptyText1_WTQueryByWT"
+                                    width="10px"
+                                />
                                 <Input
                                     id="idWtQBWtActyEmpInput_WTQueryByWT"
                                     value=""
-                                    width="200px"
+                                    width="120px"
                                     editable="false"
                                 />
                             </HBox>
@@ -271,16 +275,20 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtProLabel_WTQueryByWT"
                                     text="Pro:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtProInput_WTQueryByWT"
                                     value=""
                                     width="310px"
                                     editable="false"
+                                />
+                                <Text
+                                    id="idEmptyText2_WTQueryByWT"
+                                    width="10px"
                                 />
                                 <Input
                                     id="idWtQBWtProEmpInput_WTQueryByWT"
@@ -295,16 +303,20 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtSbinLabel_WTQueryByWT"
                                     text="Sbin:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtSbinInput_WTQueryByWT"
                                     value=""
                                     width="120px"
                                     editable="false"
+                                />
+                                <Text
+                                    id="idEmptyText3_WTQueryByWT"
+                                    width="10px"
                                 />
                                 <Input
                                     id="idWtQBWtSbinEmpInput_WTQueryByWT"
@@ -319,16 +331,20 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtDbinLabel_WTQueryByWT"
                                     text="Dbin:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtDbinInput_WTQueryByWT"
                                     value=""
                                     width="120px"
                                     editable="false"
+                                />
+                                <Text
+                                    id="idEmptyText4_WTQueryByWT"
+                                    width="10px"
                                 />
                                 <Input
                                     id="idWtQBWtDbinEmpInput_WTQueryByWT"
@@ -343,10 +359,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtCdatLabel_WTQueryByWT"
                                     text="Cdat:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtCdatInput_WTQueryByWT"
@@ -354,20 +370,24 @@
                                     width="120px"
                                     editable="false"
                                 />
+                                <Text
+                                    id="idEmptyText5_WTQueryByWT"
+                                    width="10px"
+                                />
                                 <Input
                                     id="idWtQBWtCdatnput_WTQueryByWT"
                                     value=""
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idSecondScEmptyLabel4_WTQueryByWT"
                                     width="20px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtCusrLabel_WTQueryByWT"
                                     text="Cusr:"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtCusrInput_WTQueryByWT"
@@ -445,10 +465,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idWtQBWtWoLabel_WTQueryByWT"
                                     text="WO"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtwoInput_WTQueryByWT"
@@ -456,15 +476,14 @@
                                     value=""
                                     editable="false"
                                 />
-                                <Label
+                                <Text
                                     id="idThirdScEmptylabel1_WTQueryByWT"
-                                    width="50px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtEstpLabel_WTQueryByWT"
                                     text="ESTP"
-                                    class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtEstpInput_WTQueryByWT"
@@ -475,11 +494,11 @@
                             </HBox>
 
                             <HBox id="idThirdScHbox3_WTQueryByWT">
-                                <Label
+                                <Text
                                     id="idWtQBWtSqtyLabel_WTQueryByWT"
                                     text="Sqty"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtSqtyInput_WTQueryByWT"
@@ -487,21 +506,25 @@
                                     width="100px"
                                     value=""
                                 />
+                                <Text
+                                    id="idEmptyText6_WTQueryByWT"
+                                    width="8px"
+                                />
                                 <Input
                                     id="idWtQBWtPcInput_WTQueryByWT"
                                     editable="false"
-                                    width="40px"
+                                    width="45px"
                                     value=""
                                 />
-                                <Label
+                                <Text
                                     id="idThirdScEmptyLabel2_WTQueryByWT"
-                                    width="10px"
+                                    width="5px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
                                     text="Btch"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="idWtQBWtBtchInput_WTQueryByWT"
@@ -512,10 +535,10 @@
                             </HBox>
 
                             <HBox id="idThirdScHbox4_WTQueryByWT">
-                                <Label
+                                <Text
                                     id="idWtQBWtOwnerLabel_WTQueryByWT"
                                     text="Owner"
-                                    width="50px"
+                                    width="45px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -524,15 +547,15 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label
+                                <Text
                                     id="idThirdScEmptyLabel4_WTQueryByWT"
-                                    width="50px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtPEntLabel_WTQueryByWT"
                                     text="PEnt"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtPEntInput_WTQueryByWT"
@@ -543,11 +566,11 @@
                             </HBox>
 
                             <HBox id="idThirdScHbox5_WTQueryByWT">
-                                <Label
+                                <Text
                                     id="idWtQBWtHuWtLabel_WTQueryByWT"
                                     text="HuWt"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtHuWtInput_WTQueryByWT"
@@ -555,15 +578,15 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label
+                                <Text
                                     id="idThirdScEmptylabel5_WTQueryByWT"
-                                    width="50px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtHtypeLabel_WTQueryByWT"
-                                    text="H Type"
+                                    text="Htype"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtHTypeInput_WTQueryByWT"
@@ -571,15 +594,15 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label
+                                <Text
                                     id="idThirdScEmptyLabel6_WTQueryByWT"
-                                    width="30px"
+                                    width="10px"
                                 />
-                                <Label
+                                <Text
                                     id="idWtQBWtWhHuLabel_WTQueryByWT"
                                     text="Wh Hu"
                                     class="sapUiTinyMarginTop"
-                                    width="50px"
+                                    width="45px"
                                 />
                                 <Input
                                     id="idWtQBWtWhHuInput_WTQueryByWT"

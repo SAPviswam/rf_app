@@ -167,6 +167,7 @@
                                     placeholder="HU Number..."
                                     maxLength="25"
                                     width="150px"
+                                    editable="false"
                                 />
                             </HBox>
 
@@ -181,6 +182,7 @@
                                     id="idPackagingMaterialInput_HuQuery"
                                     placeholder="Packaging Material"
                                     width="150px"
+                                     editable="false"
                                 />
 
                                 <Text
@@ -197,6 +199,7 @@
                                     placeholder="Enter HU Type..."
                                     maxLength="25"
                                     width="150px"
+                                     editable="false"
                                 />
                             </HBox>
   <!-- Location and Action Buttons -->
@@ -210,6 +213,7 @@
                                     id="idLocInput_HuQuery"
                                     placeholder="Enter Location..."
                                     width="150px"
+                                     editable="false"
                                 />
                                 <Text
                                     id="idEmptyText_HuQuery"
@@ -224,6 +228,7 @@
                                     id="idCGrpInput_HuQuery"
                                     placeholder="Enter cgrp..."
                                     width="150px"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox2_HuQuery">
@@ -237,10 +242,12 @@
                                     placeholder="Total Weight"
                                     maxLength="25"
                                     width="100px"
+                                     editable="false"
                                 />
                                 <Input
                                     id="idTotalWeightInput2_HuQuery"
                                     width="50px"
+                                     editable="false"
                                 />
 
                                 <Text
@@ -256,10 +263,12 @@
                                     id="idVolumeInput_HuQuery"
                                     placeholder="Enter Volume..."
                                     width="100px"
+                                     editable="false"
                                 />
                                 <Input
                                     id="idVolumeInput2_HuQuery"
                                     width="50px"
+                                     editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox8_HuQuery">
@@ -273,6 +282,7 @@
                                     placeholder="tarW"
                                     maxLength="25"
                                     width="100px"
+                                     editable="false"
                                 />
 
                                 <Text
@@ -288,6 +298,7 @@
                                     id="idTarVInput_HuQuery"
                                     placeholder="Tar Volume"
                                     width="100px"
+                                     editable="false"
                                 />
                             </HBox>
 
@@ -302,6 +313,7 @@
                                     placeholder="MaxW"
                                     maxLength="25"
                                     width="100px"
+                                     editable="false"
                                 />
 
                                 <Text
@@ -317,6 +329,7 @@
                                     id="idmaxVInput_HuQuery"
                                     placeholder="Max Volume."
                                     width="100px"
+                                     editable="false"
                                 />
                             </HBox>
                           
@@ -338,6 +351,7 @@
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
+                                     editable="false"
                                 />
                                 <!-- width -->
                                 <Text
@@ -350,6 +364,7 @@
                                     placeholder="Enter Width..."
                                     maxLength="3"
                                     width="80px"
+                                     editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
 
@@ -366,6 +381,7 @@
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
+                                     editable="false"
                                 />
 
                                 <!-- Height Measurements -->
@@ -380,6 +396,7 @@
                                     placeholder=""
                                     maxLength="13"
                                     width="40px"
+                                     editable="false"
                                 />
                             </HBox>
 

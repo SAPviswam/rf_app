@@ -151,12 +151,14 @@ sap.ui.define([
                                 that._populateHUDetails(odata);  // Populate HU details
                             }
                             else{
-                                sap.m.MessageToast.show("Enter correct");  
+                                sap.m.MessageToast.show("Please Enter correct Handling Unit"); 
+                                that.getView().byId("idSecondSc_HuQuery").setVisible(false);  // Show second screen
+                                that.getView().byId("idFirstSc_HuQuery").setVisible(true); 
                             }
                         },
                         error: function (oError) {
                             // Handle error if HU is not found
-                            sap.m.MessageToast.show("Enter correct"); 
+                            sap.m.MessageToast.show("Please Enter correct Handling Unit"); 
                         }
                     });
                 }.bind(this), 2000);  // Delay of 1000ms (1 second)
@@ -164,7 +166,7 @@ sap.ui.define([
                 // Reset view if input is cleared
                 this.getView().byId("idSecondSc_HuQuery").setVisible(false);
                 this.getView().byId("idFirstSc_HuQuery").setVisible(true);
-                sap.m.MessageToast.show("Enter correct"); 
+                sap.m.MessageToast.show("Please Enter correct Handling Unit"); 
             }
         },
 
