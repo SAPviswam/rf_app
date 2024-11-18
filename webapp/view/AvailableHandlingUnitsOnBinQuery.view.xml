@@ -41,7 +41,7 @@
                 <Avatar
                     id="_IDGenAvatar1_AHUOBQ"
                     displaySize="XS"
-                    press="onPressAvatarAHUOBQ"
+                    press="onAvatarPressed"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -126,7 +126,7 @@
 
             <ScrollContainer
                 id="idPage2BinNoTable_AHUOBQ"
-                horizontal="true"
+                horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
