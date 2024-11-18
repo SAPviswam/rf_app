@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        //"sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/Device"
     
     ],
@@ -106,6 +107,8 @@ sap.ui.define(
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
             },
 
             onAfterRendering: function () {
