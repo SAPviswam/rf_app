@@ -126,7 +126,7 @@
 
             <ScrollContainer
                 id="idPage2BinNoTable_AHUOBQ"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
@@ -200,10 +200,6 @@
                                     id="IDGenText_AHUOBQ"
                                     text="{i18n>(X)OpenWT_AHUBQ}"
                                     class="HedingNameColor"
-
-
-
-
             
                                 />
                             </Column>

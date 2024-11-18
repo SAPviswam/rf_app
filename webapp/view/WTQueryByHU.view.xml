@@ -89,7 +89,7 @@
                             </HBox>
                     
                   
-                            <HBox     id="iHBoxIn_WTQueryByHU"  justifyContent="Center">
+                            <HBox id="iHBoxIn_WTQueryByHU"  justifyContent="Center">
                                 <Button
                                     id="IdBackBtnInPage1_WTQueryBYHU"
                                     text="Back"
@@ -97,7 +97,7 @@
                                     class="sapUiSmallMarginEnd"
                                     press="onPressBackBtnPage1_WTQBYHU"
                                 />
-                                <ndc:BarcodeScannerButton
+                             <ndc:BarcodeScannerButton
                                     id="idScannerBtnInPage1_WTQBYHU"
                                     scanSuccess="onScanSuccess"
                                     scanFail="onScanError"
@@ -105,12 +105,7 @@
                                     dialogTitle="Enter Warehouse Order Number:"
                                     class="sapUiSmallMarginEnd"
                                 />
-                                <Button
-                                    id="idSubmitBtnIn_WTQBYHU"
-                                    text="Submit"
-                                    class="sapUiSmallMarginEnd"
-                                    press="onSubmitPressPage1_WTQBYHU"
-                                />
+                             
                             </HBox>
                    </form:SimpleForm>
                 </VBox> 
@@ -316,7 +311,7 @@
                                     <Input
                                         id="idInputStsIn_WTQBYHU"
                                         width="10rem"
-                                        value="{localModel>/WarehouseTask/Sts}"
+                                        value="{localModel>/WarehouseTask/Trart}"
                                     />
                                     <Text id="Emptylabeli01In_WTQBHU" width="10px" />
                                     <Text

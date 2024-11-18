@@ -53,7 +53,11 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <VBox id="idFirstScVbox1_WTQueryByWT" alignContent="Center" alignItems="Center">
+                <VBox
+                    id="idFirstScVbox1_WTQueryByWT"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
                     <form:SimpleForm
                         id="idWtQBWtSF1_WTQueryByWT"
                         layout="ResponsiveGridLayout"
@@ -63,10 +67,17 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
-                       
                     >
-                        <VBox id="idFirstScVbox2_WTQueryByWT" alignContent="Center" alignItems="Center">
-                            <HBox id="idFirstScHbox1_WTQueryByWT" alignContent="Center" alignItems="Center">
+                        <VBox
+                            id="idFirstScVbox2_WTQueryByWT"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox
+                                id="idFirstScHbox1_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtWhLabel_WTQueryByWT"
                                     text="WareHouse Task:"
@@ -78,15 +89,33 @@
                                     liveChange="onWtQBWtWhLiveChange"
                                 />
                             </HBox>
-                            <HBox id="idFirstScHbox2_WTQueryByWT" alignContent="Center" alignItems="Center">
-                            <Button id="idFirstBackButton_WTQueryByWT" class="sapUiTinyMarginEnd" type="Emphasized" text="Back" press="onPressFirstBackButton" />
+                            <HBox
+                                id="idFirstScHbox2_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Button
+                                    id="idFirstBackButton_WTQueryByWT"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                    text="Back"
+                                    press="onPressFirstBackButton"
+                                />
+<ndc:BarcodeScannerButton
+                                    id="idWtQBWtWhScannerBtn_WTQueryByWT"
+                                    scanSuccess="onScanSuccess"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Enter Warehouse Task Number:"
+                                    class="sapUiSmallMarginEnd"
+                                />
+
+                                <!-- <Button
                                     id="idWtQBWtWhScannerBtn_WTQueryByWT"
                                     icon="sap-icon://bar-code"
                                     press="onWtQBWtWhBarcodeScanner"
                                     class="sapUiTinyMarginEnd"
-                                />
-                                
+                                /> -->
                             </HBox>
                         </VBox>
                     </form:SimpleForm>
@@ -101,7 +130,11 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox id="idSecondScVbox1_WTQueryByWT" alignContent="Center" alignItems="Center">
+                <VBox
+                    id="idSecondScVbox1_WTQueryByWT"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
                     <form:SimpleForm
                         id="idWtQBWtSF2_WTQueryByWT"
                         layout="ResponsiveGridLayout"
@@ -112,7 +145,10 @@
                         columnsL="2"
                         columnsM="1"
                     >
-                        <VBox id="idSecondScVbox2_WTQueryByWT"  alignContent="Center">
+                        <VBox
+                            id="idSecondScVbox2_WTQueryByWT"
+                            alignContent="Center"
+                        >
                             <HBox id="idSecondScHbox1_WTQueryByWT">
                                 <Label
                                     id="idWtQBWtwtLabel_WTQueryByWT"
@@ -126,7 +162,10 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label id="idSecondScEmptyLabel1_WTQueryByWT" width="20px" />
+                                <Label
+                                    id="idSecondScEmptyLabel1_WTQueryByWT"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWtWTitLabel_WTQueryByWT"
                                     text="WTit:"
@@ -154,7 +193,10 @@
                                     value=""
                                     editable="false"
                                 />
-                                <Label id="idSecondScEmptyLabel2_WTQueryByWT" width="20px" />
+                                <Label
+                                    id="idSecondScEmptyLabel2_WTQueryByWT"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWtStsLabel_WTQueryByWT"
                                     text="Sts:"
@@ -167,7 +209,10 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label id="idSecondScEmptyLabel3_WTQueryByWT" width="30px" />
+                                <Label
+                                    id="idSecondScEmptyLabel3_WTQueryByWT"
+                                    width="30px"
+                                />
                                 <Label
                                     id="idWtQBWtPtypLabel_WTQueryByWT"
                                     text="Ptyp:"
@@ -182,7 +227,11 @@
                                 />
                             </HBox>
 
-                            <HBox id="idSecondScHbox3_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idSecondScHbox3_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtSproLabel_WTQueryByWT"
                                     text="Spro:"
@@ -194,7 +243,10 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label id="idSecondScEmptyLabel5_WTQueryByWT" width="20px" />
+                                <Label
+                                    id="idSecondScEmptyLabel5_WTQueryByWT"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWtActyLabel_WTQueryByWT"
                                     text="Acty:"
@@ -214,7 +266,11 @@
                                 />
                             </HBox>
 
-                            <HBox id="idSecondScHbox4_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idSecondScHbox4_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtProLabel_WTQueryByWT"
                                     text="Pro:"
@@ -234,7 +290,11 @@
                                 />
                             </HBox>
 
-                            <HBox id="idSecondScHbox5_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idSecondScHbox5_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtSbinLabel_WTQueryByWT"
                                     text="Sbin:"
@@ -254,7 +314,11 @@
                                 />
                             </HBox>
 
-                            <HBox id="idSecondScHbox6_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idSecondScHbox6_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtDbinLabel_WTQueryByWT"
                                     text="Dbin:"
@@ -274,7 +338,11 @@
                                 />
                             </HBox>
 
-                            <HBox id="idSecondScHbox7_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idSecondScHbox7_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtCdatLabel_WTQueryByWT"
                                     text="Cdat:"
@@ -292,7 +360,10 @@
                                     width="120px"
                                     editable="false"
                                 />
-                                <Label id="idSecondScEmptyLabel4_WTQueryByWT" width="20px" />
+                                <Label
+                                    id="idSecondScEmptyLabel4_WTQueryByWT"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWtCusrLabel_WTQueryByWT"
                                     text="Cusr:"
@@ -306,9 +377,17 @@
                                 />
                             </HBox>
 
-                            <VBox id="idSecondScVbox3_WTQueryByWT" alignContent="Center" alignItems="Center">
-                                <HBox id="idSecondScHbox8_WTQueryByWT" alignContent="Center" alignItems="Center">
-                                <Button
+                            <VBox
+                                id="idSecondScVbox3_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idSecondScHbox8_WTQueryByWT"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <Button
                                         id="WtQBWtDetailBackBtn_WTQueryByWT"
                                         text="Back"
                                         type="Emphasized"
@@ -321,7 +400,6 @@
                                         press="onWtQBWtDetailBtnPress"
                                         class="sapUiTinyMarginEnd"
                                     />
-                                    
                                 </HBox>
                             </VBox>
                         </VBox>
@@ -337,7 +415,11 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox id="idThirdScVbox1_WTQueryByWT" alignContent="Center" alignItems="Center">
+                <VBox
+                    id="idThirdScVbox1_WTQueryByWT"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
                     <form:SimpleForm
                         id="idWtQBWtSF3_WTQueryByWT"
                         layout="ResponsiveGridLayout"
@@ -347,19 +429,22 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
-                        
                     >
                         <VBox id="idThirdScVbox2_WTQueryByWT">
                             <HBox id="idThirdScHbox1_WTQueryByWT">
                                 <Input
                                     id="idWtQBWtProductDiscriptioInput_WTQueryByWT"
                                     value=""
-                                     editable="false"
-                                     width="100%"
+                                    editable="false"
+                                    width="100%"
                                 />
                             </HBox>
 
-                            <HBox id="idThirdScHbox2_WTQueryByWT" alignContent="Center" alignItems="Center">
+                            <HBox
+                                id="idThirdScHbox2_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                                 <Label
                                     id="idWtQBWtWoLabel_WTQueryByWT"
                                     text="WO"
@@ -369,9 +454,12 @@
                                     id="idWtQBWtwoInput_WTQueryByWT"
                                     width="100px"
                                     value=""
-                                     editable="false"
+                                    editable="false"
                                 />
-                                <Label id="idThirdScEmptylabel1_WTQueryByWT" width="50px" />
+                                <Label
+                                    id="idThirdScEmptylabel1_WTQueryByWT"
+                                    width="50px"
+                                />
                                 <Label
                                     id="idWtQBWtEstpLabel_WTQueryByWT"
                                     text="ESTP"
@@ -405,7 +493,10 @@
                                     width="40px"
                                     value=""
                                 />
-                                <Label id="idThirdScEmptyLabel2_WTQueryByWT" width="10px" />
+                                <Label
+                                    id="idThirdScEmptyLabel2_WTQueryByWT"
+                                    width="10px"
+                                />
                                 <Label
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
                                     text="Btch"
@@ -433,7 +524,10 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label id="idThirdScEmptyLabel4_WTQueryByWT" width="50px" />
+                                <Label
+                                    id="idThirdScEmptyLabel4_WTQueryByWT"
+                                    width="50px"
+                                />
                                 <Label
                                     id="idWtQBWtPEntLabel_WTQueryByWT"
                                     text="PEnt"
@@ -461,7 +555,10 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label id="idThirdScEmptylabel5_WTQueryByWT" width="50px" />
+                                <Label
+                                    id="idThirdScEmptylabel5_WTQueryByWT"
+                                    width="50px"
+                                />
                                 <Label
                                     id="idWtQBWtHtypeLabel_WTQueryByWT"
                                     text="H Type"
@@ -474,7 +571,10 @@
                                     width="100px"
                                     value=""
                                 />
-                                <Label id="idThirdScEmptyLabel6_WTQueryByWT" width="30px" />
+                                <Label
+                                    id="idThirdScEmptyLabel6_WTQueryByWT"
+                                    width="30px"
+                                />
                                 <Label
                                     id="idWtQBWtWhHuLabel_WTQueryByWT"
                                     text="Wh Hu"
@@ -489,8 +589,15 @@
                                 />
                             </HBox>
 
-                            <VBox id="idThirdScVbox3_WTQueryByWT" alignContent="Center" alignItems="Center">
-                                <HBox id="idThirdScHbox6_WTQueryByWT" justifyContent="Center">
+                            <VBox
+                                id="idThirdScVbox3_WTQueryByWT"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idThirdScHbox6_WTQueryByWT"
+                                    justifyContent="Center"
+                                >
                                     <Button
                                         id="idThirdBackButton_WTQueryByWT"
                                         text="Back"

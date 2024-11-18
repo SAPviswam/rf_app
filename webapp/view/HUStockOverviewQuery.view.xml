@@ -91,7 +91,7 @@
                             <Input
                                 id="idinput_HUSOQ"
                                 placeholder="Enter HU..."
-                                liveChange="onLiveChange"
+                                liveChange="onSubmitButtonPress"
                                 width="80%"
                                 class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                             />
@@ -117,12 +117,12 @@
                                 dialogTitle="Enter Bin Number:"
                                 class="sapUiTinyMargin"
                             />
-                            <Button
+                            <!-- <Button
                                 id="idSubmitButton"
                                 text="{i18n>Submit_button_HUSOQ}"
                                 press="onSubmitButtonPress"
                                 class="sapUiTinyMargin"
-                            />
+                            /> -->
                         </HBox>
                     </VBox>
                 </VBox>
@@ -130,7 +130,6 @@
 
             <ScrollContainer
                 id="idScforSecondHUStockOverviewQuery_HUSOQ"
-                width="100%"
                 height="100%"
                 horizontal="true"
                 vertical="true"
@@ -170,7 +169,6 @@
                                 <OverflowToolbar id="idSlotsTabdfleHeader1">
                                    <Title
                             id="Title1__HUSOQ11"
-                            text="{i18n>Table_heading_HUSOQ}"
                         />
                                     <ToolbarSpacer id="IDGenToolbar__HUSOQ" />
                                      <Button
@@ -247,9 +245,8 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idScforThirdHUStockOverviewQuery_HUSOQ"
-                width="100%"
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
@@ -286,10 +283,6 @@
                         id="TB4_HUSOQ11"
                         class="HeaderToolBar"
                     >
-                        <Title
-                            id="Title1455896_HUSOQ"
-                            text="{i18n>Table_heading_HUSOQ}"
-                        />
                         <ToolbarSpacer id="IDGenToolbar_HUSOQ" />
                         <Button
                             id="idHUStockOverviewQueryThirdbackbtn_HUSOQ"
