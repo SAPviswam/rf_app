@@ -8,7 +8,7 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageToast"
-], function (Controller,Device, JSONModel, library, MessageBox, Fragment,MessageToast) {
+], function (Controller, Device, JSONModel, library, MessageBox, Fragment, MessageToast) {
 
 	"use strict";
 	var history = {
@@ -23,7 +23,7 @@ sap.ui.define([
 
 			if (Device.system.phone) {
 				this.getView().byId("idAssignedQueueTable_changeQueue").setWidth("200%");
-				
+
 			}
 
 			this.processGroupArray = [];
@@ -76,7 +76,7 @@ sap.ui.define([
 					const oResourceGroupArrayUpper = oResourceGroupArray.map(name => name.toUpperCase());
 					var oResourceQueueArray = oData.Queue.split(",").map(item => item.trim());
 					const oResourceQueueArrayUpper = oResourceQueueArray.map(name => name.toUpperCase());
-
+					var count = 0;
 					oModel.read("/ProcessAreaSet", {
 						success: function (oData) {
 							var oDetails = oData.results;
@@ -91,7 +91,9 @@ sap.ui.define([
 											if (oDetails[i].Queue.toUpperCase().length > longestQueue) {
 												longestQueue = oDetails[i].Queue.toUpperCase().length
 											}
+											count += 1
 											aTableDetails.push({
+												Slno: count,
 												Area: oDetails[i].Processarea,
 												Group: oDetails[i].Processgroup,
 												Queue: oDetails[i].Queue
@@ -153,11 +155,7 @@ sap.ui.define([
 		},
 		onBackBtnPress_changeQueue: async function () {
 			var oRouter = this.getOwnerComponent().getRouter();
-
-
 			oRouter.navTo("Homepage", { id: this.ID });
-
-
 		},
 
 
@@ -444,166 +442,49 @@ sap.ui.define([
 
 		},
 		onDeleteQueueBtnPress_changeQueue: function () {
-
 			var oTable = this.byId("idAssignedQueueTable_changeQueue");
 			var aSelectedItems = oTable.getSelectedItems();
-			var oModel = this.getOwnerComponent().getModel();
-			var that = this
-			if (aSelectedItems.length > 0) {
-				oModel.read("/RESOURCESSet('" + this.ID + "')", {
-					success: function (oData) {
-						var oResourceQueueArray = oData.Queue.split(",").map(item => item.trim());
-						var oResourceGroupArray = oData.Resourcegroup.split(",").map(item => item.trim());
-						var oResourceAreaArray = oData.Area.split(",").map(item => item.trim());
-						var oResourceQueueArrayUpper = oResourceQueueArray.map(name => name.toUpperCase());
-						var oResourceGroupArrayUpper = oResourceGroupArray.map(name => name.toUpperCase());
-						var oDetegroupArray = []
-						var oDeleteAreaArray = []
-						// aSelectedItems.forEach(function (oItem) {
-						// 	var oQueueArray=[];
-						// 	var oContext = oItem.getBindingContext();
-						// 	var oObject = oContext.getObject();
-						// 	let count=0;
-						oModel.read("/ProcessAreaSet", {
-							success: function (odata) {
-								var oDetails = odata.results
-								aSelectedItems.forEach(function (oItem) {
-									var oQueueArray = [];
-									var oGroupArray = [];
-									var oContext = oItem.getBindingContext();
-									var oObject = oContext.getObject();
-									let count = 0;
-									let areaCount = 0;
-									oDetails.forEach(function (element) {
-										if (element.Processarea.toUpperCase() === oObject.Area.toUpperCase()) {
-											oGroupArray.push(element.Processgroup.toUpperCase());
-										}
+			var aItems = oTable.getItems()
+			var UnselectedAreaofSet=[];
+			var UnselectedAreaofSet = new Set();
+			var UnselectedGroupSet = new Set();
+			var UnselectedQueueSet = new Set();
+			var aSelectedSlno = aSelectedItems.map(function (oItem) {
+                var oBindingContext = oItem.getBindingContext();
+                return oBindingContext.getProperty("Slno");
+            });
+			console.log(aSelectedSlno)
+			aItems.forEach(function (oItem) {
+                var oBindingContext = oItem.getBindingContext();
+				var sSlno = oBindingContext.getProperty("Slno");
+				if(!(aSelectedSlno.includes(sSlno))){
+					UnselectedAreaofSet.add(oBindingContext.getProperty("Area"));
+					UnselectedGroupSet.add(oBindingContext.getProperty("Group"));
+					UnselectedQueueSet.add(oBindingContext.getProperty("Queue"));
+				}
+               
+            });
+	
 
-									});
-									oResourceGroupArrayUpper.forEach(element => {
-										if (oGroupArray.includes(element)) {
-											areaCount += 1;
-										}
-									}
+			var unSelectedAreaString = Array.from(UnselectedAreaofSet).join(',');
+			var unSelectedGroupString = Array.from(UnselectedGroupSet).join(',');
+			var unSelectedQueueString = Array.from(UnselectedQueueSet).join(',');
 
-									)
-
-									oDetails.forEach(function (element) {
-										if (element.Processgroup.toUpperCase() === oObject.Group.toUpperCase()) {
-											oQueueArray.push(element.Queue.toUpperCase());
-										}
-
-									});
-									oResourceQueueArrayUpper.forEach(element => {
-										if (oQueueArray.includes(element)) {
-											count += 1;
-										}
-									}
-
-									)
-									if (count <= 1) {
-										oDetegroupArray.push(oObject.Group)
-									}
-
-									if (areaCount <= 1) {
-										oDeleteAreaArray.push(oObject.Area)
-									}
-									// console.log(oDetegroupArray)
-									// if (oResourceQueueArray.includes(oObject.Queue.toUpperCase())) {
-									// 	console.log(oObject.Queue.toUpperCase())
-									// 	oResourceQueueArrayUpper = oResourceQueueArrayUpper.filter(item => item != oObject.Queue.toUpperCase())
-									// }
-									// console.log(oData);
-									// if(count<=1){
-									// 	oDetegroupArray.push(oObject.Group)
-									// }
-									console.log(oDetegroupArray)
-									if (oResourceQueueArray.includes(oObject.Queue.toUpperCase())) {
-										console.log(oObject.Queue.toUpperCase())
-										oResourceQueueArrayUpper = oResourceQueueArrayUpper.filter(item => item != oObject.Queue.toUpperCase())
-									}
-									console.log(oData);
-								});
-								let resultString = oResourceQueueArrayUpper.join(',');
-								console.log(resultString);
-
-								const array2Lower = oDetegroupArray.map(item => item.toLowerCase());
-								const array2LowerArea = oDeleteAreaArray.map(item => item.toLowerCase());
-
-
-								// Filter array1 by removing elements found in array2 (case-insensitive)
-								const filteredArray1 = oResourceGroupArray.filter(item => !array2Lower.includes(item.toLowerCase()));
-								const filteredArray1Area = oResourceAreaArray.filter(item => !array2LowerArea.includes(item.toLowerCase()));
-
-								console.log(filteredArray1); 
-								const resultStringGroup = filteredArray1.join(", ");
-								const resultStringArea = filteredArray1Area.join(", ");
-
-								const resourceDetails = {
-									Area:resultStringArea,
-									Resourcegroup: resultStringGroup,
-									Queue: resultString
-								}
-								oModel.update("/RESOURCESSet('" + that.ID + "')", resourceDetails, {
-									success: function () {
-										that.tableContent();
-									}.bind(this),
-									error: function (oError) {
-										sap.m.MessageBox.error("Failed " + oError.message);
-									}.bind(this)
-								});
-
-
-							},
-							error: function () {
-
-							}
-						})
-						// 	// if(count<=1){
-						// 	// 	oDetegroupArray.push(oObject.Group)
-						// 	// }
-						// 	console.log(oDetegroupArray)
-						// 	if (oResourceQueueArray.includes(oObject.Queue.toUpperCase())) {
-						// 		console.log(oObject.Queue.toUpperCase())
-						// 		oResourceQueueArrayUpper = oResourceQueueArrayUpper.filter(item => item != oObject.Queue.toUpperCase())
-						// 	}
-						// 	console.log(oData);
-						// });
-						// console.log(oDetegroupArray)
-						// let resultString = oResourceQueueArrayUpper.join(',');
-						// console.log(resultString);
-
-						// const array2Lower = oDetegroupArray.map(item => item.toLowerCase());
-
-						// // Filter array1 by removing elements found in array2 (case-insensitive)
-						// const filteredArray1 = oResourceGroupArray.filter(item => !array2Lower.includes(item.toLowerCase()));
-
-						// console.log(filteredArray1);  // Output: ["apple", "cherry"]
-						// const resultStringGroup = filteredArray1.join(", ");
-
-						// const resourceDetails = {
-						// 	Resourcegroup: resultStringGroup,
-						// 	Queue: resultString
-						// }
-						// oModel.update("/RESOURCESSet('" + that.ID + "')", resourceDetails, {
-						// 	success: function () {
-
-						// 	}.bind(this),
-						// 	error: function (oError) {
-						// 		sap.m.MessageBox.error("Failed " + oError.message);
-						// 	}.bind(this)
-						// });
-						// that.tableContent();
-					},
-					error: function () {
-
-					}
-				})
-				console.log(aSelectedItems)
-
-			} else {
-				sap.m.MessageToast.show("Please Select atleast on Queue");
+			const resourceDetails = {
+				Area: unSelectedAreaString,
+				Resourcegroup: unSelectedGroupString,
+				Queue: unSelectedQueueString
 			}
+			var that = this;
+			var oModel = this.getOwnerComponent().getModel();
+			oModel.update("/RESOURCESSet('" + that.ID + "')", resourceDetails, {
+				success: function () {
+					that.tableContent();
+				}.bind(this),
+				error: function (oError) {
+					sap.m.MessageBox.error("Failed " + oError.message);
+				}.bind(this)
+			});
 		},
 		onBackPressInWizard: function () {
 			this.getView().byId("idScrollContainer1_changeQueue").setVisible(true);
@@ -625,22 +506,22 @@ sap.ui.define([
 			// Clear the selection (unselect all items)
 			oList.removeSelections(true);
 		},
-// for clearing the area group and queues
-		OnClearPress_changeQueue:function(){
+		// for clearing the area group and queues
+		OnClearPress_changeQueue: function () {
 			var oWizard = this.byId("idProcesstWizard_changeQueue");
 			var oFirstStep = oWizard.getSteps()[0];
 			oWizard.setCurrentStep(oFirstStep);
 			oWizard.goToStep(oFirstStep);
 			var oList = this.byId("idProcessAreaList_changeQueue");
-    
+
 			// Clear the selection (unselect all items)
 			oList.removeSelections(true);
 			var oList = this.byId("idProcessGroupList_changeQueue");
-    
+
 			// Clear the selection (unselect all items)
 			oList.removeSelections(true);
 			var oList = this.byId("idProcessQueueList_changeQueue");
-    
+
 			// Clear the selection (unselect all items)
 			oList.removeSelections(true);
 		}
