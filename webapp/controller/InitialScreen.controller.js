@@ -570,7 +570,8 @@ sap.ui.define([
                 }
 
                 var that = this;
-                var oModel = this.getView().getModel();
+                // var oModel = this.getView().getModel();
+                var oModel = this.getOwnerComponent().getModel();
 
                 // First read the values if entered unique values if entered uniquely.
 
