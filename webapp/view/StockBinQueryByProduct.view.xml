@@ -96,13 +96,11 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                
                                 <ndc:BarcodeScannerButton
                                     id="_IDBinGenScanButton_SBQP"
                                     scanSuccess="onScanSuccessProduct"
                                     scanFail="onScanError"
                                     dialogTitle="Barcode Scanner"
-                                    
                                 />
                                 <Button
                                     id="idfirstbackbtn_SBQP"
@@ -120,11 +118,12 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idsecondSC_SBQP"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
+                
             >
                 <form:SimpleForm
                     id="idSF2_SBQP"
@@ -143,112 +142,96 @@
                         width="100%"
                         height="100%"
                     >
-                        <VBox
-                            id="idVbox4_SBQP"
+                        <HBox
+                            id="idHbox2_SBQP"
                             alignItems="Center"
                             justifyContent="Center"
-                            width="100%"
                         >
+                            <Label
+                                id="idProductLabel1_SBQP"
+                                text="Product:"
+                                width="70Px"
+                                class="sapUiTinyMargin sapUiTinyMarginBottom"
+                            />
                             <HBox
-                                id="idHbox2_SBQP"
+                                id="idHbox3_SBQP"
                                 alignItems="Center"
-                                justifyContent="Center"
+                                justifyContent="SpaceBetween"
+                                width="100%"
                             >
-                                <Label
-                                    id="idProductLabel1_SBQP"
-                                    text="Product:"
-                                    width="70Px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                <Input
+                                    id="idProductinput2_SBQP"
+                                    value=""
                                 />
-                                <HBox
-                                    id="idHbox3_SBQP"
-                                    alignItems="Center"
-                                    justifyContent="SpaceBetween"
-                                    width="100%"
-                                >
-                                    <Input
-                                        id="idProductinput2_SBQP"
-                                        value=""
-                                    />
-                                </HBox>
                             </HBox>
-                        </VBox>
+                        </HBox>
                         <VBox
                             id="idVbox5_SBQP"
                             class="sapUiMediumMarginBottom"
                         />
-                        <VBox
-                            id="idVbox6_SBQP"
-                            alignItems="Center"
-                            justifyContent="Center"
-                            width="100%"
+                        <Panel
+                            id="idPanel_StockBinQuerybyProduct"
+                            headerText=""
+                            visible="true"
+                            class="sapUiSmallMarginTop"
                         >
-                            <HBox
-                                id="idHbox4_SBQP"
-                                alignItems="Center"
-                                justifyContent="Center"
+                            <Table
+                                id="idTable_SBQP"
+                                growing="true"
+                                growingThreshold="6"
+                                mode="None"
                                 width="100%"
-                                
+                                alternateRowColors="true"
                             >
-                                <Table
-                                    id="idTable_SBQP"
-                                    growing="true"
-                                    growingThreshold="10"
-                                    mode="None"
-                                    width="100%"
-                                    alternateRowColors="true"
-                                >
-                                    <headerToolbar>
-                                        <OverflowToolbar
-                                            id="idTableHeader_SBQP"
-                                        >
-                                            <Title
-                                                id="idTableHeaderTitle_SBQP"
-                                                text="Bin Details"
-                                            />
-                                            <ToolbarSpacer
-                                                id="idTableHeaderSpacerem_SBQP"
-                                            />
-                                            <Button
-                                                id="idSecondbackbtn_SBQP"
-                                                type="Emphasized"
-                                                press="onSBQPSecondBackBtnPress"
-                                                visible="false"
-                                                text="Back"
-                                            />
-                                            <Button
-                                                id="idProductDescription_SBQP"
-                                                text="Prd De"
-                                                class="sapUiTinyMargin"
-                                                press="onSBQPPreDePress"
-                                                type="Emphasized"
-                                            />
-                                        </OverflowToolbar>
-                                    </headerToolbar>
-                                    <columns>
-                                        <Column id="idBinColumn_SBQP" >
-                                            <Text
-                                                id="idBinText_SBQP"
-                                                text="Bin No"
-                                            />
-                                        </Column>
-                                        <Column id="idSBQPColumn_SBQP" >
-                                            <Text
-                                                id="idSBQPText"
-                                                text="Stock"
-                                            />
-                                        </Column>
-                                        <Column id="idSBQPPcColumn_SBQP" >
-                                            <Text
-                                                id="idSBQPPcText_SBQP"
-                                                text="UOM"
-                                            />
-                                        </Column>
-                                    </columns>
-                                    <items />
-                                </Table>
-                            </HBox>
-                        </VBox>
+
+                                <headerToolbar>
+                                    <OverflowToolbar id="idTableHeader_SBQP">
+                                        <Title
+                                            id="idTableHeaderTitle_SBQP"
+                                            text="Bin Details"
+                                        />
+                                        <ToolbarSpacer
+                                            id="idTableHeaderSpacerem_SBQP"
+                                        />
+                                        <Button
+                                            id="idSecondbackbtn_SBQP"
+                                            type="Emphasized"
+                                            press="onSBQPSecondBackBtnPress"
+                                            visible="false"
+                                            text="Back"
+                                        />
+                                        <Button
+                                            id="idProductDescription_SBQP"
+                                            text="Prd De"
+                                            class="sapUiTinyMargin"
+                                            press="onSBQPPreDePress"
+                                            type="Emphasized"
+                                        />
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column id="idBinColumn_SBQP">
+                                        <Text
+                                            id="idBinText_SBQP"
+                                            text="Bin No"
+                                        />
+                                    </Column>
+                                    <Column id="idSBQPColumn_SBQP">
+                                        <Text
+                                            id="idSBQPText"
+                                            text="Stock"
+                                        />
+                                    </Column>
+                                    <Column id="idSBQPPcColumn_SBQP">
+                                        <Text
+                                            id="idSBQPPcText_SBQP"
+                                            text="UOM"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items />
+                            </Table>
+                        </Panel>
                     </VBox>
                 </form:SimpleForm>
             </ScrollContainer>
@@ -261,135 +244,123 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <!-- <VBox
-                    id="idVbox_StockBinQuerybyProduct17"
-                    justifyContent="Center"
-                    alignContent="Center"
-                    alignItems="Center"
-                    width="auto"
-                > -->
-                    <form:SimpleForm
-                        id="idsf3_SBQP"
-                        layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
-                        columnsM="1"
+                <form:SimpleForm
+                    id="idsf3_SBQP"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    emptySpanL="1"
+                    emptySpanM="1"
+                    columnsL="2"
+                    columnsM="1"
+                >
+                    <VBox
+                        id="idVbox7_SBQP"
+                        alignItems="Center"
+                        justifyContent="Center"
+                        width="100%"
                     >
-                        <VBox
-                            id="idVbox7_SBQP"
-                            alignItems="Center"
-                            justifyContent="Center"
-                            width="100%"
-                        >
-                            <Title
-                                id="idTitle_SBQP"
-                                text="Product Description"
-                                class="sapUiTinyMargin sapUiSmallMarginBottom"
+                        <Title
+                            id="idTitle_SBQP"
+                            text="Product Description"
+                            class="sapUiTinyMargin sapUiSmallMarginBottom"
+                        />
+                        <HBox id="idHbox6_SBQP">
+                            <Input
+                                id="idMaktxInput_SBQP"
+                                width="250px"
+                                editable="false"
                             />
-                            <!-- <VBox
-                                id="idVbox_StockBinQuerybyProduct13"
-                                class="sapUiLargeMarginBottom"
-                            /> -->
-                            <HBox id="idHbox6_SBQP">
-                                <Input
-                                    id="idMaktxInput_SBQP"
-                                    width="250px"
-                                    editable="false"
-                                />
-                            </HBox>
-                            <HBox id="idHbox7_SBQP">
-                                <Label
-                                    id="idEANLabel_SBQP"
-                                    text="EAN/UPC:"
-                                    width="70Px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
-                                />
-                                <Input
-                                    id="idEANInput_SBQP"
-                                    value=""
-                                    editable="false"
-                                    width="73px"
-                                />
-                                <Label
-                                    id="idLabel1_SBQP"
-                                    width="1rem"
-                                />
-                                <Input
-                                    id="idinput1_SBQP"
-                                    value=""
-                                    editable="false"
-                                    width="73px"
-                                    
-                                />
-                            </HBox>
+                        </HBox>
+                        <HBox id="idHbox7_SBQP">
+                            <Label
+                                id="idEANLabel_SBQP"
+                                text="EAN/UPC:"
+                                width="70Px"
+                                class="sapUiTinyMargin sapUiTinyMarginBottom"
+                            />
+                            <Input
+                                id="idEANInput_SBQP"
+                                value=""
+                                editable="false"
+                                width="73px"
+                            />
+                            <Label
+                                id="idLabel1_SBQP"
+                                width="1rem"
+                            />
+                            <Input
+                                id="idinput1_SBQP"
+                                value=""
+                                editable="false"
+                                width="73px"
+                            />
+                        </HBox>
 
-                            <HBox id="idHbox8_SBQP">
-                                <Label
-                                    id="idTotWLabel_SBQP"
-                                    text="TotW:"
-                                    width="70Px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
-                                />
-                                <Input
-                                    id="idTotWinput_SBQP"
-                                    value=""
-                                    editable="false"
-                                    width="73px"
-                                />
-                                <Label
-                                    id="idUnitGWLabel_SBQP"
-                                    width="1rem"
-                                />
-                                <Input
-                                    id="idUnitGWinput_SBQP"
-                                    editable="false"
-                                    width="73px"
-                                />
-                            </HBox>
+                        <HBox id="idHbox8_SBQP">
+                            <Label
+                                id="idTotWLabel_SBQP"
+                                text="TotW:"
+                                width="70Px"
+                                class="sapUiTinyMargin sapUiTinyMarginBottom"
+                            />
+                            <Input
+                                id="idTotWinput_SBQP"
+                                value=""
+                                editable="false"
+                                width="73px"
+                            />
+                            <Label
+                                id="idUnitGWLabel_SBQP"
+                                width="1rem"
+                            />
+                            <Input
+                                id="idUnitGWinput_SBQP"
+                                editable="false"
+                                width="73px"
+                            />
+                        </HBox>
 
-                            <HBox id="idHbox9_SBQP">
-                                <Label
-                                    id="idTotVLabel_SBQP"
-                                    text="TotV:"
-                                    width="70Px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
-                                />
-                                <Input
-                                    id="idTotVinput_SBQP"
-                                    value=""
-                                    editable="false"
-                                    width="73px"
-                                />
-                                <Label
-                                    id="idUnitGVLabel_SBQP"
-                                    width="1rem"
-                                />
-                                <Input
-                                    id="idUnitGVinput_SBQP"
-                                    editable="false"
-                                    width="73px"
-                                />
-                            </HBox>
-                            <HBox
-                                id="idHbox10_SBQP"
-                                justifyContent="Center"
-                                alignContent="Center"
-                                alignItems="Center"
-                                class="sapUiTinyMargin sapUiTinyMarginTop"
-                            >
-                                <Button
-                                    id="idThirdbackbtn_SBQP"
-                                    text="Back"
-                                    type="Emphasized"
-                                    press="onSBQPThirdBackBtnPress"
-                                    visible="false"
-                                />
-                            </HBox>
-                        </VBox>
-                    </form:SimpleForm>
+                        <HBox id="idHbox9_SBQP">
+                            <Label
+                                id="idTotVLabel_SBQP"
+                                text="TotV:"
+                                width="70Px"
+                                class="sapUiTinyMargin sapUiTinyMarginBottom"
+                            />
+                            <Input
+                                id="idTotVinput_SBQP"
+                                value=""
+                                editable="false"
+                                width="73px"
+                            />
+                            <Label
+                                id="idUnitGVLabel_SBQP"
+                                width="1rem"
+                            />
+                            <Input
+                                id="idUnitGVinput_SBQP"
+                                editable="false"
+                                width="73px"
+                            />
+                        </HBox>
+                        <HBox
+                            id="idHbox10_SBQP"
+                            justifyContent="Center"
+                            alignContent="Center"
+                            alignItems="Center"
+                            class="sapUiTinyMargin sapUiTinyMarginTop"
+                        >
+                            <Button
+                                id="idThirdbackbtn_SBQP"
+                                text="Back"
+                                type="Emphasized"
+                                press="onSBQPThirdBackBtnPress"
+                                visible="false"
+                            />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
             </ScrollContainer>
             <ScrollContainer
                 id="idFourthSC_SBQP"
@@ -421,7 +392,7 @@
                             justifyContent="Center"
                             width="100%"
                         >
-                         <Title
+                            <Title
                                 id="idTitle1_SBQP"
                                 text="Bin Details"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
@@ -430,7 +401,7 @@
                                 id="idHbox11_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idBinLabel_SBQP"
                                     text="Bin:"
                                     width="80px"
@@ -447,8 +418,9 @@
                                     id="IdLabel4_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idStorageTypeLabel_SBQP"
                                     text="Storage Type:"
                                     width="90px"
@@ -467,7 +439,7 @@
                                 id="idHbox12_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idQtyLabel_SBQP"
                                     text="Qty:"
                                     width="80px"
@@ -484,8 +456,9 @@
                                     id="idLabel5_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idSSecLabel_SBQP"
                                     text="Storage Sec:"
                                     width="90px"
@@ -504,7 +477,7 @@
                                 id="idHbox13_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idNoOfHuLabel_SBQP"
                                     text="No of Hu's:"
                                     width="80px"
@@ -521,8 +494,9 @@
                                     id="idLabel6_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idBinAisleLabel_SBQP"
                                     text="Bin Aisle:"
                                     width="90px"
@@ -541,7 +515,7 @@
                                 id="idHbox14_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idMaxWLabel_SBQP"
                                     text="MaxW:"
                                     width="80px"
@@ -570,8 +544,9 @@
                                     id="idLabel8_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idBinLevelLabel_SBQP"
                                     text="Bin Level:"
                                     width="90px"
@@ -590,7 +565,7 @@
                                 id="idHbox15_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
-                                <Label
+                                <Text
                                     id="idMaxVLabel_SBQP"
                                     text="MaxV:"
                                     width="80px"
@@ -619,8 +594,9 @@
                                     id="idLabel10_SBQP"
                                     text=""
                                     width="30px"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                                <Label
+                                <Text
                                     id="idStackLabel_SBQP"
                                     text="Stack:"
                                     width="90px"

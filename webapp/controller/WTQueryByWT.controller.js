@@ -152,7 +152,14 @@ sap.ui.define(
             onPressThirdBackButton: function () {
                 this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show second screen
                 this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(false); // Hide third screen
-            }
+            },
+
+             // Handle successful scan events
+      onScanSuccess: function (oEvent) {
+        var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
+        this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue(sScannedProduct); // Set the value in the input
+        this.onWtQBWtWhLiveChange();
+      }
         });
     }
 );

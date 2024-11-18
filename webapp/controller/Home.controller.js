@@ -146,8 +146,17 @@ sap.ui.define([
             onInitialDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
-                var oUserId = this.getView().byId("idUserIDInput").setValue(this.ID)
-                oUserId.setEditable(false)
+                var oModel = this.getOwnerComponent().getModel();
+                await oModel.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        var oUserId = this.getView().byId("idUserIDInput").setValue(oData.Resourcename)
+                        oUserId.setEditable(false)  
+                    }.bind(this),
+                    error: function () {
+                        
+                    }
+                });
+               
             },
             //             onPressAutoSaveBtn: function (oEvent) {
             //                 var isChecked = oEvent.getParameter("selected");

@@ -370,14 +370,14 @@
           ]
         },
         {
-          "name": "CreateConfirmAdhocHu",
+          "name": "CREATEANDCONFIRMADHOCHUWT",
           "pattern": "CreateConfirmAdhocHu/{id}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
         },
         {
-          "name": "CreateConfirmAdhocProduct",
+          "name": "CREATEANDCONFIRMADHOCPRODUCTWT",
           "pattern": "CreateConfirmAdhocProduct/{id}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
@@ -585,6 +585,23 @@
           "target": [
             "TargetRouteChangeLoadingUnloadingDetails"
           ]
+        },
+        {
+
+          "name": "HelpTourOnEditConfigSAPSystem",
+          "pattern": "RouteHelpTourOnEditConfigSAPSystem",
+          "target": [
+            "TargetRouteHelpTourOnEditConfigSAPSystem"
+          ]
+        },
+        {
+
+          "name": "SETREADYFORWHPROCESSINGBYBOL",
+          "pattern": "SetReadyForWHProcessingByBol/{id}",
+          "target": [
+            "TargetSetReadyForWhProcessingByBOL"
+
+          ]
         }
       ],
       "targets": {
@@ -594,6 +611,13 @@
           "clearControlAggregation": false,
           "viewId": "ConfigLogin",
           "viewName": "ConfigLogin"
+        },
+        "TargetRouteHelpTourOnEditConfigSAPSystem": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HelpTourOnEditConfigSAPSystem",
+          "viewName": "HelpTourOnEditConfigSAPSystem"
         },
         "TargetInitialScreen": {
           "viewType": "XML",
@@ -1063,6 +1087,13 @@
           "clearControlAggregation": false,
           "viewId": "ReversalofConsumptionbyMO_Bin",
           "viewName": "ReversalofConsumptionbyMO_Bin"
+        },
+        "TargetSetReadyForWhProcessingByBOL":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WHProcessingByBOL",
+          "viewName": "WHProcessingByBOL"
         }
       }
     },
