@@ -1903,15 +1903,7 @@ margin-right: 20%;
     padding: 0.5rem;
     
 }
-/* change queue ends */
-
-.genericTile{
-    height: 50px;
-    width:50px;
-}
-
-
-/* HU Stock Overview Query Tabel */
+/* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
     position: fixed;
     top: 0;
@@ -1920,6 +1912,29 @@ margin-right: 20%;
     z-index: 10;
     padding: 0.5rem;
 }
+
+.table_HuStockOverview{
+    margin-top: 5%;
+}
+
+.MobileviewTable_HUSOQ{
+    margin-top: 20%;
+}
+
+/* HU Stock Overview Query Tabel End 18-11-2024*/
+
+
+
+/* change queue ends */
+
+.genericTile{
+    height: 50px;
+    width:50px;
+}
+
+
+
+
 
 
 

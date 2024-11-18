@@ -23,7 +23,8 @@ sap.ui.define(
         if (Device.system.phone) {
           this.getView().byId("idBinNumberTableInput_HUSOQ").setWidth("200%");
           this.getView().byId("idTable_HUSOQ").setWidth("200%");
-         
+          this.getView().byId("idBinNumberTableInput_HUSOQ").addStyleClass("MobileviewTable_HUSOQ");
+          this.getView().byId("idTable_HUSOQ").addStyleClass("MobileviewTable_HUSOQ");
       }
 
       },
