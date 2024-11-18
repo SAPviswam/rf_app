@@ -1,13 +1,8 @@
 sap.ui.define(
     [
-<<<<<<< HEAD
         "sap/ui/core/mvc/Controller",
         "sap/ui/Device"
     
-=======
-        //"sap/ui/core/mvc/Controller"
-    "./BaseController",
->>>>>>> 93b6c30256257c9fa3e547e917710d8c1db17a40
     ],
     function (BaseController,Device) {
         "use strict";
