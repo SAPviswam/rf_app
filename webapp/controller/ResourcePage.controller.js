@@ -20,6 +20,11 @@ sap.ui.define([
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
 
+
+                if (Device.system.phone) {
+                    this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile");
+                }
+
                 // Initialize JSON Model
                 var oModel = new JSONModel();
                 this.getView().setModel(oModel);
