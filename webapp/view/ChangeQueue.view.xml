@@ -109,7 +109,7 @@
                     <columns>
                     <Column
                             id="idSlonoCol_changeQueue"
-                            width="40%"
+                            width="20%"
                         >
                             <Title
                                 id="idSlonoTitle_changeQueue"
