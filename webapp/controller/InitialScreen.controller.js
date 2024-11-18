@@ -13,7 +13,7 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
 
-                //Profile Image updating(from Base Controller)...
+                //Profile Image updating(from Base Controller)...idBtnsVbox_InitialView
 
                 this.load_100_Client_Metadata();
                 this.applyStoredProfileImage();
@@ -570,7 +570,8 @@ sap.ui.define([
                 }
 
                 var that = this;
-                var oModel = this.getView().getModel();
+                // var oModel = this.getView().getModel();
+                var oModel = this.getOwnerComponent().getModel();
 
                 // First read the values if entered unique values if entered uniquely.
 
