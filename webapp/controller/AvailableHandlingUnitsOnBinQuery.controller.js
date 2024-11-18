@@ -84,6 +84,7 @@ sap.ui.define(
                     }
                 });
             },
+
             
             _debounce: function (fn, delay) {
                 var timeout;
@@ -112,16 +113,12 @@ sap.ui.define(
             },
 
             onScanSuccess_AHUOBQ: function (oEvent) {
-                // Get the scanned bin number from the event parameters
+                console.log("Scan success triggered with data:", oEvent.getParameter("text"));
                 var sScannedBinNumber = oEvent.getParameter("text");
-            
-                // Check if the bin number is empty or invalid
                 if (sScannedBinNumber) {
 
                     this.byId("idInput_AHUOBQ").setValue(sScannedBinNumber);
-
-                    this._validateBinNumber(sScannedBinNumber); // Trigger validation immediately
-
+                    this._validateBinNumber(sScannedBinNumber);
                     sap.m.MessageToast.show("Bin number scanned successfully: " + sScannedBinNumber, { duration: 3000 });
                 } else {
 
@@ -129,11 +126,11 @@ sap.ui.define(
 
                 }
             },
-    
             onScanError_AHUOBQ: function (oEvent) {
-                // Handle scan failure
-                MessageToast.show("Scanning failed. Please try again.", { duration: 3000 });
+                console.error("Scan error triggered", oEvent);
+                sap.m.MessageToast.show("Scanning failed. Please try again.", { duration: 3000 });
             },
+            
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1_AHUOBQ
             onPressBackBtnPage1_AHUOBQ: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();

@@ -163,10 +163,12 @@
                             editable="false"
                         />
                     </HBox>
-                        <ToolbarSpacer id="IDGenToolbar__HUSOQ" />
-                        <HBox id = "idHbox45_HUSOQ"
-                          class = "Buttons_HUSOQ">
-                    <Button
+                        <OverflowToolbar id="idSlotsTabdfleHeader1">
+                                   <Title
+                            id="Title1__HUSOQ11"
+                        />
+                                    <ToolbarSpacer id="IDGenToolbar__HUSOQ" />
+                                     <Button
                             id="idHUStockOverviewQuerySecondbackbtn_HUSOQ"
                             text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
@@ -178,10 +180,7 @@
                             press="onPressHUQueryList"
                             text="{i18n>Hu_query_List_button_HUSOQ}"
                         />
-                    </HBox>
-                    
-                
-
+                                </OverflowToolbar>
                     <Table
                         id="idBinNumberTableInput_HUSOQ"
                         selectionChange="onSelectionChange"
