@@ -1,9 +1,8 @@
 sap.ui.define(
     [
-        //"sap/ui/core/mvc/Controller"
-    "./BaseController",
-    "sap/ui/Device"
-   
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/Device"
+    
     ],
     function (BaseController,Device) {
         "use strict";
@@ -117,8 +116,6 @@ sap.ui.define(
                     sap.m.MessageToast.show("Invalid barcode scanned.", { duration: 3000 });
                 }
             },
-            
-            
     
             onScanError_AHUOBQ: function (oEvent) {
                 // Handle scan failure
@@ -395,7 +392,12 @@ sap.ui.define(
           },
           // On clicking HUContent Button
           onPressHUContentBtn: function () {
+
+            debugger;
+
             var oView = this.getView();
+            var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
+            this.sBinNumber = sBinNumber;
             var oModel = oView.getModel();
         
             if (!this._selectedRowContext) {
@@ -419,6 +421,7 @@ sap.ui.define(
                     "$format": "json"
                 },
                 success: function (odata) {
+                    console.log(odata);
                     var aMaterials = odata.BINQHeadSet.results;
         
                     // Find the selected material using the HU Number
