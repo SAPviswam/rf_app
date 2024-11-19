@@ -39,11 +39,11 @@
                     </layoutData>
                 </ToolbarSpacer>
                 <!-- Avatar -->
-                <Avatar
+                <!-- <Avatar
                     id="idImageAvatarInitialScreen_InitialView"
                     displaySize="XS"
                     tooltip="{i18n>Prf_Ttip_IV}"
-                />
+                /> -->
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>

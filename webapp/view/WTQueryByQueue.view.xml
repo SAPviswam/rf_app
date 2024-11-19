@@ -76,7 +76,7 @@
                             alignItems="Center"
                             justifyContent="Center"
                         >
-                            <Label
+                            <Text
                                 id="idWtQBQueueWhLabel"
                                 text="{i18n>Queue_Label_WTQuerybyQueue}"
                                 width="50px"
@@ -115,7 +115,7 @@
             <!--Scroll Container for Second view (Warehouse Tasks)-->
             <ScrollContainer
                 id="idWtQBQueueWhThirdsc"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
@@ -142,11 +142,10 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <Label
+                            <Text
                                 id="idLabel_WTQuerybyQueue"
                                 text="{i18n>Queue_Label_WTQuerybyQueue}"
-                                width="60px"
-                                class="sapUiTinyMarginTop"
+                                class="sapUiSmallMarginEnd"
                             />
                             <Input
                                 id="idInput_Wt_WTQuerybyQueue"
@@ -204,6 +203,7 @@
                         growingThreshold="6"
                         mode="SingleSelectMaster"
                         selectionChange="onSelectWarehouseTaskQueue"
+                        width="100%"
                     >
                         <columns>
                             <Column id="idColumn_WTQuerybyQueue">
@@ -253,11 +253,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_WT_WTQuerybyQueue"
                                     text="{i18n>Label_WT_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idInput_WT_WTQuerybyQueue"
@@ -301,11 +300,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_WTs_WTQuerybyQueue"
                                     text="{i18n>Label_WTs_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idInput_WTs_WTQuerybyQueue"
@@ -364,7 +362,7 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Spro_WTQuerybyQueue"
                                     text="{i18n>Label_Spro_WTQbyQ}"
                                     width="50px"
@@ -407,11 +405,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Pro_WTQuerybyQueue"
                                     text="{i18n>Label_Pro_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idInput_Pro_WTQuerybyQueue"
@@ -434,10 +431,9 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Sbin_WTQuerybyQueue"
                                     text="{i18n>Label_Sbin_WTQbyQ}"
-                                    class="sapMLabel"
                                     width="50px"
                                 />
                                 <Input
@@ -460,11 +456,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Dbin_WTQuerybyQueue"
                                     text="{i18n>Label_Dbin_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idInput__Dbin_WTQuerybyQueue"
@@ -486,11 +481,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Cdat_WTQuerybyQueue"
                                     text="{i18n>Label_Cdat_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idInput_Cdat_WTQuerybyQueue"
@@ -596,12 +590,12 @@
                             <HBox id="idHbox25_WTQuerybyQueue">
                                 <Label
                                     id="idLabel_ProdDisc_WTQuerybyQueue"
-                                    width="45px"
+                                    width="35px"
                                 />
                                 <Input
                                     id="idInput_ProdDisc_WTQuerybyQueue"
                                     value=""
-                                    width="280px"
+                                    width="350px"
                                     editable="false"
                                     class="sapMInput sapUiSmallMarginBegin"
                                 />
@@ -611,11 +605,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Wo_WTQuerybyQueue"
                                     text="{i18n>Label_WO_WTQbyQ}"
-                                    width="60px"
-                                    class="sapMLabel"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idInput_Wo_WTQuerybyQueue"
@@ -661,11 +654,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Sqty_WTQuerybyQueue"
                                     text="{i18n>Label_Sqty_WTQbyQ}"
-                                    width="60px"
-                                    class="sapMLabel"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idInput_Sqty_WTQuerybyQueue"
@@ -689,7 +681,6 @@
                                     id="idLabel_Btch_WTQuerybyQueue"
                                     text="{i18n>Label_Btch_WTQbyQ}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="IdInput_Btch_WTQuerybyQueue"
@@ -707,11 +698,11 @@
                                 />
                             </HBox>
                             <HBox id="idHbox26_WTQuerybyQueue">
-                                <Label
+                                <Text
                                     id="idLabel_Qu_WTQuerybyQueue"
                                     text="{i18n>Label_Qu_WTQbyQ}"
-                                    width="60px"
-                                    class="sapMLabel sapUiTinyMarginTop"
+                                    width="50px"
+                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idInput_Qu_WTQuerybyQueue"
@@ -744,11 +735,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_Owner_WTQuerybyQueue"
                                     text="{i18n>Label_Owner_WTQbyQ}"
-                                    width="60px"
-                                    class="sapMLabel"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idInput_Owner_WTQuerybyQueue"
@@ -781,11 +771,10 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idLabel_HuWt_WTQuerybyQueue"
                                     text="{i18n>Label_HuWt_WTQbyQ}"
-                                    width="60px"
-                                    class="sapMLabel"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idInput_HuWt_WTQuerybyQueue"
@@ -849,28 +838,28 @@
                             >
                                 <Label
                                     id="idLabel25_Space_WTQuerybyQueue"
-                                    width="60px"
+                                    width="50px"
                                 />
                                 <Input
                                     id="idInput29_WTQuerybyQueue"
                                     value=""
                                     width="130px"
                                     editable="false"
-                                    class="sapMInput sapUiTinyMarginEnd"
+                                    class="sapUiSmallMarginEnd"
                                 />
                                 <Input
                                     id="idInput30_WTQuerybyQueue"
                                     value=""
                                     width="130px"
                                     editable="false"
-                                    class="sapMInput sapUiTinyMarginBeign sapUiTinyMarginEnd"
+                                    class="sapUiTinyMarginBeign sapUiSmallMarginEnd"
                                 />
                                 <Input
                                     id="idInput31_WTQuerybyQueue"
                                     value=""
                                     width="130px"
                                     editable="false"
-                                    class="sapMInput sapUiTinyMarginBeign"
+                                    class="sapUiSmallMarginBeign"
                                 />
                             </HBox>
                             <VBox

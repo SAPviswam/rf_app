@@ -16,12 +16,6 @@
     <tnt:ToolPage id="pageHome">
         <tnt:header>
             <tnt:ToolHeader id="idtntpageHome">
-                <Button
-                    id="idBackBtnInPageHome"
-                    icon="sap-icon://nav-back"
-                    press="onBackBtnInHomePage"
-                    visible="true"
-                />
                 <Image
                     id="id_GenImage1PageHome"
                     height="1.5rem"
@@ -68,7 +62,10 @@
                     class="configTextVbox sapUiLargeMargin"
                 >
                     <!-- vbox for subtitle "Configure SAP System" -->
-                    <VBox id="idVbox4_HomeView" class="configtitle">
+                    <VBox
+                        id="idVbox4_HomeView"
+                        class="configtitle"
+                    >
                         <Title
                             id="IdSubTitle_HomeView"
                             class="configSubTitle"
@@ -80,9 +77,7 @@
                         id="idMainContentHBox_HomeView"
                         justifyContent="Center"
                         alignItems="Center"
-                        
                     >
-                   
                         <!-- VBox for the GIF on the left side -->
                         <VBox
                             id="idVBoxGif_HomeView"
@@ -100,7 +95,7 @@
                         </VBox>
                         <VBox
                             id="idVboxRfLogin_HomeView"
-                            alignItems="End" 
+                            alignItems="End"
                         >
                             <!-- VBox for the input fields on the right side -->
                             <VBox
@@ -137,7 +132,7 @@
                                         <MultiInput
                                             id="idHUInput"
                                             width="7rem"
-                                            value="AWHE"
+                                            value="W001"
                                             editable="true"
                                         />
                                         <Input
@@ -157,13 +152,22 @@
                                         text="{i18n>autosave}"
                                         select="onSelectCheckBox"
                                     />
+                                   
+
                                     <Button
+                                        id="idBackBtnInPageHome"
+                                        text="Back"
+                                        type="Emphasized"
+                                        press="onBackBtnInHomePage"
+                                        visible="true"
+                                    />
+
+                                     <Button
                                         id="idNextBtn_HomeView"
                                         text="{i18n>next}"
                                         type="Emphasized"
                                         press="onPressConnectButton"
                                         class="checkBoxforAutosave"
-                                        
                                     />
                                 </HBox>
 
@@ -322,25 +326,23 @@
                                 </HBox>
                             </VBox>
                         </VBox>
-                        
                     </HBox>
 
                     <VBox
-                            id="idVBoxGif_HomeViewTab"
-                            width="70%"
-                            class="vboxResponsiveGifTab"
-                            alignItems="Center"
-                            justifyContent="Center"
-                            visible="false"
-
-                        >
-                            <html:img
-                                id="idGif_HomeViewTab"
-                                src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJkYmQycWpiendiMHp0NWtiem16MTEzZTFrZzNja2Jua2c0OTBmNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PfmcrhvmzJZ03tE8hu/giphy-downsized-large.gif"
-                                style="width:700px; height:500px;"
-                                class="responsiveGifTab"
-                            />
-                        </VBox>
+                        id="idVBoxGif_HomeViewTab"
+                        width="70%"
+                        class="vboxResponsiveGifTab"
+                        alignItems="Center"
+                        justifyContent="Center"
+                        visible="false"
+                    >
+                        <html:img
+                            id="idGif_HomeViewTab"
+                            src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJkYmQycWpiendiMHp0NWtiem16MTEzZTFrZzNja2Jua2c0OTBmNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PfmcrhvmzJZ03tE8hu/giphy-downsized-large.gif"
+                            style="width:700px; height:500px;"
+                            class="responsiveGifTab"
+                        />
+                    </VBox>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>

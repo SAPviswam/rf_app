@@ -12,11 +12,8 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
-
-                //Profile Image updating(from Base Controller)...
-
                 this.load_100_Client_Metadata();
-                this.applyStoredProfileImage();
+                //this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
@@ -84,6 +81,7 @@ sap.ui.define([
                     this._oBusyDialog.close();
                 }.bind(this), 700);
             },
+
 
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
@@ -439,6 +437,7 @@ sap.ui.define([
                             });
                             // Delete from OData service
                             var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             this.arrayOfClient.forEach(element => {
                                 var sPath = "/ServiceSet('" + element + "')";
                                 oModel.remove(sPath, {
@@ -491,8 +490,9 @@ sap.ui.define([
                         } else {
                             MessageToast.show("Deletion cancelled.");
                             this.selectedButton = null;
-                            this.arrayOfButton.forEach(element => {
-                                element.setType("Unstyled")
+                            this.arrayOfButton.forEach(oButton => {
+                                oButton.removeStyleClass("buttonSelected");
+                                oButton.addStyleClass("customButtonBackground");
                             });
                             this.arrayOfButton = [];
                             this.arrayOfClient = [];
@@ -585,7 +585,8 @@ sap.ui.define([
                 }
 
                 var that = this;
-                var oModel = this.getView().getModel();
+                // var oModel = this.getView().getModel();
+                var oModel = this.getOwnerComponent().getModel();
 
                 // First read the values if entered unique values if entered uniquely.
 
@@ -900,6 +901,24 @@ sap.ui.define([
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
 
             },
+            onHelpconnectsapDialog:function(){
+
+
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("HelpTourOnEditConfigSAPSystem");
+
+
+
+
+
+
+                // var filepath = "/webapp/docs/How%20to%20Edit%20SAP%20Configure%20System.pdf";
+                // var link = document.createElement("a");
+                // link.href = filepath;
+                // link.download = "How to Edit SAP Configure System.pdf"
+                // link.click();
+                // MessageToast.show("File Downloaded");
+            }
 
             // New UI snippets end
 

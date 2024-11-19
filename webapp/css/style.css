@@ -1176,7 +1176,7 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 3rem !important;
+    margin-left: 1rem !important;
     margin-right: 1rem !important;
 }
 
@@ -1416,7 +1416,7 @@ margin-right: 20%;
 }
 
 .titleMobile_home {
-    left: 38%;
+    left: 35%;
 }
 
 .BtnConfSAPsys {
@@ -1486,10 +1486,10 @@ margin-right: 20%;
 /*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
 .TitleMQ {
-    margin-right: 35%;
+    margin-right: 30%;
     margin-top: 10%;
     position: fixed;
-    right: 10%;
+    right: 5%;
     top: 30%;
 }
 
@@ -1805,4 +1805,136 @@ margin-right: 20%;
 }
 
 /* create resource ends */
+/* config login view responsive for tablet start */
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    /* Adjust whiteBox width and height */
+    .whiteBorderBox {
+        width: 80%; /* Increase the width for tablet mode */
+        height: auto; /* Adjust height to fit the content */
+    }
+  
+    /* Increase padding around input fields for tablet view */
+    .paddingBox {
+        padding: 15rem; /* Add padding to center content better on tablets */
+    }
+  
+    /* Adjust font sizes for better readability */
+    .loginTitle {
+        font-size: 1.5rem; /* Increase the font size */
+    }
+  
+    /* Adjust width of text and input elements */
+    .inputRow Text {
+        width: 30%; /* Adjust label width */
+    }
+  
+    .inputRow Input {
+        width: 60%; /* Adjust input field width */
+    }
+  
+    /* Adjust button widths */
+    .sapMBtn {
+        width: 80%; /* Reduce width slightly to fit tablet screen */
+    }
+  
+    /* Adjust VBox and HBox padding/margins to make elements centered on tablet */
+    .contentContainer {
+        padding: 1rem;
+        margin: auto;
+    }
+}
+/* Media query for mobiles */
+.titlecap {
+    position: absolute;
+    left: 35%;
+    color: hsl(29, 100%, 50%);
+    align-content: center;
+}
+
+
+
+/* change queue starts */
+
+/* ----------------------Help tour On EDit Config SAP System Class Begin------------------------------------------------------*/
+
+.HeadingIn_HelpTourOnEditConfigSAPSystem{
+    font-weight: bold;
+    color:#ec792d;
+    font-size:20px;
+}
+.SideHeadingIn_HelpTourOnEditConfigSAPSystem{
+    font-weight: bold;
+    color:#000000;   
+}
+.headerTitleclass_HelpTourOnEditConfigSAPSystem{
+  
+    margin-left: 100%;
+}
+.BackInHelpTourOnEditConfigSAPSystem{
+    margin-left: 150%; 
+}
+
+
+/* ----------------------Help tour On EDit Config SAP System Class END------------------------------------------------------*/
+
+
+/* Media query for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .titlecap {
+        left: 45%;
+    }
+}
+
+/* Media query for desktops */
+@media (min-width: 1025px) {
+    .titlecap {
+        left: 45%;
+    }
+}
+/* config login view responsive for tablet end */
+
+.floatingTitle {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 0;
+
+    z-index: 10; 
+    padding: 0.5rem;
+    
+}
+/* HU Stock Overview Query Tabel Start 18-11-2024 */
+.Buttons_HUSOQ {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 0;
+    z-index: 10;
+    padding: 0.5rem;
+}
+
+.table_HuStockOverview{
+    margin-top: 5%;
+}
+
+.MobileviewTable_HUSOQ{
+    margin-top: 20%;
+}
+
+/* HU Stock Overview Query Tabel End 18-11-2024*/
+
+
+
+/* change queue ends */
+
+.genericTile{
+    height: 50px;
+    width:50px;
+}
+
+
+
+
+
+
 
