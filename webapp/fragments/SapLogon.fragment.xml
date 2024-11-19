@@ -86,12 +86,17 @@
                         <core:Item
                             id="idCoreItem1"
                             key="en"
-                            text="English"
+                            text="{i18n>englishLan_IV}"
                         />
                         <core:Item
                             id="idCoreItem2"
                             key="de"
-                            text="German"
+                            text="{i18n>germanLan_IV}"
+                        />
+                        <core:Item
+                            id="idCoreItem3"
+                            key="es"
+                            text="{i18n>spanish_Lang}"
                         />
                     </items>
                      </ComboBox>

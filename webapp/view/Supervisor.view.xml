@@ -149,9 +149,10 @@
                     items="{path: '/navigation' , templateShareable: true}"
                     class="sidecontent"
                 >
+                <!-- Supervisor side content-->
                     <tnt:NavigationListItem
                         id="NavigationListItem"
-                        text="{title}"
+                        text="{title}" 
                         icon="{icon}"
                         enabled="{enabled}"
                         expanded="{expanded}"
