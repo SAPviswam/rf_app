@@ -14,16 +14,21 @@
     >
         <customHeader>
             <Bar>
-                 <contentMiddle>
+                <contentMiddle>
                     <FlexBox
                         id="flexboxHeader"
                         alignItems="Baseline"
                         justifyContent="Center"
-                        width="100%">
-                        <Text id="_IDGenTextSAPLogon" text="{i18n>SAPCon_Txt_IV}" class="sapMHeader-CTX1" />
+                        width="100%"
+                    >
+                        <Text
+                            id="_IDGenTextSAPLogon"
+                            text="{i18n>SAPCon_Txt_IV}"
+                            class="sapMHeader-CTX1"
+                        />
                     </FlexBox>
                 </contentMiddle>
-                    <contentRight>
+                <contentRight>
                     <Button
                         id="CancelButton_Header"
                         icon="sap-icon://sys-cancel"
@@ -75,31 +80,41 @@
                         text="{i18n>lan_Txt_IV}"
                         width="110%"
                     />
-                <ComboBox
+                    <Select
                         id="idLanguageSelectorMultiComboBox_CS"
                         width="100%"
                         selectedKey="en"
                         class="customInput"
                         change="onLanguageChange"
                     >
-                    <items>
-                        <core:Item
-                            id="idCoreItem1"
-                            key="en"
-                            text="{i18n>englishLan_IV}"
-                        />
-                        <core:Item
-                            id="idCoreItem2"
-                            key="de"
-                            text="{i18n>germanLan_IV}"
-                        />
-                        <core:Item
-                            id="idCoreItem3"
-                            key="es"
-                            text="{i18n>spanish_Lang}"
-                        />
-                    </items>
-                     </ComboBox>
+                        <items>
+                            <core:Item
+                                id="idCoreItem1"
+                                key="en"
+                                text="{i18n>englishLan_IV}"
+                            />
+                            <core:Item
+                                id="idCoreItem2"
+                                key="de"
+                                text="{i18n>germanLan_IV}"
+                            />
+                            <core:Item
+                                id="idCoreItem3"
+                                key="es"
+                                text="{i18n>spanish_Lang}"
+                            />
+                            <core:Item
+                                id="idCoreItem4"
+                                key="ar"
+                                text="{i18n>arbic_Lang}"
+                            />
+                            <core:Item
+                                id="idCoreItem5"
+                                key="fr"
+                                text="{i18n>french_Lang}"
+                            />
+                        </items>
+                    </Select>
                     <Input
                         id="idRouterStringInput_CS"
                         value="100"

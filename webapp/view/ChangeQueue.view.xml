@@ -7,7 +7,6 @@
     xmlns:form="sap.ui.layout.form"
     xmlns:layout="sap.ui.layout"
     xmlns:tnt="sap.tnt"
-    xmlns:tnt="sap.tnt"
     height="100%"
 >
     <tnt:ToolPage id="idToolPage_changeQueue">
@@ -52,7 +51,6 @@
         </tnt:header>
 
         <tnt:mainContents>
-            <ScrollContainer
             <ScrollContainer
                 id="idScrollContainer1_changeQueue"
                 horizontal="true"
@@ -289,10 +287,6 @@
 						<Button type="Reject" text="Reject"/>
 					</OverflowToolbar>
 				</f:footer> -->
-                    </f:DynamicPage>
-                </pages>
-            </NavContainer>
-        </tnt:mainContents>
                     </f:DynamicPage>
                 </pages>
             </NavContainer>
