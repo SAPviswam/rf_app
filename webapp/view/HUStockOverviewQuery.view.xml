@@ -307,12 +307,12 @@
                             text="{i18n>HU_Information_button_HUSOQ}"
                             class = "sapUiTinyMarginEnd"
                         />
-                        <Button
+                        <!-- <Button
                             id="buttonid2"
                             press="onPressHUQuerystockprodinfoPress"
                             text="{i18n>HU_Query_Stock}"
                             class = "sapUiTinyMarginEnd"
-                        />
+                        /> -->
                         <Button
                             id="buttonid3_HUSOQ"
                             press="onTopHupress"
@@ -1061,7 +1061,7 @@
                                     id="spacerLabel9"
                                 />
                                 <Input
-                                    width="290px"
+                                    width="100px"
                                     id="inputMisc2"
                                     editable="false"
                                 />

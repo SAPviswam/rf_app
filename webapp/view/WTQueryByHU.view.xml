@@ -22,7 +22,7 @@
 
                 <Title
                     id="idTitle_WtQueryByHu"
-                    text="CAPModel RF"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                     class="title"
                 />
                 <tnt:ToolHeaderUtilitySeparator
@@ -75,7 +75,7 @@
                             >
                                 <Text
                                     id="idLableWTQUeryByHu_WTQBYHU"
-                                    text="HU:"
+                                    text="{i18n>Label_HU_WtQbWt}"
                                     width="3rem"
                                 />
                                 <Input
@@ -92,7 +92,7 @@
                             <HBox id="iHBoxIn_WTQueryByHU"  justifyContent="Center">
                                 <Button
                                     id="IdBackBtnInPage1_WTQueryBYHU"
-                                    text="Back"
+                                    text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
                                     class="sapUiSmallMarginEnd"
                                     press="onPressBackBtnPage1_WTQBYHU"
@@ -136,7 +136,7 @@
                         <HBox  id="idHBox2_WTQueryByHU" alignContent="Center" alignItems="Center">
                              <Text
                             id="idHUNumberLable_WTQBYHU"
-                            text="HU Number:"
+                            text="{i18n>Label_HUNumber_WtQbWt}"
                              width="5rem"
             
                         />
@@ -147,7 +147,7 @@
                         <Text id="idSampleLabelIn_WTQBYHU" width="20px"/>
                          <Text
                                     id="idLableWT_WTQBYHU"
-                                    text="WT's:"
+                                    text="{i18n>Label_WTs_WtQbWt}"
                                     width="3rem"
                                     
                                 />
@@ -161,28 +161,28 @@
                        <HBox  id="idHBox3_WTQueryByHU">
                         <Button
                                 id="IdOpenBtnIn_WTQueryByHU"
-                                text="Open"
+                                text="{i18n>Btn_Open_WtQbWt}"
                                 press="onWtQBQueueOpenBtnPress"
                                 class="sapUiTinyMargin"
                                 type="Emphasized"
                             />
                             <Button
                                 id="IdConfBtnIn_WTQueryByHU"
-                                text="Conf"
+                                text="{i18n>Btn_Conf_WtQbWt}"
                                 press="onWtQBQueueConfBtnPress"
                                   class="sapUiTinyMargin"
                                   type="Emphasized"
                             />
                             <Button
                                 id="IdAllBtnIn_WTQueryByHU"
-                                text="All"
+                                text="{i18n>Btn_All_WtQbWt}"
                                 press="onWtQBQueueAllBtnPress"
-                                  class="sapUiTinyMargin"
-                                  type="Emphasized"
+                                class="sapUiTinyMargin"
+                                type="Emphasized"
                             />
                                     <Button
                                          id="idThirdBackfghfghBtn_HuQuery"
-                                        text="Back" press="onPressBackButtonSecondSC" type="Emphasized"
+                                        text="{i18n>Button_Back1_HuQuery}" press="onPressBackButtonSecondSC" type="Emphasized"
                                        class="sapUiTinyMargin"
                                     />
                         </HBox>
@@ -204,14 +204,14 @@
                             <Column id="IDWtNumberIn_WTQBYHU">
                                 <Text
                                     id="IDGenText001_WTQBYHU"
-                                    text="WT Number:"
+                                    text="{i18n>col_WTNumber_WtQbWt}"
                                     class="HedingNameColor"
                                 />
                             </Column>
                             <Column id="IDWtStatusIn_WTQBYHU">
                                 <Text
                                     id="IDGenText002_WTQBYHU"
-                                    text="WT Status:"
+                                    text="{i18n>col_WTStatus_WtQbWt}"
                                     class="HedingNameColor"
                                 />
                             </Column>
@@ -266,7 +266,7 @@
                                 <HBox id="idHBox01Page3_WTQBYHU">
                                     <Text
                                         id="idLabelWT_WTQBYHU"
-                                        text="WT:"
+                                        text="{i18n>Label_WT_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                    
@@ -279,7 +279,7 @@
                                     <Text id="Emptylabeli9dIn_WTQBHU" width="10px" />
                                     <Text
                                         id="idLabelWTIt_WTQBYHU"
-                                        text="WTIt:"
+                                        text="{i18n>Label_WTIt_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -292,7 +292,7 @@
                                 <HBox id="idHBox02Page3_WTQBYHU">
                                     <Text
                                         id="idLabelWTs"
-                                        text="WTs:"
+                                        text="{i18n>Label_WTs_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -304,7 +304,7 @@
                                     <Text id="Emptylabeli05In_WTQBHU" width="10px" />
                                     <Text
                                         id="idLabelStsIn_WTQBYHU"
-                                        text="Sts:"
+                                        text="{i18n>Label_Sts_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -316,7 +316,7 @@
                                     <Text id="Emptylabeli01In_WTQBHU" width="10px" />
                                     <Text
                                         id="idTextPtypIn_WTQBYHU"
-                                        text="Ptyp:"
+                                        text="{i18n>Label_Ptyp_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -329,7 +329,7 @@
                                 <HBox id="idHBox03Page3_WTQBYHU">
                                     <Text
                                         id="idLabelSpro"
-                                        text="Spro:"
+                                        text="{i18n>Label_Spro_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -341,7 +341,7 @@
                                     <Text id="EmptylabeliadIn_WTQBHU" width="10px" />
                                     <Text
                                         id="idLabelActyIn_WTQBYHU"
-                                        text="Acty:"
+                                        text="{i18n>Label_Acty_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -359,7 +359,7 @@
                                 <HBox id="idHBox04Page3_WTQBYHU">
                                     <Text
                                         id="idLabelProIn_WTQBYHU"
-                                        text="Pro:"
+                                        text="{i18n>Label_Pro_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -377,7 +377,7 @@
                                 <HBox id="idHBox05Page3_WTQBYHU">
                                     <Text
                                         id="idLabelSbinIn_WTQBYHU"
-                                        text="Sbin:"
+                                        text="{i18n>Label_Sbin_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -395,7 +395,7 @@
                                 <HBox id="idHBox06Page3_WTQBYHU">
                                     <Text
                                         id="idLabelDbinIn_WTQBYHU"
-                                        text="Dbin:"
+                                        text="{i18n>Label_Dbin_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -413,7 +413,7 @@
                                 <HBox id="idHBox07Page3_WTQBYHU">
                                     <Text
                                         id="idLabelCdatIn_WTQBYHU"
-                                        text="Cdat:"
+                                        text="{i18n>Label_Cdat_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -430,7 +430,7 @@
                                     <Text id="EmptyLabel" width="8px" />
                                     <Text
                                         id="idLabelCusrIn_WTQBYHU"
-                                        text="Cusr:"
+                                        text="{i18n>Label_Cusr_WtQbWt}"
                                         width="40px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -448,12 +448,12 @@
                                         id="idBackBtnPage3_WTQBYHU"
                                         press="onBackPressBtnWTDetails_WTQBYHU"
                                         class="sapUiTinyMarginEnd"
-                                        text="Back"
+                                        text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                     />
                                     <Button
                                         id="idBtnDetailPage3_WTQBYHU"
-                                        text="Detail"
+                                        text="{i18n>Btn_Detail_WtQbWt}"
                                         press="onBtnDetailPressPage3_WTQBYHU"
                                     />
                                 </HBox>
@@ -499,7 +499,7 @@
                                 
                                     <Text
                                         id="idLabelPage4WO_WTQBYHU"
-                                        text="WO:"
+                                        text="{i18n>Label_WO_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -511,7 +511,7 @@
                                     <Text id="SampleTextIn_WTQBYHU" width="50px" />
                                     <Text
                                         id="idLabelPage4ESTP_WTQBYHU"
-                                        text="ESTP:"
+                                        text="{i18n>Label_ESTP_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -524,7 +524,7 @@
                                 <HBox id="idHBox02Page4_WTQBYHU">
                                     <Text
                                         id="idLabelPage4SQTY_WTQBYHU"
-                                        text="SQTY:"
+                                        text="{i18n>Label_SQTY_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -543,9 +543,9 @@
                                     <Text  id="SampleTextIn1_WTQBYHU" width="10px" />
                                     <Text
                                         id="idLabelPage4Batch_WTQBYHU"
-                                        text="Batch:"
+                                        text="{i18n>Label_Batch_WtQbWt}"
                                         width="50px"
-                                           class="sapUiTinyMarginTop"
+                                        class="sapUiTinyMarginTop"
                                         
                                     />
                                     <Input
@@ -557,7 +557,7 @@
                                 <HBox id="idHBox03Page4_WTQBYHU">
                                     <Text
                                         id="idLabelPage4Owner_WTQBYHU"
-                                        text="Owner:"
+                                        text="{i18n>Label_Owner_WtQbWt}"
                                         width="50px"
                                            class="sapUiTinyMarginTop"
                                     />
@@ -569,7 +569,7 @@
                                     <Text id="idSampleText7_InWTQBYHU" width="50px" />
                                     <Text
                                         id="idLabelPage4PENT_WTQBYHU"
-                                        text="PEnt:"
+                                        text="{i18n>Label_PEnt_WtQbWt}"
                                         width="50px"
                                            class="sapUiTinyMarginTop"
                                     />
@@ -582,9 +582,9 @@
                                 <HBox id="idHBox04Page5_WTQBYHU">
                                     <Text
                                         id="idTextPage4HUWT_WTQBYHU"
-                                        text="HUWT:"
+                                        text="{i18n>Label_HUWT_WtQbWt}"
                                         width="50px"
-                                           class="sapUiTinyMarginTop"
+                                        class="sapUiTinyMarginTop"
                                     />
                                     <Input
                                         id="idInputHUWT_WTQBYHU"
@@ -594,7 +594,7 @@
                                     <Text id="idSampleLabel07_InWTQBYHU" width="50px" />
                                     <Text
                                         id="idLabelPage4HTYPE_WTQBYHU"
-                                        text="H Type:"
+                                        text="{i18n>Label_HType_WtQbWt}"
                                         width="50px"
                                            class="sapUiTinyMarginTop"
                                     />
@@ -609,7 +609,7 @@
                                     
                                     <Text
                                         id="idLabelPage4WHHU_WTQBYHU"
-                                        text="Wh HU:"
+                                        text="{i18n>Label_WhHU_WtQbWt}"
                                         width="50px"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -624,7 +624,7 @@
                                         id="idBackBtnPage4PD_WTQBYHU"
                                         press="onBackPressBtnProductDetails_WTQBYHU"
                                         class="sapUiTinyMarginBottom"
-                                        text="Back"
+                                        text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                     />
                                 </HBox>
