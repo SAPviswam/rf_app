@@ -56,16 +56,16 @@ sap.ui.define([
             onAfterRendering: function () {
                 debugger
                 // Apply stored background color
-                var sStoredBackgroundColor = localStorage.getItem("backgroundColor");
-                if (sStoredBackgroundColor) {
-                    this.applyBackgroundTheme(sStoredBackgroundColor, null);
-                }
+                // var sStoredBackgroundColor = localStorage.getItem("backgroundColor");
+                // if (sStoredBackgroundColor) {
+                //     this.applyBackgroundTheme(sStoredBackgroundColor, null);
+                // }
 
-                // Apply stored background image
-                var sStoredBackgroundImage = localStorage.getItem("backgroundImage");
-                if (sStoredBackgroundImage) {
-                    this.applyBackgroundTheme(null, sStoredBackgroundImage);
-                }
+                // // Apply stored background image
+                // var sStoredBackgroundImage = localStorage.getItem("backgroundImage");
+                // if (sStoredBackgroundImage) {
+                //     this.applyBackgroundTheme(null, sStoredBackgroundImage);
+                // }
 
                 // Apply stored tile colors
                 var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
@@ -152,6 +152,46 @@ sap.ui.define([
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
+            },
+            //This Function Calls from the Resource Details load function..(its taking little bit Time).
+            handleUserDetailsBasedOnUserID: async function () {
+                const userId = this.ID;
+                const oModel = this.getOwnerComponent().getModel();
+                const oMainContainer = this.byId("idScrollContainer1"); // Replace with your container ID
+                const sEntityPath = `/RESOURCESSet('${userId}')`; // Fetch specific user data
+
+                try {
+                    // Fetch user data from the backend
+                    const userData = await new Promise((resolve, reject) => {
+                        oModel.read(sEntityPath, {
+                            success: (oData) => resolve(oData),
+                            error: (oError) => reject(oError)
+                        });
+                    });
+
+                    const { Backgroundcolor, Backgroundimage } = userData; // Destructure fields
+                    const oMainContainerDom = oMainContainer ? oMainContainer.getDomRef() : null;
+
+                    if (oMainContainerDom) {
+                        Backgroundimage
+                            ? (() => {
+                                oMainContainerDom.style.backgroundImage = `url(data:image/png;base64,${Backgroundimage})`;
+                                oMainContainerDom.style.backgroundSize = "cover";
+                                oMainContainerDom.style.backgroundPosition = "center";
+                                oMainContainerDom.style.backgroundRepeat = "no-repeat";
+                                oMainContainerDom.style.backgroundAttachment = "fixed";
+                            })()
+                            : Backgroundcolor
+                                ? (() => {
+                                    oMainContainerDom.style.backgroundColor = Backgroundcolor;
+                                })()
+                                : sap.m.MessageToast.show("No background settings found for the user.");
+                    }
+                } catch (oError) {
+                    sap.m.MessageToast.show("Failed to retrieve user background settings.");
+                    console.error("Error fetching user data:", oError);
+                }
+
             },
             //CHATBOT
             onChatbotButtonPress: function () {
@@ -426,52 +466,78 @@ sap.ui.define([
                 this._selectedTiles = [];
                 this.resetDialogBox();
             },
-            applyBackgroundTheme: function (sColor, sImageSrc) {
-                var oMainContainer = this.byId("idScrollContainer1");
-                if (oMainContainer) {
-                    var oMainContainerDom = oMainContainer.getDomRef();
+            applyBackgroundTheme: async function (sColor, sImageSrc) {
+                debugger
+                const userId = this.ID;
+                const sEntityPath = `/RESOURCESSet('${userId}')`;
+                const oModel = this.getOwnerComponent().getModel();
 
-                    // Clear any existing background settings
-                    oMainContainerDom.style.backgroundImage = "";
-                    oMainContainerDom.style.backgroundColor = ""; // Clear any set background color
-                    oMainContainer.removeStyleClass("customTheme");
+                try {
+                    var oMainContainer = this.byId("idScrollContainer1");
+                    if (oMainContainer) {
+                        var oMainContainerDom = oMainContainer.getDomRef();
 
-                    // Apply new background image settings
-                    if (sImageSrc) {
-                        oMainContainerDom.style.backgroundImage = `url(${sImageSrc})`;
-                        oMainContainerDom.style.backgroundSize = "cover";
-                        oMainContainerDom.style.backgroundPosition = "center";
-                        oMainContainerDom.style.backgroundRepeat = "no-repeat";
-                        oMainContainerDom.style.backgroundAttachment = "fixed";
+                        let oPayload = {
+                            Backgroundcolor: null,
+                            Backgroundimage: null
+                        };
+                        // var userData = await new Promise((resolve, reject) => {
+                        //     oModel.read(sEntityPath, {
+                        //         success: resolve,
+                        //         error: reject
+                        //     });
+                        // });
 
-                        sap.m.MessageToast.show("Background image applied successfully!");
+                        if (sImageSrc) {
+                            oMainContainerDom.style.backgroundColor = "";
+                            oMainContainerDom.style.backgroundImage = `url(${sImageSrc})`;
+                            oMainContainerDom.style.backgroundSize = "cover";
+                            oMainContainerDom.style.backgroundPosition = "center";
+                            oMainContainerDom.style.backgroundRepeat = "no-repeat";
+                            oMainContainerDom.style.backgroundAttachment = "fixed";
 
-                        // Save the newest background image and remove the stored background color
-                        localStorage.setItem("backgroundImage", sImageSrc);
-                        localStorage.removeItem("backgroundColor"); // Ensure only one background setting is stored
-                    } else if (sColor) {
-                        // Remove any previous custom theme style element based on ID
-                        var sStyleId = "customThemeStyle";
-                        var oOldStyle = document.getElementById(sStyleId);
-                        if (oOldStyle) {
-                            oOldStyle.remove();
+                            sap.m.MessageToast.show("Background image applied successfully!");
+
+                            // Prepare the payload for the backend
+                            const base64ImageData = sImageSrc.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+                            oPayload.Backgroundimage = base64ImageData; // Store the base64 image
+                            oPayload.Backgroundcolor = ""; // Ensure the color is null
+                        } else if (sColor) {
+                            oMainContainerDom.style.backgroundImage = "";
+                            var hexColor = this._convertColorToHex(sColor); // Ensure the color is in hex format
+                            oMainContainerDom.style.backgroundColor = hexColor;
+                            sap.m.MessageToast.show("Background color applied successfully!");
+
+                            // Prepare the payload for the backend
+                            oPayload.Backgroundcolor = hexColor; // Store the color
+                            oPayload.Backgroundimage = ""; // Ensure the image is null
+                        } else {
+                            sap.m.MessageToast.show("No input provided to apply.");
+                            return;
                         }
-                        // Create a new style element and apply the color
-                        var oStyle = document.createElement("style");
-                        oStyle.id = sStyleId;
-                        oStyle.textContent = ".customTheme { background-color: " + sColor + " !important; }";
-                        document.head.appendChild(oStyle);
 
-                        // Add the custom theme class to the element
-                        oMainContainer.addStyleClass("customTheme");
-
-                        sap.m.MessageToast.show("Background color applied successfully!");
-
-                        // Save the newest background color and remove the stored background image
-                        localStorage.setItem("backgroundColor", sColor);
-                        localStorage.removeItem("backgroundImage"); // Ensure only one background setting is stored
+                        // Update the backend with the new background settings
+                        await new Promise((resolve, reject) => {
+                            oModel.update(sEntityPath, oPayload, {
+                                success: resolve,
+                                error: reject
+                            });
+                        });
+                        //sap.m.MessageToast.show("Background theme saved successfully in the backend.");
+                    } else {
+                        sap.m.MessageToast.show("Main container not found.");
                     }
+                } catch (error) {
+                    sap.m.MessageToast.show("Error applying background theme: " + error.message);
+                    console.error("Error:", error);
                 }
+            },
+            _convertColorToHex: function (color) {
+                var hex;
+                var ctx = document.createElement("canvas").getContext("2d");
+                ctx.fillStyle = color;
+                hex = ctx.fillStyle;
+                return hex;
             },
             onFileUploadChange: function (oEvent) {
                 var aFiles = oEvent.getParameter("files");
@@ -842,6 +908,7 @@ sap.ui.define([
                 });
                 //For the Profile Pic loaded from backend service..
                 this.applyStoredProfileImage();
+                this.handleUserDetailsBasedOnUserID();
             },
             // onGenericTilePress: async function(oEvent) {
             //     if (!this._oPopover) {
