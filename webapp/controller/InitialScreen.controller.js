@@ -12,11 +12,8 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: function () {
-
-                //Profile Image updating(from Base Controller)...
-
                 this.load_100_Client_Metadata();
-                this.applyStoredProfileImage();
+                //this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
@@ -570,7 +567,8 @@ sap.ui.define([
                 }
 
                 var that = this;
-                var oModel = this.getView().getModel();
+                // var oModel = this.getView().getModel();
+                var oModel = this.getOwnerComponent().getModel();
 
                 // First read the values if entered unique values if entered uniquely.
 

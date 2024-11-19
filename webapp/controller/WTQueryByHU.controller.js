@@ -63,11 +63,16 @@ sap.ui.define(
         this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
         this.clear();
       },
+      onBeforeRendering:function(){
+        this.onPressBackButtonSecondSC();
+      },
 
       // Load resource details based on the router event
       onResourceDetailsLoad: async function (oEvent1) {
         const { id } = oEvent1.getParameter("arguments");
         this.ID = id; // Store the resource ID for later use
+        //Profile image updating(from BaseController)...
+        this.applyStoredProfileImage();
       },
 
       // Handle selection of a specific warehouse task
@@ -135,6 +140,8 @@ sap.ui.define(
                 oPayload.WarehouseTask.HUWT = element.Flghuto;
                 oPayload.WarehouseTask.H_Type = element.Letyp;
                 oPayload.WarehouseTask.Wh_HU = element.Vlenr;
+                oPayload.WarehouseTask.Batch = element.Charg;
+
 
                 // Update the local model with the fetched data
                 that.getView().getModel("localModel").setData(oPayload);

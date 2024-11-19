@@ -97,8 +97,9 @@
                             >
                                 <Label
                                     id="_IDBinGenLabel1_SBQB"
-                                    text="{i18n>Bin_Label_SBQBB}"
+                                    text="{i18n>Bin_Label_SBQBB}:"
                                     class="sapUiTinyMarginTop"
+                                    width="50px"
                                 />
                                 <Input
                                     id="_IDBinGenInput1_SBQB"
@@ -119,7 +120,6 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Barcode Scanner"
-                                    
                                 />
                                 <Button
                                     id="idNavBacktoHome"
@@ -127,7 +127,6 @@
                                     type="Emphasized"
                                     press="onPressBinBackToHome"
                                     class="sapUiTinyMarginBegin"
-                                   
                                 />
                             </HBox>
                         </VBox>
@@ -182,8 +181,9 @@
                         <HBox id="idHbox_StockBinQuerybyBin3">
                             <Label
                                 id="_IDBinDetailsGenLabel_SBQB"
-                                text="{i18n>Bin_Label_SBQBB}"
+                                text="{i18n>Bin_Label_SBQBB}:"
                                 class="sapUiTinyMarginTop"
+                                width="50px"
                             />
                             <HBox id="idHbox_StockBinQuerybyBin4">
                                 <Input
@@ -301,49 +301,48 @@
                                 <Label
                                     id="idSTypLabel"
                                     text="STyp:"
-                                    width="65Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="60Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBBinInput"
                                     value=""
                                     editable="false"
-                                    width="170px"
-                                    class="sapMInput"
+                                    width="80px"
                                 />
-                                <Label id="idEmptyLabel1"
+                                <Label
+                                    id="idEmptyLabel1"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBStorTypeLabel"
                                     text="SSec:"
-                                    width="50Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="43Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
-                                    width="80px"
+                                    width="50px"
                                 />
-                                <Label id="idEmptyLabel"
+                                <Label
+                                    id="idEmptyLabel"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBStorTypeLabel1"
                                     text="BT:"
-                                    width="30Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="40Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput1"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
-                                    width="70px"
+                                    width="55px"
                                 />
                             </HBox>
 
@@ -351,34 +350,34 @@
                                 <Label
                                     id="idSBQBQtyLabel"
                                     text="MHU:"
-                                    width="65Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="60Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBQtyWInput"
                                     value=""
                                     editable="false"
-                                    width="170px"
-                                    class="sapMInput"
+                                    width="80px"
                                 />
-                                <Label id="idEmptyLabel2"
+                                <Label
+                                    id="idEmptyLabel2"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBStorSecLabel"
                                     text="AcHU:"
-                                    width="50Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="43Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBStorSecInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
-                                    class="sapMInput"
+                                    width="50px"
                                 />
-                                <Label id="idEmptyLabel3"
+                                <Label
+                                    id="idEmptyLabel3"
                                     text=""
                                     width="30px"
                                 />
@@ -386,14 +385,13 @@
                                     id="idSBQBStorTypeLabel2"
                                     text="Sect:"
                                     width="40Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBStoreTypeInput2"
                                     value=""
                                     editable="false"
-                                    width="60px"
-                                    class="sapMInput"
+                                    width="55px"
                                 />
                             </HBox>
                             <HBox id="idHbox_StockBinQuerybyBin7">
@@ -401,38 +399,36 @@
                                     id="idSBQBNoOfHuLabel"
                                     text="MaxW:"
                                     width="60Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBNoOfHuInput"
                                     value=""
                                     editable="false"
-                                    width="175px"
-                                    class="sapMInput"
+                                    width="80px"
                                 />
-                                <Label id="idEmptyLabel4"
+                                <Label
+                                    id="idEmptyLabel4"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBBinAisleLabel"
                                     text="ActW:"
-                                    width="40Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="43Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBBinAisleInput"
                                     value=""
                                     editable="false"
-                                    width="155px"
-                                    class="sapMInput"
+                                    width="125px"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInputUOM"
                                     value=""
-                                    width="4rem"
+                                    width="3rem"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
                             <HBox id="idHbox_StockBinQuerybyBin8">
@@ -440,39 +436,37 @@
                                     id="idSBQBMaxWLabel"
                                     text="MaxV:"
                                     width="60Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBMaxWInput"
                                     value=""
                                     editable="false"
-                                    width="175px"
-                                    class="sapMInput"
+                                    width="80px"
                                 />
 
-                                <Label id="idEmptyLabel5"
+                                <Label
+                                    id="idEmptyLabel5"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBBinLevelLabel"
                                     text="ActV:"
-                                    width="40Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="43Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBBinLevelInput"
                                     value=""
                                     editable="false"
-                                    width="160px"
-                                    class="sapMInput"
+                                    width="125px"
                                 />
                                 <Input
                                     id="idSBQBinLevelInputUOM"
                                     value=""
-                                    width="4rem"
+                                    width="3rem"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
                             <HBox id="idHbox_StockBinQuerybyBin9">
@@ -480,31 +474,30 @@
                                     id="idSBQBMaxVLabel"
                                     text="MaxC:"
                                     width="60Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBMaxVInput"
                                     value=""
                                     editable="false"
-                                    width="175px"
-                                    class="sapMInput"
+                                    width="80px"
                                 />
-                                <Label id="idEmptyLabel6"
+                                <Label
+                                    id="idEmptyLabel6"
                                     text=""
                                     width="30px"
                                 />
                                 <Label
                                     id="idSBQBStackLabel"
                                     text="Av.C:"
-                                    width="40Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    width="43Px"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBStackInput"
                                     value=""
                                     editable="false"
-                                    width="220px"
-                                    class="sapMInput"
+                                    width="175px"
                                 />
                             </HBox>
                             <!-- <HBox
@@ -515,14 +508,14 @@
                                     id="idLable_LastMoved_BQB"
                                     text="LM:"
                                     width="60Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idinput_MovementId_BQB"
                                     value=""
                                     editable="false"
                                     width="6rem"
-                                    class="sapMInput"
+
                                 />
                                 <Label
                                     id="idlabelfor_space_BQB"
@@ -533,7 +526,7 @@
                                     value=""
                                     editable="false"
                                     width="5rem"
-                                    class="sapMInput"
+
                                 />
                                 <Label
                                     id="idLablespace_bqb"
@@ -543,7 +536,7 @@
                                     id="idLable_LastChanged_BQB"
                                     text="LC:"
                                     width="35Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idinput_LastChanged_BQB"
@@ -561,7 +554,7 @@
                                     value=""
                                     editable="false"
                                     width="7.5rem"
-                                    class="sapMInput"
+
                                 />
                             </HBox>
                             <HBox
@@ -572,13 +565,13 @@
                                     id="idLable_LastMoved_LI_BQB"
                                     text="LI:"
                                     width="60Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idinput_MovementId_LI_BQB"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
+
                                     width="6rem"
                                 />
                                 <Label
@@ -589,7 +582,7 @@
                                     id="idinput_Movement_LI_BQB"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
+
                                     width="5rem"
                                 />
                                 <Label
@@ -600,7 +593,7 @@
                                     id="idLable_LastChanged_LI_BQB"
                                     text="IvDo:"
                                     width="35Px"
-                                    class="sapUiTinyMarginTop sapMLabel"
+                                    class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idinput_LastChanged_LI_BQB"
@@ -617,7 +610,7 @@
                                     id="idinput_Movementcbt_LI_BQB"
                                     value=""
                                     editable="false"
-                                    class="sapMInput"
+
                                     width="7.5rem"
                                 />
                             </HBox> -->
@@ -660,46 +653,46 @@
                         priority="NeverOverflow"
                     />
                 </layoutData>
-                <Text
+                <!-- <Text
                     id="idBinDetailsText4"
                     text="HU List"
                     class="sapUiTinyMarginTop sapUiSmallMarginBegin"
-                />
+                /> -->
                 <VBox
                     id="idVbox_StockBinQuerybyBin9"
                     alignContent="Center"
                     alignItems="Center"
                 >
-                <f:SimpleForm
-                    id="simpleForm_SBQB2"
-                    editable="true"
-                    layout="ResponsiveGridLayout"
-                    labelSpanXL="3"
-                    labelSpanL="3"
-                    labelSpanM="3"
-                    labelSpanS="12"
-                    adjustLabelSpan="false"
-                    emptySpanXL="4"
-                    emptySpanL="4"
-                    emptySpanM="4"
-                    emptySpanS="0"
-                    columnsXL="1"
-                    columnsL="1"
-                    columnsM="1"
-                >
-                <HBox id="idHbox_StockBinQuerybyBin12">
-                    <Label
-                        id="_IDListBinDetailsGenLabel_SBQB"
-                        text="Bin:"
-                        class="sapUiTinyMarginTop"
-
-                    />
-                        <Input
-                            id="_IDBinListDetailsGenInput1_SBQB"
-                            editable="false"
-                        />
-                    </HBox>
-                </f:SimpleForm>
+                    <f:SimpleForm
+                        id="simpleForm_SBQB2"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <HBox id="idHbox_StockBinQuerybyBin12">
+                            <Label
+                                id="_IDListBinDetailsGenLabel_SBQB"
+                                text="Bin:"
+                                class="sapUiTinyMarginTop"
+                                width="50px"
+                            />
+                            <Input
+                                id="_IDBinListDetailsGenInput1_SBQB"
+                                editable="false"
+                            />
+                        </HBox>
+                    </f:SimpleForm>
                 </VBox>
                 <Panel
                     id="idListPanel_SBQB"
@@ -772,318 +765,293 @@
                         columnsM="1"
                     >
                         <VBox id="idVbox_StockBinQuerybyBin6">
-                        <HBox
-                            id="idHbox_StockBinQuerybyBin20"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
-                            <Label
-                                id="idSTypLabel_Extra"
-                                text="STyp :"
-                                class="sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBBinInput_extra"
-                                value=""
-                                editable="false"
-                                width="8.3rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLabelBqb_extra"
-                                text=""
-                                width="2rem"
-                              
-                            />
-                            <Label
-                                id="idSBQBStorTypeLabel_extra"
-                                text="SSec:"
-                                class="sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBStoreTypeInput_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="8rem"
-                            />
-                            <Label
-                                id="idLabelBqb_extra1"
-                                text=""
-                                width="1rem"
-                             
-                            />
-                            <Label
-                                id="idSBQBStorTypeLabel1_extra"
-                                text="BT:"
-                                class="sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBStoreTypeInput1_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="80px"
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin13">
-                            <Label
-                                id="idSBQBNoOfHuLabel_extra"
-                                text="MaxW:"
-                                class="sapUiTinyMarginTop sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBNoOfHuInput_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="8rem"
-                            />
-                            <Label
-                                id="idlabelspace_space_binqbin"
-                                text=""
-                                width="2rem"
-                               
-                            />
-                            <Label
-                                id="idSBQBBinAisleLabel_extra"
-                                text="ActW:"
-                                class="sapUiTinyMarginTop sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBBinAisleInput_extra"
-                                value=""
-                                editable="false"
-                                width="8rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_space2_binqbin"
-                                width="2.2rem"
-                               
-                            />
-                            <Input
-                                id="idSBQBBinAisleInputUOM_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="80px"
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin14">
-                            <Label
-                                id="idSBQBMaxWLabel_extra1"
-                                text="MaxV :"
-                                class="sapUiTinyMarginTop sapMLabel"
-                            />
-                            <Input
-                                id="idSBQBMaxWInput_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="8rem"
-                            />
-                            <Label
-                                id="idLable_space_binqbin4"
-                                text=""
-                                width="2rem"
-                               
-                            />
-                            <Label
-                                id="idSBQBBinLevelLabel_extra5"
-                                class="sapMLabel sapUiTinyMarginTop"
-                                text="ActV :"
-                            />
-                            <Input
-                                id="idSBQBBinLevelInput_extra"
-                                value=""
-                                editable="false"
-                                width="8rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_space3_binqbin"
-                                width="2rem"
-                            />
-                            <Input
-                                id="idSBQBinLevelInputUOM_extra"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="80px"
-                                
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin15">
-                            <Input
-                                id="idSBQBMaxVInput_extra"
-                                value=""
-                                editable="false"
-                                width="500px"
-                                class="sapMInput1"
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin16">
-                            <Label
-                                id="idlabel_binqbin_Aqty"
-                                text="AQty :"
-                                class="sapMLabel sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="idinput_binqbin_AQty"
-                                value=""
-                                editable="false"
-                                width="6rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_binQbin_space1"
-                                width="1.3rem"
-                            />
-                            <Input
-                                id="idinput_binqbin_Uom"
-                                value=""
-                                editable="false"
-                                width="3rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_binQbin_space2"
-                                width="3.5rem"
-                            />
-                            <Label
-                                id="idlabel_binqbin_PB"
-                                text="PB :"
-                                class="sapMLabel sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="idinput_binqbin_PB"
-                                value=""
-                                editable="false"
-                                width="3rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_binQbin_space3"
-                                width="3rem"
-                            />
-                            <Label
-                                id="idlabel_binqbin_RB"
-                                class="sapMLabel sapUiTinyMarginTop"
-                                text="RB :"
-                            />
-                            <Input
-                                id="idinput_binqbin_RB"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="80px"
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin18">
-                            <Label
-                                id="idlabel_binqbin_Batch"
-                                class="sapMLabel sapUiTinyMarginTop"
-                                text="BTch :"
-                            />
-                            <Input
-                                id="idinput_binqbin_Btch"
-                                value=""
-                                editable="false"
-                                width="6rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_binQbin_space9"
-                                width="1.3rem"
-                            />
-                            <Input
-                                id="idinput_binqbin_Uom1"
-                                value=""
-                                editable="false"
-                                width="3rem"
-                                class="sapMInput"
-                            />
-                            <Label
-                                id="idLable_binQbin_space10"
-                                width="3rem"
-                            />
-                            <Label
-                                id="idlabel_binqbin_Styp"
-                                class="sapMLabel sapUiTinyMarginTop"
-                                text="STyp:"
-                            />
-                            <Input
-                                id="idinput_binqbin_Styp"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="3rem"
-                            />
-                            <Label
-                                id="idLable_binQbin_space11"
-                                width="3rem"
-                            />
-                            <Label
-                                id="idlabel_binqbin_IA"
-                                text="IA :"
-                                class="sapMLabel sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="idinput_binqbin_IA"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="80px"
-                            />
-                        </HBox>
-                        <HBox id="idHbox_StockBinQuerybyBin17">
-                            <Label
-                                id="idlabel_binqbin_OWnr"
-                                text="OWnr:"
-                                class="sapMLabel sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="idinput_binqbin_OWnr"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="10.3rem"
-                            />
-                            <Label
-                                id="idLable_binQbin_space14"
-                                width="3rem"
-                            />
-                            <Label
-                                id="idlabel_binqbin_PEnt"
-                                text="PEnt :"
-                                class="sapMLabel sapUiTinyMarginTop"
-                            />
-                            <Input
-                                id="idinput_binqbin_PEnt"
-                                value=""
-                                editable="false"
-                                class="sapMInput"
-                                width="13rem"
-                            />
-                        </HBox>
-                        <VBox
-                            id="idVbox_StockBinQuerybyBin13"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
                             <HBox
-                                id="idHbox_StockBinQuerybyBin26"
+                                id="idHbox_StockBinQuerybyBin20"
+                                alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Button
-                                    id="idBackButton_BinQBin"
-                                    text="Back"
-                                    type="Emphasized"
-                                    press="onPressBackfromView"
+                                <Label
+                                    id="idSTypLabel_Extra"
+                                    text="STyp :"
+                                    class=""
+                                />
+                                <Input
+                                    id="idSBQBBinInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8.3rem"
+                                />
+                                <Label
+                                    id="idLabelBqb_extra"
+                                    text=""
+                                    width="2rem"
+                                />
+                                <Label
+                                    id="idSBQBStorTypeLabel_extra"
+                                    text="SSec:"
+                                    class=""
+                                />
+                                <Input
+                                    id="idSBQBStoreTypeInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8rem"
+                                />
+                                <Label
+                                    id="idLabelBqb_extra1"
+                                    text=""
+                                    width="1rem"
+                                />
+                                <Label
+                                    id="idSBQBStorTypeLabel1_extra"
+                                    text="BT:"
+                                    class=""
+                                />
+                                <Input
+                                    id="idSBQBStoreTypeInput1_extra"
+                                    value=""
+                                    editable="false"
+                                    width="80px"
                                 />
                             </HBox>
-                          </VBox>
+                            <HBox id="idHbox_StockBinQuerybyBin13">
+                                <Label
+                                    id="idSBQBNoOfHuLabel_extra"
+                                    text="MaxW:"
+                                    class="sapUiTinyMarginTop "
+                                />
+                                <Input
+                                    id="idSBQBNoOfHuInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8rem"
+                                />
+                                <Label
+                                    id="idlabelspace_space_binqbin"
+                                    text=""
+                                    width="2rem"
+                                />
+                                <Label
+                                    id="idSBQBBinAisleLabel_extra"
+                                    text="ActW:"
+                                    class="sapUiTinyMarginTop "
+                                />
+                                <Input
+                                    id="idSBQBBinAisleInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8rem"
+                                />
+                                <Label
+                                    id="idLable_space2_binqbin"
+                                    width="2.2rem"
+                                />
+                                <Input
+                                    id="idSBQBBinAisleInputUOM_extra"
+                                    value=""
+                                    editable="false"
+                                    width="80px"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyBin14">
+                                <Label
+                                    id="idSBQBMaxWLabel_extra1"
+                                    text="MaxV :"
+                                    class="sapUiTinyMarginTop "
+                                />
+                                <Input
+                                    id="idSBQBMaxWInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8rem"
+                                />
+                                <Label
+                                    id="idLable_space_binqbin4"
+                                    text=""
+                                    width="2rem"
+                                />
+                                <Label
+                                    id="idSBQBBinLevelLabel_extra5"
+                                    class=" sapUiTinyMarginTop"
+                                    text="ActV :"
+                                />
+                                <Input
+                                    id="idSBQBBinLevelInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="8rem"
+                                />
+                                <Label
+                                    id="idLable_space3_binqbin"
+                                    width="2rem"
+                                />
+                                <Input
+                                    id="idSBQBinLevelInputUOM_extra"
+                                    value=""
+                                    editable="false"
+                                    width="80px"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyBin15">
+                                <Input
+                                    id="idSBQBMaxVInput_extra"
+                                    value=""
+                                    editable="false"
+                                    width="500px"
+                                    class="sapMInput1"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyBin16">
+                                <Label
+                                    id="idlabel_binqbin_Aqty"
+                                    text="AQty :"
+                                    class=" sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idinput_binqbin_AQty"
+                                    value=""
+                                    editable="false"
+                                    width="6rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space1"
+                                    width="1.3rem"
+                                />
+                                <Input
+                                    id="idinput_binqbin_Uom"
+                                    value=""
+                                    editable="false"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space2"
+                                    width="3.5rem"
+                                />
+                                <Label
+                                    id="idlabel_binqbin_PB"
+                                    text="PB :"
+                                    class=" sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idinput_binqbin_PB"
+                                    value=""
+                                    editable="false"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space3"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idlabel_binqbin_RB"
+                                    class=" sapUiTinyMarginTop"
+                                    text="RB :"
+                                />
+                                <Input
+                                    id="idinput_binqbin_RB"
+                                    value=""
+                                    editable="false"
+                                    width="80px"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyBin18">
+                                <Label
+                                    id="idlabel_binqbin_Batch"
+                                    class=" sapUiTinyMarginTop"
+                                    text="BTch :"
+                                />
+                                <Input
+                                    id="idinput_binqbin_Btch"
+                                    value=""
+                                    editable="false"
+                                    width="6rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space9"
+                                    width="1.3rem"
+                                />
+                                <Input
+                                    id="idinput_binqbin_Uom1"
+                                    value=""
+                                    editable="false"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space10"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idlabel_binqbin_Styp"
+                                    class=" sapUiTinyMarginTop"
+                                    text="STyp:"
+                                />
+                                <Input
+                                    id="idinput_binqbin_Styp"
+                                    value=""
+                                    editable="false"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space11"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idlabel_binqbin_IA"
+                                    text="IA :"
+                                    class=" sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idinput_binqbin_IA"
+                                    value=""
+                                    editable="false"
+                                    width="80px"
+                                />
+                            </HBox>
+                            <HBox id="idHbox_StockBinQuerybyBin17">
+                                <Label
+                                    id="idlabel_binqbin_OWnr"
+                                    text="OWnr:"
+                                    class=" sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idinput_binqbin_OWnr"
+                                    value=""
+                                    editable="false"
+                                    width="10.3rem"
+                                />
+                                <Label
+                                    id="idLable_binQbin_space14"
+                                    width="3rem"
+                                />
+                                <Label
+                                    id="idlabel_binqbin_PEnt"
+                                    text="PEnt :"
+                                    class=" sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idinput_binqbin_PEnt"
+                                    value=""
+                                    editable="false"
+                                    width="13rem"
+                                />
+                            </HBox>
+                            <VBox
+                                id="idVbox_StockBinQuerybyBin13"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idHbox_StockBinQuerybyBin26"
+                                    alignItems="Center"
+                                >
+                                    <Button
+                                        id="idBackButton_BinQBin"
+                                        text="Back"
+                                        type="Emphasized"
+                                        press="onPressBackfromView"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>

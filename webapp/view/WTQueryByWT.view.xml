@@ -22,7 +22,7 @@
                 <Title
                     id="idTitle_WTQueryByWT"
                     class="title"
-                    text="CAPmodel RF"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparator_WTQueryByWT"
@@ -80,7 +80,7 @@
                             >
                                 <Text
                                     id="idWtQBWtWhLabel_WTQueryByWT"
-                                    text="WareHouse Task:"
+                                    text="{i18n>Label_WareHouseTask_WtQbWt}"
                                     width="120px"
                                 />
                                 <Input
@@ -98,7 +98,7 @@
                                     id="idFirstBackButton_WTQueryByWT"
                                     class="sapUiTinyMarginEnd"
                                     type="Emphasized"
-                                    text="Back"
+                                    text="{i18n>Button_Back1_HuQuery}"
                                     press="onPressFirstBackButton"
                                 />
                                 <ndc:BarcodeScannerButton
@@ -152,7 +152,7 @@
                             <HBox id="idSecondScHbox1_WTQueryByWT">
                                 <Text
                                     id="idWtQBWtwtLabel_WTQueryByWT"
-                                    text="WT:"
+                                    text="{i18n>Label_WT_WtQbWt}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -168,7 +168,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtWTitLabel_WTQueryByWT"
-                                    text="WTit:"
+                                    text="{i18n>Label_WTit_WtQbWt}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -183,7 +183,7 @@
                             <HBox id="idSecondScHbox2_WTQueryByWT">
                                 <Text
                                     id="idWtQBWtwtsLabel_WTQueryByWT"
-                                    text="WTs:"
+                                    text="{i18n>Label_WTs_wtQbWt}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -199,7 +199,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtStsLabel_WTQueryByWT"
-                                    text="Sts:"
+                                    text="{i18n>Label_Sts_WtQbWt}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -215,7 +215,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtPtypLabel_WTQueryByWT"
-                                    text="Ptyp:"
+                                    text="{i18n>Label_Ptyp_WtQbWt}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -234,7 +234,7 @@
                             >
                                 <Text
                                     id="idWtQBWtSproLabel_WTQueryByWT"
-                                    text="Spro:"
+                                    text="{i18n>Label_Spro_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -249,7 +249,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtActyLabel_WTQueryByWT"
-                                    text="Acty:"
+                                    text="{i18n>Label_Acty_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -277,7 +277,7 @@
                             >
                                 <Text
                                     id="idWtQBWtProLabel_WTQueryByWT"
-                                    text="Pro:"
+                                    text="{i18n>Label_Pro_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -305,7 +305,7 @@
                             >
                                 <Text
                                     id="idWtQBWtSbinLabel_WTQueryByWT"
-                                    text="Sbin:"
+                                    text="{i18n>Label_Sbin_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -333,7 +333,7 @@
                             >
                                 <Text
                                     id="idWtQBWtDbinLabel_WTQueryByWT"
-                                    text="Dbin:"
+                                    text="{i18n>Label_Dbin_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -361,7 +361,7 @@
                             >
                                 <Text
                                     id="idWtQBWtCdatLabel_WTQueryByWT"
-                                    text="Cdat:"
+                                    text="{i18n>Label_Cdat_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -386,7 +386,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtCusrLabel_WTQueryByWT"
-                                    text="Cusr:"
+                                    text="{i18n>Label_Cusr_WtQbWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -409,14 +409,14 @@
                                 >
                                     <Button
                                         id="WtQBWtDetailBackBtn_WTQueryByWT"
-                                        text="Back"
+                                        text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                         press="onPressSecondBackButton"
                                         class="sapUiTinyMarginEnd"
                                     />
                                     <Button
                                         id="WtQBWtDetailBtn_WTQueryByWT"
-                                        text="Detail"
+                                        text="{i18n>Label_Detail_WtQbWt}"
                                         press="onWtQBWtDetailBtnPress"
                                         class="sapUiTinyMarginEnd"
                                     />
@@ -456,7 +456,7 @@
                                     id="idWtQBWtProductDiscriptioInput_WTQueryByWT"
                                     value=""
                                     editable="false"
-                                    width="100%"
+                                    width="200%"
                                 />
                             </HBox>
 
@@ -467,7 +467,7 @@
                             >
                                 <Text
                                     id="idWtQBWtWoLabel_WTQueryByWT"
-                                    text="WO"
+                                    text="{i18n>Label_WO_WtQbWt}"
                                     width="45px"
                                 />
                                 <Input
@@ -482,7 +482,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtEstpLabel_WTQueryByWT"
-                                    text="ESTP"
+                                    text="{i18n>Label_ESTP_WtQbWt}"
                                     width="45px"
                                 />
                                 <Input
@@ -496,7 +496,7 @@
                             <HBox id="idThirdScHbox3_WTQueryByWT">
                                 <Text
                                     id="idWtQBWtSqtyLabel_WTQueryByWT"
-                                    text="Sqty"
+                                    text="{i18n>Label_Sqty_WtQbWt}"
                                     class="sapUiTinyMarginTop"
                                     width="45px"
                                 />
@@ -522,7 +522,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
-                                    text="Btch"
+                                    text="{i18n>Label_Btch_wtQbWt}"
                                     class="sapUiTinyMarginTop"
                                     width="40px"
                                 />
@@ -537,7 +537,7 @@
                             <HBox id="idThirdScHbox4_WTQueryByWT">
                                 <Text
                                     id="idWtQBWtOwnerLabel_WTQueryByWT"
-                                    text="Owner"
+                                    text="{i18n>Label_Owner_WtQbWt}"
                                     width="45px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -553,7 +553,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtPEntLabel_WTQueryByWT"
-                                    text="PEnt"
+                                    text="{i18n>Label_PEnt_WtQbWt}"
                                     class="sapUiTinyMarginTop"
                                     width="45px"
                                 />
@@ -568,7 +568,7 @@
                             <HBox id="idThirdScHbox5_WTQueryByWT">
                                 <Text
                                     id="idWtQBWtHuWtLabel_WTQueryByWT"
-                                    text="HuWt"
+                                    text="{i18n>Label_HuWt_WtQbWt}"
                                     class="sapUiTinyMarginTop"
                                     width="45px"
                                 />
@@ -584,7 +584,7 @@
                                 />
                                 <Text
                                     id="idWtQBWtHtypeLabel_WTQueryByWT"
-                                    text="Htype"
+                                    text="{i18n>Label_Htype_WtQbWt}"
                                     class="sapUiTinyMarginTop"
                                     width="45px"
                                 />
@@ -600,9 +600,9 @@
                                 />
                                 <Text
                                     id="idWtQBWtWhHuLabel_WTQueryByWT"
-                                    text="Wh Hu"
+                                    text="{i18n>Label_WhHu_WtQbWt}"
                                     class="sapUiTinyMarginTop"
-                                    width="45px"
+                                    width="47px"
                                 />
                                 <Input
                                     id="idWtQBWtWhHuInput_WTQueryByWT"
@@ -623,7 +623,7 @@
                                 >
                                     <Button
                                         id="idThirdBackButton_WTQueryByWT"
-                                        text="Back"
+                                        text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                         press="onPressThirdBackButton"
                                     />

@@ -1176,7 +1176,7 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 3rem !important;
+    margin-left: 1rem !important;
     margin-right: 1rem !important;
 }
 
@@ -1416,7 +1416,7 @@ margin-right: 20%;
 }
 
 .titleMobile_home {
-    left: 38%;
+    left: 35%;
 }
 
 .BtnConfSAPsys {
@@ -1486,10 +1486,10 @@ margin-right: 20%;
 /*----------------------------------- end of sap logon fragment CSS ---------------------------------------------------  */
 
 .TitleMQ {
-    margin-right: 35%;
+    margin-right: 30%;
     margin-top: 10%;
     position: fixed;
-    right: 10%;
+    right: 5%;
     top: 30%;
 }
 
@@ -1682,49 +1682,6 @@ margin-right: 20%;
 /* Home View endss */
 
 
-/* WT Query by WO View */
-/* For mobile devices */
-@media (max-width: 480px) {
-    .sapUiContentPadding {
-        padding: 10px !important;
-    }
-
-    .sapMLabel {
-        width: auto !important;
-        /* Allow labels to take up necessary space */
-    }
-
-    .sapMInput {
-        width: 100% !important;
-        /* Full width inputs */
-        margin-bottom: 10px !important;
-        /* Spacing between inputs */
-    }
-
-    .sapMInput1 {
-        width: 200% !important;
-        /* Full width inputs */
-    }
-
-    /* Adjust Button styles */
-    #WtQBWoDetailBtn,
-    #idWtQBWoThirdbackbtn {
-        width: 100%;
-        /* Full width for buttons */
-    }
-}
-
-/* For tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-    .sapMInput {
-        width: 70% !important;
-    }
-
-    .sapMLabel {
-        width: auto !important;
-    }
-}
-
 .Simpleform_secSc_HuQuery {
     margin-left: 30% !important;
 }
@@ -1903,19 +1860,38 @@ margin-right: 20%;
     padding: 0.5rem;
     
 }
-/* change queue ends */
-/* 
-.btn{
-    position:fixed;
-    
-} */
-
-    z-index: 10; /* Ensures it stays on top of other content */
-     /* Solid background to prevent transparency issues */
-    padding: 0.5rem; /* Optional: add padding for better spacing */
-    /* Optional: make the title bigger */
-     /* Center the title */
+/* HU Stock Overview Query Tabel Start 18-11-2024 */
+.Buttons_HUSOQ {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 0;
+    z-index: 10;
+    padding: 0.5rem;
 }
+
+.table_HuStockOverview{
+    margin-top: 5%;
+}
+
+.MobileviewTable_HUSOQ{
+    margin-top: 20%;
+}
+
+/* HU Stock Overview Query Tabel End 18-11-2024*/
+
+
+
+/* change queue ends */
+
+.genericTile{
+    height: 50px;
+    width:50px;
+}
+
+
+
+
 
 
 
