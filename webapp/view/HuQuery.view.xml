@@ -464,6 +464,7 @@
                     width="100%"
                     growingScrollToLoad="true"
                     mode="None"
+                  
                 >
                     <headerToolbar>
                         <OverflowToolbar id="idOverflowToolBar_HuQuery">
@@ -514,7 +515,7 @@
                     </columns>
 
                     <items>
-                        <ColumnListItem id="idColListItem_HuQuery">
+                        <ColumnListItem id="idColListItem_HuQuery" type="Navigation">
                             <cells>
                                 <Text
                                     id="idSerialNoText_HuQuery"
@@ -616,6 +617,7 @@
                         <ColumnListItem
                             id="idColumListItem_HuQuery"
                             navigated="true"
+                            type="Navigation"
                         >
                             <cells>
                                 <Text

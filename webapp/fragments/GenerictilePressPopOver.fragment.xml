@@ -6,6 +6,9 @@
     <Popover
         id="idGenericTilePressPopover"  
         placement="Auto" 
+        beforeClose="_onPopoverBeforeClose"
+        
+        
     >
         <VBox id="popoverContent">
             <!-- <RadioButton id="id_changeresourcegroup" text="Change Resource Group" visible="false"/>
