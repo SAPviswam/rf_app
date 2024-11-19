@@ -182,7 +182,7 @@ sap.ui.define([
                                 oMainContainerDom.style.backgroundAttachment = "fixed")
                             : Backgroundcolor
                                 ? (oMainContainerDom.style.backgroundColor = Backgroundcolor)
-                                : sap.m.MessageToast.show("No background settings found for the user.");
+                                : null;
                     }
 
                     // Apply tile view settings
@@ -209,14 +209,14 @@ sap.ui.define([
                                         oTile.addStyleClass("smallIcons");
                                         break;
                                     default:
-                                        sap.m.MessageToast.show("Unknown tile view setting.");
+                                        //sap.m.MessageToast.show("Unknown tile view setting.");
                                         break;
                                 }
                             }
                         });
                     }
                 } catch (oError) {
-                    sap.m.MessageToast.show("Failed to retrieve user details.");
+                    //sap.m.MessageToast.show("Failed to retrieve user details.");
                     console.error("Error fetching user data:", oError);
                 }
             },
