@@ -23,7 +23,7 @@ sap.ui.define([
                 this.genericTitleName = ''
 
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
 
                 if (Device.system.phone) {
@@ -41,7 +41,7 @@ sap.ui.define([
                         MessageToast.show("Failed to load data.");
                     }
                 }.bind(this));
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
                 this.Themecall = false;
                 this.EditCall = false;
@@ -185,7 +185,7 @@ sap.ui.define([
                                 oMainContainerDom.style.backgroundAttachment = "fixed")
                             : Backgroundcolor
                                 ? (oMainContainerDom.style.backgroundColor = Backgroundcolor)
-                                : sap.m.MessageToast.show("No background settings found for the user.");
+                                : null;
                     }
 
                     // Apply tile view settings
@@ -212,14 +212,14 @@ sap.ui.define([
                                         oTile.addStyleClass("smallIcons");
                                         break;
                                     default:
-                                        sap.m.MessageToast.show("Unknown tile view setting.");
+                                        //sap.m.MessageToast.show("Unknown tile view setting.");
                                         break;
                                 }
                             }
                         });
                     }
                 } catch (oError) {
-                    sap.m.MessageToast.show("Failed to retrieve user details.");
+                    //sap.m.MessageToast.show("Failed to retrieve user details.");
                     console.error("Error fetching user data:", oError);
                 }
             },
@@ -828,7 +828,7 @@ sap.ui.define([
                 });
                 return headers;
             },
-            onResourceDetailsLoad: async function (oEvent1) {
+            onResourceDetailsLoadResorcePage: async function (oEvent1) {
                 // const { id } = oEvent1.getParameter("arguments");
                 // this.ID = id;
                 // console.log(this.ID)

@@ -48,7 +48,7 @@
                 <Avatar
                     id="_IDGenAvatar1PutawayByWO_SBQB"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarSBQBB"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

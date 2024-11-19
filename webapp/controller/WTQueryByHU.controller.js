@@ -46,7 +46,7 @@ sap.ui.define(
             PEnt: "",
             HUWT: "",
             H_Type: "",
-            Wh_HU: "",
+            Wh_HU: ""
           },
         });
 

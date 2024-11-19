@@ -1,5 +1,6 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
+  //"sap/ui/core/mvc/Controller",
+  "./BaseController",
   "sap/ui/Device",
   "sap/m/MessageToast", // Import MessageToast for user feedback
   "sap/ui/core/UIComponent",
@@ -17,7 +18,11 @@ sap.ui.define([
       var that = this;
       const { id } = oEvent1.getParameter("arguments");
       this.ID = id;
+      this.applyStoredProfileImage();
     },
+    onPressAvatarSBQBB: function (oEvent) {     
+      this.onPressAvatarEveryTileHelperFunction(oEvent); 
+      },
     onPressBinBackToHome: async function () {
       var oRouter = UIComponent.getRouterFor(this);
       var oModel1 = this.getOwnerComponent().getModel();
