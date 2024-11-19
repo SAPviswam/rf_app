@@ -20,7 +20,7 @@ sap.ui.define([
 
                 this.genericTitleName = "";
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
 
                 if (Device.system.phone) {
@@ -38,7 +38,7 @@ sap.ui.define([
                         MessageToast.show("Failed to load data.");
                     }
                 }.bind(this));
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
                 this.Themecall = false;
                 this.EditCall = false;
@@ -825,7 +825,7 @@ sap.ui.define([
                 });
                 return headers;
             },
-            onResourceDetailsLoad: async function (oEvent1) {
+            onResourceDetailsLoadResorcePage: async function (oEvent1) {
                 // const { id } = oEvent1.getParameter("arguments");
                 // this.ID = id;
                 // console.log(this.ID)
