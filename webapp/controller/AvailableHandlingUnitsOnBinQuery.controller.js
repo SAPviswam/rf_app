@@ -120,7 +120,7 @@ sap.ui.define(
                 console.error("Scan error triggered", oEvent);
                 sap.m.MessageToast.show("Scanning failed. Please try again.", { duration: 3000 });
             },
-            
+
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1_AHUOBQ
             onPressBackBtnPage1_AHUOBQ: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
@@ -331,7 +331,6 @@ sap.ui.define(
         _showErrorMessage: function (message) {
             sap.m.MessageToast.show(message, { duration: 3000 });
         },
-        
             //Prod Description Btn from ScrollContainer Page 2=>idPage2BinNoTable_AHUOBQ
             onPressProductDescriptionBtn: function (oEvent) {
               // Get the selected row's context from the table
@@ -386,8 +385,6 @@ sap.ui.define(
                   error: function () {
                       sap.m.MessageToast.show("Error fetching product details.");
                   }
-
-
               });
           },
           // On clicking HUContent Button
@@ -447,7 +444,6 @@ sap.ui.define(
               return statusCode ? 'yes' : 'No';
           }
         }
-        
         });
     }
 );
