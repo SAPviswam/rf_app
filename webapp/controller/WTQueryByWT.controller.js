@@ -90,7 +90,7 @@ sap.ui.define(
                             let day = dateStr.slice(6, 8);
                             let formattedDate = `${year}-${month}-${day}`;
                             that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
-
+                            
                             // Calculate and format the ConfT time (from milliseconds)
                             let milliseconds = odata.ConfT.ms;
                             let hours = Math.floor(milliseconds / (1000 * 60 * 60));
@@ -132,7 +132,7 @@ sap.ui.define(
             // Event handler for the button to view more details of the warehouse task
             onWtQBWtDetailBtnPress: function () {
                 var oHuValue = this.getView().byId("idWtQBWtwtInput_WTQueryByWT").getValue(); // Get HU value from input
-
+debugger
                 if (oHuValue) { // Proceed if HU value is available
                     var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                     var that = this; // Preserve controller context for success handler
@@ -140,6 +140,7 @@ sap.ui.define(
                     // Call OData service to validate and retrieve data for the given HU
                     oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
                         success: function (odata) {
+                            debugger
                             // If HU exists, toggle screens and populate fields with data
                             that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false); // Hide second screen
                             that.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(true); // Show third screen
@@ -155,6 +156,7 @@ sap.ui.define(
                             that.getView().byId("idWtQBWtSqtyInput_WTQueryByWT").setValue(odata.Vsola);
                             that.getView().byId("idWtQBWtPcInput_WTQueryByWT").setValue(odata.Altme);
                             that.getView().byId("idWtQBWtHuWtInput_WTQueryByWT").setValue(odata.Flghuto);
+                            that.getView().byId("idWtQBWtBtchInput_WTQueryByWT").setValue(odata.Charg);
                         },
                         error: function (oError) {
                             // Handle error if HU not found
