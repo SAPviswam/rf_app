@@ -83,6 +83,17 @@ sap.ui.define(
                 this.getView().byId("idWtQBWoThirdbackbtn").setVisible(true);
                 this.getView().byId("idWtQBWoSevenththbackbtn").setVisible(false);
             },
+
+            onWtQBWoWhBarcodeScanner: function (oEvent) {
+                // Get the scanned bin number from the event
+                var sScannedWhOrder = oEvent.getParameter("text");
+          
+                // Set the scanned value into the input field
+                this.getView().byId("idWtQBWoWhInput").setValue(sScannedWhOrder);
+          
+                // Call the submit function to fetch products
+                this.onWtQBWoWhLiveChange();
+              },
             // Handler for Warehouse Order input change event
             onWtQBWoWhLiveChange: function () {
                 // Get the input value from the input field
@@ -98,9 +109,16 @@ sap.ui.define(
                     sap.m.MessageToast.show("Please enter a WarehouseOrder");
                     return;
                 }
+                // Clear any previous timeout for invalid WHorder toast
+                if (this._timeoutIDForInvalidWHorder) {
+                    clearTimeout(this._timeoutIDForInvalidWHorder);
+                }
 
-                // Fetch the warehouse order task details
-                this.onFetchWarehouseOrderTaskDetails(sWarehouseorder);
+                // Set a new timeout to validate the WHorder after 500ms (debounce)
+                this._timeoutIDForInvalidWHorder = setTimeout(function () {
+                    this.onFetchWarehouseOrderTaskDetails(sWarehouseorder);
+                }.bind(this), 500);
+
             },
 
             // Function to fetch warehouse order task details from backend
@@ -132,10 +150,12 @@ sap.ui.define(
                                 // Filter and bind tasks to the table
                                 that._filterAndBindWarehouseOrderTasks(that, sWarehouseOrder, "all", that._odata);
                             }
+                            else{
+                                that.showInvalidWarehouseOrderMessageToast();
+                            }
                         },
                         error: function () {
-                            // Display an error message if fetching data fails
-                            sap.m.MessageToast.show("Error fetching warehouse order tasks.");
+                            that.showInvalidWarehouseOrderMessageToast();
                         }
                     });
                 } else {
@@ -143,6 +163,17 @@ sap.ui.define(
                     that._filterAndBindWarehouseOrderTasks(that, sWarehouseOrder, "all", that._odata);
                 }
             },
+
+            showInvalidWarehouseOrderMessageToast: function () {
+                if (this._timeoutIDForInvalidQueueMessage) {
+                  clearTimeout(this._timeoutIDForInvalidQueueMessage);
+                }
+          
+                // Set a timeout for showing the message toast after 500ms (debounce)
+                this._timeoutIDForInvalidQueueMessage = setTimeout(function () {
+                  sap.m.MessageToast.show("Please enter a valid Warehouse Order.");
+                }, 500); // 500ms delay
+              },
 
             // Function to filter tasks based on status and bind them to the table
             _filterAndBindWarehouseOrderTasks: function (that, sWarehouseOrder, status, odata) {
