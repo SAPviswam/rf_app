@@ -44,9 +44,9 @@ sap.ui.define([
 
         // Handler for selecting a particular warehouse transfer (WT)
         onSelectParticularWT: async function (oEvent) {
-            const { HU } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();  // Get the HU value
-            console.log(HU);  // Log the HU value for debugging
-            this.onSelectRow(HU);  // Call onSelectRow with the HU value
+            const { HUI } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();  // Get the HU value
+            console.log(HUI);  // Log the HU value for debugging
+            this.onSelectRow(HUI);  // Call onSelectRow with the HU value
         },
 
         // Function to handle selection of a row (HU)
@@ -251,7 +251,7 @@ sap.ui.define([
                     "$format": "json"  // Response format JSON
                 },
                 success: function (odata) {
-                    if (odata.Top === true) {
+                    if (odata.Top === true || odata.Top.toUpperCase()==="X") {
                         // Handle case where HU is a top-level HU
                         let oDetails = odata.HUheadtoItems.results;
                         console.log(oDetails);  // Log the product details
@@ -347,6 +347,8 @@ sap.ui.define([
                     "$format": "json"  // Response format JSON
                 },
                 success: function (odata) {
+                    debugger
+                    if (odata.Tophu === oHu) {
                     console.log(odata);  // Log the data response
 
                     // Get the product details from the response
@@ -378,6 +380,40 @@ sap.ui.define([
                             ]
                         })
                     });
+                }
+                else{
+                    console.log(odata);  // Log the data response
+
+                    // Get the product details from the response
+                    let oDetails = odata.HUheadtoItems.results;
+                    console.log(oDetails);  // Log the details
+                    oDetails = oDetails.filter(item => item.Huident == oHu);
+                    // Prepare array for binding to the table
+                    var aProductDetails = [];
+                    for (var i = 0; i < oDetails.length; i++) {
+                        aProductDetails.push({
+                            HUI: oDetails[i].Huident,
+                            HU: odata.Tophu,
+                            SLNO: i + 1
+                        });
+                    }
+
+                    // Create a JSON model with the hierarchy details
+                    var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                    that.byId("idSimpleTable_HuQuery").setModel(oProductModel);
+
+                    // Bind the table items to the hierarchy model
+                    that.byId("idSimpleTable_HuQuery").bindItems({
+                        path: "/products",
+                        template: new sap.m.ColumnListItem({
+                            cells: [
+                                new sap.m.Text({ text: "{SLNO}" }),
+                                new sap.m.Text({ text: "{HUI}" }),
+                                new sap.m.Text({ text: "{HU}" }),
+                            ]
+                        })
+                    });
+                }
                 },
                 error: function () {
                     sap.m.MessageToast.show("Error fetching products.");  // Show error message
