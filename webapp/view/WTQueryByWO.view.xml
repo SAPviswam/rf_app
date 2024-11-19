@@ -593,7 +593,7 @@
                                 <Input
                                     id="idWtQBWOwoInput"
                                     value=""
-                                    width="120px"
+                                    width="95px"
                                     editable="false"
                                 />
 
@@ -627,7 +627,7 @@
                                 <Input
                                     id="idWtQBWOSqtyInput"
                                     value=""
-                                    width="120px"
+                                    width="95px"
                                     editable="false"
                                 />
                                 <Input
@@ -666,7 +666,7 @@
                                 <Input
                                     id="idWtQBWOOwnerInput"
                                     value=""
-                                    width="80px"
+                                    width="55px"
                                     editable="false"
                                 />
                                 <Label
@@ -699,7 +699,7 @@
                                 <Input
                                     id="idWtQBWOHuWtInput"
                                     value=""
-                                    width="80px"
+                                    width="55px"
                                     editable="false"
                                 />
                                 <Label
