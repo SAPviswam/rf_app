@@ -113,32 +113,32 @@ sap.ui.define([
                 }
 
                 // Apply stored view setting
-                var sStoredView = localStorage.getItem("selectedView");
-                if (sStoredView) {
-                    var oTilesContainer = this.byId("idScrollContainer1");
-                    var aTiles = oTilesContainer.getContent();
-                    aTiles.forEach(function (oTile) {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            oTile.removeStyleClass("largeIcons");
-                            oTile.removeStyleClass("mediumIcons");
-                            oTile.removeStyleClass("smallIcons");
+                // var sStoredView = localStorage.getItem("selectedView");
+                // if (sStoredView) {
+                //     var oTilesContainer = this.byId("idScrollContainer1");
+                //     var aTiles = oTilesContainer.getContent();
+                //     aTiles.forEach(function (oTile) {
+                //         if (oTile.isA("sap.m.GenericTile")) {
+                //             oTile.removeStyleClass("largeIcons");
+                //             oTile.removeStyleClass("mediumIcons");
+                //             oTile.removeStyleClass("smallIcons");
 
-                            switch (sStoredView) {
-                                case "LargeIcons":
-                                    oTile.addStyleClass("largeIcons");
-                                    break;
-                                case "MediumIcons":
-                                    oTile.addStyleClass("mediumIcons");
-                                    break;
-                                case "SmallIcons":
-                                    oTile.addStyleClass("smallIcons");
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    });
-                }
+                //             switch (sStoredView) {
+                //                 case "LargeIcons":
+                //                     oTile.addStyleClass("largeIcons");
+                //                     break;
+                //                 case "MediumIcons":
+                //                     oTile.addStyleClass("mediumIcons");
+                //                     break;
+                //                 case "SmallIcons":
+                //                     oTile.addStyleClass("smallIcons");
+                //                     break;
+                //                 default:
+                //                     break;
+                //             }
+                //         }
+                //     });
+                // }
 
                 // Apply stored tile details (header and subheader)
                 var tileIds = Object.keys(localStorage).filter(key => key.startsWith('tile_'));
@@ -151,50 +151,77 @@ sap.ui.define([
                         oTile.setSubheader(storedTileData.subHeader || "");
                     }
                 }.bind(this));
-
             },
             _extractLocalId: function (sTileId) {
                 return sTileId.split("--").pop();
             },
             //This Function Calls from the Resource Details load function..(its taking little bit Time).
             handleUserDetailsBasedOnUserID: async function () {
+                debugger;
                 const userId = this.ID;
                 const oModel = this.getOwnerComponent().getModel();
+                const sEntityPath = `/RESOURCESSet('${userId}')`;
                 const oMainContainer = this.byId("idScrollContainer1"); // Replace with your container ID
-                const sEntityPath = `/RESOURCESSet('${userId}')`; // Fetch specific user data
+                const oMainContainerDom = oMainContainer ? oMainContainer.getDomRef() : null;
 
                 try {
-                    // Fetch user data from the backend
                     const userData = await new Promise((resolve, reject) => {
                         oModel.read(sEntityPath, {
-                            success: (oData) => resolve(oData),
-                            error: (oError) => reject(oError)
+                            success: resolve,
+                            error: reject
                         });
                     });
 
-                    const { Backgroundcolor, Backgroundimage } = userData; // Destructure fields
-                    const oMainContainerDom = oMainContainer ? oMainContainer.getDomRef() : null;
+                    // Destructure fields
+                    const { Backgroundcolor, Backgroundimage, Tileviews } = userData;
 
+                    // Apply background settings using ternary operator
                     if (oMainContainerDom) {
                         Backgroundimage
-                            ? (() => {
-                                oMainContainerDom.style.backgroundImage = `url(data:image/png;base64,${Backgroundimage})`;
-                                oMainContainerDom.style.backgroundSize = "cover";
-                                oMainContainerDom.style.backgroundPosition = "center";
-                                oMainContainerDom.style.backgroundRepeat = "no-repeat";
-                                oMainContainerDom.style.backgroundAttachment = "fixed";
-                            })()
+                            ? (oMainContainerDom.style.backgroundImage = `url(data:image/png;base64,${Backgroundimage})`,
+                                oMainContainerDom.style.backgroundSize = "cover",
+                                oMainContainerDom.style.backgroundPosition = "center",
+                                oMainContainerDom.style.backgroundRepeat = "no-repeat",
+                                oMainContainerDom.style.backgroundAttachment = "fixed")
                             : Backgroundcolor
-                                ? (() => {
-                                    oMainContainerDom.style.backgroundColor = Backgroundcolor;
-                                })()
+                                ? (oMainContainerDom.style.backgroundColor = Backgroundcolor)
                                 : sap.m.MessageToast.show("No background settings found for the user.");
                     }
+
+                    // Apply tile view settings
+                    if (Tileviews) {
+                        const oTilesContainer = this.byId("idScrollContainer1");
+                        const aTiles = oTilesContainer.getContent();
+
+                        aTiles.forEach((oTile) => {
+                            if (oTile.isA("sap.m.GenericTile")) {
+                                // Clear existing icon size classes
+                                oTile.removeStyleClass("largeIcons");
+                                oTile.removeStyleClass("mediumIcons");
+                                oTile.removeStyleClass("smallIcons");
+
+                                // Apply the relevant tile view class
+                                switch (Tileviews) {
+                                    case "LargeIcons":
+                                        oTile.addStyleClass("largeIcons");
+                                        break;
+                                    case "MediumIcons":
+                                        oTile.addStyleClass("mediumIcons");
+                                        break;
+                                    case "SmallIcons":
+                                        oTile.addStyleClass("smallIcons");
+                                        break;
+                                    default:
+                                        sap.m.MessageToast.show("Unknown tile view setting.");
+                                        break;
+                                }
+                            }
+                        });
+                    }
                 } catch (oError) {
-                    sap.m.MessageToast.show("Failed to retrieve user background settings.");
+                    sap.m.MessageToast.show("Failed to retrieve user details.");
                     console.error("Error fetching user data:", oError);
                 }
-
             },
             //CHATBOT
             onChatbotButtonPress: function () {
@@ -636,7 +663,8 @@ sap.ui.define([
                 this.onPressTileViewResizeIcons("SmallIcons");
             },
             //CallBack function every Tile view....
-            onPressTileViewResizeIcons: function (sSelectedKey) {
+            onPressTileViewResizeIcons: async function (sSelectedKey) {
+                debugger
                 if (this.Themecall) {
                     sap.m.MessageToast.show("Please exit Theme mode.");
                     return;
@@ -645,38 +673,54 @@ sap.ui.define([
                     sap.m.MessageToast.show("Please exit Edit mode.");
                     return;
                 }
-                var oTilesContainer = this.byId("idScrollContainer1");
-                var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
-                // Save the selected key to localStorage
-                localStorage.setItem("selectedView", sSelectedKey);
-                // Loop through each tile and apply the appropriate style class based on the selected view
-                aTiles.forEach(function (oTile) {
-                    // Check if the content is a GenericTile before proceeding
-                    if (oTile.isA("sap.m.GenericTile")) {
-                        // Remove any previous size-related CSS classes
-                        oTile.removeStyleClass("largeIcons");
-                        oTile.removeStyleClass("mediumIcons");
-                        oTile.removeStyleClass("smallIcons");
 
-                        // Apply the selected size class
-                        switch (sSelectedKey) {
-                            case "LargeIcons":
-                                oTile.addStyleClass("largeIcons");
-                                break;
-                            case "MediumIcons":
-                                oTile.addStyleClass("mediumIcons");
-                                break;
-                            case "SmallIcons":
-                                oTile.addStyleClass("smallIcons");
-                                break;
-                            default:
-                                break;
+                try {
+                    const userId = this.ID;
+                    const sEntityPath = `/RESOURCESSet('${userId}')`;
+                    const oModel = this.getOwnerComponent().getModel();
+
+                    var oTilesContainer = this.byId("idScrollContainer1");
+                    var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+
+                    // Save the selected key to localStorage for persistence
+                    //localStorage.setItem("selectedView", sSelectedKey);
+                    aTiles.forEach(function (oTile) {
+                        if (oTile.isA("sap.m.GenericTile")) {
+                            // Remove any previous size-related CSS classes
+                            oTile.removeStyleClass("largeIcons");
+                            oTile.removeStyleClass("mediumIcons");
+                            oTile.removeStyleClass("smallIcons");
+
+                            // Apply the selected size class
+                            switch (sSelectedKey) {
+                                case "LargeIcons":
+                                    oTile.addStyleClass("largeIcons");
+                                    break;
+                                case "MediumIcons":
+                                    oTile.addStyleClass("mediumIcons");
+                                    break;
+                                case "SmallIcons":
+                                    oTile.addStyleClass("smallIcons");
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-                    }
-                });
-                // oTilesContainer.rerender();
-                // var oModel = this.getView().getModel();
-                // oModel.refresh(true);
+                    });
+                    let oPayload = {
+                        Tileviews: sSelectedKey
+                    };
+
+                    await new Promise((resolve, reject) => {
+                        oModel.update(sEntityPath, oPayload, {
+                            success: resolve,
+                            error: reject
+                        });
+                    });
+                } catch (error) {
+                    sap.m.MessageToast.show("Error saving tile view: " + error.message);
+                    console.error("Error:", error);
+                }
             },
             //Grid and List Views...
             onPressGridViewsResource: function () {
