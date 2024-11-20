@@ -57,7 +57,7 @@
                 <Avatar
                     id="_IDGenAvatar1WtQBWo"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarWTQBWO"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
