@@ -227,18 +227,48 @@ sap.ui.define([
             onChatbotButtonPress: function () {
                 window.open("https://cai.tools.sap/api/connect/v1/webclient/standalone/53c7e531-9483-4c3e-b523-b0bdf59df4a4", "_self");
             },
-
-            onResetToDefaultPress: function () {
-                sap.m.MessageBox.warning("Reset to default settings ?", {
-                    title: "Default settings",
+            //For Resetting the Default settings...
+            onPressDefualtSettings: async function () {
+                debugger
+                const oModel = this.getOwnerComponent().getModel();
+                const userId = this.ID;
+                const sEntityPath = `/RESOURCESSet('${userId}')`;
+                // const userData = await new Promise((resolve, reject) => {
+                //     oModel.read(sEntityPath, {
+                //         success: resolve,
+                //         error: reject
+                //     });
+                // });
+                sap.m.MessageBox.warning("Reset to default settings?", {
+                    title: "Default Settings",
                     actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-                    onClose: function (status) {
+                    onClose: async function (status) {
                         if (status === sap.m.MessageBox.Action.OK) {
-                            localStorage.clear();
-                            sap.m.MessageToast.show("Settings reset to default.");
-                            window.location.reload();
+                            try {
+                                // Clear local storage
+                                localStorage.clear();
+                                // Prepare the payload to reset backend data
+                                const oPayload = {
+                                    Backgroundcolor: "",
+                                    Backgroundimage: "",
+                                    Tileviews: "",
+                                    Profileimage: ""
+                                };
+                                // Update the backend with empty/default values
+                                await new Promise((resolve, reject) => {
+                                    oModel.update(sEntityPath, oPayload, {
+                                        success: resolve,
+                                        error: reject
+                                    });
+                                });
+                                window.location.reload();
+                                sap.m.MessageToast.show("Settings resetting to default!");
+                            } catch (oError) {
+                                //sap.m.MessageToast.show("Failed to reset settings on the backend.");
+                                console.error("Error resetting backend data:", oError);
+                            }
                         } else {
-                            MessageToast.show("Reset to default settings cancelled.");
+                            sap.m.MessageToast.show("Reset to default settings cancelled.");
                         }
                     }
                 });
@@ -372,6 +402,7 @@ sap.ui.define([
                     return tile.getId();
                 });
                 this.resetDialogBox();
+                this.byId("idBrowseImgfileUploaderTilesBG").setVisible(false);
                 this.byId("idthemeTileDialogResource").open();
             },
             //Exit from Theme Mode...
@@ -595,6 +626,7 @@ sap.ui.define([
             onColorOptionSelect: function (oEvent) {
                 var oSelectedCheckBox = oEvent.getSource();
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
+                var isThemeModeActive = this.Themecall;
 
                 oColorOptions.forEach(function (oItem) {
                     if (oItem instanceof sap.m.CheckBox && oItem !== oSelectedCheckBox) {
@@ -605,6 +637,7 @@ sap.ui.define([
                 var isCheckBoxSelected = oSelectedCheckBox.getSelected();
                 this.byId("idcolorPickerResource").setVisible(!isCheckBoxSelected);
                 this.byId("idBrowseImgfileUploaderTilesBG").setVisible(!isCheckBoxSelected);
+                this.byId("idBrowseImgfileUploaderTilesBG").setVisible(!isCheckBoxSelected && !isThemeModeActive);
             },
             resetDialogBox: function () {
                 var oView = this.getView();
@@ -964,93 +997,79 @@ sap.ui.define([
                 this.genericTitleName = ""
             },
             onGenericTilePress: async function (oEvent) {
-              
-                    const oTile = oEvent.getSource();
-                    var oGenericTileName = oEvent.oSource.mProperties.header;
-                    if (this.genericTitleName === oGenericTileName) {
-
-                        return
+                const oTile = oEvent.getSource();
+                var oGenericTileName = oEvent.oSource.mProperties.header;
+                var oQueueArray = []
+                if (this.Themecall) {
+                    if (!this._selectedTiles) {
+                        this._selectedTiles = [];
                     }
-
-                    this.genericTitleName = oGenericTileName;
-                    var oQueueArray = []
-
-                    if (this.Themecall) {
-                        if (!this._selectedTiles) {
-                            this._selectedTiles = [];
-                        }
-                        const iTileIndex = this._selectedTiles.indexOf(oTile);
-                        if (iTileIndex !== -1) {
-                            sap.m.MessageToast.show("Tile Deselected.");
-                            this._selectedTiles.splice(iTileIndex, 1);
-                            oTile.removeStyleClass("tileSelected");
-                        } else {
-                            this._selectedTiles.push(oTile);
-                            oTile.addStyleClass("tileSelected");
-                            sap.m.MessageToast.show("Tile Selected.");
-                        }
-                        return;
+                    const iTileIndex = this._selectedTiles.indexOf(oTile);
+                    if (iTileIndex !== -1) {
+                        sap.m.MessageToast.show("Tile Deselected.");
+                        this._selectedTiles.splice(iTileIndex, 1);
+                        oTile.removeStyleClass("tileSelected");
+                    } else {
+                        this._selectedTiles.push(oTile);
+                        oTile.addStyleClass("tileSelected");
+                        sap.m.MessageToast.show("Tile Selected.");
                     }
-
-                    if (!this._oPopoverGt) {
-                        this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
-                        this.getView().addDependent(this._oPopoverGt);
-                    }
-                    const aOptions = []
-
-                    this._oPopoverGt.setTitle(oGenericTileName)
-                    const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
-                    oVBox.destroyItems(); // Clear existing items
-                    var oModel1 = this.getOwnerComponent().getModel();
-                  
-                     oModel1.read("/ProcessAreaSet", {
-                        success: function (oData) {
-
-                            oData.results.forEach(element => {
-                                if (element.Processgroup.toUpperCase() === oGenericTileName.toUpperCase()) {
-                                    oQueueArray.push(element.Queue.toUpperCase())
-                                }
-                            });
-                            oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-                                success: function (oData) {
-                                    var oResourceArray = oData.Queue.split(",").map(item => item.trim());
-
-                                    oResourceArray.forEach(function (queue) {
-                                        let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
-                                        let lOQueue = oQueue.toLowerCase();
-                                        if (oQueueArray.includes(queue.toUpperCase())) {
-                                            aOptions.push(queue)
-                                        }
-
+                    return;
+                }
+                if (this.genericTitleName === oGenericTileName) {
+                    return
+                }
+                this.genericTitleName = oGenericTileName;
+                if (!this._oPopoverGt) {
+                    this._oPopoverGt = sap.ui.xmlfragment("com.app.rfapp.fragments.GenerictilePressPopOver", this);
+                    this.getView().addDependent(this._oPopoverGt);
+                }
+                const aOptions = []
+                this._oPopoverGt.setTitle(oGenericTileName)
+                const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
+                oVBox.destroyItems(); // Clear existing items
+                var oModel1 = this.getOwnerComponent().getModel();
+                oModel1.read("/ProcessAreaSet", {
+                    success: function (oData) {
+                        oData.results.forEach(element => {
+                            if (element.Processgroup.toUpperCase() === oGenericTileName.toUpperCase()) {
+                                oQueueArray.push(element.Queue.toUpperCase())
+                            }
+                        });
+                        oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                            success: function (oData) {
+                                var oResourceArray = oData.Queue.split(",").map(item => item.trim());
+                                oResourceArray.forEach(function (queue) {
+                                    let oQueue = queue.replace(/[^a-zA-Z0-9]/g, '');
+                                    let lOQueue = oQueue.toLowerCase();
+                                    if (oQueueArray.includes(queue.toUpperCase())) {
+                                        aOptions.push(queue)
+                                    }
+                                });
+                                const aOptionSet = new Set(aOptions);
+                                const oOptions = Array.from(aOptionSet)
+                                console.log(oOptions)
+                                oOptions.forEach((sOption) => {
+                                    const oRadioButton = new sap.m.RadioButton({
+                                        text: sOption,
+                                        select: this.onRadioButtonSelect.bind(this)
                                     });
-                                    const aOptionSet=new Set(aOptions);
-                                   const oOptions=Array.from(aOptionSet)
-                                   console.log(oOptions)
-                                    oOptions.forEach((sOption) => {
-                                        const oRadioButton = new sap.m.RadioButton({
-                                            text: sOption,
-                                            select: this.onRadioButtonSelect.bind(this)
-                                        });
-                                        oVBox.addItem(oRadioButton); // Add the radio button to the VBox
-                                    });
-                                }
-                                    .bind(this),
-                                error: function () {
-                                    MessageToast.show("User does not exist");
-                                }
-                            });
-                        }
-                            .bind(this),
-                        error: function () {
-                            MessageToast.show("User does not exist");
-                        }
-                    });
-               
-                    console.log(oQueueArray);
-
-                     this._oPopoverGt.openBy(oEvent.getSource());
-              
-                
+                                    oVBox.addItem(oRadioButton); // Add the radio button to the VBox
+                                });
+                            }
+                                .bind(this),
+                            error: function () {
+                                MessageToast.show("User does not exist");
+                            }
+                        });
+                    }
+                        .bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+                console.log(oQueueArray);
+                this._oPopoverGt.openBy(oEvent.getSource());
             },
 
 

@@ -27,6 +27,7 @@
                         icon="sap-icon://decline"
                         type="Transparent"
                         press="onPressDeclineProfileDetailsDailog"
+                        tooltip="Close"
                     />
                 </contentRight>
             </Bar>
