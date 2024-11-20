@@ -595,7 +595,7 @@
                                 <Input
                                     id="idInput_ProdDisc_WTQuerybyQueue"
                                     value=""
-                                    width="350px"
+                                    width="200px"
                                     editable="false"
                                     class="sapMInput sapUiSmallMarginBegin"
                                 />
@@ -613,7 +613,7 @@
                                 <Input
                                     id="idInput_Wo_WTQuerybyQueue"
                                     value=""
-                                    width="120px"
+                                    width="90px"
                                     editable="false"
                                     class="sapMInput"
                                 />
@@ -631,7 +631,7 @@
                                 <Input
                                     id="idInput_ESTP_WTQuerybyQueue"
                                     value=""
-                                    width="150px"
+                                    width="50px"
                                     editable="false"
                                     class="sapMInput sapUiTinyMarginEnd"
                                 />
@@ -662,14 +662,14 @@
                                 <Input
                                     id="idInput_Sqty_WTQuerybyQueue"
                                     value=""
-                                    width="120px"
+                                    width="50px"
                                     editable="false"
                                     class="sapMInput sapUiSmallMarginEnd"
                                 />
                                 <Input
                                     id="idInput21_WTQuerybyQueue"
                                     value=""
-                                    width="95px"
+                                    width="50px"
                                     editable="false"
                                     class="sapMInput"
                                 />

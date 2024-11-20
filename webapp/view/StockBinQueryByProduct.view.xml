@@ -80,7 +80,7 @@
                             >
                                 <Label
                                     id="idProductLabel_SBQP"
-                                    text="Product:"
+                                    text="{i18n>Label_Product_SBQbyP}"
                                     width="70px"
                                     class="sapUiTinyMargin sapUiTinyMarginBottom"
                                 />
@@ -89,6 +89,7 @@
                                     value=""
                                     liveChange="onpressProductsubmit"
                                     width="15rem"
+                                     placeholder="{i18n>Placeholder_SBQbyP}"
                                 />
                             </HBox>
                             <HBox
@@ -101,11 +102,11 @@
                                     id="_IDBinGenScanButton_SBQP"
                                     scanSuccess="onScanSuccessProduct"
                                     scanFail="onScanError"
-                                    dialogTitle="Barcode Scanner"
+                                    dialogTitle="{i18n>BarcodeScanner_SBQbyP}"
                                 />
                                 <Button
                                     id="idfirstbackbtn_SBQP"
-                                    text="Back"
+                                    text="{i18n>Button_Back_SBQbyP}"
                                     press="onSBQPfirstBackBtnPress"
                                     visible="true"
                                     tooltip="Back"
@@ -150,7 +151,7 @@
                         >
                             <Label
                                 id="idProductLabel1_SBQP"
-                                text="Product:"
+                                text="{i18n>Label_Product_SBQbyP}"
                                 width="70Px"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
@@ -189,7 +190,7 @@
                                     <OverflowToolbar id="idTableHeader_SBQP">
                                         <Title
                                             id="idTableHeaderTitle_SBQP"
-                                            text="Bin Details"
+                                            text="{i18n>Table_Title_SBQbyP}"
                                         />
                                         <ToolbarSpacer
                                             id="idTableHeaderSpacerem_SBQP"
@@ -199,11 +200,11 @@
                                             type="Emphasized"
                                             press="onSBQPSecondBackBtnPress"
                                             visible="false"
-                                            text="Back"
+                                            text="{i18n>Button_Back_SBQbyP}"
                                         />
                                         <Button
                                             id="idProductDescription_SBQP"
-                                            text="Prd De"
+                                            text="{i18n>Button_PrdDe_SBQbyP}"
                                             class="sapUiTinyMargin"
                                             press="onSBQPPreDePress"
                                             type="Emphasized"
@@ -214,19 +215,19 @@
                                     <Column id="idBinColumn_SBQP">
                                         <Text
                                             id="idBinText_SBQP"
-                                            text="Bin No"
+                                            text="{i18n>Text_Binno_SBQbyP}"
                                         />
                                     </Column>
                                     <Column id="idSBQPColumn_SBQP">
                                         <Text
                                             id="idSBQPText"
-                                            text="Stock"
+                                            text="{i18n>Text_Stock_SBQbyP}"
                                         />
                                     </Column>
                                     <Column id="idSBQPPcColumn_SBQP">
                                         <Text
                                             id="idSBQPPcText_SBQP"
-                                            text="UOM"
+                                            text="{i18n>Text_UoM_SBQbyP}"
                                         />
                                     </Column>
                                 </columns>
@@ -263,7 +264,7 @@
                     >
                         <Title
                             id="idTitle_SBQP"
-                            text="Product Description"
+                            text="{i18n>Title_Prode_SBQbyP}"
                             class="sapUiTinyMargin sapUiSmallMarginBottom"
                         />
                         <HBox id="idHbox6_SBQP">
@@ -276,7 +277,7 @@
                         <HBox id="idHbox7_SBQP">
                             <Label
                                 id="idEANLabel_SBQP"
-                                text="EAN/UPC:"
+                                text="{i18n>Label_EAN/UPC_SBQbyP}"
                                 width="70Px"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
@@ -301,7 +302,7 @@
                         <HBox id="idHbox8_SBQP">
                             <Label
                                 id="idTotWLabel_SBQP"
-                                text="TotW:"
+                                text="{i18n>Label_Totw_SBQbyP}"
                                 width="70Px"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
@@ -325,7 +326,7 @@
                         <HBox id="idHbox9_SBQP">
                             <Label
                                 id="idTotVLabel_SBQP"
-                                text="TotV:"
+                                text="{i18n>Label_TotV_SBQbyP}"
                                 width="70Px"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
@@ -354,7 +355,7 @@
                         >
                             <Button
                                 id="idThirdbackbtn_SBQP"
-                                text="Back"
+                                text="{i18n>Button_Back_SBQbyP}"
                                 type="Emphasized"
                                 press="onSBQPThirdBackBtnPress"
                                 visible="false"
@@ -395,16 +396,18 @@
                         >
                             <Title
                                 id="idTitle1_SBQP"
-                                text="Bin Details"
+                                text="{i18n>Title_BinDetails_SBQbyP}"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
+
+                            <!-- First HBox -->
                             <HBox
                                 id="idHbox11_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
                                 <Text
                                     id="idBinLabel_SBQP"
-                                    text="Bin:"
+                                    text="{i18n>Label_Bin_SBQbyP}"
                                     width="80px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
@@ -417,200 +420,206 @@
                                 />
                                 <Label
                                     id="IdLabel4_SBQP"
-                                    text=""
+                                    text=" "
                                     width="30px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Text
                                     id="idStorageTypeLabel_SBQP"
-                                    text="Storage Type:"
+                                    text="{i18n>Label_StorageType_SBQbyP}"
                                     width="90px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idStorageTypeInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="90px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                             </HBox>
 
+                            <!-- Second HBox -->
                             <HBox
                                 id="idHbox12_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
                                 <Text
                                     id="idQtyLabel_SBQP"
-                                    text="Qty:"
+                                    text="{i18n>Label_Qty_SBQbyP}"
                                     width="80px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idQtyInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="100px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel5_SBQP"
-                                    text=""
+                                    text=" "
                                     width="30px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Text
                                     id="idSSecLabel_SBQP"
-                                    text="Storage Sec:"
+                                    text="{i18n>Label_StorageSec_SBQbyP}"
                                     width="90px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idSSecinput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     class="sapMInputBinQuerybyProduct"
                                     width="90px"
                                 />
                             </HBox>
 
+                            <!-- Third HBox -->
                             <HBox
                                 id="idHbox13_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
                                 <Text
                                     id="idNoOfHuLabel_SBQP"
-                                    text="No of Hu's:"
+                                    text="{i18n>Label_NoOfHu_SBQbyP}"
                                     width="80px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idNoOfHuInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="100px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel6_SBQP"
-                                    text=""
+                                    text=" "
                                     width="30px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Text
                                     id="idBinAisleLabel_SBQP"
-                                    text="Bin Aisle:"
+                                    text="{i18n>Label_BinAisle_SBQbyP}"
                                     width="90px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idBinAisleinput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     class="sapMInputBinQuerybyProduct"
                                     width="90px"
                                 />
                             </HBox>
 
+                            <!-- Fourth HBox -->
                             <HBox
                                 id="idHbox14_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
                                 <Text
                                     id="idMaxWLabel_SBQP"
-                                    text="MaxW:"
+                                    text="{i18n>Label_MaxW_SBQbyP}"
                                     width="80px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idMaxWInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="40px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel7_SBQP"
-                                    text=""
+                                    text=" "
                                     width="20px"
                                 />
                                 <Input
                                     id="idUnitGwInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="40px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel8_SBQP"
-                                    text=""
+                                    text=" "
                                     width="30px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Text
                                     id="idBinLevelLabel_SBQP"
-                                    text="Bin Level:"
+                                    text="{i18n>Label_BinLevel_SBQbyP}"
                                     width="90px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idBinLevelinput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     class="sapMInputBinQuerybyProduct"
                                     width="90px"
                                 />
                             </HBox>
 
+                            <!-- Fifth HBox -->
                             <HBox
                                 id="idHbox15_SBQP"
                                 class="sapUiTinyMarginBottom"
                             >
                                 <Text
                                     id="idMaxVLabel_SBQP"
-                                    text="MaxV:"
+                                    text="{i18n>Label_MaxV_SBQbyP}"
                                     width="80px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idMaxVinput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="40px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel9_SBQP"
-                                    text=""
+                                    text=" "
                                     width="20px"
                                 />
                                 <Input
                                     id="idUnitGvInput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     width="40px"
                                     class="sapMInputBinQuerybyProduct"
                                 />
                                 <Label
                                     id="idLabel10_SBQP"
-                                    text=""
+                                    text=" "
                                     width="30px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Text
                                     id="idStackLabel_SBQP"
-                                    text="Stack:"
+                                    text="{i18n>Label_Stack_SBQbyP}"
                                     width="90px"
                                     class="sapUiTinyMarginTop sapMLabelBinQuerybyProduct"
                                 />
                                 <Input
                                     id="idStackinput_SBQP"
-                                    value=""
+                                    value=" "
                                     editable="false"
                                     class="sapMInputBinQuerybyProduct"
                                     width="90px"
                                 />
                             </HBox>
+
+                            <!-- Button -->
                             <HBox
                                 id="idHbox16_SBQP"
                                 justifyContent="Center"
@@ -622,7 +631,7 @@
                                     type="Emphasized"
                                     press="onSBQPFourthBackBtnPress"
                                     visible="false"
-                                    text="Back"
+                                    text="{i18n>Button_Back_SBQbyP}"
                                 />
                             </HBox>
                         </VBox>
