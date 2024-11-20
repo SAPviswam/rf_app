@@ -66,7 +66,7 @@
                         alignItems="Center"
                         height="100%"
                         class="paddingBox"
-                        visible="false"
+                        visible="true"
                     >
                         <VBox
                             id="idWhiteBorderBox_configPage"
@@ -194,7 +194,7 @@
                         columnsM="1"
                         width="auto"
                         title="Sign Up"
-                        visible="true"
+                        visible="false"
                     >
                         <Label
                             id="idUsserLabel_C"
