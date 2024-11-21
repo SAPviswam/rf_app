@@ -138,7 +138,7 @@
                 id="page2_SBQB"
                 width="100%"
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
@@ -206,6 +206,7 @@
                         selectionChange="onSelectmaterial"
                         growingThreshold="5"
                         growing="true"
+                        
                     >
                         <headerToolbar>
                             <OverflowToolbar id="idBinTableHeader">
@@ -259,7 +260,7 @@
                 id="page3_SBQB"
                 width="100%"
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
@@ -422,7 +423,8 @@
                                     id="idSBQBBinAisleInput"
                                     value=""
                                     editable="false"
-                                    width="125px"
+                                    width="120px"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInputUOM"
@@ -460,7 +462,8 @@
                                     id="idSBQBBinLevelInput"
                                     value=""
                                     editable="false"
-                                    width="125px"
+                                    width="120px"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBinLevelInputUOM"
