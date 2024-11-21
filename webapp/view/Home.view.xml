@@ -157,6 +157,7 @@
                                     <Button
                                         id="idBackBtnInPageHome"
                                         text="Back"
+                                        width="100%"
                                         type="Emphasized"
                                         press="onBackBtnInHomePage"
                                         visible="true"
@@ -165,6 +166,7 @@
                                      <Button
                                         id="idNextBtn_HomeView"
                                         text="{i18n>next}"
+                                        width="100%"
                                         type="Emphasized"
                                         press="onPressConnectButton"
                                         class="checkBoxforAutosave"
@@ -180,6 +182,7 @@
                                 >
                                     <Button
                                         id="idButtonSignUp"
+                                        width="100%"
                                         text="{i18n>createresource}"
                                         press="onPressSignupBtn"
                                         type="Transparent"
@@ -188,6 +191,7 @@
                                         id="idchangequeue"
                                         text="{i18n>changequeue}"
                                         type="Transparent"
+                                        width="100%"
                                         press="onChangeQueuePress"
                                     />
                                 </HBox>
@@ -311,13 +315,16 @@
                                     <Button
                                         id="idsignupcreateButton"
                                         text="{i18n>create}"
+                                        width="100%"
                                         press="oncreatesingupPress"
                                         type="Emphasized"
                                         class="sapUiTinyMarginEnd signupCreatebutton sapUiSmallMarginTop"
                                     />
+                                    <Text id="emptyText_HomeView" width="10px" />
                                     <Button
                                         id="idsignupcancelButton"
                                         text="{i18n>cancel}"
+                                        width="100%"
                                         press="oncancelsignupPress"
                                         type="Emphasized"
                                         visible="true"

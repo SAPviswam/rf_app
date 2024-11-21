@@ -52,19 +52,36 @@ sap.ui.define([
             // Language Change 
 
             onLanguageChange: function (oEvent) {
+                // Create a Busy Dialog instance
+                if (!this._oBusyDialog) {
+                    this._oBusyDialog = new sap.m.BusyDialog({
+                        text: "Please wait while we complete your request..."
+                    });
+                }
+
+                // Open the Busy Dialog
+                this._oBusyDialog.open();
+
                 // Get selected language from dropdown
                 var sSelectedLanguage = oEvent.getSource().getSelectedKey();
 
-                // Set the new language for the core configuration
-                sap.ui.getCore().getConfiguration().setLanguage(sSelectedLanguage);
+                // Simulate a short delay (if needed, such as for model reloading or any async operation)
+                setTimeout(function () {
+                    // Set the new language for the core configuration
+                    sap.ui.getCore().getConfiguration().setLanguage(sSelectedLanguage);
 
-                // Reload i18n model with the selected language
-                var oI18nModel = new sap.ui.model.resource.ResourceModel({
-                    bundleName: "com.app.rfapp.i18n.i18n",
-                    bundleLocale: sSelectedLanguage  // Set to selected language
-                });
-                this.getView().setModel(oI18nModel, "i18n");
+                    // Reload i18n model with the selected language
+                    var oI18nModel = new sap.ui.model.resource.ResourceModel({
+                        bundleName: "com.app.rfapp.i18n.i18n",
+                        bundleLocale: sSelectedLanguage // Set to selected language
+                    });
+                    this.getView().setModel(oI18nModel, "i18n");
+
+                    // Close the Busy Dialog
+                    this._oBusyDialog.close();
+                }.bind(this), 700);
             },
+
 
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
@@ -419,6 +436,7 @@ sap.ui.define([
                             this.arrayOfButton.forEach(element => {
                             });
                             // Delete from OData service
+                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             this.arrayOfClient.forEach(element => {
                                 var sPath = "/ServiceSet('" + element + "')";
