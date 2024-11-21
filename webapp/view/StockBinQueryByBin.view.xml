@@ -423,7 +423,8 @@
                                     id="idSBQBBinAisleInput"
                                     value=""
                                     editable="false"
-                                    width="125px"
+                                    width="120px"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInputUOM"
@@ -461,7 +462,8 @@
                                     id="idSBQBBinLevelInput"
                                     value=""
                                     editable="false"
-                                    width="125px"
+                                    width="120px"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBinLevelInputUOM"
