@@ -34,7 +34,7 @@
                 <Title
                     id="idTitle_HuQuery"
                     class="title"
-                    text="CAPmodel RF"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorAdhocHuquery"
@@ -97,7 +97,7 @@
                                 <!-- Scan HU Label -->
                                 <Text
                                     id="idScanHuLabel_HuQuery"
-                                    text="Scan HU :"
+                                    text="{i18n>Label_scanHu_HuQuery}"
                                     width="70px"
                                 />
                                 <!-- Input Field -->
@@ -111,7 +111,7 @@
                             <HBox id="idFirstScHbox2_HuQuery">
                                 <Button
                                     id="idFirstBackBtn_HuQuery"
-                                    text="Back"
+                                    text="{i18n>Button_Back1_HuQuery}"
                                     class="sapUiTinyMargin"
                                     press="onPressBackButtonFirstSC"
                                     type="Emphasized"
@@ -159,7 +159,7 @@
                             <HBox id="idSecScHbox1_HuQuery">
                                 <Text
                                     id="idHuLabel_HuQuery"
-                                    text="HU:"
+                                    text="{i18n>Label_Hu_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -175,7 +175,7 @@
                             <HBox id="idSecScHbox3_HuQuery">
                                 <Text
                                     id="idPackagingMaterialLabel_HuQuery"
-                                    text="PKMT:"
+                                    text="{i18n>Label_PKMT_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -191,7 +191,7 @@
                                 />
                                 <Text
                                     id="idHuTypeLabel_HuQuery"
-                                    text="Htype:"
+                                    text="{i18n>Label_Htype_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -206,7 +206,7 @@
                             <HBox id="idSecScHbox7_HuQuery">
                                 <Text
                                     id="idLocationLabel_HuQuery"
-                                    text="Bin:"
+                                    text="{i18n>Label_Bin_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -221,7 +221,7 @@
                                 />
                                 <Text
                                     id="idCGrpLabel_HuQuery"
-                                    text="CGrp:"
+                                    text="{i18n>Label_CGrp_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -234,7 +234,7 @@
                             <HBox id="idSecScHbox2_HuQuery">
                                 <Text
                                     id="idTotalWeightLabel_HuQuery"
-                                    text="TotW:"
+                                    text="{i18n>Label_TotW_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -256,7 +256,7 @@
                                 />
                                 <Text
                                     id="idVolumeLabel_HuQuery"
-                                    text="TotV:"
+                                    text="{i18n>Label_TotV_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -274,7 +274,7 @@
                             <HBox id="idSecScHbox8_HuQuery">
                                 <Text
                                     id="idTarWeightLabel_HuQuery"
-                                    text="TarW:"
+                                    text="{i18n>Label_TarW_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -291,7 +291,7 @@
                                 />
                                 <Text
                                     id="idTarVolumeLabel_HuQuery"
-                                    text="TarV:"
+                                    text="{i18n>Label_TarV_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -305,7 +305,7 @@
                              <HBox id="idSecScHbox6_HuQuery">
                                 <Text
                                     id="idMaxWeightLabel_HuQuery"
-                                    text="MaxW:"
+                                    text="{i18n>Label_MaxW_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -322,7 +322,7 @@
                                 />
                                 <Text
                                     id="idMaxVolumeLabel_HuQuery"
-                                    text="MaxV:"
+                                    text="{i18n>Label_MaxV_HuQuery}"
                                     width="50px"
                                 />
                                 <Input
@@ -342,7 +342,7 @@
 
                                 <Text
                                     id="idLengthLabel_HuQuery"
-                                    text="L:"
+                                    text="{i18n>Label_L_HuQuery}"
                                     width="20px"
                                 />
                                 <Input
@@ -356,7 +356,7 @@
                                 <!-- width -->
                                 <Text
                                     id="idWidthLabel_HuQuery"
-                                    text="W:"
+                                    text="{i18n>Label_W_HuQuery}"
                                     width="20px"
                                 />
                                 <Input
@@ -372,7 +372,7 @@
 
                                 <Text
                                     id="idHeightLabel_HuQuery"
-                                    text="H:"
+                                    text="{i18n>Label_H_HuQuery}"
                                     width="20px"
                                 />
                                 <Input
@@ -388,7 +388,7 @@
 
                                 <Text
                                     id="idUnitsLabel_HuQuery"
-                                    text="Units:"
+                                    text="{i18n>Label_Units_HuQuery}"
                                     width="40px"
                                 />
                                 <Input
@@ -413,19 +413,19 @@
                                     <Button
                                         id="idSecBackBtn_HuQuery"
                                         type="Emphasized"
-                                        text="Back"
+                                        text="{i18n>Button_Back1_HuQuery}"
                                         press="onPressBackButtonSecondSC"
                                         class="sapUiTinyMarginEnd"
                                     />
                                     <Button
                                         id="idHuContentBtn_HuQuery"
-                                        text="HU Content"
+                                        text="{i18n>Label_HuContent_HuQuery}"
                                         press="onHUContentPress"
                                         class="sapUiTinyMarginEnd"
                                     />
                                     <Button
                                         id="idHuHierarchyBtn_HuQuery"
-                                        text="HU Hierarchy"
+                                        text="{i18n>Label_HuHierarchy_HuQuery}"
                                         press="onHUHierarchyPress"
                                         class="sapUiTinyMarginEnd"
                                     />
@@ -452,7 +452,7 @@
                 >
                     <Button
                         id="idThirdBackBtn_HuQuery"
-                        text="Back"
+                        text="{i18n>Button_Back1_HuQuery}"
                         press="onPressBackButtonThirdSC"
                         type="Emphasized"
                     />
@@ -464,6 +464,7 @@
                     width="100%"
                     growingScrollToLoad="true"
                     mode="None"
+                  
                 >
                     <headerToolbar>
                         <OverflowToolbar id="idOverflowToolBar_HuQuery">
@@ -484,37 +485,37 @@
                         >
                             <Text
                                 id="idSnoText_HuQuery"
-                                text="S.No"
+                                text="{i18n>Col_SNo_HuQuery}"
                             />
                         </Column>
                         <Column id="idProductCol_HuQuery">
                             <Text
                                 id="idProductText_HuQuery"
-                                text="Product"
+                                text="{i18n>col_Product_HuQuery}"
                             />
                         </Column>
                         <Column id="idQuanCol_HuQuery">
                             <Text
                                 id="idQuanText_HuQuery"
-                                text="Quantity"
+                                text="{i18n>col_Quantity_HuQuery}"
                             />
                         </Column>
                         <Column id="idUomCol_HuQuery">
                             <Text
                                 id="idUomText_HuQuery"
-                                text="UOM"
+                                text="{i18n>col_UOM_HuQuery}"
                             />
                         </Column>
                         <Column id="idPrDesCol_HuQuery">
                             <Text
                                 id="idPrDesText_HuQuery"
-                                text="Product Description"
+                                text="{i18n>col_ProductDescription_HuQuery}"
                             />
                         </Column>
                     </columns>
 
                     <items>
-                        <ColumnListItem id="idColListItem_HuQuery">
+                        <ColumnListItem id="idColListItem_HuQuery" type="Navigation">
                             <cells>
                                 <Text
                                     id="idSerialNoText_HuQuery"
@@ -558,7 +559,7 @@
                 >
                     <Button
                         id="idFourthBackBtn_HuQuery"
-                        text="Back"
+                        text="{i18n>Button_Back1_HuQuery}"
                         class=""
                         press="onPressBackButtonFourthSC"
                         type="Emphasized"
@@ -590,7 +591,7 @@
                             <header>
                                 <Text
                                     id="idSnoLabel_HuQuery"
-                                    text="S.No"
+                                    text="{i18n>Col_SNo_HuQuery}"
                                 />
                             </header>
                         </Column>
@@ -598,7 +599,7 @@
                             <header>
                                 <Text
                                     id="idHlHuLabel_HuQuery"
-                                    text="Higher Level HU"
+                                    text="{i18n>col_HigherLevelHU_HuQuery}"
                                 />
                             </header>
                         </Column>
@@ -606,7 +607,7 @@
                             <header>
                                 <Text
                                     id="idHlestHuLabel_HuQuery"
-                                    text="Highest Level HU"
+                                    text="{i18n>col_HighestLevelHU_HuQuery}"
                                 />
                             </header>
                         </Column>
@@ -616,6 +617,7 @@
                         <ColumnListItem
                             id="idColumListItem_HuQuery"
                             navigated="true"
+                            type="Navigation"
                         >
                             <cells>
                                 <Text

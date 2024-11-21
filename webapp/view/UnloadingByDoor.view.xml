@@ -73,7 +73,7 @@
                 >
                     <Title
                         id="idPageTitle_UBYD"
-                        text="Unloading By Door"
+                        text="{i18n>UnloadingByDoor_title_UBD}"
                         level="H2"
                     />
                     <f:SimpleForm
@@ -101,11 +101,11 @@
                         >
                             <Label
                                 id="_IDGenLabel1_UBYD"
-                                text="Warehouse Door:"
+                                text="{i18n>WarehouseDoor_Lbl_UBD}"
                             />
                             <Input
                                 id="_IDGenInput1_UBYD"
-                                placeholder="Enter Door Number"
+                                placeholder="{i18n>EnterDoorNumber_PlaceHldr_UBD}"
                                 class="sapUiTinyMarginBegin"
                             />
 
@@ -121,7 +121,7 @@
                             <!-- Submit Button -->
                             <Button
                                 id="_IDGenButton111_UBYD"
-                                text="Submit"
+                                text="{i18n>Submit_Btn_UBD}"
                                 class="sapUiTinyMarginBegin"
                                 press="Onpresssubmit"
                             />
@@ -169,57 +169,56 @@
                 >
                     <Label
                         id="_IDGenLabel2_UBYD"
-                        text="Delivery"
+                        text="{i18n>Delivery_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
-                    <HBox id="idHBx__UBYCONORDR" >
-                    <Input
-                        id="_IDGenInt2_UBYCONORDR"
-                        placeholder="Enter Delivery"
-                        maxLength="25"
-                        width="115px"
-                    />
-                         <Label
-                        id="idItemNoLal_UBYCONORDR"
-                        text="Item No:"
-                        class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
-                    />
-                    <Input
-                        id="idItemNoIt_UBYCONORDR"
-                        placeholder="Enter Item No"
-                        width="115px"
-                    />
-
+                    <HBox id="idHBx__UBYCONORDR">
+                        <Input
+                            id="_IDGenInt2_UBYCONORDR"
+                            placeholder="{i18n>EnterDelivery_PlaceHldr_UBD}"
+                            maxLength="25"
+                            width="115px"
+                        />
+                        <Label
+                            id="idItemNoLal_UBYCONORDR"
+                            text="{i18n>ItemNo_Lbl_UBD}"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idItemNoIt_UBYCONORDR"
+                            placeholder="{i18n>EnterItemNo_PlaceHldr_UBD}"
+                            width="115px"
+                        />
                     </HBox>
                     <Label
                         id="_IDGenLabel3_UBYD"
-                        text="Vendor"
+                        text="{i18n>Vendo_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput3_UBYD"
-                        placeholder="Enter Vendor"
+                        placeholder="{i18n>EnterVendor_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel4_UBYD"
-                        text="No. of HU"
+                        text="{i18n>Noof_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput4_UBYD"
-                        placeholder="Enter No. of HU"
+                        placeholder="{i18n>EnterNHU_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel5_UBYD"
-                        text="HU"
+                        text="{i18n>HU_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput5_UBYD"
-                        placeholder="Enter HU"
+                        placeholder="{i18n>EnterHU_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
@@ -230,19 +229,19 @@
                         >
                             <Button
                                 id="huListButton_UBYD"
-                                text="HU List"
+                                text="{i18n>HUList_Btn_UBD}"
                                 press="onHUListPress"
                                 class="sapUiTinyMarginEnd"
                             />
                             <Button
                                 id="newHUButton_UBYD"
-                                text="New HU"
+                                text="{i18n>NewHU_Btn_UBD}"
                                 class="sapUiTinyMarginEnd"
                                 press="onNewHUPress"
                             />
                             <Button
                                 id="newHUButton3_UBYD"
-                                text="GR"
+                                text="{i18n>GR_Btn_UBD}"
                                 press="onGRRPress"
                             />
                         </HBox>
@@ -253,13 +252,13 @@
                         >
                             <Button
                                 id="_IDGenButton1_UBYD"
-                                text="HU Change"
+                                text="{i18n>HUChange_Btn_UBD}"
                                 press="onHUContentPress"
                                 class="sapUiTinyMarginEnd"
                             />
                             <Button
                                 id="_IDGenButton2_UBYD"
-                                text="Unload"
+                                text="{i18n>Unload_Btn_UBD}"
                                 press="onHUHierarchyPress"
                             />
                         </HBox>
@@ -300,37 +299,37 @@
                             >
                                 <Text
                                     id="_IDGenText1_UBYD"
-                                    text="S.No"
+                                    text="{i18n>SNo_TblClm_UBD}"
                                 />
                             </Column>
                             <Column id="_IDGenColumn2_UBYD">
                                 <Text
                                     id="_IDGenText2_UBYD"
-                                    text="HU No"
+                                    text="{i18n>HUNo_TblClm_UBD}"
                                 />
                             </Column>
                             <Column id="_IDGenColumn3_UBYD">
                                 <Text
                                     id="_IDGenText3_UBYD"
-                                    text="Product"
+                                    text="{i18n>Product_TblClm_UBD}"
                                 />
                             </Column>
                             <Column id="_IDGenColumn4_UBYD">
                                 <Text
                                     id="_IDGenText4_UBYD"
-                                    text="Product Description"
+                                    text="{i18n>ProductDes_TblClm_UBD}"
                                 />
                             </Column>
                             <Column id="_IDGenColumn5_UBYD">
                                 <Text
                                     id="_IDGenText5_UBYD"
-                                    text="Qty"
+                                    text="{i18n>Qty_TblClm_UBD}"
                                 />
                             </Column>
                             <Column id="_IDGenColumn6_UBYD">
                                 <Text
                                     id="_IDGenText66_UBYD"
-                                    text="UOM"
+                                    text="{i18n>UOM_TblClm_UBD}"
                                 />
                             </Column>
                         </columns>
@@ -407,116 +406,116 @@
                 >
                     <Label
                         id="_IDGenLabel22_UBYD"
-                        text="Product"
+                        text="{i18n>Product_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="_IDGenInput22_UBYD"
-                        placeholder="Enter Product"
+                        placeholder="{i18n>EnterProduct_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="idItemNoLabel2_UBYD"
-                        text="Qty"
+                        text="{i18n>Qty_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <HBox id="idItemNosd_UBYD">
                         <Input
                             id="idItemNoInput2_UBYD"
-                            placeholder="Enter Qty"
+                            placeholder="{i18n>EnterQty_PlaceHldr_UBD}"
                             width="120px"
                         />
 
                         <Label
                             id="idItemNoLab8el_UBYD"
-                            text="UOM:"
+                            text="{i18n>UOM_Lbl_UBD}"
                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <Input
                             id="idItemNoInp5ut_UBYD"
-                            placeholder="Enter UOM"
+                            placeholder="{i18n>EnterUOM_PlaceHldr_UBD}"
                             width="129px"
                         />
                     </HBox>
 
                     <Label
                         id="_IDGenLabel32_UBYD"
-                        text="Packaging Material"
+                        text="{i18n>PackagingMaterial_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput32_UBYD"
-                        placeholder="Enter Packaging Material"
+                        placeholder="{i18n>EnterPackMat_PLaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel42_UBYD"
-                        text="Batch"
+                        text="{i18n>Batch_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput42_UBYD"
-                        placeholder="Enter Batch"
+                        placeholder="{i18n>EnterBatch_PLaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel427_UBYD"
-                        text="BBD"
+                        text="{i18n>BBD_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput423_UBYD"
-                        placeholder="Enter BBD"
+                        placeholder="{i18n>EnterBBD_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel422_UBYD"
-                        text="Man"
+                        text="{i18n>Man_Lbl_UBD}"
                     />
                     <HBox id="idItemNd_UBYD">
                         <Input
                             id="_IDGenInput432_UBYD"
-                            placeholder="Enter Man"
+                            placeholder="{i18n>EnterManPlaceHldr_UBD}"
                             maxLength="25"
                             width="120px"
                         />
 
                         <Label
                             id="idItemNoLab99el_UBYD"
-                            text="Expiry:"
+                            text="{i18n>Expiry_Lbl_UBD}"
                             class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop"
                         />
                         <Input
                             id="idItemNoI8nput_UBYD"
-                            placeholder="Enter Expiry"
+                            placeholder="{i18n>EnterExpiry_PlaceHldr_UBD}"
                             width="122px"
                         />
                     </HBox>
 
                     <Label
                         id="_IDGenLabel4211_UBYD"
-                        text="Coo"
+                        text="{i18n>Coo_Lbl_UBD}"
                     />
                     <Input
                         id="_IDGenInput422_UBYD"
-                        placeholder="Enter Coo"
+                        placeholder="{i18n>EnterCoo_PlaceHldr_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="_IDGenLabel4225_UBYD"
-                        text="Man"
+                        text="{i18n>Man_Lbl_UBD}"
                         visible="false"
                     />
                     <Input
                         id="_IDGenInput4532_UBYD"
-                        placeholder="Enter Man"
+                        placeholder="{i18n>EnterManPlaceHldr_UBD}"
                         maxLength="25"
                         visible="false"
                         width="300px"
@@ -529,7 +528,7 @@
                     >
                         <Button
                             id="idNextEnterpress_UBYD"
-                            text="Next (or) Enter"
+                            text="{i18n>NextEnter_Btn_UBD}"
                             class="sapUiTinyMarginEnd"
                             press="onNextEnterpress"
                         />
@@ -537,6 +536,7 @@
                 </f:SimpleForm>
             </ScrollContainer>
 
+            <!-- Test -->
             <ScrollContainer
                 id="icon5_UBYD"
                 width="100%"
@@ -571,34 +571,34 @@
                 >
                     <Label
                         id="_IDGenLabel442_UBYD"
-                        text="HU       "
+                        text="{i18n>HU_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="_IDGenInput3442_UBYD"
-                        placeholder="Enter HU"
+                        placeholder="{i18n>Enter_HU_Placeholder_UBD}"
                         maxLength="25"
                         width="300px"
                     />
                     <Label
                         id="idItemNo23Label_UBYD"
-                        text="Delivery"
+                        text="{i18n>Delivery_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
-                     <HBox id="idItesmNo_UBYCONORDR">
+                    <HBox id="idItesmNo_UBYCONORDR">
                         <Input
                             id="idIteasmNoI233nput_UBYCONORDR"
-                            placeholder="Delivery"
+                            placeholder="{i18n>Delivery_Placeholder_UBD}"
                             width="130px"
                         />
                         <Label
                             id="idItemLdel_UBYCONORDR"
-                            text="Item No:"
+                            text="{i18n>ItemNo_Lbl_UBD}"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                         />
                         <Input
                             id="idItem3npsut_UBYCONORDR"
-                            placeholder="Item No"
+                            placeholder="{i18n>ItemNo_Placeholder_UBD}"
                             width="110px"
                         />
                     </HBox>
@@ -608,13 +608,13 @@
                     >
                         <Button
                             id="newHUButton3123_UBYD"
-                            text="GR"
+                            text="{i18n>GR_Btn_UBD}"
                             press="onGRPress"
                         />
 
                         <Button
                             id="_IDGenButton_UBYD"
-                            text="Unload"
+                            text="{i18n>Unload_Btn_UBD}"
                             press="onUnloadPress"
                             width="100px"
                         />
@@ -656,31 +656,31 @@
                 >
                     <Label
                         id="_IDGenLabel444562_UBYD"
-                        text="Product"
+                        text="{i18n>Product_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="_IDGenInput312442_UBYD"
-                        placeholder="Enter product"
+                        placeholder="{i18n>Enter_Product_Placeholder_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Label
                         id="idItemNo23L12abel_UBYD"
-                        text="Quantity"
+                        text="{i18n>Quantity_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="idItemNoI233np12ut_UBYD"
-                        placeholder="Enter Quantity"
+                        placeholder="{i18n>Enter_Quantity_Placeholder_UBD}"
                         maxLength="25"
                         width="300px"
                     />
 
                     <Button
                         id="newHUButto123n3123_UBYD"
-                        text="GR"
+                        text="{i18n>GR_Btn_UBD}"
                         press="onGRPress"
                         width="100px"
                     />
@@ -720,29 +720,28 @@
                 >
                     <Label
                         id="_IDGen123Label444562_UBYD"
-                        text="Product"
+                        text="{i18n>Product_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="_IDGenInp234ut312442_UBYD"
-                        placeholder="Enter product"
+                        placeholder="{i18n>Enter_Product_Placeholder_UBD}"
                         maxLength="25"
                         width="300px"
                     />
-
                     <Label
                         id="idItem123No23L12abel_UBYD"
-                        text="Quantity"
+                        text="{i18n>Quantity_Lbl_UBD}"
                         class="sapUiTinyMarginEnd"
                     />
                     <Input
                         id="idIt1234emNoI233np12ut_UBYD"
-                        placeholder="Enter Quantity"
+                        placeholder="{i18n>Enter_Quantity_Placeholder_UBD}"
                         width="300px"
                     />
                     <Button
                         id="new345HUButto123n3123_UBYD"
-                        text="Unload"
+                        text="{i18n>Unload_Btn_UBD}"
                         press="onUnloadPress1"
                         width="100px"
                     />

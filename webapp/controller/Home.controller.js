@@ -15,9 +15,6 @@ sap.ui.define([
 
         return Controller.extend("com.app.rfapp.controller.Home", {
             onInit: function () {
-                //Profile image updating(from BaseController)...
-                this.applyStoredProfileImage();
-                
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
                 console.log(this.isTablet)
@@ -34,19 +31,19 @@ sap.ui.define([
                 }
 
                 if (Device.system.tablet) {
-                   // this.getView().byId("idVBoxGif_HomeView").addStyleClass("VboxGifTab");
-                   // this.getView().byId("idhboxFields_HomeView").addStyleClass("VboxRfLoginTab");
-                   //this.getView().byId("idMainContentVBox_HomeView").setVisible(true);
-                   this.getView().byId("idVBoxGif_HomeViewTab").setVisible(true);
-                   this.getView().byId("idVBoxGif_HomeView").setVisible(false);
-                   // this.getView().byId("idVBoxGif_HomeViewTab").addStyleClass("imageVboxForTab");
+                    // this.getView().byId("idVBoxGif_HomeView").addStyleClass("VboxGifTab");
+                    // this.getView().byId("idhboxFields_HomeView").addStyleClass("VboxRfLoginTab");
+                    //this.getView().byId("idMainContentVBox_HomeView").setVisible(true);
+                    this.getView().byId("idVBoxGif_HomeViewTab").setVisible(true);
+                    this.getView().byId("idVBoxGif_HomeView").setVisible(false);
+                    // this.getView().byId("idVBoxGif_HomeViewTab").addStyleClass("imageVboxForTab");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("TextVboxForTab");
                     this.getView().byId("IdMainVbox_HomeView").addStyleClass("VboxForTab");
                     this.getView().byId("idVBoxInputFields_HomeView").addStyleClass("TextBoxForTab_HomeView");
                     this.getView().byId("createResourceVbox").addStyleClass("createResourceVboxForTab_HomeView")
-                   
+
                 }
-                else if(Device.system.phone){
+                else if (Device.system.phone) {
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("rfLoginVboxMobile");
                     this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
@@ -54,7 +51,7 @@ sap.ui.define([
                     this.getView().byId("idVBoxInputFields_HomeView").addStyleClass("rflogin_mobile_Home");
                     this.getView().byId("createResourceVbox").addStyleClass("createResource_mobile_home")
                 }
-                else{
+                else {
                     this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("ConfigBtnsHbox");
                 }
@@ -106,7 +103,7 @@ sap.ui.define([
                 // else {
                 //     this.byId("environmentButtonsHBoxHome").setWidth("23%");
                 // }
-                
+
             },
             //Profile click function..
             onHomePageAvatarPressed: function (oEvent) {
@@ -121,6 +118,7 @@ sap.ui.define([
                     showAccountDetails: true,
                     showSignOut: true
                 });
+                //Profile image updating(from BaseController)...
                 this.applyStoredProfileImage();
             },
             onSelectCheckBox: function (oEvent) {
@@ -150,13 +148,14 @@ sap.ui.define([
                 await oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         var oUserId = this.getView().byId("idUserIDInput").setValue(oData.Resourcename)
-                        oUserId.setEditable(false)  
+                        oUserId.setEditable(false)
                     }.bind(this),
                     error: function () {
-                        
+
                     }
                 });
-               
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
             },
             //             onPressAutoSaveBtn: function (oEvent) {
             //                 var isChecked = oEvent.getParameter("selected");
@@ -250,10 +249,10 @@ sap.ui.define([
 
                                     if (oUser === "supervisor") {
 
-                                        that.getRouter().navTo("Supervisor", { id: sResourceId },true);
+                                        that.getRouter().navTo("Supervisor", { id: sResourceId }, true);
                                     }
                                     else {
-                                        that.getRouter().navTo("RouteResourcePage", { id: sResourceId },true);
+                                        that.getRouter().navTo("RouteResourcePage", { id: sResourceId }, true);
                                     }
 
                                 }
@@ -299,13 +298,13 @@ sap.ui.define([
             //     }
             // },
 
-            onPressSignupBtn:function(){
+            onPressSignupBtn: function () {
                 this.getView().byId("idVBoxInputFields_HomeView").setVisible(false);
                 this.getView().byId("createResourceVbox").setVisible(true);
 
             },
 
-            oncancelsignupPress:function(){
+            oncancelsignupPress: function () {
                 this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
                 this.getView().byId("createResourceVbox").setVisible(false);
 
@@ -752,7 +751,7 @@ sap.ui.define([
                 oRouter.navTo("InitialScreen", { id: this.ID });
 
             },
-            onChangeQueuePress:function(){
+            onChangeQueuePress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CHANGEQUEUE", { id: this.ID });
             }

@@ -133,9 +133,13 @@
                 height="100%"
                 horizontal="true"
                 vertical="true"
+                visible="false"
             >
                 <VBox id="idVBoxBinNumberta_ble_HUSOQ">
-                    <HBox id="idBinNumber_HBox_HUSOQ">
+                    <HBox
+                        id="idBinNumber_HBox_HUSOQ"
+                        class="Buttons_HUSOQ"
+                    >
                         <Label
                             id="idBinNumber_Lable_HUSOQ"
                             text="{i18n>HU_Label_HUSOQ}"
@@ -163,30 +167,37 @@
                             editable="false"
                         />
                     </HBox>
-                        <OverflowToolbar id="idSlotsTabdfleHeader1">
-                                   <Title
-                            id="Title1__HUSOQ11"
-                        />
-                                    <ToolbarSpacer id="IDGenToolbar__HUSOQ" />
-                                     <Button
+
+
+                    <HBox
+                        id="idHbox45_HUSOQ"
+                        class="Buttons_HUSOQ sapUiMediumMarginTop"
+                        justifyContent="End"
+                    >
+                        <Button
+
                             id="idHUStockOverviewQuerySecondbackbtn_HUSOQ"
                             text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
                             press="onHUStockOverviewQuerySecondBackBtnPress"
                             visible="false"
+                            class = "sapUiTinyMarginEnd"
                         />
                         <Button
                             id="Buttonid"
                             press="onPressHUQueryList"
                             text="{i18n>Hu_query_List_button_HUSOQ}"
                         />
-                                </OverflowToolbar>
+
+                    </HBox>
+
                     <Table
                         id="idBinNumberTableInput_HUSOQ"
                         selectionChange="onSelectionChange"
                         growingScrollToLoad="true"
                         growing="true"
                         width="100%"
+                        class="table_HuStockOverview"
                     >
                         <columns>
                             <Column id="IDGenColumn001_HUSOQ">
@@ -246,7 +257,10 @@
                 visible="false"
             >
                 <VBox id="idVBoxBinNumbertable_HUSOQ">
-                    <HBox id="idBinNumberHBox_HUSOQ">
+
+                    <HBox id="idBinNumberHBox_HUSOQ"
+                           class = "Buttons_HUSOQ">
+
                         <Label
                             id="idBinNumberLable_HUSOQ"
                             text="{i18n>HU_Label_HUSOQ}"
@@ -273,38 +287,45 @@
                             editable="false"
                         />
                     </HBox>
-                    <Toolbar
-                        id="TB4_HUSOQ11"
-                        class="HeaderToolBar"
+                    <HBox
+                        id="idHbox46_HUSOQ"
+                        class="Buttons_HUSOQ sapUiLargeMarginTop"
+                        justifyContent="End"
+                        
                     >
-                        <ToolbarSpacer id="IDGenToolbar_HUSOQ" />
                         <Button
                             id="idHUStockOverviewQueryThirdbackbtn_HUSOQ"
                             text="{i18n>Back_button_HUSOQ}"
                             type="Emphasized"
                             press="onHUStockOverviewQueryThirdBackBtnPress"
                             visible="false"
+                            class = "sapUiTinyMarginEnd"
                         />
                         <Button
                             id="buttonid1"
                             press="onPressHUINformationPress"
                             text="{i18n>HU_Information_button_HUSOQ}"
+                            class = "sapUiTinyMarginEnd"
                         />
-                        <Button
+                        <!-- <Button
                             id="buttonid2"
                             press="onPressHUQuerystockprodinfoPress"
                             text="{i18n>HU_Query_Stock}"
-                        />
+                            class = "sapUiTinyMarginEnd"
+                        /> -->
                         <Button
                             id="buttonid3_HUSOQ"
                             press="onTopHupress"
                             text="{i18n>Top_HU_Button_HUSOQ}"
                         />
-                    </Toolbar>
+                    </HBox>
+
                     <Table
                         id="idTable_HUSOQ"
                         width="100%"
                         selectionChange="onSelectionChange"
+                        class="table_HuStockOverview"
+
                     >
                         <columns>
                             <Column id="IDGenColumn005_HUSOQ">
@@ -1040,7 +1061,7 @@
                                     id="spacerLabel9"
                                 />
                                 <Input
-                                    width="290px"
+                                    width="100px"
                                     id="inputMisc2"
                                     editable="false"
                                 />

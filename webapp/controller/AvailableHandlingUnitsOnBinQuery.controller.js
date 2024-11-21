@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        //"sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/Device"
     
     ],
@@ -17,7 +18,8 @@ sap.ui.define(
 
 
                 if (Device.system.phone) {
-                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("175%");
+                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");
+                    this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("MobileviewTable_HUSOQ");
                    
                 }
             },
@@ -106,6 +108,8 @@ sap.ui.define(
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
             },
 
             onAfterRendering: function () {

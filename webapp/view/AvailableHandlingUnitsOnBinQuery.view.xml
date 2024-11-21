@@ -41,7 +41,7 @@
                 <Avatar
                     id="_IDGenAvatar1_AHUOBQ"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarAHUOBQ"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -131,14 +131,15 @@
 
             <ScrollContainer
                 id="idPage2BinNoTable_AHUOBQ"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
                 <VBox id="idVBoxBinNumbertable_AHUOBQ">
-                    <HBox id="idBinNumberHBox_AHUOBQ">
+                    <HBox id="idBinNumberHBox_AHUOBQ"
+                           class = "Buttons_HUSOQ">
                         <Label
                             id="idBinNumberLable_AHUOBQ"
                             text="{i18n>Bin_Number_Table_AHUBQ}"
@@ -150,22 +151,25 @@
                             editable="false"
                         />
                     </HBox>
-                    <Toolbar
-                        id="TB4_AHUOBQ"
-                        class="HeaderToolBar"
+                   <HBox
+                        id="idHbox46_AHUOBQ"
+                        class="Buttons_HUSOQ sapUiLargeMarginTop"
+                        justifyContent="End"
+                        
                     >
-                        <ToolbarSpacer id="IDToolbarsapcer_AHUOBQ" />
                         <Button
                             id="idBackBtn2_AHUOBQ"
                             press="onBackPressBinNumbersTable"
                             text="{i18n>Back_button_AHUBQ}"
                             type="Emphasized"
+                            class = "sapUiTinyMarginEnd"
                         />
                         <Button
                             id="idBtnProductDescription_AHUOBQ"
                             text="{i18n>productdescription_button_AHUBQ}"
                             press="onPressProductDescriptionBtn"
                             tooltip="Prod Description"
+                            class = "sapUiTinyMarginEnd"
                         />
                         <Button
                             id="idBtnHUContentBtn_AHUOBQ"
@@ -173,14 +177,15 @@
                             press="onPressHUContentBtn"
                             tooltip="HU Content"
                         />
-                    </Toolbar>
+                    </HBox>
                     <Table
                         id="idBinNumTable_AHUOBQ"
                         width="100%"
                         mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
-                          growingScrollToLoad="true"
-                            growing="true"
+                        growingScrollToLoad="true"
+                        growing="true"
+                        class="table_HuStockOverview"
                         
                     >
 
