@@ -168,6 +168,14 @@
 <Property Name="ConfBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="CUsr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Numwt" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WTs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
+<EntityType Name="LogonServiceRel" sap:content-version="1">
+<Key>
+<PropertyRef Name="Userid"/>
+<PropertyRef Name="Client"/>
+</Key>
+<Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="User id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
 <EntityType Name="RESOURCES" sap:content-version="1">
 <Key>
 <PropertyRef Name="Resourceid"/>
@@ -210,11 +218,14 @@
 </EntityType>
 <EntityType Name="APP_LOGON_DETAILS" sap:content-version="1">
 <Key>
-<PropertyRef Name="Username"/>
+<PropertyRef Name="Userid"/>
 </Key>
-<Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="resource name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="PASSWORD" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="EMAIL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="User id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Password" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Firstname" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="First name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Email" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="EMAIL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Lastname" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Last name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Phonenumber" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Phone Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="Hudetails" sap:content-version="1">
 <Key>
@@ -242,13 +253,13 @@
 <PropertyRef Name="Tophu"/>
 <PropertyRef Name="HuidentI"/>
 </Key>
-<Property Name="Pmat" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Pack. Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Tophu" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Letyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="HTyp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Vlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="SrcBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Tophu" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Pmat" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Pack. Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Nlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="DstBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Vlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="SrcBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Itemno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Item Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Nlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="DstBin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="HuidentI" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Altme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Alternatve Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
@@ -320,8 +331,8 @@
 <Key>
 <PropertyRef Name="Who"/>
 </Key>
-<Property Name="Who" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="WO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="WO Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Who" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="WO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CreatedAt" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Numwt" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="WTs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -666,6 +677,7 @@
 <EntitySet Name="ProductItemSet" EntityType="ZEWM_RFUI_SRV_01.ProductItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="SerialNoLocationSet" EntityType="ZEWM_RFUI_SRV_01.SerialNoLocation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="WarehouseTaskNewSet" EntityType="ZEWM_RFUI_SRV_01.WarehouseTaskNew" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+<EntitySet Name="LogonServiceRelSet" EntityType="ZEWM_RFUI_SRV_01.LogonServiceRel" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="RESOURCESSet" EntityType="ZEWM_RFUI_SRV_01.RESOURCES" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="Configure_SystemSet" EntityType="ZEWM_RFUI_SRV_01.Configure_System" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 <EntitySet Name="APP_LOGON_DETAILSSet" EntityType="ZEWM_RFUI_SRV_01.APP_LOGON_DETAILS" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>

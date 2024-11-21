@@ -108,7 +108,7 @@
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
                                     scanFail="onScanError_AHUOBQ"
-                                   visible="true"
+                                    visible="true"
                                     dialogTitle="Enter Bin Number:"
                                     class="sapUiTinyMargin"
                                 />
