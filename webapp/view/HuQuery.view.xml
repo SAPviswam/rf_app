@@ -103,7 +103,7 @@
                                 <!-- Input Field -->
                                 <Input
                                     id="idScanHuInput_HuQuery"
-                                    placeholder="Enter HU..."
+                                    placeholder="{i18n>Input_EnterHU_HuQuery}"
                                     class="sapUiTinyMarginBegin"
                                     liveChange="onLiveHuValidation"
                                 />
@@ -164,7 +164,7 @@
                                 />
                                 <Input
                                     id="idHuInput_HuQuery"
-                                    placeholder="HU Number..."
+                                    placeholder="{i18n>Input_HUNumber_HuQuery}"
                                     maxLength="25"
                                     width="150px"
                                     editable="false"
@@ -180,7 +180,7 @@
                                 />
                                 <Input
                                     id="idPackagingMaterialInput_HuQuery"
-                                    placeholder="Packaging Material"
+                                    placeholder="{i18n>Input_PKMT_HuQuery}"
                                     width="150px"
                                      editable="false"
                                 />
@@ -196,7 +196,7 @@
                                 />
                                 <Input
                                     id="idHuTypeInput_HuQuery"
-                                    placeholder="Enter HU Type..."
+                                    placeholder="{i18n>Input_HUType_HuQuery}"
                                     maxLength="25"
                                     width="150px"
                                      editable="false"
@@ -211,9 +211,9 @@
                                 />
                                 <Input
                                     id="idLocInput_HuQuery"
-                                    placeholder="Enter Location..."
+                                    placeholder="{i18n>Input_Location_HuQuery}"
                                     width="150px"
-                                     editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="idEmptyText_HuQuery"
@@ -226,7 +226,7 @@
                                 />
                                 <Input
                                     id="idCGrpInput_HuQuery"
-                                    placeholder="Enter cgrp..."
+                                    placeholder="{i18n>Input_cgrp_HuQuery}"
                                     width="150px"
                                     editable="false"
                                 />
@@ -239,7 +239,7 @@
                                 />
                                 <Input
                                     id="idTotalWeightInput_HuQuery"
-                                    placeholder="Total Weight"
+                                    placeholder="{i18n>Input_TotW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
                                      editable="false"
@@ -261,14 +261,14 @@
                                 />
                                 <Input
                                     id="idVolumeInput_HuQuery"
-                                    placeholder="Enter Volume..."
+                                    placeholder="{i18n>Input_Volume_HuQuery}"
                                     width="100px"
                                      editable="false"
                                 />
                                 <Input
                                     id="idVolumeInput2_HuQuery"
                                     width="50px"
-                                     editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox8_HuQuery">
@@ -279,10 +279,10 @@
                                 />
                                 <Input
                                     id="idTarWeightInput_HuQuery"
-                                    placeholder="tarW"
+                                    placeholder="{i18n>Input_TarW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
 
                                 <Text
@@ -296,9 +296,9 @@
                                 />
                                 <Input
                                     id="idTarVInput_HuQuery"
-                                    placeholder="Tar Volume"
+                                    placeholder="{i18n>Input_TarVolume_HuQuery}"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
                             </HBox>
 
@@ -307,13 +307,14 @@
                                     id="idMaxWeightLabel_HuQuery"
                                     text="{i18n>Label_MaxW_HuQuery}"
                                     width="50px"
+                                    
                                 />
                                 <Input
                                     id="idMaxWeightInput_HuQuery"
-                                    placeholder="MaxW"
+                                    placeholder="{i18n>Input_MaxW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
 
                                 <Text
@@ -327,7 +328,7 @@
                                 />
                                 <Input
                                     id="idmaxVInput_HuQuery"
-                                    placeholder="Max Volume."
+                                    placeholder="{i18n>Input_MaxV_HuQuery}"
                                     width="100px"
                                      editable="false"
                                 />
@@ -347,11 +348,11 @@
                                 />
                                 <Input
                                     id="idLenInput_HuQuery"
-                                    placeholder="Enter Length..."
+                                    placeholder="{i18n>Input_L_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
-                                     editable="false"
+                                    editable="false"
                                 />
                                 <!-- width -->
                                 <Text
@@ -361,7 +362,7 @@
                                 />
                                 <Input
                                     id="idWidthInput_HuQuery"
-                                    placeholder="Enter Width..."
+                                    placeholder="{i18n>Input_width_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                      editable="false"
@@ -377,7 +378,7 @@
                                 />
                                 <Input
                                     id="idHeightInput_HuQuery"
-                                    placeholder="Enter Height..."
+                                    placeholder="{i18n>Input_Height_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
@@ -393,7 +394,7 @@
                                 />
                                 <Input
                                     id="idUnitsInput_HuQuery"
-                                    placeholder=""
+                                    placeholder="{i18n>Input_units_HuQuery}"
                                     maxLength="13"
                                     width="40px"
                                      editable="false"
