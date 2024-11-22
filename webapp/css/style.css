@@ -1877,3 +1877,49 @@ margin-right: 20%;
 
 
 
+/* config login view for mobile  */
+@media only screen and (max-width: 600px) {
+    /* Adjust whiteBox for mobile view */
+    .whiteBorderBox {
+        width: 90%; /* Adjust width to fit mobile screen */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 1rem; /* Add some padding for better spacing */
+        margin-top: 70%; /* Moves the whiteBox down */
+    }
+    
+    /* Adjust padding for the surrounding container */
+    .paddingBox {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    /* Center and adjust font size for the title */
+    .loginTitle {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        text-align: center; /* Ensure title remains centered */
+    }
+    
+    /* Adjust label and input widths for better alignment */
+    .inputRow Text {
+        width: 30%; /* Adjust label width to fit screen */
+    }
+
+    .inputRow Input {
+        width: 65%; /* Adjust input field width */
+    }
+
+    /* Adjust button spacing and size */
+    .sapMBtn {
+        width: 100%; /* Full width buttons on mobile */
+    }
+    
+    /* Ensure overall container is centered and responsive */
+    .contentContainer {
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 0.5rem; /* Reduce padding for compact screens */
+    }
+
+    /* Add scroll behavior for overflow */
+    body {
+        overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
+    }
+}

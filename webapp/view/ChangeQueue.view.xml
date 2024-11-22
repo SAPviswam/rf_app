@@ -11,10 +11,8 @@
 >
     <tnt:ToolPage id="idToolPage_changeQueue">
         <!-- Header section -->
-        <!-- Header section -->
         <tnt:header>
             <tnt:ToolHeader id="idToolHeader_changeQueue">
-                <!-- Artihcus Logo -->
                 <!-- Artihcus Logo -->
                 <Image
                     id="idArtihcusLogo_changeQueue"
@@ -25,7 +23,7 @@
                 <!-- capModel RF Title -->
                 <Title
                     id="idCapModelRfTitle_changeQueue"
-                    text="{i18n>CAP_Title}"
+                    text="CAPmodel RF"
                     class="title"
                 />
                 <tnt:ToolHeaderUtilitySeparator
@@ -44,7 +42,7 @@
                 <Avatar
                     id="idAvatar_changeQueue"
                     displaySize="XS"
-                    tooltip="{i18n>Prf_Ttip_IV}"
+                    tooltip="Profile"
                     press="onHomePageAvatarPressed"
                 />
             </tnt:ToolHeader>
@@ -59,79 +57,87 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+                <HBox
+                    id="idHboxTitle_changeQueue"
+                    class="floatingTitle sapUiSmallMarginLeft"
+                    justifyContent="SpaceBetween"
+                >
+                    <Title
+                        id="idAssignedQueueTitle_changeQueue"
+                        text="Assigned Queue"
+                        class="sapUiTinyMarginTop sapUiSmallMarginLeft"
+                    />
+                    <HBox id="idHboxButtons_changeQueue">
+                        <Button
+                            id="idAddBtn_changeQueue"
+                            text="Add"
+                            type="Emphasized"
+                            press="onAddQueueBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <!-- Delete button -->
+                        <Button
+                            id="idDeleteBtn_changeQueue"
+                            icon="sap-icon://delete"
+                            tooltip="Delete Queue"
+                            type="Reject"
+                            press="onDeleteQueueBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <!-- Back button -->
+                        <Button
+                            id="idBackBtn_changeQueue"
+                            text="Back"
+                            type="Emphasized"
+                            press="onBackBtnPress_changeQueue"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </HBox>
+                </HBox>
+
                 <!-- Queues Table -->
                 <Table
                     id="idAssignedQueueTable_changeQueue"
                     mode="MultiSelect"
+                    width="100%"
                     alternateRowColors="true"
+                    items="{/resources}"
+                    class="sapUiMediumMarginTop"
                 >
-                    <headerToolbar>
-                        <OverflowToolbar id="idOverflowToolbar_changeQueue">
-                            <!-- title -->
-                            <Title
-                                id="idAssignedQueueTitle_changeQueue"
-                                text="Assigned Queue/Work Center"
-                            />
-
-                            <ToolbarSpacer id="idToolbarSpacer_changeQueue" />
-                            <!-- Add button -->
-                            <Button
-                                id="idAddBtn_changeQueue"
-                                text="{i18n>add_Des_IV}"
-                                type="Emphasized"
-                                press="onAddQueueBtnPress_changeQueue"
-                            />
-                            <!-- Refresh button -->
-                            <Button
-                                id="idRefreshBtn_changeQueue"
-                                icon="sap-icon://refresh"
-                                tooltip="{i18n>RefreshQueue_Btn_CQ}"
-                                type="Emphasized"
-                                press="onRefreshBtnPress_changeQueue"
-                            />
-
-                            <!-- Edit button -->
-                            <Button
-                                id="idEditBtn_changeQueue"
-                                icon="sap-icon://edit"
-                                tooltip="{i18n>EditQueue_Ttip_CQ}"
-                                type="Emphasized"
-                                press="onEditQueueBtnPress_changeQueue"
-                            />
-
-                            <!-- Delete button -->
-                            <Button
-                                id="idDeleteBtn_changeQueue"
-                                icon="sap-icon://delete"
-                                tooltip="{i18n>DeleteQueueTtp_CQ}"
-                                type="Reject"
-                                press="onDeleteQueueBtnPress_changeQueue"
-                            />
-
-                            <!-- Back button -->
-                            <Button
-                                id="idBackBtn_changeQueue"
-                                text="{i18n>Back_Btn_QC}"
-                                type="Emphasized"
-                                press="onBackBtnInHomePage"
-                            />
-                        </OverflowToolbar>
-                    </headerToolbar>
                     <!-- columns -->
                     <columns>
-                        <Column id="idAreaCol_changeQueue">
+                    <Column
+                            id="idSlonoCol_changeQueue"
+                            width="40%"
+                        >
+                            <Title
+                                id="idSlonoTitle_changeQueue"
+                                text="Sl.no"
+                            />
+                        </Column>
+                        <Column
+                            id="idAreaCol_changeQueue"
+                            width="40%"
+                        >
                             <Title
                                 id="idAreaTitle_changeQueue"
                                 text="Area"
                             />
                         </Column>
-                        <Column id="idGroupCol_changeQueue">
+                        <Column
+                            id="idGroupCol_changeQueue"
+                            width="70%"
+                        >
                             <Title
                                 id="idGroupTitle_changeQueue"
                                 text="Group"
                             />
                         </Column>
-                        <Column id="idQueueCol_changeQueue">
+                        <Column
+                            id="idQueueCol_changeQueue"
+                            width="90%"
+                        >
                             <Title
                                 id="idQueueTitle_changeQueue"
                                 text="Queue"
@@ -142,9 +148,22 @@
                     <items>
                         <ColumnListItem id="idColListItem_changeQueue">
                             <cells>
-                                <Text id="idAreaText_changeQueue" />
-                                <Text id="idGroupText_changeQueue" />
-                                <Text id="idChangeText_changeQueue" />
+                            <Text
+                                    id="idASlonoText_changeQueue"
+                                    text="{Slno}"
+                                />
+                                <Text
+                                    id="idAreaText_changeQueue"
+                                    text="{Area}"
+                                />
+                                <Text
+                                    id="idGroupText_changeQueue"
+                                    text="{Group}"
+                                />
+                                <Text
+                                    id="idChangeText_changeQueue"
+                                    text="{Queue}"
+                                />
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -172,11 +191,23 @@
                                         text="Add new Queue"
                                     />
                                 </f:heading>
+                                <!-- Back button in the title section -->
+                                <f:actions>
+                                    <Button
+                                        id="idBackBtnWizard_changeQueue"
+                                        icon="sap-icon://nav-back"
+                                        text="Back"
+                                        press="onBackPressInWizard"
+                                        type="Emphasized"
+                                    />
+                                </f:actions>
                             </f:DynamicPageTitle>
                         </f:title>
+
                         <!-- DynamicPage Header -->
                         <f:content>
                             <!-- Area wizards -->
+
                             <Wizard
                                 id="idProcesstWizard_changeQueue"
                                 class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
@@ -188,7 +219,7 @@
                                     id="idProcessAreaWizard_changeQueue"
                                     nextStep="ProcessGroupStep"
                                     title="Select Process Area"
-                                    icon="sap-icon://cart"
+                                    icon="sap-icon://slim-arrow-right"
                                 >
                                     <!-- list for area -->
                                     <List
@@ -219,7 +250,7 @@
                                     id="idProcessGroupStep_changeQueue"
                                     title="Select Process Group"
                                     nextStep="ProcessQueueStep"
-                                    icon="sap-icon://money-bills"
+                                    icon="sap-icon://open-command-field"
                                 >
                                     <!-- list for process area -->
                                     <List
@@ -249,7 +280,7 @@
                                 <WizardStep
                                     id="idProcessQueueStep_changeQueue"
                                     title="Select Queue"
-                                    icon="sap-icon://credit-card"
+                                    icon="sap-icon://process"
                                 >
                                     <List
                                         id="idProcessQueueList_changeQueue"
@@ -268,8 +299,15 @@
                                     </List>
                                     <!-- list for Queue -->
                                     <Button
+                                        id="idSubmitBtn_changeQueue"
+                                        class="sapUiSmallMarginEnd"
                                         text="Submit"
                                         press="OnSubmitPress"
+                                    />
+                                    <Button
+                                        id="idClearBtn_changeQueue"
+                                        text="Clear"
+                                        press="OnClearPress_changeQueue"
                                     />
                                 </WizardStep>
                             </Wizard>

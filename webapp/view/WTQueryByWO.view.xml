@@ -65,7 +65,7 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idWtQBWoFirstSC"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
@@ -134,7 +134,7 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhSecondsc"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 width="100%"
                 height="100%"
