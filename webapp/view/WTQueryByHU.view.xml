@@ -373,6 +373,10 @@
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/Acty}"
                                 />
+                                 <Label
+                                    id="idSampleLabel122in_WTQBYHU"
+                                    width="5px"
+                                />
                                 <Input
                                     id="idInputActy2In_WTQBYHU"
                                     width="10rem"
