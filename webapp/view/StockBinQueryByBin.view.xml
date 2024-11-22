@@ -123,7 +123,7 @@
                                 />
                                 <Button
                                     id="idNavBacktoHome"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToHome"
                                     class="sapUiTinyMarginBegin"
@@ -213,19 +213,19 @@
                                 <ToolbarSpacer id="idTableHeaderSpacer" />
                                 <Button
                                     id="idNavBacktoBin"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToBin"
                                 />
                                 <Button
                                     id="idBinDetailsButton"
-                                    text="BinDe"
+                                    text="{i18n>BinDe_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinDetails"
                                 />
                                 <Button
                                     id="idListButton"
-                                    text="HU List"
+                                    text="{i18n>HUList_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressList"
                                 />
@@ -631,7 +631,7 @@
                                 >
                                     <Button
                                         id="idNavBacktoBinProductDetaails"
-                                        text="Back"
+                                        text="{i18n>Back_Btn_SBQBB}"
                                         type="Emphasized"
                                         press="onPressBinBacktoProductDetaails"
                                     />
@@ -686,7 +686,7 @@
                         <HBox id="idHbox_StockBinQuerybyBin12">
                             <Label
                                 id="_IDListBinDetailsGenLabel_SBQB"
-                                text="Bin:"
+                                text="{i18n>Bin_Label_SBQBB}:"
                                 class="sapUiTinyMarginTop"
                                 width="50px"
                             />
@@ -714,7 +714,7 @@
                                 <ToolbarSpacer id="idTableHeaderSpacer1" />
                                 <Button
                                     id="idNavBacktoList"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBackfromBinList"
                                 />
@@ -724,19 +724,19 @@
                             <Column id="idHUCol">
                                 <Title
                                     id="idHUTitle"
-                                    text="HU.No"
+                                    text="{i18n>HUno_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idListProductCol">
                                 <Title
                                     id="idListProductTitle"
-                                    text="HU Type"
+                                    text="{i18n>HUtype_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idListflagCol">
                                 <Title
                                     id="idListFlagTitle"
-                                    text="open WT"
+                                    text="{i18n>Openwt_TABCloumName_SBQBB}"
                                 />
                             </Column>
                         </columns>
@@ -1049,7 +1049,7 @@
                                 >
                                     <Button
                                         id="idBackButton_BinQBin"
-                                        text="Back"
+                                        text="{i18n>Back_Btn_SBQBB}"
                                         type="Emphasized"
                                         press="onPressBackfromView"
                                     />
