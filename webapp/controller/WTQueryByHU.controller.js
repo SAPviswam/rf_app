@@ -186,11 +186,6 @@ sap.ui.define(
         this.getView().byId("idPage3WTDetails_WTQBYHU").setVisible(false);
       },
 
-      // Back button logic for navigating to previous screens
-      // onBackPressHUNumbersTable: function () {
-      //   this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
-      //   this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
-      // },
 
       // Screen 4 Back button logic for navigating to previous screens
       onBackPressBtnProductDetails_WTQBYHU: function () {
@@ -273,20 +268,12 @@ sap.ui.define(
         }
       },
 
-      // // Show warehouse task details when the corresponding button is pressed
-      // onPressWTBtnPage2_WTQBYHU: function () {
-      //   var oScrollContainer2 = this.byId("idPage2HUNumberTable_WTQBYHU");
-      //   var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
-      //   oScrollContainer2.setVisible(false); // Hide the HU number table
-      //   oScrollContainer3.setVisible(true); // Show the WT details
-      // },
 
       // Show product details from the WT details view
       onBtnDetailPressPage3_WTQBYHU: function () {
-        var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
-        var oScrollContainer4 = this.byId("idPage4ProductDescription_WTQBYHU");
-        oScrollContainer3.setVisible(false); // Hide the WT details
-        oScrollContainer4.setVisible(true); // Show the product details
+  
+        this.byId("idPage3WTDetails_WTQBYHU").setVisible(false);
+        this.byId("idPage4ProductDescription_WTQBYHU").setVisible(true);
       },
 
       // Handle successful scan events
