@@ -3,7 +3,7 @@ sap.ui.define(
     //"sap/ui/core/mvc/Controller",
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-   "sap/m/MessageToast"
+    "sap/m/MessageToast"
   ],
   function (BaseController, JSONModel, MessageToast) {
     "use strict";
@@ -48,7 +48,7 @@ sap.ui.define(
             H_Type: "",
             Wh_HU: ""
           },
-    
+
         });
 
         // Set the local model to the view
@@ -59,10 +59,10 @@ sap.ui.define(
       onPressAvatarWTQBYHU: function (oEvent) {
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
-     
-      onBeforeRendering:function(){
-        this.onPressBackButtonSecondSC();
-      },
+
+      // onBeforeRendering: function () {
+      //   this.onPressBackButtonSecondSC();
+      // },
 
       // Load resource details based on the router event
       onResourceDetailsLoad: async function (oEvent1) {
@@ -173,15 +173,15 @@ sap.ui.define(
         this.clear();
       },
 
-       // back button logic in screen 2 Navigate back to the scanner form
-       onPressBackButtonSecondSC: function () {
+      // back button logic in screen 2 Navigate back to the scanner form
+      onPressBackButtonSecondSC: function () {
         this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
         this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
         this.clear();
       },
 
-       // back button logic in screen 3.
-       onBackPressBtnWTDetails_WTQBYHU: function () {
+      // back button logic in screen 3.
+      onBackPressBtnWTDetails_WTQBYHU: function () {
         this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
         this.getView().byId("idPage3WTDetails_WTQBYHU").setVisible(false);
       },
@@ -191,7 +191,7 @@ sap.ui.define(
       //   this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
       //   this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
       // },
-      
+
       // Screen 4 Back button logic for navigating to previous screens
       onBackPressBtnProductDetails_WTQBYHU: function () {
         this.getView().byId("idPage4ProductDescription_WTQBYHU").setVisible(false);
@@ -222,55 +222,55 @@ sap.ui.define(
       tableContentDisplay: async function (oHuValue, status) {
         var that = this;
         var oModel = this.getOwnerComponent().getModel();
-        if(oHuValue){
-        await oModel.read(`/HUWTHSet('${oHuValue}')`, {
-          urlParameters: {
-            "$expand": "HUtoWT",
-            "$format": "json"
-          },
-          success: function (odata) {
-            if(odata.HUtoWT.results.length>0){
+        if (oHuValue) {
+          await oModel.read(`/HUWTHSet('${oHuValue}')`, {
+            urlParameters: {
+              "$expand": "HUtoWT",
+              "$format": "json"
+            },
+            success: function (odata) {
+              if (odata.HUtoWT.results.length > 0) {
 
-            
-            // If HU exists, populate the input field and filter tasks based on status
-            that.getView().byId("idHUNumberInput_WTQBYHU").setValue(odata.Huident);
-            let oDetails = odata.HUtoWT.results;
-            if (status === "Open") {
-              oDetails = oDetails.filter(item => item.Tostat === "");
-            } else if (status === "Conf") {
-              oDetails = oDetails.filter(item => item.Tostat === "C");
-            }
 
-            // Prepare an array for binding to the table
-            var aProductDetails = [];
-            for (var i = 0; i < oDetails.length; i++) {
-              aProductDetails.push({
-                WT: oDetails[i].Tanum,
-                WTS: oDetails[i].Tostat
-              });
-            }
-            that.getView().byId("idInputWTS_WTQBYHU").setValue(oDetails.length);
-            // Create a JSON model with the product details array
-            var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-            that.byId("idHUNumTable_WTQBYHU").setModel(oProductModel); // Set the model to the table
+                // If HU exists, populate the input field and filter tasks based on status
+                that.getView().byId("idHUNumberInput_WTQBYHU").setValue(odata.Huident);
+                let oDetails = odata.HUtoWT.results;
+                if (status === "Open") {
+                  oDetails = oDetails.filter(item => item.Tostat === "");
+                } else if (status === "Conf") {
+                  oDetails = oDetails.filter(item => item.Tostat === "C");
+                }
 
-            // Show the HU number table
-            that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
-            that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
-          }
-                                                 else {
+                // Prepare an array for binding to the table
+                var aProductDetails = [];
+                for (var i = 0; i < oDetails.length; i++) {
+                  aProductDetails.push({
+                    WT: oDetails[i].Tanum,
+                    WTS: oDetails[i].Tostat
+                  });
+                }
+                that.getView().byId("idInputWTS_WTQBYHU").setValue(oDetails.length);
+                // Create a JSON model with the product details array
+                var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
+                that.byId("idHUNumTable_WTQBYHU").setModel(oProductModel); // Set the model to the table
+
+                // Show the HU number table
+                that.byId("idPage1ScannerFormBox_WTQBYHU").setVisible(false);
+                that.byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
+              }
+              else {
                 MessageToast.show("Please enter correct Hu")
               }
-        },
-          error: function (oError) {
-            // Handle error if HU is not found
-                                                    MessageToast.show("Please enter correct Hu")
-          }
-        });
-                                                }
-                                                 else {
+            },
+            error: function (oError) {
+              // Handle error if HU is not found
+              MessageToast.show("Please enter correct Hu")
+            }
+          });
+        }
+        else {
           MessageToast.show("Please enter correct Hu");
-                                                }
+        }
       },
 
       // // Show warehouse task details when the corresponding button is pressed
