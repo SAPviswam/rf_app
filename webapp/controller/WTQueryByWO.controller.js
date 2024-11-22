@@ -348,6 +348,7 @@ sap.ui.define(
                             oView.byId("idWtQBWOwoInput").setValue(odata.Who);
                             oView.byId("idWtQBWOEstpInput").setValue(oSelectedWT.Procs);
                             oView.byId("idWtQBWOSqtyInput").setValue(oSelectedWT.Vsola);
+                            oView.byId("idWtQBWOBtchInput").setValue(oSelectedWT.Charg);
                             oView.byId("idWtQBWOPcInput").setValue(oSelectedWT.Altme);
                             oView.byId("idWtQBWOOwnerInput").setValue(oSelectedWT.Owner);
                             oView.byId("idWtQBWOPEntInput").setValue(oSelectedWT.Entitled);
