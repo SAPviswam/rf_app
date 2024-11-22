@@ -95,7 +95,7 @@ sap.ui.define(
                 // Populate local model with the warehouse task details
                 oPayload.WarehouseTask.WT = element.Tanum;
                 oPayload.WarehouseTask.WTIt = element.Tapos;
-                oPayload.WarehouseTask.WTs = element.Numwt;
+                oPayload.WarehouseTask.WTs = odata.HUtoWT.results.length;
                 oPayload.WarehouseTask.Sts = element.Tostat;
                 oPayload.WarehouseTask.Ptyp = element.Procty;
                 oPayload.WarehouseTask.Spro = element.Prces;
