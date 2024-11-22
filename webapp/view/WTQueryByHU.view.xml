@@ -85,7 +85,7 @@
                                 id="idInputWTQueryByHU_WTQBYHU"
                                 placeholder="{i18n>Input_Hu_WtQbHu}"
                                 liveChange="onLiveChange"
-                                width="120%"
+                                width="100%"
                             />
                         </HBox>
 
@@ -258,7 +258,7 @@
                 height="100%"
                 width="100%"
                 class="sapUiContentPadding"
-                visible="true"
+                visible="false"
             >
                 <VBox
                     id="idVBoxThirdScreen_WTQBYHU"
@@ -514,7 +514,7 @@
                 height="100%"
                 width="100%"
                 class="sapUiContentPadding"
-                visible="false"
+               visible="false"
             >
                 <VBox
                     id="idVboxScreen4In_WTQBYHU"
