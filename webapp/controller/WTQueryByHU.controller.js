@@ -48,21 +48,18 @@ sap.ui.define(
             H_Type: "",
             Wh_HU: ""
           },
+    
         });
 
         // Set the local model to the view
         this.getView().setModel(oLocalModel, "localModel");
+        this.onPressBackButtonSecondSC();
       },
       //Avata Press function with Helper function...
       onPressAvatarWTQBYHU: function (oEvent) {
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
-      // Navigate back to the scanner form
-      onPressBackButtonSecondSC: function () {
-        this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
-        this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
-        this.clear();
-      },
+     
       onBeforeRendering:function(){
         this.onPressBackButtonSecondSC();
       },
@@ -97,7 +94,7 @@ sap.ui.define(
                 // Populate local model with the warehouse task details
                 oPayload.WarehouseTask.WT = element.Tanum;
                 oPayload.WarehouseTask.WTIt = element.Tapos;
-                oPayload.WarehouseTask.WTs = element.Numwt;
+                oPayload.WarehouseTask.WTs = odata.HUtoWT.results.length;
                 oPayload.WarehouseTask.Sts = element.Tostat;
                 oPayload.WarehouseTask.Ptyp = element.Procty;
                 oPayload.WarehouseTask.Spro = element.Prces;
@@ -176,28 +173,30 @@ sap.ui.define(
         this.clear();
       },
 
+       // back button logic in screen 2 Navigate back to the scanner form
+       onPressBackButtonSecondSC: function () {
+        this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
+        this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
+        this.clear();
+      },
+
+       // back button logic in screen 3.
+       onBackPressBtnWTDetails_WTQBYHU: function () {
+        this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(true);
+        this.getView().byId("idPage3WTDetails_WTQBYHU").setVisible(false);
+      },
+
       // Back button logic for navigating to previous screens
-      onBackPressHUNumbersTable: function () {
-        var oScrollContainer2 = this.byId("idPage2HUNumberTable_WTQBYHU");
-        var oScrollContainer1 = this.byId("idPage1ScannerFormBox_WTQBYHU");
-        oScrollContainer1.setVisible(true); // Show scanner form
-        oScrollContainer2.setVisible(false); // Hide HU numbers table
-      },
-
-      onBackPressBtnWTDetails_WTQBYHU: function () {
-        var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
-        var oScrollContainer2 = this.byId("idPage2HUNumberTable_WTQBYHU");
-        oScrollContainer2.setVisible(true); // Show WT details
-        oScrollContainer3.setVisible(false); // Hide WT detail view
-      },
-
+      // onBackPressHUNumbersTable: function () {
+      //   this.getView().byId("idPage1ScannerFormBox_WTQBYHU").setVisible(true);
+      //   this.getView().byId("idPage2HUNumberTable_WTQBYHU").setVisible(false);
+      // },
+      
+      // Screen 4 Back button logic for navigating to previous screens
       onBackPressBtnProductDetails_WTQBYHU: function () {
-        var oScrollContainer4 = this.byId("idPage4ProductDescription_WTQBYHU");
-        var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
-        oScrollContainer3.setVisible(true); // Show WT details
-        oScrollContainer4.setVisible(false); // Hide product details
+        this.getView().byId("idPage4ProductDescription_WTQBYHU").setVisible(false);
+        this.getView().byId("idPage3WTDetails_WTQBYHU").setVisible(true);
       },
-
 
       onLiveChange: async function () {
         var oHuValue = this.getView().byId("idInputWTQueryByHU_WTQBYHU").getValue();
@@ -214,7 +213,6 @@ sap.ui.define(
         var oHu = this.getView().byId("idHUNumberInput_WTQBYHU").getValue();
         this.tableContentDisplay(oHu, "Conf");
       },
-
       onWtQBQueueAllBtnPress: function () {
         var oHu = this.getView().byId("idHUNumberInput_WTQBYHU").getValue();
         this.tableContentDisplay(oHu, "All");
@@ -275,13 +273,13 @@ sap.ui.define(
                                                 }
       },
 
-      // Show warehouse task details when the corresponding button is pressed
-      onPressWTBtnPage2_WTQBYHU: function () {
-        var oScrollContainer2 = this.byId("idPage2HUNumberTable_WTQBYHU");
-        var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
-        oScrollContainer2.setVisible(false); // Hide the HU number table
-        oScrollContainer3.setVisible(true); // Show the WT details
-      },
+      // // Show warehouse task details when the corresponding button is pressed
+      // onPressWTBtnPage2_WTQBYHU: function () {
+      //   var oScrollContainer2 = this.byId("idPage2HUNumberTable_WTQBYHU");
+      //   var oScrollContainer3 = this.byId("idPage3WTDetails_WTQBYHU");
+      //   oScrollContainer2.setVisible(false); // Hide the HU number table
+      //   oScrollContainer3.setVisible(true); // Show the WT details
+      // },
 
       // Show product details from the WT details view
       onBtnDetailPressPage3_WTQBYHU: function () {
@@ -292,13 +290,11 @@ sap.ui.define(
       },
 
       // Handle successful scan events
-      // Handle successful scan events
       onScanSuccess: function (oEvent) {
         var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
         this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue(sScannedProduct); // Set the value in the input
         this.onLiveChange();
       },
- 
 
       clear: function () {
         this.getView().byId("idInputWTQueryByHU_WTQBYHU").setValue();
