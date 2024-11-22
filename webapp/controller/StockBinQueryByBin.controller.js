@@ -1,5 +1,6 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
+  //"sap/ui/core/mvc/Controller",
+  "./BaseController",
   "sap/ui/Device",
   "sap/m/MessageToast", // Import MessageToast for user feedback
   "sap/ui/core/UIComponent",
@@ -17,7 +18,11 @@ sap.ui.define([
       var that = this;
       const { id } = oEvent1.getParameter("arguments");
       this.ID = id;
+      this.applyStoredProfileImage();
     },
+    onPressAvatarSBQBB: function (oEvent) {     
+      this.onPressAvatarEveryTileHelperFunction(oEvent); 
+      },
     onPressBinBackToHome: async function () {
       var oRouter = UIComponent.getRouterFor(this);
       var oModel1 = this.getOwnerComponent().getModel();
@@ -75,9 +80,20 @@ sap.ui.define([
       if (sBinNumber === "DECON BIN") {
         sBinNumber = "DECON%20BIN";
       }
-      
+
       this.sBinNumber = sBinNumber;
 
+      // Clear any previous timeout for invalid Bin toast
+      if (this._timeoutIDForInvalidBin) {
+        clearTimeout(this._timeoutIDForInvalidBin);
+      }
+
+      // Set a new timeout to validate the Bin after 500ms (debounce)
+      this._timeoutIDForInvalidBin = setTimeout(function () {
+        this.onFetchBinDetails(sBinNumber);
+      }.bind(this), 500);
+    },
+    onFetchBinDetails: function (sBinNumber) {
       // Call your backend service to fetch products for this bin
       var oModel = this.getView().getModel(); // Assuming you have a model set up
       var that = this;
@@ -125,19 +141,34 @@ sap.ui.define([
                   new sap.m.Text({ text: "{Quan}" }),   // Quantity
                   new sap.m.Text({ text: "{Meins}" })   // UOM
                 ],
-                type: "Navigation",
-                press: [that.onSelectMaterial, that]
+               // type: "Navigation",
+              //  press: [that.onSelectMaterial, that]
               })
             });
             that.getView().byId("page1_SBQB").setVisible(false);
             that.getView().byId("page2_SBQB").setVisible(true);
-         }
+          }
+          else {
+            that.showInvalidBinMessageToast();
+          }
         },
         error: function () {
-          sap.m.MessageToast.show("Error fetching products.");
+          that.showInvalidBinMessageToast();
         }
       });
     },
+
+    showInvalidBinMessageToast: function () {
+      if (this._timeoutIDForInvalidQueueMessage) {
+        clearTimeout(this._timeoutIDForInvalidQueueMessage);
+      }
+
+      // Set a timeout for showing the message toast after 500ms (debounce)
+      this._timeoutIDForInvalidQueueMessage = setTimeout(function () {
+        sap.m.MessageToast.show("Please enter a valid Bin number.");
+      }, 500); // 500ms delay
+    },
+
     onPressBinDetails: function () {
       var oModel = this.getView().getModel(); // Assuming you have a model set up
       var that = this;

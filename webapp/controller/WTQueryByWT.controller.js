@@ -1,9 +1,10 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller", // Base controller for UI5 controllers
-        "sap/ui/core/UIComponent" // To access routing functionalities
+        "sap/ui/core/UIComponent", // To access routing functionalities
+        "sap/m/MessageToast"
     ],
-    function (BaseController, UIComponent) {
+    function (BaseController, UIComponent,MessageToast) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.WTQueryByWT", {
@@ -45,16 +46,24 @@ sap.ui.define(
 
             // Event handler for live change in the Warehouse Task (WT) input field (validates HU value)
             onWtQBWtWhLiveChange: function (oEvent) {
+                if(oEvent===this.getView().byId("idWtQBWtWhInput_WTQueryByWT").getValue()){
+                    var oHuValue=oEvent
+                }
+                else{
                 var oInput = oEvent.getSource(); // Get the input field that triggered the event
                 var oHuValue = oInput.getValue().trim(); // Get the HU value from the input and trim any whitespace
-
+                }
                 if (oHuValue) { // Proceed if the HU value is not empty
                     var oModel = this.getOwnerComponent().getModel(); // Get the OData model for making requests
                     var that = this; // Preserve the controller context for the success handler
 
                     // Call OData service to validate if the HU exists in the system
+                    setTimeout(function () {
                     oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
                         success: function (odata) {
+                            if(odata.Tanum===oHuValue){
+
+                          
                             // If HU exists, toggle screens and populate input fields with the retrieved data
                             that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false); // Hide the first screen
                             that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show the second screen
@@ -81,7 +90,7 @@ sap.ui.define(
                             let day = dateStr.slice(6, 8);
                             let formattedDate = `${year}-${month}-${day}`;
                             that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
-
+                            
                             // Calculate and format the ConfT time (from milliseconds)
                             let milliseconds = odata.ConfT.ms;
                             let hours = Math.floor(milliseconds / (1000 * 60 * 60));
@@ -92,28 +101,38 @@ sap.ui.define(
 
                             // Set the ConfBy user
                             that.getView().byId("idWtQBWtCusrInput_WTQueryByWT").setValue(odata.ConfBy);
+                            }
+                            else{
+                                MessageToast.show("Please Enter correct Warehouse task Number");
+                                this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true);
+                                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
+                            }
                         },
                         error: function (oError) {
                             // Handle error if HU not found
+                            MessageToast.show("Please Enter correct Warehouse task Number")
                         }
+                   
                     });
+                }.bind(this), 2000); 
                 }
 
                 // Toggle visibility of screens (no action if HU is empty)
-                this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false);
-                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true);
+                // this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false);
+                // this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true);
             },
 
             // Event handler for the second back button (returns to the first screen)
             onPressSecondBackButton: function () {
                 this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false); // Hide second screen
                 this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true); // Show first screen
+                this.clear();
             },
 
             // Event handler for the button to view more details of the warehouse task
             onWtQBWtDetailBtnPress: function () {
                 var oHuValue = this.getView().byId("idWtQBWtwtInput_WTQueryByWT").getValue(); // Get HU value from input
-
+debugger
                 if (oHuValue) { // Proceed if HU value is available
                     var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                     var that = this; // Preserve controller context for success handler
@@ -121,6 +140,7 @@ sap.ui.define(
                     // Call OData service to validate and retrieve data for the given HU
                     oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
                         success: function (odata) {
+                            debugger
                             // If HU exists, toggle screens and populate fields with data
                             that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false); // Hide second screen
                             that.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(true); // Show third screen
@@ -136,6 +156,7 @@ sap.ui.define(
                             that.getView().byId("idWtQBWtSqtyInput_WTQueryByWT").setValue(odata.Vsola);
                             that.getView().byId("idWtQBWtPcInput_WTQueryByWT").setValue(odata.Altme);
                             that.getView().byId("idWtQBWtHuWtInput_WTQueryByWT").setValue(odata.Flghuto);
+                            that.getView().byId("idWtQBWtBtchInput_WTQueryByWT").setValue(odata.Charg);
                         },
                         error: function (oError) {
                             // Handle error if HU not found
@@ -152,7 +173,17 @@ sap.ui.define(
             onPressThirdBackButton: function () {
                 this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show second screen
                 this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(false); // Hide third screen
-            }
+            },
+
+             // Handle successful scan events
+      onScanSuccess: function (oEvent) {
+        var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
+        this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue(sScannedProduct); // Set the value in the input
+        this.onWtQBWtWhLiveChange(sScannedProduct);
+      },
+      clear: function () {
+        this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue();
+    },
         });
     }
 );

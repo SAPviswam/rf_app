@@ -1,15 +1,21 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
-        "sap/ui/core/UIComponent"
+        "sap/ui/core/UIComponent",
+        "sap/ui/Device"
     ],
-    function (BaseController, UIComponent) {
+    function (BaseController, UIComponent, Device) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.WTQueryByQueue", {
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
+
+                if (Device.system.phone) {
+                    this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
+
+                }
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
@@ -23,6 +29,7 @@ sap.ui.define(
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
                             oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            this.getView().byId("idWtQBQueueWhInput").setValue("")
                         }
                         else {
                             oRouter.navTo("Supervisor", { id: this.ID });
@@ -45,7 +52,16 @@ sap.ui.define(
                     sap.m.MessageToast.show("Please enter a WarehouseQueue");
                     return;
                 }
-                this.onFetchWareHouseTaskDetails(sWarehouseQueue);
+
+                // Clear any previous timeout for invalid warehouse queue toast
+                if (this._timeoutIDForInvalidQueue) {
+                    clearTimeout(this._timeoutIDForInvalidQueue);
+                }
+
+                // Set a new timeout to validate the warehouse queue after 500ms (debounce)
+                this._timeoutIDForInvalidQueue = setTimeout(function () {
+                    this.onFetchWareHouseTaskDetails(sWarehouseQueue);
+                }.bind(this), 500);
             },
 
             // Fetch warehouse task details once and store in a model
@@ -71,16 +87,32 @@ sap.ui.define(
                                 };
 
                                 that._filterAndBindWarehouseTasks(that, sWarehouseQueue, "all");
+                            } else {
+                                // Show an error message toast when the queue doesn't exist after a debounce timeout
+                                that._showInvalidWarehouseQueueMessageToast();
                             }
                         },
                         error: function () {
-                            sap.m.MessageToast.show("Error fetching warehouse tasks.");
+                            // Show an error message toast in case of backend failure
+                            that._showInvalidWarehouseQueueMessageToast();
                         }
                     });
                 } else {
                     // Data already exists, directly apply the filter
                     that._filterAndBindWarehouseTasks(that, sWarehouseQueue, "all");
                 }
+            },
+
+            // Helper function to show the error message toast with debouncing
+            _showInvalidWarehouseQueueMessageToast: function () {
+                if (this._timeoutIDForInvalidQueueMessage) {
+                    clearTimeout(this._timeoutIDForInvalidQueueMessage);
+                }
+
+                // Set a timeout for showing the message toast after 500ms (debounce)
+                this._timeoutIDForInvalidQueueMessage = setTimeout(function () {
+                    sap.m.MessageToast.show("Please enter a valid Warehouse Queue.");
+                }, 500); // 500ms delay
             },
 
             // Reusable function to filter and bind warehouse tasks based on status
@@ -93,7 +125,7 @@ sap.ui.define(
                 } else if (status === "confirmed") {
                     filteredTasks = this._oWarehouseData.tasks.filter(task => task.Tostat === 'C');
                 } else {
-                    filteredTasks = this._oWarehouseData.tasks; // For 'all', no filtering
+                    filteredTasks = this._oWarehouseData.tasks;
                 }
 
                 // Map filtered tasks to a simpler format
@@ -121,12 +153,13 @@ sap.ui.define(
                     })
                 });
 
-                // visibility of UI components based on filtered data
+                // Visibility of UI components based on filtered data
                 that.getView().byId("idWtQBQueueFirstSC").setVisible(false);
                 that.getView().byId("idWtQBQueueWhThirdsc").setVisible(true);
                 that.getView().byId("idWtQBQueuefirstbackbtn").setVisible(false);
                 that.getView().byId("IdButton_Back_WTQuerybyQueue").setVisible(true);
             },
+
 
             // Filter function for open tasks
             onOpenWTQuerybyQueue: function () {
@@ -179,6 +212,7 @@ sap.ui.define(
                     },
 
                     success: function (odata) {
+                        console.log(odata)
                         var aWarehousetask = odata.QueueNav.results;
                         var sSelectedWT = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("Tanum");
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
@@ -188,7 +222,10 @@ sap.ui.define(
                             debugger
                             oView.byId("idInput_WT_WTQuerybyQueue").setValue(oSelectedWT.Tanum);
                             oView.byId("idInput_WTit_WTQuerybyQueue").setValue(oSelectedWT.Tapos);
-                            oView.byId("idInput_WTs_WTQuerybyQueue").setValue(odata.Numwt);
+                            var value = oSelectedWT.Numwt;  
+                            var totaltasks = parseInt(value, 10);  
+                            oView.byId("idInput_WTs_WTQuerybyQueue").setValue(totaltasks);
+
                             oView.byId("idInput_STs_WTQuerybyQueue").setValue(oSelectedWT.Tostat);
                             oView.byId("idInput_STyp_WTQuerybyQueue").setValue(oSelectedWT.Trart);
                             oView.byId("idInput_PTyp_WTQuerybyQueue").setValue(oSelectedWT.Procty);  // Selected material number
@@ -207,7 +244,7 @@ sap.ui.define(
                             // Check if the rawDate is null or empty
                             if (!rawDate) {
                                 // If the date is invalid (null or empty), set formattedDateString to an empty string or a default value
-                                var formattedDateString = ""; 
+                                var formattedDateString = "";
                             } else {
                                 var year = rawDate.substring(0, 4);
                                 // Month is zero-indexed in JavaScript

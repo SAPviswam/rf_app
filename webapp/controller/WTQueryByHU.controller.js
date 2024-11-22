@@ -46,7 +46,7 @@ sap.ui.define(
             PEnt: "",
             HUWT: "",
             H_Type: "",
-            Wh_HU: "",
+            Wh_HU: ""
           },
         });
 
@@ -71,6 +71,8 @@ sap.ui.define(
       onResourceDetailsLoad: async function (oEvent1) {
         const { id } = oEvent1.getParameter("arguments");
         this.ID = id; // Store the resource ID for later use
+        //Profile image updating(from BaseController)...
+        this.applyStoredProfileImage();
       },
 
       // Handle selection of a specific warehouse task

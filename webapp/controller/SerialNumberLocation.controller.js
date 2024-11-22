@@ -56,7 +56,9 @@ sap.ui.define(
       
           // Perform the read operation
           oModel.read(sRequestUrl, {
+            
               success: function (odata) {
+                console.log(odata);
                   // Check the returned data
                   if (odata.Matnr40 === sProductNumber && odata.Serid === sSerialNumber) {
                       // Hide the first screen container and show the next screen
@@ -110,6 +112,8 @@ sap.ui.define(
                         let oUser=oData.Users.toLowerCase()
                         if(oUser ===  "resource"){
                             oRouter.navTo("RouteResourcePage",{id:this.ID});
+                            this.getView().byId("idproductInput_SNL").setValue("")
+                            this.getView().byId("idSerialNoInput_SNL").setValue("")
                         }
                         else{
                         oRouter.navTo("Supervisor",{id:this.ID});
