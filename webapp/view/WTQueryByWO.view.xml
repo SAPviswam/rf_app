@@ -57,7 +57,7 @@
                 <Avatar
                     id="_IDGenAvatar1WtQBWo"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarWTQBWO"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -65,13 +65,14 @@
         <tnt:mainContents>
             <ScrollContainer
                 id="idWtQBWoFirstSC"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <VBox id="idVbox_WTQueryByWO"
+                <VBox
+                    id="idVbox_WTQueryByWO"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -87,7 +88,8 @@
                         columnsXL="1"
                     >
                         <VBox id="idVbox_WTQueryByWO1">
-                            <HBox id="idHbox_WTQueryByWO1"
+                            <HBox
+                                id="idHbox_WTQueryByWO1"
                                 alignContent="Center"
                                 alignItems="Center"
                                 class="sapUiSmallMargin"
@@ -95,7 +97,7 @@
                             >
                                 <Label
                                     id="idWtQBWoWhLabel"
-                                    text="{i18n>WareHouse_Order_label_WTQbyWO}"
+                                    text="{i18n>WareHouse_Order_label_WTQbyWO}:"
                                     width="120px"
                                 />
                                 <Input
@@ -104,16 +106,19 @@
                                     liveChange="onWtQBWoWhLiveChange"
                                 />
                             </HBox>
-                            <HBox id="idHbox_WTQueryByWO2"
+                            <HBox
+                                id="idHbox_WTQueryByWO2"
                                 alignContent="Center"
                                 alignItems="Center"
                                 class="sapUiTinyMargin"
                                 justifyContent="Center"
                             >
-                                <Button
+                                <ndc:BarcodeScannerButton
                                     id="idWtQBWoWhScannerBtn"
-                                    icon="sap-icon://bar-code"
-                                    press="onWtQBWoWhBarcodeScanner"
+                                    scanSuccess="onWtQBWoWhBarcodeScanner"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Barcode Scanner"
                                 />
                                 <Button
                                     id="idWtQBWofirstbackbtn"
@@ -129,7 +134,7 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idWtQBWoWhSecondsc"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 width="100%"
                 height="100%"
@@ -152,11 +157,15 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <HBox id="idHbox_WTQueryByWO3" justifyContent="Center">
+                        <HBox
+                            id="idHbox_WTQueryByWO3"
+                            justifyContent="Center"
+                        >
                             <Label
                                 id="idWtQBWoWh2Label"
-                                text="{i18n>WareHouse_Order_label_WTQbyWO}"
+                                text="{i18n>WareHouse_Order_label_WTQbyWO}:"
                                 class="sapUiTinyMarginTop"
+                                width="120px"
                             />
                             <Input
                                 id="idWtQBWoWh2Input"
@@ -210,7 +219,7 @@
                         id="idWtQBWoWhTable"
                         growing="true"
                         growingThreshold="6"
-                        selectionChange="onSelectWarehouseTask"   
+                        selectionChange="onSelectWarehouseTask"
                     >
                         <columns>
                             <Column id="idWtQBWoWhWtsCol">
@@ -245,7 +254,8 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox id="idVbox_WTQueryByWO3"
+                <VBox
+                    id="idVbox_WTQueryByWO3"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -261,7 +271,8 @@
                         columnsXL="1"
                     >
                         <VBox id="idVbox_WTQueryByWO4">
-                            <HBox id="idHbox_WTQueryByWO5"
+                            <HBox
+                                id="idHbox_WTQueryByWO5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -269,42 +280,43 @@
                                     id="idWtQBWowtLabel"
                                     text="{i18n>WT_label_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWowtInput"
                                     value=""
-                                    width="140px"
+                                    width="130px"
                                     editable="false"
                                 />
 
-                                <Label id="idEmptyLabel8" width="20px" />
+                                <Label
+                                    id="idEmptyLabel8"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWoWTitLabel"
                                     text="{i18n>Label_WTit_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoWTitInput"
                                     value=""
-                                    width="50px"
+                                    width="40px"
                                     editable="false"
-                                    class="sapMInput"
-                                    
                                 />
-                                <Label id="idEmptyLabel9" width="10px" />
+                                <Label
+                                    id="idEmptyLabel9"
+                                    width="10px"
+                                />
                                 <Input
                                     id="idWtQBWoWTitAllInput"
                                     value=""
                                     width="90px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO6"
+                            <HBox
+                                id="idHbox_WTQueryByWO6"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -312,58 +324,54 @@
                                     id="idWtQBWowtsLabel"
                                     text="{i18n>Label_WTs_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWowtsInput"
                                     value=""
-                                    width="50px"
+                                    width="60px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel10" width="20px" />
+                                <Label
+                                    id="idEmptyLabel10"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWoStsLabel"
                                     text="{i18n>Label_Sts_WTQbyWO}"
                                     width="30px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoStsInput"
                                     value=""
                                     width="50px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                                 <Label
                                     id="idWtQBWoStypLabel"
                                     text="{i18n>Label_STyp_WTQbyWO}"
                                     width="40px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoStypInput"
                                     value=""
                                     width="50px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                                 <Label
                                     id="idWtQBWoPtypLabel"
                                     text="{i18n>Label_Ptyp_WTQbyWO}"
-                                    width="40px"
-                                    class="sapMLabel"
+                                    width="35px"
                                 />
                                 <Input
                                     id="idWtQBWoPtypInput"
                                     value=""
-                                    width="83px"
+                                    width="58px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO7"
+                            <HBox
+                                id="idHbox_WTQueryByWO7"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -377,14 +385,15 @@
                                     value=""
                                     width="50px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel11" width="20px" />
+                                <Label
+                                    id="idEmptyLabel11"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWoActyLabel"
                                     text="{i18n>Label_Acty_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoActyInput"
@@ -396,13 +405,13 @@
                                 <Input
                                     id="idWtQBWoActyEmpInput"
                                     value=""
-                                    width="195px"
+                                    width="165px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO8"
+                            <HBox
+                                id="idHbox_WTQueryByWO8"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -410,12 +419,11 @@
                                     id="idWtQBWoProLabel"
                                     text="{i18n>Label_Pro_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoProInput"
                                     value=""
-                                    width="290px"
+                                    width="260px"
                                     editable="false"
                                     class="sapMInput sapUiTinyMarginEnd"
                                 />
@@ -424,20 +432,18 @@
                                     value=""
                                     width="75px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO9"
+                            <HBox
+                                id="idHbox_WTQueryByWO9"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
                                 <Label
                                     id="idWtQBWoSbinLabel"
                                     text="{i18n>Label_Sbin_WTQbyWO}"
-                                    class="sapMLabel"
                                     width="50px"
-                                    
                                 />
                                 <Input
                                     id="idWtQBWoSbinInput"
@@ -449,12 +455,13 @@
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
-                                    width="182px"
+                                    width="157px"
                                     class="sapMInput sapUiTinyMarginBegin"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO10"
+                            <HBox
+                                id="idHbox_WTQueryByWO10"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -462,7 +469,6 @@
                                     id="idWtQBWoDbinLabel"
                                     text="{i18n>Label_Dbin_WTQbywo}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoDbinInput"
@@ -473,13 +479,14 @@
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
-                                    width="182px"
+                                    width="157px"
                                     editable="false"
                                     class="sapMInput sapUiTinyMarginBegin"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO11"
+                            <HBox
+                                id="idHbox_WTQueryByWO11"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -487,7 +494,6 @@
                                     id="idWtQBWoCdatLabel"
                                     text="{i18n>Label_Cdat_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoCdatInput"
@@ -499,33 +505,35 @@
                                 <Input
                                     id="idWtQBWoCdatnput"
                                     value=""
-                                    width="100px"
+                                    width="80px"
                                     editable="false"
                                     class="sapMInput sapUiTinyMarginBegin"
                                 />
-                                <Label id="idEmptyLabel12" width="10px" />
+                                <Label
+                                    id="idEmptyLabel12"
+                                    width="10px"
+                                />
                                 <Label
                                     id="idWtQBWoCusrLabel"
                                     text="{i18n>Label_Cusr_WTQbyWO}"
                                     width="40px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
                                     width="111px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
-                            <VBox id="idVbox_WTQueryByWO5"
+                            <VBox
+                                id="idVbox_WTQueryByWO5"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <HBox id="idHbox_WTQueryByWO12"
+                                <HBox
+                                    id="idHbox_WTQueryByWO12"
                                     alignContent="Center"
                                     alignItems="Center"
-
                                 >
                                     <Button
                                         id="WtQBWoDetailBtn"
@@ -540,7 +548,6 @@
                                         press="onWtQBWoThirdBackBtnPress"
                                         visible="false"
                                         type="Emphasized"
-                                        
                                     />
                                 </HBox>
                             </VBox>
@@ -556,7 +563,8 @@
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <VBox id="idVbox_WTQueryByWO6"
+                <VBox
+                    id="idVbox_WTQueryByWO6"
                     alignContent="Center"
                     alignItems="Center"
                 >
@@ -572,7 +580,8 @@
                         columnsXL="1"
                     >
                         <VBox id="idVbox_WTQueryByWO7">
-                            <HBox id="idHbox_WTQueryByWO13"
+                            <HBox
+                                id="idHbox_WTQueryByWO13"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -580,33 +589,33 @@
                                     id="idWtQBWOWoLabel"
                                     text="{i18n>Label_WO_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOwoInput"
                                     value=""
-                                    width="120px"
+                                    width="95px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
 
-                                <Label id="idEmptyLabel13" width="20px" />
+                                <Label
+                                    id="idEmptyLabel13"
+                                    width="20px"
+                                />
 
                                 <Label
                                     id="idWtQBWOEstpLabel"
                                     text="{i18n>Label_ESTP_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOEstpInput"
                                     value=""
                                     width="150px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
-                            <HBox id="idHbox_WTQueryByWO14"
+                            <HBox
+                                id="idHbox_WTQueryByWO14"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -614,39 +623,38 @@
                                     id="idWtQBWOSqtyLabel"
                                     text="{i18n>Label_Sqty_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOSqtyInput"
                                     value=""
-                                    width="120px"
+                                    width="95px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                                 <Input
                                     id="idWtQBWOPcInput"
                                     value=""
                                     width="50px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel14" width="20px" />
+                                <Label
+                                    id="idEmptyLabel14"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWOBtchLabel"
                                     text="{i18n>Label_Btch_WTQbyWO}"
                                     width="50px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOBtchInput"
                                     value=""
                                     width="110px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO15"
+                            <HBox
+                                id="idHbox_WTQueryByWO15"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -654,32 +662,32 @@
                                     id="idWtQBWOOwnerLabel"
                                     text="{i18n>Label_Owner_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOOwnerInput"
                                     value=""
-                                    width="80px"
+                                    width="55px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel15" width="20px" />
+                                <Label
+                                    id="idEmptyLabel15"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWOPEntLabel"
                                     text="{i18n>Label_PEnt_WTQbyWO}"
-                                    width="40px"
-                                    class="sapMLabel"
+                                    width="60px"
                                 />
                                 <Input
                                     id="idWtQBWOPEntInput"
                                     value=""
                                     width="80px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
 
-                            <HBox id="idHbox_WTQueryByWO16"
+                            <HBox
+                                id="idHbox_WTQueryByWO16"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
@@ -687,49 +695,51 @@
                                     id="idWtQBWOHuWtLabel"
                                     text="{i18n>Label_HuWt_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOHuWtInput"
                                     value=""
-                                    width="80px"
+                                    width="55px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel16" width="20px" />
+                                <Label
+                                    id="idEmptyLabel16"
+                                    width="20px"
+                                />
                                 <Label
                                     id="idWtQBWOHtypeLabel"
                                     text="{i18n>Label_HType_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOHTypeInput"
                                     value=""
                                     width="80px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
-                                <Label id="idEmptyLabel17" width="10px" />
+                                <Label
+                                    id="idEmptyLabel17"
+                                    width="10px"
+                                />
                                 <Label
                                     id="idWtQBWOWhHuLabel"
                                     text="{i18n>Label_WhHu_WTQbyWO}"
                                     width="60px"
-                                    class="sapMLabel"
                                 />
                                 <Input
                                     id="idWtQBWOWhHuInput"
                                     value=""
                                     width="40px"
                                     editable="false"
-                                    class="sapMInput"
                                 />
                             </HBox>
-                            <VBox id="idVbox_WTQueryByWO8"
+                            <VBox
+                                id="idVbox_WTQueryByWO8"
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <HBox id="idHbox_WTQueryByWO17"
+                                <HBox
+                                    id="idHbox_WTQueryByWO17"
                                     alignContent="Center"
                                     alignItems="Center"
                                 >

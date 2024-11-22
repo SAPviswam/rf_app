@@ -9,7 +9,6 @@
     xmlns:core="sap.ui.core"
     displayBlock="true"
     height="100%"
-    
 >
     <tnt:ToolPage id="idRfconfigPage01ToolPage">
         <!-- Header -->
@@ -43,140 +42,261 @@
         </tnt:header>
         <tnt:mainContents>
             <!-- scroll container for total view -->
-    <ScrollContainer
-    id="idScrollContainer1_configPage"
-    horizontal="false"
-    vertical="true"
-    height="100%"
-    class="customBackground"
-    visible="true"
->
-    <VBox
-    id="idContentContainer_configPage"
-    class="contentContainer"
-    justifyContent="Center"
-    alignItems="Center"
-    fitContainer="true"
-    height="100%"
-    width="100%"
->
-    <!-- Use an HBox to center the whiteBox -->
-    <HBox
-        id="idPaddingBox_configPage"
-        justifyContent="Center"
-        alignItems="Center"
-        height="100%"
-        class="paddingBox"
-    >
-        <VBox
-            id="idWhiteBorderBox_configPage"
-            class="whiteBorderBox"  
-            width="350px"  
-            height="250px"
-            alignItems="Center"
-            justifyContent="Center"
-        >
-            <!-- Title -->
-            <Text
-                id="idLoginTitle_configPage"
-                text="Application Login"
-                class="loginTitle"
-                textAlign="Center"
-                width="100%"
-            />
-           
-            <!-- Input Fields Start Here (Label + Input side by side) -->
-            <HBox
-                id="idInputRowUserID_configPage"
-                width="100%"
-                alignItems="Center"
-                class="inputRow"
+            <ScrollContainer
+                id="idScrollContainer1_configPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="customBackground"
+                visible="true"
             >
-                <ToolbarSpacer
-                    id="idToolbarSpacerUserID_configPage"
-                    width="2rem"
-                /> <!-- Add some space on the left -->
-                <Text
-                    id="idUserIDLabel_configPage"
-                    text="User ID"
-                    width="70px"
-                />
-                <Input
-                    id="idUserIDInput_configPage"
-                    width="60%"
-                    value="111010"
-                    class="orangeInput sapUiTinyMarginTop"
-                    editable="false"
-                />
-            </HBox>
-           
-            <HBox
-                id="idInputRowPassword_configPage"
-                width="100%"
-                alignItems="Center"
-                class="inputRow"
-            >
-                <ToolbarSpacer
-                    id="idToolbarSpacerPassword_configPage"
-                    width="2rem"
-                /> <!-- Add some space on the left -->
-                <Text
-                    id="idPasswordLabel_configPage"
-                    text="Password"
-                    width="70px"
-                />
-                <Input
-                    id="idPasswordInput_configPage"
-                    type="Password"
-                    value="........"
-                    width="60%"
-                    placeholder="Enter Password"
-                    class="orangeInput sapUiTinyMarginTop"
-                    editable="false"
-                />
-            </HBox>
-
-            <VBox
-                id="idSpacerAfterInputs_configPage"
-                height="20px"
-            /> <!-- Increase space between fields and buttons -->
-
-            <!-- Submit Buttons -->
-            <HBox
-                id="idButtonRow_configPage"
-                justifyContent="Center"
-                alignItems="Center"
-            >
-                <Button
-                    id="idSignupButton_configPage"
-                    text="Signup"
-                    press="onpressSignup"
+                <VBox
+                    id="idContentContainer_configPage"
+                    class="contentContainer"
+                    justifyContent="Center"
+                    alignItems="Center"
+                    fitContainer="true"
+                    height="100%"
                     width="100%"
-                />
-                <ToolbarSpacer
-                    id="idToolbarSpacerBetweenButtons_configPage"
-                    width="1rem"
-                />
-                <Button
-                    id="idLoginButton_configPage"
-                    text="Login"
-                    press="onpresslogin"
-                    width="100%"
-                />
-            </HBox>
-        </VBox>
-    </HBox>
-</VBox>
+                >
+                    <!-- Use an HBox to center the whiteBox -->
+                    <HBox
+                        id="idPaddingBox_configPage"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        height="100%"
+                        class="paddingBox"
+                        visible="true"
+                    >
+                        <VBox
+                            id="idWhiteBorderBox_configPage"
+                            class="whiteBorderBox"
+                            width="350px"
+                            height="250px"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
+                            <!-- Title -->
+                            <Text
+                                id="idLoginTitle_configPage"
+                                text="Application Login"
+                                class="loginTitle"
+                                textAlign="Center"
+                                width="100%"
+                            />
 
-</ScrollContainer>
- 
- 
- 
- 
-            
+                            <!-- Input Fields Start Here (Label + Input side by side) -->
+                            <HBox
+                                id="idInputRowUserID_configPage"
+                                width="100%"
+                                alignItems="Center"
+                                class="inputRow"
+                            >
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerUserID_configPage"
+                                    width="2rem"
+                                />
+                                <!-- Add some space on the left -->
+                                <Text
+                                    id="idUserIDLabel_configPage"
+                                    text="User ID"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idUserIDInput_configPage"
+                                    width="60%"
+                                    value="111010"
+                                    class="orangeInput sapUiTinyMarginTop"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idInputRowPassword_configPage"
+                                width="100%"
+                                alignItems="Center"
+                                class="inputRow"
+                            >
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerPassword_configPage"
+                                    width="2rem"
+                                />
+                                <!-- Add some space on the left -->
+                                <Text
+                                    id="idPasswordLabel_configPage"
+                                    text="Password"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idPasswordInput_configPage"
+                                    type="Password"
+                                    value="........"
+                                    width="60%"
+                                    placeholder="Enter Password"
+                                    class="orangeInput sapUiTinyMarginTop"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox
+                                id="idSpacerAfterInputs_configPage"
+                                height="20px"
+                            />
+                            <!-- Increase space between fields and buttons -->
+
+                            <!-- Submit Buttons -->
+                            <HBox
+                                id="idButtonRow_configPage"
+                                justifyContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSignupButton_configPage"
+                                    text="Signup"
+                                    press="onpressSignup"
+                                    width="100%"
+                                />
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerBetweenButtons_configPage"
+                                    width="1rem"
+                                />
+                                <Button
+                                    id="idLoginButton_configPage"
+                                    text="Login"
+                                    press="onpresslogin"
+                                    width="100%"
+                                />
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <FlexBox
+                    id="flexBoxContainer"
+                    justifyContent="Center"
+                    alignItems="Center"
+                    class="formContainer"
+                    height="100vh"
+                >
+                    <form:SimpleForm
+                        id="idconnecttsosapDetailsForm_CP"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        emptySpanXL="1"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="1"
+                        width="auto"
+                        title="Sign Up"
+                        visible="false"
+                    >
+                        <Label
+                            id="idUsserLabel_C"
+                            text="{i18n>FristN_Lbl_CL}"
+                            class="customInput sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idUssrInput_CP"
+                            placeholder="{i18n>FristN_PlaceHldr_CL}"
+                            class="customInput"
+                        />
+                        <Label
+                            id="idUserLabels_CP"
+                            text="{i18n>LName_Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idSPasswosrdInput_CP"
+                            placeholder="{i18n>LName_PlaceHldr_CL}"
+                            class="customInput"
+                        />
+                        <Label
+                            id="idNewPassworsdlabel_CP"
+                            text="{i18n>EmailAdd_Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idNewPassworsdInput_CP"
+                            placeholder="{i18n>EmailAdd_PlaceHldr_CL}"
+                            class="customInput"
+                        />
+                        <Label
+                            id="idRepeatPasswsordlabel_CP"
+                            text="{i18n>Phone__Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <HBox id="idHBox_CL">
+                            <Input
+                                id="idRepeatPassswordInput_CP"
+                                placeholder="{i18n>Phone_PlaceHldr_CL}"
+                                class="customInput"
+                                width="120%"
+                            />
+                            <Button
+                                id="ChangePs_CP"
+                                text="Get OTP"
+                                type="Emphasized"
+                                press="onGetOTPPress"
+                                class="sapUiLargeMarginBegin"
+                            />
+                        </HBox>
+                        <Label
+                            id="idRepeatPasdswsordlabel_CP"
+                            text="{i18n>ValidateOTP_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <HBox id="idOTPHBox" visible="false">
+                            <Input
+                                id="idRepeatPassswofrdInput_CP"
+                                placeholder="{i18n>EntrOTP_PlaceHldr_CL}"
+                                class="customInput"
+                                width="120%"
+                            />
+                            <Button
+                                id="ChangePsd_CP"
+                                text="{i18n>Validate_CL}"
+                                type="Emphasized"
+                                press="onValidate"
+                                class="sapUiLargeMarginBegin"
+                            />
+                        </HBox>
+                        <Label
+                            id="idRepeatPasswsordlabeld_CP"
+                            text="{i18n>Password__Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idRepeatPassswordInputwd_CP"
+                            type="Password"
+                            placeholder="{i18n>Password_PlaceHldr_CL}"
+                            class="customInput"
+                        />
+                        <HBox id="idButtonsHbox_CL" >
+                        <Button
+                            id="ChangePswd_CP"
+                            text="{i18n>SignUp_Btn}"
+                            type="Emphasized"
+                            width="100%"
+                            press="onSignupPress"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Button
+                            id="IDbuttonchangdepwcancel"
+                            class="changePasswordCancelBtn sapUiTinyMarginTop sapUiTinyMarginBegin"
+                            text="{i18n>Cancel_Btn}"
+                            type="Transparent"
+                            press="onCancleSignup"
+                        />
+                        </HBox>
+                    </form:SimpleForm>
+                </FlexBox>
+            </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
- 
- 
- 

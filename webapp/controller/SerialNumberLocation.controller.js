@@ -110,6 +110,8 @@ sap.ui.define(
                         let oUser=oData.Users.toLowerCase()
                         if(oUser ===  "resource"){
                             oRouter.navTo("RouteResourcePage",{id:this.ID});
+                            this.getView().byId("idproductInput_SNL").setValue("")
+                            this.getView().byId("idSerialNoInput_SNL").setValue("")
                         }
                         else{
                         oRouter.navTo("Supervisor",{id:this.ID});
