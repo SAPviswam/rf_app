@@ -164,7 +164,6 @@
                                 />
                                 <Input
                                     id="idHuInput_HuQuery"
-                                    placeholder="{i18n>Input_HUNumber_HuQuery}"
                                     maxLength="25"
                                     width="150px"
                                     editable="false"
@@ -180,7 +179,6 @@
                                 />
                                 <Input
                                     id="idPackagingMaterialInput_HuQuery"
-                                    placeholder="{i18n>Input_PKMT_HuQuery}"
                                     width="150px"
                                      editable="false"
                                 />
@@ -196,7 +194,6 @@
                                 />
                                 <Input
                                     id="idHuTypeInput_HuQuery"
-                                    placeholder="{i18n>Input_HUType_HuQuery}"
                                     maxLength="25"
                                     width="150px"
                                      editable="false"
@@ -211,7 +208,6 @@
                                 />
                                 <Input
                                     id="idLocInput_HuQuery"
-                                    placeholder="{i18n>Input_Location_HuQuery}"
                                     width="150px"
                                     editable="false"
                                 />
@@ -226,7 +222,6 @@
                                 />
                                 <Input
                                     id="idCGrpInput_HuQuery"
-                                    placeholder="{i18n>Input_cgrp_HuQuery}"
                                     width="150px"
                                     editable="false"
                                 />
@@ -239,7 +234,6 @@
                                 />
                                 <Input
                                     id="idTotalWeightInput_HuQuery"
-                                    placeholder="{i18n>Input_TotW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
                                      editable="false"
@@ -265,7 +259,6 @@
                                 />
                                 <Input
                                     id="idVolumeInput_HuQuery"
-                                    placeholder="{i18n>Input_Volume_HuQuery}"
                                     width="100px"
                                      editable="false"
                                 />
@@ -287,7 +280,6 @@
                                 />
                                 <Input
                                     id="idTarWeightInput_HuQuery"
-                                    placeholder="{i18n>Input_TarW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
                                     editable="false"
@@ -304,7 +296,6 @@
                                 />
                                 <Input
                                     id="idTarVInput_HuQuery"
-                                    placeholder="{i18n>Input_TarVolume_HuQuery}"
                                     width="100px"
                                     editable="false"
                                 />
@@ -319,7 +310,6 @@
                                 />
                                 <Input
                                     id="idMaxWeightInput_HuQuery"
-                                    placeholder="{i18n>Input_MaxW_HuQuery}"
                                     maxLength="25"
                                     width="100px"
                                     editable="false"
@@ -336,7 +326,6 @@
                                 />
                                 <Input
                                     id="idmaxVInput_HuQuery"
-                                    placeholder="{i18n>Input_MaxV_HuQuery}"
                                     width="100px"
                                      editable="false"
                                 />
@@ -356,7 +345,6 @@
                                 />
                                 <Input
                                     id="idLenInput_HuQuery"
-                                    placeholder="{i18n>Input_L_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
@@ -370,7 +358,6 @@
                                 />
                                 <Input
                                     id="idWidthInput_HuQuery"
-                                    placeholder="{i18n>Input_width_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                      editable="false"
@@ -386,7 +373,6 @@
                                 />
                                 <Input
                                     id="idHeightInput_HuQuery"
-                                    placeholder="{i18n>Input_Height_HuQuery}"
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
@@ -402,7 +388,6 @@
                                 />
                                 <Input
                                     id="idUnitsInput_HuQuery"
-                                    placeholder="{i18n>Input_units_HuQuery}"
                                     maxLength="13"
                                     width="40px"
                                      editable="false"

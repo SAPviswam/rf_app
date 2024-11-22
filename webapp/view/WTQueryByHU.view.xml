@@ -167,7 +167,6 @@
                                 <Input
                                     id="idInputWTS_WTQBYHU"
                                     width="50%"
-                                    placeholder="{i18n>Input_WTs_WtQbWt}"
                                     class="sapUiTinyMarginTop HUNumberInput"
                                 />
                             </HBox>
@@ -286,7 +285,7 @@
                                     id="idInputWTIn_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/WT}"
-                                    placeholder="{i18n>Input_WT_WtQbWt}"
+                                   
                                 />
                                 <Text
                                     id="Emptylabeli9dIn_WTQBHU"
@@ -301,7 +300,6 @@
                                 <Input
                                     id="idInputWTIt_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_WTIt_WtQbWt}"
                                     value="{localModel>/WarehouseTask/WTIt}"
                                 />
                             </HBox>
@@ -315,7 +313,6 @@
                                 <Input
                                     id="idInputWTs1_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_WTs_WtQbWt}"
                                     value="{localModel>/WarehouseTask/WTs}"
                                 />
                                 <Text
@@ -332,7 +329,6 @@
                                     id="idInputStsIn_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/Trart}"
-                                    placeholder="{i18n>Input_Sts_WtQbWt}"
                                 />
                                 <Text
                                     id="Emptylabeli01In_WTQBHU"
@@ -347,7 +343,6 @@
                                 <Input
                                     id="idInputPtypIn_WTQBYHU"
                                     width="6rem"
-                                    placeholder="{i18n>Input_Ptyp_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Ptyp}"
                                 />
                             </HBox>
@@ -361,7 +356,6 @@
                                 <Input
                                     id="idInputSproIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Spro_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Spro}"
                                 />
                                 <Text
@@ -377,14 +371,12 @@
                                 <Input
                                     id="idInputActyIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Acty_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Acty}"
                                 />
                                 <Input
                                     id="idInputActy2In_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/ActyEmI}"
-                                    placeholder="{i18n>Input_Acty2_WtQbWt}"
                                 />
                             </HBox>
                             <HBox id="idHBox04Page3_WTQBYHU">
@@ -397,14 +389,12 @@
                                 <Input
                                     id="idInputProIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Pro_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Pro}"
                                 />
                                 <Input
                                     id="idInputPro2In_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/ProEmI}"
-                                    placeholder="{i18n>Input_Pro_WtQbWt}"
                                 />
                             </HBox>
                             <HBox id="idHBox05Page3_WTQBYHU">
@@ -417,14 +407,12 @@
                                 <Input
                                     id="idInputSbinIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Sbin_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Sbin}"
                                 />
                                 <Input
                                     id="idInputSbin1In_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/SbinEmI}"
-                                    placeholder="{i18n>Input_Sbin_WtQbWt}"
                                 />
                             </HBox>
                             <HBox id="idHBox06Page3_WTQBYHU">
@@ -438,12 +426,10 @@
                                     id="idInputDbinIn_WTQBYHU"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/Dbin}"
-                                    placeholder="{i18n>Input_Dbin_WtQbWt}"
                                 />
                                 <Input
                                     id="idInputDbin1In_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Dbin_WtQbWt}"
                                     value="{localModel>/WarehouseTask/DbinEmI}"
                                 />
                             </HBox>
@@ -457,13 +443,11 @@
                                 <Input
                                     id="idInputCdatIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Cdat_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Cdat}"
                                 />
                                 <Input
                                     id="idInputCdat1In_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Cdat_WtQbWt}"
                                     value="{localModel>/WarehouseTask/CdatEmI}"
                                 />
                                 <Text
@@ -479,7 +463,6 @@
                                 <Input
                                     id="idInputCusrIn_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Cusr_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Cusr}"
                                 />
                             </HBox>
@@ -532,7 +515,6 @@
                                 <Input
                                     id="idInputProductDes_WTQBYHU"
                                     width="350px"
-                                    placeholder="{i18n>Input_ProDesc_WtQbyHu}"
                                     value="{localModel>/WarehouseTask/PD}"
                                 />
                             </HBox>
@@ -546,7 +528,6 @@
                                 <Input
                                     id="idInputWO_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_WO_WtQbWt}"
                                     value="{localModel>/WarehouseTask/WO}"
                                 />
                                 <Text
@@ -562,7 +543,6 @@
                                 <Input
                                     id="idInputESTP_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_ESTP_WtQbWt}"
                                     value="{localModel>/WarehouseTask/ESTP}"
                                 />
                             </HBox>
@@ -576,14 +556,12 @@
                                 <Input
                                     id="idInputSQTY_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_SQTY_WtQbWt}"
                                     value="{localModel>/WarehouseTask/SQTY}"
                                 />
 
                                 <Input
                                     id="idInputPC_WTQBYHU"
                                     width="2.5rem"
-                                    placeholder="{i18n>Input_SQTY_WtQbWt}"
                                     value="{localModel>/WarehouseTask/SQTYEmI}"
                                 />
                                 <Text
@@ -599,7 +577,6 @@
                                 <Input
                                     id="idInputBatch_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Batch_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Batch}"
                                 />
                             </HBox>
@@ -613,7 +590,6 @@
                                 <Input
                                     id="idInputOwner_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Owner_WtQbWt}"
                                     value="{localModel>/WarehouseTask/Owner}"
                                 />
                                 <Text
@@ -629,7 +605,6 @@
                                 <Input
                                     id="idInputPENT_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_PEnt_WtQbWt}"
                                     value="{localModel>/WarehouseTask/PEnt}"
                                 />
                             </HBox>
@@ -643,7 +618,6 @@
                                 <Input
                                     id="idInputHUWT_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_HUWT_WtQbWt}"
                                     value="{localModel>/WarehouseTask/HUWT}"
                                 />
                                 <Text
@@ -659,7 +633,6 @@
                                 <Input
                                     id="idInputHTYPE_WTQBYHU"
                                     width="10rem"
-                                    placeholder="{i18n>Input_Htype_WtQbWt}"
                                     value="{localModel>/WarehouseTask/H_Type}"
                                 />
                             </HBox>
@@ -675,7 +648,6 @@
                                 />
                                 <Input
                                     id="idInputWHHU_WTQBYHU"
-                                    placeholder="{i18n>Input_Whhu_WtQbWt}"
                                     width="10rem"
                                     value="{localModel>/WarehouseTask/Wh_HU}"
                                 />
