@@ -5,7 +5,7 @@ sap.ui.define(
     "sap/ui/Device",
     "sap/ui/core/UIComponent"
   ],
-  function (BaseController, MessageToast, Device,UIComponent ) {
+  function (BaseController, MessageToast, Device, UIComponent) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.StockBinQueryByProduct", {
@@ -265,6 +265,7 @@ sap.ui.define(
             oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
             oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
             oView.byId("idUnitGVinput_SBQP").setValue(odata.UnitGv);
+            oView.byId("idEANInput_SBQP").setValue(odata.Ean11);
             that.getView().byId("idsecondSC_SBQP").setVisible(false);
             that.getView().byId("idThirdSC_SBQP").setVisible(true);
             that.getView().byId("idSecondbackbtn_SBQP").setVisible(false);
