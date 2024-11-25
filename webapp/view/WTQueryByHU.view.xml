@@ -255,7 +255,7 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idPage3WTDetails_WTQBYHU"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 width="100%"
@@ -275,6 +275,7 @@
                         labelSpanM="4"
                         columnsL="2"
                         columnsM="2"
+                        width="100%"
                     >
                         <VBox id="idVBox02Page3_WTQBYHU">
                             <HBox id="idHBox01Page3_WTQBYHU">
@@ -532,7 +533,7 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idPage4ProductDescription_WTQBYHU"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
                 width="100%"
@@ -552,6 +553,7 @@
                         labelSpanM="4"
                         columnsL="2"
                         columnsM="2"
+                        width="100%"
                     >
                         <VBox id="idVBox02Page4PD_WTQBYHU">
                             <HBox id="idHBox1Page4PD_WTQBYHU">
@@ -697,7 +699,7 @@
                             </HBox>
                             <HBox
                                 id="idHBoxLastIn_WTQBYHU"
-                                justifyContent="End"
+                                justifyContent="Start"
                             >
                                 <Text
                                     id="idLabelPage4WHHU_WTQBYHU"
@@ -722,7 +724,7 @@
                                     width="100%"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
-                                     width="100%"
+                                    
                                 />
                             </HBox>
                         </VBox>
