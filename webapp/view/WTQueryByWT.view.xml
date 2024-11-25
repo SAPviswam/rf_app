@@ -88,6 +88,7 @@
                                     value=""
                                     placeholder="{i18n>Input_WareHouseTask_WtQbWt}"
                                     liveChange="onWtQBWtWhLiveChange"
+                                    
                                 />
                             </HBox>
                             <HBox
@@ -101,6 +102,7 @@
                                     type="Emphasized"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     press="onPressFirstBackButton"
+                                    width="100%"
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="idWtQBWtWhScannerBtn_WTQueryByWT"
@@ -108,7 +110,7 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Enter Warehouse Task Number:"
-                                    class="sapUiSmallMarginEnd"
+                                    class="sapUiSmallMarginBegin"
                                 />
 
                                 <!-- <Button
@@ -125,9 +127,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhSecondsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -139,6 +142,7 @@
                     <form:SimpleForm
                         id="idWtQBWtSF2_WTQueryByWT"
                         layout="ResponsiveGridLayout"
+                        width="100%"
                         labelSpanL="4"
                         labelSpanM="4"
                         emptySpanL="1"
@@ -160,7 +164,6 @@
                                 <Input
                                     id="idWtQBWtwtInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Wt_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -177,7 +180,6 @@
                                 <Input
                                     id="idWtQBWtWTitInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_WTit_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -194,7 +196,6 @@
                                     id="idWtQBWtwtsInput_WTQueryByWT"
                                     width="120px"
                                     value=""
-                                    placeholder="{i18n>Input_Wts_WtQbWt}"
                                     editable="false"
                                 />
                                 <Text
@@ -210,7 +211,6 @@
                                 <Input
                                     id="idWtQBWtStsInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Sts_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -227,7 +227,6 @@
                                 <Input
                                     id="idWtQBWtPtypInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Ptyp_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -246,7 +245,6 @@
                                 <Input
                                     id="idWtQBWtSproInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Spro_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -262,7 +260,6 @@
                                 <Input
                                     id="idWtQBWtActyInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Acty_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -273,7 +270,6 @@
                                 <Input
                                     id="idWtQBWtActyEmpInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Acty2_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -292,7 +288,6 @@
                                 <Input
                                     id="idWtQBWtProInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Pro_WtQbWt}"
                                     width="310px"
                                     editable="false"
                                 />
@@ -303,7 +298,6 @@
                                 <Input
                                     id="idWtQBWtProEmpInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Pro2_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -322,7 +316,6 @@
                                 <Input
                                     id="idWtQBWtSbinInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Sbin_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -333,7 +326,6 @@
                                 <Input
                                     id="idWtQBWtSbinEmpInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Sbin2_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -352,7 +344,6 @@
                                 <Input
                                     id="idWtQBWtDbinInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Dbin_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -363,7 +354,6 @@
                                 <Input
                                     id="idWtQBWtDbinEmpInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_Dbin2_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -382,7 +372,6 @@
                                 <Input
                                     id="idWtQBWtCdatInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_cdat_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -393,7 +382,6 @@
                                 <Input
                                     id="idWtQBWtCdatnput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_cdat_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -430,12 +418,14 @@
                                         type="Emphasized"
                                         press="onPressSecondBackButton"
                                         class="sapUiTinyMarginEnd"
+                                        width="100%"
                                     />
                                     <Button
                                         id="WtQBWtDetailBtn_WTQueryByWT"
                                         text="{i18n>Label_Detail_WtQbWt}"
                                         press="onWtQBWtDetailBtnPress"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiTinyMarginBegin"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>
@@ -446,9 +436,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhThirdsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -466,13 +457,13 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
+                        width="100%"
                     >
                         <VBox id="idThirdScVbox2_WTQueryByWT">
                             <HBox id="idThirdScHbox1_WTQueryByWT">
                                 <Input
                                     id="idWtQBWtProductDiscriptioInput_WTQueryByWT"
                                     value=""
-                                    placeholder="{i18n>Input_ProdDesc_WtQbWt}"
                                     editable="false"
                                     width="200%"
                                 />
@@ -492,7 +483,6 @@
                                     id="idWtQBWtwoInput_WTQueryByWT"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_WO_WtQbWt}"
                                     editable="false"
                                 />
                                 <Text
@@ -507,7 +497,6 @@
                                 <Input
                                     id="idWtQBWtEstpInput_WTQueryByWT"
                                     width="100px"
-                                    placeholder="{i18n>Input_ESTP_WtQbWt}"
                                     editable="false"
                                     value=""
                                 />
@@ -523,24 +512,23 @@
                                 <Input
                                     id="idWtQBWtSqtyInput_WTQueryByWT"
                                     editable="false"
-                                    placeholder="{i18n>Input_Sqty_WtQbWt}"
-                                    width="100px"
+                                    width="57px"
                                     value=""
                                 />
                                 <Text
                                     id="idEmptyText6_WTQueryByWT"
-                                    width="8px"
+                                    width="3px"
                                 />
                                 <Input
                                     id="idWtQBWtPcInput_WTQueryByWT"
                                     editable="false"
-                                    width="45px"
+                                    width="40px"
                                     value=""
-                                    placeholder="{i18n>Input_Btch_WtQbWt}"
                                 />
+                        
                                 <Text
                                     id="idThirdScEmptyLabel2_WTQueryByWT"
-                                    width="5px"
+                                    width="10px"
                                 />
                                 <Text
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
@@ -553,7 +541,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_Btch_WtQbWt}"
                                 />
                             </HBox>
 
@@ -569,7 +556,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_Owner_WtQbWt}"
                                 />
                                 <Text
                                     id="idThirdScEmptyLabel4_WTQueryByWT"
@@ -586,7 +572,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_PEnt_WtQbWt}"
                                 />
                             </HBox>
 
@@ -602,7 +587,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_HuWt_WtQbWt}"
                                 />
                                 <Text
                                     id="idThirdScEmptylabel5_WTQueryByWT"
@@ -619,7 +603,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_Htype_WtQbWt}"
                                 />
                                 <Text
                                     id="idThirdScEmptyLabel6_WTQueryByWT"
@@ -636,7 +619,6 @@
                                     editable="false"
                                     width="100px"
                                     value=""
-                                    placeholder="{i18n>Input_WhHu_WtQbWt}"
                                 />
                             </HBox>
 
@@ -654,6 +636,7 @@
                                         text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                         press="onPressThirdBackButton"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>

@@ -123,7 +123,7 @@
                                 />
                                 <Button
                                     id="idNavBacktoHome"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToHome"
                                     class="sapUiTinyMarginBegin"
@@ -213,19 +213,19 @@
                                 <ToolbarSpacer id="idTableHeaderSpacer" />
                                 <Button
                                     id="idNavBacktoBin"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToBin"
                                 />
                                 <Button
                                     id="idBinDetailsButton"
-                                    text="BinDe"
+                                    text="{i18n>BinDe_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinDetails"
                                 />
                                 <Button
                                     id="idListButton"
-                                    text="HU List"
+                                    text="{i18n>HUList_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressList"
                                 />
@@ -302,14 +302,14 @@
                                 <Label
                                     id="idSTypLabel"
                                     text="STyp:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBBinInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="idEmptyLabel1"
@@ -343,7 +343,7 @@
                                     id="idSBQBStoreTypeInput1"
                                     value=""
                                     editable="false"
-                                    width="55px"
+                                    width="35px"
                                 />
                             </HBox>
 
@@ -351,14 +351,14 @@
                                 <Label
                                     id="idSBQBQtyLabel"
                                     text="MHU:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBQtyWInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="idEmptyLabel2"
@@ -392,21 +392,21 @@
                                     id="idSBQBStoreTypeInput2"
                                     value=""
                                     editable="false"
-                                    width="55px"
+                                    width="35px"
                                 />
                             </HBox>
                             <HBox id="idHbox_StockBinQuerybyBin7">
                                 <Label
                                     id="idSBQBNoOfHuLabel"
                                     text="MaxW:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBNoOfHuInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="idEmptyLabel4"
@@ -423,13 +423,13 @@
                                     id="idSBQBBinAisleInput"
                                     value=""
                                     editable="false"
-                                    width="120px"
+                                    width="110px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBBinAisleInputUOM"
                                     value=""
-                                    width="3rem"
+                                    width="2.5rem"
                                     editable="false"
                                 />
                             </HBox>
@@ -437,14 +437,14 @@
                                 <Label
                                     id="idSBQBMaxWLabel"
                                     text="MaxV:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBMaxWInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
+                                    width="70px"
                                 />
 
                                 <Label
@@ -462,13 +462,13 @@
                                     id="idSBQBBinLevelInput"
                                     value=""
                                     editable="false"
-                                    width="120px"
+                                    width="110px"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idSBQBinLevelInputUOM"
                                     value=""
-                                    width="3rem"
+                                    width="2.5rem"
                                     editable="false"
                                 />
                             </HBox>
@@ -476,14 +476,14 @@
                                 <Label
                                     id="idSBQBMaxVLabel"
                                     text="MaxC:"
-                                    width="60Px"
+                                    width="50Px"
                                     class="sapUiTinyMarginTop "
                                 />
                                 <Input
                                     id="idSBQBMaxVInput"
                                     value=""
                                     editable="false"
-                                    width="80px"
+                                    width="70px"
                                 />
                                 <Label
                                     id="idEmptyLabel6"
@@ -500,7 +500,7 @@
                                     id="idSBQBStackInput"
                                     value=""
                                     editable="false"
-                                    width="175px"
+                                    width="160px"
                                 />
                             </HBox>
                             <!-- <HBox
@@ -631,7 +631,7 @@
                                 >
                                     <Button
                                         id="idNavBacktoBinProductDetaails"
-                                        text="Back"
+                                        text="{i18n>Back_Btn_SBQBB}"
                                         type="Emphasized"
                                         press="onPressBinBacktoProductDetaails"
                                     />
@@ -686,7 +686,7 @@
                         <HBox id="idHbox_StockBinQuerybyBin12">
                             <Label
                                 id="_IDListBinDetailsGenLabel_SBQB"
-                                text="Bin:"
+                                text="{i18n>Bin_Label_SBQBB}:"
                                 class="sapUiTinyMarginTop"
                                 width="50px"
                             />
@@ -714,7 +714,7 @@
                                 <ToolbarSpacer id="idTableHeaderSpacer1" />
                                 <Button
                                     id="idNavBacktoList"
-                                    text="Back"
+                                    text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBackfromBinList"
                                 />
@@ -724,19 +724,19 @@
                             <Column id="idHUCol">
                                 <Title
                                     id="idHUTitle"
-                                    text="HU.No"
+                                    text="{i18n>HUno_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idListProductCol">
                                 <Title
                                     id="idListProductTitle"
-                                    text="HU Type"
+                                    text="{i18n>HUtype_TABCloumName_SBQBB}"
                                 />
                             </Column>
                             <Column id="idListflagCol">
                                 <Title
                                     id="idListFlagTitle"
-                                    text="open WT"
+                                    text="{i18n>Openwt_TABCloumName_SBQBB}"
                                 />
                             </Column>
                         </columns>
@@ -1049,7 +1049,7 @@
                                 >
                                     <Button
                                         id="idBackButton_BinQBin"
-                                        text="Back"
+                                        text="{i18n>Back_Btn_SBQBB}"
                                         type="Emphasized"
                                         press="onPressBackfromView"
                                     />

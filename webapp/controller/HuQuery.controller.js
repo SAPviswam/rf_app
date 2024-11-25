@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/Device",
     "sap/ui/core/UIComponent",
     "sap/m/MessageToast"
@@ -30,6 +30,8 @@ sap.ui.define([
             if (Device.system.phone) {
                 this.getView().byId("HuDetailsTable_HuQuery").setWidth("200%");
                 this.getView().byId("idSimpleTable_HuQuery").setWidth("200%");
+                this.getView().byId("idSecScsimpleForm_HuQuery").setWidth("120%");
+                this.getView().byId("idSecondSc_HuQuery").setWidth("120%");
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("hlHu"));
@@ -47,6 +49,10 @@ sap.ui.define([
             const { HUI } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();  // Get the HU value
             console.log(HUI);  // Log the HU value for debugging
             this.onSelectRow(HUI);  // Call onSelectRow with the HU value
+        },
+        onSignoutPressed:function(){
+            var oRouter = this.getOwnerComponent().getRouter(this);
+            oRouter.navTo("InitialScreen"); 
         },
 
         // Function to handle selection of a row (HU)
@@ -82,7 +88,12 @@ sap.ui.define([
         onResourceDetailsLoad: function (oEvent1) {
             const { id } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
             this.ID = id;  // Save ID for later use
+            this.applyStoredProfileImage();
         },
+        onAvatarPressed: function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+
+            },
 
         // Scan success handler for barcode scanning
         // onScanSuccess: function(oEvent) {
@@ -146,6 +157,7 @@ sap.ui.define([
                         },
                         success: function (odata) {
                             if (odata.HUheadtoItems.results.length > 0) {
+                                sap.m.MessageToast.show("Scanned Succesfully"); 
                                 that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
                                 that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
                                 that._populateHUDetails(odata);  // Populate HU details
@@ -369,17 +381,18 @@ sap.ui.define([
                     var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
                     that.byId("idSimpleTable_HuQuery").setModel(oProductModel);
 
-                    // Bind the table items to the hierarchy model
-                    that.byId("idSimpleTable_HuQuery").bindItems({
-                        path: "/products",
-                        template: new sap.m.ColumnListItem({
-                            cells: [
-                                new sap.m.Text({ text: "{SLNO}" }),
-                                new sap.m.Text({ text: "{HUI}" }),
-                                new sap.m.Text({ text: "{HU}" }),
-                            ]
-                        })
-                    });
+                    //Bind the table items to the hierarchy model
+                    // that.byId("idSimpleTable_HuQuery").bindItems({
+                    //     path: "/products",
+                       
+                    //     template: new sap.m.ColumnListItem({
+                    //         cells: [
+                    //             new sap.m.Text({ text: "{SLNO}" }),
+                    //             new sap.m.Text({ text: "{HUI}" }),
+                    //             new sap.m.Text({ text: "{HU}" }),
+                    //         ]
+                    //     })
+                    // });
                 }
                 else{
                     console.log(odata);  // Log the data response
