@@ -47,7 +47,22 @@ sap.ui.define([
                 console.error("Error fetching user data:", error);
             }
         },
-
+            //  read call
+            readData: function (oModel, sPath, aFilters, aSorters) {
+                return new Promise((resolve, reject) => {
+                    oModel.read(sPath, {
+                        filters: [aFilters], // Apply any filters (optional)
+                        sorters: [aSorters], // for sorting
+                        success: function (oData) {
+                            resolve(oData); // Resolve with the response
+                        },
+                        error: function (oError) {
+                            reject(oError); // Reject with the error
+                        }
+                    });
+                });
+            },
+            
         createData: function (oModel, oPayload, sPath) {
             return new Promise((resolve, reject) => {
                 oModel.create(sPath, oPayload, {

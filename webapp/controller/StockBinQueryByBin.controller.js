@@ -91,7 +91,7 @@ sap.ui.define([
       // Set a new timeout to validate the Bin after 500ms (debounce)
       this._timeoutIDForInvalidBin = setTimeout(function () {
         this.onFetchBinDetails(sBinNumber);
-      }.bind(this), 500);
+      }.bind(this), 1000);
     },
     onFetchBinDetails: function (sBinNumber) {
       // Call your backend service to fetch products for this bin

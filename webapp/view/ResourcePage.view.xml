@@ -19,12 +19,12 @@
         <tnt:ToolPage id="idToolPageP">
             <tnt:header>
                 <tnt:ToolHeader id="idtntToolHeaderP">
-                    <Button
+                    <!-- <Button
                         id="idPFourthbackbtn"
                         icon="sap-icon://nav-back"
                         press="onSBQPFourthBackBtnPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- Artihcus Logo -->
                     <Image
                         id="id_GenImage1P"
@@ -32,66 +32,76 @@
                         class="sapUiTinyMarginBegin"
                         src="https://artihcus.com/assets/img/AG-logo.png"
                     />
-
+                    <ToolbarSpacer id="idToolbarSpacerP" />
                     <!-- CAPmodel RF Title -->
                     <Title
                         id="IdTitle_ResourceView"
-                        class="title"
+                        class="ResourcePageTitle"
                         text="CAPmodel RF"
                     />
-
-                    <tnt:ToolHeaderUtilitySeparator
-                        id="idToolHeaderUtilitySeparatorP"
-                    />
-                    <ToolbarSpacer id="idToolbarSpacerP">
-                        <layoutData>
-                            <OverflowToolbarLayoutData
-                                id="idOverflowToolbarLayoutData1P"
-                                priority="AlwaysOverflow"
-                                minWidth="20px"
-                            />
-                        </layoutData>
-                    </ToolbarSpacer>
-                    <Button
-                        id="idCancelEditButtonResource"
-                        text="Exit edit mode"
-                        press="onCancelEditPress"
-                        visible="false"
-                    />
+                    <ToolbarSpacer id="idToolbarSpacerP2" />
                     <Button
                         id="idTileThemesModeOpen"
-                        text="Open Theme"
+                        text="Open"
                         press="onPressTileThemesModeOpenDailog"
                         icon="sap-icon://palette"
                         visible="false"
-                    />
+                        width="5rem"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataResourcePage"
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Button>
                     <Button
                         id="idExitThemeModeResource"
-                        text="Exit theme"
+                        text="Exit"
                         icon="sap-icon://decline"
                         press="onPressExitTileThemesMode"
                         visible="false"
-                    />
+                        width="5rem"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataResourcePage01"
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Button>
                     <Button
                         id="idBtnListViewResourcePage"
                         icon="sap-icon://menu"
                         tooltip="List View"
                         press="onPressListViewsResource"
+                        width="2rem"
                     />
                     <Button
                         id="idBtnGridViewResourcePage"
                         icon="sap-icon://grid"
                         tooltip="Grid View"
                         press="onPressGridViewsResource"
-                    /> 
+                        width="2rem"
+                    />
 
                     <!-- Avatar -->
+                    <tnt:ToolHeaderUtilitySeparator
+                        id="idToolHeaderUtilitySeparatorP"
+                    />
                     <Avatar
                         id="idImageMainAvatarResourcepage"
                         displaySize="XS"
                         press="onSBQPAvatarPressedResourcePage"
                         tooltip="Profile"
-                    />
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataRP03"
+                                priority="High"
+                            />
+                        </layoutData>
+                    </Avatar>
                 </tnt:ToolHeader>
             </tnt:header>
             <tnt:mainContents>
@@ -906,12 +916,14 @@
                                     buttonText=" "
                                     mimeType="image/jpeg,image/png,image/gif"
                                     visible="true"
+                                    width="1rem"
                                 />
                                 <Button
                                     id="applyColorButtonResource"
                                     text="Apply"
                                     press="onApplyColor"
                                     type="Transparent"
+                                    width="4rem"
                                     tooltip="Apply the selected color"
                                 />
                                 <Button
@@ -920,6 +932,7 @@
                                     press="onCancelColorDialog"
                                     type="Transparent"
                                     tooltip="Cancel Theme"
+                                    width="1rem"
                                 />
                             </contentRight>
                         </Bar>

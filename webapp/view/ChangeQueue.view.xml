@@ -43,7 +43,7 @@
                     id="idAvatar_changeQueue"
                     displaySize="XS"
                     tooltip="Profile"
-                    press="onHomePageAvatarPressed"
+                    press="onChangeQueuePageAvatarPressed"
                 />
             </tnt:ToolHeader>
         </tnt:header>
@@ -73,7 +73,8 @@
                             text="{i18n>Btn_Add_CQ}"
                             type="Emphasized"
                             press="onAddQueueBtnPress_changeQueue"
-                            class="sapUiTinyMarginEnd"
+                         
+                            width="100%"
                         />
                         <!-- Delete button -->
                         <Button
@@ -82,7 +83,7 @@
                             tooltip="Delete Queue"
                             type="Reject"
                             press="onDeleteQueueBtnPress_changeQueue"
-                            class="sapUiTinyMarginEnd"
+                            class="deleteClassinChangeQueue"
                         />
 
                         <!-- Back button -->
@@ -91,7 +92,8 @@
                             text="{i18n>Btn_Back_CQ}"
                             type="Emphasized"
                             press="onBackBtnPress_changeQueue"
-                            class="sapUiTinyMarginEnd"
+                           
+                            width="100%"
                         />
                     </HBox>
                 </HBox>

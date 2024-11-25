@@ -1,19 +1,8 @@
 <mvc:View
     controllerName="com.app.rfapp.controller.HuQuery"
-    xmlns:unified="sap.ui.unified"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
-    xmlns:layout="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
-    xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:ndc="sap.ndc"
-    xmlns:cssgrid="sap.ui.layout.cssgrid"
-    xmlns:vbm="sap.ui.vbm"
-    xmlns:controls="sap.viz.ui5.controls"
-    xmlns:commons="sap.suite.ui.commons"
-    xmlns:simple="sap.gantt.simple"
-    xmlns:launchpad="sap.ushell.ui.launchpad"
-    xmlns:uxap="sap.uxap"
     xmlns="sap.m"
     displayBlock="true"
     xmlns:tnt="sap.tnt"
@@ -115,11 +104,12 @@
                                     class="sapUiTinyMargin"
                                     press="onPressBackButtonFirstSC"
                                     type="Emphasized"
+                                    
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="sampleBarcodeScannerButton"
                                     scanSuccess="onScanSuccess"
-                                    class="sapUiTinyMargin"
+                                    class="sapUiTinyMargin sapUiTinyMarginBegin"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Barcode Scanner Button Sample"
@@ -133,9 +123,10 @@
             <!--Second Scroll Container for HU Details -->
             <ScrollContainer
                 id="idSecondSc_HuQuery"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -180,7 +171,7 @@
                                 <Input
                                     id="idPackagingMaterialInput_HuQuery"
                                     width="150px"
-                                     editable="false"
+                                    editable="false"
                                 />
 
                                 <Text
@@ -196,10 +187,10 @@
                                     id="idHuTypeInput_HuQuery"
                                     maxLength="25"
                                     width="150px"
-                                     editable="false"
+                                    editable="false"
                                 />
                             </HBox>
-  <!-- Location and Action Buttons -->
+                            <!-- Location and Action Buttons -->
                             <HBox id="idSecScHbox7_HuQuery">
                                 <Text
                                     id="idLocationLabel_HuQuery"
@@ -236,16 +227,16 @@
                                     id="idTotalWeightInput_HuQuery"
                                     maxLength="25"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
-                                  <Text
+                                <Text
                                     id="idTotalWeightEmtyInput_HuQuery"
-                                    width="8px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idTotalWeightInput2_HuQuery"
-                                    width="50px"
-                                     editable="false"
+                                    width="45px"
+                                    editable="false"
                                 />
 
                                 <Text
@@ -260,15 +251,15 @@
                                 <Input
                                     id="idVolumeInput_HuQuery"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
-                                 <Text
+                                <Text
                                     id="idVolumeLabelEmtyInput_HuQuery"
-                                    width="8px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idVolumeInput2_HuQuery"
-                                    width="50px"
+                                    width="45px"
                                     editable="false"
                                 />
                             </HBox>
@@ -287,7 +278,7 @@
 
                                 <Text
                                     id="idEmpLabel4_HuQuery"
-                                    width="10px"
+                                    width="60px"
                                 />
                                 <Text
                                     id="idTarVolumeLabel_HuQuery"
@@ -301,12 +292,11 @@
                                 />
                             </HBox>
 
-                             <HBox id="idSecScHbox6_HuQuery">
+                            <HBox id="idSecScHbox6_HuQuery">
                                 <Text
                                     id="idMaxWeightLabel_HuQuery"
                                     text="{i18n>Label_MaxW_HuQuery}"
                                     width="50px"
-                                    
                                 />
                                 <Input
                                     id="idMaxWeightInput_HuQuery"
@@ -317,7 +307,7 @@
 
                                 <Text
                                     id="idEmpLabel3_HuQuery"
-                                    width="10px"
+                                    width="60px"
                                 />
                                 <Text
                                     id="idMaxVolumeLabel_HuQuery"
@@ -327,10 +317,10 @@
                                 <Input
                                     id="idmaxVInput_HuQuery"
                                     width="100px"
-                                     editable="false"
+                                    editable="false"
                                 />
                             </HBox>
-                          
+
                             <HBox
                                 id="idSecScHbox4_HuQuery"
                                 justifyContent="Start"
@@ -360,7 +350,7 @@
                                     id="idWidthInput_HuQuery"
                                     maxLength="3"
                                     width="80px"
-                                     editable="false"
+                                    editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
 
@@ -376,7 +366,7 @@
                                     maxLength="3"
                                     width="80px"
                                     class="sapUiTinyMarginEnd"
-                                     editable="false"
+                                    editable="false"
                                 />
 
                                 <!-- Height Measurements -->
@@ -390,11 +380,9 @@
                                     id="idUnitsInput_HuQuery"
                                     maxLength="13"
                                     width="40px"
-                                     editable="false"
+                                    editable="false"
                                 />
                             </HBox>
-
-                          
 
                             <VBox
                                 id="idSecScVbox3_HuQuery"
@@ -409,19 +397,22 @@
                                         type="Emphasized"
                                         text="{i18n>Button_Back1_HuQuery}"
                                         press="onPressBackButtonSecondSC"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiSmallMarginEnd"
+                                        width="100%"
                                     />
                                     <Button
                                         id="idHuContentBtn_HuQuery"
                                         text="{i18n>Label_HuContent_HuQuery}"
                                         press="onHUContentPress"
                                         class="sapUiTinyMarginEnd"
+                                         width="100%"
                                     />
                                     <Button
                                         id="idHuHierarchyBtn_HuQuery"
                                         text="{i18n>Label_HuHierarchy_HuQuery}"
                                         press="onHUHierarchyPress"
                                         class="sapUiTinyMarginEnd"
+                                         width="100%"
                                     />
                                 </HBox>
                             </VBox>
@@ -449,6 +440,7 @@
                         text="{i18n>Button_Back1_HuQuery}"
                         press="onPressBackButtonThirdSC"
                         type="Emphasized"
+                        width="100%"
                     />
                 </HBox>
                 <Table
@@ -458,7 +450,6 @@
                     width="100%"
                     growingScrollToLoad="true"
                     mode="None"
-                  
                 >
                     <headerToolbar>
                         <OverflowToolbar id="idOverflowToolBar_HuQuery">
@@ -509,7 +500,10 @@
                     </columns>
 
                     <items>
-                        <ColumnListItem id="idColListItem_HuQuery" type="Navigation">
+                        <ColumnListItem
+                            id="idColListItem_HuQuery"
+                            type="Navigation"
+                        >
                             <cells>
                                 <Text
                                     id="idSerialNoText_HuQuery"
@@ -557,13 +551,15 @@
                         class=""
                         press="onPressBackButtonFourthSC"
                         type="Emphasized"
+                        width="100%"
                     />
                 </HBox>
 
                 <Table
                     id="idSimpleTable_HuQuery"
-                    inset="false"
+                  items="{/products}"
                     growing="true"
+                    
                     growingScrollToLoad="true"
                     mode="SingleSelectMaster"
                     selectionChange="onSelectParticularWT"
@@ -610,21 +606,22 @@
                     <items>
                         <ColumnListItem
                             id="idColumListItem_HuQuery"
-                            navigated="true"
+                            
                             type="Navigation"
+
                         >
                             <cells>
                                 <Text
                                     id="idSrnoText_HuQuery"
-                                    text="{serialNo}"
+                                    text="{SLNO}"
                                 />
                                 <Text
                                     id="idHlhu_HuQuery"
-                                    text="{higherLevelHU}"
+                                    text="{HUI}"
                                 />
                                 <Text
                                     id="idHstHu_HuQuery"
-                                    text="{highestLevelHU}"
+                                    text="{HU}"
                                 />
                             </cells>
                         </ColumnListItem>
