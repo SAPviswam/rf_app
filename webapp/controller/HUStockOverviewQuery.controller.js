@@ -426,9 +426,10 @@ sap.ui.define(
           },
 
           success: function (odata) {
+            debugger;
 
             console.log(odata)
-            if (odata.Huident === sHUNumber) {
+            if (odata.Tophu === sHUNumber) {
               that.getView().byId("idHUStockOverviewQueryFourthbackbtn_HUSOQ").setVisible(true);
               that.getView().byId("idScforFourthHUStockOverviewQuery_HUSOQ").setVisible(true);
               that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
@@ -438,27 +439,60 @@ sap.ui.define(
 
               let oDetails = odata.HUheadtoItems.results;
 
-              that.getView().byId("inputPkmt").setValue(oDetails[0].Pmat);
-              that.getView().byId("inputHtyp").setValue(oDetails[0].Letyp);
-              that.getView().byId("inputTotw1").setValue(oDetails[0].GWeight);
-              that.getView().byId("inputTotw2").setValue(oDetails[0].UnitGw);
-              that.getView().byId("inputTotv1").setValue(oDetails[0].GVolume);
-              that.getView().byId("inputTotv2").setValue(oDetails[0].UnitGv);
-              that.getView().byId("inputMaxW").setValue(oDetails[0].MaxWeight);
-              that.getView().byId("inputMaxV").setValue(oDetails[0].MaxVolume);
-              that.getView().byId("inputTarW").setValue(oDetails[0].TWeight);
-              that.getView().byId("inputTarV").setValue(oDetails[0].TVolume);
-              that.getView().byId("inputEr1").setValue(oDetails[0].Length);
-              that.getView().byId("inputEr2").setValue(oDetails[0].Width);
-              that.getView().byId("inputEr3").setValue(oDetails[0].Height);
-              that.getView().byId("inputEr4").setValue(oDetails[0].UnitLwh);
-              that.getView().byId("inputTop").setValue(oDetails[0].Top);
-              that.getView().byId("inputLwst").setValue(oDetails[0].Bottom);
-              that.getView().byId("inputMove").setValue(oDetails[0].Flgmove);
-              that.getView().byId("inputStat1").setValue(oDetails[0].Phystat);
-              that.getView().byId("inputStat2").setValue(oDetails[0].HazmatInd);
-              that.getView().byId("inputBin1").setValue(oDetails[0].Wsbin);
-              that.getView().byId("inputCGrp").setValue(oDetails[0].Dstgrp);
+              that.getView().byId("inputPkmt").setValue(odata.Pmat);
+              that.getView().byId("inputHtyp").setValue(odata.Letyp);
+              that.getView().byId("inputTotw1").setValue(odata.GWeight);
+              that.getView().byId("inputTotw2").setValue(odata.UnitGw);
+              that.getView().byId("inputTotv1").setValue(odata.GVolume);
+              that.getView().byId("inputTotv2").setValue(odata.UnitGv);
+              that.getView().byId("inputMaxW").setValue(odata.MaxWeight);
+              that.getView().byId("inputMaxV").setValue(odata.MaxVolume);
+              that.getView().byId("inputTarW").setValue(odata.TWeight);
+              that.getView().byId("inputTarV").setValue(odata.TVolume);
+              that.getView().byId("inputEr1").setValue(odata.Length);
+              that.getView().byId("inputEr2").setValue(odata.Width);
+              that.getView().byId("inputEr3").setValue(odata.Height);
+              that.getView().byId("inputEr4").setValue(odata.UnitLwh);
+              that.getView().byId("inputTop").setValue(odata.Top);
+              that.getView().byId("inputLwst").setValue(odata.Bottom);
+              that.getView().byId("inputMove").setValue(odata.Flgmove);
+              that.getView().byId("inputStat1").setValue(odata.Phystat);
+              that.getView().byId("inputStat2").setValue(odata.HazmatInd);
+              that.getView().byId("inputBin1").setValue(odata.Wsbin);
+              that.getView().byId("inputCGrp").setValue(odata.Dstgrp);
+
+            } else {
+              that.getView().byId("idHUStockOverviewQueryFourthbackbtn_HUSOQ").setVisible(true);
+              that.getView().byId("idScforFourthHUStockOverviewQuery_HUSOQ").setVisible(true);
+              that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
+              that.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(false);
+              that.getView().byId("idBinNumberforlabelInput_HUSOQ").setValue(sHUNumber);
+
+
+              let oDetails = odata.HUheadtoItems.results;
+
+              that.getView().byId("inputPkmt").setValue(odata.Pmat);
+              that.getView().byId("inputHtyp").setValue(odata.Letyp);
+              that.getView().byId("inputTotw1").setValue(odata.GWeight);
+              that.getView().byId("inputTotw2").setValue(odata.UnitGw);
+              that.getView().byId("inputTotv1").setValue(odata.GVolume);
+              that.getView().byId("inputTotv2").setValue(odata.UnitGv);
+              that.getView().byId("inputMaxW").setValue(odata.MaxWeight);
+              that.getView().byId("inputMaxV").setValue(odata.MaxVolume);
+              that.getView().byId("inputTarW").setValue(odata.TWeight);
+              that.getView().byId("inputTarV").setValue(odata.TVolume);
+              that.getView().byId("inputEr1").setValue(odata.Length);
+              that.getView().byId("inputEr2").setValue(odata.Width);
+              that.getView().byId("inputEr3").setValue(odata.Height);
+              that.getView().byId("inputEr4").setValue(odata.UnitLwh);
+              that.getView().byId("inputTop").setValue(odata.Top);
+              that.getView().byId("inputLwst").setValue(odata.Bottom);
+              that.getView().byId("inputMove").setValue(odata.Flgmove);
+              that.getView().byId("inputStat1").setValue(odata.Phystat);
+              that.getView().byId("inputStat2").setValue(odata.HazmatInd);
+              that.getView().byId("inputBin1").setValue(odata.Wsbin);
+              that.getView().byId("inputCGrp").setValue(odata.Dstgrp);
+
 
             }
           },
