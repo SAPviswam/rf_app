@@ -388,8 +388,6 @@
                     class="Page4PrdDescriptionContainer_AHUOBQ"
                     justifyContent="Center"
                 >
-                  
-
                     <form:SimpleForm
                         id="idSimpleFormVerifyHuNumber_AHUOBQ"
                         layout="ResponsiveGridLayout"

@@ -202,9 +202,10 @@
                             class="customInput sapUiTinyMarginTop"
                         />
                         <Input
-                            id="idUssrInput_CP"
+                            id="idFirstnameInput_CL"
                             placeholder="{i18n>FristN_PlaceHldr_CL}"
                             class="customInput"
+                            value="{ODataModel>/appLoginData/Firstname}"
                         />
                         <Label
                             id="idUserLabels_CP"
@@ -212,9 +213,10 @@
                             class="sapUiTinyMarginTop"
                         />
                         <Input
-                            id="idSPasswosrdInput_CP"
+                            id="idLName_Input_CL"
                             placeholder="{i18n>LName_PlaceHldr_CL}"
                             class="customInput"
+                            value="{ODataModel>/appLoginData/Lastname}"
                         />
                         <Label
                             id="idNewPassworsdlabel_CP"
@@ -225,22 +227,28 @@
                             id="idNewPassworsdInput_CP"
                             placeholder="{i18n>EmailAdd_PlaceHldr_CL}"
                             class="customInput"
+                            value="{ODataModel>/appLoginData/Email}"
                         />
                         <Label
-                            id="idRepeatPasswsordlabel_CP"
+                            id="idPhonelabel_CP"
                             text="{i18n>Phone__Lbl_CL}"
                             class="sapUiTinyMarginTop"
                         />
                         <HBox id="idHBox_CL">
                             <Input
-                                id="idRepeatPassswordInput_CP"
+                                id="idPhoneInput_CL"
                                 placeholder="{i18n>Phone_PlaceHldr_CL}"
                                 class="customInput"
                                 width="120%"
+                                value="{ODataModel>/appLoginData/Phonenumber}"
+                                liveChange="onAfterNumberEnter"
+                                maxLength="10"
+                                type="Number"
                             />
                             <Button
-                                id="ChangePs_CP"
+                                id="idBtnOTP"
                                 text="Get OTP"
+                                enabled="false"
                                 type="Emphasized"
                                 press="onGetOTPPress"
                                 class="sapUiLargeMarginBegin"
@@ -251,9 +259,12 @@
                             text="{i18n>ValidateOTP_CL}"
                             class="sapUiTinyMarginTop"
                         />
-                        <HBox id="idOTPHBox" visible="false">
+                        <HBox
+                            id="idOTPHBox"
+                            visible="false"
+                        >
                             <Input
-                                id="idRepeatPassswofrdInput_CP"
+                                id="idOTPInput_CL"
                                 placeholder="{i18n>EntrOTP_PlaceHldr_CL}"
                                 class="customInput"
                                 width="120%"
@@ -267,32 +278,34 @@
                             />
                         </HBox>
                         <Label
-                            id="idRepeatPasswsordlabeld_CP"
+                            id="idPasswsordlabel_CP"
                             text="{i18n>Password__Lbl_CL}"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
-                            id="idRepeatPassswordInputwd_CP"
+                            id="idPassswordInput_CP"
                             type="Password"
                             placeholder="{i18n>Password_PlaceHldr_CL}"
+                            value="{ODataModel>/appLoginData/Password}"
                             class="customInput"
                         />
-                        <HBox id="idButtonsHbox_CL" >
-                        <Button
-                            id="ChangePswd_CP"
-                            text="{i18n>SignUp_Btn}"
-                            type="Emphasized"
-                            width="100%"
-                            press="onSignupPress"
-                            class="sapUiTinyMarginTop"
-                        />
-                        <Button
-                            id="IDbuttonchangdepwcancel"
-                            class="changePasswordCancelBtn sapUiTinyMarginTop sapUiTinyMarginBegin"
-                            text="{i18n>Cancel_Btn}"
-                            type="Transparent"
-                            press="onCancleSignup"
-                        />
+                        <HBox id="idButtonsHbox_CL">
+                            <Button
+                                id="idSignUp_CP"
+                                text="{i18n>SignUp_Btn}"
+                                type="Emphasized"
+                                width="100%"
+                                enabled="false"
+                                press="onSignupPress"
+                                class="sapUiTinyMarginTop"
+                            />
+                            <Button
+                                id="IDbuttonchangdepwcancel"
+                                class="changePasswordCancelBtn sapUiTinyMarginTop sapUiTinyMarginBegin"
+                                text="{i18n>Cancel_Btn}"
+                                type="Transparent"
+                                press="onCancleSignup"
+                            />
                         </HBox>
                     </form:SimpleForm>
                 </FlexBox>

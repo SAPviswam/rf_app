@@ -1858,7 +1858,7 @@ margin-right: 20%;
     margin-top: 5%;
 }
 .MobileviewTable_HUSOQ{
-    margin-top: 20%;
+    margin-top: 25%;
 }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
@@ -1873,18 +1873,14 @@ margin-right: 20%;
 }
 
 
-
-
-
-
 /* config login view for mobile  */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
     /* Adjust whiteBox for mobile view */
     .whiteBorderBox {
-        width: 90%; /* Adjust width to fit mobile screen */
+        width: 90vw; /* Adjust width to fit mobile screen */
         height: auto; /* Allow height to adjust based on content */
         padding: 1rem; /* Add some padding for better spacing */
-        margin-top: 70%; /* Moves the whiteBox down */
+        margin-top: 45%; /* Moves the whiteBox down */
     }
     
     /* Adjust padding for the surrounding container */
@@ -1924,7 +1920,9 @@ margin-right: 20%;
     }
 }
 
+
 .deleteClassinChangeQueue{
     margin-left: 2px;
     margin-right: 2px;
 }
+
