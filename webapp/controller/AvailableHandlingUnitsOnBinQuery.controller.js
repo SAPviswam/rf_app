@@ -444,7 +444,7 @@ sap.ui.define(
                     if (oSelectedMaterial) {
                         // Update the other fields with the selected material's details
                         oView.byId("idSectionInput_AHUOBQ").setValue(odata.Lgtyp); // Storage Type
-                        oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
+                        // oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
                         oView.byId("idQtyInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Quan); // Quantity
                         oView.byId("idBinInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Owner); // Owner
                     } else {

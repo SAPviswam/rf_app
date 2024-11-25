@@ -307,7 +307,7 @@
                                    editable="false"
                                 />
                             </HBox>
-                            <HBox
+                            <!-- <HBox
                               id="idHBox4_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
@@ -325,7 +325,7 @@
                                     editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
-                            </HBox>
+                            </HBox> -->
                             <HBox
                               id="idHBox5_AHUOBQ"
                                 alignContent="Center"
