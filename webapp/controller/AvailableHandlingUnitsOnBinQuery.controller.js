@@ -386,6 +386,7 @@ sap.ui.define(
                       for (var i = 0; i < aBindetails.length; i++) {
                           if (aBindetails[i].Matnr === sSelectedMatnr) {
                              this.getView().byId("idProductDescription_AHUOBQ").setValue(odata.Maktx);
+                             this.getView().byId("idHuInput_AHUOBQ").setValue(odata.Ean11);
                               this.getView().byId("idTotalWeightInput_AHUOBQ").setValue(odata.GWeight);
                               this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
                               this.getView().byId("idKGUnits_AHUOBQ").setValue(odata.UnitGw);
@@ -433,6 +434,7 @@ sap.ui.define(
                     "$format": "json"
                 },
                 success: function (odata) {
+                    debugger;
                     console.log(odata);
                     var aMaterials = odata.BINQHeadSet.results;
         
