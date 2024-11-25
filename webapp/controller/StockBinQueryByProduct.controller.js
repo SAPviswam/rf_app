@@ -232,10 +232,10 @@ sap.ui.define(
               this.getView().byId("idBinAisleinput_SBQP").setValue(Aisle);
               this.getView().byId("idStackinput_SBQP").setValue(Stack);
               this.getView().byId("idBinLevelinput_SBQP").setValue(LvlV);
-              this.getView().byId("idMaxWInput_SBQP").setValue(odata.GWeight);
-              this.getView().byId("idUnitGwInput_SBQP").setValue(odata.UnitGw);
-              this.getView().byId("idMaxVinput_SBQP").setValue(odata.GVolume);
-              this.getView().byId("idUnitGvInput_SBQP").setValue(odata.UnitGv);
+              this.getView().byId("idMaxWInput_SBQP").setValue(oSelectedBinDetails.MaxWeight);
+              this.getView().byId("idUnitGwInput_SBQP").setValue(oSelectedBinDetails.UnitW);
+              this.getView().byId("idMaxVinput_SBQP").setValue(oSelectedBinDetails.MaxVolume);
+              this.getView().byId("idUnitGvInput_SBQP").setValue(oSelectedBinDetails.UnitV);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
