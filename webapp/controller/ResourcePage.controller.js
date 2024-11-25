@@ -26,9 +26,9 @@ sap.ui.define([
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
 
-                if (Device.system.phone) {
-                    this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile_home");
-                }
+                // if (Device.system.phone) {
+                //     this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile_home");
+                // }
 
                 // Initialize JSON Model
                 var oModel = new JSONModel();
