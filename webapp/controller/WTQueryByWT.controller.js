@@ -1,15 +1,23 @@
 sap.ui.define(
     [
-        "./BaseController", // Base controller for UI5 controllers
+        "./BaseController",
+        "sap/ui/Device", // Base controller for UI5 controllers
         "sap/ui/core/UIComponent", // To access routing functionalities
         "sap/m/MessageToast"
     ],
-    function (BaseController, UIComponent, MessageToast) {
+    function (BaseController, Device, UIComponent, MessageToast) {
         "use strict";
 
+       
         return BaseController.extend("com.app.rfapp.controller.WTQueryByWT", {
             // Controller initialization, called when the controller is instantiated
             onInit: function () {
+                if (Device.system.phone) {
+                    this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setWidth("150%");
+                    this.getView().byId("idWtQBWtSF2_WTQueryByWT").setWidth("150%");
+                    this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setWidth("140%");
+                    this.getView().byId("idWtQBWtSF3_WTQueryByWT").setWidth("140%");
+                }
                 const oRouter = this.getOwnerComponent().getRouter(); // Get the router from the owner component
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this); // Attach route match event to handler
             },
