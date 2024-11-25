@@ -355,15 +355,12 @@ sap.ui.define(
                             oView.byId("idWtQBWOHuWtInput").setValue(oSelectedWT.Flghuto);
                             oView.byId("idWtQBWOHTypeInput").setValue(oSelectedWT.Letyp);
                         }
-
                     },
-
                     error: function () {
                         sap.m.MessageToast.show("Error fetching products.");
                     }
                 });
             },
-
             // Handler for filtering open tasks in Warehouse Order
             onWtQBWoOpenBtnPress: function () {
                 var oView = this.getView();
