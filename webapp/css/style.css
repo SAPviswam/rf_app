@@ -1010,8 +1010,8 @@
     font-size: auto !important;
 }
 .smallIcons {
-    width: 80px !important;
-    height: 80px !important;
+    width: 75px !important;
+    height: 75px !important;
     font-size: auto !important;
 }
 /* For the list form view to tiles */
@@ -1393,6 +1393,9 @@ margin-right: 20%;
     left: 45%;
     color: hsl(29, 100%, 50%);
     align-content: center;
+}
+.ResourcePageTitle{
+    color: hsl(29, 100%, 50%);
 }
 
 .titleMobile {
