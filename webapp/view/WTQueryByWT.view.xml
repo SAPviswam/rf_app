@@ -88,6 +88,7 @@
                                     value=""
                                     placeholder="{i18n>Input_WareHouseTask_WtQbWt}"
                                     liveChange="onWtQBWtWhLiveChange"
+                                    
                                 />
                             </HBox>
                             <HBox
@@ -101,6 +102,7 @@
                                     type="Emphasized"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     press="onPressFirstBackButton"
+                                    width="100%"
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="idWtQBWtWhScannerBtn_WTQueryByWT"
@@ -108,7 +110,7 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Enter Warehouse Task Number:"
-                                    class="sapUiSmallMarginEnd"
+                                    class="sapUiSmallMarginBegin"
                                 />
 
                                 <!-- <Button
@@ -414,12 +416,14 @@
                                         type="Emphasized"
                                         press="onPressSecondBackButton"
                                         class="sapUiTinyMarginEnd"
+                                        width="100%"
                                     />
                                     <Button
                                         id="WtQBWtDetailBtn_WTQueryByWT"
                                         text="{i18n>Label_Detail_WtQbWt}"
                                         press="onWtQBWtDetailBtnPress"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiTinyMarginBegin"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>
@@ -627,6 +631,7 @@
                                         text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                         press="onPressThirdBackButton"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>

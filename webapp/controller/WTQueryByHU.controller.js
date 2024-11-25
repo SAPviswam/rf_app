@@ -59,6 +59,10 @@ sap.ui.define(
       onPressAvatarWTQBYHU: function (oEvent) {
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
+      onSignoutPressed:function(){
+				var oRouter = this.getOwnerComponent().getRouter(this);
+				oRouter.navTo("InitialScreen"); 
+			},
      
       onBeforeRendering:function(){
         this.onPressBackButtonSecondSC();

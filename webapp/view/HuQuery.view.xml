@@ -104,11 +104,12 @@
                                     class="sapUiTinyMargin"
                                     press="onPressBackButtonFirstSC"
                                     type="Emphasized"
+                                    
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="sampleBarcodeScannerButton"
                                     scanSuccess="onScanSuccess"
-                                    class="sapUiTinyMargin"
+                                    class="sapUiTinyMargin sapUiTinyMarginBegin"
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Barcode Scanner Button Sample"
@@ -395,19 +396,22 @@
                                         type="Emphasized"
                                         text="{i18n>Button_Back1_HuQuery}"
                                         press="onPressBackButtonSecondSC"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiSmallMarginEnd"
+                                        width="100%"
                                     />
                                     <Button
                                         id="idHuContentBtn_HuQuery"
                                         text="{i18n>Label_HuContent_HuQuery}"
                                         press="onHUContentPress"
                                         class="sapUiTinyMarginEnd"
+                                         width="100%"
                                     />
                                     <Button
                                         id="idHuHierarchyBtn_HuQuery"
                                         text="{i18n>Label_HuHierarchy_HuQuery}"
                                         press="onHUHierarchyPress"
                                         class="sapUiTinyMarginEnd"
+                                         width="100%"
                                     />
                                 </HBox>
                             </VBox>
@@ -435,6 +439,7 @@
                         text="{i18n>Button_Back1_HuQuery}"
                         press="onPressBackButtonThirdSC"
                         type="Emphasized"
+                        width="100%"
                     />
                 </HBox>
                 <Table
@@ -545,6 +550,7 @@
                         class=""
                         press="onPressBackButtonFourthSC"
                         type="Emphasized"
+                        width="100%"
                     />
                 </HBox>
 
