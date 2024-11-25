@@ -123,9 +123,10 @@
             <!--Second Scroll Container for HU Details -->
             <ScrollContainer
                 id="idSecondSc_HuQuery"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -230,11 +231,11 @@
                                 />
                                 <Text
                                     id="idTotalWeightEmtyInput_HuQuery"
-                                    width="8px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idTotalWeightInput2_HuQuery"
-                                    width="50px"
+                                    width="45px"
                                     editable="false"
                                 />
 
@@ -254,11 +255,11 @@
                                 />
                                 <Text
                                     id="idVolumeLabelEmtyInput_HuQuery"
-                                    width="8px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idVolumeInput2_HuQuery"
-                                    width="50px"
+                                    width="45px"
                                     editable="false"
                                 />
                             </HBox>
@@ -277,7 +278,7 @@
 
                                 <Text
                                     id="idEmpLabel4_HuQuery"
-                                    width="10px"
+                                    width="60px"
                                 />
                                 <Text
                                     id="idTarVolumeLabel_HuQuery"
@@ -306,7 +307,7 @@
 
                                 <Text
                                     id="idEmpLabel3_HuQuery"
-                                    width="10px"
+                                    width="60px"
                                 />
                                 <Text
                                     id="idMaxVolumeLabel_HuQuery"
@@ -556,8 +557,9 @@
 
                 <Table
                     id="idSimpleTable_HuQuery"
-                    inset="false"
+                  items="{/products}"
                     growing="true"
+                    
                     growingScrollToLoad="true"
                     mode="SingleSelectMaster"
                     selectionChange="onSelectParticularWT"
@@ -604,21 +606,22 @@
                     <items>
                         <ColumnListItem
                             id="idColumListItem_HuQuery"
-                            navigated="true"
+                            
                             type="Navigation"
+
                         >
                             <cells>
                                 <Text
                                     id="idSrnoText_HuQuery"
-                                    text="{serialNo}"
+                                    text="{SLNO}"
                                 />
                                 <Text
                                     id="idHlhu_HuQuery"
-                                    text="{higherLevelHU}"
+                                    text="{HUI}"
                                 />
                                 <Text
                                     id="idHstHu_HuQuery"
-                                    text="{highestLevelHU}"
+                                    text="{HU}"
                                 />
                             </cells>
                         </ColumnListItem>

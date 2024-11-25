@@ -30,6 +30,8 @@ sap.ui.define([
             if (Device.system.phone) {
                 this.getView().byId("HuDetailsTable_HuQuery").setWidth("200%");
                 this.getView().byId("idSimpleTable_HuQuery").setWidth("200%");
+                this.getView().byId("idSecScsimpleForm_HuQuery").setWidth("120%");
+                this.getView().byId("idSecondSc_HuQuery").setWidth("120%");
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("qty"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("hlHu"));
@@ -379,17 +381,18 @@ sap.ui.define([
                     var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
                     that.byId("idSimpleTable_HuQuery").setModel(oProductModel);
 
-                    // Bind the table items to the hierarchy model
-                    that.byId("idSimpleTable_HuQuery").bindItems({
-                        path: "/products",
-                        template: new sap.m.ColumnListItem({
-                            cells: [
-                                new sap.m.Text({ text: "{SLNO}" }),
-                                new sap.m.Text({ text: "{HUI}" }),
-                                new sap.m.Text({ text: "{HU}" }),
-                            ]
-                        })
-                    });
+                    //Bind the table items to the hierarchy model
+                    // that.byId("idSimpleTable_HuQuery").bindItems({
+                    //     path: "/products",
+                       
+                    //     template: new sap.m.ColumnListItem({
+                    //         cells: [
+                    //             new sap.m.Text({ text: "{SLNO}" }),
+                    //             new sap.m.Text({ text: "{HUI}" }),
+                    //             new sap.m.Text({ text: "{HU}" }),
+                    //         ]
+                    //     })
+                    // });
                 }
                 else{
                     console.log(odata);  // Log the data response
