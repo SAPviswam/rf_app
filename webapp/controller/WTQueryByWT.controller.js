@@ -1,10 +1,10 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller", // Base controller for UI5 controllers
+        "./BaseController", // Base controller for UI5 controllers
         "sap/ui/core/UIComponent", // To access routing functionalities
         "sap/m/MessageToast"
     ],
-    function (BaseController, UIComponent,MessageToast) {
+    function (BaseController, UIComponent, MessageToast) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.WTQueryByWT", {
@@ -18,11 +18,20 @@ sap.ui.define(
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
                 this.ID = id; // Store the 'id' for use in other methods
+                this.applyStoredProfileImage();
             },
+            onAvatarPressed: function (oEvent) {     
+                this.onPressAvatarEveryTileHelperFunction(oEvent); 
+    
+                },
+                onSignoutPressed:function(){
+                    var oRouter = this.getOwnerComponent().getRouter(this);
+                    oRouter.navTo("InitialScreen"); 
+                },
 
             // Event handler for the first back button (navigation based on user type)
             onPressFirstBackButton: async function () {
-            var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
+                var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
                 var oModel1 = this.getOwnerComponent().getModel(); // Get the model from the owner component
 
                 // Read data from the RESOURCESSet entity for the given ID
@@ -46,12 +55,12 @@ sap.ui.define(
 
             // Event handler for live change in the Warehouse Task (WT) input field (validates HU value)
             onWtQBWtWhLiveChange: function (oEvent) {
-                if(oEvent===this.getView().byId("idWtQBWtWhInput_WTQueryByWT").getValue()){
-                    var oHuValue=oEvent
+                if (oEvent === this.getView().byId("idWtQBWtWhInput_WTQueryByWT").getValue()) {
+                    var oHuValue = oEvent
                 }
-                else{
-                var oInput = oEvent.getSource(); // Get the input field that triggered the event
-                var oHuValue = oInput.getValue().trim(); // Get the HU value from the input and trim any whitespace
+                else {
+                    var oInput = oEvent.getSource(); // Get the input field that triggered the event
+                    var oHuValue = oInput.getValue().trim(); // Get the HU value from the input and trim any whitespace
                 }
                 if (oHuValue) { // Proceed if the HU value is not empty
                     var oModel = this.getOwnerComponent().getModel(); // Get the OData model for making requests
@@ -59,68 +68,147 @@ sap.ui.define(
 
                     // Call OData service to validate if the HU exists in the system
                     setTimeout(function () {
-                    oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
-                        success: function (odata) {
-                            if(odata.Tanum===oHuValue){
+                        oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
+                            success: function (odata) {
+                                if (odata.Tanum === oHuValue) {
 
-                          
-                            // If HU exists, toggle screens and populate input fields with the retrieved data
-                            that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false); // Hide the first screen
-                            that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show the second screen
+                                    MessageToast.show("Succesfully Scanned");
+                                    // If HU exists, toggle screens and populate input fields with the retrieved data
+                                    that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false); // Hide the first screen
+                                    that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show the second screen
 
-                            // Populate the fields with the data returned from the OData service
-                            that.getView().byId("idWtQBWtwtInput_WTQueryByWT").setValue(odata.Tanum);
-                            that.getView().byId("idWtQBWtWTitInput_WTQueryByWT").setValue(odata.Tapos);
-                            that.getView().byId("idWtQBWtwtsInput_WTQueryByWT").setValue(odata.Numwt);
-                            that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(odata.Tostat);
-                            that.getView().byId("idWtQBWtPtypInput_WTQueryByWT").setValue(odata.Procty);
-                            that.getView().byId("idWtQBWtSproInput_WTQueryByWT").setValue(odata.Prces);
-                            that.getView().byId("idWtQBWtActyInput_WTQueryByWT").setValue(odata.ActType);
-                            that.getView().byId("idWtQBWtProInput_WTQueryByWT").setValue(odata.Matnr);
-                            that.getView().byId("idWtQBWtProEmpInput_WTQueryByWT").setValue(odata.HazmatInd);
-                            that.getView().byId("idWtQBWtSbinInput_WTQueryByWT").setValue(odata.Vlpla);
-                            that.getView().byId("idWtQBWtSbinEmpInput_WTQueryByWT").setValue(odata.Vlenr);
-                            that.getView().byId("idWtQBWtDbinInput_WTQueryByWT").setValue(odata.Nlpla);
-                            that.getView().byId("idWtQBWtDbinEmpInput_WTQueryByWT").setValue(odata.Nlenr);
+                                    // Populate the fields with the data returned from the OData service
+                                    that.getView().byId("idWtQBWtwtInput_WTQueryByWT").setValue(odata.Tanum);
+                                    that.getView().byId("idWtQBWtWTitInput_WTQueryByWT").setValue(odata.Tapos);
+                                    that.getView().byId("idWtQBWtwtsInput_WTQueryByWT").setValue(odata.Numwt);
+                                    that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(odata.Tostat);
+                                    that.getView().byId("idWtQBWtPtypInput_WTQueryByWT").setValue(odata.Procty);
+                                    that.getView().byId("idWtQBWtSproInput_WTQueryByWT").setValue(odata.Prces);
+                                    that.getView().byId("idWtQBWtActyInput_WTQueryByWT").setValue(odata.ActType);
+                                    that.getView().byId("idWtQBWtProInput_WTQueryByWT").setValue(odata.Matnr);
+                                    that.getView().byId("idWtQBWtProEmpInput_WTQueryByWT").setValue(odata.HazmatInd);
+                                    that.getView().byId("idWtQBWtSbinInput_WTQueryByWT").setValue(odata.Vlpla);
+                                    that.getView().byId("idWtQBWtSbinEmpInput_WTQueryByWT").setValue(odata.Vlenr);
+                                    that.getView().byId("idWtQBWtDbinInput_WTQueryByWT").setValue(odata.Nlpla);
+                                    that.getView().byId("idWtQBWtDbinEmpInput_WTQueryByWT").setValue(odata.Nlenr);
 
-                            // Format and set the ConfD date
-                            let dateStr = odata.ConfD;
-                            let year = dateStr.slice(0, 4);
-                            let month = dateStr.slice(4, 6);
-                            let day = dateStr.slice(6, 8);
-                            let formattedDate = `${year}-${month}-${day}`;
-                            that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
-                            
-                            // Calculate and format the ConfT time (from milliseconds)
-                            let milliseconds = odata.ConfT.ms;
-                            let hours = Math.floor(milliseconds / (1000 * 60 * 60));
-                            let minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-                            let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-                            let timeFormatted = `${hours}:${minutes}:${seconds}`;
-                            that.getView().byId("idWtQBWtCdatnput_WTQueryByWT").setValue(timeFormatted);
+                                    // Format and set the ConfD date
+                                    let dateStr = odata.ConfD;
+                                    let year = dateStr.slice(0, 4);
+                                    let month = dateStr.slice(4, 6);
+                                    let day = dateStr.slice(6, 8);
+                                    let formattedDate = `${year}-${month}-${day}`;
+                                    that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
 
-                            // Set the ConfBy user
-                            that.getView().byId("idWtQBWtCusrInput_WTQueryByWT").setValue(odata.ConfBy);
+                                    // Calculate and format the ConfT time (from milliseconds)
+                                    let milliseconds = odata.ConfT.ms;
+                                    let hours = Math.floor(milliseconds / (1000 * 60 * 60));
+                                    let minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+                                    let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+                                    let timeFormatted = `${hours}:${minutes}:${seconds}`;
+                                    that.getView().byId("idWtQBWtCdatnput_WTQueryByWT").setValue(timeFormatted);
+
+                                    // Set the ConfBy user
+                                    that.getView().byId("idWtQBWtCusrInput_WTQueryByWT").setValue(odata.ConfBy);
+                                }
+                                else {
+                                     MessageToast.show("Please Enter correct Warehouse task Number");
+                                    that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true);
+                                    that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
+                                }
+                            },
+                            error: function (oError) {
+                                // Handle error if HU not found
+                                MessageToast.show("Please Enter correct Warehouse task Number")
                             }
-                            else{
-                                MessageToast.show("Please Enter correct Warehouse task Number");
-                                this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true);
-                                this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
-                            }
-                        },
-                        error: function (oError) {
-                            // Handle error if HU not found
-                            MessageToast.show("Please Enter correct Warehouse task Number")
-                        }
-                   
-                    });
-                }.bind(this), 2000); 
+
+                        });
+                    }.bind(this), 2000);
                 }
 
                 // Toggle visibility of screens (no action if HU is empty)
                 // this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false);
                 // this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true);
             },
+            // onWtQBWtWhLiveChange: function (oEvent) {
+            //     // Get the value from the input
+            //     var oHuValue = oEvent.getSource().getValue().trim();
+            
+            //     if (oHuValue) { // Proceed if the HU value is not empty
+            //         var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+            //         var that = this; // Preserve the controller context for the success handler
+            
+            //         // Clear previous timeout, if any
+            //         if (this.inputTimeout) {
+            //             clearTimeout(this.inputTimeout);
+            //         }
+            
+            //         // Set a new timeout to trigger after 2 seconds of inactivity
+            //         this.inputTimeout = setTimeout(function () {
+            //             // Show the message toast after 2 seconds of inactivity
+            //             // MessageToast.show("Naveen");
+            
+            //             // Make the OData call to validate if the HU exists in the system
+            //             oModel.read(`/WarehouseTaskNewSet('${oHuValue}')`, {
+            //                 success: function (odata) {
+            //                     if (odata.Tanum === oHuValue) {
+            //                         MessageToast.show("Succesfully Scanned");
+            //                         // If HU exists, toggle screens and populate input fields with the retrieved data
+            //                         that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(false); // Hide first screen
+            //                         that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(true); // Show second screen
+            
+            //                         // Populate fields with data from OData response
+            //                         that.getView().byId("idWtQBWtwtInput_WTQueryByWT").setValue(odata.Tanum);
+            //                         that.getView().byId("idWtQBWtWTitInput_WTQueryByWT").setValue(odata.Tapos);
+            //                         that.getView().byId("idWtQBWtwtsInput_WTQueryByWT").setValue(odata.Numwt);
+            //                         that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(odata.Tostat);
+            //                         that.getView().byId("idWtQBWtPtypInput_WTQueryByWT").setValue(odata.Procty);
+            //                         that.getView().byId("idWtQBWtSproInput_WTQueryByWT").setValue(odata.Prces);
+            //                         that.getView().byId("idWtQBWtActyInput_WTQueryByWT").setValue(odata.ActType);
+            //                         that.getView().byId("idWtQBWtProInput_WTQueryByWT").setValue(odata.Matnr);
+            //                         that.getView().byId("idWtQBWtProEmpInput_WTQueryByWT").setValue(odata.HazmatInd);
+            //                         that.getView().byId("idWtQBWtSbinInput_WTQueryByWT").setValue(odata.Vlpla);
+            //                         that.getView().byId("idWtQBWtSbinEmpInput_WTQueryByWT").setValue(odata.Vlenr);
+            //                         that.getView().byId("idWtQBWtDbinInput_WTQueryByWT").setValue(odata.Nlpla);
+            //                         that.getView().byId("idWtQBWtDbinEmpInput_WTQueryByWT").setValue(odata.Nlenr);
+            
+            //                         // Format and set ConfD date
+            //                         let dateStr = odata.ConfD;
+            //                         let year = dateStr.slice(0, 4);
+            //                         let month = dateStr.slice(4, 6);
+            //                         let day = dateStr.slice(6, 8);
+            //                         let formattedDate = `${year}-${month}-${day}`;
+            //                         that.getView().byId("idWtQBWtCdatInput_WTQueryByWT").setValue(formattedDate);
+            
+            //                         // Calculate and format ConfT time from milliseconds
+            //                         let milliseconds = odata.ConfT.ms;
+            //                         let hours = Math.floor(milliseconds / (1000 * 60 * 60));
+            //                         let minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+            //                         let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+            //                         let timeFormatted = `${hours}:${minutes}:${seconds}`;
+            //                         that.getView().byId("idWtQBWtCdatnput_WTQueryByWT").setValue(timeFormatted);
+            
+            //                         // Set ConfBy user
+            //                         that.getView().byId("idWtQBWtCusrInput_WTQueryByWT").setValue(odata.ConfBy);
+            //                     } else {
+            //                         // Show message if the HU is incorrect
+            //                         MessageToast.show("Please Enter correct Warehouse task Number");
+            //                         that.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true);
+            //                         that.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
+            //                     }
+            //                 },
+            //                 error: function (oError) {
+            //                     // Handle error if HU not found
+            //                     MessageToast.show("Please Enter correct Warehouse task Number");
+            //                 }
+            //             });
+            //         }, 2000); // Trigger after 2 seconds of inactivity
+            //     } else {
+            //         // Hide second screen if input is empty
+            //         this.getView().byId("idWtQBWtFirstSC_WTQueryByWT").setVisible(true);
+            //         this.getView().byId("idWtQBWtWhSecondsc_WTQueryByWT").setVisible(false);
+            //     }
+            // },            
 
             // Event handler for the second back button (returns to the first screen)
             onPressSecondBackButton: function () {
@@ -132,7 +220,7 @@ sap.ui.define(
             // Event handler for the button to view more details of the warehouse task
             onWtQBWtDetailBtnPress: function () {
                 var oHuValue = this.getView().byId("idWtQBWtwtInput_WTQueryByWT").getValue(); // Get HU value from input
-debugger
+                debugger
                 if (oHuValue) { // Proceed if HU value is available
                     var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                     var that = this; // Preserve controller context for success handler
@@ -175,15 +263,15 @@ debugger
                 this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setVisible(false); // Hide third screen
             },
 
-             // Handle successful scan events
-      onScanSuccess: function (oEvent) {
-        var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
-        this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue(sScannedProduct); // Set the value in the input
-        this.onWtQBWtWhLiveChange(sScannedProduct);
-      },
-      clear: function () {
-        this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue();
-    },
+            // Handle successful scan events
+            onScanSuccess: function (oEvent) {
+                var sScannedProduct = oEvent.getParameter("text"); // Get the scanned product value
+                this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue(sScannedProduct); // Set the value in the input
+                this.onWtQBWtWhLiveChange(sScannedProduct);
+            },
+            clear: function () {
+                this.getView().byId("idWtQBWtWhInput_WTQueryByWT").setValue();
+            },
         });
     }
 );

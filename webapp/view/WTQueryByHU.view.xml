@@ -512,17 +512,18 @@
                                 <Button
                                     id="idBackBtnPage3_WTQBYHU"
                                     press="onBackPressBtnWTDetails_WTQBYHU"
-                                    class="sapUiTinyMarginEnd"
+                                   
                                     text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
-                                      width="100%"
+                                    width="100%"
                                 />
                                 <Label id="idSampleLabel_WTQBYHU" width="5px"/>
                                 <Button
                                     id="idBtnDetailPage3_WTQBYHU"
                                     text="{i18n>Btn_Detail_WtQbWt}"
                                     press="onBtnDetailPressPage3_WTQBYHU"
-                                      width="100%"
+                                    class="sapUiTinyMarginBegin"
+                                    width="100%"
                                 />
                             </HBox>
                         </VBox>
@@ -721,6 +722,7 @@
                                     width="100%"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
+                                     width="100%"
                                 />
                             </HBox>
                         </VBox>

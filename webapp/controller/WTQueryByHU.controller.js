@@ -60,9 +60,15 @@ sap.ui.define(
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
 
-      // onBeforeRendering: function () {
-      //   this.onPressBackButtonSecondSC();
-      // },
+      onSignoutPressed:function(){
+				var oRouter = this.getOwnerComponent().getRouter(this);
+				oRouter.navTo("InitialScreen"); 
+			},
+     
+      onBeforeRendering:function(){
+        this.onPressBackButtonSecondSC();
+      },
+
 
       // Load resource details based on the router event
       onResourceDetailsLoad: async function (oEvent1) {

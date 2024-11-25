@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/Device",
     "sap/ui/core/UIComponent",
     "sap/m/MessageToast"
@@ -48,6 +48,10 @@ sap.ui.define([
             console.log(HUI);  // Log the HU value for debugging
             this.onSelectRow(HUI);  // Call onSelectRow with the HU value
         },
+        onSignoutPressed:function(){
+            var oRouter = this.getOwnerComponent().getRouter(this);
+            oRouter.navTo("InitialScreen"); 
+        },
 
         // Function to handle selection of a row (HU)
         onSelectRow: function (oHui) {
@@ -82,7 +86,12 @@ sap.ui.define([
         onResourceDetailsLoad: function (oEvent1) {
             const { id } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
             this.ID = id;  // Save ID for later use
+            this.applyStoredProfileImage();
         },
+        onAvatarPressed: function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+
+            },
 
         // Scan success handler for barcode scanning
         // onScanSuccess: function(oEvent) {
@@ -146,6 +155,7 @@ sap.ui.define([
                         },
                         success: function (odata) {
                             if (odata.HUheadtoItems.results.length > 0) {
+                                sap.m.MessageToast.show("Scanned Succesfully"); 
                                 that.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
                                 that.getView().byId("idFirstSc_HuQuery").setVisible(false);  // Hide first screen
                                 that._populateHUDetails(odata);  // Populate HU details
