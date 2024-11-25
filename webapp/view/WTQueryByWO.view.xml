@@ -310,7 +310,7 @@
                                 <Input
                                     id="idWtQBWoWTitAllInput"
                                     value=""
-                                    width="90px"
+                                    width="80px"
                                     editable="false"
                                 />
                             </HBox>
@@ -343,7 +343,7 @@
                                 <Input
                                     id="idWtQBWoStsInput"
                                     value=""
-                                    width="50px"
+                                    width="45px"
                                     editable="false"
                                 />
                                 <Label
@@ -354,7 +354,7 @@
                                 <Input
                                     id="idWtQBWoStypInput"
                                     value=""
-                                    width="50px"
+                                    width="45px"
                                     editable="false"
                                 />
                                 <Label
@@ -365,7 +365,7 @@
                                 <Input
                                     id="idWtQBWoPtypInput"
                                     value=""
-                                    width="53px"
+                                    width="50px"
                                     editable="false"
                                 />
                             </HBox>
@@ -405,7 +405,7 @@
                                 <Input
                                     id="idWtQBWoActyEmpInput"
                                     value=""
-                                    width="155px"
+                                    width="145px"
                                     editable="false"
                                 />
                             </HBox>
@@ -430,7 +430,7 @@
                                 <Input
                                     id="idWtQBWoProEmpInput"
                                     value=""
-                                    width="65px"
+                                    width="55px"
                                     editable="false"
                                 />
                             </HBox>
@@ -455,7 +455,7 @@
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
-                                    width="147px"
+                                    width="132px"
                                     class="sapMInput sapUiTinyMarginBegin"
                                 />
                             </HBox>
@@ -479,7 +479,7 @@
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
-                                    width="147px"
+                                    width="132px"
                                     editable="false"
                                     class="sapMInput sapUiTinyMarginBegin"
                                 />
@@ -521,7 +521,7 @@
                                 <Input
                                     id="idWtQBWoCusrInput"
                                     value=""
-                                    width="111px"
+                                    width="95px"
                                     editable="false"
                                 />
                             </HBox>
