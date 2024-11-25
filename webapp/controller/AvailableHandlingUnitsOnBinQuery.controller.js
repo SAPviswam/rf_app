@@ -187,9 +187,7 @@ sap.ui.define(
                 //Hide the Product Description scroll container
                 oScrollContainer4.setVisible(false);
             },
-
-
-
+            
             // //Submit Btn from ScrollContainer Page 1=> idPage1_AHUOBQ..
             // onSubmitPress_AHUOBQ: function () {
               

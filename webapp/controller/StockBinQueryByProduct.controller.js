@@ -259,8 +259,10 @@ sap.ui.define(
             "$format": "json"
           },
           success: function (odata) {
+            
             var oView = that.getView();
             oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
+            oView.byId("idEANInput_SBQP").setValue(odata.Ean11);
             oView.byId("idTotWinput_SBQP").setValue(odata.GWeight);
             oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
             oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
