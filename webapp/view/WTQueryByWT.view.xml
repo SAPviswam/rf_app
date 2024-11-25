@@ -127,9 +127,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhSecondsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -141,6 +142,7 @@
                     <form:SimpleForm
                         id="idWtQBWtSF2_WTQueryByWT"
                         layout="ResponsiveGridLayout"
+                        width="100%"
                         labelSpanL="4"
                         labelSpanM="4"
                         emptySpanL="1"
@@ -434,9 +436,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhThirdsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -454,6 +457,7 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
+                        width="100%"
                     >
                         <VBox id="idThirdScVbox2_WTQueryByWT">
                             <HBox id="idThirdScHbox1_WTQueryByWT">
@@ -508,22 +512,23 @@
                                 <Input
                                     id="idWtQBWtSqtyInput_WTQueryByWT"
                                     editable="false"
-                                    width="100px"
+                                    width="57px"
                                     value=""
                                 />
                                 <Text
                                     id="idEmptyText6_WTQueryByWT"
-                                    width="8px"
+                                    width="3px"
                                 />
                                 <Input
                                     id="idWtQBWtPcInput_WTQueryByWT"
                                     editable="false"
-                                    width="45px"
+                                    width="40px"
                                     value=""
                                 />
+                        
                                 <Text
                                     id="idThirdScEmptyLabel2_WTQueryByWT"
-                                    width="5px"
+                                    width="10px"
                                 />
                                 <Text
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
