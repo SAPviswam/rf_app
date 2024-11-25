@@ -22,32 +22,41 @@
         }
 
         #chatbotButton {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: transparent; /* Fully transparent */
-    color: rgb(243, 178, 56); /* Icon color */
-    border: none;
-    width: auto; /* Remove fixed width and height */
-    height: auto;
-    padding: 0; /* No padding */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-    font-size: 30px; /* Icon size */
-    box-shadow: none; /* No shadow */
-    transition: transform 0.3s;
-}
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            /* Fully transparent */
+            color: rgb(243, 178, 56);
+            /* Icon color */
+            border: none;
+            width: auto;
+            /* Remove fixed width and height */
+            height: auto;
+            padding: 0;
+            /* No padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 30px;
+            /* Icon size */
+            box-shadow: none;
+            /* No shadow */
+            transition: transform 0.3s;
+        }
 
-#chatbotButton:hover {
-    transform: scale(1.1); /* Slight scaling on hover */
-}
+        #chatbotButton:hover {
+            transform: scale(1.1);
+            /* Slight scaling on hover */
+        }
 
-#chatbotButton:focus {
-    outline: none; /* Remove focus outline */
-}
+        #chatbotButton:focus {
+            outline: none;
+            /* Remove focus outline */
+        }
+
         #chatbotContainer {
             position: fixed;
             bottom: 80px;
@@ -102,25 +111,21 @@
             height: 100%;
             width: 100%;
         }
-
-        
     </style>
 
-<!-- data-sap-ui-language="en" -->
- 
+    <!-- data-sap-ui-language="en" -->
+
     <script id="sap-ui-bootstrap" src="resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon"
         data-sap-ui-resourceroots='{
          "com.app.rfapp": "./"
      }' data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
-        data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"> </script>
+        data-sap-ui-async="true" data-sap-ui-frameOptions="trusted"> </script>
 
     <!-- Chatbot script -->
     <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  >
+    <!-- crypto-js for password storing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="sapUiBody sapUiSizeCompact" id="content">
@@ -128,7 +133,7 @@
         data-handle-validation="true"></div>
 
     <!-- Chatbot button and container -->
-    <button id="chatbotButton"  >  <i class="fas fa-headset"></i> </button>
+    <button id="chatbotButton"> <i class="fas fa-headset"></i> </button>
 
     <div id="chatbotContainer">
         <div id="chatbotHeader">
