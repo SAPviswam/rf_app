@@ -5,7 +5,7 @@ sap.ui.define(
     "sap/ui/Device",
     "sap/ui/core/UIComponent"
   ],
-  function (BaseController, MessageToast, Device,UIComponent ) {
+  function (BaseController, MessageToast, Device, UIComponent) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.StockBinQueryByProduct", {
@@ -232,10 +232,10 @@ sap.ui.define(
               this.getView().byId("idBinAisleinput_SBQP").setValue(Aisle);
               this.getView().byId("idStackinput_SBQP").setValue(Stack);
               this.getView().byId("idBinLevelinput_SBQP").setValue(LvlV);
-              this.getView().byId("idMaxWInput_SBQP").setValue(odata.GWeight);
-              this.getView().byId("idUnitGwInput_SBQP").setValue(odata.UnitGw);
-              this.getView().byId("idMaxVinput_SBQP").setValue(odata.GVolume);
-              this.getView().byId("idUnitGvInput_SBQP").setValue(odata.UnitGv);
+              this.getView().byId("idMaxWInput_SBQP").setValue(oSelectedBinDetails.MaxWeight);
+              this.getView().byId("idUnitGwInput_SBQP").setValue(oSelectedBinDetails.UnitW);
+              this.getView().byId("idMaxVinput_SBQP").setValue(oSelectedBinDetails.MaxVolume);
+              this.getView().byId("idUnitGvInput_SBQP").setValue(oSelectedBinDetails.UnitV);
             } else {
               sap.m.MessageToast.show("Material not found.");
             }
@@ -259,12 +259,15 @@ sap.ui.define(
             "$format": "json"
           },
           success: function (odata) {
+            
             var oView = that.getView();
             oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
+            oView.byId("idEANInput_SBQP").setValue(odata.Ean11);
             oView.byId("idTotWinput_SBQP").setValue(odata.GWeight);
             oView.byId("idUnitGWinput_SBQP").setValue(odata.UnitGw);
             oView.byId("idTotVinput_SBQP").setValue(odata.GVolume);
             oView.byId("idUnitGVinput_SBQP").setValue(odata.UnitGv);
+            oView.byId("idEANInput_SBQP").setValue(odata.Ean11);
             that.getView().byId("idsecondSC_SBQP").setVisible(false);
             that.getView().byId("idThirdSC_SBQP").setVisible(true);
             that.getView().byId("idSecondbackbtn_SBQP").setVisible(false);

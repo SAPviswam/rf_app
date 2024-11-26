@@ -70,7 +70,9 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
+            /* Prevent overflow issues */
             flex-direction: column;
+            /* Organize header and content vertically */
         }
 
         #chatbotHeader {
@@ -108,8 +110,13 @@
         }
 
         #webchat {
-            height: 100%;
-            width: 100%;
+            flex: 1;
+            /* Allow the chat area to grow and take available space */
+            overflow-y: auto;
+            /* Add vertical scrolling for long messages */
+            padding: 10px;
+            box-sizing: border-box;
+            /* Ensure padding doesn't affect dimensions */
         }
     </style>
 
@@ -123,6 +130,7 @@
 
     <!-- Chatbot script -->
     <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
     <!-- crypto-js for password storing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">

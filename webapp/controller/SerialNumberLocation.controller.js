@@ -56,7 +56,9 @@ sap.ui.define(
       
           // Perform the read operation
           oModel.read(sRequestUrl, {
+            
               success: function (odata) {
+                console.log(odata);
                   // Check the returned data
                   if (odata.Matnr40 === sProductNumber && odata.Serid === sSerialNumber) {
                       // Hide the first screen container and show the next screen
