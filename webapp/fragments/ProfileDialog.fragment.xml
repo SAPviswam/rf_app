@@ -71,7 +71,7 @@
                         icon="sap-icon://settings"
                         text="Default Settings"
                         type="Transparent"
-                        press="onResetToDefaultPress"
+                        press="onPressDefualtSettings"
                         visible="{popoverModel>/showDefaultSettings}"
                     />
                     <Button
