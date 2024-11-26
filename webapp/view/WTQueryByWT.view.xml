@@ -288,7 +288,7 @@
                                 <Input
                                     id="idWtQBWtProInput_WTQueryByWT"
                                     value=""
-                                    width="310px"
+                                    width="120px"
                                     editable="false"
                                 />
                                 <Text

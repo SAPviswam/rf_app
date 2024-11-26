@@ -764,6 +764,7 @@ sap.ui.define([
                     success: function (oData) {
                         if (oData.Password === oPassword) {
                             this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                            document.removeEventListener("keydown", this._handleKeyDownBound);
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");

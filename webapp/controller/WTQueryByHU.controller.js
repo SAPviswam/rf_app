@@ -2,15 +2,22 @@ sap.ui.define(
   [
     //"sap/ui/core/mvc/Controller",
     "./BaseController",
+    "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast"
   ],
-  function (BaseController, JSONModel, MessageToast) {
+  function (BaseController, Device, JSONModel, MessageToast) {
     "use strict";
 
     return BaseController.extend("com.app.rfapp.controller.WTQueryByHU", {
       // Initialization function
       onInit: function () {
+        if (Device.system.phone) {
+          this.getView().byId("idPage3WTDetails_WTQBYHU").setWidth("150%");
+          this.getView().byId("idSimpleForm4_WTQBYHU").setWidth("150%");
+          this.getView().byId("idPage4ProductDescription_WTQBYHU").setWidth("140%");
+          this.getView().byId("idSimpleFormPage4PD_WTQBYHU").setWidth("140%");
+      }
         // Setup router to handle navigation
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
