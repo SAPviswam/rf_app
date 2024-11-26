@@ -3,12 +3,11 @@ sap.ui.define(
     "./BaseController",
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/odata/v2/ODataModel",
-    "sap/m/MessageToast",
-    "../utils/Constant"
-
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 
   ],
-  function (Controller, ODataModel, MessageToast, Constant) {
+  function (Controller, ODataModel, Filter, FilterOperator) {
 
     "use strict";
 
@@ -16,7 +15,7 @@ sap.ui.define(
       onInit: function () {
         // Loading of secrets
         const oConfigModel = this.getOwnerComponent().getModel("config");
-          this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
+        this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
 
         var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
           headers: {
@@ -44,6 +43,81 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("InitialScreen");
       },
+
+
+      onForgotPasswordPress: async function () {
+        if (!this.forgotPass) {
+          this.forgotPass = await this.loadFragment("ForgotPassword");
+        }
+        this.forgotPass.open()
+      },
+      onForgotPasswordCancel: function () {
+        if (this.forgotPass.isOpen()) {
+          this.forgotPass.close()
+        }
+      },
+      // test
+      onUpdatePasswordPress: async function () {
+        const oModel = this.getOwnerComponent().getModel(),
+          sPath = "/APP_LOGON_DETAILSSet",
+          sUserEnteredUserID = this.getView().byId("idUserIDInput_CL").getValue(),
+          sUserEnteredMobile = this.getView().byId("idRegNumbInput_CL").getValue();
+        try {
+
+          const aRegisteredUserID = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sUserEnteredUserID);
+          const aRegisteredMobile = new sap.ui.model.Filter("Phonenumber", sap.ui.model.FilterOperator.EQ, sUserEnteredMobile);
+
+          // Combine the filters with AND
+          const aFilters = new sap.ui.model.Filter({
+            filters: [aRegisteredUserID, aRegisteredMobile],
+            and: true // Change to false if you want OR logic
+          });
+
+
+          const oResponse = await this.readData(oModel, sPath, aFilters)
+          if (oResponse.results.length > 0) {
+            const sRegisteredUserID = oResponse.results[0].Userid,
+              sRegisteredPhnNumber = oResponse.results[0].Phonenumber;
+              
+            if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
+
+              sap.m.MessageToast.show("Success User Authenticated")
+              // get the actual password
+              const sNewPassword = this.getView().byId("idPasswordInput_CL").getValue();
+
+              // Use SHA256 for hashing (CryptoJS)
+              const sEncrytpedPass = CryptoJS.SHA256(sNewPassword).toString(); // encryption with CryptoJS
+              const oPayload = {
+                Password: sEncrytpedPass
+              }
+              try {
+
+                // last change here.... (working with update call)
+                 
+                const sUpdatePath = `/APP_LOGON_DETAILSSet('${sUserEnteredUserID}')`
+                // update call
+               const oResponse =  await this.updateData(oModel, sUpdatePath, oPayload);
+                // success 
+              sap.m.MessageToast.show("Success User Authenticated")
+
+              } catch (error) {
+                
+              }
+            } else {
+              sap.m.MessageToast.show("Failed to Authenticate ID and phn number missmatch")
+            }
+          } else {
+            sap.m.MessageToast.show("No records Found")
+          }
+
+        } catch (error) {
+          sap.m.MessageToast.show("Failed to read data " + error)
+        }
+
+
+
+      },
+      // test
 
       onNavToSignUpPage: function () {
 
@@ -143,9 +217,9 @@ sap.ui.define(
           }
           // get the actual password
           const sActualPass = oPayload.Password
-            // Use SHA256 for hashing (CryptoJS or native WebCrypto API)
-            const sEncrytpedPass = CryptoJS.SHA256(sActualPass).toString(); // encryption with CryptoJS
-            oPayload.Password = sEncrytpedPass
+          // Use SHA256 for hashing (CryptoJS )
+          const sEncrytpedPass = CryptoJS.SHA256(sActualPass).toString(); // encryption with CryptoJS
+          oPayload.Password = sEncrytpedPass
 
           // Create a record with payload
           await this.createData(oModel, oPayload, "/APP_LOGON_DETAILSSet");
@@ -167,7 +241,7 @@ sap.ui.define(
 
         // set the inputfield states to defult 
         await this.onDefaultStates(oView);
-  
+
       },
       // set the inputfield states to defult 
       onDefaultStates: function () {
@@ -205,7 +279,7 @@ sap.ui.define(
         // Prepare the Twilio API details
         var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
         const accountSid = this.oTwilioConfig.AccountSID;  // Constant.oAccountSID;
-        const authToken =  this.oTwilioConfig.AuthToken;   // Constant.oAuthToken;
+        const authToken = this.oTwilioConfig.AuthToken;   // Constant.oAuthToken;
         const serviceSid = this.oTwilioConfig.ServiceID;   // Constant.oServiceID;
         const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
 
@@ -281,13 +355,13 @@ sap.ui.define(
 
         // Prepare the Twilio Verify Check API details
         const accountSid = this.oTwilioConfig.AccountSID,
-         authToken =  this.oTwilioConfig.AuthToken,
-         serviceSid = this.oTwilioConfig.ServiceID, 
-         url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`,
-         payload = {
-          To: this._storedPhoneNumber,
-          Code: sEnteredOtp
-        };
+          authToken = this.oTwilioConfig.AuthToken,
+          serviceSid = this.oTwilioConfig.ServiceID,
+          url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`,
+          payload = {
+            To: this._storedPhoneNumber,
+            Code: sEnteredOtp
+          };
 
         // Make the AJAX request to Twilio to verify the OTP
         $.ajax({

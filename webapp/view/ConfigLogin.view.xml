@@ -104,7 +104,7 @@
                                 />
                                 <Input
                                     id="idUserIDInput_configPage"
-                                    width="60%"
+                                    width="100%"
                                     value="111010"
                                     class="orangeInput sapUiTinyMarginTop"
                                     editable="false"
@@ -131,7 +131,7 @@
                                     id="idPasswordInput_configPage"
                                     type="Password"
                                     value="........"
-                                    width="60%"
+                                    width="100%"
                                     placeholder="Enter Password"
                                     class="orangeInput sapUiTinyMarginTop"
                                     editable="false"
@@ -167,6 +167,12 @@
                                     width="100%"
                                 />
                             </HBox>
+                            <Link
+                                id="idchangePassword_CL"
+                                text="{i18n>forgot_Link_CL}"
+                                class="sapUiSmallMarginTop"
+                                press="onForgotPasswordPress"
+                            />
                         </VBox>
                     </HBox>
                 </VBox>
