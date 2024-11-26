@@ -7,11 +7,10 @@
         placement="Bottom"
         verticalScrolling="false"
         horizontalScrolling="false"
-        contentWidth="100px"
         title="Select Theme:"
         class="sapUiResponsivePadding"
     >
-        <VBox id="idPopOverTheme">
+        <VBox id="idPopOverTheme" alignItems="Start">
             <Button
                 id="idBackGroudTheme"
                 text="Background"
@@ -20,7 +19,7 @@
             />
             <Button
                 id="idHindiTheme"
-                text="Tile"
+                text="Tile Theme"
                 type="Transparent"
                 press="onTileThemeSelect"
             />

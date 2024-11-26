@@ -348,21 +348,19 @@ sap.ui.define(
                             oView.byId("idWtQBWOwoInput").setValue(odata.Who);
                             oView.byId("idWtQBWOEstpInput").setValue(oSelectedWT.Procs);
                             oView.byId("idWtQBWOSqtyInput").setValue(oSelectedWT.Vsola);
+                            oView.byId("idWtQBWOBtchInput").setValue(oSelectedWT.Charg);
                             oView.byId("idWtQBWOPcInput").setValue(oSelectedWT.Altme);
                             oView.byId("idWtQBWOOwnerInput").setValue(oSelectedWT.Owner);
                             oView.byId("idWtQBWOPEntInput").setValue(oSelectedWT.Entitled);
                             oView.byId("idWtQBWOHuWtInput").setValue(oSelectedWT.Flghuto);
                             oView.byId("idWtQBWOHTypeInput").setValue(oSelectedWT.Letyp);
                         }
-
                     },
-
                     error: function () {
                         sap.m.MessageToast.show("Error fetching products.");
                     }
                 });
             },
-
             // Handler for filtering open tasks in Warehouse Order
             onWtQBWoOpenBtnPress: function () {
                 var oView = this.getView();

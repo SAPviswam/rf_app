@@ -86,7 +86,9 @@
                                 <Input
                                     id="idWtQBWtWhInput_WTQueryByWT"
                                     value=""
+                                    placeholder="{i18n>Input_WareHouseTask_WtQbWt}"
                                     liveChange="onWtQBWtWhLiveChange"
+                                    
                                 />
                             </HBox>
                             <HBox
@@ -100,6 +102,7 @@
                                     type="Emphasized"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     press="onPressFirstBackButton"
+                                    width="100%"
                                 />
                                 <ndc:BarcodeScannerButton
                                     id="idWtQBWtWhScannerBtn_WTQueryByWT"
@@ -107,7 +110,7 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Enter Warehouse Task Number:"
-                                    class="sapUiSmallMarginEnd"
+                                    class="sapUiSmallMarginBegin"
                                 />
 
                                 <!-- <Button
@@ -124,9 +127,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhSecondsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -138,6 +142,7 @@
                     <form:SimpleForm
                         id="idWtQBWtSF2_WTQueryByWT"
                         layout="ResponsiveGridLayout"
+                        width="100%"
                         labelSpanL="4"
                         labelSpanM="4"
                         emptySpanL="1"
@@ -283,7 +288,7 @@
                                 <Input
                                     id="idWtQBWtProInput_WTQueryByWT"
                                     value=""
-                                    width="310px"
+                                    width="120px"
                                     editable="false"
                                 />
                                 <Text
@@ -391,7 +396,7 @@
                                 />
                                 <Input
                                     id="idWtQBWtCusrInput_WTQueryByWT"
-                                    value=""
+                                    value="{i18n>Input_cusr_WtQbWt}"
                                     width="120px"
                                     editable="false"
                                 />
@@ -413,12 +418,14 @@
                                         type="Emphasized"
                                         press="onPressSecondBackButton"
                                         class="sapUiTinyMarginEnd"
+                                        width="100%"
                                     />
                                     <Button
                                         id="WtQBWtDetailBtn_WTQueryByWT"
                                         text="{i18n>Label_Detail_WtQbWt}"
                                         press="onWtQBWtDetailBtnPress"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiTinyMarginBegin"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>
@@ -429,9 +436,10 @@
 
             <ScrollContainer
                 id="idWtQBWtWhThirdsc_WTQueryByWT"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
@@ -449,6 +457,7 @@
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
+                        width="100%"
                     >
                         <VBox id="idThirdScVbox2_WTQueryByWT">
                             <HBox id="idThirdScHbox1_WTQueryByWT">
@@ -503,22 +512,23 @@
                                 <Input
                                     id="idWtQBWtSqtyInput_WTQueryByWT"
                                     editable="false"
-                                    width="100px"
+                                    width="57px"
                                     value=""
                                 />
                                 <Text
                                     id="idEmptyText6_WTQueryByWT"
-                                    width="8px"
+                                    width="3px"
                                 />
                                 <Input
                                     id="idWtQBWtPcInput_WTQueryByWT"
                                     editable="false"
-                                    width="45px"
+                                    width="40px"
                                     value=""
                                 />
+                        
                                 <Text
                                     id="idThirdScEmptyLabel2_WTQueryByWT"
-                                    width="5px"
+                                    width="10px"
                                 />
                                 <Text
                                     id="idWtQBWtBtchLabel_WTQueryByWT"
@@ -626,6 +636,7 @@
                                         text="{i18n>Button_Back1_HuQuery}"
                                         type="Emphasized"
                                         press="onPressThirdBackButton"
+                                        width="100%"
                                     />
                                 </HBox>
                             </VBox>

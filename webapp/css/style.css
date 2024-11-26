@@ -1010,8 +1010,8 @@
     font-size: auto !important;
 }
 .smallIcons {
-    width: 80px !important;
-    height: 80px !important;
+    width: 75px !important;
+    height: 75px !important;
     font-size: auto !important;
 }
 /* For the list form view to tiles */
@@ -1393,6 +1393,9 @@ margin-right: 20%;
     left: 45%;
     color: hsl(29, 100%, 50%);
     align-content: center;
+}
+.ResourcePageTitle{
+    color: hsl(29, 100%, 50%);
 }
 
 .titleMobile {
@@ -1840,7 +1843,6 @@ margin-right: 20%;
     top: 0;
     left: 1rem;
     right: 0;
-
     z-index: 10; 
     padding: 0.5rem;
     
@@ -1858,7 +1860,7 @@ margin-right: 20%;
     margin-top: 5%;
 }
 .MobileviewTable_HUSOQ{
-    margin-top: 20%;
+    margin-top: 25%;
 }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
@@ -1873,7 +1875,56 @@ margin-right: 20%;
 }
 
 
+/* config login view for mobile  */
+@media only screen and (max-width: 480px) {
+    /* Adjust whiteBox for mobile view */
+    .whiteBorderBox {
+        width: 90vw; /* Adjust width to fit mobile screen */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 1rem; /* Add some padding for better spacing */
+        margin-top: 45%; /* Moves the whiteBox down */
+    }
+    
+    /* Adjust padding for the surrounding container */
+    .paddingBox {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    /* Center and adjust font size for the title */
+    .loginTitle {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        text-align: center; /* Ensure title remains centered */
+    }
+    
+    /* Adjust label and input widths for better alignment */
+    .inputRow Text {
+        width: 30%; /* Adjust label width to fit screen */
+    }
+
+    .inputRow Input {
+        width: 65%; /* Adjust input field width */
+    }
+
+    /* Adjust button spacing and size */
+    .sapMBtn {
+        width: 100%; /* Full width buttons on mobile */
+    }
+    
+    /* Ensure overall container is centered and responsive */
+    .contentContainer {
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 0.5rem; /* Reduce padding for compact screens */
+    }
+
+    /* Add scroll behavior for overflow */
+    body {
+        overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
+    }
+}
 
 
-
+.deleteClassinChangeQueue{
+    margin-left: 2px;
+    margin-right: 2px;
+}
 
