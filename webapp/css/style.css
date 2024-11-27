@@ -1839,10 +1839,14 @@ margin-right: 20%;
     position: fixed;
     top: 0;
     left: 1rem;
-    right: 0;
+    right: 1rem;
     z-index: 10; 
     padding: 0.5rem;
     
+}
+
+.backBtnChangeQueue{
+    left: 0.5rem;
 }
 /* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
@@ -1918,10 +1922,14 @@ margin-right: 20%;
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
 }
-
-
-.deleteClassinChangeQueue{
-    margin-left: 2px;
-    margin-right: 2px;
+/* .addClassinChangeQueue{
+    margin-left:  0.9rem;
 }
 
+.deleteClassinChangeQueue{
+margin-left:  0.6rem;
+}
+
+.backClassinChangeQueue{
+    margin-left: 0.3rem;
+} */
