@@ -984,18 +984,25 @@
 @media (max-width: 768px) {
     .autoRepackPage {
         flex-direction: column;
-        /* Stack vertically */
         align-items: flex-start;
     }
 
     .autoRepackPage .sapMLabel {
         width: auto !important;
-        /* Adjust labels */
     }
 }
 
+/* Profile PopOver Classes */
 .onProfileOptions {
-    margin-left: -0.2rem !important;
+    margin-left: -0.5rem !important;
+    align-items: start !important;
+}
+.UserNameBold{
+    font-weight: bold !important;
+}
+.NamePhoneClass{
+    margin-top: 0.4rem;
+    margin-right: 1rem;
 }
 
 /* For the Tile View settings  */
