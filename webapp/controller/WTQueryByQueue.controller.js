@@ -17,6 +17,12 @@ sap.ui.define(
                     this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
 
                 }
+                // if (Device.system.tablet) {
+                //     this.getView().byId("IdButton_Open_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_Conf_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_All_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_Back_WTQuerybyQueue").setWidth("110%");
+                // }
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");

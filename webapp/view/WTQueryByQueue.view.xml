@@ -158,12 +158,14 @@
                             justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
+                            class="myResponsiveHBoxWTQBYQ"
+                            width="100%"
                         >
                             <Button
                                 id="IdButton_Open_WTQuerybyQueue"
                                 text="{i18n>Button_Open_WTQbyQ}"
                                 press="onOpenWTQuerybyQueue"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                 type="Emphasized"
                             />
                             <Button
@@ -171,13 +173,13 @@
                                 text="{i18n>Button_Conf_WTQbyQ}"
                                 press="onConfWTQuerybyQueue"
                                 type="Emphasized"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                             />
                             <Button
                                 id="IdButton_All_WTQuerybyQueue"
                                 text="{i18n>Button_All_WTQbyQ}"
                                 press="onAllWTQuerybyQueue"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                 type="Emphasized"
                             />
                             <Button
@@ -186,6 +188,7 @@
                                 press="onBackWTQuerybyQueue"
                                 type="Emphasized"
                                 visible="false"
+                                class="myResponsiveButtonWTQBYQ"
                             />
                         </HBox>
                     </form:SimpleForm>
@@ -511,13 +514,14 @@
                                         text="{i18n>Button_Detail_WTQbyQ}"
                                         press="onWtQBWoDetailBtnPress"
                                         type="Emphasized"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                     />
                                     <Button
                                         id="idWtQBQueueThirdbackbtn"
                                         text="{i18n>Button_Back_WTQbyQ}"
                                         press="onWtQBQueueSecondBackBtnPress"
                                         type="Emphasized"
+                                        class="myResponsiveButtonWTQBYQ"
                                         visible="false"
                                     />
                                 </HBox>
@@ -848,6 +852,7 @@
                                         press="onPressBackWTQuerybyQueue"
                                         visible="false"
                                         type="Emphasized"
+                                        class="myResponsiveButtonWTQBYQ"
                                     />
                                 </HBox>
                             </VBox>
