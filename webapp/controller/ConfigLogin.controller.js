@@ -134,9 +134,7 @@ sap.ui.define(
                 Password: sEncrytpedPass
               }
               try {
-
-                // last change here.... (working with update call)
-
+                
                 const sUpdatePath = `/APP_LOGON_DETAILSSet('${sUserEnteredUserID}')`
                 // update call
                 const oResponse = await this.updateData(oModel, sUpdatePath, oPayload);
