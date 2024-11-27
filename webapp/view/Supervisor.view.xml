@@ -23,7 +23,6 @@
                     type="Transparent"
                     press=".onSideNavButtonPress"
                 >
-                
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idToolBarLayout"
@@ -121,7 +120,7 @@
                         />
                     </customData>
                 </Button> -->
-                 <ToolbarSpacer id="idToolbarSpacer_supervisor">
+                <ToolbarSpacer id="idToolbarSpacer_supervisor">
                     <layoutData>
                         <OverflowToolbarLayoutData
                             id="idOverflowToolbarLayout_supervisor"
@@ -150,9 +149,10 @@
                     items="{path: '/navigation' , templateShareable: true}"
                     class="sidecontent"
                 >
+                <!-- Supervisor side content-->
                     <tnt:NavigationListItem
                         id="NavigationListItem"
-                        text="{title}"
+                        text="{title}" 
                         icon="{icon}"
                         enabled="{enabled}"
                         expanded="{expanded}"
@@ -243,62 +243,51 @@
                             <columns>
                                 <Column
                                     id="idEmployeeId"
-                                    width="12em"
+                                    width="100px"
                                 >
                                     <Title
                                         id="idtitleEmpID"
                                         text="Resource Id"
+                                        
                                     />
                                 </Column>
-                                <Column
-                                    id="idEmployeename"
-                                >
+                                <Column id="idEmployeename"  width="20em" >
                                     <Title
                                         id="idtitleEmpName"
                                         text="Resource Name"
                                     />
                                 </Column>
-                                <Column
-                                    id="idResourceType"
-                                >
+                                <Column id="idResourceType" width="20em"   >
                                     <Title
                                         id="idResourceTypetitle"
                                         text="Resource Type"
                                     />
                                 </Column>
-                                <Column
-                                    id="idPhonenumber"
-                                >
+                                <Column id="idPhonenumber"  width="12em">
                                     <Title
                                         id="idPhoneNumbertitle"
                                         text="Phone Number"
                                     />
                                 </Column>
-                                <Column id="idEmail">
+                                <Column id="idEmail" width="30em" >
                                     <Title
                                         id="idEmailtitle"
                                         text="Email"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessArea"
-                                >
+                                <Column id="idProcessArea" width="50em">
                                     <Title
                                         id="idProcessAreatitle"
                                         text="Process Area"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessGroup"
-                                >
+                                <Column id="idProcessGroup"  width="50em" >
                                     <Title
                                         id="idProcessgrouptitle"
                                         text="Group"
                                     />
                                 </Column>
-                                <Column
-                                    id="idProcessQueue"
-                                >
+                                <Column id="idProcessQueue" width="50em" >
                                     <Title
                                         id="idProcessQueuetitle"
                                         text="Queue"
@@ -403,7 +392,7 @@
                                         id="idUsersInfoTitl"
                                         text="Users Data:"
                                     />
-                                    <ToolbarSpacer />
+                                    <ToolbarSpacer id="as"/>
                                     <SearchField
                                         id="idonSearchBt"
                                         width="20%"
@@ -464,7 +453,6 @@
                                 <Column
                                     id="idresourcetype"
                                     width="100px"
-
                                 >
                                     <Title
                                         id="idRDResourceTypeTitle"
@@ -662,16 +650,7 @@
                             header="Putaway By WO"
                             press="onTilePress"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-                        >
-                            <TileContent id="idTileContentPutaway">
-                                <Button
-                                    id="idBtnPutawayByWO"
-                                    press="onPaletteIconPress"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="idConfiramtionCorrections1"
                             header="Confiramtion Corrections"
@@ -1102,16 +1081,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
                             header="Replenishment for fixed Bins"
                             press="onTileSelect"
-                        >
-                            <TileContent id="idTileContent0">
-                                <Button
-                                    id="idBtn"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
 
                         <GenericTile
                             id="IDCreateAdhocHUWT"
@@ -1180,18 +1150,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="Available Handling units on bin query"
                             press="OnPressAvailableHandlingUnitsOnBinQuery"
-                        >
-                            <TileContent
-                                id="idTileContentHandlingunitsonbinquery"
-                            >
-                                <Button
-                                    id="idBtnHandlingunitsonbinquery"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="IDWTQuerybyWO"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
@@ -1215,16 +1174,7 @@
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
                             header="WT query by HU"
                             press="OnPressWTquerybyHU"
-                        >
-                            <TileContent id="idTileContentWTquerybyHU">
-                                <Button
-                                    id="idBtnWTquerybyHU"
-                                    press="onPaletteIconSingleClick"
-                                    icon="sap-icon://palette"
-                                    type="Transparent"
-                                />
-                            </TileContent>
-                        </GenericTile>
+                        />
                         <GenericTile
                             id="IDHUStockOverviewQuery"
                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"

@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        //"sap/ui/core/mvc/Controller",
+        "./BaseController",
     ],
     function (BaseController) {
         "use strict";
@@ -13,6 +14,12 @@ sap.ui.define(
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                //Profile image updating(from BaseController)...
+                this.applyStoredProfileImage();
+            },
+            //Avata Press function with Helper function...
+            onPressAvatarARHUI: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
             },
             //Back Btn from 1st ScrollContainer Page 1 =>idPage1_ARHUI
             onPressBackBtnPage1_ARHUI: async function () {
@@ -52,7 +59,6 @@ sap.ui.define(
 
                 // show the second page
                 oScrollContainer2.setVisible(true);
-
                 //Hide the third Page scroll container
                 oScrollContainer3.setVisible(false);
             },

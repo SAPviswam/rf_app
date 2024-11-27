@@ -29,7 +29,7 @@
                 >
                     <Title
                         id="idPageTitle_CHNGRSGRP"
-                        text="Change Resource Group"
+                        text="{i18n>ChangeResourceGroup_Ttl_CRG}"
                         level="H2"
                     />
                 </VBox>
@@ -55,13 +55,13 @@
                 >
                     <Label
                         id="_IDGenLabel2_CHNGRSGRP"
-                        text="Resource"
+                        text="{i18n>Resource_Lbl_CRG}"
                         class="sapUiTinyMarginEnd"
                         
                     />
                     <Input
                         id="_IDGenInput2_CHNGRSGRP"
-                        placeholder="Enter Resource"
+                        placeholder="{i18n>EnterResourcePlaceHldr_CRG}"
                         maxLength="25"
                         width="300px"
                         editable="false"
@@ -69,11 +69,11 @@
                     />
                     <Label
                         id="_IDGenLabel3_CHNGRSGRP"
-                        text="RsGrp"
+                        text="{i18n>RsGrp_Lbl_CRG}"
                     />
                     <Input
                         id="_IDGenInput3_CHNGRSGRP"
-                        placeholder="Enter RsGrp"
+                        placeholder="{i18n>EnterRsGrp_PlaceHldr_CRG}"
                         maxLength="25"
                         width="300px"
                         editable="false"
@@ -82,11 +82,11 @@
 
                     <Label
                         id="_IDGenLabel4_CHNGRSGRP"
-                        text="Queue"
+                        text="{i18n>Queue_Lbl_CRG}"
                     />
                     <Input
                         id="_IDGenInput4_CHNGRSGRP"
-                        placeholder="Enter Queue"
+                        placeholder="{i18n>EnterQueuePlaceHldr_CRG}"
                         maxLength="25"
                         width="300px"
                         editable="false"
@@ -94,21 +94,21 @@
                     />
                     <Label
                         id="_IDGenLabelgyu_CHNGRSGRP"
-                        text="NRsGrp"
+                        text="{i18n>NRsGrp_Lbl_CRG}"
                     />
                     <Input
                         id="_IDGenInpsdfut4_CHNGRSGRP"
-                        placeholder="Enter NRsGrp"
+                        placeholder="{i18n>EnterNRsGrp_PlaceHldr_CRG}"
                         maxLength="25"
                         width="300px"
                     />
                     <Label
                         id="_IDGen_CHNGRSGRP"
-                        text="NQueue"
+                        text="{i18n>NQueue_Lbl_CRG}"
                     />
                     <Input
                         id="_IDGenInp_CHNGRSGRP"
-                        placeholder="Enter NQueue"
+                        placeholder="{i18n>EnterNQueue_PlaceHldr_CRG}"
                         maxLength="25"
                         width="300px"
                     />

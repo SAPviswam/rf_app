@@ -1,0 +1,107 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="idGenericTilePressPopover"  
+        placement="Auto" 
+        beforeClose="_onPopoverBeforeClose"
+        
+        
+    >
+        <VBox id="popoverContent">
+            <!-- <RadioButton id="id_changeresourcegroup" text="Change Resource Group" visible="false"/>
+            <RadioButton id="id_unloadingbydelivery" text="Unloading By Delivery" visible="false" />
+            <RadioButton id="id_unloadingbyshipment" text="Unloading By Shipment" visible="false" />
+            <RadioButton id="id_unloadingbytransportunit" text="Unloading By Transport Unit" visible="false" />
+            <RadioButton id="id_unloadingbyasn" text="Unloading By ASN" visible="false" />
+            <RadioButton id="id_unloadingbydoor" text="Unloading By Door" visible="false" />
+            <RadioButton  id="id_unloadingbybilloflading" text="Unloading by Bill of Lading" visible="false" />
+            <RadioButton id="id_unloadingbyconsigmentorder"  text="Unloading By Consigment Order" visible="false" />
+            <RadioButton  id="id_createputawayhusfordeconsolidation" text="Create Putaway Hus for Deconsolidation" visible="false" />
+            <RadioButton  id="id_deconsolidationautomatically" text="Deconsolidation Automatically" visible="false" />
+            <RadioButton  id="id_deconsolidationmanually" text="Deconsolidate Manually" visible="false" />
+            <RadioButton id="id_huoverview" text="HU Overview" visible="false" />
+            <RadioButton  id="id_createputawayhumanuallywowc" text="Create Putaway HU Manually (W/O WC)" visible="false" />
+            <RadioButton id="id_humaintenance" text="HU Maintenance" visible="false" />
+            <RadioButton id="id_putawaybyhu" text="Putaway By HU" visible="false" />
+            <RadioButton  id="id_putawaybyhuclustered" text="Putaway By HU (Clustered)" visible="false" />
+            <RadioButton  id="id_putawaybywo" text="Putaway By WO" visible="false" />
+            <RadioButton id="id_confiramtioncorrections"  text="Confiramtion Corrections" visible="false" />
+            <RadioButton  id="id_receivingofhubydelivery" text="Receiving of HU by Delivery" visible="false" />
+            <RadioButton id="id_receivingofhubyshipment" text="Receiving of HU by Shipment" visible="false" />
+            <RadioButton id="id_receivingofhubytu" text="Receiving of HU by TU" visible="false" />
+            <RadioButton  id="id_receivingofhubyasn" text="Receiving of HU by ASN" visible="false" />
+            <RadioButton id="id_receivingofhubydoor" text="Receiving of HU by Door" visible="false" />
+            <RadioButton id="id_receivingofhubymanufacturingorder" text="Receiving of HU by manufacturing Order" visible="false" />
+            <RadioButton id="id_receivingoftudoortw" text="Receving of TU/Door (TW)" visible="false" />
+            <RadioButton id="id_unloadhuctw" text="Unload HUC (TW)" visible="false" />
+            <RadioButton id="id_recevinngofhubybilloflading" text="Recevinng of HU by Bill of Lading" visible="false" />
+            <RadioButton id="id_recevinngofhubyconsignementorder" text="Receiving of HU by Consignement Order" visible="false" />
+            <RadioButton id="id_setreadyforwhprocessingbybol" text="Set Ready for WH processing by BOL" visible="false" />
+            <RadioButton id="id_setreadyforwhprocessingbyboco" text="Set Ready for WH processing by CO" visible="false" />
+            <RadioButton id="id_pickingbysystemguided" text="Picking By system Guided" visible="false" />
+            <RadioButton id="id_systemguidedbyqueue" text="System Guided By queue" visible="false" />
+            <RadioButton id="id_pickingbywr" text="Picking by WR" visible="false" />
+            <RadioButton id="id_pickingbywo" text="Picking By WO" visible="false" />
+            <RadioButton id="id_pickingbyhu" text="Picking By HU" visible="false" />
+            <RadioButton id="id_createshippinghu" text="Create Shipping HU" visible="false"/>
+            <RadioButton id="id_automaticallyrepackhu" text="Automatically Repack HU"  visible="false"/>
+            <RadioButton id="id_automaticallyrepackhuitem" text="Automatically Repack HU Item" visible="false"/>
+            <RadioButton id="id_createshippinghuwowc" text="Create Shipping HU (W/O WC)" visible="false" />
+            <RadioButton id="id_manuallyrepackhu" text="Manually Repack HU" visible="false" />
+            <RadioButton id="id_manuallyrepackhuitem" text="Manually Repack HU Item" visible="false"/>
+            <RadioButton id="id_maintainhu" text="Maintain HU" visible="false" />
+            <RadioButton id="id_manuallyrepackallhuitems" text="Manually re-pack all HU items" visible="false" />
+            <RadioButton id="id_loadhuctw" text="Load HUC(TW)" visible="false"/>
+            <RadioButton id="id_loadingbydelivery" text="Loading By Delivery" visible="false"/>
+            <RadioButton id="id_loadingbyshipment" text="Loading By Shipment" visible="false"/>
+            <RadioButton id="id_loadingbytransportunit" text="Loading By Transport Unit" visible="false" />
+            <RadioButton id="id_loadingbydoor" text="Loading By Door" visible="false" />
+            <RadioButton id="id_loadingbyhu" text="Loading By HU"  visible="false"/>
+            <RadioButton id="id_loadingbyroute" text="Loading By Route" visible="false"/>
+            <RadioButton id="id_buildvehicle" text="Build Vehicle" visible="false"/>
+            <RadioButton id="id_loadingbytudoortw" text="Loading By TU/Door (TW)" visible="false" />
+            <RadioButton id="id_loadingbybilloflading" text="Loading By bill of Lading" visible="false" />
+             <RadioButton id="id_loadingbyconsignmentorder" text="Loading By Consignment order" visible="false" />
+              <RadioButton id="id_creationofsinglehu" text="Creation Of Single HU" visible="false"/>
+               <RadioButton id="id_pickpoint" text="Pick Point" visible="false" />
+                <RadioButton id="id_humaintenance1" text="HU Maintenance"  visible="false" />
+                 <RadioButton id="id_consumptionbymanufacturingorder" text="Consumption By Manufacturing Order"  visible="false"/>
+                  <RadioButton id="id_reversalofconsumptionbymohu" text="Reversal of Consumption by MO (HU)" visible="false"/>
+                   <RadioButton id="id_reversalofconsumptionbymobin"  text="Reversal of consumption by MO (Bin)" visible="false" />
+
+                   <RadioButton id="id_loadbyhuautoposassignment" text="Load By HU - Auto.Pos.Assignment"  visible="false"/>
+                    <RadioButton  id="id_loadbyhumanposassignment" text="Load By HU - Man. Pos. Assigment" visible="false" />
+                     <RadioButton id="id_changeloadingunloadingdetails" text="Change Loading/Unloading Details" visible="false" />
+                      <RadioButton id="id_unloadbyhu" text="Unload By HU" visible="false" />
+                       <RadioButton id="id_inventorycountingguied" text="Inventory Counting Guied" visible="false" />
+                        <RadioButton id="id_inventorycountingmanual" text="Inventory Counting Manual" visible="false" />
+                            <RadioButton id="id_adhocinventorycreation" text="Adhoc Inventory Creation"  visible="false"/>
+                                <RadioButton id="id_adhocinventorycounting" text="Adhoc Inventory Counting" visible="false"/>
+                                    <RadioButton id="id_replenishmentforfixedbins" text="Replenishment for fixed Bins" visible="false" />
+                                        <RadioButton id="id_createadhochuwt" text="Create Adhoc HU WT" visible="false"/>
+                                            <RadioButton id="id_createandconfirmadhochuwt"  text="Create and Confirm Adhoc HU WT" visible="false"/>
+                                                <RadioButton id="id_createadhocproductwt" text="Create Adhoc Product WT" visible="false" />
+                                                    <RadioButton id="id_createandconfirmadhocproductwt" text="Create and Confirm Adhoc Product WT"  visible="false"/>
+                                                        <RadioButton id="id_huquery" text="HU Query" visible="false" />
+                                                            <RadioButton id="id_stockbinquerybybin" text="Stock/Bin Query by Bin" visible="false" />
+                                                                <RadioButton id="id_stockbinquerybyproduct" text="Stock/Bin Query by Product" visible="false" />
+                                    <RadioButton id="id_serialnumberlocation" text="Serial number Location" visible="false" />
+                                        <RadioButton id="id_availablehandlingunitsonbinquery"  text="Available Handling units on bin query"  visible="false"/>
+                                <RadioButton id="id_wtquerybywo" text="WT Query by WO" visible="false" />
+                                    <RadioButton id="id_wtquerybywt" text="WT Query By WT"  visible="false"/>
+                                           <RadioButton id="id_wtquerybyqueue" text="WT Query by Queue" visible="false" />
+                                                          <RadioButton  id="id_wtquerybyhu" text="WT query by HU"  visible="false"/>
+                                                                         <RadioButton id="id_hustockoverviewquery" text="HU Stock Overview Query" visible="false" />
+                                                                                        <RadioButton id="id_productinspectionbyhu" text="Product Inspection By HU" visible="false"/>
+                                                                                                       <RadioButton id="id_productinspectionbystoragebin" text="Product Inspection By Storage Bin" visible="false" />
+                                                                                                                      <RadioButton id="id_changequeue" text="Change Queue" visible="false" />
+                                                                                                                                     
+
+ -->
+
+        </VBox>
+    </Popover>
+</core:FragmentDefinition>

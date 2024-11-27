@@ -19,65 +19,92 @@
         <tnt:ToolPage id="idToolPageP">
             <tnt:header>
                 <tnt:ToolHeader id="idtntToolHeaderP">
-                    <Button
+                    <!-- <Button
                         id="idPFourthbackbtn"
                         icon="sap-icon://nav-back"
                         press="onSBQPFourthBackBtnPress"
                         visible="false"
-                    />
+                    /> -->
+                    <!-- Artihcus Logo -->
                     <Image
                         id="id_GenImage1P"
                         height="1.5rem"
                         class="sapUiTinyMarginBegin"
                         src="https://artihcus.com/assets/img/AG-logo.png"
                     />
-                    <tnt:ToolHeaderUtilitySeparator
-                        id="idToolHeaderUtilitySeparatorP"
+                    <ToolbarSpacer id="idToolbarSpacerP" />
+                    <!-- CAPmodel RF Title -->
+                    <Title
+                        id="IdTitle_ResourceView"
+                        class="ResourcePageTitle"
+                        text="CAPmodel RF"
                     />
-                    <ToolbarSpacer id="idToolbarSpacerP">
-                        <layoutData>
-                            <OverflowToolbarLayoutData
-                                id="idOverflowToolbarLayoutData1P"
-                                priority="NeverOverflow"
-                                minWidth="20px"
-                            />
-                        </layoutData>
-                    </ToolbarSpacer>
-                    <Button
-                        id="idCancelEditButtonResource"
-                        text="Exit edit mode"
-                        press="onCancelEditPress"
-                        visible="false"
-                    />
-                    <Button
-                        id="idBtnListView"
-                        press="onPressListGridViewsResource"
-                        icon="sap-icon://grid"
-                        tooltip="ListView"
-                    />
+                    <ToolbarSpacer id="idToolbarSpacerP2" />
                     <Button
                         id="idTileThemesModeOpen"
-                        text="Open Theme"
+                        text="Open"
                         press="onPressTileThemesModeOpenDailog"
                         icon="sap-icon://palette"
                         visible="false"
-                    />
+                        width="5rem"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataResourcePage"
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Button>
                     <Button
                         id="idExitThemeModeResource"
-                        text="Exit theme"
+                        text="Exit"
                         icon="sap-icon://decline"
                         press="onPressExitTileThemesMode"
                         visible="false"
+                        width="5rem"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataResourcePage01"
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Button>
+                    <Button
+                        id="idBtnListViewResourcePage"
+                        icon="sap-icon://menu"
+                        tooltip="List View"
+                        press="onPressListViewsResource"
+                        width="2rem"
+                    />
+                    <Button
+                        id="idBtnGridViewResourcePage"
+                        icon="sap-icon://grid"
+                        tooltip="Grid View"
+                        press="onPressGridViewsResource"
+                        width="2rem"
+                    />
+
+                    <!-- Avatar -->
+                    <tnt:ToolHeaderUtilitySeparator
+                        id="idToolHeaderUtilitySeparatorP"
                     />
                     <Avatar
-                        id="id_GenAvatar1P"
+                        id="idImageMainAvatarResourcepage"
                         displaySize="XS"
-                        press="onSBQPAvatarPressed"
+                        press="onSBQPAvatarPressedResourcePage"
                         tooltip="Profile"
-                    />
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataRP03"
+                                priority="High"
+                            />
+                        </layoutData>
+                    </Avatar>
                 </tnt:ToolHeader>
             </tnt:header>
-            <tnt:mainContents>      
+            <tnt:mainContents>
                 <ScrollContainer
                     id="idScrollContainer1"
                     horizontal="true"
@@ -108,29 +135,29 @@
                         height="100%"
 
                     > -->
-                    <VBox>
-                        <Title
+                    <VBox id="idUnloadingTile">
+                        <!-- <Title
                             id="id_unloading_title"
                             text="Unloading"
                             visible="false"
-                        />
-                        <HBox />
+                        /> -->
                     </VBox>
+
                     <GenericTile
-                        id="id_unloadingbydelivery"
+                        id="id_unloading_title"
                         class="sapUiTinyMargin sapUiResponsivePadding"
-                        header="Unloading By Delivery"
-                        press="onUnloadingByDeliveryPress"
+                        header="Unloading"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_unlodingbyshipment"
                         class="sapUiTinyMargin"
                         header="Unloading By Shipment"
                         press="onUnloadingByShipmentPress"
                         visible="false"
-                    />
-                    <GenericTile
+                    /> -->
+                    <!-- <GenericTile
                         id="id_unloadingbytransportunit"
                         class="sapUiTinyMargin"
                         header="Unloading By Transport Unit"
@@ -164,7 +191,7 @@
                         header="Unloading By Consigment Order"
                         press="onUnloadingByConsignmentOrderTilePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_deconsolidation_title"
@@ -175,13 +202,13 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_createputawayhusfordeconsolidation"
+                        id="id_deconsolidation_title"
                         class="sapUiTinyMargin"
-                        header="Create Putaway Hus for Deconsolidation"
-                        press="onCreatePutawayHusforDeconsolidationPress"
+                        header="Deconsolidation"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_createputawayhusmanually"
                         class="sapUiTinyMargin"
                         header="Create Putaway Hus Manually"
@@ -217,16 +244,13 @@
                         visible="false"
                     />
 
-
                     <GenericTile
                         id="id_humaintenance1"
                         class="sapUiTinyMargin"
                         header="HU Maintenance"
                         press="onHUMaintenancePress"
                         visible="false"
-                    />
-
-
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -237,13 +261,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_putawaybyhu"
+                        id="id_putaway_title"
                         class="sapUiTinyMargin"
-                        header="Putaway By HU"
-                        press="onPutawayByHUPress"
+                        header="Putaway"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_putawaybyhuclustered"
                         class="sapUiTinyMargin"
                         header="Putaway By HU (Clustered)"
@@ -264,7 +288,7 @@
                         header="Confiramtion Corrections"
                         press="onConfiramtionCorrectionsPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -275,13 +299,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_receivingofhubydelivery"
+                        id="id_receivingofhanndlingunits_title"
                         class="sapUiTinyMargin"
-                        header="Receiving of HU by Delivery"
-                        press="onReceivingofHUbyDeliveryPress"
+                        header="Receiving Of Hanndling Units"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_receivingofhubyshipment"
                         class="sapUiTinyMargin"
                         header="Receiving of HU by Shipment"
@@ -343,7 +367,7 @@
                         header="Receiving of HU by Consignment Order"
                         press="onReceivingofHUbyConsignementOrderPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -355,19 +379,19 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_setreadyforwhprocessingbybol"
+                        id="id_setreadyforwarehouseprocessing_title"
                         class="sapUiTinyMargin"
-                        header="Set Ready for WH processing by BOL"
-                        press="onSetReadyforWHprocessingbyBOLPress"
+                        header="Set Ready for warehouse processing"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_setreadyforwhprocessingbyco"
                         class="sapUiTinyMargin"
                         header="Set Ready for WH processing by CO"
                         press="onSetReadyforWHprocessingbyCOPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -378,13 +402,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_pickingbysystemguided"
+                        id="id_picking_title"
                         class="sapUiTinyMargin"
-                        header="Picking By system Guided"
-                        press="onPickingBysystemGuidedPress"
+                        header="Picking"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_systemguidedbyqueue"
                         class="sapUiTinyMargin"
                         header="System Guided By queue"
@@ -411,7 +435,7 @@
                         header="Picking By HU"
                         press="onPickingByHUPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_packing_title"
@@ -421,13 +445,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_createshippinghu"
+                        id="id_packing_title"
                         class="sapUiTinyMargin"
-                        header="Create Shipping HU"
-                        press="onCreateShippingHUPress"
+                        header="Packing"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_automaticallyrepackhu"
                         class="sapUiTinyMargin"
                         header="Automatically Repack HU"
@@ -476,7 +500,7 @@
                         header="Manually re-pack all HU items"
                         press="onManuallyrepackallHUitemsPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -487,13 +511,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_loadhuctW"
+                        id="id_loading_title"
                         class="sapUiTinyMargin"
-                        header="Load HUC(TW)"
-                        press="onLoadHUCTWPress"
+                        header="Loading"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_loadingbydelivery"
                         class="sapUiTinyMargin"
                         header="Loading By Delivery"
@@ -562,7 +586,7 @@
                         header="Loading By Consignment order"
                         press="onLoadingByConsignmentorderPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -573,13 +597,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_creationofsinglehu"
+                        id="id_pickpoint_title"
                         class="sapUiTinyMargin"
-                        header="Creation Of Single HU"
-                        press="onCreationOfSingleHUpress"
+                        header="Pick Point"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_pickpoint"
                         class="sapUiTinyMargin"
                         header="Pick Point"
@@ -592,7 +616,7 @@
                         header="HU Maintenance"
                         press="onHUMaintenancePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_consumption_title"
@@ -602,13 +626,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_consumptionbymanufacturingorder"
+                        id="id_consumption_title"
                         class="sapUiTinyMargin"
-                        header="Consumption By Manufacturing Order"
-                        press="onConsumptionByManufacturingOrderPress"
+                        header="Consumption"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_reversalofconsumptionbymohu"
                         class="sapUiTinyMargin"
                         header="Reversal of Consumption by MO (HU)"
@@ -621,7 +645,7 @@
                         header="Reversal of consumption by MO (Bin)"
                         press="onReversalofconsumptionbyMOBinPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_distributionequipment_title"
@@ -632,13 +656,13 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_loadbyhuautoposassignment"
+                        id="id_distributionequipment_title"
                         class="sapUiTinyMargin"
-                        header="Load By HU - Auto.Pos.Assignment"
-                        press="onLoadByHUAutoPosAssignmentPress"
+                        header="Distribution Equipment"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_loadbyhumanposassignment"
                         class="sapUiTinyMargin"
                         header="Load By HU - Man.Pos.Assignment"
@@ -658,7 +682,7 @@
                         header="Unload By HU"
                         press="onUnloadByHUPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -669,13 +693,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_inventorycountingguied"
+                        id="id_inventorycounting_title"
                         class="sapUiTinyMargin"
-                        header="Inventory Counting Guied"
-                        press="onInventoryCountingGuiedPress"
+                        header="Inventory Counting"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_inventorycountingmanual"
                         class="sapUiTinyMargin"
                         header="Inventory Counting Manual"
@@ -695,7 +719,7 @@
                         header="Adhoc Inventory Counting"
                         press="onAdhocInventoryCountingPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -706,17 +730,17 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_replenishmentforfixedbins"
+                        id="id_adhocwtcreations_title"
                         class="sapUiTinyMargin"
-                        header="Replenishment for fixed Bins"
-                        press="onReplenishmentforfixedBinsPress"
+                        header="Adhoc WT creations"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_createadhochuwt"
                         class="sapUiTinyMargin"
-                        header="Create Adhoc HU WT"
-                        press="onCreateAdhocHUWTPress"
+                        header="Replenishment for fixed Bins"
+                        press=""
                         visible="false"
                     />
                     <GenericTile
@@ -739,7 +763,7 @@
                         header="Create and Confirm Adhoc Product WT"
                         press="onCreateandConfirmAdhocProductWTPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -750,13 +774,13 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_huquery"
+                        id="id_queries_title"
                         class="sapUiTinyMargin"
-                        header="HU Query"
-                        press="onHUQueryPress"
+                        header="Queries"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_stockbinquerybybin"
                         class="sapUiTinyMargin"
                         header="Stock/Bin Query by Bin"
@@ -818,7 +842,7 @@
                         header="HU Stock Overview Query"
                         press="onHUStockOverviewQueryPress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- <VBox>
                     <Title
                         id="id_qualitymanagement_title"
@@ -829,19 +853,19 @@
                 </VBox> -->
 
                     <GenericTile
-                        id="id_productinspectionbyhu"
+                        id="id_qualitymanagement_title"
                         class="sapUiTinyMargin"
-                        header="Product Inspection By HU"
-                        press="onProductInspectionByHUPress"
+                        header="Quality Management"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_productinspectionbystoragebin"
                         class="sapUiTinyMargin"
                         header="Product Inspection By Storage Bin"
                         press="onProductInspectionByStorageBinPress"
                         visible="false"
-                    />
+                    /> -->
 
                     <!-- <VBox>
                     <Title
@@ -852,19 +876,19 @@
                     <HBox />
                 </VBox> -->
                     <GenericTile
-                        id="id_changequeue"
+                        id="id_resourcemanagement_title"
                         class="sapUiTinyMargin"
-                        header="Change Queue"
-                        press="onChangeQueueTilePress"
+                        header="Resource Management"
+                        press="onGenericTilePress"
                         visible="false"
                     />
-                    <GenericTile
+                    <!-- <GenericTile
                         id="id_changeresourcegroup"
                         class="sapUiTinyMargin"
                         header="Change Resource Group"
                         press="onChangeResourceGroupTilePress"
                         visible="false"
-                    />
+                    /> -->
                     <!-- </ScrollContainer> -->
                     <!-- </form:SimpleForm> -->
                 </ScrollContainer>
@@ -882,11 +906,24 @@
                                 />
                             </contentLeft>
                             <contentRight>
+                                <unified:FileUploader
+                                    id="idBrowseImgfileUploaderTilesBG"
+                                    icon="sap-icon://background"
+                                    change="onFileUploadChange"
+                                    fileType="jpg,png,jpeg,gif"
+                                    maximumFileSize="1"
+                                    buttonOnly="true"
+                                    buttonText=" "
+                                    mimeType="image/jpeg,image/png,image/gif"
+                                    visible="true"
+                                    width="1rem"
+                                />
                                 <Button
                                     id="applyColorButtonResource"
                                     text="Apply"
                                     press="onApplyColor"
                                     type="Transparent"
+                                    width="4rem"
                                     tooltip="Apply the selected color"
                                 />
                                 <Button
@@ -895,19 +932,11 @@
                                     press="onCancelColorDialog"
                                     type="Transparent"
                                     tooltip="Cancel Theme"
+                                    width="1rem"
                                 />
                             </contentRight>
                         </Bar>
                     </customHeader>
-                    <!-- <unified:FileUploader
-                            id="idBrowseImgfileUploader"
-                            icon="sap-icon://background"
-                            tooltip="Upload an image to apply as tile background"
-                            change="onFileUploadChange"
-                            fileType="jpg,png,jpeg,gif"
-                            maximumFileSize="2"
-                            uploadOnChange="false"
-                        /> -->
                     <VBox
                         id="idVBox1796Resource"
                         class="sapUiSmallMargin"
@@ -923,7 +952,7 @@
                                     <core:CustomData
                                         id="idcustomedata1Resource"
                                         key="red"
-                                        value="red"
+                                        value="lightcoral"
                                     />
                                 </customData>
                             </CheckBox>
@@ -937,7 +966,7 @@
                                     <core:CustomData
                                         id="idcustomedata2Resource"
                                         key="black"
-                                        value="black"
+                                        value="lightgray"
                                     />
                                 </customData>
                             </CheckBox>
@@ -951,7 +980,7 @@
                                     <core:CustomData
                                         id="idcustomedata3Resource"
                                         key="green"
-                                        value="green"
+                                        value="lightgreen"
                                     />
                                 </customData>
                             </CheckBox>
@@ -979,7 +1008,7 @@
                                     <core:CustomData
                                         id="idcustomedata5Resource"
                                         key="purple"
-                                        value="purple"
+                                        value="thistle"
                                     />
                                 </customData>
                             </CheckBox>
@@ -993,7 +1022,7 @@
                                     <core:CustomData
                                         id="idcustomedata6Resource"
                                         key="blue"
-                                        value="blue"
+                                        value="lightblue"
                                     />
                                 </customData>
                             </CheckBox>
@@ -1006,13 +1035,11 @@
                                 <customData>
                                     <core:CustomData
                                         id="idcustomedata7Resource"
-                                        key="yellow"
-                                        value="yellow"
+                                        key="Orange"
+                                        value="rgba(255, 173, 22, 0.918)"
                                     />
                                 </customData>
                             </CheckBox>
-                            <!-- <Button id="idCustomethemeSelection" press="onPressCustomeTheme" icon="sap-icon://palette" type="Transparent"></Button> -->
-                            <!-- Add more color options as needed -->
                         </HBox>
                         <unified:ColorPicker
                             id="idcolorPickerResource"

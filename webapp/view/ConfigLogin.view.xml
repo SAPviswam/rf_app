@@ -1,102 +1,321 @@
 <mvc:View
+    xmlns:form="sap.ui.layout.form"
     controllerName="com.app.rfapp.controller.ConfigLogin"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
+    xmlns:ndc="sap.ndc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:layout="sap.ui.layout"
-    xmlns:cssgrid="sap.ui.layout.cssgrid"
     xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
 >
-    <Page id="pageHome_cl">
-        <content>
-            <FlexBox
-                id="_IDGenFlexBoxHome_cl"
+    <tnt:ToolPage id="idRfconfigPage01ToolPage">
+        <!-- Header -->
+        <tnt:header>
+            <tnt:ToolHeader id="idRfconfigPage01ToolHeader">
+                <!-- Artihcus Logo -->
+                <Image
+                    id="idArtihcus_configPage"
+                    class="sapUiTinyMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <!-- CAPmodel RF Title -->
+                <Title
+                    id="idTitle_configPage"
+                    class="titlecap"
+                    text="{i18n>CAP_Title}"
+                />
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_configPage"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_configPage">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData_configPage"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <!-- scroll container for total view -->
+            <ScrollContainer
+                id="idScrollContainer1_configPage"
+                horizontal="false"
+                vertical="true"
                 height="100%"
-                direction="Column"
-                alignItems="Center"
+                class="customBackground"
+                visible="true"
             >
                 <VBox
-                    id="environmentButtonsHBoxHome_cl"
-                    class="sapUiSmallMarginTop boxContainerhome"
+                    id="idContentContainer_configPage"
+                    class="contentContainer"
+                    justifyContent="Center"
                     alignItems="Center"
+                    fitContainer="true"
+                    height="100%"
+                    width="100%"
                 >
+                    <!-- Use an HBox to center the whiteBox -->
                     <HBox
-                        id="idHboxHome_cl"
-                        alignContent="Start"
-                        class="boxContainerlogin"
-                        width="auto"
-                        height="20%"
-                    >
-                        <Image
-                            id="idImageLogoAvatarHome_cl"
-                            src="https://artihcus.com/assets/img/AG-logo.png"
-                            class="sapUiSmallMarginEnd logo"
-                            width="85%"
-                            height="35%"
-                        />
-                      <Title
-                                id="initialscreentitle1"
-                                text="CAPmodel RF"
-                                class="capModelRFTextlogin sapUiSmallMarginBottom"
-                           
-                            />
-                    </HBox>
-                    <Label id="idlabelempty_cl" width="0.5rem" />
-                    <HBox id="idhboxwah_cl">
-                        <VBox id="_IDGenHBox26_cl">
-                            <Label
-                                id="idLabelHU_cl"
-                                text="Username:"
-                                labelFor="idHUInput_cl"
-                                class="LabelHomePage"
-                            />
-                            <Label
-                                id="idLabelUserID_cl"
-                                text="password:"
-                                labelFor="idUserIDInput_cl"
-                                class="sapUiSmallMarginTop LabelHomePage"
-                            />
-                        </VBox>
-                        <Text id="idtext_cl" width="0.4rem"></Text>
-                        <VBox id="_IDGenHBox32_cl">
-                            <Input
-                                id="idUsernameInput_cl"
-                                placeholder="username"
-                                width="100%"
-                                editable="true"
-                            />
-                            <Input
-                                id="idUserIDInput_cl"
-                                placeholder="password"
-                                width="100%"
-                                 editable="true"
-                            />
-                        </VBox>
-                    </HBox>
-               
-                    <HBox
-                        id="idHBoxForgot_cl"
+                        id="idPaddingBox_configPage"
                         justifyContent="Center"
                         alignItems="Center"
-                        class="sapUiSmallMarginTop moveRight"
+                        height="100%"
+                        class="paddingBox"
+                        visible="true"
                     >
-                        <Button
-                            id="idchangequeue_cl1"
-                            text="Signup"
-                            type="Default"
-                            press="onpresssignup"
-                        />
-                         <Text width="0.5rem" />
-                        <Button
-                            id="idchangequeue_cl"
-                            text="Login"
-                            type="Default"
-                            press="onpresslogin"
-                        />
+                        <VBox
+                            id="idWhiteBorderBox_configPage"
+                            class="whiteBorderBox"
+                            width="350px"
+                            height="250px"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
+                            <!-- Title -->
+                            <Text
+                                id="idLoginTitle_configPage"
+                                text="Application Login"
+                                class="loginTitle"
+                                textAlign="Center"
+                                width="100%"
+                            />
+
+                            <!-- Input Fields Start Here (Label + Input side by side) -->
+                            <HBox
+                                id="idInputRowUserID_configPage"
+                                width="100%"
+                                alignItems="Center"
+                                class="inputRow"
+                            >
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerUserID_configPage"
+                                    width="2rem"
+                                />
+                                <!-- Add some space on the left -->
+                                <Text
+                                    id="idUserIDLabel_configPage"
+                                    text="User ID"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idUserIDInput_configPage"
+                                    width="100%"
+                                    value="111010"
+                                    class="orangeInput sapUiTinyMarginTop"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idInputRowPassword_configPage"
+                                width="100%"
+                                alignItems="Center"
+                                class="inputRow"
+                            >
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerPassword_configPage"
+                                    width="2rem"
+                                />
+                                <!-- Add some space on the left -->
+                                <Text
+                                    id="idPasswordLabel_configPage"
+                                    text="Password"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idPasswordInput_configPage"
+                                    type="Password"
+                                    value="........"
+                                    width="100%"
+                                    placeholder="Enter Password"
+                                    class="orangeInput sapUiTinyMarginTop"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox
+                                id="idSpacerAfterInputs_configPage"
+                                height="20px"
+                            />
+                            <!-- Increase space between fields and buttons -->
+
+                            <!-- Submit Buttons -->
+                            <HBox
+                                id="idButtonRow_configPage"
+                                justifyContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idSignupButton_configPage"
+                                    text="{i18n>SignUp_Btn}"
+                                    press="onNavToSignUpPage"
+                                    width="100%"
+                                />
+                                <ToolbarSpacer
+                                    id="idToolbarSpacerBetweenButtons_configPage"
+                                    width="1rem"
+                                />
+                                <Button
+                                    id="idLoginButton_configPage"
+                                    text="{i18n>Login_Btn}"
+                                    press="onpresslogin"
+                                    width="100%"
+                                />
+                            </HBox>
+                            <Link
+                                id="idchangePassword_CL"
+                                text="{i18n>forgot_Link_CL}"
+                                class="sapUiSmallMarginTop"
+                                press="onForgotPasswordPress"
+                            />
+                        </VBox>
                     </HBox>
                 </VBox>
-            </FlexBox>
-        </content>
-    </Page>
+
+                <FlexBox
+                    id="flexBoxContainer"
+                    justifyContent="Center"
+                    alignItems="Center"
+                    class="formContainer"
+                    height="100vh"
+                >
+                    <form:SimpleForm
+                        id="idconnecttsosapDetailsForm_CP"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        emptySpanXL="1"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="1"
+                        width="auto"
+                        title="{i18n>SignUp_Btn}"
+                        visible="false"
+                    >
+                        <Label
+                            id="idUsserLabel_C"
+                            text="{i18n>FristN_Lbl_CL}"
+                            class="customInput sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idFirstnameInput_CL"
+                            placeholder="{i18n>FristN_PlaceHldr_CL}"
+                            class="customInput"
+                            value="{ODataModel>/appLoginData/Firstname}"
+                        />
+                        <Label
+                            id="idUserLabels_CP"
+                            text="{i18n>LName_Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idLName_Input_CL"
+                            placeholder="{i18n>LName_PlaceHldr_CL}"
+                            class="customInput"
+                            value="{ODataModel>/appLoginData/Lastname}"
+                        />
+                        <Label
+                            id="idEmailAddlabel_CL"
+                            text="{i18n>EmailAdd_Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idEmailAddInput_CL"
+                            placeholder="{i18n>EmailAdd_PlaceHldr_CL}"
+                            class="customInput"
+                            value="{ODataModel>/appLoginData/Email}"
+                        />
+                        <Label
+                            id="idPhonelabel_CP"
+                            text="{i18n>Phone__Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <HBox id="idHBox_CL">
+                            <Input
+                                id="idPhoneInput_CL"
+                                placeholder="{i18n>Phone_PlaceHldr_CL}"
+                                class="customInput"
+                                width="120%"
+                                value="{ODataModel>/appLoginData/Phonenumber}"
+                                liveChange="onAfterNumberEnter"
+                                maxLength="10"
+                                type="Number"
+                            />
+                            <Button
+                                id="idBtnOTP"
+                                text="Get OTP"
+                                enabled="false"
+                                type="Emphasized"
+                                press="onGetOTPPress"
+                                class="sapUiLargeMarginBegin"
+                            />
+                        </HBox>
+                        <Label
+                            id="idRepeatPasdswsordlabel_CP"
+                            text="{i18n>ValidateOTP_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <HBox
+                            id="idOTPHBox"
+                            visible="false"
+                        >
+                            <Input
+                                id="idOTPInput_CL"
+                                placeholder="{i18n>EntrOTP_PlaceHldr_CL}"
+                                class="customInput"
+                                width="120%"
+                            />
+                            <Button
+                                id="ChangePsd_CP"
+                                text="{i18n>Validate_CL}"
+                                type="Emphasized"
+                                press="onValidate"
+                                class="sapUiLargeMarginBegin"
+                            />
+                        </HBox>
+                        <Label
+                            id="idPasswsordlabel_CP"
+                            text="{i18n>Password__Lbl_CL}"
+                            class="sapUiTinyMarginTop"
+                        />
+                        <Input
+                            id="idPassswordInput_CL"
+                            type="Password"
+                            placeholder="{i18n>Password_PlaceHldr_CL}"
+                            value="{ODataModel>/appLoginData/Password}"
+                            class="customInput"
+                        />
+                        <HBox id="idButtonsHbox_CL">
+                            <Button
+                                id="idSignUp_CL"
+                                text="{i18n>SignUp_Btn}"
+                                type="Emphasized"
+                                width="100%"
+                                enabled="false"
+                                press="onSignupPress"
+                                class="sapUiTinyMarginTop"
+                            />
+                            <Button
+                                id="IDbuttonchangdepwcancel"
+                                class="changePasswordCancelBtn sapUiTinyMarginTop sapUiTinyMarginBegin"
+                                text="{i18n>Cancel_Btn}"
+                                type="Transparent"
+                                press="onCancleSignup"
+                            />
+                        </HBox>
+                    </form:SimpleForm>
+                </FlexBox>
+            </ScrollContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>
