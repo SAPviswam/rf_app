@@ -51,17 +51,60 @@ sap.ui.define(
         }
         this.forgotPass.open()
       },
-      onForgotPasswordCancel: function () {
+      onCancelForgotPassword: async function () {
         if (this.forgotPass.isOpen()) {
-          this.forgotPass.close()
+          const oView = this.getView()
+          await this.forgotPass.close()
+          // value states
+          oView.byId("idRegNumbInput_CL").setValueState("None");
+          oView.byId("idUserIDInput_CL").setValueState("None");
+          oView.byId("idPasswordInput_CL").setValueState("None");
+
+          // clear fields
+          oView.byId("idRegNumbInput_CL").setValue("");
+          oView.byId("idUserIDInput_CL").setValue("");
+          oView.byId("idPasswordInput_CL").setValue("");
+
         }
       },
       // test
       onUpdatePasswordPress: async function () {
         const oModel = this.getOwnerComponent().getModel(),
+          oUserView = this.getView(),
           sPath = "/APP_LOGON_DETAILSSet",
           sUserEnteredUserID = this.getView().byId("idUserIDInput_CL").getValue(),
-          sUserEnteredMobile = this.getView().byId("idRegNumbInput_CL").getValue();
+          sUserEnteredMobile = this.getView().byId("idRegNumbInput_CL").getValue(),
+          sUserEnteredPass = this.getView().byId("idPasswordInput_CL").getValue();
+        // validations
+        var flag = true;
+        if (!sUserEnteredUserID) {
+          oUserView.byId("idUserIDInput_CL").setValueState("Error");
+          oUserView.byId("idUserIDInput_CL").setValueStateText("Please enter registered user ID");
+          flag = false;
+        } else {
+          oUserView.byId("idUserIDInput_CL").setValueState("None");
+        }
+        if (!sUserEnteredMobile || sUserEnteredMobile.length !== 10 || !/^\d+$/.test(sUserEnteredMobile)) {
+          oUserView.byId("idRegNumbInput_CL").setValueState("Error");
+          oUserView.byId("idRegNumbInput_CL").setValueStateText("Please enter 10 digit correct mobile number");
+          flag = false;
+        } else {
+          oUserView.byId("idRegNumbInput_CL").setValueState("None");
+
+        }
+        if (!sUserEnteredPass || sUserEnteredPass.length < 8) {
+          oUserView.byId("idPasswordInput_CL").setValueState("Error");
+          oUserView.byId("idPasswordInput_CL").setValueStateText("Password length should be 8 characters");
+          flag = false;
+        } else {
+          oUserView.byId("idPasswordInput_CL").setValueState("None");
+
+        }
+        if (!flag) {
+          sap.m.MessageToast.show("Please enter correct data")
+          return;
+        }
+
         try {
 
           const aRegisteredUserID = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sUserEnteredUserID);
@@ -78,7 +121,7 @@ sap.ui.define(
           if (oResponse.results.length > 0) {
             const sRegisteredUserID = oResponse.results[0].Userid,
               sRegisteredPhnNumber = oResponse.results[0].Phonenumber;
-              
+
             if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
 
               sap.m.MessageToast.show("Success User Authenticated")
@@ -93,21 +136,30 @@ sap.ui.define(
               try {
 
                 // last change here.... (working with update call)
-                 
+
                 const sUpdatePath = `/APP_LOGON_DETAILSSet('${sUserEnteredUserID}')`
                 // update call
-               const oResponse =  await this.updateData(oModel, sUpdatePath, oPayload);
-                // success 
-              sap.m.MessageToast.show("Success User Authenticated")
+                const oResponse = await this.updateData(oModel, sUpdatePath, oPayload);
+                // after successfull  value states
+                oView.byId("idRegNumbInput_CL").setValueState("None");
+                oView.byId("idUserIDInput_CL").setValueState("None");
+                oView.byId("idPasswordInput_CL").setValueState("None");
+
+                // clear fields
+                oView.byId("idRegNumbInput_CL").setValue("");
+                oView.byId("idUserIDInput_CL").setValue("");
+                oView.byId("idPasswordInput_CL").setValue("");
+                // close the fragment
+                this.forgotPass.close()
 
               } catch (error) {
-                
+                sap.m.MessageToast.show("Failed to reset password" + error)
               }
             } else {
-              sap.m.MessageToast.show("Failed to Authenticate ID and phn number missmatch")
+              sap.m.MessageToast.show("ID and phone number mismatch")
             }
           } else {
-            sap.m.MessageToast.show("No records Found")
+            sap.m.MessageToast.show("ID and phone number mismatch")
           }
 
         } catch (error) {
