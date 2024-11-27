@@ -1674,9 +1674,10 @@ margin-right: 20%;
 .configureSapBtn_InitialView {
     background-color: whitesmoke;
     color: rgb(249, 126, 3) !important;
-    font-weight: bold !important;
+    font-weight: bolder !important;
     border: 0px;
-
+    font-size: 16px;
+    margin-right: 0.8rem !important;
 }
 .configureSapBtn_InitialView:hover{
     cursor: pointer;

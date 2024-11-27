@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController", 
     "sap/ui/core/UIComponent"
 ], function (Controller,UIComponent ) {
     "use strict";
@@ -12,7 +12,11 @@ sap.ui.define([
         onResourceDetailsLoad: async function (oEvent1) {
             const { id } = oEvent1.getParameter("arguments");
             this.ID = id;
+            this.applyStoredProfileImage();
         },
+        onPressAvatarRHBBL: function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+            },
         Onpressbackbol1: async function () {
             var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();

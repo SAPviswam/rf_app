@@ -33,7 +33,7 @@
                 <Avatar
                     id="_IDGenAvatar1Bofl"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarRHBBL"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
