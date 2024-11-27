@@ -45,7 +45,7 @@
             <ScrollContainer
                 id="idScrollContainer1_configPage"
                 horizontal="false"
-                vertical="true"
+                vertical="false"
                 height="100%"
                 class="customBackground"
                 visible="true"

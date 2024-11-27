@@ -371,8 +371,7 @@
                     id="idVerifyHuNumberContai_ner__HUSOQ"
                     class="formContainer_AHUOBQ"
                     justifyContent="Center"
-                    alignItems="Center"
-                >
+                    alignItems="Center">
                     <f:SimpleForm
                         id="idProductDeaisForm_1"
                         layout="ResponsiveGridLayout"
@@ -385,7 +384,6 @@
                         columnsL="1"
                         columnsM="1"
                          width="110%"
-                       
                     >
                         <VBox
                             alignContent="Center"
@@ -481,7 +479,9 @@
                                     width="30px"
                                     class="sapUiTinyMarginTop"
                                 />
-                                <HBox width="20px"/>
+                                <HBox 
+                                id="HBoxid7_HUSOQ"
+                                width="20px"/>
                                 <Input
                                     id="inputTotv1"
                                     
@@ -988,7 +988,7 @@
                                     width="70px"
                                     id="inputBtch"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                    
                                 />
                                 <Text
                                     width="10px"
@@ -998,7 +998,7 @@
                                     width="100px"
                                     id="inputBtchSmall"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                   
                                 />
                                 <Text
                                     width="10px"
@@ -1031,7 +1031,7 @@
                                     width="70px"
                                     id="inputOwnr"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                   
                                 />
                                 <Text
                                     width="10px"
