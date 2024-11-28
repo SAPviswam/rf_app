@@ -16,6 +16,7 @@ sap.ui.define(
         // Loading of secrets
         const oConfigModel = this.getOwnerComponent().getModel("config");
         this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
+        this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
         var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
           headers: {
@@ -116,7 +117,6 @@ sap.ui.define(
             and: true // Change to false if you want OR logic
           });
 
-
           const oResponse = await this.readData(oModel, sPath, aFilters)
           if (oResponse.results.length > 0) {
             const sRegisteredUserID = oResponse.results[0].Userid,
@@ -124,7 +124,6 @@ sap.ui.define(
 
             if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
 
-              sap.m.MessageToast.show("Success User Authenticated")
               // get the actual password
               const sNewPassword = this.getView().byId("idPasswordInput_CL").getValue();
 
@@ -134,19 +133,21 @@ sap.ui.define(
                 Password: sEncrytpedPass
               }
               try {
-                
+
                 const sUpdatePath = `/APP_LOGON_DETAILSSet('${sUserEnteredUserID}')`
                 // update call
                 const oResponse = await this.updateData(oModel, sUpdatePath, oPayload);
+                sap.m.MessageToast.show("Password Changed Successfully")
+                const oUserView = this.getView();
                 // after successfull  value states
-                oView.byId("idRegNumbInput_CL").setValueState("None");
-                oView.byId("idUserIDInput_CL").setValueState("None");
-                oView.byId("idPasswordInput_CL").setValueState("None");
+                oUserView.byId("idRegNumbInput_CL").setValueState("None");
+                oUserView.byId("idUserIDInput_CL").setValueState("None");
+                oUserView.byId("idPasswordInput_CL").setValueState("None");
 
                 // clear fields
-                oView.byId("idRegNumbInput_CL").setValue("");
-                oView.byId("idUserIDInput_CL").setValue("");
-                oView.byId("idPasswordInput_CL").setValue("");
+                oUserView.byId("idRegNumbInput_CL").setValue("");
+                oUserView.byId("idUserIDInput_CL").setValue("");
+                oUserView.byId("idPasswordInput_CL").setValue("");
                 // close the fragment
                 this.forgotPass.close()
 
@@ -186,16 +187,16 @@ sap.ui.define(
 
         // Validations 
         var flag = true;
-        if (!oPayload.Firstname || oPayload.Firstname.length < 3) {
+        if (!oPayload.Firstname || oPayload.Firstname.length < 3 || !/^[a-zA-Z]+$/.test(oPayload.Firstname)) {
           oUserView.byId("idFirstnameInput_CL").setValueState("Error");
-          oUserView.byId("idFirstnameInput_CL").setValueStateText("first name must contain 3 characters");
+          oUserView.byId("idFirstnameInput_CL").setValueStateText("first name must contain alphabet characters and 3 characters long");
           flag = false;
         } else {
           oUserView.byId("idFirstnameInput_CL").setValueState("None");
         }
-        if (!oPayload.Lastname || oPayload.Lastname.length < 3) {
+        if (!oPayload.Lastname || oPayload.Lastname.length < 3 || !/^[a-zA-Z]+$/.test(oPayload.Lastname)) {
           oUserView.byId("idLName_Input_CL").setValueState("Error");
-          oUserView.byId("idLName_Input_CL").setValueStateText("last name must contain 3 characters");
+          oUserView.byId("idLName_Input_CL").setValueStateText("last name must contain alphabet characters and 3 characters long");
           flag = false;
         } else {
           oUserView.byId("idLName_Input_CL").setValueState("None");
@@ -214,9 +215,9 @@ sap.ui.define(
         } else {
           oUserView.byId("idPhoneInput_CL").setValueState("None");
         }
-        if (!oPayload.Password || oPayload.Password.length < 8) {
+        if (!oPayload.Password || oPayload.Password.length < 8 || !oPayload.Password.length > 30) {
           oUserView.byId("idPassswordInput_CL").setValueState("Error");
-          oUserView.byId("idPassswordInput_CL").setValueStateText("Password length must be 8 characters");
+          oUserView.byId("idPassswordInput_CL").setValueStateText("Password length must be minimum 8 characters (max 30 characters)");
           flag = false;
         } else {
           oUserView.byId("idPassswordInput_CL").setValueState("None");
@@ -274,13 +275,42 @@ sap.ui.define(
           // Create a record with payload
           await this.createData(oModel, oPayload, "/APP_LOGON_DETAILSSet");
           sap.m.MessageToast.show("Record created successfully!");
-          that.getView().byId("idSignUp_CL").setEnabled(false)
+          this.getView().byId("idSignUp_CL").setEnabled(false)
           // set the empty data after successful creation
-          that.getView().getModel("ODataModel").setProperty("/appLoginData", {});
+          this.getView().getModel("ODataModel").setProperty("/appLoginData", {});
           // set the inputfield states to defult 
-          that.onDefaultStates();
+          await this  .onDefaultStates();
+
+          // Send the generated UserID to User
+          // Send POST request to Twilio API using jQuery.ajax
+          const accountSid = this.oSMSConfig.AccountSID,
+            authToken = this.oSMSConfig.AuthToken,
+            url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+            fromNumber = '+15856485867';
+          $.ajax({
+            url: url,
+            type: 'POST',
+            async: true,
+            headers: {
+              'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken)
+            },
+            data: {
+              To: `+91${oPayload.Phonenumber}`,
+              From: fromNumber,
+              Body: `Hi ${oPayload.Firstname} your login ID for RF app is ${oPayload.Userid} don't share with anyone. \nThank You,\nArtihcus Global.`
+            },
+            success: function (data) {
+              sap.m.MessageToast.show('Login ID will be sent via SMS to your mobile number');
+            },
+            error: function (error) {
+              sap.m.MessageToast.show('Failed to send user ID');
+              console.error('Failed to send user ID' + error.message);
+            }
+          });
+          // SMS END
         } catch (error) {
-          sap.m.MessageToast.show("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
+          sap.m.MessageToast.show("Something went wrong try again later....");
+          console.error("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
         }
       },
       onCancleSignup: async function () {

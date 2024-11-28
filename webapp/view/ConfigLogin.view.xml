@@ -212,6 +212,7 @@
                             placeholder="{i18n>FristN_PlaceHldr_CL}"
                             class="customInput"
                             value="{ODataModel>/appLoginData/Firstname}"
+                            type="Text"
                         />
                         <Label
                             id="idUserLabels_CP"
