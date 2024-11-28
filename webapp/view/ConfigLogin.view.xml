@@ -255,7 +255,7 @@
                             <Button
                                 id="idBtnOTP"
                                 text="Get OTP"
-                                enabled="false"
+                                enabled="true"
                                 type="Emphasized"
                                 press="onGetOTPPress"
                                 class="sapUiLargeMarginBegin"
@@ -302,7 +302,7 @@
                                 text="{i18n>SignUp_Btn}"
                                 type="Emphasized"
                                 width="100%"
-                                enabled="false"
+                                enabled="true"
                                 press="onSignupPress"
                                 class="sapUiTinyMarginTop"
                             />
