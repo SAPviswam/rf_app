@@ -173,13 +173,12 @@
                         alignItems="Center"
                     >
                         <!-- button for configure sap system -->
-                        <Button
+                        <Link
                             id="idBtnConfSAPsys_InitialView"
                             class="configureSapBtn_InitialView"
                             text="{i18n>configSAPSys_IV}"
                             tooltip="{i18n>configSAPSys_IV}"
                             press="AddPress_InitialView"
-                            type="Unstyled"
                         />
                         <!-- Link for configuring SAP system -->
                         <HBox id="IDhboxnavup_InitialView">

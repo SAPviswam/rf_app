@@ -9,7 +9,7 @@
         verticalScrolling="false"
         horizontalScrolling="false"
         class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
-        contentWidth="210px"
+        contentMinWidth="auto"
         title="Profile:"
     >
         <form:SimpleForm
@@ -34,10 +34,12 @@
                     <VBox
                         id="idUserDeatilsVBox11"
                         alignItems="Start"
+                        class="NamePhoneClass"
                     >
                         <Text
                             id="idUserDeatilsTextName"
                             text="{profile>/Name}"
+                            class="UserNameBold"
                         />
                         <Link
                             id="idUserDeatilsPhoneLink"
@@ -48,7 +50,7 @@
                 <VBox
                     id="idUserDeatilsVBox12"
                     alignItems="Start"
-                    class="onProfileOptions"
+                    class="onProfileOptions"  
                 >
                     <Button
                         id="idUserDeatilsButtonAccountDetails"
@@ -57,6 +59,7 @@
                         type="Transparent"
                         press="onPressAccountDetails"
                         visible="{popoverModel>/showAccountDetails}"
+                        width="auto"
                     />
                     <!-- <Button
                         id="idUserDeatilsButton1Edit"
@@ -73,6 +76,7 @@
                         type="Transparent"
                         press="onPressDefualtSettings"
                         visible="{popoverModel>/showDefaultSettings}"
+                        width="auto"
                     />
                     <Button
                         id="idUserDeatilsButton4Pallete"
@@ -81,6 +85,7 @@
                         type="Transparent"
                         press="onPressThemesBtnFromProfilePopover"
                         visible="{popoverModel>/showThemes}"
+                        width="auto"
                     />
                     <!-- <Button
                         id="idUserDeatilsButton5Transulate"
@@ -97,6 +102,7 @@
                         type="Transparent"
                         press="onPressTileViewSettings"
                         visible="{popoverModel>/showTileView}"
+                        width="auto"
                     />
                     <Button
                         id="idUserDeatilsButton7Help"
@@ -105,6 +111,7 @@
                         type="Transparent"
                         press="onChatbotButtonPress"
                         visible="{popoverModel>/showHelp}"
+                        width="auto"
                     />
                     <Button
                         id="idUserDeatilsButton8Logout"
@@ -113,6 +120,7 @@
                         type="Transparent"
                         press="onSignoutPressed"
                         visible="{popoverModel>/showSignOut}"
+                        width="auto"
                     />
                 </VBox>
             </VBox>

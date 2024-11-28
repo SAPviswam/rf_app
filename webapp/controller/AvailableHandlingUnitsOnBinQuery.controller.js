@@ -187,9 +187,7 @@ sap.ui.define(
                 //Hide the Product Description scroll container
                 oScrollContainer4.setVisible(false);
             },
-
-
-
+            
             // //Submit Btn from ScrollContainer Page 1=> idPage1_AHUOBQ..
             // onSubmitPress_AHUOBQ: function () {
               
@@ -386,6 +384,7 @@ sap.ui.define(
                       for (var i = 0; i < aBindetails.length; i++) {
                           if (aBindetails[i].Matnr === sSelectedMatnr) {
                              this.getView().byId("idProductDescription_AHUOBQ").setValue(odata.Maktx);
+                             this.getView().byId("idHuInput_AHUOBQ").setValue(odata.Ean11);
                               this.getView().byId("idTotalWeightInput_AHUOBQ").setValue(odata.GWeight);
                               this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
                               this.getView().byId("idKGUnits_AHUOBQ").setValue(odata.UnitGw);
@@ -433,6 +432,7 @@ sap.ui.define(
                     "$format": "json"
                 },
                 success: function (odata) {
+                    debugger;
                     console.log(odata);
                     var aMaterials = odata.BINQHeadSet.results;
         
@@ -444,7 +444,7 @@ sap.ui.define(
                     if (oSelectedMaterial) {
                         // Update the other fields with the selected material's details
                         oView.byId("idSectionInput_AHUOBQ").setValue(odata.Lgtyp); // Storage Type
-                        oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
+                        // oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
                         oView.byId("idQtyInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Quan); // Quantity
                         oView.byId("idBinInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Owner); // Owner
                     } else {
