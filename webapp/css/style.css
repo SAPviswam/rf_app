@@ -1920,8 +1920,11 @@ margin-left:2% !important;
 .MobileviewTable_HUSOQ{
     margin-top: 25%;
 }
+.tab_Table_HuStockOverview{
+    margin-top: 10%;
+}
 .scrollableTable1 {
-    height: 400px;  /* Adjust the height of the table as required */
+    height: 450px;  /* Adjust the height of the table as required */
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: auto;  /* Enable Horizontal scrolling */
   }
