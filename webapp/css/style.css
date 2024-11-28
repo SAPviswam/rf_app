@@ -54,8 +54,19 @@
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
 
 /* Supervisor Page Start */
+.TableBarForRequestedData{
+    height: 3rem !important;
+    position: fixed !important;
+}
+.RequestedDataClass{
+    font-weight: bold;
+    margin-bottom: 0.45rem !important;
+}
 .sapUiSmallMarginTop {
     margin-top: 1rem;
+}
+.EmptyLableClass{
+    margin-top: 1rem !important;
 }
 
 .sapUiSmallMargin {
