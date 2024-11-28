@@ -23,7 +23,7 @@
                 <!-- capModel RF Title -->
                 <Title
                     id="idCapModelRfTitle_changeQueue"
-                    text="CAPmodel RF"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                     class="title"
                 />
                 <tnt:ToolHeaderUtilitySeparator
@@ -43,7 +43,7 @@
                     id="idAvatar_changeQueue"
                     displaySize="XS"
                     tooltip="Profile"
-                    press="onHomePageAvatarPressed"
+                    press="onChangeQueuePageAvatarPressed"
                 />
             </tnt:ToolHeader>
         </tnt:header>
@@ -64,16 +64,17 @@
                 >
                     <Title
                         id="idAssignedQueueTitle_changeQueue"
-                        text="Assigned Queue"
+                        text="{i18n>Title_AssignedQueue_CQ}"
                         class="sapUiTinyMarginTop sapUiSmallMarginLeft"
                     />
-                    <HBox id="idHboxButtons_changeQueue">
+                    <HBox id="idHboxButtons_changeQueue" justifyContent="SpaceBetween">
                         <Button
                             id="idAddBtn_changeQueue"
-                            text="Add"
+                            text="{i18n>Btn_Add_CQ}"
                             type="Emphasized"
                             press="onAddQueueBtnPress_changeQueue"
                             class="sapUiTinyMarginEnd"
+                            width="100%"
                         />
                         <!-- Delete button -->
                         <Button
@@ -81,17 +82,19 @@
                             icon="sap-icon://delete"
                             tooltip="Delete Queue"
                             type="Reject"
+                            class="sapUiTinyMarginBegin"
                             press="onDeleteQueueBtnPress_changeQueue"
-                            class="sapUiTinyMarginEnd"
+                           
                         />
 
                         <!-- Back button -->
                         <Button
                             id="idBackBtn_changeQueue"
-                            text="Back"
+                            text="{i18n>Btn_Back_CQ}"
                             type="Emphasized"
                             press="onBackBtnPress_changeQueue"
-                            class="sapUiTinyMarginEnd"
+                            class="sapUiTinyMarginBegin"
+                            width="100%"
                         />
                     </HBox>
                 </HBox>
@@ -113,7 +116,7 @@
                         >
                             <Title
                                 id="idSlonoTitle_changeQueue"
-                                text="Sl.no"
+                                text="{i18n>col_Slno_CQ}"
                             />
                         </Column>
                         <Column
@@ -122,7 +125,7 @@
                         >
                             <Title
                                 id="idAreaTitle_changeQueue"
-                                text="Area"
+                                text="{i18n>col_area_CQ}"
                             />
                         </Column>
                         <Column
@@ -131,7 +134,7 @@
                         >
                             <Title
                                 id="idGroupTitle_changeQueue"
-                                text="Group"
+                                text="{i18n>col_group_CQ}"
                             />
                         </Column>
                         <Column
@@ -140,7 +143,7 @@
                         >
                             <Title
                                 id="idQueueTitle_changeQueue"
-                                text="Queue"
+                                text="{i18n>col_Queue_CQ}"
                             />
                         </Column>
                     </columns>
@@ -188,7 +191,7 @@
                                 <f:heading>
                                     <Title
                                         id="idTitleAddNewQueue_changeQueue"
-                                        text="Add new Queue"
+                                        text="{i18n>Title_AddnewQueue_CQ}"
                                     />
                                 </f:heading>
                                 <!-- Back button in the title section -->
@@ -196,8 +199,9 @@
                                     <Button
                                         id="idBackBtnWizard_changeQueue"
                                         icon="sap-icon://nav-back"
-                                        text="Back"
+                                        text="{i18n>Btn_Back_CQ}"
                                         press="onBackPressInWizard"
+                                     
                                         type="Emphasized"
                                     />
                                 </f:actions>
@@ -242,7 +246,8 @@
                                     <Button
                                         id="idNextBtn_changeQueue"
                                         press="onNextPressProcessArea"
-                                        text="Next"
+                                        text="{i18n>Btn_next_CQ}"
+                                    
                                     />
                                 </WizardStep>
                                 <!-- group wizard -->
@@ -273,7 +278,7 @@
                                     <Button
                                         id="idNext2Btn_changeQueue"
                                         press="onNextPressProcessGroup"
-                                        text="Next"
+                                        text="{i18n>Btn_next_CQ}"
                                     />
                                 </WizardStep>
                                 <!-- Queue wizard -->
@@ -301,12 +306,12 @@
                                     <Button
                                         id="idSubmitBtn_changeQueue"
                                         class="sapUiSmallMarginEnd"
-                                        text="Submit"
+                                        text="{i18n>Btn_Submit_CQ}"
                                         press="OnSubmitPress"
                                     />
                                     <Button
                                         id="idClearBtn_changeQueue"
-                                        text="Clear"
+                                        text="{i18n>Btn_Clear_CQ}"
                                         press="OnClearPress_changeQueue"
                                     />
                                 </WizardStep>

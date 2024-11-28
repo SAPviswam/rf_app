@@ -995,18 +995,25 @@
 @media (max-width: 768px) {
     .autoRepackPage {
         flex-direction: column;
-        /* Stack vertically */
         align-items: flex-start;
     }
 
     .autoRepackPage .sapMLabel {
         width: auto !important;
-        /* Adjust labels */
     }
 }
 
+/* Profile PopOver Classes */
 .onProfileOptions {
-    margin-left: -0.2rem !important;
+    margin-left: -0.5rem !important;
+    align-items: start !important;
+}
+.UserNameBold{
+    font-weight: bold !important;
+}
+.NamePhoneClass{
+    margin-top: 0.4rem;
+    margin-right: 1rem;
 }
 
 /* For the Tile View settings  */
@@ -1021,8 +1028,8 @@
     font-size: auto !important;
 }
 .smallIcons {
-    width: 80px !important;
-    height: 80px !important;
+    width: 75px !important;
+    height: 75px !important;
     font-size: auto !important;
 }
 /* For the list form view to tiles */
@@ -1171,8 +1178,8 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    margin-left: 0.6rem !important;
+  
 }
 
 @media only screen and (max-width: 600px) {
@@ -1404,6 +1411,9 @@ margin-right: 20%;
     left: 45%;
     color: hsl(29, 100%, 50%);
     align-content: center;
+}
+.ResourcePageTitle{
+    color: hsl(29, 100%, 50%);
 }
 
 .titleMobile {
@@ -1814,15 +1824,26 @@ margin-right: 20%;
 .HeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#ec792d;
-    font-size:20px;
+    font-size:15px;  
 }
+
+.MainHeadingInPhone_HelpTourOnEditConfigSAPSystem{
+margin-left:2% !important;
+    color:#ec792d;
+    font-size:large !important; 
+} 
+.MainHeadingInTab_HelpTourOnEditConfigSAPSystem{
+    margin-left:35% !important;
+    color:#ec792d; 
+} 
+
 .SideHeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#000000;   
 }
 .headerTitleclass_HelpTourOnEditConfigSAPSystem{
-  
-    margin-left: 100%;
+    color: hsl(29, 100%, 50%);
+    margin-left: 90%; 
 }
 .BackInHelpTourOnEditConfigSAPSystem{
     margin-left: 150%; 
@@ -1851,10 +1872,14 @@ margin-right: 20%;
     position: fixed;
     top: 0;
     left: 1rem;
-    right: 0;
+    right: 1rem;
     z-index: 10; 
     padding: 0.5rem;
     
+}
+
+.backBtnChangeQueue{
+    left: 0.5rem;
 }
 /* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
@@ -1869,7 +1894,7 @@ margin-right: 20%;
     margin-top: 5%;
 }
 .MobileviewTable_HUSOQ{
-    margin-top: 20%;
+    margin-top: 25%;
 }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
@@ -1884,53 +1909,48 @@ margin-right: 20%;
 }
 
 
+/* Media query for tablet screens WT QUERY BY QUEUE */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Ensure the HBox remains horizontal and buttons are centered */
+    .myResponsiveHBoxWTQBYQ {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-
-
-
-/* config login view for mobile  */
-@media only screen and (max-width: 600px) {
-    /* Adjust whiteBox for mobile view */
-    .whiteBorderBox {
-        width: 90%; /* Adjust width to fit mobile screen */
-        height: auto; /* Allow height to adjust based on content */
-        padding: 1rem; /* Add some padding for better spacing */
-        margin-top: 70%; /* Moves the whiteBox down */
+    /* Maintain the same button width for tablets */
+    .myResponsiveButtonWTQBYQ {
+        margin: 4px !important;
+        width: 20% !important;  /* Maintain button width same as mobile */
+        min-width: 60px;
+        max-width: 50px;
     }
     
-    /* Adjust padding for the surrounding container */
-    .paddingBox {
-        padding: 1rem; /* Reduce padding for smaller screens */
+    .myResponsiveHBoxWTQBYQ > .sapMButton {
+        margin-left: 5px !important;
+        margin-right: 5px !important;
     }
+}
 
-    /* Center and adjust font size for the title */
-    .loginTitle {
-        font-size: 1.2rem; /* Adjust font size for smaller screens */
-        text-align: center; /* Ensure title remains centered */
-    }
-    
-    /* Adjust label and input widths for better alignment */
-    .inputRow Text {
-        width: 30%; /* Adjust label width to fit screen */
-    }
 
-    .inputRow Input {
-        width: 65%; /* Adjust input field width */
-    }
 
-    /* Adjust button spacing and size */
-    .sapMBtn {
-        width: 100%; /* Full width buttons on mobile */
-    }
-    
-    /* Ensure overall container is centered and responsive */
-    .contentContainer {
-        margin: 0 auto; /* Center the container horizontally */
-        padding: 0.5rem; /* Reduce padding for compact screens */
-    }
 
     /* Add scroll behavior for overflow */
     body {
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
 }
+/* .addClassinChangeQueue{
+    margin-left:  0.9rem;
+}
+
+.deleteClassinChangeQueue{
+margin-left:  0.6rem;
+}
+
+
+.backClassinChangeQueue{
+    margin-left: 0.3rem;
+} */

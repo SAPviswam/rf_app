@@ -59,7 +59,7 @@
                 id="idScforFirstHUStockOverviewQuery_HUSOQ"
                 width="100%"
                 height="100%"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 class="sapUiContentPadding"
                 visible="true"
@@ -150,17 +150,22 @@
                             class="BinNumberInput"
                             editable="false"
                         />
+                        <Text id="hsoq2_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumberInputBinInput_HUSOQ"
                             class="BinNumberInput"
                             editable="false"
                         />
-
+ <Text id="hsoq1_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumberInputBinNumberInput_HUSOQ"
                             class="BinNumberInput"
                             editable="false"
                         />
+                         <Text id="hsoq3_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumberInputBinNumInput_HUSOQ"
                             class="BinNumberInput"
@@ -271,16 +276,22 @@
                             class="BinNumberInput"
                             editable="false"
                         />
+                         <Text id="hsoq_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumberforbinnumbernput_HUSOQ"
                             class="BinNumberInput"
                             editable="false"
                         />
+                         <Text id="hsoq4_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumbinnumbernput_HUSOQ"
                             class="BinNumberInput"
                             editable="false"
                         />
+                         <Text id="hsoq5_id"
+                        width="10px"/>
                         <Input
                             id="idBinNumbeerInput_HUSOQ"
                             class="BinNumberInput"
@@ -352,14 +363,15 @@
                 width="100%"
                 height="100%"
                 horizontal="true"
-                vertical="false"
+                vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
             >
                 <VBox
                     id="idVerifyHuNumberContai_ner__HUSOQ"
-                    class="Page4PrdDescriptionContainer_AHUOBQ"
-                >
+                    class="formContainer_AHUOBQ"
+                    justifyContent="Center"
+                    alignItems="Center">
                     <f:SimpleForm
                         id="idProductDeaisForm_1"
                         layout="ResponsiveGridLayout"
@@ -371,7 +383,7 @@
                         emptySpanM="4"
                         columnsL="1"
                         columnsM="1"
-                        width="90%"
+                         width="110%"
                     >
                         <VBox
                             alignContent="Center"
@@ -388,20 +400,17 @@
                                 <Text
                                     id="idHubyASNLabelQ__HUSOQ1"
                                     text="{i18n>PKMT_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="IDqtyinputhbx__HUSOQ">
                                     <Input
                                         id="inputPkmt"
-                                        maxLength="30"
+                                     
                                         width="150px"
                                         editable="false"
-                                        class="sapUiTinyMarginTop"
+                                        class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                     />
-                                    <HBox
-                                        id="_IDGenHBox571"
-                                        width="10px"
-                                    />
+                                  
                                     <HBox
                                         id="idHubyASNHUobox___HUSOQ"
                                         class="customLabelSpacing"
@@ -409,19 +418,21 @@
                                         <Text
                                             id="idHubyASNomabel___HUSOQ"
                                             text="{i18n>htyp_Label_HUSOQ}"
-                                            width="40px"
-                                            class="sapUiTinyMarginTop"
+                                            width="30px"
+                                          class="sapUiTinyMarginTop"
                                         />
                                         <Input
                                             id="inputHtyp"
-                                            maxLength="30"
+                                          
                                             width="64px"
                                             editable="false"
-                                            class="sapUiTinyMarginTop"
+                                             class="sapUiTinyMarginTop"
+                                           
                                         />
                                     </HBox>
                                 </HBox>
                             </HBox>
+                            
 
                             <HBox
                                 alignContent="Center"
@@ -434,12 +445,12 @@
                                 <Text
                                     id="idTotW__HUSOQ"
                                     text="{i18n>totw_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <Input
                                     id="inputTotw1"
-                                    maxLength="30"
-                                    width="50px"
+                                  
+                                    width="40px"
                                     editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -450,7 +461,7 @@
                                 <Input
                                     id="inputTotw2"
                                     maxLength="30"
-                                    width="50px"
+                                    width="40px"
                                     editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -465,12 +476,15 @@
                                 <Text
                                     id="idHubyASqwrt45y6NLabl23ty__HUSOQ"
                                     text="{i18n>totv_Label_HUSOQ}"
-                                    width="40px"
+                                    width="30px"
                                     class="sapUiTinyMarginTop"
                                 />
+                                <HBox 
+                                id="HBoxid7_HUSOQ"
+                                width="20px"/>
                                 <Input
                                     id="inputTotv1"
-                                    maxLength="30"
+                                    
                                     width="50px"
                                     editable="false"
                                     class="sapUiTinyMarginTop"
@@ -481,7 +495,7 @@
                                 />
                                 <Input
                                     id="inputTotv2"
-                                    maxLength="30"
+                                   
                                     width="50px"
                                     editable="false"
                                     class="sapUiTinyMarginTop"
@@ -498,19 +512,19 @@
                                 <Text
                                     id="idMaxWLabel__HUSOQ"
                                     text="{i18n>MaxW_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="IDqtyindhrftputhbx__HUSOQ">
                                     <Input
                                         id="inputMaxW"
                                         maxLength="30"
-                                        width="100px"
+                                        width="64px"
                                         editable="false"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <HBox
                                         id="_IDGenHjmBox57"
-                                        width="10px"
+                                        width="48px"
                                     />
                                     <HBox
                                         id="idHubybox___HUSOQ"
@@ -519,7 +533,7 @@
                                         <Text
                                             id="idHubyMaxVLabel___HUSOQ"
                                             text="{i18n>MaxV_Label_HUSOQ}"
-                                            width="40px"
+                                            width="50px"
                                             class="sapUiTinyMarginTop"
                                         />
                                         <Input
@@ -542,19 +556,19 @@
                                 <Text
                                     id="idforTarwLabel_HUSOQ"
                                     text="{i18n>tarW_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="IDHbox__HUSOQ">
                                     <Input
                                         id="inputTarW"
                                         maxLength="30"
-                                        width="100px"
+                                        width="64px"
                                         editable="false"
                                         class="sapUiTinyMarginTop"
                                     />
                                     <HBox
                                         id="_IDGenHjETREmBox57"
-                                        width="10px"
+                                        width="48px"
                                     />
                                     <HBox
                                         id="idHubyASNHUETRukliobox___HUSOQ"
@@ -563,7 +577,7 @@
                                         <Text
                                             id="idHubyASNETREomyyabel___HUSOQ"
                                             text="{i18n>tarv_Label_HUSOQ}"
-                                            width="40px"
+                                            width="50px"
                                             class="sapUiTinyMarginTop"
                                         />
                                         <Input
@@ -585,13 +599,13 @@
                             >
                                 <Text
                                     id="idHubyASNLablfty__HUSOQ"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="idforinput_HUSOQ">
                                     <Input
                                         id="inputEr1"
                                         maxLength="30"
-                                        width="100px"
+                                        width="64px"
                                         editable="false"
                                         class="sapUiTinyMarginTop"
                                     />
@@ -659,7 +673,7 @@
                                 <Text
                                     id="idHubyLabel_HUSOQ"
                                     text="{i18n>top_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="IDqty__HUSOQ">
                                     <Input
@@ -680,7 +694,7 @@
                                         <Text
                                             id="idLabel___HUSOQ"
                                             text="{i18n>LWST_Label_HUSOQ}"
-                                            width="40px"
+                                            width="30px"
                                             class="sapUiTinyMarginTop"
                                         />
                                         <Input
@@ -724,7 +738,7 @@
                                         <Text
                                             id="idHumyyabel___HUSOQ"
                                             text="{i18n>stat_Label_HUSOQ}"
-                                            width="40px"
+                                            width="30px"
                                             class="sapUiTinyMarginTop"
                                         />
                                         <Input
@@ -758,7 +772,7 @@
                                 <Text
                                     id="idHub__HUSOQ1"
                                     text="{i18n>Bin_Label_HUSOQ}"
-                                    width="45px"
+                                    width="40px"
                                 />
                                 <HBox id="ID__HUSOQ">
                                     <Input
@@ -820,7 +834,8 @@
             >
                 <VBox
                     id="vboxidd"
-                    alignContent="Center"
+                   class="formContainer_AHUOBQ"
+                    justifyContent="Center"
                     alignItems="Center"
                 >
                     <f:SimpleForm
@@ -834,7 +849,7 @@
                         emptySpanM="4"
                         columnsL="1"
                         columnsM="1"
-                        width="90%"
+                        width="110%"
                     >
                         <VBox
                             alignContent="Center"
@@ -866,7 +881,7 @@
                                 <Input
                                     width="30px"
                                     id="inputProSmall"
-                                    class="sapUiTinyMarginTop"
+                            class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
@@ -917,10 +932,7 @@
                                     id="labelBin"
                                 />
 
-                                <Text
-                                    width="5px"
-                                    id="spacerLabel4"
-                                />
+                                
 
                                 <Input
                                     width="120px"
@@ -976,7 +988,7 @@
                                     width="70px"
                                     id="inputBtch"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                    
                                 />
                                 <Text
                                     width="10px"
@@ -986,7 +998,7 @@
                                     width="100px"
                                     id="inputBtchSmall"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                   
                                 />
                                 <Text
                                     width="10px"
@@ -1019,7 +1031,7 @@
                                     width="70px"
                                     id="inputOwnr"
                                     editable="false"
-                                    class="sapUiTinyMarginTop"
+                                   
                                 />
                                 <Text
                                     width="10px"

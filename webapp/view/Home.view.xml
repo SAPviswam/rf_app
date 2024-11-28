@@ -146,6 +146,7 @@
                                 <HBox
                                     id="_IDGenHBox69"
                                     alignItems="Start"
+                                    class="sapUiTinyMarginTop"
                                 >
                                     <CheckBox
                                         id="_IDGenCheckBox"
@@ -178,7 +179,7 @@
                                     id="idHBoxForgot"
                                     justifyContent="Center"
                                     alignItems="Center"
-                                    class="sapUiSmallMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 >
                                     <Button
                                         id="idButtonSignUp"

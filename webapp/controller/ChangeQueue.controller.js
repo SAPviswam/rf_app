@@ -1,7 +1,7 @@
 
 
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
+	"./BaseController",
 	"sap/ui/Device",
 	"sap/ui/model/json/JSONModel",
 	"sap/f/library",
@@ -23,7 +23,8 @@ sap.ui.define([
 
 			if (Device.system.phone) {
 				this.getView().byId("idAssignedQueueTable_changeQueue").setWidth("200%");
-
+				this.getView().byId("idCapModelRfTitle_changeQueue").addStyleClass("titleMobile");
+				this.getView().byId("idBackBtn_changeQueue").addStyleClass("backBtnChangeQueue")
 			}
 
 			this.processGroupArray = [];
@@ -140,7 +141,16 @@ sap.ui.define([
 			const { id } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
 			this.ID = id; // Store the 'id' for use in other methods
 			this.tableContent();
-		},
+			this.applyStoredProfileImage();
+        },
+        onChangeQueuePageAvatarPressed: function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+
+            },
+			onSignoutPressed:function(){
+				var oRouter = this.getOwnerComponent().getRouter(this);
+				oRouter.navTo("InitialScreen"); 
+			},
 		onAddQueueBtnPress_changeQueue: function () {
 			var oTable = this.byId("idAssignedQueueTable_changeQueue");
 			var aSelectedItems = oTable.getSelectedItems();

@@ -11,7 +11,7 @@
         title="Profile Details"
         class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
         contentWidth="25%"
-        contentHeight="65%"
+        contentHeight="auto"
     >
         <customHeader>
             <Bar id="BarUserDetails_ResourcePage">
@@ -49,6 +49,7 @@
                     icon="sap-icon://upload"
                     press="onPressUploadProfilePic"
                     type="Transparent"
+                    width="auto"
                 />
                 <Label
                     id="idEmptylabelforBtns"
@@ -60,6 +61,7 @@
                     icon="sap-icon://edit"
                     press="onPressEditProfileDetails"
                     type="Transparent"
+                    width="auto"
                 />
                 <Button
                     id="idBtnSaveProfileDetails"
@@ -68,6 +70,7 @@
                     press="onPressSaveProfileDetails"
                     type="Transparent"
                     visible="false"
+                    width="auto"
                 />
                 <Label
                     id="idEmptylabelforBtns123"
@@ -79,6 +82,7 @@
                     icon="sap-icon://delete"
                     press="onPressDeleteProfilePic"
                     type="Transparent"
+                    width="auto"
                 />
                 <Button
                     id="idBtnCancelProfileDetails"
@@ -87,6 +91,7 @@
                     press="onPressCancelProfileDetails"
                     type="Transparent"
                     visible="false"
+                    width="auto"
                 />
             </HBox>
             <VBox id="VBox2UserDetails_ResourcePage">
