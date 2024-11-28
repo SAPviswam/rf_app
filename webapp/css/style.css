@@ -1928,3 +1928,9 @@ margin-right: 20%;
     margin-right: 2px;
 }
 
+.scrollableTableWtQuerybyHu{
+    height:350px;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
