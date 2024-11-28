@@ -1884,22 +1884,23 @@ margin-left:2% !important;
 /* CSS for Sticky HBox */
 .stickyHBox {
     position: fixed;
-    background-color: #ec792d;
     top: 0;
     z-index: 100;  /* Ensure it stays above other content */
       /* Add a background color to avoid transparency issues */
     padding: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Optional: Adds shadow for better visibility */
+    box-shadow: 0px 2px 5px rgba(247, 246, 246, 0.1);  /* Optional: Adds shadow for better visibility */
   }
 
   /* CSS for Scrollable Table */
   .scrollableTable {
     height: 450px;  /* Adjust the height of the table as required */
     overflow-y: auto;
-    
     overflow-x: auto;  /* Enable vertical scrolling */
   }
-  
+  /* .changeQueueTable_Tab{
+    height: max-content;
+  }
+   */
 
 .backBtnChangeQueue{
     left: 0.5rem;
@@ -1962,18 +1963,17 @@ margin-left:2% !important;
     }
 }
 
-
-
-
     /* Add scroll behavior for overflow */
     body {
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
+
     .scrollableTableWtQuerybyHu{
         height:350px;
         overflow-y:auto;
         overflow-x: auto;
     }
+
 /* .addClassinChangeQueue{
     margin-left:  0.9rem;
 }
