@@ -1871,12 +1871,35 @@ margin-left:2% !important;
 .floatingTitle {
     position: fixed;
     top: 0;
-    left: 1rem;
-    right: 1rem;
+    left: 0rem;
+    right: 0rem;
     z-index: 10; 
     padding: 0.5rem;
     
 }
+
+.btns_CQ{
+    right:1rem;
+}
+/* CSS for Sticky HBox */
+.stickyHBox {
+    position: fixed;
+    background-color: #ec792d;
+    top: 0;
+    z-index: 100;  /* Ensure it stays above other content */
+      /* Add a background color to avoid transparency issues */
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Optional: Adds shadow for better visibility */
+  }
+
+  /* CSS for Scrollable Table */
+  .scrollableTable {
+    height: 450px;  /* Adjust the height of the table as required */
+    overflow-y: auto;
+    
+    overflow-x: auto;  /* Enable vertical scrolling */
+  }
+  
 
 .backBtnChangeQueue{
     left: 0.5rem;
