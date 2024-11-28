@@ -3,16 +3,20 @@ sap.ui.define(
     "./BaseController",
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/odata/v2/ODataModel",
-    "sap/m/MessageBox",
     "sap/m/MessageToast",
+    "../utils/Constant"
+
 
   ],
-  function (Controller, ODataModel, MessageBox, MessageToast) {
+  function (Controller, ODataModel, MessageToast, Constant) {
 
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.ConfigLogin", {
       onInit: function () {
+        // Loading of secrets
+        const oConfigModel = this.getOwnerComponent().getModel("config");
+          this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
 
         var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
           headers: {
@@ -41,7 +45,8 @@ sap.ui.define(
         oRouter.navTo("InitialScreen");
       },
 
-      onpressSignup: function () {
+      onNavToSignUpPage: function () {
+
         this.getView().byId("idconnecttsosapDetailsForm_CP").setVisible(true)
         this.getView().byId("idPaddingBox_configPage").setVisible(false)
 
@@ -71,7 +76,13 @@ sap.ui.define(
         } else {
           oUserView.byId("idLName_Input_CL").setValueState("None");
         }
-        // 
+        if (!oPayload.Email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(oPayload.Email)) {
+          oUserView.byId("idEmailAddInput_CL").setValueState("Error");
+          oUserView.byId("idEmailAddInput_CL").setValueStateText("Enter Correct E-Mail address");
+          flag = false;
+        } else {
+          oUserView.byId("idEmailAddInput_CL").setValueState("None");
+        }
         if (!oPayload.Phonenumber || oPayload.Phonenumber.length !== 10 || !/^\d+$/.test(oPayload.Phonenumber)) {
           oUserView.byId("idPhoneInput_CL").setValueState("Error");
           oUserView.byId("idPhoneInput_CL").setValueStateText("please enter 10 digit number");
@@ -79,16 +90,15 @@ sap.ui.define(
         } else {
           oUserView.byId("idPhoneInput_CL").setValueState("None");
         }
-        if (!oPayload.Password || oPayload.Password.length !== 8) {
-          oUserView.byId("idPassswordInput_CP").setValueState("Error");
-          oUserView.byId("idPassswordInput_CP").setValueStateText("Password length must be 8 characters");
+        if (!oPayload.Password || oPayload.Password.length < 8) {
+          oUserView.byId("idPassswordInput_CL").setValueState("Error");
+          oUserView.byId("idPassswordInput_CL").setValueStateText("Password length must be 8 characters");
           flag = false;
         } else {
-          oUserView.byId("idPassswordInput_CP").setValueState("None");
+          oUserView.byId("idPassswordInput_CL").setValueState("None");
         }
-
         if (!flag) {
-          MessageToast.error("Please enter correct data");
+          sap.m.MessageToast.show("Please enter correct data");
           return; // Prevent further execution
 
         }
@@ -128,20 +138,46 @@ sap.ui.define(
           } catch (error) {
             console.error("Failed to fetch data:", error);
             // Display error message
-            MessageToast.error("Failed to fetch data. Please try again.");
+            sap.m.MessageToast.show("Failed to fetch data. Please try again.");
             return
           }
+          // get the actual password
+          const sActualPass = oPayload.Password
+            // Use SHA256 for hashing (CryptoJS or native WebCrypto API)
+            const sEncrytpedPass = CryptoJS.SHA256(sActualPass).toString(); // encryption with CryptoJS
+            oPayload.Password = sEncrytpedPass
+
+          // Create a record with payload
           await this.createData(oModel, oPayload, "/APP_LOGON_DETAILSSet");
-          MessageToast.success("Record created successfully!");
-          that.getView().byId("idSignUp_CP").setEnabled(false)
+          sap.m.MessageToast.show("Record created successfully!");
+          that.getView().byId("idSignUp_CL").setEnabled(false)
+          // set the empty data after successful creation
           that.getView().getModel("ODataModel").setProperty("/appLoginData", {});
+          // set the inputfield states to defult 
+          that.onDefaultStates();
         } catch (error) {
-          MessageToast.error("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
+          sap.m.MessageToast.show("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
         }
       },
-      onCancleSignup: function () {
-        this.getView().byId("idconnecttsosapDetailsForm_CP").setVisible(false)
-        this.getView().byId("idPaddingBox_configPage").setVisible(true)
+      onCancleSignup: async function () {
+        const oView = this.getView();
+        oView.getModel("ODataModel").setProperty("/appLoginData", {});
+        oView.byId("idconnecttsosapDetailsForm_CP").setVisible(false)
+        oView.byId("idPaddingBox_configPage").setVisible(true)
+
+        // set the inputfield states to defult 
+        await this.onDefaultStates(oView);
+  
+      },
+      // set the inputfield states to defult 
+      onDefaultStates: function () {
+        const oView = this.getView();
+        oView.byId("idFirstnameInput_CL").setValueState("None");
+        oView.byId("idLName_Input_CL").setValueState("None");
+        oView.byId("idEmailAddInput_CL").setValueState("None");
+        oView.byId("idPassswordInput_CL").setValueState("None");
+        oView.byId("idPhoneInput_CL").setValueState("None");
+        oView.byId("idOTPInput_CL").setValueState("None");
       },
       onAfterNumberEnter: function () {
         const value = this.getView().byId("idPhoneInput_CL").getValue()
@@ -168,9 +204,9 @@ sap.ui.define(
 
         // Prepare the Twilio API details
         var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
-        const accountSid = 'ACd2aa0faa93339ceb8b1f3aad47fc1c80'; // Replace with your Twilio Account 
-        const authToken = 'f1cf11fa75eefd1d2bc7640fc23639f3'; // Replace with your Twilio Auth Token
-        const serviceSid = 'VA86b64328119f75c18392bdd98fd32546'; // Replace with your Twilio Verify Service SID
+        const accountSid = this.oTwilioConfig.AccountSID;  // Constant.oAccountSID;
+        const authToken =  this.oTwilioConfig.AuthToken;   // Constant.oAuthToken;
+        const serviceSid = this.oTwilioConfig.ServiceID;   // Constant.oServiceID;
         const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
 
         // Prepare the data for the request
@@ -204,7 +240,7 @@ sap.ui.define(
             oMobileinput.setValueState(sap.ui.core.ValueState.Error)
             oMobileinput.setValueStateText("check your Mobile Number")
             console.error('Error sending OTP:', error);
-            sap.m.MessageToast.show('Its not you its me Failed to send OTP')
+            sap.m.MessageToast.show('Failed to send OTP')
           }
         });
 
@@ -229,6 +265,7 @@ sap.ui.define(
         if (!sEnteredOtp) {
           oOtpInput.setValueState(sap.ui.core.ValueState.Error);
           oOtpInput.setValueStateText("Please enter OTP");
+          sap.m.MessageToast.show("Please enter OTP")
           this._oBusyDialog.close();
           return;
         }
@@ -243,11 +280,11 @@ sap.ui.define(
         }
 
         // Prepare the Twilio Verify Check API details
-        const accountSid = 'ACd2aa0faa93339ceb8b1f3aad47fc1c80'; // Replace with your Twilio Account SID
-        const authToken = 'f1cf11fa75eefd1d2bc7640fc23639f3'; // Replace with your Twilio Auth Token
-        const serviceSid = 'VA86b64328119f75c18392bdd98fd32546'; // Replace with your Twilio Verify Service SID
-        const url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`;
-        const payload = {
+        const accountSid = this.oTwilioConfig.AccountSID,
+         authToken =  this.oTwilioConfig.AuthToken,
+         serviceSid = this.oTwilioConfig.ServiceID, 
+         url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`,
+         payload = {
           To: this._storedPhoneNumber,
           Code: sEnteredOtp
         };
@@ -269,10 +306,11 @@ sap.ui.define(
               that.getView().byId("idOTPHBox").setVisible(false)
               that.getView().byId("idOTPInput_CL").setValue("")
               oMobileinput.setValueState(sap.ui.core.ValueState.Success);
-              that.getView().byId("idSignUp_CP").setEnabled(true)
+              that.getView().byId("idSignUp_CL").setEnabled(true)
+              that.getView().byId("idBtnOTP").setEnabled(false)
               sap.m.MessageToast.show('OTP validation successfull...!');
               // set otp input value state to none 
-              oOtpInput.setValueState("none");
+              oOtpInput.setValueState("None");
               // Proceed with further actions
             } else {
               // close the busy dailog
@@ -283,7 +321,7 @@ sap.ui.define(
             }
           }.bind(that),
           error: function (xhr, status, error) {
-            this._oBusyDialog.close();
+            that._oBusyDialog.close();
             console.error('Error verifying OTP:', error);
             sap.m.MessageToast.show('Failed to verify OTP: ' + error);
           }

@@ -27,6 +27,7 @@
                 <!-- DynamicPage Header -->
                 <f:content>
                   <ScrollContainer id="idScrollContainerIn_HelpTourOnEditConfigSAPSystem"
+
                 height="100%"  
                 width="100%"    
                 horizontal="false"  
@@ -37,10 +38,8 @@
                 <form:SimpleForm
                     id="idSimpleformIn_HelpTourOnEditConfigSAPSystem"
                     editable="true"
-                >
-               
+                >             
                 <VBox id="idVbox1In_HelpTourOnEditConfigSAPSystem" >
-               
                     <!-- Section: System Connection Configuration Fields -->
                     <Text id="idText01In_HelpTourOnEditConfigSAPSystem" text="1. System Connection Configuration fields:"  class="HeadingIn_HelpTourOnEditConfigSAPSystem"   />
                    
@@ -131,6 +130,7 @@
                     id="idGenImage006_HTOECSS"
                     src="../Images/client.png"
                 />
+
 <Label id="idEmptyLabel04In_HTOECSS" width="10px"/>
     <Text id="idText048In_HelpTourOnEditConfigSAPSystem" text="4. Sample Values:"  class="HeadingIn_HelpTourOnEditConfigSAPSystem" />
      
