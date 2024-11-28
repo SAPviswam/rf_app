@@ -40,12 +40,86 @@ sap.ui.define(
 
       },
 
-      onpresslogin: function () {
-        const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen");
+      onAppLoginPress: async function () {
+        const oModel = this.getOwnerComponent().getModel(),
+          oUserView = this.getView(),
+          sPath = "/APP_LOGON_DETAILSSet",
+          sUserEnteredUserID = this.getView().byId("idUserIDInpt_CL").getValue(),
+          sUserEnteredPassword = this.getView().byId("idPasswordInpt_CL").getValue();
+
+        // validations
+        var flag = true;
+        if (!sUserEnteredUserID) {
+          oUserView.byId("idUserIDInpt_CL").setValueState("Warning");
+          oUserView.byId("idUserIDInpt_CL").setValueStateText("Please enter registered user ID");
+          flag = false;
+        } else {
+          oUserView.byId("idUserIDInpt_CL").setValueState("None");
+        }
+        if (!sUserEnteredPassword) {
+          oUserView.byId("idPasswordInpt_CL").setValueState("Warning");
+          oUserView.byId("idPasswordInpt_CL").setValueStateText("Enter your password");
+          flag = false;
+        } else {
+          oUserView.byId("idPasswordInpt_CL").setValueState("None");
+
+        }
+        if (!flag) {
+          sap.m.MessageToast.show("Please enter required credentials")
+          // Close busy dialog
+          this._oBusyDialog.close();
+          return;
+        }
+
+        const fUser = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sUserEnteredUserID),
+          // fPassword = new sap.ui.model.Filter("Password", sap.ui.model.FilterOperator.EQ, sUserEnteredPassword),
+          aFilters = new sap.ui.model.Filter({
+            filters: [fUser],
+            and: true // Change to false if you want OR logic
+          });
+
+        // create busy dialog
+        if (!this._oBusyDialog) {
+          this._oBusyDialog = new sap.m.BusyDialog({
+            text: "Authenticating"
+          });
+        }
+        // Open the Busy Dialog
+        this._oBusyDialog.open();
+
+        try {
+          setTimeout(async () => {
+            const oResponse = await this.readData(oModel, sPath, aFilters);
+            if (oResponse.results.length > 0) {
+              const oResult = oResponse.results,
+                sStoredUserId = oResult[0].Userid,
+                sStoredPassword = oResult[0].Password
+              // Use SHA256 for hashing (CryptoJS)
+              const sEncrytpedPass = CryptoJS.SHA256(sUserEnteredPassword).toString(); // encryption with CryptoJS
+              if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncrytpedPass) {
+                // Destination on Successfull login
+                sap.m.MessageToast.show("Login Successfull")
+                // Close busy dialog
+                this._oBusyDialog.close();
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("InitialScreen");
+              } else {
+                sap.m.MessageToast.show("Authentication failed")
+                // Close busy dialog
+                this._oBusyDialog.close();
+              }
+            } else {
+              sap.m.MessageToast.show("user ID not found")
+              // Close busy dialog
+              this._oBusyDialog.close();
+            }
+
+          }, 1000);
+        } catch (error) {
+          sap.m.MessageToast.show("Something went wrong please try again later")
+          console.error("Error:" + error)
+        }
       },
-
-
       onForgotPasswordPress: async function () {
         if (!this.forgotPass) {
           this.forgotPass = await this.loadFragment("ForgotPassword");
@@ -227,38 +301,40 @@ sap.ui.define(
           return; // Prevent further execution
 
         }
-
         try {
 
           try {
             // keep the below line for future use
-            const aSorters = new sap.ui.model.Sorter("Userid", true); // sorting--> 'false' for ascending, 'true' for descending
-            const oResponse = await this.readData(oModel, sPath, "", aSorters);
+            const oResponse = await this.readData(oModel, sPath);
 
             // Accessing the data in the response
-            const aResults = oResponse.results,
-              aSortedarray = aResults.sort((a, b) => b.Userid.localeCompare(a.Userid)), // descendign order to get the highest number user id
-              currentMaxID = aSortedarray[0].Userid
+            const aResults = oResponse.results;
+            if (aResults.length === 0) {
+              oPayload.Userid = "ARTUSR0001"
+            } else {
+              const aSortedarray = aResults.sort((a, b) => b.Userid.localeCompare(a.Userid)), // descendign order to get the highest number user id
+                currentMaxID = aSortedarray[0].Userid
+              // generation of user ID
+              function generateUniqueString(currentString) {
+                // Extract the prefix (non-numeric part) and the number (numeric part)
+                const prefix = currentString.match(/[^\d]+/g)[0]; // Extract non-numeric characters
+                const number = parseInt(currentString.match(/\d+/g)[0], 10); // Extract numeric characters and convert to integer
 
-            // generation of user ID
-            function generateUniqueString(currentString) {
-              // Extract the prefix (non-numeric part) and the number (numeric part)
-              const prefix = currentString.match(/[^\d]+/g)[0]; // Extract non-numeric characters
-              const number = parseInt(currentString.match(/\d+/g)[0], 10); // Extract numeric characters and convert to integer
+                // Increment the numeric part by 1
+                const newNumber = number + 1;
 
-              // Increment the numeric part by 1
-              const newNumber = number + 1;
+                // Format the new number with leading zeros to match the original length
+                const formattedNumber = String(newNumber).padStart(currentString.length - prefix.length, '0');
 
-              // Format the new number with leading zeros to match the original length
-              const formattedNumber = String(newNumber).padStart(currentString.length - prefix.length, '0');
+                // Combine the prefix and the formatted number to get the new unique string
+                return prefix + formattedNumber;
+              }
 
-              // Combine the prefix and the formatted number to get the new unique string
-              return prefix + formattedNumber;
+              // call
+              const newUserid = generateUniqueString(currentMaxID);
+              oPayload.Userid = newUserid
+
             }
-
-            // call
-            const newUserid = generateUniqueString(currentMaxID);
-            oPayload.Userid = newUserid
 
           } catch (error) {
             console.error("Failed to fetch data:", error);
