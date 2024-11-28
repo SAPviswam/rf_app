@@ -11,7 +11,7 @@
         title="Select Tile View:"
         class="sapUiResponsivePadding"
     >
-        <VBox id="idPopOverTileView">
+        <VBox id="idPopOverTileView" alignItems="Start">
             <Button
                 id="idEnglishTileView"
                 text="Large Icons"

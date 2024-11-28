@@ -26,9 +26,9 @@ sap.ui.define([
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoadResorcePage, this);
 
 
-                if (Device.system.phone) {
-                    this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile_home");
-                }
+                // if (Device.system.phone) {
+                //     this.getView().byId("IdTitle_ResourceView").addStyleClass("titleMobile_home");
+                // }
 
                 // Initialize JSON Model
                 var oModel = new JSONModel();
@@ -283,7 +283,7 @@ sap.ui.define([
                                     });
                                 });
                                 window.location.reload();
-                                sap.m.MessageToast.show("Settings resetting to default!");
+                                sap.m.MessageToast.show("Settings resetting to default, Please wait!");
                             } catch (oError) {
                                 //sap.m.MessageToast.show("Failed to reset settings on the backend.");
                                 console.error("Error resetting backend data:", oError);
@@ -438,8 +438,8 @@ sap.ui.define([
                 // Clear the array of selected tiles
                 this._selectedTiles = [];
                 // Reset button visibility as needed
-                this.byId("idBtnListViewResourcePage").setVisible(true);
-                this.byId("idBtnGridViewResourcePage").setVisible(false);
+                this.byId("idBtnListViewResourcePage").setVisible(false);
+                this.byId("idBtnGridViewResourcePage").setVisible(true);
                 this.byId("idTileThemesModeOpen").setVisible(false);
                 this.byId("idExitThemeModeResource").setVisible(false);
                 // Optionally, close the theme dialog if it's open

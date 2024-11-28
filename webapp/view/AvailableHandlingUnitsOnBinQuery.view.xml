@@ -94,7 +94,7 @@
                             <!-- Buttons Aligned Under Input Field -->
                             <HBox
                             id="IdHBox_AHUOBQ"
-                                justifyContent="Center"
+                            justifyContent="Center"
                                
                             >
                              <Button
@@ -102,8 +102,8 @@
                                     text="{i18n>Back_button_AHUBQ}"
                                     type="Emphasized"
                                     press="onPressBackBtnPage1_AHUOBQ"
-                                    class="sapUiTinyMargin"
-                                />
+                                    class="sapUiTinyMargin"/>
+
                                 <ndc:BarcodeScannerButton
                                     id="idAvalableUnitsOnBinScanner_AHUOBQ"
                                     scanSuccess="onScanSuccess_AHUOBQ"
@@ -307,7 +307,7 @@
                                    editable="false"
                                 />
                             </HBox>
-                            <HBox
+                            <!-- <HBox
                               id="idHBox4_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
@@ -325,7 +325,7 @@
                                     editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
-                            </HBox>
+                            </HBox> -->
                             <HBox
                               id="idHBox5_AHUOBQ"
                                 alignContent="Center"

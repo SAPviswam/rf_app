@@ -764,6 +764,7 @@ sap.ui.define([
                     success: function (oData) {
                         if (oData.Password === oPassword) {
                             this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                            document.removeEventListener("keydown", this._handleKeyDownBound);
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
@@ -774,6 +775,11 @@ sap.ui.define([
                     }
                 });
             },
+            onBeforeRendering: function () {
+                // Reattach the event listener every time the InitialScreen is about to be rendered
+                this._handleKeyDownBound = this._handleKeyDown.bind(this);
+                document.addEventListener("keydown", this._handleKeyDownBound);
+            },            
             onPressCancleSapLogon: function () {
                 this.oConfigSap.close();
             },
