@@ -1887,12 +1887,36 @@ margin-left:2% !important;
 .floatingTitle {
     position: fixed;
     top: 0;
-    left: 1rem;
-    right: 1rem;
+    left: 0rem;
+    right: 0rem;
     z-index: 10; 
     padding: 0.5rem;
     
 }
+
+.btns_CQ{
+    right:1rem;
+}
+/* CSS for Sticky HBox */
+.stickyHBox {
+    position: fixed;
+    top: 0;
+    z-index: 100;  /* Ensure it stays above other content */
+      /* Add a background color to avoid transparency issues */
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(247, 246, 246, 0.1);  /* Optional: Adds shadow for better visibility */
+  }
+
+  /* CSS for Scrollable Table */
+  .scrollableTable {
+    height: 450px;  /* Adjust the height of the table as required */
+    overflow-y: auto;
+    overflow-x: auto;  /* Enable vertical scrolling */
+  }
+  /* .changeQueueTable_Tab{
+    height: max-content;
+  }
+   */
 
 .backBtnChangeQueue{
     left: 0.5rem;
@@ -1912,6 +1936,14 @@ margin-left:2% !important;
 .MobileviewTable_HUSOQ{
     margin-top: 25%;
 }
+.tab_Table_HuStockOverview{
+    margin-top: 10%;
+}
+.scrollableTable1 {
+    height: 450px;  /* Adjust the height of the table as required */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto;  /* Enable Horizontal scrolling */
+  }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
 
@@ -1950,17 +1982,22 @@ margin-left:2% !important;
     }
 }
 
-
-
-
     /* Add scroll behavior for overflow */
     body {
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
 
+    .scrollableTableWtQuerybyHu{
+        height:350px;
+        overflow-y:auto;
+        overflow-x: auto;
+    }
+
 /* .addClassinChangeQueue{
     margin-left:  0.9rem;
 }
+
+
 
 .deleteClassinChangeQueue{
 margin-left:  0.6rem;

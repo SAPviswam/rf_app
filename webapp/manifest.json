@@ -587,7 +587,6 @@
           ]
         },
         {
-
           "name": "HelpTourOnEditConfigSAPSystem",
           "pattern": "RouteHelpTourOnEditConfigSAPSystem",
           "target": [
@@ -595,12 +594,10 @@
           ]
         },
         {
-
           "name": "SETREADYFORWHPROCESSINGBYBOL",
           "pattern": "SetReadyForWHProcessingByBol/{id}",
           "target": [
             "TargetSetReadyForWhProcessingByBOL"
-
           ]
         }
       ],
@@ -1088,7 +1085,7 @@
           "viewId": "ReversalofConsumptionbyMO_Bin",
           "viewName": "ReversalofConsumptionbyMO_Bin"
         },
-        "TargetSetReadyForWhProcessingByBOL":{
+        "TargetSetReadyForWhProcessingByBOL": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,

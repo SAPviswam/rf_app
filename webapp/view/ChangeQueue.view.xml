@@ -59,15 +59,16 @@
             >
                 <HBox
                     id="idHboxTitle_changeQueue"
-                    class="floatingTitle sapUiSmallMarginLeft"
+                    class="floatingTitle sapUiSmallMarginLeft stickyHBox"
                     justifyContent="SpaceBetween"
+                    backgroundDesign="Transparent"
                 >
                     <Title
                         id="idAssignedQueueTitle_changeQueue"
                         text="{i18n>Title_AssignedQueue_CQ}"
                         class="sapUiTinyMarginTop sapUiSmallMarginLeft"
                     />
-                    <HBox id="idHboxButtons_changeQueue" justifyContent="SpaceBetween">
+                    <HBox id="idHboxButtons_changeQueue" justifyContent="SpaceBetween" class="btns_CQ">
                         <Button
                             id="idAddBtn_changeQueue"
                             text="{i18n>Btn_Add_CQ}"
@@ -100,13 +101,15 @@
                 </HBox>
 
                 <!-- Queues Table -->
+                
                 <Table
                     id="idAssignedQueueTable_changeQueue"
                     mode="MultiSelect"
                     width="100%"
                     alternateRowColors="true"
                     items="{/resources}"
-                    class="sapUiMediumMarginTop"
+                    class="sapUiMediumMarginTop scrollableTable"
+                    sticky="ColumnHeaders,HeaderToolbar"
                 >
                     <!-- columns -->
                     <columns>
@@ -149,7 +152,7 @@
                     </columns>
                     <!-- cells -->
                     <items>
-                        <ColumnListItem id="idColListItem_changeQueue">
+                        <ColumnListItem id="idColListItem_changeQueue" >
                             <cells>
                             <Text
                                     id="idASlonoText_changeQueue"
@@ -171,6 +174,18 @@
                         </ColumnListItem>
                     </items>
                 </Table>
+                <!-- <f:footer>
+					<OverflowToolbar>
+						<Button icon="sap-icon://message-popup"
+						       
+						        type="Emphasized"
+						        press="onMessageButtonPress"
+						       />
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Accept"/>
+						<Button type="Reject" text="Reject"/>
+					</OverflowToolbar>
+				</f:footer> -->
             </ScrollContainer>
             <NavContainer
                 id="idNavContainer_changeQueue"
@@ -321,10 +336,10 @@
                         <!-- <f:footer>
 					<OverflowToolbar>
 						<Button icon="sap-icon://message-popup"
-						        text="{messagesLength}"
+						       
 						        type="Emphasized"
 						        press="onMessageButtonPress"
-						        visible="{= !!$messagesLength}}"/>
+						       />
 						<ToolbarSpacer/>
 						<Button type="Accept" text="Accept"/>
 						<Button type="Reject" text="Reject"/>
