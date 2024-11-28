@@ -89,7 +89,9 @@ sap.ui.define(
                                     that.getView().byId("idWtQBWtwtInput_WTQueryByWT").setValue(odata.Tanum);
                                     that.getView().byId("idWtQBWtWTitInput_WTQueryByWT").setValue(odata.Tapos);
                                     that.getView().byId("idWtQBWtwtsInput_WTQueryByWT").setValue(odata.Numwt);
-                                    that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(odata.Tostat);
+                                    let smallToast=odata.Tostat.toLowerCase();
+                                    let oStatus=smallToast===""?"Open":(smallToast==="a"?"Canceled":(smallToast==="b"?"Waiting":"Confirmed"))
+                                    that.getView().byId("idWtQBWtStsInput_WTQueryByWT").setValue(oStatus);
                                     that.getView().byId("idWtQBWtPtypInput_WTQueryByWT").setValue(odata.Procty);
                                     that.getView().byId("idWtQBWtSproInput_WTQueryByWT").setValue(odata.Prces);
                                     that.getView().byId("idWtQBWtActyInput_WTQueryByWT").setValue(odata.ActType);

@@ -1969,10 +1969,16 @@ margin-left:2% !important;
     body {
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
-}
+    .scrollableTableWtQuerybyHu{
+        height:350px;
+        overflow-y:auto;
+        overflow-x: auto;
+    }
 /* .addClassinChangeQueue{
     margin-left:  0.9rem;
 }
+
+
 
 .deleteClassinChangeQueue{
 margin-left:  0.6rem;
