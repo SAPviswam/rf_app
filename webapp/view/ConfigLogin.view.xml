@@ -79,7 +79,7 @@
                             <!-- Title -->
                             <Text
                                 id="idLoginTitle_configPage"
-                                text="Application Login"
+                                text="{i18n>AppLogin_Txt}"
                                 class="loginTitle"
                                 textAlign="Center"
                                 width="100%"
@@ -99,15 +99,14 @@
                                 <!-- Add some space on the left -->
                                 <Text
                                     id="idUserIDLabel_configPage"
-                                    text="User ID"
+                                    text="{i18n>UserID_Txt}"
                                     width="70px"
                                 />
                                 <Input
-                                    id="idUserIDInput_configPage"
+                                    id="idUserIDInpt_CL"
                                     width="100%"
-                                    value="111010"
                                     class="orangeInput sapUiTinyMarginTop"
-                                    editable="false"
+                                    placeholder="{i18n>entr_ID_PlaceHldr}"
                                 />
                             </HBox>
 
@@ -124,17 +123,15 @@
                                 <!-- Add some space on the left -->
                                 <Text
                                     id="idPasswordLabel_configPage"
-                                    text="Password"
+                                    text="{i18n>pswrd_Txt}"
                                     width="70px"
                                 />
                                 <Input
-                                    id="idPasswordInput_configPage"
+                                    id="idPasswordInpt_CL"
                                     type="Password"
-                                    value="........"
                                     width="100%"
-                                    placeholder="Enter Password"
+                                    placeholder="{i18n>pswrd_PlaceHldr_IV}"
                                     class="orangeInput sapUiTinyMarginTop"
-                                    editable="false"
                                 />
                             </HBox>
 
@@ -163,7 +160,7 @@
                                 <Button
                                     id="idLoginButton_configPage"
                                     text="{i18n>Login_Btn}"
-                                    press="onpresslogin"
+                                    press="onAppLoginPress"
                                     width="100%"
                                 />
                             </HBox>
