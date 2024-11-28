@@ -39,7 +39,7 @@
                 <Avatar
                     id="_IDGenAvatar1_SBQP"
                     displaySize="XS"
-                    press="onSBQPAvatarPressed"
+                    press="onPressAvatarSBQBP"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
