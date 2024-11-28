@@ -1919,6 +1919,11 @@ margin-left:2% !important;
 .MobileviewTable_HUSOQ{
     margin-top: 25%;
 }
+.scrollableTable1 {
+    height: 400px;  /* Adjust the height of the table as required */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto;  /* Enable Horizontal scrolling */
+  }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
 
