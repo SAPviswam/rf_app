@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        // "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/core/UIComponent",
         "sap/ui/Device"
     ],
@@ -16,11 +17,21 @@ sap.ui.define(
                     this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
 
                 }
+                // if (Device.system.tablet) {
+                //     this.getView().byId("IdButton_Open_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_Conf_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_All_WTQuerybyQueue").setWidth("110%");
+                //     this.getView().byId("IdButton_Back_WTQuerybyQueue").setWidth("110%");
+                // }
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.applyStoredProfileImage();
             },
+            onPressAvatarWTQBQ: function (oEvent) {     
+                this.onPressAvatarEveryTileHelperFunction(oEvent); 
+                },
             onWtQBQueuefirstBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
@@ -209,13 +220,14 @@ sap.ui.define(
                         "$expand": "QueueNav",
                         "$format": "json"
                     },
-            
+
                     success: function (odata) {
+                        console.log(odata)
                         var aWarehousetask = odata.QueueNav.results;
 
                         var confirmedCount = 0;
                         var openCount = 0;
-            
+
                         // Loop through the array of warehouse tasks
                         aWarehousetask.forEach(function (WarehouseTask) {
                             var status = WarehouseTask.Tostat;
@@ -230,7 +242,7 @@ sap.ui.define(
                         var oSelectedWT = aWarehousetask.find(function (WarehouseTask) {
                             return WarehouseTask.Tanum === sSelectedWT;
                         });
-                        
+
                         if (oSelectedWT) {
                             oView.byId("idInput_WT_WTQuerybyQueue").setValue(oSelectedWT.Tanum);
                             oView.byId("idInput_WTit_WTQuerybyQueue").setValue(oSelectedWT.Tapos);
@@ -246,9 +258,9 @@ sap.ui.define(
                             oView.byId("idInput5_WTQuerybyQueue").setValue(oSelectedWT.Vlenr);
                             oView.byId("idInput__Dbin_WTQuerybyQueue").setValue(oSelectedWT.Nlpla);
                             oView.byId("idInput6_WTQuerybyQueue").setValue(oSelectedWT.Nlenr);
-            
+
                             var rawDate = oSelectedWT.ConfD;
-            
+
                             // Check if the rawDate is null or empty
                             if (!rawDate) {
                                 var formattedDateString = "";
@@ -256,42 +268,42 @@ sap.ui.define(
                                 var year = rawDate.substring(0, 4);
                                 var month = rawDate.substring(4, 6) - 1;
                                 var day = rawDate.substring(6, 8);
-            
+
                                 var formattedDate = new Date(year, month, day);
-            
+
                                 var dayStr = ("0" + formattedDate.getDate()).slice(-2);
                                 var monthStr = ("0" + (formattedDate.getMonth() + 1)).slice(-2);
                                 var yearStr = formattedDate.getFullYear();
-            
+
                                 formattedDateString = dayStr + '.' + monthStr + '.' + yearStr;
                             }
-            
+
                             oView.byId("idInput_Cdat_WTQuerybyQueue").setValue(formattedDateString);
                             oView.byId("idInput_Cusr_WTQuerybyQueue").setValue(oSelectedWT.ConfBy);
-            
+
                             var milliseconds = oSelectedWT.ConfT.ms;
                             var totalSeconds = Math.floor(milliseconds / 1000);
                             var hours = Math.floor(totalSeconds / 3600);
                             var minutes = Math.floor((totalSeconds % 3600) / 60);
                             var seconds = totalSeconds % 60;
-            
+
                             hours = hours < 10 ? '0' + hours : hours;
                             minutes = minutes < 10 ? '0' + minutes : minutes;
                             seconds = seconds < 10 ? '0' + seconds : seconds;
-            
+
                             var formattedTime = hours + ':' + minutes + ':' + seconds;
                             oView.byId("idInput7_WTQuerybyQueue").setValue(formattedTime);
-            
+
                             oView.byId("idInput_WTQuerybyQueue").setValue(that.getStatusText(oSelectedWT.Tostat));
                             that.oSelectedWT = sSelectedWT;
-            
+
                             // Set the value based on the task status
                             if (oSelectedWT.Tostat === 'C') {
                                 oView.byId("idInput_WTs_WTQuerybyQueue").setValue(confirmedCount);
                             } else if (oSelectedWT.Tostat === '') {
                                 oView.byId("idInput_WTs_WTQuerybyQueue").setValue(openCount);
                             }
-            
+
                         } else {
                             sap.m.MessageToast.show("WarehouseTask not found.");
                         }
@@ -357,7 +369,16 @@ sap.ui.define(
                             oView.byId("IdInput_Btch_WTQuerybyQueue").setValue(oSelectedWT.Charg);
                             oView.byId("idInput_WhHu_WTQuerybyQueue").setValue(oSelectedWT.Homve);
                             oView.byId("IdInput_CGrp_WTQuerybyQueue").setValue(oSelectedWT.Dstgrp);
-                            oView.byId("idInput_SLED_WTQuerybyQueue").setValue(oSelectedWT.Vfdat);
+
+                            var rawDate = oSelectedWT.Vfdat;
+                            // Extract the year, month, and day from the raw date string
+                            var year = rawDate.substring(0, 4);
+                            var month = rawDate.substring(4, 6);
+                            var day = rawDate.substring(6, 8);
+                            // Format the date as "dd.MM.yyyy"
+                            var ExperiryDate = day + "." + month + "." + year;
+                            oView.byId("idInput_SLED_WTQuerybyQueue").setValue(ExperiryDate);
+
                             oView.byId("idInput_Qu_WTQuerybyQueue").setValue(oSelectedWT.Queue1);
                             oView.byId("idInput29_WTQuerybyQueue").setValue(oSelectedWT.Rdoccat);
                             oView.byId("idInput30_WTQuerybyQueue").setValue(oRdocid);

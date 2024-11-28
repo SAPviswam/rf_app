@@ -36,7 +36,7 @@
                 <Avatar
                     id="_IDGenAvatar1CSHUWOWC"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarCSHUWOWC"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
