@@ -1877,7 +1877,6 @@ margin-right: 20%;
 
 /* Media query for tablet screens WT QUERY BY QUEUE */
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* Ensure the HBox remains horizontal and buttons are centered */
     .myResponsiveHBoxWTQBYQ {
         display: flex;
         flex-direction: row;
@@ -1889,7 +1888,7 @@ margin-right: 20%;
     /* Maintain the same button width for tablets */
     .myResponsiveButtonWTQBYQ {
         margin: 4px !important;
-        width: 20% !important;  /* Maintain button width same as mobile */
+        width: 20% !important;  
         min-width: 60px;
         max-width: 50px;
     }
@@ -1900,8 +1899,23 @@ margin-right: 20%;
     }
 }
 
+.scrollableTable1WTQbyQ {
+    height: 400px; 
+    overflow-y: auto; 
+    overflow-x: auto;  
+  }
 
+  .MobileviewTable_WtQbyQ{
+    margin-top: 25%;
+    height:600px
+}
 
-
-
+.MobileviewTableTablet_WtQbyQ{
+    margin-top: 10%;
+    height:800px
+}
+.MobileviewTable_StbqP{
+    margin-top :20%;
+    height:600px
+}
 
