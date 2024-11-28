@@ -1813,15 +1813,26 @@ margin-right: 20%;
 .HeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#ec792d;
-    font-size:20px;
+    font-size:15px;  
 }
+
+.MainHeadingInPhone_HelpTourOnEditConfigSAPSystem{
+margin-left:2% !important;
+    color:#ec792d;
+    font-size:large !important; 
+} 
+.MainHeadingInTab_HelpTourOnEditConfigSAPSystem{
+    margin-left:35% !important;
+    color:#ec792d; 
+} 
+
 .SideHeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#000000;   
 }
 .headerTitleclass_HelpTourOnEditConfigSAPSystem{
-  
-    margin-left: 100%;
+    color: hsl(29, 100%, 50%);
+    margin-left: 90%; 
 }
 .BackInHelpTourOnEditConfigSAPSystem{
     margin-left: 150%; 
