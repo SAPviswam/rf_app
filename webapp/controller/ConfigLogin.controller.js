@@ -97,6 +97,9 @@ sap.ui.define(
               // Use SHA256 for hashing (CryptoJS)
               const sEncrytpedPass = CryptoJS.SHA256(sUserEnteredPassword).toString(); // encryption with CryptoJS
               if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncrytpedPass) {
+                // clear input fields
+                 this.getView().byId("idUserIDInpt_CL").setValue(""),
+                 this.getView().byId("idPasswordInpt_CL").setValue("");
                 // Destination on Successfull login
                 sap.m.MessageToast.show("Login Successfull")
                 // Close busy dialog
