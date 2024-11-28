@@ -1167,8 +1167,8 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    margin-left: 0.6rem !important;
+  
 }
 
 @media only screen and (max-width: 600px) {
@@ -1861,10 +1861,14 @@ margin-left:2% !important;
     position: fixed;
     top: 0;
     left: 1rem;
-    right: 0;
+    right: 1rem;
     z-index: 10; 
     padding: 0.5rem;
     
+}
+
+.backBtnChangeQueue{
+    left: 0.5rem;
 }
 /* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
@@ -1922,5 +1926,20 @@ margin-left:2% !important;
 
 
 
+    /* Add scroll behavior for overflow */
+    body {
+        overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
+    }
+}
+/* .addClassinChangeQueue{
+    margin-left:  0.9rem;
+}
+
+.deleteClassinChangeQueue{
+margin-left:  0.6rem;
+}
 
 
+.backClassinChangeQueue{
+    margin-left: 0.3rem;
+} */
