@@ -93,9 +93,9 @@ sap.ui.define(
           oUserView.byId("idRegNumbInput_CL").setValueState("None");
 
         }
-        if (!sUserEnteredPass || sUserEnteredPass.length < 8) {
+        if (!sUserEnteredPass || sUserEnteredPass.length < 8 || !sUserEnteredPass.length > 30) {
           oUserView.byId("idPasswordInput_CL").setValueState("Error");
-          oUserView.byId("idPasswordInput_CL").setValueStateText("Password length should be 8 characters");
+          oUserView.byId("idPasswordInput_CL").setValueStateText("Password length must be minimum 8 characters (max 30 characters)");
           flag = false;
         } else {
           oUserView.byId("idPasswordInput_CL").setValueState("None");
@@ -232,13 +232,13 @@ sap.ui.define(
 
           try {
             // keep the below line for future use
-            // const aSorters = [new sap.ui.model.Sorter("Userid", false)]; // sorting--> 'false' for ascending, 'true' for descending
-            const oResponse = await this.readData(oModel, sPath);
+            const aSorters = new sap.ui.model.Sorter("Userid", true); // sorting--> 'false' for ascending, 'true' for descending
+            const oResponse = await this.readData(oModel, sPath, "", aSorters);
 
             // Accessing the data in the response
             const aResults = oResponse.results,
-              recordsLength = aResults.length,
-              currentMaxID = aResults[recordsLength - 1].Userid
+              aSortedarray = aResults.sort((a, b) => b.Userid.localeCompare(a.Userid)), // descendign order to get the highest number user id
+              currentMaxID = aSortedarray[0].Userid
 
             // generation of user ID
             function generateUniqueString(currentString) {
@@ -279,7 +279,7 @@ sap.ui.define(
           // set the empty data after successful creation
           this.getView().getModel("ODataModel").setProperty("/appLoginData", {});
           // set the inputfield states to defult 
-          await this  .onDefaultStates();
+          await this.onDefaultStates();
 
           // Send the generated UserID to User
           // Send POST request to Twilio API using jQuery.ajax
