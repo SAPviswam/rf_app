@@ -98,8 +98,8 @@ sap.ui.define(
               const sEncrytpedPass = CryptoJS.SHA256(sUserEnteredPassword).toString(); // encryption with CryptoJS
               if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncrytpedPass) {
                 // clear input fields
-                 this.getView().byId("idUserIDInpt_CL").setValue(""),
-                 this.getView().byId("idPasswordInpt_CL").setValue("");
+                this.getView().byId("idUserIDInpt_CL").setValue(""),
+                  this.getView().byId("idPasswordInpt_CL").setValue("");
                 // Destination on Successfull login
                 sap.m.MessageToast.show("Login Successfull")
                 // Close busy dialog
@@ -482,13 +482,13 @@ sap.ui.define(
 
         const that = this;
         // Create a Busy Dialog instance
-        if (!this._oBusyDialog) {
-          this._oBusyDialog = new sap.m.BusyDialog({
+        if (!this._oValidatingBusyDialog) {
+          this._oValidatingBusyDialog = new sap.m.BusyDialog({
             text: "Please wait while validatiing OTP"
           });
         }
         // Open the Busy Dialog
-        this._oBusyDialog.open();
+        this._oValidatingBusyDialog.open();
 
         const oMobileinput = this.byId("idPhoneInput_CL"),
           oOtpInput = this.byId("idOTPInput_CL"),
@@ -499,7 +499,7 @@ sap.ui.define(
           oOtpInput.setValueState(sap.ui.core.ValueState.Error);
           oOtpInput.setValueStateText("Please enter OTP");
           sap.m.MessageToast.show("Please enter OTP")
-          this._oBusyDialog.close();
+          this._oValidatingBusyDialog.close();
           return;
         }
 
@@ -508,7 +508,7 @@ sap.ui.define(
         if (!otpRegex.test(sEnteredOtp)) {
           oOtpInput.setValueState(sap.ui.core.ValueState.Error);
           oOtpInput.setValueStateText("Please enter a valid 6-digit OTP.");
-          this._oBusyDialog.close();
+          this._oValidatingBusyDialog.close();
           return;
         }
 
@@ -534,7 +534,7 @@ sap.ui.define(
           success: function (data) {
             if (data.status === "approved") {
               // close the busy dailog
-              that._oBusyDialog.close();
+              that._oValidatingBusyDialog.close();
               // hide the validattion elements
               that.getView().byId("idOTPHBox").setVisible(false)
               that.getView().byId("idOTPInput_CL").setValue("")
@@ -547,14 +547,14 @@ sap.ui.define(
               // Proceed with further actions
             } else {
               // close the busy dailog
-              that._oBusyDialog.close();
+              that._oValidatingBusyDialog.close();
               oOtpInput.setValueState(sap.ui.core.ValueState.Error);
               oOtpInput.setValueStateText("Invalid OTP");
               sap.m.MessageToast.show('Invalid OTP...!');
             }
           }.bind(that),
           error: function (xhr, status, error) {
-            that._oBusyDialog.close();
+            that._oValidatingBusyDialog.close();
             console.error('Error verifying OTP:', error);
             sap.m.MessageToast.show('Failed to verify OTP: ' + error);
           }
