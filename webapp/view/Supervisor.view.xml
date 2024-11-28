@@ -196,11 +196,14 @@
                         vertical="true"
                         height="100%"
                         width="100%"
-                        horizontal="true"
+                        horizontal="false"
                     >
                         <Bar class="TableBarForRequestedData">
                             <contentLeft>
-                                <Text text="Requested Data:" class="RequestedDataClass"/>
+                                <Text
+                                    text="Requested Data:"
+                                    class="RequestedDataClass"
+                                />
                             </contentLeft>
                             <contentRight>
                                 <Button
@@ -225,11 +228,11 @@
                                     tooltip="Reject"
                                     press="onRejectUserBtnPress"
                                     width="3.5rem"
-                                    type="Reject"                                
+                                    type="Reject"
                                 />
                             </contentRight>
                         </Bar>
-                        <Label class="EmptyLableClass"></Label>
+                        <Label class="EmptyLableClass" />
                         <Table
                             id="idRequestedData"
                             alternateRowColors="true"
@@ -240,6 +243,8 @@
                             growingScrollToLoad="true"
                             growing="true"
                             width="40%"
+                            sticky="ColumnHeaders,HeaderToolbar"
+                            class="scrollableTableRequesteddata"
                         >
                             <columns>
                                 <Column
@@ -393,9 +398,45 @@
                         id="pageSV3"
                         horizontal="true"
                         vertical="true"
-                        height="400px"
-                        class="sapUiContentPadding"
+                        height="100%"
+                        width="100%"
                     >
+                        <Bar class="TableBarForUserDataSupervisor">
+                            <contentLeft>
+                                <Text
+                                    text="Users Data:"
+                                    class="UserDataClassSupervisor"
+                                />
+                            </contentLeft>
+                            <contentMiddle>
+                                <ToolbarSpacer />
+                            </contentMiddle>
+                            <contentRight>
+                                <SearchField
+                                    id="searchField"
+                                    search="onSearch"
+                                    liveChange="handlerSearchFieldLiveEvent"
+                                    visible="false"
+                                    showSearchButton="true"
+                                    placeholder="Search..."
+                                    width="auto"
+                                />
+                                <Button
+                                    icon="sap-icon://search"
+                                    press="onToggleSearch"
+                                    type="Transparent"
+                                    tooltip="Search"
+                                    id="searchButton"
+                                />
+                                <Button
+                                    id="idBtnSelectFields"
+                                    text="Select Filter"
+                                    press="onSelectFieldsPress"
+                                    width="auto"
+                                />
+                            </contentRight>
+                        </Bar>
+                        <Label class="EmptyLableClassUserdataSupervisor" />
                         <Table
                             id="idUserDataTable"
                             mode="MultiSelect"
@@ -404,35 +445,9 @@
                             growingScrollToLoad="true"
                             growing="true"
                             width="auto"
-                            sticky="ColumnHeaders"
+                            sticky="ColumnHeaders,HeaderToolbar"
+                            class="scrollableTableRequesteddata"
                         >
-                            <headerToolbar>
-                                <OverflowToolbar id="idUsersInfoHeade">
-                                    <Title
-                                        id="idUsersInfoTitl"
-                                        text="Users Data:"
-                                    />
-                                    <ToolbarSpacer id="as" />
-                                    <SearchField
-                                        id="idonSearchBt"
-                                        width="20%"
-                                        liveChange="onSearch"
-                                    >
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData
-                                                id="idToolbarLayoutDat"
-                                                priority="NeverOverflow"
-                                            />
-                                        </layoutData>
-                                    </SearchField>
-                                    <Button
-                                        id="idBtnSelectFields"
-                                        text="Select Fields"
-                                        press="onSelectFieldsPress"
-                                    />
-                                </OverflowToolbar>
-                            </headerToolbar>
-
                             <columns>
                                 <Column
                                     id="idresourceid"

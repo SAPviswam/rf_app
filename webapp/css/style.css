@@ -54,6 +54,11 @@
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
 
 /* Supervisor Page Start */
+.scrollableTableRequesteddata {
+    height: 600px;  /* Adjust the height of the table as required */
+    overflow-y: auto; 
+    overflow-x: auto; 
+  }
 .TableBarForRequestedData{
     height: 3rem !important;
     position: fixed !important;
@@ -62,10 +67,21 @@
     font-weight: bold;
     margin-bottom: 0.45rem !important;
 }
+.TableBarForUserDataSupervisor{
+    height: 3rem !important;
+    position: fixed !important;
+}
+.UserDataClassSupervisor{
+    font-weight: bold;
+    margin-bottom: 0.45rem !important;
+}
 .sapUiSmallMarginTop {
     margin-top: 1rem;
 }
 .EmptyLableClass{
+    margin-top: 1rem !important;
+}
+.EmptyLableClassUserdataSupervisor{
     margin-top: 1rem !important;
 }
 
