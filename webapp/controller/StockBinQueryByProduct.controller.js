@@ -1,6 +1,7 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
+    // "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/m/MessageToast",
     "sap/ui/Device",
     "sap/ui/core/UIComponent"
@@ -28,8 +29,12 @@ sap.ui.define(
         const { id } = oEvent1.getParameter("arguments");
         this.ID = id;
         console.log(this.ID);
+        this.applyStoredProfileImage();
 
       },
+      onPressAvatarSBQBP: function (oEvent) {     
+        this.onPressAvatarEveryTileHelperFunction(oEvent); 
+        },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
         var oModel1 = this.getOwnerComponent().getModel();
