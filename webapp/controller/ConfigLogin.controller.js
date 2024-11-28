@@ -300,7 +300,7 @@ sap.ui.define(
               Body: `Hi ${oPayload.Firstname} your login ID for RF app is ${oPayload.Userid} don't share with anyone. \nThank You,\nArtihcus Global.`
             },
             success: function (data) {
-              sap.m.MessageToast.show('Login ID will be sent via SMS to your mobile number');
+              sap.m.MessageBox.show('Login ID will be sent via SMS to your mobile number');
             },
             error: function (error) {
               sap.m.MessageToast.show('Failed to send user ID');
