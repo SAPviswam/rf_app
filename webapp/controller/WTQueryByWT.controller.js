@@ -17,6 +17,7 @@ sap.ui.define(
                     this.getView().byId("idWtQBWtSF2_WTQueryByWT").setWidth("150%");
                     this.getView().byId("idWtQBWtWhThirdsc_WTQueryByWT").setWidth("140%");
                     this.getView().byId("idWtQBWtSF3_WTQueryByWT").setWidth("140%");
+                    this.getView().byId("idTitle_WTQueryByWT").addStyleClass("titleMobile");
                 }
                 const oRouter = this.getOwnerComponent().getRouter(); // Get the router from the owner component
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this); // Attach route match event to handler
