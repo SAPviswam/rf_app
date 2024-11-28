@@ -116,7 +116,6 @@ sap.ui.define(
               // Close busy dialog
               this._oBusyDialog.close();
             }
-
           }, 1000);
         } catch (error) {
           sap.m.MessageToast.show("Something went wrong please try again later")
@@ -197,7 +196,8 @@ sap.ui.define(
           const oResponse = await this.readData(oModel, sPath, aFilters)
           if (oResponse.results.length > 0) {
             const sRegisteredUserID = oResponse.results[0].Userid,
-              sRegisteredPhnNumber = oResponse.results[0].Phonenumber;
+              sRegisteredPhnNumber = oResponse.results[0].Phonenumber,
+              sStoredPassword = oResponse.results[0].Password;
 
             if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
 
@@ -206,6 +206,10 @@ sap.ui.define(
 
               // Use SHA256 for hashing (CryptoJS)
               const sEncrytpedPass = CryptoJS.SHA256(sNewPassword).toString(); // encryption with CryptoJS
+              if (sStoredPassword === sEncrytpedPass) {
+                sap.m.MessageBox.information("New Password can not be same as previous password");
+                return;
+              }
               const oPayload = {
                 Password: sEncrytpedPass
               }
