@@ -153,7 +153,7 @@
                                 <Button
                                     id="idSignupButton_configPage"
                                     text="Signup"
-                                    press="onpressSignup"
+                                    press="onNavToSignUpPage"
                                     width="100%"
                                 />
                                 <ToolbarSpacer
@@ -219,12 +219,12 @@
                             value="{ODataModel>/appLoginData/Lastname}"
                         />
                         <Label
-                            id="idNewPassworsdlabel_CP"
+                            id="idEmailAddlabel_CL"
                             text="{i18n>EmailAdd_Lbl_CL}"
                             class="sapUiTinyMarginTop"
                         />
                         <Input
-                            id="idNewPassworsdInput_CP"
+                            id="idEmailAddInput_CL"
                             placeholder="{i18n>EmailAdd_PlaceHldr_CL}"
                             class="customInput"
                             value="{ODataModel>/appLoginData/Email}"
@@ -283,7 +283,7 @@
                             class="sapUiTinyMarginTop"
                         />
                         <Input
-                            id="idPassswordInput_CP"
+                            id="idPassswordInput_CL"
                             type="Password"
                             placeholder="{i18n>Password_PlaceHldr_CL}"
                             value="{ODataModel>/appLoginData/Password}"
@@ -291,7 +291,7 @@
                         />
                         <HBox id="idButtonsHbox_CL">
                             <Button
-                                id="idSignUp_CP"
+                                id="idSignUp_CL"
                                 text="{i18n>SignUp_Btn}"
                                 type="Emphasized"
                                 width="100%"
