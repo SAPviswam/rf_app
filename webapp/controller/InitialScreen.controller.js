@@ -775,6 +775,11 @@ sap.ui.define([
                     }
                 });
             },
+            onBeforeRendering: function () {
+                // Reattach the event listener every time the InitialScreen is about to be rendered
+                this._handleKeyDownBound = this._handleKeyDown.bind(this);
+                document.addEventListener("keydown", this._handleKeyDownBound);
+            },            
             onPressCancleSapLogon: function () {
                 this.oConfigSap.close();
             },

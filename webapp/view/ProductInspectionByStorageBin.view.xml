@@ -36,7 +36,7 @@
                 <Avatar
                     id="_IDGenAvatar1PIBSB"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarPIBSB"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
