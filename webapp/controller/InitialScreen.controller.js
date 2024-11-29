@@ -43,7 +43,17 @@ sap.ui.define([
                 document.addEventListener("keydown", this._handleKeyDownBound);
 
 
+                // Route based on id
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this);
+
             },
+
+            onUserDetailsLoad: async function (oEvent) {
+                const { Userid } = oEvent.getParameter("arguments");
+                this.Userid = Userid;
+            },
+
             onExit: function () {
                 // Remove the event listener when the controller is destroyed
                 document.removeEventListener("keydown", this._handleKeyDownBound);
@@ -902,7 +912,7 @@ sap.ui.define([
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
 
             },
-            onHelpconnectsapDialog:function(){
+            onHelpconnectsapDialog: function () {
 
 
                 var oRouter = this.getOwnerComponent().getRouter();

@@ -38,7 +38,16 @@ sap.ui.define(
         });
         this.getView().setModel(OData, "ODataModel");
 
+        // Route based on id
+        // const oRouter = this.getOwnerComponent().getRouter();
+        // oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this);
+
       },
+
+      // onUserDetailsLoad: async function (oEvent1) {
+      //   const { Userid } = oEvent1.getParameter("arguments");
+      //   this.Userid = Userid;
+      // },
 
       onAppLoginPress: async function () {
         const oModel = this.getOwnerComponent().getModel(),
@@ -87,23 +96,23 @@ sap.ui.define(
         try {
           // Open busy dialog
           this._oBusyDialog.open();
-      
+
           // Simulate buffer using setTimeout
           await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
           // Fetch data from the model
           const oResponse = await this.readData(oModel, sPath, aFilters);
-      
+
           if (oResponse.results.length > 0) {
             const oResult = oResponse.results[0],
-               sStoredUserId = oResult.Userid,
-                 sStoredPassword = oResult.Password;
-      
+              sStoredUserId = oResult.Userid,
+              sStoredPassword = oResult.Password;
+
             // Encrypt user-entered password with SHA256
             const sEncryptedPass = CryptoJS.SHA256(sUserEnteredPassword).toString();
-      
+
             if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncryptedPass) {
-              this._onLoginSuccess();
+              this._onLoginSuccess(sUserEnteredUserID);
             } else {
               this._onLoginFail("Authentication failed");
             }
@@ -112,30 +121,30 @@ sap.ui.define(
           }
         } catch (error) {
           sap.m.MessageToast.show("Something went wrong. Please try again later.");
-          console.error("Error:", error);
+          console.error("Error Found:", error);
         } finally {
           // Close busy dialog
           this._oBusyDialog.close();
         }
       },
-      _onLoginSuccess() {
+      _onLoginSuccess(sUserEnteredUserID) {
         // Clear input fields
         this.getView().byId("idUserIDInpt_CL").setValue("");
         this.getView().byId("idPasswordInpt_CL").setValue("");
-      
+
         // Show success message
-        sap.m.MessageToast.show("Login Successful");
-      
+        sap.m.MessageToast.show("Login Successfull");
+
         // Navigate to the Initial Screen
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen");
+        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID });
       },
-      
+
       _onLoginFail(sMessage) {
         // Show failure message
         sap.m.MessageToast.show(sMessage);
       },
-      
+
       onForgotPasswordPress: async function () {
         if (!this.forgotPass) {
           this.forgotPass = await this.loadFragment("ForgotPassword");
