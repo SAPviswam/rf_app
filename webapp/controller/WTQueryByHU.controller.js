@@ -18,6 +18,10 @@ sap.ui.define(
           this.getView().byId("idPage4ProductDescription_WTQBYHU").setWidth("140%");
           this.getView().byId("idSimpleFormPage4PD_WTQBYHU").setWidth("140%");
       }
+      else if(Device.system.tablet){
+        this.getView().byId("idHUNumTable_WTQBYHU").addStyleClass("tableScrollTab");
+
+    }
         // Setup router to handle navigation
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);

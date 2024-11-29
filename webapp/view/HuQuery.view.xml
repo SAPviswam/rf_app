@@ -398,21 +398,21 @@
                                         text="{i18n>Button_Back1_HuQuery}"
                                         press="onPressBackButtonSecondSC"
                                         class="sapUiSmallMarginEnd"
-                                        width="100%"
+                                        width="auto"
                                     />
                                     <Button
                                         id="idHuContentBtn_HuQuery"
                                         text="{i18n>Label_HuContent_HuQuery}"
                                         press="onHUContentPress"
                                         class="sapUiTinyMarginEnd"
-                                         width="100%"
+                                         width="auto"
                                     />
                                     <Button
                                         id="idHuHierarchyBtn_HuQuery"
                                         text="{i18n>Label_HuHierarchy_HuQuery}"
                                         press="onHUHierarchyPress"
                                         class="sapUiTinyMarginEnd"
-                                         width="100%"
+                                         width="auto"
                                     />
                                 </HBox>
                             </VBox>

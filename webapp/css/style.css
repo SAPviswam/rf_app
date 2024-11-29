@@ -1952,6 +1952,9 @@ margin-left:2% !important;
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
 
+    .tableScrollTab{
+        height:800px;
+    }
 /* .addClassinChangeQueue{
     margin-left:  0.9rem;
 }

@@ -216,7 +216,7 @@
                                         icon="sap-icon://nav-back"
                                         text="{i18n>Btn_Back_CQ}"
                                         press="onBackPressInWizard"
-                                     
+                                        width="auto"
                                         type="Emphasized"
                                     />
                                 </f:actions>
@@ -262,6 +262,7 @@
                                         id="idNextBtn_changeQueue"
                                         press="onNextPressProcessArea"
                                         text="{i18n>Btn_next_CQ}"
+                                        width="auto"
                                     
                                     />
                                 </WizardStep>
@@ -294,6 +295,7 @@
                                         id="idNext2Btn_changeQueue"
                                         press="onNextPressProcessGroup"
                                         text="{i18n>Btn_next_CQ}"
+                                        width="auto"
                                     />
                                 </WizardStep>
                                 <!-- Queue wizard -->
@@ -323,11 +325,13 @@
                                         class="sapUiSmallMarginEnd"
                                         text="{i18n>Btn_Submit_CQ}"
                                         press="OnSubmitPress"
+                                        width="auto"
                                     />
                                     <Button
                                         id="idClearBtn_changeQueue"
                                         text="{i18n>Btn_Clear_CQ}"
                                         press="OnClearPress_changeQueue"
+                                        width="auto"
                                     />
                                 </WizardStep>
                             </Wizard>
