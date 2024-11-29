@@ -1981,8 +1981,50 @@ margin-left:2% !important;
     }
 }
 
+.scrollableTable1WTQbyQ {
+    height: 400px; 
+    overflow-y: auto; 
+    overflow-x: auto;  
+  }
+
+    /* Add scroll behavior for overflow */
+    body {
+        overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
+    }
+
+    .scrollableTableWtQuerybyHu{
+        height:350px;
+        overflow-y:auto;
+        overflow-x: auto;
+    }
+
+    .tableScrollTab{
+        height:800px;
+    }
+/* .addClassinChangeQueue{
+    margin-left:  0.9rem;
+}
 
 
+  .MobileviewTable_WtQbyQ{
+    margin-top: 25%;
+    height:600px
+}
 
 
+.MobileviewTableTablet_WtQbyQ{
+    margin-top: 10%;
+    height:800px
+}
+.MobileviewTable_StbqP{
+    margin-top :20%;
+    height:600px
+}
 
+.deleteClassinChangeQueue{
+margin-left:  0.6rem;
+}
+
+.backClassinChangeQueue{
+    margin-left: 0.3rem;
+} */
