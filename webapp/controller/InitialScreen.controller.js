@@ -96,7 +96,7 @@ sap.ui.define([
             load_100_Client_Metadata: function () {
                 var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
                     headers: {
-                        "Authorization": "Basic " + btoa("psrilekha:Artihcus@123"),
+                        "Authorization": "Basic " + btoa("sreedhars:Sreedhar191729"),
                         "sap-client": "100"
                     }
                 });
@@ -785,6 +785,11 @@ sap.ui.define([
                     }
                 });
             },
+            onBeforeRendering: function () {
+                // Reattach the event listener every time the InitialScreen is about to be rendered
+                this._handleKeyDownBound = this._handleKeyDown.bind(this);
+                document.addEventListener("keydown", this._handleKeyDownBound);
+            },            
             onPressCancleSapLogon: function () {
                 this.oConfigSap.close();
             },

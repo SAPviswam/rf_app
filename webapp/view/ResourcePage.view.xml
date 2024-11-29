@@ -135,13 +135,13 @@
                         height="100%"
 
                     > -->
-                    <VBox id="idUnloadingTile">
-                        <!-- <Title
+                    <!-- <VBox id="idUnloadingTile">
+                        <Title
                             id="id_unloading_title"
                             text="Unloading"
                             visible="false"
-                        /> -->
-                    </VBox>
+                        />
+                    </VBox> -->
 
                     <GenericTile
                         id="id_unloading_title"
@@ -208,6 +208,7 @@
                         press="onGenericTilePress"
                         visible="false"
                     />
+                    
                     <!-- <GenericTile
                         id="id_createputawayhusmanually"
                         class="sapUiTinyMargin"
@@ -895,7 +896,8 @@
                 <Dialog
                     id="idthemeTileDialogResource"
                     title="Select Theme Color"
-                    contentHeight="65%"
+                    contentHeight="auto"
+                    contentWidth="auto"
                 >
                     <customHeader>
                         <Bar id="themeDialogHeaderResource">

@@ -23,9 +23,13 @@ sap.ui.define([
 
 			if (Device.system.phone) {
 				this.getView().byId("idAssignedQueueTable_changeQueue").setWidth("200%");
-
+				this.getView().byId("idCapModelRfTitle_changeQueue").addStyleClass("titleMobile");
+				this.getView().byId("idBackBtn_changeQueue").addStyleClass("backBtnChangeQueue");
 			}
 
+           else if(Device.system.tablet){
+			this.getView().byId("idAssignedQueueTable_changeQueue").addStyleClass("tableScrollTab")
+		   }
 			this.processGroupArray = [];
 			var oModel = this.getOwnerComponent().getModel();
 			this.getView().setModel(oModel)

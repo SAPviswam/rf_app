@@ -2571,7 +2571,7 @@ sap.ui.define(
 
 
             // search functionality in User data
-            onSearch: async function (oEvent) {
+            handlerSearchFieldLiveEvent: async function (oEvent) {
                 var sQuery = oEvent.getParameter("newValue").trim().toLowerCase(); // Convert the query to lower case
                 var oTable = this.byId("idUserDataTable"); // ID of your Table
 
@@ -2623,5 +2623,25 @@ sap.ui.define(
                     console.error("Error fetching or filtering data:", error);
                 }
             },
+            onToggleSearch: function () {
+                var oSearchField = this.byId("searchField");
+                var bVisible = oSearchField.getVisible();
+                oSearchField.setVisible(!bVisible);
+                this.byId("searchButton").setVisible(false);
+              },
+              onSearch: function () {
+                // Get the search field and toggle button by their IDs
+                var oSearchField = this.byId("searchField");
+                var oToggleSearchButton = this.byId("toggleSearchButton");
+          
+                // Hide the search field
+                oSearchField.setVisible(false);
+                this.byId("searchButton").setVisible(true);
+          
+                // Toggle the visibility of the button
+                // var bVisible = oToggleSearchButton.getVisible();
+                oToggleSearchButton.setVisible(!bVisible);
+          
+              },
         });
     });

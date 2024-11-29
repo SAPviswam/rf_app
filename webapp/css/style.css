@@ -54,8 +54,35 @@
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
 
 /* Supervisor Page Start */
+.scrollableTableRequesteddata {
+    height: 600px;  /* Adjust the height of the table as required */
+    overflow-y: auto; 
+    overflow-x: auto; 
+  }
+.TableBarForRequestedData{
+    height: 3rem !important;
+    position: fixed !important;
+}
+.RequestedDataClass{
+    font-weight: bold;
+    margin-bottom: 0.45rem !important;
+}
+.TableBarForUserDataSupervisor{
+    height: 3rem !important;
+    position: fixed !important;
+}
+.UserDataClassSupervisor{
+    font-weight: bold;
+    margin-bottom: 0.45rem !important;
+}
 .sapUiSmallMarginTop {
     margin-top: 1rem;
+}
+.EmptyLableClass{
+    margin-top: 1rem !important;
+}
+.EmptyLableClassUserdataSupervisor{
+    margin-top: 1rem !important;
 }
 
 .sapUiSmallMargin {
@@ -984,18 +1011,25 @@
 @media (max-width: 768px) {
     .autoRepackPage {
         flex-direction: column;
-        /* Stack vertically */
         align-items: flex-start;
     }
 
     .autoRepackPage .sapMLabel {
         width: auto !important;
-        /* Adjust labels */
     }
 }
 
+/* Profile PopOver Classes */
 .onProfileOptions {
-    margin-left: -0.2rem !important;
+    margin-left: -0.5rem !important;
+    align-items: start !important;
+}
+.UserNameBold{
+    font-weight: bold !important;
+}
+.NamePhoneClass{
+    margin-top: 0.4rem;
+    margin-right: 1rem;
 }
 
 /* For the Tile View settings  */
@@ -1160,8 +1194,8 @@
 }
 
 .checkBoxforAutosave {
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    margin-left: 0.6rem !important;
+  
 }
 
 @media only screen and (max-width: 600px) {
@@ -1677,9 +1711,10 @@ margin-right: 20%;
 .configureSapBtn_InitialView {
     background-color: whitesmoke;
     color: rgb(249, 126, 3) !important;
-    font-weight: bold !important;
+    font-weight: bolder !important;
     border: 0px;
-
+    font-size: 16px;
+    margin-right: 0.8rem !important;
 }
 .configureSapBtn_InitialView:hover{
     cursor: pointer;
@@ -1805,15 +1840,26 @@ margin-right: 20%;
 .HeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#ec792d;
-    font-size:20px;
+    font-size:15px;  
 }
+
+.MainHeadingInPhone_HelpTourOnEditConfigSAPSystem{
+margin-left:2% !important;
+    color:#ec792d;
+    font-size:large !important; 
+} 
+.MainHeadingInTab_HelpTourOnEditConfigSAPSystem{
+    margin-left:35% !important;
+    color:#ec792d; 
+} 
+
 .SideHeadingIn_HelpTourOnEditConfigSAPSystem{
     font-weight: bold;
     color:#000000;   
 }
 .headerTitleclass_HelpTourOnEditConfigSAPSystem{
-  
-    margin-left: 100%;
+    color: hsl(29, 100%, 50%);
+    margin-left: 90%; 
 }
 .BackInHelpTourOnEditConfigSAPSystem{
     margin-left: 150%; 
@@ -1841,11 +1887,39 @@ margin-right: 20%;
 .floatingTitle {
     position: fixed;
     top: 0;
-    left: 1rem;
-    right: 0;
+    left: 0rem;
+    right: 0rem;
     z-index: 10; 
     padding: 0.5rem;
     
+}
+
+.btns_CQ{
+    right:1rem;
+}
+/* CSS for Sticky HBox */
+.stickyHBox {
+    position: fixed;
+    top: 0;
+    z-index: 100;  /* Ensure it stays above other content */
+      /* Add a background color to avoid transparency issues */
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(247, 246, 246, 0.1);  /* Optional: Adds shadow for better visibility */
+  }
+
+  /* CSS for Scrollable Table */
+  .scrollableTable {
+    height: 450px;  /* Adjust the height of the table as required */
+    overflow-y: auto;
+    overflow-x: auto;  /* Enable vertical scrolling */
+  }
+  /* .changeQueueTable_Tab{
+    height: max-content;
+  }
+   */
+
+.backBtnChangeQueue{
+    left: 0.5rem;
 }
 /* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
@@ -1862,6 +1936,14 @@ margin-right: 20%;
 .MobileviewTable_HUSOQ{
     margin-top: 25%;
 }
+.tab_Table_HuStockOverview{
+    margin-top: 10%;
+}
+.scrollableTable1 {
+    height: 450px;  /* Adjust the height of the table as required */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto;  /* Enable Horizontal scrolling */
+  }
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
 
@@ -1875,56 +1957,74 @@ margin-right: 20%;
 }
 
 
-/* config login view for mobile  */
-@media only screen and (max-width: 480px) {
-    /* Adjust whiteBox for mobile view */
-    .whiteBorderBox {
-        width: 90vw; /* Adjust width to fit mobile screen */
-        height: auto; /* Allow height to adjust based on content */
-        padding: 1rem; /* Add some padding for better spacing */
-        margin-top: 45%; /* Moves the whiteBox down */
-    }
-    
-    /* Adjust padding for the surrounding container */
-    .paddingBox {
-        padding: 1rem; /* Reduce padding for smaller screens */
+/* Media query for tablet screens WT QUERY BY QUEUE */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .myResponsiveHBoxWTQBYQ {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-    /* Center and adjust font size for the title */
-    .loginTitle {
-        font-size: 1.2rem; /* Adjust font size for smaller screens */
-        text-align: center; /* Ensure title remains centered */
+    /* Maintain the same button width for tablets */
+    .myResponsiveButtonWTQBYQ {
+        margin: 4px !important;
+        width: 20% !important;  
+        min-width: 60px;
+        max-width: 50px;
     }
     
-    /* Adjust label and input widths for better alignment */
-    .inputRow Text {
-        width: 30%; /* Adjust label width to fit screen */
+    .myResponsiveHBoxWTQBYQ > .sapMButton {
+        margin-left: 5px !important;
+        margin-right: 5px !important;
     }
+}
 
-    .inputRow Input {
-        width: 65%; /* Adjust input field width */
-    }
-
-    /* Adjust button spacing and size */
-    .sapMBtn {
-        width: 100%; /* Full width buttons on mobile */
-    }
-    
-    /* Ensure overall container is centered and responsive */
-    .contentContainer {
-        margin: 0 auto; /* Center the container horizontally */
-        padding: 0.5rem; /* Reduce padding for compact screens */
-    }
+.scrollableTable1WTQbyQ {
+    height: 400px; 
+    overflow-y: auto; 
+    overflow-x: auto;  
+  }
 
     /* Add scroll behavior for overflow */
     body {
         overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
     }
+
+    .scrollableTableWtQuerybyHu{
+        height:350px;
+        overflow-y:auto;
+        overflow-x: auto;
+    }
+
+    .tableScrollTab{
+        height:800px;
+    }
+/* .addClassinChangeQueue{
+    margin-left:  0.9rem;
 }
 
+
+  .MobileviewTable_WtQbyQ{
+    margin-top: 25%;
+    height:600px
+}
+
+
+.MobileviewTableTablet_WtQbyQ{
+    margin-top: 10%;
+    height:800px
+}
+.MobileviewTable_StbqP{
+    margin-top :20%;
+    height:600px
+}
 
 .deleteClassinChangeQueue{
-    margin-left: 2px;
-    margin-right: 2px;
+margin-left:  0.6rem;
 }
 
+.backClassinChangeQueue{
+    margin-left: 0.3rem;
+} */

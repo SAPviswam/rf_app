@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        // "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/core/UIComponent",
         "sap/ui/Device"
     ],
@@ -14,13 +15,21 @@ sap.ui.define(
 
                 if (Device.system.phone) {
                     this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
+                    this.getView().byId("idTableWTQuerybyQueue").addStyleClass("MobileviewTable_WtQbyQ");
 
+                }
+                if (Device.system.tablet) {
+                    this.getView().byId("idTableWTQuerybyQueue").addStyleClass("MobileviewTableTablet_WtQbyQ");
                 }
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.applyStoredProfileImage();
             },
+            onPressAvatarWTQBQ: function (oEvent) {     
+                this.onPressAvatarEveryTileHelperFunction(oEvent); 
+                },
             onWtQBQueuefirstBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();

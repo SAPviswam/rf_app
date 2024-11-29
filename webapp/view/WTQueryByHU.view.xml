@@ -106,7 +106,7 @@
                                 scanFail="onScanError"
                                 inputLiveUpdate="onScanLiveupdate"
                                 dialogTitle="Enter Warehouse Order Number:"
-                                class="sapUiSmallMarginEnd"
+                               class="sapUiSmallMarginBegin"
                             />
                         </HBox>
                     </form:SimpleForm>
@@ -173,36 +173,41 @@
                                        editable="false"
                                 />
                             </HBox>
-                            <HBox id="idHBox3_WTQueryByHU">
-                                <Button
-                                    id="IdOpenBtnIn_WTQueryByHU"
-                                    text="{i18n>Btn_Open_WtQbWt}"
-                                    press="onWtQBQueueOpenBtnPress"
-                                    class="sapUiTinyMargin"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="IdConfBtnIn_WTQueryByHU"
-                                    text="{i18n>Btn_Conf_WtQbWt}"
-                                    press="onWtQBQueueConfBtnPress"
-                                    class="sapUiTinyMargin"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="IdAllBtnIn_WTQueryByHU"
-                                    text="{i18n>Btn_All_WtQbWt}"
-                                    press="onWtQBQueueAllBtnPress"
-                                    class="sapUiTinyMargin"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="idThirdBackfghfghBtn_HuQuery"
-                                    text="{i18n>Button_Back1_HuQuery}"
-                                    press="onPressBackButtonSecondSC"
-                                    type="Emphasized"
-                                    class="sapUiTinyMargin"
-                                />
-                            </HBox>
+                            <HBox id="idHBox3_WTQueryByHU" >
+    <Button
+        id="IdOpenBtnIn_WTQueryByHU"
+        text="{i18n>Btn_Open_WtQbWt}"
+        press="onWtQBQueueOpenBtnPress"
+        type="Emphasized"
+        class="sapUiTinyMarginEnd"
+        width="auto"
+    />
+    <Button
+        id="IdConfBtnIn_WTQueryByHU"
+        text="{i18n>Btn_Conf_WtQbWt}"
+        press="onWtQBQueueConfBtnPress"
+        type="Emphasized"
+        class="sapUiTinyMarginEnd"
+         width="auto"
+    />
+    <Button
+        id="IdAllBtnIn_WTQueryByHU"
+        text="{i18n>Btn_All_WtQbWt}"
+        press="onWtQBQueueAllBtnPress"
+        type="Emphasized"
+        class="sapUiTinyMarginEnd"
+         width="auto"
+    />
+    <Button
+        id="idThirdBackfghfghBtn_HuQuery"
+        text="{i18n>Button_Back1_HuQuery}"
+        press="onPressBackButtonSecondSC"
+        type="Emphasized"
+         width="auto"
+       
+    />
+</HBox>
+ 
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -215,7 +220,9 @@
                         width="100%"
                         items="{/products}"
                         mode="SingleSelectMaster"
+                        class="scrollableTableWtQuerybyHu"
                         selectionChange="onSelectParticularWT"
+                        sticky="ColumnHeaders,HeaderToolbar"
                     >
                         <columns>
                             <Column id="IDWtNumberIn_WTQBYHU">
@@ -245,9 +252,10 @@
                                     />
                                     <Text
                                         id="IDWTSCell_WTQBYHU"
-                                        text="{= ${WTS} ? 'Confirmed':'Open' }"
+                                        text="{WTS}"
                                     />
                                 </cells>
+                                
                             </ColumnListItem>
                         </items>
                     </Table>
