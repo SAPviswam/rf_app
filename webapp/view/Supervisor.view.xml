@@ -424,7 +424,7 @@
                                 <Button
                                     icon="sap-icon://search"
                                     press="onToggleSearch"
-                                    type="Transparent"
+                                    type="Emphasized"
                                     tooltip="Search"
                                     id="searchButton"
                                 />
@@ -433,6 +433,14 @@
                                     text="Select Filter"
                                     press="onSelectFieldsPress"
                                     width="auto"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idBtnDelete"
+                                    text="Delete"
+                                    press="onPressDeleteUser"
+                                    width="auto"
+                                    type="Emphasized"
                                 />
                             </contentRight>
                         </Bar>
