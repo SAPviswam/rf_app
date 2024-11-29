@@ -36,7 +36,7 @@
                 <Avatar
                     id="_IDGenAvatar1PIBHU"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarPIBHU"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
