@@ -16,12 +16,14 @@
                 text="Background"
                 type="Transparent"
                 press="onBackGroudThemeSelect"
+                width="auto"
             />
             <Button
                 id="idHindiTheme"
                 text="Tile Theme"
                 type="Transparent"
                 press="onTileThemeSelect"
+                width="auto"
             />
         </VBox>
     </Popover>
