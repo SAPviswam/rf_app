@@ -84,44 +84,58 @@ sap.ui.define(
             text: "Authenticating"
           });
         }
-        // Open the Busy Dialog
-        this._oBusyDialog.open();
-
         try {
-          setTimeout(async () => {
-            const oResponse = await this.readData(oModel, sPath, aFilters);
-            if (oResponse.results.length > 0) {
-              const oResult = oResponse.results,
-                sStoredUserId = oResult[0].Userid,
-                sStoredPassword = oResult[0].Password
-              // Use SHA256 for hashing (CryptoJS)
-              const sEncrytpedPass = CryptoJS.SHA256(sUserEnteredPassword).toString(); // encryption with CryptoJS
-              if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncrytpedPass) {
-                // clear input fields
-                this.getView().byId("idUserIDInpt_CL").setValue(""),
-                  this.getView().byId("idPasswordInpt_CL").setValue("");
-                // Destination on Successfull login
-                sap.m.MessageToast.show("Login Successfull")
-                // Close busy dialog
-                this._oBusyDialog.close();
-                const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("InitialScreen");
-              } else {
-                sap.m.MessageToast.show("Authentication failed")
-                // Close busy dialog
-                this._oBusyDialog.close();
-              }
+          // Open busy dialog
+          this._oBusyDialog.open();
+      
+          // Simulate buffer using setTimeout
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+      
+          // Fetch data from the model
+          const oResponse = await this.readData(oModel, sPath, aFilters);
+      
+          if (oResponse.results.length > 0) {
+            const oResult = oResponse.results[0],
+               sStoredUserId = oResult.Userid,
+                 sStoredPassword = oResult.Password;
+      
+            // Encrypt user-entered password with SHA256
+            const sEncryptedPass = CryptoJS.SHA256(sUserEnteredPassword).toString();
+      
+            if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncryptedPass) {
+              this._onLoginSuccess();
             } else {
-              sap.m.MessageToast.show("user ID not found")
-              // Close busy dialog
-              this._oBusyDialog.close();
+              this._onLoginFail("Authentication failed");
             }
-          }, 1000);
+          } else {
+            this._onLoginFail("User ID not found");
+          }
         } catch (error) {
-          sap.m.MessageToast.show("Something went wrong please try again later")
-          console.error("Error:" + error)
+          sap.m.MessageToast.show("Something went wrong. Please try again later.");
+          console.error("Error:", error);
+        } finally {
+          // Close busy dialog
+          this._oBusyDialog.close();
         }
       },
+      _onLoginSuccess() {
+        // Clear input fields
+        this.getView().byId("idUserIDInpt_CL").setValue("");
+        this.getView().byId("idPasswordInpt_CL").setValue("");
+      
+        // Show success message
+        sap.m.MessageToast.show("Login Successful");
+      
+        // Navigate to the Initial Screen
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("InitialScreen");
+      },
+      
+      _onLoginFail(sMessage) {
+        // Show failure message
+        sap.m.MessageToast.show(sMessage);
+      },
+      
       onForgotPasswordPress: async function () {
         if (!this.forgotPass) {
           this.forgotPass = await this.loadFragment("ForgotPassword");
@@ -144,7 +158,6 @@ sap.ui.define(
 
         }
       },
-      // test
       onUpdatePasswordPress: async function () {
         const oModel = this.getOwnerComponent().getModel(),
           oUserView = this.getView(),
@@ -245,11 +258,7 @@ sap.ui.define(
         } catch (error) {
           sap.m.MessageToast.show("Failed to read data " + error)
         }
-
-
-
       },
-      // test
 
       onNavToSignUpPage: function () {
 
