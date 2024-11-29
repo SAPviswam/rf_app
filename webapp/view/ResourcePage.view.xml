@@ -896,7 +896,8 @@
                 <Dialog
                     id="idthemeTileDialogResource"
                     title="Select Theme Color"
-                    contentHeight="65%"
+                    contentHeight="auto"
+                    contentWidth="auto"
                 >
                     <customHeader>
                         <Bar id="themeDialogHeaderResource">
