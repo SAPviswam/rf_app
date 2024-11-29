@@ -1959,7 +1959,6 @@ margin-left:2% !important;
 
 /* Media query for tablet screens WT QUERY BY QUEUE */
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* Ensure the HBox remains horizontal and buttons are centered */
     .myResponsiveHBoxWTQBYQ {
         display: flex;
         flex-direction: row;
@@ -1971,7 +1970,7 @@ margin-left:2% !important;
     /* Maintain the same button width for tablets */
     .myResponsiveButtonWTQBYQ {
         margin: 4px !important;
-        width: 20% !important;  /* Maintain button width same as mobile */
+        width: 20% !important;  
         min-width: 60px;
         max-width: 50px;
     }
@@ -1981,6 +1980,12 @@ margin-left:2% !important;
         margin-right: 5px !important;
     }
 }
+
+.scrollableTable1WTQbyQ {
+    height: 400px; 
+    overflow-y: auto; 
+    overflow-x: auto;  
+  }
 
     /* Add scroll behavior for overflow */
     body {
@@ -2001,11 +2006,24 @@ margin-left:2% !important;
 }
 
 
+  .MobileviewTable_WtQbyQ{
+    margin-top: 25%;
+    height:600px
+}
+
+
+.MobileviewTableTablet_WtQbyQ{
+    margin-top: 10%;
+    height:800px
+}
+.MobileviewTable_StbqP{
+    margin-top :20%;
+    height:600px
+}
 
 .deleteClassinChangeQueue{
 margin-left:  0.6rem;
 }
-
 
 .backClassinChangeQueue{
     margin-left: 0.3rem;

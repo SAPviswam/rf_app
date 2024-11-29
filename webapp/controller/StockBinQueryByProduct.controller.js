@@ -20,7 +20,7 @@ sap.ui.define(
         this._cacheExpiryTime = 60000;
         if (Device.system.phone) {
           this.getView().byId("idTable_SBQP").setWidth("150%");
-
+          this.getView().byId("idTable_SBQP").addStyleClass("MobileviewTable_StbqP");
         }
 
       },
