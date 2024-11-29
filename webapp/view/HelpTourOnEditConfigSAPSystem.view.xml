@@ -1,32 +1,33 @@
 <mvc:View
-	controllerName="com.app.rfapp.controller.HelpTourOnEditConfigSAPSystem"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	xmlns:f="sap.f"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:layout="sap.ui.layout"
-	height="100%">
-	<NavContainer id="navContainer">
-		<pages>
-			<f:DynamicPage
-				id="dynamicPage"
-				
-				stickySubheaderProvider="ShoppingCartWizard"
-				class="sapUiNoContentPadding"
-				showFooter="true">
-				<!-- DynamicPage Title -->
-				<f:title>
-					<f:DynamicPageTitle id="idDynamicPageTitle" >
-						<f:heading>
+    controllerName="com.app.rfapp.controller.HelpTourOnEditConfigSAPSystem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    height="100%">
+    <NavContainer id="navContainer">
+        <pages>
+            <f:DynamicPage
+                id="dynamicPage"
+               
+                stickySubheaderProvider="ShoppingCartWizard"
+                class="sapUiNoContentPadding"
+                showFooter="true">
+                <!-- DynamicPage Title -->
+                <f:title>
+                    <f:DynamicPageTitle id="idDynamicPageTitle" >
+                        <f:heading>
                      
-							<Title  id="idPageTitle_HelpTourOnEditConfigSAPSystem" class="headerTitleclass_HelpTourOnEditConfigSAPSystem"  text="Help document on Config SAP System" />
-					
+                            <Title  id="idPageTitle_HelpTourOnEditConfigSAPSystem" class="headerTitleclass_HelpTourOnEditConfigSAPSystem"  text="Help document on Config SAP System" />
+                   
                         </f:heading>
-					</f:DynamicPageTitle>
-				</f:title>
-				<!-- DynamicPage Header -->
-				<f:content>
-				  <ScrollContainer id="idScrollContainerIn_HelpTourOnEditConfigSAPSystem"
+                    </f:DynamicPageTitle>
+                </f:title>
+                <!-- DynamicPage Header -->
+                <f:content>
+                  <ScrollContainer id="idScrollContainerIn_HelpTourOnEditConfigSAPSystem"
+
                 height="100%"  
                 width="100%"    
                 horizontal="false"  
@@ -37,10 +38,8 @@
                 <form:SimpleForm
                     id="idSimpleformIn_HelpTourOnEditConfigSAPSystem"
                     editable="true"
-                >
-                
+                >             
                 <VBox id="idVbox1In_HelpTourOnEditConfigSAPSystem" >
-                <!-- <Input id="dfg" visible="true" editable="true" /> -->
                     <!-- Section: System Connection Configuration Fields -->
                     <Text id="idText01In_HelpTourOnEditConfigSAPSystem" text="1. System Connection Configuration fields:"  class="HeadingIn_HelpTourOnEditConfigSAPSystem"   />
                    
@@ -125,83 +124,33 @@
                     <Text id="idText044In_HelpTourOnEditConfigSAPSystem" text="4. Save Changes:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
                     <Text id="idText045In_HelpTourOnEditConfigSAPSystem" text="After making necessary changes to the editable fields, click Save to update the system configuration. If any of the editable fields have incorrect or missing data, the system should prompt the user to correct it before saving." />
                     <Text id="idText046In_HelpTourOnEditConfigSAPSystem" text="5. Client Field Check:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
-                    <Text id="idText047In_HelpTourOnEditConfigSAPSystem" text="If the user tries to modify the Client field (which should not be allowed), 'The client field cannot be changed after initial configuration.'" />
+                    <Text id="idText047In_HelpTourOnEditConfigSAPSystem" text="If the user tries to modify the Client field (which should not be allowed)" />
                                      <Image
                     width="100%"
                     id="idGenImage006_HTOECSS"
                     src="../Images/client.png"
                 />
-<Label id="idEmptyLabel04In_HTOECSS" width="10px"   />
-                    <Text id="idText048In_HelpTourOnEditConfigSAPSystem" text="4. Sample Values:"  class="HeadingIn_HelpTourOnEditConfigSAPSystem" />
-                    <!-- <Table  id="idSamnpleDataIn_HelpTourOnEditConfigSAPSystem"  >
-                        <columns >
-                            <Column id="idClmn1In_HelpTourOnEditConfigSAPSystem" >
-                                <Text id="idText049In_HelpTourOnEditConfigSAPSystem" text="Field" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
-                            </Column>
-                            <Column id="idClmnListItem18In_HelpTourOnEditConfigSAPSystem" >
-                                <Text id="idText050In_HelpTourOnEditConfigSAPSystem" text="Sample Value" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
-                            </Column>
-                        </columns>
-                        <items>
-                            <ColumnListItem  id="idClmnListItem17In_HelpTourOnEditConfigSAPSystem">
-                                <cells>
-                                    <Text id="idText051In_HelpTourOnEditConfigSAPSystem" text="Description" />
-                                    <Text id="idText052In_HelpTourOnEditConfigSAPSystem" text="AKE/100" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem16In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText053In_HelpTourOnEditConfigSAPSystem" text="System ID" />
-                                    <Text id="idText054In_HelpTourOnEditConfigSAPSystem" text="AKE" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem15In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText055In_HelpTourOnEditConfigSAPSystem" text="Instance Number" />
-                                    <Text id="idText056In_HelpTourOnEditConfigSAPSystem" text="06" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem134In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText057In_HelpTourOnEditConfigSAPSystem" text="Client" />
-                                    <Text id="idText058In_HelpTourOnEditConfigSAPSystem" text="100" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem12In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText059In_HelpTourOnEditConfigSAPSystem" text="Application Server" />
-                                    <Text id="idText60In_HelpTourOnEditConfigSAPSystem" text="sapserver.comp.com" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem111In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText71In_HelpTourOnEditConfigSAPSystem" text="SAP Router String" />
-                                    <Text id="idText72In_HelpTourOnEditConfigSAPSystem" text="192.18.668.16" />
-                                </cells>
-                            </ColumnListItem>
-                            <ColumnListItem id="idClmnListItem1In_HelpTourOnEditConfigSAPSystem" >
-                                <cells>
-                                    <Text id="idText73In_HelpTourOnEditConfigSAPSystem" text="SAP Service (opt)" />
-                                    <Text id="idText74In_HelpTourOnEditConfigSAPSystem" text="/sap/opu/odata/sap/zodata_srv" />
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table> -->
-                             <!-- <Image
+
+<Label id="idEmptyLabel04In_HTOECSS" width="10px"/>
+    <Text id="idText048In_HelpTourOnEditConfigSAPSystem" text="4. Sample Values:"  class="HeadingIn_HelpTourOnEditConfigSAPSystem" />
+     
+                   
+                                <Image
                     width="100%"
-                    id="idGenImageLast_HTOECSS"
-                    src="../Images/lastImage.png"/> -->
-                    
+                    id="idGenImage94_HTOECSS"
+                    src="../Images/ConfigSAPDialog.png"
+                />
+                   
                     </VBox>
                 </form:SimpleForm>
-            </ScrollContainer>	
-				</f:content>
-				<!-- DynamicPage Footer -->
-				<f:footer>
+            </ScrollContainer>  
+                </f:content>
+                <!-- DynamicPage Footer -->
+                <f:footer>
     <OverflowToolbar id="idOverFlowToolbarIn_HelpTourOnEditConfigSAPSystem">
         <!-- Spacer before the button to center it -->
         <ToolbarSpacer id="idToolbar1In_HelpTourOnEditConfigSAPSystem" />
-        
+       
         <!-- Back Button -->
         <Button
             id="idBackBtnIn_HelpTourOnEditConfigSAPSystem"
@@ -210,13 +159,15 @@
             press="onPressBackBtnIn_HelpTourOnEditConfigSAPSystem"
             class="BackInHelpTourOnEditConfigSAPSystem"
         />
-        
+       
         <!-- Spacer after the button to center it -->
         <ToolbarSpacer id="id1ToolbarIn_HelpTourOnEditConfigSAPSystem" />
     </OverflowToolbar>
 </f:footer>
-			</f:DynamicPage>
-			
-		</pages>
-	</NavContainer>
+            </f:DynamicPage>
+           
+        </pages>
+    </NavContainer>
 </mvc:View>
+ 
+ 

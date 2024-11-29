@@ -17,6 +17,7 @@ sap.ui.define(
           this.getView().byId("idSimpleForm4_WTQBYHU").setWidth("150%");
           this.getView().byId("idPage4ProductDescription_WTQBYHU").setWidth("140%");
           this.getView().byId("idSimpleFormPage4PD_WTQBYHU").setWidth("140%");
+          this.getView().byId("idTitle_WtQueryByHu").addStyleClass("titleMobile");
       }
       else if(Device.system.tablet){
         this.getView().byId("idHUNumTable_WTQBYHU").addStyleClass("tableScrollTab");
@@ -112,7 +113,10 @@ sap.ui.define(
                 oPayload.WarehouseTask.WT = element.Tanum;
                 oPayload.WarehouseTask.WTIt = element.Tapos;
                 oPayload.WarehouseTask.WTs = odata.HUtoWT.results.length;
-                oPayload.WarehouseTask.Sts = element.Tostat;
+                let smallToast=element.Tostat.toLowerCase();
+                let oStatus=smallToast===""?"Open":(smallToast==="a"?"Canceled":(smallToast==="b"?"Waiting":"Confirmed"))
+                oPayload.WarehouseTask.Sts = oStatus;
+
                 oPayload.WarehouseTask.Ptyp = element.Procty;
                 oPayload.WarehouseTask.Spro = element.Prces;
                 oPayload.WarehouseTask.Acty = element.ActType;
@@ -258,7 +262,8 @@ sap.ui.define(
                 for (var i = 0; i < oDetails.length; i++) {
                   aProductDetails.push({
                     WT: oDetails[i].Tanum,
-                    WTS: oDetails[i].Tostat
+                    WTS:oDetails[i].Tostat.toLowerCase()===""?"Open":(oDetails[i].Tostat.toLowerCase()==="a"?"Canceled":(oDetails[i].Tostat.toLowerCase()==="b"?"Waiting":"Confirmed"))
+                   
                   });
                 }
                 that.getView().byId("idInputWTS_WTQBYHU").setValue(oDetails.length);

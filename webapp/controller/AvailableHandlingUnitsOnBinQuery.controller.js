@@ -12,14 +12,11 @@ sap.ui.define(
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-
-
                 this._debouncedValidate = this._debounce(this._validateBinNumber.bind(this), 500); // 500ms delay
 
-
                 if (Device.system.phone) {
-                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");
-                    this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("MobileviewTable_HUSOQ");
+                    this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");// FOR SCROLLABLE CONTAINER
+                    this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("MobileviewTable_HUSOQ");// FOR TABLE ADJUSTABLE
                    
                 }
             },
@@ -188,85 +185,6 @@ sap.ui.define(
                 oScrollContainer4.setVisible(false);
             },
             
-            // //Submit Btn from ScrollContainer Page 1=> idPage1_AHUOBQ..
-            // onSubmitPress_AHUOBQ: function () {
-              
-            //     // Get the input value from the input field
-            //     var oView = this.getView();
-            //     var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
-            //     this.sBinNumber = sBinNumber;
-          
-            //     // Check if bin number is provided
-            //     if (!sBinNumber) {
-            //       sap.m.MessageToast.show("Please enter a bin number.");
-            //       return;
-            //     }
-          
-            //     // Call your backend service to fetch products for this bin
-            //     var oModel = this.getView().getModel(); // Assuming you have a model set up
-            //     var that = this;
-          
-            //     oModel.read(`/BINQItemSet('${sBinNumber}')`, {
-            //       urlParameters: {
-            //         "$expand": "BINQHeadSet",
-                    
-            //         "$format": "json"
-            //       },
-          
-            //       success: function (odata) {
-            //         console.log(odata);
-            //         if(odata.Lgpla === sBinNumber) {
-            //         that.getView().byId("idPage1_AHUOBQ").setVisible(false);
-            //         that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
-            //         that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
-          
-            //         // Get the product details from the response
-            //         let oDetails = odata.BINQHeadSet.results;
-          
-            //         // Prepare an array for binding
-            //         var aProductDetails = [];
-          
-            //         // Loop through the results and push them into the array
-            //         for (var i = 0; i < oDetails.length; i++) {
-            //           if (oDetails[i].Huident) {
-            //             aProductDetails.push({
-            //                 Huident: oDetails[i].Huident,
-            //                 Matnr: oDetails[i].Matnr,
-            //                 Flgmove: that.getStatusText(oDetails[i].Flgmove)
-            //             });
-            //           }
-            //         }
-          
-                    
-            //         // Create a JSON model with the product details array
-            //         var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-          
-            //         // Set the model to the table
-            //         that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
-          
-            //         // Bind the items aggregation of the table to the products array in the model
-            //         that.byId("idBinNumTable_AHUOBQ").bindItems({
-            //           path: "/products",
-            //           template: new sap.m.ColumnListItem({
-            //             cells: [
-            //               new sap.m.Text({ text: "{Huident}" }),  // Hu
-            //               new sap.m.Text({ text: "{Matnr}" }),   // 
-            //               new sap.m.Text({ text: "{Flgmove}" })   // 
-            //             ],
-                      
-            //           })
-            //         });
-            //     } else {
-            //         sap.m.MessageToast.show("Enter a Valid Binnumber.");
-            //     }
-            //       },
-            //       error: function () {
-            //         sap.m.MessageToast.show("Error fetching products.");
-            //       }
-            //     });
-            //   },
-
-            
             onSelectionChange: function (oEvent) {
               // Get the selected item
               var oSelectedItem = oEvent.getParameter("listItem");
@@ -279,66 +197,6 @@ sap.ui.define(
                   this._selectedRowContext = null;
               }
           },
-        //   onChange: function (oEvent) {
-        //     var oInput = oEvent.getSource();
-        //     var sBinNumber = oInput.getValue().trim();
-        
-        //     // Check if bin number is provided
-        //     if (!sBinNumber) {
-        //         this._showErrorMessage("Please enter a bin number.");
-        //         return;
-        //     }
-        
-        //     // Call backend service to check if bin number is valid
-        //     var oModel = this.getView().getModel();
-        //     var that = this;
-        
-        //     oModel.read(`/BINQItemSet('${sBinNumber}')`, {
-        //         urlParameters: {
-        //             "$expand": "BINQHeadSet",
-        //             "$format": "json"
-        //         },
-        //         success: function (odata) {
-        //             if (odata.Lgpla === sBinNumber) {
-        //                 // Clear any error message before proceeding
-        //                 sap.m.MessageToast.show("", { duration: 0 }); 
-        
-        //                 // Bin number is valid, proceed to the next screen
-        //                 that.getView().byId("idPage1_AHUOBQ").setVisible(false);
-        //                 that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
-        //                 that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
-        
-        //                 // Populate product details in the table
-        //                 let oDetails = odata.BINQHeadSet.results;
-        //                 let aProductDetails = oDetails.map(detail => ({
-        //                     Huident: detail.Huident,
-        //                     Matnr: detail.Matnr,
-        //                     Flgmove: that.getStatusText(detail.Flgmove)
-        //                 }));
-        
-        //                 // Set data in the table's model
-        //                 var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
-        //                 that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
-        //                 that.byId("idBinNumTable_AHUOBQ").bindItems({
-        //                     path: "/products",
-        //                     template: new sap.m.ColumnListItem({
-        //                         cells: [
-        //                             new sap.m.Text({ text: "{Huident}" }),
-        //                             new sap.m.Text({ text: "{Matnr}" }),
-        //                             new sap.m.Text({ text: "{Flgmove}" })
-        //                         ]
-        //                     })
-        //                 });
-        //             } else {
-        //                 // Show error message if bin number is invalid
-        //                 sap.m.MessageToast.show("Enter a valid bin number.", { duration: 3000 });
-        //             }
-        //         },
-        //         error: function () {
-        //             that._showErrorMessage("Error fetching products.");
-        //         }
-        //     });
-        // },
         
         _showErrorMessage: function (message) {
             sap.m.MessageToast.show(message, { duration: 3000 });
