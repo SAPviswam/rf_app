@@ -1993,6 +1993,9 @@ margin-left:2% !important;
         overflow-x: auto;
     }
 
+    .tableScrollTab{
+        height:800px;
+    }
 /* .addClassinChangeQueue{
     margin-left:  0.9rem;
 }

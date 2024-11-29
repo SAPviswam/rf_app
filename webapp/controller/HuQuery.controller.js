@@ -37,7 +37,11 @@ sap.ui.define([
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("pr.des"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("hlHu"));
                 oHighestLevelHu.setText(i18nModel.getResourceBundle().getText("hstlHu"));
-            } else {
+            } else if(Device.system.tablet){
+                this.getView().byId("idSimpleTable_HuQuery").addStyleClass("tableScrollTab");
+                this.getView().byId("HuDetailsTable_HuQuery").addStyleClass("tableScrollTab")
+            }
+            else {
                 oQuantityHeader.setText(i18nModel.getResourceBundle().getText("quantity"));
                 oProductDescriptionHeader.setText(i18nModel.getResourceBundle().getText("productdescription"));
                 oHigherLevelHu.setText(i18nModel.getResourceBundle().getText("higherLevelHu"));
