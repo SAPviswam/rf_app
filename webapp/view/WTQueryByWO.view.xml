@@ -182,8 +182,9 @@
                                 id="WtQBWoOpenBtn"
                                 text="{i18n>Open_button_WTQbyWO}"
                                 press="onWtQBWoOpenBtnPress"
-                                class="sapUiTinyMarginEnd"
                                 type="Emphasized"
+                                class="sapUiTinyMarginEnd"
+                                width="auto"
                             />
                             <Button
                                 id="WtQBWoConfBtn"
@@ -191,13 +192,15 @@
                                 press="onWtQBWoConfBtnPress"
                                 type="Emphasized"
                                 class="sapUiTinyMarginEnd"
+                                width="auto"
                             />
                             <Button
                                 id="WtQBWoAllBtn"
                                 text="{i18n>ALL_Button_WTQbyWO}"
                                 press="onWtQBWoAllBtnPress"
-                                class="sapUiTinyMarginEnd"
                                 type="Emphasized"
+                                class="sapUiTinyMarginEnd"
+                                width="auto"
                             />
                             <Button
                                 id="idWtQBWoSecondbackbtn"
@@ -205,6 +208,7 @@
                                 press="onWtQBWoSecondBackBtnPress"
                                 type="Emphasized"
                                 visible="false"
+                                width="auto"
                             />
                         </HBox>
                     </form:SimpleForm>
@@ -536,6 +540,7 @@
                                         press="onWtQBWoDetailBtnPress"
                                         type="Emphasized"
                                         class="sapUiTinyMarginEnd"
+                                        width="auto"
                                     />
                                     <Button
                                         id="idWtQBWoThirdbackbtn"
@@ -543,6 +548,7 @@
                                         press="onWtQBWoThirdBackBtnPress"
                                         visible="false"
                                         type="Emphasized"
+                                        width="auto"
                                     />
                                 </HBox>
                             </VBox>
@@ -750,6 +756,7 @@
                                         text="{i18n>Back_button_WTQbyWO}"
                                         press="onWtQBWoFourthBackBtnPress"
                                         visible="false"
+                                        width="auto"
                                         type="Emphasized"
                                     />
                                 </HBox>
@@ -758,541 +765,6 @@
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
-            <!-- <ScrollContainer
-                id="idWtQBWoWhFifthsc"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-                <VBox id="idVbox_WTQueryByWO9"
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <form:SimpleForm
-                        id="idWtQBWoSF5"
-                        layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
-                        columnsM="1"
-                        columnsXL="1"
-                    >
-                        <VBox id="idVbox_WTQueryByWO10">
-                            <HBox id="idHbox_WTQueryByWO18"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWowtLabel2"
-                                    text="WT"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWowtInput2"
-                                    value=""
-                                />
-                                <Label width="20px" />
-
-                                <Label
-                                    id="idWtQBWoWTitLabel2"
-                                    text="WTit"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoWTitInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoWTitAllInput2"
-                                    value=""
-                                />
-                            </HBox>
-                            <HBox id="idHbox_WTQueryByWO19"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWowtsLabel2"
-                                    text="WTs"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWowtsInput2"
-                                    value=""
-                                />
-
-                                <Label width="20px" />
-
-                                <Label
-                                    id="idWtQBWoStsLabel2"
-                                    text="Sts"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoStsInput2"
-                                    value=""
-                                />
-                                <Label width="30px" />
-                                <Label
-                                    id="idWtQBWoPtypLabel2"
-                                    text="Ptyp"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoPtypInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO20"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoSproLabel2"
-                                    text="Spro"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoSproInput2"
-                                    value=""
-                                />
-                                <Label width="20px" />
-                                <Label
-                                    id="idWtQBWoActyLabel2"
-                                    text="Acty"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoActyInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoActyEmpInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO21"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoProLabel2"
-                                    text="Pro"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoProInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoProEmpInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO22"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoSbinLabel2"
-                                    text="Sbin"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoSbinInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoSbinEmpInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO23"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoDbinLabel2"
-                                    text="Dbin"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoDbinInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoDbinEmpInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO24"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoCdatLabel2"
-                                    text="Cdat"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoCdatInput2"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoCdatnput2"
-                                    value=""
-                                />
-                                <Label width="20px" />
-                                <Label
-                                    id="idWtQBWoCusrLabel2"
-                                    text="Cusr"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoCusrInput2"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO25"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Button
-                                    id="WtQBWoDetailBtn2"
-                                    text="Detail"
-                                    press="onWtQBWoDetailBtnPress2"
-                                />
-                                <Button
-                                    id="WtQBWoOpenBtn2"
-                                    text="Open"
-                                    press="onWtQBWoOpenBtnPress2"
-                                />
-                                <Button
-                                    id="WtQBWoConfBtn2"
-                                    text="Conf"
-                                    press="onWtQBWoConfBtnPress2"
-                                />
-                                <Button
-                                    id="WtQBWoAllBtn2"
-                                    text="All"
-                                    press="onWtQBWoAllBtnPress2"
-                                />
-                            </HBox>
-                        </VBox>
-                    </form:SimpleForm>
-                </VBox>
-            </ScrollContainer>
-            <ScrollContainer
-                id="idWtQBWoWhSixthsc"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-                <VBox id="idVbox_WTQueryByWO11"
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <form:SimpleForm
-                        id="idWtQBWoSF6"
-                        layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
-                        columnsM="1"
-                        columnsXL="1"
-                    >
-                        <VBox id="idVbox_WTQueryByWO12">
-                            <HBox id="idHbox_WTQueryByW26"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWowtLabel3"
-                                    text="WT"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWowtInput3"
-                                    value=""
-                                />
-                                <Label width="20px" />
-                                <Label
-                                    id="idWtQBWoWTitLabel3"
-                                    text="WTit"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoWTitInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoWTitAllInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO27"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWowtsLabel3"
-                                    text="WTs"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWowtsInput3"
-                                    value=""
-                                />
-                                <Label width="20px" />
-                                <Label
-                                    id="idWtQBWoStsLabel3"
-                                    text="Sts"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoStsInput3"
-                                    value=""
-                                />
-                                <Label width="20px" />
-                                <Label
-                                    id="idWtQBWoPtypLabel3"
-                                    text="Ptyp"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoPtypInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO28"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoSproLabel3"
-                                    text="Spro"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoSproInput3"
-                                    value=""
-                                />
-                                <Label width="20px" />
-
-                                <Label
-                                    id="idWtQBWoActyLabel3"
-                                    text="Acty"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoActyInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoActyEmpInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO29"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoProLabel3"
-                                    text="Pro"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoProInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoProEmpInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO30"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoSbinLabel3"
-                                    text="Sbin"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoSbinInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoSbinEmpInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO31"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoDbinLabel3"
-                                    text="Dbin"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoDbinInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoDbinEmpInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO32"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWoCdatLabel3"
-                                    text="Cdat"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoCdatInput3"
-                                    value=""
-                                />
-                                <Input
-                                    id="idWtQBWoCdatnput3"
-                                    value=""
-                                />
-
-                                <Label
-                                    id="idWtQBWoCusrLabel3"
-                                    text="Cusr"
-                                    width="50px"
-                                />
-                                <Input
-                                    id="idWtQBWoCusrInput3"
-                                    value=""
-                                />
-                            </HBox>
-
-                            <HBox id="idHbox_WTQueryByWO33"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Button
-                                    id="WtQBWoDetailBtn3"
-                                    text="Detail"
-                                    press="onWtQBWoDetailBtnPress3"
-                                />
-                                <Button
-                                    id="WtQBWoOpenBtn3"
-                                    text="Open"
-                                    press="onWtQBWoOpenBtnPress3"
-                                />
-                                <Button
-                                    id="WtQBWoConfBtn3"
-                                    text="Conf"
-                                    press="onWtQBWoConfBtnPress3"
-                                />
-                                <Button
-                                    id="WtQBWoAllBtn3"
-                                    text="All"
-                                    press="onWtQBWoAllBtnPress3"
-                                />
-                            </HBox>
-                        </VBox>
-                    </form:SimpleForm>
-                </VBox>
-            </ScrollContainer>
-            <ScrollContainer
-                id="idWtQBWoWhSeventhsc"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-                <VBox id="idVbox_WTQueryByWO13"
-                    alignContent="Center"
-                    alignItems="Center"
-                >
-                    <form:SimpleForm
-                        id="idWtQBWoSF7"
-                        layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
-                        columnsM="1"
-                        columnsXL="1"
-                    >
-                        <VBox id="idVbox_WTQueryByWO14">
-                            <HBox id="idHbox_WTQueryByWO34"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idWtQBWhorLabel"
-                                    text="Warehouse Order"
-                                    width="150px"
-                                />
-                                <Input
-                                    id="idWtQBWhorInput"
-                                    value=""
-                                />
-                            </HBox>
-                            <HBox id="idHbox_WTQueryByWO35"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Button
-                                    id="idWtQBWoWtnobtn"
-                                    text="WT.No"
-                                    press="onWtQBWoWtnobtnPress"
-                                />
-                                <Button
-                                    id="idWtQBWoOpenWtbtn"
-                                    text="WT.No"
-                                    press="onWtQBWoOpenwtbtnPress"
-                                />
-                                <Label width="30px" />
-                                <Button
-                                    id="idWtQBWoWtno2btn"
-                                    text="WT.No"
-                                    press="onWtQBWoWtno2btnPress"
-                                />
-                                <Button
-                                    id="idWtQBWoConfWtbtn"
-                                    text="WT.No"
-                                    press="onWtQBWoConfwtbtnPress"
-                                />
-                            </HBox>
-                        </VBox>
-                    </form:SimpleForm>
-                </VBox>
-            </ScrollContainer> -->
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
