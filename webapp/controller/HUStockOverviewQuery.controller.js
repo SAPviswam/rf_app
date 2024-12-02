@@ -28,7 +28,8 @@ sap.ui.define(
       }
       
       if (Device.system.tablet) {
-        this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("tab_Table_HuStockOverview");
+        this.getView().byId("idBinNumberTableInput_HUSOQ").addStyleClass("tab_Table_HuStockOverview");
+        this.getView().byId("idTable_HUSOQ").addStyleClass("tab_Table_HuStockOverview");
     }
 
       },
