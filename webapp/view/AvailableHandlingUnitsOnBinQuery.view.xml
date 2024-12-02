@@ -470,6 +470,7 @@
                                 class="sapUiTinyMarginBottom"
                                 text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
+                                width="auto"
                             />
                         </VBox>
                     </form:SimpleForm>
@@ -608,6 +609,7 @@
                                 press="onBackPressProductDescription"
                                 text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
+                                width="auto"
                             />
                         </VBox>
                     </form:SimpleForm>
