@@ -87,20 +87,20 @@
                          <Image
                     width="100%"
                     id="idGenImage2HUQuery_HTOECSS"
-                    src="../Images/ConfigSAPSystemScreen.png"
+                    src="https://i.ibb.co/R0H6tcp/55fe813b71c1.png"
                 />
                 <Text id="idText033In_HelpTourOnEditConfigSAPSystem" text="Identify or select the system configuration you wish to edit and click on edit Button (using the system ID or description). "/>
                        <Image
                     width="100%"
                     id="idGenImage3_HTOECSS"
-                    src="../Images/EditingSystem.png"
+                    src="https://i.ibb.co/wB7kvZZ/89b868601b43.png"
                 />
                     <Text id="idText034In_HelpTourOnEditConfigSAPSystem" text="2. Click on Edit Option:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
                     <Text id="idText035In_HelpTourOnEditConfigSAPSystem" text="Once the system entry is selected, there should be an 'Edit' button or option that allows you to modify the configuration details." />
                            <Image
                     width="100%"
                     id="idGenImage4_HTOECSS"
-                    src="../Images/ConfigSAPDialog.png"
+                    src="https://i.ibb.co/n7r2wH2/dfb1fedaa0d2.png"
                 />
                     <Text id="idText036In_HelpTourOnEditConfigSAPSystem" text="3. Edit Allowed Fields:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
                     <Text id="idText037In_HelpTourOnEditConfigSAPSystem" text="When you Select a system and click on the Edit button, the form for editing the system configuration will be displayed."/>
@@ -113,7 +113,7 @@
                             <Image
                     width="100%"
                     id="idGenImage8_HTOECSS"
-                    src="../Images/CurrentlyEditing.png"
+                    src="https://i.ibb.co/ZM5JTLH/5b182f16ad44.jpg"
                 />
                     <Text id="idText043In_HelpTourOnEditConfigSAPSystem" text="Changes were Updated."/>
                                 <Image
@@ -128,7 +128,7 @@
                                      <Image
                     width="100%"
                     id="idGenImage006_HTOECSS"
-                    src="../Images/client.png"
+                    src="https://i.ibb.co/31N4KbV/051b13842518.jpg"
                 />
 
 <Label id="idEmptyLabel04In_HTOECSS" width="10px"/>
@@ -138,7 +138,7 @@
                                 <Image
                     width="100%"
                     id="idGenImage94_HTOECSS"
-                    src="../Images/ConfigSAPDialog.png"
+                    src="https://i.ibb.co/n7r2wH2/dfb1fedaa0d2.png"
                 />
                    
                     </VBox>
