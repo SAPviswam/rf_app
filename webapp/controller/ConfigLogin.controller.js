@@ -38,16 +38,7 @@ sap.ui.define(
         });
         this.getView().setModel(OData, "ODataModel");
 
-        // Route based on id
-        // const oRouter = this.getOwnerComponent().getRouter();
-        // oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this);
-
       },
-
-      // onUserDetailsLoad: async function (oEvent1) {
-      //   const { Userid } = oEvent1.getParameter("arguments");
-      //   this.Userid = Userid;
-      // },
 
       onAppLoginPress: async function () {
         const oModel = this.getOwnerComponent().getModel(),
@@ -137,7 +128,9 @@ sap.ui.define(
 
         // Navigate to the Initial Screen
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID });
+        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID },true);
+        window.location.reload(true);
+
       },
 
       _onLoginFail(sMessage) {

@@ -11,15 +11,22 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
-            onInit: function () {
-                this.load_100_Client_Metadata();
+            onInit: async function () {
+
+                if (!this._loadingSysDialog) {
+                    this._loadingSysDialog = new sap.m.BusyDialog({
+                        text: "Please wait while Loading configured systems"
+                    });
+                }
+                // Open the Busy Dialog
+                this._loadingSysDialog.open();
+
+                await this.load_100_Client_Metadata();
                 //this.applyStoredProfileImage();
 
                 this.isIPhone = /iPhone/i.test(navigator.userAgent);
                 this.isTablet = /iPad|Tablet|Android(?!.*Mobile)/i.test(navigator.userAgent);
 
-                // load configured systems from the backend
-                this.loadConfiguredSystems();
 
                 this.aAllButtons = [];
                 this.currentIndex = 0;
@@ -42,10 +49,23 @@ sap.ui.define([
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
 
-
-                // Route based on id
+                // Wait for the route pattern matched to complete
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this);
+                await new Promise(resolve => {
+                    oRouter.attachRoutePatternMatched(async (oEvent) => {
+                        await this.onUserDetailsLoad(oEvent);
+                        resolve();
+                    });
+                });
+
+
+                // load configured systems from the backend
+                await this.loadConfiguredSystems();
+
+            },
+            onGetConfiguredSystems: async function () {
+
+                // test
 
             },
 
@@ -677,18 +697,43 @@ sap.ui.define([
                 // Toggle the selected state
                 oButton.setPressed(!oButton.getPressed());
             },
+
             // Load configured systems from OData service and display them in the UI
-            loadConfiguredSystems: function () {
-                var oModel = this.getOwnerComponent().getModel(); // Get the OData model
-                oModel.read("/ServiceSet", {
-                    success: function (oData) {
-                        var aConfiguredSystems = oData.results; // Assuming results is an array of configured systems
+            // first read the relation table to get the configured systems based on User ID 
+            // take the configured systems UUID into an array next read the actual systems table and show it in UI
+
+            loadConfiguredSystems: async function () {
+
+                const oModel = this.getOwnerComponent().getModel(),// Get the OData model                 
+                    sPath = "/LogonServiceRelSet",
+                    sCurrentUser = this.Userid,
+                    aFilters = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sCurrentUser);
+                try {
+                    // Simulate buffer using setTimeout
+                    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+                    const oResponse = await this.readData(oModel, sPath, aFilters),
+                        oResults = oResponse.results;
+                    if (oResults.length > 0) {
+                        // GETTING THE SYSTEM UUID S OF RESPECTIVE USER 
+                        const aUserConfiguredSys = oResults.map((element) => {
+                            return element.Uuid
+                        })
+                        const aSysFilters = aUserConfiguredSys.map(sysId => new sap.ui.model.Filter("Uuid", sap.ui.model.FilterOperator.EQ, sysId)),
+                            oCombinedFilter = new sap.ui.model.Filter({
+                                filters: aSysFilters,
+                                and: false // 'false' means 'OR' logic
+                            });
+                        // read the user configured systems based on his ID
+                        const oSysResponse = await this.readData(oModel, "/Configure_SystemSet", oCombinedFilter),
+                            aConfiguredSystems = oSysResponse.results
+
                         this.aAllButtons = []; // Reset the array
                         // Store all button instances
                         for (var i = 0; i < aConfiguredSystems.length; i++) {
                             var system = aConfiguredSystems[i]; // Get the current system
                             var oNewButton = new sap.m.Button({
-                                text: system.DescriptionB,
+                                text: system.Description,
                                 type: "Unstyled",
                                 width: "11rem",
                             });
@@ -705,12 +750,41 @@ sap.ui.define([
                         }
                         // Load initial set of buttons
                         this.updateDisplayedButtons();
-                    }.bind(this), // Ensure 'this' context is correct
-                    error: function (oError) {
-                        MessageToast.show("Error loading configured systems.");
-                        console.error(oError);
+
+                    } else {
+                        sap.m.MessageBox.information("No configured systems found")
                     }
-                });
+                } catch (error) {
+                    sap.m.MessageToast.show("Something went wrong please try again later...")
+                    console.error("Error:" + error);
+                } finally {
+                    // Close the Busy Dialog
+                    this._loadingSysDialog.close();
+                }
+            },
+            onSignoutPress: async function () {
+
+                // Create a Busy Dialog instance
+                if (!this._oSignOutBusyDialog) {
+                    this._oSignOutBusyDialog = new sap.m.BusyDialog({
+                        text: "Signing out..."
+                    });
+                }
+
+                // Open the Busy Dialog
+                this._oSignOutBusyDialog.open();
+                this.getView().byId("idEnvironmentButtonsHBox_InitialView").removeAllItems();
+                try {
+                    await new Promise((resolve) => setTimeout(resolve, 1000))
+                    const oRouter = this.getOwnerComponent().getRouter();
+                    oRouter.navTo("ConfigLogin", {}, true);
+
+                } catch (error) {
+                    console.error("Error: " + error);
+
+                } finally {
+                    this._oSignOutBusyDialog.close();
+                }
             },
             updateDisplayedButtons: function () {
                 this.getView().getModel().refresh(true)
@@ -789,7 +863,7 @@ sap.ui.define([
                 // Reattach the event listener every time the InitialScreen is about to be rendered
                 this._handleKeyDownBound = this._handleKeyDown.bind(this);
                 document.addEventListener("keydown", this._handleKeyDownBound);
-            },            
+            },
             onPressCancleSapLogon: function () {
                 this.oConfigSap.close();
             },

@@ -44,6 +44,11 @@
                     displaySize="XS"
                     tooltip="{i18n>Prf_Ttip_IV}"
                 /> -->
+                <Button
+                    id="idBtnSignout"
+                    icon="sap-icon://log"
+                    press="onSignoutPress"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
@@ -94,7 +99,6 @@
                             id="idScreenDes_InitialView"
                             text="{path: 'i18n>ScreenDescri_IV', formatter: ''}"
                         />
-
                         <!-- test -->
                     </VBox>
                 </VBox>
@@ -107,7 +111,6 @@
                     <HBox
                         id="idBtnsHbox_InitialView"
                         class="sapUiMediumMarginBegin"
-                        
                     >
                         <!-- vbox for add button -->
                         <VBox
@@ -131,8 +134,11 @@
                             />
                         </VBox>
                         <!-- vbox for edit button -->
-                        <VBox id="idButtonsVbox_InitialView" justifyContent="Center"
-                            alignItems="Center">
+                        <VBox
+                            id="idButtonsVbox_InitialView"
+                            justifyContent="Center"
+                            alignItems="Center"
+                        >
                             <Button
                                 id="idBtnEdit_InitialView"
                                 class="btn"
@@ -148,8 +154,11 @@
                             />
                         </VBox>
                         <!-- vbox for delete button -->
-                        <VBox id="idDelBtnVBox_InitialView" justifyContent="Center"
-                            alignItems="Center">
+                        <VBox
+                            id="idDelBtnVBox_InitialView"
+                            justifyContent="Center"
+                            alignItems="Center"
+                        >
                             <Button
                                 id="idBtnDelete_InitialView"
                                 class="btn"
@@ -216,8 +225,11 @@
                     <!-- hbox for description field -->
 
                     <HBox id="idhboxDescription">
-
-                     <Text id="idStar1_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
+                            id="idStar1_InitialView"
+                            text="*"
+                            class="sapUiTinyMarginTop star"
+                        />
 
                         <Text
                             id="idLableDescription_InitialView"
@@ -241,7 +253,11 @@
                     <!-- hbox for System Id field -->
 
                     <HBox id="iDhboxSystem_InitialView">
-                    <Text id="idStar2_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
+                            id="idStar2_InitialView"
+                            text="*"
+                            class="sapUiTinyMarginTop star"
+                        />
 
                         <Text
                             id="idLableSystemId_InitialView"
@@ -264,7 +280,11 @@
                     <!-- hbox for Instance Number field -->
 
                     <HBox id="ighboxInstanceNumber_initialView">
-                    <Text id="idStar3_InitialView"  text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
+                            id="idStar3_InitialView"
+                            text="*"
+                            class="sapUiTinyMarginTop star"
+                        />
                         <Text
                             id="idLableInstanceNumber_InitialView"
                             text="{i18n>InstanceNum_Txt_IV}"
@@ -285,7 +305,11 @@
                     <!--hbox for Client field -->
 
                     <HBox id="idhboxClient_InitialView">
-                    <Text id="idStar4_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
+                            id="idStar4_InitialView"
+                            text="*"
+                            class="sapUiTinyMarginTop star"
+                        />
                         <Text
                             id="idLableClient_InitialView"
                             text="{i18n>client_Txt_IV}"
@@ -307,7 +331,11 @@
                     <!-- hbox for Application server field -->
 
                     <HBox id="idhboxApplicationServer_InitialView">
-                    <Text id="idStar5_InitialView" text="*" class="sapUiTinyMarginTop star"/>
+                        <Text
+                            id="idStar5_InitialView"
+                            text="*"
+                            class="sapUiTinyMarginTop star"
+                        />
                         <Text
                             id="idLableApplicationServer_InitialView"
                             text="{i18n>app_server_Txt_IV}"
