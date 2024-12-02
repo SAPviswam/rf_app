@@ -115,14 +115,15 @@
                     id="idGenImage8_HTOECSS"
                     src="https://i.ibb.co/ZM5JTLH/5b182f16ad44.jpg"
                 />
+                 <Text id="idText044In_HelpTourOnEditConfigSAPSystem" text="4. Save Changes:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
+                    <Text id="idText045In_HelpTourOnEditConfigSAPSystem" text="After making necessary changes to the editable fields, click Save to update the system configuration. If any of the editable fields have incorrect or missing data, the system should prompt the user to correct it before saving." />
                     <Text id="idText043In_HelpTourOnEditConfigSAPSystem" text="Changes were Updated."/>
                                 <Image
                     width="100%"
                     id="idGenImage07_HTOECSS"
                     src="https://i.ibb.co/Wkn8gCk/61826e810a2a.png"
                 />
-                    <Text id="idText044In_HelpTourOnEditConfigSAPSystem" text="4. Save Changes:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
-                    <Text id="idText045In_HelpTourOnEditConfigSAPSystem" text="After making necessary changes to the editable fields, click Save to update the system configuration. If any of the editable fields have incorrect or missing data, the system should prompt the user to correct it before saving." />
+                   
                     <Text id="idText046In_HelpTourOnEditConfigSAPSystem" text="5. Client Field Check:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
                     <Text id="idText047In_HelpTourOnEditConfigSAPSystem" text="If the user tries to modify the Client field (which should not be allowed)" />
                                      <Image
