@@ -77,7 +77,7 @@
                     <Image
                     width="100%"
                     id="idGenImageHUQuery_HTOECSS"
-                    src="../Images/ConfigSAPSystemScreen.png"
+                    src="https://i.postimg.cc/W3DnSrjf/Config-SAPSystem-Screen.png"
                 />
 <Label id="idEmptyLabel3In_HTOECSS" width="10px"   />
                     <Text id="idText029In_HelpTourOnEditConfigSAPSystem" text="3. How to Edit the SAP Configured System:" class="HeadingIn_HelpTourOnEditConfigSAPSystem"/>
