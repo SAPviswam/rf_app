@@ -422,7 +422,7 @@
                                     visible="false"
                                     showSearchButton="true"
                                     placeholder="Search..."
-                                    width="auto"
+                                    width="10rem"
                                 />
                                 <Button
 
@@ -431,6 +431,14 @@
                                     press="onSelectFieldsPress"
                                     width="5.8rem"
                                 />
+                                 <Button
+
+                                    id="idDeleteBtnS"
+                                    icon="sap-icon://delete"
+                                    press="onPressDeleteUser"
+                                    type="Reject"
+                                />
+
                             </contentRight>
                         </Bar>
                         <Label class="EmptyLableClassUserdataSupervisor" />
