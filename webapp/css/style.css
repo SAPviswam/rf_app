@@ -2007,14 +2007,14 @@ margin-left:2% !important;
 
 
   .MobileviewTable_WtQbyQ{
-    margin-top: 25%;
+    margin-top: 20%;
     height:600px
 }
 
 
 .MobileviewTableTablet_WtQbyQ{
     margin-top: 10%;
-    height:800px
+    height:600px
 }
 .MobileviewTable_StbqP{
     margin-top :20%;
@@ -2028,3 +2028,7 @@ margin-left:  0.6rem;
 .backClassinChangeQueue{
     margin-left: 0.3rem;
 } 
+.MobileviewTableTablet_stockbinquerybyproduct{
+    margin-top: 10%;
+    height:600px
+}
