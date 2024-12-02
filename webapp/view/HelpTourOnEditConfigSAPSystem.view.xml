@@ -119,7 +119,7 @@
                                 <Image
                     width="100%"
                     id="idGenImage07_HTOECSS"
-                    src="../Images/ChangedSytem.png"
+                    src="https://i.ibb.co/Wkn8gCk/61826e810a2a.png"
                 />
                     <Text id="idText044In_HelpTourOnEditConfigSAPSystem" text="4. Save Changes:" class="SideHeadingIn_HelpTourOnEditConfigSAPSystem" />
                     <Text id="idText045In_HelpTourOnEditConfigSAPSystem" text="After making necessary changes to the editable fields, click Save to update the system configuration. If any of the editable fields have incorrect or missing data, the system should prompt the user to correct it before saving." />
