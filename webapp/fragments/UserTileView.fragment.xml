@@ -7,7 +7,7 @@
         placement="Bottom"
         verticalScrolling="false"
         horizontalScrolling="false"
-        contentWidth="100px"
+        contentWidth="auto"
         title="Select Tile View:"
         class="sapUiResponsivePadding"
     >
@@ -17,18 +17,21 @@
                 text="Large Icons"
                 type="Transparent"
                 press="onPressTileViewLargeIcons"
+                width="auto"
             />
             <Button
                 id="idHindiTileView"
                 text="Medium Icons"
                 type="Transparent"
                 press="onPressTileViewMediumIcons"
+                width="auto"
             />
             <Button
                 id="idSpanishTileView"
                 text="Small Icons"
                 type="Transparent"
                 press="onPressTileViewSmallIcons"
+                width="auto"
             />
         </VBox>
     </Popover>

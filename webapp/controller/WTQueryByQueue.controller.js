@@ -15,14 +15,12 @@ sap.ui.define(
 
                 if (Device.system.phone) {
                     this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
+                    this.getView().byId("idTableWTQuerybyQueue").addStyleClass("MobileviewTable_WtQbyQ");
 
                 }
-                // if (Device.system.tablet) {
-                //     this.getView().byId("IdButton_Open_WTQuerybyQueue").setWidth("110%");
-                //     this.getView().byId("IdButton_Conf_WTQuerybyQueue").setWidth("110%");
-                //     this.getView().byId("IdButton_All_WTQuerybyQueue").setWidth("110%");
-                //     this.getView().byId("IdButton_Back_WTQuerybyQueue").setWidth("110%");
-                // }
+                if (Device.system.tablet) {
+                    this.getView().byId("idTableWTQuerybyQueue").addStyleClass("MobileviewTableTablet_WtQbyQ");
+                }
             },
             onResourceDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");

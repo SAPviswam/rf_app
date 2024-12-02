@@ -19,6 +19,10 @@ sap.ui.define(
                     this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("MobileviewTable_HUSOQ");// FOR TABLE ADJUSTABLE
                    
                 }
+                if (Device.system.tablet) {
+                    this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("tab_Table_HuStockOverview");
+                }
+            
             },
 
             onLiveChange: function (oEvent) {
