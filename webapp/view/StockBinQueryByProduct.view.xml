@@ -112,6 +112,7 @@
                                     tooltip="Back"
                                     type="Emphasized"
                                     class="sapUiSmallMarginBegin"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -161,28 +162,19 @@
                             visible="false"
                             text="{i18n>Button_Back_SBQbyP}"
                             class="sapUiTinyMarginEnd"
+                            width="auto"
                         />
                         <Button
                             id="idProductDescription_SBQP"
                             text="{i18n>Button_PrdDe_SBQbyP}"
                             press="onSBQPPreDePress"
                             type="Emphasized"
+                            width="auto"
                         />
                     </HBox>
-                    <!-- <VBox
-                            id="idVbox5_SBQP"
-                            class="sapUiMediumMarginBottom"
-                        />
-                        <Panel
-                            id="idPanel_StockBinQuerybyProduct"
-                            headerText=""
-                            visible="true"
-                            class="sapUiSmallMarginTop"
-                        > -->
                     <Table
                         id="idTable_SBQP"
                         growing="true"
-                        growingThreshold="6"
                         mode="None"
                         width="100%"
                         alternateRowColors="true"
@@ -336,6 +328,7 @@
                                 type="Emphasized"
                                 press="onSBQPThirdBackBtnPress"
                                 visible="false"
+                                width="auto"
                             />
                         </HBox>
                     </VBox>
@@ -609,6 +602,7 @@
                                     press="onSBQPFourthBackBtnPress"
                                     visible="false"
                                     text="{i18n>Button_Back_SBQbyP}"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
