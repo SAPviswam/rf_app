@@ -425,6 +425,7 @@
                                     width="auto"
                                 />
                                 <Button
+
                                     id="idBtnSelectFields"
                                     text="Select Filter"
                                     press="onSelectFieldsPress"
@@ -435,7 +436,7 @@
                         <Label class="EmptyLableClassUserdataSupervisor" />
                         <Table
                             id="idUserDataTable"
-                            mode="MultiSelect"
+                            mode="SingleSelectLeft"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             growingScrollToLoad="true"
                             growing="true"
