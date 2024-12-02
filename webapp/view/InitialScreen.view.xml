@@ -173,7 +173,7 @@
                         alignItems="Center"
                     >
                         <!-- button for configure sap system -->
-                        <Link
+                        <Button
                             id="idBtnConfSAPsys_InitialView"
                             class="configureSapBtn_InitialView"
                             text="{i18n>configSAPSys_IV}"
