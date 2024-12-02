@@ -447,7 +447,7 @@
                         <Label class="EmptyLableClassUserdataSupervisor" />
                         <Table
                             id="idUserDataTable"
-                            mode="MultiSelect"
+                            mode="SingleSelectLeft"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
                             alternateRowColors="true"
                             growingScrollToLoad="true"
