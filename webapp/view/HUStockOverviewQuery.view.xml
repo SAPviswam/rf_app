@@ -826,6 +826,7 @@
                                     type="Emphasized"
                                     press="onHUStockOverviewQueryFourthBackBtnPress"
                                     visible="false"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -1110,6 +1111,7 @@
                                     type="Emphasized"
                                     press="onHUStockOverviewQueryFifthBackBtnPress"
                                     visible="false"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
