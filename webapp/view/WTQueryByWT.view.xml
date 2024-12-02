@@ -621,7 +621,6 @@
                                     value=""
                                 />
                             </HBox>
-
                             <VBox
                                 id="idThirdScVbox3_WTQueryByWT"
                                 alignContent="Center"

@@ -193,10 +193,10 @@
                 <pages>
                     <ScrollContainer
                         id="pageSV2"
+                        horizontal="true"
                         vertical="true"
                         height="100%"
                         width="100%"
-                        horizontal="false"
                     >
                         <Bar class="TableBarForRequestedData">
                             <contentLeft>
@@ -235,16 +235,11 @@
                         <Label class="EmptyLableClass" />
                         <Table
                             id="idRequestedData"
-                            alternateRowColors="true"
-                            backgroundDesign="Transparent"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'EQ', value1:''}],templateShareable: true}"
                             selectionChange="onRowSelect"
                             mode="SingleSelectLeft"
                             growingScrollToLoad="true"
                             growing="true"
-                            width="40%"
-                            sticky="ColumnHeaders,HeaderToolbar"
-                            class="scrollableTableRequesteddata"
                         >
                             <columns>
                                 <Column
@@ -412,6 +407,14 @@
                                 <ToolbarSpacer />
                             </contentMiddle>
                             <contentRight>
+                                <Button
+                                    icon="sap-icon://search"
+                                    press="onToggleSearch"
+                                    type="Transparent"
+                                    tooltip="Search"
+                                    id="searchButton"
+                                    width="0.5rem"
+                                />
                                 <SearchField
                                     id="searchField"
                                     search="onSearch"
@@ -422,17 +425,10 @@
                                     width="auto"
                                 />
                                 <Button
-                                    icon="sap-icon://search"
-                                    press="onToggleSearch"
-                                    type="Transparent"
-                                    tooltip="Search"
-                                    id="searchButton"
-                                />
-                                <Button
                                     id="idBtnSelectFields"
                                     text="Select Filter"
                                     press="onSelectFieldsPress"
-                                    width="auto"
+                                    width="5.8rem"
                                 />
                             </contentRight>
                         </Bar>
@@ -441,12 +437,10 @@
                             id="idUserDataTable"
                             mode="MultiSelect"
                             items="{path: '/RESOURCESSet', filters: [{path: 'Area', operator: 'NE', value1:''}]}"
-                            alternateRowColors="true"
                             growingScrollToLoad="true"
                             growing="true"
                             width="auto"
                             sticky="ColumnHeaders,HeaderToolbar"
-                            class="scrollableTableRequesteddata"
                         >
                             <columns>
                                 <Column
