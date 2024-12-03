@@ -177,30 +177,36 @@ sap.ui.define([
         onPressAccountDetails: async function () {
             const oModel1 = this.getOwnerComponent().getModel();
             const userId = this.ID;
-
-            // Fetch user details from the backend
-            await new Promise((resolve, reject) => {
-                oModel1.read(`/RESOURCESSet('${userId}')`, {
-                    success: function (oData) {
-                        const userDetails = oData; // Adjust this based on your data structure
-                        // Set user data in a new model or update existing model
-                        const oUserModel = new sap.ui.model.json.JSONModel(userDetails);
-                        this.getView().setModel(oUserModel, "oUserModel"); // Set the model with name
-                        resolve();
-                    }.bind(this), // Bind this to ensure the context is correct
-                    error: function () {
-                        MessageToast.show("Error loading user tiles");
-                        reject();
-                    }
+        
+            try {
+                sap.ui.core.BusyIndicator.show(0); // 0ms delay for instant appearance
+                await new Promise((resolve, reject) => {
+                    oModel1.read(`/RESOURCESSet('${userId}')`, {
+                        success: function (oData) {
+                            const userDetails = oData; // Adjust this based on your data structure
+                            const oUserModel = new sap.ui.model.json.JSONModel(userDetails);
+                            this.getView().setModel(oUserModel, "oUserModel"); // Set the model with name
+                            resolve();
+                        }.bind(this), // Bind this to ensure the context is correct
+                        error: function () {
+                            MessageToast.show("Error loading user details");
+                            reject();
+                        }
+                    });
                 });
-            });
-
-            if (!this.UserDetailsFragment) {
-                this.UserDetailsFragment = await this.loadFragment("UserDetails"); // Load your fragment asynchronously
+        
+                if (!this.UserDetailsFragment) {
+                    this.UserDetailsFragment = await this.loadFragment("UserDetails");
+                }
+                this.UserDetailsFragment.open();
+        
+                // Profile image updating (from BaseController)...
+                this.applyStoredProfileImage();
+            } catch (error) {
+                console.error("Error fetching user details:", error);
+            } finally {
+                sap.ui.core.BusyIndicator.hide();
             }
-            this.UserDetailsFragment.open();
-            //Profile image updating(from BaseController)...
-            this.applyStoredProfileImage();
         },
         onPressDeclineProfileDetailsDailog: function () {
             if (this.UserDetailsFragment) {

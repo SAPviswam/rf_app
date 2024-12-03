@@ -190,26 +190,26 @@ sap.ui.define([
 
                     // Apply tile view settings
                     if (Tileviews) {
-                        const oTilesContainer = this.byId("idScrollContainer1");
-                        const aTiles = oTilesContainer.getContent();
+                        const oFlexBoxContainer = this.byId("idFlexBoxResourcePage");
+                        const aFlexBoxItems = oFlexBoxContainer.getItems();
 
-                        aTiles.forEach((oTile) => {
-                            if (oTile.isA("sap.m.GenericTile")) {
-                                // Clear existing icon size classes
-                                oTile.removeStyleClass("largeIcons");
-                                oTile.removeStyleClass("mediumIcons");
-                                oTile.removeStyleClass("smallIcons");
+                        aFlexBoxItems.forEach((oItem) => {
+                            const oGenericTile = oItem.getItems()?.find(item => item.isA("sap.m.GenericTile"));
+                            if (oGenericTile) {
+                                oGenericTile.removeStyleClass("largeIcons");
+                                oGenericTile.removeStyleClass("mediumIcons");
+                                oGenericTile.removeStyleClass("smallIcons");
 
-                                // Apply the relevant tile view class
+                                // Apply the relevant size class
                                 switch (Tileviews) {
                                     case "LargeIcons":
-                                        oTile.addStyleClass("largeIcons");
+                                        oGenericTile.addStyleClass("largeIcons");
                                         break;
                                     case "MediumIcons":
-                                        oTile.addStyleClass("mediumIcons");
+                                        oGenericTile.addStyleClass("mediumIcons");
                                         break;
                                     case "SmallIcons":
-                                        oTile.addStyleClass("smallIcons");
+                                        oGenericTile.addStyleClass("smallIcons");
                                         break;
                                     default:
                                         //sap.m.MessageToast.show("Unknown tile view setting.");
@@ -220,22 +220,30 @@ sap.ui.define([
                     }
                     //Applying the saved colours for the Tiles...
                     if (Multitilescolor) {
-                        const oTilesContainer = this.byId("idScrollContainer1");
-                        const aTiles = oTilesContainer.getContent();
+                        const oFlexBox = this.byId("idFlexBoxResourcePage");
+                        const aTiles = oFlexBox.getItems();
+
+                        // Parse the color mapping into a usable array of [id, color] pairs
                         const tileColorArray = Multitilescolor.split(",").map((pair) => pair.split(":"));
-                        aTiles.forEach((oTile) => {
-                            oTile.addEventDelegate({
-                                onAfterRendering: function () {
-                                    const tileId = oTile.getId(); // Get the current tile's ID
-                                    const oTileDomRef = oTile.getDomRef(); // Get the DOM reference of the tile
-                                    // Find a match in tileColorArray
-                                    tileColorArray.forEach(([id, color]) => {
-                                        if (id === tileId) {
-                                            oTileDomRef.style.backgroundColor = color; // Apply the matched color
+
+                        aTiles.forEach((oHBox) => {
+                            const oTile = oHBox.getItems().find((item) => item.isA("sap.m.GenericTile")); // Find GenericTile in HBox
+
+                            if (oTile) {
+                                oTile.addEventDelegate({
+                                    onAfterRendering: function () {
+                                        const tileId = oTile.getId(); // Get the current tile's ID
+                                        const oTileDomRef = oTile.getDomRef(); // Get the DOM reference of the tile
+                                        if (oTileDomRef) {
+                                            tileColorArray.forEach(([id, color]) => {
+                                                if (id === tileId) {
+                                                    oTileDomRef.style.backgroundColor = color; // Apply the matched color
+                                                }
+                                            });
                                         }
-                                    });
-                                }
-                            });
+                                    }
+                                });
+                            }
                         });
                     }
                 } catch (oError) {
@@ -265,6 +273,7 @@ sap.ui.define([
                     onClose: async function (status) {
                         if (status === sap.m.MessageBox.Action.OK) {
                             try {
+                                sap.ui.core.BusyIndicator.show(0);
                                 // Clear local storage
                                 localStorage.clear();
                                 // Prepare the payload to reset backend data
@@ -287,6 +296,8 @@ sap.ui.define([
                             } catch (oError) {
                                 //sap.m.MessageToast.show("Failed to reset settings on the backend.");
                                 console.error("Error resetting backend data:", oError);
+                            } finally {
+                                sap.ui.core.BusyIndicator.hide();
                             }
                         } else {
                             sap.m.MessageToast.show("Reset to default settings cancelled.");
@@ -746,7 +757,6 @@ sap.ui.define([
             },
             //CallBack function every Tile view....
             onPressTileViewResizeIcons: async function (sSelectedKey) {
-                debugger
                 if (this.Themecall) {
                     sap.m.MessageToast.show("Please exit Theme mode.");
                     return;
@@ -761,14 +771,13 @@ sap.ui.define([
                     const sEntityPath = `/RESOURCESSet('${userId}')`;
                     const oModel = this.getOwnerComponent().getModel();
 
-                    var oTilesContainer = this.byId("idScrollContainer1");
-                    var aTiles = oTilesContainer.getContent(); // Get all the tiles within the ScrollContainer
+                    const oFlexBoxContainer = this.byId("idFlexBoxResourcePage");
+                    const aFlexBoxItems = oFlexBoxContainer.getItems();
 
-                    // Save the selected key to localStorage for persistence
-                    //localStorage.setItem("selectedView", sSelectedKey);
-                    aTiles.forEach(function (oTile) {
-                        if (oTile.isA("sap.m.GenericTile")) {
-                            // Remove any previous size-related CSS classes
+                    // Apply selected view size
+                    aFlexBoxItems.forEach(function (oHBox) {
+                        const oTile = oHBox.getItems().find(item => item.isA("sap.m.GenericTile"));
+                        if (oTile) {
                             oTile.removeStyleClass("largeIcons");
                             oTile.removeStyleClass("mediumIcons");
                             oTile.removeStyleClass("smallIcons");
@@ -789,7 +798,9 @@ sap.ui.define([
                             }
                         }
                     });
-                    let oPayload = {
+
+                    // Save the selected view to the backend for persistence
+                    const oPayload = {
                         Tileviews: sSelectedKey
                     };
 
@@ -799,6 +810,7 @@ sap.ui.define([
                             error: reject
                         });
                     });
+                    //sap.m.MessageToast.show("Tile view updated successfully!");
                 } catch (error) {
                     sap.m.MessageToast.show("Error saving tile view: " + error.message);
                     console.error("Error:", error);
@@ -806,127 +818,77 @@ sap.ui.define([
             },
             //Grid and List Views...
             onPressGridViewsResource: function () {
-                const oTilesContainer = this.byId("idScrollContainer1");
-                const aTiles = oTilesContainer.getContent();
-            
-                // Disable the grid button to avoid multiple clicks during rendering
+                const oFlexBox = this.byId("idFlexBoxResourcePage");
+                const aTiles = oFlexBox.getItems();
                 const oListViewButton = this.byId("idBtnListViewResourcePage");
                 const oGridViewButton = this.byId("idBtnGridViewResourcePage");
                 oGridViewButton.setEnabled(false);
-            
-                // Retrieve the stored view for grid styling
-                const sStoredView = localStorage.getItem("selectedView") || ""; // Default to an empty class if not set
-            
-                // Remove all content and re-add tiles in grid format
-                oTilesContainer.removeAllContent();
+                oFlexBox.setDirection("Row");
+                // Revert to grid view
                 aTiles.forEach(oHBox => {
                     if (oHBox.isA("sap.m.HBox")) {
-                        const tileObject = oHBox.getItems()[0]; // The tile object within the HBox
-                        tileObject.removeStyleClass("listViewIcons");
-                        tileObject.addStyleClass(sStoredView);
-                        oTilesContainer.addContent(tileObject);
+                        const oTile = oHBox.getItems()[0];
+                        const oHeader = oHBox.getItems()[1];
+                        oTile.removeStyleClass("listViewIcons");
+                        oHeader.setVisible(false);
+                        oHeader.removeStyleClass("listViewHeader");
                     }
                 });
                 sap.ui.getCore().applyChanges();
                 oGridViewButton.setVisible(false);
                 oListViewButton.setVisible(true);
                 oListViewButton.setEnabled(true);
-            },            
-            onPressListViewsResource: async function () {
-                const oTilesContainer = this.byId("idScrollContainer1");
-                const aTiles = oTilesContainer.getContent();
-            
-                // Disable the list button immediately to avoid multiple clicks
+            },
+            onPressListViewsResource: function () {
+                debugger
+                const oFlexBox = this.byId("idFlexBoxResourcePage");
+                const aTiles = oFlexBox.getItems();
                 const oListViewButton = this.byId("idBtnListViewResourcePage");
                 const oGridViewButton = this.byId("idBtnGridViewResourcePage");
                 oListViewButton.setEnabled(false);
-            
-                // Fetch headers asynchronously
-                const headers = await this.getHeaders();
-            
-                // Extract and clean frontend tile IDs (filtering only GenericTiles)
-                const genericTiles = aTiles.filter(oTile => oTile.isA("sap.m.GenericTile"));
-                const frontEndTileIds = genericTiles.map(oTile => {
-                    const sTileId = oTile.getId();
-                    const localId = this._extractLocalId(sTileId);
-                    return localId.replace("id_", "").toLowerCase();
-                });
-            
+                // Extract tile IDs for matching
+                const frontEndTileIds = aTiles
+                    .filter(oHBox => oHBox.isA("sap.m.HBox"))
+                    .map(oHBox => {
+                        const oTile = oHBox.getItems()[0]; // GenericTile
+                        const sTileId = oTile.getId();
+                        const localId = this._extractLocalId(sTileId);
+                        return {
+                            hbox: oHBox,
+                            tile: oTile,
+                            header: oHBox.getItems()[1], // Text element
+                            tileId: localId.replace("id_", "").toLowerCase()
+                        };
+                    });
                 // Fetch user tiles from the backend
                 const oModel1 = this.getOwnerComponent().getModel();
                 const userId = this.ID;
                 let userTiles = [];
-                await new Promise((resolve, reject) => {
-                    oModel1.read(`/RESOURCESSet('${userId}')`, {
-                        success: function (oData) {
-                            const tiles = oData.Resourcegroup;
-                            userTiles = tiles.split(',')
-                                .map(item => item.trim().toLowerCase().replace(/\s+/g, '') + "_title");
-                            resolve();
-                        },
-                        error: function () {
-                            sap.m.MessageToast.show("Error loading user tiles");
-                            reject();
-                        }
-                    });
-                });
-            
-                // Match frontend tile IDs with backend queue tile names
-                const matchedTiles = frontEndTileIds.map(frontEndTileId => {
-                    const tileIndex = userTiles.indexOf(frontEndTileId);
-                    if (tileIndex !== -1) {
-                        return {
-                            tileId: frontEndTileId,
-                            tileObject: genericTiles.find(oTile => {
-                                const sTileId = oTile.getId();
-                                const localId = this._extractLocalId(sTileId);
-                                return localId.replace("id_", "").toLowerCase() === frontEndTileId;
-                            }),
-                            headerText: headers[tileIndex]
-                        };
+                oModel1.read(`/RESOURCESSet('${userId}')`, {
+                    success: (oData) => {
+                        const tiles = oData.Resourcegroup;
+                        userTiles = tiles.split(',')
+                            .map(item => item.trim().toLowerCase().replace(/\s+/g, '') + "_title");
+                        // Filter matched tiles
+                        const matchedTiles = frontEndTileIds.filter(({ tileId }) =>
+                            userTiles.includes(tileId)
+                        );
+                        // Apply list view only to matched tiles
+                        matchedTiles.forEach(({ tile, header }) => {
+                            tile.addStyleClass("listViewIcons");
+                            header.setVisible(true); // Show the header beside the tile
+                            header.addStyleClass("listViewHeader");
+                        });
+                        oFlexBox.setDirection("Column");
+                        sap.ui.getCore().applyChanges();
+                        oListViewButton.setVisible(false);
+                        oGridViewButton.setVisible(true);
+                        oGridViewButton.setEnabled(true);
+                    },
+                    error: () => {
+                        sap.m.MessageToast.show("Error loading user tiles");
                     }
-                    return null;
-                }).filter(item => item !== null); // Filter out null matches
-            
-                // Replace only the generic tiles with headers and keep other content intact
-                genericTiles.forEach(oTile => oTilesContainer.removeContent(oTile)); // Remove only GenericTiles
-                matchedTiles.forEach(({ tileObject, headerText }) => {
-                    const oHBox = new sap.m.HBox({
-                        items: [
-                            tileObject.addStyleClass("listViewIcons"), 
-                            new sap.m.Text({
-                                text: headerText
-                            }).addStyleClass("listViewHeader") 
-                        ]
-                    }).addStyleClass("tileContainer");  
-                    oTilesContainer.addContent(oHBox); 
                 });
-            
-                // Wait for rendering to complete before switching button visibility
-                sap.ui.getCore().applyChanges(); // Ensure UI rendering is up-to-date
-                oListViewButton.setVisible(false);
-                oGridViewButton.setVisible(true);
-                oGridViewButton.setEnabled(true);
-            },            
-            getHeaders: async function () {
-                const oModel1 = this.getOwnerComponent().getModel();
-                const userId = this.ID;
-                let headers = [];
-                // Use a Promise to handle the async operation
-                await new Promise((resolve, reject) => {
-                    oModel1.read(`/RESOURCESSet('${userId}')`, {
-                        success: function (oData) {
-                            const tiles = oData.Resourcegroup;
-                            headers = tiles.split(',').map(item => item.trim());
-                            resolve();
-                        },
-                        error: function () {
-                            MessageToast.show("Error loading user tiles");
-                            reject();  // Reject the promise on error
-                        }
-                    });
-                });
-                return headers;
             },
             onResourceDetailsLoadResorcePage: async function (oEvent1) {
                 // const { id } = oEvent1.getParameter("arguments");
