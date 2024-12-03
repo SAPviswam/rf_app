@@ -911,7 +911,7 @@ sap.ui.define(
                     }
                 });
             },
-
+            // for selecting a row of the table
             onRowSelect: function (oEvent) {
                 var select = oEvent.mParameters.selected;
                 var oSelectedItem = oEvent.getParameter("listItem");
@@ -996,6 +996,7 @@ sap.ui.define(
                     this._oPreviousSelectedItem = null;
                 }
             },
+            // for selecting process area in the table
             onSelectTableProcesAarea: function (oEvent) {
                 debugger;
                 var oTable = this.byId("idRequestedData");
@@ -1007,7 +1008,7 @@ sap.ui.define(
                 var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5].mProperties.selectedKeys
                 this.onSelectFiltertableArea(oSelectedItem);
             },
-            // Resuable code for Selecting Process Area
+            // Resuable code for Selecting Process Area in table
             onSelectFiltertableArea: function (oSelectedItem) {
                 debugger;
                 var oTable = this.byId("idRequestedData");
@@ -1806,6 +1807,7 @@ sap.ui.define(
                     }
                 });
             },
+
             onSelectGroup: function () {
                 // Get the MultiComboBox instances for Area and Group
                 var oAreaMultiComboBox = this.byId("idAreaSelect");

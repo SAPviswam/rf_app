@@ -437,6 +437,8 @@
                                     icon="sap-icon://delete"
                                     press="onPressDeleteUser"
                                     type="Reject"
+                                    width="1rem"
+
                                 />
 
                             </contentRight>
