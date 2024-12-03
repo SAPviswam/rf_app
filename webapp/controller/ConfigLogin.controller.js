@@ -18,13 +18,13 @@ sap.ui.define(
         this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
         this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
-        var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-          headers: {
-            "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-            "sap-client": "100"
-          }
-        });
-        this.getView().setModel(oModel);
+        // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+        //   headers: {
+        //     "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
+        //     "sap-client": "100"
+        //   }
+        // });
+        // this.getView().setModel(oModel);
 
         const OData = new sap.ui.model.json.JSONModel({
           appLoginData: {
@@ -62,7 +62,6 @@ sap.ui.define(
           flag = false;
         } else {
           oUserView.byId("idPasswordInpt_CL").setValueState("None");
-
         }
         if (!flag) {
           sap.m.MessageToast.show("Please enter required credentials")

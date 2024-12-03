@@ -240,7 +240,7 @@
 
                         <Input
                             id="idDescriptionInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/Description}"
                             placeholder="{i18n>enterDes_IV}"
                             class="customInput"
                             width="100%"
@@ -268,7 +268,7 @@
 
                         <Input
                             id="idSystemIdInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/SystemId}"
                             placeholder="{i18n>Id_PlaceHldr_IV}"
                             maxLength="3"
                             width="100%"
@@ -294,7 +294,7 @@
 
                         <Input
                             id="idInstanceNumberInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/InstanceNo}"
                             placeholder="{i18n>num_PlaceHldr_IV}"
                             required="true"
                             maxLength="2"
@@ -319,7 +319,7 @@
 
                         <Input
                             id="idClientInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/Client}"
                             required="true"
                             placeholder="{i18n>client_PlaceHldr_IV}"
                             maxLength="3"
@@ -345,7 +345,7 @@
 
                         <Input
                             id="idApplicationServerInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/AppServer}"
                             required="true"
                             placeholder="{i18n>AppSrv_PlaceHldr_IV}"
                             class="customInput"
@@ -365,7 +365,7 @@
 
                         <Input
                             id="idRouterStringInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/SapRouterStr}"
                             placeholder="{i18n>entrRouterStr_PlaceHldr_IV}"
                             class="customInput"
                             width="100%"
@@ -382,7 +382,7 @@
 
                         <Input
                             id="idServiceInput_InitialView"
-                            value=""
+                            value="{ODataModel>/connectionData/SapService}"
                             placeholder="{i18n>entrSvr_PlaceHldr_IV}"
                             class="customInput"
                             width="100%"
