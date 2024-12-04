@@ -294,7 +294,7 @@
 
                         <Input
                             id="idInstanceNumberInput_InitialView"
-                            value="{ODataModel>/connectionData/InstanceNo}"
+                            value="{ODataModel>/connectionData/InstanceNumber}"
                             placeholder="{i18n>num_PlaceHldr_IV}"
                             required="true"
                             maxLength="2"
@@ -345,7 +345,7 @@
 
                         <Input
                             id="idApplicationServerInput_InitialView"
-                            value="{ODataModel>/connectionData/AppServer}"
+                            value="{ODataModel>/connectionData/ApplicationServer}"
                             required="true"
                             placeholder="{i18n>AppSrv_PlaceHldr_IV}"
                             class="customInput"
@@ -365,7 +365,7 @@
 
                         <Input
                             id="idRouterStringInput_InitialView"
-                            value="{ODataModel>/connectionData/SapRouterStr}"
+                            value="{ODataModel>/connectionData/SaprouterString}"
                             placeholder="{i18n>entrRouterStr_PlaceHldr_IV}"
                             class="customInput"
                             width="100%"

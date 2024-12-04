@@ -25,13 +25,11 @@ sap.ui.define([
                 const OData = new sap.ui.model.json.JSONModel({
                     connectionData: {
                         SystemId: "",
-                        InstanceNo: "",
+                        InstanceNumber: "",
                         Client: "",
-                        AppServer: "",
-                        SapRouterStr: "",
-                        SapService: "",
-                        Description: "",
-                        Description_B: ""
+                        ApplicationServer: "",
+                        SaprouterString: "",
+                        Description: ""
                     }
                 });
                 this.getView().setModel(OData, "ODataModel");
@@ -210,8 +208,8 @@ sap.ui.define([
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
                     oCheckbox = oView.byId("idCheckboxDescription_InitialView");
 
-                    // validations
-                if (!(oPayload.SystemId && oPayload.InstanceNo && oPayload.Client)) {
+                // validations
+                if (!(oPayload.SystemId && oPayload.InstanceNumber && oPayload.Client)) {
                     MessageToast.show("Please enter the mandatory fields");
                     return;
                 }
@@ -232,7 +230,7 @@ sap.ui.define([
                     oView.byId("idSystemIdInput_InitialView").setValueState("None");
                 }
                 // Validate Instance Number
-                if (!oPayload.InstanceNo || !/^\d{2}$/.test(oPayload.InstanceNo)) {
+                if (!oPayload.InstanceNumber || !/^\d{2}$/.test(oPayload.InstanceNumber)) {
                     oView.byId("idInstanceNumberInput_InitialView").setValueState("Error");
                     oView.byId("idInstanceNumberInput_InitialView").setValueStateText("Instance Number must be a 2-digit numeric value");
                     flag = false;
@@ -248,7 +246,7 @@ sap.ui.define([
                 } else {
                     oView.byId("idClientInput_InitialView").setValueState("None");
                 }
-                if (!oPayload.AppServer) {
+                if (!oPayload.ApplicationServer) {
                     oView.byId("idApplicationServerInput_InitialView").setValueState("Error");
                     flag = false;
                 } else {
@@ -260,35 +258,67 @@ sap.ui.define([
                     return;
                 }
 
-                // Check for existing combinations in Configure_SystemSet
                 const oModel = this.getOwnerComponent().getModel(),      // Get the OData model 
-                    aSystemId = new Filter("SystemId", FilterOperator.EQ, oPayload.SystemId),
-                    aClient = new Filter("Client", FilterOperator.EQ, oPayload.Client),
-                    aInstanceNumber = new Filter("InstanceNumber", FilterOperator.EQ, oPayload.InstanceNo),
-                    sPath = "/Configure_SystemSet",
-                    aFilters = new sap.ui.model.Filter({
-                        filters: [aSystemId, aClient, aInstanceNumber],
-                        and: true // Change to false if you want OR logic
-                    });
+                    // aSystemId = new sap.ui.model.Filter("SystemId", sap.ui.model.FilterOperator.EQ, oPayload.SystemId),
+                    // aClient = new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, oPayload.Client),
+                    // aInstanceNumber = new sap.ui.model.Filter("InstanceNumber", sap.ui.model.FilterOperator.EQ, oPayload.InstanceNumber),                    
+                    // aAppServer = new sap.ui.model.Filter("ApplicationServer", sap.ui.model.FilterOperator.EQ, oPayload.ApplicationServer),                    
+                    sPath = "/Configure_SystemSet";
+                // aFilters = new sap.ui.model.Filter({
+                //     filters: [aSystemId, aClient, aInstanceNumber, aAppServer],
+                //     and: true // Change to false if you want OR logic
+                // });
 
                 try {
-                    const oResponse = await this.readData(oModel, sPath, aFilters),
-                        oResult = oResponse.results;
-                    if (oResult.length > 0) {
-                        const sConnectionId = oResult[0].Uuid,
+                    // Check for existing combinations in Configure_SystemSet
+                    const oResponse = await this.readData(oModel, sPath),
+                        oResults = oResponse.results
+                    // SystemId: "",
+                    // InstanceNumber: "",
+                    // Client: "",
+                    // ApplicationServer: "",
+
+                    const configCombinationExists = oResults.find(
+                        (obj) => obj.SystemId === oPayload.SystemId && 
+                        obj.InstanceNumber === oPayload.InstanceNumber && 
+                        obj.Client === oPayload.Client && 
+                        obj.ApplicationServer === oPayload.ApplicationServer);
+
+                    if (configCombinationExists) {
+                        const sConnectionId = configCombinationExists.Uuid,
                             sCurreUserId = this.Userid,
                             oCurreUserId = new Filter("Userid", FilterOperator.EQ, sCurreUserId),
-                            oConnectionId = new Filter("Uuid", FilterOperator.EQ, sConnectionId),
+                            // oConnectionId = new Filter("Uuid", FilterOperator.EQ, sConnectionId),
                             sUsersRelPath = "/LogonServiceRelSet",
                             aCheckFilters = new sap.ui.model.Filter({
-                                filters: [oCurreUserId, oConnectionId],
+                                filters: [oCurreUserId],
                                 and: true // Change to false if you want OR logic
                             });
-                        // check if user already configured or not 
                         try {
+                            // check if user already configured or not and desscription is different
                             const oCheckResponse = await this.readData(oModel, sUsersRelPath, aCheckFilters),
-                                oCheckResult = oCheckResponse.results;
-                            if (oCheckResult.length === 0) {
+                                aCheckResult = oCheckResponse.results;
+                            // Check for UserId and Uuid combination
+                            const combinationExists = aCheckResult.find(
+                                (obj) => obj.Userid === sCurreUserId && obj.Uuid === sConnectionId);
+                            // Check for Description
+                            const descriptionExists = aCheckResult.some(
+                                (obj) => obj.Description.toLowerCase() === oPayload.Description.toLowerCase()
+                            );
+                            if (combinationExists) {
+                                sap.m.MessageBox.information(`Oops...Please check this system is already configured with description as ${combinationExists.Description}`)
+                                return;
+                            }
+                            if (descriptionExists) {
+                                sap.m.MessageToast.show("Description Already taken")
+                                this.getView().byId("idDescriptionInput_InitialView").setValueState("Error");
+                                this.getView().byId("idDescriptionInput_InitialView").setValueStateText("Description must be unique");
+                                return;
+                            } else {
+                                this.getView().byId("idDescriptionInput_InitialView").setValueState("None");
+                            }
+
+                            if (!combinationExists && !descriptionExists) {
                                 const oUserCOnfigPayload = {
                                     Userid: sCurreUserId,
                                     Uuid: sConnectionId,
@@ -296,15 +326,16 @@ sap.ui.define([
                                 }
                                 try {
                                     const oCreateResp = await this.createData(oModel, oUserCOnfigPayload, sUsersRelPath)
-                                    console.log(oCreateResp);
-                                    sap.m.MessageToast.show("Configured system saved successfully.")
-
+                                    console.log(oCreateResp)
+                                    sap.m.MessageToast.show("Configured system saved successfully.");
+                                    window.location.reload();
                                 } catch (error) {
+                                    sap.m.MessageBox.error("Oops...Creation failed Give another try")
                                     console.error("CREATION ERROR: " + error);
 
                                 }
                             } else {
-                                sap.m.MessageBox.error("Oops...Please check this system already configured")
+                                sap.m.MessageBox.error("Oops...Something went wrong please try with different data")
                             }
                         } catch (error) {
                             console.error("Error: " + error);
@@ -315,8 +346,6 @@ sap.ui.define([
 
                 } catch (error) {
                     console.error(error);
-                } finally {
-                    window.location.reload();
                 }
             },
 
