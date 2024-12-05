@@ -41,6 +41,21 @@
                     />
                     <ToolbarSpacer id="idToolbarSpacerP2" />
                     <Button
+                        id="idEditTileExitBtnResourcePage"
+                        text="Exit"
+                        press="onPressEditTileExitBtnResourcePage"
+                        icon="sap-icon://edit"
+                        visible="false"
+                        width="5rem"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                id="idOverflowToolbarLayoutDataResourcePageEditBtn"
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Button>
+                    <Button
                         id="idTileThemesModeOpen"
                         text="Open"
                         press="onPressTileThemesModeOpenDailog"
@@ -151,7 +166,7 @@
                         justifyContent="Start"
                         width="100%"
                     >
-                        <HBox>
+                        <HBox id="id_HBoxTile01_ResourcePage">
                             <GenericTile
                                 id="id_unloading_title"
                                 class="sapUiTinyMargin sapUiResponsivePadding"
@@ -160,6 +175,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile01_ResourcePage"
                                 text="UNLOADING"
                                 visible="false"
                             />
@@ -214,7 +230,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile02_ResourcePage">
                             <GenericTile
                                 id="id_deconsolidation_title"
                                 class="sapUiTinyMargin"
@@ -223,6 +239,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile02_ResourcePage"
                                 text="DECONSOLIDATION"
                                 visible="false"
                             />
@@ -277,7 +294,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile03_ResourcePage">
                             <GenericTile
                                 id="id_putaway_title"
                                 class="sapUiTinyMargin"
@@ -286,6 +303,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile03_ResourcePage"
                                 text="PUTAWAY"
                                 visible="false"
                             />
@@ -320,7 +338,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile04_ResourcePage">
                             <GenericTile
                                 id="id_receivingofhanndlingunits_title"
                                 class="sapUiTinyMargin"
@@ -329,6 +347,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile04_ResourcePage"
                                 text="RECEIVING OF HANDLING UNITS"
                                 visible="false"
                             />
@@ -404,7 +423,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile05_ResourcePage">
                             <GenericTile
                                 id="id_setreadyforwarehouseprocessing_title"
                                 class="sapUiTinyMargin"
@@ -413,6 +432,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile05_ResourcePage"
                                 text="SET READY FOR WAREHOUSE PROCESSING"
                                 visible="false"
                             />
@@ -432,7 +452,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile06_ResourcePage">
                             <GenericTile
                                 id="id_picking_title"
                                 class="sapUiTinyMargin"
@@ -441,6 +461,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile06_ResourcePage"
                                 text="PICKING"
                                 visible="false"
                             />
@@ -481,7 +502,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile07_ResourcePage">
                             <GenericTile
                                 id="id_packing_title"
                                 class="sapUiTinyMargin"
@@ -490,6 +511,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile07_ResourcePage"
                                 text="PACKING"
                                 visible="false"
                             />
@@ -552,7 +574,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile08_ResourcePage">
                             <GenericTile
                                 id="id_loading_title"
                                 class="sapUiTinyMargin"
@@ -561,6 +583,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile08_ResourcePage"
                                 text="LOADING"
                                 visible="false"
                             />
@@ -643,7 +666,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile09_ResourcePage">
                             <GenericTile
                                 id="id_pickpoint_title"
                                 class="sapUiTinyMargin"
@@ -652,6 +675,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile09_ResourcePage"
                                 text="PICK POINT"
                                 visible="false"
                             />
@@ -678,7 +702,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile010_ResourcePage">
                             <GenericTile
                                 id="id_consumption_title"
                                 class="sapUiTinyMargin"
@@ -687,6 +711,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile010_ResourcePage"
                                 text="CONSUMPTION"
                                 visible="false"
                             />
@@ -713,7 +738,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile011_ResourcePage">
                             <GenericTile
                                 id="id_distributionequipment_title"
                                 class="sapUiTinyMargin"
@@ -722,6 +747,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile011_ResourcePage"
                                 text="DISTRIBUTION EQUIPMENT"
                                 visible="false"
                             />
@@ -755,7 +781,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile012_ResourcePage">
                             <GenericTile
                                 id="id_inventorycounting_title"
                                 class="sapUiTinyMargin"
@@ -764,6 +790,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile012_ResourcePage"
                                 text="INVENTORY COUNTING"
                                 visible="false"
                             />
@@ -797,7 +824,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile013_ResourcePage">
                             <GenericTile
                                 id="id_adhocwtcreations_title"
                                 class="sapUiTinyMargin"
@@ -806,6 +833,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile013_ResourcePage"
                                 text="ADHOC WT CREATIONS"
                                 visible="false"
                             />
@@ -846,7 +874,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile014_ResourcePage">
                             <GenericTile
                                 id="id_queries_title"
                                 class="sapUiTinyMargin"
@@ -855,6 +883,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile014_ResourcePage"
                                 text="QUERIES"
                                 visible="false"
                             />
@@ -930,7 +959,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile015_ResourcePage">
                             <GenericTile
                                 id="id_qualitymanagement_title"
                                 class="sapUiTinyMargin"
@@ -939,6 +968,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile015_ResourcePage"
                                 text="QUALITY MANAGEMENT"
                                 visible="false"
                             />
@@ -958,7 +988,7 @@
                     />
                     <HBox />
                 </VBox> -->
-                        <HBox>
+                        <HBox id="id_HBoxTile016_ResourcePage">
                             <GenericTile
                                 id="id_resourcemanagement_title"
                                 class="sapUiTinyMargin"
@@ -967,6 +997,7 @@
                                 visible="false"
                             />
                             <Text
+                                id="id_TextTile016_ResourcePage"
                                 text="RESOURCE MANAGEMENT"
                                 visible="false"
                             />
@@ -987,6 +1018,7 @@
                     title="Select Theme Color"
                     contentHeight="auto"
                     contentWidth="auto"
+                    class="sapMIBar sapMHeader-CTX"
                 >
                     <customHeader>
                         <Bar id="themeDialogHeaderResource">
@@ -1004,7 +1036,7 @@
                                     fileType="jpg,png,jpeg,gif"
                                     maximumFileSize="1"
                                     buttonOnly="true"
-                                    buttonText=" "
+                                    buttonText=""
                                     mimeType="image/jpeg,image/png,image/gif"
                                     visible="true"
                                     width="1rem"
@@ -1143,6 +1175,7 @@
                     id="IdEditTileDetailsDialogResource"
                     title="Edit The Tile Deatils:"
                     contentHeight="30%"
+                    class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
                 >
                     <customHeader>
                         <Bar id="idTileDeatilsDialogHeaderResource">
@@ -1178,11 +1211,11 @@
                             />
                             <Input id="idInputTileHeaderResource" />
                             <Label id="idEmptyTileDetails" />
-                            <Label
+                            <!-- <Label
                                 id="idTileSubHeaderTiledetails"
                                 text="Sub Header:"
                             />
-                            <Input id="idInputSubHeaderResource" />
+                            <Input id="idInputSubHeaderResource" /> -->
                         </VBox>
                     </form:SimpleForm>
                 </Dialog>
