@@ -141,6 +141,7 @@
                             justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
+                            class="Buttons_HUSOQ"
                         >
                             <Text
                                 id="idLabel_WTQuerybyQueue"
@@ -158,7 +159,7 @@
                             justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
-                            class="myResponsiveHBoxWTQBYQ"
+                            class="myResponsiveHBoxWTQBYQ Buttons_HUSOQ sapUiLargeMarginTop"
                             width="100%"
                         >
                             <Button
@@ -192,21 +193,16 @@
                             />
                         </HBox>
                     </form:SimpleForm>
-                </VBox>
-                <Panel
-                    id="idPanel_WTQuerybyQueue"
-                    headerText=""
-                    visible="true"
-                    class="sapUiSmallMarginTop"
-                >
+
                     <!--Table for the Warhouse Tasks-->
                     <Table
                         id="idTableWTQuerybyQueue"
                         growing="true"
-                        growingThreshold="6"
                         mode="SingleSelectMaster"
                         selectionChange="onSelectWarehouseTaskQueue"
                         width="100%"
+                        class="table_HuStockOverview scrollableTable1WTQbyQ"
+                        sticky="ColumnHeaders,HeaderToolbar"
                     >
                         <columns>
                             <Column id="idColumn_WTQuerybyQueue">
@@ -224,7 +220,7 @@
                         </columns>
                         <items />
                     </Table>
-                </Panel>
+                </VBox>
             </ScrollContainer>
             <!--Scroll Container for Third view (Warehouse Task Details)-->
             <ScrollContainer
@@ -595,7 +591,7 @@
                                     id="idInput_Wo_WTQuerybyQueue"
                                     value=""
                                     width="90px"
-                                    editable="false"   
+                                    editable="false"
                                 />
 
                                 <Label
@@ -606,7 +602,6 @@
                                     id="idLabel_ESTP_WTQuerybyQueue"
                                     text="{i18n>Label_ESTP_WTQbyQ}"
                                     width="50px"
-                                
                                 />
                                 <Input
                                     id="idInput_ESTP_WTQuerybyQueue"
@@ -626,7 +621,6 @@
                                     value=""
                                     width="80px"
                                     editable="false"
-                                    
                                 />
                             </HBox>
                             <HBox
@@ -651,7 +645,6 @@
                                     value=""
                                     width="40px"
                                     editable="false"
-                                    
                                 />
                                 <Label
                                     id="idLabel_Space21_WTQuerybyQueue"
@@ -667,7 +660,6 @@
                                     value=""
                                     width="100px"
                                     editable="false"
-                                    
                                 />
                                 <Input
                                     id="IdInput26_WTQuerybyQueue"
@@ -729,7 +721,6 @@
                                     id="idLabel_PEnt_WTQuerybyQueue"
                                     text="{i18n>Label_PEnt_WTQbyQ}"
                                     width="50px"
-                                    
                                 />
                                 <Input
                                     id="idInput_PEnt_WTQuerybyQueue"

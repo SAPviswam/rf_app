@@ -120,13 +120,14 @@
                                     scanFail="onScanError"
                                     inputLiveUpdate="onScanLiveupdate"
                                     dialogTitle="Barcode Scanner"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Button
                                     id="idNavBacktoHome"
                                     text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToHome"
-                                    class="sapUiTinyMarginBegin"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -216,18 +217,21 @@
                                     text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinBackToBin"
+                                    width="auto"
                                 />
                                 <Button
                                     id="idBinDetailsButton"
                                     text="{i18n>BinDe_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBinDetails"
+                                    width="auto"
                                 />
                                 <Button
                                     id="idListButton"
                                     text="{i18n>HUList_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressList"
+                                    width="auto"
                                 />
                             </OverflowToolbar>
                         </headerToolbar>
@@ -634,6 +638,7 @@
                                         text="{i18n>Back_Btn_SBQBB}"
                                         type="Emphasized"
                                         press="onPressBinBacktoProductDetaails"
+                                        width="auto"
                                     />
                                 </HBox>
                             </VBox>
@@ -717,6 +722,7 @@
                                     text="{i18n>Back_Btn_SBQBB}"
                                     type="Emphasized"
                                     press="onPressBackfromBinList"
+                                    width="auto"
                                 />
                             </OverflowToolbar>
                         </headerToolbar>
