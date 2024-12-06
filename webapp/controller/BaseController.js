@@ -90,9 +90,9 @@ sap.ui.define([
                 });
             });
         },
-        deleteData: function (oModel, sPath, ID) {
+        deleteData: function (oModel, sPath) {
             return new Promise((resolve, reject) => {
-                oModel.remove(`${sPath}/${ID}`, {
+                oModel.remove(`${sPath}`, {
                     success: function (oSuccessData) {
                         resolve(oSuccessData);
                     },

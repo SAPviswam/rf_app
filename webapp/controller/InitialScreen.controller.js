@@ -272,23 +272,17 @@ sap.ui.define([
                 try {
                     // Check for existing combinations in Configure_SystemSet
                     const oResponse = await this.readData(oModel, sPath),
-                        oResults = oResponse.results
-                    // SystemId: "",
-                    // InstanceNumber: "",
-                    // Client: "",
-                    // ApplicationServer: "",
-
-                    const configCombinationExists = oResults.find(
-                        (obj) => obj.SystemId === oPayload.SystemId && 
-                        obj.InstanceNumber === oPayload.InstanceNumber && 
-                        obj.Client === oPayload.Client && 
-                        obj.ApplicationServer === oPayload.ApplicationServer);
+                        aResults = oResponse.results
+                    const configCombinationExists = aResults.find(
+                        (obj) => obj.SystemId === oPayload.SystemId &&
+                            obj.InstanceNumber === oPayload.InstanceNumber &&
+                            obj.Client === oPayload.Client &&
+                            obj.ApplicationServer === oPayload.ApplicationServer);
 
                     if (configCombinationExists) {
                         const sConnectionId = configCombinationExists.Uuid,
                             sCurreUserId = this.Userid,
                             oCurreUserId = new Filter("Userid", FilterOperator.EQ, sCurreUserId),
-                            // oConnectionId = new Filter("Uuid", FilterOperator.EQ, sConnectionId),
                             sUsersRelPath = "/LogonServiceRelSet",
                             aCheckFilters = new sap.ui.model.Filter({
                                 filters: [oCurreUserId],
@@ -489,56 +483,174 @@ sap.ui.define([
                 });
             },
             onEditConfiguredSystem: async function () {
-
-
-                if (this.arrayOfButton.length > 1) {
-                    MessageToast.show("Please select only one system to edit");
-                    return
+                // Validate user selection
+                const selectedButtons = this.arrayOfButton;
+                if (selectedButtons.length !== 1) {
+                    MessageToast.show(
+                        selectedButtons.length > 1
+                            ? "Please select only one system to edit"
+                            : "Please select at least one system to edit"
+                    );
+                    return;
                 }
-                else if (this.arrayOfButton.length < 1) {
-                    MessageToast.show("Please select atleast one system to edit");
-                    return
-                }
-                let oButtonText;
-                this.arrayOfButton.forEach(element => {
-                    oButtonText = element.mProperties.text
-                });
-                this.isEditButtonPressed = true
 
-                this.getView().byId("idconnectsapfinishButton_InitialView").setVisible(false);
-                this.getView().byId("idconnectsapeditButton_InitialView").setVisible(true);
-                this.getView().byId("idClientInput_InitialView").setEditable(false);
+                const sButtonDescription = selectedButtons[0]?.mProperties?.text; // Assume one button is selected
+                this.isEditButtonPressed = true;
 
+                // Update button visibility
+                const oView = this.getView();
+                oView.byId("idconnectsapfinishButton_InitialView").setVisible(false);
+                oView.byId("idconnectsapeditButton_InitialView").setVisible(true);
 
-                // load 100 client meta data
-                var oModel = this.getOwnerComponent().getModel();
-                var that = this;
-                oModel.read("/ServiceSet", {
-                    success: function (oData) {
-                        var aButtons = oData.results;
-                        function checkButton(v) {
-                            return v.DescriptionB === oButtonText;
-                        }
-                        var oButtonedit = aButtons.filter(checkButton);
-                        if (oButtonedit) {
-                            that.byId("idDescriptionInput_InitialView").setValue(oButtonedit[0].Description);
-                            that.byId("idSystemIdInput_InitialView").setValue(oButtonedit[0].SystemId);
-                            that.byId("idInstanceNumberInput_InitialView").setValue(oButtonedit[0].InstanceNo);
-                            that.byId("idClientInput_InitialView").setValue(oButtonedit[0].Client);
-                            that.byId("idApplicationServerInput_InitialView").setValue(oButtonedit[0].AppServer);
-                            that.byId("idRouterStringInput_InitialView").setValue(oButtonedit[0].SapRouterStr);
-                            that.byId("idServiceInput_InitialView").setValue(oButtonedit[0].SapService);
-                        }
-                        // New UI modification start
-                        that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(true);
-                        that.getView().byId("idBtnsVbox_InitialView").setVisible(false);
-                    },
-                    error: function (oError) {
-                        MessageBox.error("Error while reading data " + oError.message)
+                const oModel = this.getOwnerComponent().getModel(),
+                    sPath = "/LogonServiceRelSet",
+                    oCheckbox = this.getView().byId("idCheckboxDescription_InitialView"),
+                    sCurrentUserId = this.Userid;
+
+                try {
+                    // Fetch user-specific system descriptions
+                    const oResponse = await this.readData(oModel, sPath),
+                        aResults = oResponse.results;
+
+                    const userDescriptionExists = aResults.find(
+                        (obj) => obj.Userid === sCurrentUserId && obj.Description === sButtonDescription
+                    );
+
+                    if (!userDescriptionExists) {
+                        MessageToast.show("Reading description failed");
+                        return;
                     }
-                });
+
+                    const sSelectedSysID = userDescriptionExists.Uuid,
+                        sSysPath = "/Configure_SystemSet";
+
+                    this.sDescription = userDescriptionExists.Description;
+
+                    try {
+                        // Fetch system details for the selected UUID
+                        const oSysResponse = await this.readData(oModel, sSysPath),
+                            aSysResults = oSysResponse.results;
+
+                        const sSysUuidExists = aSysResults.find((obj) => obj.Uuid === sSelectedSysID);
+
+                        if (!sSysUuidExists) {
+                            MessageToast.show("Reading selected system failed");
+                            return;
+                        }
+
+                        // Show connection data
+                        oView.getModel("ODataModel").setProperty("/connectionData", {
+                            SystemId: sSysUuidExists.SystemId,
+                            InstanceNumber: sSysUuidExists.InstanceNumber,
+                            Client: sSysUuidExists.Client,
+                            ApplicationServer: sSysUuidExists.ApplicationServer,
+                            SaprouterString: sSysUuidExists.SaprouterString,
+                            Description: ""
+                        });
+                        if (this.sDescription === `${sSysUuidExists.SystemId} / ${sSysUuidExists.Client}`) {
+                            oCheckbox.setSelected(true);
+                        }
+
+                        // Update visibility of sections
+                        oView.byId("idConfigSapSysVbox_InitialView").setVisible(true);
+                        oView.byId("idBtnsVbox_InitialView").setVisible(false);
+
+                    } catch (error) {
+                        MessageToast.show("Error while reading selected system. Try again later.");
+                        console.error("Error: ", error);
+                    }
+                } catch (error) {
+                    MessageToast.show("Something went wrong. Facing a technical issue.");
+                    console.error("Error: ", error);
+                }
             },
-            onEditconnectSAPPress: function () {
+
+            onEditconnectSAPPress: async function () {
+                const oModel = this.getOwnerComponent().getModel(),
+                    oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
+                    oCheckbox = this.getView().byId("idCheckboxDescription_InitialView"),
+                    sConfigPath = "/Configure_SystemSet",
+                    sRelPath = "/LogonServiceRelSet";
+
+                // Step 1: Validation
+                for (let key in oPayload) {
+                    if (!oPayload[key] && key !== "SaprouterString") {
+                        if (key === "Description" && !oCheckbox.getSelected()) {
+                            sap.m.MessageToast.show(`${key} is required`);
+                            return;
+                        }
+                        if (key !== "Description") {
+                            sap.m.MessageToast.show(`${key} is required`);
+                            return;
+                        }
+                    }
+                }
+
+                try {
+                    // Step 2: Fetch All Required Data in Parallel
+                    const [oConfigResponse, oRelResponse] = await Promise.all([
+                        this.readData(oModel, sConfigPath),
+                        this.readData(oModel, sRelPath)
+                    ]);
+                    const aConfigResults = oConfigResponse.results;
+                    const aRelResults = oRelResponse.results;
+
+                    // Step 3: Check for Existing System Configuration
+                    const configCombinationExists = aConfigResults.find(
+                        obj =>
+                            obj.SystemId === oPayload.SystemId &&
+                            obj.InstanceNumber === oPayload.InstanceNumber &&
+                            obj.Client === oPayload.Client &&
+                            obj.ApplicationServer === oPayload.ApplicationServer
+                    );
+
+                    if (!configCombinationExists) {
+                        sap.m.MessageBox.information("Ooops entered system not found");
+                        return;
+                    }
+
+                    const sUpdatedSysID = configCombinationExists.Uuid;
+
+                    // Step 4: Check Description Uniqueness
+                    const descriptionExists = aRelResults.find(
+                        obj => obj.Userid === this.Userid && obj.Description === this.sDescription
+                    );
+
+                    const isDescriptionUnique = !aRelResults.some(
+                        obj => obj.Userid === this.Userid && obj.Description.toLowerCase() === oPayload.Description.toLowerCase()
+                    );
+
+                    if (!isDescriptionUnique) {
+                        sap.m.MessageToast.show("Description must be unique");
+                        return;
+                    }
+
+                    if (descriptionExists) {
+                        // Step 5: Delete Existing Entry
+                        const sSelectedSysID = descriptionExists.Uuid;
+                        const sDeletePath = `${sRelPath}(Userid='${this.Userid}',Uuid='${sSelectedSysID}')`;
+
+                        await this.deleteData(oModel, sDeletePath);
+                    }
+
+                    // Step 6: Create/Update Entry
+                    const oUserUpdatedPayload = {
+                        Userid: this.Userid,
+                        Uuid: sUpdatedSysID,
+                        Description: oCheckbox.getSelected() ? `${oPayload.SystemId} / ${oPayload.Client}` : oPayload.Description
+                    };
+
+                    await this.createData(oModel, oUserUpdatedPayload, sRelPath);
+                    sap.m.MessageToast.show("Updated Successfully");
+                    window.location.reload();
+                } catch (error) {
+                    sap.m.MessageToast.show("Operation failed due to a technical issue");
+                    console.error("ERROR: ", error);
+                }
+            },
+
+
+            onEditconnectSAPPresss: function () {
                 var oView = this.getView();
                 var sDescription = oView.byId("idDescriptionInput_InitialView").getValue();
                 var sSystemId = oView.byId("idSystemIdInput_InitialView").getValue();
