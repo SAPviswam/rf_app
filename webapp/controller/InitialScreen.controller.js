@@ -388,69 +388,8 @@ sap.ui.define([
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
                         if (status === MessageBox.Action.DELETE) {
-                            // this.arrayOfButton.forEach(element => {
-                            // });
-                            // Delete from OData service
-                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
-                            this.arrayOfClient.forEach(element => {
-                                var sPath = "/ServiceSet('" + element + "')";
-                                oModel.remove(sPath, {
-                                    success: function () {
-                                        MessageToast.show("Configured system deleted successfully.");
+                            // last change here....Delete the selected system
 
-                                        // Remove selected the buttons from the UI
-                                        debugger
-                                        var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        that.arrayOfButton.forEach((currentButton) => {
-                                            oHomePage.removeItem(currentButton); // Remove the selected button
-                                            var index = that.aAllButtons.indexOf(currentButton);
-                                            if (index !== -1) {
-                                                that.aAllButtons.splice(index, 1); // Remove button from array
-                                            }
-                                            // Clear selection
-                                            currentButton = null;
-                                            that.updateDisplayedButtons()
-                                            var index = that.aAllButtons.indexOf(currentButton);
-                                            if (index !== -1) {
-                                                that.aAllButtons.splice(index, 1); // Remove button from array
-                                            }
-                                            // Clear selection
-                                            currentButton = null;
-                                        })
-
-
-                                        that.arrayOfButton.forEach(element => {
-                                            element.setType("Unstyled")
-                                        });
-                                        that.arrayOfButton = [];
-                                        that.arrayOfClient = [];
-                                        that.arrayOfDescription = [];
-                                        that.updateDisplayedButtons();
-                                    }.bind(that), // Ensure 'this' context is correct
-                                    error: function (oError) {
-                                        console.error(oError);
-                                        MessageToast.show("Error deleting configured system.");
-                                        that.arrayOfButton.forEach(element => {
-                                            element.setType("Unstyled")
-                                        });
-                                        that.arrayOfButton = [];
-                                        that.arrayOfClient = [];
-
-                                        that.arrayOfDescription = [];
-
-                                    }
-                                });
-                            });
-                        } else {
-                            MessageToast.show("Deletion cancelled.");
-                            this.selectedButton = null;
-                            this.arrayOfButton.forEach(oButton => {
-                                oButton.removeStyleClass("buttonSelected");
-                                oButton.addStyleClass("customButtonBackground");
-                            });
-                            this.arrayOfButton = [];
-                            this.arrayOfClient = [];
-                            this.arrayOfDescription = [];
                         }
                     }.bind(that) // Bind the controller context
                 });
