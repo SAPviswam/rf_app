@@ -237,26 +237,27 @@ sap.ui.define([
                             }
                         });
                     }
-                    // if (Alttilename) {
-                    //     const altTileArray = Alttilename.split(",").map((entry) => entry.split(":"));
-                    //     const oFlexBox = this.byId("idFlexBoxResourcePage");
-                    //     const aTiles = oFlexBox.getItems();
-                    //     aTiles.forEach((oHBox) => {
-                    //         const oTile = oHBox.getItems().find((item) => item.isA("sap.m.GenericTile"));
-                    //         if (oTile) {
-                    //             const tileId = oTile.getId().split("--").pop();
-                    //             oTile.addEventDelegate({
-                    //                 onAfterRendering: function () {
-                    //                     altTileArray.forEach(([id, header]) => {
-                    //                         if (id === tileId) {
-                    //                             oTile.setHeader(header); // Set the header for the respective tile
-                    //                         }
-                    //                     });
-                    //                 }
-                    //             });
-                    //         }
-                    //     });
-                    // }
+                    //For alternative Tile Name settings... 
+                    if (Alttilename) {
+                        const altTileArray = Alttilename.split(",").map((entry) => entry.split(":"));
+                        const oFlexBox = this.byId("idFlexBoxResourcePage");
+                        const aTiles = oFlexBox.getItems();
+                        aTiles.forEach((oHBox) => {
+                            const oTile = oHBox.getItems().find((item) => item.isA("sap.m.GenericTile"));
+                            if (oTile) {
+                                const tileId = oTile.getId().split("--").pop();
+                                oTile.addEventDelegate({
+                                    onAfterRendering: function () {
+                                        altTileArray.forEach(([id, newHeader, pastHeader]) => {
+                                            if (id === tileId) {
+                                                oTile.setHeader(newHeader); // Set the header for the respective tile
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
                 } catch (oError) {
                     //sap.m.MessageToast.show("Failed to retrieve user details.");
                     console.error("Error fetching user data:", oError);
@@ -338,23 +339,23 @@ sap.ui.define([
                 }
             },
             //Rename Dailog Box..
-            onPressRenameTile: function () {
-                debugger
-                this.TileHeader = this._currentTile.getHeader();
-                //this.TileSubHeader = this._currentTile.getSubheader();
-                this.getView().byId("IdEditTileDetailsDialogResource").open();
-                this.byId("idInputTileHeaderResource").setValue(this.TileHeader);
-                //this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
-            },
+            // onPressRenameTile: function () {
+            //     debugger
+            //     const sTileHeader = this._currentTile.getHeader();
+            //     this.TileSubHeader = this._currentTile.getSubheader();
+            //     this.getView().byId("IdEditTileDetailsDialogResource").open();
+            //     this.byId("idInputTileHeaderResource").setValue(sTileHeader);
+            //     this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
+            // },
             onPressSaveTileEditDetails: async function () {
-                debugger;
                 const userID = this.ID;
                 const oModel = this.getOwnerComponent().getModel();
+                //const sPastHeader = this._currentTile.getHeader();
                 const sNewHeader = this.byId("idInputTileHeaderResource").getValue();
                 if (this._currentTile) {
                     const tileId = this._currentTile.getId().split("--").pop(); // Get Tile ID
-                    const newTileEntry = `${tileId}:${sNewHeader}`; // Concatenate TileID and NewHeader
                     const sEntityPath = `/RESOURCESSet('${userID}')`;
+                    const newTileEntry = `${tileId}:${sNewHeader}`; //For adding the tile and header...
                     try {
                         const oData = await new Promise((resolve, reject) => {
                             oModel.read(sEntityPath, {
@@ -367,12 +368,12 @@ sap.ui.define([
                         // Update or Add the new entry
                         const index = entries.findIndex(entry => entry.startsWith(tileId + ":"));
                         if (index !== -1) {
-                            entries[index] = newTileEntry; //if already existed tileId..
+                            entries[index] = newTileEntry; // Update existing record with id as same...
                         } else {
-                            entries.push(newTileEntry); //if new entry this..
+                            entries.push(newTileEntry); // Add new entry...
                         }
                         // Join the updated entries
-                        const updatedAlttilename = entries.join(", ");
+                        const updatedAlttilename = entries.join(",");
                         const oPayload = {
                             Alttilename: updatedAlttilename,
                         };
@@ -385,7 +386,8 @@ sap.ui.define([
                         // Update the tile header in the UI
                         this._currentTile.setHeader(sNewHeader);
                         this.byId("IdEditTileDetailsDialogResource").close();
-                        sap.m.MessageToast.show("Tile details updated successfully!");
+                        sap.m.MessageToast.show("Tile details updated successfully, Please wait!");
+                        window.location.reload();
                     } catch (error) {
                         sap.m.MessageToast.show("Error updating tile details. Please try again.");
                         console.error(error);
@@ -1063,15 +1065,41 @@ sap.ui.define([
                 this.genericTitleName = ""
             },
             onGenericTilePress: async function (oEvent) {
+                // var that = this
+                var oModel1 = this.getOwnerComponent().getModel()
                 const oTile = oEvent.getSource();
-                var oGenericTileName = oEvent.oSource.mProperties.header;
+                var oGenericTileName = oTile.getHeader();
+                const tileID = oTile.getId().split("--").pop();
+                oModel1.read("/RESOURCESSet('" + this.ID + "')", {
+                    success: function (oData) {
+                        var oAlternativeTileArray = oData.Alttilename.split(",").map(item => item.trim());
+                        oAlternativeTileArray.forEach(function (alt) {
+                            let oSingleTileArray = alt.split(":").map(item => item.trim());
+                            if (oSingleTileArray[0] === tileID) {
+                                oGenericTileName = oSingleTileArray[2]
+                                // that._oPopoverGt.setTitle(oGenericTileName)
+                            }
+                            // else {
+                            //     that._oPopoverGt.setTitle(oGenericTileName)
+                            // }   
+                        });
+                    }.bind(this),
+                    error: function () {
+                        MessageToast.show("User does not exist");
+                    }
+                });
+
                 var oQueueArray = []
                 //For Edit Tile Name changing...
                 if (this.EditCall) {
                     this._currentTile = oTile;
-                    this.onPressRenameTile();
+                    const sTileHeader = this._currentTile.getHeader();
+                    const oDialog = this.getView().byId("IdEditTileDetailsDialogResource");
+                    oDialog.open();
+                    this.byId("idInputTileHeaderResource").setValue(sTileHeader);
                     return;
                 }
+
                 //FOr Tile Theming...
                 if (this.Themecall) {
                     if (!this._selectedTiles) {
@@ -1101,7 +1129,6 @@ sap.ui.define([
                 this._oPopoverGt.setTitle(oGenericTileName)
                 const oVBox = this._oPopoverGt.getContent()[0]; // Assuming the VBox is the first content
                 oVBox.destroyItems(); // Clear existing items
-                var oModel1 = this.getOwnerComponent().getModel();
                 oModel1.read("/ProcessAreaSet", {
                     success: function (oData) {
                         oData.results.forEach(element => {
@@ -1121,7 +1148,7 @@ sap.ui.define([
                                 });
                                 const aOptionSet = new Set(aOptions);
                                 const oOptions = Array.from(aOptionSet)
-                                console.log(oOptions)
+                                //console.log(oOptions)
                                 oOptions.forEach((sOption) => {
                                     const oRadioButton = new sap.m.RadioButton({
                                         text: sOption,
@@ -1129,19 +1156,17 @@ sap.ui.define([
                                     });
                                     oVBox.addItem(oRadioButton); // Add the radio button to the VBox
                                 });
-                            }
-                                .bind(this),
+                            }.bind(this),
                             error: function () {
                                 MessageToast.show("User does not exist");
                             }
                         });
-                    }
-                        .bind(this),
+                    }.bind(this),
                     error: function () {
                         MessageToast.show("User does not exist");
                     }
                 });
-                console.log(oQueueArray);
+                // console.log(oQueueArray);
                 this._oPopoverGt.openBy(oEvent.getSource());
             },
 
