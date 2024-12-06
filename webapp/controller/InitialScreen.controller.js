@@ -202,73 +202,47 @@ sap.ui.define([
                 this.getView().byId("idSPasswordInput_CS").setValue("");
             },
 
-            // test
             onFinishconnectSAPPress: async function () {
                 const oView = this.getView(),
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
                     oCheckbox = oView.byId("idCheckboxDescription_InitialView");
 
-                // validations
-                if (!(oPayload.SystemId && oPayload.InstanceNumber && oPayload.Client)) {
-                    MessageToast.show("Please enter the mandatory fields");
-                    return;
-                }
-                var flag = true;
-                // Validate Description only if the checkbox is not selected
-                if (!oCheckbox.getSelected() && !oPayload.Description) {
-                    oView.byId("idDescriptionInput_InitialView").setValueState("Error");
-                    oView.byId("idDescriptionInput_InitialView").setValueStateText("Description is mandatory when checkbox is not selected.");
-                    flag = false;
+                // Validation Logic
+                const validationErrors = [];
+                const validateField = (fieldId, value, regex, errorMessage) => {
+                    const oField = oView.byId(fieldId);
+                    if (!value || (regex && !regex.test(value))) {
+                        oField.setValueState("Error");
+                        oField.setValueStateText(errorMessage);
+                        validationErrors.push(errorMessage);
+                    } else {
+                        oField.setValueState("None");
+                    }
+                };
+
+                validateField("idSystemIdInput_InitialView", oPayload.SystemId, /^\w{3}$/, "System ID must be a 3-character value");
+                validateField("idInstanceNumberInput_InitialView", oPayload.InstanceNumber, /^\d{2}$/, "Instance Number must be a 2-digit numeric value");
+                validateField("idClientInput_InitialView", oPayload.Client, /^\d{3}$/, "Client ID must be a 3-digit numeric value");
+                validateField("idApplicationServerInput_InitialView", oPayload.ApplicationServer, null, "Application Server is required");
+
+                if (!oCheckbox.getSelected()) {
+                    validateField(
+                        "idDescriptionInput_InitialView",
+                        oPayload.Description,
+                        null,
+                        "Description is mandatory when checkbox is not selected"
+                    )
                 } else {
                     oView.byId("idDescriptionInput_InitialView").setValueState("None");
                 }
-                if (!oPayload.SystemId) {
-                    oView.byId("idSystemIdInput_InitialView").setValueState("Error");
-                    oView.byId("idSystemIdInput_InitialView").setValueStateText("System ID must be a 3-digit value");
-                    flag = false;
-                } else {
-                    oView.byId("idSystemIdInput_InitialView").setValueState("None");
-                }
-                // Validate Instance Number
-                if (!oPayload.InstanceNumber || !/^\d{2}$/.test(oPayload.InstanceNumber)) {
-                    oView.byId("idInstanceNumberInput_InitialView").setValueState("Error");
-                    oView.byId("idInstanceNumberInput_InitialView").setValueStateText("Instance Number must be a 2-digit numeric value");
-                    flag = false;
-                } else {
-                    oView.byId("idInstanceNumberInput_InitialView").setValueState("None");
-                }
 
-                // Validate Client ID
-                if (!oPayload.Client || !/^\d{3}$/.test(oPayload.Client)) {
-                    oView.byId("idClientInput_InitialView").setValueState("Error");
-                    oView.byId("idClientInput_InitialView").setValueStateText("Client ID must be a 3-digit numeric value");
-                    flag = false;
-                } else {
-                    oView.byId("idClientInput_InitialView").setValueState("None");
-                }
-                if (!oPayload.ApplicationServer) {
-                    oView.byId("idApplicationServerInput_InitialView").setValueState("Error");
-                    flag = false;
-                } else {
-                    oView.byId("idApplicationServerInput_InitialView").setValueState("None");
-                }
-                // Display appropriate message
-                if (!flag) {
-                    sap.m.MessageToast.show("Please enter correct data");
+                if (validationErrors.length > 0) {
+                    MessageToast.show("Please enter correct data");
                     return;
                 }
 
-                const oModel = this.getOwnerComponent().getModel(),      // Get the OData model 
-                    // aSystemId = new sap.ui.model.Filter("SystemId", sap.ui.model.FilterOperator.EQ, oPayload.SystemId),
-                    // aClient = new sap.ui.model.Filter("Client", sap.ui.model.FilterOperator.EQ, oPayload.Client),
-                    // aInstanceNumber = new sap.ui.model.Filter("InstanceNumber", sap.ui.model.FilterOperator.EQ, oPayload.InstanceNumber),                    
-                    // aAppServer = new sap.ui.model.Filter("ApplicationServer", sap.ui.model.FilterOperator.EQ, oPayload.ApplicationServer),                    
+                const oModel = this.getOwnerComponent().getModel(),      // Get the OData model                     
                     sPath = "/Configure_SystemSet";
-                // aFilters = new sap.ui.model.Filter({
-                //     filters: [aSystemId, aClient, aInstanceNumber, aAppServer],
-                //     and: true // Change to false if you want OR logic
-                // });
-
                 try {
                     // Check for existing combinations in Configure_SystemSet
                     const oResponse = await this.readData(oModel, sPath),
@@ -285,8 +259,7 @@ sap.ui.define([
                             oCurreUserId = new Filter("Userid", FilterOperator.EQ, sCurreUserId),
                             sUsersRelPath = "/LogonServiceRelSet",
                             aCheckFilters = new sap.ui.model.Filter({
-                                filters: [oCurreUserId],
-                                and: true // Change to false if you want OR logic
+                                filters: [oCurreUserId]
                             });
                         try {
                             // check if user already configured or not and desscription is different
@@ -303,6 +276,7 @@ sap.ui.define([
                                 sap.m.MessageBox.information(`Oops...Please check this system is already configured with description as ${combinationExists.Description}`)
                                 return;
                             }
+
                             if (descriptionExists) {
                                 sap.m.MessageToast.show("Description Already taken")
                                 this.getView().byId("idDescriptionInput_InitialView").setValueState("Error");
@@ -320,18 +294,17 @@ sap.ui.define([
                                 }
                                 try {
                                     const oCreateResp = await this.createData(oModel, oUserCOnfigPayload, sUsersRelPath)
-                                    console.log(oCreateResp)
                                     sap.m.MessageToast.show("Configured system saved successfully.");
                                     window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
                                     console.error("CREATION ERROR: " + error);
-
                                 }
                             } else {
                                 sap.m.MessageBox.error("Oops...Something went wrong please try with different data")
                             }
                         } catch (error) {
+                            sap.m.MessageToast.show("something went wrong technical issue");
                             console.error("Error: " + error);
                         }
                     } else {
@@ -339,6 +312,7 @@ sap.ui.define([
                     }
 
                 } catch (error) {
+                    sap.m.MessageToast.show("something went wrong technical issue")
                     console.error(error);
                 }
             },
@@ -414,10 +388,95 @@ sap.ui.define([
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
                     onClose: function (status) {
                         if (status === MessageBox.Action.DELETE) {
+                            // this.arrayOfButton.forEach(element => {
+                            // });
+                            // Delete from OData service
+                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+                            this.arrayOfClient.forEach(element => {
+                                var sPath = "/ServiceSet('" + element + "')";
+                                oModel.remove(sPath, {
+                                    success: function () {
+                                        MessageToast.show("Configured system deleted successfully.");
+
+                                        // Remove selected the buttons from the UI
+                                        debugger
+                                        var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
+                                        that.arrayOfButton.forEach((currentButton) => {
+                                            oHomePage.removeItem(currentButton); // Remove the selected button
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                            that.updateDisplayedButtons()
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                        })
+
+
+                                        that.arrayOfButton.forEach(element => {
+                                            element.setType("Unstyled")
+                                        });
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
+                                        that.updateDisplayedButtons();
+                                    }.bind(that), // Ensure 'this' context is correct
+                                    error: function (oError) {
+                                        console.error(oError);
+                                        MessageToast.show("Error deleting configured system.");
+                                        that.arrayOfButton.forEach(element => {
+                                            element.setType("Unstyled")
+                                        });
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+
+                                        that.arrayOfDescription = [];
+
+                                    }
+                                });
+                            });
+                        } else {
+                            MessageToast.show("Deletion cancelled.");
+                            this.selectedButton = null;
+                            this.arrayOfButton.forEach(oButton => {
+                                oButton.removeStyleClass("buttonSelected");
+                                oButton.addStyleClass("customButtonBackground");
+                            });
+                            this.arrayOfButton = [];
+                            this.arrayOfClient = [];
+                            this.arrayOfDescription = [];
+                        }
+                    }.bind(that) // Bind the controller context
+                });
+            },
+            onDeleteConfiguredSystems: function () {
+                if (this.arrayOfButton < 1) {
+                    MessageToast.show("Please select atleast one system to delete");
+                    return;
+                }
+
+                var that = this; // Store reference to 'this' for use in callbacks
+
+                if (this.arrayOfDescription.length > 1) {
+                    var oString = this.arrayOfDescription.length
+                }
+                else {
+                    var oString = this.arrayOfDescription[0];
+                }
+                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
+                    title: "Delete",
+                    actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
+                    onClose: function (status) {
+                        if (status === MessageBox.Action.DELETE) {
                             this.arrayOfButton.forEach(element => {
                             });
                             // Delete from OData service
-                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             var oModel = this.getOwnerComponent().getModel(); // Get the OData model
                             this.arrayOfClient.forEach(element => {
                                 var sPath = "/ServiceSet('" + element + "')";
@@ -572,7 +631,7 @@ sap.ui.define([
                     sConfigPath = "/Configure_SystemSet",
                     sRelPath = "/LogonServiceRelSet";
 
-                // Step 1: Validation
+                // Validation
                 for (let key in oPayload) {
                     if (!oPayload[key] && key !== "SaprouterString") {
                         if (key === "Description" && !oCheckbox.getSelected()) {
@@ -587,7 +646,7 @@ sap.ui.define([
                 }
 
                 try {
-                    // Step 2: Fetch All Required Data in Parallel
+                    //  Fetch All Required Data in Parallel
                     const [oConfigResponse, oRelResponse] = await Promise.all([
                         this.readData(oModel, sConfigPath),
                         this.readData(oModel, sRelPath)
@@ -595,7 +654,7 @@ sap.ui.define([
                     const aConfigResults = oConfigResponse.results;
                     const aRelResults = oRelResponse.results;
 
-                    // Step 3: Check for Existing System Configuration
+                    //  Check for Existing System Configuration
                     const configCombinationExists = aConfigResults.find(
                         obj =>
                             obj.SystemId === oPayload.SystemId &&
@@ -611,7 +670,7 @@ sap.ui.define([
 
                     const sUpdatedSysID = configCombinationExists.Uuid;
 
-                    // Step 4: Check Description Uniqueness
+                    //  Check Description Uniqueness
                     const descriptionExists = aRelResults.find(
                         obj => obj.Userid === this.Userid && obj.Description === this.sDescription
                     );
@@ -626,14 +685,14 @@ sap.ui.define([
                     }
 
                     if (descriptionExists) {
-                        // Step 5: Delete Existing Entry
+                        //  Delete Existing Entry
                         const sSelectedSysID = descriptionExists.Uuid;
                         const sDeletePath = `${sRelPath}(Userid='${this.Userid}',Uuid='${sSelectedSysID}')`;
 
                         await this.deleteData(oModel, sDeletePath);
                     }
 
-                    // Step 6: Create/Update Entry
+                    //  Create/Update Entry
                     const oUserUpdatedPayload = {
                         Userid: this.Userid,
                         Uuid: sUpdatedSysID,
@@ -647,118 +706,6 @@ sap.ui.define([
                     sap.m.MessageToast.show("Operation failed due to a technical issue");
                     console.error("ERROR: ", error);
                 }
-            },
-
-
-            onEditconnectSAPPresss: function () {
-                var oView = this.getView();
-                var sDescription = oView.byId("idDescriptionInput_InitialView").getValue();
-                var sSystemId = oView.byId("idSystemIdInput_InitialView").getValue();
-                var sInstanceNumber = oView.byId("idInstanceNumberInput_InitialView").getValue();
-                var sClient = oView.byId("idClientInput_InitialView").getValue();
-                var sApplicationServer = oView.byId("idApplicationServerInput_InitialView").getValue();
-                var sRouterString = oView.byId("idRouterStringInput_InitialView").getValue();
-                var sService = oView.byId("idServiceInput_InitialView").getValue();
-                var oCheckbox = oView.byId("idCheckboxDescription_InitialView");
-                var oButton = this.selectedButton;
-                // Perform validation checks
-                if (!sSystemId) {
-                    sap.m.MessageToast.show("System ID is required.");
-                    return;
-                }
-                if (!sInstanceNumber) {
-                    sap.m.MessageToast.show("Instance Number is required.");
-                    return;
-                }
-                if (!sClient) {
-                    sap.m.MessageToast.show("Client is required.");
-                    return;
-                }
-                if (!sApplicationServer) {
-                    sap.m.MessageToast.show("Application Server is required.");
-                    return;
-                }
-                // Update the sDescription based on the checkbox state
-                if (oCheckbox.getSelected()) {
-                    sDescription = sSystemId + " / " + sClient;
-                }
-
-                var that = this;
-                // var oModel = this.getView().getModel();
-                var oModel = this.getOwnerComponent().getModel();
-
-                // First read the values if entered unique values if entered uniquely.
-
-                const oDescription = new Filter("Description", FilterOperator.EQ, sDescription),
-                    oClient = new Filter("Client", FilterOperator.EQ, sClient),
-                    aAllFilters = new Filter([oClient, oDescription]);
-
-                oModel.read("/ServiceSet", {
-                    filters: [aAllFilters],
-                    success: function (oData) {
-                        // Initialize an array to hold error messages
-                        var errorMessages = [];
-
-                        // Check for duplicates and populate error messages
-                        if (oData.results.length > 0) {
-                            if (oData.results.some(entry => entry.Description === sDescription &&
-                                entry.Client === sClient && entry.SystemId === sSystemId &&
-                                entry.InstanceNo === sInstanceNumber &&
-                                entry.AppServer === sApplicationServer &&
-                                entry.SapRouterStr === sRouterString &&
-                                entry.SapService === sService)) {
-                                MessageToast.show("No changes made cancel to exit")
-                                return;
-                            }
-
-                            if (oData.results.some(entry => entry.Description === sDescription && entry.Client !== sClient)) {
-                                errorMessages.push("Description already exists.");
-                                oView.byId("idDescriptionInput_InitialView").setValueState("Error");
-                                oView.byId("idDescriptionInput_InitialView").setValueStateText("Description already exists");
-                            } else {
-                                oView.byId("idDescriptionInput_InitialView").setValueState("None");
-                            }
-
-                            // Show error messages if duplicates are found
-                            if (errorMessages.length > 0) {
-                                MessageBox.information(errorMessages.join("\n"));
-                                return; // Exit the function if duplicates are found
-                            }
-                            // Update button text
-                            oButton.setText(sDescription);
-                            // Create an object with updated values, setting both Description and DescriptionB
-                            var oUpdatedData = {
-                                Description: sDescription,
-                                DescriptionB: sDescription,  // Ensure DescriptionB is updated to the same value
-                                SystemId: sSystemId,
-                                InstanceNo: sInstanceNumber,
-                                Client: sClient,
-                                AppServer: sApplicationServer,
-                                SapRouterStr: sRouterString,
-                                SapService: sService
-                            };
-                            // Update the entry in OData service
-                            oModel.update("/ServiceSet('" + sClient + "')", oUpdatedData, {
-                                success: function () {
-                                    that.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
-                                    that.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-                                    sap.m.MessageToast.show("system Configuration updated successfully");
-                                    that.clearInputFields(oView);
-                                },
-                                error: function (oError) {
-                                    sap.m.MessageToast.show("Error updating data.");
-                                }
-                            });
-                        } else {
-                            MessageToast.show("Data not found")
-                        }
-                        that.getView().byId("idClientInput_InitialView").setEditable(false);
-
-                    },
-                    error: function (oError) {
-                        MessageBox.error("Error while reading data ", oError.messagew)
-                    }
-                })
             },
 
             onToggleButtonPress: function (oEvent) {
@@ -784,18 +731,6 @@ sap.ui.define([
                     const oResponse = await this.readData(oModel, sPath, aFilters),
                         oResults = oResponse.results;
                     if (oResults.length > 0) {
-                        // GETTING THE SYSTEM UUID S OF RESPECTIVE USER 
-                        // const aUserConfiguredSys = oResults.map((element) => {
-                        //     return element.Uuid
-                        // })
-                        // const aSysFilters = aUserConfiguredSys.map(sysId => new sap.ui.model.Filter("Uuid", sap.ui.model.FilterOperator.EQ, sysId)),
-                        //     oCombinedFilter = new sap.ui.model.Filter({
-                        //         filters: aSysFilters,
-                        //         and: false // 'false' means 'OR' logic
-                        //     });
-                        // // read the user configured systems based on his ID
-                        // const oSysResponse = await this.readData(oModel, "/Configure_SystemSet", oCombinedFilter),
-                        //     aConfiguredSystems = oSysResponse.results
 
                         this.aAllButtons = []; // Reset the array
                         // Store all button instances
