@@ -468,32 +468,32 @@
                     <columns>
                         <Column
                             id="idSnoColumn_HuQuery"
-                            width="12%"
+                            width="15%"
                         >
                             <Text
                                 id="idSnoText_HuQuery"
                                 text="{i18n>Col_SNo_HuQuery}"
                             />
                         </Column>
-                        <Column id="idProductCol_HuQuery">
+                        <Column id="idProductCol_HuQuery" width="20%">
                             <Text
                                 id="idProductText_HuQuery"
                                 text="{i18n>col_Product_HuQuery}"
                             />
                         </Column>
-                        <Column id="idQuanCol_HuQuery">
+                        <Column id="idQuanCol_HuQuery" width="15%">
                             <Text
                                 id="idQuanText_HuQuery"
                                 text="{i18n>col_Quantity_HuQuery}"
                             />
                         </Column>
-                        <Column id="idUomCol_HuQuery">
+                        <Column id="idUomCol_HuQuery" width="15%">
                             <Text
                                 id="idUomText_HuQuery"
                                 text="{i18n>col_UOM_HuQuery}"
                             />
                         </Column>
-                        <Column id="idPrDesCol_HuQuery">
+                        <Column id="idPrDesCol_HuQuery" width="35%">
                             <Text
                                 id="idPrDesText_HuQuery"
                                 text="{i18n>col_ProductDescription_HuQuery}"

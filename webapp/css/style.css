@@ -54,11 +54,6 @@
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
 
 /* Supervisor Page Start */
-.scrollableTableRequesteddata {
-    height: 600px;  /* Adjust the height of the table as required */
-    overflow-y: auto; 
-    overflow-x: auto; 
-  }
 .TableBarForRequestedData{
     height: 3rem !important;
     position: fixed !important;
@@ -1846,7 +1841,7 @@ margin-right: 20%;
 .MainHeadingInPhone_HelpTourOnEditConfigSAPSystem{
 margin-left:2% !important;
     color:#ec792d;
-    font-size:large !important; 
+    font-size:medium !important; 
 } 
 .MainHeadingInTab_HelpTourOnEditConfigSAPSystem{
     margin-left:35% !important;
@@ -1862,7 +1857,7 @@ margin-left:2% !important;
     margin-left: 90%; 
 }
 .BackInHelpTourOnEditConfigSAPSystem{
-    margin-left: 150%; 
+    margin-left: 190%; 
 }
 
 
@@ -2001,20 +1996,20 @@ margin-left:2% !important;
     .tableScrollTab{
         height:800px;
     }
-/* .addClassinChangeQueue{
+ .addClassinChangeQueue{
     margin-left:  0.9rem;
 }
 
 
   .MobileviewTable_WtQbyQ{
-    margin-top: 25%;
+    margin-top: 20%;
     height:600px
 }
 
 
 .MobileviewTableTablet_WtQbyQ{
     margin-top: 10%;
-    height:800px
+    height:600px
 }
 .MobileviewTable_StbqP{
     margin-top :20%;
@@ -2027,4 +2022,8 @@ margin-left:  0.6rem;
 
 .backClassinChangeQueue{
     margin-left: 0.3rem;
-} */
+} 
+.MobileviewTableTablet_stockbinquerybyproduct{
+    margin-top: 10%;
+    height:600px
+}

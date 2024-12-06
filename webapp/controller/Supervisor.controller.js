@@ -911,7 +911,7 @@ sap.ui.define(
                     }
                 });
             },
-
+            // for selecting a row of the table
             onRowSelect: function (oEvent) {
                 var select = oEvent.mParameters.selected;
                 var oSelectedItem = oEvent.getParameter("listItem");
@@ -996,6 +996,7 @@ sap.ui.define(
                     this._oPreviousSelectedItem = null;
                 }
             },
+            // for selecting process area in the table
             onSelectTableProcesAarea: function (oEvent) {
                 debugger;
                 var oTable = this.byId("idRequestedData");
@@ -1007,7 +1008,7 @@ sap.ui.define(
                 var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5].mProperties.selectedKeys
                 this.onSelectFiltertableArea(oSelectedItem);
             },
-            // Resuable code for Selecting Process Area
+            // Resuable code for Selecting Process Area in table
             onSelectFiltertableArea: function (oSelectedItem) {
                 debugger;
                 var oTable = this.byId("idRequestedData");
@@ -1806,6 +1807,7 @@ sap.ui.define(
                     }
                 });
             },
+
             onSelectGroup: function () {
                 // Get the MultiComboBox instances for Area and Group
                 var oAreaMultiComboBox = this.byId("idAreaSelect");
@@ -2643,5 +2645,49 @@ sap.ui.define(
                 oToggleSearchButton.setVisible(!bVisible);
           
               },
+              //Delete feunctionality in the User Table
+              onPressDeleteUser: function () {
+                debugger;
+                // Get the table reference
+                var oTable = this.byId("idUserDataTable");
+            
+                // Get the selected item (single row)
+                var oSelectedItem = oTable.getSelectedItem();
+                
+                if (!oSelectedItem) {
+                    // If no row is selected, show a message
+                    sap.m.MessageToast.show("Please select a row to delete.");
+                    return;
+                }
+            
+                // Get the OData model (assuming it's bound to the view)
+                 var oModel = this.getOwnerComponent().getModel();
+            
+                // Get the path of the selected item (row)
+                var sPath = oSelectedItem.getBindingContext().getPath();
+            
+                // Confirm deletion (Optional: You can ask the user to confirm the delete action)
+                sap.m.MessageBox.warning("Are you sure you want to delete the resource?", {
+
+                    title: "Delete",
+                    actions: [sap.m.MessageBox.Action.DELETE, sap.m.MessageBox.Action.CANCEL],
+
+                    onClose: function (oAction) {
+                        if (oAction === sap.m.MessageBox.Action.DELETE) {
+                            // Proceed with deletion
+                            oModel.remove(sPath, {
+                                success: function () {
+                                    // Show a success message after deletion
+                                    sap.m.MessageToast.show("Row deleted successfully.");
+                                },
+                                error: function () {
+                                    // Show an error message if the deletion fails
+                                    sap.m.MessageToast.show("Error deleting row. Please try again.");
+                                }
+                            });
+                        }
+                    }
+                });
+            },
         });
     });

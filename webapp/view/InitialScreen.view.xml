@@ -122,6 +122,7 @@
                             <Button
                                 id="idBtnAdd_InitialView"
                                 class="btn"
+                                width="auto"
                                 icon="sap-icon://sys-add"
                                 tooltip="{i18n>add_Ttip_IV}"
                                 press="AddPress_InitialView"
@@ -142,6 +143,7 @@
                             <Button
                                 id="idBtnEdit_InitialView"
                                 class="btn"
+                                width="auto"
                                 icon="sap-icon://edit"
                                 tooltip="{i18n>edit_Ttip_IV}"
                                 press="onEditConfiguredSystem"
@@ -162,6 +164,7 @@
                             <Button
                                 id="idBtnDelete_InitialView"
                                 class="btn"
+                                width="auto"
                                 icon="sap-icon://delete"
                                 tooltip="{i18n>del_Ttip_IV}"
                                 press="onDeleteConfiguredSystem"
@@ -182,12 +185,13 @@
                         alignItems="Center"
                     >
                         <!-- button for configure sap system -->
-                        <Link
+                        <Button
                             id="idBtnConfSAPsys_InitialView"
                             class="configureSapBtn_InitialView"
                             text="{i18n>configSAPSys_IV}"
                             tooltip="{i18n>configSAPSys_IV}"
                             press="AddPress_InitialView"
+                            type="Unstyled"
                         />
                         <!-- Link for configuring SAP system -->
                         <HBox id="IDhboxnavup_InitialView">
@@ -196,6 +200,7 @@
                                 icon="sap-icon://navigation-up-arrow"
                                 tooltip="{i18n>previous_Ttip_IV}"
                                 press="onNavNext"
+                                width="auto"
                                 visible="false"
                             />
                         </HBox>
@@ -208,6 +213,7 @@
                                 id="idDownNavigationButton_InitialView"
                                 icon="sap-icon://navigation-down-arrow"
                                 tooltip="{i18n>next_Ttip_IV}"
+                                width="auto"
                                 press="onNavPrevious"
                             />
                         </HBox>
@@ -407,6 +413,7 @@
                             text="{i18n>clear_Btn_IV}"
                             press="onClearconnectSAPPress"
                             type="Unstyled"
+                            width="auto"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button
@@ -414,6 +421,7 @@
                             text="{i18n>save_Btn_IV}"
                             press="onEditconnectSAPPress"
                             type="Unstyled"
+                            width="auto"
                             visible="false"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
@@ -421,6 +429,7 @@
                             id="idconnectsapbackButton_InitialView"
                             text="{i18n>cancel_Btn_IV}"
                             type="Unstyled"
+                            width="auto"
                             press="onBackconnectSAPPress"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
@@ -428,6 +437,7 @@
                             id="idconnectsapfinishButton_InitialView"
                             text="{i18n>finish_Btn_IV}"
                             type="Unstyled"
+                            width="auto"
                             press="onFinishconnectSAPPress"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
@@ -435,6 +445,7 @@
                             id="idhelpconnectsapButton_InitialView"
                             text="{i18n>help_Btn_IV}"
                             type="Unstyled"
+                            width="auto"
                             press="onHelpconnectsapDialog"
                             class="dialogButton_sapconnect"
                         />

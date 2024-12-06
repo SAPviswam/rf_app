@@ -22,6 +22,9 @@ sap.ui.define(
           this.getView().byId("idTable_SBQP").setWidth("150%");
           this.getView().byId("idTable_SBQP").addStyleClass("MobileviewTable_StbqP");
         }
+        if (Device.system.tablet) {
+          this.getView().byId("idTable_SBQP").addStyleClass("MobileviewTableTablet_stockbinquerybyproduct");
+        }
 
       },
       onResourceDetailsLoad: function (oEvent1) {
@@ -32,9 +35,9 @@ sap.ui.define(
         this.applyStoredProfileImage();
 
       },
-      onPressAvatarSBQBP: function (oEvent) {     
-        this.onPressAvatarEveryTileHelperFunction(oEvent); 
-        },
+      onPressAvatarSBQBP: function (oEvent) {
+        this.onPressAvatarEveryTileHelperFunction(oEvent);
+      },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
         var oModel1 = this.getOwnerComponent().getModel();
@@ -264,7 +267,7 @@ sap.ui.define(
             "$format": "json"
           },
           success: function (odata) {
-            
+
             var oView = that.getView();
             oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
             oView.byId("idEANInput_SBQP").setValue(odata.Ean11);
