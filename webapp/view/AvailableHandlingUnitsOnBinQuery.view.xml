@@ -6,12 +6,13 @@
     xmlns:form="sap.ui.layout.form"
     xmlns="sap.m"
     xmlns:tnt="sap.tnt"
+    xmlns:ui="sap.ui.table"
     xmlns:core="sap.ui.core"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
     displayBlock="true"
     height="100%"
 >
     <tnt:ToolPage id="idToolPage_AHUOBQ">
-
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeader_AHUOBQ">
                 <Title
@@ -35,7 +36,6 @@
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
-                        
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
@@ -45,7 +45,6 @@
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
-
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
@@ -56,77 +55,73 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
+                <VBox
+                    id="idVBoxBinNumber_AHUOBQ"
+                    class="formContainer_AHUOBQ"
+                    justifyContent="Center"
+                    alignItems="Center"
+                >
                     <VBox
-                        id="idVBoxBinNumber_AHUOBQ"
-                        class="formContainer_AHUOBQ"
+                        id="idVBOXFormBox_AHUOBQ"
+                        class="formBox_AHUOBQ"
                         justifyContent="Center"
                         alignItems="Center"
                     >
-                        <VBox
-                            id="idVBOXFormBox_AHUOBQ"
-                            class="formBox_AHUOBQ"
-                            justifyContent="Center"
+                        <!-- Bin Number Label and Input Field -->
+                        <HBox
+                            id="idHBox_AHUOBQ"
                             alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
                         >
-                            <!-- Bin Number Label and Input Field -->
-                            <HBox
-                                id="idHBox_AHUOBQ"
-                                alignItems="Center"
-                                justifyContent="Center"
-                                width="100%"
-                            >
-                                <Text
-                                    id="idLableBinNumber_AHUOBQ"
-                                    text="{i18n>Binnumber_Label_AHUBQ}:"
-                                    width="80px"
-                                    class="sapUiTinyMarginEnd"
+                            <Text
+                                id="idLableBinNumber_AHUOBQ"
+                                text="{i18n>Binnumber_Label_AHUBQ}:"
+                                width="80px"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="idInput_AHUOBQ"
+                                placeholder="Enter Bin no..."
+                                liveChange="onLiveChange"
+                                width="80%"
+                                class="sapUiTinyMarginTop"
+                            />
+                        </HBox>
 
-                                />
-                                <Input
-                                    id="idInput_AHUOBQ"
-                                    placeholder="Enter Bin no..."
-                                    liveChange="onLiveChange"
-                                    width="80%"
-                                    class="sapUiTinyMarginTop"
-                                />
-                            </HBox>
-
-                            <!-- Buttons Aligned Under Input Field -->
-                            <HBox
+                        <!-- Buttons Aligned Under Input Field -->
+                        <HBox
                             id="IdHBox_AHUOBQ"
                             justifyContent="Center"
-                               
-                            >
-                             <Button
-                                    id="IdBackbutton_AHUOBQ"
-                                    text="{i18n>Back_button_AHUBQ}"
-                                    type="Emphasized"
-                                    press="onPressBackBtnPage1_AHUOBQ"
-                                    class="sapUiTinyMargin"/>
+                        >
+                            <Button
+                                id="IdBackbutton_AHUOBQ"
+                                text="{i18n>Back_button_AHUBQ}"
+                                type="Emphasized"
+                                press="onPressBackBtnPage1_AHUOBQ"
+                                class="sapUiTinyMargin"
+                                width="auto"
+                            />
 
-                                <ndc:BarcodeScannerButton
-                                    id="idAvalableUnitsOnBinScanner_AHUOBQ"
-                                    scanSuccess="onScanSuccess_AHUOBQ"
-                                    scanFail="onScanError_AHUOBQ"
-                                    visible="true"
-                                    dialogTitle="Enter Bin Number:"
-                                    class="sapUiTinyMargin"
-                                />
- 
+                            <ndc:BarcodeScannerButton
+                                id="idAvalableUnitsOnBinScanner_AHUOBQ"
+                                scanSuccess="onScanSuccess_AHUOBQ"
+                                scanFail="onScanError_AHUOBQ"
+                                visible="true"
+                                dialogTitle="Enter Bin Number:"
+                                class="sapUiTinyMargin"
+                            />
 
-
-                                <!-- <Button
+                            <!-- <Button
                                     id="idSubmitBtnBinNumber_AHUOBQ"
                                     text="{i18n>Submit_button_AHUBQ}"
                                     press="onSubmitPress_AHUOBQ"
                                     class="sapUiTinyMargin"
                                     
                                 /> -->
-  
-                               
-                            </HBox>
-                        </VBox>
+                        </HBox>
                     </VBox>
+                </VBox>
             </ScrollContainer>
 
             <ScrollContainer
@@ -138,9 +133,10 @@
                 visible="false"
             >
                 <VBox id="idVBoxBinNumbertable_AHUOBQ">
+                
                     <HBox id="idBinNumberHBox_AHUOBQ"
-                           class = "Buttons_HUSOQ">
-                        <Label
+                           class = "Buttons_HUSOQ"> 
+                    <Label
                             id="idBinNumberLable_AHUOBQ"
                             text="{i18n>Bin_Number_Table_AHUBQ}"
                             class="BinNumberTableLabel_AHUOBQ"
@@ -149,20 +145,21 @@
                             id="idBinNumberInput_AHUOBQ"
                             class="BinNumberInput"
                             editable="false"
-                        />
+                        /> 
                     </HBox>
                    <HBox
                         id="idHbox46_AHUOBQ"
                         class="Buttons_HUSOQ sapUiLargeMarginTop"
                         justifyContent="End"
                         
-                    >
-                        <Button
+                    > 
+                    <Button
                             id="idBackBtn2_AHUOBQ"
                             press="onBackPressBinNumbersTable"
                             text="{i18n>Back_button_AHUBQ}"
                             type="Emphasized"
                             class = "sapUiTinyMarginEnd"
+                            width="auto"
                         />
                         <Button
                             id="idBtnProductDescription_AHUOBQ"
@@ -170,12 +167,14 @@
                             press="onPressProductDescriptionBtn"
                             tooltip="Prod Description"
                             class = "sapUiTinyMarginEnd"
+                            width="auto"
                         />
                         <Button
                             id="idBtnHUContentBtn_AHUOBQ"
                             text="{i18n>HUContent_button_AHUBQ}"
                             press="onPressHUContentBtn"
                             tooltip="HU Content"
+                            width="auto"
                         />
                     </HBox>
                     <Table
@@ -183,9 +182,9 @@
                         width="100%"
                         mode="SingleSelectLeft"
                         selectionChange="onSelectionChange"
-                        growingScrollToLoad="true"
                         growing="true"
-                        class="table_HuStockOverview"
+                        class="table_HuStockOverview scrollableTable1"
+                        sticky="ColumnHeaders,HeaderToolbar"
                         
                     >
 
@@ -217,6 +216,108 @@
                            
                         </items>
                     </Table>
+                    <!-- <ui:Table
+                        id="idBinNumTable_AHUOBQ"
+                        rows="{/products}"
+                        selectionMode="Single"
+                        rowSelectionChange="onSelectionChange"
+                        ariaLabelledBy="title"
+                        class="table_HuStockOverview" 
+                    >
+                        <ui:extension>
+                            <OverflowToolbar
+                                id="idOverflowtoolbar_AHUOBQ"
+                                style="Clear"
+                            > -->
+                                <!-- <Label
+                                    id="idBinNumberLable_AHUOBQ"
+                                    text="{i18n>Bin_Number_Table_AHUBQ}"
+                                    class="BinNumberTableLabel_AHUOBQ"
+                                />
+                                <Input
+                                    id="idBinNumberInput_AHUOBQ"
+                                    class="BinNumberInput"
+                                    editable="false"
+                                    width="11rem"
+                                />
+                                <ToolbarSpacer id="idToolbarSpacer1_AHUOBQ" />
+                                <Button
+                                    id="idBackBtn2_AHUOBQ"
+                                    press="onBackPressBinNumbersTable"
+                                    text="{i18n>Back_button_AHUBQ}"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd"
+                                    width="5%"
+                                />
+                                <Button
+                                    id="idBtnProductDescription_AHUOBQ"
+                                    text="{i18n>productdescription_button_AHUBQ}"
+                                    press="onPressProductDescriptionBtn"
+                                    tooltip="Prod Description"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                    width="5%"
+                                />
+                                <Button
+                                    id="idBtnHUContentBtn_AHUOBQ"
+                                    text="{i18n>HUContent_button_AHUBQ}"
+                                    press="onPressHUContentBtn"
+                                    tooltip="HU Content"
+                                    type="Emphasized"
+                                    width="5%"
+                                /> -->
+                            <!-- </OverflowToolbar>
+                        </ui:extension>
+                        <ui:rowMode>
+                            <rowmodes:Fixed id="idrowmode_AHUOBQ" />
+                        </ui:rowMode>
+                        <ui:columns>
+                            <ui:Column 
+                            id="idHUcoloumn_AHUOBQ" 
+                            width="30rem">
+                                <Label
+                                    id="idHULadel_AHUOBQ"
+                                    text="Hu"
+                                />
+                                <ui:template>
+                                    <Text
+                                        id="idHUText_AHUOBQ"
+                                        text="{Huident}"
+                                        wrapping="false"
+                                    />
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column 
+                                id="idProductcoloumn_AHUOBQ" 
+                                width="30rem">
+                                <Label
+                                    id="idProductLadel_AHUOBQ"
+                                    text="Product Id"
+                                />
+                                <ui:template>
+                                    <Text
+                                        id="idProductText_AHUOBQ"
+                                        text="{Matnr}"
+                                    />
+                                </ui:template>
+                            </ui:Column>
+                            <ui:Column
+                                id="idFlgcoloumn_AHUOBQ"
+                                width="30rem"
+                            >
+                                <Label
+                                    id="idOpenwtLadel_AHUOBQ"
+                                    text="Open(WT)"
+                                />
+                                <ui:template>
+                                    <Text
+                                        id="idOpenwtext_AHUOBQ"
+                                        text="{Flgmove}"
+                                    />
+                                </ui:template>
+                            </ui:Column>
+                        </ui:columns>
+                    </ui:Table> -->
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
@@ -232,7 +333,6 @@
                     class="ThirdPageContainer_AHUOBQ"
                     justifyContent="Center"
                 >
-                    
                     <form:SimpleForm
                         id="idSimpleFormThirdPage_AHUOBQ"
                         layout="ResponsiveGridLayout"
@@ -246,12 +346,12 @@
                         columnsM="1"
                     >
                         <VBox
-                        id="idVBox_AHUOBQ"
+                            id="idVBox_AHUOBQ"
                             alignItems="Center"
                             alignContent="Center"
                         >
                             <HBox
-                              id="idHBox1_AHUOBQ"
+                                id="idHBox1_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -259,7 +359,7 @@
                             >
                                 <Text
                                     id="idThirdPageLable1_AHUOBQ"
-                                    text="{i18n>HU_Number_AHUBQ}" 
+                                    text="{i18n>HU_Number_AHUBQ}"
                                     width="80px"
                                 />
                                 <Input
@@ -270,7 +370,7 @@
                                 />
                             </HBox>
                             <HBox
-                              id="idHBox2_AHUOBQ"
+                                id="idHBox2_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -289,7 +389,7 @@
                                 />
                             </HBox>
                             <HBox
-                              id="idHBox3_AHUOBQ"
+                                id="idHBox3_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -303,8 +403,8 @@
                                 <Input
                                     id="idSectionInput_AHUOBQ"
                                     width="5rem"
-                                   class="sapUiTinyMarginTop"
-                                   editable="false"
+                                    class="sapUiTinyMarginTop"
+                                    editable="false"
                                 />
                             </HBox>
                             <!-- <HBox
@@ -327,7 +427,7 @@
                                 />
                             </HBox> -->
                             <HBox
-                              id="idHBox5_AHUOBQ"
+                                id="idHBox5_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -341,12 +441,12 @@
                                 <Input
                                     id="idQtyInputThirdPage_AHUOBQ"
                                     width="7rem"
-                                     class="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                     editable="false"
                                 />
                             </HBox>
                             <HBox
-                              id="idHBox6_AHUOBQ"
+                                id="idHBox6_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -361,7 +461,7 @@
                                     id="idBinInputThirdPage_AHUOBQ"
                                     width="7rem"
                                     editable="false"
-                                     class="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                 />
                             </HBox>
                             <Button
@@ -370,6 +470,7 @@
                                 class="sapUiTinyMarginBottom"
                                 text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
+                                width="auto"
                             />
                         </VBox>
                     </form:SimpleForm>
@@ -406,7 +507,7 @@
                             id="idVBox7_AHUOBQ"
                         >
                             <HBox
-                              id="idHBox20_AHUOBQ"
+                                id="idHBox20_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -424,7 +525,7 @@
                                 />
                             </HBox>
                             <HBox
-                              id="idHBox7_AHUOBQ"
+                                id="idHBox7_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -443,7 +544,7 @@
                                 />
                             </HBox>
                             <HBox
-                              id="idHBox8_AHUOBQ"
+                                id="idHBox8_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -473,7 +574,7 @@
                                 </HBox>
                             </HBox>
                             <HBox
-                              id="idHBox9_AHUOBQ"
+                                id="idHBox9_AHUOBQ"
                                 alignContent="Center"
                                 alignItems="Center"
                                 justifyContent="Start"
@@ -508,6 +609,7 @@
                                 press="onBackPressProductDescription"
                                 text="{i18n>Back_button_AHUBQ}"
                                 type="Emphasized"
+                                width="auto"
                             />
                         </VBox>
                     </form:SimpleForm>

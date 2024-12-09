@@ -40,7 +40,7 @@
                 <Avatar
                     id="_IDGenAvatar1WtQBQueue"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarWTQBQ"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -141,6 +141,7 @@
                             justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
+                            class="Buttons_HUSOQ"
                         >
                             <Text
                                 id="idLabel_WTQuerybyQueue"
@@ -158,12 +159,14 @@
                             justifyContent="Center"
                             alignContent="Center"
                             alignItems="Center"
+                            class="myResponsiveHBoxWTQBYQ Buttons_HUSOQ sapUiLargeMarginTop"
+                            width="100%"
                         >
                             <Button
                                 id="IdButton_Open_WTQuerybyQueue"
                                 text="{i18n>Button_Open_WTQbyQ}"
                                 press="onOpenWTQuerybyQueue"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                 type="Emphasized"
                             />
                             <Button
@@ -171,13 +174,13 @@
                                 text="{i18n>Button_Conf_WTQbyQ}"
                                 press="onConfWTQuerybyQueue"
                                 type="Emphasized"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                             />
                             <Button
                                 id="IdButton_All_WTQuerybyQueue"
                                 text="{i18n>Button_All_WTQbyQ}"
                                 press="onAllWTQuerybyQueue"
-                                class="sapUiTinyMarginEnd"
+                                class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                 type="Emphasized"
                             />
                             <Button
@@ -186,24 +189,20 @@
                                 press="onBackWTQuerybyQueue"
                                 type="Emphasized"
                                 visible="false"
+                                class="myResponsiveButtonWTQBYQ"
                             />
                         </HBox>
                     </form:SimpleForm>
-                </VBox>
-                <Panel
-                    id="idPanel_WTQuerybyQueue"
-                    headerText=""
-                    visible="true"
-                    class="sapUiSmallMarginTop"
-                >
+
                     <!--Table for the Warhouse Tasks-->
                     <Table
                         id="idTableWTQuerybyQueue"
                         growing="true"
-                        growingThreshold="6"
                         mode="SingleSelectMaster"
                         selectionChange="onSelectWarehouseTaskQueue"
                         width="100%"
+                        class="table_HuStockOverview scrollableTable1WTQbyQ"
+                        sticky="ColumnHeaders,HeaderToolbar"
                     >
                         <columns>
                             <Column id="idColumn_WTQuerybyQueue">
@@ -221,7 +220,7 @@
                         </columns>
                         <items />
                     </Table>
-                </Panel>
+                </VBox>
             </ScrollContainer>
             <!--Scroll Container for Third view (Warehouse Task Details)-->
             <ScrollContainer
@@ -511,13 +510,14 @@
                                         text="{i18n>Button_Detail_WTQbyQ}"
                                         press="onWtQBWoDetailBtnPress"
                                         type="Emphasized"
-                                        class="sapUiTinyMarginEnd"
+                                        class="sapUiTinyMarginEnd myResponsiveButtonWTQBYQ"
                                     />
                                     <Button
                                         id="idWtQBQueueThirdbackbtn"
                                         text="{i18n>Button_Back_WTQbyQ}"
                                         press="onWtQBQueueSecondBackBtnPress"
                                         type="Emphasized"
+                                        class="myResponsiveButtonWTQBYQ"
                                         visible="false"
                                     />
                                 </HBox>
@@ -591,7 +591,7 @@
                                     id="idInput_Wo_WTQuerybyQueue"
                                     value=""
                                     width="90px"
-                                    editable="false"   
+                                    editable="false"
                                 />
 
                                 <Label
@@ -602,7 +602,6 @@
                                     id="idLabel_ESTP_WTQuerybyQueue"
                                     text="{i18n>Label_ESTP_WTQbyQ}"
                                     width="50px"
-                                
                                 />
                                 <Input
                                     id="idInput_ESTP_WTQuerybyQueue"
@@ -622,7 +621,6 @@
                                     value=""
                                     width="80px"
                                     editable="false"
-                                    
                                 />
                             </HBox>
                             <HBox
@@ -647,7 +645,6 @@
                                     value=""
                                     width="40px"
                                     editable="false"
-                                    
                                 />
                                 <Label
                                     id="idLabel_Space21_WTQuerybyQueue"
@@ -663,7 +660,6 @@
                                     value=""
                                     width="100px"
                                     editable="false"
-                                    
                                 />
                                 <Input
                                     id="IdInput26_WTQuerybyQueue"
@@ -725,7 +721,6 @@
                                     id="idLabel_PEnt_WTQuerybyQueue"
                                     text="{i18n>Label_PEnt_WTQbyQ}"
                                     width="50px"
-                                    
                                 />
                                 <Input
                                     id="idInput_PEnt_WTQuerybyQueue"
@@ -848,6 +843,7 @@
                                         press="onPressBackWTQuerybyQueue"
                                         visible="false"
                                         type="Emphasized"
+                                        class="myResponsiveButtonWTQBYQ"
                                     />
                                 </HBox>
                             </VBox>

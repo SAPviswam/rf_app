@@ -19,13 +19,13 @@ sap.ui.define(
         this.oSMSConfig = oConfigModel.getProperty("/SMS");
         
 
-        var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-          headers: {
-            "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-            "sap-client": "100"
-          }
-        });
-        this.getView().setModel(oModel);
+        // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+        //   headers: {
+        //     "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
+        //     "sap-client": "100"
+        //   }
+        // });
+        // this.getView().setModel(oModel);
 
         const OData = new sap.ui.model.json.JSONModel({
           appLoginData: {
@@ -63,7 +63,6 @@ sap.ui.define(
           flag = false;
         } else {
           oUserView.byId("idPasswordInpt_CL").setValueState("None");
-
         }
         if (!flag) {
           sap.m.MessageToast.show("Please enter required credentials")
@@ -85,45 +84,60 @@ sap.ui.define(
             text: "Authenticating"
           });
         }
-        // Open the Busy Dialog
-        this._oBusyDialog.open();
-
         try {
-          setTimeout(async () => {
-            const oResponse = await this.readData(oModel, sPath, aFilters);
-            if (oResponse.results.length > 0) {
-              const oResult = oResponse.results,
-                sStoredUserId = oResult[0].Userid,
-                sStoredPassword = oResult[0].Password
-              // Use SHA256 for hashing (CryptoJS)
-              const sEncrytpedPass = CryptoJS.SHA256(sUserEnteredPassword).toString(); // encryption with CryptoJS
-              if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncrytpedPass) {
-                // clear input fields
-                this.getView().byId("idUserIDInpt_CL").setValue(""),
-                  this.getView().byId("idPasswordInpt_CL").setValue("");
-                // Destination on Successfull login
-                sap.m.MessageToast.show("Login Successfull")
-                // Close busy dialog
-                this._oBusyDialog.close();
-                const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("InitialScreen");
-              } else {
-                sap.m.MessageToast.show("Authentication failed")
-                // Close busy dialog
-                this._oBusyDialog.close();
-              }
-            } else {
-              sap.m.MessageToast.show("user ID not found")
-              // Close busy dialog
-              this._oBusyDialog.close();
-            }
+          // Open busy dialog
+          this._oBusyDialog.open();
 
-          }, 1000);
+          // Simulate buffer using setTimeout
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          // Fetch data from the model
+          const oResponse = await this.readData(oModel, sPath, aFilters);
+
+          if (oResponse.results.length > 0) {
+            const oResult = oResponse.results[0],
+              sStoredUserId = oResult.Userid,
+              sStoredPassword = oResult.Password;
+
+            // Encrypt user-entered password with SHA256
+            const sEncryptedPass = CryptoJS.SHA256(sUserEnteredPassword).toString();
+
+            if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncryptedPass) {
+              this._onLoginSuccess(sUserEnteredUserID);
+            } else {
+              this._onLoginFail("Authentication failed");
+            }
+          } else {
+            this._onLoginFail("User ID not found");
+          }
         } catch (error) {
-          sap.m.MessageToast.show("Something went wrong please try again later")
-          console.error("Error:" + error)
+          sap.m.MessageToast.show("Something went wrong. Please try again later.");
+          console.error("Error Found:", error);
+        } finally {
+          // Close busy dialog
+          this._oBusyDialog.close();
         }
       },
+      _onLoginSuccess(sUserEnteredUserID) {
+        // Clear input fields
+        this.getView().byId("idUserIDInpt_CL").setValue("");
+        this.getView().byId("idPasswordInpt_CL").setValue("");
+
+        // Show success message
+        sap.m.MessageToast.show("Login Successfull");
+
+        // Navigate to the Initial Screen
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID },true);
+        window.location.reload(true);
+
+      },
+
+      _onLoginFail(sMessage) {
+        // Show failure message
+        sap.m.MessageToast.show(sMessage);
+      },
+
       onForgotPasswordPress: async function () {
         if (!this.forgotPass) {
           this.forgotPass = await this.loadFragment("ForgotPassword");
@@ -146,7 +160,6 @@ sap.ui.define(
 
         }
       },
-      // test
       onUpdatePasswordPress: async function () {
         const oModel = this.getOwnerComponent().getModel(),
           oUserView = this.getView(),
@@ -198,7 +211,8 @@ sap.ui.define(
           const oResponse = await this.readData(oModel, sPath, aFilters)
           if (oResponse.results.length > 0) {
             const sRegisteredUserID = oResponse.results[0].Userid,
-              sRegisteredPhnNumber = oResponse.results[0].Phonenumber;
+              sRegisteredPhnNumber = oResponse.results[0].Phonenumber,
+              sStoredPassword = oResponse.results[0].Password;
 
             if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
 
@@ -207,6 +221,10 @@ sap.ui.define(
 
               // Use SHA256 for hashing (CryptoJS)
               const sEncrytpedPass = CryptoJS.SHA256(sNewPassword).toString(); // encryption with CryptoJS
+              if (sStoredPassword === sEncrytpedPass) {
+                sap.m.MessageBox.information("New Password can not be same as previous password");
+                return;
+              }
               const oPayload = {
                 Password: sEncrytpedPass
               }
@@ -242,11 +260,7 @@ sap.ui.define(
         } catch (error) {
           sap.m.MessageToast.show("Failed to read data " + error)
         }
-
-
-
       },
-      // test
 
       onNavToSignUpPage: function () {
 

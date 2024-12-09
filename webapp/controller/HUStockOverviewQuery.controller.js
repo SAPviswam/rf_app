@@ -26,6 +26,11 @@ sap.ui.define(
           this.getView().byId("idBinNumberTableInput_HUSOQ").addStyleClass("MobileviewTable_HUSOQ");
           this.getView().byId("idTable_HUSOQ").addStyleClass("MobileviewTable_HUSOQ");
       }
+      
+      if (Device.system.tablet) {
+        this.getView().byId("idBinNumberTableInput_HUSOQ").addStyleClass("tab_Table_HuStockOverview");
+        this.getView().byId("idTable_HUSOQ").addStyleClass("tab_Table_HuStockOverview");
+    }
 
       },
       onResourceDetailsLoad: async function (oEvent1) {
@@ -604,6 +609,46 @@ sap.ui.define(
         this.getView().byId("idinput_HUSOQ").setValue(sScannedHu);
         this.onSubmitButtonPress();
       },
+
+      onTopHupress: function() {
+        debugger;
+
+        var oView = this.getView();
+        var sHUNumber = oView.byId("idBinNumberforlabelInput_HUSOQ").getValue();
+
+        sHUNumber = sHUNumber.toUpperCase();
+
+        this.sHUNumber = sHUNumber;
+
+        // Check if bin number is provided
+        if (!sHUNumber) {
+          sap.m.MessageToast.show("Please enter a hu number.");
+          return;
+        }
+
+        // Call your backend service to fetch products for this bin
+        var oModel = this.getOwnerComponent().getModel(); // Assuming you have a model set up
+        var that = this;
+        var sRequestUrl = `/HandlingUnitNHSet('${sHUNumber}')`;
+        oModel.read(sRequestUrl, {
+          urlParameters: {
+            "$expand": "HUheadtoItems",
+            "$format": "json"
+          },
+
+          success: function (odata) {
+
+            debugger;
+
+            console.log(odata)
+            sap.m.MessageBox.success(`Tophu : ${odata.Tophu}`);
+
+          },
+          error: function () {
+            sap.m.MessageToast.show("Error fetching products.");
+          }
+        });
+      }
     });
   }
 );
