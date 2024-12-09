@@ -17,6 +17,7 @@ sap.ui.define(
         const oConfigModel = this.getOwnerComponent().getModel("config");
         this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
         this.oSMSConfig = oConfigModel.getProperty("/SMS");
+        
 
         var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
           headers: {
