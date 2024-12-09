@@ -1168,6 +1168,7 @@
                             id="idcolorPickerResource"
                             mode="HSL"
                             change="onColorChange"
+                            displayMode="Simplified"
                         />
                     </VBox>
                 </Dialog>

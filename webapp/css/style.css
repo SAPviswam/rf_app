@@ -678,7 +678,7 @@
 }
 
 .tanCheckBox .sapMCbBg {
-    background-color:  tan !important;
+    background-color: tan !important;
     height: 20px;
     width: 20px;
 }
@@ -1049,7 +1049,7 @@
     height: 50px !important;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers the tile's content */
+    justify-content: center; 
     align-items: center;
 }
 /* Hide the title and subtitle within the tile */
