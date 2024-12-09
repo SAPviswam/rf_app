@@ -398,21 +398,21 @@
                                         text="{i18n>Button_Back1_HuQuery}"
                                         press="onPressBackButtonSecondSC"
                                         class="sapUiSmallMarginEnd"
-                                        width="100%"
+                                        width="auto"
                                     />
                                     <Button
                                         id="idHuContentBtn_HuQuery"
                                         text="{i18n>Label_HuContent_HuQuery}"
                                         press="onHUContentPress"
                                         class="sapUiTinyMarginEnd"
-                                         width="100%"
+                                         width="auto"
                                     />
                                     <Button
                                         id="idHuHierarchyBtn_HuQuery"
                                         text="{i18n>Label_HuHierarchy_HuQuery}"
                                         press="onHUHierarchyPress"
                                         class="sapUiTinyMarginEnd"
-                                         width="100%"
+                                         width="auto"
                                     />
                                 </HBox>
                             </VBox>
@@ -432,9 +432,10 @@
             >
                 <HBox
                     id="idHbox1ThirdSc_HuQuery"
-                    class="floatingTitle"
-                    justifyContent="End"
+                    class="floatingTitle stickyHBox"
+                    justifyContent="SpaceBetween"
                 >
+                <Title id="HuContentTitle_HuQuery" text="Hu Content" ></Title>
                     <Button
                         id="idThirdBackBtn_HuQuery"
                         text="{i18n>Button_Back1_HuQuery}"
@@ -450,6 +451,7 @@
                     width="100%"
                     growingScrollToLoad="true"
                     mode="None"
+                    class="scrollableTable"
                 >
                     <headerToolbar>
                         <OverflowToolbar id="idOverflowToolBar_HuQuery">
@@ -466,32 +468,32 @@
                     <columns>
                         <Column
                             id="idSnoColumn_HuQuery"
-                            width="12%"
+                            width="15%"
                         >
                             <Text
                                 id="idSnoText_HuQuery"
                                 text="{i18n>Col_SNo_HuQuery}"
                             />
                         </Column>
-                        <Column id="idProductCol_HuQuery">
+                        <Column id="idProductCol_HuQuery" width="20%">
                             <Text
                                 id="idProductText_HuQuery"
                                 text="{i18n>col_Product_HuQuery}"
                             />
                         </Column>
-                        <Column id="idQuanCol_HuQuery">
+                        <Column id="idQuanCol_HuQuery" width="15%">
                             <Text
                                 id="idQuanText_HuQuery"
                                 text="{i18n>col_Quantity_HuQuery}"
                             />
                         </Column>
-                        <Column id="idUomCol_HuQuery">
+                        <Column id="idUomCol_HuQuery" width="15%">
                             <Text
                                 id="idUomText_HuQuery"
                                 text="{i18n>col_UOM_HuQuery}"
                             />
                         </Column>
-                        <Column id="idPrDesCol_HuQuery">
+                        <Column id="idPrDesCol_HuQuery" width="35%">
                             <Text
                                 id="idPrDesText_HuQuery"
                                 text="{i18n>col_ProductDescription_HuQuery}"
@@ -542,13 +544,13 @@
             >
                 <HBox
                     id="idHbox1FourthSc_HuQuery"
-                    class="floatingTitle"
-                    justifyContent="End"
+                    class="floatingTitle stickyHBox"
+                    justifyContent="SpaceBetween"
                 >
+                <Title id="HuHierarchyTitle_HuQuery" text="Hu Hierarchy" ></Title>
                     <Button
                         id="idFourthBackBtn_HuQuery"
                         text="{i18n>Button_Back1_HuQuery}"
-                        class=""
                         press="onPressBackButtonFourthSC"
                         type="Emphasized"
                         width="100%"
@@ -559,7 +561,7 @@
                     id="idSimpleTable_HuQuery"
                   items="{/products}"
                     growing="true"
-                    
+                     class="scrollableTable"
                     growingScrollToLoad="true"
                     mode="SingleSelectMaster"
                     selectionChange="onSelectParticularWT"

@@ -1,6 +1,7 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
+    // "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/m/MessageToast",
     "sap/ui/Device",
     "sap/ui/core/UIComponent"
@@ -19,7 +20,10 @@ sap.ui.define(
         this._cacheExpiryTime = 60000;
         if (Device.system.phone) {
           this.getView().byId("idTable_SBQP").setWidth("150%");
-
+          this.getView().byId("idTable_SBQP").addStyleClass("MobileviewTable_StbqP");
+        }
+        if (Device.system.tablet) {
+          this.getView().byId("idTable_SBQP").addStyleClass("MobileviewTableTablet_stockbinquerybyproduct");
         }
 
       },
@@ -28,7 +32,11 @@ sap.ui.define(
         const { id } = oEvent1.getParameter("arguments");
         this.ID = id;
         console.log(this.ID);
+        this.applyStoredProfileImage();
 
+      },
+      onPressAvatarSBQBP: function (oEvent) {
+        this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
       onSBQPfirstBackBtnPress: async function () {
         var oRouter = UIComponent.getRouterFor(this);
@@ -259,7 +267,7 @@ sap.ui.define(
             "$format": "json"
           },
           success: function (odata) {
-            
+
             var oView = that.getView();
             oView.byId("idMaktxInput_SBQP").setValue(odata.Maktx);
             oView.byId("idEANInput_SBQP").setValue(odata.Ean11);

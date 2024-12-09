@@ -283,7 +283,7 @@ sap.ui.define([
                                     });
                                 });
                                 window.location.reload();
-                                sap.m.MessageToast.show("Settings resetting to default!");
+                                sap.m.MessageToast.show("Settings resetting to default, Please wait!");
                             } catch (oError) {
                                 //sap.m.MessageToast.show("Failed to reset settings on the backend.");
                                 console.error("Error resetting backend data:", oError);

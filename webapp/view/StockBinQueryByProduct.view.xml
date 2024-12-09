@@ -39,7 +39,7 @@
                 <Avatar
                     id="_IDGenAvatar1_SBQP"
                     displaySize="XS"
-                    press="onSBQPAvatarPressed"
+                    press="onPressAvatarSBQBP"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -75,21 +75,21 @@
                         >
                             <HBox
                                 id="idHbox1_SBQP"
-                                class="sapUiSmallMargin"
+                                alignContent="Center"
                                 alignItems="Center"
                             >
-                                <Label
+                                <Text
                                     id="idProductLabel_SBQP"
                                     text="{i18n>Label_Product_SBQbyP}"
-                                    width="70px"
-                                    class="sapUiTinyMargin sapUiTinyMarginBottom"
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idProductinput_SBQP"
                                     value=""
                                     liveChange="onpressProductsubmit"
                                     width="15rem"
-                                     placeholder="{i18n>Placeholder_SBQbyP}"
+                                    placeholder="{i18n>Placeholder_SBQbyP}"
                                 />
                             </HBox>
                             <HBox
@@ -112,6 +112,7 @@
                                     tooltip="Back"
                                     type="Emphasized"
                                     class="sapUiSmallMarginBegin"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -125,29 +126,17 @@
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
-                
             >
-                <form:SimpleForm
-                    id="idSF2_SBQP"
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
+                <VBox
+                    id="idVbox3_SBQP"
+                    width="100%"
+                    height="100%"
                 >
-                    <VBox
-                        id="idVbox3_SBQP"
-                        alignItems="Center"
-                        justifyContent="Center"
-                        width="100%"
-                        height="100%"
-                    >
                         <HBox
                             id="idHbox2_SBQP"
                             alignItems="Center"
                             justifyContent="Center"
+                            class="Buttons_HUSOQ"
                         >
                             <Label
                                 id="idProductLabel1_SBQP"
@@ -155,87 +144,67 @@
                                 width="70Px"
                                 class="sapUiTinyMargin sapUiTinyMarginBottom"
                             />
-                            <HBox
-                                id="idHbox3_SBQP"
-                                alignItems="Center"
-                                justifyContent="SpaceBetween"
-                                width="100%"
-                            >
-                                <Input
-                                    id="idProductinput2_SBQP"
-                                    value=""
-                                />
-                            </HBox>
+                            <Input
+                                id="idProductinput2_SBQP"
+                                value=""
+                            />
                         </HBox>
-                        <VBox
-                            id="idVbox5_SBQP"
-                            class="sapUiMediumMarginBottom"
+                   
+                    <HBox
+                        id="idHbox2_StockbinQuerybyQueue"
+                        justifyContent="End"
+                        class="Buttons_HUSOQ sapUiMediumMarginTop"
+                    >
+                        <Button
+                            id="idSecondbackbtn_SBQP"
+                            type="Emphasized"
+                            press="onSBQPSecondBackBtnPress"
+                            visible="false"
+                            text="{i18n>Button_Back_SBQbyP}"
+                            class="sapUiTinyMarginEnd"
+                            width="auto"
                         />
-                        <Panel
-                            id="idPanel_StockBinQuerybyProduct"
-                            headerText=""
-                            visible="true"
-                            class="sapUiSmallMarginTop"
-                        >
-                            <Table
-                                id="idTable_SBQP"
-                                growing="true"
-                                growingThreshold="6"
-                                mode="None"
-                                width="100%"
-                                alternateRowColors="true"
-                            >
-
-                                <headerToolbar>
-                                    <OverflowToolbar id="idTableHeader_SBQP">
-                                        <Title
-                                            id="idTableHeaderTitle_SBQP"
-                                            text="{i18n>Table_Title_SBQbyP}"
-                                        />
-                                        <ToolbarSpacer
-                                            id="idTableHeaderSpacerem_SBQP"
-                                        />
-                                        <Button
-                                            id="idSecondbackbtn_SBQP"
-                                            type="Emphasized"
-                                            press="onSBQPSecondBackBtnPress"
-                                            visible="false"
-                                            text="{i18n>Button_Back_SBQbyP}"
-                                        />
-                                        <Button
-                                            id="idProductDescription_SBQP"
-                                            text="{i18n>Button_PrdDe_SBQbyP}"
-                                            class="sapUiTinyMargin"
-                                            press="onSBQPPreDePress"
-                                            type="Emphasized"
-                                        />
-                                    </OverflowToolbar>
-                                </headerToolbar>
-                                <columns>
-                                    <Column id="idBinColumn_SBQP">
-                                        <Text
-                                            id="idBinText_SBQP"
-                                            text="{i18n>Text_Binno_SBQbyP}"
-                                        />
-                                    </Column>
-                                    <Column id="idSBQPColumn_SBQP">
-                                        <Text
-                                            id="idSBQPText"
-                                            text="{i18n>Text_Stock_SBQbyP}"
-                                        />
-                                    </Column>
-                                    <Column id="idSBQPPcColumn_SBQP">
-                                        <Text
-                                            id="idSBQPPcText_SBQP"
-                                            text="{i18n>Text_UoM_SBQbyP}"
-                                        />
-                                    </Column>
-                                </columns>
-                                <items />
-                            </Table>
-                        </Panel>
-                    </VBox>
-                </form:SimpleForm>
+                        <Button
+                            id="idProductDescription_SBQP"
+                            text="{i18n>Button_PrdDe_SBQbyP}"
+                            press="onSBQPPreDePress"
+                            type="Emphasized"
+                            width="auto"
+                        />
+                    </HBox>
+                    <Table
+                        id="idTable_SBQP"
+                        growing="true"
+                        mode="None"
+                        width="100%"
+                        alternateRowColors="true"
+                        class="table_HuStockOverview scrollableTable1WTQbyQ"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                    >
+                        <columns>
+                            <Column id="idBinColumn_SBQP">
+                                <Text
+                                    id="idBinText_SBQP"
+                                    text="{i18n>Text_Binno_SBQbyP}"
+                                />
+                            </Column>
+                            <Column id="idSBQPColumn_SBQP">
+                                <Text
+                                    id="idSBQPText"
+                                    text="{i18n>Text_Stock_SBQbyP}"
+                                />
+                            </Column>
+                            <Column id="idSBQPPcColumn_SBQP">
+                                <Text
+                                    id="idSBQPPcText_SBQP"
+                                    text="{i18n>Text_UoM_SBQbyP}"
+                                />
+                            </Column>
+                        </columns>
+                        <items />
+                    </Table>
+                    <!-- </Panel> -->
+                </VBox>
             </ScrollContainer>
 
             <ScrollContainer
@@ -359,6 +328,7 @@
                                 type="Emphasized"
                                 press="onSBQPThirdBackBtnPress"
                                 visible="false"
+                                width="auto"
                             />
                         </HBox>
                     </VBox>
@@ -632,6 +602,7 @@
                                     press="onSBQPFourthBackBtnPress"
                                     visible="false"
                                     text="{i18n>Button_Back_SBQbyP}"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>

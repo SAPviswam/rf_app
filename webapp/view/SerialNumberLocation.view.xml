@@ -112,6 +112,7 @@
                                         press="onSNLfirxtBackBtnPress"
                                         type="Emphasized"
                                         class="sapUiTinyMargin"
+                                        width="auto"
                                     />
                                     <!-- <Button
                                         id="idproductScannerBtn_SNL"
@@ -163,7 +164,7 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
-                        <!-- 1ST ROW -->
+                            <!-- 1ST ROW -->
                             <HBox
                                 id="idHbox3_SNL"
                                 alignContent="Center"
@@ -216,8 +217,10 @@
                                     editable="false"
                                 />
 
-                                <Text id="idLabel3_SNL" 
-                                class="sapUiTinyMarginTop"/>
+                                <Text
+                                    id="idLabel3_SNL"
+                                    class="sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idlgberInput3_SNL"
                                     maxLength="25"
@@ -244,7 +247,7 @@
                                     editable="false"
                                 />
                             </HBox>
-                             <!-- 3RD ROW -->
+                            <!-- 3RD ROW -->
                             <HBox
                                 id="idHbox5_SNL"
                                 alignContent="Center"
@@ -283,7 +286,7 @@
                                     editable="false"
                                 />
                             </HBox>
-                                    <!-- 4TH ROW -->
+                            <!-- 4TH ROW -->
                             <HBox
                                 id="idHbox6_SNL"
                                 alignContent="Center"
@@ -364,7 +367,7 @@
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
                             </HBox>
-                               <!-- 6TH ROW -->
+                            <!-- 6TH ROW -->
                             <HBox
                                 id="idHbox8_SNL"
                                 alignContent="Center"
@@ -412,17 +415,20 @@
                                     press="onSNLthirdBackBtnPress"
                                     type="Emphasized"
                                     class="sapUiTinyMarginEnd"
+                                    width="auto"
                                 />
                                 <Button
                                     id="idHudetailsbtn_SNL"
                                     text="{i18n>huDetails_btn_SNL}"
                                     press="onpresshudetails"
                                     class="sapUiTinyMarginEnd"
+                                    width="auto"
                                 />
                                 <Button
                                     id="idBindetailsbtn_SNL"
                                     text="{i18n>binDetails_btn_SNL}"
                                     press="onpressBindetails"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -455,10 +461,12 @@
                         columnsM="1"
                         width="110%"
                     >
-                        <VBox id="idVbox13_SNL"   
-                        alignItems="Center"
-                        justifyContent="Center"
-                        width="100%">
+                        <VBox
+                            id="idVbox13_SNL"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="100%"
+                        >
                             <!-- 1ST ROW -->
                             <HBox
                                 id="idVbox14_SNL"
@@ -483,7 +491,7 @@
                                 <Label
                                     id="idHtypLabel_SNL"
                                     text="{i18n>htyp_Label_SNL}"
-                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                    class="sapUiTinyMarginTop"
                                     width="40px"
                                 />
                                 <Input
@@ -509,16 +517,18 @@
                                 />
                                 <Input
                                     id="idTotwinput_SNL"
-                                    width="50px"
+                                    width="55px"
                                     editable="false"
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="idLabel13_SNL"
-                                      class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+                                <Label
+                                    id="idLabel13_SNL"
+                                    class="sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idUnitGWinput_SNL"
-                                    width="50px"
+                                    width="55px"
                                     editable="false"
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
@@ -526,7 +536,7 @@
                                 <Label
                                     id="idTotVLabel_SNL"
                                     text="{i18n>totv_Label_SNL}"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                     width="40px"
                                 />
 
@@ -537,8 +547,10 @@
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="idLabel14_SNL" 
-                                class="sapUiTinyMarginTop"/>
+                                <Label
+                                    id="idLabel14_SNL"
+                                    class="sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idUnitsGVinput_SNL"
                                     width="50px"
@@ -570,7 +582,7 @@
                                 <Label
                                     id="idMaxVLabel_SNL"
                                     text="{i18n>maxv_Label_SNL}"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                     width="40px"
                                 />
                                 <Input
@@ -604,7 +616,7 @@
                                 <Label
                                     id="idTarVLabel_SNL"
                                     text="{i18n>tarv_Label_SNL}"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop"
                                     width="40px"
                                 />
                                 <Input
@@ -634,8 +646,10 @@
                                     editable="false"
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
-                                <Label id="idLabel16_SNL" 
-                                class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+                                <Label
+                                    id="idLabel16_SNL"
+                                    class="sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idWidthinput_SNL"
                                     width="50px"
@@ -643,8 +657,10 @@
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="idLabel17_SNL" 
-                                class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+                                <Label
+                                    id="idLabel17_SNL"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idHeightinput_SNL"
                                     width="50px"
@@ -652,8 +668,10 @@
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
 
-                                <Label id="idLabel18_SNL" 
-                                class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+                                <Label
+                                    id="idLabel18_SNL"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idUnitlwhinput_SNL"
                                     width="50px"
@@ -717,7 +735,7 @@
                                     editable="false"
                                     class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                 />
-                                <Label id="idLabel19_SNL"/>
+                                <Label id="idLabel19_SNL" />
                                 <Input
                                     id="idHazmatIndinput_SNL"
                                     width="40px"
