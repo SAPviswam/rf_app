@@ -61,14 +61,15 @@
                         visible="{popoverModel>/showAccountDetails}"
                         width="auto"
                     />
-                    <!-- <Button
+                    <Button
                         id="idUserDeatilsButton1Edit"
                         icon="sap-icon://edit"
                         text="Edit Tile"
                         type="Transparent"
                         press="onEditTileNamePress"
                         visible="{popoverModel>/showEditTile}"
-                    /> -->
+                        width="auto"
+                    />
                     <Button
                         id="idUserDeatilsButton3Seetings"
                         icon="sap-icon://settings"

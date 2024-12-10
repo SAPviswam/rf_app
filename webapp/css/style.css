@@ -677,8 +677,8 @@
     width: 20px;
 }
 
-.YellowCheckBox .sapMCbBg {
-    background-color: #ffad16ea !important;
+.tanCheckBox .sapMCbBg {
+    background-color: tan !important;
     height: 20px;
     width: 20px;
 }
@@ -1049,6 +1049,8 @@
     height: 50px !important;
     display: flex;
     flex-direction: column;
+    justify-content: center; 
+    align-items: center;
 }
 /* Hide the title and subtitle within the tile */
 .listViewIcons .sapMGTTitle,
@@ -1056,16 +1058,18 @@
     display: none !important;
 }
 .listViewHeader {
+    margin-top: 1.5rem;
     font-size: 16px;
-    padding-left: 7px;
-    vertical-align: top;
+    padding-left: 5px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
-.tileContainer {
+/* .tileContainer {
     display: flex;
     align-items: center;
     margin: 10px 0;
-}
+} */
 /* for the selected tiles add some effects like vibrations */
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
@@ -1334,6 +1338,9 @@ margin-right: 20%;
 }
 
 .sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #ec792d !important;
+}
+.sapMIBar .sapMHeader-CTX {
     background-color: #ec792d !important;
 }
 
