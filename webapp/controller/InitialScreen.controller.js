@@ -404,8 +404,7 @@ sap.ui.define([
                                     aDelUuidArray = [],
                                     oModel = this.getOwnerComponent().getModel(),
                                     oReadResponse = await this.readData(oModel, sPath, oFilters),
-                                    aReadResults = oReadResponse.results,
-                                    batchGroupId = "deleteBatchGroupId";
+                                    aReadResults = oReadResponse.results;
                                 aReadResults.forEach((element) => {
                                     aDelUuidArray.push(element.Uuid)
                                 });
