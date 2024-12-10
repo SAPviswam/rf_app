@@ -195,10 +195,12 @@ sap.ui.define([
                 this.getView().byId("idSPasswordInput_CS").setValue("");
             },
 
-            onFinishconnectSAPPress: async function () {
+            onFinishconnectSAPPress: async function (oEvent) {
                 const oView = this.getView(),
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
-                    oCheckbox = oView.byId("idCheckboxDescription_InitialView");
+                    oCheckbox = oView.byId("idCheckboxDescription_InitialView"),
+                    oButton = oEvent.getSource()
+                oButton.setEnabled(false);
 
                 // Validation Logic
                 const validationErrors = [];
@@ -231,6 +233,7 @@ sap.ui.define([
 
                 if (validationErrors.length > 0) {
                     MessageToast.show("Please enter correct data");
+                    oButton.setEnabled(true);
                     return;
                 }
 
@@ -291,6 +294,7 @@ sap.ui.define([
                                     window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
+                                    oButton.setEnabled(true);
                                     console.error("CREATION ERROR: " + error);
                                 }
                             } else {
@@ -298,14 +302,16 @@ sap.ui.define([
                             }
                         } catch (error) {
                             sap.m.MessageToast.show("something went wrong technical issue");
+                            oButton.setEnabled(true);
                             console.error("Error: " + error);
                         }
                     } else {
                         sap.m.MessageBox.information("Entered system not found")
                     }
-
+                    oButton.setEnabled(true);
                 } catch (error) {
                     sap.m.MessageToast.show("something went wrong technical issue")
+                    oButton.setEnabled(true);
                     console.error(error);
                 }
             },
@@ -429,7 +435,7 @@ sap.ui.define([
                                         // test
                                         // Remove selected the buttons from the UI
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        that.arrayOfButton.forEach(async(currentButton) => {
+                                        that.arrayOfButton.forEach(async (currentButton) => {
                                             oHomePage.removeItem(currentButton); // Remove the selected button
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
@@ -437,7 +443,7 @@ sap.ui.define([
                                             }
                                             // Clear selection
                                             currentButton = null;
-                                           await that.updateDisplayedButtons()
+                                            await that.updateDisplayedButtons()
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
                                                 that.aAllButtons.splice(index, 1); // Remove button from array
