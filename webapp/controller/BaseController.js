@@ -90,9 +90,10 @@ sap.ui.define([
                 });
             });
         },
-        deleteData: function (oModel, sPath) {
+        deleteData: function (oModel, sPath, batchGroupId) {
             return new Promise((resolve, reject) => {
                 oModel.remove(`${sPath}`, {
+                    groupId: batchGroupId, // for batch operations
                     success: function (oSuccessData) {
                         resolve(oSuccessData);
                     },

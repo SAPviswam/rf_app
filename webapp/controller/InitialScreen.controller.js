@@ -13,14 +13,6 @@ sap.ui.define([
         return Controller.extend("com.app.rfapp.controller.InitialScreen", {
             onInit: async function () {
 
-                if (!this._loadingSysDialog) {
-                    this._loadingSysDialog = new sap.m.BusyDialog({
-                        text: "Please wait while Loading configured systems"
-                    });
-                }
-                // Open the Busy Dialog
-                this._loadingSysDialog.open();
-
                 // json model to compare the SAP connections details 
                 const OData = new sap.ui.model.json.JSONModel({
                     connectionData: {
@@ -47,6 +39,7 @@ sap.ui.define([
                 this.arrayOfButton = [];
                 this.arrayOfDescription = [];
                 this.arrayOfClient = [];
+                this.arryOfUuids = [];
 
 
 
@@ -341,6 +334,9 @@ sap.ui.define([
                         this.arrayOfButton = this.arrayOfButton.filter(item => item !== oButton);
                         this.arrayOfClient = this.arrayOfClient.filter(item => item !== Client);
                         this.arrayOfDescription = this.arrayOfDescription.filter(item => item !== description);
+                        // this.arryOfUuids = this.arryOfUuids.filter(item => item !== sUuid);
+
+
                     } else {
                         // Select the button
                         this.arrayOfButton.push(oButton);
@@ -369,7 +365,7 @@ sap.ui.define([
                 var oView = this.getView();
                 this.clearInputFields(oView);
             },
-            onDeleteConfiguredSystem: function () {
+            onDeleteConfiguredSystem: async function () {
                 if (this.arrayOfButton < 1) {
                     MessageToast.show("Please select atleast one system to delete");
                     return;
@@ -386,9 +382,104 @@ sap.ui.define([
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
-                    onClose: function (status) {
+                    onClose: async function (status) {
                         if (status === MessageBox.Action.DELETE) {
                             // last change here....Delete the selected system
+
+                            try {
+                                const oFilters = new sap.ui.model.Filter({
+                                    filters: [
+                                        new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, this.Userid),
+                                        new sap.ui.model.Filter({
+                                            filters: this.arrayOfDescription.map(function (sDescription) {
+                                                return new sap.ui.model.Filter("Description", sap.ui.model.FilterOperator.EQ, sDescription);
+                                            }),
+                                            and: false
+                                        })
+                                    ],
+                                    and: true
+                                }),
+                                    // Read and get the data
+                                    sPath = "/LogonServiceRelSet",
+                                    aDelUuidArray = [],
+                                    oModel = this.getOwnerComponent().getModel(),
+                                    oReadResponse = await this.readData(oModel, sPath, oFilters),
+                                    aReadResults = oReadResponse.results,
+                                    batchGroupId = "deleteBatchGroupId";
+                                aReadResults.forEach((element) => {
+                                    aDelUuidArray.push(element.Uuid)
+                                });
+
+                                // batch delete
+                                var url = this.getOwnerComponent().getModel().sServiceUrl;
+                                var oDataModel = new sap.ui.model.odata.ODataModel(url);
+                                var batchChanges = [];
+                                var that = this;
+
+                                aDelUuidArray.forEach(async (sUUID) => {
+                                    // await this.deleteData(oModel, `${sPath}(Userid='${this.Userid}',Uuid='${sUUID}')`, batchGroupId)
+                                    batchChanges.push(oDataModel.createBatchOperation(`${sPath}(Userid='${this.Userid}',Uuid='${sUUID}')`, "DELETE"));
+                                });
+
+                                oDataModel.addBatchChangeOperations(batchChanges);
+                                oDataModel.submitBatch(async function (oData, oResponse) {
+                                    // Success callback function
+                                    if (oResponse.statusCode === "202" || oResponse.statusCode === 202) {
+                                        sap.m.MessageToast.show("Selected systems deleted successfully");
+
+                                        // test
+                                        // Remove selected the buttons from the UI
+                                        var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
+                                        that.arrayOfButton.forEach(async(currentButton) => {
+                                            oHomePage.removeItem(currentButton); // Remove the selected button
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                           await that.updateDisplayedButtons()
+                                            var index = that.aAllButtons.indexOf(currentButton);
+                                            if (index !== -1) {
+                                                that.aAllButtons.splice(index, 1); // Remove button from array
+                                            }
+                                            // Clear selection
+                                            currentButton = null;
+                                        })
+
+
+                                        that.arrayOfButton.forEach(element => {
+                                            element.setType("Unstyled")
+                                        });
+                                        that.arrayOfButton = [];
+                                        that.arrayOfClient = [];
+                                        that.arrayOfDescription = [];
+                                        that.updateDisplayedButtons();
+                                        // test
+
+                                    }
+                                    // Handle the response data
+                                    await that.loadConfiguredSystems();
+
+                                }, function (oError) {
+                                    // Error callback function
+                                    sap.m.MessageBox.success("Delete failed batch operation failed");
+                                });
+
+                            } catch (error) {
+                                sap.m.MessageToast.show("Facing technical issue")
+                                console.error("Error: " + error);
+                            }
+                        } else {
+                            MessageToast.show("Deletion cancelled.");
+                            this.selectedButton = null;
+                            this.arrayOfButton.forEach(oButton => {
+                                oButton.removeStyleClass("buttonSelected");
+                                oButton.addStyleClass("customButtonBackground");
+                            });
+                            this.arrayOfButton = [];
+                            this.arrayOfClient = [];
+                            this.arrayOfDescription = [];
 
                         }
                     }.bind(that) // Bind the controller context
@@ -658,6 +749,14 @@ sap.ui.define([
             // take the configured systems UUID into an array next read the actual systems table and show it in UI
 
             loadConfiguredSystems: async function () {
+
+                if (!this._loadingSysDialog) {
+                    this._loadingSysDialog = new sap.m.BusyDialog({
+                        text: "Please wait while Loading configured systems"
+                    });
+                }
+                // Open the Busy Dialog
+                this._loadingSysDialog.open();
 
                 const oModel = this.getOwnerComponent().getModel(),// Get the OData model                 
                     sPath = "/LogonServiceRelSet",
