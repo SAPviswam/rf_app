@@ -127,7 +127,7 @@ sap.ui.define(
 
         // Navigate to the Initial Screen
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID },true);
+        oRouter.navTo("InitialScreen", { Userid: sUserEnteredUserID }, true);
         window.location.reload(true);
 
       },
@@ -292,11 +292,15 @@ sap.ui.define(
         } else {
           oUserView.byId("idLName_Input_CL").setValueState("None");
         }
-        if (!oPayload.Email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(oPayload.Email)) {
-          oUserView.byId("idEmailAddInput_CL").setValueState("Error");
-          oUserView.byId("idEmailAddInput_CL").setValueStateText("Enter Correct E-Mail address");
-          flag = false;
-        } else {
+        if (oPayload.Email) {
+          if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(oPayload.Email)) {
+            oUserView.byId("idEmailAddInput_CL").setValueState("Error");
+            oUserView.byId("idEmailAddInput_CL").setValueStateText("Enter Correct E-Mail address");
+            flag = false;
+          } else {
+            oUserView.byId("idEmailAddInput_CL").setValueState("None");
+          }
+        }else{
           oUserView.byId("idEmailAddInput_CL").setValueState("None");
         }
         if (!oPayload.Phonenumber || oPayload.Phonenumber.length !== 10 || !/^\d+$/.test(oPayload.Phonenumber)) {
