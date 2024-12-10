@@ -3,12 +3,11 @@ sap.ui.define(
     "./BaseController",
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/odata/v2/ODataModel",
-    "sap/m/MessageToast",
-    "../utils/Constant"
-
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 
   ],
-  function (Controller, ODataModel, MessageToast, Constant) {
+  function (Controller, ODataModel, Filter, FilterOperator) {
 
     "use strict";
 
@@ -16,15 +15,16 @@ sap.ui.define(
       onInit: function () {
         // Loading of secrets
         const oConfigModel = this.getOwnerComponent().getModel("config");
-          this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
+        this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
+        this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
-        var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-          headers: {
-            "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-            "sap-client": "100"
-          }
-        });
-        this.getView().setModel(oModel);
+        // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+        //   headers: {
+        //     "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
+        //     "sap-client": "100"
+        //   }
+        // });
+        // this.getView().setModel(oModel);
 
         const OData = new sap.ui.model.json.JSONModel({
           appLoginData: {
@@ -40,9 +40,225 @@ sap.ui.define(
 
       },
 
-      onpresslogin: function () {
+      onAppLoginPress: async function () {
+        const oModel = this.getOwnerComponent().getModel(),
+          oUserView = this.getView(),
+          sPath = "/APP_LOGON_DETAILSSet",
+          sUserEnteredUserID = this.getView().byId("idUserIDInpt_CL").getValue(),
+          sUserEnteredPassword = this.getView().byId("idPasswordInpt_CL").getValue();
+
+        // validations
+        var flag = true;
+        if (!sUserEnteredUserID) {
+          oUserView.byId("idUserIDInpt_CL").setValueState("Warning");
+          oUserView.byId("idUserIDInpt_CL").setValueStateText("Please enter registered user ID");
+          flag = false;
+        } else {
+          oUserView.byId("idUserIDInpt_CL").setValueState("None");
+        }
+        if (!sUserEnteredPassword) {
+          oUserView.byId("idPasswordInpt_CL").setValueState("Warning");
+          oUserView.byId("idPasswordInpt_CL").setValueStateText("Enter your password");
+          flag = false;
+        } else {
+          oUserView.byId("idPasswordInpt_CL").setValueState("None");
+        }
+        if (!flag) {
+          sap.m.MessageToast.show("Please enter required credentials")
+          // Close busy dialog
+          this._oBusyDialog.close();
+          return;
+        }
+
+        const fUser = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sUserEnteredUserID),
+          // fPassword = new sap.ui.model.Filter("Password", sap.ui.model.FilterOperator.EQ, sUserEnteredPassword),
+          aFilters = new sap.ui.model.Filter({
+            filters: [fUser],
+            and: true // Change to false if you want OR logic
+          });
+
+        // create busy dialog
+        if (!this._oBusyDialog) {
+          this._oBusyDialog = new sap.m.BusyDialog({
+            text: "Authenticating"
+          });
+        }
+        try {
+          // Open busy dialog
+          this._oBusyDialog.open();
+
+          // Simulate buffer using setTimeout
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          // Fetch data from the model
+          const oResponse = await this.readData(oModel, sPath, aFilters);
+
+          if (oResponse.results.length > 0) {
+            const oResult = oResponse.results[0],
+              sStoredUserId = oResult.Userid,
+              sStoredPassword = oResult.Password;
+
+            // Encrypt user-entered password with SHA256
+            const sEncryptedPass = CryptoJS.SHA256(sUserEnteredPassword).toString();
+
+            if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncryptedPass) {
+              this._onLoginSuccess(sUserEnteredUserID);
+            } else {
+              this._onLoginFail("Authentication failed");
+            }
+          } else {
+            this._onLoginFail("User ID not found");
+          }
+        } catch (error) {
+          sap.m.MessageToast.show("Something went wrong. Please try again later.");
+          console.error("Error Found:", error);
+        } finally {
+          // Close busy dialog
+          this._oBusyDialog.close();
+        }
+      },
+      _onLoginSuccess(sUserEnteredUserID) {
+        // Clear input fields
+        this.getView().byId("idUserIDInpt_CL").setValue("");
+        this.getView().byId("idPasswordInpt_CL").setValue("");
+
+        // Show success message
+        sap.m.MessageToast.show("Login Successfull");
+
+        // Navigate to the Initial Screen
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen");
+        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID },true);
+        window.location.reload(true);
+
+      },
+
+      _onLoginFail(sMessage) {
+        // Show failure message
+        sap.m.MessageToast.show(sMessage);
+      },
+
+      onForgotPasswordPress: async function () {
+        if (!this.forgotPass) {
+          this.forgotPass = await this.loadFragment("ForgotPassword");
+        }
+        this.forgotPass.open()
+      },
+      onCancelForgotPassword: async function () {
+        if (this.forgotPass.isOpen()) {
+          const oView = this.getView()
+          await this.forgotPass.close()
+          // value states
+          oView.byId("idRegNumbInput_CL").setValueState("None");
+          oView.byId("idUserIDInput_CL").setValueState("None");
+          oView.byId("idPasswordInput_CL").setValueState("None");
+
+          // clear fields
+          oView.byId("idRegNumbInput_CL").setValue("");
+          oView.byId("idUserIDInput_CL").setValue("");
+          oView.byId("idPasswordInput_CL").setValue("");
+
+        }
+      },
+      onUpdatePasswordPress: async function () {
+        const oModel = this.getOwnerComponent().getModel(),
+          oUserView = this.getView(),
+          sPath = "/APP_LOGON_DETAILSSet",
+          sUserEnteredUserID = this.getView().byId("idUserIDInput_CL").getValue(),
+          sUserEnteredMobile = this.getView().byId("idRegNumbInput_CL").getValue(),
+          sUserEnteredPass = this.getView().byId("idPasswordInput_CL").getValue();
+        // validations
+        var flag = true;
+        if (!sUserEnteredUserID) {
+          oUserView.byId("idUserIDInput_CL").setValueState("Error");
+          oUserView.byId("idUserIDInput_CL").setValueStateText("Please enter registered user ID");
+          flag = false;
+        } else {
+          oUserView.byId("idUserIDInput_CL").setValueState("None");
+        }
+        if (!sUserEnteredMobile || sUserEnteredMobile.length !== 10 || !/^\d+$/.test(sUserEnteredMobile)) {
+          oUserView.byId("idRegNumbInput_CL").setValueState("Error");
+          oUserView.byId("idRegNumbInput_CL").setValueStateText("Please enter 10 digit correct mobile number");
+          flag = false;
+        } else {
+          oUserView.byId("idRegNumbInput_CL").setValueState("None");
+
+        }
+        if (!sUserEnteredPass || sUserEnteredPass.length < 8 || !sUserEnteredPass.length > 30) {
+          oUserView.byId("idPasswordInput_CL").setValueState("Error");
+          oUserView.byId("idPasswordInput_CL").setValueStateText("Password length must be minimum 8 characters (max 30 characters)");
+          flag = false;
+        } else {
+          oUserView.byId("idPasswordInput_CL").setValueState("None");
+
+        }
+        if (!flag) {
+          sap.m.MessageToast.show("Please enter correct data")
+          return;
+        }
+
+        try {
+
+          const aRegisteredUserID = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, sUserEnteredUserID);
+          const aRegisteredMobile = new sap.ui.model.Filter("Phonenumber", sap.ui.model.FilterOperator.EQ, sUserEnteredMobile);
+
+          // Combine the filters with AND
+          const aFilters = new sap.ui.model.Filter({
+            filters: [aRegisteredUserID, aRegisteredMobile],
+            and: true // Change to false if you want OR logic
+          });
+
+          const oResponse = await this.readData(oModel, sPath, aFilters)
+          if (oResponse.results.length > 0) {
+            const sRegisteredUserID = oResponse.results[0].Userid,
+              sRegisteredPhnNumber = oResponse.results[0].Phonenumber,
+              sStoredPassword = oResponse.results[0].Password;
+
+            if (sRegisteredUserID === sUserEnteredUserID && sRegisteredPhnNumber === sUserEnteredMobile) {
+
+              // get the actual password
+              const sNewPassword = this.getView().byId("idPasswordInput_CL").getValue();
+
+              // Use SHA256 for hashing (CryptoJS)
+              const sEncrytpedPass = CryptoJS.SHA256(sNewPassword).toString(); // encryption with CryptoJS
+              if (sStoredPassword === sEncrytpedPass) {
+                sap.m.MessageBox.information("New Password can not be same as previous password");
+                return;
+              }
+              const oPayload = {
+                Password: sEncrytpedPass
+              }
+              try {
+
+                const sUpdatePath = `/APP_LOGON_DETAILSSet('${sUserEnteredUserID}')`
+                // update call
+                const oResponse = await this.updateData(oModel, sUpdatePath, oPayload);
+                sap.m.MessageToast.show("Password Changed Successfully")
+                const oUserView = this.getView();
+                // after successfull  value states
+                oUserView.byId("idRegNumbInput_CL").setValueState("None");
+                oUserView.byId("idUserIDInput_CL").setValueState("None");
+                oUserView.byId("idPasswordInput_CL").setValueState("None");
+
+                // clear fields
+                oUserView.byId("idRegNumbInput_CL").setValue("");
+                oUserView.byId("idUserIDInput_CL").setValue("");
+                oUserView.byId("idPasswordInput_CL").setValue("");
+                // close the fragment
+                this.forgotPass.close()
+
+              } catch (error) {
+                sap.m.MessageToast.show("Failed to reset password" + error)
+              }
+            } else {
+              sap.m.MessageToast.show("ID and phone number mismatch")
+            }
+          } else {
+            sap.m.MessageToast.show("ID and phone number mismatch")
+          }
+
+        } catch (error) {
+          sap.m.MessageToast.show("Failed to read data " + error)
+        }
       },
 
       onNavToSignUpPage: function () {
@@ -62,16 +278,16 @@ sap.ui.define(
 
         // Validations 
         var flag = true;
-        if (!oPayload.Firstname || oPayload.Firstname.length < 3) {
+        if (!oPayload.Firstname || oPayload.Firstname.length < 3 || !/^[a-zA-Z]+$/.test(oPayload.Firstname)) {
           oUserView.byId("idFirstnameInput_CL").setValueState("Error");
-          oUserView.byId("idFirstnameInput_CL").setValueStateText("first name must contain 3 characters");
+          oUserView.byId("idFirstnameInput_CL").setValueStateText("first name must contain alphabet characters and 3 characters long");
           flag = false;
         } else {
           oUserView.byId("idFirstnameInput_CL").setValueState("None");
         }
-        if (!oPayload.Lastname || oPayload.Lastname.length < 3) {
+        if (!oPayload.Lastname || oPayload.Lastname.length < 3 || !/^[a-zA-Z]+$/.test(oPayload.Lastname)) {
           oUserView.byId("idLName_Input_CL").setValueState("Error");
-          oUserView.byId("idLName_Input_CL").setValueStateText("last name must contain 3 characters");
+          oUserView.byId("idLName_Input_CL").setValueStateText("last name must contain alphabet characters and 3 characters long");
           flag = false;
         } else {
           oUserView.byId("idLName_Input_CL").setValueState("None");
@@ -90,9 +306,9 @@ sap.ui.define(
         } else {
           oUserView.byId("idPhoneInput_CL").setValueState("None");
         }
-        if (!oPayload.Password || oPayload.Password.length < 8) {
+        if (!oPayload.Password || oPayload.Password.length < 8 || !oPayload.Password.length > 30) {
           oUserView.byId("idPassswordInput_CL").setValueState("Error");
-          oUserView.byId("idPassswordInput_CL").setValueStateText("Password length must be 8 characters");
+          oUserView.byId("idPassswordInput_CL").setValueStateText("Password length must be minimum 8 characters (max 30 characters)");
           flag = false;
         } else {
           oUserView.byId("idPassswordInput_CL").setValueState("None");
@@ -102,38 +318,40 @@ sap.ui.define(
           return; // Prevent further execution
 
         }
-
         try {
 
           try {
             // keep the below line for future use
-            // const aSorters = [new sap.ui.model.Sorter("Userid", false)]; // sorting--> 'false' for ascending, 'true' for descending
             const oResponse = await this.readData(oModel, sPath);
 
             // Accessing the data in the response
-            const aResults = oResponse.results,
-              recordsLength = aResults.length,
-              currentMaxID = aResults[recordsLength - 1].Userid
+            const aResults = oResponse.results;
+            if (aResults.length === 0) {
+              oPayload.Userid = "ARTUSR0001"
+            } else {
+              const aSortedarray = aResults.sort((a, b) => b.Userid.localeCompare(a.Userid)), // descendign order to get the highest number user id
+                currentMaxID = aSortedarray[0].Userid
+              // generation of user ID
+              function generateUniqueString(currentString) {
+                // Extract the prefix (non-numeric part) and the number (numeric part)
+                const prefix = currentString.match(/[^\d]+/g)[0]; // Extract non-numeric characters
+                const number = parseInt(currentString.match(/\d+/g)[0], 10); // Extract numeric characters and convert to integer
 
-            // generation of user ID
-            function generateUniqueString(currentString) {
-              // Extract the prefix (non-numeric part) and the number (numeric part)
-              const prefix = currentString.match(/[^\d]+/g)[0]; // Extract non-numeric characters
-              const number = parseInt(currentString.match(/\d+/g)[0], 10); // Extract numeric characters and convert to integer
+                // Increment the numeric part by 1
+                const newNumber = number + 1;
 
-              // Increment the numeric part by 1
-              const newNumber = number + 1;
+                // Format the new number with leading zeros to match the original length
+                const formattedNumber = String(newNumber).padStart(currentString.length - prefix.length, '0');
 
-              // Format the new number with leading zeros to match the original length
-              const formattedNumber = String(newNumber).padStart(currentString.length - prefix.length, '0');
+                // Combine the prefix and the formatted number to get the new unique string
+                return prefix + formattedNumber;
+              }
 
-              // Combine the prefix and the formatted number to get the new unique string
-              return prefix + formattedNumber;
+              // call
+              const newUserid = generateUniqueString(currentMaxID);
+              oPayload.Userid = newUserid
+
             }
-
-            // call
-            const newUserid = generateUniqueString(currentMaxID);
-            oPayload.Userid = newUserid
 
           } catch (error) {
             console.error("Failed to fetch data:", error);
@@ -143,20 +361,49 @@ sap.ui.define(
           }
           // get the actual password
           const sActualPass = oPayload.Password
-            // Use SHA256 for hashing (CryptoJS or native WebCrypto API)
-            const sEncrytpedPass = CryptoJS.SHA256(sActualPass).toString(); // encryption with CryptoJS
-            oPayload.Password = sEncrytpedPass
+          // Use SHA256 for hashing (CryptoJS )
+          const sEncrytpedPass = CryptoJS.SHA256(sActualPass).toString(); // encryption with CryptoJS
+          oPayload.Password = sEncrytpedPass
 
           // Create a record with payload
           await this.createData(oModel, oPayload, "/APP_LOGON_DETAILSSet");
           sap.m.MessageToast.show("Record created successfully!");
-          that.getView().byId("idSignUp_CL").setEnabled(false)
+          this.getView().byId("idSignUp_CL").setEnabled(false)
           // set the empty data after successful creation
-          that.getView().getModel("ODataModel").setProperty("/appLoginData", {});
+          this.getView().getModel("ODataModel").setProperty("/appLoginData", {});
           // set the inputfield states to defult 
-          that.onDefaultStates();
+          await this.onDefaultStates();
+
+          // Send the generated UserID to User
+          // Send POST request to Twilio API using jQuery.ajax
+          const accountSid = this.oSMSConfig.AccountSID,
+            authToken = this.oSMSConfig.AuthToken,
+            url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+            fromNumber = '+15856485867';
+          $.ajax({
+            url: url,
+            type: 'POST',
+            async: true,
+            headers: {
+              'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken)
+            },
+            data: {
+              To: `+91${oPayload.Phonenumber}`,
+              From: fromNumber,
+              Body: `Hi ${oPayload.Firstname} your login ID for RF app is ${oPayload.Userid} don't share with anyone. \nThank You,\nArtihcus Global.`
+            },
+            success: function (data) {
+              sap.m.MessageToast.show('Login ID will be sent via SMS to your mobile number');
+            },
+            error: function (error) {
+              sap.m.MessageToast.show('Failed to send user ID');
+              console.error('Failed to send user ID' + error.message);
+            }
+          });
+          // SMS END
         } catch (error) {
-          sap.m.MessageToast.show("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
+          sap.m.MessageToast.show("Something went wrong try again later....");
+          console.error("Failed to create record. Please try again.", error.message || error.responseText || "Unknown error occurred.");
         }
       },
       onCancleSignup: async function () {
@@ -167,7 +414,7 @@ sap.ui.define(
 
         // set the inputfield states to defult 
         await this.onDefaultStates(oView);
-  
+
       },
       // set the inputfield states to defult 
       onDefaultStates: function () {
@@ -205,7 +452,7 @@ sap.ui.define(
         // Prepare the Twilio API details
         var formattedPhoneNumber = "+91" + sPhoneNumber; // Assuming country code for India
         const accountSid = this.oTwilioConfig.AccountSID;  // Constant.oAccountSID;
-        const authToken =  this.oTwilioConfig.AuthToken;   // Constant.oAuthToken;
+        const authToken = this.oTwilioConfig.AuthToken;   // Constant.oAuthToken;
         const serviceSid = this.oTwilioConfig.ServiceID;   // Constant.oServiceID;
         const url = `https://verify.twilio.com/v2/Services/${serviceSid}/Verifications`;
 
@@ -249,13 +496,13 @@ sap.ui.define(
 
         const that = this;
         // Create a Busy Dialog instance
-        if (!this._oBusyDialog) {
-          this._oBusyDialog = new sap.m.BusyDialog({
+        if (!this._oValidatingBusyDialog) {
+          this._oValidatingBusyDialog = new sap.m.BusyDialog({
             text: "Please wait while validatiing OTP"
           });
         }
         // Open the Busy Dialog
-        this._oBusyDialog.open();
+        this._oValidatingBusyDialog.open();
 
         const oMobileinput = this.byId("idPhoneInput_CL"),
           oOtpInput = this.byId("idOTPInput_CL"),
@@ -266,7 +513,7 @@ sap.ui.define(
           oOtpInput.setValueState(sap.ui.core.ValueState.Error);
           oOtpInput.setValueStateText("Please enter OTP");
           sap.m.MessageToast.show("Please enter OTP")
-          this._oBusyDialog.close();
+          this._oValidatingBusyDialog.close();
           return;
         }
 
@@ -275,19 +522,19 @@ sap.ui.define(
         if (!otpRegex.test(sEnteredOtp)) {
           oOtpInput.setValueState(sap.ui.core.ValueState.Error);
           oOtpInput.setValueStateText("Please enter a valid 6-digit OTP.");
-          this._oBusyDialog.close();
+          this._oValidatingBusyDialog.close();
           return;
         }
 
         // Prepare the Twilio Verify Check API details
         const accountSid = this.oTwilioConfig.AccountSID,
-         authToken =  this.oTwilioConfig.AuthToken,
-         serviceSid = this.oTwilioConfig.ServiceID, 
-         url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`,
-         payload = {
-          To: this._storedPhoneNumber,
-          Code: sEnteredOtp
-        };
+          authToken = this.oTwilioConfig.AuthToken,
+          serviceSid = this.oTwilioConfig.ServiceID,
+          url = `https://verify.twilio.com/v2/Services/${serviceSid}/VerificationCheck`,
+          payload = {
+            To: this._storedPhoneNumber,
+            Code: sEnteredOtp
+          };
 
         // Make the AJAX request to Twilio to verify the OTP
         $.ajax({
@@ -301,7 +548,7 @@ sap.ui.define(
           success: function (data) {
             if (data.status === "approved") {
               // close the busy dailog
-              that._oBusyDialog.close();
+              that._oValidatingBusyDialog.close();
               // hide the validattion elements
               that.getView().byId("idOTPHBox").setVisible(false)
               that.getView().byId("idOTPInput_CL").setValue("")
@@ -314,14 +561,14 @@ sap.ui.define(
               // Proceed with further actions
             } else {
               // close the busy dailog
-              that._oBusyDialog.close();
+              that._oValidatingBusyDialog.close();
               oOtpInput.setValueState(sap.ui.core.ValueState.Error);
               oOtpInput.setValueStateText("Invalid OTP");
               sap.m.MessageToast.show('Invalid OTP...!');
             }
           }.bind(that),
           error: function (xhr, status, error) {
-            that._oBusyDialog.close();
+            that._oValidatingBusyDialog.close();
             console.error('Error verifying OTP:', error);
             sap.m.MessageToast.show('Failed to verify OTP: ' + error);
           }
