@@ -46,10 +46,43 @@
             /* No shadow */
             transition: transform 0.3s;
         }
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            /* Fully transparent */
+            color: rgb(243, 178, 56);
+            /* Icon color */
+            border: none;
+            width: auto;
+            /* Remove fixed width and height */
+            height: auto;
+            padding: 0;
+            /* No padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 30px;
+            /* Icon size */
+            box-shadow: none;
+            /* No shadow */
+            transition: transform 0.3s;
+        }
 
         #chatbotButton:hover {
             transform: scale(1.1);
             /* Slight scaling on hover */
+        }
+        #chatbotButton:hover {
+            transform: scale(1.1);
+            /* Slight scaling on hover */
+        }
+
+        #chatbotButton:focus {
+            outline: none;
+            /* Remove focus outline */
         }
 
         #chatbotButton:focus {
@@ -110,13 +143,8 @@
         }
 
         #webchat {
-            flex: 1;
-            /* Allow the chat area to grow and take available space */
-            overflow-y: auto;
-            /* Add vertical scrolling for long messages */
-            padding: 10px;
-            box-sizing: border-box;
-            /* Ensure padding doesn't affect dimensions */
+            height: 100%;
+            width: 100%;
         }
     </style>
 
@@ -141,6 +169,7 @@
         data-handle-validation="true"></div>
 
     <!-- Chatbot button and container -->
+    <button id="chatbotButton"> <i class="fas fa-headset"></i> </button>
     <button id="chatbotButton"> <i class="fas fa-headset"></i> </button>
 
     <div id="chatbotContainer">
