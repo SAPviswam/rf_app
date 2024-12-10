@@ -76,9 +76,24 @@ sap.ui.define([
                 })
             })
         },
-        deleteData: function (oModel, sPath, ID) {
+        // update
+        updateData: function (oModel, sPath, oPayload, oMethod) {  // here oMethod is nothing but "MERGE or PUT or PATCH" 
             return new Promise((resolve, reject) => {
-                oModel.remove(`${sPath}/${ID}`, {
+                oModel.update(sPath, oPayload, {
+                    method: oMethod,
+                    success: function (oSuccessData) {
+                        resolve(oSuccessData);
+                    },
+                    error: function (oErrorData) {
+                        reject(oErrorData);
+                    }
+                });
+            });
+        },
+        deleteData: function (oModel, sPath, batchGroupId) {
+            return new Promise((resolve, reject) => {
+                oModel.remove(`${sPath}`, {
+                    groupId: batchGroupId, // for batch operations
                     success: function (oSuccessData) {
                         resolve(oSuccessData);
                     },
