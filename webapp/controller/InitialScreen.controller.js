@@ -41,8 +41,6 @@ sap.ui.define([
                 this.arrayOfClient = [];
                 this.arryOfUuids = [];
 
-
-
                 if (Device.system.phone) {
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
@@ -429,7 +427,7 @@ sap.ui.define([
                                         // test
                                         // Remove selected the buttons from the UI
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        that.arrayOfButton.forEach(async(currentButton) => {
+                                        that.arrayOfButton.forEach(async (currentButton) => {
                                             oHomePage.removeItem(currentButton); // Remove the selected button
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
@@ -437,7 +435,7 @@ sap.ui.define([
                                             }
                                             // Clear selection
                                             currentButton = null;
-                                           await that.updateDisplayedButtons()
+                                            await that.updateDisplayedButtons()
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
                                                 that.aAllButtons.splice(index, 1); // Remove button from array
@@ -888,8 +886,14 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
-                            document.removeEventListener("keydown", this._handleKeyDownBound);
+                            if (oData.Loginfirst) {
+                                // Open the password change dialog
+                                this.onChangePasswordBtn(oResourceId);
+                            } 
+                            else {
+                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                                window.location.reload(true);
+                            }
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
@@ -947,6 +951,7 @@ sap.ui.define([
                 var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
                 var oModel = this.getOwnerComponent().getModel(); // Get your model
                 var sResourceId = this.sResourceID;
+                var that = this
                 if (!sCurrentPassword) {
                     MessageToast.show("Please enter current password");
                     return;
@@ -967,13 +972,15 @@ sap.ui.define([
                         // Compare entered current password with stored password
                         if (oData.Password === sCurrentPassword) {
                             oModel.update(`/RESOURCESSet('${sResourceId}')`, {
-                                Password: sNewPassword // Use an object to set the new password
+                                Password: sNewPassword,
+                                Loginfirst :false // Use an object to set the new password
                             }, {
                                 success: function () {
                                     MessageToast.show("Password updated successfully!");
                                     oView.byId("idSPasswordInput_CP").setValue("");
                                     oView.byId("idNewPasswordInput_CP").setValue("");
                                     oView.byId("idRepeatPasswordInput_CP").setValue("");
+                                    that.onPressCancleSapLogonInChangePassword();
                                 }.bind(this),
                                 error: function () {
                                     MessageBox.error("Error updating user login status.");
