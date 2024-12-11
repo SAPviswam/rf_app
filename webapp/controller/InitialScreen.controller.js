@@ -884,11 +884,12 @@ sap.ui.define([
                 }
                 var oResourceId = this.getView().byId("idUserInput_CS").getValue();
                 var oPassword = this.getView().byId("idSPasswordInput_CS").getValue();
+                var that =this;
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId,idI:that.Userid }, true)
                             document.removeEventListener("keydown", this._handleKeyDownBound);
                         }
                         else {

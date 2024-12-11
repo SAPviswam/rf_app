@@ -141,8 +141,9 @@ sap.ui.define([
 		},
 		// Event handler for loading resource details when route pattern is matched
 		onResourceDetailsLoad: async function (oEvent1) {
-			const { id } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
+			const { id,idI } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
 			this.ID = id; // Store the 'id' for use in other methods
+			this.IDI=idI
 			this.tableContent();
 			this.applyStoredProfileImage();
         },
@@ -152,7 +153,7 @@ sap.ui.define([
             },
 			onSignoutPressed:function(){
 				var oRouter = this.getOwnerComponent().getRouter(this);
-				oRouter.navTo("InitialScreen"); 
+				oRouter.navTo("InitialScreen",{Userid:this.IDI}); 
 			},
 		onAddQueueBtnPress_changeQueue: function () {
 			var oTable = this.byId("idAssignedQueueTable_changeQueue");
@@ -168,7 +169,7 @@ sap.ui.define([
 		},
 		onBackBtnPress_changeQueue: async function () {
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.navTo("Homepage", { id: this.ID });
+			oRouter.navTo("Homepage", { id: this.ID,idI:this.IDI });
 		},
 
 
