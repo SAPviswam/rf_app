@@ -18,13 +18,13 @@ sap.ui.define(
         this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
         this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
-        // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-        //   headers: {
-        //     "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-        //     "sap-client": "100"
-        //   }
-        // });
-        // this.getView().setModel(oModel);
+        var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+          headers: {
+            "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
+            "sap-client": "100"
+          }
+        });
+        this.getView().setModel(oModel);
 
         const OData = new sap.ui.model.json.JSONModel({
           appLoginData: {
@@ -110,6 +110,7 @@ sap.ui.define(
             this._onLoginFail("User ID not found");
           }
         } catch (error) {
+          this._oBusyDialog.close();
           sap.m.MessageToast.show("Something went wrong. Please try again later.");
           console.error("Error Found:", error);
         } finally {
@@ -131,7 +132,6 @@ sap.ui.define(
         window.location.reload(true);
 
       },
-
       _onLoginFail(sMessage) {
         // Show failure message
         sap.m.MessageToast.show(sMessage);
@@ -269,7 +269,7 @@ sap.ui.define(
       },
 
       onSignupPress: async function () {
-
+          
         const oPayload = this.getView().getModel("ODataModel").getProperty("/appLoginData"),
           sPath = "/APP_LOGON_DETAILSSet",
           oModel = this.getOwnerComponent().getModel(),
