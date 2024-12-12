@@ -1,6 +1,6 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/m/MessageToast",
         "sap/ui/core/UIComponent"
     ],
@@ -16,9 +16,11 @@ sap.ui.define(
                 var that = this;
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
-                console.log(this.ID);
+                this.applyStoredProfileImage();
             },
-
+            onPressAvatarCCAP: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+              },
             onSubmitAdhocProductBtnPress: function () {
                 this.getView().byId("idInitialProductPage").setVisible(false)
                 this.getView().byId("idsecondProductPage").setVisible(true)
@@ -62,10 +64,10 @@ sap.ui.define(
                     success: function (oData) {
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID});
                         }
                         else {
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                            oRouter.navTo("Supervisor", { id: this.ID});
                         }
                     }.bind(this),
                     error: function () {

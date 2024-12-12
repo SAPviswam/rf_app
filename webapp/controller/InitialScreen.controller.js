@@ -895,14 +895,12 @@ sap.ui.define([
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId,idI:that.Userid }, true)
-                            document.removeEventListener("keydown", this._handleKeyDownBound);
                             if (oData.Loginfirst) {
                                 // Open the password change dialog
                                 this.onChangePasswordBtn(oResourceId);
                             } 
                             else {
-                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId,idI:that.Userid }, true)
                                 window.location.reload(true);
                             }
                         }
