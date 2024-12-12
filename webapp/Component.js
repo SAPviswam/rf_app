@@ -40,6 +40,27 @@ sap.ui.define([
                 // });
                 // this.setModel(oModel);
 
+                // testing dynamic client
+                async function changeClient(newClient) {
+                    // Get the base service URL
+                    var baseUrl = "/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/";
+
+                    // Append the desired client dynamically
+                    var updatedUrl = baseUrl + "?sap-client=" + newClient;
+
+                    // Create a new OData model with the updated URL
+                    var oModel = new sap.ui.model.odata.v2.ODataModel(updatedUrl, {
+                        useBatch: true, // Enable batch requests if required
+                        defaultBindingMode: "TwoWay" // Adjust binding mode as needed
+                    });
+
+                    // Set the new model to the core or specific view
+                    sap.ui.getCore().setModel(oModel);
+                }
+
+                changeClient("100)
+                // test
+
                 // Load config.json
                 const oConfigModel = new sap.ui.model.json.JSONModel();
                 oConfigModel.loadData("utils/config.json");
