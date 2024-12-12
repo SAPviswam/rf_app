@@ -1,6 +1,6 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/m/MessageToast",
         "sap/ui/core/UIComponent",
         "sap/ui/Device"
@@ -17,10 +17,19 @@ sap.ui.define(
           }
         },
         onResourceDetailsLoad: async function (oEvent1) {
-          const { id } = oEvent1.getParameter("arguments");
+          const { id,idI } = oEvent1.getParameter("arguments");
               this.ID = id;
+              this.IDI = idI;
       },
+      
+      onAvatarPressed_CCAHU:function (oEvent) {     
+        this.onPressAvatarEveryTileHelperFunction(oEvent); 
 
+        },
+        onSignoutPressed:function(){
+          var oRouter = this.getOwnerComponent().getRouter(this);
+          oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
+      },
         onLiveChange:function(){
         //   if(this.getView().byId("idHuInput_CCAHU").getValue()=="800020"){
            this.getView().byId("idFirstSc_CCAHU").setVisible(false)
@@ -55,14 +64,15 @@ sap.ui.define(
       onFirstBackBtnPress_CCAHU:async function(){
         var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();
+            var that = this;
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
                     let oUser=oData.Users.toLowerCase()
                     if(oUser ===  "resource"){
-                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                        oRouter.navTo("RouteResourcePage",{id:this.ID,idI:that.IDI });
                     }
                     else{
-                    oRouter.navTo("Supervisor",{id:this.ID});
+                    oRouter.navTo("Supervisor",{id:this.ID,idI:that.IDI });
                 }
                 }.bind(this),
                 error: function () {

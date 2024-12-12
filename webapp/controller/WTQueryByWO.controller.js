@@ -21,6 +21,10 @@ sap.ui.define(
             onPressAvatarWTQBWO: function (oEvent) {     
                 this.onPressAvatarEveryTileHelperFunction(oEvent); 
                 },
+            onSignoutPressed:function(){
+                    var oRouter = this.getOwnerComponent().getRouter(this);
+                    oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
+                }, 
             onWtQBWofirstBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
