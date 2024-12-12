@@ -1044,8 +1044,9 @@ sap.ui.define([
                 //   sToolPage.bindElement(`/(${id})`);
 
                 var that = this;
-                const { id } = oEvent1.getParameter("arguments");
+                const { id,idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI=idI;
                 console.log(this.ID);
 
                 var oModel = this.getView().getModel();
@@ -1251,7 +1252,7 @@ sap.ui.define([
                     }
                 });
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo(`${selectedText}`, { id: this.ID });
+                oRouter.navTo(`${selectedText}`, { id: this.ID,idI:this.IDI });
                 if (selectedText) {
                     console.log("Selected:", selectedText);
                     // Add your logic based on the selected text here
@@ -2982,7 +2983,7 @@ sap.ui.define([
 
             onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
+                oRouter.navTo("InitialScreen", { Userid:this.IDI });
 
             },
         });

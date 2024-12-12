@@ -41,8 +41,6 @@ sap.ui.define([
                 this.arrayOfClient = [];
                 this.arryOfUuids = [];
 
-
-
                 if (Device.system.phone) {
                     this.getView().byId("IdMainVbox_InitialView").setVisible(false);
                     this.getView().byId("idBtnsVbox_InitialView").addStyleClass("TitleMQ");
@@ -195,10 +193,12 @@ sap.ui.define([
                 this.getView().byId("idSPasswordInput_CS").setValue("");
             },
 
-            onFinishconnectSAPPress: async function () {
+            onFinishconnectSAPPress: async function (oEvent) {
                 const oView = this.getView(),
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
-                    oCheckbox = oView.byId("idCheckboxDescription_InitialView");
+                    oCheckbox = oView.byId("idCheckboxDescription_InitialView"),
+                    oButton = oEvent.getSource()
+                oButton.setEnabled(false);
 
                 // Validation Logic
                 const validationErrors = [];
@@ -231,6 +231,7 @@ sap.ui.define([
 
                 if (validationErrors.length > 0) {
                     MessageToast.show("Please enter correct data");
+                    oButton.setEnabled(true);
                     return;
                 }
 
@@ -291,6 +292,7 @@ sap.ui.define([
                                     window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
+                                    oButton.setEnabled(true);
                                     console.error("CREATION ERROR: " + error);
                                 }
                             } else {
@@ -298,14 +300,16 @@ sap.ui.define([
                             }
                         } catch (error) {
                             sap.m.MessageToast.show("something went wrong technical issue");
+                            oButton.setEnabled(true);
                             console.error("Error: " + error);
                         }
                     } else {
                         sap.m.MessageBox.information("Entered system not found")
                     }
-
+                    oButton.setEnabled(true);
                 } catch (error) {
                     sap.m.MessageToast.show("something went wrong technical issue")
+                    oButton.setEnabled(true);
                     console.error(error);
                 }
             },
@@ -429,7 +433,7 @@ sap.ui.define([
                                         // test
                                         // Remove selected the buttons from the UI
                                         var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        that.arrayOfButton.forEach(async(currentButton) => {
+                                        that.arrayOfButton.forEach(async (currentButton) => {
                                             oHomePage.removeItem(currentButton); // Remove the selected button
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
@@ -437,7 +441,7 @@ sap.ui.define([
                                             }
                                             // Clear selection
                                             currentButton = null;
-                                           await that.updateDisplayedButtons()
+                                            await that.updateDisplayedButtons()
                                             var index = that.aAllButtons.indexOf(currentButton);
                                             if (index !== -1) {
                                                 that.aAllButtons.splice(index, 1); // Remove button from array
@@ -811,6 +815,8 @@ sap.ui.define([
                         text: "Signing out..."
                     });
                 }
+                // clear local storage 
+                localStorage.removeItem('loginData');
 
                 // Open the Busy Dialog
                 this._oSignOutBusyDialog.open();
@@ -884,12 +890,21 @@ sap.ui.define([
                 }
                 var oResourceId = this.getView().byId("idUserInput_CS").getValue();
                 var oPassword = this.getView().byId("idSPasswordInput_CS").getValue();
+                var that =this;
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId,idI:that.Userid }, true)
                             document.removeEventListener("keydown", this._handleKeyDownBound);
+                            if (oData.Loginfirst) {
+                                // Open the password change dialog
+                                this.onChangePasswordBtn(oResourceId);
+                            } 
+                            else {
+                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                                window.location.reload(true);
+                            }
                         }
                         else {
                             MessageToast.show("Please enter the correct Password");
@@ -947,6 +962,7 @@ sap.ui.define([
                 var sConfirmPassword = oView.byId("idRepeatPasswordInput_CP").getValue();
                 var oModel = this.getOwnerComponent().getModel(); // Get your model
                 var sResourceId = this.sResourceID;
+                var that = this
                 if (!sCurrentPassword) {
                     MessageToast.show("Please enter current password");
                     return;
@@ -967,13 +983,15 @@ sap.ui.define([
                         // Compare entered current password with stored password
                         if (oData.Password === sCurrentPassword) {
                             oModel.update(`/RESOURCESSet('${sResourceId}')`, {
-                                Password: sNewPassword // Use an object to set the new password
+                                Password: sNewPassword,
+                                Loginfirst :false // Use an object to set the new password
                             }, {
                                 success: function () {
                                     MessageToast.show("Password updated successfully!");
                                     oView.byId("idSPasswordInput_CP").setValue("");
                                     oView.byId("idNewPasswordInput_CP").setValue("");
                                     oView.byId("idRepeatPasswordInput_CP").setValue("");
+                                    that.onPressCancleSapLogonInChangePassword();
                                 }.bind(this),
                                 error: function () {
                                     MessageBox.error("Error updating user login status.");
@@ -1007,18 +1025,24 @@ sap.ui.define([
 
 
             onBackconnectSAPPress: function () {
-                this.getView().byId("idDescriptionInput_InitialView").setValue("");
-                this.getView().byId("idSystemIdInput_InitialView").setValue("");
-                this.getView().byId("idInstanceNumberInput_InitialView").setValue("");
-                this.getView().byId("idClientInput_InitialView").setValue("");
-                this.getView().byId("idApplicationServerInput_InitialView").setValue("");
-                this.getView().byId("idRouterStringInput_InitialView").setValue("");
-                this.getView().byId("idServiceInput_InitialView").setValue("");
+                const oView = this.getView(),
+                    oFormData = oView.getModel("ODataModel").setProperty("/connectionData", {});
+
+                const SetValueStates = (fieldId) => {
+                    const oField = oView.byId(fieldId);
+                    oField.setValueState("None");
+                };
+                SetValueStates("idDescriptionInput_InitialView")
+                SetValueStates("idSystemIdInput_InitialView")
+                SetValueStates("idInstanceNumberInput_InitialView")
+                SetValueStates("idClientInput_InitialView")
+                SetValueStates("idApplicationServerInput_InitialView")
+                SetValueStates("idRouterStringInput_InitialView")
+                SetValueStates("idServiceInput_InitialView")
+
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
                 this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
                 this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-                this.getView().byId("idClientInput_InitialView").setEditable(true);
-
             },
 
             onClearconnectSAPPress: function () {

@@ -439,6 +439,7 @@
                             type="Unstyled"
                             width="auto"
                             press="onFinishconnectSAPPress"
+                            enabled="true"
                             class="dialogButton_sapconnect sapUiSmallMarginEnd"
                         />
                         <Button

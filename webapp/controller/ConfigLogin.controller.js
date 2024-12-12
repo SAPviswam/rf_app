@@ -38,14 +38,41 @@ sap.ui.define(
         });
         this.getView().setModel(OData, "ODataModel");
 
+
+
+        const savedData = localStorage.getItem('loginData');
+        if (savedData) {
+          const { userid, token, expiration } = JSON.parse(savedData);
+          // Clear input fields
+          this.getView().byId("idUserIDInpt_CL").setValue("");
+          this.getView().byId("idPasswordInpt_CL").setValue("");
+
+          // Check if data is expired
+          if (Date.now() > expiration) {
+            console.log('Login data has expired');
+            localStorage.removeItem('loginData');
+            return null;
+          }
+
+          // Show success message
+          sap.m.MessageToast.show("Login Successfull");
+
+          // Navigate to the Initial Screen
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("InitialScreen", { Userid: userid }, true);
+          window.location.reload(true);
+        }
+
       },
 
       onAppLoginPress: async function () {
+        debugger
         const oModel = this.getOwnerComponent().getModel(),
           oUserView = this.getView(),
           sPath = "/APP_LOGON_DETAILSSet",
           sUserEnteredUserID = this.getView().byId("idUserIDInpt_CL").getValue(),
           sUserEnteredPassword = this.getView().byId("idPasswordInpt_CL").getValue();
+
 
         // validations
         var flag = true;
@@ -102,6 +129,11 @@ sap.ui.define(
             const sEncryptedPass = CryptoJS.SHA256(sUserEnteredPassword).toString();
 
             if (sUserEnteredUserID === sStoredUserId && sStoredPassword === sEncryptedPass) {
+              // Auto Save 
+              const oCheckbox = this.getView().byId("_IDGenCheckBox_CL");
+              if (oCheckbox.getSelected()) {
+                await this.onAutoSaveData(sUserEnteredUserID, sStoredPassword)
+              }
               this._onLoginSuccess(sUserEnteredUserID);
             } else {
               this._onLoginFail("Authentication failed");
@@ -110,6 +142,7 @@ sap.ui.define(
             this._onLoginFail("User ID not found");
           }
         } catch (error) {
+          this._oBusyDialog.close();
           sap.m.MessageToast.show("Something went wrong. Please try again later.");
           console.error("Error Found:", error);
         } finally {
@@ -127,16 +160,29 @@ sap.ui.define(
 
         // Navigate to the Initial Screen
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("InitialScreen",{ Userid: sUserEnteredUserID },true);
+        oRouter.navTo("InitialScreen", { Userid: sUserEnteredUserID }, true);
         window.location.reload(true);
 
       },
-
       _onLoginFail(sMessage) {
         // Show failure message
         sap.m.MessageToast.show(sMessage);
       },
+      onAutoSaveData: function (CurrentUser, Token) {
+        // Save credentials with an expiration time 
 
+        const expirationTime = Date.now() + 5 * 60 * 1000; // Current time + expiration time in ms
+
+        const loginData = {
+          userid: CurrentUser,
+          token: Token,
+          expiration: expirationTime
+        };
+
+        // Save to local storage as a JSON string
+        localStorage.setItem('loginData', JSON.stringify(loginData));
+
+      },
       onForgotPasswordPress: async function () {
         if (!this.forgotPass) {
           this.forgotPass = await this.loadFragment("ForgotPassword");
@@ -292,10 +338,14 @@ sap.ui.define(
         } else {
           oUserView.byId("idLName_Input_CL").setValueState("None");
         }
-        if (!oPayload.Email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(oPayload.Email)) {
-          oUserView.byId("idEmailAddInput_CL").setValueState("Error");
-          oUserView.byId("idEmailAddInput_CL").setValueStateText("Enter Correct E-Mail address");
-          flag = false;
+        if (oPayload.Email) {
+          if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(oPayload.Email)) {
+            oUserView.byId("idEmailAddInput_CL").setValueState("Error");
+            oUserView.byId("idEmailAddInput_CL").setValueStateText("Enter Correct E-Mail address");
+            flag = false;
+          } else {
+            oUserView.byId("idEmailAddInput_CL").setValueState("None");
+          }
         } else {
           oUserView.byId("idEmailAddInput_CL").setValueState("None");
         }
@@ -368,6 +418,7 @@ sap.ui.define(
           // Create a record with payload
           await this.createData(oModel, oPayload, "/APP_LOGON_DETAILSSet");
           sap.m.MessageToast.show("Record created successfully!");
+          this.getView().byId("idPhoneInput_CL").setEditable(true)
           this.getView().byId("idSignUp_CL").setEnabled(false)
           // set the empty data after successful creation
           this.getView().getModel("ODataModel").setProperty("/appLoginData", {});
@@ -393,10 +444,10 @@ sap.ui.define(
               Body: `Hi ${oPayload.Firstname} your login ID for RF app is ${oPayload.Userid} don't share with anyone. \nThank You,\nArtihcus Global.`
             },
             success: function (data) {
-              sap.m.MessageToast.show('Login ID will be sent via SMS to your mobile number');
+              sap.m.MessageBox.show('Login ID will be sent via SMS to your mobile number');
             },
             error: function (error) {
-              sap.m.MessageToast.show('Failed to send user ID');
+              sap.m.MessageBox.information(`Failed to send SMS.\nyour user ID is ${oPayload.Userid} please note this for future use`);
               console.error('Failed to send user ID' + error.message);
             }
           });
@@ -556,6 +607,7 @@ sap.ui.define(
               that.getView().byId("idSignUp_CL").setEnabled(true)
               that.getView().byId("idBtnOTP").setEnabled(false)
               sap.m.MessageToast.show('OTP validation successfull...!');
+              this.getView().byId("idPhoneInput_CL").setEditable(false)
               // set otp input value state to none 
               oOtpInput.setValueState("None");
               // Proceed with further actions
