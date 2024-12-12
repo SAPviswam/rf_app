@@ -34,7 +34,7 @@
                 <Avatar
                     id="_IDGenAvatar1AdhocProductByWt"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressAvatarCCAP"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
