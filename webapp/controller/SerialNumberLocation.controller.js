@@ -1,6 +1,6 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/m/MessageToast",
         "sap/ui/core/UIComponent",
         "sap/ui/model/json/JSONModel",
@@ -20,10 +20,21 @@ sap.ui.define(
         },
         onResourceDetailsLoad:function(oEvent1){
             var that = this;
-            const { id } = oEvent1.getParameter("arguments");
+            const { id,idI } = oEvent1.getParameter("arguments");
             this.ID = id;
+            this.IDI = idI;
             console.log(this.ID);
         },
+
+        onSNLAvatarPressed:function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+    
+            },
+            onSignoutPressed:function(){
+              var oRouter = this.getOwnerComponent().getRouter(this);
+              oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
+          },
+
         onLiveChange: function(oEvent) {
           var oView = this.getView();
           var sProductNumber = oView.byId("idproductInput_SNL").getValue();
@@ -107,16 +118,17 @@ sap.ui.define(
          onSNLfirxtBackBtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         let oUser=oData.Users.toLowerCase()
                         if(oUser ===  "resource"){
-                            oRouter.navTo("RouteResourcePage",{id:this.ID});
+                            oRouter.navTo("RouteResourcePage",{id:this.ID,idI:this.IDI});
                             this.getView().byId("idproductInput_SNL").setValue("")
                             this.getView().byId("idSerialNoInput_SNL").setValue("")
                         }
                         else{
-                        oRouter.navTo("Supervisor",{id:this.ID});
+                        oRouter.navTo("Supervisor",{id:this.ID,idI:this.IDI});
                     }
                     }.bind(this),
                     error: function () {

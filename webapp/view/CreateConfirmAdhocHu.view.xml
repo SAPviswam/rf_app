@@ -39,7 +39,7 @@
                 <Avatar
                     id="_IDGenAvatar_CCAHU"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressed_CCAHU"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

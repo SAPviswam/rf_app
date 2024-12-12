@@ -1,8 +1,9 @@
 sap.ui.define([
     "./BaseController",
     "sap/m/MessageToast",
-         "sap/ui/core/UIComponent"
+    "sap/ui/core/UIComponent"
 ],
+
 function (Controller,MessageToast,UIComponent) {
     "use strict";
  
@@ -47,10 +48,12 @@ function (Controller,MessageToast,UIComponent) {
         },
         onPressBackButtoninAdhocProductWtProductScan: async function(){
             var oRouter = UIComponent.getRouterFor(this);
+
                 var oModel1 = this.getOwnerComponent().getModel();
                 var that=this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
+
                         let oUser=oData.Users.toLowerCase()
                         if(oUser ===  "resource"){
                             oRouter.navTo("RouteResourcePage",{id:this.ID,idI: that.IDI});
@@ -58,12 +61,12 @@ function (Controller,MessageToast,UIComponent) {
                         else{
                         oRouter.navTo("Supervisor",{id:this.ID,idI: that.IDI});
                     }
+
                     }.bind(this),
                     error: function () {
                         MessageToast.show("User does not exist");
                     }
                 });
-        }
- 
+            }
+        });
     });
-});
