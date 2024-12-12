@@ -442,7 +442,6 @@ sap.ui.define(
                 debugger
 
                 var Empid = this.byId("idEmployeeIDInputF").getValue();
-
                 var oNameInput = this.getView().byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
@@ -452,7 +451,6 @@ sap.ui.define(
                 var oGroupSelect = this.byId("idGroupSelect");
                 var oQueueSelect = this.byId("idQueueSelect");
                 
-
                 var Name = oNameInput.getValue();
                 var email = oEmailInput.getValue();
                 var phone = oPhoneInput.getValue();
@@ -615,13 +613,13 @@ sap.ui.define(
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
 
-                        that.sendSms(Empid, Name, phone, oPassword,);
+                        that.sendSms(Empid, Name, phone, oPassword,);  
                         sap.m.MessageToast.show("Password updated successfully!");
                         this.resetForm();
-
                         // Navigate to the user menu after successful password update
                         this.onRequestedData();
                         this.onUserData();
+                        this.oApproveForm.close();
 
                     }.bind(this),
                     error: function () {
@@ -640,7 +638,6 @@ sap.ui.define(
                 var Resourcetype = SelectedTable.cells[2].mProperties.text;
                 var email = SelectedTable.cells[4].mProperties.text;
                 var User =  SelectedTable.cells[5].mProperties.selectedKey
-
                 var Area = AreaV.join(",");
                 var Group = GrpV.join(",");
                 var Queue = QusV.join(",");
@@ -695,8 +692,6 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
-                        
-
                         that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         // Navigate to the user menu after successful password update
@@ -708,7 +703,6 @@ sap.ui.define(
                         sap.m.MessageToast.show("Error updating user login status.");
                     }
                 });
-
             },
 
             sendSms: function (Userid,Firstname,Phonenumber,Password) {
