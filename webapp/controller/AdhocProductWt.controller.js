@@ -17,21 +17,21 @@ sap.ui.define([
                 this.ID = id;
                 console.log(this.ID);
             },
-            onPressSubmitInAdhocHuWt: function () {
-                this.getView().byId("idProductScanning").setVisible(false);
-                this.getView().byId("idProductDetails").setVisible(true);
-                this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(false);
-                this.getView().byId("idBackButtoninAdhocProductWtProductDetails").setVisible(true);
-            },
-            onBeforeRendering: function () {
-                this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(true);
-            },
-            onPressBackButtoninAdhocProductWtProductDetails: function () {
-                this.getView().byId("idProductScanning").setVisible(true);
-                this.getView().byId("idProductDetails").setVisible(false);
-                this.getView().byId("idBackButtoninAdhocProductWtProductDetails").setVisible(false);
-                this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(true);
-            },
+            // onPressSubmitInAdhocHuWt: function () {
+            //     this.getView().byId("idProductScanning").setVisible(false);
+            //     this.getView().byId("idProductDetails").setVisible(true);
+            //     this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(false);
+            //     this.getView().byId("idBackButtoninAdhocProductWtProductDetails").setVisible(true);
+            // },
+            // onBeforeRendering: function () {
+            //     this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(true);
+            // },
+            // onPressBackButtoninAdhocProductWtProductDetails: function () {
+            //     this.getView().byId("idProductScanning").setVisible(true);
+            //     this.getView().byId("idProductDetails").setVisible(false);
+            //     this.getView().byId("idBackButtoninAdhocProductWtProductDetails").setVisible(false);
+            //     this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(true);
+            // },
             onAdhocProductWtBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
@@ -49,6 +49,10 @@ sap.ui.define([
                         MessageToast.show("User does not exist");
                     }
                 });
+            },
+            onPressSubmitInAdhocHuWt:function(){
+                this.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true)
+                this.getView().byId("Id_ScrollContainer_AdhocProductWt").setVisible(false)
             }
         });
     });

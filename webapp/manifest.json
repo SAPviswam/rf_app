@@ -349,7 +349,7 @@
           ]
         },
         {
-          "name": "AdhocProductWt",
+          "name": "CREATEADHOCPRODUCTWT",
           "pattern": "AdhocProductWt/{id}/{idI}",
           "target": [
             "TargetAdhocProductWt"
