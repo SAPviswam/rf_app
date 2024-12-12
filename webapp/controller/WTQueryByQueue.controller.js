@@ -12,7 +12,7 @@ sap.ui.define(
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-
+                 var that=this;
                 if (Device.system.phone) {
                     this.getView().byId("idTableWTQuerybyQueue").setWidth("110%");
                     this.getView().byId("idTableWTQuerybyQueue").addStyleClass("MobileviewTable_WtQbyQ");
@@ -23,25 +23,33 @@ sap.ui.define(
                 }
             },
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
+                const { id,idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
                 this.applyStoredProfileImage();
             },
             onPressAvatarWTQBQ: function (oEvent) {     
                 this.onPressAvatarEveryTileHelperFunction(oEvent); 
                 },
+            
+               
+                  onSignoutPressed:function(){
+                    var oRouter = this.getOwnerComponent().getRouter(this);
+                    oRouter.navTo("InitialScreen",{Userid:this.IDI});
+                  },
             onWtQBQueuefirstBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
+                var that=this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID,iDI: that.IDI });
                             this.getView().byId("idWtQBQueueWhInput").setValue("")
                         }
                         else {
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                            oRouter.navTo("Supervisor", { id: this.ID,iDI: that.IDI });
                         }
                     }.bind(this),
                     error: function () {

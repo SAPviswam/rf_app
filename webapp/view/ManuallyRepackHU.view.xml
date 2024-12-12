@@ -77,7 +77,7 @@
                 <Avatar
                     id="_IDGenAvatar1ManuallyRepackHU"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="MRHU"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

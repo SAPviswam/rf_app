@@ -1,6 +1,6 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/m/MessageToast",
          "sap/ui/core/UIComponent"
     ],
@@ -13,20 +13,22 @@ sap.ui.define(
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
         },
         onResourceDetailsLoad: async function (oEvent1) {
-            const { id } = oEvent1.getParameter("arguments");
+            const { id,idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
         },
         onFirstBOLbackbtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();
+            var that = this;
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
                     let oUser=oData.Users.toLowerCase()
                     if(oUser ===  "resource"){
-                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                        oRouter.navTo("RouteResourcePage",{id:this.ID,idI:that.IDI});
                     }
                     else{
-                    oRouter.navTo("Supervisor",{id:this.ID});
+                    oRouter.navTo("Supervisor",{id:this.ID,idI:that.IDI});
                 }
                 }.bind(this),
                 error: function () {
@@ -34,6 +36,15 @@ sap.ui.define(
                 }
             });
         },
+
+        onAvatarPressed:function (oEvent) {     
+            this.onPressAvatarEveryTileHelperFunction(oEvent); 
+    
+            },
+            onSignoutPressed:function(){
+              var oRouter = this.getOwnerComponent().getRouter(this);
+              oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
+          },
         onBolQueriesPress:function(){
            this.getView().byId("idFirstBOLPage").setVisible(false);
            this.getView().byId("idSecondBOLPage").setVisible(true);

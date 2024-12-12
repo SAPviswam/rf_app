@@ -1,4 +1,3 @@
-
 <mvc:View
     controllerName="com.app.rfapp.controller.WTQueryByHU"
     xmlns:html="http://www.w3.org/1999/xhtml"
@@ -106,7 +105,7 @@
                                 scanFail="onScanError"
                                 inputLiveUpdate="onScanLiveupdate"
                                 dialogTitle="Enter Warehouse Order Number:"
-                               class="sapUiSmallMarginBegin"
+                                class="sapUiSmallMarginBegin"
                             />
                         </HBox>
                     </form:SimpleForm>
@@ -170,44 +169,42 @@
                                     id="idInputWTS_WTQBYHU"
                                     width="30%"
                                     class="sapUiTinyMarginTop HUNumberInput"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox id="idHBox3_WTQueryByHU" >
-    <Button
-        id="IdOpenBtnIn_WTQueryByHU"
-        text="{i18n>Btn_Open_WtQbWt}"
-        press="onWtQBQueueOpenBtnPress"
-        type="Emphasized"
-        class="sapUiTinyMarginEnd"
-        width="auto"
-    />
-    <Button
-        id="IdConfBtnIn_WTQueryByHU"
-        text="{i18n>Btn_Conf_WtQbWt}"
-        press="onWtQBQueueConfBtnPress"
-        type="Emphasized"
-        class="sapUiTinyMarginEnd"
-         width="auto"
-    />
-    <Button
-        id="IdAllBtnIn_WTQueryByHU"
-        text="{i18n>Btn_All_WtQbWt}"
-        press="onWtQBQueueAllBtnPress"
-        type="Emphasized"
-        class="sapUiTinyMarginEnd"
-         width="auto"
-    />
-    <Button
-        id="idThirdBackfghfghBtn_HuQuery"
-        text="{i18n>Button_Back1_HuQuery}"
-        press="onPressBackButtonSecondSC"
-        type="Emphasized"
-         width="auto"
-       
-    />
-</HBox>
- 
+                            <HBox id="idHBox3_WTQueryByHU">
+                                <Button
+                                    id="IdOpenBtnIn_WTQueryByHU"
+                                    text="{i18n>Btn_Open_WtQbWt}"
+                                    press="onWtQBQueueOpenBtnPress"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd"
+                                    width="auto"
+                                />
+                                <Button
+                                    id="IdConfBtnIn_WTQueryByHU"
+                                    text="{i18n>Btn_Conf_WtQbWt}"
+                                    press="onWtQBQueueConfBtnPress"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd"
+                                    width="auto"
+                                />
+                                <Button
+                                    id="IdAllBtnIn_WTQueryByHU"
+                                    text="{i18n>Btn_All_WtQbWt}"
+                                    press="onWtQBQueueAllBtnPress"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd"
+                                    width="auto"
+                                />
+                                <Button
+                                    id="idThirdBackfghfghBtn_HuQuery"
+                                    text="{i18n>Button_Back1_HuQuery}"
+                                    press="onPressBackButtonSecondSC"
+                                    type="Emphasized"
+                                    width="auto"
+                                />
+                            </HBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -255,7 +252,6 @@
                                         text="{WTS}"
                                     />
                                 </cells>
-                                
                             </ColumnListItem>
                         </items>
                     </Table>
@@ -311,7 +307,7 @@
                                 />
                                 <Input
                                     id="idInputWTIt_WTQBYHU"
-                                  width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/WTIt}"
                                     editable="false"
                                 />
@@ -325,9 +321,9 @@
                                 />
                                 <Input
                                     id="idInputWTs1_WTQBYHU"
-                                   width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/WTs}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="Emptylabeli05In_WTQBHU"
@@ -336,14 +332,14 @@
                                 <Text
                                     id="idLabelStsIn_WTQBYHU"
                                     text="{i18n>Label_Sts_WtQbWt}"
-                                     width="40px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idInputStsIn_WTQBYHU"
-                                  width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Sts}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="Emptylabeli01In_WTQBHU"
@@ -352,14 +348,14 @@
                                 <Text
                                     id="idTextPtypIn_WTQBYHU"
                                     text="{i18n>Label_Ptyp_WtQbWt}"
-                                     width="40px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idInputPtypIn_WTQBYHU"
                                     width="4rem"
                                     value="{localModel>/WarehouseTask/Ptyp}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox03Page3_WTQBYHU">
@@ -373,7 +369,7 @@
                                     id="idInputSproIn_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/Spro}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="EmptylabeliadIn_WTQBHU"
@@ -382,16 +378,16 @@
                                 <Text
                                     id="idLabelActyIn_WTQBYHU"
                                     text="{i18n>Label_Acty_WtQbWt}"
-                                     width="40px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
                                     id="idInputActyIn_WTQBYHU"
-                                  width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Acty}"
-                                       editable="false"
+                                    editable="false"
                                 />
-                                 <Label
+                                <Label
                                     id="idSampleLabel122in_WTQBYHU"
                                     width="3px"
                                 />
@@ -399,7 +395,7 @@
                                     id="idInputActy2In_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/ActyEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox04Page3_WTQBYHU">
@@ -411,9 +407,9 @@
                                 />
                                 <Input
                                     id="idInputProIn_WTQBYHU"
-                                   width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Pro}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Label
                                     id="idSampleLabel1in_WTQBYHU"
@@ -421,9 +417,9 @@
                                 />
                                 <Input
                                     id="idInputPro2In_WTQBYHU"
-                              width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/ProEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox05Page3_WTQBYHU">
@@ -435,9 +431,9 @@
                                 />
                                 <Input
                                     id="idInputSbinIn_WTQBYHU"
-                                 width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Sbin}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Label
                                     id="idSampleLabel22in_WTQBYHU"
@@ -447,7 +443,7 @@
                                     id="idInputSbin1In_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/SbinEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox06Page3_WTQBYHU">
@@ -459,9 +455,9 @@
                                 />
                                 <Input
                                     id="idInputDbinIn_WTQBYHU"
-                                  width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Dbin}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Label
                                     id="idSampleLabel33in_WTQBYHU"
@@ -469,9 +465,9 @@
                                 />
                                 <Input
                                     id="idInputDbin1In_WTQBYHU"
-                                   width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/DbinEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox07Page3_WTQBYHU">
@@ -485,7 +481,7 @@
                                     id="idInputCdatIn_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/Cdat}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Label
                                     id="idSampleLabel44in_WTQBYHU"
@@ -493,9 +489,9 @@
                                 />
                                 <Input
                                     id="idInputCdat1In_WTQBYHU"
-                                  width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/CdatEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="EmptyLabel"
@@ -509,9 +505,9 @@
                                 />
                                 <Input
                                     id="idInputCusrIn_WTQBYHU"
-                                   width="8rem"
+                                    width="8rem"
                                     value="{localModel>/WarehouseTask/Cusr}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox
@@ -521,12 +517,14 @@
                                 <Button
                                     id="idBackBtnPage3_WTQBYHU"
                                     press="onBackPressBtnWTDetails_WTQBYHU"
-                                   
                                     text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
                                     width="100%"
                                 />
-                                <Label id="idSampleLabel_WTQBYHU" width="5px"/>
+                                <Label
+                                    id="idSampleLabel_WTQBYHU"
+                                    width="5px"
+                                />
                                 <Button
                                     id="idBtnDetailPage3_WTQBYHU"
                                     text="{i18n>Btn_Detail_WtQbWt}"
@@ -546,7 +544,7 @@
                 height="100%"
                 width="100%"
                 class="sapUiContentPadding"
-               visible="false"
+                visible="false"
             >
                 <VBox
                     id="idVboxScreen4In_WTQBYHU"
@@ -565,13 +563,17 @@
                     >
                         <VBox id="idVBox02Page4PD_WTQBYHU">
                             <HBox id="idHBox1Page4PD_WTQBYHU">
-                            <Text id="ifdSampleLabelin_WTQBYHU1" text="P.Des" width="50px" class="sapUiTinyMarginTop" />
+                                <Text
+                                    id="ifdSampleLabelin_WTQBYHU1"
+                                    text="P.Des"
+                                    width="50px"
+                                    class="sapUiTinyMarginTop"
+                                />
                                 <Input
                                     id="idInputProductDes_WTQBYHU"
                                     width="325px"
                                     value="{localModel>/WarehouseTask/PD}"
-                                       editable="false"
-                                       
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox01Page4PD_WTQBYHU">
@@ -585,7 +587,7 @@
                                     id="idInputWO_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/WO}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="SampleTextIn_WTQBYHU"
@@ -601,7 +603,7 @@
                                     id="idInputESTP_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/ESTP}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox02Page4_WTQBYHU">
@@ -615,7 +617,7 @@
                                     id="idInputSQTY_WTQBYHU"
                                     width="7rem"
                                     value="{localModel>/WarehouseTask/SQTY}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Label
                                     id="idSampleLabelin5_WTQBYHU"
@@ -626,7 +628,7 @@
                                     id="idInputPC_WTQBYHU"
                                     width="2.5rem"
                                     value="{localModel>/WarehouseTask/SQTYEmI}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="SampleTextIn1_WTQBYHU"
@@ -640,9 +642,9 @@
                                 />
                                 <Input
                                     id="idInputBatch_WTQBYHU"
-                                     width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Batch}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox03Page4_WTQBYHU">
@@ -654,9 +656,9 @@
                                 />
                                 <Input
                                     id="idInputOwner_WTQBYHU"
-                                     width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Owner}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="idSampleText7_InWTQBYHU"
@@ -670,9 +672,9 @@
                                 />
                                 <Input
                                     id="idInputPENT_WTQBYHU"
-                                       width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/PEnt}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idHBox04Page5_WTQBYHU">
@@ -684,9 +686,9 @@
                                 />
                                 <Input
                                     id="idInputHUWT_WTQBYHU"
-                                      width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/HUWT}"
-                                       editable="false"
+                                    editable="false"
                                 />
                                 <Text
                                     id="idSampleLabel07_InWTQBYHU"
@@ -700,9 +702,9 @@
                                 />
                                 <Input
                                     id="idInputHTYPE_WTQBYHU"
-                                      width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/H_Type}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox
@@ -717,9 +719,9 @@
                                 />
                                 <Input
                                     id="idInputWHHU_WTQBYHU"
-                                       width="7rem"
+                                    width="7rem"
                                     value="{localModel>/WarehouseTask/Wh_HU}"
-                                       editable="false"
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox
@@ -732,7 +734,6 @@
                                     width="100%"
                                     text="{i18n>Button_Back1_HuQuery}"
                                     type="Emphasized"
-                                    
                                 />
                             </HBox>
                         </VBox>
