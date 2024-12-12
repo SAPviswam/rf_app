@@ -422,7 +422,7 @@
                                     visible="false"
                                     showSearchButton="true"
                                     placeholder="Search..."
-                                    width="10rem"
+                                    width="11.5rem"
                                 />
                                 <Button
 
