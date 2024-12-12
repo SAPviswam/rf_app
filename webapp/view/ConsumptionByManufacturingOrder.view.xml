@@ -98,7 +98,7 @@
                 <Avatar
                     id="_IDGenAvatar1ConsumptionByManufacturingOrder"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressed_CBMO"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

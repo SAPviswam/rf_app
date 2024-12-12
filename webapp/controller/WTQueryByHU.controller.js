@@ -67,14 +67,14 @@ sap.ui.define(
         this.getView().setModel(oLocalModel, "localModel");
         this.onPressBackButtonSecondSC();
       },
-      //Avata Press function with Helper function...
+      //Avatar Press function with Helper function...
       onPressAvatarWTQBYHU: function (oEvent) {
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },
 
       onSignoutPressed:function(){
 				var oRouter = this.getOwnerComponent().getRouter(this);
-				oRouter.navTo("InitialScreen"); 
+				oRouter.navTo("InitialScreen",{Userid:this.IDI}); 
 			},
      
       onBeforeRendering:function(){
@@ -84,8 +84,9 @@ sap.ui.define(
 
       // Load resource details based on the router event
       onResourceDetailsLoad: async function (oEvent1) {
-        const { id } = oEvent1.getParameter("arguments");
+        const { id,idI } = oEvent1.getParameter("arguments");
         this.ID = id; // Store the resource ID for later use
+        this.IDI=idI
         //Profile image updating(from BaseController)...
         this.applyStoredProfileImage();
       },
@@ -179,12 +180,13 @@ sap.ui.define(
       onPressBackBtnPage1_WTQBYHU: async function () {
         var oRouter = this.getOwnerComponent().getRouter();
         var oModel1 = this.getOwnerComponent().getModel();
+        var that = this;
         await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
           success: function (oData) {
             if (oData.Users === "RESOURCE") {
-              oRouter.navTo("RouteResourcePage", { id: this.ID });
+              oRouter.navTo("RouteResourcePage", { id: this.ID,idI:that.IDI });
             } else {
-              oRouter.navTo("Supervisor", { id: this.ID });
+              oRouter.navTo("Supervisor", { id: this.ID,idI:that.IDI });
             }
           }.bind(this),
           error: function () {
