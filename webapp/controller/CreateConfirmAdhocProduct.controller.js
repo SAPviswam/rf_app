@@ -2,7 +2,7 @@ sap.ui.define(
     [
         "./BaseController",
         "sap/m/MessageToast",
-         "sap/ui/core/UIComponent"
+        "sap/ui/core/UIComponent"
     ],
     function(BaseController,MessageToast,UIComponent) {
       "use strict";
@@ -98,5 +98,4 @@ sap.ui.define(
       
       });
     }
-  );
-  
+);
