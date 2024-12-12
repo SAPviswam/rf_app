@@ -288,6 +288,15 @@
                                     />
                                 </Column>
                                 <Column
+                                    id="idUsers"
+                                    width="30em"
+                                >
+                                    <Title
+                                        id="idUserstitle"
+                                        text="User Type"
+                                    />
+                                </Column>
+                                <Column
                                     id="idProcessArea"
                                     width="50em"
                                 >
@@ -341,6 +350,21 @@
                                             id="idEmailValue"
                                             text="{Email}"
                                         />
+                                        <ComboBox
+                                    id="idUsertypeCombobox"
+                                    placeholder="Please Select a Usertype from Dropdown.. "
+                                >
+                                    <core:Item
+                                        id="IDGenItem7"
+                                        key="Supervisor"
+                                        text="Supervisor"
+                                    />
+                                     <core:Item
+                                        id="IDGenItem8"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                </ComboBox>
 
                                         <MultiComboBox
                                             id="idProcessAreaValue"
