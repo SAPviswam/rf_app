@@ -32,13 +32,13 @@ sap.ui.define([
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
 
-                var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-                    headers: {
-                        "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-                        "sap-client": "100"
-                    }
-                });
-                this.setModel(oModel);
+                // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
+                //     headers: {
+                //         "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
+                //         "sap-client": "100"
+                //     }
+                // });
+                // this.setModel(oModel);
 
                 // Load config.json
                 const oConfigModel = new sap.ui.model.json.JSONModel();
