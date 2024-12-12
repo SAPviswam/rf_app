@@ -14,18 +14,6 @@
     <tnt:ToolPage id="idToolPageAdhocProductwt">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderAdhocProductwt">
-                <Button
-                    id="idBackButtoninAdhocProductWtScan"
-                    icon="sap-icon://nav-back"
-                    press="onPressBackButtoninAdhocProductWtProductScan"
-                    visible="false"
-                />
-                <Button
-                    id="idBackButtoninAdhocProductWtProductDetails"
-                    icon="sap-icon://nav-back"
-                    press="onPressBackButtoninAdhocProductWtProductDetails"
-                    visible="false"
-                />
                 <Image
                     id="_IDGenImage1AdhocProductwt"
                     height="1.5rem"
@@ -126,108 +114,117 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idProductDetails"
+                id="Id_Scrollcontainer_Screen2"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <!-- Vertical Box Layout for Content Alignment -->
-                <VBox class="sapUiSmallMargin">
-                    <!-- Horizontal Box for HU Number Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
+                <VBox
+                    id="idSecScVbox1_AdhocProductWt"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform2_AdhocProductWt"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
                     >
-                        <Label
-                            id="idAdhocProductScanLabel"
-                            text="Product"
-                            labelFor="idHuNumberInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductNumberInput"
-                            placeholder="Enter Product..."
-                            maxLength="30"
-                            width="250px"
-                            editable="false"
-                        />
-                    </HBox>
+                        <VBox
+                            id="idSecScVbox2_AdhocProductWt"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox id="idSecSCHbox1_AdhocProductWt">
+                                <Text
+                                    id="Id_Text_Product_AdhocProductWt"
+                                    text="Product"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_Product_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                           
+                            <HBox id="idSecScHbox2_AdhocProductWt">
+                                <Text
+                                    id="id_Text_SrcBin_AdhocProductWt"
+                                    text="Src Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_SrcBin_AdhocProductWt"
+                                    value=""
+                                    liveChange="onBinSrcLiveChange"
+                                />
+                            </HBox>
 
-                    <!-- Horizontal Box for SRC Bin Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Label
-                            id="idAdhocProductSRCBinLabel"
-                            text="SRC Bin"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductSRCBinInput"
-                            placeholder="Enter SRC Bin..."
-                            maxLength="25"
-                            width="250px"
-                            editable="false"
-                        />
-                    </HBox>
-
-                    <!-- Horizontal Box for Destination Bin Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Label
-                            id="idAdhocProductDestBinLabel"
-                            text="Destination Bin"
-                            labelFor="idDestBinInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductDestBinInput"
-                            placeholder="Enter Dest Bin..."
-                            maxLength="25"
-                            width="250px"
-                        />
-                    </HBox>
-
-                    <!-- Horizontal Box for Destination HU Field -->
-                    <HBox
-                        alignItems="Start"
-                        class="sapUiSmallMarginBottom sapUiSmallMarginLeft "
-                    >
-                        <Label
-                            id="idAdhocProductDestHuLabel"
-                            text="Destination HU"
-                            labelFor="idDestHuInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductDestHuInput"
-                            placeholder="Enter Dest HU..."
-                            maxLength="25"
-                            width="250px"
-                        />
-                    </HBox>
-
-                    <!-- HU Content Button aligned to the left -->
-                    <HBox
-                        justifyContent="Start"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Button
-                            id="idAdhocProductHuContentButton"
-                            text="HU Content"
-                            press="onHUContentPress"
-                            class="sapUiTinyMarginEnd"
-                        />
-                    </HBox>
+                            <HBox id="idSecScHBOX3_AdhocProductWt">
+                                <Text
+                                   id="id_Text_DestBin_AdhocProductWt"
+                                    text="Dest Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_DestBin_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox4_AdhocProductWt">
+                                <Text
+                                    id="id_Text_DestHu_AdhocProductWt"
+                                    text="Dest Hu"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_DestHu_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                             <HBox id="idSecScHbox5_AdhocProductWt">
+                                <Text
+                                    id="id_Text_Wpt_AdhocProductWt"
+                                    text="WPT"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_Wpt_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecSCHbox6_AdhocProductWt">
+                                <Button
+                                    id="idSecondBackBtn_AdhocProductWt"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    press="onSecondBackBtnPress_AdhocProductWt"
+                                   
+                                />
+                                <Button
+                                    id="idProdDetailsBtn_AdhocProductWt"
+                                    class="sapUiTinyMarginTop"
+                                    text="Prod Details"
+                                    width="auto"
+                                    press="onHuDetailsPress_AdhocProductWt"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>
