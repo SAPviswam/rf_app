@@ -58,7 +58,7 @@ sap.ui.define([
                     sap.ui.getCore().setModel(oModel);
                 }
 
-                changeClient("100)
+                changeClient("100")
                 // test
 
                 // Load config.json
