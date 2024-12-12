@@ -86,13 +86,14 @@
                                     width="70px"
                                     class="sapUiTinyMargin"
                                 />
+
                                 <Input
                                     id="1_CidProductInputCAP"
                                     value=""
                                     liveChange="onProductLiveChange"
                                 />
                             </HBox>
-                            <HBox>
+                            <HBox id="buttonhbox__CCAP">
                                 <Button
                                     id="idProductScannerBtn"
                                     icon="sap-icon://bar-code"
@@ -107,6 +108,7 @@
                                     class="sapUiTinyMarginEnd"
                                     type="Emphasized"
                                 />
+
                                 <Button
                                     id="idSubmitAdhocProductbtn"
                                     text="Submit"
@@ -177,7 +179,7 @@
                                     liveChange="onProductSrcLiveChange"
                                 />
                             </HBox>
-                            <HBox>
+                            <HBox id="buttonhbox_CCAP">
                                 <Button
                                     id="idProductSrcScannerBtn"
                                     icon="sap-icon://bar-code"
@@ -198,26 +200,31 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idthirdProductPage"
-                horizontal="false"
+                horizontal="true"
                 vertical="true"
                 height="100%"
+                width="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
                 <VBox
                     id="idthirdProductPage2"
-                    alignContent="Center"
+                    class="formContainer_AHUOBQ"
+                    justifyContent="Center"
                     alignItems="Center"
                 >
                     <form:SimpleForm
                         id="idSimpleform3_CCAP"
                         layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
                         columnsM="1"
+                        width="110%"
                     >
                         <VBox
                             id="idthirdProductPage1"
@@ -294,7 +301,7 @@
                                     value=""
                                 />
                             </HBox>
-                            <HBox>
+                            <HBox id="Hboxid_ccap">
                                 <Button
                                     id="idProdutDetailsbtn"
                                     text="Product Details"
@@ -315,189 +322,324 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idfourthProductPage"
-                horizontal="false"
-                vertical="true"
+                width="100%"
                 height="100%"
+                horizontal="true"
+                vertical="true"
                 class="sapUiContentPadding"
                 visible="false"
             >
                 <VBox
                     id="idfourthProductPage2"
-                    alignContent="Center"
-                    alignItems="Center"
-                >
+                    
+                     class="formContainer_AHUOBQ"
+                    justifyContent="Center"
+                    alignItems="Center">
+                  
+                
                     <form:SimpleForm
                         id="idSimpleform4_CCAP"
                         layout="ResponsiveGridLayout"
-                        labelSpanL="4"
-                        labelSpanM="4"
-                        emptySpanL="1"
-                        emptySpanM="1"
-                        columnsL="2"
+                        editable="true"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
                         columnsM="1"
+                        width="110%"
                     >
                         <VBox
                             id="idfourthProductPage1"
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <HBox class="sapUiTinyMargin">
-                                <Label
+                            <HBox
+                                id="idProductHBox1_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idProductLabel_CCAP"
                                     text="Product:"
-                                    width="55px"
-                                    class="sapUiTinyMarginTop"
+                                    width="70px"
                                 />
                                 <Input
+                                    id="idProductInput_CCAP"
                                     value=""
                                     width="150px"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Label
+
+                            <HBox
+                                id="idProTextHBox_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idProTextLabel_CCAP"
                                     text="ProText:"
-                                    width="55px"
+                                    width="70px"
+                                />
+
+                                <Input
+                                    id="idProTextInput_CCAP"
+                                    width="190px"
+                                    editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
-                                <Input
-                                    value=""
-                                    width="170px"
+                                <Label
+                                    id="idPtyEntlSpacer5_CCAP"
+                                    width="10px"
                                 />
                                 <Label
+                                    id="idStatusLabel_CCAP"
                                     text="StUs:"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idStatusInput_CCAP"
                                     value=""
                                     width="40px"
-                                />
-                            </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Label
-                                    text="Batch:"
-                                    width="50px"
+                                    editable="false"
                                     class="sapUiTinyMarginTop"
                                 />
+                            </HBox>
+
+                            <HBox
+                                id="idBatchHBox_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idBatchLabel_CCAP"
+                                    text="Batch:"
+                                    width="70px"
+                                />
                                 <Input
+                                    id="idBatchInput1_CCAP"
                                     value=""
                                     width="100px"
+                                    editable="false"
                                 />
-                                <Label width="10px" />
+                                <Label
+                                    id="idBatchSpacer1_CCAP"
+                                    width="10px"
+                                />
                                 <Input
+                                    id="idBatchInput2_CCAP"
                                     value=""
                                     width="40px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idBatchSpacer2_CCAP"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idBatchSTypeLabel_CCAP"
                                     text="STyp:"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idBatchSTypeInput_CCAP"
                                     value=""
                                     width="20px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idBatchSpacer3_CCAP"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idBatchCRLabel_CCAP"
                                     text="C/R:"
-                                    width="40px"
+                                    width="30px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idBatchCRInput_CCAP"
                                     value=""
-                                    width="50px"
+                                    width="80px"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Input
-                                    width="60px"
-                                    value=""
+
+                            <HBox
+                                id="idHBoxRow4_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idEmptyLabel_CCAP"
+                                    width="70px"
                                 />
                                 <Input
+                                    id="idRow4Input1_CCAP"
+                                    width="60px"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idRow4Spacer1_CCAP"
+                                    width="10px"
+                                />
+                                <Input
+                                    id="idRow4Input2_CCAP"
                                     width="250px"
                                     value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idRow4Spacer2_CCAP"
+                                    width="10px"
                                 />
                                 <Input
-                                    width="120px"
+                                    id="idRow4Input3_CCAP"
+                                    width="20px"
                                     value=""
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Label
+
+                            <HBox
+                                id="idPtyEntlHBox_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idPtyEntlLabel_CCAP"
                                     text="PtyEntl:"
-                                    width="60px"
-                                    class="sapUiTinyMarginTop"
+                                    width="70px"
                                 />
                                 <Input
+                                    id="idPtyEntlInput_CCAP"
                                     value=""
                                     width="100px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idPtyEntlSpacer_CCAP"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idOwnerLabel_CCAP"
                                     text="Owner:"
                                     width="60px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idOwnerInput_CCAP"
                                     value=""
                                     width="100px"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Label
+
+                            <HBox
+                                id="idSLEDBBDHBox_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idSLEDBBDLabel_CCAP"
                                     text="SLED/BBD:"
                                     width="70px"
-                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idSLEDBBDInput_CCAP"
                                     value=""
                                     width="100px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idPtyEntlSpacer1_CCAP"
+                                    width="20px"
+                                />
+
+                                <Label
+                                    id="idGRDateLabel_CCAP"
                                     text="GR Date:"
                                     width="60px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idGRDateInput_CCAP"
                                     value=""
                                     width="100px"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox class="sapUiTinyMargin">
-                                <Label
+
+                            <HBox
+                                id="idHazSubsHBox_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idHazSubsLabel_CCAP"
                                     text="Haz.Subs:"
                                     width="70px"
-                                    class="sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    value=""
+                                    id="idHazSubsInput_CCAP"
                                     width="60px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idPtyEntlSpacer2_CCAP"
+                                    width="10px"
+                                />
+                                <Label
+                                    id="idWhseHandLabel_CCAP"
                                     text="WhseHand:"
                                     width="75px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
-                                    value=""
+                                    id="idWhseHandInput_CCAP"
                                     width="60px"
+                                    editable="false"
                                 />
-                                <Label width="20px" />
                                 <Label
+                                    id="idPtyEntlSpacer4_CCAP"
+                                    width="20px"
+                                />
+                                <Label
+                                    id="idERelLabel_CCAP"
                                     text="ERel:"
-                                    width="60px"
+                                    width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
+                                    id="idERelInput_CCAP"
                                     value=""
                                     width="40px"
+                                    editable="false"
                                 />
                             </HBox>
-                            <HBox>
+
+                            <HBox id="idBackButtonHBox_CCAP">
                                 <Button
-                                    id="idProductthirdbackbtn"
+                                    id="idProductThirdBackBtn_CCAP"
                                     text="Back"
                                     press="onProductthirdBackBtnPress"
                                     type="Emphasized"
