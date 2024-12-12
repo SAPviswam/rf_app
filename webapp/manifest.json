@@ -126,7 +126,7 @@
         },
         {
           "name": "InitialScreen",
-          "pattern": "InitialScreen/{Userid}",
+          "pattern": "InitialScreen/user_id{Userid}",
           "target": [
             "TargetInitialScreen"
           ]

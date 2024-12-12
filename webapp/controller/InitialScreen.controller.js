@@ -193,10 +193,12 @@ sap.ui.define([
                 this.getView().byId("idSPasswordInput_CS").setValue("");
             },
 
-            onFinishconnectSAPPress: async function () {
+            onFinishconnectSAPPress: async function (oEvent) {
                 const oView = this.getView(),
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
-                    oCheckbox = oView.byId("idCheckboxDescription_InitialView");
+                    oCheckbox = oView.byId("idCheckboxDescription_InitialView"),
+                    oButton = oEvent.getSource()
+                oButton.setEnabled(false);
 
                 // Validation Logic
                 const validationErrors = [];
@@ -229,6 +231,7 @@ sap.ui.define([
 
                 if (validationErrors.length > 0) {
                     MessageToast.show("Please enter correct data");
+                    oButton.setEnabled(true);
                     return;
                 }
 
@@ -289,6 +292,7 @@ sap.ui.define([
                                     window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
+                                    oButton.setEnabled(true);
                                     console.error("CREATION ERROR: " + error);
                                 }
                             } else {
@@ -296,14 +300,16 @@ sap.ui.define([
                             }
                         } catch (error) {
                             sap.m.MessageToast.show("something went wrong technical issue");
+                            oButton.setEnabled(true);
                             console.error("Error: " + error);
                         }
                     } else {
                         sap.m.MessageBox.information("Entered system not found")
                     }
-
+                    oButton.setEnabled(true);
                 } catch (error) {
                     sap.m.MessageToast.show("something went wrong technical issue")
+                    oButton.setEnabled(true);
                     console.error(error);
                 }
             },
@@ -809,6 +815,8 @@ sap.ui.define([
                         text: "Signing out..."
                     });
                 }
+                // clear local storage 
+                localStorage.removeItem('loginData');
 
                 // Open the Busy Dialog
                 this._oSignOutBusyDialog.open();
@@ -1017,18 +1025,24 @@ sap.ui.define([
 
 
             onBackconnectSAPPress: function () {
-                this.getView().byId("idDescriptionInput_InitialView").setValue("");
-                this.getView().byId("idSystemIdInput_InitialView").setValue("");
-                this.getView().byId("idInstanceNumberInput_InitialView").setValue("");
-                this.getView().byId("idClientInput_InitialView").setValue("");
-                this.getView().byId("idApplicationServerInput_InitialView").setValue("");
-                this.getView().byId("idRouterStringInput_InitialView").setValue("");
-                this.getView().byId("idServiceInput_InitialView").setValue("");
+                const oView = this.getView(),
+                    oFormData = oView.getModel("ODataModel").setProperty("/connectionData", {});
+
+                const SetValueStates = (fieldId) => {
+                    const oField = oView.byId(fieldId);
+                    oField.setValueState("None");
+                };
+                SetValueStates("idDescriptionInput_InitialView")
+                SetValueStates("idSystemIdInput_InitialView")
+                SetValueStates("idInstanceNumberInput_InitialView")
+                SetValueStates("idClientInput_InitialView")
+                SetValueStates("idApplicationServerInput_InitialView")
+                SetValueStates("idRouterStringInput_InitialView")
+                SetValueStates("idServiceInput_InitialView")
+
                 this.getView().byId("idCheckboxDescription_InitialView").setSelected(false);
                 this.getView().byId("idConfigSapSysVbox_InitialView").setVisible(false);
                 this.getView().byId("idBtnsVbox_InitialView").setVisible(true);
-                this.getView().byId("idClientInput_InitialView").setEditable(true);
-
             },
 
             onClearconnectSAPPress: function () {
