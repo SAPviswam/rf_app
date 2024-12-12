@@ -25,8 +25,9 @@ sap.ui.define(
 
             // Event handler for loading resource details when route pattern is matched
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
+                const { id,idI } = oEvent1.getParameter("arguments"); // Extract the 'id' parameter from the route's arguments
                 this.ID = id; // Store the 'id' for use in other methods
+                this.IDI=idI;
                 this.applyStoredProfileImage();
             },
             onAvatarPressed: function (oEvent) {     
@@ -35,14 +36,14 @@ sap.ui.define(
                 },
                 onSignoutPressed:function(){
                     var oRouter = this.getOwnerComponent().getRouter(this);
-                    oRouter.navTo("InitialScreen"); 
+                    oRouter.navTo("InitialScreen",{Userid:this.IDI}); 
                 },
 
             // Event handler for the first back button (navigation based on user type)
             onPressFirstBackButton: async function () {
                 var oRouter = UIComponent.getRouterFor(this); // Get the router for the current controller
                 var oModel1 = this.getOwnerComponent().getModel(); // Get the model from the owner component
-
+                var that=this
                 // Read data from the RESOURCESSet entity for the given ID
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
@@ -50,9 +51,9 @@ sap.ui.define(
 
                         // Navigate to different routes based on the user type
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID }); // Route to Resource page
+                            oRouter.navTo("RouteResourcePage", { id: this.ID ,idI:that.IDI}); // Route to Resource page
                         } else {
-                            oRouter.navTo("Supervisor", { id: this.ID }); // Route to Supervisor page
+                            oRouter.navTo("Supervisor", { id: this.ID,idI:that.IDI }); // Route to Supervisor page
                         }
                     }.bind(this), // Bind the success handler to the controller context
 

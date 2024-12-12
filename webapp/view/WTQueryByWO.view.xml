@@ -13,24 +13,6 @@
     <tnt:ToolPage id="idToolPageWtQBWo">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderWtQBWo">
-                <Button
-                    id="idWtQBWoFifthbackbtn"
-                    text="Back"
-                    press="onWtQBWoFifthBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBWoSixththbackbtn"
-                    text="Back"
-                    press="onWtQBWoSixthBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idWtQBWoSevenththbackbtn"
-                    text="Back"
-                    press="onWtQBWoSeventhBackBtnPress"
-                    visible="false"
-                />
                 <Image
                     id="_IDGenImage1WtQBWo"
                     height="1.5rem"
