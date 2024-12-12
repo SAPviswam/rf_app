@@ -1,5 +1,6 @@
 sap.ui.define(
     [
+        "./BaseController",
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/UIComponent"
     ],
@@ -12,20 +13,22 @@ sap.ui.define(
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
         },
         onResourceDetailsLoad: async function (oEvent1) {
-            const { id } = oEvent1.getParameter("arguments");
+            const { id,idI} = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI=idI;
         },
         onManuallyRepackHUfirstBackBtnPress:async function(){
             var oRouter = UIComponent.getRouterFor(this);
             var oModel1 = this.getOwnerComponent().getModel();
+            var that=this;
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
                     let oUser=oData.Users.toLowerCase()
                     if(oUser ===  "resource"){
-                        oRouter.navTo("RouteResourcePage",{id:this.ID});
+                        oRouter.navTo("RouteResourcePage",{id:this.ID,idI:this.IDI});
                     }
                     else{
-                    oRouter.navTo("Supervisor",{id:this.ID});
+                    oRouter.navTo("Supervisor",{id:this.ID,idI:this.IDI});
                 }
                 }.bind(this),
                 error: function () {
@@ -34,6 +37,14 @@ sap.ui.define(
             });
            
         },
+        onAvatarPressedIn_MRHU: function (oEvent) {
+            this.onPressAvatarEveryTileHelperFunction(oEvent);
+          },
+       
+          onSignoutPressed:function(){
+            var oRouter = this.getOwnerComponent().getRouter(this);
+            oRouter.navTo("InitialScreen",{Userid:this.IDI});
+          },
         onValueLiveChange:function(){
                 this.getView().byId("idManuallyRepackHUFirstSC").setVisible(false);
                 this.getView().byId("idManuallyRepackHUSecSC").setVisible(true);

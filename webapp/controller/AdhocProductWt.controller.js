@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/m/MessageToast",
          "sap/ui/core/UIComponent"
 ],
@@ -13,10 +13,19 @@ function (Controller,MessageToast,UIComponent) {
         },
         onResourceDetailsLoad:function(oEvent1){
             var that = this;
-            const { id } = oEvent1.getParameter("arguments");
+            const { id,idI } = oEvent1.getParameter("arguments");
             this.ID = id;
-            console.log(this.ID);
+            this.IDI = idI;
+            
         },
+        onAvatarPressedIn_APWT: function (oEvent) {
+            this.onPressAvatarEveryTileHelperFunction(oEvent);
+          },
+       
+          onSignoutPressed:function(){
+            var oRouter = this.getOwnerComponent().getRouter(this);
+            oRouter.navTo("InitialScreen",{Userid:this.IDI});
+          },
         onPressSubmitInAdhocHuWt: function () {
  
             this.getView().byId("idProductScanning").setVisible(false);
@@ -29,6 +38,7 @@ function (Controller,MessageToast,UIComponent) {
             this.getView().byId("idBackButtoninAdhocProductWtScan").setVisible(true);
         },
         onPressBackButtoninAdhocProductWtProductDetails: function () {
+
  
             this.getView().byId("idProductScanning").setVisible(true);
             this.getView().byId("idProductDetails").setVisible(false);
@@ -38,14 +48,15 @@ function (Controller,MessageToast,UIComponent) {
         onPressBackButtoninAdhocProductWtProductScan: async function(){
             var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
+                var that=this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         let oUser=oData.Users.toLowerCase()
                         if(oUser ===  "resource"){
-                            oRouter.navTo("RouteResourcePage",{id:this.ID});
+                            oRouter.navTo("RouteResourcePage",{id:this.ID,idI: that.IDI});
                         }
                         else{
-                        oRouter.navTo("Supervisor",{id:this.ID});
+                        oRouter.navTo("Supervisor",{id:this.ID,idI: that.IDI});
                     }
                     }.bind(this),
                     error: function () {

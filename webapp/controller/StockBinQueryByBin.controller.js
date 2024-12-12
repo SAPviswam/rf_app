@@ -16,8 +16,9 @@ sap.ui.define([
     },
     onResourceDetailsLoad: function (oEvent1) {
       var that = this;
-      const { id } = oEvent1.getParameter("arguments");
+      const { id,idI } = oEvent1.getParameter("arguments");
       this.ID = id;
+      this.IDI = idI;
       this.applyStoredProfileImage();
     },
     onPressAvatarSBQBB: function (oEvent) {     
@@ -26,14 +27,16 @@ sap.ui.define([
     onPressBinBackToHome: async function () {
       var oRouter = UIComponent.getRouterFor(this);
       var oModel1 = this.getOwnerComponent().getModel();
+      var that=this;
+      // Fetch resource details from OData service
       await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
         success: function (oData) {
           let oUser = oData.Users.toLowerCase()
           if (oUser === "resource") {
-            oRouter.navTo("RouteResourcePage", { id: this.ID });
+            oRouter.navTo("RouteResourcePage", { id: this.ID,idI: this.IDI });
           }
           else {
-            oRouter.navTo("Supervisor", { id: this.ID });
+            oRouter.navTo("Supervisor", { id: this.ID,idI: this.IDI });
           }
           this.getView().byId("_IDBinGenInput1_SBQB").setValue("");
         }.bind(this),
@@ -41,6 +44,16 @@ sap.ui.define([
           MessageToast.show("User does not exist");
         }
       });
+    },
+
+    //Avatar Press function with Helper function...
+    onPressAvatarSBQBP: function (oEvent) {
+      this.onPressAvatarEveryTileHelperFunction(oEvent);
+    },
+
+    onSignoutPressed:function(){
+      var oRouter = this.getOwnerComponent().getRouter(this);
+      oRouter.navTo("InitialScreen",{Userid:this.IDI}); 
     },
     onPressBinBackToBin: function () {
       this.getView().byId("page1_SBQB").setVisible(true);
