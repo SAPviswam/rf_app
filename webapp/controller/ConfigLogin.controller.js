@@ -66,6 +66,7 @@ sap.ui.define(
       },
 
       onAppLoginPress: async function () {
+        debugger
         const oModel = this.getOwnerComponent().getModel(),
           oUserView = this.getView(),
           sPath = "/APP_LOGON_DETAILSSet",

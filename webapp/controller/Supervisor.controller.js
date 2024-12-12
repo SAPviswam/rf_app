@@ -22,8 +22,8 @@ sap.ui.define(
 
                 var oModelV2 = this.getOwnerComponent().getModel();
                 this.getView().byId("pageContainer").setModel(oModelV2);
-                
-                
+
+
                 //this._updateComboBoxItems();
                 // this._fetchUniqueProcessAreas();
                 // this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
@@ -52,6 +52,9 @@ sap.ui.define(
                     this.byId("idRequestedData").setWidth("600px");
                     this.byId("idUserDataTable").setWidth("3500px");
                 }
+
+                const oConfigModel = this.getOwnerComponent().getModel("config");
+                this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
             },
 
@@ -438,7 +441,7 @@ sap.ui.define(
 
                 var Empid = this.byId("idEmployeeIDInputF").getText();
 
-                var oNameInput = this.byId("idNameInputF");
+                var oNameInput = this.getView().byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
                 var oResourcetypeInput = this.byId("idRoesurcetypeInputF");
@@ -457,6 +460,7 @@ sap.ui.define(
                 var Queue = oQueueSelect.getSelectedKeys().join(",");
 
                 var isValid = true;
+                var that = this;
 
                 // Validate Name
                 if (!Name) {
@@ -583,7 +587,6 @@ sap.ui.define(
                     Email: email,
                     Notification: "your request has been Approved",
                     Phonenumber: phone,
-
                     Queue: Queue,
                     Resourcegroup: Group,
                     Resourceid: Empid,
@@ -598,6 +601,8 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
+
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         this.resetForm();
 
@@ -654,6 +659,7 @@ sap.ui.define(
                 var oCurrentDateTime = new Date();
                 var sFormattedCurrentDateTime = this.formatDate(oCurrentDateTime);
                 var sFormattedExpiryDate = this.formatDate(oExpiryDate);
+                var that = this;
 
                 var oData = {
                     Area: Area,
@@ -675,9 +681,10 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
+                        
+
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
-
-
                         // Navigate to the user menu after successful password update
                         this.onRequestedData();
                         this.onUserData();
@@ -688,6 +695,36 @@ sap.ui.define(
                     }
                 });
 
+            },
+
+            sendSms: function (Userid,Firstname,Phonenumber,Password) {
+                debugger
+                // Send POST request to Twilio API using jQuery.ajax
+                const accountSid = this.oSMSConfig.AccountSID,
+                    authToken = this.oSMSConfig.AuthToken,
+                    url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+                    fromNumber = '+15856485867';
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    async: true,
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken)
+                    },
+                    data: {
+                        To: `+91${Phonenumber}`,
+                        From: fromNumber,
+                        Body: `Hi ${Firstname} your Request Have Been Apporved  Your UserID ${Userid} and Password ${Password}  don't share with anyone. \nThank You,\nArtihcus Global.`
+                    },
+                    success: function (data) {
+                        sap.m.MessageBox.show(`${Userid} request have been approved and password have been sent to ${Phonenumber} `);
+                    },
+                    error: function (error) {
+                        sap.m.MessageBox.information(`Failed to send SMS.\nyour user ID is ${Userid} please note this for future use`);
+                        console.error('Failed to send user ID' + error.message);
+                    }
+                });
+                // SMS END
             },
             _updateComboBoxItems: function () {
                 var oComboBox = this.byId("_IDGenComboBox1");
@@ -2630,42 +2667,42 @@ sap.ui.define(
                 var bVisible = oSearchField.getVisible();
                 oSearchField.setVisible(!bVisible);
                 this.byId("searchButton").setVisible(false);
-              },
-              onSearch: function () {
+            },
+            onSearch: function () {
                 // Get the search field and toggle button by their IDs
                 var oSearchField = this.byId("searchField");
                 var oToggleSearchButton = this.byId("toggleSearchButton");
-          
+
                 // Hide the search field
                 oSearchField.setVisible(false);
                 this.byId("searchButton").setVisible(true);
-          
+
                 // Toggle the visibility of the button
                 // var bVisible = oToggleSearchButton.getVisible();
                 oToggleSearchButton.setVisible(!bVisible);
-          
-              },
-              //Delete feunctionality in the User Table
-              onPressDeleteUser: function () {
+
+            },
+            //Delete feunctionality in the User Table
+            onPressDeleteUser: function () {
                 debugger;
                 // Get the table reference
                 var oTable = this.byId("idUserDataTable");
-            
+
                 // Get the selected item (single row)
                 var oSelectedItem = oTable.getSelectedItem();
-                
+
                 if (!oSelectedItem) {
                     // If no row is selected, show a message
                     sap.m.MessageToast.show("Please select a row to delete.");
                     return;
                 }
-            
+
                 // Get the OData model (assuming it's bound to the view)
-                 var oModel = this.getOwnerComponent().getModel();
-            
+                var oModel = this.getOwnerComponent().getModel();
+
                 // Get the path of the selected item (row)
                 var sPath = oSelectedItem.getBindingContext().getPath();
-            
+
                 // Confirm deletion (Optional: You can ask the user to confirm the delete action)
                 sap.m.MessageBox.warning("Are you sure you want to delete the resource?", {
 
