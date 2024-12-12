@@ -97,12 +97,21 @@
                                     id="idProductScannerBtn"
                                     icon="sap-icon://bar-code"
                                     press="onProductBarcodeScanner"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
                                 />
                                 <Button
                                     id="idInitialAdhocProductbackbtn"
                                     text="Back"
                                     press="onInitialAdhocProductBackBtnPress"
-                                    visible="true"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idSubmitAdhocProductbtn"
+                                    text="Submit"
+                                    press="onSubmitAdhocProductBtnPress"
+                                    type="Emphasized"
                                 />
                             </HBox>
                         </VBox>
@@ -173,12 +182,14 @@
                                     id="idProductSrcScannerBtn"
                                     icon="sap-icon://bar-code"
                                     press="onSrcBarcodeScanner"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
                                 />
                                 <Button
                                     id="idProductfirstbackbtn"
                                     text="Back"
                                     press="onProductfirstBackBtnPress"
-                                    visible="false"
+                                    type="Emphasized"
                                 />
                             </HBox>
                         </VBox>
@@ -285,10 +296,211 @@
                             </HBox>
                             <HBox>
                                 <Button
+                                    id="idProdutDetailsbtn"
+                                    text="Product Details"
+                                    press="onProductdetailsBtnPress"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
                                     id="idProdutSecondbackbtn"
                                     text="Back"
                                     press="onProductSecondBackBtnPress"
-                                    visible="false"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idfourthProductPage"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idfourthProductPage2"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform4_CCAP"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idfourthProductPage1"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="Product:"
+                                    width="55px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="150px"
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="ProText:"
+                                    width="55px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="170px"
+                                />
+                                <Label
+                                    text="StUs:"
+                                    width="40px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="40px"
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="Batch:"
+                                    width="50px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="100px"
+                                />
+                                <Label width="10px" />
+                                <Input
+                                    value=""
+                                    width="40px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="STyp:"
+                                    width="40px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="20px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="C/R:"
+                                    width="40px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="50px"
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Input
+                                    width="60px"
+                                    value=""
+                                />
+                                <Input
+                                    width="250px"
+                                    value=""
+                                />
+                                <Input
+                                    width="120px"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="PtyEntl:"
+                                    width="60px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="100px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="Owner:"
+                                    width="60px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="100px"
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="SLED/BBD:"
+                                    width="70px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="100px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="GR Date:"
+                                    width="60px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="100px"
+                                />
+                            </HBox>
+                            <HBox class="sapUiTinyMargin">
+                                <Label
+                                    text="Haz.Subs:"
+                                    width="70px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="60px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="WhseHand:"
+                                    width="75px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="60px"
+                                />
+                                <Label width="20px" />
+                                <Label
+                                    text="ERel:"
+                                    width="60px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    value=""
+                                    width="40px"
+                                />
+                            </HBox>
+                            <HBox>
+                                <Button
+                                    id="idProductthirdbackbtn"
+                                    text="Back"
+                                    press="onProductthirdBackBtnPress"
+                                    type="Emphasized"
                                 />
                             </HBox>
                         </VBox>

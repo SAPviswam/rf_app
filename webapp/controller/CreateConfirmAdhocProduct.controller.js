@@ -19,7 +19,7 @@ sap.ui.define(
                 console.log(this.ID);
             },
 
-            onProductLiveChange: function () {
+            onSubmitAdhocProductBtnPress: function () {
                 this.getView().byId("idInitialProductPage").setVisible(false)
                 this.getView().byId("idsecondProductPage").setVisible(true)
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
@@ -42,6 +42,18 @@ sap.ui.define(
                 this.getView().byId("idthirdProductPage").setVisible(false);
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
+            },
+            onProductdetailsBtnPress: function(){
+                this.getView().byId("idfourthProductPage").setVisible(true);
+                this.getView().byId("idthirdProductPage").setVisible(false);
+                this.getView().byId("idProductthirdbackbtn").setVisible(true);
+                this.getView().byId("idProdutSecondbackbtn").setVisible(false)
+            },
+            onProductthirdBackBtnPress :function(){
+                this.getView().byId("idfourthProductPage").setVisible(false);
+                this.getView().byId("idthirdProductPage").setVisible(true);
+                this.getView().byId("idProductthirdbackbtn").setVisible(false);
+                this.getView().byId("idProdutSecondbackbtn").setVisible(true)
             },
             onInitialAdhocProductBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
