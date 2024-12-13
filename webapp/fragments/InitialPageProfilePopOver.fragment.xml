@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        placement="Bottom"
+        verticalScrolling="false"
+        horizontalScrolling="false"
+        class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
+        contentMinWidth="auto"
+        title="Profile:"
+    >
+        <form:SimpleForm
+            backgroundDesign="Solid"
+        >
+            <VBox>
+                <HBox
+                    alignItems="Start"
+                >
+                    <Avatar
+                        displaySize="S"
+                        press="onPressPopoverProfileImageAvatar_Initial"
+                        class="profileAvatar1234"
+                    />
+                    <Label
+                        width="1rem"
+                    />
+                    <VBox
+                        alignItems="Start"
+                        class="NamePhoneClass"
+                    >
+                        <Text
+                            text="{initialProfile>/Name}"
+                            class="UserNameBold"
+                        />
+                        <Link
+                            text="{initialProfile>/Number}"
+                            class="UserNameBold"
+                        />
+                    </VBox>
+                </HBox>
+                <VBox
+                    alignItems="Start"
+                    class="onProfileOptions"  
+                >
+                    <Button
+                        icon="sap-icon://person-placeholder"
+                        text="Account Details"
+                        type="Transparent"
+                        press="onPressAccountDetails_Initial"
+                        width="auto"
+                    />
+                    <Button
+                        icon="sap-icon://add-employee"
+                        text="Create Resource"
+                        type="Transparent"
+                        press="onPressCreateResource_Initial"
+                        width="auto"
+                    />
+                    <Button
+                        icon="sap-icon://sys-help"
+                        text="Help"
+                        type="Transparent"
+                        press="onChatbotButtonPress_Initial"
+                        width="auto"
+                    />
+                    <Button
+                        icon="sap-icon://log"
+                        text="Sign Out"
+                        type="Transparent"
+                        press="onSignoutPressed_Initial"
+                        width="auto"
+                    />
+                </VBox>
+            </VBox>
+        </form:SimpleForm>
+    </Popover>
+</core:FragmentDefinition>
