@@ -67,7 +67,7 @@ sap.ui.define(
         this.getView().setModel(oLocalModel, "localModel");
         this.onPressBackButtonSecondSC();
       },
-      //Avata Press function with Helper function...
+      //Avatar Press function with Helper function...
       onPressAvatarWTQBYHU: function (oEvent) {
         this.onPressAvatarEveryTileHelperFunction(oEvent);
       },

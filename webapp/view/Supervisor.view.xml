@@ -244,7 +244,7 @@
                             <columns>
                                 <Column
                                     id="idEmployeeId"
-                                    width="7rem"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idtitleEmpID"
@@ -253,7 +253,7 @@
                                 </Column>
                                 <Column
                                     id="idEmployeename"
-                                    width="20em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idtitleEmpName"
@@ -262,7 +262,8 @@
                                 </Column>
                                 <Column
                                     id="idResourceType"
-                                    width="20em"
+                                    width="auto"
+                                   
                                 >
                                     <Title
                                         id="idResourceTypetitle"
@@ -271,7 +272,7 @@
                                 </Column>
                                 <Column
                                     id="idPhonenumber"
-                                    width="12em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idPhoneNumbertitle"
@@ -280,7 +281,7 @@
                                 </Column>
                                 <Column
                                     id="idEmail"
-                                    width="30em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idEmailtitle"
@@ -288,8 +289,17 @@
                                     />
                                 </Column>
                                 <Column
+                                    id="idUsers"
+                                    width="auto"
+                                >
+                                    <Title
+                                        id="idUserstitle"
+                                        text="User Type"
+                                    />
+                                </Column>
+                                <Column
                                     id="idProcessArea"
-                                    width="50em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idProcessAreatitle"
@@ -298,7 +308,7 @@
                                 </Column>
                                 <Column
                                     id="idProcessGroup"
-                                    width="50em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idProcessgrouptitle"
@@ -307,7 +317,7 @@
                                 </Column>
                                 <Column
                                     id="idProcessQueue"
-                                    width="50em"
+                                    width="auto"
                                 >
                                     <Title
                                         id="idProcessQueuetitle"
@@ -341,6 +351,22 @@
                                             id="idEmailValue"
                                             text="{Email}"
                                         />
+                                        <ComboBox
+                                    id="idUsertypeCombobox"
+                                    placeholder="Please Select a Usertype from Dropdown.. "
+                                    width="30rem"
+                                >
+                                    <core:Item
+                                        id="IDGenItem7"
+                                        key="Supervisor"
+                                        text="Supervisor"
+                                    />
+                                     <core:Item
+                                        id="IDGenItem8"
+                                        key="Resource"
+                                        text="Resource"
+                                    />
+                                </ComboBox>
 
                                         <MultiComboBox
                                             id="idProcessAreaValue"
@@ -432,13 +458,11 @@
                                     width="5.8rem"
                                 />
                                  <Button
-
                                     id="idDeleteBtnS"
                                     icon="sap-icon://delete"
                                     press="onPressDeleteUser"
                                     type="Reject"
                                     width="1rem"
-
                                 />
 
                             </contentRight>

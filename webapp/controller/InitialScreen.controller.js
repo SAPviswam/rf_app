@@ -384,6 +384,7 @@ sap.ui.define([
                 else {
                     var oString = this.arrayOfDescription[0];
                 }
+                
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -489,92 +490,93 @@ sap.ui.define([
                     }.bind(that) // Bind the controller context
                 });
             },
-            onDeleteConfiguredSystems: function () {
-                if (this.arrayOfButton < 1) {
-                    MessageToast.show("Please select atleast one system to delete");
-                    return;
-                }
+            // onDeleteConfiguredSystems: function () {
+            //     if (this.arrayOfButton < 1) {
+            //         MessageToast.show("Please select atleast one system to delete");
+            //         return;
+            //     }
 
-                var that = this; // Store reference to 'this' for use in callbacks
+            //     var that = this; // Store reference to 'this' for use in callbacks
 
-                if (this.arrayOfDescription.length > 1) {
-                    var oString = this.arrayOfDescription.length
-                }
-                else {
-                    var oString = this.arrayOfDescription[0];
-                }
-                MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
-                    title: "Delete",
-                    actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
-                    onClose: function (status) {
-                        if (status === MessageBox.Action.DELETE) {
-                            this.arrayOfButton.forEach(element => {
-                            });
-                            // Delete from OData service
-                            var oModel = this.getOwnerComponent().getModel(); // Get the OData model
-                            this.arrayOfClient.forEach(element => {
-                                var sPath = "/ServiceSet('" + element + "')";
-                                oModel.remove(sPath, {
-                                    success: function () {
-                                        MessageToast.show("Configured system deleted successfully.");
+            //     if (this.arrayOfDescription.length > 1) {
+            //         var oString = this.arrayOfDescription.length
+            //     }
+            //     else {
+            //         var oString = this.arrayOfDescription[0];
+            //     }
 
-                                        // Remove selected the buttons from the UI
-                                        debugger
-                                        var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
-                                        that.arrayOfButton.forEach((currentButton) => {
-                                            oHomePage.removeItem(currentButton); // Remove the selected button
-                                            var index = that.aAllButtons.indexOf(currentButton);
-                                            if (index !== -1) {
-                                                that.aAllButtons.splice(index, 1); // Remove button from array
-                                            }
-                                            // Clear selection
-                                            currentButton = null;
-                                            that.updateDisplayedButtons()
-                                            var index = that.aAllButtons.indexOf(currentButton);
-                                            if (index !== -1) {
-                                                that.aAllButtons.splice(index, 1); // Remove button from array
-                                            }
-                                            // Clear selection
-                                            currentButton = null;
-                                        })
+            //     MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
+            //         title: "Delete",
+            //         actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
+            //         onClose: function (status) {
+            //             if (status === MessageBox.Action.DELETE) {
+            //                 this.arrayOfButton.forEach(element => {
+            //                 });
+            //                 // Delete from OData service
+            //                 var oModel = this.getOwnerComponent().getModel(); // Get the OData model
+            //                 this.arrayOfClient.forEach(element => {
+            //                     var sPath = "/ServiceSet('" + element + "')";
+            //                     oModel.remove(sPath, {
+            //                         success: function () {
+            //                             MessageToast.show("Configured system deleted successfully.");
+
+            //                             // Remove selected the buttons from the UI
+            //                             debugger
+            //                             var oHomePage = that.getView().byId("idEnvironmentButtonsHBox_InitialView");
+            //                             that.arrayOfButton.forEach((currentButton) => {
+            //                                 oHomePage.removeItem(currentButton); // Remove the selected button
+            //                                 var index = that.aAllButtons.indexOf(currentButton);
+            //                                 if (index !== -1) {
+            //                                     that.aAllButtons.splice(index, 1); // Remove button from array
+            //                                 }
+            //                                 // Clear selection
+            //                                 currentButton = null;
+            //                                 that.updateDisplayedButtons()
+            //                                 var index = that.aAllButtons.indexOf(currentButton);
+            //                                 if (index !== -1) {
+            //                                     that.aAllButtons.splice(index, 1); // Remove button from array
+            //                                 }
+            //                                 // Clear selection
+            //                                 currentButton = null;
+            //                             })
 
 
-                                        that.arrayOfButton.forEach(element => {
-                                            element.setType("Unstyled")
-                                        });
-                                        that.arrayOfButton = [];
-                                        that.arrayOfClient = [];
-                                        that.arrayOfDescription = [];
-                                        that.updateDisplayedButtons();
-                                    }.bind(that), // Ensure 'this' context is correct
-                                    error: function (oError) {
-                                        console.error(oError);
-                                        MessageToast.show("Error deleting configured system.");
-                                        that.arrayOfButton.forEach(element => {
-                                            element.setType("Unstyled")
-                                        });
-                                        that.arrayOfButton = [];
-                                        that.arrayOfClient = [];
+            //                             that.arrayOfButton.forEach(element => {
+            //                                 element.setType("Unstyled")
+            //                             });
+            //                             that.arrayOfButton = [];
+            //                             that.arrayOfClient = [];
+            //                             that.arrayOfDescription = [];
+            //                             that.updateDisplayedButtons();
+            //                         }.bind(that), // Ensure 'this' context is correct
+            //                         error: function (oError) {
+            //                             console.error(oError);
+            //                             MessageToast.show("Error deleting configured system.");
+            //                             that.arrayOfButton.forEach(element => {
+            //                                 element.setType("Unstyled")
+            //                             });
+            //                             that.arrayOfButton = [];
+            //                             that.arrayOfClient = [];
 
-                                        that.arrayOfDescription = [];
+            //                             that.arrayOfDescription = [];
 
-                                    }
-                                });
-                            });
-                        } else {
-                            MessageToast.show("Deletion cancelled.");
-                            this.selectedButton = null;
-                            this.arrayOfButton.forEach(oButton => {
-                                oButton.removeStyleClass("buttonSelected");
-                                oButton.addStyleClass("customButtonBackground");
-                            });
-                            this.arrayOfButton = [];
-                            this.arrayOfClient = [];
-                            this.arrayOfDescription = [];
-                        }
-                    }.bind(that) // Bind the controller context
-                });
-            },
+            //                         }
+            //                     });
+            //                 });
+            //             } else {
+            //                 MessageToast.show("Deletion cancelled.");
+            //                 this.selectedButton = null;
+            //                 this.arrayOfButton.forEach(oButton => {
+            //                     oButton.removeStyleClass("buttonSelected");
+            //                     oButton.addStyleClass("customButtonBackground");
+            //                 });
+            //                 this.arrayOfButton = [];
+            //                 this.arrayOfClient = [];
+            //                 this.arrayOfDescription = [];
+            //             }
+            //         }.bind(that) // Bind the controller context
+            //     });
+            // },
             onEditConfiguredSystem: async function () {
                 // Validate user selection
                 const selectedButtons = this.arrayOfButton;
@@ -901,6 +903,7 @@ sap.ui.define([
                 var oResourceId = this.getView().byId("idUserInput_CS").getValue();
                 var oPassword = this.getView().byId("idSPasswordInput_CS").getValue();
                 var that = this;
+                var that = this;
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
@@ -911,8 +914,9 @@ sap.ui.define([
                                 // Open the password change dialog
                                 this.onChangePasswordBtn(oResourceId);
                             }
+                            }
                             else {
-                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId }, true)
+                                this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId, idI: that.Userid }, true)
                                 window.location.reload(true);
                             }
                         }
@@ -924,11 +928,6 @@ sap.ui.define([
                         MessageToast.show("User doesn't exist")
                     }
                 });
-            },
-            onBeforeRendering: function () {
-                // Reattach the event listener every time the InitialScreen is about to be rendered
-                this._handleKeyDownBound = this._handleKeyDown.bind(this);
-                document.addEventListener("keydown", this._handleKeyDownBound);
             },
             onPressCancleSapLogon: function () {
                 this.oConfigSap.close();
@@ -994,6 +993,7 @@ sap.ui.define([
                         if (oData.Password === sCurrentPassword) {
                             oModel.update(`/RESOURCESSet('${sResourceId}')`, {
                                 Password: sNewPassword,
+                                Loginfirst: false // Use an object to set the new password
                                 Loginfirst: false // Use an object to set the new password
                             }, {
                                 success: function () {
