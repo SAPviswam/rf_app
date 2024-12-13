@@ -412,7 +412,7 @@
           ]
         },
         {
-          "name": "RECEIVINGOFHUDOORTW",
+          "name": "RECEVINGOFTUDOORTW",
           "pattern": "RecevingOfHUbyTUorDoor/{id}/{idI}",
           "target": [
             "TargetRecevingOfHUbyTUorDoor"
