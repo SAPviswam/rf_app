@@ -47,6 +47,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
+        
             <ScrollContainer
                 id="idPage1_AHUOBQ"
                 horizontal="false"
@@ -94,6 +95,7 @@
                             id="IdHBox_AHUOBQ"
                             justifyContent="Center"
                         >
+
                             <Button
                                 id="IdBackbutton_AHUOBQ"
                                 text="{i18n>Back_button_AHUBQ}"
