@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController",
 ],
     function (Controller) {
         "use strict";
@@ -13,6 +13,13 @@ sap.ui.define([
                 const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 this.IDI = idI;
+            },
+            onAvatarPressed: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
             onF2PressManPosAssignment: function () {
                 this.getView().byId("idLBHUManPosAssignmentScrollContainer2").setVisible(true);
