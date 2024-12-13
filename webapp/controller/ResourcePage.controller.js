@@ -57,105 +57,6 @@ sap.ui.define([
             //     this.ID = id;
             // },
 
-            onAfterRendering: function () {
-                debugger
-                // Apply stored background color
-                // var sStoredBackgroundColor = localStorage.getItem("backgroundColor");
-                // if (sStoredBackgroundColor) {
-                //     this.applyBackgroundTheme(sStoredBackgroundColor, null);
-                // }
-
-                // // Apply stored background image
-                // var sStoredBackgroundImage = localStorage.getItem("backgroundImage");
-                // if (sStoredBackgroundImage) {
-                //     this.applyBackgroundTheme(null, sStoredBackgroundImage);
-                // }
-
-                // Apply stored tile colors
-                // var tileColors = JSON.parse(localStorage.getItem("tileColors") || "{}");
-                // for (var sTileId in tileColors) {
-                //     var sColor = tileColors[sTileId];
-                //     var oTile = this.byId(this._extractLocalId(sTileId));
-
-                //     if (oTile) {
-                //         (function (oTile, sColor) {
-                //             oTile.addEventDelegate({
-                //                 onAfterRendering: function () {
-                //                     var oTileDom = oTile.getDomRef();
-                //                     if (oTileDom) oTileDom.style.backgroundColor = sColor;
-                //                 }
-                //             });
-                //         })(oTile, sColor);
-                //     }
-                // }
-
-                // // Apply stored tile images
-                // var tileImages = JSON.parse(localStorage.getItem("tileImages") || "{}");
-                // for (var sTileId in tileImages) {
-                //     var sImageSrc = tileImages[sTileId];
-                //     var oTile = this.byId(this._extractLocalId(sTileId));
-
-                //     if (oTile) {
-                //         (function (oTile, sImageSrc) {
-                //             oTile.addEventDelegate({
-                //                 onAfterRendering: function () {
-                //                     var oTileDom = oTile.getDomRef();
-                //                     if (oTileDom) {
-                //                         oTileDom.style.backgroundImage = `url(${sImageSrc})`;
-                //                         oTileDom.style.backgroundSize = "cover";
-                //                         oTileDom.style.backgroundPosition = "center";
-                //                         oTileDom.style.backgroundRepeat = "no-repeat";
-                //                         oTileDom.style.backgroundAttachment = "fixed";
-                //                     }
-                //                 }
-                //             });
-                //         })(oTile, sImageSrc);
-                //     }
-                // }
-
-                // Apply stored view setting
-                // var sStoredView = localStorage.getItem("selectedView");
-                // if (sStoredView) {
-                //     var oTilesContainer = this.byId("idScrollContainer1");
-                //     var aTiles = oTilesContainer.getContent();
-                //     aTiles.forEach(function (oTile) {
-                //         if (oTile.isA("sap.m.GenericTile")) {
-                //             oTile.removeStyleClass("largeIcons");
-                //             oTile.removeStyleClass("mediumIcons");
-                //             oTile.removeStyleClass("smallIcons");
-
-                //             switch (sStoredView) {
-                //                 case "LargeIcons":
-                //                     oTile.addStyleClass("largeIcons");
-                //                     break;
-                //                 case "MediumIcons":
-                //                     oTile.addStyleClass("mediumIcons");
-                //                     break;
-                //                 case "SmallIcons":
-                //                     oTile.addStyleClass("smallIcons");
-                //                     break;
-                //                 default:
-                //                     break;
-                //             }
-                //         }
-                //     });
-                // }
-
-                // Apply stored tile details (header and subheader)
-                var tileIds = Object.keys(localStorage).filter(key => key.startsWith('tile_'));
-                tileIds.forEach(function (tileKey) {
-                    var tileId = tileKey.replace('tile_', '');
-                    var storedTileData = JSON.parse(localStorage.getItem(tileKey));
-                    var oTile = this.byId(this._extractLocalId(tileId));
-                    if (oTile && storedTileData) {
-                        oTile.setHeader(storedTileData.header || "");
-                        oTile.setSubheader(storedTileData.subHeader || "");
-                    }
-                }.bind(this));
-            },
-            _extractLocalId: function (sTileId) {
-                return sTileId.split("--").pop();
-            },
             //This Function Calls from the Resource Details load function..(its taking little bit Time).
             handleUserDetailsBasedOnUserID: async function () {
                 debugger;
@@ -274,6 +175,7 @@ sap.ui.define([
                 const oModel = this.getOwnerComponent().getModel();
                 const userId = this.ID;
                 const sEntityPath = `/RESOURCESSet('${userId}')`;
+                //it will used further if any requires... 
                 // const userData = await new Promise((resolve, reject) => {
                 //     oModel.read(sEntityPath, {
                 //         success: resolve,
@@ -319,6 +221,7 @@ sap.ui.define([
                     }
                 });
             },
+            //Edit Btn from the Prfile popover from the RESOURCE PAGE...
             onEditTileNamePress: function () {
                 if (this._currentViewMode === "list") {
                     sap.m.MessageToast.show("Please switch to grid mode to edit the tile!")
@@ -343,7 +246,7 @@ sap.ui.define([
                     sap.m.MessageToast.show("Edit mode deactivated.");
                 }
             },
-            //Rename Dailog Box..
+            //Rename Dailog Box..(dont remove this,in future case will use)
             // onPressRenameTile: function () {
             //     debugger
             //     const sTileHeader = this._currentTile.getHeader();
@@ -352,11 +255,13 @@ sap.ui.define([
             //     this.byId("idInputTileHeaderResource").setValue(sTileHeader);
             //     this.byId("idInputSubHeaderResource").setValue(this.TileSubHeader);
             // },
-            onPressSaveTileEditDetails: async function () {
-                debugger;
+
+            //Save btn from the Edit Dialog Box from the RESOURCE PAGE...
+            onPressSaveTileEditDetails: async function (oEvent) {
+                const oTile = this._currentTile;
                 const userID = this.ID;
                 const oModel = this.getOwnerComponent().getModel();
-                const sPastHeader = this._currentTile.getHeader();
+                const sPastHeader = oTile.getHeader();
                 const sNewHeader = this.byId("idInputTileHeaderResource").getValue();
                 if (this._currentTile) {
                     const tileId = this._currentTile.getId().split("--").pop(); // Get Tile ID
@@ -402,9 +307,11 @@ sap.ui.define([
                     }
                 }
             },
+            //Decline Btn from the Edit dailog Box from The RESOURCE PAGE... 
             onCloseEditingTileDetailsDialog: function () {
                 this.byId("IdEditTileDetailsDialogResource").close();
             },
+            //Exit btn for the edit mode functionality from the RESOURCE PAGE...
             onPressEditTileExitBtnResourcePage: function () {
                 if (this._currentViewMode === "list") {
                     this.byId("idBtnListViewResourcePage").setVisible(false);
@@ -417,9 +324,8 @@ sap.ui.define([
                 this.EditCall = false;
                 sap.m.MessageToast.show("Edit mode Deactivated.");
             },
-            // Theme press from profile 
+            // Theme press from profile Popover from the RESORCE PAGE...
             onPressThemesBtnFromProfilePopover: function (oEvent) {
-                debugger
                 // Check if the popover already exists, if not create it
                 if (!this._oThemeSelectPopover) {
                     this._oThemeSelectPopover = sap.ui.xmlfragment("com.app.rfapp.fragments.SelectToApplyTheme", this);
@@ -428,7 +334,7 @@ sap.ui.define([
                 // Open popover near the language button
                 this._oThemeSelectPopover.openBy(oEvent.getSource());
             },
-            //Background theme select 
+            //Background theme btn from the Profile Popover from the RESOURCE PAGE...
             onBackGroudThemeSelect: function () {
                 if (this.EditCall) {
                     sap.m.MessageToast.show("Please exit Edit mode before selecting a theme.");
@@ -441,13 +347,13 @@ sap.ui.define([
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").open();
             },
-            //Closing Theme Dailog Box...
+            //Decline Btn from Theme Dailog Box from the RESOURCE PAGE...
             onCancelColorDialog: function () {
                 this.resetDialogBox();
                 //this._selectedTiles = [];
                 this.byId("idthemeTileDialogResource").close();
             },
-            //Tile selcect btn from Profile Popover...
+            //Tile theme selcect btn from Profile Popover...
             onTileThemeSelect: function () {
                 if (this._currentViewMode === "list") {
                     sap.m.MessageToast.show("Please switch to grid mode to apply Tile Theme!");
@@ -492,7 +398,7 @@ sap.ui.define([
                 this.byId("idBrowseImgfileUploaderTilesBG").setVisible(false);
                 this.byId("idthemeTileDialogResource").open();
             },
-            //Exit from Theme Mode...
+            //Exit btn from Theme Mode in RESOURCE PAGE...
             onPressExitTileThemesMode: function () {
                 this.Themecall = false; // Deactivate theme call
                 // Deselect all tiles visually
@@ -521,7 +427,7 @@ sap.ui.define([
                 this.resetDialogBox();
                 sap.m.MessageToast.show("Theme mode Exited!");
             },
-            //Apply btn ThemeDailog Box...
+            //Apply btn from ThemeDailog Box in RESOURCE PAGE...
             onApplyColor: function () {
                 var oView = this.getView();
                 var oColorPicker = oView.byId("idcolorPickerResource");
@@ -559,7 +465,8 @@ sap.ui.define([
                 }
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").close();
-            },
+            }, 
+            //Helper function from the above(onApplyColor)...
             applyTheme: function (sColor, sImageSrc) {
                 if (this._selectedTiles && this._selectedTiles.length > 0) {
                     this.applyThemeToTiles(sColor, sImageSrc);
@@ -567,7 +474,7 @@ sap.ui.define([
                     this.applyBackgroundTheme(sColor, sImageSrc);
                 }
             },
-            //For Background Theme and Callback function from "onApplyColor"...
+            //For Background Theme to Tiles and Callback function from "onApplyColor"...
             applyThemeToTiles: async function (sColor) {
                 debugger;
                 if (!this._selectedTiles || this._selectedTiles.length === 0) {
@@ -647,6 +554,7 @@ sap.ui.define([
                 this._selectedTiles = [];
                 this.resetDialogBox();
             },
+            //For Background Theme to BACKGROUND and Callback function from "onApplyColor"...
             applyBackgroundTheme: async function (sColor, sImageSrc) {
                 debugger
                 const userId = this.ID;
@@ -713,6 +621,7 @@ sap.ui.define([
                     console.error("Error:", error);
                 }
             },
+            //which is used for the colour converter function from both(Tiles & Background)...
             _convertColorToHex: function (color) {
                 var hex;
                 var ctx = document.createElement("canvas").getContext("2d");
@@ -720,6 +629,7 @@ sap.ui.define([
                 hex = ctx.fillStyle;
                 return hex;
             },
+            //change Property from the Theme Dialog box, which is image to Base64 Conveter...
             onFileUploadChange: function (oEvent) {
                 var aFiles = oEvent.getParameter("files");
                 if (aFiles.length > 0) {
@@ -743,6 +653,7 @@ sap.ui.define([
                     MessageToast.show("No image selected. Please choose an image.");
                 }
             },
+            //Color options from the Theme Diaog Box...
             onColorOptionSelect: function (oEvent) {
                 var oSelectedCheckBox = oEvent.getSource();
                 var oColorOptions = this.byId("colorOptionsResource").getItems();
@@ -759,6 +670,7 @@ sap.ui.define([
                 this.byId("idBrowseImgfileUploaderTilesBG").setVisible(!isCheckBoxSelected);
                 this.byId("idBrowseImgfileUploaderTilesBG").setVisible(!isCheckBoxSelected && !isThemeModeActive);
             },
+            //resetting the Theme Dailog Box...
             resetDialogBox: function () {
                 var oView = this.getView();
                 var oColorPicker = oView.byId("idcolorPickerResource");
@@ -787,18 +699,18 @@ sap.ui.define([
                 this.byId("colorOptionsResource").setVisible(true);
                 this.byId("idBrowseImgfileUploaderTilesBG").setVisible(true);
             },
-            // Helper function to extract the local ID of a tile
-            _extractLocalId: function (sTileId) {
-                return sTileId.split("--").pop();
-            },
+            //Colour Code validator...
             _isValidColor: function (sColor) {
                 var hexRegex = /^#([0-9A-Fa-f]{3}){1,2}$/;
                 var rgbRegex = /^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/;
                 return hexRegex.test(sColor) || rgbRegex.test(sColor);
             },
-            //Tile View setting When press on profile...
+            // Helper function to extract the local ID of a tile
+            _extractLocalId: function (sTileId) {
+                return sTileId.split("--").pop();
+            },
+            //Tile View Btn from the the profile Popover...
             onPressTileViewSettings: function (oEvent) {
-                // Check if the popover already exists, if not create it
                 if (!this.oTileViewSettings) {
                     this.oTileViewSettings = sap.ui.xmlfragment("com.app.rfapp.fragments.UserTileView", this);
                     this.getView().addDependent(this.oTileViewSettings);
@@ -815,7 +727,7 @@ sap.ui.define([
             onPressTileViewSmallIcons: function () {
                 this.onPressTileViewResizeIcons("SmallIcons");
             },
-            //CallBack function every Tile view....
+            //CallBack function every Size view Btn from the Profile Popover(look at above function)....
             onPressTileViewResizeIcons: async function (sSelectedKey) {
                 if (this._currentViewMode === "list") {
                     sap.m.MessageToast.show("Please switch to grid mode to apply tile views.");
@@ -880,7 +792,7 @@ sap.ui.define([
                     console.error("Error:", error);
                 }
             },
-            //Grid and List Views...
+            //Grid and List Views from the RESOURCE PAGE...
             onPressGridViewsResource: async function () {
                 const oModel = this.getOwnerComponent().getModel();
                 try {
@@ -1044,8 +956,9 @@ sap.ui.define([
                 //   sToolPage.bindElement(`/(${id})`);
 
                 var that = this;
-                const { id } = oEvent1.getParameter("arguments");
+                const { id,idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI=idI;
                 console.log(this.ID);
 
                 var oModel = this.getView().getModel();
@@ -1251,7 +1164,7 @@ sap.ui.define([
                     }
                 });
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo(`${selectedText}`, { id: this.ID });
+                oRouter.navTo(`${selectedText}`, { id: this.ID,idI:this.IDI });
                 if (selectedText) {
                     console.log("Selected:", selectedText);
                     // Add your logic based on the selected text here
@@ -2982,7 +2895,7 @@ sap.ui.define([
 
             onSignoutPressed: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
+                oRouter.navTo("InitialScreen", { Userid:this.IDI });
 
             },
         });

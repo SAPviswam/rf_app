@@ -32,13 +32,21 @@ sap.ui.define([
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
 
-                // var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-                //     headers: {
-                //         "Authorization": "Basic" + btoa("sreedhars:Sreedhar191729"),
-                //         "sap-client": "100"
-                //     }
-                // });
-                // this.setModel(oModel);
+                // testing dynamic client
+                async function changeClient(newClient) {
+                    var baseUrl = "/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/";
+                    var updatedUrl = baseUrl + "?sap-client=" + newClient;
+
+                    // Create a new OData model with the updated URL
+                    var oModel = new sap.ui.model.odata.v2.ODataModel(updatedUrl, {
+                        useBatch: true, 
+                        defaultBindingMode: "TwoWay" 
+                    });
+
+                    sap.ui.getCore().setModel(oModel);
+                }
+                changeClient("100")
+                // test
 
                 // Load config.json
                 const oConfigModel = new sap.ui.model.json.JSONModel();

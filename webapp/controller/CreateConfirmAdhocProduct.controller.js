@@ -1,6 +1,6 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/m/MessageToast",
         "sap/ui/core/UIComponent"
     ],
@@ -14,9 +14,18 @@ sap.ui.define(
             },
             onResourceDetailsLoad: function (oEvent1) {
                 var that = this;
-                const { id } = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
                 console.log(this.ID);
+            },
+            onAvatarPressed_CCAP: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
 
             onSubmitAdhocProductBtnPress: function () {
@@ -43,13 +52,13 @@ sap.ui.define(
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
             },
-            onProductdetailsBtnPress: function(){
+            onProductdetailsBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(true);
                 this.getView().byId("idthirdProductPage").setVisible(false);
                 this.getView().byId("idProductthirdbackbtn").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
             },
-            onProductthirdBackBtnPress :function(){
+            onProductthirdBackBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(false);
                 this.getView().byId("idthirdProductPage").setVisible(true);
                 this.getView().byId("idProductthirdbackbtn").setVisible(false);
@@ -58,14 +67,15 @@ sap.ui.define(
             onInitialAdhocProductBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
                         }
                         else {
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                         }
                     }.bind(this),
                     error: function () {

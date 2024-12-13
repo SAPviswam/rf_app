@@ -19,6 +19,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                <Title
+                    id="idTitle_CCAPView"
+                    class="title"
+                    text="CAPmodel RF"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorAdhocProductByWt"
                 />
@@ -34,7 +39,7 @@
                 <Avatar
                     id="_IDGenAvatar1AdhocProductByWt"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressed_CCAP"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -56,12 +61,13 @@
                     <form:SimpleForm
                         id="idSimpleform1_CCAP"
                         layout="ResponsiveGridLayout"
-                        labelSpanL="4"
+                       labelSpanL="4"
                         labelSpanM="4"
                         emptySpanL="1"
                         emptySpanM="1"
                         columnsL="2"
                         columnsM="1"
+                        columnsXL="1"
                     >
                         <VBox
                             id="idVBOX1_CCAP"
@@ -150,7 +156,8 @@
                         >
                             <HBox
                                 id="idHbox1_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductLabel1"
@@ -165,7 +172,8 @@
                             </HBox>
                             <HBox
                                 id="idHbox2_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductSrcBinLabel1"
@@ -204,36 +212,30 @@
                 vertical="true"
                 height="100%"
                 width="100%"
-                class="sapUiContentPadding"
                 visible="false"
+                class="sapUiContentPadding"
             >
                 <VBox
                     id="idthirdProductPage2"
-                    class="formContainer_AHUOBQ"
                     justifyContent="Center"
                     alignItems="Center"
                 >
                     <form:SimpleForm
                         id="idSimpleform3_CCAP"
                         layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
                         columnsM="1"
-                        width="110%"
+                        columnsXL="1"
                     >
-                        <VBox
-                            id="idthirdProductPage1"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                        <VBox id="idthirdProductPage1">
                             <HBox
                                 id="idHbox3_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductLabel2"
@@ -247,7 +249,8 @@
                             </HBox>
                             <HBox
                                 id="idHbox4_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductSrcBinLabel2"
@@ -261,7 +264,8 @@
                             </HBox>
                             <HBox
                                 id="idHbox5_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductAvlQtyLabel2"
@@ -275,7 +279,8 @@
                             </HBox>
                             <HBox
                                 id="idHbox6_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductSourceQtyLabel2"
@@ -289,7 +294,8 @@
                             </HBox>
                             <HBox
                                 id="idHbox7_CCAP"
-                                class="sapUiTinyMargin"
+                                alignContent="Center"
+                                alignItems="Center"
                             >
                                 <Label
                                     id="idProductDestBinLabel2"
@@ -322,47 +328,35 @@
             </ScrollContainer>
             <ScrollContainer
                 id="idfourthProductPage"
-                width="100%"
-                height="100%"
-                horizontal="true"
+                horizontal="false"
                 vertical="true"
+                height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
                 <VBox
                     id="idfourthProductPage2"
-                    
-                     class="formContainer_AHUOBQ"
                     justifyContent="Center"
-                    alignItems="Center">
-                  
-                
+                    alignItems="Center"
+                >
                     <form:SimpleForm
                         id="idSimpleform4_CCAP"
                         layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
                         columnsL="1"
                         columnsM="1"
-                        width="110%"
+                        columnsXL="1"
                     >
-                        <VBox
-                            id="idfourthProductPage1"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                        <VBox id="idfourthProductPage1">
                             <HBox
                                 id="idProductHBox1_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idProductLabel_CCAP"
                                     text="{i18n>Product_CCAP}"
                                     width="70px"
@@ -379,15 +373,12 @@
                                 id="idProTextHBox_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idProTextLabel_CCAP"
                                     text="{i18n>ProText_Label_CCAP}"
                                     width="70px"
                                 />
-
                                 <Input
                                     id="idProTextInput_CCAP"
                                     width="190px"
@@ -417,10 +408,8 @@
                                 id="idBatchHBox_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idBatchLabel_CCAP"
                                     text="{i18n>Batch_Label_CCAP}"
                                     width="70px"
@@ -470,7 +459,7 @@
                                 <Input
                                     id="idBatchCRInput_CCAP"
                                     value=""
-                                    width="80px"
+                                    width="20px"
                                     editable="false"
                                 />
                             </HBox>
@@ -479,13 +468,7 @@
                                 id="idHBoxRow4_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
-                                    id="idEmptyLabel_CCAP"
-                                    width="70px"
-                                />
                                 <Input
                                     id="idRow4Input1_CCAP"
                                     width="60px"
@@ -494,21 +477,21 @@
                                 />
                                 <Label
                                     id="idRow4Spacer1_CCAP"
-                                    width="10px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idRow4Input2_CCAP"
-                                    width="250px"
+                                    width="230px"
                                     value=""
                                     editable="false"
                                 />
                                 <Label
                                     id="idRow4Spacer2_CCAP"
-                                    width="10px"
+                                    width="5px"
                                 />
                                 <Input
                                     id="idRow4Input3_CCAP"
-                                    width="20px"
+                                    width="80px"
                                     value=""
                                     editable="false"
                                 />
@@ -518,10 +501,8 @@
                                 id="idPtyEntlHBox_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idPtyEntlLabel_CCAP"
                                    text="{i18n>PtyEntl_Label_CCAP}"
                                     width="70px"
@@ -554,10 +535,8 @@
                                 id="idSLEDBBDHBox_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idSLEDBBDLabel_CCAP"
                                      text="{i18n>SLED/BBD_Label_CCAP}"
                                     width="70px"
@@ -591,10 +570,8 @@
                                 id="idHazSubsHBox_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
-                                justifyContent="Start"
-                                width="100%"
                             >
-                                <Text
+                                <Label
                                     id="idHazSubsLabel_CCAP"
                                      text="{i18n>Haz_Subs_Label_CCAP}"
                                     width="70px"

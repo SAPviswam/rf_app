@@ -188,7 +188,7 @@
                                 alignItems="Center"
                             >
                                 <Label text="PSA" id="idLabelPSA"/>
-                                <VBox width="8%" id="idSecScVbox3"/>
+                                <VBox width="8%" id="idSecScVbox9"/>
                                 <Input width="240px" id="idSecScInput4" />
                             </HBox>
                             <HBox
@@ -218,7 +218,7 @@
                                 <Label text="Product" id="idsecScLabel3" />
                                 <VBox width="4%" id="idSecScVbox5"/>
                                 <Input width="70px" id="idSecScInput7"/>
-                                <Label width="20px" id="idSecScLabel4"/>
+                                <Label width="20px" id="idSecScLabel44"/>
                                 <Input width="150px" id="idSecScInput8" />
                             </HBox>
 
@@ -650,7 +650,7 @@
 
                             <Input editable="false" id="idFifthScInput3" ></Input>
                             <VBox width="5%" id="idFifthScVbox2"></VBox>
-                             <Input editable="false" id="idFifthScInput4"></Input>
+                             <Input editable="false" id="idFifthScInput47"></Input>
                              </HBox>
                                <HBox
                                id="idFifthScHbox3"
@@ -660,7 +660,7 @@
 
                             <Input id="idFifthScInput4" editable="false" ></Input>
                             <VBox id="idFifthScVbox3" width="5%"></VBox>
-                             <Input editable="false" id="idFifthScInput5"></Input>
+                             <Input editable="false" id="idFifthScInput55"></Input>
                              </HBox>
                                <HBox
                                id="idFifthHbox4"

@@ -11,197 +11,369 @@
     displayBlock="true"
     height="100%"
 >
- 
-    <tnt:ToolPage id="idToolPageAdhocHuWt">
-   
+    <tnt:ToolPage id="idToolPage_CAHU">
         <tnt:header>
-       
-       
-            <tnt:ToolHeader id="idtntToolHeaderAdhocHuWt">
-             <Button
-                id="idBackButtoninAdhocHuWtHuScan"
-                icon="sap-icon://nav-back"
-                press="onPressBackButtoninAdhocHuWtHuScan"
-                visible="false"
-            />
-            <Button
-                id="idBackButtoninAdhocHuWtHuDetails"
-                icon="sap-icon://nav-back"
-                press="onPressBackButtoninAdhocHuWtHuDetails"
-                visible="false"
-            />
+            <tnt:ToolHeader id="idtntToolHeader_CAHU">
                 <Image
-                    id="_IDGenImageAdhocHuWt"
+                    id="_IDGenImage_CAHU"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
-                <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorAdhocHuWt"
+                <Title
+                    id="idTitle_CAHU"
+                    class="title"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                 />
-                <ToolbarSpacer id="idToolbarSpacerAdhocHuWt">
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_CAHU"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_CAHU">
                     <layoutData>
                         <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutDataAdhocHuWt"
+                            id="idOverflowToolbarLayoutData_CAHU"
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="_IDGenAvatarAdhocHuWt"
+                    id="_IDGenAvatar_CAHU"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressedIn_AHWT"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
-                id="idHuScanning"
+                id="idFirstSc_CAHU"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="true"
             >
-                 <VBox
+                <VBox
+                    id="idVbox_CAHU"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleForm_CAHU"
+                        layout="ResponsiveGridLayout"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idFirstVbox_CAHU"
+                            alignContent="Center"
                             alignItems="Center"
-                            justifyContent="Center"
-                            class="centerContent"
                         >
-                         
-                                <HBox
-                                    id="idHuScanGenHBoxContainer"
-                                    justifyContent="Start"
-                                >
-                                    <!-- Scan HU Label -->
-                                    <Label
-                                        id="idHuScanlabel"
-                                        text="HU :"
-                                        class="ScanHumargin"
-                                    />
-                                    <!-- Input Field -->
-                                    <Input
-                                        id="idHuScanInput"
-                                        placeholder="Enter HU..."
-                                        class="sapUiTinyMarginBegin"
-                                    />
-                                   
-                                    <!-- Barcode Scan Button -->
-                                    <Button
-                                        id="idBtnBarcode"
-                                        icon="sap-icon://bar-code"
-                                        press="Onpressscan"
-                                    />
-                                    <!-- Submit Button -->
-                                    <Button
-                                        id="idSubmitInAdhocHuWt"
-                                        text="Submit"
-                                        press="onPressSubmitInAdhocHuWt"
-                                    />
-                                </HBox>
-                         
+                            <HBox
+                                id="idFirstHbox_CAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idHuLabel_CAHU"
+                                    text="HU"
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idHuInput_CAHU"
+                                    value=""
+                                    liveChange="onLiveChange"
+                                />
+                            </HBox>
+                            <HBox id="idSecondHbox_CAHU">
+                                <Button
+                                    id="idHuScannerBtn_CAHU"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    icon="sap-icon://bar-code"
+                                    press="onHuBarcodeScanner"
+                                    width="auto"
+                                />
+                                <Button
+                                    id="idFirstBackBtn_CAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Back"
+                                    type="Emphasized"
+                                    width="auto"
+                                    press="onFirstBackBtnPress_CAHU"
+                                    visible="true"
+                                />
+                            </HBox>
                         </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
-           <!-- Scroll Container for HU Details -->
-<ScrollContainer
-    id="idHuDetails"
-    horizontal="false"
-    vertical="true"
-    height="100%"
-    class="sapUiContentPadding"
-    visible="false"
->
- 
- 
-    <!-- Vertical Box Layout for Content Alignment -->
-    <VBox
-        class="sapUiSmallMargin"
-    >
-        <!-- Horizontal Box for HU Number Field -->
-        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
-            <Label
-                id="idHuScanLabel"
-                text="HU"
-                labelFor="idHuNumberInput"
-                class="sapUiTinyMarginEnd"
-                width="100px"
-            />
-            <Input
-                id="_idHuNumberInput"
-                placeholder="HU Number..."
-                maxLength="30"
-                width="250px"
-                editable="false"
-            />
-        </HBox>
- 
-        <!-- Horizontal Box for SRC Bin Field -->
-        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
-            <Label
-                id="idSRCBinLabel"
-                text="SRC Bin"
-                labelFor="idSRCBinInput"
-                class="sapUiTinyMarginEnd"
-                width="100px"
-            />
-            <Input
-                id="idSRCBinInput"
-                placeholder="Enter SRC Bin..."
-                maxLength="25"
-                width="250px"
-                 editable="false"
-            />
-        </HBox>
- 
-        <!-- Horizontal Box for Destination Bin Field -->
-        <HBox alignItems="Center" class="sapUiSmallMarginBottom">
-            <Label
-                id="idDestBinLabel"
-                text="Destination Bin"
-                labelFor="idDestBinInput"
-                class="sapUiTinyMarginEnd"
-                width="100px"
-            />
-            <Input
-                id="idDestBinInput"
-                placeholder="Enter Dest Bin..."
-                maxLength="25"
-                width="250px"
-            />
-        </HBox>
- 
-        <!-- Horizontal Box for Destination HU Field -->
-        <HBox alignItems="Start" class="sapUiSmallMarginBottom sapUiSmallMarginLeft ">
-            <Label
-                id="idDestHuLabel"
-                text="Destination HU"
-                labelFor="idDestHuInput"
-                class="sapUiTinyMarginEnd"
-                width="100px"
-            />
-            <Input
-                id="_idDestHuInput"
-                placeholder="Enter Dest HU..."
-                maxLength="25"
-                width="250px"
-            />
-        </HBox>
- 
-        <!-- HU Content Button aligned to the left -->
-        <HBox justifyContent="Start" class="sapUiSmallMarginBottom">
-            <Button
-                id="idHuContentButton"
-                text="HU Content"
-                press="onHUContentPress"
-                class="sapUiTinyMarginEnd"
-            />
-        </HBox>
-    </VBox>
-</ScrollContainer>
-           
+            <ScrollContainer
+                id="idsecondSc_CAHU"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idSecScVbox1_CAHU"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform2_CAHU"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idSecScVbox2_CAHU"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox id="idSecSCHbox1_CAHU">
+                                <Label
+                                    id="idHuLabelSecSC"
+                                    text="HU"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idSecSCHuInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox5_CAHU">
+                                <Label
+                                    id="idWPTLabel_CAHU"
+                                    text="WPT"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idWPTInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox2_CAHU">
+                                <Label
+                                    id="idSrcBinLabel_CAHU"
+                                    text="Src Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idsrcBinInput_CAHU"
+                                    value=""
+                                    liveChange="onSrcLiveChange"
+                                />
+                            </HBox>
+
+                            <HBox id="idSecScHBOX3_CAHU">
+                                <Label
+                                    id="idDestBinLabel_CAHU"
+                                    text="Dest Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idDestBinInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox id="idSecScHbox4_CAHU">
+                                <Label
+                                    id="idDestHuLabel_CAHU"
+                                    text="Dest Hu"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idDestHuInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox
+                                id="idSecScVbox3_CAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            />
+                            <HBox id="idSecSCHbox6_CAHU">
+                                <Button
+                                    id="idSecondBackBtn_CAHU"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    press="onSecondBackBtnPress_CAHU"
+                                />
+                                <Button
+                                    id="idHuDetailsBtn_CAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Hu Details"
+                                    width="auto"
+                                    press="onHuDetailsPress_CAHU"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idthirdSc_CAHU"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idThirdScVbox1_CAHU"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform3_CAHU"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox id="idThirdScVbox2_CAHU">
+                            <HBox id="idThirdScHbox2_CAHU">
+                                <Label
+                                    id="idThirdScHuLabel9_CAHU"
+                                    width="120px"
+                                />
+                                <Input
+                                    id="idDescInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox1_CAHU">
+                                <Label
+                                    id="idThirdScHuLabel_CAHU"
+                                    text="Hu"
+                                    width="120px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScHuInput_CAHU"
+                                    value=""
+                                    width="auto"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idThirdScHuInput2_CAHU"
+                                    value=""
+                                    width="auto"
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox3_CAHU">
+                                <Label
+                                    id="idThirdScProdLabel_CAHU"
+                                    width="120px"
+                                    text="Product"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScProdInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox4_CAHU">
+                                <Label
+                                    id="idThirdScAvlQtyLabel_CAHU"
+                                    width="120px"
+                                    text="Avl Qty"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScAvlQtyInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox5_CAHU">
+                                <Label
+                                    id="idThirdScUOMLabel_CAHU"
+                                    width="120px"
+                                    text="UOM"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScUOMInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox6_CAHU">
+                                <Label
+                                    id="idThirdScBatchLabel_CAHU"
+                                    width="120px"
+                                    text="Batch"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScBatchInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox7_CAHU">
+                                <Label
+                                    id="idThirdScHazardousSubLabel_CAHU"
+                                    width="120px"
+                                    text="Hazardous Substance"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScHazardousSubstanceInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox8_CAHU">
+                                <Label
+                                    id="idThirdScStockCategoryLabel_CAHU"
+                                    width="120px"
+                                    text="Stock Category"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScStockCategoryInput_CAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox
+                                id="idThirdScVbox3_CAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Button
+                                    id="idThirdBackBtn_CAHU"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    press="onThirdBackBtnPress_CAHU"
+                                    visible="true"
+                                />
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
- 
