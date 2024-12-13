@@ -419,7 +419,7 @@
                         <Button
                             id="idconnectsapeditButton_InitialView"
                             text="{i18n>save_Btn_IV}"
-                            press="onEditconnectSAPPress"
+                            press="__onEditconnectSAPPress"
                             type="Unstyled"
                             width="auto"
                             visible="false"
