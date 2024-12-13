@@ -142,8 +142,9 @@ sap.ui.define([
                 }
             },
             onInitialDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
+                const { id ,idI} = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI=idI;
                 var oModel = this.getOwnerComponent().getModel();
                 await oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
@@ -621,10 +622,10 @@ sap.ui.define([
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID }, Animation)
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID,idI:this.IDI }, Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID }, Animation)
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID ,idI:this.IDI}, Animation)
                         }
 
                     }.bind(this),
@@ -734,7 +735,7 @@ sap.ui.define([
             },
             onBackBtnInHomePage: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
 
             },
             onSignoutPressedInHomePage: function () {
@@ -753,7 +754,7 @@ sap.ui.define([
             },
             onChangeQueuePress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CHANGEQUEUE", { id: this.ID });
+                oRouter.navTo("CHANGEQUEUE", { id: this.ID,idI:this.IDI });
             }
 
         });

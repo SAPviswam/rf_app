@@ -10,238 +10,366 @@
     displayBlock="true"
     height="100%"
 >
-    <tnt:ToolPage id="idToolPageAdhocHubyWt">
+    <tnt:ToolPage id="idToolPage_CCAHU">
         <tnt:header>
-            <tnt:ToolHeader id="idtntToolHeaderAdhocHubyWt">
-                <Button
-                    id="idInitialAdhocbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onInitialAdhocBackBtnPress"
-                    visible="true"
-                />
-                <Button
-                    id="idfirstbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onfirstBackBtnPress"
-                    visible="false"
-                />
-                <Button
-                    id="idSecondbackbtn"
-                    icon="sap-icon://nav-back"
-                    press="onSecondBackBtnPress"
-                    visible="false"
-                />
+            <tnt:ToolHeader id="idtntToolHeader_CCAHU">
                 <Image
-                    id="_IDGenImage1AdhocHuByWt"
+                    id="_IDGenImage_CCAHU"
                     height="1.5rem"
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
-                <tnt:ToolHeaderUtilitySeparator
-                    id="idToolHeaderUtilitySeparatorAdhocHuByWt"
+                 <Title
+                    id="idTitle_CCAHU"
+                    class="title"
+                    text="{i18n>Title_CapmodelRf_HuQuery}"
                 />
-                <ToolbarSpacer id="idToolbarSpacerAdhocHuByWt">
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator_CCAHU"
+                />
+                <ToolbarSpacer id="idToolbarSpacer_CCAHU">
                     <layoutData>
                         <OverflowToolbarLayoutData
-                            id="idOverflowToolbarLayoutData1AdhocHuBYWt"
+                            id="idOverflowToolbarLayoutData_CCAHU"
                             priority="NeverOverflow"
                             minWidth="20px"
                         />
                     </layoutData>
                 </ToolbarSpacer>
                 <Avatar
-                    id="_IDGenAvatar1AdhocHuByWt"
+                    id="_IDGenAvatar_CCAHU"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressed_CCAHU"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
             <ScrollContainer
-                id="idInitialHuPage"
+                id="idFirstSc_CCAHU"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <form:SimpleForm
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                    columnsS="1"
+                <VBox
+                    id="idVbox_CCAHU"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                <VBox alignContent="Center"
-                        alignItems="Center">
-
-                        <Title text="Create and Confirm Adhoc HU"></Title>
-                        <VBox class="sapUiTinyMarginBottom"></VBox>
-                    <HBox
-                        id="idInitialHuPage1"
-                        alignContent="Center"
-                        alignItems="Center"
+                    <form:SimpleForm
+                        id="idSimpleForm_CCAHU"
+                        layout="ResponsiveGridLayout"
+                        class="sapUiResponsiveMargin"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
                     >
-                        <Label
-                            id="idHuLabel"
-                            text="HU"
-                             width="70px"
-                        />
-                        <Input
-                            id="idHuInput"
-                            value=""
-                            liveChange="onLiveChange"
-                        />
-                        <Button
-                            id="idHuScannerBtn"
-                            icon="sap-icon://bar-code"
-                            press="onHuBarcodeScanner"
-                        />
-                       
-                    </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                        <VBox
+                            id="idFirstVbox_CCAHU"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox
+                                id="idFirstHbox_CCAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idHuLabel_CCAHU"
+                                    text="HU"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idHuInput_CCAHU"
+                                    value=""
+                                    liveChange="onLiveChange"
+                                />
+                            </HBox>
+                            <HBox id="idSecondHbox_CCAHU">
+                                <Button
+                                    id="idHuScannerBtn"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    icon="sap-icon://bar-code"
+                                    press="onHuBarcodeScanner"
+                                    width="auto"
+                                />
+                                <Button
+                                    id="idFirstBackBtn_CCAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Back"
+                                    type="Emphasized"
+                                    width="auto"
+                                    press="onFirstBackBtnPress_CCAHU"
+                                    visible="true"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idsecondHuPage"
+                id="idsecondSc_CCAHU"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <form:SimpleForm
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                    columnsS="1"
+                <VBox
+                    id="idSecScVbox1_CCAHU"
+                    alignContent="Center"
+                    alignItems="Center"
                 >
-                    <VBox
-                        id="idsecondHuPage2"
-                        alignContent="Center"
-                        alignItems="Center"
+                    <form:SimpleForm
+                        id="idSimpleform2_CCAHU"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
                     >
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idHuLabel1"
-                                text="HU"
-                                 width="100px"
+                        <VBox
+                            id="idSecScVbox2_CCAHU"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox id="idSecSCHbox1_CCAHU">
+                                <Label
+                                    id="idHuLabelSecSC"
+                                    text="HU"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idSecSCHuInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox5_CCAHU">
+                                <Label
+                                    id="idWPTLabel_CCAHU"
+                                    text="WPT"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idWPTInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox2_CCAHU">
+                                <Label
+                                    id="idSrcBinLabel_CCAHU"
+                                    text="Src Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idsrcBinInput"
+                                    value=""
+                                    liveChange="onSrcLiveChange"
+                                />
+                            </HBox>
+
+                            <HBox id="idSecScHBOX3_CCAHU">
+                                <Label
+                                    id="idDestBinLabel_CCAHU"
+                                    text="Dest Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idDestBinInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+
+                            <HBox id="idSecScHbox4_CCAHU">
+                                <Label
+                                    id="idDestHuLabel_CCAHU"
+                                    text="Dest Hu"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idDestHuInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox
+                                id="idSecScVbox3_CCAHU"
+                                alignContent="Center"
+                                alignItems="Center"
                             />
-                            <Input
-                                id="idHuInput1"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idSrcBinLabel1"
-                                text="Src Bin"
-                 
-                                 width="100px"
-                            />
-                            <Input
-                                id="idsrcBinInput"
-                                value=""
-                                liveChange="onSrcLiveChange"
-                            />
+                            <HBox id="idSecSCHbox6_CCAHU">
+                                <Button
+                                    id="idSecondBackBtn_CCAHU"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    press="onSecondBackBtnPress_CCAHU"
+                                   
+                                />
+                                <Button
+                                    id="idHuDetailsBtn_CCAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Hu Details"
+                                    width="auto"
+                                    press="onHuDetailsPress_CCAHU"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="idthirdSc_CCAHU"
+                horizontal="false"
+                vertical="true"
+                height="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idThirdScVbox1_CCAHU"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform3_CCAHU"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
+                    >
+                        <VBox id="idThirdScVbox2_CCAHU">
+                            <HBox id="idThirdScHbox2_CCAHU">
+                                <Input
+                                    id="idDescInput_CCAHU"
+                                    value=""
+                                    width="150%"
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox1_CCAHU">
+                                <Label
+                                    id="idThirdScHuLabel_CCAHU"
+                                    text="Hu"
+                                    width="120px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScHuInput_CCAHU"
+                                    value=""
+                                    width="auto"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idThirdScHuInput2_CCAHU"
+                                    value=""
+                                    width="auto"
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox3_CCAHU">
+                                <Label
+                                    id="idThirdScProdLabel_CCAHU"
+                                    width="120px"
+                                    text="Product"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScProdInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox4_CCAHU">
+                                <Label
+                                    id="idThirdScAvlQtyLabel_CCAHU"
+                                    width="120px"
+                                    text="Avl Qty"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScAvlQtyInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox5_CCAHU">
+                                <Label
+                                    id="idThirdScUOMLabel_CCAHU"
+                                    width="120px"
+                                    text="UOM"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScUOMInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox6_CCAHU">
+                                <Label
+                                    id="idThirdScBatchLabel_CCAHU"
+                                    width="120px"
+                                    text="Batch"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScBatchInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox7_CCAHU">
+                                <Label
+                                    id="idThirdScHazardousSubLabel_CCAHU"
+                                    width="120px"
+                                    text="Hazardous Substance"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScHazardousSubstanceInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idThirdScHbox8_CCAHU">
+                                <Label
+                                    id="idThirdScStockCategoryLabel_CCAHU"
+                                    width="120px"
+                                    text="Stock Category"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idThirdScStockCategoryInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
+                            <VBox
+                                id="idThirdScVbox3_CCAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
                             <Button
-                                id="idSrcScannerBtn"
-                                icon="sap-icon://bar-code"
-                                press="onSrcBarcodeScanner"
+                                id="idThirdBackBtn_CCAHU"
+                                text="Back"
+                                width="auto"
+                                type="Emphasized"
+                                press="onThirdBackBtnPress_CCAHU"
+                                visible="true"
                             />
-                        </HBox>
-                    </VBox>
-                </form:SimpleForm>
-            </ScrollContainer>
-            <ScrollContainer
-                id="idthirdHuPage"
-                horizontal="false"
-                vertical="true"
-                height="100%"
-                class="sapUiContentPadding"
-                visible="false"
-            >
-                <form:SimpleForm
-                    layout="ResponsiveGridLayout"
-                    labelSpanL="4"
-                    labelSpanM="4"
-                    emptySpanL="1"
-                    emptySpanM="1"
-                    columnsL="2"
-                    columnsM="1"
-                    columnsS="1"
-                >
-                    <VBox
-                        id="idthirdHuPage1"
-                        alignContent="Center"
-                        alignItems="Center"
-
-                    >
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idHuLabel2"
-                                text="HU"
-                                 width="100px"
-                            />
-                            <Input
-                                id="idHuInput2"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idSrcBinLabel2"
-                                text="Src Bin"
-                                 width="100px"
-                            />
-                            <Input
-                                id="idSrcBinInput2"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idAvlQtyLabel2"
-                                text="Avl Qty"
-                                 width="100px"
-                            />
-                            <Input
-                                id="idAvlQtyInput2"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idSourceQtyLabel2"
-                                text="Source Qty"
-                                 width="100px"
-                            />
-                            <Input
-                                id="idSourceQtyInput2"
-                                value=""
-                            />
-                        </HBox>
-                        <HBox class="sapUiTinyMargin">
-                            <Label
-                                id="idDestBinLabel2"
-                                text="Dest Bin"
-                                 width="100px"
-                            />
-                            <Input
-                                id="idDestBinInput2"
-                                value=""
-                            />
-                        </HBox>
-                    </VBox>
-                </form:SimpleForm>
+                            </VBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>

@@ -126,462 +126,462 @@
         },
         {
           "name": "InitialScreen",
-          "pattern": "InitialScreen",
+          "pattern": "InitialScreen/user_id{Userid}",
           "target": [
             "TargetInitialScreen"
           ]
         },
         {
           "name": "Homepage",
-          "pattern": "Homepage/{id}",
+          "pattern": "Homepage/{id}/{idI}",
           "target": [
             "TargetHome"
           ]
         },
         {
           "name": "RouteResourcePage",
-          "pattern": "ResourcePage/{id}",
+          "pattern": "ResourcePage/{id}/{idI}",
           "target": [
             "TargetResourcePage"
           ]
         },
         {
           "name": "Supervisor",
-          "pattern": "Supervisor/{id}",
+          "pattern": "Supervisor/{id}/{idI}",
           "target": [
             "TargetSupervisorPage"
           ]
         },
         {
           "name": "HUQUERY",
-          "pattern": "HuQuery/{id}",
+          "pattern": "HuQuery/{id}/{idI}",
           "target": [
             "TargetHuQueryPage"
           ]
         },
         {
           "name": "STOCKBINQUERYBYBIN",
-          "pattern": "StockBinQueryByBin/{id}",
+          "pattern": "StockBinQueryByBin/{id}/{idI}",
           "target": [
             "TargetStockBinQueryByBin"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYASN",
-          "pattern": "ReceivingofHUbyASN/{id}",
+          "pattern": "ReceivingofHUbyASN/{id}/{idI}",
           "target": [
             "TargetReceivingofHUbyASN"
           ]
         },
         {
           "name": "UNLOADINGBYASN",
-          "pattern": "UnloadingASNDetails/{id}",
+          "pattern": "UnloadingASNDetails/{id}/{idI}",
           "target": [
             "TargetUnloadingASNDetails"
           ]
         },
         {
           "name": "UNLOADINGBYDELIVERY",
-          "pattern": "UnloadByDelivery/{id}",
+          "pattern": "UnloadByDelivery/{id}/{idI}",
           "target": [
             "TargetUnloadByDelivery"
           ]
         },
         {
           "name": "CREATEADHOCHUWT",
-          "pattern": "AdhocHuWt/{id}",
+          "pattern": "AdhocHuWt/{id}/{idI}",
           "target": [
             "TargetAdhocHuWt"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYDOOR",
-          "pattern": "ReceivingOfHuByDoor/{id}",
+          "pattern": "ReceivingOfHuByDoor/{id}/{idI}",
           "target": [
             "TargetReceivingOfHuByDoor"
           ]
         },
         {
           "name": "UNLOADINGBYDOOR",
-          "pattern": "UnloadingByDoor/{id}",
+          "pattern": "UnloadingByDoor/{id}/{idI}",
           "target": [
             "TargetUnloadingByDoor"
           ]
         },
         {
           "name": "CHANGEQUEUE",
-          "pattern": "ChangeQueue/{id}",
+          "pattern": "ChangeQueue/{id}/{idI}",
           "target": [
             "TargetChangeQueue"
           ]
         },
         {
           "name": "CHANGERESOURCEGROUP",
-          "pattern": "ChangeResourceGroup/{id}",
+          "pattern": "ChangeResourceGroup/{id}/{idI}",
           "target": [
             "TargetChangeResourceGroup"
           ]
         },
         {
           "name": "UNLOADINGBYCONSIGNMENTORDER",
-          "pattern": "UnloadingByConsignmentOrder/{id}",
+          "pattern": "UnloadingByConsignmentOrder/{id}/{idI}",
           "target": [
             "TargetUnloadingByConsignmentOrder"
           ]
         },
         {
           "name": "PUTAWAYBYHU",
-          "pattern": "RoutePutawayByHU/{id}",
+          "pattern": "RoutePutawayByHU/{id}/{idI}",
           "target": [
             "TargetPutawayByHU"
           ]
         },
         {
           "name": "MANUALLYREPACKHUITEM",
-          "pattern": "ManuallyRepackingByHUItem/{id}",
+          "pattern": "ManuallyRepackingByHUItem/{id}/{idI}",
           "target": [
             "TargetManuallyRepackingByHUItem"
           ]
         },
         {
           "name": "RECEVINNGOFHUBYBILLOFLADING",
-          "pattern": "BillofLading/{id}",
+          "pattern": "BillofLading/{id}/{idI}",
           "target": [
             "TargetBillofLading"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYDELIVERY",
-          "pattern": "RecevingOfHUbyDelivery/{id}",
+          "pattern": "RecevingOfHUbyDelivery/{id}/{idI}",
           "target": [
             "TargetRecevingOfHUbyDelivery"
           ]
         },
         {
           "name": "REVERSALOFCONSUMPTIONBYMOHU",
-          "pattern": "ReversalofConsumptionbyMObyHU/{id}",
+          "pattern": "ReversalofConsumptionbyMObyHU/{id}/{idI}",
           "target": [
             "TargetReversalofConsumptionbyMObyHU"
           ]
         },
         {
           "name": "UNLOADINGBYBILLOFLADING",
-          "pattern": "UnloadingByBillofLading/{id}",
+          "pattern": "UnloadingByBillofLading/{id}/{idI}",
           "target": [
             "TargetUnloadingByBillofLading"
           ]
         },
         {
           "name": "ADHOCINVENTORYCREATION",
-          "pattern": "AdhocInventoryCreation/{id}",
+          "pattern": "AdhocInventoryCreation/{id}/{idI}",
           "target": [
             "TargetAdhocInventoryCreation"
           ]
         },
         {
           "name": "CREATIONOFSINGLEHU",
-          "pattern": "CreationOfSingleHU/{id}",
+          "pattern": "CreationOfSingleHU/{id}/{idI}",
           "target": [
             "TargetCreationOfSingleHU"
           ]
         },
         {
           "name": "DECONSOLIDATIONAUTOMATICALLY",
-          "pattern": "DeconsolidationAutomatically/{id}",
+          "pattern": "DeconsolidationAutomatically/{id}/{idI}",
           "target": [
             "TargetDeconsolidationAutomatically"
           ]
         },
         {
           "name": "DECONSOLIDATIONMANUALLY",
-          "pattern": "DeconsolidationManually/{id}",
+          "pattern": "DeconsolidationManually/{id}/{idI}",
           "target": [
             "TargetDeconsolidationManually"
           ]
         },
         {
           "name": "UNLOADINGBYSHIPMENT",
-          "pattern": "UnloadingByShipment/{id}",
+          "pattern": "UnloadingByShipment/{id}/{idI}",
           "target": [
             "TargetUnloadingByShipment"
           ]
         },
         {
           "name": "UNLOADINGBYTRANSPORTUNIT",
-          "pattern": "UnloadingByTU/{id}",
+          "pattern": "UnloadingByTU/{id}/{idI}",
           "target": [
             "TargetUnloadingByTU"
           ]
         },
         {
           "name": "PUTAWAYBYWO",
-          "pattern": "PutawayByWO/{id}",
+          "pattern": "PutawayByWO/{id}/{idI}",
           "target": [
             "TargetPutawayByWO"
           ]
         },
         {
           "name": "AVAILABLEHANDLINGUNITSONBINQUERY",
-          "pattern": "AvailableHandlingUnitsOnBinQuery/{id}",
+          "pattern": "AvailableHandlingUnitsOnBinQuery/{id}/{idI}",
           "target": [
             "TargetAvailableHandlingUnitsOnBinQuery"
           ]
         },
         {
           "name": "WTQUERYBYHU",
-          "pattern": "WTQueryByHU/{id}",
+          "pattern": "WTQueryByHU/{id}/{idI}",
           "target": [
             "TargetWTQueryByHU"
           ]
         },
         {
           "name": "AUTOMATICALLYREPACKHUITEM",
-          "pattern": "AutomaticallyRepackHUItem/{id}",
+          "pattern": "AutomaticallyRepackHUItem/{id}/{idI}",
           "target": [
             "TargetAutomaticallyRepackHUItem"
           ]
         },
         {
           "name": "SETREADYFORWHPROCESSINGBYCO",
-          "pattern": "SetReadyforWHProcessingByCO/{id}",
+          "pattern": "SetReadyforWHProcessingByCO/{id}/{idI}",
           "target": [
             "TargetSetReadyforWHProcessingByCO"
           ]
         },
         {
-          "name": "AdhocProductWt",
-          "pattern": "AdhocProductWt/{id}",
+          "name": "CREATEADHOCPRODUCTWT",
+          "pattern": "AdhocProductWt/{id}/{idI}",
           "target": [
             "TargetAdhocProductWt"
           ]
         },
         {
           "name": "MAINTAINHU",
-          "pattern": "MaintainHU/{id}",
+          "pattern": "MaintainHU/{id}/{idI}",
           "target": [
             "TargetMaintainHU"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYMANUFACTURINGORDER",
-          "pattern": "RecevingOfHUbyManufacturingOrder/{id}",
+          "pattern": "RecevingOfHUbyManufacturingOrder/{id}/{idI}",
           "target": [
             "TargetRecevingOfHUbyManufacturingOrder"
           ]
         },
         {
           "name": "CREATEANDCONFIRMADHOCHUWT",
-          "pattern": "CreateConfirmAdhocHu/{id}",
+          "pattern": "CreateConfirmAdhocHu/{id}/{idI}",
           "target": [
             "TargetCreateConfirmAdhocHu"
           ]
         },
         {
           "name": "CREATEANDCONFIRMADHOCPRODUCTWT",
-          "pattern": "CreateConfirmAdhocProduct/{id}",
+          "pattern": "CreateConfirmAdhocProduct/{id}/{idI}",
           "target": [
             "TargetCreateConfirmAdhocProduct"
           ]
         },
         {
           "name": "STOCKBINQUERYBYPRODUCT",
-          "pattern": "StockBinQueryByProduct/{id}",
+          "pattern": "StockBinQueryByProduct/{id}/{idI}",
           "target": [
             "TargetStockBinQueryByProduct"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYCONSIGNMENTORDER",
-          "pattern": "Receivingofhubyco/{id}",
+          "pattern": "Receivingofhubyco/{id}/{idI}",
           "target": [
             "TargetRecevingofHUbyConsignemntOrder"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYSHIPMENT",
-          "pattern": "ReceivingofHUbyShipment/{id}",
+          "pattern": "ReceivingofHUbyShipment/{id}/{idI}",
           "target": [
             "TargetReceivingofHUbyShipment"
           ]
         },
         {
           "name": "WTQUERYBYWO",
-          "pattern": "WTQueryByWO/{id}",
+          "pattern": "WTQueryByWO/{id}/{idI}",
           "target": [
             "TargetWTQueryByWO"
           ]
         },
         {
-          "name": "RECEIVINGOFHUDOORTW",
-          "pattern": "RecevingOfHUbyTUorDoor/{id}",
+          "name": "RECEVINGOFTUDOORTW",
+          "pattern": "RecevingOfHUbyTUorDoor/{id}/{idI}",
           "target": [
             "TargetRecevingOfHUbyTUorDoor"
           ]
         },
         {
           "name": "RECEIVINGOFHUBYTU",
-          "pattern": "ReceivingofHUbyTU/{id}",
+          "pattern": "ReceivingofHUbyTU/{id}/{idI}",
           "target": [
             "TargetReceivingofHUbyTU"
           ]
         },
         {
           "name": "SERIALNUMBERLOCATION",
-          "pattern": "SerialNumberLocation/{id}",
+          "pattern": "SerialNumberLocation/{id}/{idI}",
           "target": [
             "TargetSerialNumberLocation"
           ]
         },
         {
           "name": "WTQUERYBYWT",
-          "pattern": "WTQueryByWT/{id}",
+          "pattern": "WTQueryByWT/{id}/{idI}",
           "target": [
             "TargetWTQueryByWT"
           ]
         },
         {
           "name": "WTQUERYBYQUEUE",
-          "pattern": "WTQueryByQueue/{id}",
+          "pattern": "WTQueryByQueue/{id}/{idI}",
           "target": [
             "TargetWTQueryByQueue"
           ]
         },
         {
           "name": "CREATESHIPPINGHU",
-          "pattern": "CreateShippingHU/{id}",
+          "pattern": "CreateShippingHU/{id}/{idI}",
           "target": [
             "TargetCreateShippingHU"
           ]
         },
         {
           "name": "CREATESHIPPINGHUWOWC",
-          "pattern": "CreateShippingHUWOWC/{id}",
+          "pattern": "CreateShippingHUWOWC/{id}/{idI}",
           "target": [
             "TargetCreateShippingHUWOWC"
           ]
         },
         {
           "name": "PICKPOINT",
-          "pattern": "PickPoint/{id}",
+          "pattern": "PickPoint/{id}/{idI}",
           "target": [
             "TargetPickPoint"
           ]
         },
         {
           "name": "MANUALLYREPACKALLHUITEMS",
-          "pattern": "ManuallyRepackAllHUItems/{id}",
+          "pattern": "ManuallyRepackAllHUItems/{id}/{idI}",
           "target": [
             "TargetManuallyRepackAllHUItems"
           ]
         },
         {
           "name": "LOADBYHUMANPOSASSIGNMENT",
-          "pattern": "LoadbyHUManPosAssiognment/{id}",
+          "pattern": "LoadbyHUManPosAssiognment/{id}/{idI}",
           "target": [
             "TargetLoadbyHUManPosAssiognment"
           ]
         },
         {
           "name": "MANUALLYREPACKHUITEM",
-          "pattern": "ManuallyRepackHU/{id}",
+          "pattern": "ManuallyRepackHU/{id}/{idI}",
           "target": [
             "TargetManuallyRepackHU"
           ]
         },
         {
           "name": "CREATEPUTAWAYHUSFORDECONSOLIDATION",
-          "pattern": "CreatePutawayHusforDeconsolidate/{id}",
+          "pattern": "CreatePutawayHusforDeconsolidate/{id}/{idI}",
           "target": [
             "TargetCreatePutawayHusforDeconsolidate"
           ]
         },
         {
           "name": "HUSTOCKOVERVIEWQUERY",
-          "pattern": "HUStockOverviewQuery/{id}",
+          "pattern": "HUStockOverviewQuery/{id}/{idI}",
           "target": [
             "TargetHUStockOverviewQuery"
           ]
         },
         {
           "name": "CREATEPUTAWAYHUSMANUALLY",
-          "pattern": "CreatePutawayHusManually/{id}",
+          "pattern": "CreatePutawayHusManually/{id}/{idI}",
           "target": [
             "TargetCreatePutawayHusManually"
           ]
         },
         {
           "name": "PRODUCTINSPECTIONBYHU",
-          "pattern": "ProductInspectionByHU/{id}",
+          "pattern": "ProductInspectionByHU/{id}/{idI}",
           "target": [
             "TargetProductInspectionByHU"
           ]
         },
         {
           "name": "HuMaintanaceInDeconsolidation",
-          "pattern": "HuMaintanaceInDeconsolidation/{id}",
+          "pattern": "HuMaintanaceInDeconsolidation/{id}/{idI}",
           "target": [
             "TargetHuMaintanaceInDeconsolidation"
           ]
         },
         {
           "name": "PRODUCTINSPECTIONBYSTORAGEBIN",
-          "pattern": "ProductInspectionByStorageBin/{id}",
+          "pattern": "ProductInspectionByStorageBin/{id}/{idI}",
           "target": [
             "TargetProductInspectionByStorageBin"
           ]
         },
         {
           "name": "CONSUMPTIONBYMANUFACTURINGORDER",
-          "pattern": "ConsumptionByManufacturingOrder/{id}",
+          "pattern": "ConsumptionByManufacturingOrder/{id}/{idI}",
           "target": [
             "TargetConsumptionByManufacturingOrder"
           ]
         },
         {
           "name": "PUTAWAYBYHUCLUSTERED",
-          "pattern": "RoutePutawayHuClustered/{id}",
+          "pattern": "RoutePutawayHuClustered/{id}/{idI}",
           "target": [
             "TargetRoutePutawayHuClustered"
           ]
         },
         {
           "name": "WHProcessingByBOL",
-          "pattern": "WHProcessingByBOL/{id}",
+          "pattern": "WHProcessingByBOL/{id}/{idI}",
           "target": [
             "TargetWHProcessingByBOL"
           ]
         },
         {
           "name": "UNLOADBYHU",
-          "pattern": "UnloadByHu/{id}",
+          "pattern": "UnloadByHu/{id}/{idI}",
           "target": [
             "TargetUnloadByHu"
           ]
         },
         {
           "name": "REVERSALOFCONSUMPTIONBYMOBIN",
-          "pattern": "ReversalofConsumptionbyMO_Bin/{id}",
+          "pattern": "ReversalofConsumptionbyMO_Bin/{id}/{idI}",
           "target": [
             "TargetReversalofConsumptionbyMO_Bin"
           ]
         },
         {
           "name": "AUTOMATICALLYREPACKHU",
-          "pattern": "AutomaticallyRepackHu/{id}",
+          "pattern": "AutomaticallyRepackHu/{id}/{idI}",
           "target": [
             "TargetAutomaticallyRepackHu"
           ]
         },
         {
           "name": "LOADBYHUAUTOPOSASSIGNMENT",
-          "pattern": "LoadbyHUAutoPosAssiognment/{id}",
+          "pattern": "LoadbyHUAutoPosAssiognment/{id}/{idI}",
           "target": [
             "TargetLoadbyHUAutoPosAssiognment"
           ]
         },
         {
           "name": "CHANGELOADINGUNLOADINGDETAILS",
-          "pattern": "RouteChangeLoadingUnloadingDetails/{id}",
+          "pattern": "RouteChangeLoadingUnloadingDetails/{id}/{idI}",
           "target": [
             "TargetRouteChangeLoadingUnloadingDetails"
           ]
@@ -595,7 +595,7 @@
         },
         {
           "name": "SETREADYFORWHPROCESSINGBYBOL",
-          "pattern": "SetReadyForWHProcessingByBol/{id}",
+          "pattern": "SetReadyForWHProcessingByBol/{id}/{idI}",
           "target": [
             "TargetSetReadyForWhProcessingByBOL"
           ]

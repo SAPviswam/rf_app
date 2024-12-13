@@ -22,8 +22,8 @@ sap.ui.define(
 
                 var oModelV2 = this.getOwnerComponent().getModel();
                 this.getView().byId("pageContainer").setModel(oModelV2);
-                
-                
+
+
                 //this._updateComboBoxItems();
                 // this._fetchUniqueProcessAreas();
                 // this.byId("idEmppInput").attachLiveChange(this.onEmployeeIdLiveChange, this);
@@ -52,6 +52,9 @@ sap.ui.define(
                     this.byId("idRequestedData").setWidth("600px");
                     this.byId("idUserDataTable").setWidth("3500px");
                 }
+
+                const oConfigModel = this.getOwnerComponent().getModel("config");
+                this.oSMSConfig = oConfigModel.getProperty("/SMS");
 
             },
 
@@ -331,25 +334,25 @@ sap.ui.define(
                 debugger
                 var SelectedTable = this.byId("idRequestedData").getSelectedItem().mAggregations;
 
-                var oSelectedTableResource1 = SelectedTable.cells[5].mProperties.hasSelection;
-                var oSelectedTableResource2 = SelectedTable.cells[6].mProperties.hasSelection;
-                var oSelectedTableResource3 = SelectedTable.cells[7].mProperties.hasSelection;
-                var AreaV = SelectedTable.cells[5].mProperties.selectedKeys;
-                var GrpV = SelectedTable.cells[6].mProperties.selectedKeys;
-                var QusV = SelectedTable.cells[7].mProperties.selectedKeys;
+                var oSelectedTableResource1 = SelectedTable.cells[6].mProperties.hasSelection;
+                var oSelectedTableResource2 = SelectedTable.cells[7].mProperties.hasSelection;
+                var oSelectedTableResource3 = SelectedTable.cells[8].mProperties.hasSelection;
+                var AreaV = SelectedTable.cells[6].mProperties.selectedKeys;
+                var GrpV = SelectedTable.cells[7].mProperties.selectedKeys;
+                var QusV = SelectedTable.cells[8].mProperties.selectedKeys;
                 if (oSelectedTableResource1 && oSelectedTableResource2 && oSelectedTableResource3) {
                     this.onApproveforTable(AreaV, GrpV, QusV);
                     return
 
                 }
                 else if (oSelectedTableResource1 && !oSelectedTableResource2) {
-                    SelectedTable.cells[6].setValueState(sap.ui.core.ValueState.Error);
-                    SelectedTable.cells[6].setValueStateText("Please Select Group");
+                    SelectedTable.cells[7].setValueState(sap.ui.core.ValueState.Error);
+                    SelectedTable.cells[7].setValueStateText("Please Select Group");
                     return
                 }
                 else if (oSelectedTableResource1 && oSelectedTableResource2 && !oSelectedTableResource3) {
-                    SelectedTable.cells[7].setValueState(sap.ui.core.ValueState.Error);
-                    SelectedTable.cells[7].setValueStateText("Please Select Queue");
+                    SelectedTable.cells[8].setValueState(sap.ui.core.ValueState.Error);
+                    SelectedTable.cells[8].setValueStateText("Please Select Queue");
                     return
                 }
 
@@ -370,28 +373,30 @@ sap.ui.define(
                 })
                 this.oApproveForm.open();
                 if (oSelectedResource.Email) {
-                    oView.byId("idEmailInputF").setText(oSelectedResource.Email)
+                    oView.byId("idEmailInputF").setValue(oSelectedResource.Email)
                 }
                 else {
                     oView.byId("idEmailInputF").setVisible(false)
                     oView.byId("idEmployeeEmailLabelF").setVisible(false)
                 }
-                oView.byId("idEmployeeIDInputF").setText(oSelectedResource.Resourceid)
-                oView.byId("idNameInputF").setText(oSelectedResource.Resourcename)
-                oView.byId("idEmailInputF").setText(oSelectedResource.Email)
-                oView.byId("idPhoneInputF").setText(oSelectedResource.Phonenumber)
-                oView.byId("idRoesurcetypeInputF").setText(oSelectedResource.Resourcetype)
+                oView.byId("idEmployeeIDInputF").setValue(oSelectedResource.Resourceid)
+                oView.byId("idNameInputF").setValue(oSelectedResource.Resourcename)
+                oView.byId("idEmailInputF").setValue(oSelectedResource.Email)
+                oView.byId("idPhoneInputF").setValue(oSelectedResource.Phonenumber)
+                oView.byId("idRoesurcetypeInputF").setValue(oSelectedResource.Resourcetype)
 
 
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/ProcessAreaSet", {
                     success: function (oData) {
+                        debugger
                         var aProcessAreas = oData.results;
                         var uniqueProcessAreasSet = new Set();
 
                         // Add unique Processarea values to the Set
                         aProcessAreas.forEach(function (item) {
-                            uniqueProcessAreasSet.add(item.Processarea);
+                            var formattedProcessArea = item.Processarea.charAt(0).toUpperCase() + item.Processarea.slice(1).toLowerCase();
+                            uniqueProcessAreasSet.add(formattedProcessArea);
                         });
 
                         // Convert the Set back to an array for the JSON model
@@ -436,27 +441,29 @@ sap.ui.define(
             onApprove: function () {
                 debugger
 
-                var Empid = this.byId("idEmployeeIDInputF").getText();
+                var Empid = this.byId("idEmployeeIDInputF").getValue();
 
-                var oNameInput = this.byId("idNameInputF");
+                var oNameInput = this.getView().byId("idNameInputF");
                 var oEmailInput = this.byId("idEmailInputF");
                 var oPhoneInput = this.byId("idPhoneInputF");
                 var oResourcetypeInput = this.byId("idRoesurcetypeInputF");
+                var oUserSelect = this.byId("idUsertypeComboboxF");
                 var oAreaSelect = this.byId("idAreaSelect");
                 var oGroupSelect = this.byId("idGroupSelect");
                 var oQueueSelect = this.byId("idQueueSelect");
+                
 
-
-                var Name = oNameInput.getText();
-                var email = oEmailInput.getText();
-                var phone = oPhoneInput.getText();
-                var Resourcetype = oResourcetypeInput.getText();
-
+                var Name = oNameInput.getValue();
+                var email = oEmailInput.getValue();
+                var phone = oPhoneInput.getValue();
+                var Resourcetype = oResourcetypeInput.getValue();
+                var Users = oUserSelect.getSelectedKey();
                 var Area = oAreaSelect.getSelectedKeys().join(",");
                 var Group = oGroupSelect.getSelectedKeys().join(",");
                 var Queue = oQueueSelect.getSelectedKeys().join(",");
 
                 var isValid = true;
+                var that = this;
 
                 // Validate Name
                 if (!Name) {
@@ -509,6 +516,15 @@ sap.ui.define(
                 } else {
                     oResourcetypeInput.setValueState(sap.ui.core.ValueState.None);
                     oResourcetypeInput.setValueStateText("");
+                }
+
+                if (!Users) {
+                    oUserSelect.setValueState(sap.ui.core.ValueState.Error);
+                    oUserSelect.setValueStateText("User type is required.");
+                    isValid = false;
+                } else {
+                    oUserSelect.setValueState(sap.ui.core.ValueState.None);
+                    oUserSelect.setValueStateText("");
                 }
 
 
@@ -583,12 +599,12 @@ sap.ui.define(
                     Email: email,
                     Notification: "your request has been Approved",
                     Phonenumber: phone,
-
                     Queue: Queue,
                     Resourcegroup: Group,
                     Resourceid: Empid,
                     Resourcename: Name,
                     Resourcetype: Resourcetype,
+                    Users: Users,
                     Approveddate: sFormattedCurrentDateTime,
                     Expirydate: sFormattedExpiryDate,
                     Password: oPassword,
@@ -598,6 +614,8 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
+
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         this.resetForm();
 
@@ -620,7 +638,8 @@ sap.ui.define(
                 var Name = SelectedTable.cells[1].mProperties.text;
                 var phone = SelectedTable.cells[3].mProperties.text;
                 var Resourcetype = SelectedTable.cells[2].mProperties.text;
-                var email = SelectedTable.cells[4].mProperties.text
+                var email = SelectedTable.cells[4].mProperties.text;
+                var User =  SelectedTable.cells[5].mProperties.selectedKey
 
                 var Area = AreaV.join(",");
                 var Group = GrpV.join(",");
@@ -654,13 +673,14 @@ sap.ui.define(
                 var oCurrentDateTime = new Date();
                 var sFormattedCurrentDateTime = this.formatDate(oCurrentDateTime);
                 var sFormattedExpiryDate = this.formatDate(oExpiryDate);
+                var that = this;
 
                 var oData = {
                     Area: Area,
                     Email: email,
                     Notification: "your request has been Approved",
                     Phonenumber: phone,
-
+                    Users: User,
                     Queue: Queue,
                     Resourcegroup: Group,
                     Resourceid: Empid,
@@ -675,9 +695,10 @@ sap.ui.define(
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
+                        
+
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
-
-
                         // Navigate to the user menu after successful password update
                         this.onRequestedData();
                         this.onUserData();
@@ -688,6 +709,36 @@ sap.ui.define(
                     }
                 });
 
+            },
+
+            sendSms: function (Userid,Firstname,Phonenumber,Password) {
+                debugger
+                // Send POST request to Twilio API using jQuery.ajax
+                const accountSid = this.oSMSConfig.AccountSID,
+                    authToken = this.oSMSConfig.AuthToken,
+                    url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+                    fromNumber = '+15856485867';
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    async: true,
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken)
+                    },
+                    data: {
+                        To: `+91${Phonenumber}`,
+                        From: fromNumber,
+                        Body: `Hi ${Firstname} your Request Have Been Apporved  Your UserID ${Userid} and Password ${Password}  don't share with anyone. \nThank You,\nArtihcus Global.`
+                    },
+                    success: function (data) {
+                        sap.m.MessageBox.show(`${Userid} request have been approved and password have been sent to ${Phonenumber} `);
+                    },
+                    error: function (error) {
+                        sap.m.MessageBox.information(`Failed to send SMS.\nyour user ID is ${Userid} please note this for future use`);
+                        console.error('Failed to send user ID' + error.message);
+                    }
+                });
+                // SMS END
             },
             _updateComboBoxItems: function () {
                 var oComboBox = this.byId("_IDGenComboBox1");
@@ -854,6 +905,7 @@ sap.ui.define(
 
                 // Iterate over the selected items to add corresponding filters
                 aSelectedItems.forEach(function (oItem) {
+                    debugger
                     var sKey = oItem.getText(); // Get the key (e.g., "Inbound", "Outbound", "Internal")
 
                     // Add filter for the selected process area
@@ -913,6 +965,7 @@ sap.ui.define(
             },
             // for selecting a row of the table
             onRowSelect: function (oEvent) {
+                debugger
                 var select = oEvent.mParameters.selected;
                 var oSelectedItem = oEvent.getParameter("listItem");
                 var oModel = this.getOwnerComponent().getModel();
@@ -920,12 +973,12 @@ sap.ui.define(
                 // Reference to previously selected item
                 if (this._oPreviousSelectedItem && this._oPreviousSelectedItem !== oSelectedItem) {
                     // Deselect the previous item
-                    this._oPreviousSelectedItem.mAggregations.cells[5].setVisible(false);
-                    this._oPreviousSelectedItem.mAggregations.cells[5].setValue("");
+                    this._oPreviousSelectedItem.mAggregations.cells[6].setVisible(false);
+                    this._oPreviousSelectedItem.mAggregations.cells[6].setValue("");
 
                     // Additional cells to hide
-                    this._oPreviousSelectedItem.mAggregations.cells[6].setVisible(false);
                     this._oPreviousSelectedItem.mAggregations.cells[7].setVisible(false);
+                    this._oPreviousSelectedItem.mAggregations.cells[8].setVisible(false);
                 }
 
                 if (select) {
@@ -934,7 +987,7 @@ sap.ui.define(
                         var oContext = oSelectedItem.getBindingContext();
 
                         // Make the MultiComboBox visible
-                        oSelectedItem.mAggregations.cells[5].setVisible(true);
+                        oSelectedItem.mAggregations.cells[6].setVisible(true);
 
                         // Read ProcessAreaSet
                         oModel.read("/ProcessAreaSet", {
@@ -957,7 +1010,7 @@ sap.ui.define(
                                     ProcessAreas: aUniqueProcessAreas
                                 });
 
-                                var oMultiComboBox = oSelectedItem.mAggregations.cells[5];
+                                var oMultiComboBox = oSelectedItem.mAggregations.cells[6];
                                 if (!oMultiComboBox) {
                                     oMultiComboBox = sap.ui.core.byId("idProcessAreaValue");
                                 }
@@ -987,10 +1040,10 @@ sap.ui.define(
                 } else {
                     // Deselecting
                     if (oSelectedItem) {
-                        oSelectedItem.mAggregations.cells[5].setValue("");
-                        oSelectedItem.mAggregations.cells[5].setVisible(false);
+                        oSelectedItem.mAggregations.cells[6].setValue("");
                         oSelectedItem.mAggregations.cells[6].setVisible(false);
                         oSelectedItem.mAggregations.cells[7].setVisible(false);
+                        oSelectedItem.mAggregations.cells[8].setVisible(false);
                     }
                     // Clear previous selected item reference
                     this._oPreviousSelectedItem = null;
@@ -1005,7 +1058,7 @@ sap.ui.define(
                 var aSelectedtableItems = oTable.getSelectedItems();
 
 
-                var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5].mProperties.selectedKeys
+                var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[6].mProperties.selectedKeys
                 this.onSelectFiltertableArea(oSelectedItem);
             },
             // Resuable code for Selecting Process Area in table
@@ -1020,7 +1073,7 @@ sap.ui.define(
                 var oContext = aSelectedtableItems[0].getBindingContext();
 
                 // Assuming you have a way to get the Process Area from the selected item
-                var oGroupMultiComboBox = aSelectedtableItems[0].mAggregations.cells[6];
+                var oGroupMultiComboBox = aSelectedtableItems[0].mAggregations.cells[7];
 
 
                 // Initialize an array to hold the filters
@@ -1214,11 +1267,11 @@ sap.ui.define(
                 var aSelectedtableItems = oTable.getSelectedItems();
 
 
-                var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[5]
+                var oSelectedItem = aSelectedtableItems[0].mAggregations.cells[6]
 
-                var oAreaMultiComboBox = aSelectedtableItems[0].mAggregations.cells[5];
-                var oGroupMultiComboBox = aSelectedtableItems[0].mAggregations.cells[6];
-                var oQueueMultiComboBox = aSelectedtableItems[0].mAggregations.cells[7];
+                var oAreaMultiComboBox = aSelectedtableItems[0].mAggregations.cells[6];
+                var oGroupMultiComboBox = aSelectedtableItems[0].mAggregations.cells[7];
+                var oQueueMultiComboBox = aSelectedtableItems[0].mAggregations.cells[8];
                 this.OnFilterTableGroup(oAreaMultiComboBox, oGroupMultiComboBox, oQueueMultiComboBox);
 
             },
@@ -2630,42 +2683,42 @@ sap.ui.define(
                 var bVisible = oSearchField.getVisible();
                 oSearchField.setVisible(!bVisible);
                 this.byId("searchButton").setVisible(false);
-              },
-              onSearch: function () {
+            },
+            onSearch: function () {
                 // Get the search field and toggle button by their IDs
                 var oSearchField = this.byId("searchField");
                 var oToggleSearchButton = this.byId("toggleSearchButton");
-          
+
                 // Hide the search field
                 oSearchField.setVisible(false);
                 this.byId("searchButton").setVisible(true);
-          
+
                 // Toggle the visibility of the button
                 // var bVisible = oToggleSearchButton.getVisible();
                 oToggleSearchButton.setVisible(!bVisible);
-          
-              },
-              //Delete feunctionality in the User Table
-              onPressDeleteUser: function () {
+
+            },
+            //Delete feunctionality in the User Table
+            onPressDeleteUser: function () {
                 debugger;
                 // Get the table reference
                 var oTable = this.byId("idUserDataTable");
-            
+
                 // Get the selected item (single row)
                 var oSelectedItem = oTable.getSelectedItem();
-                
+
                 if (!oSelectedItem) {
                     // If no row is selected, show a message
                     sap.m.MessageToast.show("Please select a row to delete.");
                     return;
                 }
-            
+
                 // Get the OData model (assuming it's bound to the view)
-                 var oModel = this.getOwnerComponent().getModel();
-            
+                var oModel = this.getOwnerComponent().getModel();
+
                 // Get the path of the selected item (row)
                 var sPath = oSelectedItem.getBindingContext().getPath();
-            
+
                 // Confirm deletion (Optional: You can ask the user to confirm the delete action)
                 sap.m.MessageBox.warning("Are you sure you want to delete the resource?", {
 

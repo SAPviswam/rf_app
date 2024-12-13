@@ -30,64 +30,75 @@
         <VBox
             id="idDialogContent"
             class="sapUiMediumMargin marginApproveDetailsFragment"
-           
         >
-       
             <Label
                 id="idEmployeeIDLabelF"
                 text="Employee ID:"
-               
             />
-            <Text
+            <Input
                 class="textFieldsAF"
                 id="idEmployeeIDInputF"
-               
+                editable="false"
             />
-         
- 
+
             <Label
                 id="idEmployeeNameLabeFl"
                 text="Name:"
-               
             />
-            <Text
-            class="textFieldsAF"
+            <Input
+                class="textFieldsAF"
                 id="idNameInputF"
-               
+                editable="false"
             />
- 
+
             <Label
                 id="idEmployeeEmailLabelF"
                 text="Email:"
-               
             />
-            <Text
-            class="textFieldsAF"
+            <Input
+                class="textFieldsAF"
                 id="idEmailInputF"
-               
+                editable="false"
             />
- 
+
             <Label
                 id="idEmployeePhoneLabelF"
                 text="Phone:"
-             
             />
-            <Text
-            class="textFieldsAF"
+            <Input
+                class="textFieldsAF"
                 id="idPhoneInputF"
-               
+                editable="false"
             />
-             <Label
+            <Label
                 id="idResourceTypeLabelF"
                 text="Resource Type:"
-             
             />
-            <Text
-            class="textFieldsAF"
+            <Input
+                class="textFieldsAF"
                 id="idRoesurcetypeInputF"
-               
+                editable="false"
             />
- 
+            <Label
+                id="IdUserTypeLabel"
+                text="UserType"
+            />
+            <ComboBox
+                id="idUsertypeComboboxF"
+                placeholder="Please Select a Usertype from Dropdown.. "
+            >
+                <core:Item
+                    id="IDGenItem7F"
+                    key="Supervisor"
+                    text="Supervisor"
+                />
+                <core:Item
+                    id="IDGenItem8F"
+                    key="Resource"
+                    text="Resource"
+                />
+            </ComboBox>
+
             <Label
                 id="idEmployeeAreaLabeFl"
                 text="Process Area:"
@@ -105,20 +116,18 @@
                     text="{Processarea}"
                 />
             </MultiComboBox>
- 
- 
+
             <Label
                 id="idEmployeeGroupLabelF"
                 text="Group:"
                 required="true"
                 class="sapUiSmallMarginTop"
             />
-             <MultiComboBox
+            <MultiComboBox
                 id="idGroupSelect"
                 items="{path: '/ProcessAreaSet'}"
                 visible="false"
                 selectionChange="onSelectGroup"
-                
             >
                 <core:Item
                     class="dropdown"
@@ -127,13 +136,12 @@
                     text="{Processgroup}"
                 />
             </MultiComboBox>
- 
+
             <Label
                 id="idEmployeeQueueLabelF"
                 text="Queue:"
                 required="true"
                 class="sapUiSmallMarginTop"
-                
             />
             <MultiComboBox
                 id="idQueueSelect"
@@ -160,7 +168,6 @@
                 text="Approve"
                 type="Emphasized"
                 press="onApprove"
-               
             />
         </HBox>
     </Dialog>

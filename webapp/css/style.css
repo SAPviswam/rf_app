@@ -54,29 +54,35 @@
 /*--------------------------------------------------------------------- Login Page Styles End ---------------------------------------------------------------------*/
 
 /* Supervisor Page Start */
-.TableBarForRequestedData{
+.TableBarForRequestedData {
     height: 3rem !important;
     position: fixed !important;
 }
-.RequestedDataClass{
+
+.RequestedDataClass {
     font-weight: bold;
     margin-bottom: 0.45rem !important;
 }
-.TableBarForUserDataSupervisor{
+
+.TableBarForUserDataSupervisor {
     height: 3rem !important;
     position: fixed !important;
 }
-.UserDataClassSupervisor{
+
+.UserDataClassSupervisor {
     font-weight: bold;
     margin-bottom: 0.45rem !important;
 }
+
 .sapUiSmallMarginTop {
     margin-top: 1rem;
 }
-.EmptyLableClass{
+
+.EmptyLableClass {
     margin-top: 1rem !important;
 }
-.EmptyLableClassUserdataSupervisor{
+
+.EmptyLableClassUserdataSupervisor {
     margin-top: 1rem !important;
 }
 
@@ -632,7 +638,8 @@
     font-weight: bold !important;
 }
 
-/* these are for theme colors for options... */
+
+/* Start==> these are for theme colors for options in Theme Dialog Box from RESOURCE PAGE... */
 .colorCheckBox {
     width: 36px !important;
     height: 36px !important;
@@ -677,8 +684,8 @@
     width: 20px;
 }
 
-.YellowCheckBox .sapMCbBg {
-    background-color: #ffad16ea !important;
+.tanCheckBox .sapMCbBg {
+    background-color: tan !important;
     height: 20px;
     width: 20px;
 }
@@ -686,6 +693,9 @@
 .LabelTileNamecolour {
     font-weight: bolder;
 }
+
+/* End==> these are for theme colors for options in Theme Dialog Box from RESOURCE PAGE... */
+
 
 
 
@@ -950,6 +960,7 @@
 }
 
 @media (max-width: 600px) {
+
     .Page2HUDetailsContainer_PBYWO,
     .verifyHuNumberContainer,
     .MainVBoxGR,
@@ -979,30 +990,7 @@
     }
 }
 
-/* CSS methods only for WTQueryByHU Tile in that Page3 & Page4 Scrollcontainers  */
-@media (max-width: 600px) {
-
-    .ThirdPageContainerWT_WTQBYHU,
-    .Page4ContainerPD_WTQBYHU {
-        margin: 0.5rem;
-        width: auto;
-        margin-right: 0.5rem;
-    }
-
-    .ThirdPageContainerWT_WTQBYHU .sapMHBox {
-        flex-direction: column;
-        align-items: stretch;
-        width: auto;
-    }
-
-    .Page4ContainerPD_WTQBYHU .sapMHBox {
-        flex-direction: column;
-        align-items: stretch;
-        width: auto;
-    }
-}
-
-/* CSS methods for ARHUI(Automatically RepackHUItem) Tile in that Page 2 & Page 3... */
+/* Start==>Media CSS methods for ARHUI(Automatically RepackHUItem) Tile in that Page 2 & Page 3... */
 @media (max-width: 768px) {
     .autoRepackPage {
         flex-direction: column;
@@ -1013,83 +1001,118 @@
         width: auto !important;
     }
 }
+/* End==>Media CSS methods for ARHUI(Automatically RepackHUItem) Tile in that Page 2 & Page 3... */
 
-/* Profile PopOver Classes */
+/* Start==>CSS methods for WTQBYHU(WTQuery By HU) Tile */
+.scrollableTable1WTQbyQ {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.scrollableTableWtQuerybyHu {
+    height: 350px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+/* End==>CSS methods for WTQBYHU(WTQuery By HU) Tile */
+
+/* Start==> These for the Profile PopOver Classes from RESOURCE PAGE */
 .onProfileOptions {
     margin-left: -0.5rem !important;
     align-items: start !important;
 }
-.UserNameBold{
+
+.UserNameBold {
     font-weight: bold !important;
 }
-.NamePhoneClass{
+
+.NamePhoneClass {
     margin-top: 0.4rem;
     margin-right: 1rem;
 }
 
-/* For the Tile View settings  */
+/* End==> These for the Profile PopOver Classes from RESOURCE PAGE */
+
+/* Start==> These For the Tile View settings from the RESOURCE PAGE */
 .largeIcons {
     width: 150px !important;
     height: 150px !important;
     font-size: auto !important;
 }
+
 .mediumIcons {
     width: 110px !important;
     height: 110px !important;
     font-size: auto !important;
 }
+
 .smallIcons {
     width: 75px !important;
     height: 75px !important;
     font-size: auto !important;
 }
-/* For the list form view to tiles */
+
+/* End==> These For the Tile View settings from the RESOURCE PAGE */
+
+/* Start==> These For the list form & Grid view to tiles from The RESOURCE PAGE */
 .listViewIcons {
     width: 50px !important;
     height: 50px !important;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 /* Hide the title and subtitle within the tile */
 .listViewIcons .sapMGTTitle,
 .listViewIcons .sapMGTSubTitle {
     display: none !important;
 }
+
 .listViewHeader {
+    margin-top: 1.5rem;
     font-size: 16px;
-    padding-left: 7px;
-    vertical-align: top;
+    padding-left: 5px;
     font-weight: bold;
-}
-.tileContainer {
     display: flex;
     align-items: center;
-    margin: 10px 0;
 }
-/* for the selected tiles add some effects like vibrations */
+
+/* Start==> These For the list form & Grid view to tiles from The RESOURCE PAGE */
+
+/* Start==> These for the selected tiles add some effects like vibrations from The RESOURCE PAGE */
 .tileSelected {
     border: 3px solid rgb(255, 120, 9) !important;
     box-shadow: 0px 5px 15px rgba(10, 8, 9, 0.5) !important;
     animation: shake 0.35s ease infinite !important;
 }
+
 @keyframes shake {
     0% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(5deg);
     }
+
     50% {
         transform: rotate(0deg);
     }
+
     75% {
         transform: rotate(-5deg);
     }
+
     100% {
         transform: rotate(0deg);
     }
 }
-/* Hover effect for the profilepicture when move on the cursor */
+
+/* End==> These for the selected tiles add some effects like vibrations from The RESOURCE PAGE */
+
+/* Start==> Hover effect for the profilepicture when move on the cursor from the All like Resource and tile pages*/
 .profileAvatar1234:hover::after {
     content: "";
     /* Unicode for the camera icon (from SAP icons) */
@@ -1106,24 +1129,31 @@
     font-size: 1.5rem;
     transition: 0.3s;
 }
+
+/* User Profile Details(Account Details) Dailog Box */
 .profileCard {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
 }
+
 .profileAvatar {
     border-radius: 55%;
     margin-bottom: 15px;
     border: 4px solid #fff;
     position: relative;
 }
+
 .profileDetailItem {
     margin: auto;
     font-size: 0.9em;
     color: #000000;
     font-weight: bold;
 }
+
+/* End==> Hover effect for the profilepicture when move on the cursor from the All like Resource and tile pages*/
+
 
 
 
@@ -1190,7 +1220,7 @@
 
 .checkBoxforAutosave {
     margin-left: 0.6rem !important;
-  
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -1337,6 +1367,10 @@ margin-right: 20%;
     background-color: #ec792d !important;
 }
 
+.sapMIBar .sapMHeader-CTX {
+    background-color: #ec792d !important;
+}
+
 .div {
     position: absolute;
     left: 8%;
@@ -1423,7 +1457,8 @@ margin-right: 20%;
     color: hsl(29, 100%, 50%);
     align-content: center;
 }
-.ResourcePageTitle{
+
+.ResourcePageTitle {
     color: hsl(29, 100%, 50%);
 }
 
@@ -1464,10 +1499,10 @@ margin-right: 20%;
 .configTextVbox {
     width: 10%;
     margin-left: 90%;
-   
+
 }
 
-.textBoxForTab_HomeView{
+.textBoxForTab_HomeView {
     margin-left: 30%;
 }
 
@@ -1627,11 +1662,11 @@ margin-right: 20%;
     /* Optional: adds space inside the border */
     border-radius: 5px;
     margin-right: 0.1%;
-    
+
 }
 
-.vboxRfLogin_HomeView{
-   margin-left: 111%; 
+.vboxRfLogin_HomeView {
+    margin-left: 111%;
 }
 
 
@@ -1664,7 +1699,7 @@ margin-right: 20%;
 }
 
 .vboxResponsiveGif {
-    margin-left:10%;
+    margin-left: 10%;
 }
 
 .vboxResponsiveGifTab {
@@ -1672,7 +1707,7 @@ margin-right: 20%;
     margin-left: 100%;
 }
 
-.responsiveGif{
+.responsiveGif {
     margin-left: 35%;
 
 }
@@ -1711,12 +1746,16 @@ margin-right: 20%;
     font-size: 16px;
     margin-right: 0.8rem !important;
 }
-.configureSapBtn_InitialView:hover{
+
+.configureSapBtn_InitialView:hover {
     cursor: pointer;
 }
+
 .customButtonStyle {
-    background-color: blue; /* Change this to your preferred color */
-    color: white;           /* Change this to your preferred color */
+    background-color: blue;
+    /* Change this to your preferred color */
+    color: white;
+    /* Change this to your preferred color */
 }
 
 .customButtonBackground {
@@ -1726,22 +1765,33 @@ margin-right: 20%;
     border: 0px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
-    width: 200px; /* Set a specific width, or you can use max-width instead */
-    font-size: 15px; /* Increase the font size for bigger text */
-    text-align: center; /* Ensure text is centered */
+    padding: 8px 30px;
+    /* Increase padding (top-bottom, left-right) */
+    width: 200px;
+    /* Set a specific width, or you can use max-width instead */
+    font-size: 15px;
+    /* Increase the font size for bigger text */
+    text-align: center;
+    /* Ensure text is centered */
 }
+
 .buttonSelected {
-    background-color: #c2f499; /* Default background color */
+    background-color: #c2f499;
+    /* Default background color */
     border-radius: 10px;
-    color: black; /* Default text color */
+    color: black;
+    /* Default text color */
     border: 0px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding: 8px 30px; /* Increase padding (top-bottom, left-right) */
-    width: 200px; /* Set a specific width, or you can use max-width instead */
-    font-size: 15px; /* Increase the font size for bigger text */
-    text-align: center; /* Ensure text is centered */
+    padding: 8px 30px;
+    /* Increase padding (top-bottom, left-right) */
+    width: 200px;
+    /* Set a specific width, or you can use max-width instead */
+    font-size: 15px;
+    /* Increase the font size for bigger text */
+    text-align: center;
+    /* Ensure text is centered */
 }
 
 
@@ -1749,75 +1799,84 @@ margin-right: 20%;
 
 /* create resource starts */
 
-.star{
+.star {
     color: red;
 }
 
 
-.VboxForTab{
+.VboxForTab {
     left: 80%;
 }
 
-.responsiveGifTab{
+.responsiveGifTab {
     margin-left: 33%;
 }
 
-.TextBoxForTab_HomeView{
+.TextBoxForTab_HomeView {
     left: 100%;
 }
 
-.createResourceVboxForTab_HomeView{
-    left:90%;
+.createResourceVboxForTab_HomeView {
+    left: 90%;
 }
 
-.rflogin_mobile_Home{
-    left:40%;
+.rflogin_mobile_Home {
+    left: 40%;
 }
 
-.createResource_mobile_home{
-    left:25%;
+.createResource_mobile_home {
+    left: 25%;
 }
 
 /* create resource ends */
 /* config login view responsive for tablet start */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
+
     /* Adjust whiteBox width and height */
     .whiteBorderBox {
-        width: 80%; /* Increase the width for tablet mode */
-        height: auto; /* Adjust height to fit the content */
+        width: 80%;
+        /* Increase the width for tablet mode */
+        height: auto;
+        /* Adjust height to fit the content */
     }
-  
+
     /* Increase padding around input fields for tablet view */
     .paddingBox {
-        padding: 15rem; /* Add padding to center content better on tablets */
+        padding: 15rem;
+        /* Add padding to center content better on tablets */
     }
-    
-  
+
+
     /* Adjust font sizes for better readability */
     .loginTitle {
-        font-size: 1.5rem; /* Increase the font size */
+        font-size: 1.5rem;
+        /* Increase the font size */
     }
-  
+
     /* Adjust width of text and input elements */
     .inputRow Text {
-        width: 30%; /* Adjust label width */
+        width: 30%;
+        /* Adjust label width */
     }
-  
+
     .inputRow Input {
-        width: 60%; /* Adjust input field width */
+        width: 60%;
+        /* Adjust input field width */
     }
-  
+
     /* Adjust button widths */
     .sapMBtn {
-        width: 80%; /* Reduce width slightly to fit tablet screen */
+        width: 80%;
+        /* Reduce width slightly to fit tablet screen */
     }
-  
+
     /* Adjust VBox and HBox padding/margins to make elements centered on tablet */
     .contentContainer {
         padding: 1rem;
         margin: auto;
     }
 }
+
 /* Media query for mobiles */
 .titlecap {
     position: absolute;
@@ -1832,32 +1891,35 @@ margin-right: 20%;
 
 /* ----------------------Help tour On EDit Config SAP System Class Begin------------------------------------------------------*/
 
-.HeadingIn_HelpTourOnEditConfigSAPSystem{
+.HeadingIn_HelpTourOnEditConfigSAPSystem {
     font-weight: bold;
-    color:#ec792d;
-    font-size:15px;  
+    color: #ec792d;
+    font-size: 15px;
 }
 
-.MainHeadingInPhone_HelpTourOnEditConfigSAPSystem{
-margin-left:2% !important;
-    color:#ec792d;
-    font-size:medium !important; 
-} 
-.MainHeadingInTab_HelpTourOnEditConfigSAPSystem{
-    margin-left:35% !important;
-    color:#ec792d; 
-} 
-
-.SideHeadingIn_HelpTourOnEditConfigSAPSystem{
-    font-weight: bold;
-    color:#000000;   
+.MainHeadingInPhone_HelpTourOnEditConfigSAPSystem {
+    margin-left: 2% !important;
+    color: #ec792d;
+    font-size: medium !important;
 }
-.headerTitleclass_HelpTourOnEditConfigSAPSystem{
+
+.MainHeadingInTab_HelpTourOnEditConfigSAPSystem {
+    margin-left: 35% !important;
+    color: #ec792d;
+}
+
+.SideHeadingIn_HelpTourOnEditConfigSAPSystem {
+    font-weight: bold;
+    color: #000000;
+}
+
+.headerTitleclass_HelpTourOnEditConfigSAPSystem {
     color: hsl(29, 100%, 50%);
-    margin-left: 90%; 
+    margin-left: 110%;
 }
-.BackInHelpTourOnEditConfigSAPSystem{
-    margin-left: 190%; 
+
+.BackInHelpTourOnEditConfigSAPSystem {
+    margin-left: 150%;
 }
 
 
@@ -1877,6 +1939,7 @@ margin-left:2% !important;
         left: 45%;
     }
 }
+
 /* config login view responsive for tablet end */
 
 .floatingTitle {
@@ -1884,38 +1947,45 @@ margin-left:2% !important;
     top: 0;
     left: 0rem;
     right: 0rem;
-    z-index: 10; 
+    z-index: 10;
     padding: 0.5rem;
-    
+
 }
 
-.btns_CQ{
-    right:1rem;
+.btns_CQ {
+    right: 1rem;
 }
+
 /* CSS for Sticky HBox */
 .stickyHBox {
     position: fixed;
     top: 0;
-    z-index: 100;  /* Ensure it stays above other content */
-      /* Add a background color to avoid transparency issues */
+    z-index: 100;
+    /* Ensure it stays above other content */
+    /* Add a background color to avoid transparency issues */
     padding: 10px;
-    box-shadow: 0px 2px 5px rgba(247, 246, 246, 0.1);  /* Optional: Adds shadow for better visibility */
-  }
+    box-shadow: 0px 2px 5px rgba(247, 246, 246, 0.1);
+    /* Optional: Adds shadow for better visibility */
+}
 
-  /* CSS for Scrollable Table */
-  .scrollableTable {
-    height: 450px;  /* Adjust the height of the table as required */
+/* CSS for Scrollable Table */
+.scrollableTable {
+    height: 450px;
+    /* Adjust the height of the table as required */
     overflow-y: auto;
-    overflow-x: auto;  /* Enable vertical scrolling */
-  }
-  /* .changeQueueTable_Tab{
+    overflow-x: auto;
+    /* Enable vertical scrolling */
+}
+
+/* .changeQueueTable_Tab{
     height: max-content;
   }
    */
 
-.backBtnChangeQueue{
+.backBtnChangeQueue {
     left: 0.5rem;
 }
+
 /* HU Stock Overview Query Tabel Start 18-11-2024 */
 .Buttons_HUSOQ {
     position: fixed;
@@ -1925,20 +1995,27 @@ margin-left:2% !important;
     z-index: 10;
     padding: 0.5rem;
 }
-.table_HuStockOverview{
+
+.table_HuStockOverview {
     margin-top: 5%;
 }
-.MobileviewTable_HUSOQ{
+
+.MobileviewTable_HUSOQ {
     margin-top: 25%;
 }
-.tab_Table_HuStockOverview{
+
+.tab_Table_HuStockOverview {
     margin-top: 10%;
 }
+
 .scrollableTable1 {
-    height: 450px;  /* Adjust the height of the table as required */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto;  /* Enable Horizontal scrolling */
-  }
+    height: 450px;
+    /* Adjust the height of the table as required */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    overflow-x: auto;
+    /* Enable Horizontal scrolling */
+}
 
 /* HU Stock Overview Query Tabel End 18-11-2024*/
 
@@ -1946,9 +2023,9 @@ margin-left:2% !important;
 
 /* change queue ends */
 
-.genericTile{
+.genericTile {
     height: 50px;
-    width:50px;
+    width: 50px;
 }
 
 
@@ -1965,65 +2042,58 @@ margin-left:2% !important;
     /* Maintain the same button width for tablets */
     .myResponsiveButtonWTQBYQ {
         margin: 4px !important;
-        width: 20% !important;  
+        width: 20% !important;
         min-width: 60px;
         max-width: 50px;
     }
-    
-    .myResponsiveHBoxWTQBYQ > .sapMButton {
+
+    .myResponsiveHBoxWTQBYQ>.sapMButton {
         margin-left: 5px !important;
         margin-right: 5px !important;
     }
 }
 
-.scrollableTable1WTQbyQ {
-    height: 400px; 
-    overflow-y: auto; 
-    overflow-x: auto;  
-  }
 
-    /* Add scroll behavior for overflow */
-    body {
-        overflow-y: auto; /* Ensure the user can scroll if content exceeds viewport */
-    }
 
-    .scrollableTableWtQuerybyHu{
-        height:350px;
-        overflow-y:auto;
-        overflow-x: auto;
-    }
+/* Add scroll behavior for overflow */
+body {
+    overflow-y: auto;
+    /* Ensure the user can scroll if content exceeds viewport */
+}
+.tableScrollTab {
+    height: 800px;
+}
 
-    .tableScrollTab{
-        height:800px;
-    }
- .addClassinChangeQueue{
-    margin-left:  0.9rem;
+.addClassinChangeQueue {
+    margin-left: 0.9rem;
 }
 
 
-  .MobileviewTable_WtQbyQ{
+.MobileviewTable_WtQbyQ {
     margin-top: 20%;
-    height:600px
+    height: 600px
 }
 
 
-.MobileviewTableTablet_WtQbyQ{
+.MobileviewTableTablet_WtQbyQ {
     margin-top: 10%;
-    height:600px
-}
-.MobileviewTable_StbqP{
-    margin-top :20%;
-    height:600px
+    height: 600px
 }
 
-.deleteClassinChangeQueue{
-margin-left:  0.6rem;
+.MobileviewTable_StbqP {
+    margin-top: 20%;
+    height: 600px
 }
 
-.backClassinChangeQueue{
+.deleteClassinChangeQueue {
+    margin-left: 0.6rem;
+}
+
+.backClassinChangeQueue {
     margin-left: 0.3rem;
-} 
-.MobileviewTableTablet_stockbinquerybyproduct{
+}
+
+.MobileviewTableTablet_stockbinquerybyproduct {
     margin-top: 10%;
-    height:600px
+    height: 600px
 }

@@ -57,7 +57,7 @@ sap.ui.define([
         },
         onSignoutPressed:function(){
             var oRouter = this.getOwnerComponent().getRouter(this);
-            oRouter.navTo("InitialScreen"); 
+            oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
         },
 
         // Function to handle selection of a row (HU)
@@ -91,8 +91,9 @@ sap.ui.define([
 
         // Load resource details on route pattern match
         onResourceDetailsLoad: function (oEvent1) {
-            const { id } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
+            const { id,idI } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
             this.ID = id;  // Save ID for later use
+            this.IDI=idI
             this.applyStoredProfileImage();
         },
         onAvatarPressed: function (oEvent) {     
@@ -222,15 +223,15 @@ sap.ui.define([
         onPressBackButtonFirstSC: async function () {
             var oRouter = UIComponent.getRouterFor(this);  // Get the router
             var oModel1 = this.getOwnerComponent().getModel();  // Get the OData model
-
+            var that=this;
             // Fetch resource details from OData service
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
                     let oUser = oData.Users.toLowerCase();  // Get user role
                     if (oUser === "resource") {
-                        oRouter.navTo("RouteResourcePage", { id: this.ID });  // Navigate to Resource page
+                        oRouter.navTo("RouteResourcePage", { id: this.ID,idI:that.IDI });  // Navigate to Resource page
                     } else {
-                        oRouter.navTo("Supervisor", { id: this.ID });  // Navigate to Supervisor page
+                        oRouter.navTo("Supervisor", { id: this.ID ,idI:that.IDI });  // Navigate to Supervisor page
                     }
                 }.bind(this),
                 error: function () {
