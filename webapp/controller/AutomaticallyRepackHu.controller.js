@@ -11,14 +11,16 @@ sap.ui.define(
             oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
         },
         onResourceDetailsLoad: async function (oEvent1) {
-            const { id } = oEvent1.getParameter("arguments");
-            this.ID = id;
+          var that = this;
+          const { id, idI } = oEvent1.getParameter("arguments");
+          this.ID = id;
+          this.IDI = idI;
         },
         onPressARHUScanbackbtn: async function () {
             var oRouter = this.getOwnerComponent().getRouter();
     
             var oModel1 = this.getOwnerComponent().getModel();
-    
+            var that = this;
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
     
               success: function (oData) {
@@ -26,13 +28,13 @@ sap.ui.define(
                 let oUser=oData.Users.toLowerCase()
                 if (oUser === "resource") {
     
-                  oRouter.navTo("RouteResourcePage", { id: this.ID });
+                  oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
     
                 }
     
                 else {
     
-                  oRouter.navTo("Supervisor", { id: this.ID });
+                  oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                 }
     
               }.bind(this),

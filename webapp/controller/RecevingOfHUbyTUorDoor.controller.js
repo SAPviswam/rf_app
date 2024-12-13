@@ -16,11 +16,10 @@ sap.ui.define(
         
               },
               onResourceDetailsLoad: async function (oEvent1) {
-        
-                const { id } = oEvent1.getParameter("arguments");
-        
+                var that = this;
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
-        
+                this.IDI = idI;
               },
             onRowDoubleClick: function () {
                 debugger
@@ -35,7 +34,7 @@ sap.ui.define(
           //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
           onPressROHTU_DScanbackbtn: async function () {
             var oRouter = this.getOwnerComponent().getRouter();
-    
+            var that=this;
             var oModel1 = this.getOwnerComponent().getModel();
     
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
@@ -45,13 +44,13 @@ sap.ui.define(
                 let oUser=oData.Users.toLowerCase()
                 if (oUser === "resource") {
     
-                  oRouter.navTo("RouteResourcePage", { id: this.ID });
+                  oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
     
                 }
     
                 else {
     
-                  oRouter.navTo("Supervisor", { id: this.ID });
+                  oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                 }
     
               }.bind(this),
