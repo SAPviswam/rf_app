@@ -354,6 +354,7 @@
                                         <ComboBox
                                     id="idUsertypeCombobox"
                                     placeholder="Please Select a Usertype from Dropdown.. "
+                                    width="30rem"
                                 >
                                     <core:Item
                                         id="IDGenItem7"

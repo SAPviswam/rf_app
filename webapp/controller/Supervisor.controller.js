@@ -615,11 +615,10 @@ sap.ui.define(
 
                         that.sendSms(Empid, Name, phone, oPassword,);  
                         sap.m.MessageToast.show("Password updated successfully!");
-                        this.resetForm();
-                        // Navigate to the user menu after successful password update
-                        this.onRequestedData();
-                        this.onUserData();
-                        this.oApproveForm.close();
+                        //that.resetForm();
+                        that.onRequestedData();
+                        that.onUserData();
+                        that.oApproveForm.close();
 
                     }.bind(this),
                     error: function () {
@@ -695,9 +694,9 @@ sap.ui.define(
                         that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         // Navigate to the user menu after successful password update
-                        this.onRequestedData();
-                        this.onUserData();
-                        this.oApproveForm.close();
+                        that.onRequestedData();
+                        that.onUserData();
+                        that.oApproveForm.close();
                     }.bind(this),
                     error: function () {
                         sap.m.MessageToast.show("Error updating user login status.");
@@ -1020,8 +1019,8 @@ sap.ui.define(
                                 }
 
                                 // Add the two functions after the success
-                                this.onRequestedData();
-                                this.onUserData();
+                                that.onRequestedData();
+                                that.onUserData();
 
                                 // Set the current selected item as previous
                                 this._oPreviousSelectedItem = oSelectedItem;
@@ -1679,7 +1678,8 @@ sap.ui.define(
                 var sDay = ("0" + oDate.getDate()).slice(-2);
 
                 return `${sYear}-${sMonth}-${sDay}`;
-            }, resetForm: function () {
+            }, 
+            resetForm: function () {
                 // Reset input fields
                 this.byId("idEmppInput").setValue("");
                 this.byId("idNameInput").setValue("");
