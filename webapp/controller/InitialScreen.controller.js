@@ -903,17 +903,13 @@ sap.ui.define([
                 var oResourceId = this.getView().byId("idUserInput_CS").getValue();
                 var oPassword = this.getView().byId("idSPasswordInput_CS").getValue();
                 var that = this;
-                var that = this;
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.read("/RESOURCESSet('" + oResourceId + "')", {
                     success: function (oData) {
                         if (oData.Password === oPassword) {
-                            this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId, idI: that.Userid }, true)
-                            document.removeEventListener("keydown", this._handleKeyDownBound);
                             if (oData.Loginfirst) {
                                 // Open the password change dialog
                                 this.onChangePasswordBtn(oResourceId);
-                            }
                             }
                             else {
                                 this.getOwnerComponent().getRouter().navTo("Homepage", { id: oResourceId, idI: that.Userid }, true)
@@ -993,7 +989,6 @@ sap.ui.define([
                         if (oData.Password === sCurrentPassword) {
                             oModel.update(`/RESOURCESSet('${sResourceId}')`, {
                                 Password: sNewPassword,
-                                Loginfirst: false // Use an object to set the new password
                                 Loginfirst: false // Use an object to set the new password
                             }, {
                                 success: function () {
