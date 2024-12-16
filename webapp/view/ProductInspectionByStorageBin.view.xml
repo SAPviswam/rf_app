@@ -18,8 +18,13 @@
                 <Image
                     id="_IDGenImage1PIBSB"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin .Logo"
-                    src="./Images/Artihcuslogo.png"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <Title
+                    id="idTitle_PIBSBView"
+                    class="title"
+                    text="CAPmodel RF"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorPIBSB"
@@ -50,13 +55,6 @@
                 width="100%"
                 class="sapUiContentPadding"
             >
-                <Button
-                    id="_IDGenbackButtonPIBSB1"
-                    icon="sap-icon://nav-back"
-                    press="OnpressbackPIBSB1"
-                    visible="true"
-                    class="sapUiSmallMarginBottom"
-                />
                 <VBox
                     id="_IDGenVBoxpagePIBSB1"
                     alignItems="Center"
@@ -95,11 +93,24 @@
                                 class="sapUiTinyMarginBegin"
                                 maxLength="4"
                             />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            class="sapUiTinyMargin"
+                            justifyContent="Center"
+                        >
                             <Button
                                 id="_IDGenPIBSBsubmitButton"
                                 text="Submit"
                                 press="OnpressPIBSBsubmit"
-                                class="sapUiSmallMarginBegin"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
+                            />
+                            <Button
+                                id="_IDGenbackButtonPIBSB1"
+                                text="Back"
+                                press="OnpressbackPIBSB1"
                                 type="Emphasized"
                             />
                         </HBox>
@@ -147,11 +158,11 @@
                             text="HU/Bin"
                             class="sapUiTinyMarginEnd"
                         />
-                            <Input
-                                id="_IDGenPIBSBhubininput"
-                                maxLength="255"
-                                width="200px"
-                            />
+                        <Input
+                            id="_IDGenPIBSBhubininput"
+                            maxLength="255"
+                            width="200px"
+                        />
 
                         <Label
                             id="_IDPIBSBProductGenLabel"

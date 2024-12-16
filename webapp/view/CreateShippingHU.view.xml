@@ -18,8 +18,13 @@
                 <Image
                     id="_IDGenImage1CSHU"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin .Logo"
-                    src="./Images/Artihcuslogo.png"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <Title
+                    id="idTitle_CSHUView"
+                    class="title"
+                    text="CAPmodel RF"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorCSHU"
@@ -50,13 +55,6 @@
                 width="100%"
                 class="sapUiContentPadding"
             >
-                <Button
-                    id="_IDGenbackButtonCSHU1"
-                    icon="sap-icon://nav-back"
-                    press="OnpressbackCSHU1"
-                    visible="true"
-                    class="sapUiSmallMarginBottom"
-                />
                 <VBox
                     id="_IDGenVBoxpageCSHU1"
                     alignItems="Center"
@@ -97,19 +95,32 @@
                                 maxLength="4"
                                 width="100px"
                             />
+                        </HBox>
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            class="sapUiTinyMargin"
+                            justifyContent="Center"
+                        >
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeCSHU"
                                 scanSuccess="onScanSuccessOne"
                                 scanFail="onScanErrorOne"
                                 inputLiveUpdate="onScanLiveUpdate"
                                 dialogTitle="Enter BOL Number"
-                                class="sapUiTinyMarginBegin"
+                                class="sapUiTinyMarginEnd"
                             />
                             <Button
                                 id="_IDGenCSHUsubmitButton"
                                 text="Submit"
                                 press="OnpressCSHUsubmit"
-                                class="sapUiSmallMarginBegin"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
+                            />
+                            <Button
+                                id="_IDGenbackButtonCSHU1"
+                                text="Back"
+                                press="OnpressbackCSHU1"
                                 type="Emphasized"
                             />
                         </HBox>
@@ -255,12 +266,12 @@
                             text="Dest.HU"
                             class="sapUiTinyMarginEnd"
                         />
-                            <Input
-                                id="_IDGenDESTHUInput1"
-                                maxLength="255"
-                                width="200px"
-                                editable="false"
-                            />
+                        <Input
+                            id="_IDGenDESTHUInput1"
+                            maxLength="255"
+                            width="200px"
+                            editable="false"
+                        />
 
                         <Label
                             id="_IDPackmatGenLabel1"
@@ -293,14 +304,14 @@
                             maxLength="10"
                             width="200px"
                         />
-                        <VBox alignItems="Center" >
-                        <Button
-                            id="_IDonsaveCSHU"
-                            text="Save"
-                            type="Emphasized"
-                            press="onSavePress"
-                            class="sapUiTinyMargin"
-                        />
+                        <VBox alignItems="Center">
+                            <Button
+                                id="_IDonsaveCSHU"
+                                text="Save"
+                                type="Emphasized"
+                                press="onSavePress"
+                                class="sapUiTinyMargin"
+                            />
                         </VBox>
                     </form:SimpleForm>
                 </VBox>

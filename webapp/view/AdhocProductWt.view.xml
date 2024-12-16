@@ -14,18 +14,6 @@
     <tnt:ToolPage id="idToolPageAdhocProductwt">
         <tnt:header>
             <tnt:ToolHeader id="idtntToolHeaderAdhocProductwt">
-                <Button
-                    id="idBackButtoninAdhocProductWtScan"
-                    icon="sap-icon://nav-back"
-                    press="onPressBackButtoninAdhocProductWtProductScan"
-                    visible="false"
-                />
-                <Button
-                    id="idBackButtoninAdhocProductWtProductDetails"
-                    icon="sap-icon://nav-back"
-                    press="onPressBackButtoninAdhocProductWtProductDetails"
-                    visible="false"
-                />
                 <Image
                     id="_IDGenImage1AdhocProductwt"
                     height="1.5rem"
@@ -47,7 +35,7 @@
                 <Avatar
                     id="_IDGenAvatar1AdhocProductwt"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onAvatarPressedIn_APWT"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -110,7 +98,7 @@
                             <Button
                                 id="Id_Button1_AdhocProductWt"
                                 text="{i18n>Back_Button_AdhocProductWt}"
-                                press="onAdhocProductWtBackBtnPress"
+                                press="onAdhocProductWtBackBtn1Press"
                                 visible="true"
                                 type="Emphasized"
                                 class="sapUiSmallMarginBegin"
@@ -126,108 +114,427 @@
                 </VBox>
             </ScrollContainer>
             <ScrollContainer
-                id="idProductDetails"
+                id="Id_Scrollcontainer_Screen2"
                 horizontal="false"
                 vertical="true"
                 height="100%"
                 class="sapUiContentPadding"
                 visible="false"
             >
-                <!-- Vertical Box Layout for Content Alignment -->
-                <VBox class="sapUiSmallMargin">
-                    <!-- Horizontal Box for HU Number Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
+                <VBox
+                    id="idSecScVbox1_AdhocProductWt"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform2_AdhocProductWt"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="1"
+                        columnsM="1"
                     >
-                        <Label
-                            id="idAdhocProductScanLabel"
-                            text="Product"
-                            labelFor="idHuNumberInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductNumberInput"
-                            placeholder="Enter Product..."
-                            maxLength="30"
-                            width="250px"
-                            editable="false"
-                        />
-                    </HBox>
+                        <VBox
+                            id="idSecScVbox2_AdhocProductWt"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox id="idSecSCHbox1_AdhocProductWt">
+                                <Text
+                                    id="Id_Text_Product_AdhocProductWt"
+                                    text="Product"
+                                    width="70px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="id_Input_Product_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox2_AdhocProductWt">
+                                <Text
+                                    id="id_Text_SrcBin_AdhocProductWt"
+                                    text="Src Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_SrcBin_AdhocProductWt"
+                                    value=""
+                                    liveChange="onBinSrcLiveChange"
+                                />
+                            </HBox>
+                            <HBox id="idSecScHBOX3_AdhocProductWt">
+                                <Text
+                                    id="id_Text_DestBin_AdhocProductWt"
+                                    text="Dest Bin"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_DestBin_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox4_AdhocProductWt">
+                                <Text
+                                    id="id_Text_DestHu_AdhocProductWt"
+                                    text="Dest Hu"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_DestHu_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox5_AdhocProductWt">
+                                <Text
+                                    id="id_Text_Wpt_AdhocProductWt"
+                                    text="WPT"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_Wpt_AdhocProductWt"
+                                    value=""
+                                />
+                            </HBox>
+                            <HBox id="idSecSCHbox6_AdhocProductWt">
+                                <Button
+                                    id="idSecondBackBtn_AdhocProductWt"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                    press="onSecondBackBtnPress_AdhocProductWt"
+                                />
+                                <Button
+                                    id="idProdDetailsBtn_AdhocProductWt"
+                                    class="sapUiTinyMarginTop"
+                                    text="Prod Details"
+                                    width="auto"
+                                    press="onHuDetailsPress_AdhocProductWt"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
+                </VBox>
+            </ScrollContainer>
+            <ScrollContainer
+                id="Id_Scrollcontainer_ProductDet_AdhocProductWt"
+                width="100%"
+                height="100%"
+                horizontal="true"
+                class="sapUiContentPadding"
+                vertical="true"
+                visible="false"
+            >
+                <VBox
+                    id="idProductPage2_AdhocProductWt"
+                    justifyContent="Center"
+                    alignItems="Center"
+                >
+                    <form:SimpleForm
+                        id="idSimpleform4_AdhocProductWt"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="Id_Vbox1_AdhocProductWt"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <HBox
+                                id="idProductHBox1_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idProductLabel_AdhocProductWt"
+                                    text="Product:"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idProductInput_AdhocProductWt"
+                                    value=""
+                                    width="150px"
+                                    editable="false"
+                                />
+                            </HBox>
 
-                    <!-- Horizontal Box for SRC Bin Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Label
-                            id="idAdhocProductSRCBinLabel"
-                            text="SRC Bin"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductSRCBinInput"
-                            placeholder="Enter SRC Bin..."
-                            maxLength="25"
-                            width="250px"
-                            editable="false"
-                        />
-                    </HBox>
+                            <HBox
+                                id="idProTextHBox_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idProTextLabel_AdhocProductWt"
+                                    text="ProText:"
+                                    width="70px"
+                                />
 
-                    <!-- Horizontal Box for Destination Bin Field -->
-                    <HBox
-                        alignItems="Center"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Label
-                            id="idAdhocProductDestBinLabel"
-                            text="Destination Bin"
-                            labelFor="idDestBinInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductDestBinInput"
-                            placeholder="Enter Dest Bin..."
-                            maxLength="25"
-                            width="250px"
-                        />
-                    </HBox>
+                                <Input
+                                    id="idProTextInput_AdhocProductWt"
+                                    width="190px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idPtyEntlSpacer5_AdhocProductWt"
+                                    width="10px"
+                                />
+                                <Text
+                                    id="idStatusLabel_AdhocProductWt"
+                                    text="StUs:"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idStatusInput_AdhocProductWt"
+                                    value=""
+                                    width="40px"
+                                    editable="false"
+                                />
+                            </HBox>
 
-                    <!-- Horizontal Box for Destination HU Field -->
-                    <HBox
-                        alignItems="Start"
-                        class="sapUiSmallMarginBottom sapUiSmallMarginLeft "
-                    >
-                        <Label
-                            id="idAdhocProductDestHuLabel"
-                            text="Destination HU"
-                            labelFor="idDestHuInput"
-                            class="sapUiTinyMarginEnd"
-                            width="100px"
-                        />
-                        <Input
-                            id="idAdhocProductDestHuInput"
-                            placeholder="Enter Dest HU..."
-                            maxLength="25"
-                            width="250px"
-                        />
-                    </HBox>
+                            <HBox
+                                id="idBatchHBox_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idBatchLabel_AdhocProductWt"
+                                    text="Batch:"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idBatchInput1_AdhocProductWt"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idBatchSpacer1_AdhocProductWt"
+                                    width="10px"
+                                />
+                                <Input
+                                    id="idBatchInput2_AdhocProductWt"
+                                    value=""
+                                    width="40px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idBatchSpacer2_AdhocProductWt"
+                                    width="20px"
+                                />
+                                <Text
+                                    id="idBatchSTypeLabel_AdhocProductWt"
+                                    text="STyp:"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idBatchSTypeInput_AdhocProductWt"
+                                    value=""
+                                    width="20px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idBatchSpacer3_AdhocProductWt"
+                                    width="20px"
+                                />
+                                <Text
+                                    id="idBatchCRLabel_AdhocProductWt"
+                                    text="C/R:"
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idBatchCRInput_AdhocProductWt"
+                                    value=""
+                                    width="80px"
+                                    editable="false"
+                                />
+                            </HBox>
 
-                    <!-- HU Content Button aligned to the left -->
-                    <HBox
-                        justifyContent="Start"
-                        class="sapUiSmallMarginBottom"
-                    >
-                        <Button
-                            id="idAdhocProductHuContentButton"
-                            text="HU Content"
-                            press="onHUContentPress"
-                            class="sapUiTinyMarginEnd"
-                        />
-                    </HBox>
+                            <HBox
+                                id="idHBoxRow4_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idEmptyLabel_AdhocProductWt"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idRow4Input1_AdhocProductWt"
+                                    width="60px"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idRow4Spacer1_AdhocProductWt"
+                                    width="10px"
+                                />
+                                <Input
+                                    id="idRow4Input2_AdhocProductWt"
+                                    width="250px"
+                                    value=""
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idRow4Spacer2_AdhocProductWt"
+                                    width="10px"
+                                />
+                                <Input
+                                    id="idRow4Input3_AdhocProductWt"
+                                    width="20px"
+                                    value=""
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idPtyEntlHBox_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idPtyEntlLabel_AdhocProductWt"
+                                    text="PtyEntl:"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idPtyEntlInput_AdhocProductWt"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idPtyEntlSpacer_AdhocProductWt"
+                                    width="20px"
+                                />
+                                <Text
+                                    id="idOwnerLabel_AdhocProductWt"
+                                    text="Owner:"
+                                    width="60px"
+                                />
+                                <Input
+                                    id="idOwnerInput_AdhocProductWt"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idSLEDBBDHBox_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idSLEDBBDLabel_AdhocProductWt"
+                                    text="SLED/BBD:"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idSLEDBBDInput_AdhocProductWt"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idPtyEntlSpacer1_AdhocProductWt"
+                                    width="20px"
+                                />
+
+                                <Text
+                                    id="idGRDateLabel_AdhocProductWt"
+                                    text="GR Date:"
+                                    width="60px"
+                                />
+                                <Input
+                                    id="idGRDateInput_AdhocProductWt"
+                                    value=""
+                                    width="100px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idHazSubsHBox_AdhocProductWt"
+                                alignContent="Center"
+                                alignItems="Center"
+                                justifyContent="Start"
+                                width="100%"
+                            >
+                                <Text
+                                    id="idHazSubsLabel_AdhocProductWt"
+                                    text="Haz.Subs:"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idHazSubsInput_AdhocProductWt"
+                                    width="60px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idPtyEntlSpacer2_AdhocProductWt"
+                                    width="10px"
+                                />
+                                <Text
+                                    id="idWhseHandLabel_AdhocProductWt"
+                                    text="WhseHand:"
+                                    width="75px"
+                                />
+                                <Input
+                                    id="idWhseHandInput_AdhocProductWt"
+                                    width="60px"
+                                    editable="false"
+                                />
+                                <Label
+                                    id="idPtyEntlSpacer4_AdhocProductWt"
+                                    width="20px"
+                                />
+                                <Text
+                                    id="idERelLabel_AdhocProductWt"
+                                    text="ERel:"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idERelInput_AdhocProductWt"
+                                    value=""
+                                    width="40px"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox id="idBackButtonHBox_AdhocProductWt">
+                                <Button
+                                    id="idProductThirdBackBtn_AdhocProductWt"
+                                    text="Back"
+                                    press="onAdhocProductWtBackBtnPress"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                        </VBox>
+                    </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
         </tnt:mainContents>

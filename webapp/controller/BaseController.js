@@ -12,6 +12,20 @@ sap.ui.define([
         onInit: function () {
 
         },
+        debounceCall: function (mainFunction, delay) {
+            let timer;
+            return  function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(async () => {
+                    try {
+                        mainFunction(...args); // Await the main function
+                    } catch (error) {
+                        console.error("Debounced function error:", error);
+                    }
+                }, delay);
+            };
+        },        
+
         applyStoredProfileImage: async function () {
             var oView = this.getView();
             const userId = this.ID; // Assuming this.ID holds the user ID
@@ -192,7 +206,7 @@ sap.ui.define([
         onPressAccountDetails: async function () {
             const oModel1 = this.getOwnerComponent().getModel();
             const userId = this.ID;
-        
+
             try {
                 sap.ui.core.BusyIndicator.show(0); // 0ms delay for instant appearance
                 await new Promise((resolve, reject) => {
@@ -209,12 +223,12 @@ sap.ui.define([
                         }
                     });
                 });
-        
+
                 if (!this.UserDetailsFragment) {
                     this.UserDetailsFragment = await this.loadFragment("UserDetails");
                 }
                 this.UserDetailsFragment.open();
-        
+
                 // Profile image updating (from BaseController)...
                 this.applyStoredProfileImage();
             } catch (error) {
