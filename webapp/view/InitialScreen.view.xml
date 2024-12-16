@@ -48,6 +48,7 @@
                     id="idBtnSignout"
                     icon="sap-icon://log"
                     press="onSignoutPress"
+                    width="1rem"
                 />
             </tnt:ToolHeader>
         </tnt:header>
