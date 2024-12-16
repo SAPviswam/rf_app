@@ -133,7 +133,7 @@
                 <Avatar
                     id="_IDGenAvatar_supervisor"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressBtnAvatar_SupervisorPage"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>

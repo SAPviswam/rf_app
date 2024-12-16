@@ -44,6 +44,7 @@
                         <Link
                             id="idUserDeatilsPhoneLink"
                             text="{profile>/Number}"
+                            class="UserNameBold"
                         />
                     </VBox>
                 </HBox>

@@ -1,0 +1,92 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="idProfileDetailsPopover_InitialPage"
+        placement="Bottom"
+        verticalScrolling="false"
+        horizontalScrolling="false"
+        class="sapUiResponsivePadding sapMPopover sapMIBar sapMHeader-CTX"
+        contentMinWidth="auto"
+        title="Profile:"
+    >
+        <form:SimpleForm
+            id="idSipleform_InitialPage"
+            backgroundDesign="Solid"
+        >
+            <VBox id="idVBoxProfileDeatils_InitialPage">
+                <HBox
+                    id="idHBoxProfilePopover_InitialPage"
+                    alignItems="Start"
+                >
+                    <Avatar
+                        id="idProfilePicPopover_InitialPage"
+                        displaySize="S"
+                        press="onPressPopoverHoverEffectAvatar_InitialPage"
+                        class="profileAvatar1234"
+                    />
+                    <Label
+                        id="idEmptyLabel_InitialPage"
+                        width="1rem"
+                    />
+                    <VBox
+                        id="IdVBoxPopover_InitialPage"
+                        alignItems="Start"
+                        class="NamePhoneClass"
+                    >
+                        <Text
+                            id="idUsernamePopover_InitialPage"
+                            text="{initialProfile>/Name}"
+                            class="UserNameBold"
+                        />
+                        <Link
+                            id="idUserPhone_InitialPage"
+                            text="{initialProfile>/Number}"
+                            class="UserNameBold"
+                        />
+                    </VBox>
+                </HBox>
+                <VBox
+                    id="idVBoxProfileOptions_InitialPage"
+                    alignItems="Start"
+                    class="onProfileOptions"
+                >
+                    <Button
+                        id="idBtnAccountDetails_InitialPage"
+                        icon="sap-icon://person-placeholder"
+                        text="Account Details"
+                        type="Transparent"
+                        press="onPressAccountDetails_Initial"
+                        width="auto"
+                    />
+                    <Button
+                        id="idBtnCreateResource_InitialPage"
+                        icon="sap-icon://add-employee"
+                        text="Create Resource"
+                        type="Transparent"
+                        press="onPressCreateResource_InitialPage"
+                        width="auto"
+                    />
+                    <!-- <Button
+                        id="idBTnHelp_InitialPage"
+                        icon="sap-icon://sys-help"
+                        text="Help"
+                        type="Transparent"
+                        press="onChatbotButtonPress_Initial"
+                        width="auto"
+                    /> -->
+                    <Button
+                        id="idBtnLogout_InitialPage"
+                        icon="sap-icon://log"
+                        text="Sign Out"
+                        type="Transparent"
+                        press="onSignoutPressed_Initial"
+                        width="auto"
+                    />
+                </VBox>
+            </VBox>
+        </form:SimpleForm>
+    </Popover>
+</core:FragmentDefinition>

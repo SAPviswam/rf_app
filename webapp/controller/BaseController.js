@@ -14,7 +14,7 @@ sap.ui.define([
         },
         debounceCall: function (mainFunction, delay) {
             let timer;
-            return  function (...args) {
+            return function (...args) {
                 clearTimeout(timer);
                 timer = setTimeout(async () => {
                     try {
@@ -24,8 +24,8 @@ sap.ui.define([
                     }
                 }, delay);
             };
-        },        
-
+        },
+        //Applying the saved prfile picture to frontand avatars from the backend table with based on user id...
         applyStoredProfileImage: async function () {
             var oView = this.getView();
             const userId = this.ID; // Assuming this.ID holds the user ID
@@ -165,7 +165,9 @@ sap.ui.define([
 
             oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
-                    if (oData.Users.toLowerCase() === "resource") {
+                    var isSupervisor = oData.Users.toLowerCase() === "supervisor";
+                    var isResource = oData.Users.toLowerCase() === "resource";
+                    if (isSupervisor || isResource) {
                         // Prepare the profile data
                         var oProfileData = {
                             Name: oData.Resourcename,
