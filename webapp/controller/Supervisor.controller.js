@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        //"sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/Device",
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast",
@@ -58,31 +59,30 @@ sap.ui.define(
 
             },
 
-
             onSupervisorDetailsLoad: async function (oEvent1) {
                 const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.applyStoredProfileImage();
             },
-            onTilePress: function (oEvent) {
-                var oPressedControl = oEvent.getSource(); // Source of the press
-                // If the pressed control is the button inside the tile
-                if (oPressedControl instanceof sap.m.Button) {
-                    oEvent.stopPropagation();
-                    ;
-                } else {
-                    // If the press is on the tile itself, handle navigation
-                    this.onTilePressPutawayByWO(oEvent);
+            //Avatar Press function in SupervisorPage...
+            onPressBtnAvatar_SupervisorPage: function(oEvent){
+                var oComponent = this.getOwnerComponent();
+                // Destroy the existing popover if it exists
+                if (oComponent.getPopover()) {
+                    oComponent.getPopover().destroy();
+                    oComponent.setPopover(null);
                 }
+                this.onPressAvatarPopOverBaseFunction(oEvent, {
+                    showAccountDetails: true,
+                    showSignOut: true
+                });
+                this.applyStoredProfileImage();
             },
-            // Palette button press logic (this is triggered when the button is pressed)
-            onPaletteIconPress: function (oEvent) {
-                // Open the theme dialog box
-                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-                this.byId("themeTileDialog").open();
-                oEvent.stopPropagation();
-            },
-            onAfterRendering: function () {
+            
 
+
+
+            onAfterRendering: function () {
                 // Apply stored theme color immediately
                 var sStoredThemeColor = localStorage.getItem("themeColor");
                 if (sStoredThemeColor) {

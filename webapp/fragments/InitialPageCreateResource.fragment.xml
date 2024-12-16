@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified"
+    xmlns:vk="sap.ui.vk"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+>
+    <Dialog
+        id="idCreateResource_InitialPage"
+        title="Create Resorce:"
+        class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
+        contentWidth="25%"
+        contentHeight="auto"
+    >
+        <customHeader>
+            <Bar id="BarCreateResource_InitialPage">
+                <contentLeft>
+                    <Title
+                        id="idPersonTileCreateResource_InitialPage"
+                        text="Create Resource:"
+                    />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="iddeclineBtnCreateResource_InitialPage"
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        press="onPressDeclineCreateResource_InitialPage"
+                        tooltip="Close"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <Text
+            text="{i18n>resourcetype}:"
+            textAlign="Initial"
+            class="textbold sapUiSmallMarginTop"
+        />
+        <HBox>
+            <RadioButton text="Internal" />
+            <Label width="1.8rem" />
+            <RadioButton text="External" />
+            <Label width="1.8rem" />
+            <RadioButton text="Others" />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

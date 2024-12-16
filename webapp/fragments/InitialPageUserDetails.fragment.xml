@@ -112,7 +112,7 @@
                             class="profileDetailItem"
                         />
                         <Text
-                            id="idInpuTextUsrIDUserDetails_InitialPage"
+                            id="idInpuTextUserIDUserDetails_InitialPage"
                             text="{oUserModel_Initial>/Userid}"
                             class="profileDetailItem"
                         />
@@ -128,7 +128,7 @@
                             class="profileDetailItem"
                         />
                         <Text
-                            id="idInputTextResourceFirstame_InitialPage"
+                            id="idInputTextResourceFirstname_InitialPage"
                             text="{oUserModel_Initial>/Firstname}"
                             class="profileDetailItem"
                         />
@@ -137,7 +137,7 @@
                             width="0.3rem"
                         />
                         <Text
-                            id="idInputTextResourceFLastname_InitialPage"
+                            id="idInputTextResourceLastname_InitialPage"
                             text="{oUserModel_Initial>/Lastname}"
                             class="profileDetailItem"
                         />
@@ -169,7 +169,7 @@
                             class="profileDetailItem"
                         />
                         <Text
-                            id="idInputUserphone_InitialPage"
+                            id="idInputTextUserPhonenumber_InitialPage"
                             text="{oUserModel_Initial>/Phonenumber}"
                             class="profileDetailItem"
                         />
@@ -190,7 +190,7 @@
                             class="profileDetailItem"
                         />
                         <Text
-                            id="idInputEmailUserDetails_InitialPage"
+                            id="idInputTextUserEmail_InitialPage"
                             text="{oUserModel_Initial>/Email}"
                             class="profileDetailItem"
                         />
