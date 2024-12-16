@@ -20,6 +20,11 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
+                <Title
+                    id="idTitle_AdhocProductwt"
+                    class="title"
+                    text="{i18n>idTitle_WTQuerybyQueue}"
+                />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorAdhocProductwt"
                 />

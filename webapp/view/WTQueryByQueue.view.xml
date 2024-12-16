@@ -94,12 +94,6 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <ndc:BarcodeScannerButton
-                                id="IDBinGenScanButton_WTQuerybyQueue"
-                                scanSuccess="onScanSuccessQueue"
-                                scanFail="onScanError"
-                                dialogTitle="{i18n>idBinGenScanButton_WTQuerybyQueue}"
-                            />
                             <Button
                                 id="idWtQBQueuefirstbackbtn"
                                 text="{i18n>Back_Button_WTQuerybyQueue}"
