@@ -41,15 +41,15 @@ sap.ui.define(
                 this.Themecall = false;
 
                 if (Device.system.desktop) {
-                    this.byId("idRequestedData").setWidth("1400px");
+                    this.byId("idRequestedData").setWidth("150%");
                     this.byId("idUserDataTable").setWidth("2200px");
 
                 } else if (Device.system.tablet) {
-                    this.byId("idRequestedData").setWidth("3500px"); // Adjust width for tablets
+                    this.byId("idRequestedData").setWidth("200%"); // Adjust width for tablets
                     this.byId("idUserDataTable").setWidth("2200px");
                 }
                 else if (Device.system.phone) {
-                    this.byId("idRequestedData").setWidth("600px");
+                    this.byId("idRequestedData").setWidth("400%");
                     this.byId("idUserDataTable").setWidth("3500px");
                 }
 
