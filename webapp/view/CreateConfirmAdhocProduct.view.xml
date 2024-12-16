@@ -76,7 +76,7 @@
                         >
                             <Title
                                 id="idTitle_CCAP"
-                                text="Create and Confirm Adhoc Product"
+                                text="{i18n>CreateandConfirmAdhocProduct_title_CCAP}"
                             />
                             <VBox
                                 id="idVbox2_CCAP"
@@ -88,7 +88,7 @@
                             >
                                 <Label
                                     id="idProductLabel"
-                                    text="Product:"
+                                    text="{i18n>Product_CCAP}"
                                     width="70px"
                                     class="sapUiTinyMargin"
                                 />
@@ -109,7 +109,7 @@
                                 />
                                 <Button
                                     id="idInitialAdhocProductbackbtn"
-                                    text="Back"
+                                   text="{i18n>Back_Button_CCAP}"
                                     press="onInitialAdhocProductBackBtnPress"
                                     class="sapUiTinyMarginEnd"
                                     type="Emphasized"
@@ -117,7 +117,7 @@
 
                                 <Button
                                     id="idSubmitAdhocProductbtn"
-                                    text="Submit"
+                              text="{i18n>Submit_Button_CCAP}"
                                     press="onSubmitAdhocProductBtnPress"
                                     type="Emphasized"
                                 />
@@ -161,7 +161,7 @@
                             >
                                 <Label
                                     id="idProductLabel1"
-                                    text="Product"
+                                      text="{i18n>Product_CCAP}"
                                     width="100px"
                                     class="sapUiTinyMargin"
                                 />
@@ -177,7 +177,7 @@
                             >
                                 <Label
                                     id="idProductSrcBinLabel1"
-                                    text="Src Bin"
+                                    text="{i18n>Src_Bin_Label_CCAP}"
                                     width="100px"
                                     class="sapUiTinyMargin"
                                 />
@@ -187,31 +187,21 @@
                                     liveChange="onProductSrcLiveChange"
                                 />
                             </HBox>
-                            <VBox
-                                id="idVbox_CCAD2"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <HBox
-                                    id="buttonhbox_CCAP"
-                                    alignContent="Center"
-                                    alignItems="Center"
-                                >
-                                    <Button
-                                        id="idProductSrcScannerBtn"
-                                        icon="sap-icon://bar-code"
-                                        press="onSrcBarcodeScanner"
-                                        class="sapUiTinyMarginEnd"
-                                        type="Emphasized"
-                                    />
-                                    <Button
-                                        id="idProductfirstbackbtn"
-                                        text="Back"
-                                        press="onProductfirstBackBtnPress"
-                                        type="Emphasized"
-                                    />
-                                </HBox>
-                            </VBox>
+                            <HBox id="buttonhbox_CCAP">
+                                <Button
+                                    id="idProductSrcScannerBtn"
+                                    icon="sap-icon://bar-code"
+                                    press="onSrcBarcodeScanner"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idProductfirstbackbtn"
+                                  text="{i18n>Back_Button_CCAP}"
+                                    press="onProductfirstBackBtnPress"
+                                    type="Emphasized"
+                                />
+                            </HBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -249,7 +239,7 @@
                             >
                                 <Label
                                     id="idProductLabel2"
-                                    text="Product"
+                                    text="{i18n>Product_CCAP}"
                                     width="100px"
                                 />
                                 <Input
@@ -264,7 +254,7 @@
                             >
                                 <Label
                                     id="idProductSrcBinLabel2"
-                                    text="Src Bin"
+                                     text="{i18n>Src_Bin_Label_CCAP}"
                                     width="100px"
                                 />
                                 <Input
@@ -279,7 +269,7 @@
                             >
                                 <Label
                                     id="idProductAvlQtyLabel2"
-                                    text="Avl Qty"
+                                  text="{i18n>Avl_Qty_Label_CCAP}"
                                     width="100px"
                                 />
                                 <Input
@@ -294,7 +284,7 @@
                             >
                                 <Label
                                     id="idProductSourceQtyLabel2"
-                                    text="Source Qty"
+                                     text="{i18n>Source_Qty_Label_CCAP}"
                                     width="100px"
                                 />
                                 <Input
@@ -309,7 +299,7 @@
                             >
                                 <Label
                                     id="idProductDestBinLabel2"
-                                    text="Dest Bin"
+                                  text="{i18n>Dest_Bin_Label_CCAP}"
                                     width="100px"
                                 />
                                 <Input
@@ -317,31 +307,21 @@
                                     value=""
                                 />
                             </HBox>
-                            <VBox
-                                id="idVbox_CCAP1"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <HBox
-                                    id="Hboxid_ccap"
-                                    alignContent="Center"
-                                    alignItems="Center"
-                                >
-                                    <Button
-                                        id="idProdutDetailsbtn"
-                                        text="Product Details"
-                                        press="onProductdetailsBtnPress"
-                                        class="sapUiTinyMarginEnd"
-                                        type="Emphasized"
-                                    />
-                                    <Button
-                                        id="idProdutSecondbackbtn"
-                                        text="Back"
-                                        press="onProductSecondBackBtnPress"
-                                        type="Emphasized"
-                                    />
-                                </HBox>
-                            </VBox>
+                            <HBox id="Hboxid_ccap">
+                                <Button
+                                    id="idProdutDetailsbtn"
+                                    text="{i18n>Product_Details_Button_CCAP}"
+                                    press="onProductdetailsBtnPress"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idProdutSecondbackbtn"
+                                   text="{i18n>Back_Button_CCAP}"
+                                    press="onProductSecondBackBtnPress"
+                                    type="Emphasized"
+                                />
+                            </HBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -378,7 +358,7 @@
                             >
                                 <Label
                                     id="idProductLabel_CCAP"
-                                    text="Product:"
+                                    text="{i18n>Product_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -396,7 +376,7 @@
                             >
                                 <Label
                                     id="idProTextLabel_CCAP"
-                                    text="ProText:"
+                                    text="{i18n>ProText_Label_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -411,7 +391,7 @@
                                 />
                                 <Label
                                     id="idStatusLabel_CCAP"
-                                    text="StUs:"
+                                    text="{i18n>StUs_Label_CCAP}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -431,7 +411,7 @@
                             >
                                 <Label
                                     id="idBatchLabel_CCAP"
-                                    text="Batch:"
+                                    text="{i18n>Batch_Label_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -456,7 +436,7 @@
                                 />
                                 <Label
                                     id="idBatchSTypeLabel_CCAP"
-                                    text="STyp:"
+                                     text="{i18n>STyp_Label_CCAP}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -472,7 +452,7 @@
                                 />
                                 <Label
                                     id="idBatchCRLabel_CCAP"
-                                    text="C/R:"
+                                    text="{i18n>C/R_Label_CCAP}"
                                     width="30px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -524,7 +504,7 @@
                             >
                                 <Label
                                     id="idPtyEntlLabel_CCAP"
-                                    text="PtyEntl:"
+                                   text="{i18n>PtyEntl_Label_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -539,7 +519,7 @@
                                 />
                                 <Label
                                     id="idOwnerLabel_CCAP"
-                                    text="Owner:"
+                                  text="{i18n>Owner_Label_CCAP}"
                                     width="60px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -558,7 +538,7 @@
                             >
                                 <Label
                                     id="idSLEDBBDLabel_CCAP"
-                                    text="SLED/BBD:"
+                                     text="{i18n>SLED/BBD_Label_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -574,7 +554,7 @@
 
                                 <Label
                                     id="idGRDateLabel_CCAP"
-                                    text="GR Date:"
+                               text="{i18n>GR_Date_Label_CCAP}"
                                     width="60px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -593,7 +573,7 @@
                             >
                                 <Label
                                     id="idHazSubsLabel_CCAP"
-                                    text="Haz.Subs:"
+                                     text="{i18n>Haz_Subs_Label_CCAP}"
                                     width="70px"
                                 />
                                 <Input
@@ -607,7 +587,7 @@
                                 />
                                 <Label
                                     id="idWhseHandLabel_CCAP"
-                                    text="WhseHand:"
+                                     text="{i18n>WhseHand_Label_CCAP}"
                                     width="75px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -622,7 +602,7 @@
                                 />
                                 <Label
                                     id="idERelLabel_CCAP"
-                                    text="ERel:"
+                                 text="{i18n>ERel_Label_CCAP}"
                                     width="40px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -634,20 +614,14 @@
                                 />
                             </HBox>
 
-                            <VBox
-                                id="idVbox_CCAP"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <HBox id="idBackButtonHBox_CCAP">
-                                    <Button
-                                        id="idProductThirdBackBtn_CCAP"
-                                        text="Back"
-                                        press="onProductthirdBackBtnPress"
-                                        type="Emphasized"
-                                    />
-                                </HBox>
-                            </VBox>
+                            <HBox id="idBackButtonHBox_CCAP">
+                                <Button
+                                    id="idProductThirdBackBtn_CCAP"
+                                     text="{i18n>Back_Button_CCAP}"
+                                    press="onProductthirdBackBtnPress"
+                                    type="Emphasized"
+                                />
+                            </HBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>

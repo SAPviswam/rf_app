@@ -1,25 +1,29 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController"
 ],
     function (Controller) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ReceivingofHUbyShipment", {
             onInit: function () {
-
                 const oTable = this.getView().byId("idRHBSshipmennumbertable");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
                 const oRouter = this.getOwnerComponent().getRouter();
-
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-
             },
-            onResourceDetailsLoad: async function (oEvent1) {
-
-                const { id } = oEvent1.getParameter("arguments");
-
+            onResourceDetailsLoad: function (oEvent1) {
+                var that = this;
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
-
+                this.IDI = idI;
+                console.log(this.ID);
+            },
+            onAvatarPressed: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInput").getValue() == "800020") {
@@ -39,8 +43,6 @@ sap.ui.define([
                 this.getView().byId("idRHBSscrollContainer2").setVisible(false);
                 this.getView().byId("idRHBSscrollContainer1").setVisible(true);
                 this.getView().byId("IDRHBS_MainbackButton1").setVisible(true);
-
-
             },
             onRowDoubleClick: function () {
                 var oSelected = this.byId("idRHBSshipmennumbertable").getSelectedItem();
@@ -98,37 +100,25 @@ sap.ui.define([
                 this.getView().byId("idRHBSscrollContainer8").setVisible(false);
                 this.getView().byId("idRHBSscrollContainer6").setVisible(true);
             },
-
             Onpressbackbol1main: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel1 = this.getOwnerComponent().getModel();
-
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-
                     success: function (oData) {
-
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
-
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
                         }
-
                         else {
-
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                         }
-
                     }.bind(this),
-
                     error: function () {
-
                         MessageToast.show("User does not exist");
-
                     }
 
                 });
             },
-
         });
     });

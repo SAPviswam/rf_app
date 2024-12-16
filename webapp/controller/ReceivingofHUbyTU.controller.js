@@ -1,24 +1,29 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController"
 ],
     function (Controller) {
         "use strict";
 
         return Controller.extend("com.app.rfapp.controller.ReceivingofHUbyTU", {
             onInit: function () {
-
                 const oTable = this.getView().byId("idReceivingofHUbyTUnumbertable");
                 oTable.attachBrowserEvent("dblclick", this.onRowDoubleClick.bind(this));
-
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-
             },
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
+                var that = this;
+                const { id,idI} = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
             },
-
+            onAvatarPressed: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
+            },
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInputReceivingHubyTU").getValue() == "800020") {
                     this.getView().byId("idscrollContainer1ReceivingHubyTU").setVisible(false)
@@ -37,8 +42,6 @@ sap.ui.define([
                 this.getView().byId("idscrollContainer2ReceivingHubyTU").setVisible(false);
                 this.getView().byId("idscrollContainer1ReceivingHubyTU").setVisible(true);
                 this.getView().byId("IDMainbackButton1ReceivingHubyTU").setVisible(true);
-
-
             },
             onRowDoubleClick: function () {
                 var oSelected = this.byId("idReceivingofHUbyTUnumbertable").getSelectedItem();
@@ -50,11 +53,9 @@ sap.ui.define([
                 this.getView().byId("idscrollContainer2ReceivingHubyTU").setVisible(true);
                 this.getView().byId("idscrollContainer3ReceivingHubyTU").setVisible(false);
             },
-
             onHUListPressHubyRCHUbyTUScreen3: function () {
                 this.getView().byId("idRCHUbyTUscrollContainer4ReceivingofHUbyTU").setVisible(true);
                 this.getView().byId("idscrollContainer3ReceivingHubyTU").setVisible(false);
-
             },
             //back button from hu list
             OnpressHuListBackButtonRCHubyTu: function () {
@@ -96,37 +97,24 @@ sap.ui.define([
                 this.getView().byId("idRCHUbyTUscrollContainer8ReceivingOfHUbyTu").setVisible(false);
                 this.getView().byId("idRCHUbyTUscrollContainer6ReceivingOfHubyTu").setVisible(true);
             },
-            Onpressbackbol1ReceivingHubyTU: async function () {
+            Onpressbackbol1ReceivingHubyTU:async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
-
                 var oModel1 = this.getOwnerComponent().getModel();
-
+                var that=this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
-
                     success: function (oData) {
-
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
-
+                            oRouter.navTo("RouteResourcePage",{id:this.ID,idI: that.IDI});
                         }
-
                         else {
-
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                            oRouter.navTo("Supervisor",{id:this.ID,idI: that.IDI});
                         }
-
                     }.bind(this),
-
                     error: function () {
-
                         MessageToast.show("User does not exist");
-
                     }
-
                 });
             },
-
         });
     });
