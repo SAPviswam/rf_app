@@ -9,8 +9,8 @@
     <Dialog
         id="idCreateResource_InitialPage"
         title="Create Resorce:"
-        class="userProfileDialog sapMPopover sapMIBar sapMHeader-CTX"
-        contentWidth="25%"
+        class="sapMIBar sapMHeader-CTX"
+        contentWidth="20%"
         contentHeight="auto"
     >
         <customHeader>
@@ -32,17 +32,125 @@
                 </contentRight>
             </Bar>
         </customHeader>
-        <Text
-            text="{i18n>resourcetype}:"
-            textAlign="Initial"
-            class="textbold sapUiSmallMarginTop"
-        />
-        <HBox>
-            <RadioButton text="Internal" />
-            <Label width="1.8rem" />
-            <RadioButton text="External" />
-            <Label width="1.8rem" />
-            <RadioButton text="Others" />
-        </HBox>
+        <form:SimpleForm id="idSimpleformCR_InitialPage">
+            <Text
+                id="idTextCRResourceType_InitialPage"
+                text="{i18n>resourcetype}:"
+                textAlign="Initial"
+                class="textbold"
+            />
+            <HBox id="idHBoxCRRadioBtns_InitialPage">
+                <RadioButton
+                    id="idinternal"
+                    text="{i18n>internal}"
+                />
+                <Text
+                    id="idCREmptyText01ForRadioBtns_InitialPage"
+                    width="0.5rem"
+                />
+                <RadioButton
+                    id="idexternal"
+                    text="{i18n>external}"
+                />
+                <Text
+                    id="idCREmptyText02ForRadioBtns_InitialPage"
+                    width="0.5rem"
+                />
+                <RadioButton
+                    id="idothers"
+                    text="{i18n>others}"
+                />
+            </HBox>
+            <VBox id="idVBox01_InitialPage">
+                <HBox id="idHBoxLabelInput01_InitialPage">
+                    <Label
+                        id="idLabelCRFirstName_InitialPage"
+                        text="{i18n>firstname}:"
+                        width="6.5rem"
+                        class="CreateResourceLabelClass_InitialPage"
+                    />
+                    <Input
+                        id="idFirstnameInput"
+                        value="{}"
+                        width="100%"
+                    />
+                </HBox>
+                <HBox id="idHBoxLabelInput02_InitialPage">
+                    <Label
+                        id="idLabelCRLastName_InitialPage"
+                        text="{i18n>lastname}:"
+                        width="6.5rem"
+                        class="CreateResourceLabelClass_InitialPage"
+                    />
+                    <Input
+                        id="idLastnameInput"
+                        value="{}"
+                        width="100%"
+                    />
+                </HBox>
+                <HBox id="idHBoxLabelInput03_InitialPage">
+                    <Label
+                        id="idLabelCREmployeeno_InitialPage"
+                        text="{i18n>employeeno}:"
+                        width="6.5rem"
+                        class="CreateResourceLabelClass_InitialPage"
+                    />
+                    <Input
+                        id="idEmployeenoInput"
+                        value="{}"
+                        width="100%"
+                    />
+                </HBox>
+                <HBox id="idHBoxLabelInput04_InitialPage">
+                    <Label
+                        id="idLabelCRMobile_InitialPage"
+                        text="{i18n>mobileno}:"
+                        width="6.5rem"
+                        class="CreateResourceLabelClass_InitialPage"
+                    />
+                    <Input
+                        id="idMobilenoInput"
+                        value="{}"
+                        width="100%"
+                    />
+                </HBox>
+                <HBox id="idHBoxLabelInput05_InitialPage">
+                    <Label
+                        id="idLabelCREmail_InitialPage"
+                        text="{i18n>emailid}:"
+                        width="6.5rem"
+                        class="CreateResourceLabelClass_InitialPage"
+                    />
+                    <Input
+                        id="idEmailIDInput"
+                        value="{}"
+                        width="100%"
+                    />
+                </HBox>
+            </VBox>
+            <HBox
+                id="idHBoxforCreateClearBtns_InitialPage"
+                justifyContent="End"
+            >
+                <Button
+                    id="idBtnCreateResourcePopover_InitialPage"
+                    text="{i18n>create}"
+                    width="4rem"
+                    press="oncreatesingupPress"
+                    type="Emphasized"
+                />
+                <Text
+                    id="idEmptyTextBetweenBtns_InitialPage"
+                    width="5px"
+                />
+                <Button
+                    id="idBtnClearResourcePopover_InitialPage"
+                    text="{i18n>clear}"
+                    width="4rem"
+                    press="onPressClearsignupPress"
+                    type="Emphasized"
+                />
+            </HBox>
+        </form:SimpleForm>
     </Dialog>
 </core:FragmentDefinition>
