@@ -82,7 +82,7 @@
                         icon="sap-icon://log"
                         text="Sign Out"
                         type="Transparent"
-                        press="onSignoutPressed_Initial"
+                        press="onPressBtnSignoutProfilePopover_InitialPage"
                         width="auto"
                     />
                 </VBox>
