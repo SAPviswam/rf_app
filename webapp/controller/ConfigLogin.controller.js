@@ -12,7 +12,7 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("com.app.rfapp.controller.ConfigLogin", {
-      onInit: function () {
+      onInit: async function () {
         // Loading of secrets
         const oConfigModel = this.getOwnerComponent().getModel("config");
         this.oTwilioConfig = oConfigModel.getProperty("/Twilio");
@@ -31,32 +31,51 @@ sap.ui.define(
         this.getView().setModel(OData, "ODataModel");
 
 
+        // Check credentials are saved
+        await this.checkAutoLogin()
+
+
+      },
+      checkAutoLogin: function () {
 
         const savedData = localStorage.getItem('loginData');
         if (savedData) {
           const { userid, token, expiration } = JSON.parse(savedData);
-          // Clear input fields
-          this.getView().byId("idUserIDInpt_CL").setValue("");
-          this.getView().byId("idPasswordInpt_CL").setValue("");
 
           // Check if data is expired
           if (Date.now() > expiration) {
             console.log('Login data has expired');
             localStorage.removeItem('loginData');
+            sap.m.MessageToast.show("Login expired")
             return null;
           }
 
-          // Show success message
-          sap.m.MessageToast.show("Login Successfull");
+          try {
+            const oModel = this.getOwnerComponent().getModel()
+            const fUser = new sap.ui.model.Filter("Userid", sap.ui.model.FilterOperator.EQ, userid),
+              fPassword = new sap.ui.model.Filter("Password", sap.ui.model.FilterOperator.EQ, token),
+              aFilters = new sap.ui.model.Filter({
+                filters: [fUser, fPassword],
+                and: true
+              });
+            const oResponse = this.readData(oModel, "/APP_LOGON_DETAILSSet", aFilters)
+            if (oResponse.results.length === 1) {
+              // Show success message
+              sap.m.MessageToast.show("Welcome back");
 
-          // Navigate to the Initial Screen
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("InitialScreen", { Userid: userid }, true);
-          window.location.reload(true);
+              // Navigate to the Initial Screen
+              const oRouter = this.getOwnerComponent().getRouter();
+              oRouter.navTo("InitialScreen", { Userid: userid }, true);
+              window.location.reload(true);
+
+            }
+          } catch (error) {
+            sap.m.MessageToast.show("Oops something went wrong please refresh the page")
+            console.error(error);
+          }
         }
 
       },
-
       onAppLoginPress: async function () {
         debugger
         const oModel = this.getOwnerComponent().getModel(),
@@ -163,7 +182,7 @@ sap.ui.define(
       onAutoSaveData: function (CurrentUser, Token) {
         // Save credentials with an expiration time 
 
-        const expirationTime = Date.now() + 5 * 60 * 1000; // Current time + expiration time in ms
+        const expirationTime = Date.now() + 2 * 60 * 1000; // Current time + expiration time in ms
 
         const loginData = {
           userid: CurrentUser,
