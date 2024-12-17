@@ -149,7 +149,7 @@
                             <HBox id="idSecSCHbox1_AdhocProductWt">
                                 <Text
                                     id="Id_Text_Product_AdhocProductWt"
-                                    text="Product"
+                                    text="{i18n>Product_text_AdhocProductWt}"
                                     width="70px"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -161,7 +161,7 @@
                             <HBox id="idSecScHbox2_AdhocProductWt">
                                 <Text
                                     id="id_Text_SrcBin_AdhocProductWt"
-                                    text="Src Bin"
+                                    text="{i18n>Src_Bin_text_AdhocProductWt}"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
                                 />
@@ -174,7 +174,7 @@
                             <HBox id="idSecScHBOX3_AdhocProductWt">
                                 <Text
                                     id="id_Text_DestBin_AdhocProductWt"
-                                    text="Dest Bin"
+                                    text="{i18n>Dest_bin_text_AdhocProductWt}"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
                                 />
@@ -186,7 +186,7 @@
                             <HBox id="idSecScHbox4_AdhocProductWt">
                                 <Text
                                     id="id_Text_DestHu_AdhocProductWt"
-                                    text="Dest Hu"
+                                    text="{i18n>Dest_Hu_text_AdhocProductWt}"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
                                 />
@@ -198,7 +198,7 @@
                             <HBox id="idSecScHbox5_AdhocProductWt">
                                 <Text
                                     id="id_Text_Wpt_AdhocProductWt"
-                                    text="WPT"
+                                    text="{i18n>WPT_text_AdhocProductWt}"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
                                 />
@@ -210,7 +210,7 @@
                             <HBox id="idSecSCHbox6_AdhocProductWt">
                                 <Button
                                     id="idSecondBackBtn_AdhocProductWt"
-                                    text="Back"
+                                    text="{i18n>Back_Button_AdhocProductWt}"
                                     width="auto"
                                     type="Emphasized"
                                     class="sapUiTinyMarginEnd sapUiTinyMarginTop"
@@ -219,7 +219,7 @@
                                 <Button
                                     id="idProdDetailsBtn_AdhocProductWt"
                                     class="sapUiTinyMarginTop"
-                                    text="Prod Details"
+                                    text="{i18n>Prod_Det_Button_AdhocProductWt}"
                                     width="auto"
                                     press="onHuDetailsPress_AdhocProductWt"
                                     type="Emphasized"
@@ -287,7 +287,7 @@
                             >
                                 <Text
                                     id="idProTextLabel_AdhocProductWt"
-                                    text="ProText:"
+                                    text="{i18n>Product_text_AdhocProductWt}"
                                     width="70px"
                                 />
 
@@ -302,7 +302,7 @@
                                 />
                                 <Text
                                     id="idStatusLabel_AdhocProductWt"
-                                    text="StUs:"
+                                    text="{i18n>StUs_text_AdhocProductWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -322,7 +322,7 @@
                             >
                                 <Text
                                     id="idBatchLabel_AdhocProductWt"
-                                    text="Batch:"
+                                    text="{i18n>Batch_text_AdhocProductWt}"
                                     width="70px"
                                 />
                                 <Input
@@ -347,7 +347,7 @@
                                 />
                                 <Text
                                     id="idBatchSTypeLabel_AdhocProductWt"
-                                    text="STyp:"
+                                    text="{i18n>STyp_text_AdhocProductWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -362,7 +362,7 @@
                                 />
                                 <Text
                                     id="idBatchCRLabel_AdhocProductWt"
-                                    text="C/R:"
+                                    text="{i18n>C/R_text_AdhocProductWt}"
                                     width="30px"
                                 />
                                 <Input
@@ -421,7 +421,7 @@
                             >
                                 <Text
                                     id="idPtyEntlLabel_AdhocProductWt"
-                                    text="PtyEntl:"
+                                    text="{i18n>PtyEntl_text_AdhocProductWt}"
                                     width="70px"
                                 />
                                 <Input
@@ -436,7 +436,7 @@
                                 />
                                 <Text
                                     id="idOwnerLabel_AdhocProductWt"
-                                    text="Owner:"
+                                    text="{i18n>Owner_text_AdhocProductWt}"
                                     width="60px"
                                 />
                                 <Input
@@ -456,7 +456,7 @@
                             >
                                 <Text
                                     id="idSLEDBBDLabel_AdhocProductWt"
-                                    text="SLED/BBD:"
+                                    text="{i18n>SLED/BBD_text_AdhocProductWt}"
                                     width="70px"
                                 />
                                 <Input
@@ -469,10 +469,9 @@
                                     id="idPtyEntlSpacer1_AdhocProductWt"
                                     width="20px"
                                 />
-
                                 <Text
                                     id="idGRDateLabel_AdhocProductWt"
-                                    text="GR Date:"
+                                    text="{i18n>GR_Date_text_AdhocProductWt}"
                                     width="60px"
                                 />
                                 <Input
@@ -492,7 +491,7 @@
                             >
                                 <Text
                                     id="idHazSubsLabel_AdhocProductWt"
-                                    text="Haz.Subs:"
+                                    text="{i18n>Haz_Subs_text_AdhocProductWt}"
                                     width="70px"
                                 />
                                 <Input
@@ -506,7 +505,7 @@
                                 />
                                 <Text
                                     id="idWhseHandLabel_AdhocProductWt"
-                                    text="WhseHand:"
+                                    text="{i18n>WhseHand_text_AdhocProductWt}"
                                     width="75px"
                                 />
                                 <Input
@@ -520,7 +519,7 @@
                                 />
                                 <Text
                                     id="idERelLabel_AdhocProductWt"
-                                    text="ERel:"
+                                    text="{i18n>ERel_text_AdhocProductWt}"
                                     width="40px"
                                 />
                                 <Input
@@ -533,7 +532,7 @@
                             <HBox id="idBackButtonHBox_AdhocProductWt">
                                 <Button
                                     id="idProductThirdBackBtn_AdhocProductWt"
-                                    text="Back"
+                                    text="{i18n>Back_Button_AdhocProductWt}"
                                     press="onAdhocProductWtBackBtnPress"
                                     type="Emphasized"
                                 />
