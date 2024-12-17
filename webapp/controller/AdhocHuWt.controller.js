@@ -28,13 +28,47 @@ sap.ui.define([
                 var ohu = this.getView().byId("idHuInput_CAHU").getValue();
                 this.getView().byId("idSecSCHuInput_CAHU").setValue(ohu)
                 this.getView().byId("idSecSCHuInput_CAHU").setEditable(false);
-
-
-                //   }
-                //   else{
-                //       MessageToast.show("please enter valid HU Number")
-                //   }
             },
+
+            onPressSubmitbtn: function () {
+                debugger;
+
+                var oView = this.getView();
+                var sHunumber = oView.byId("idHuInput_CAHU").getValue();
+                var sProcessType = oView.byId("idWPTInput_CAHU").getValue();
+
+            // Ensure both product number and serial number are provided
+            if (!sHunumber || !sProcessType) {
+                sap.m.MessageToast.show("Please enter both Hu and Process type");
+                return;
+ 
+            }
+            // Call your backend service to fetch products based on the provided keys
+            var oModel = this.getView().getModel();
+            var that = this;
+
+            var sRequestUrl = `/Adhoc_warehouse_taskSet(Huident='${sHunumber}',Procty='${sProcessType}')`;
+
+            oModel.read(sRequestUrl, {
+                success: (odata) => {
+                    console.log(odata);
+
+                        if (odata.Huident === sHunumber && odata.Procty === sProcessType) {
+
+                            that.getView().byId("idSecSCHuInput_CAHU").setValue(sHunumber);
+                            that.getView().byId("idWPTInput_CAHU").setValue(sProcessType);
+                            that.getView().byId("idsrcBinInput_CAHU").setValue(odata.Vlpla);
+                    }
+       
+                    this.getView().byId("idFirstSc_CAHU").setVisible(false)
+                    this.getView().byId("idsecondSc_CAHU").setVisible(true)
+                },
+                error: function () {
+                    sap.m.MessageToast.show("Error fetching product details.");
+                }
+            });
+            },
+
             onHuDetailsPress_CAHU: function () {
                 this.getView().byId("idthirdSc_CAHU").setVisible(true);
                 this.getView().byId("idsecondSc_CAHU").setVisible(false);
