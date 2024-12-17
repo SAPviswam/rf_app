@@ -181,13 +181,13 @@
                                     alignItems="Center"
                                     class="sapUiTinyMarginTop"
                                 >
-                                    <Button
+                                    <!-- <Button
                                         id="idButtonSignUp"
                                         width="100%"
                                         text="{i18n>createresource}"
                                         press="onPressSignupBtn"
                                         type="Transparent"
-                                    />
+                                    /> -->
                                     <Button
                                         id="idchangequeue"
                                         text="{i18n>changequeue}"
@@ -198,7 +198,7 @@
                                 </HBox>
                             </VBox>
 
-                            <VBox
+                            <!-- <VBox
                                 id="createResourceVbox"
                                 visible="false"
                                 class="homeScreenCreateResourceVbox"
@@ -312,7 +312,6 @@
                                     id="_IDgenhboxcontainersingup"
                                     justifyContent="Center"
                                 >
-                                    <!-- Centering buttons  -->
                                     <Button
                                         id="idsignupcreateButton"
                                         text="{i18n>create}"
@@ -332,7 +331,7 @@
                                         class="sapUiTinyMarginEnd textbold signupCreatebutton sapUiSmallMarginTop"
                                     />
                                 </HBox>
-                            </VBox>
+                            </VBox> -->
                         </VBox>
                     </HBox>
 
