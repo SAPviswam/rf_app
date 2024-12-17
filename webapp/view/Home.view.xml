@@ -177,8 +177,8 @@
                                 <!-- hbox for create resource and change queue buttons -->
                                 <HBox
                                     id="idHBoxForgot"
-                                    justifyContent="Center"
-                                    alignItems="Center"
+                                    justifyContent="Start"
+                                    alignItems="Start"
                                     class="sapUiTinyMarginTop"
                                 >
                                     <!-- <Button

@@ -110,48 +110,54 @@ sap.ui.define([
                 }
             },
             //Avatar Press function from INITIAL PAGE...
-            onPressAvatarBtn_InitialScreen: function (oEvent) {
+            onPressAvatarBtn_InitialScreen: async function (oEvent) {
                 debugger;
                 const userId = this.Userid;
                 const oView = this.getView();
                 const oComponent = this.getOwnerComponent();
                 const oModel = oComponent.getModel();
-                const This = this;
-
-                // Destroy existing popover if present
+            
+                // Check if the popover is already open
                 const existingPopover = oComponent.getPopover();
-                if (existingPopover) {
-                    existingPopover.destroy();
-                    oComponent.setPopover(null);
+                if (existingPopover && existingPopover.isOpen()) {
+                    return; 
                 }
-
-                oModel.read(`/APP_LOGON_DETAILSSet('${userId}')`, {
-                    success: function (oData) {
-                        // Create profile data model
-                        const oProfileModel = new sap.ui.model.json.JSONModel({
-                            Name: `${oData.Firstname} ${oData.Lastname}`,
-                            Number: oData.Phonenumber
+                try {
+                    sap.ui.core.BusyIndicator.show(0); 
+                    const oData = await new Promise((resolve, reject) => {
+                        oModel.read(`/APP_LOGON_DETAILSSet('${userId}')`, {
+                            success: resolve,
+                            error: reject
                         });
-
-                        // Load and open the ProfileDialog fragment
-                        sap.ui.core.Fragment.load({
+                    });
+            
+                    // Create profile data model
+                    const oProfileModel = new sap.ui.model.json.JSONModel({
+                        Name: `${oData.Firstname} ${oData.Lastname}`,
+                        Number: oData.Phonenumber
+                    });
+            
+                    // Check if the popover is already created
+                    if (!this._oProfilePopover) {
+                        this._oProfilePopover = await sap.ui.core.Fragment.load({
                             name: "com.app.rfapp.fragments.InitialPageProfilePopOver",
-                            controller: This
-                        }).then(function (oPopover) {
-                            oView.addDependent(oPopover);
-                            oPopover.setModel(oProfileModel, "initialProfile");
-                            oComponent.setPopover(oPopover);
-                            oPopover.openBy(oEvent.getSource());
-                        }).catch(function (oError) {
-                            console.error("Error loading the fragment:", oError);
+                            controller: this
                         });
-                    },
-                    error: function () {
-                        sap.m.MessageToast.show("User does not exist.");
+                        oView.addDependent(this._oProfilePopover); 
                     }
-                });
-                this.onSetSrcSavedInitialPageProfilePic();
-            },
+            
+                    // Set the model for profile data
+                    this._oProfilePopover.setModel(oProfileModel, "initialProfile");
+                    oComponent.setPopover(this._oProfilePopover); // Set the popover in the component
+                    this._oProfilePopover.openBy(oEvent.getSource());
+                    this.onSetSrcSavedInitialPageProfilePic();
+            
+                } catch (error) {
+                    sap.m.MessageToast.show("User does not exist or an error occurred.");
+                } finally {
+                    sap.ui.core.BusyIndicator.hide(); 
+                }
+            },            
             //Press Hover effect Avatar Press at Initial View...
             onPressPopoverHoverEffectAvatar_InitialPage: function () {
                 var This = this;
@@ -242,8 +248,9 @@ sap.ui.define([
             onPressUploadProfilePic_InitialPage: async function () {
                 debugger
                 var This = this;
+                const oView1 = This.getView();
                 const oModel = This.getOwnerComponent().getModel();
-                const userId = This.Userid;
+                const userId = this.Userid;
 
                 var fileInput = document.createElement("input");
                 fileInput.type = "file";
@@ -260,14 +267,12 @@ sap.ui.define([
                         reader.onload = async (e) => {
                             var selectedImageBase64 = e.target.result; // Get the base64 encoded image
                             //localStorage.removeItem("userProfileImage");
-                            const oImageControle1 = This.byId("idImageAccontDetailsAvatar_InitialPage");
-                            const oImageControle2 = This.byId("idProfilePicPopover_InitialPage");
-                            const oImageControle3 = This.byId("idImageAvatarInitialScreen_InitialView");
-                            // Update all avatar images with the new base64 image
-                            oImageControle1.setSrc(selectedImageBase64);
-                            oImageControle2.setSrc(selectedImageBase64);
-                            oImageControle3.setSrc(selectedImageBase64);
-                            //localStorage.setItem("userProfileImage", selectedImageBase64);
+                            var allAvatars = oView1.findElements(true, function (element) {
+                                return element.isA("sap.m.Avatar");
+                            });
+                            allAvatars.forEach(function (avatar) {
+                                avatar.setSrc(selectedImageBase64);
+                            });
                             const cleanBase64 = selectedImageBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
 
                             const oPayload = {
@@ -279,6 +284,7 @@ sap.ui.define([
                                     error: reject
                                 });
                             });
+                            sap.m.MessageToast.show("Profile image updated successfully.");
                         };
                         // Read the selected file as a Data URL (base64 string)
                         reader.readAsDataURL(selectedFile);
@@ -296,6 +302,7 @@ sap.ui.define([
                 const oModel = This.getOwnerComponent().getModel();
                 const oUserId = This.Userid;
                 try {
+                    sap.ui.core.BusyIndicator.show(0);
                     const sEntityPath = `/APP_LOGON_DETAILSSet('${oUserId}')`;
                     const userData = await new Promise((resolve, reject) => {
                         oModel.read(sEntityPath, {
@@ -332,6 +339,8 @@ sap.ui.define([
                     }
                 } catch (oError) {
                     console.error("Error deleting profile image:", oError);
+                } finally {
+                    sap.ui.core.BusyIndicator.hide();
                 }
             },
             //Cancel the Initial Page User Details...starts here
@@ -426,6 +435,7 @@ sap.ui.define([
                 // Retrieve all resources for validation
                 var sEntityPath = `/APP_LOGON_DETAILSSet('${userId}')`;
                 try {
+                    sap.ui.core.BusyIndicator.show(0);
                     const currentUserData = await new Promise((resolve, reject) => {
                         oModel.read(sEntityPath, {
                             success: (oData) => resolve(oData),
@@ -485,6 +495,8 @@ sap.ui.define([
                     this.byId("idInputTextUserEmail_InitialPage").setVisible(true);
                 } catch (error) {
                     sap.m.MessageToast.show("Error updating profile or fetching data.");
+                } finally {
+                    sap.ui.core.BusyIndicator.hide();
                 }
             },
             //Cancel the Profile Details Changing...
@@ -515,7 +527,7 @@ sap.ui.define([
                 }
                 this.CreateResorceFragment_Initial.open();
             },
-            onPressDeclineCreateResource_InitialPage: function(){
+            onPressDeclineCreateResource_InitialPage: function () {
                 this.CreateResorceFragment_Initial.close();
             },
             //Create Resource (New user to warehouse)..
@@ -609,6 +621,7 @@ sap.ui.define([
                     return "Others";
                 }
             },
+            //After enters some values into fileds then press on clear, it removes all fields and radio btns... 
             onPressClearsignupPress: function () {
                 //this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
                 //this.getView().byId("createResourceVbox").setVisible(false);
@@ -621,10 +634,14 @@ sap.ui.define([
                 this.byId("idexternal").setSelected(false);
                 this.byId("idothers").setSelected(false);
             },
-
-
-
-
+            //Signout the page...InitialPage Popover
+            onPressBtnSignoutProfilePopover_InitialPage: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("ConfigLogin", {}, true);
+                setTimeout(function () {
+                    location.reload(); 
+                }, 100);
+            },
 
 
             onExit: function () {
