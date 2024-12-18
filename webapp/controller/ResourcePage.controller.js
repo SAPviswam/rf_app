@@ -2894,10 +2894,6 @@ sap.ui.define([
                 this.byId("idUserDetails").close();
             },
 
-            onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { Userid:this.IDI });
-
-            },
+            
         });
     });

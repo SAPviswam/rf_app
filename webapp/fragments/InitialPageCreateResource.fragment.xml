@@ -68,6 +68,7 @@
                         text="{i18n>firstname}:"
                         width="6.5rem"
                         class="CreateResourceLabelClass_InitialPage"
+                        required="true"
                     />
                     <Input
                         id="idFirstnameInput"
@@ -81,6 +82,7 @@
                         text="{i18n>lastname}:"
                         width="6.5rem"
                         class="CreateResourceLabelClass_InitialPage"
+                        required="true"
                     />
                     <Input
                         id="idLastnameInput"
@@ -94,6 +96,7 @@
                         text="{i18n>employeeno}:"
                         width="6.5rem"
                         class="CreateResourceLabelClass_InitialPage"
+                        required="true"
                     />
                     <Input
                         id="idEmployeenoInput"
@@ -107,6 +110,7 @@
                         text="{i18n>mobileno}:"
                         width="6.5rem"
                         class="CreateResourceLabelClass_InitialPage"
+                        required="true"
                     />
                     <Input
                         id="idMobilenoInput"
@@ -120,6 +124,7 @@
                         text="{i18n>emailid}:"
                         width="6.5rem"
                         class="CreateResourceLabelClass_InitialPage"
+                        required="true"
                     />
                     <Input
                         id="idEmailIDInput"

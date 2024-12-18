@@ -1,7 +1,7 @@
 sap.ui.define(
     [
-       // "sap/ui/core/mvc/Controller",
-       "./BaseController",
+        // "sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/core/UIComponent"
     ],
     function (BaseController, UIComponent) {
@@ -13,18 +13,18 @@ sap.ui.define(
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             },
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id,idI } = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 this.IDI = idI
                 this.applyStoredProfileImage();
             },
-            onPressAvatarWTQBWO: function (oEvent) {     
-                this.onPressAvatarEveryTileHelperFunction(oEvent); 
-                },
-            onSignoutPressed:function(){
-                    var oRouter = this.getOwnerComponent().getRouter(this);
-                    oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
-                }, 
+            onPressAvatarWTQBWO: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
+            },
             onWtQBWofirstBackBtnPress: async function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
@@ -36,10 +36,10 @@ sap.ui.define(
                         let oUser = oData.Users.toLowerCase()
 
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID,idI:that.IDI });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
                         }
                         else {
-                            oRouter.navTo("Supervisor", { id: this.ID,idI:that.IDI });
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                         }
                         this.getView().byId("idWtQBWoWhInput").setValue(""); // Clear input field
                     }.bind(this),
@@ -51,7 +51,7 @@ sap.ui.define(
             onSignoutPressed: function () {
                 var oRouter = this.getOwnerComponent().getRouter(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
-              },
+            },
             onWtQBWoSecondBackBtnPress: function () {
                 this.getView().byId("idWtQBWoFirstSC").setVisible(true);
                 this.getView().byId("idWtQBWoWhSecondsc").setVisible(false);
@@ -102,13 +102,13 @@ sap.ui.define(
             onWtQBWoWhBarcodeScanner: function (oEvent) {
                 // Get the scanned bin number from the event
                 var sScannedWhOrder = oEvent.getParameter("text");
-          
+
                 // Set the scanned value into the input field
                 this.getView().byId("idWtQBWoWhInput").setValue(sScannedWhOrder);
-          
+
                 // Call the submit function to fetch products
                 this.onWtQBWoWhLiveChange();
-              },
+            },
             // Handler for Warehouse Order input change event
             onWtQBWoWhLiveChange: function () {
                 // Get the input value from the input field
@@ -165,7 +165,7 @@ sap.ui.define(
                                 // Filter and bind tasks to the table
                                 that._filterAndBindWarehouseOrderTasks(that, sWarehouseOrder, "all", that._odata);
                             }
-                            else{
+                            else {
                                 that.showInvalidWarehouseOrderMessageToast();
                             }
                         },
@@ -181,14 +181,14 @@ sap.ui.define(
 
             showInvalidWarehouseOrderMessageToast: function () {
                 if (this._timeoutIDForInvalidQueueMessage) {
-                  clearTimeout(this._timeoutIDForInvalidQueueMessage);
+                    clearTimeout(this._timeoutIDForInvalidQueueMessage);
                 }
-          
+
                 // Set a timeout for showing the message toast after 500ms (debounce)
                 this._timeoutIDForInvalidQueueMessage = setTimeout(function () {
-                  sap.m.MessageToast.show("Please enter a valid Warehouse Order.");
+                    sap.m.MessageToast.show("Please enter a valid Warehouse Order.");
                 }, 500); // 500ms delay
-              },
+            },
 
             // Function to filter tasks based on status and bind them to the table
             _filterAndBindWarehouseOrderTasks: function (that, sWarehouseOrder, status, odata) {
