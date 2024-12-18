@@ -151,7 +151,6 @@ sap.ui.define([
                     oComponent.setPopover(this._oProfilePopover); // Set the popover in the component
                     this._oProfilePopover.openBy(oEvent.getSource());
                     this.onSetSrcSavedInitialPageProfilePic();
-            
                 } catch (error) {
                     sap.m.MessageToast.show("User does not exist or an error occurred.");
                 } finally {
@@ -638,9 +637,6 @@ sap.ui.define([
             onPressBtnSignoutProfilePopover_InitialPage: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("ConfigLogin", {}, true);
-                setTimeout(function () {
-                    location.reload(); 
-                }, 100);
             },
 
 

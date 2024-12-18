@@ -26,6 +26,7 @@
                         displaySize="S"
                         press="onPressPopoverHoverEffectAvatar_InitialPage"
                         class="profileAvatar1234"
+                        tooltip="Add profile"
                     />
                     <Label
                         id="idEmptyLabel_InitialPage"

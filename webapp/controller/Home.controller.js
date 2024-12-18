@@ -728,30 +728,12 @@ sap.ui.define([
             //         return "Others";
             //     }
             // },
-            onLogoutPressedInHomePage: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
 
-            },
             onBackBtnInHomePage: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
-
             },
-            onSignoutPressedInHomePage: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID }, true);
-                // if (window.history && window.history.replaceState) {
-                //     window.history.replaceState(null, document.title, window.location.href);
-                // }
-
-            },
-
-            onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
-
-            },
+            
             onChangeQueuePress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CHANGEQUEUE", { id: this.ID,idI:this.IDI });

@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/core/UIComponent",
 
-], function (Controller, Fragment) {
+], function (Controller, Fragment, UIComponent) {
     'use strict';
 
     return Controller.extend("com.app.rfapp.controller.BaseController", {
@@ -397,7 +398,7 @@ sap.ui.define([
                 }
             } catch (oError) {
                 console.error("Error deleting profile image:", oError);
-            } finally{
+            } finally {
                 sap.ui.core.BusyIndicator.hide();
             }
         },
@@ -543,7 +544,7 @@ sap.ui.define([
                 this.byId("idInputEmailUserDetails_ResourcePage").setVisible(true);
             } catch (error) {
                 sap.m.MessageToast.show("Error updating profile or fetching data.");
-            } finally{
+            } finally {
                 sap.ui.core.BusyIndicator.hide();
             }
         },
@@ -564,6 +565,14 @@ sap.ui.define([
             this.byId("idBtnEditDetailsforProfile").setVisible(true);
             this.byId("idBtnSaveProfileDetails").setVisible(false);
             this.byId("idBtnCancelProfileDetails").setVisible(false);
+        },
+        
+        //Signout Btn from the Profile Popover_ResourcePage..(which works from all tile controllers)
+        onSignoutPressed_ResourcePage: function () {
+            sessionStorage.clear();
+            localStorage.clear();
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InitialScreen", { Userid: this.IDI });
         },
 
     })
