@@ -199,7 +199,7 @@ sap.ui.define([
                     oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData"),
                     oCheckbox = oView.byId("idCheckboxDescription_InitialView"),
                     oButton = oEvent.getSource()
-                oButton.setEnabled(false);
+                oButton.setEnabled(false); // prevention of multiple clicks by disabling 
 
                 // Validation Logic
                 const validationErrors = [];
@@ -293,7 +293,7 @@ sap.ui.define([
                                     window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
-                                    oButton.setEnabled(true);
+                                    // oButton.setEnabled(true);
                                     console.error("CREATION ERROR: " + error);
                                 }
                             } else {
@@ -301,17 +301,19 @@ sap.ui.define([
                             }
                         } catch (error) {
                             sap.m.MessageToast.show("something went wrong technical issue");
-                            oButton.setEnabled(true);
+                            // oButton.setEnabled(true);
                             console.error("Error: " + error);
                         }
                     } else {
                         sap.m.MessageBox.information("Entered system not found")
                     }
-                    oButton.setEnabled(true);
+                    // oButton.setEnabled(true);
                 } catch (error) {
                     sap.m.MessageToast.show("something went wrong technical issue")
-                    oButton.setEnabled(true);
+                    // oButton.setEnabled(true);
                     console.error(error);
+                } finally {
+                    oButton.setEnabled(true);
                 }
             },
 
@@ -384,7 +386,7 @@ sap.ui.define([
                 else {
                     var oString = this.arrayOfDescription[0];
                 }
-                
+
                 MessageBox.warning(`Are you sure want to delete the ${oString} selected system?`, {
                     title: "Delete",
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -662,7 +664,7 @@ sap.ui.define([
             // last change here.......12-12-2024
             __onEditconnectSAPPress: function () {
 
-              const EditCall = async function () {
+                const EditCall = async function () {
                     // console.log("ERROR: ", this)
                     const oModel = this.getOwnerComponent().getModel();
                     const oPayload = this.getView().getModel("ODataModel").getProperty("/connectionData");
@@ -748,8 +750,22 @@ sap.ui.define([
                         console.error("ERROR: ", error);
                     }
                 }.bind(this);
-                const bouncedRespose = this.debounceCall(EditCall, 1000);
-                bouncedRespose()
+
+                function debounceCall(mainFunction, delay) {
+                    let timer;
+                    return function (...args) {
+                        clearTimeout(timer);
+                        timer = setTimeout(async () => {
+                            try {
+                                mainFunction(...args); // Await the main function
+                            } catch (error) {
+                                console.error("Debounced function error:", error);
+                            }
+                        }, delay);
+                    };
+                }
+                debounceCall(EditCall, 1000)();
+                // bouncedRespose() // calling dbounced fun
             },
 
             // onEditconnectSAPPress: ,
