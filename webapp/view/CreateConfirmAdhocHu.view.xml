@@ -70,8 +70,7 @@
                         columnsM="1"
                     >
                         <VBox
-                            id="idFirstVbox_CCAHU"
-                           
+                            id="idFirstVbox_CCAHU" 
                         >
                             
                             <HBox
