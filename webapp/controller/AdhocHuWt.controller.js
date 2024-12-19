@@ -21,21 +21,21 @@ sap.ui.define([
                 this.IDI=idI;
             },
 
-            onLiveChange: function () { 
-                //   if(this.getView().byId("idHuInput_CAHU").getValue()=="800020"){
-                this.getView().byId("idFirstSc_CAHU").setVisible(false)
-                this.getView().byId("idsecondSc_CAHU").setVisible(true)
-                var ohu = this.getView().byId("idHuInput_CAHU").getValue();
-                this.getView().byId("idSecSCHuInput_CAHU").setValue(ohu)
-                this.getView().byId("idSecSCHuInput_CAHU").setEditable(false);
-            },
+            // onLiveChange: function () { 
+            //     //   if(this.getView().byId("idHuInput_CAHU").getValue()=="800020"){
+            //     this.getView().byId("idFirstSc_CAHU").setVisible(false)
+            //     this.getView().byId("idsecondSc_CAHU").setVisible(true)
+            //     var ohu = this.getView().byId("idHuInput_CAHU").getValue();
+            //     this.getView().byId("idSecSCHuInput_CAHU").setValue(ohu)
+            //     this.getView().byId("idSecSCHuInput_CAHU").setEditable(false);
+            // },
 
-            onPressSubmitbtn: function () {
+            onPressSubmitbtn:async function () {
                 debugger;
 
                 var oView = this.getView();
                 var sHunumber = oView.byId("idHuInput_CAHU").getValue();
-                var sProcessType = oView.byId("idWPTInput_CAHU").getValue();
+                var sProcessType = oView.byId("idWPTInput1_CAHU").getValue();
 
             // Ensure both product number and serial number are provided
             if (!sHunumber || !sProcessType) {
@@ -47,9 +47,9 @@ sap.ui.define([
             var oModel = this.getView().getModel();
             var that = this;
 
-            var sRequestUrl = `/Adhoc_warehouse_taskSet(Huident='${sHunumber}',Procty='${sProcessType}')`;
+            var sRequestUrl = `/Adhoc_warehouse_taskSet(Huident='${sHunumber}',Procty='${sProcessType}',Reason='')`;
 
-            oModel.read(sRequestUrl, {
+           await oModel.read(sRequestUrl, {
                 success: (odata) => {
                     console.log(odata);
 
@@ -63,8 +63,11 @@ sap.ui.define([
                     this.getView().byId("idFirstSc_CAHU").setVisible(false)
                     this.getView().byId("idsecondSc_CAHU").setVisible(true)
                 },
-                error: function () {
-                    sap.m.MessageToast.show("Error fetching product details.");
+                error: function (oError) {
+                   console.log(oError)
+                    var oJson=JSON.parse(oError.responseText)
+                    
+                    sap.m.MessageToast.show(oJson.error.message.value   );  
                 }
             });
             },
@@ -113,6 +116,39 @@ sap.ui.define([
                     }
                 });
             },
+            onPressCreate_CAHU:async function(){
+                var oView=this.getView();
+                var oModel=this.getView().getModel();
+                var oHu=oView.byId("idSecSCHuInput_CAHU").getValue();
+                var oProcesstype=oView.byId("idWPTInput_CAHU").getValue()
+                var oSrcBin=oView.byId("idsrcBinInput_CAHU").getValue();
+                var oDestbin=oView.byId("idDestBinInput_CAHU").getValue();
+                var oobj={
+                    Huident:oHu,
+                    Procty:oProcesstype,
+                    Reason:"",
+                    Vlpla:oSrcBin,
+                    Nlpla:oDestbin
+
+                }
+                
+            // var oError=await this.createData(oModel,oobj,"/Adhoc_warehouse_taskSet")
+            // console.log(oError)
+            // var ojson = JSON.parse(oError.responseText)
+            //     MessageToast.show(ojson)
+            // }
+            oModel.create("/Adhoc_warehouse_taskSet",oobj,{
+                success:function(oSucces){
+                    console.log(oSucces)
+                    MessageToast.show(`Warehouse task is created succesfully with number ${oSucces.Tanum}`);
+                },
+                error:function(oError){
+                    var ojson = JSON.parse(oError.responseText)
+                    console.log(ojson)
+                    MessageToast.show(ojson.error.message.value )
+                }
+            })
+        }
 
         });
     }
