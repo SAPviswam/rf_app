@@ -26,6 +26,7 @@
                         displaySize="S"
                         press="onPressPopoverHoverEffectAvatar_InitialPage"
                         class="profileAvatar1234"
+                        tooltip="Add profile"
                     />
                     <Label
                         id="idEmptyLabel_InitialPage"
@@ -82,7 +83,7 @@
                         icon="sap-icon://log"
                         text="Sign Out"
                         type="Transparent"
-                        press="onSignoutPressed_Initial"
+                        press="onPressBtnSignoutProfilePopover_InitialPage"
                         width="auto"
                     />
                 </VBox>

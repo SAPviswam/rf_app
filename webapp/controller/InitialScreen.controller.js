@@ -110,48 +110,53 @@ sap.ui.define([
                 }
             },
             //Avatar Press function from INITIAL PAGE...
-            onPressAvatarBtn_InitialScreen: function (oEvent) {
+            onPressAvatarBtn_InitialScreen: async function (oEvent) {
                 debugger;
                 const userId = this.Userid;
                 const oView = this.getView();
                 const oComponent = this.getOwnerComponent();
                 const oModel = oComponent.getModel();
-                const This = this;
-
-                // Destroy existing popover if present
+            
+                // Check if the popover is already open
                 const existingPopover = oComponent.getPopover();
-                if (existingPopover) {
-                    existingPopover.destroy();
-                    oComponent.setPopover(null);
+                if (existingPopover && existingPopover.isOpen()) {
+                    return; 
                 }
-
-                oModel.read(`/APP_LOGON_DETAILSSet('${userId}')`, {
-                    success: function (oData) {
-                        // Create profile data model
-                        const oProfileModel = new sap.ui.model.json.JSONModel({
-                            Name: `${oData.Firstname} ${oData.Lastname}`,
-                            Number: oData.Phonenumber
+                try {
+                    sap.ui.core.BusyIndicator.show(0); 
+                    const oData = await new Promise((resolve, reject) => {
+                        oModel.read(`/APP_LOGON_DETAILSSet('${userId}')`, {
+                            success: resolve,
+                            error: reject
                         });
-
-                        // Load and open the ProfileDialog fragment
-                        sap.ui.core.Fragment.load({
+                    });
+            
+                    // Create profile data model
+                    const oProfileModel = new sap.ui.model.json.JSONModel({
+                        Name: `${oData.Firstname} ${oData.Lastname}`,
+                        Number: oData.Phonenumber
+                    });
+            
+                    // Check if the popover is already created
+                    if (!this._oProfilePopover) {
+                        this._oProfilePopover = await sap.ui.core.Fragment.load({
                             name: "com.app.rfapp.fragments.InitialPageProfilePopOver",
-                            controller: This
-                        }).then(function (oPopover) {
-                            oView.addDependent(oPopover);
-                            oPopover.setModel(oProfileModel, "initialProfile");
-                            oComponent.setPopover(oPopover);
-                            oPopover.openBy(oEvent.getSource());
-                        }).catch(function (oError) {
-                            console.error("Error loading the fragment:", oError);
+                            controller: this
                         });
-                    },
-                    error: function () {
-                        sap.m.MessageToast.show("User does not exist.");
+                        oView.addDependent(this._oProfilePopover); 
                     }
-                });
-                this.onSetSrcSavedInitialPageProfilePic();
-            },
+            
+                    // Set the model for profile data
+                    this._oProfilePopover.setModel(oProfileModel, "initialProfile");
+                    oComponent.setPopover(this._oProfilePopover); // Set the popover in the component
+                    this._oProfilePopover.openBy(oEvent.getSource());
+                    this.onSetSrcSavedInitialPageProfilePic();
+                } catch (error) {
+                    sap.m.MessageToast.show("User does not exist or an error occurred.");
+                } finally {
+                    sap.ui.core.BusyIndicator.hide(); 
+                }
+            },            
             //Press Hover effect Avatar Press at Initial View...
             onPressPopoverHoverEffectAvatar_InitialPage: function () {
                 var This = this;
@@ -242,8 +247,9 @@ sap.ui.define([
             onPressUploadProfilePic_InitialPage: async function () {
                 debugger
                 var This = this;
+                const oView1 = This.getView();
                 const oModel = This.getOwnerComponent().getModel();
-                const userId = This.Userid;
+                const userId = this.Userid;
 
                 var fileInput = document.createElement("input");
                 fileInput.type = "file";
@@ -260,14 +266,12 @@ sap.ui.define([
                         reader.onload = async (e) => {
                             var selectedImageBase64 = e.target.result; // Get the base64 encoded image
                             //localStorage.removeItem("userProfileImage");
-                            const oImageControle1 = This.byId("idImageAccontDetailsAvatar_InitialPage");
-                            const oImageControle2 = This.byId("idProfilePicPopover_InitialPage");
-                            const oImageControle3 = This.byId("idImageAvatarInitialScreen_InitialView");
-                            // Update all avatar images with the new base64 image
-                            oImageControle1.setSrc(selectedImageBase64);
-                            oImageControle2.setSrc(selectedImageBase64);
-                            oImageControle3.setSrc(selectedImageBase64);
-                            //localStorage.setItem("userProfileImage", selectedImageBase64);
+                            var allAvatars = oView1.findElements(true, function (element) {
+                                return element.isA("sap.m.Avatar");
+                            });
+                            allAvatars.forEach(function (avatar) {
+                                avatar.setSrc(selectedImageBase64);
+                            });
                             const cleanBase64 = selectedImageBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
 
                             const oPayload = {
@@ -279,6 +283,7 @@ sap.ui.define([
                                     error: reject
                                 });
                             });
+                            sap.m.MessageToast.show("Profile image updated successfully.");
                         };
                         // Read the selected file as a Data URL (base64 string)
                         reader.readAsDataURL(selectedFile);
@@ -296,6 +301,7 @@ sap.ui.define([
                 const oModel = This.getOwnerComponent().getModel();
                 const oUserId = This.Userid;
                 try {
+                    sap.ui.core.BusyIndicator.show(0);
                     const sEntityPath = `/APP_LOGON_DETAILSSet('${oUserId}')`;
                     const userData = await new Promise((resolve, reject) => {
                         oModel.read(sEntityPath, {
@@ -332,6 +338,8 @@ sap.ui.define([
                     }
                 } catch (oError) {
                     console.error("Error deleting profile image:", oError);
+                } finally {
+                    sap.ui.core.BusyIndicator.hide();
                 }
             },
             //Cancel the Initial Page User Details...starts here
@@ -426,6 +434,7 @@ sap.ui.define([
                 // Retrieve all resources for validation
                 var sEntityPath = `/APP_LOGON_DETAILSSet('${userId}')`;
                 try {
+                    sap.ui.core.BusyIndicator.show(0);
                     const currentUserData = await new Promise((resolve, reject) => {
                         oModel.read(sEntityPath, {
                             success: (oData) => resolve(oData),
@@ -485,6 +494,8 @@ sap.ui.define([
                     this.byId("idInputTextUserEmail_InitialPage").setVisible(true);
                 } catch (error) {
                     sap.m.MessageToast.show("Error updating profile or fetching data.");
+                } finally {
+                    sap.ui.core.BusyIndicator.hide();
                 }
             },
             //Cancel the Profile Details Changing...
@@ -508,12 +519,126 @@ sap.ui.define([
                 this.byId("idBtnCancelProfileDetails_InitialPage").setVisible(false);
             },
 
+            //Create Resource(New User to the warehouse.)
             onPressCreateResource_InitialPage: async function () {
                 if (!this.CreateResorceFragment_Initial) {
                     this.CreateResorceFragment_Initial = await this.loadFragment("InitialPageCreateResource");
                 }
                 this.CreateResorceFragment_Initial.open();
             },
+            onPressDeclineCreateResource_InitialPage: function () {
+                this.CreateResorceFragment_Initial.close();
+            },
+            //Create Resource (New user to warehouse)..
+            oncreatesingupPress: function () {
+                var oView = this.getView();
+                // Retrieve values from input fields
+                var sFirstName = oView.byId("idFirstnameInput").getValue();
+                var sLastName = oView.byId("idLastnameInput").getValue();
+                var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
+                var sMobileNo = oView.byId("idMobilenoInput").getValue();
+                var sEmailID = oView.byId("idEmailIDInput").getValue();
+                var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
+
+                // Validate input fields
+                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
+                    MessageToast.show("Please fill all fields");
+                    return;
+                }
+
+                // Validate mobile number
+                if (!/^\d{10}$/.test(sMobileNo)) {
+                    MessageToast.show("Mobile number must be exactly 10 digits.");
+                    return;
+                }
+                if (!this.validateEmail(sEmailID)) {
+                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
+                    return;
+                }
+
+                // Get the OData model
+                var oModel = this.getView().getModel();
+
+                // Check if Employee No already exists
+                oModel.read("/RESOURCESSet", {
+                    filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
+                    success: function (oData) {
+                        // Check if any results were returned
+                        if (oData.results.length > 0) {
+                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
+                        } else {
+                            // Create a data object for new user
+                            var oDataToCreate = {
+                                Resourcename: sFirstName,
+                                Lname: sLastName,
+                                Resourceid: sEmployeeNo,
+                                Phonenumber: sMobileNo,
+                                Email: sEmailID,
+                                Resourcetype: sResourceType
+                            };
+
+                            // Send data to backend (adjust path as necessary)
+                            oModel.create("/RESOURCESSet", oDataToCreate, {
+                                success: function () {
+                                    MessageBox.success("Woohoo!\nYour Request Has Been Placed");
+                                    // Reset input fields
+                                    oView.byId("idFirstnameInput").setValue("");
+                                    oView.byId("idLastnameInput").setValue("");
+                                    oView.byId("idEmployeenoInput").setValue("");
+                                    oView.byId("idMobilenoInput").setValue("");
+                                    oView.byId("idEmailIDInput").setValue("");
+                                    oView.byId("idinternal").setSelected(false);
+                                    oView.byId("idexternal").setSelected(false);
+                                    oView.byId("idothers").setSelected(false);
+                                    //oView.byId("dialog").close();
+                                },
+                                error: function () {
+                                    MessageToast.show("Error creating user. Please try again.");
+                                }
+                            });
+                        }
+                    },
+                    error: function () {
+                        MessageToast.show("Error checking existing Employee No. Please try again.");
+                    }
+                });
+                this.CreateResorceFragment_Initial.close();
+            },
+            validateEmail: function (email) {
+                // Regular expression for validating an email address
+                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+                return re.test(email);  // Returns true if valid, false otherwise
+            },
+            getSelectedResourceType: function () {
+                // Get selected resource type from radio buttons
+                var oView = this.getView();
+                if (oView.byId("idinternal").getSelected()) {
+                    return "Internal";
+                } else if (oView.byId("idexternal").getSelected()) {
+                    return "External";
+                } else if (oView.byId("idothers").getSelected()) {
+                    return "Others";
+                }
+            },
+            //After enters some values into fileds then press on clear, it removes all fields and radio btns... 
+            onPressClearsignupPress: function () {
+                //this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
+                //this.getView().byId("createResourceVbox").setVisible(false);
+                this.byId("idFirstnameInput").setValue("");
+                this.byId("idLastnameInput").setValue("");
+                this.byId("idEmployeenoInput").setValue("");
+                this.byId("idMobilenoInput").setValue("");
+                this.byId("idEmailIDInput").setValue("");
+                this.byId("idinternal").setSelected(false);
+                this.byId("idexternal").setSelected(false);
+                this.byId("idothers").setSelected(false);
+            },
+            //Signout the page...InitialPage Popover
+            onPressBtnSignoutProfilePopover_InitialPage: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("ConfigLogin", {}, true);
+            },
+
 
             onExit: function () {
                 // Remove the event listener when the controller is destroyed

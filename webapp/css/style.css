@@ -1229,11 +1229,12 @@
     }
 }
 
-.LabelHomePage {
-    margin-top: 0.3rem;
+.CreateResourceLabelClass_InitialPage{
+    margin-top: 0.5rem;
+    font-weight: bold !important;
 }
 
-.LabelHomepageFragmentSignup {
+/* .LabelHomepageFragmentSignup {
     margin-top: 0.5rem;
 }
 
@@ -1251,7 +1252,7 @@
 
 .LabelHomepageFragmentSignup5 {
     margin-top: 0.8rem;
-}
+} */
 
 .signupCreatebutton {
     font-weight: bold !important;
