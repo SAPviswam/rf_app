@@ -45,7 +45,7 @@
                     tooltip="{i18n>Prf_Ttip_IV}"
                     press="onPressAvatarBtn_InitialScreen"
                 />
-                <!-- <Button
+                 <Button
                     id="idBtnSignout"
                     icon="sap-icon://log"
                     press="onSignoutPress"
