@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController",
 ],
     function (Controller) {
         "use strict";
@@ -16,6 +16,13 @@ sap.ui.define([
                 this.ID = id;
                 this.IDI = idI;
             },
+            onAvatarPressed: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
+            },
             onF2PressHubyAutoPosAssignment: function () {
                 this.getView().byId("idLBHUAPAscrollContainer2").setVisible(true);
                 this.getView().byId("idLBHUAPAscrollContainer1").setVisible(false);
@@ -31,7 +38,6 @@ sap.ui.define([
             OnpressThirdBackButtonLBHUAPA:function(){
                 this.getView().byId("idLBHUAPAScrollContainer3").setVisible(false);
                 this.getView().byId("idLBHUAPAscrollContainer1").setVisible(true);
-
             },
             OnpressBack_AutoPosAssignment: async function(){
                 var oRouter = this.getOwnerComponent().getRouter();

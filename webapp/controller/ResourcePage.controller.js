@@ -425,7 +425,8 @@ sap.ui.define([
                     oDialog.close();
                 }
                 this.resetDialogBox();
-                sap.m.MessageToast.show("Theme mode Exited!");
+                sap.m.MessageToast.show("Theme mode Exited. Please wait!");
+                window.location.reload();
             },
             //Apply btn from ThemeDailog Box in RESOURCE PAGE...
             onApplyColor: function () {
@@ -2893,10 +2894,6 @@ sap.ui.define([
                 this.byId("idUserDetails").close();
             },
 
-            onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { Userid:this.IDI });
-
-            },
+            
         });
     });

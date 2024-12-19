@@ -18,8 +18,13 @@
                 <Image
                     id="_IDGenImage1CSHUWOWC"
                     height="1.5rem"
-                    class="sapUiSmallMarginBegin .Logo"
-                    src="./Images/Artihcus logo.png"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+                <Title
+                    id="idTitle_CSHUWOWCView"
+                    class="title"
+                    text="CAPmodel RF"
                 />
                 <tnt:ToolHeaderUtilitySeparator
                     id="idToolHeaderUtilitySeparatorCSHUWOWC"
@@ -49,13 +54,6 @@
                 height="100%"
                 width="100%"
             >
-                <Button
-                    id="_IDGenbackButtonCSHUWOWC1"
-                    icon="sap-icon://nav-back"
-                    press="OnpressbackbolCSHUWOWC1"
-                    visible="true"
-                    class="sapUiSmallMarginBottom"
-                />
                 <VBox
                     id="_IDGenVBoxWithCSHUWOWCBackButton"
                     alignItems="Center"
@@ -133,6 +131,20 @@
                             width="200px"
                             editable="false"
                         />
+                        <HBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            class="sapUiTinyMargin"
+                            justifyContent="Center"
+                        >
+                            <Button
+                                id="_IDGenbackButtonCSHUWOWC1"
+                                text="Back"
+                                press="OnpressbackbolCSHUWOWC1"
+                                class="sapUiTinyMarginEnd"
+                                type="Emphasized"
+                            />
+                        </HBox>
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -179,12 +191,12 @@
                             text="Dest.HU"
                             class="sapUiTinyMarginEnd"
                         />
-                            <Input
-                                id="_IDGenDESTHUWOWCInput1"
-                                maxLength="255"
-                                width="200px"
-                                editable="false"
-                            />
+                        <Input
+                            id="_IDGenDESTHUWOWCInput1"
+                            maxLength="255"
+                            width="200px"
+                            editable="false"
+                        />
 
                         <Label
                             id="_IDPackmatWOWCGenLabel1"
@@ -217,13 +229,16 @@
                             maxLength="10"
                             width="200px"
                         />
-                    <VBox id="_IDvboxcshu" alignItems="Center">
-                        <Button
-                            id="_IDonsaveCSHUWOWC"
-                            text="Save"
-                            type="Emphasized"
-                            press="onSavePress"
-                        />
+                        <VBox
+                            id="_IDvboxcshu"
+                            alignItems="Center"
+                        >
+                            <Button
+                                id="_IDonsaveCSHUWOWC"
+                                text="Save"
+                                type="Emphasized"
+                                press="onSavePress"
+                            />
                         </VBox>
                     </form:SimpleForm>
                 </VBox>

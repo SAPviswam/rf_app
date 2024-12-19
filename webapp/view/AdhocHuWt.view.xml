@@ -90,6 +90,18 @@
                                     value=""
                                     liveChange="onLiveChange"
                                 />
+                                </HBox>
+                                <HBox id = "idFirstHbox1_CAHU">
+                                <Label
+                                    id="idWPTLabel1_CAHU"
+                                    text="Wpt"
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idWPTInput1_CAHU"
+                                    value=""
+                                    liveChange="onLiveChange"
+                                />
                             </HBox>
                             <HBox id="idSecondHbox_CAHU">
                                 <Button
@@ -99,6 +111,16 @@
                                     press="onHuBarcodeScanner"
                                     width="auto"
                                 />
+                                <Button
+                                    id="SubmitBtn_CAHU"
+                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                    text="Submit"
+                                    type="Emphasized"
+                                    width="auto"
+                                    press="onPressSubmitbtn"
+                                    visible="true"
+                                />
+
                                 <Button
                                     id="idFirstBackBtn_CAHU"
                                     class="sapUiTinyMarginTop"
@@ -143,7 +165,7 @@
                         >
                             <HBox id="idSecSCHbox1_CAHU">
                                 <Label
-                                    id="idHuLabelSecSC"
+                                    id="idHuLabelSecSC1"
                                     text="HU"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
@@ -217,6 +239,14 @@
                                     type="Emphasized"
                                     class="sapUiTinyMarginEnd sapUiTinyMarginTop"
                                     press="onSecondBackBtnPress_CAHU"
+                                />
+                                <Button
+                                    id="idCreateBtn_CAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Create"
+                                    width="auto"
+                                    press="onPressCreate_CAHU"
+                                    type="Emphasized"
                                 />
                                 <Button
                                     id="idHuDetailsBtn_CAHU"

@@ -305,11 +305,11 @@ sap.ui.define([
 
             },
 
-            oncancelsignupPress: function () {
-                this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
-                this.getView().byId("createResourceVbox").setVisible(false);
+            // oncancelsignupPress: function () {
+            //     this.getView().byId("idVBoxInputFields_HomeView").setVisible(true);
+            //     this.getView().byId("createResourceVbox").setVisible(false);
 
-            },
+            // },
 
 
 
@@ -635,123 +635,105 @@ sap.ui.define([
                 });
             },
 
-            oncreatesingupPress: function () {
-                var oView = this.getView();
+            // oncreatesingupPress: function () {
+            //     var oView = this.getView();
 
-                // Retrieve values from input fields
-                var sFirstName = oView.byId("idFirstnameInput").getValue();
-                var sLastName = oView.byId("idLastnameInput").getValue();
-                var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
-                var sMobileNo = oView.byId("idMobilenoInput").getValue();
-                var sEmailID = oView.byId("idEmailIDInput").getValue();
-                var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
+            //     // Retrieve values from input fields
+            //     var sFirstName = oView.byId("idFirstnameInput").getValue();
+            //     var sLastName = oView.byId("idLastnameInput").getValue();
+            //     var sEmployeeNo = oView.byId("idEmployeenoInput").getValue();
+            //     var sMobileNo = oView.byId("idMobilenoInput").getValue();
+            //     var sEmailID = oView.byId("idEmailIDInput").getValue();
+            //     var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
 
-                // Validate input fields
-                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
-                    MessageToast.show("Please fill all fields");
-                    return;
-                }
+            //     // Validate input fields
+            //     if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
+            //         MessageToast.show("Please fill all fields");
+            //         return;
+            //     }
 
-                // Validate mobile number
-                if (!/^\d{10}$/.test(sMobileNo)) {
-                    MessageToast.show("Mobile number must be exactly 10 digits.");
-                    return;
-                }
-                if (!this.validateEmail(sEmailID)) {
-                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
-                    return;
-                }
+            //     // Validate mobile number
+            //     if (!/^\d{10}$/.test(sMobileNo)) {
+            //         MessageToast.show("Mobile number must be exactly 10 digits.");
+            //         return;
+            //     }
+            //     if (!this.validateEmail(sEmailID)) {
+            //         MessageToast.show("Please enter a valid email address. Example: example@domain.com");
+            //         return;
+            //     }
 
-                // Get the OData model
-                var oModel = this.getView().getModel();
+            //     // Get the OData model
+            //     var oModel = this.getView().getModel();
 
-                // Check if Employee No already exists
-                oModel.read("/RESOURCESSet", {
-                    filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
-                    success: function (oData) {
-                        // Check if any results were returned
-                        if (oData.results.length > 0) {
-                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
-                        } else {
-                            // Create a data object for new user
-                            var oDataToCreate = {
-                                Resourcename: sFirstName,
-                                Lname: sLastName,
-                                Resourceid: sEmployeeNo,
-                                Phonenumber: sMobileNo,
-                                Email: sEmailID,
-                                Resourcetype: sResourceType
-                            };
+            //     // Check if Employee No already exists
+            //     oModel.read("/RESOURCESSet", {
+            //         filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
+            //         success: function (oData) {
+            //             // Check if any results were returned
+            //             if (oData.results.length > 0) {
+            //                 MessageToast.show("Employee No already exists. Please use a different Employee No.");
+            //             } else {
+            //                 // Create a data object for new user
+            //                 var oDataToCreate = {
+            //                     Resourcename: sFirstName,
+            //                     Lname: sLastName,
+            //                     Resourceid: sEmployeeNo,
+            //                     Phonenumber: sMobileNo,
+            //                     Email: sEmailID,
+            //                     Resourcetype: sResourceType
+            //                 };
 
-                            // Send data to backend (adjust path as necessary)
-                            oModel.create("/RESOURCESSet", oDataToCreate, {
-                                success: function () {
-                                    MessageBox.success("Woohoo!\nYour Request Has Been Placed");
+            //                 // Send data to backend (adjust path as necessary)
+            //                 oModel.create("/RESOURCESSet", oDataToCreate, {
+            //                     success: function () {
+            //                         MessageBox.success("Woohoo!\nYour Request Has Been Placed");
 
 
-                                    // Reset input fields
-                                    oView.byId("idFirstnameInput").setValue("");
-                                    oView.byId("idLastnameInput").setValue("");
-                                    oView.byId("idEmployeenoInput").setValue("");
-                                    oView.byId("idMobilenoInput").setValue("");
-                                    oView.byId("idEmailIDInput").setValue("");
-                                    oView.byId("idinternal").setSelected(false);
-                                    oView.byId("idexternal").setSelected(false);
-                                    oView.byId("idothers").setSelected(false);
-                                    oView.byId("dialog").close();
-                                },
-                                error: function () {
-                                    MessageToast.show("Error creating user. Please try again.");
-                                }
-                            });
-                        }
-                    },
-                    error: function () {
-                        MessageToast.show("Error checking existing Employee No. Please try again.");
-                    }
-                });
-            },
-            validateEmail: function (email) {
-                // Regular expression for validating an email address
-                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
-                return re.test(email);  // Returns true if valid, false otherwise
-            },
+            //                         // Reset input fields
+            //                         oView.byId("idFirstnameInput").setValue("");
+            //                         oView.byId("idLastnameInput").setValue("");
+            //                         oView.byId("idEmployeenoInput").setValue("");
+            //                         oView.byId("idMobilenoInput").setValue("");
+            //                         oView.byId("idEmailIDInput").setValue("");
+            //                         oView.byId("idinternal").setSelected(false);
+            //                         oView.byId("idexternal").setSelected(false);
+            //                         oView.byId("idothers").setSelected(false);
+            //                         oView.byId("dialog").close();
+            //                     },
+            //                     error: function () {
+            //                         MessageToast.show("Error creating user. Please try again.");
+            //                     }
+            //                 });
+            //             }
+            //         },
+            //         error: function () {
+            //             MessageToast.show("Error checking existing Employee No. Please try again.");
+            //         }
+            //     });
+            // },
+            // validateEmail: function (email) {
+            //     // Regular expression for validating an email address
+            //     var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+            //     return re.test(email);  // Returns true if valid, false otherwise
+            // },
 
-            getSelectedResourceType: function () {
-                // Get selected resource type from radio buttons
-                var oView = this.getView();
-                if (oView.byId("idinternal").getSelected()) {
-                    return "Internal";
-                } else if (oView.byId("idexternal").getSelected()) {
-                    return "External";
-                } else if (oView.byId("idothers").getSelected()) {
-                    return "Others";
-                }
-            },
-            onLogoutPressedInHomePage: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
+            // getSelectedResourceType: function () {
+            //     // Get selected resource type from radio buttons
+            //     var oView = this.getView();
+            //     if (oView.byId("idinternal").getSelected()) {
+            //         return "Internal";
+            //     } else if (oView.byId("idexternal").getSelected()) {
+            //         return "External";
+            //     } else if (oView.byId("idothers").getSelected()) {
+            //         return "Others";
+            //     }
+            // },
 
-            },
             onBackBtnInHomePage: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
-
             },
-            onSignoutPressedInHomePage: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID }, true);
-                // if (window.history && window.history.replaceState) {
-                //     window.history.replaceState(null, document.title, window.location.href);
-                // }
-
-            },
-
-            onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { id: this.ID });
-
-            },
+            
             onChangeQueuePress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("CHANGEQUEUE", { id: this.ID,idI:this.IDI });

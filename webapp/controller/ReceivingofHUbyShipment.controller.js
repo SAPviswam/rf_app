@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "./BaseController"
 ],
     function (Controller) {
         "use strict";
@@ -13,10 +13,17 @@ sap.ui.define([
             },
             onResourceDetailsLoad: function (oEvent1) {
                 var that = this;
-                const { id,idI} = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 this.IDI = idI;
                 console.log(this.ID);
+            },
+            onAvatarPressed: function (oEvent) {
+                this.onPressAvatarEveryTileHelperFunction(oEvent);
+            },
+            onSignoutPressed: function () {
+                var oRouter = this.getOwnerComponent().getRouter(this);
+                oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
             onLivechangeShipment: function () {
                 if (this.getView().byId("IDShipmentInput").getValue() == "800020") {
@@ -96,15 +103,15 @@ sap.ui.define([
             Onpressbackbol1main: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel1 = this.getOwnerComponent().getModel();
-                var that=this;
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         let oUser = oData.Users.toLowerCase()
                         if (oUser === "resource") {
-                            oRouter.navTo("RouteResourcePage",{id:this.ID,idI: that.IDI});
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
                         }
                         else {
-                            oRouter.navTo("Supervisor",{id:this.ID,idI: that.IDI});
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                         }
                     }.bind(this),
                     error: function () {

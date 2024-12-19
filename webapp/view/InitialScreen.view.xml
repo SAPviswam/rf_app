@@ -39,15 +39,11 @@
                     </layoutData>
                 </ToolbarSpacer>
                 <!-- Avatar -->
-                <!-- <Avatar
+                <Avatar
                     id="idImageAvatarInitialScreen_InitialView"
                     displaySize="XS"
                     tooltip="{i18n>Prf_Ttip_IV}"
-                /> -->
-                <Button
-                    id="idBtnSignout"
-                    icon="sap-icon://log"
-                    press="onSignoutPress"
+                    press="onPressAvatarBtn_InitialScreen"
                 />
             </tnt:ToolHeader>
         </tnt:header>
@@ -419,7 +415,7 @@
                         <Button
                             id="idconnectsapeditButton_InitialView"
                             text="{i18n>save_Btn_IV}"
-                            press="onEditconnectSAPPress"
+                            press="__onEditconnectSAPPress"
                             type="Unstyled"
                             width="auto"
                             visible="false"

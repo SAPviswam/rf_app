@@ -5,6 +5,7 @@ sap.ui.define([
 	"sap/m/Popover",
 	"sap/m/Button",
 	"sap/m/library"
+
 ],
 function (Controller,Device,JSONModel,Popover,Button,library) {
     "use strict";
@@ -20,10 +21,15 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
         },
         onResourceDetailsLoad: async function (oEvent1) {
 
-            const { id } = oEvent1.getParameter("arguments");
+             const { id,idI } = oEvent1.getParameter("arguments");
+                this.ID = id;
+                this.IDI=idI
 
-            this.ID = id;
 
+        },
+        onSignoutPressed:function(){
+            var oRouter = this.getOwnerComponent().getRouter(this);
+            oRouter.navTo("InitialScreen",{Userid:this.IDI});
         },
         onRowDoubleClick: function () {
             debugger
@@ -37,20 +43,20 @@ function (Controller,Device,JSONModel,Popover,Button,library) {
             const oRouter = this.getOwnerComponent().getRouter();
      
             var oModel1 = this.getOwnerComponent().getModel();
-     
+            var that=this;
             await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
      
               success: function (oData) {
                 let oUser=oData.Users.toLowerCase()
                 if (oUser === "resource") {
      
-                  oRouter.navTo("RouteResourcePage", { id: this.ID });
+                  oRouter.navTo("RouteResourcePage", { id: this.ID ,idI:that.IDI});
      
                 }
      
                 else {
      
-                  oRouter.navTo("Supervisor", { id: this.ID });
+                  oRouter.navTo("Supervisor", { id: this.ID ,idI:that.IDI});
                 }
      
               }.bind(this),

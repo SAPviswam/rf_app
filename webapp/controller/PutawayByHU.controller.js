@@ -15,11 +15,6 @@ sap.ui.define(
           Device.media.attachHandler(this.onResize, this);
             
     },
-
-
-
-   
-
     onResourceDetailsLoad: async function (oEvent1) {
         const { id } = oEvent1.getParameter("arguments");
             this.ID = id;
@@ -27,9 +22,7 @@ sap.ui.define(
       },
       onAfterRendering: function () {
         this.byId("idPage1ScannerFormBoxHU").setVisible(true);
-      },
-      //Back Btn from 1st ScrollContainer Page 1 =>idPage1ScannerFormBox
-    //   
+      }, 
       onPressBackBtnScanerFormBox: async function(){
         var oRouter = this.getOwnerComponent().getRouter();
         var oModel1 = this.getOwnerComponent().getModel();

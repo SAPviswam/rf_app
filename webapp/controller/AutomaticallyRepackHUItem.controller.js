@@ -12,8 +12,9 @@ sap.ui.define(
                 oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             },
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
-                this.ID = id;
+                const { id, idI } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
+                this.ID = id;  // Save ID for later use
+                this.IDI = idI
                 //Profile image updating(from BaseController)...
                 this.applyStoredProfileImage();
             },
@@ -25,17 +26,18 @@ sap.ui.define(
             onPressBackBtnPage1_ARHUI: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel1 = this.getOwnerComponent().getModel();
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
-                        if (oData.Users === "RESOURCE") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID });
-                        }
-                        else {
-                            oRouter.navTo("Supervisor", { id: this.ID });
+                        let oUser = oData.Users.toLowerCase();  // Get user role
+                        if (oUser === "resource") {
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });  // Navigate to Resource page
+                        } else {
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });  // Navigate to Supervisor page
                         }
                     }.bind(this),
                     error: function () {
-                        MessageToast.show("User does not exist");
+                        MessageToast.show("User does not exist");  // Show error if user doesn't exist
                     }
                 });
             },
@@ -290,6 +292,7 @@ sap.ui.define(
                 // Show the 8th Page
                 oScrollContainer9.setVisible(true);
             },
+            
         });
     }
 );
