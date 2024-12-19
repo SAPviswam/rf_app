@@ -116,36 +116,36 @@ sap.ui.define([
                 const oView = this.getView();
                 const oComponent = this.getOwnerComponent();
                 const oModel = oComponent.getModel();
-            
+
                 // Check if the popover is already open
                 const existingPopover = oComponent.getPopover();
                 if (existingPopover && existingPopover.isOpen()) {
-                    return; 
+                    return;
                 }
                 try {
-                    sap.ui.core.BusyIndicator.show(0); 
+                    sap.ui.core.BusyIndicator.show(0);
                     const oData = await new Promise((resolve, reject) => {
                         oModel.read(`/APP_LOGON_DETAILSSet('${userId}')`, {
                             success: resolve,
                             error: reject
                         });
                     });
-            
+
                     // Create profile data model
                     const oProfileModel = new sap.ui.model.json.JSONModel({
                         Name: `${oData.Firstname} ${oData.Lastname}`,
                         Number: oData.Phonenumber
                     });
-            
+
                     // Check if the popover is already created
                     if (!this._oProfilePopover) {
                         this._oProfilePopover = await sap.ui.core.Fragment.load({
                             name: "com.app.rfapp.fragments.InitialPageProfilePopOver",
                             controller: this
                         });
-                        oView.addDependent(this._oProfilePopover); 
+                        oView.addDependent(this._oProfilePopover);
                     }
-            
+
                     // Set the model for profile data
                     this._oProfilePopover.setModel(oProfileModel, "initialProfile");
                     oComponent.setPopover(this._oProfilePopover); // Set the popover in the component
@@ -154,9 +154,9 @@ sap.ui.define([
                 } catch (error) {
                     sap.m.MessageToast.show("User does not exist or an error occurred.");
                 } finally {
-                    sap.ui.core.BusyIndicator.hide(); 
+                    sap.ui.core.BusyIndicator.hide();
                 }
-            },            
+            },
             //Press Hover effect Avatar Press at Initial View...
             onPressPopoverHoverEffectAvatar_InitialPage: function () {
                 var This = this;
@@ -539,33 +539,74 @@ sap.ui.define([
                 var sMobileNo = oView.byId("idMobilenoInput").getValue();
                 var sEmailID = oView.byId("idEmailIDInput").getValue();
                 var sResourceType = this.getSelectedResourceType(); // Method to get selected resource type
+                var bValid = true;
 
-                // Validate input fields
-                if (!sFirstName || !sLastName || !sEmployeeNo || !sMobileNo || !sResourceType) {
-                    MessageToast.show("Please fill all fields");
+                // Validate First Name
+                if (!sFirstName || sFirstName.length < 3) {
+                    this.byId("idFirstnameInput").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idFirstnameInput").setValueStateText(sFirstName ? "First name must be at least 3 characters long!" : "First name is required!");
+                    bValid = false;
+                } else {
+                    this.byId("idFirstnameInput").setValueState(sap.ui.core.ValueState.None);
+                }
+
+                // Validate Last Name
+                if (!sLastName || sLastName.length < 3) {
+                    this.byId("idLastnameInput").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idLastnameInput").setValueStateText(sLastName ? "Last name must be at least 3 characters long!" : "Last name is required!");
+                    bValid = false;
+                } else {
+                    this.byId("idLastnameInput").setValueState(sap.ui.core.ValueState.None);
+                }
+
+                // Validate Employee No
+                var employeeNo = /^\d{6}$/;
+                if (!sEmployeeNo || !employeeNo.test(sEmployeeNo)) {
+                    this.byId("idEmployeenoInput").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idEmployeenoInput").setValueStateText(sEmployeeNo ? "Employee number should be 6 digits!" : "Employee number is required!");
+                    bValid = false;
+                } else {
+                    this.byId("idEmployeenoInput").setValueState(sap.ui.core.ValueState.None);
+                }
+
+                // Validate Mobile Number
+                var phoneRegex = /^\d{10}$/;
+                if (!sMobileNo || !phoneRegex.test(sMobileNo)) {
+                    this.byId("idMobilenoInput").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idMobilenoInput").setValueStateText(sMobileNo ? "Phone number must be exactly 10 digits!" : "Phone number is required!");
+                    bValid = false;
+                } else {
+                    this.byId("idMobilenoInput").setValueState(sap.ui.core.ValueState.None);
+                }
+
+                // Validate Email
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!sEmailID || !emailRegex.test(sEmailID)) {
+                    this.byId("idEmailIDInput").setValueState(sap.ui.core.ValueState.Error);
+                    this.byId("idEmailIDInput").setValueStateText(sEmailID ? "Email should be like this 'xyz@xyz.com' !" : "Email is required!");
+                    bValid = false;
+                } else {
+                    this.byId("idEmailIDInput").setValueState(sap.ui.core.ValueState.None);
+                }
+            
+                // Show error message if invalid fields
+                if (!bValid) {
+                    MessageToast.show("Please correct the highlighted errors.");
                     return;
                 }
 
-                // Validate mobile number
-                if (!/^\d{10}$/.test(sMobileNo)) {
-                    MessageToast.show("Mobile number must be exactly 10 digits.");
-                    return;
-                }
-                if (!this.validateEmail(sEmailID)) {
-                    MessageToast.show("Please enter a valid email address. Example: example@domain.com");
+                if (!sResourceType) {
+                    MessageToast.show("Please select resource type!");
                     return;
                 }
 
-                // Get the OData model
-                var oModel = this.getView().getModel();
-
+                const oModel = this.getView().getModel();
                 // Check if Employee No already exists
                 oModel.read("/RESOURCESSet", {
                     filters: [new sap.ui.model.Filter("Resourceid", sap.ui.model.FilterOperator.EQ, sEmployeeNo)],
                     success: function (oData) {
-                        // Check if any results were returned
                         if (oData.results.length > 0) {
-                            MessageToast.show("Employee No already exists. Please use a different Employee No.");
+                            MessageToast.show("Employee Number already exists. Please use a different one.");
                         } else {
                             // Create a data object for new user
                             var oDataToCreate = {
@@ -604,11 +645,6 @@ sap.ui.define([
                 });
                 this.CreateResorceFragment_Initial.close();
             },
-            validateEmail: function (email) {
-                // Regular expression for validating an email address
-                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
-                return re.test(email);  // Returns true if valid, false otherwise
-            },
             getSelectedResourceType: function () {
                 // Get selected resource type from radio buttons
                 var oView = this.getView();
@@ -618,7 +654,7 @@ sap.ui.define([
                     return "External";
                 } else if (oView.byId("idothers").getSelected()) {
                     return "Others";
-                }
+                } 
             },
             //After enters some values into fileds then press on clear, it removes all fields and radio btns... 
             onPressClearsignupPress: function () {

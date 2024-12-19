@@ -60,12 +60,13 @@ sap.ui.define(
             },
 
             onSupervisorDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
                 this.applyStoredProfileImage();
             },
             //Avatar Press function in SupervisorPage...
-            onPressBtnAvatar_SupervisorPage: function(oEvent){
+            onPressBtnAvatar_SupervisorPage: function (oEvent) {
                 var oComponent = this.getOwnerComponent();
                 // Destroy the existing popover if it exists
                 if (oComponent.getPopover()) {
@@ -78,7 +79,7 @@ sap.ui.define(
                 });
                 this.applyStoredProfileImage();
             },
-            
+
 
 
 
@@ -450,7 +451,7 @@ sap.ui.define(
                 var oAreaSelect = this.byId("idAreaSelect");
                 var oGroupSelect = this.byId("idGroupSelect");
                 var oQueueSelect = this.byId("idQueueSelect");
-                
+
                 var Name = oNameInput.getValue();
                 var email = oEmailInput.getValue();
                 var phone = oPhoneInput.getValue();
@@ -613,7 +614,7 @@ sap.ui.define(
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
 
-                        that.sendSms(Empid, Name, phone, oPassword,);  
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         //that.resetForm();
                         that.onRequestedData();
@@ -636,7 +637,7 @@ sap.ui.define(
                 var phone = SelectedTable.cells[3].mProperties.text;
                 var Resourcetype = SelectedTable.cells[2].mProperties.text;
                 var email = SelectedTable.cells[4].mProperties.text;
-                var User =  SelectedTable.cells[5].mProperties.selectedKey
+                var User = SelectedTable.cells[5].mProperties.selectedKey
                 var Area = AreaV.join(",");
                 var Group = GrpV.join(",");
                 var Queue = QusV.join(",");
@@ -704,7 +705,7 @@ sap.ui.define(
                 });
             },
 
-            sendSms: function (Userid,Firstname,Phonenumber,Password) {
+            sendSms: function (Userid, Firstname, Phonenumber, Password) {
                 debugger
                 // Send POST request to Twilio API using jQuery.ajax
                 const accountSid = this.oSMSConfig.AccountSID,
@@ -1678,7 +1679,7 @@ sap.ui.define(
                 var sDay = ("0" + oDate.getDate()).slice(-2);
 
                 return `${sYear}-${sMonth}-${sDay}`;
-            }, 
+            },
             resetForm: function () {
                 // Reset input fields
                 this.byId("idEmppInput").setValue("");
