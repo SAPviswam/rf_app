@@ -669,12 +669,6 @@ sap.ui.define([
                 this.byId("idexternal").setSelected(false);
                 this.byId("idothers").setSelected(false);
             },
-            //Signout the page...InitialPage Popover
-            onPressBtnSignoutProfilePopover_InitialPage: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("ConfigLogin", {}, true);
-            },
-
 
             onExit: function () {
                 // Remove the event listener when the controller is destroyed
@@ -1408,7 +1402,7 @@ sap.ui.define([
                     this._loadingSysDialog.close();
                 }
             },
-            onSignoutPress: async function () {
+            onPressBtnSignoutProfilePopover_InitialPage: async function () {
 
                 // Create a Busy Dialog instance
                 if (!this._oSignOutBusyDialog) {
