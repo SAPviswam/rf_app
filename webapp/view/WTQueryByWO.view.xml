@@ -256,9 +256,11 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox id="idVbox_WTQueryByWO4"
-                         alignContent="Center"
-                            alignItems="Center">
+                        <VBox
+                            id="idVbox_WTQueryByWO4"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
                             <HBox
                                 id="idHbox_WTQueryByWO5"
                                 alignContent="Center"

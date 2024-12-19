@@ -714,17 +714,6 @@ sap.ui.define([
                 }.bind(this), 700);
             },
 
-
-            // load_100_Client_Metadata: function () {
-            //     var oModel = new ODataModel("/sap/opu/odata/sap/ZEWM_RFUI_SRV_01/", {
-            //         headers: {
-            //             "Authorization": "Basic " + btoa("sreedhars:Sreedhar191729"),
-            //             "sap-client": "100"
-            //         }
-            //     });
-            //     this.getView().setModel(oModel);
-            // },
-
             _handleKeyDown: function (oEvent) {
                 // Prevent default action for specific function keys
                 if (["F1", "F2", "F4"].includes(oEvent.key)) {
@@ -892,7 +881,7 @@ sap.ui.define([
                                 try {
                                     const oCreateResp = await this.createData(oModel, oUserCOnfigPayload, sUsersRelPath)
                                     sap.m.MessageToast.show("Configured system saved successfully.");
-                                    window.location.reload();
+                                      window.location.reload();
                                 } catch (error) {
                                     sap.m.MessageBox.error("Oops...Creation failed Give another try")
                                     oButton.setEnabled(true);
@@ -1065,8 +1054,6 @@ sap.ui.define([
                                         // test
 
                                     }
-                                    // Handle the response data
-                                    await that.loadConfiguredSystems();
 
                                 }, function (oError) {
                                     // Error callback function
