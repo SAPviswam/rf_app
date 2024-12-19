@@ -90,6 +90,18 @@
                                     value=""
                                     liveChange="onLiveChange"
                                 />
+                                </HBox>
+                                <HBox id = "idFirstHbox1_CAHU">
+                                <Label
+                                    id="idWPTLabel1_CAHU"
+                                    text="Wpt"
+                                    width="30px"
+                                />
+                                <Input
+                                    id="idWPTInput1_CAHU"
+                                    value=""
+                                    liveChange="onLiveChange"
+                                />
                             </HBox>
                             <HBox id="idSecondHbox_CAHU">
                                 <Button
