@@ -667,6 +667,62 @@
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
+             <ScrollContainer
+                id="idfifthProductPage"
+                horizontal="true"
+                vertical="true"
+                height="100%"
+                visible="false"
+                class="sapUiContentPadding"
+            >
+             <Button
+                            id="idBtnHUContentBtn_CCAP"
+                            text="Back"
+                            press="onbackbuttonfromtablepress"
+                            type="Emphasized"
+                            width="auto"
+                        />
+            <Table
+                        id="idBinNumTable_CCAP"
+                        width="100%"
+                        mode="SingleSelectLeft"
+                        selectionChange="onSelectionChange"
+                        growing="true"
+                        class="table_HuStockOverview scrollableTable1"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        
+                    >
+                   
+
+                        <columns>
+                            <Column id="IDGenColumn001_CCAP">
+                                <Text
+                                    id="IDGenText001_CCAP"
+                                    text="Product"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn002_CCAP">
+                                <Text
+                                    id="IDGenTextt_CCAP"
+                                    text="HU Number"
+                                    class="HedingNameColor"
+                                />
+                            </Column>
+                            <Column id="IDGenColumn_CCAP">
+                                <Text
+                                    id="IDGenText_CCAP"
+                                    text="Warehouse number"
+                                    class="HedingNameColor"
+            
+                                />
+                            </Column>
+                        </columns>
+                        <items>
+                           
+                        </items>
+                    </Table>
+             </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>

@@ -65,6 +65,23 @@ sap.ui.define(
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
             },
+            onThirdSubmitBtnPress:function() {
+                this.getView().byId("idsecondProductPage").setVisible(false);
+                this.getView().byId("idthirdProductPage").setVisible(false);
+                this.getView().byId("idProductfirstbackbtn").setVisible(true);
+                this.getView().byId("idProdutSecondbackbtn").setVisible(false);
+                this.getView().byId("idfifthProductPage").setVisible(true)
+
+            },
+            onbackbuttonfromtablepress:function() {
+                this.getView().byId("idsecondProductPage").setVisible(false);
+                this.getView().byId("idthirdProductPage").setVisible(true);
+                this.getView().byId("idProductfirstbackbtn").setVisible(true);
+                this.getView().byId("idProdutSecondbackbtn").setVisible(false);
+                this.getView().byId("idfifthProductPage").setVisible(false);
+                this.getView().byId("idfourthProductPage").setVisible(false)
+
+            },
             onProductdetailsBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(true);
                 this.getView().byId("idthirdProductPage").setVisible(false);
