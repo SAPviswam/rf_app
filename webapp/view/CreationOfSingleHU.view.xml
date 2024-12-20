@@ -59,16 +59,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0_SHU"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                />
+                
 
                 <VBox
                     id="vBox_BOL_SHU"
                     alignItems="Center"
-                    justifyContent="Center"
+                   alignContent="Center"
                     class="centerContent"
                 >
                     <Title
@@ -89,9 +85,13 @@
                         columnsL="1"
                         columnsM="1"
                     >
+                    <VBox id="vbox_SHU">
                         <HBox
                             id="idHBox1_SHU"
-                            justifyContent="Start"
+                            alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiSmallMargin"
+                                justifyContent="Center"
                         >
                             <Label
                                 id="idCreationOfSingleHULabel_SHU"
@@ -106,6 +106,17 @@
                                 class="sapUiTinyMarginBegin"
                                 liveChange="Onpresssubmit"
                             />
+                            </HBox>
+                            <HBox id="hbox3_SHU"
+                             alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center">
+                                <Button
+                    id="idNavBackButton0_SHU"
+                text="Back"
+                    press="Onpressback0"
+                />
                             <!-- Barcode Scan Button -->
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeScannerButtonZebraOneCreationOfSingleHU_SHU"
@@ -122,6 +133,7 @@
                                 press="Onpresssubmit"
                             /> -->
                         </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>

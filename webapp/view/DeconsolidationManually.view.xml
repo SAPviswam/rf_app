@@ -59,17 +59,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0DeconsolidationManually"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                    text="{i18n>Back_Button_DM}"
-                />
+                
 
                 <VBox
                     id="vBox_BOLDeconsolidationManually"
                     alignItems="Center"
-                    justifyContent="Center"
+                 alignContent="Center"
                     class="centerContent"
                 >
                     <Title
@@ -90,9 +85,13 @@
                         columnsL="1"
                         columnsM="1"
                     >
+                    <VBox id="vboxid_DM">
                         <HBox
                             id="idHBox1DeconsolidationManually"
-                            justifyContent="Start"
+                         alignContent="Center"
+                            alignItems="Center"
+                            justifyContent="Center"
+                                class="sapUiSmallMargin"
                         >
                             <Label
                                 id="idDeconsolidationManuallyLabelDeconsolidationManually"
@@ -105,6 +104,18 @@
                                 class="sapUiTinyMarginBegin"
                                 liveChange="Onpresssubmit"
                             />
+                            </HBox>
+                            <HBox id="idhbox_DM"
+                             alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center">
+                                <Button
+                    id="idNavBackButton0DeconsolidationManually"
+                    icon="sap-icon://nav-back"
+                    press="Onpressback0"
+                    text="{i18n>Back_Button_DM}"
+                />
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeScannerButtonZebraOneDeconsolidationManually"
                                 scanSuccess="onScanSuccessOne"
@@ -114,6 +125,7 @@
                                 class="sapUiTinyMarginBegin"
                             />
                         </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
