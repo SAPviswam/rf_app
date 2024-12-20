@@ -144,7 +144,7 @@ sap.ui.define(
         // Get the scanned bin number from the event
         var sScannedDestBin = oEvent.getParameter("text");
         this.getView().byId("idDestBinInput_CCAHU").setValue(sScannedDestBin);
-        this.onSubmitBtn_CCAHU();
+        this.onCreateConfirmPress_CCAHU();
       },
 
       //for destination hu
