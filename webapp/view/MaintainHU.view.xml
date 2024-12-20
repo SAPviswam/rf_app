@@ -59,17 +59,13 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0_MHU"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                />
+               
 
                 <VBox
                     id="vBox_BOL_MHU"
+                    alignContent="Center"
                     alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
+                  
                 >
                     <Title
                         id="mainfirstpageTitle_MHU"
@@ -79,23 +75,27 @@
                     />
                     <f:SimpleForm
                         id="simpleFormBOL_MHU"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
+                         layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
                         columnsM="1"
+                        columnsXL="1"
                     >
+                    <VBox id="idVBOX1_MHU">
                         <HBox
                             id="idHBox1_MHU"
-                            justifyContent="Start"
+                            alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiSmallMargin"
+                                justifyContent="Center"
                         >
                             <Label
                                 id="idMaintainHULabel_MHU"
                                 text="Work Center :"
+                                  width="90px"
                                 class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
@@ -106,7 +106,18 @@
                                 class="sapUiTinyMarginBegin"
                                 liveChange="Onpresssubmit"
                             />
+                            </HBox>
+                            <HBox id="hbox_MHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center">
                             <!-- Barcode Scan Button -->
+                             <Button
+                    id="idNavBackButton0_MHU"
+               text="Back"
+                    press="Onpressback0"
+                />
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeScannerButtonZebraOneMaintainHU_MHU"
                                 scanSuccess="onScanSuccessOne"
@@ -122,6 +133,7 @@
                                 press="Onpresssubmit"
                             /> -->
                         </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>

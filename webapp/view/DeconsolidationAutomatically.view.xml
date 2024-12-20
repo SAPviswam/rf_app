@@ -59,16 +59,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0DeconsolidationAutomatically"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                />
+               
 
                 <VBox
                     id="vBox_BOLDeconsolidationAutomatically"
                     alignItems="Center"
-                    justifyContent="Center"
+                   alignContent="Center"
                     class="centerContent"
                 >
                     <Title
@@ -80,23 +76,27 @@
                     <f:SimpleForm
                         id="simpleFormBOLDeconsolidationAutomatically"
                         layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
                         columnsM="1"
+                        columnsXL="1"
                     >
+                    <VBox id="vbox_deconsolidationautomatically">
                         <HBox
                             id="idHBox1DeconsolidationAutomatically"
-                            justifyContent="Start"
+                            alignContent="Center"
+                            alignItems="Center"
+                            justifyContent="Center"
+                                class="sapUiSmallMargin"
                         >
                             <Label
                                 id="idDeconsolidationAutomaticallyLabelDeconsolidationAutomatically"
                                 text="Work Center :"
                                 class="sapUiTinyMargin"
+                                  width="90px"
                             />
                             <!-- Input Field -->
                             
@@ -106,6 +106,17 @@
                                 class="sapUiTinyMarginBegin"
                                 liveChange="Onpresssubmit"
                             />
+                            </HBox>
+                            <HBox id="idhbox_DA"
+                             alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center">
+                                 <Button
+                    id="idNavBackButton0DeconsolidationAutomatically"
+                   text="Back"
+                    press="Onpressback0"
+                />
                             <!-- Barcode Scan Button -->
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeScannerButtonZebraOneDeconsolidationAutomatically"
@@ -116,12 +127,13 @@
                                 class="sapUiTinyMarginBegin"
                             />
                             <!-- Submit Button -->
-                            <!-- <Button
+                            <Button
                                 id="idButtonSubmitDeconsolidationAutomatically"
                                 text="Submit"
                                 press="Onpresssubmit"
-                            /> -->
+                            />
                         </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>
@@ -260,7 +272,7 @@
                             width="100px"
                             editable="false"
                         />
-<HBox width="10px"></HBox>
+<HBox id="hbox1_DA" width="10px"></HBox>
                         <HBox
                             id="idHubyAS1NHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -277,7 +289,7 @@
                                 width="70px"
                                 editable="false"
                             />
-                             <HBox width="10px"></HBox>
+                             <HBox  id="hbox_2_DA" width="10px"></HBox>
                         </HBox>
                         <HBox
                             id="idHubyAS1HUuomboxDeconsolidationAutomatically"
@@ -310,7 +322,7 @@
                             width="100px"
                             editable="false"
                         />
-<HBox width="10px"></HBox>
+<HBox  id="hbox_3DA" width="10px"></HBox>
                         <HBox
                             id="idHubUOMNHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -326,7 +338,7 @@
                                 editable="false"
                             />
                         </HBox>
-                        <HBox width="10px"></HBox>
+                        <HBox  id="hbox_4_DA" width="10px"></HBox>
                         <HBox
                             id="idHubEVTHUuomboxDeconsolidationAutomatically"
                             class="customLabelSpacing"
@@ -364,7 +376,7 @@
                             width="150px"
                             editable="false"
                         />
-                        <HBox width="5px"></HBox>
+                        <HBox id="hbox_7_DA" width="5px"></HBox>
                          <Input
                             id="idWidthInputDeconsolidationAutomatically1"
                             placeholder="Width"

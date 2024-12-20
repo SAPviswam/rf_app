@@ -34,7 +34,7 @@ sap.ui.define(
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
             },
-            onProductSrcLiveChange: function () {
+            onSecondSubmitBtnPress: function () {
                 this.getView().byId("idthirdProductPage").setVisible(true);
                 this.getView().byId("idsecondProductPage").setVisible(false);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(true);

@@ -50,6 +50,7 @@
         </tnt:header>
 
         <tnt:mainContents>
+
             <ScrollContainer
                 id="page1Shipment_UBYSHP"
                 width="100%"
@@ -59,11 +60,7 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0_UBYSHP"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                />
+                
                 <Button
                     id="idNavBackButton0_1_UBYSHP"
                     icon="sap-icon://nav-back"
@@ -73,9 +70,8 @@
 
                 <VBox
                     id="vBox_BOL_UBYSHP"
+                    alignContent="Center"
                     alignItems="Center"
-                    justifyContent="Center"
-                    class="centerContent"
                 >
                     <Title
                         id="mainfirstpageTitle_UBYSHP"
@@ -85,24 +81,29 @@
                     />
                     <f:SimpleForm
                         id="simpleFormBOL_UBYSHP"
-                        layout="ResponsiveGridLayout"
-                        editable="true"
-                        class="sapUiResponsiveMargin"
-                        labelSpanL="3"
-                        labelSpanM="3"
-                        emptySpanL="4"
-                        emptySpanM="4"
-                        columnsL="1"
+                         layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        columnsL="2"
                         columnsM="1"
+                        columnsXL="1"
                     >
+                      <VBox id="idVBOX1_UBYSHP">
                         <HBox
                             id="idHBox1_UBYSHP"
-                            justifyContent="Start"
+                            alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiSmallMargin"
+                                justifyContent="Center"
                         >
                             <Label
                                 id="idShipmentLabel_UBYSHP"
                                 text="Shipment:"
-                                class="classUOMbyASn"
+                                 width="70px"
+                               
+                                 class="sapUiTinyMargin"
                             />
                             <!-- Input Field -->
                             <Input
@@ -110,6 +111,19 @@
                                 placeholder="..."
                                 class="sapUiTinyMarginBegin"
                             />
+                                  </HBox>
+                                  <HBox
+                            id="IdHBox__ubyshp"
+                            alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center"
+                        >
+                        <Button
+                    id="idNavBackButton0_UBYSHP"
+                   text="Back"
+                    press="Onpressback0"
+                />
                             <!-- Barcode Scan Button -->
                             <ndc:BarcodeScannerButton
                                 id="sampleBarcodeScannerButtonZebraOneShipment_UBYSHP"
@@ -126,6 +140,7 @@
                                 press="Onpresssubmit"
                             />
                         </HBox>
+                              </VBox>
                     </f:SimpleForm>
                 </VBox>
 
