@@ -70,11 +70,21 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox
-                            id="idFirstVbox_CAHU"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                        <VBox id="idFirstVbox_CAHU">
+                            <HBox id="idFirstHbox1_CAHU">
+                                <Label
+                                    id="idWPTLabel1_CAHU"
+                                    text="Wpt"
+                                    width="30px"
+                                    class="sapUiTinyMarginTop"
+                                />
+                                <Input
+                                    id="idWPTInput1_CAHU"
+                                    value=""
+                                    liveChange="onLiveChange"
+                                />
+                            </HBox>
+
                             <HBox
                                 id="idFirstHbox_CAHU"
                                 alignContent="Center"
@@ -90,47 +100,44 @@
                                     value=""
                                     liveChange="onLiveChange"
                                 />
-                                </HBox>
-                                <HBox id = "idFirstHbox1_CAHU">
-                                <Label
-                                    id="idWPTLabel1_CAHU"
-                                    text="Wpt"
-                                    width="30px"
-                                />
-                                <Input
-                                    id="idWPTInput1_CAHU"
-                                    value=""
-                                    liveChange="onLiveChange"
-                                />
-                            </HBox>
-                            <HBox id="idSecondHbox_CAHU">
-                                <Button
-                                    id="idHuScannerBtn_CAHU"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    icon="sap-icon://bar-code"
-                                    press="onHuBarcodeScanner"
-                                    width="auto"
-                                />
-                                <Button
-                                    id="SubmitBtn_CAHU"
-                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
-                                    text="Submit"
-                                    type="Emphasized"
-                                    width="auto"
-                                    press="onPressSubmitbtn"
-                                    visible="true"
-                                />
 
-                                <Button
-                                    id="idFirstBackBtn_CAHU"
-                                    class="sapUiTinyMarginTop"
-                                    text="Back"
-                                    type="Emphasized"
+                                <ndc:BarcodeScannerButton
+                                    id="idHuScannerBtn_CAHU"
+                                    scanSuccess="onScanSuccess__CAHU"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate__CAHU"
+                                    dialogTitle="Enter HU Number:"
+                                    class="sapUiTinyMargin"
                                     width="auto"
-                                    press="onFirstBackBtnPress_CAHU"
-                                    visible="true"
                                 />
                             </HBox>
+                            <VBox
+                                id="IdVbox_CAHU"
+                                alignItems="Center"
+                                alignContent="Center"
+                            >
+                                <HBox id="idSecondHbox_CAHU">
+                                    <Button
+                                        id="SubmitBtn_CAHU"
+                                        class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                        text="Submit"
+                                        type="Emphasized"
+                                        width="auto"
+                                        press="onPressSubmitbtn"
+                                        visible="true"
+                                    />
+
+                                    <Button
+                                        id="idFirstBackBtn_CAHU"
+                                        class="sapUiTinyMarginTop"
+                                        text="Back"
+                                        type="Emphasized"
+                                        width="auto"
+                                        press="onFirstBackBtnPress_CAHU"
+                                        visible="true"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -158,11 +165,7 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox
-                            id="idSecScVbox2_CAHU"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                        <VBox id="idSecScVbox2_CAHU">
                             <HBox id="idSecSCHbox1_CAHU">
                                 <Label
                                     id="idHuLabelSecSC1"
@@ -173,6 +176,7 @@
                                 <Input
                                     id="idSecSCHuInput_CAHU"
                                     value=""
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox5_CAHU">
@@ -185,6 +189,7 @@
                                 <Input
                                     id="idWPTInput_CAHU"
                                     value=""
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox2_CAHU">
@@ -198,6 +203,7 @@
                                     id="idsrcBinInput_CAHU"
                                     value=""
                                     liveChange="onSrcLiveChange"
+                                    editable="false"
                                 />
                             </HBox>
 
@@ -211,6 +217,14 @@
                                 <Input
                                     id="idDestBinInput_CAHU"
                                     value=""
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="idDestBinScannerBtn_CAHU"
+                                    class="sapUiTinyMarginBegin"
+                                    scanSuccess="onDestBinBarcodeScanner_CAHU"
+                                    scanFail="onDestBinScanError_CAHU"
+                                    inputLiveUpdate="onScanDestBinLiveUpdate_CAHU"
+                                    width="auto"
                                 />
                             </HBox>
 
@@ -230,33 +244,34 @@
                                 id="idSecScVbox3_CAHU"
                                 alignContent="Center"
                                 alignItems="Center"
-                            />
-                            <HBox id="idSecSCHbox6_CAHU">
-                                <Button
-                                    id="idSecondBackBtn_CAHU"
-                                    text="Back"
-                                    width="auto"
-                                    type="Emphasized"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    press="onSecondBackBtnPress_CAHU"
-                                />
-                                <Button
-                                    id="idCreateBtn_CAHU"
-                                    class="sapUiTinyMarginTop"
-                                    text="Create"
-                                    width="auto"
-                                    press="onPressCreate_CAHU"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="idHuDetailsBtn_CAHU"
-                                    class="sapUiTinyMarginTop"
-                                    text="Hu Details"
-                                    width="auto"
-                                    press="onHuDetailsPress_CAHU"
-                                    type="Emphasized"
-                                />
-                            </HBox>
+                            >
+                                <HBox id="idSecSCHbox6_CAHU">
+                                    <Button
+                                        id="idSecondBackBtn_CAHU"
+                                        text="Back"
+                                        width="auto"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                        press="onSecondBackBtnPress_CAHU"
+                                    />
+                                    <Button
+                                        id="idCreateBtn_CAHU"
+                                        class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                        text="Create"
+                                        width="auto"
+                                        press="onPressCreate_CAHU"
+                                        type="Emphasized"
+                                    />
+                                    <Button
+                                        id="idHuDetailsBtn_CAHU"
+                                        class="sapUiTinyMarginTop"
+                                        text="Hu Details"
+                                        width="auto"
+                                        press="onHuDetailsPress_CAHU"
+                                        type="Emphasized"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>

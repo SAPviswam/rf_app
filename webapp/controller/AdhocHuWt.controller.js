@@ -73,10 +73,41 @@ sap.ui.define([
             },
 
             onHuDetailsPress_CAHU: function () {
-                this.getView().byId("idthirdSc_CAHU").setVisible(true);
-                this.getView().byId("idsecondSc_CAHU").setVisible(false);
 
-            },
+                
+                    var oView=this.getView();
+                    var sHu=oView.byId("idSecSCHuInput_CAHU").getValue();
+                    var sWpt=oView.byId("idWPTInput_CAHU").getValue();
+             
+                    var oModel=this.getView().getModel();
+                    var sRequestUrl=`/create_confirm_adhochuSet(Huident='${sHu}',Procty='${sWpt}')`
+                    var that=this;
+                    oModel.read(sRequestUrl,{
+                      success: function(odata) {
+                        console.log(odata);
+                        if (odata.Huident === sHu && odata.Procty.toLowerCase() === sWpt.toLowerCase()) {
+                             that.getView().byId("idDescInput_CAHU").setValue(odata.Maktx);
+                             that.getView().byId("idThirdScHuInput_CAHU").setValue(odata.Huident);
+                             that.getView().byId("idThirdScHuInput2_CAHU").setValue(odata.Letyp);
+                             that.getView().byId("idThirdScProdInput_CAHU").setValue(odata.Matnr);
+                             that.getView().byId("idThirdScAvlQtyInput_CAHU").setValue(odata.AvailQuan);
+                             that.getView().byId("idThirdScUOMInput_CAHU").setValue(odata.Meins);
+                             that.getView().byId("idThirdScBatchInput_CAHU").setValue(odata.Charg);
+                             that.getView().byId("idThirdScHazardousSubstanceInput_CAHU").setValue(odata.HazmatInd);
+                             that.getView().byId("idThirdScStockCategoryInput_CAHU").setValue(odata.StockDoccat);
+             
+                        }
+                        that.getView().byId("idthirdSc_CAHU").setVisible(true);
+                        that.getView().byId("idsecondSc_CAHU").setVisible(false);
+             
+                      },
+                      error:function(oError){
+                        sap.m.MessageToast.show("error occured")
+                      }
+                    })
+             
+             
+                  },
             onAvatarPressedIn_AHWT: function (oEvent) {
                 this.onPressAvatarEveryTileHelperFunction(oEvent);
               },
@@ -148,7 +179,18 @@ sap.ui.define([
                     MessageToast.show(ojson.error.message.value )
                 }
             })
-        }
+        },
+        onScanSuccess__CAHU: function (oEvent) {
+            // Get the scanned HU number from the event
+            var sScannedHu = oEvent.getParameter("text");
+            this.getView().byId("idHuInput_CAHU").setValue(sScannedHu);
+            this.onPressSubmitbtn();
+          },
+          onDestBinBarcodeScanner_CAHU: function (oEvent) {
+            var sScannedHu = oEvent.getParameter("text");
+            this.getView().byId("idDestBinInput_CAHU").setValue(sScannedHu);
+            this.onPressCreate_CAHU();
+          }
 
         });
     }
