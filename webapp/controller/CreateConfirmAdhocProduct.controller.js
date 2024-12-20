@@ -29,10 +29,23 @@ sap.ui.define(
             },
 
             onSubmitAdhocProductBtnPress: function () {
+                var oView = this.getView();
+                var sProductnumber = oView.byId("1_CidProductInputCAP").getValue();
+
+                // Convert the product number to uppercase and store it
+                sProductnumber = sProductnumber.toUpperCase();
+                this.sProductnumber = sProductnumber;
+
+                // Check if the product number is provided, if not show a message
+                if (!sProductnumber) {
+                    sap.m.MessageToast.show("Please enter a ProductNumber");
+                    return;
+                }
                 this.getView().byId("idInitialProductPage").setVisible(false)
                 this.getView().byId("idsecondProductPage").setVisible(true)
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
+                this.getView().byId("idproductInput1").setValue(sProductnumber);
             },
             onSecondSubmitBtnPress: function () {
                 this.getView().byId("idthirdProductPage").setVisible(true);
