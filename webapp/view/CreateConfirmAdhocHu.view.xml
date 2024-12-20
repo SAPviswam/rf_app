@@ -50,6 +50,7 @@
                 horizontal="false"
                 vertical="true"
                 height="100%"
+                width="auto"
                 class="sapUiContentPadding"
                 visible="true"
             >
