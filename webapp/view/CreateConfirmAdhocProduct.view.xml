@@ -165,7 +165,6 @@
                                     text="{i18n>Product_CCAP}:"
                                     width="70px"
                                     class="sapUiTinyMargin"
-                                   
                                 />
                                 <Input
                                     id="idproductInput1"
@@ -189,7 +188,7 @@
                                     value=""
                                 />
                             </HBox>
-                             <HBox
+                            <HBox
                                 id="idHbox9_CCAP"
                                 alignContent="Center"
                                 alignItems="Center"
@@ -351,7 +350,7 @@
                                     id="idProdutSecondbackbtn"
                                     text="{i18n>Back_Button_CCAP}"
                                     press="onProductSecondBackBtnPress"
-                                       class="sapUiTinyMarginEnd"
+                                    class="sapUiTinyMarginEnd"
                                     type="Emphasized"
                                 />
                                 <Button
@@ -389,9 +388,7 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox
-                            id="idfourthProductPage1"
-                        >
+                        <VBox id="idfourthProductPage1">
                             <HBox
                                 id="idProductHBox1_CCAP"
                                 alignContent="Center"
@@ -683,7 +680,7 @@
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
-             <ScrollContainer
+            <ScrollContainer
                 id="idfifthProductPage"
                 horizontal="true"
                 vertical="true"
@@ -691,54 +688,46 @@
                 visible="false"
                 class="sapUiContentPadding"
             >
-             <Button
-                            id="idBtnHUContentBtn_CCAP"
-                            text="Back"
-                            press="onbackbuttonfromtablepress"
-                            type="Emphasized"
-                            width="auto"
-                        />
-            <Table
-                        id="idBinNumTable_CCAP"
-                        width="100%"
-                        mode="SingleSelectLeft"
-                        selectionChange="onSelectionChange"
-                        growing="true"
-                        class="table_HuStockOverview scrollableTable1"
-                        sticky="ColumnHeaders,HeaderToolbar"
-                        
-                    >
-                   
-
-                        <columns>
-                            <Column id="IDGenColumn001_CCAP">
-                                <Text
-                                    id="IDGenText001_CCAP"
-                                    text="Product"
-                                    class="HedingNameColor"
-                                />
-                            </Column>
-                            <Column id="IDGenColumn002_CCAP">
-                                <Text
-                                    id="IDGenTextt_CCAP"
-                                    text="HU Number"
-                                    class="HedingNameColor"
-                                />
-                            </Column>
-                            <Column id="IDGenColumn_CCAP">
-                                <Text
-                                    id="IDGenText_CCAP"
-                                    text="Warehouse number"
-                                    class="HedingNameColor"
-            
-                                />
-                            </Column>
-                        </columns>
-                        <items>
-                           
-                        </items>
-                    </Table>
-             </ScrollContainer>
+                <Button
+                    id="idBtnHUContentBtn_CCAP"
+                    text="Back"
+                    press="onbackbuttonfromtablepress"
+                    type="Emphasized"
+                    width="auto"
+                />
+                <Table
+                    id="idBinNumTable_CCAP"
+                    width="100%"
+                    mode="SingleSelectMaster"
+                    selectionChange="onSelectionChange"
+                    growing="true"
+                >
+                    <columns>
+                        <Column id="IDGenColumn001_CCAP">
+                            <Text
+                                id="IDGenText001_CCAP"
+                                text="Product"
+                                class="HedingNameColor"
+                            />
+                        </Column>
+                        <Column id="IDGenColumn002_CCAP">
+                            <Text
+                                id="IDGenTextt_CCAP"
+                                text="HU Number"
+                                class="HedingNameColor"
+                            />
+                        </Column>
+                        <Column id="IDGenColumn_CCAP">
+                            <Text
+                                id="IDGenText_CCAP"
+                                text="Warehouse number"
+                                class="HedingNameColor"
+                            />
+                        </Column>
+                    </columns>
+                    <items />
+                </Table>
+            </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
