@@ -162,7 +162,7 @@
                             >
                                 <Label
                                     id="idProductLabel1"
-                                    text="{i18n>Product_CCAP}"
+                                    text="{i18n>Product_CCAP}:"
                                     width="70px"
                                     class="sapUiTinyMargin"
                                    
@@ -180,12 +180,28 @@
                             >
                                 <Label
                                     id="idProductSrcBinLabel1"
-                                    text="{i18n>Src_Bin_Label_CCAP}"
+                                    text="{i18n>Src_Bin_Label_CCAP}:"
                                     width="70px"
                                     class="sapUiTinyMargin"
                                 />
                                 <Input
                                     id="idProductsrcBinInput"
+                                    value=""
+                                />
+                            </HBox>
+                             <HBox
+                                id="idHbox9_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idProcesstypeLabel1"
+                                    text="ProTyp:"
+                                    width="70px"
+                                    class="sapUiTinyMargin"
+                                />
+                                <Input
+                                    id="idProcesstypeInput"
                                     value=""
                                     liveChange="onProductSrcLiveChange"
                                 />
