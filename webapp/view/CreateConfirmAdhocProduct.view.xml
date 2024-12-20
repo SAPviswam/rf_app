@@ -202,6 +202,13 @@
                                     id="idProductfirstbackbtn"
                                     text="{i18n>Back_Button_CCAP}"
                                     press="onProductfirstBackBtnPress"
+                                    class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idSubmitAdhocProductbtn2"
+                                    text="{i18n>Submit_Button_CCAP}"
+                                    press="onSecondSubmitBtnPress"
                                     type="Emphasized"
                                 />
                             </HBox>
@@ -328,6 +335,13 @@
                                     id="idProdutSecondbackbtn"
                                     text="{i18n>Back_Button_CCAP}"
                                     press="onProductSecondBackBtnPress"
+                                       class="sapUiTinyMarginEnd"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idSubmitAdhocProductbtn3"
+                                    text="{i18n>Submit_Button_CCAP}"
+                                    press="onThirdSubmitBtnPress"
                                     type="Emphasized"
                                 />
                             </HBox>
