@@ -55,6 +55,7 @@ sap.ui.define(
                 // Convert the product number to uppercase and store it
                 sBinnumber = sBinnumber.toUpperCase();
                 this.sBinnumber = sBinnumber;
+                this.sProctyp = sProctyp;
 
                 // Check if the product number is provided, if not show a message
                 if (!sBinnumber || !sProctyp) {
@@ -121,6 +122,7 @@ sap.ui.define(
                                 that.getView().byId("idProdutSecondbackbtn").setVisible(true);
                                 that.getView().byId("idProductfirstbackbtn").setVisible(false);
                                 that.getView().byId("idProductAvlQtyInput2").setValue(odataItems[0].AvailQuan);
+                                this.oSelectedMaterial=odata.ProductWTCSetsNav1.results[0];
                             }
                         }
                     },
@@ -147,6 +149,7 @@ sap.ui.define(
                     this.getView().byId("idProductAvlQtyInput2").setValue(oSelectedMaterial.AvailQuan);
                     this.getView().byId("idProductSrcBinInput2").setValue(this.sBinnumber);
                     this.getView().byId("idProductInput2").setValue(this.sProductnumber);
+                    this.oSelectedMaterial = oSelectedMaterial;
 
                 } else {
                     sap.m.MessageToast.show("Material not found.");
@@ -171,18 +174,76 @@ sap.ui.define(
                 this.getView().byId("idfourthProductPage").setVisible(false)
             },
             onProductdetailsBtnPress: function () {
-                var aProductdata = this.Odata.ProductWTCSetsNav1.results[0];
-                
-
+                this.getView().byId("idProductInput_CCAP").setValue(this.oSelectedMaterial.Matnr40)
+                this.getView().byId("idProTextInput_CCAP").setValue(this.oSelectedMaterial.Maktx)
+                this.getView().byId("idBatchSTypeInput_CCAP").setValue(this.oSelectedMaterial.Cat)
+                this.getView().byId("idPtyEntlInput_CCAP").setValue(this.oSelectedMaterial.Entitled)
+                this.getView().byId("idOwnerInput_CCAP").setValue(this.oSelectedMaterial.Owner)
+                this.getView().byId("idGRDateInput_CCAP").setValue(this.oSelectedMaterial.GrDate)
+                this.getView().byId("idStatusInput_CCAP").setValue(this.oSelectedMaterial.UsageIv)
+                this.getView().byId("idBatchInput1_CCAP").setValue(this.oSelectedMaterial.ChargBarc)
+                this.getView().byId("idBatchInput2_CCAP").setValue(this.oSelectedMaterial.Brestr)
+                this.getView().byId("idBatchCRInput_CCAP").setValue(this.oSelectedMaterial.Coo)
+                this.getView().byId("idRow4Input1_CCAP").setValue(this.oSelectedMaterial.StockDoccat)
+                this.getView().byId("idRow4Input2_CCAP").setValue(this.oSelectedMaterial.StockDocno)
+                this.getView().byId("idRow4Input3_CCAP").setValue(this.oSelectedMaterial.StockItmno)
+                this.getView().byId("idSLEDBBDInput_CCAP").setValue(this.oSelectedMaterial.Vfdat)
+                this.getView().byId("idHazSubsInput_CCAP").setValue(this.oSelectedMaterial.HazmatInd)
+                this.getView().byId("idWhseHandInput_CCAP").setValue(this.oSelectedMaterial.Hndlcode)
+                this.getView().byId("idERelInput_CCAP").setValue(this.oSelectedMaterial.Envrel)
                 this.getView().byId("idfourthProductPage").setVisible(true);
                 this.getView().byId("idthirdProductPage").setVisible(false);
-                this.getView().byId("idProductthirdbackbtn").setVisible(true);
+                this.getView().byId("idProductThirdBackBtn_CCAP").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
+            },
+            onThirdSubmitBtnPress: function () {
+                var oView = this.getView();
+                var sSrcBin = oView.byId("idProductSrcBinInput2").getValue();
+                var sDestBin = oView.byId("idProductDestBinInput2").getValue();
+                var sProductnumber = oView.byId("idProductInput2").getValue();
+                var sSrcQty = oView.byId("idProductSourceQtyInput2").getValue();
+                // Ensure all required fields are filled in
+                if (!sDestBin || !sSrcQty) {
+                    sap.m.MessageToast.show("Please enter all the required fields: Source Qty, Destination Bin.");
+                    return;
+                }
+                var oobj = {
+                    Matnr40: sProductnumber,
+                    Vlpla: sSrcBin,
+                    Nlpla: sDestBin,
+                    VsolaBarc: sSrcQty,
+                    Procty: this.sProctyp,
+                }
+
+                // Call the backend service to update the data
+
+                var oModel = this.getView().getModel();
+                var that = this;
+
+
+                try {
+                    oModel.create("/ProductWTC1Set", oobj, {
+                        success: function (oSucces) {
+                            console.log(oSucces)
+                            MessageToast.show("Warehouse Task created and confirmed Successfully")
+                        },
+                        error: function (oError) {
+                            var ojson = JSON.parse(oError.responseText)
+                            console.log(ojson)
+                            MessageToast.show(ojson.error.message.value)
+                        }
+                    })
+
+                } catch (error) {
+                    sap.m.MessageToast.show("Unexpected error occurred. Please try again.");
+                    console.error(error);
+                }
+
             },
             onProductthirdBackBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(false);
                 this.getView().byId("idthirdProductPage").setVisible(true);
-                this.getView().byId("idProductthirdbackbtn").setVisible(false);
+                this.getView().byId("idProductThirdBackBtn_CCAP").setVisible(false);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(true)
             },
             onInitialAdhocProductBackBtnPress: async function () {
