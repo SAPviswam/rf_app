@@ -75,9 +75,9 @@ sap.ui.define(
                      success: (odata) => {
                          console.log(odata);
      
-                             if (odata.Mantnr40 === that.sProductnumber && odata.Procty === sProctyp && odata.vlpla === sBinnumber) {
-                                that.getView().byId("idProductSrcBinInput2").setValue(sBinnumber);
-                                that.getView().byId("idProductInput2").setValue(that.sProductnumber);  
+                            if (odata.Mantnr40 === that.sProductnumber && odata.Procty === sProctyp && odata.vlpla === sBinnumber) {
+                            that.getView().byId("idProductSrcBinInput2").setValue(sBinnumber);
+                            that.getView().byId("idProductInput2").setValue(that.sProductnumber);  
                          }
                          that.getView().byId("idthirdProductPage").setVisible(true);
                          that.getView().byId("idsecondProductPage").setVisible(false);
