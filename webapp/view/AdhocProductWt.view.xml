@@ -103,6 +103,7 @@
                                     id="IDBinGenScanButton_AdhocProductWt"
                                     scanSuccess="OnScannerAdhocProductWt"
                                     scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
                                 />
                                 <Button
                                     id="Id_Button1_AdhocProductWt"
@@ -148,11 +149,7 @@
                         columnsL="2"
                         columnsM="1"
                     >
-                        <VBox
-                            id="idsecondProductPage2__AdhocProductwt"
-                            alignContent="Center"
-                            alignItems="Center"
-                        >
+                        <VBox id="idsecondProductPage2__AdhocProductwt">
                             <HBox
                                 id="idHbox1_AdhocProductwt"
                                 alignContent="Center"
@@ -185,6 +182,13 @@
                                     id="idProductsrcBinInput__AdhocProductwt"
                                     value=""
                                 />
+                                <ndc:BarcodeScannerButton
+                                    id="IDGenScanButton_AdhocProductWt"
+                                    scanSuccess="OnScannerSourceBin"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    class="sapUiTinyMarginBegin"
+                                />
                             </HBox>
                             <HBox
                                 id="idHbox9_AdhocProductwt"
@@ -203,28 +207,27 @@
                                     liveChange="onProductSrcLiveChange"
                                 />
                             </HBox>
-                            <HBox id="buttonhbox_AdhocProductwt">
-                                <Button
-                                    id="idProductSrcScannerBtn__AdhocProductwt"
-                                    icon="sap-icon://bar-code"
-                                    press="onSrcBarcodeScanner"
-                                    class="sapUiTinyMarginEnd"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="idProductfirstbackbtn__AdhocProductwt"
-                                    text="{i18n>Back_Button_CCAP}"
-                                    press="onPressProductfirstBackBtnPress"
-                                    class="sapUiTinyMarginEnd"
-                                    type="Emphasized"
-                                />
-                                <Button
-                                    id="idSubmitAdhocProductbtn2__AdhocProductwt"
-                                    text="{i18n>Submit_Button_CCAP}"
-                                    press="onPressSecondSubmitBtnPress"
-                                    type="Emphasized"
-                                />
-                            </HBox>
+                            <VBox
+                                id="idsecondProductPage3__AdhocProductwt12"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox id="buttonhbox_AdhocProductwt">
+                                    <Button
+                                        id="idProductfirstbackbtn__AdhocProductwt"
+                                        text="{i18n>Back_Button_CCAP}"
+                                        press="onPressProductfirstBackBtnPress"
+                                        class="sapUiTinyMarginEnd"
+                                        type="Emphasized"
+                                    />
+                                    <Button
+                                        id="idSubmitAdhocProductbtn2__AdhocProductwt"
+                                        text="{i18n>Submit_Button_CCAP}"
+                                        press="onPressSecondSubmitBtnPress"
+                                        type="Emphasized"
+                                    />
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -287,7 +290,7 @@
                             <HBox id="idSecScHbox5_AdhocProductWt">
                                 <Text
                                     id="id_Text_Wpt_AdhocProductWt"
-                                    text="{i18n>WPT_text_AdhocProductWt}"
+                                    text="Aval Quan"
                                     class="sapUiTinyMarginTop"
                                     width="70px"
                                 />
@@ -295,6 +298,18 @@
                                     id="id_Input_Wpt_AdhocProductWt"
                                     value=""
                                     editable="false"
+                                />
+                            </HBox>
+                            <HBox id="idSecScHbox9_AdhocProductWt">
+                                <Text
+                                    id="id_Text_ssrcquan_AdhocProductWt"
+                                    text="Src Quan"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="id_Input_srcquan_AdhocProductWt"
+                                    value=""
                                 />
                             </HBox>
                             <HBox id="idSecScHBOX3_AdhocProductWt">
@@ -332,10 +347,18 @@
                                 />
                                 <Button
                                     id="idProdDetailsBtn_AdhocProductWt"
-                                    class="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                     text="{i18n>Prod_Det_Button_AdhocProductWt}"
                                     width="auto"
-                                    press="onHuDetailsPress_AdhocProductWt"
+                                    press="onProductDetailsPress_AdhocProductWt"
+                                    type="Emphasized"
+                                />
+                                <Button
+                                    id="idsubmitlsBtn_AdhocProductWt"
+                                    class="sapUiTinyMarginTop"
+                                    text="submit"
+                                    width="auto"
+                                    press="OnPressSubmit1AdhocProductWt"
                                     type="Emphasized"
                                 />
                             </HBox>
