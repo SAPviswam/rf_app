@@ -122,7 +122,7 @@ sap.ui.define(
                                 that.getView().byId("idProdutSecondbackbtn").setVisible(true);
                                 that.getView().byId("idProductfirstbackbtn").setVisible(false);
                                 that.getView().byId("idProductAvlQtyInput2").setValue(odataItems[0].AvailQuan);
-                                this.oSelectedMaterial=odata.ProductWTCSetsNav1.results[0];
+                                this.oSelectedMaterial = odata.ProductWTCSetsNav1.results[0];
                             }
                         }
                     },
@@ -207,38 +207,73 @@ sap.ui.define(
                     sap.m.MessageToast.show("Please enter all the required fields: Source Qty, Destination Bin.");
                     return;
                 }
+
+                // var sMaktx = this.oSelectedMaterial.Maktx;
+                var sCat = this.oSelectedMaterial.Cat;
+                var sEntitled = this.oSelectedMaterial.Entitled;
+                var sOwner = this.oSelectedMaterial.Owner;
+                var sHuident = this.oSelectedMaterial.Huident; // Added Huident
+                var sAvailQuan = this.oSelectedMaterial.AvailQuan; // Assuming Nrfhu is 
+
                 var oobj = {
-                    Matnr40: sProductnumber,
-                    Vlpla: sSrcBin,
-                    Nlpla: sDestBin,
-                    VsolaBarc: sSrcQty,
-                    Procty: this.sProctyp,
+                        Vlpla: sSrcBin,
+                        Reason: "",
+                        RfprodBarc: "",
+                        Procty: "T999",
+                        Maktx: "Small Part, Slow-Moving Item",
+                        Stock: "",
+                        HazmatInd: "",
+                        TextInd: "",
+                        ChargBarc: "",
+                        Brestr: false,
+                        AvailQuan: sAvailQuan,
+                        Opunit: "PC",
+                        VsolaBarc: "1",
+                        Altme: "PC",
+                        CwrelInd: "",
+                        Nlpla: "",
+                        NlplaVerif: "",
+                        UsageIv: "",
+                        Cat: sCat,
+                        Coo: "",
+                        StockDoccat: "",
+                        StockDocno: "",
+                        StockItmno: "0000000000",
+                        Matnr40: sProductnumber,
+                        Owner: sOwner,
+                        Entitled: sEntitled,
+                        Vfdat: "",
+                        GrDate: "20240910",
+                        Hndlcode: "",
+                        Envrel: false,
+                        NlplaOrig: "",
+                        Nlenr: "T021-02-08-03",
+                        Nrfhu: "",
+                        Flgmove: false,
+                        Huident: sHuident,
+                        Lgtyp: "T021"
                 }
 
-                // Call the backend service to update the data
-
+                // Call the backend service to create a new warehouse task
                 var oModel = this.getView().getModel();
-                var that = this;
-
 
                 try {
                     oModel.create("/ProductWTC1Set", oobj, {
-                        success: function (oSucces) {
-                            console.log(oSucces)
-                            MessageToast.show("Warehouse Task created and confirmed Successfully")
+                        success: function (oSuccess) {
+                            console.log(oSuccess);
+                            sap.m.MessageToast.show("Warehouse Task created and confirmed successfully");
                         },
                         error: function (oError) {
-                            var ojson = JSON.parse(oError.responseText)
-                            console.log(ojson)
-                            MessageToast.show(ojson.error.message.value)
+                            // var ojson = JSON.parse(oError.responseText);
+                            // console.log(ojson);
+                            sap.m.MessageToast.show(oError);
                         }
-                    })
+                    });
 
                 } catch (error) {
                     sap.m.MessageToast.show("Unexpected error occurred. Please try again.");
                     console.error(error);
                 }
-
             },
             onProductthirdBackBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(false);

@@ -92,7 +92,6 @@ sap.ui.define([
                 this.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(false);
             },
             onPressSecondSubmitBtnPress: async function () {
-                debugger
                 var oView = this.getView();
                 var SourceBinnumber = oView.byId("idProductsrcBinInput__AdhocProductwt").getValue();
                 var Processtype = oView.byId("idProcesstypeInput__AdhocProductwt").getValue();
@@ -111,6 +110,7 @@ sap.ui.define([
                     return;
                 }
                 if (!Processtype) {
+
                     MessageToast.show("Please enter a Warehouse Process Type");
                     return;
                 }
@@ -119,6 +119,7 @@ sap.ui.define([
                 //     MessageToast.show("Please enter a valid Process Type (T999)");
                 //     return;
                 // }
+
                 var sRequestUrl = `/ProductWTCSet(Matnr40='${this.sProduct}',Procty='${Processtype}',Vlpla='${SourceBinnumber}')`;
                 await oModel.read(sRequestUrl, {
                     urlParameters: {
@@ -173,7 +174,9 @@ sap.ui.define([
                                 that.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true);
                                 that.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(true);
                                 that.getView().byId("id_Input_Wpt_AdhocProductWt").setValue(odataItems[0].AvailQuan);
+
                                 this.oSelectedMaterial=odata.ProductWTCSetsNav.results[0];
+
                               
                             }
                         }
@@ -201,7 +204,9 @@ sap.ui.define([
                     this.getView().byId("idBtnHUContentBtn_AdhocProductWt").setVisible(false);
                     this.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(true);
                     this.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true); 
+
                     this.oSelectedMaterial = oSelectedMaterial;
+
                 } else {
                     sap.m.MessageToast.show("Material not found.");
                 }
@@ -258,6 +263,7 @@ sap.ui.define([
             OnScannerSourceBin: function(oEvent) {
                 var sScannedBin = oEvent.getParameter("text");
                 this.getView().byId("idProductsrcBinInput__AdhocProductwt").setValue(sScannedBin);
+
             }
         });
     });
