@@ -92,6 +92,7 @@ sap.ui.define([
                 this.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(false);
             },
             onPressSecondSubmitBtnPress: async function () {
+                debugger
                 var oView = this.getView();
                 var SourceBinnumber = oView.byId("idProductsrcBinInput__AdhocProductwt").getValue();
                 var Processtype = oView.byId("idProcesstypeInput__AdhocProductwt").getValue();
@@ -110,9 +111,14 @@ sap.ui.define([
                     return;
                 }
                 if (!Processtype) {
-                    MessageToast.show("Please enter a Source Warehouse Process Type");
+                    MessageToast.show("Please enter a Warehouse Process Type");
                     return;
                 }
+                
+                // if (Processtype !== "T999") {
+                //     MessageToast.show("Please enter a valid Process Type (T999)");
+                //     return;
+                // }
                 var sRequestUrl = `/ProductWTCSet(Matnr40='${this.sProduct}',Procty='${Processtype}',Vlpla='${SourceBinnumber}')`;
                 await oModel.read(sRequestUrl, {
                     urlParameters: {
@@ -167,6 +173,7 @@ sap.ui.define([
                                 that.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true);
                                 that.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(true);
                                 that.getView().byId("id_Input_Wpt_AdhocProductWt").setValue(odataItems[0].AvailQuan);
+                                this.oSelectedMaterial=odata.ProductWTCSetsNav.results[0];
                               
                             }
                         }
@@ -215,23 +222,23 @@ sap.ui.define([
                 var oSrcQuan=this.getView().byId("id_Input_srcquan_AdhocProductWt").getValue();
                 var oHunumber= this.getView().byId("id_Input_DestHu_AdhocProductWt").getValue();
                 var oModel = this.getView().getModel();
-                var that = this;
+                // var that = this;
 
-                var oOwner =  this.oSelectedMaterial.Owner || "";
-                var oEntitled = this.oSelectedMaterial.Entitled || "";
-                var oCat = this.oSelectedMaterial.Cat||"";
+                var oOwner =  this.oSelectedMaterial.Owner;
+                var oEntitled = this.oSelectedMaterial.Entitled;
+                var oCat = this.oSelectedMaterial.Cat;
                 var oobj = {
                     Matnr40: oProductnum,
                     Vlpla: oSrcBin,
                     Nlpla: oDestbin,
                     VsolaBarc: oSrcQuan,
-                    Procty: this.sProctyp,
+                    Procty: this.Processtype,
                     Owner: oOwner,
                     Opunit: "PC",
                     Altme: "PC",
                     Cat: oCat,
                     Entitled: oEntitled,
-                    Huident: "" // Include Huident
+                    Huident: "" 
                 }
                 oModel.create("/ProductWTCSet", oobj, {
                     success: function(oSucces) {
