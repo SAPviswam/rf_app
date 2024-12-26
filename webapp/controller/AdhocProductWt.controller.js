@@ -60,7 +60,24 @@ sap.ui.define([
                 this.getView().byId("idsecondProductPage_AdhocProductwt").setVisible(true)
                 this.getView().byId("Id_ScrollContainer_AdhocProductWt").setVisible(false)
             },
-            onHuDetailsPress_AdhocProductWt: function () {
+            onProductDetailsPress_AdhocProductWt: function () {
+                this.getView().byId("idProductInput_AdhocProductWt").setValue(this.oSelectedMaterial.Matnr40)
+                this.getView().byId("idProTextInput_AdhocProductWt").setValue(this.oSelectedMaterial.Maktx)
+                this.getView().byId("idBatchSTypeInput_AdhocProductWt").setValue(this.oSelectedMaterial.Cat)
+                this.getView().byId("idPtyEntlInput_AdhocProductWt").setValue(this.oSelectedMaterial.Entitled)
+                this.getView().byId("idOwnerInput_AdhocProductWt").setValue(this.oSelectedMaterial.Owner)
+                this.getView().byId("idGRDateInput_AdhocProductWt").setValue(this.oSelectedMaterial.GrDate)
+                this.getView().byId("idStatusInput_AdhocProductWt").setValue(this.oSelectedMaterial.UsageIv)
+                this.getView().byId("idBatchInput1_AdhocProductWt").setValue(this.oSelectedMaterial.ChargBarc)
+                this.getView().byId("idBatchInput2_AdhocProductWt").setValue(this.oSelectedMaterial.Brestr)
+                this.getView().byId("idBatchCRInput_AdhocProductWt").setValue(this.oSelectedMaterial.Coo)
+                this.getView().byId("idRow4Input1_AdhocProductWt").setValue(this.oSelectedMaterial.StockDoccat)
+                this.getView().byId("idRow4Input2_AdhocProductWt").setValue(this.oSelectedMaterial.StockDocno)
+                this.getView().byId("idRow4Input3_AdhocProductWt").setValue(this.oSelectedMaterial.StockItmno)
+                this.getView().byId("idSLEDBBDInput_AdhocProductWt").setValue(this.oSelectedMaterial.Vfdat)
+                this.getView().byId("idHazSubsInput_AdhocProductWt").setValue(this.oSelectedMaterial.HazmatInd)
+                this.getView().byId("idWhseHandInput_AdhocProductWt").setValue(this.oSelectedMaterial.Hndlcode)
+                this.getView().byId("idERelInput_AdhocProductWt").setValue(this.oSelectedMaterial.Envrel)
                 this.getView().byId("Id_Scrollcontainer_ProductDet_AdhocProductWt").setVisible(true)
                 this.getView().byId("Id_Scrollcontainer_Screen2").setVisible(false)
             },
@@ -93,9 +110,16 @@ sap.ui.define([
                     return;
                 }
                 if (!Processtype) {
-                    MessageToast.show("Please enter a Source Warehouse Process Type");
+
+                    MessageToast.show("Please enter a Warehouse Process Type");
                     return;
                 }
+                
+                // if (Processtype !== "T999") {
+                //     MessageToast.show("Please enter a valid Process Type (T999)");
+                //     return;
+                // }
+
                 var sRequestUrl = `/ProductWTCSet(Matnr40='${this.sProduct}',Procty='${Processtype}',Vlpla='${SourceBinnumber}')`;
                 await oModel.read(sRequestUrl, {
                     urlParameters: {
@@ -150,6 +174,9 @@ sap.ui.define([
                                 that.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true);
                                 that.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(true);
                                 that.getView().byId("id_Input_Wpt_AdhocProductWt").setValue(odataItems[0].AvailQuan);
+
+                                this.oSelectedMaterial=odata.ProductWTCSetsNav.results[0];
+
                               
                             }
                         }
@@ -177,6 +204,9 @@ sap.ui.define([
                     this.getView().byId("idBtnHUContentBtn_AdhocProductWt").setVisible(false);
                     this.getView().byId("idSecondBackBtn_AdhocProductWt").setVisible(true);
                     this.getView().byId("Id_Scrollcontainer_Screen2").setVisible(true); 
+
+                    this.oSelectedMaterial = oSelectedMaterial;
+
                 } else {
                     sap.m.MessageToast.show("Material not found.");
                 }
@@ -188,6 +218,52 @@ sap.ui.define([
             onbackbuttonfromtablepress:function(){
                 this.getView().byId("idsecondProductPage_AdhocProductwt").setVisible(true);
                 this.getView().byId("idfifthProductPage__AdhocProductWt").setVisible(false);
+            },
+            OnPressSubmit1AdhocProductWt:function() {
+                debugger
+                var oProductnum=this.getView().byId("id_Input_Product_AdhocProductWt").getValue()
+                var oSrcBin=this.getView().byId("id_Input_SrcBin_AdhocProductWt").getValue();
+                var oDestbin=this.getView().byId("id_Input_DestBin_AdhocProductWt").getValue();
+                var oSrcQuan=this.getView().byId("id_Input_srcquan_AdhocProductWt").getValue();
+                var oHunumber= this.getView().byId("id_Input_DestHu_AdhocProductWt").getValue();
+                var oModel = this.getView().getModel();
+                // var that = this;
+
+                var oOwner =  this.oSelectedMaterial.Owner;
+                var oEntitled = this.oSelectedMaterial.Entitled;
+                var oCat = this.oSelectedMaterial.Cat;
+                var oobj = {
+                    Matnr40: oProductnum,
+                    Vlpla: oSrcBin,
+                    Nlpla: oDestbin,
+                    VsolaBarc: oSrcQuan,
+                    Procty: this.Processtype,
+                    Owner: oOwner,
+                    Opunit: "PC",
+                    Altme: "PC",
+                    Cat: oCat,
+                    Entitled: oEntitled,
+                    Huident: "" 
+                }
+                oModel.create("/ProductWTCSet", oobj, {
+                    success: function(oSucces) {
+                        sap.m.MessageToast.show("Product added successfully.");
+                    },
+                    error: function(oError) {
+                        var ojson = JSON.parse(oError.responseText)
+                        console.log(ojson)
+                        MessageToast.show(ojson.error.message.value);
+                    }
+                });
+            },
+            OnScannerAdhocProductWt:function(oEvent){
+                var sScannedProduct = oEvent.getParameter("text");
+                this.getView().byId("Id_Input1_AdhocProductWt").setValue(sScannedProduct);
+            },
+            OnScannerSourceBin: function(oEvent) {
+                var sScannedBin = oEvent.getParameter("text");
+                this.getView().byId("idProductsrcBinInput__AdhocProductwt").setValue(sScannedBin);
+
             }
         });
     });
