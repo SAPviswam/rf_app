@@ -52,23 +52,6 @@ sap.ui.define(
 
       // },
 
-      // for second back button press
-      onSecondBackBtnPress_CCAHU: function () {
-        this.getView().byId("idFirstSc_CCAHU").setVisible(true);
-        this.getView().byId("idsecondSc_CCAHU").setVisible(false);
-        this.getView().byId("idSecSCHuInput_CCAHU").setValue();
-        this.getView().byId("idWPTInput_CCAHU").setValue();
-        this.getView().byId("idsrcBinInput_CCAHU").setValue();
-        this.getView().byId("idDestBinInput_CCAHU").setValue();
-        this.getView().byId("idDestHuInput_CCAHU").setValue();
-      },
-
-      // for third back button press
-      onThirdBackBtnPress_CCAHU: function () {
-        this.getView().byId("idsecondSc_CCAHU").setVisible(true);
-        this.getView().byId("idFirstSc_CCAHU").setVisible(false);
-
-      },
 
       // for first back button press
 
@@ -96,16 +79,34 @@ sap.ui.define(
 
       },
 
+      // for second back button press
+      onSecondBackBtnPress_CCAHU: function () {
+        this.getView().byId("idFirstSc_CCAHU").setVisible(true);
+        this.getView().byId("idsecondSc_CCAHU").setVisible(false);
+        this.getView().byId("idSecSCHuInput_CCAHU").setValue();
+        this.getView().byId("idWPTInput_CCAHU").setValue();
+        this.getView().byId("idsrcBinInput_CCAHU").setValue();
+        this.getView().byId("idDestBinInput_CCAHU").setValue();
+        this.getView().byId("idDestHuInput_CCAHU").setValue();
+      },
+
+      // for third back button press
+      onThirdBackBtnPress_CCAHU: function () {
+        this.getView().byId("idsecondSc_CCAHU").setVisible(true);
+        this.getView().byId("idFirstSc_CCAHU").setVisible(false);
+
+      },
+
       // submit button in first screen
       onSubmitBtn_CCAHU: async function () {
 
         var oView = this.getView();
         var sHunumber = oView.byId("idHuInput_CCAHU").getValue();
-        var sProcessType = oView.byId("idWPT1Input_CCAHU").getValue();
+
 
         // Ensure both hu number and process type are provided
-        if (!sHunumber || !sProcessType) {
-          sap.m.MessageToast.show("Please enter both Hu and Process type");
+        if (!sHunumber) {
+          sap.m.MessageToast.show("Please enter Hu number");
           return;
 
         }
@@ -114,15 +115,14 @@ sap.ui.define(
         var that = this;
 
 
-        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHunumber}',Procty='${sProcessType}')`;
+        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHunumber}')`;
 
         await oModel.read(sRequestUrl, {
           success: (odata) => {
             console.log(odata);
 
-            if (odata.Huident === sHunumber && odata.Procty.toUpperCase() === sProcessType.toUpperCase()) {
+            if (odata.Huident === sHunumber) {
               that.getView().byId("idSecSCHuInput_CCAHU").setValue(sHunumber);
-              that.getView().byId("idWPTInput_CCAHU").setValue(sProcessType);
               that.getView().byId("idsrcBinInput_CCAHU").setValue(odata.Vlpla);
 
             }
@@ -157,7 +157,7 @@ sap.ui.define(
       onCreateConfirmPress_CCAHU: async function () {
         var oView = this.getView();
         var sSrcBin = oView.byId("idsrcBinInput_CCAHU").getValue();
-        var sDestBin = oView.byId("idDestBinInput_CCAHU").getValue();
+        var sDestBin = oView.byId("idDestBinInput_CCAHU").getValue().toUpperCase();
         var sHunumber = oView.byId("idSecSCHuInput_CCAHU").getValue();
         var sProcessType = oView.byId("idWPTInput_CCAHU").getValue().toUpperCase();
         var sDestHu = oView.byId("idDestHuInput_CCAHU").getValue();
@@ -169,9 +169,15 @@ sap.ui.define(
         }
         // Ensure all required fields are filled in
 
-        if (!sSrcBin || !sDestBin) {
-          sap.m.MessageToast.show("Please enter all the required fields: Source Bin, Destination Bin.");
+        if (!sSrcBin || !sDestBin || !sProcessType) {
+          sap.m.MessageBox.show("Please enter all the required fields: Warehouse process Type, Source Bin, Destination Bin.");
           return;
+        }
+
+        let DestHuInput = this.getView().byId("idDestHuInput_CCAHU").getValue();
+        if (!DestHuInput) {
+          let DestHu = this.getView().byId("idHuInput_CCAHU").getValue();
+          this.getView().byId("idDestHuInput_CCAHU").setValue(DestHu);
         }
         var oObj = {
           Huident: sHunumber,
@@ -180,7 +186,7 @@ sap.ui.define(
           Nlpla: sDestBin
 
         }
-
+       
         // Call the backend service to update the data
 
         var oModel = this.getView().getModel();
@@ -191,12 +197,20 @@ sap.ui.define(
           oModel.create("/create_confirm_adhochuSet", oObj, {
             success: function (oSucces) {
               console.log(oSucces)
-              MessageToast.show("Warehouse Task created and confirmed Successfully")
-              let DestHuInput = this.getView().byId("idDestHuInput_CCAHU").getValue();
-              if (!DestHuInput) {
-                let DestHu = this.getView().byId("idHuInput_CCAHU").getValue();
-                this.getView().byId("idDestHuInput_CCAHU").setValue(DestHu);
-              }
+
+
+              MessageToast.show("Warehouse Task created and confirmed Successfully");
+
+              this.getView().byId("idSecSCHuInput_CCAHU").setValue();
+              this.getView().byId("idWPTInput_CCAHU").setValue();
+              this.getView().byId("idsrcBinInput_CCAHU").setValue();
+              this.getView().byId("idDestBinInput_CCAHU").setValue();
+              this.getView().byId("idDestHuInput_CCAHU").setValue();
+              this.getView().byId("idHuInput_CCAHU").setValue();
+              this.getView().byId("idFirstSc_CCAHU").setVisible(true);
+              this.getView().byId("idsecondSc_CCAHU").setVisible(false);
+
+
 
             }.bind(this),
             error: function (oError) {
@@ -221,12 +235,12 @@ sap.ui.define(
         var sWpt = oView.byId("idWPTInput_CCAHU").getValue();
 
         var oModel = this.getView().getModel();
-        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHu}',Procty='${sWpt}')`
+        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHu}')`
         var that = this;
         oModel.read(sRequestUrl, {
           success: function (odata) {
             console.log(odata);
-            if (odata.Huident === sHu && odata.Procty.toLowerCase() === sWpt.toLowerCase()) {
+            if (odata.Huident === sHu) {
               that.getView().byId("idDescInput_CCAHU").setValue(odata.Maktx);
               that.getView().byId("idThirdScHuInput_CCAHU").setValue(odata.Huident);
               that.getView().byId("idThirdScHuInput2_CCAHU").setValue(odata.Letyp);

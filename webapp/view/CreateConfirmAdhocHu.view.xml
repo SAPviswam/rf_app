@@ -19,7 +19,7 @@
                     class="sapUiSmallMarginBegin"
                     src="https://artihcus.com/assets/img/AG-logo.png"
                 />
-                 <Title
+                <Title
                     id="idTitle_CCAHU"
                     class="title"
                     text="{i18n>Title_CapmodelRf_HuQuery}"
@@ -70,14 +70,12 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox
-                            id="idFirstVbox_CCAHU" 
-                        >
-                            
+                        <VBox id="idFirstVbox_CCAHU">
                             <HBox
                                 id="idWPTHbox_CCAHU"
                                 alignContent="Center"
                                 alignItems="Center"
+                                visible="false"
                             >
                                 <Label
                                     id="idWPT1Label_CCAHU"
@@ -87,11 +85,10 @@
                                 <Input
                                     id="idWPT1Input_CCAHU"
                                     value=""
-                                
                                     liveChange="onLiveChange"
                                 />
-                                </HBox>
-                                <HBox
+                            </HBox>
+                            <HBox
                                 id="idFirstHbox_CCAHU"
                                 alignContent="Center"
                                 alignItems="Center"
@@ -115,30 +112,35 @@
                                     inputLiveUpdate="onScanLiveUpdate_CCAHU"
                                     width="auto"
                                 />
-
-                         
                             </HBox>
-                            <VBox id="idVbox" alignContent="Center" alignItems="Center">
-                            <HBox id="idSecondHbox_CCAHU" alignContent="Center" alignItems="Center">
-                                
-                                <Button
-                                    id="idHuSubmitBtn"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    text="Submit"
-                                    type="Emphasized"
-                                    press="onSubmitBtn_CCAHU"
-                                    width="auto"
-                                />
-                                <Button
-                                    id="idFirstBackBtn_CCAHU"
-                                    class="sapUiTinyMarginTop"
-                                    text="Back"
-                                    type="Emphasized"
-                                    width="auto"
-                                    press="onFirstBackBtnPress_CCAHU"
-                                    visible="true"
-                                />
-                            </HBox>
+                            <VBox
+                                id="idVbox"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox
+                                    id="idSecondHbox_CCAHU"
+                                    alignContent="Center"
+                                    alignItems="Center"
+                                >
+                                    <Button
+                                        id="idHuSubmitBtn"
+                                        class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                        text="Submit"
+                                        type="Emphasized"
+                                        press="onSubmitBtn_CCAHU"
+                                        width="auto"
+                                    />
+                                    <Button
+                                        id="idFirstBackBtn_CCAHU"
+                                        class="sapUiTinyMarginTop"
+                                        text="Back"
+                                        type="Emphasized"
+                                        width="auto"
+                                        press="onFirstBackBtnPress_CCAHU"
+                                        visible="true"
+                                    />
+                                </HBox>
                             </VBox>
                         </VBox>
                     </form:SimpleForm>
@@ -167,10 +169,7 @@
                         columnsL="1"
                         columnsM="1"
                     >
-                        <VBox
-                            id="idSecScVbox2_CCAHU"
-                           
-                        >
+                        <VBox id="idSecScVbox2_CCAHU">
                             <HBox id="idSecSCHbox1_CCAHU">
                                 <Label
                                     id="idHuLabelSecSC"
@@ -184,19 +183,7 @@
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox id="idSecScHbox5_CCAHU">
-                                <Label
-                                    id="idWPTLabel_CCAHU"
-                                    text="WPT"
-                                    class="sapUiTinyMarginTop"
-                                    width="70px"
-                                />
-                                <Input
-                                    id="idWPTInput_CCAHU"
-                                    value=""
-                                    editable="false"
-                                />
-                            </HBox>
+
                             <HBox id="idSecScHbox2_CCAHU">
                                 <Label
                                     id="idSrcBinLabel_CCAHU"
@@ -212,6 +199,18 @@
                                 />
                             </HBox>
 
+                            <HBox id="idSecScHbox5_CCAHU">
+                                <Label
+                                    id="idWPTLabel_CCAHU"
+                                    text="WPT"
+                                    class="sapUiTinyMarginTop"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idWPTInput_CCAHU"
+                                    value=""
+                                />
+                            </HBox>
                             <HBox id="idSecScHBOX3_CCAHU">
                                 <Label
                                     id="idDestBinLabel_CCAHU"
@@ -223,7 +222,7 @@
                                     id="idDestBinInput_CCAHU"
                                     value=""
                                 />
-                                 <ndc:BarcodeScannerButton
+                                <ndc:BarcodeScannerButton
                                     id="idDestBinScannerBtn"
                                     class="sapUiTinyMarginBegin"
                                     scanSuccess="onDestBinBarcodeScanner_CCAHU"
@@ -250,35 +249,38 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             />
-                            <VBox id="idVbox21_CCAHU" alignContent="Center" alignItems="Center">
-                            <HBox id="idSecSCHbox6_CCAHU">
-                                <Button
-                                    id="idSecondBackBtn_CCAHU"
-                                    text="Back"
-                                    width="auto"
-                                    type="Emphasized"
-                                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    press="onSecondBackBtnPress_CCAHU"
-                                   
-                                />
-                                <Button
-                                    id="idHuDetailsBtn_CCAHU"
-                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
-                                    text="Hu Details"
-                                    width="auto"
-                                    press="onHuDetailsPress_CCAHU"
-                                    type="Emphasized"
-                                />
+                            <VBox
+                                id="idVbox21_CCAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <HBox id="idSecSCHbox6_CCAHU">
+                                    <Button
+                                        id="idSecondBackBtn_CCAHU"
+                                        text="Back"
+                                        width="auto"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                                        press="onSecondBackBtnPress_CCAHU"
+                                    />
+                                    <Button
+                                        id="idHuDetailsBtn_CCAHU"
+                                        class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                        text="Hu Details"
+                                        width="auto"
+                                        press="onHuDetailsPress_CCAHU"
+                                        type="Emphasized"
+                                    />
 
-                                 <Button
-                                    id="idCreateConfirmBtn_CCAHU"
-                                    class="sapUiTinyMarginTop"
-                                    text="Create confirm"
-                                    width="auto"
-                                    press="onCreateConfirmPress_CCAHU"
-                                    type="Emphasized"
-                                />
-                            </HBox>
+                                    <Button
+                                        id="idCreateConfirmBtn_CCAHU"
+                                        class="sapUiTinyMarginTop"
+                                        text="Create confirm"
+                                        width="auto"
+                                        press="onCreateConfirmPress_CCAHU"
+                                        type="Emphasized"
+                                    />
+                                </HBox>
                             </VBox>
                         </VBox>
                     </form:SimpleForm>
@@ -411,14 +413,14 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                            <Button
-                                id="idThirdBackBtn_CCAHU"
-                                text="Back"
-                                width="auto"
-                                type="Emphasized"
-                                press="onThirdBackBtnPress_CCAHU"
-                                visible="true"
-                            />
+                                <Button
+                                    id="idThirdBackBtn_CCAHU"
+                                    text="Back"
+                                    width="auto"
+                                    type="Emphasized"
+                                    press="onThirdBackBtnPress_CCAHU"
+                                    visible="true"
+                                />
                             </VBox>
                         </VBox>
                     </form:SimpleForm>
