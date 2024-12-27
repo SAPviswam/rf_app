@@ -27,6 +27,16 @@ sap.ui.define(
                 var oRouter = this.getOwnerComponent().getRouter(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
+            onScanSuccess: function (oEvent) {
+                // Get the scanned product number from the event
+                var sScannedProductnumber = oEvent.getParameter("text");
+
+                // Set the scanned value into the input field
+                this.getView().byId("1_CidProductInputCAP").setValue(sScannedProductnumber);
+
+                // Call the submit function to fetch products
+                this.onSubmitAdhocProductBtnPress();
+            },
 
             onSubmitAdhocProductBtnPress: function () {
                 var oView = this.getView();
@@ -46,6 +56,16 @@ sap.ui.define(
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
                 this.getView().byId("idproductInput1").setValue(sProductnumber);
+            },
+            onScanSuccessBin: function (oEvent) {
+                // Get the scanned bin number from the event
+                var sScannedSrcBin = oEvent.getParameter("text");
+
+                // Set the scanned value into the input fonScanSuccessield
+                this.getView().byId("idProductsrcBinInput").setValue(sScannedSrcBin);
+
+                // Call the submit function to fetch products
+                this.onSecondSubmitBtnPress();
             },
             onSecondSubmitBtnPress: async function () {
                 var oView = this.getView();
@@ -193,6 +213,13 @@ sap.ui.define(
                 this.getView().byId("idthirdProductPage").setVisible(false);
                 this.getView().byId("idProductThirdBackBtn_CCAP").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
+            },
+            onScanSuccessDestBin: function (oEvent) {
+                // Get the scanned destination bin number from the event
+                var sScannedDestBinnumber = oEvent.getParameter("text");
+
+                // Set the scanned value into the input field
+                this.getView().byId("idProductDestBinInput2").setValue(sScannedDestBinnumber);
             },
             onThirdSubmitBtnPress: function () {
                 var oView = this.getView();

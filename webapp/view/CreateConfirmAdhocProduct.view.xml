@@ -97,16 +97,18 @@
                                     id="1_CidProductInputCAP"
                                     value=""
                                     liveChange="onProductLiveChange"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="idProductScannerBtn"
+                                    scanSuccess="onScanSuccess"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Barcode Scanner"
+                                    
                                 />
                             </HBox>
                             <HBox id="buttonhbox__CCAP">
-                                <Button
-                                    id="idProductScannerBtn"
-                                    icon="sap-icon://bar-code"
-                                    press="onProductBarcodeScanner"
-                                    class="sapUiTinyMarginEnd"
-                                    type="Emphasized"
-                                />
                                 <Button
                                     id="idInitialAdhocProductbackbtn"
                                     text="{i18n>Back_Button_CCAP}"
@@ -163,13 +165,18 @@
                                 <Label
                                     id="idProductLabel1"
                                     text="{i18n>Product_CCAP}:"
-                                    width="70px"
+                                    width="60px"
                                     class="sapUiTinyMargin"
                                 />
                                 <Input
                                     id="idproductInput1"
                                     value=""
                                     editable="false"
+                                    width="180px"
+                                />
+                                 <Label
+                                    id="idProductLabelEmpty"
+                                    width="40px"
                                 />
                             </HBox>
                             <HBox
@@ -180,22 +187,23 @@
                                 <Label
                                     id="idProductSrcBinLabel1"
                                     text="{i18n>Src_Bin_Label_CCAP}:"
-                                    width="70px"
+                                    width="60px"
                                     class="sapUiTinyMargin"
                                 />
                                 <Input
                                     id="idProductsrcBinInput"
                                     value=""
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="idProductSrcScannerBtn"
+                                    scanSuccess="onScanSuccessBin"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Barcode Scanner"
                                 />
                             </HBox>
                             <HBox id="buttonhbox_CCAP">
-                                <Button
-                                    id="idProductSrcScannerBtn"
-                                    icon="sap-icon://bar-code"
-                                    press="onSrcBarcodeScanner"
-                                    class="sapUiTinyMarginEnd"
-                                    type="Emphasized"
-                                />
                                 <Button
                                     id="idProductfirstbackbtn"
                                     text="{i18n>Back_Button_CCAP}"
@@ -339,6 +347,15 @@
                                 <Input
                                     id="idProductDestBinInput2"
                                     value=""
+                                    width="130px"
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="_IDBinGenScanButton_CCAPDestbin"
+                                    scanSuccess="onScanSuccessDestBin"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Barcode Scanner"
+                                    class="sapUiTinyMarginEnd"
                                 />
                             </HBox>
                             <HBox id="Hboxid_ccap">
