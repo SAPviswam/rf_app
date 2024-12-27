@@ -188,23 +188,6 @@
                                     value=""
                                 />
                             </HBox>
-                            <HBox
-                                id="idHbox9_CCAP"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Label
-                                    id="idProcesstypeLabel1"
-                                    text="ProTyp:"
-                                    width="70px"
-                                    class="sapUiTinyMargin"
-                                />
-                                <Input
-                                    id="idProcesstypeInput"
-                                    value=""
-                                    liveChange="onProductSrcLiveChange"
-                                />
-                            </HBox>
                             <HBox id="buttonhbox_CCAP">
                                 <Button
                                     id="idProductSrcScannerBtn"
@@ -268,7 +251,7 @@
                                 <Label
                                     id="idProductLabel2"
                                     text="{i18n>Product_CCAP}"
-                                    width="100px"
+                                    width="70px"
                                 />
                                 <Input
                                     id="idProductInput2"
@@ -284,7 +267,7 @@
                                 <Label
                                     id="idProductSrcBinLabel2"
                                     text="{i18n>Src_Bin_Label_CCAP}"
-                                    width="100px"
+                                    width="70px"
                                 />
                                 <Input
                                     id="idProductSrcBinInput2"
@@ -300,12 +283,32 @@
                                 <Label
                                     id="idProductAvlQtyLabel2"
                                     text="{i18n>Avl_Qty_Label_CCAP}"
-                                    width="100px"
+                                    width="70px"
                                 />
                                 <Input
                                     id="idProductAvlQtyInput2"
                                     value=""
                                     editable="false"
+                                    width="50px"
+                                />
+                            <!-- </HBox>
+                                <HBox
+                                id="idHbox9_CCAP"
+                                alignContent="Center"
+                                alignItems="Center"
+                            > -->
+                                <Label
+                                    id="idProcesstypeLabel1"
+                                    text="WPT:"
+                                    width="50px"
+                                    class="sapUiTinyMargin"
+                                />
+                                <Input
+                                    id="idProcesstypeInput"
+                                    value=""
+                                    liveChange="onProductSrcLiveChange"
+                                    maxLength="4"
+                                    width="55px"
                                 />
                             </HBox>
                             <HBox
@@ -316,7 +319,7 @@
                                 <Label
                                     id="idProductSourceQtyLabel2"
                                     text="{i18n>Source_Qty_Label_CCAP}"
-                                    width="100px"
+                                    width="70px"
                                 />
                                 <Input
                                     id="idProductSourceQtyInput2"
@@ -331,7 +334,7 @@
                                 <Label
                                     id="idProductDestBinLabel2"
                                     text="{i18n>Dest_Bin_Label_CCAP}"
-                                    width="100px"
+                                    width="70px"
                                 />
                                 <Input
                                     id="idProductDestBinInput2"
