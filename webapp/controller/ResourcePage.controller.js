@@ -1033,6 +1033,9 @@ sap.ui.define([
                 this.applyStoredProfileImage();
                 this.handleUserDetailsBasedOnUserID();
             },
+            onPressBackBtnInResourcePage:function(){
+                this.getOwnerComponent().getRouter().navTo("Homepage",{id:this.ID, idI:this.IDI})
+            },
 
 
             _onPopoverBeforeClose: function (oEvent) {
