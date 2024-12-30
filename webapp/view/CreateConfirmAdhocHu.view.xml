@@ -70,11 +70,27 @@
                         columnsM="1"
                     >
                         <VBox
-                            id="idFirstVbox_CCAHU"
-                            alignContent="Center"
-                            alignItems="Center"
+                            id="idFirstVbox_CCAHU" 
                         >
+                            
                             <HBox
+                                id="idWPTHbox_CCAHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Label
+                                    id="idWPT1Label_CCAHU"
+                                    text="WPT"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idWPT1Input_CCAHU"
+                                    value=""
+                                
+                                    liveChange="onLiveChange"
+                                />
+                                </HBox>
+                                <HBox
                                 id="idFirstHbox_CCAHU"
                                 alignContent="Center"
                                 alignItems="Center"
@@ -88,14 +104,28 @@
                                     id="idHuInput_CCAHU"
                                     value=""
                                     liveChange="onLiveChange"
+                                    class="sapUiTinyMarginEnd"
                                 />
-                            </HBox>
-                            <HBox id="idSecondHbox_CCAHU">
-                                <Button
+                                <ndc:BarcodeScannerButton
                                     id="idHuScannerBtn"
+                                    class="sapUiTinyMarginBegin"
+                                    scanSuccess="onHuBarcodeScanner_CCAHU"
+                                    scanFail="onScanError_CCAHU"
+                                    inputLiveUpdate="onScanLiveUpdate_CCAHU"
+                                    width="auto"
+                                />
+
+                         
+                            </HBox>
+                            <VBox id="idVbox" alignContent="Center" alignItems="Center">
+                            <HBox id="idSecondHbox_CCAHU" alignContent="Center" alignItems="Center">
+                                
+                                <Button
+                                    id="idHuSubmitBtn"
                                     class="sapUiTinyMarginEnd sapUiTinyMarginTop"
-                                    icon="sap-icon://bar-code"
-                                    press="onHuBarcodeScanner"
+                                    text="Submit"
+                                    type="Emphasized"
+                                    press="onSubmitBtn_CCAHU"
                                     width="auto"
                                 />
                                 <Button
@@ -108,6 +138,7 @@
                                     visible="true"
                                 />
                             </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -137,8 +168,7 @@
                     >
                         <VBox
                             id="idSecScVbox2_CCAHU"
-                            alignContent="Center"
-                            alignItems="Center"
+                           
                         >
                             <HBox id="idSecSCHbox1_CCAHU">
                                 <Label
@@ -150,6 +180,7 @@
                                 <Input
                                     id="idSecSCHuInput_CCAHU"
                                     value=""
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox5_CCAHU">
@@ -162,6 +193,7 @@
                                 <Input
                                     id="idWPTInput_CCAHU"
                                     value=""
+                                    editable="false"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox2_CCAHU">
@@ -172,8 +204,9 @@
                                     width="70px"
                                 />
                                 <Input
-                                    id="idsrcBinInput"
+                                    id="idsrcBinInput_CCAHU"
                                     value=""
+                                    editable="false"
                                     liveChange="onSrcLiveChange"
                                 />
                             </HBox>
@@ -188,6 +221,14 @@
                                 <Input
                                     id="idDestBinInput_CCAHU"
                                     value=""
+                                />
+                                 <ndc:BarcodeScannerButton
+                                    id="idDestBinScannerBtn"
+                                    class="sapUiTinyMarginBegin"
+                                    scanSuccess="onDestBinBarcodeScanner_CCAHU"
+                                    scanFail="onDestBinScanError_CCAHU"
+                                    inputLiveUpdate="onScanDestBinLiveUpdate_CCAHU"
+                                    width="auto"
                                 />
                             </HBox>
 
@@ -208,6 +249,7 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             />
+                            <VBox id="idVbox21_CCAHU" alignContent="Center" alignItems="Center">
                             <HBox id="idSecSCHbox6_CCAHU">
                                 <Button
                                     id="idSecondBackBtn_CCAHU"
@@ -220,13 +262,23 @@
                                 />
                                 <Button
                                     id="idHuDetailsBtn_CCAHU"
-                                    class="sapUiTinyMarginTop"
+                                    class="sapUiTinyMarginTop sapUiTinyMarginEnd"
                                     text="Hu Details"
                                     width="auto"
                                     press="onHuDetailsPress_CCAHU"
                                     type="Emphasized"
                                 />
+
+                                 <Button
+                                    id="idCreateConfirmBtn_CCAHU"
+                                    class="sapUiTinyMarginTop"
+                                    text="Create confirm"
+                                    width="auto"
+                                    press="onCreateConfirmPress_CCAHU"
+                                    type="Emphasized"
+                                />
                             </HBox>
+                            </VBox>
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
@@ -266,7 +318,7 @@
                                 <Label
                                     id="idThirdScHuLabel_CCAHU"
                                     text="Hu"
-                                    width="120px"
+                                    width="80px"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -284,7 +336,7 @@
                             <HBox id="idThirdScHbox3_CCAHU">
                                 <Label
                                     id="idThirdScProdLabel_CCAHU"
-                                    width="120px"
+                                    width="80px"
                                     text="Product"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -296,7 +348,7 @@
                             <HBox id="idThirdScHbox4_CCAHU">
                                 <Label
                                     id="idThirdScAvlQtyLabel_CCAHU"
-                                    width="120px"
+                                    width="80px"
                                     text="Avl Qty"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -308,7 +360,7 @@
                             <HBox id="idThirdScHbox5_CCAHU">
                                 <Label
                                     id="idThirdScUOMLabel_CCAHU"
-                                    width="120px"
+                                    width="80px"
                                     text="UOM"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -320,7 +372,7 @@
                             <HBox id="idThirdScHbox6_CCAHU">
                                 <Label
                                     id="idThirdScBatchLabel_CCAHU"
-                                    width="120px"
+                                    width="80px"
                                     text="Batch"
                                     class="sapUiTinyMarginTop"
                                 />
@@ -332,8 +384,8 @@
                             <HBox id="idThirdScHbox7_CCAHU">
                                 <Label
                                     id="idThirdScHazardousSubLabel_CCAHU"
-                                    width="120px"
-                                    text="Hazardous Substance"
+                                    width="80px"
+                                    text="Hzrd Sub"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input
@@ -344,8 +396,8 @@
                             <HBox id="idThirdScHbox8_CCAHU">
                                 <Label
                                     id="idThirdScStockCategoryLabel_CCAHU"
-                                    width="120px"
-                                    text="Stock Category"
+                                    width="80px"
+                                    text="Scat"
                                     class="sapUiTinyMarginTop"
                                 />
                                 <Input

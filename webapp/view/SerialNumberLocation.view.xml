@@ -786,6 +786,7 @@
                                     text="Back"
                                     press="onSNLfourthBackBtnPress"
                                     type="Emphasized"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>
@@ -1184,6 +1185,7 @@
                                     text="Back"
                                     press="onSNLfifthBackBtnPress"
                                     type="Emphasized"
+                                    width="auto"
                                 />
                             </HBox>
                         </VBox>

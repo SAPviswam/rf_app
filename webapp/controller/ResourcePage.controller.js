@@ -403,9 +403,7 @@ sap.ui.define([
                 this.Themecall = false; // Deactivate theme call
                 // Deselect all tiles visually
                 if (this._selectedTiles && this._selectedTiles.length > 0) {
-                    this._selectedTiles.forEach(function (oTile) {
-                        oTile.removeStyleClass("tileSelected");
-                    });
+                    this._selectedTiles.forEach(oTile => (oTile.removeStyleClass("tileSelected")));
                 }
                 // Clear the array of selected tiles
                 this._selectedTiles = [];
@@ -425,7 +423,8 @@ sap.ui.define([
                     oDialog.close();
                 }
                 this.resetDialogBox();
-                sap.m.MessageToast.show("Theme mode Exited!");
+                sap.m.MessageToast.show("Theme mode Exited. Please wait!");
+                window.location.reload();
             },
             //Apply btn from ThemeDailog Box in RESOURCE PAGE...
             onApplyColor: function () {
@@ -465,7 +464,7 @@ sap.ui.define([
                 }
                 this.resetDialogBox();
                 this.byId("idthemeTileDialogResource").close();
-            }, 
+            },
             //Helper function from the above(onApplyColor)...
             applyTheme: function (sColor, sImageSrc) {
                 if (this._selectedTiles && this._selectedTiles.length > 0) {
@@ -548,9 +547,7 @@ sap.ui.define([
                 }
 
                 // Remove the 'tileSelected' style class and clear the selected tiles list
-                this._selectedTiles.forEach(function (oTile) {
-                    oTile.removeStyleClass("tileSelected");
-                });
+                this._selectedTiles.forEach(oTile => (oTile.removeStyleClass("tileSelected")));
                 this._selectedTiles = [];
                 this.resetDialogBox();
             },
@@ -956,9 +953,9 @@ sap.ui.define([
                 //   sToolPage.bindElement(`/(${id})`);
 
                 var that = this;
-                const { id,idI } = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
-                this.IDI=idI;
+                this.IDI = idI;
                 console.log(this.ID);
 
                 var oModel = this.getView().getModel();
@@ -1164,7 +1161,7 @@ sap.ui.define([
                     }
                 });
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo(`${selectedText}`, { id: this.ID,idI:this.IDI });
+                oRouter.navTo(`${selectedText}`, { id: this.ID, idI: this.IDI });
                 if (selectedText) {
                     console.log("Selected:", selectedText);
                     // Add your logic based on the selected text here
@@ -2893,10 +2890,6 @@ sap.ui.define([
                 this.byId("idUserDetails").close();
             },
 
-            onSignoutPressed: function () {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("InitialScreen", { Userid:this.IDI });
 
-            },
         });
     });

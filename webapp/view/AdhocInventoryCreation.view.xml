@@ -63,11 +63,7 @@
                     justifyContent="SpaceBetween"
                     alignItems="Center"
                 >
-                    <Button
-                        id="idNavBackButton3_AIC"
-                        icon="sap-icon://nav-back"
-                        press="Onpressback0"
-                    />
+                   
                     <Title
                         id="idTitle_AIC1"
                         class="TitleSecondPage"
@@ -186,6 +182,11 @@
                             class="sapUiTinyMarginEnd"
                             press="onF4press"
                         />
+                         <Button
+                        id="idNavBackButton3_AIC"
+                text="Back"
+                        press="Onpressback0"
+                    />
                     </HBox>
                 </f:SimpleForm>
             </ScrollContainer>
@@ -323,7 +324,7 @@
                         />
                     </HBox>
                     <Label id="idExtraInputLabel1_A1IC1" />
-                    <HBox>
+                    <HBox id="hbox1_AIC">
                         <Input
                             id="idExtraI1nput_AIC1"
                             maxLength="25"
@@ -364,7 +365,7 @@
                     </HBox>
 
                     <Label id="idExtr1aInputLabel1_AIC1" />
-                    <HBox>
+                   <HBox id="hbox2_AIC">
                         <Input
                             id="idExtr1aInput1_AIC1"
                             maxLength="25"

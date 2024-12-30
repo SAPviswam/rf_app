@@ -1,6 +1,5 @@
 sap.ui.define(
     [
-        // "sap/ui/core/mvc/Controller",
         "./BaseController",
         "sap/ui/core/UIComponent",
         "sap/ui/Device"
@@ -375,6 +374,7 @@ sap.ui.define(
                             oView.byId("IdInput_Btch_WTQuerybyQueue").setValue(oSelectedWT.Charg);
                             oView.byId("idInput_WhHu_WTQuerybyQueue").setValue(oSelectedWT.Homve);
                             oView.byId("IdInput_CGrp_WTQuerybyQueue").setValue(oSelectedWT.Dstgrp);
+                            oView.byId("IdInput26_WTQuerybyQueue").setValue(oSelectedWT.Brestr);
 
                             var rawDate = oSelectedWT.Vfdat;
                             // Extract the year, month, and day from the raw date string

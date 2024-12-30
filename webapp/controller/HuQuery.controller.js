@@ -1,3 +1,5 @@
+
+
 sap.ui.define([
     "./BaseController",
     "sap/ui/Device",
@@ -53,8 +55,26 @@ sap.ui.define([
         onSelectParticularWT: async function (oEvent) {
             const { HUI } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();  // Get the HU value
             console.log(HUI);  // Log the HU value for debugging
-            this.onSelectRow(HUI);  // Call onSelectRow with the HU value
-        },
+            var oSelectedItem = oEvent.getParameter("listItem");
+    
+    // Get the cells of the selected row
+    var aCells = oSelectedItem.getCells();
+    
+    // Get the text of the second and third cells (HUI and HU)
+    var sHUI = aCells[1].getText();  // Second cell (index 1) corresponds to {HUI}
+    var sHU = aCells[2].getText();   // Third cell (index 2) corresponds to {HU}
+    
+    // Compare the values
+    if (sHUI === sHU) {
+        // If the values are equal
+        MessageToast.show("Higher Level Hu not availabel")
+       
+    } else {
+        // If the values are not equal
+        this.onSelectRow(HUI);  // Call onSelectRow with the HU value
+    }
+    },
+            
         onSignoutPressed:function(){
             var oRouter = this.getOwnerComponent().getRouter(this);
             oRouter.navTo("InitialScreen", { Userid:this.IDI }); 
@@ -63,8 +83,8 @@ sap.ui.define([
         // Function to handle selection of a row (HU)
         onSelectRow: function (oHui) {
             this.getView().byId("idFourthSc_HuQuery").setVisible(false);  // Hide fourth screen
-            this.getView().byId("idSecondSc_HuQuery").setVisible(true);  // Show second screen
-
+            this.getView().byId("idFifthSc_HuQuery").setVisible(true);  // Show second screen
+            var that =this
             if (oHui) {
                 // Call OData service to validate the HU value
                 var oModel = this.getOwnerComponent().getModel();
@@ -76,7 +96,26 @@ sap.ui.define([
                         "$format": "json"  // Fetch response in JSON format
                     },
                     success: function (odata) {
-                        that._populateHUDetails(odata);  // Populate HU details on success
+                        that.byId("idHuInputfifSc_HuQuery").setValue(odata.Huident);
+            that.byId("idPackagingMaterialInputfifSc_HuQuery").setValue(odata.Pmat);
+            that.byId("idHuTypeInputfifSc_HuQuery").setValue(odata.Letyp);
+            that.byId("idLocInputfifSc_HuQuery").setValue(odata.Wsbin);
+            that.byId("idCGrpInputfifSc_HuQuery").setValue(odata.Dstgrp);
+            that.byId("idTotalWeightInputfifSc_HuQuery").setValue(odata.GWeight);
+            that.byId("idTotalWeightInput2fifSc_HuQuery").setValue(odata.UnitGw);
+            that.byId("idVolumeInputfifSc_HuQuery").setValue(odata.GVolume);
+            that.byId("idVolumeInput2fifSc_HuQuery").setValue(odata.UnitGv);
+            that.byId("idTarWeightInputfifSc_HuQuery").setValue(odata.TWeight);
+            that.byId("idTarVInputfifSc_HuQuery").setValue(odata.TVolume);
+            that.byId("idMaxWeightInputfifSc_HuQuery").setValue(odata.MaxWeight);
+            that.byId("idmaxVInputfifSc_HuQuery").setValue(odata.MaxVolume);
+            
+            that.byId("idLenInputfifSc_HuQuery").setValue(odata.Length);
+            that.byId("idWidthInputfifSc_HuQuery").setValue(odata.Width);
+            that.byId("idHeightInputfifSc_HuQuery").setValue(odata.Height);
+            
+            that.byId("idUnitsInputfifSc_HuQuery").setValue(odata.UnitLwh);
+                         // Populate HU details on success
                     },
                     error: function (oError) {
                         // Handle error if HU is not found    
@@ -88,7 +127,10 @@ sap.ui.define([
                 this.getView().byId("idFirstSc_HuQuery").setVisible(true);
             }
         },
-
+        onPressBackButtonFifthSC:function(){
+            this.getView().byId("idFourthSc_HuQuery").setVisible(true);  // Hide fourth screen
+            this.getView().byId("idFifthSc_HuQuery").setVisible(false);  // Show second screen
+        },
         // Load resource details on route pattern match
         onResourceDetailsLoad: function (oEvent1) {
             const { id,idI } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments

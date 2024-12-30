@@ -630,6 +630,292 @@
                     </items>
                 </Table>
             </ScrollContainer>
+            <ScrollContainer
+                id="idFifthSc_HuQuery"
+                horizontal="true"
+                vertical="true"
+                height="100%"
+                width="100%"
+                class="sapUiContentPadding"
+                visible="false"
+            >
+                <VBox
+                    id="idFifthScVbox1_HuQuery"
+                    alignContent="Center"
+                    alignItems="Center"
+                >
+                    <f:SimpleForm
+                        id="idFifthScsimpleForm_HuQuery"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        columnsL="2"
+                        columnsM="1"
+                    >
+                        <VBox
+                            id="idFifScVbox2_HuQuery"
+                            justifyContent="Start"
+                        >
+                            <!-- HU Number Field -->
+                            <HBox id="idFifScHbox1_HuQuery">
+                                <Text
+                                    id="idHuLabelfifSc_HuQuery"
+                                    text="{i18n>Label_Hu_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idHuInputfifSc_HuQuery"
+                                    maxLength="25"
+                                    width="150px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <!-- packing material  Hu Type-->
+                            <HBox id="idFifthScHbox3_HuQuery">
+                                <Text
+                                    id="idPackagingMaterialLabelfifSc_HuQuery"
+                                    text="{i18n>Label_PKMT_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idPackagingMaterialInputfifSc_HuQuery"
+                                    width="150px"
+                                    editable="false"
+                                />
+
+                                <Text
+                                    id="idEmptyLabelfifSc_HuQuery"
+                                    width="10px"
+                                />
+                                <Text
+                                    id="idHuTypeLabelfifSc_HuQuery"
+                                    text="{i18n>Label_Htype_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idHuTypeInputfifSc_HuQuery"
+                                    maxLength="25"
+                                    width="150px"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <!-- Location and Action Buttons -->
+                            <HBox id="idFifthScHbox7_HuQuery">
+                                <Text
+                                    id="idLocationLabelfifSc_HuQuery"
+                                    text="{i18n>Label_Bin_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idLocInputfifSc_HuQuery"
+                                    width="150px"
+                                    editable="false"
+                                />
+                                <Text
+                                    id="idEmptyTextfifSc_HuQuery"
+                                    width="10px"
+                                />
+                                <Text
+                                    id="idCGrpLabelfifSc_HuQuery"
+                                    text="{i18n>Label_CGrp_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idCGrpInputfifSc_HuQuery"
+                                    width="150px"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox id="idFifthScHbox2_HuQuery">
+                                <Text
+                                    id="idTotalWeightLabelfifSc_HuQuery"
+                                    text="{i18n>Label_TotW_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idTotalWeightInputfifSc_HuQuery"
+                                    maxLength="25"
+                                    width="100px"
+                                    editable="false"
+                                />
+                                <Text
+                                    id="idTotalWeightEmtyInputfifSc_HuQuery"
+                                    width="5px"
+                                />
+                                <Input
+                                    id="idTotalWeightInput2fifSc_HuQuery"
+                                    width="45px"
+                                    editable="false"
+                                />
+
+                                <Text
+                                    id="idEmpLabel2fifSc_HuQuery"
+                                    width="10px"
+                                />
+                                <Text
+                                    id="idVolumeLabelfifSc_HuQuery"
+                                    text="{i18n>Label_TotV_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idVolumeInputfifSc_HuQuery"
+                                    width="100px"
+                                    editable="false"
+                                />
+                                <Text
+                                    id="idVolumeLabelEmtyInputfifSc_HuQuery"
+                                    width="5px"
+                                />
+                                <Input
+                                    id="idVolumeInput2fifSc_HuQuery"
+                                    width="45px"
+                                    editable="false"
+                                />
+                            </HBox>
+                            <HBox id="idFifthScHbox8_HuQuery">
+                                <Text
+                                    id="idTarWeightLabelfifSc_HuQuery"
+                                    text="{i18n>Label_TarW_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idTarWeightInputfifSc_HuQuery"
+                                    maxLength="25"
+                                    width="100px"
+                                    editable="false"
+                                />
+
+                                <Text
+                                    id="idEmpLabel4fifSc_HuQuery"
+                                    width="60px"
+                                />
+                                <Text
+                                    id="idTarVolumeLabelfifSc_HuQuery"
+                                    text="{i18n>Label_TarV_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idTarVInputfifSc_HuQuery"
+                                    width="100px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox id="idFifthScHbox6_HuQuery">
+                                <Text
+                                    id="idMaxWeightLabelfifSc_HuQuery"
+                                    text="{i18n>Label_MaxW_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idMaxWeightInputfifSc_HuQuery"
+                                    maxLength="25"
+                                    width="100px"
+                                    editable="false"
+                                />
+
+                                <Text
+                                    id="idEmpLabel3fifSc_HuQuery"
+                                    width="60px"
+                                />
+                                <Text
+                                    id="idMaxVolumeLabelfifSc_HuQuery"
+                                    text="{i18n>Label_MaxV_HuQuery}"
+                                    width="50px"
+                                />
+                                <Input
+                                    id="idmaxVInputfifSc_HuQuery"
+                                    width="100px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <HBox
+                                id="idFifthScHbox4_HuQuery"
+                                justifyContent="Start"
+                                class="gapBetweenInputs"
+                            >
+                                <!-- Length Input -->
+
+                                <Text
+                                    id="idLengthLabelfifSc_HuQuery"
+                                    text="{i18n>Label_L_HuQuery}"
+                                    width="20px"
+                                />
+                                <Input
+                                    id="idLenInputfifSc_HuQuery"
+                                    maxLength="3"
+                                    width="80px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+                                <!-- width -->
+                                <Text
+                                    id="idWidthLabelfifSc_HuQuery"
+                                    text="{i18n>Label_W_HuQuery}"
+                                    width="20px"
+                                />
+                                <Input
+                                    id="idWidthInputfifSc_HuQuery"
+                                    maxLength="3"
+                                    width="80px"
+                                    editable="false"
+                                    class="sapUiTinyMarginEnd"
+                                />
+
+                                <!-- Height Input -->
+
+                                <Text
+                                    id="idHeightLabelfifSc_HuQuery"
+                                    text="{i18n>Label_H_HuQuery}"
+                                    width="20px"
+                                />
+                                <Input
+                                    id="idHeightInputfifSc_HuQuery"
+                                    maxLength="3"
+                                    width="80px"
+                                    class="sapUiTinyMarginEnd"
+                                    editable="false"
+                                />
+
+                                <!-- Height Measurements -->
+
+                                <Text
+                                    id="idUnitsLabelfifSc_HuQuery"
+                                    text="{i18n>Label_Units_HuQuery}"
+                                    width="40px"
+                                />
+                                <Input
+                                    id="idUnitsInputfifSc_HuQuery"
+                                    maxLength="13"
+                                    width="40px"
+                                    editable="false"
+                                />
+                            </HBox>
+
+                            <VBox
+                                id="idFifthScVbox3_HuQuery"
+                                justifyContent="Center"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <!-- HU Content and HU Hierarchy Buttons -->
+                                <HBox id="idFifthScHBox8_HuQuery">
+                                    <Button
+                                        id="idFithBackBtn_HuQuery"
+                                        type="Emphasized"
+                                        text="{i18n>Button_Back1_HuQuery}"
+                                        press="onPressBackButtonFifthSC"
+                                        class="sapUiSmallMarginEnd"
+                                        width="auto"
+                                    />
+                                   
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </f:SimpleForm>
+                </VBox>
+            </ScrollContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
