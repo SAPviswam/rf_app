@@ -99,7 +99,7 @@
                         press="onPressGridViewsResource"
                         width="2rem"
                     />
-
+                    <Button id="idBackButonInResourcePage" press="onPressBackBtnInResourcePage" text="Back" type="Emphasized" />
                     <!-- Avatar -->
                     <tnt:ToolHeaderUtilitySeparator
                         id="idToolHeaderUtilitySeparatorP"
