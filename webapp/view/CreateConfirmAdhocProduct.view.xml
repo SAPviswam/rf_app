@@ -74,10 +74,7 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <Title
-                                id="idTitle_CCAP"
-                                text="{i18n>CreateandConfirmAdhocProduct_title_CCAP}"
-                            />
+                           
                             <VBox
                                 id="idVbox2_CCAP"
                                 class="sapUiTinyMarginBottom"

@@ -67,6 +67,7 @@ sap.ui.define(
                 // Call the submit function to fetch products
                 this.onSecondSubmitBtnPress();
             },
+            
             onSecondSubmitBtnPress: async function () {
                 var oView = this.getView();
                 var sBinnumber = oView.byId("idProductsrcBinInput").getValue();
