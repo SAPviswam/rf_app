@@ -88,7 +88,6 @@
                                     value=""
                                     placeholder="{i18n>Input_WareHouseTask_WtQbWt}"
                                     liveChange="onWtQBWtWhLiveChange"
-                                    
                                 />
                             </HBox>
                             <HBox
@@ -525,7 +524,7 @@
                                     width="40px"
                                     value=""
                                 />
-                        
+
                                 <Text
                                     id="idThirdScEmptyLabel2_WTQueryByWT"
                                     width="10px"
