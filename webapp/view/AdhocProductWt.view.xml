@@ -190,23 +190,6 @@
                                     class="sapUiTinyMarginBegin"
                                 />
                             </HBox>
-                            <HBox
-                                id="idHbox9_AdhocProductwt"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Text
-                                    id="idProcesstypeLabel1__AdhocProductwt"
-                                    text="ProTyp"
-                                    width="50px"
-                                    class="sapUiTinyMarginEnd"
-                                />
-                                <Input
-                                    id="idProcesstypeInput__AdhocProductwt"
-                                    value=""
-                                    liveChange="onProductSrcLiveChange"
-                                />
-                            </HBox>
                             <VBox
                                 id="idsecondProductPage3__AdhocProductwt12"
                                 alignContent="Center"
@@ -298,6 +281,22 @@
                                     id="id_Input_Wpt_AdhocProductWt"
                                     value=""
                                     editable="false"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox9_AdhocProductwt"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Text
+                                    id="idProcesstypeLabel1__AdhocProductwt"
+                                    text="ProTyp"
+                                    width="70px"
+                                />
+                                <Input
+                                    id="idProcesstypeInput__AdhocProductwt"
+                                    value=""
+                                    liveChange="onProductSrcLiveChange"
                                 />
                             </HBox>
                             <HBox id="idSecScHbox9_AdhocProductWt">
