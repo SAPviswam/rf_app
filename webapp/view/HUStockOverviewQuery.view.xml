@@ -283,6 +283,7 @@
                             id="idBinNumberforlabelInput_HUSOQ"
                             class="BinNumberInput"
                             editable="false"
+                            value=""
                         />
                         <Text
                             id="hsoq_id"

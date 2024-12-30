@@ -36,7 +36,7 @@ sap.ui.define(
 
 
       },
-      checkAutoLogin: function () {
+      checkAutoLogin: async function () {
 
         const savedData = localStorage.getItem('loginData');
         if (savedData) {
@@ -58,7 +58,7 @@ sap.ui.define(
                 filters: [fUser, fPassword],
                 and: true
               });
-            const oResponse = this.readData(oModel, "/APP_LOGON_DETAILSSet", aFilters)
+            const oResponse = await this.readData(oModel, "/APP_LOGON_DETAILSSet", aFilters)
             if (oResponse.results.length === 1) {
               // Show success message
               sap.m.MessageToast.show("Welcome back");
@@ -70,7 +70,7 @@ sap.ui.define(
 
             }
           } catch (error) {
-            sap.m.MessageToast.show("Oops something went wrong please refresh the page")
+            sap.m.MessageToast.show("Oops something went wrong please refresh the page");
             console.error(error);
           }
         }
@@ -182,7 +182,7 @@ sap.ui.define(
       onAutoSaveData: function (CurrentUser, Token) {
         // Save credentials with an expiration time 
 
-        const expirationTime = Date.now() + 2 * 60 * 1000; // Current time + expiration time in ms
+        const expirationTime = Date.now() + 24 * 60 * 60 * 1000; // Current time + expiration time in ms( hr * min * sec * millisec )
 
         const loginData = {
           userid: CurrentUser,
@@ -407,7 +407,6 @@ sap.ui.define(
                 // Combine the prefix and the formatted number to get the new unique string
                 return prefix + formattedNumber;
               }
-
               // call
               const newUserid = generateUniqueString(currentMaxID);
               oPayload.Userid = newUserid
