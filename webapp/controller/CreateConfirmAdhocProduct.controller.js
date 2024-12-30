@@ -27,57 +27,43 @@ sap.ui.define(
                 var oRouter = this.getOwnerComponent().getRouter(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
-            onScanSuccess: function (oEvent) {
-                // Get the scanned product number from the event
-                var sScannedProductnumber = oEvent.getParameter("text");
 
-                // Set the scanned value into the input field
-                this.getView().byId("1_CidProductInputCAP").setValue(sScannedProductnumber);
+            // onSubmitAdhocProductBtnPress: function () {
+            //     var oView = this.getView();
+            //     var sProductnumber = oView.byId("1_CidProductInputCAP").getValue();
 
-                // Call the submit function to fetch products
-                this.onSubmitAdhocProductBtnPress();
-            },
+            //     // Convert the product number to uppercase and store it
+            //     sProductnumber = sProductnumber.toUpperCase();
+            //     this.sProductnumber = sProductnumber;
 
-            onSubmitAdhocProductBtnPress: function () {
+            //     // Check if the product number is provided, if not show a message
+            //     if (!sProductnumber) {
+            //         sap.m.MessageToast.show("Please enter a ProductNumber");
+            //         return;
+            //     }
+            //     this.getView().byId("idInitialProductPage").setVisible(false)
+            //     this.getView().byId("idsecondProductPage").setVisible(true)
+            //     this.getView().byId("idProductfirstbackbtn").setVisible(true);
+            //     this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
+            //     this.getView().byId("idproductInput1").setValue(sProductnumber);
+            // },
+            onSecondSubmitBtnPress: async function () {
                 var oView = this.getView();
-                var sProductnumber = oView.byId("1_CidProductInputCAP").getValue();
+                var sProductnumber = oView.byId("idproductInput1").getValue();
 
+                var sBinnumber = oView.byId("idProductsrcBinInput").getValue();
+              
                 // Convert the product number to uppercase and store it
                 sProductnumber = sProductnumber.toUpperCase();
                 this.sProductnumber = sProductnumber;
 
-                // Check if the product number is provided, if not show a message
-                if (!sProductnumber) {
-                    sap.m.MessageToast.show("Please enter a ProductNumber");
-                    return;
-                }
-                this.getView().byId("idInitialProductPage").setVisible(false)
-                this.getView().byId("idsecondProductPage").setVisible(true)
-                this.getView().byId("idProductfirstbackbtn").setVisible(true);
-                this.getView().byId("idInitialAdhocProductbackbtn").setVisible(false);
-                this.getView().byId("idproductInput1").setValue(sProductnumber);
-            },
-            onScanSuccessBin: function (oEvent) {
-                // Get the scanned bin number from the event
-                var sScannedSrcBin = oEvent.getParameter("text");
-
-                // Set the scanned value into the input fonScanSuccessield
-                this.getView().byId("idProductsrcBinInput").setValue(sScannedSrcBin);
-
-                // Call the submit function to fetch products
-                this.onSecondSubmitBtnPress();
-            },
-            onSecondSubmitBtnPress: async function () {
-                var oView = this.getView();
-                var sBinnumber = oView.byId("idProductsrcBinInput").getValue();
-
-                // Convert the product number to uppercase and store it
                 sBinnumber = sBinnumber.toUpperCase();
                 this.sBinnumber = sBinnumber;
+               
 
                 // Check if the product number is provided, if not show a message
-                if (!sBinnumber) {
-                    sap.m.MessageToast.show("Please enter a BinNumber");
+                if (!sBinnumber ||!sProductnumber ) {
+                    sap.m.MessageToast.show("Please enter a BinNumber and Product number");
                     return;
                 }
                 var oModel = this.getView().getModel(); // Get the model associated with the view
@@ -91,9 +77,9 @@ sap.ui.define(
                         "$format": "json" // Request the data in JSON format
                     },
                     success: (odata) => {
-                        console.log(odata)
+                        console.log(odata);
                         this.Odata = odata
-                        if (odata.Matnr40 === that.sProductnumber && odata.Vlpla === sBinnumber) {
+                        if (odata.Matnr40 === that.sProductnumber &&  odata.Vlpla === sBinnumber) {
                             var odataItems = odata.ProductWTCSetsNav1.results;
                             if (odataItems.length > 1) {
                                 // Prepare an array for binding
@@ -140,7 +126,7 @@ sap.ui.define(
                                 that.getView().byId("idProdutSecondbackbtn").setVisible(true);
                                 that.getView().byId("idProductfirstbackbtn").setVisible(false);
                                 that.getView().byId("idProductAvlQtyInput2").setValue(odataItems[0].AvailQuan);
-                                this.oSelectedMaterial = odata.ProductWTCSetsNav1.results[0];
+                                this.oSelectedMaterial=odata.ProductWTCSetsNav1.results[0];
                             }
                         }
                     },
@@ -174,22 +160,48 @@ sap.ui.define(
                 }
             },
             onProductfirstBackBtnPress: function () {
-                this.getView().byId("idInitialProductPage").setVisible(true);
+                // this.getView().byId("idInitialProductPage").setVisible(true);
                 this.getView().byId("idsecondProductPage").setVisible(false);
                 this.getView().byId("idProductfirstbackbtn").setVisible(false);
                 this.getView().byId("idInitialAdhocProductbackbtn").setVisible(true);
             },
             onProductSecondBackBtnPress: function () {
+                var oView = this.getView(); // Ensure the view is being referred to correctly
+                var sProductnumber1 = oView.byId("idproductInput1");
+                var sBinnumber = oView.byId("idProductsrcBinInput");
+                // Get references to the input fields
+                var sProductnumber = oView.byId("idProductInput2");
+                var sSrcBin = oView.byId("idProductSrcBinInput2");
+                var sAvailqty = oView.byId("idProductAvlQtyInput2");
+                var sWPTnumber = oView.byId("idWPTtypeInput");
+                var sSrcQty = oView.byId("idProductSourceQtyInput2");
+                var sDestBin = oView.byId("idProductDestBinInput2");
+            
+                // Clear their values
+                sProductnumber1.setValue("");  // Clear the Product number input
+                sBinnumber.setValue("");      // Clear the Bin number input
+                sProductnumber.setValue("");  // Clear the Product number input
+                sSrcBin.setValue("");         // Clear the Source Bin input
+                sAvailqty.setValue("");       // Clear the Available Quantity input
+                sWPTnumber.setValue("");      // Clear the WPT input
+                sSrcQty.setValue("");         // Clear the Source Quantity input
+                sDestBin.setValue("");        // Clear the Destination Bin input
+            
+                // Set the visibility of pages and buttons
                 this.getView().byId("idsecondProductPage").setVisible(true);
                 this.getView().byId("idthirdProductPage").setVisible(false);
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
-                this.getView().byId("idProdutSecondbackbtn").setVisible(false)
+                this.getView().byId("idProdutSecondbackbtn").setVisible(false);
             },
+            
             onbackbuttonfromtablepress: function () {
+
+
                 this.getView().byId("idProductfirstbackbtn").setVisible(true);
                 this.getView().byId("idsecondProductPage").setVisible(true);
                 this.getView().byId("idfifthProductPage").setVisible(false);
-                this.getView().byId("idfourthProductPage").setVisible(false)
+                this.getView().byId("idfourthProductPage").setVisible(false);
+    
             },
             onProductdetailsBtnPress: function () {
                 this.getView().byId("idProductInput_CCAP").setValue(this.oSelectedMaterial.Matnr40)
@@ -214,64 +226,49 @@ sap.ui.define(
                 this.getView().byId("idProductThirdBackBtn_CCAP").setVisible(true);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(false)
             },
-            onScanSuccessDestBin: function (oEvent) {
-                // Get the scanned destination bin number from the event
-                var sScannedDestBinnumber = oEvent.getParameter("text");
-
-                // Set the scanned value into the input field
-                this.getView().byId("idProductDestBinInput2").setValue(sScannedDestBinnumber);
-            },
             onThirdSubmitBtnPress: function () {
                 var oView = this.getView();
                 var sSrcBin = oView.byId("idProductSrcBinInput2").getValue();
                 var sDestBin = oView.byId("idProductDestBinInput2").getValue();
                 var sProductnumber = oView.byId("idProductInput2").getValue();
                 var sSrcQty = oView.byId("idProductSourceQtyInput2").getValue();
-                var sProctyp = oView.byId("idProcesstypeInput").getValue();
                 // Ensure all required fields are filled in
-                if (!sDestBin || !sSrcQty || !sProctyp) {
-                    sap.m.MessageToast.show("Please enter all the required fields: Source Qty, Destination Bin and Process type.");
+                if (!sDestBin || !sSrcQty) {
+                    sap.m.MessageToast.show("Please enter all the required fields: Source Qty, Destination Bin.");
                     return;
                 }
-
-                // var sMaktx = this.oSelectedMaterial.Maktx;
-                var sCat = this.oSelectedMaterial.Cat;
-                var sEntitled = this.oSelectedMaterial.Entitled;
-                var sOwner = this.oSelectedMaterial.Owner;
-                var sHuident = this.oSelectedMaterial.Huident;
-                var Altme = this.oSelectedMaterial.Altme;
-                var sOpunit = this.oSelectedMaterial.Opunit;
-
                 var oobj = {
-                    Vlpla: sSrcBin,
-                    Procty: sProctyp,
-                    Opunit: sOpunit,
-                    VsolaBarc: sSrcQty,
-                    Altme: Altme,
-                    Nlpla: sDestBin,
-                    Cat: sCat,
                     Matnr40: sProductnumber,
-                    Owner: sOwner,
-                    Entitled: sEntitled,
-                    Huident: sHuident
+                    Vlpla: sSrcBin,
+                    Nlpla: sDestBin,
+                    VsolaBarc: sSrcQty,
+                    Procty: this.sProctyp,
                 }
 
+                // Call the backend service to update the data
+
                 var oModel = this.getView().getModel();
-                oModel.create("/ProductWTC1Set", oobj, {
-                    success: function (oSuccess) {
-                        console.log(oSuccess)
-                        sap.m.MessageToast.show(`${oSuccess.Tanum} Warehouse Task confirmed successfully.`);
-                        oModel.refresh(true);
-                        oView.byId("idProductSourceQtyInput2").setValue();
-                        oView.byId("idProcesstypeInput").setValue();
-                        oView.byId("idProductDestBinInput2").setValue();
-                    },
-                    error: function (oError) {
-                        var ojson = JSON.parse(oError.responseText)
-                        console.log(ojson)
-                        MessageToast.show(ojson.error.message.value)
-                    }
-                });
+                var that = this;
+
+
+                try {
+                    oModel.create("/ProductWTC1Set", oobj, {
+                        success: function (oSucces) {
+                            console.log(oSucces)
+                            MessageToast.show("Warehouse Task created and confirmed Successfully")
+                        },
+                        error: function (oError) {
+                            var ojson = JSON.parse(oError.responseText)
+                            console.log(ojson)
+                            MessageToast.show(ojson.error.message.value)
+                        }
+                    })
+
+                } catch (error) {
+                    sap.m.MessageToast.show("Unexpected error occurred. Please try again.");
+                    console.error(error);
+                }
+
             },
             onProductthirdBackBtnPress: function () {
                 this.getView().byId("idfourthProductPage").setVisible(false);
@@ -279,7 +276,15 @@ sap.ui.define(
                 this.getView().byId("idProductThirdBackBtn_CCAP").setVisible(false);
                 this.getView().byId("idProdutSecondbackbtn").setVisible(true)
             },
-            onInitialAdhocProductBackBtnPress: async function () {
+            onProductfirstBackBtnPress: async function () {
+                var oView = this.getView();
+                var sProductnumber = oView.byId("idproductInput1");
+                var sBinnumber = oView.byId("idProductsrcBinInput");
+            
+                // Clear their values
+                sProductnumber.setValue("");  // Clear the Product number input
+                sBinnumber.setValue("");      // Clear the Bin number input
+            
                 var oRouter = UIComponent.getRouterFor(this);
                 var oModel1 = this.getOwnerComponent().getModel();
                 var that = this;

@@ -45,7 +45,7 @@
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
-            <ScrollContainer
+            <!-- <ScrollContainer
                 id="idInitialProductPage"
                 horizontal="false"
                 vertical="true"
@@ -74,10 +74,7 @@
                             alignContent="Center"
                             alignItems="Center"
                         >
-                            <Title
-                                id="idTitle_CCAP"
-                                text="{i18n>CreateandConfirmAdhocProduct_title_CCAP}"
-                            />
+                            
                             <VBox
                                 id="idVbox2_CCAP"
                                 class="sapUiTinyMarginBottom"
@@ -127,7 +124,7 @@
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
-            </ScrollContainer>
+            </ScrollContainer> -->
             <ScrollContainer
                 id="idsecondProductPage"
                 horizontal="false"
@@ -135,7 +132,7 @@
                 height="100%"
                 width="100%"
                 class="sapUiContentPadding"
-                visible="false"
+                visible="true"
             >
                 <VBox
                     id="idsecondProductPage3"
@@ -171,7 +168,7 @@
                                 <Input
                                     id="idproductInput1"
                                     value=""
-                                    editable="false"
+                                    
                                     width="180px"
                                 />
                                  <Label
@@ -312,7 +309,7 @@
                                     class="sapUiTinyMargin"
                                 />
                                 <Input
-                                    id="idProcesstypeInput"
+                                    id="idWPTtypeInput"
                                     value=""
                                     liveChange="onProductSrcLiveChange"
                                     maxLength="4"
