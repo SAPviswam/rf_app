@@ -39,15 +39,11 @@
                     </layoutData>
                 </ToolbarSpacer>
                 <!-- Avatar -->
-                <!-- <Avatar
+                <Avatar
                     id="idImageAvatarInitialScreen_InitialView"
                     displaySize="XS"
                     tooltip="{i18n>Prf_Ttip_IV}"
-                /> -->
-                <Button
-                    id="idBtnSignout"
-                    icon="sap-icon://log"
-                    press="onSignoutPress"
+                    press="onPressAvatarBtn_InitialScreen"
                 />
             </tnt:ToolHeader>
         </tnt:header>

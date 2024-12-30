@@ -59,16 +59,12 @@
                 class="sapUiContentPadding"
                 visible="true"
             >
-                <Button
-                    id="idNavBackButton0_RCMHU"
-                    icon="sap-icon://nav-back"
-                    press="Onpressback0"
-                />
+               
 
                 <VBox
                     id="vBox_BOL_RCMHU"
                     alignItems="Center"
-                    justifyContent="Center"
+                   alignContent="Center"
                     class="centerContent"
                 >
                     <Title
@@ -78,7 +74,7 @@
                     />
                     <f:SimpleForm
                         id="simpleFormBOL_RCMHU"
-                        layout="ResponsiveGridLayout"
+                         layout="ResponsiveGridLayout"
                         editable="true"
                         class="sapUiResponsiveMargin"
                         labelSpanL="3"
@@ -88,27 +84,43 @@
                         columnsL="1"
                         columnsM="1"
                     >
+                    <VBox id="vbox_RCMHU">
                         <HBox
                             id="idHBox1_RCMHU"
-                            justifyContent="Start"
+                            alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiSmallMargin"
+                                justifyContent="Center"
                         >
                             <Label
                                 id="idCreationOfSingleHULabel_RCMHU"
                                 text="Manuford :"
                                 class="sapUiTinyMargin"
                             />
-                            <HBox>
+                          
                                 <Input
                                     id="idCreationOfSingleHUinput_RCMHU"
                                     class="sapUiTinyMarginBegin"
                                 />
+                                </HBox>
+                                <HBox id="hboxid_RCMHU"
+                                alignContent="Center"
+                                alignItems="Center"
+                                class="sapUiTinyMargin"
+                                justifyContent="Center">
+                                 <Button
+                    id="idNavBackButton0_RCMHU"
+                   text="Back"
+                    press="Onpressback0"
+                />
                                 <Button
                                     id="idF1Button_RCMHU"
                                     text="enter"
                                     press="onenterpress"
                                 />
-                            </HBox>
+                         
                         </HBox>
+                        </VBox>
                     </f:SimpleForm>
                 </VBox>
             </ScrollContainer>

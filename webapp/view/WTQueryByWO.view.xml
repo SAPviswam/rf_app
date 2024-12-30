@@ -256,9 +256,11 @@
                         columnsM="1"
                         columnsXL="1"
                     >
-                        <VBox id="idVbox_WTQueryByWO4"
-                         alignContent="Center"
-                            alignItems="Center">
+                        <VBox
+                            id="idVbox_WTQueryByWO4"
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
                             <HBox
                                 id="idHbox_WTQueryByWO5"
                                 alignContent="Center"
@@ -407,14 +409,14 @@
                                 <Input
                                     id="idWtQBWoProInput"
                                     value=""
-                                    width="110px"
+                                    width="150px"
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />
                                 <Input
                                     id="idWtQBWoProEmpInput"
                                     value=""
-                                    width="110px"
+                                    width="150px"
                                     editable="false"
                                 />
                             </HBox>
@@ -434,13 +436,13 @@
                                     value=""
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
-                                    width="110px"
+                                    width="150px"
                                 />
                                 <Input
                                     id="idWtQBWoSbinEmpInput"
                                     value=""
                                     editable="false"
-                                    width="110px"
+                                    width="150px"
                                 />
                             </HBox>
 
@@ -459,12 +461,12 @@
                                     value=""
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
-                                    width="110px"
+                                    width="150px"
                                 />
                                 <Input
                                     id="idWtQBWoDbinEmpInput"
                                     value=""
-                                    width="110px"
+                                    width="150px"
                                     editable="false"
                                 />
                             </HBox>
@@ -482,7 +484,7 @@
                                 <Input
                                     id="idWtQBWoCdatInput"
                                     value=""
-                                    width="85px"
+                                    width="90px"
                                     editable="false"
                                     class="sapUiTinyMarginEnd"
                                 />

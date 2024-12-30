@@ -1,6 +1,7 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller",
+        //"sap/ui/core/mvc/Controller",
+        "./BaseController",
         "sap/ui/Device",
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast",
@@ -41,15 +42,15 @@ sap.ui.define(
                 this.Themecall = false;
 
                 if (Device.system.desktop) {
-                    this.byId("idRequestedData").setWidth("1400px");
+                    this.byId("idRequestedData").setWidth("150%");
                     this.byId("idUserDataTable").setWidth("2200px");
 
                 } else if (Device.system.tablet) {
-                    this.byId("idRequestedData").setWidth("3500px"); // Adjust width for tablets
+                    this.byId("idRequestedData").setWidth("200%"); // Adjust width for tablets
                     this.byId("idUserDataTable").setWidth("2200px");
                 }
                 else if (Device.system.phone) {
-                    this.byId("idRequestedData").setWidth("600px");
+                    this.byId("idRequestedData").setWidth("400%");
                     this.byId("idUserDataTable").setWidth("3500px");
                 }
 
@@ -58,31 +59,31 @@ sap.ui.define(
 
             },
 
-
             onSupervisorDetailsLoad: async function (oEvent1) {
-                const { id } = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
+                this.IDI = idI;
+                this.applyStoredProfileImage();
             },
-            onTilePress: function (oEvent) {
-                var oPressedControl = oEvent.getSource(); // Source of the press
-                // If the pressed control is the button inside the tile
-                if (oPressedControl instanceof sap.m.Button) {
-                    oEvent.stopPropagation();
-                    ;
-                } else {
-                    // If the press is on the tile itself, handle navigation
-                    this.onTilePressPutawayByWO(oEvent);
+            //Avatar Press function in SupervisorPage...
+            onPressBtnAvatar_SupervisorPage: function (oEvent) {
+                var oComponent = this.getOwnerComponent();
+                // Destroy the existing popover if it exists
+                if (oComponent.getPopover()) {
+                    oComponent.getPopover().destroy();
+                    oComponent.setPopover(null);
                 }
+                this.onPressAvatarPopOverBaseFunction(oEvent, {
+                    showAccountDetails: true,
+                    showSignOut: true
+                });
+                this.applyStoredProfileImage();
             },
-            // Palette button press logic (this is triggered when the button is pressed)
-            onPaletteIconPress: function (oEvent) {
-                // Open the theme dialog box
-                this._currentTileId = oEvent.getSource().getParent().getParent().getId();
-                this.byId("themeTileDialog").open();
-                oEvent.stopPropagation();
-            },
-            onAfterRendering: function () {
 
+
+
+
+            onAfterRendering: function () {
                 // Apply stored theme color immediately
                 var sStoredThemeColor = localStorage.getItem("themeColor");
                 if (sStoredThemeColor) {
@@ -450,7 +451,7 @@ sap.ui.define(
                 var oAreaSelect = this.byId("idAreaSelect");
                 var oGroupSelect = this.byId("idGroupSelect");
                 var oQueueSelect = this.byId("idQueueSelect");
-                
+
                 var Name = oNameInput.getValue();
                 var email = oEmailInput.getValue();
                 var phone = oPhoneInput.getValue();
@@ -613,7 +614,7 @@ sap.ui.define(
                 oModel.update(`/RESOURCESSet('${Empid}')`, oData, {
                     success: function () {
 
-                        that.sendSms(Empid, Name, phone, oPassword,);  
+                        that.sendSms(Empid, Name, phone, oPassword,);
                         sap.m.MessageToast.show("Password updated successfully!");
                         //that.resetForm();
                         that.onRequestedData();
@@ -636,7 +637,7 @@ sap.ui.define(
                 var phone = SelectedTable.cells[3].mProperties.text;
                 var Resourcetype = SelectedTable.cells[2].mProperties.text;
                 var email = SelectedTable.cells[4].mProperties.text;
-                var User =  SelectedTable.cells[5].mProperties.selectedKey
+                var User = SelectedTable.cells[5].mProperties.selectedKey
                 var Area = AreaV.join(",");
                 var Group = GrpV.join(",");
                 var Queue = QusV.join(",");
@@ -704,7 +705,7 @@ sap.ui.define(
                 });
             },
 
-            sendSms: function (Userid,Firstname,Phonenumber,Password) {
+            sendSms: function (Userid, Firstname, Phonenumber, Password) {
                 debugger
                 // Send POST request to Twilio API using jQuery.ajax
                 const accountSid = this.oSMSConfig.AccountSID,
@@ -1678,7 +1679,7 @@ sap.ui.define(
                 var sDay = ("0" + oDate.getDate()).slice(-2);
 
                 return `${sYear}-${sMonth}-${sDay}`;
-            }, 
+            },
             resetForm: function () {
                 // Reset input fields
                 this.byId("idEmppInput").setValue("");

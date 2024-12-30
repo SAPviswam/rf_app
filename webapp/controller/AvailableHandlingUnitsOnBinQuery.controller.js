@@ -3,9 +3,9 @@ sap.ui.define(
         //"sap/ui/core/mvc/Controller",
         "./BaseController",
         "sap/ui/Device"
-    
+
     ],
-    function (BaseController,Device) {
+    function (BaseController, Device) {
         "use strict";
 
         return BaseController.extend("com.app.rfapp.controller.AvailableHandlingUnitsOnBinQuery", {
@@ -17,32 +17,28 @@ sap.ui.define(
                 if (Device.system.phone) {
                     this.getView().byId("idBinNumTable_AHUOBQ").setWidth("200%");// FOR SCROLLABLE CONTAINER
                     this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("MobileviewTable_HUSOQ");// FOR TABLE ADJUSTABLE
-                   
+
                 }
                 if (Device.system.tablet) {
                     this.getView().byId("idBinNumTable_AHUOBQ").addStyleClass("tab_Table_HuStockOverview");
                 }
-            
+
             },
 
             onLiveChange: function (oEvent) {
                 var sValue = oEvent.getSource().getValue().trim();
                 this._debouncedValidate(sValue);
             },
-            onSignoutPressed:function(){
-                var oRouter = this.getOwnerComponent().getRouter(this);
-                oRouter.navTo("InitialScreen",{Userid:this.IDI});
-            },
             _validateBinNumber: function (sBinNumber) {
                 if (!sBinNumber) {
                     this._showErrorMessage("Please enter a bin number.");
                     return;
                 }
-            
+
                 // Call backend service to check if bin number is valid
                 var oModel = this.getView().getModel();
                 var that = this;
-            
+
                 oModel.read(`/BINQItemSet('${sBinNumber}')`, {
                     urlParameters: {
                         "$expand": "BINQHeadSet",
@@ -52,12 +48,12 @@ sap.ui.define(
                         if (odata.Lgpla === sBinNumber) {
                             // Clear any error message before proceeding
                             sap.m.MessageToast.show("", { duration: 0 });
-            
+
                             // Navigate to the next screen
                             that.getView().byId("idPage1_AHUOBQ").setVisible(false);
                             that.getView().byId("idPage2BinNoTable_AHUOBQ").setVisible(true);
                             that.getView().byId("idBinNumberInput_AHUOBQ").setValue(sBinNumber);
-            
+
                             // Populate product details in the table
                             let oDetails = odata.BINQHeadSet.results;
 
@@ -66,7 +62,7 @@ sap.ui.define(
                                 Matnr: detail.Matnr,
                                 Flgmove: that.getStatusText(detail.Flgmove)
                             }));
-            
+
                             // Set data in the table's model
                             var oProductModel = new sap.ui.model.json.JSONModel({ products: aProductDetails });
                             that.byId("idBinNumTable_AHUOBQ").setModel(oProductModel);
@@ -91,7 +87,7 @@ sap.ui.define(
                 });
             },
 
-            
+
             _debounce: function (fn, delay) {
                 var timeout;
                 return function (...args) {
@@ -99,20 +95,20 @@ sap.ui.define(
                     timeout = setTimeout(() => fn(...args), delay);
                 };
             },
-            
+
             _showErrorMessage: function (message) {
                 sap.m.MessageToast.show(message, { duration: 3000 });
             },
-            
+
             //Avata Press function with Helper function...
             onPressAvatarAHUOBQ: function (oEvent) {
                 this.onPressAvatarEveryTileHelperFunction(oEvent);
             },
 
             onResourceDetailsLoad: async function (oEvent1) {
-                const { id,idI } = oEvent1.getParameter("arguments");
-                this.ID = id;
-                this.IDI=idI
+                const { id, idI } = oEvent1.getParameter("arguments");  // Retrieve the ID from route arguments
+                this.ID = id;  // Save ID for later use
+                this.IDI = idI
                 //Profile image updating(from BaseController)...
                 this.applyStoredProfileImage();
             },
@@ -145,19 +141,19 @@ sap.ui.define(
             onPressBackBtnPage1_AHUOBQ: async function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel1 = this.getOwnerComponent().getModel();
-                var that=this;
+                var that = this;
                 await oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
                         if (oData.Users === "RESOURCE") {
-                            oRouter.navTo("RouteResourcePage", { id: this.ID,idI:that.IDI });
+                            oRouter.navTo("RouteResourcePage", { id: this.ID, idI: that.IDI });
                             this.getView().byId("idInput_AHUOBQ").setValue("")
                         }
                         else {
-                            oRouter.navTo("Supervisor", { id: this.ID,idI:that.IDI });
+                            oRouter.navTo("Supervisor", { id: this.ID, idI: that.IDI });
                         }
                     }.bind(this),
                     error: function () {
-                    sap.m.MessageToast.show("User does not exist");
+                        sap.m.MessageToast.show("User does not exist");
                     }
                 });
             },
@@ -194,145 +190,146 @@ sap.ui.define(
                 //Hide the Product Description scroll container
                 oScrollContainer4.setVisible(false);
             },
-            
+
             onSelectionChange: function (oEvent) {
-              // Get the selected item
-              var oSelectedItem = oEvent.getParameter("listItem");
-          
-              if (oSelectedItem) {
-                  // Get the binding context of the selected item
-                  this._selectedRowContext = oSelectedItem.getBindingContext();
-              } else {
-                  // Deselecting the item
-                  this._selectedRowContext = null;
-              }
-          },
-        
-        _showErrorMessage: function (message) {
-            sap.m.MessageToast.show(message, { duration: 3000 });
-        },
+                // Get the selected item
+                var oSelectedItem = oEvent.getParameter("listItem");
+
+                if (oSelectedItem) {
+                    // Get the binding context of the selected item
+                    this._selectedRowContext = oSelectedItem.getBindingContext();
+                } else {
+                    // Deselecting the item
+                    this._selectedRowContext = null;
+                }
+            },
+
+            _showErrorMessage: function (message) {
+                sap.m.MessageToast.show(message, { duration: 3000 });
+            },
             //Prod Description Btn from ScrollContainer Page 2=>idPage2BinNoTable_AHUOBQ
             onPressProductDescriptionBtn: function (oEvent) {
-              // Get the selected row's context from the table
-              var oTable = this.byId("idBinNumTable_AHUOBQ"); // Replace with your table ID
-              
-              var oSelectedItem = oTable.getSelectedItem(); // Get selected item from the table
-          
-              if (!oSelectedItem) {
-                  sap.m.MessageToast.show(" Please select a row.");
-                  return;
-              }
-          
-              var sSelectedMatnr = oSelectedItem.getBindingContext().getProperty("Matnr");
-              
-              // Check if the selected material number is valid
-              if (!sSelectedMatnr) {
-                  sap.m.MessageToast.show("There is no product available. Please select a row.");
-                  return;
-              }
-          
-              var oModel = this.getView().getModel();
-          
-              oModel.read(`/ProductHeadSet('${sSelectedMatnr}')`, {
-                  urlParameters: {
-                      "$expand": "ProductHeadtoItem",
-                      "$format": "json"
-                  },
-                  success: (odata) => {
-                      console.log(odata);
-                      var aBindetails = odata.ProductHeadtoItem.results;
-          
-                      // Check if there are any details returned
-                      if (aBindetails.length === 0) {
-                          sap.m.MessageToast.show("No product details found for the selected item.");
-                          return;
-                      }
-          
-                      // Update the UI with the selected material's details
-                      for (var i = 0; i < aBindetails.length; i++) {
-                          if (aBindetails[i].Matnr === sSelectedMatnr) {
-                             this.getView().byId("idProductDescription_AHUOBQ").setValue(odata.Maktx);
-                             this.getView().byId("idHuInput_AHUOBQ").setValue(odata.Ean11);
-                              this.getView().byId("idTotalWeightInput_AHUOBQ").setValue(odata.GWeight);
-                              this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
-                              this.getView().byId("idKGUnits_AHUOBQ").setValue(odata.UnitGw);
-                              this.getView().byId("idInputL_AHUOBQ").setValue(odata.UnitGv);
-                          }
-                      }
-          
-                      // Show product description page and hide the previous table
-                      this.byId("idPage4PrdDecsription_AHUOBQ").setVisible(true);
-                      this.byId("idPage2BinNoTable_AHUOBQ").setVisible(false);
-                  },
-                  error: function () {
-                      sap.m.MessageToast.show("Error fetching product details.");
-                  }
-              });
-          },
-          // On clicking HUContent Button
-          onPressHUContentBtn: function () {
+                // Get the selected row's context from the table
+                var oTable = this.byId("idBinNumTable_AHUOBQ"); // Replace with your table ID
 
-            debugger;
+                var oSelectedItem = oTable.getSelectedItem(); // Get selected item from the table
 
-            var oView = this.getView();
-            var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
-            this.sBinNumber = sBinNumber;
-            var oModel = oView.getModel();
-        
-            if (!this._selectedRowContext) {
-                sap.m.MessageToast.show("Please select a row first.");
-                return; // Exit if no row is selected
-            }
-        
-            // Fetch HU Number and Product directly from the selected row
-            var oSelectedItem = this._selectedRowContext.getObject();
-            var sSelectedHuident = oSelectedItem.Huident; // HU Number from selected row
-            var sSelectedProduct = oSelectedItem.Matnr; // Product from selected row
-        
-            // Set HU Number and Product in the respective input fields
-            oView.byId("idHUNumInput_AHUOBQ").setValue(sSelectedHuident); // HU Number
-            oView.byId("idHUProdNumInput_AHUOBQ").setValue(sSelectedProduct); // Product
-        
-            // Read additional data from the backend using the BinNumber
-            oModel.read(`/BINQItemSet('${this.sBinNumber}')`, {
-                urlParameters: {
-                    "$expand": "BINQHeadSet",
-                    "$format": "json"
-                },
-                success: function (odata) {
-                    debugger;
-                    console.log(odata);
-                    var aMaterials = odata.BINQHeadSet.results;
-        
-                    // Find the selected material using the HU Number
-                    var oSelectedMaterial = aMaterials.find(function (material) {
-                        return material.Huident === sSelectedHuident;
-                    });
-        
-                    if (oSelectedMaterial) {
-                        // Update the other fields with the selected material's details
-                        oView.byId("idSectionInput_AHUOBQ").setValue(odata.Lgtyp); // Storage Type
-                        // oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
-                        oView.byId("idQtyInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Quan); // Quantity
-                        oView.byId("idBinInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Owner); // Owner
-                    } else {
-                        sap.m.MessageToast.show("Material not found.");
-                    }
-        
-                    // Hide the current table and show the HU content section
-                    oView.byId("idPage2BinNoTable_AHUOBQ").setVisible(false);
-                    oView.byId("idPage3HUContents_AHUOBQ").setVisible(true);
-                },
-                error: function () {
-                    sap.m.MessageToast.show("Error fetching products.");
+                if (!oSelectedItem) {
+                    sap.m.MessageToast.show(" Please select a row.");
+                    return;
                 }
-            });
-        },
-        getStatusText: function (statusCode) {
-            if (typeof statusCode === 'boolean') {
-              return statusCode ? 'yes' : 'No';
-          }
-        }
+
+                var sSelectedMatnr = oSelectedItem.getBindingContext().getProperty("Matnr");
+
+                // Check if the selected material number is valid
+                if (!sSelectedMatnr) {
+                    sap.m.MessageToast.show("There is no product available. Please select a row.");
+                    return;
+                }
+
+                var oModel = this.getView().getModel();
+
+                oModel.read(`/ProductHeadSet('${sSelectedMatnr}')`, {
+                    urlParameters: {
+                        "$expand": "ProductHeadtoItem",
+                        "$format": "json"
+                    },
+                    success: (odata) => {
+                        console.log(odata);
+                        var aBindetails = odata.ProductHeadtoItem.results;
+
+                        // Check if there are any details returned
+                        if (aBindetails.length === 0) {
+                            sap.m.MessageToast.show("No product details found for the selected item.");
+                            return;
+                        }
+
+                        // Update the UI with the selected material's details
+                        for (var i = 0; i < aBindetails.length; i++) {
+                            if (aBindetails[i].Matnr === sSelectedMatnr) {
+                                this.getView().byId("idProductDescription_AHUOBQ").setValue(odata.Maktx);
+                                this.getView().byId("idHuInput_AHUOBQ").setValue(odata.Ean11);
+                                this.getView().byId("idTotalWeightInput_AHUOBQ").setValue(odata.GWeight);
+                                this.getView().byId("idTotalValueInput_AHUOBQ").setValue(odata.GVolume);
+                                this.getView().byId("idKGUnits_AHUOBQ").setValue(odata.UnitGw);
+                                this.getView().byId("idInputL_AHUOBQ").setValue(odata.UnitGv);
+                            }
+                        }
+
+                        // Show product description page and hide the previous table
+                        this.byId("idPage4PrdDecsription_AHUOBQ").setVisible(true);
+                        this.byId("idPage2BinNoTable_AHUOBQ").setVisible(false);
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Error fetching product details.");
+                    }
+                });
+            },
+            // On clicking HUContent Button
+            onPressHUContentBtn: function () {
+
+                debugger;
+
+                var oView = this.getView();
+                var sBinNumber = oView.byId("idInput_AHUOBQ").getValue();
+                this.sBinNumber = sBinNumber;
+                var oModel = oView.getModel();
+
+                if (!this._selectedRowContext) {
+                    sap.m.MessageToast.show("Please select a row first.");
+                    return; // Exit if no row is selected
+                }
+
+                // Fetch HU Number and Product directly from the selected row
+                var oSelectedItem = this._selectedRowContext.getObject();
+                var sSelectedHuident = oSelectedItem.Huident; // HU Number from selected row
+                var sSelectedProduct = oSelectedItem.Matnr; // Product from selected row
+
+                // Set HU Number and Product in the respective input fields
+                oView.byId("idHUNumInput_AHUOBQ").setValue(sSelectedHuident); // HU Number
+                oView.byId("idHUProdNumInput_AHUOBQ").setValue(sSelectedProduct); // Product
+
+                // Read additional data from the backend using the BinNumber
+                oModel.read(`/BINQItemSet('${this.sBinNumber}')`, {
+                    urlParameters: {
+                        "$expand": "BINQHeadSet",
+                        "$format": "json"
+                    },
+                    success: function (odata) {
+                        debugger;
+                        console.log(odata);
+                        var aMaterials = odata.BINQHeadSet.results;
+
+                        // Find the selected material using the HU Number
+                        var oSelectedMaterial = aMaterials.find(function (material) {
+                            return material.Huident === sSelectedHuident;
+                        });
+
+                        if (oSelectedMaterial) {
+                            // Update the other fields with the selected material's details
+                            oView.byId("idSectionInput_AHUOBQ").setValue(odata.Lgtyp); // Storage Type
+                            // oView.byId("idDocInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Docno); // Document Number
+                            oView.byId("idQtyInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Quan); // Quantity
+                            oView.byId("idBinInputThirdPage_AHUOBQ").setValue(oSelectedMaterial.Owner); // Owner
+                        } else {
+                            sap.m.MessageToast.show("Material not found.");
+                        }
+
+                        // Hide the current table and show the HU content section
+                        oView.byId("idPage2BinNoTable_AHUOBQ").setVisible(false);
+                        oView.byId("idPage3HUContents_AHUOBQ").setVisible(true);
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Error fetching products.");
+                    }
+                });
+            },
+            getStatusText: function (statusCode) {
+                if (typeof statusCode === 'boolean') {
+                    return statusCode ? 'yes' : 'No';
+                }
+            },
+            
         });
     }
 );

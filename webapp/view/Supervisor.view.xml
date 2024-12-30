@@ -133,7 +133,7 @@
                 <Avatar
                     id="_IDGenAvatar_supervisor"
                     displaySize="XS"
-                    press="onAvatarPressed"
+                    press="onPressBtnAvatar_SupervisorPage"
                     tooltip="Profile"
                 />
             </tnt:ToolHeader>
@@ -198,10 +198,10 @@
                         height="100%"
                         width="100%"
                     >
-                        <Bar class="TableBarForRequestedData">
+                        <Bar id="idBar_supervisorView" class="TableBarForRequestedData">
                             <contentLeft>
-                                <Text
-                                    text="Requested Data:"
+                                <Title id="idReqData_Supervisor_View"
+                                    text="Requested Data"
                                     class="RequestedDataClass"
                                 />
                             </contentLeft>
@@ -213,6 +213,7 @@
                                     press="onRefreshRequestedData"
                                     width="0.5rem"
                                     type="Emphasized"
+                                    class="sapUiSmallMarginTop"
                                 />
                                 <Button
                                     id="idBtnApprove"
@@ -221,6 +222,7 @@
                                     press="onApproveUserBtnPress"
                                     width="4.5rem"
                                     type="Accept"
+                                     class="sapUiSmallMarginTop"
                                 />
                                 <Button
                                     id="idBtnReject"
@@ -229,6 +231,7 @@
                                     press="onRejectUserBtnPress"
                                     width="3.5rem"
                                     type="Reject"
+                                     class="sapUiSmallMarginTop"
                                 />
                             </contentRight>
                         </Bar>
@@ -240,11 +243,13 @@
                             mode="SingleSelectLeft"
                             growingScrollToLoad="true"
                             growing="true"
+                            class="sapUiTinyMarginTop"
+                           
                         >
                             <columns>
                                 <Column
                                     id="idEmployeeId"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idtitleEmpID"
@@ -253,7 +258,7 @@
                                 </Column>
                                 <Column
                                     id="idEmployeename"
-                                    width="auto"
+                                    width="30%"
                                 >
                                     <Title
                                         id="idtitleEmpName"
@@ -262,7 +267,7 @@
                                 </Column>
                                 <Column
                                     id="idResourceType"
-                                    width="auto"
+                                    width="25%"
                                    
                                 >
                                     <Title
@@ -272,7 +277,7 @@
                                 </Column>
                                 <Column
                                     id="idPhonenumber"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idPhoneNumbertitle"
@@ -281,7 +286,7 @@
                                 </Column>
                                 <Column
                                     id="idEmail"
-                                    width="auto"
+                                    width="30%"
                                 >
                                     <Title
                                         id="idEmailtitle"
@@ -290,7 +295,7 @@
                                 </Column>
                                 <Column
                                     id="idUsers"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idUserstitle"
@@ -299,7 +304,7 @@
                                 </Column>
                                 <Column
                                     id="idProcessArea"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idProcessAreatitle"
@@ -308,7 +313,7 @@
                                 </Column>
                                 <Column
                                     id="idProcessGroup"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idProcessgrouptitle"
@@ -317,7 +322,7 @@
                                 </Column>
                                 <Column
                                     id="idProcessQueue"
-                                    width="auto"
+                                    width="20%"
                                 >
                                     <Title
                                         id="idProcessQueuetitle"

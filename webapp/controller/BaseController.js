@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/core/UIComponent",
 
-], function (Controller, Fragment) {
+], function (Controller, Fragment, UIComponent) {
     'use strict';
 
     return Controller.extend("com.app.rfapp.controller.BaseController", {
@@ -10,8 +11,21 @@ sap.ui.define([
             return this.getOwnerComponent().getRouter();
         },
         onInit: function () {
-
-        },        
+        },
+        debounceCall: function (mainFunction, delay) {
+            let timer;
+            return function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(async () => {
+                    try {
+                        mainFunction(...args); // Await the main function
+                    } catch (error) {
+                        console.error("Debounced function error:", error);
+                    }
+                }, delay);
+            };
+        },
+        //Applying the saved prfile picture to frontand avatars from the backend table with based on user id...
         applyStoredProfileImage: async function () {
             var oView = this.getView();
             const userId = this.ID; // Assuming this.ID holds the user ID
@@ -151,7 +165,9 @@ sap.ui.define([
 
             oModel1.read("/RESOURCESSet('" + this.ID + "')", {
                 success: function (oData) {
-                    if (oData.Users.toLowerCase() === "resource") {
+                    var isSupervisor = oData.Users.toLowerCase() === "supervisor";
+                    var isResource = oData.Users.toLowerCase() === "resource";
+                    if (isSupervisor || isResource) {
                         // Prepare the profile data
                         var oProfileData = {
                             Name: oData.Resourcename,
@@ -320,6 +336,7 @@ sap.ui.define([
                                 error: reject
                             });
                         });
+                        sap.m.MessageToast.show("Profile image updated successfully.");
                     };
                     // Read the selected file as a Data URL (base64 string)
                     reader.readAsDataURL(selectedFile);
@@ -350,6 +367,7 @@ sap.ui.define([
             const oModel = This.getOwnerComponent().getModel();
             const userId = This.ID;
             try {
+                sap.ui.core.BusyIndicator.show(0);
                 const sEntityPath = `/RESOURCESSet('${userId}')`;
                 const userData = await new Promise((resolve, reject) => {
                     oModel.read(sEntityPath, {
@@ -379,6 +397,8 @@ sap.ui.define([
                 }
             } catch (oError) {
                 console.error("Error deleting profile image:", oError);
+            } finally {
+                sap.ui.core.BusyIndicator.hide();
             }
         },
         clearAllAvatarImages: function () {
@@ -468,6 +488,7 @@ sap.ui.define([
             // Retrieve all resources for validation
             var sEntityPath = `/RESOURCESSet('${userId}')`;
             try {
+                sap.ui.core.BusyIndicator.show(0);
                 const currentUserData = await new Promise((resolve, reject) => {
                     oModel.read(sEntityPath, {
                         success: (oData) => resolve(oData),
@@ -522,6 +543,8 @@ sap.ui.define([
                 this.byId("idInputEmailUserDetails_ResourcePage").setVisible(true);
             } catch (error) {
                 sap.m.MessageToast.show("Error updating profile or fetching data.");
+            } finally {
+                sap.ui.core.BusyIndicator.hide();
             }
         },
         //Cancel the Profile Details Changing...
@@ -541,6 +564,14 @@ sap.ui.define([
             this.byId("idBtnEditDetailsforProfile").setVisible(true);
             this.byId("idBtnSaveProfileDetails").setVisible(false);
             this.byId("idBtnCancelProfileDetails").setVisible(false);
+        },
+        
+        //Signout Btn from the Profile Popover_ResourcePage..(which works from all tile controllers)
+        onSignoutPressed_ResourcePage: function () {
+            sessionStorage.clear();
+            localStorage.clear();
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InitialScreen", { Userid: this.IDI });
         },
 
     })

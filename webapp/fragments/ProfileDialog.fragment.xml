@@ -26,6 +26,7 @@
                         displaySize="S"
                         press="onPressPopoverProfileImageAvatar"
                         class="profileAvatar1234"
+                        tooltip="Add profile"
                     />
                     <Label
                         id="idUserDeatilsLabel4"
@@ -44,6 +45,7 @@
                         <Link
                             id="idUserDeatilsPhoneLink"
                             text="{profile>/Number}"
+                            class="UserNameBold"
                         />
                     </VBox>
                 </HBox>
@@ -119,7 +121,7 @@
                         icon="sap-icon://log"
                         text="Sign Out"
                         type="Transparent"
-                        press="onSignoutPressed"
+                        press="onSignoutPressed_ResourcePage"
                         visible="{popoverModel>/showSignOut}"
                         width="auto"
                     />
