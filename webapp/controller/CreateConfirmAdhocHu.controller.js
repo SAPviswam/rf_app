@@ -30,6 +30,7 @@ sap.ui.define(
         var oRouter = this.getOwnerComponent().getRouter(this);
         oRouter.navTo("InitialScreen", { Userid: this.IDI });
       },
+
       //   onLiveChange:function(){
       //   //   if(this.getView().byId("idHuInput_CCAHU").getValue()=="800020"){
       //      this.getView().byId("idFirstSc_CCAHU").setVisible(false)
@@ -45,28 +46,14 @@ sap.ui.define(
       //   //   }
       // },
 
-
       // onHuDetailsPress_CCAHU: function () {
       //   this.getView().byId("idthirdSc_CCAHU").setVisible(true);
       //   this.getView().byId("idsecondSc_CCAHU").setVisible(false);
 
       // },
-      onSecondBackBtnPress_CCAHU: function () {
-        this.getView().byId("idFirstSc_CCAHU").setVisible(true);
-        this.getView().byId("idsecondSc_CCAHU").setVisible(false);
-        this.getView().byId("idSecSCHuInput_CCAHU").setValue();
-        this.getView().byId("idWPTInput_CCAHU").setValue();
-        this.getView().byId("idsrcBinInput_CCAHU").setValue();
-        this.getView().byId("idDestBinInput_CCAHU").setValue();
-        
-      },
-      onThirdBackBtnPress_CCAHU: function () {
-        this.getView().byId("idsecondSc_CCAHU").setVisible(true);
-        this.getView().byId("idFirstSc_CCAHU").setVisible(false);
-        
-      },
 
-      // first back button
+
+      // for first back button press
 
       onFirstBackBtnPress_CCAHU: async function () {
         var oRouter = UIComponent.getRouterFor(this);
@@ -85,10 +72,28 @@ sap.ui.define(
           error: function () {
             MessageToast.show("User does not exist");
           }
-          
+
         });
         this.getView().byId("idWPT1Input_CCAHU").setValue();
         this.getView().byId("idHuInput_CCAHU").setValue();
+
+      },
+
+      // for second back button press
+      onSecondBackBtnPress_CCAHU: function () {
+        this.getView().byId("idFirstSc_CCAHU").setVisible(true);
+        this.getView().byId("idsecondSc_CCAHU").setVisible(false);
+        this.getView().byId("idSecSCHuInput_CCAHU").setValue();
+        this.getView().byId("idWPTInput_CCAHU").setValue();
+        this.getView().byId("idsrcBinInput_CCAHU").setValue();
+        this.getView().byId("idDestBinInput_CCAHU").setValue();
+        this.getView().byId("idDestHuInput_CCAHU").setValue();
+      },
+
+      // for third back button press
+      onThirdBackBtnPress_CCAHU: function () {
+        this.getView().byId("idsecondSc_CCAHU").setVisible(true);
+        this.getView().byId("idFirstSc_CCAHU").setVisible(false);
 
       },
 
@@ -97,11 +102,11 @@ sap.ui.define(
 
         var oView = this.getView();
         var sHunumber = oView.byId("idHuInput_CCAHU").getValue();
-        var sProcessType = oView.byId("idWPT1Input_CCAHU").getValue();
+
 
         // Ensure both hu number and process type are provided
-        if (!sHunumber || !sProcessType) {
-          sap.m.MessageToast.show("Please enter both Hu and Process type");
+        if (!sHunumber) {
+          sap.m.MessageToast.show("Please enter Hu number");
           return;
 
         }
@@ -109,16 +114,17 @@ sap.ui.define(
         var oModel = this.getView().getModel();
         var that = this;
 
-        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHunumber}',Procty='${sProcessType}')`;
+
+        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHunumber}')`;
 
         await oModel.read(sRequestUrl, {
           success: (odata) => {
             console.log(odata);
 
-            if (odata.Huident === sHunumber && odata.Procty.toUpperCase() === sProcessType.toUpperCase()) {
+            if (odata.Huident === sHunumber) {
               that.getView().byId("idSecSCHuInput_CCAHU").setValue(sHunumber);
-              that.getView().byId("idWPTInput_CCAHU").setValue(sProcessType);
               that.getView().byId("idsrcBinInput_CCAHU").setValue(odata.Vlpla);
+
             }
 
             this.getView().byId("idFirstSc_CCAHU").setVisible(false)
@@ -144,51 +150,75 @@ sap.ui.define(
         // Get the scanned bin number from the event
         var sScannedDestBin = oEvent.getParameter("text");
         this.getView().byId("idDestBinInput_CCAHU").setValue(sScannedDestBin);
-        this.onSubmitBtn_CCAHU();
+        this.onCreateConfirmPress_CCAHU();
       },
 
       //for destination hu
       onCreateConfirmPress_CCAHU: async function () {
-
         var oView = this.getView();
         var sSrcBin = oView.byId("idsrcBinInput_CCAHU").getValue();
-        var sDestBin = oView.byId("idDestBinInput_CCAHU").getValue();
+        var sDestBin = oView.byId("idDestBinInput_CCAHU").getValue().toUpperCase();
         var sHunumber = oView.byId("idSecSCHuInput_CCAHU").getValue();
         var sProcessType = oView.byId("idWPTInput_CCAHU").getValue().toUpperCase();
-        // var sDestHu = oView.byId("idDestHuInput_CCAHU").getValue();
-       
-
+        var sDestHu = oView.byId("idDestHuInput_CCAHU").getValue();
+        if (sDestHu) {
+          if (sDestHu != sHunumber) {
+            sap.m.MessageBox.error("Source Hu and Destination Hu mismatch")
+            return;
+          }
+        }
         // Ensure all required fields are filled in
-        if (!sSrcBin || !sDestBin) {
-          sap.m.MessageToast.show("Please enter all the required fields: Source Bin, Destination Bin.");
+
+        if (!sSrcBin || !sDestBin || !sProcessType) {
+          sap.m.MessageBox.show("Please enter all the required fields: Warehouse process Type, Source Bin, Destination Bin.");
           return;
         }
-        var oobj={
-          Huident:sHunumber,
-          Procty:sProcessType,
-          Vlpla:sSrcBin,
-          Nlpla:sDestBin
 
-      }
+        let DestHuInput = this.getView().byId("idDestHuInput_CCAHU").getValue();
+        if (!DestHuInput) {
+          let DestHu = this.getView().byId("idHuInput_CCAHU").getValue();
+          this.getView().byId("idDestHuInput_CCAHU").setValue(DestHu);
+        }
+        var oObj = {
+          Huident: sHunumber,
+          Procty: sProcessType,
+          Vlpla: sSrcBin,
+          Nlpla: sDestBin
 
+        }
+       
         // Call the backend service to update the data
 
         var oModel = this.getView().getModel();
         var that = this;
-        
-       
+
+
         try {
-        oModel.create("/create_confirm_adhochuSet",oobj,{
-          success:function(oSucces){
+          oModel.create("/create_confirm_adhochuSet", oObj, {
+            success: function (oSucces) {
               console.log(oSucces)
-              MessageToast.show("Warehouse Task created and confirmed Successfully")
-          },
-          error:function(oError){
+
+
+              MessageToast.show("Warehouse Task created and confirmed Successfully");
+
+              this.getView().byId("idSecSCHuInput_CCAHU").setValue();
+              this.getView().byId("idWPTInput_CCAHU").setValue();
+              this.getView().byId("idsrcBinInput_CCAHU").setValue();
+              this.getView().byId("idDestBinInput_CCAHU").setValue();
+              this.getView().byId("idDestHuInput_CCAHU").setValue();
+              this.getView().byId("idHuInput_CCAHU").setValue();
+              this.getView().byId("idFirstSc_CCAHU").setVisible(true);
+              this.getView().byId("idsecondSc_CCAHU").setVisible(false);
+
+
+
+            }.bind(this),
+            error: function (oError) {
               var ojson = JSON.parse(oError.responseText)
               console.log(ojson)
-              MessageToast.show(ojson.error.message.value )
-          }
-      })
+              MessageToast.show(ojson.error.message.value)
+            }
+          })
 
         } catch (error) {
           sap.m.MessageToast.show("Unexpected error occurred. Please try again.");
@@ -199,44 +229,40 @@ sap.ui.define(
 
       // for fetching the hu details from the backend service
 
-      onHuDetailsPress_CCAHU:function(){
-        var oView=this.getView();
-        var sHu=oView.byId("idSecSCHuInput_CCAHU").getValue();
-        var sWpt=oView.byId("idWPTInput_CCAHU").getValue();
+      onHuDetailsPress_CCAHU: function () {
+        var oView = this.getView();
+        var sHu = oView.byId("idSecSCHuInput_CCAHU").getValue();
+        var sWpt = oView.byId("idWPTInput_CCAHU").getValue();
 
-        var oModel=this.getView().getModel();
-        var sRequestUrl=`/create_confirm_adhochuSet(Huident='${sHu}',Procty='${sWpt}')`
-        var that=this;
-        oModel.read(sRequestUrl,{
-          success: function(odata) {
+        var oModel = this.getView().getModel();
+        var sRequestUrl = `/create_confirm_adhochuSet(Huident='${sHu}')`
+        var that = this;
+        oModel.read(sRequestUrl, {
+          success: function (odata) {
             console.log(odata);
-            if (odata.Huident === sHu && odata.Procty.toLowerCase() === sWpt.toLowerCase()) {
-                 that.getView().byId("idDescInput_CCAHU").setValue(odata.Maktx);
-                 that.getView().byId("idThirdScHuInput_CCAHU").setValue(odata.Huident);
-                 that.getView().byId("idThirdScHuInput2_CCAHU").setValue(odata.Letyp);
-                 that.getView().byId("idThirdScProdInput_CCAHU").setValue(odata.Matnr);
-                 that.getView().byId("idThirdScAvlQtyInput_CCAHU").setValue(odata.AvailQuan);
-                 that.getView().byId("idThirdScUOMInput_CCAHU").setValue(odata.Meins);
-                 that.getView().byId("idThirdScBatchInput_CCAHU").setValue(odata.Charg);
-                 that.getView().byId("idThirdScHazardousSubstanceInput_CCAHU").setValue(odata.HazmatInd);
-                 that.getView().byId("idThirdScStockCategoryInput_CCAHU").setValue(odata.StockDoccat);
+            if (odata.Huident === sHu) {
+              that.getView().byId("idDescInput_CCAHU").setValue(odata.Maktx);
+              that.getView().byId("idThirdScHuInput_CCAHU").setValue(odata.Huident);
+              that.getView().byId("idThirdScHuInput2_CCAHU").setValue(odata.Letyp);
+              that.getView().byId("idThirdScProdInput_CCAHU").setValue(odata.Matnr);
+              that.getView().byId("idThirdScAvlQtyInput_CCAHU").setValue(odata.AvailQuan);
+              that.getView().byId("idThirdScUOMInput_CCAHU").setValue(odata.Meins);
+              that.getView().byId("idThirdScBatchInput_CCAHU").setValue(odata.Charg);
+              that.getView().byId("idThirdScHazardousSubstanceInput_CCAHU").setValue(odata.HazmatInd);
+              that.getView().byId("idThirdScStockCategoryInput_CCAHU").setValue(odata.StockDoccat);
 
             }
             that.getView().byId("idthirdSc_CCAHU").setVisible(true);
-        that.getView().byId("idsecondSc_CCAHU").setVisible(false);
+            that.getView().byId("idsecondSc_CCAHU").setVisible(false);
 
           },
-          error:function(oError){
+          error: function (oError) {
             sap.m.MessageToast.show("error occured")
           }
         })
 
 
       },
-      
-
-
-
     });
   }
 );
