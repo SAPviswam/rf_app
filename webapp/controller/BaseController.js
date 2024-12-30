@@ -11,7 +11,6 @@ sap.ui.define([
             return this.getOwnerComponent().getRouter();
         },
         onInit: function () {
-
         },
         debounceCall: function (mainFunction, delay) {
             let timer;

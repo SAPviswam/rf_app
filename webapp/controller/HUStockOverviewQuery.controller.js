@@ -483,7 +483,7 @@ sap.ui.define(
               that.getView().byId("idHUStockOverviewQueryThirdbackbtn_HUSOQ").setVisible(false);
               that.getView().byId("idScforThirdHUStockOverviewQuery_HUSOQ").setVisible(false);
               that.getView().byId("idBinNumberforlabelInput_HUSOQ").setValue(sHUNumber);
-
+              
 
               let oDetails = odata.HUheadtoItems.results;
 
