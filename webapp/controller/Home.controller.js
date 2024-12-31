@@ -46,10 +46,10 @@ sap.ui.define([
                 else if (Device.system.phone) {
                     this.getView().byId("Homescreentitle").addStyleClass("titleMobile_home");
                     this.getView().byId("idVboxRfLogin_HomeView").addStyleClass("rfLoginVboxMobile");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home");
+                    //this.getView().byId("createResourceVbox").addStyleClass("createResource_Home_mobile");
+                    //this.getView().byId("createResourceVbox").addStyleClass("createResourceVbox_Mobile_Home");
                     this.getView().byId("idVBoxInputFields_HomeView").addStyleClass("rflogin_mobile_Home");
-                    this.getView().byId("createResourceVbox").addStyleClass("createResource_mobile_home")
+                    //this.getView().byId("createResourceVbox").addStyleClass("createResource_mobile_home")
                 }
                 else {
                     this.getView().byId("idVBoxGif_HomeViewTab").setVisible(false);
@@ -142,9 +142,9 @@ sap.ui.define([
                 }
             },
             onInitialDetailsLoad: async function (oEvent1) {
-                const { id ,idI} = oEvent1.getParameter("arguments");
+                const { id, idI } = oEvent1.getParameter("arguments");
                 this.ID = id;
-                this.IDI=idI;
+                this.IDI = idI;
                 var oModel = this.getOwnerComponent().getModel();
                 await oModel.read("/RESOURCESSet('" + this.ID + "')", {
                     success: function (oData) {
@@ -622,10 +622,10 @@ sap.ui.define([
                         var ouser = oData.Users.toLowerCase()
                         if (ouser === "supervisor" || ouser === "manager") {
 
-                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID,idI:this.IDI }, Animation)
+                            this.getOwnerComponent().getRouter().navTo("Supervisor", { id: this.ID, idI: this.IDI }, Animation)
                         }
                         else {
-                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID ,idI:this.IDI}, Animation)
+                            this.getOwnerComponent().getRouter().navTo("RouteResourcePage", { id: this.ID, idI: this.IDI }, Animation)
                         }
 
                     }.bind(this),
@@ -733,10 +733,10 @@ sap.ui.define([
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("InitialScreen", { Userid: this.IDI });
             },
-            
+
             onChangeQueuePress: function () {
                 var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("CHANGEQUEUE", { id: this.ID,idI:this.IDI });
+                oRouter.navTo("CHANGEQUEUE", { id: this.ID, idI: this.IDI });
             }
 
         });
