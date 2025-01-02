@@ -92,6 +92,37 @@
                                     liveChange="onAdhocProductWtLiveChange"
                                     placeholder="{i18n>idAdhocProductWtWhInputPlaceholder}"
                                 />
+                                <ndc:BarcodeScannerButton
+                                    id="IDBinGenScanButton_AdhocProductWt"
+                                    scanSuccess="OnScannerAdhocProductWt"
+                                    scanFail="onScanError"
+                                    class="sapUiTinyMarginBegin"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                />
+                            </HBox>
+                            <HBox
+                                id="idHbox2_AdhocProductwt"
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <Text
+                                    id="idProductSrcBinLabel1__AdhocProductwt"
+                                    text="{i18n>Src_Bin_Label_CCAP}"
+                                    width="50px"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Input
+                                    id="idProductsrcBinInput__AdhocProductwt"
+                                    value=""
+                                    placeholder="Enter Source Bin"
+                                />
+                                <ndc:BarcodeScannerButton
+                                    id="IDGenScanButton_AdhocProductWt"
+                                    scanSuccess="OnScannerSourceBin"
+                                    scanFail="onScanError"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    class="sapUiTinyMarginBegin"
+                                />
                             </HBox>
                             <HBox
                                 id="idHbox_AdhocProductWt1"
@@ -99,12 +130,6 @@
                                 alignContent="Center"
                                 alignItems="Center"
                             >
-                                <ndc:BarcodeScannerButton
-                                    id="IDBinGenScanButton_AdhocProductWt"
-                                    scanSuccess="OnScannerAdhocProductWt"
-                                    scanFail="onScanError"
-                                    inputLiveUpdate="onScanLiveupdate"
-                                />
                                 <Button
                                     id="Id_Button1_AdhocProductWt"
                                     text="{i18n>Back_Button_AdhocProductWt}"
@@ -125,7 +150,7 @@
                     </form:SimpleForm>
                 </VBox>
             </ScrollContainer>
-            <ScrollContainer
+            <!-- <ScrollContainer
                 id="idsecondProductPage_AdhocProductwt"
                 horizontal="false"
                 vertical="true"
@@ -167,29 +192,7 @@
                                     editable="false"
                                 />
                             </HBox>
-                            <HBox
-                                id="idHbox2_AdhocProductwt"
-                                alignContent="Center"
-                                alignItems="Center"
-                            >
-                                <Text
-                                    id="idProductSrcBinLabel1__AdhocProductwt"
-                                    text="{i18n>Src_Bin_Label_CCAP}"
-                                    width="50px"
-                                    class="sapUiTinyMarginEnd"
-                                />
-                                <Input
-                                    id="idProductsrcBinInput__AdhocProductwt"
-                                    value=""
-                                />
-                                <ndc:BarcodeScannerButton
-                                    id="IDGenScanButton_AdhocProductWt"
-                                    scanSuccess="OnScannerSourceBin"
-                                    scanFail="onScanError"
-                                    inputLiveUpdate="onScanLiveupdate"
-                                    class="sapUiTinyMarginBegin"
-                                />
-                            </HBox>
+                            
                             <VBox
                                 id="idsecondProductPage3__AdhocProductwt12"
                                 alignContent="Center"
@@ -214,7 +217,7 @@
                         </VBox>
                     </form:SimpleForm>
                 </VBox>
-            </ScrollContainer>
+            </ScrollContainer> -->
             <ScrollContainer
                 id="Id_Scrollcontainer_Screen2"
                 horizontal="false"
